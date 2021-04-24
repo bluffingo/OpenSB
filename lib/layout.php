@@ -20,3 +20,8 @@ function twigloader($subfolder = '') {
 
 	return $twig;
 }
+
+function videoBox($videodata) {
+	$twig = twigloader('components');
+	return $twig->render('videobox.twig', ['data' => $videodata]);
+}
