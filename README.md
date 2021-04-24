@@ -9,3 +9,5 @@ If it's some generic video sharing site and if it's good, Then hey! People could
 ## How to set this up
 1. Install [composer](https://getcomposer.org/).
 2. From the terminal run `composer i`.
+3. Copy `config.sample.php` and name it as `config.php`
+4. Edit the config file, change the database auth details to the ones you use.
