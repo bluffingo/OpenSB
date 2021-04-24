@@ -1,0 +1,9 @@
+<div class="panel panel-primary">
+	<div class="panel-body">
+		<div class="col-md-8">
+			<h3>{{ data.title }}</a></h3>
+			<p>{{ data.author }} &bull; {{ data.views }} views &bull; {{ data.date }}</p>
+			<p>{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description  }}</p>
+		</div>
+	</div>
+</div>

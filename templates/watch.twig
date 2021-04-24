@@ -3,21 +3,41 @@
 {% block title %}Video{% endblock %}
 
 	{% block content %}
-<div id="playerContainer" style="width:1280px;height:720px"></div>
-<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
-<script>
-	const config = {
-		sources: [
-			{
-				type: 'mp4',
-				src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-			}
-		],
-	};
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div id="playerContainer" style="width:854px;height:480px"></div>
+				<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
+				<script>
+					const config = {
+						sources: [
+							{
+								type: 'mp4',
+								src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+							}
+						],
+					};
 
-	const element = document.getElementById('playerContainer');
-	const player = IndigoPlayer.init(element, config);
+					const element = document.getElementById('playerContainer');
+					const player = IndigoPlayer.init(element, config);
 
-	// You can use the player object now to access the player and it's methods (play, pause, ...)
-</script>
+					// You can use the player object now to access the player and it's methods (play, pause, ...)
+				</script>
+				<div style="margin-top:5px;width:854px">
+					{{ watch_box(video_data) }}
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="panel panel-primary">
+					<div class="panel-body">
+						{{ small_video_box(video_data) }}
+						{{ small_video_box(video_data) }}
+						{{ small_video_box(video_data) }}
+						{{ small_video_box(video_data) }}
+						{{ small_video_box(video_data) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	{% endblock %}

@@ -21,7 +21,17 @@ function twigloader($subfolder = '') {
 	return $twig;
 }
 
+function smallVideoBox($videodata) {
+	$twig = twigloader('components');
+	return $twig->render('smallvideobox.twig', ['data' => $videodata]);
+}
+
 function videoBox($videodata) {
 	$twig = twigloader('components');
 	return $twig->render('videobox.twig', ['data' => $videodata]);
+}
+
+function watchBox($videodata) {
+	$twig = twigloader('components');
+	return $twig->render('watchbox.twig', ['data' => $videodata]);
 }
