@@ -1,0 +1,8 @@
+## User-generated files
+conf/config.php
+templates/cache/
+
+## Composer
+vendor/
+composer.lock
+

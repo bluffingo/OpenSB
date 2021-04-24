@@ -1,0 +1,11 @@
+{
+	"require": {
+		"twig/twig": "^3.0"
+	},
+	"minimum-stability": "dev",
+	"config": {
+		"platform": {
+			"php": "7.3"
+		}
+	}
+}

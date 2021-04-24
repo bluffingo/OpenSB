@@ -1,6 +1,10 @@
-<?php include "header.php"?>
-  <body>
-    <h1>Hello, world!</h1>
-	<p>If you're reading this, then some shit happended</p>
-  </body>
-</html>
+<?php
+require('lib/common.php');
+
+$testVariable = (isset($_GET['test']) ? $_GET['test'] : null);
+
+$twig = twigloader();
+
+echo $twig->render('index.twig', [
+	'test' => $testVariable
+]);

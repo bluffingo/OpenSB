@@ -1,0 +1,12 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Home{% endblock %}
+
+	{% block content %}
+<h1>Hello, world!</h1>
+<p>If you're reading this, then some shit happended</p>
+
+{% if test %}
+<p>{{ test }}</p>
+{% endif %}
+	{% endblock %}
