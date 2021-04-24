@@ -6,3 +6,6 @@ If it's an old youtube clone, then people are going to think it's a circlejerk o
 
 If it's some generic video sharing site and if it's good, Then hey! People could start using squareBracket!
 
+## How to set this up
+1. Install [composer](https://getcomposer.org/).
+2. From the terminal run `composer i`.
