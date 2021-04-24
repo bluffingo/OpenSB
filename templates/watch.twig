@@ -1,0 +1,23 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Video{% endblock %}
+
+	{% block content %}
+<div id="playerContainer" style="width:1280px;height:720px"></div>
+<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
+<script>
+	const config = {
+		sources: [
+			{
+				type: 'mp4',
+				src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+			}
+		],
+	};
+
+	const element = document.getElementById('playerContainer');
+	const player = IndigoPlayer.init(element, config);
+
+	// You can use the player object now to access the player and it's methods (play, pause, ...)
+</script>
+	{% endblock %}

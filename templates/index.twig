@@ -1,0 +1,27 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Home{% endblock %}
+
+	{% block content %}
+<div class="row">
+	<div class="col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-heading">Featured Videos</div>
+			<div class="panel-body">
+				{{ video_box(video_data) }}
+				{{ video_box(video_data) }}
+				{{ video_box(video_data) }}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">Latest News</div>
+			<div class="panel-body">
+				some stuff here idk
+			</div>
+		</div>
+	</div>
+</div>
+
+	{% endblock %}
