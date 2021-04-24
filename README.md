@@ -3,7 +3,7 @@ That's right, let's not be a old youtube clone, and let's try to be Secure™.
 
 ## How to set this up
 1. Install [composer](https://getcomposer.org/).
-2. From the terminal run `composer i`.
+2. From the command prompt/terminal run `composer i`.
 3. Copy `config.sample.php` and name it as `config.php`
 4. Edit the config file, change the database auth details to the ones you use.
 
