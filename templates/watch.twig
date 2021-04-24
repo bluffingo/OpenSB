@@ -24,17 +24,15 @@
 					// You can use the player object now to access the player and it's methods (play, pause, ...)
 				</script>
 				<div style="margin-top:5px;width:854px">
-					{{ watch_box(video_data) }}
+					{{ watch_box(video) }}
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="panel panel-primary">
 					<div class="panel-body">
-						{{ small_video_box(video_data) }}
-						{{ small_video_box(video_data) }}
-						{{ small_video_box(video_data) }}
-						{{ small_video_box(video_data) }}
-						{{ small_video_box(video_data) }}
+						{% for related_video in related_videos %}
+							{{ small_video_box(related_video) }}
+						{% endfor %}
 					</div>
 				</div>
 			</div>

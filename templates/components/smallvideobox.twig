@@ -1,17 +1,16 @@
 <div class="row">
-	<a href="watch.php?v={{ data.id }}">
+	<a href="watch.php?v={{ data.video_id }}">
 	<div class="col-md-6">
 		<div class="thumbnail" style="margin-bottom:0">
 			<img src="assets/placeholder.jpg">
 		</div>
-					
 		</div>
 	</a>
 	<div class="row col-md-7">
-	<h5><a href="watch.php?v={{ data.id }}">{{ data.title }}</a></h5>
+	<h5><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h5>
 	<p>{{ data.author }}</p>
 	</div>
 	<div class="col-md-12">
-		<p>{{ data.views }} views &bull; {{ data.date }}</p>
+		<p>{{ data.views }} views &bull; {{ data.date | date('M j, Y') }}</p>
 	</div>
 </div>

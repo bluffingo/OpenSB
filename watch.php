@@ -1,19 +1,15 @@
 <?php
 require('lib/common.php');
 
-$testVariable = (isset($_GET['test']) ? $_GET['test'] : null);
+$id = (isset($_GET['v']) ? $_GET['v'] : null);
 
-$videodatatest = [
-	'id' => "aBcDeF",
-	'title' => "Example Video",
-	'description' => "This is an example video to test out the video box design. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur consectetur quam nec maximus laoreet. Mauris augue tellus, viverra id pulvinar id, ultricies quis felis. Suspendisse mollis nunc nec magna tincidunt lacinia.",
-	'author' => "Epic Channel",
-	'views' => 342213,
-	'date' => "15 minutes ago"
-];
+$videoData = fetch("SELECT * FROM videos WHERE video_id = ?", [$id]);
+
+$relatedVideosData = query("SELECT video_id, title, description, time, views, author FROM videos ORDER BY id DESC");
 
 $twig = twigloader();
 
 echo $twig->render('watch.twig', [
-	'video_data' => $videodatatest
+	'video' => $videoData,
+	'related_videos' => $relatedVideosData
 ]);
