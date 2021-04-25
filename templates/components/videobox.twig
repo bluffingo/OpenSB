@@ -10,7 +10,7 @@
 			</a>
 			<div class="col-md-8">
 				<h3><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
-				<p>{{ data.author }} &bull; {{ data.views }} views &bull; {{ data.date | date('M j, Y') }}</p>
+				<p>{{ data.author }} &bull; {{ data.views }} views &bull; {{ data.time | relative_time }}</p>
 				<p>{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description  }}</p>
 			</div>
 		</div>

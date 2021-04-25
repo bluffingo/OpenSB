@@ -1,6 +1,7 @@
 {
 	"require": {
-		"twig/twig": "^3.0"
+		"twig/twig": "^3.0",
+		"mpratt/relativetime": "dev-master"
 	},
 	"minimum-stability": "dev",
 	"config": {

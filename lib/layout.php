@@ -22,7 +22,7 @@ function twigloader($subfolder = '') {
 }
 
 function videoThumbnail($videodata) {
-	
+
 	$handle = @fopen('http://'.$_SERVER['HTTP_HOST'].'/assets/thumb/'.$videodata.'.png', 'r');
 	$twig = twigloader('components');
 	//print_r($videodata);
@@ -42,4 +42,17 @@ function videoBox($videodata) {
 function watchBox($videodata) {
 	$twig = twigloader('components');
 	return $twig->render('watchbox.twig', ['data' => $videodata]);
+}
+
+function relativeTime($time) {
+	$config = [
+		'language' => '\RelativeTime\Languages\English',
+		'separator' => ', ',
+		'suffix' => true,
+		'truncate' => 1,
+	];
+
+	$relativeTime = new \RelativeTime\RelativeTime($config);
+
+	return $relativeTime->timeAgo($time);
 }
