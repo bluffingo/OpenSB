@@ -1,9 +1,7 @@
 <?php
 require('lib/common.php');
 
-// currently selects all uploaded videos, should turn it into all featured only
-
-$error = "";
+$error = '';
 $success = '';
 
 $twig = twigloader();
