@@ -7,7 +7,7 @@
  * @return \Twig\Environment Twig object.
  */
 function twigloader($subfolder = '') {
-	global $tplCache, $tplNoCache;
+	global $tplCache, $tplNoCache, $loggedIn, $currentUser;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
 
@@ -17,6 +17,9 @@ function twigloader($subfolder = '') {
 	]);
 	// Add squareBracket specific extension
 	$twig->addExtension(new SBExtension());
+
+	$twig->addGlobal('logged_in', $loggedIn);
+	$twig->addGlobal('current_user', $currentUser);
 
 	return $twig;
 }
