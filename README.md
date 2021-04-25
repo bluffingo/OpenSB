@@ -1,5 +1,5 @@
 # squareBracket 2.0
-That's right, let's not be a old youtube clone, and let's try to be Secure™.
+An attempt at rewriting squareBracket, with a different vision.
 
 ## How to set this up
 1. Install [composer](https://getcomposer.org/).
