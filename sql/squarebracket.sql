@@ -18,7 +18,6 @@ CREATE TABLE `videos` (
   `flags` tinyint(4) unsigned NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',
   `category_id` int(11) DEFAULT NULL COMMENT 'Category ID for the video',
   `videofile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Path to the video file(?)',
-  `videofile_hd` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Path to the HD video file(?)',
   `videolength` bigint(20) unsigned DEFAULT NULL COMMENT 'Length of the video in seconds',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
