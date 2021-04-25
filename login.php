@@ -22,13 +22,11 @@ if(isset($_POST["loginsubmit"])){
     }
 	
 	if(empty($error)) {
-		$userData = query("SELECT * FROM users WHERE `username`='$username'");
-		foreach ($userData as $row) {
-			if(password_verify($password, $row['password'])){
-				$success = true;
-			} else {
-				$success = false;
-			}
+		$userPass = fetch("SELECT password FROM users WHERE username = ?", [$username]);
+		if (password_verify($password, $userPass['password'])) {
+			$success = true;
+		} else {
+			$success = false;
 		}
 	}
 }
