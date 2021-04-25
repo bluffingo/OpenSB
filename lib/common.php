@@ -9,6 +9,8 @@ foreach (glob("lib/*.php") as $file) {
 	require_once($file);
 }
 
+$userfields = userfields();
+
 // Cookie auth
 if (isset($_COOKIE['SBTOKEN'])) {
 	$id = result("SELECT id FROM users WHERE token = ?", [$_COOKIE['SBTOKEN']]);

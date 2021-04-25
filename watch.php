@@ -3,9 +3,9 @@ require('lib/common.php');
 
 $id = (isset($_GET['v']) ? $_GET['v'] : null);
 
-$videoData = fetch("SELECT * FROM videos WHERE video_id = ?", [$id]);
+$videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
 
-$relatedVideosData = query("SELECT video_id, title, description, time, views, author FROM videos ORDER BY id DESC");
+$relatedVideosData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC");
 
 $twig = twigloader();
 
