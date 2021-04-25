@@ -8,10 +8,13 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 SET NAMES utf8mb4;
 
 CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL COMMENT 'Incrementing ID for internal purposes.',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.',
   `username` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Username, chosen by the user',
+  `email` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User Email.',
   `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Password, hashed in bcrypt.',
-  `token` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User token for cookie authentication.'
+  `token` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User token for cookie authentication.',
+  `joined` bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT 'User''s join date',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
