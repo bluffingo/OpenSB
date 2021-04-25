@@ -21,6 +21,14 @@ function twigloader($subfolder = '') {
 	return $twig;
 }
 
+function videoThumbnail($videodata) {
+	
+	$handle = @fopen('http://'.$_SERVER['HTTP_HOST'].'/assets/thumb/'.$videodata.'.png', 'r');
+	$twig = twigloader('components');
+	//print_r($videodata);
+	return $twig->render('videothumbnail.twig', ['data' => $videodata, 'file_exists' => $handle]);
+}
+
 function smallVideoBox($videodata) {
 	$twig = twigloader('components');
 	return $twig->render('smallvideobox.twig', ['data' => $videodata]);

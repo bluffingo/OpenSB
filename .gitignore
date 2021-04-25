@@ -1,6 +1,8 @@
 ## User-generated files
 conf/config.php
 templates/cache/
+assets/thumb/
+*.mp4
 
 ## Composer
 vendor/

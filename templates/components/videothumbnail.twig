@@ -1,0 +1,11 @@
+{% if file_exists %}
+	{% set imgSrcPath = 'assets/thumb/' ~ data ~ '.png' %}
+	{% autoescape %}
+		{{ imgSrcPath | raw }}
+	{% endautoescape %}
+{% else %}
+	{% set imgSrcPath = 'assets/placeholder.jpg' %}
+	{% autoescape %}
+		{{ imgSrcPath | raw }}
+	{% endautoescape %}
+{% endif %}
