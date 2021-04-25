@@ -22,5 +22,11 @@ CREATE TABLE `videos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.',
+  `username` text COLLATE utf8mb4_unicode_ci DEFAULT NOT NULL COMMENT 'Username, chosen by the user',
+  `password` text COLLATE utf8mb4_unicode_ci DEFAULT NOT NULL COMMENT 'Password, hashed in bcrypt.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 -- 2021-04-24 22:01:47

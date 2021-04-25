@@ -1,0 +1,36 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Login{% endblock %}
+
+	{% block content %}
+		{% if error %}
+			{% autoescape %}
+				{{ error | raw }}
+			{% endautoescape %}
+		{% else %}
+			{% if not success == '' %}
+				{% if success %}
+					{% set text = 'Successfuly logged in! This is very early in development, there is no session code yet.' %}
+					{% autoescape %}
+						{{ text | raw }}
+					{% endautoescape %}
+				{% else %}
+					{% set text = 'Incorrect username or password!' %}
+					{% autoescape %}
+						{{ text | raw }}
+					{% endautoescape %}
+				{% endif %}
+			{% endif %}
+		{% endif %}
+		<form method="post" name="loginForm" id="loginForm" action="login.php">
+			<div class="input-group">
+			  <span class="input-group-addon" id="basic-addon1" style="width:90px">Username</span>
+			  <input type="text" name="username" class="form-control" aria-describedby="basic-addon1">
+			</div>
+			<div class="input-group">
+			  <span class="input-group-addon" id="basic-addon1" style="width:90px">Password</span>
+			  <input type="password" name="password" class="form-control" aria-describedby="basic-addon1">
+			</div>
+			<input class="btn btn-primary" type="submit" value="Log In" name="loginsubmit">
+		</form>
+	{% endblock %}
