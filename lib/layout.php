@@ -56,3 +56,8 @@ function relativeTime($time) {
 
 	return $relativeTime->timeAgo($time);
 }
+
+function redirect($url) {
+	header(sprintf('Location: %s', $url));
+	die();
+}

@@ -13,18 +13,20 @@ if(isset($_POST["loginsubmit"])){
     } else{
         $username = trim(htmlspecialchars($_POST['username']));
     }
-	
+
 	//check if user has inputed a password.
 	if(empty(trim($_POST['password']))){
         $error .= 'Please enter your password! ';
     } else{
         $password = trim(htmlspecialchars($_POST['password']));
     }
-	
+
 	if(empty($error)) {
-		$userPass = fetch("SELECT password FROM users WHERE username = ?", [$username]);
-		if (password_verify($password, $userPass['password'])) {
-			$success = true;
+		$logindata = fetch("SELECT password,token FROM users WHERE username = ?", [$username]);
+		if (password_verify($password, $logindata['password'])) {
+			setcookie('SBTOKEN', $logindata['token'], 2147483647);
+
+			redirect('./');
 		} else {
 			$success = false;
 		}
