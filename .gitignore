@@ -1,8 +1,8 @@
 ## User-generated files
 conf/config.php
 templates/cache/
+videos/
 
 ## Composer
 vendor/
 composer.lock
-
