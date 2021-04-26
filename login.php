@@ -1,5 +1,5 @@
 <?php
-require('lib/common.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
 
 $error = '';
 $success = '';

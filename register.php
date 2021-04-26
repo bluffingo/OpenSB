@@ -1,5 +1,5 @@
 <?php
-include('lib/common.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
 
 $error = '';
 
