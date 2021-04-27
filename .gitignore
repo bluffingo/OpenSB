@@ -1,6 +1,7 @@
 ## User-generated files
 conf/config.php
 templates/cache/
+assets/profpic/
 assets/thumb/
 *.mp4
 videos/

@@ -24,11 +24,15 @@ function twigloader($subfolder = '') {
 	return $twig;
 }
 
-function videoThumbnail($videodata) {
+function profileImage($username) {
+	$handle = @fopen('http://'.$_SERVER['HTTP_HOST'].'/assets/profpic/'.$username.'.png', 'r');
+	$twig = twigloader('components');
+	return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $handle]);
+}
 
+function videoThumbnail($videodata) {
 	$handle = @fopen('http://'.$_SERVER['HTTP_HOST'].'/assets/thumb/'.$videodata.'.png', 'r');
 	$twig = twigloader('components');
-	//print_r($videodata);
 	return $twig->render('videothumbnail.twig', ['data' => $videodata, 'file_exists' => $handle]);
 }
 

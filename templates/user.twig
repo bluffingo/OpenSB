@@ -6,7 +6,7 @@
 	<div class="row">
 	  <div class="col-sm-6 col-md-4">
 		<div class="thumbnail">
-		  <img src="assets/profiledef.png" alt="pfp">
+		  <img src="{{ profile_image(user.username) }}" alt="pfp">
 		  <div class="caption">
 			<h3>{{ user.username }}</h3>
 			<p>Joined {{ user.joined | date('M j, Y') }}</p>
