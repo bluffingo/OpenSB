@@ -9,17 +9,22 @@ An attempt at rewriting squareBracket, with a different vision.
 
 ## Not-so frequently asked questions
 
-### Why is this no longer an old youtube clone?
-If it's an old youtube clone, then people are going to think it's a circlejerk of special-ed children nostalgizing about some version of a popular website from years ago.
+### Why is this no longer a website based on a old version of YouTube?
+If it's an old youtube clone, then it's going to be a a circlejerk of young people nostalgizing about some version of a popular website from years ago. Addtionally, these sorts of website are infamous of having a lot of heat and immature drama because 1 person isn't agreeing with someone else's opinion.
 
-If it's some generic video sharing site and if it's good, Then hey! People could start using squareBracket!
+### Why not keep the old codebase (squareBracket 1.0) and make it secure?
+1.0 suffered from over-engineering and garbage programming.
 
-### Why Bootstrap 3? Why not Bootstrap 4/5 or *insert name of other CSS framework*
+1. There were features no one really used (half-assed profile customization, bulletins, etc)
+2. Tons of vunerbilities that were only patched up by making the SQL user not be able to use commands it wouldn't naturally use (so basically just by putting duct tape)
+3. It was just using the remains of a project that died a few weeks before squareBracket's developement started.
 
-Bootstrap 3 looked the best in my opinion. There were [2](https://cdn.discordapp.com/attachments/832695674662420500/832704559893708810/unknown.png) [attempts](https://cdn.discordapp.com/attachments/832695674662420500/832718470068043807/unknown.png) at converting the old codebase to use Bootstrap 5, but they all failed. Addtionally, we had [used Semantic UI](https://web.archive.org/web/20210301000232/https://squarebracket.me/) at one point, to lukewarm reception.
+### Why use Bootstrap 3? Why not Bootstrap 4/5 or *insert name of other CSS framework*?
+
+Bootstrap 3 looked the best in my opinion. We had tried Bootstrap 5 and Semantic UI in the fact, but they didn't work.
 
 ### Why TWIG?
-Twig literally makes HTML injection attacks a thing of the past (and I know you like security), it's more short and concise than PHP's "templating" syntax, it supports layout inheritance and it allows for more code reuse and it's versatile for creating more frontends in the future if you'd ever want that.
+Twig literally makes HTML injection attacks a thing of the past. It's more short and concise than PHP's "templating" syntax, it supports layout inheritance and it allows for more code reuse and it's versatile for creating more frontends in the future if you'd ever want that.
 
 It wouldn't look better if we removed Twig, it'd just look like old squareBracket. Probably just as insecure as old squareBracket as well.
 
