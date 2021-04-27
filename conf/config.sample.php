@@ -6,6 +6,9 @@ $pass = '';
 
 $basepath = '/';
 
+$ffmpegPath = '';
+$ffprobePath = '';
+
 $tplCache = 'templates/cache';
 $tplNoCache = false; // **DO NOT SET AS TRUE IN PROD - DEV ONLY**
 
