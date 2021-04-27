@@ -25,13 +25,13 @@ function twigloader($subfolder = '') {
 }
 
 function profileImage($username) {
-	$handle = @fopen('http://'.$_SERVER['HTTP_HOST'].'/assets/profpic/'.$username.'.png', 'r');
+	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/profpic/'.$username.'.png', 'r');
 	$twig = twigloader('components');
 	return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $handle]);
 }
 
 function videoThumbnail($videodata) {
-	$handle = @fopen('http://'.$_SERVER['HTTP_HOST'].'/assets/thumb/'.$videodata.'.png', 'r');
+	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/thumb/'.$videodata.'.png', 'r');
 	$twig = twigloader('components');
 	return $twig->render('videothumbnail.twig', ['data' => $videodata, 'file_exists' => $handle]);
 }
