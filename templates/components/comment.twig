@@ -6,6 +6,6 @@
 	</a>
 	<div class="row col-md-10" style="padding-left: 0px;">
 		{{ userlink(data, 'u_') }} • {{ data.time | relative_time }}
-		<p>{{ data.comment }}</p>
+		<p>{{ data.comment | nl2br }}</p>
 	</div>
 </div>
