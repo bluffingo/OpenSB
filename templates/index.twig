@@ -3,10 +3,18 @@
 {% block title %}Home{% endblock %}
 
 	{% block content %}
-	<div class="container-fluid">
+	</div><div class="bs-docs-header">
+	<div class="container">
   <h1>We do what PokTube does</h1>
   <p>We make video consumption possible even though there's like 80 quadrillion sites decidated to this</p>
+  <p>
+  <button href="register.php" type="button" class="btn btn-primary btn-lg">Get started ›</button><br>
+  <small>Already have an account?</small>
+  <button type="button" class="btn btn-primary">Login</button>
+</p>
+  </div>
 </div>
+<div class="container">
 <div class="row">
 	<div class="col-md-8">
 		<div class="panel panel-default">
@@ -34,5 +42,5 @@
 		</div>
 	</div>
 </div>
-
+</div>
 	{% endblock %}
