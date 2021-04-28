@@ -29,3 +29,5 @@ Twig literally makes HTML injection attacks a thing of the past. It's more short
 It wouldn't look better if we removed Twig, it'd just look like old squareBracket. Probably just as insecure as old squareBracket as well.
 
 It's secure (it treats all variables as "unsafe" and automatically escapes them unless you explicitly mark them as safe), concise (its liquid-like syntax is shorter and way more appropriate for the context of templating) and fast (with caching enabled there's basically no overhead compared to not using Twig). At least 150 million PHP projects use Twig, based on Packagist's stats. It's not some obscure little thing, it's a major part of modern PHP.
+
+note by chaziz: fucktube, sniped's youtube clone using the same framebit codebase that squarebracket 1.0 did, got exploited to fucking death.
