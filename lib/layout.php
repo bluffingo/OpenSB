@@ -24,6 +24,11 @@ function twigloader($subfolder = '') {
 	return $twig;
 }
 
+function comment($comment) {
+	$twig = twigloader('components');
+	return $twig->render('comment.twig', ['data' => $comment]);
+}
+
 function profileImage($username) {
 	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/profpic/'.$username.'.png', 'r');
 	$twig = twigloader('components');

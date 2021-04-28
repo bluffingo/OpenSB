@@ -1,0 +1,11 @@
+<div class="row">
+	<a href="watch.php?v=_0q8_3a_3f0">
+	<div class="col-md-1">
+		<img class="img-circle" style="width:32px;height:32px" src="{{ profile_image(data.u_username) }}"> <!--uhh it's a bad idea to use u_username, but it's a temp solution anyways.-->
+	</div>
+	</a>
+	<div class="row col-md-10" style="padding-left: 0px;">
+		{{ userlink(data, 'u_') }} • {{ data.time | relative_time }}
+		<p>{{ data.comment }}</p>
+	</div>
+</div>
