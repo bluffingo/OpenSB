@@ -5,7 +5,7 @@
 	</div>
 	</a>
 	<div class="row col-md-10" style="padding-left: 0px;">
-		{{ userlink(data, 'u_') }} &bull; {{ data.time | relative_time }}
+		{{ userlink(data, 'u_') }} &bull; {{ data.date | relative_time }}
 		{% apply markdown_to_html | nl2br %}
 			{{ data.comment | raw }}
 		{% endapply %}
