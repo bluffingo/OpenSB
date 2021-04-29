@@ -9,6 +9,10 @@ An attempt at rewriting squareBracket, with a different vision.
 
 ## Not-so frequently asked questions
 
+### Will my old stuff on squareBracket 1.0 be on squareBracket 2.0?
+
+Yes, but bulletins will not be imported.
+
 ### Why is this no longer a website based on a old version of YouTube?
 If it's an old youtube clone, then it's going to be a a circlejerk of young people nostalgizing about some version of a popular website from years ago. Addtionally, these sorts of website are infamous of having a lot of heat and immature drama because 1 person isn't agreeing with someone else's opinion.
 
@@ -30,4 +34,4 @@ It wouldn't look better if we removed Twig, it'd just look like old squareBracke
 
 It's secure (it treats all variables as "unsafe" and automatically escapes them unless you explicitly mark them as safe), concise (its liquid-like syntax is shorter and way more appropriate for the context of templating) and fast (with caching enabled there's basically no overhead compared to not using Twig). At least 150 million PHP projects use Twig, based on Packagist's stats. It's not some obscure little thing, it's a major part of modern PHP.
 
-note by chaziz: fucktube, sniped's youtube clone using the same framebit codebase that squarebracket 1.0 did, got exploited to fucking death.
+note by chaziz: fucktube, sniped's youtube clone using the same framebit codebase that squarebracket 1.0 did, got exploited to death.
