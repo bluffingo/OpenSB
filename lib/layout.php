@@ -6,6 +6,11 @@
  * @param string $subfolder Subdirectory to use in the templates/ directory.
  * @return \Twig\Environment Twig object.
  */
+use Twig\Extra\Markdown\DefaultMarkdown;
+use Twig\Extra\Markdown\MarkdownRuntime;
+use Twig\RuntimeLoader\RuntimeLoaderInterface;
+use Twig\Extra\Markdown\MarkdownExtension;
+
 function twigloader($subfolder = '') {
 	global $tplCache, $tplNoCache, $loggedIn, $currentUser;
 
@@ -15,9 +20,19 @@ function twigloader($subfolder = '') {
 	$twig = new \Twig\Environment($loader, [
 		'cache' => $doCache,
 	]);
+	
 	// Add squareBracket specific extension
 	$twig->addExtension(new SBExtension());
-
+	
+	$twig->addRuntimeLoader(new class implements RuntimeLoaderInterface {
+    public function load($class) {
+        if (MarkdownRuntime::class === $class) {
+            return new MarkdownRuntime(new DefaultMarkdown());
+        }
+    }
+	});
+	$twig->addExtension(new MarkdownExtension());
+	
 	$twig->addGlobal('logged_in', $loggedIn);
 	$twig->addGlobal('current_user', $currentUser);
 

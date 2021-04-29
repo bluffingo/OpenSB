@@ -33,5 +33,13 @@ CREATE TABLE `videos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE `comments` (
+  `id` text NOT NULL COMMENT 'ID to video or user.',
+  `comment` text NOT NULL COMMENT 'The comment itself, formatted in Markdown.',
+  `author` bigint(20) NOT NULL COMMENT 'Numerical ID of comment author.',
+  `date` bigint(20) NOT NULL COMMENT 'UNIX timestamp when the comment was posted.',
+  `deleted` tinyint(4) NOT NULL COMMENT 'States that the comment is deleted'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 -- 2021-04-25 15:54:47

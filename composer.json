@@ -3,7 +3,9 @@
 		"twig/twig": "^3.0",
 		"mpratt/relativetime": "dev-master",
 		"aminyazdanpanah/php-ffmpeg-video-streaming": "dev-master",
-		"intervention/image": "^2.5"
+		"intervention/image": "^2.5",
+		"twig/markdown-extra": "3.x-dev",
+		"erusev/parsedown": "dev-master"
 	},
 	"minimum-stability": "dev",
 	"config": {
