@@ -4,9 +4,18 @@
 
 	{% block precontent %}
 		{% if logged_in %}
-			<div class="bs-docs-header" style="margin-top:-20px;margin-bottom:20px;padding-top:20px;padding-bottom:15px;">
+			<div class="bs-docs-header" style="margin-top:-20px;margin-bottom:20px;">
 				<div class="container">
-					<h1>Welcome back {{ current_user.username }}!</h1>
+					<div class="row">
+						<div class="col-md-8">
+							<h1>Hi there, {{ current_user.username }}</h1>
+							<button type="button" class="btn btn-primary btn-lg">browse ›</button>
+							<p class="small">(does not currently work due to a lack of a browse page)<p>
+						</div>
+						<div class="col-md-4">
+						<img src="assets/profiledef.png" alt="pfp">
+						</div>
+					</div>
 				</div>
 			</div>
 		{% else %}
@@ -16,8 +25,8 @@
 					<p>This is like any other video sharing site... for now at least.</p>
 					<p>
 						<button href="register.php" type="button" class="btn btn-primary btn-lg">Get started ›</button><br>
-						<small>Already have an account?</small>
-						<button type="button" class="btn btn-default">Login</button>
+						<p class="small">Already have an account?
+						<a href="login.php">Login</button></p>
 					</p>
 				</div>
 			</div>
