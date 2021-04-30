@@ -22,3 +22,9 @@
     margin-top: 0;
     color: #fff;
 }
+.bs-docs-header a:hover, a:focus {
+    color: #dff0ff;
+}
+.bs-docs-header a {
+    color: #a3d4ff;
+}
