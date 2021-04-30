@@ -22,7 +22,7 @@
     margin-top: 0;
     color: #fff;
 }
-.bs-docs-header a:hover, a:focus {
+.bs-docs-header a:hover, .bs-docs-header a:focus {
     color: #dff0ff;
 }
 .bs-docs-header a {
