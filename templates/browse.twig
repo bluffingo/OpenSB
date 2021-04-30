@@ -1,0 +1,20 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Login{% endblock %}
+
+	{% block content %}
+		<div class="row">
+			<div class="col">
+				<div class="panel panel-default">
+					<div class="panel-heading">Videos</div>
+					<div class="panel-body">
+						{% for video in videos %}
+							{{ video_box(video) }}
+						{% else %}
+							<p>No uploaded videos. :'(</p>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
