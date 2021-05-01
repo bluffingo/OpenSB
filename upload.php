@@ -35,29 +35,32 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 			'ffmpeg.binaries'  => $ffmpegPath,
 			'ffprobe.binaries' => $ffprobePath,
 		];
-			
-		$ffmpeg = FFMpeg::create($config);
-		$video = $ffmpeg->open($target_file);
-		$dash = $video->dash()
-			->setAdaption('id=0,streams=v id=1,streams=a') // Set the adaption.
-			->x264() // Format of the video. Alternatives: x264() and vp9()
-			->autoGenerateRepresentations() // Auto generate representations
-			->save(); // It can be passed a path to the method or it can be null
-		$metadata = $dash->metadata();
-		if (intval($metadata->getFormat()->get('duration')) < 10) {
-			$video->frame(Coordinate\TimeCode::fromSeconds(intval($metadata->getFormat()->get('duration'))))
-				->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
-		} else {
-			$video->frame(Coordinate\TimeCode::fromSeconds(10))
-				->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+		try {
+			$ffmpeg = FFMpeg::create($config);
+			$video = $ffmpeg->open($target_file);
+			$dash = $video->dash()
+				->setAdaption('id=0,streams=v id=1,streams=a') // Set the adaption.
+				->x264() // Format of the video. Alternatives: x264() and vp9()
+				->autoGenerateRepresentations() // Auto generate representations
+				->save(); // It can be passed a path to the method or it can be null
+			$metadata = $dash->metadata();
+			if (intval($metadata->getFormat()->get('duration')) < 10) {
+				$video->frame(Coordinate\TimeCode::fromSeconds(intval($metadata->getFormat()->get('duration'))))
+					->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+			} else {
+				$video->frame(Coordinate\TimeCode::fromSeconds(10))
+					->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+			}
+			$img = $manager->make($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+			$img->resize(640, 360);
+			$img->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+			query("INSERT INTO videos (video_id, title, description, author, time, videofile, videolength) VALUES (?,?,?,?,?,?,?)",
+				[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),'videos/'.$new.'.mpd',intval($metadata->getFormat()->get('duration'))]);
+			redirect('./watch.php?v='.$new);
+		} catch (Exception $e) { ?>
+			Something went wrong!: <?php echo $e->getMessage();
 		}
-		$img = $manager->make($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
-		$img->resize(640, 360);
-		$img->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
 		unlink($target_file);
-		query("INSERT INTO videos (video_id, title, description, author, time, videofile, videolength) VALUES (?,?,?,?,?,?,?)",
-			[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),'videos/'.$new.'.mpd',intval($metadata->getFormat()->get('duration'))]);
-		redirect('./watch.php?v='.$new);
 	}
 }
 
