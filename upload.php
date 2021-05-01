@@ -9,7 +9,7 @@ use FFMpeg\Filters;
 
 $manager = new ImageManager();
 
-$video_id = bin2hex(random_bytes(6));
+$video_id = md5(bin2hex(random_bytes(6)));
 $new = '';
 foreach(str_split($video_id) as $char){
 	if (rand(0, 1) == 1) {
@@ -18,6 +18,8 @@ foreach(str_split($video_id) as $char){
 		$char = '_';
 	} else if (rand(0, 3) == 3) {
 		$char = mb_strtoupper($char);
+	} else if (rand(0, 4) == 4) {
+		$char = '-';
 	}
 	$new .= $char;
 }
@@ -44,9 +46,14 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 				->autoGenerateRepresentations() // Auto generate representations
 				->save(); // It can be passed a path to the method or it can be null
 			$metadata = $dash->metadata();
-			if (intval($metadata->getFormat()->get('duration')) < 10) {
-				$video->frame(Coordinate\TimeCode::fromSeconds(intval($metadata->getFormat()->get('duration')) - 1))
-					->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+			if (floor($metadata->getFormat()->get('duration')) < 10) {
+				if (floor($metadata->getFormat()->get('duration')) == 0) {
+					$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration'))))
+						->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+				} else {
+					$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration')) - 1))
+						->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+				}
 			} else {
 				$video->frame(Coordinate\TimeCode::fromSeconds(10))
 					->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
@@ -56,7 +63,7 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 			$img->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
 			unlink($target_file);
 			query("INSERT INTO videos (video_id, title, description, author, time, videofile, videolength) VALUES (?,?,?,?,?,?,?)",
-				[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),'videos/'.$new.'.mpd',intval($metadata->getFormat()->get('duration'))]);
+				[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),'videos/'.$new.'.mpd',ceil($metadata->getFormat()->get('duration'))]);
 			redirect('./watch.php?v='.$new);
 		} catch (Exception $e) { ?>
 			Something went wrong!: <?php echo $e->getMessage().'<br>on line:'.$e->getLine().'<br>stack trace:'.$e->getTraceAsString();
