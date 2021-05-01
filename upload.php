@@ -65,8 +65,8 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 			query("INSERT INTO videos (video_id, title, description, author, time, videofile, videolength) VALUES (?,?,?,?,?,?,?)",
 				[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),'videos/'.$new.'.mpd',ceil($metadata->getFormat()->get('duration'))]);
 			redirect('./watch.php?v='.$new);
-		} catch (Exception $e) { ?>
-			Something went wrong!: <?php echo $e->getMessage().'<br>on line:'.$e->getLine().'<br>stack trace:'.$e->getTraceAsString();
+		} catch (Exception $e) {
+			echo '<p>Something went wrong!:'.$e->getMessage().'on line:'.$e->getLine().'</p> <p>stack trace:'.$e->getTraceAsString().'</p>';
 			foreach (glob("videos/$new*") as $filename) {
 			   unlink($filename);
 			}
