@@ -45,7 +45,7 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 				->save(); // It can be passed a path to the method or it can be null
 			$metadata = $dash->metadata();
 			if (intval($metadata->getFormat()->get('duration')) < 10) {
-				$video->frame(Coordinate\TimeCode::fromSeconds(intval($metadata->getFormat()->get('duration'))))
+				$video->frame(Coordinate\TimeCode::fromSeconds(intval($metadata->getFormat()->get('duration')) - 1))
 					->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
 			} else {
 				$video->frame(Coordinate\TimeCode::fromSeconds(10))
@@ -59,7 +59,7 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 				[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),'videos/'.$new.'.mpd',intval($metadata->getFormat()->get('duration'))]);
 			redirect('./watch.php?v='.$new);
 		} catch (Exception $e) { ?>
-			Something went wrong!: <?php echo $e->getMessage();
+			Something went wrong!: <?php echo $e->getMessage().'<br>on line:'.$e->getLine().'<br>stack trace:'.$e->getTraceAsString();
 			foreach (glob("videos/$new*") as $filename) {
 			   unlink($filename);
 			}
