@@ -37,7 +37,7 @@
 
 											{% for i in 1..total %}
 												{% if 0 == (current - nearbyPagesLimit) - loop.index %}
-													<li><a class="page-numbers" href="{{ (url ~ 1)|e }}">1</a></li>
+													<li><a class="page-numbers" href="{{ (url ~ 1) }}">1</a></li>
 													{% if 1 != loop.index %}
 														<li><a href="#"><span class="page-numbers">...</span></a></li>
 													{% endif %}
@@ -51,11 +51,7 @@
 														{% if current == loop.index  %}
 															<li class="active"><a href="#"><span class="page-numbers" aria-current="page">{{ loop.index }}</span></a></li>
 														{% else %}
-															{% if loop.index == 1 %}
-																<li><a class="page-numbers" href="{{ main_url }}">{{ loop.index }}</a></li>
-															{% else %}
-																<li><a class="page-numbers" href="{{ url ~ loop.index }}">{{ loop.index }}</a></li>
-															{% endif %}
+															<li><a class="page-numbers" href="{{ url ~ loop.index }}">{{ loop.index }}</a></li>
 														{% endif %}
 												{% endif %}
 											{% endfor %}
