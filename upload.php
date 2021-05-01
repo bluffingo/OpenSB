@@ -54,13 +54,16 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 			$img = $manager->make($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
 			$img->resize(640, 360);
 			$img->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+			unlink($target_file);
 			query("INSERT INTO videos (video_id, title, description, author, time, videofile, videolength) VALUES (?,?,?,?,?,?,?)",
 				[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),'videos/'.$new.'.mpd',intval($metadata->getFormat()->get('duration'))]);
 			redirect('./watch.php?v='.$new);
 		} catch (Exception $e) { ?>
 			Something went wrong!: <?php echo $e->getMessage();
+			foreach (glob("videos/$new*") as $filename) {
+			   unlink($filename);
+			}
 		}
-		unlink($target_file);
 	}
 }
 
