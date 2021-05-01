@@ -66,13 +66,7 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 				[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),'videos/'.$new.'.mpd',ceil($metadata->getFormat()->get('duration'))]);
 			redirect('./watch.php?v='.$new);
 		} catch (Exception $e) {
-			echo '<p>Something went wrong!:';
-			echo $e->getMessage();
-			echo 'on line:'
-			echo $e->getLine();
-			echo '</p> <p>stack trace:';
-			echo $e->getTraceAsString();
-			echo '</p>';
+			echo '<p>Something went wrong!:'htmlspecialchars($e->getMessage()).'on line:'.htmlspecialchars($e->getLine()).'</p> <p>stack trace:'.htmlspecialchars($e->getTraceAsString()).'</p>';
 			foreach (glob("videos/$new*") as $filename) {
 			   unlink($filename);
 			}
