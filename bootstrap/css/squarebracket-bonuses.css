@@ -22,9 +22,9 @@
     margin-top: 0;
     color: #fff;
 }
-.bs-docs-header a:hover, .bs-docs-header a:focus {
+.bs-docs-header a:hover:not(.btn.btn-primary.btn-lg), .bs-docs-header a:focus:not(.btn.btn-primary.btn-lg) {
     color: #dff0ff;
 }
-.bs-docs-header a {
+.bs-docs-header a:not(.btn.btn-primary.btn-lg) {
     color: #a3d4ff;
 }
