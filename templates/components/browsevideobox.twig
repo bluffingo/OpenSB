@@ -11,7 +11,6 @@
 			<div class="col-md-12">
 				<h3><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
 				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} views &bull; {{ data.time | relative_time }}</p>
-				<p>{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description  }}</p>
 			</div>
 		</div>
 	</div>
