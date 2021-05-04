@@ -23,10 +23,31 @@
 
 					// You can use the player object now to access the player and it's methods (play, pause, ...)
 				</script>
+				<script>
+				$(document).ready(function(){
+				  $("#post").click(function(){
+					$.post("comment.php",
+					{
+						comment: $.trim($("#commentContents").val()),
+						vidid:  '{{ video.video_id }}'
+					},
+					function(data,status){
+						if (status = "success") {
+							$('#comment').prepend(data);
+						}
+					});
+				  });
+				});
+				</script>
 				<div style="margin-top:5px">
 					{{ watch_box(video) }}
 				</div>
 				<div style="margin-top:5px">
+					<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3" placeholder="Enter comment here, Markdown can be used here."></textarea>
+					<div style="margin-top:5px"></div>
+					<button id="post" class="btn btn-primary">Post</button>
+					<div style="margin-top:5px"></div>
+					<div id="comment"></div>
 					{% for comment in comments %}
 						{{ comment(comment) }}
 					{% endfor %}

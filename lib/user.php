@@ -9,9 +9,15 @@
  */
 function userlink($user, $prefix = '') {
 	// todo make this a twig component for epicness
-	return <<<HTML
-		<a class="user" href="user.php?name={$user[$prefix.'username']}"><span class="t_user">{$user[$prefix.'username']}</span></a>
+	if (isset($user)) {
+		return <<<HTML
+			<a class="user" href="user.php?name={$user[$prefix.'username']}"><span class="t_user">{$user[$prefix.'username']}</span></a>
 HTML;
+	} else {
+		return <<<HTML
+		No data supplied!
+HTML;
+	}
 }
 
 /**
