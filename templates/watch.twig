@@ -51,6 +51,8 @@
 					function(data,status){
 						if (status = "success") {
 							$('#comment').prepend(data);
+							$("#commentContents").val('');
+							$("#post").addClass("disabled");
 						}
 					});
 				  });
