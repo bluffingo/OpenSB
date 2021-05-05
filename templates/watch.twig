@@ -25,6 +25,23 @@
 				</script>
 				<script>
 				$(document).ready(function(){
+				  contents = $.trim($("#commentContents").val());
+				  if (contents === null || contents == "" && $("#post").attr("class") != "btn btn-primary disabled") {
+						$("#post").addClass("disabled");
+				  }
+				  $("#commentContents").keydown(function(e){
+					  if(e.key == "Backspace") {
+						contents = $.trim($("#commentContents").val()).slice(0, -1);;
+					  } else {
+					    contents = $.trim($("#commentContents").val()) + e.key;
+					  }
+					  if (contents == "") {
+						$("#post").addClass("disabled");
+					  } else if (contents != "") {
+						$("#post").removeClass("disabled")
+					  }
+				  });
+
 				  $("#post").click(function(){
 					$.post("comment.php",
 					{
