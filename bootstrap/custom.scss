@@ -70,6 +70,10 @@ $text-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) !default;
   @include gradient-y-three-colors(lighten($danger, 8%), $danger, 60%, darken($danger, 2%));
 }
 
+.bg-purple {
+  @include gradient-y-three-colors(lighten($purple-500, 8%), $purple-500, 60%, darken($purple-500, 2%));
+}
+
 .progress-bar-striped {
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
     background-size: 1rem 1rem;
