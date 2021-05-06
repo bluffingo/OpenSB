@@ -9,4 +9,22 @@ if(!isset($_GET['path'])) {
 
 $scss = new Compiler();
 $scss->setImportPaths($_SERVER['DOCUMENT_ROOT']);
-echo $scss->compile('@import "'.$_GET['path'].'"'); //it would be cool if this was cached
+if (file_exists('cache/'.substr($_GET['path'], 0, strlen($_GET['path']) - 4).'css') AND $tplNoCache != true) {
+	$lines = file($_SERVER['DOCUMENT_ROOT'] . '/cache/'.substr($_GET['path'], 0, strlen($_GET['path']) - 4).'css');
+	foreach ($lines as $line_num => $line) {
+		echo $line;
+	}
+} else {
+	$css = $scss->compile('@import "'.$_GET['path'].'"');
+	if($tplNoCache != true) {
+		$parts = explode('/', $_SERVER['DOCUMENT_ROOT'] . '/cache/'.substr($_GET['path'], 0, strlen($_GET['path']) - 4).'css');
+		array_pop($parts);
+		$dir = implode('/', $parts);
+		if(!is_dir($dir))
+			mkdir($dir);
+		$file = fopen($_SERVER['DOCUMENT_ROOT'] . '/cache/'.substr($_GET['path'], 0, strlen($_GET['path']) - 4).'css', 'w');
+		fwrite($file, $css);
+		fclose($file);
+	}
+	echo $css; //if the code scanner says "POSSIBLE HTML INJECTION PLEASE SANITIZE IT", i don't care the header is already css...
+}
