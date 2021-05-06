@@ -5,7 +5,9 @@
 		"aminyazdanpanah/php-ffmpeg-video-streaming": "dev-master",
 		"intervention/image": "^2.5",
 		"twig/markdown-extra": "3.x-dev",
-		"erusev/parsedown": "dev-master"
+		"erusev/parsedown": "dev-master",
+		"twbs/bootstrap": "5.0.0",
+		"scssphp/scssphp": "^1.4.1"
 	},
 	"minimum-stability": "dev",
 	"config": {

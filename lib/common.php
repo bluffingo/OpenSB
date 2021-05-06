@@ -27,6 +27,14 @@ if (isset($_COOKIE['SBTOKEN'])) {
 	$loggedIn = false;
 }
 
+// Theme selector stuff
+if (isset($_COOKIE['theme'])) {
+	$theme = $_COOKIE['theme'];
+} else {
+	// No cookie, default to the default theme
+	$theme = 'default';
+}
+
 if ($loggedIn) {
 	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
 	//printf('debug: logged in as %s', $currentUser['username']);

@@ -12,7 +12,7 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
 
 function twigloader($subfolder = '') {
-	global $tplCache, $tplNoCache, $loggedIn, $currentUser;
+	global $tplCache, $tplNoCache, $loggedIn, $currentUser, $theme;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
 
@@ -35,6 +35,7 @@ function twigloader($subfolder = '') {
 	
 	$twig->addGlobal('logged_in', $loggedIn);
 	$twig->addGlobal('current_user', $currentUser);
+	$twig->addGlobal('theme', $theme);
 
 	return $twig;
 }
