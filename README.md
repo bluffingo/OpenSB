@@ -11,7 +11,7 @@ An attempt at rewriting squareBracket, with a different vision.
 
 ### Will my old stuff on squareBracket 1.0 be on squareBracket 2.0?
 
-Yes, but bulletins and empty accounts will not be imported.
+Yes, but bulletins will not be imported.
 
 ### Why is this no longer a website based on a old version of YouTube?
 If it's an old youtube clone, then it's going to be a a circlejerk of young people nostalgizing about some version of a popular website from years ago. Addtionally, these sorts of website are infamous of having a lot of heat and immature drama because 1 person isn't agreeing with someone else's opinion.
