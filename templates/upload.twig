@@ -3,10 +3,14 @@
 {% block title %}Upload{% endblock %}
 
 	{% block content %}
-	<form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data">
+	<form name="uploadForm" id="uploadForm" method="post" action="upload.php"
+	enctype="multipart/form-data">
 		<input type="text" class="form-control" name="title" value="" placeholder="Title">
-		<textarea class="form-control" name="desc" maxlength="500" form="uploadForm" style="overflow:hidden;resize:none" rows="3" placeholder="Description"></textarea>
-		<input type="file" name="fileToUpload" id="fileToUpload" style="color:black" required=""><br>
-		<input class="btn btn-primary" type="submit" id="upload" name="upload" value="Upload Video">
+		<textarea class="form-control" name="desc" maxlength="500" form="uploadForm"
+		style="overflow:hidden;resize:none" rows="3" placeholder="Description"></textarea>
+		<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
+		<br>
+		<input class="btn btn-primary" type="submit" id="upload" name="upload"
+		value="Upload Video">
 	</form>
 	{% endblock %}

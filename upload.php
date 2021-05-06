@@ -9,7 +9,7 @@ use FFMpeg\Filters;
 
 $manager = new ImageManager();
 
-$video_id = md5(bin2hex(random_bytes(6)));
+$video_id = substr(base64_encode(md5(bin2hex(random_bytes(6)))), 0, 11); //you are never too sure how much randomness you need.
 $new = '';
 foreach(str_split($video_id) as $char){
 	if (rand(0, 1) == 1) {
@@ -23,7 +23,6 @@ foreach(str_split($video_id) as $char){
 	}
 	$new .= $char;
 }
-$new = substr($new, 0, 11);
 
 if(isset($_POST['upload']) AND isset($currentUser['username'])){
 	$name       = $_FILES['fileToUpload']['name'];  

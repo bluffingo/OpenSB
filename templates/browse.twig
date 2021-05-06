@@ -1,75 +1,59 @@
-{% extends "_layout.twig" %}
-
-{% block title %}Browse{% endblock %}
-
+{% extends "_layout.twig" %} 
+	{% block title %}Browse{% endblock%} 
 	{% block content %}
 		<div class="row">
 			<div class="col">
-				<div class="panel panel-default">
-					<div class="panel-heading">Videos</div>
-					<div class="panel-body">
-						{% for video in videos|batch(4) %}
+				<div class="card">
+					<div class="card-header">Videos</div>
+						<div class="card-body">
+							{% for video in videos|batch(4) %}
 							<div class="row">
 								{% for cell in video %}
-									<div class="col-xs-3">{{ browse_video_box(cell) }}</div>
+									<div class="col-3">
+										{{ browse_video_box(cell) }}
+									</div>
 								{% endfor %}
 							</div>
-						{% else %}
-							<p>No uploaded videos. :'(</p>
-						{% endfor %}
-						{# twig pagination code from: https://gist.github.com/maxpou/612359ed4af4cc5c4f06#gistcomment-3162415 #}
-						{% macro pagination(total, current, url, nearbyPagesLimit = 4) %}
-
-						{# Create "main_url" variable with link for the first page #}
-						{% set foo = url|split('/') %}
-						{% set foo = foo|slice(0, -1) %}
-						{% set main_url = foo|join('/') ~ "/" %}
-
-						{% apply spaceless %}
-							{% if total > 1 %}
-								<div class="row">
-									<div class="col-md-12">
-										<nav>
-										<ul class="pagination">
-											{% if current > 1 %}
-												<li><a class="prev page-numbers" href="{{ (url ~ (current-1))|e }}">&laquo;</a></li>
-											{% endif %}
-
-											{% for i in 1..total %}
-												{% if 0 == (current - nearbyPagesLimit) - loop.index %}
-													<li><a class="page-numbers" href="{{ (url ~ 1) }}">1</a></li>
-													{% if 1 != loop.index %}
-														<li><a href="#"><span class="page-numbers">...</span></a></li>
-													{% endif %}
-												{% elseif 0 == (current + nearbyPagesLimit) - loop.index  and (current + nearbyPagesLimit) < total %}
-													<li><a href="#"><span class="page-numbers">...</span></a></li>
-												{% elseif 0 < (current - nearbyPagesLimit) - loop.index %}
-													<!-- #1 -->
-												{% elseif 0 > (current + nearbyPagesLimit) - loop.index %}
-													<!-- #2 -->
-												{% else %}
-														{% if current == loop.index  %}
-															<li class="active"><a href="#"><span class="page-numbers" aria-current="page">{{ loop.index }}</span></a></li>
-														{% else %}
-															<li><a class="page-numbers" href="{{ url ~ loop.index }}">{{ loop.index }}</a></li>
-														{% endif %}
+							{% else %}
+								<p>No uploaded videos. :^(</p>
+							{% endfor %} 
+							{# twig pagination code from: https://gist.github.com/maxpou/612359ed4af4cc5c4f06#gistcomment-3694029 #} 
+							{% macro pagination(total, current, url, nearbyPagesLimit = 4) %}
+								{% if total > 1 %}
+									<ul class="pagination my-4">
+									    {% if current > 1 %}
+											<li><a class="page-link" href="{{ (url ~ (current-1))|e }}">&laquo;</a></li>
+										{% endif %}
+										{% for i in 1..total %}
+											{% if 0 == (current - nearbyPagesLimit) - loop.index %}
+												<li class="page-item"><a href="{{ (app.request.pathInfo ~ '?' ~ (app.request.query.all|merge({(pageQueryParam): 1})|url_encode))|e }}" class="page-link">1</a></li>
+												{% if 1 != loop.index %}
+													<li class="page-item">
+														<a href="javascript:void(0)" class="page-link">...</a>
+													</li>
 												{% endif %}
-											{% endfor %}
-											{% if current != total  and (current + nearbyPagesLimit) < total %}
-												<li><a class="page-numbers" href="{{ (url ~ total)|e }}">{{ total }}</a></li>
+											{% elseif 0 == (current + nearbyPagesLimit) - loop.index  and (current + nearbyPagesLimit) < total %}
+												<li class="page-item">
+													<a href="javascript:void(0)" class="page-link">...</a>
+												</li>
+											{% elseif 0 < (current - nearbyPagesLimit) - loop.index %}
+											{% elseif 0 > (current + nearbyPagesLimit) - loop.index %}
+											{% else %}
+												<li class="page-item{{ current == loop.index ? ' active' }}">
+													<a href="{{ url ~ loop.index }}" class="page-link">{{ loop.index }}</a>
+												</li>
 											{% endif %}
-											{% if current < total %}
-												<li><a class="next page-numbers" href="{{ (url ~ (current+1))|e }}">&raquo;</a></li>
-											{% endif %}
-										</ul>
-										</nav>
-									</div>
-								</div>
-							{% endif %}
-						{% endapply %}
-					{% endmacro %}
-
-					{{ _self.pagination(pageCount, currentPage, url) }}
+										{% endfor %}
+										{% if current != total  and (current + nearbyPagesLimit) < total %}
+											<li class="page-item"><a href="{{ (app.request.pathInfo ~ '?' ~ (app.request.query.all|merge({(pageQueryParam): total})|url_encode))|e }}" class="page-link">{{ total }}</a></li>
+										{% endif %}
+										{% if current < total %}
+											<li><a class="page-link" href="{{ (url ~ (current+1))|e }}">&raquo;</a></li>
+										{% endif %}
+									</ul>
+								{% endif %}
+							{% endmacro %}
+							{{ _self.pagination(pageCount,currentPage, url) }}
 					</div>
 				</div>
 			</div>

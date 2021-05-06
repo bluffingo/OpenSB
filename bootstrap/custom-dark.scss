@@ -1,0 +1,211 @@
+// Darkly 5.0.0-beta3
+// Bootswatch
+
+@mixin btn-shadow($color){
+  @include gradient-y-three-colors(lighten($color, 8%), $color, 60%, darken($color, 4%));
+}
+
+$text-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) !default;
+
+// Typography
+
+.blockquote {
+  &-footer {
+    color: $gray-600;
+  }
+}
+
+// Forms
+
+.input-group-addon {
+  color: $white;
+}
+
+.form-floating > label {
+  color: $gray-700;
+}
+
+// Navs
+
+.nav-tabs,
+.nav-pills {
+  .nav-link,
+  .nav-link.active,
+  .nav-link.active:focus,
+  .nav-link.active:hover,
+  .nav-item.open .nav-link,
+  .nav-item.open .nav-link:focus,
+  .nav-item.open .nav-link:hover {
+    color: $white;
+  }
+}
+
+.breadcrumb a {
+  color: $white;
+}
+
+.pagination {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.bg-primary {
+  @include btn-shadow($primary);
+}
+
+.bg-dark {
+  @include gradient-y-three-colors(darken($gray-800, 5%), darken($gray-800, 10%), 50%, darken($gray-800, 20%));
+}
+
+.bg-light {
+  @include gradient-y-three-colors(darken($gray-400, 5%), darken($gray-400, 10%), 60%, darken($gray-400, 20%));
+}
+
+.alert-warning {
+  @include gradient-y-three-colors(darken($warning, 5%), darken($warning, 10%), 80%, darken($warning, 20%));
+}
+
+.alert-danger {
+  @include gradient-y-three-colors(darken($danger, 5%), darken($danger, 10%), 80%, darken($danger, 20%));
+}
+
+.alert-success {
+  @include gradient-y-three-colors(darken($success, 5%), darken($success, 10%), 80%, darken($success, 20%));
+}
+
+.alert-info {
+  @include gradient-y-three-colors(darken($info, 5%), darken($info, 10%), 80%, darken($info, 20%));
+}
+
+.alert-primary {
+  @include gradient-y-three-colors(darken($primary, 5%), darken($primary, 10%), 80%, darken($primary, 20%));
+}
+
+.alert-secondary {
+  @include gradient-y-three-colors(darken($secondary, 5%), darken($secondary, 10%), 80%, darken($secondary, 20%));
+}
+
+.alert-light {
+  @include gradient-y-three-colors(darken($gray-400, 5%), darken($gray-400, 10%), 60%, darken($gray-400, 20%));
+}
+
+.progress-bar {
+  @include gradient-y-three-colors(darken($primary, 8%), $primary, 60%, darken($primary, 2%));
+}
+
+.bg-success {
+  @include gradient-y-three-colors(darken($success, 5%), darken($success, 10%), 80%, darken($success, 20%));
+}
+
+.bg-info {
+  @include gradient-y-three-colors(darken($info, 5%), darken($info, 10%), 80%, darken($info, 20%));
+}
+
+.bg-warning {
+  @include gradient-y-three-colors(darken($warning, 5%), darken($warning, 10%), 80%, darken($warning, 20%));
+}
+
+.bg-danger {
+  @include gradient-y-three-colors(darken($danger, 5%), darken($danger, 10%), 80%, darken($danger, 20%));
+}
+
+.bg-secondary {
+  @include gradient-y-three-colors(darken($secondary, 5%), darken($secondary, 10%), 80%, darken($secondary, 20%));
+}
+
+.bg-purple {
+  @include gradient-y-three-colors(darken($purple-500, 5%), darken($purple-500, 10%), 80%, darken($purple-500, 20%));
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+    background-repeat: repeat;
+}
+
+.card-header {
+  @include gradient-y-three-colors(rgba($gray-100, 0.35), rgba(darken($gray-100, 6%), 0.25), 60%, rgba(darken($gray-100, 10%), 0.25));
+}
+
+.navbar-brand,
+.nav-link {
+  text-shadow: $text-shadow
+}
+
+// Indicators
+
+.alert {
+  border: none;
+  color: $white;
+
+  a,
+  .alert-link {
+    color: $white;
+    text-decoration: underline;
+  }
+
+  @each $color, $value in $theme-colors {
+    &-#{$color} {
+      @if $enable-gradients {
+        background: $value linear-gradient(180deg, mix($white, $value, 15%), $value) repeat-x;
+      } @else {
+        background-color: $value;
+      }
+    }
+  }
+}
+
+// Containers
+
+.list-group-item-action {
+  color: $white;
+
+  &:hover,
+  &:focus {
+    background-color: $gray-700;
+    color: $white;
+  }
+
+  .list-group-item-heading {
+    color: $white;
+  }
+}
+
+// Buttons
+
+.btn {
+  text-shadow: $text-shadow
+}
+
+.btn-primary {
+  @include btn-shadow($primary);
+}
+
+.btn-secondary {
+  @include btn-shadow($secondary);
+}
+
+.btn-success {
+  @include btn-shadow($success);
+}
+
+.btn-info {
+  @include btn-shadow($info);
+}
+
+.btn-warning {
+  @include btn-shadow($warning);
+}
+
+.btn-danger {
+  @include btn-shadow($danger);
+}
+
+.btn-light {
+  @include btn-shadow($light);
+}
+
+.btn-dark {
+  @include btn-shadow($dark);
+}
