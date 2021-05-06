@@ -20,10 +20,12 @@
 					if (data == 1) {
 						$("#bootstrap").attr("href", "scssrender.php?path=bootstrap/bs.scss");
 						$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
+						$("#frontJumbo").attr("class", "p-5 mb-4 bg-success text-white")
 						Cookies.set("theme", "light", { expires: 1000 });
 					} else if (data == 2) {
 						$("#bootstrap").attr("href", "scssrender.php?path=bootstrap/bs-dark.scss");
 						$("#navbar").attr("class", "navbar navbar-dark bg-dark navbar-static-top navbar-expand-md");
+						$("#frontJumbo").attr("class", "p-5 mb-4 bg-dark text-white")
 						Cookies.set("theme", "dark", { expires: 1000 });
 					}
 				});
