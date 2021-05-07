@@ -9,22 +9,33 @@ if(!isset($_GET['path'])) {
 
 $scss = new Compiler();
 $scss->setImportPaths($_SERVER['DOCUMENT_ROOT']);
-if (file_exists('cache/'.substr($_GET['path'], 0, strlen($_GET['path']) - 4).'css') AND $tplNoCache != true) {
-	$lines = file(realpath($_SERVER['DOCUMENT_ROOT'] . '/cache/'.substr($_GET['path'], 0, strlen($_GET['path']) - 4).'css'));
-	foreach ($lines as $line_num => $line) {
-		echo $line;
-	}
+$path = (isset($_GET['path']) ? sanitizeFilePath($_GET['path']) : null);
+$cssfile = sanitizeFilePath('cache/'.substr($path, 0, strlen($path) - 4).'css');
+if (file_exists($cssfile) AND $tplNoCache != true) {
+    echo file_get_contents($cssfile);
 } else {
-	$css = $scss->compile('@import "'.$_GET['path'].'"');
-	if($tplNoCache != true) {
-		$parts = explode('/', 'cache/'.substr($_GET['path'], 0, strlen($_GET['path']) - 4).'css');
-		array_pop($parts);
-		$dir = implode('/', $parts);
-		if(!is_dir($dir))
-			mkdir($dir);
-		$file = fopen('cache/'.substr($_GET['path'], 0, strlen($_GET['path']) - 4).'css', 'w');
-		fwrite($file, $css);
-		fclose($file);
-	}
-	echo $css; //if the code scanner says "POSSIBLE HTML INJECTION PLEASE SANITIZE IT", i don't care the header is already css...
+    $css = $scss->compile('@import "'.$path.'"');
+    if ($tplNoCache != true) {
+        $parts = explode('/', $cssfile);
+        array_pop($parts);
+        $dir = implode('/', $parts);
+        if (!is_dir($dir))
+            mkdir($dir);
+        $file = fopen($cssfile, 'w');
+        fwrite($file, $css);
+        fclose($file);
+    }
+    echo $css;
+}
+
+function sanitizeFilePath($path) {
+	$path = str_replace('\'','',$path);
+	$path = str_replace('`','',$path);
+	$path = str_replace('/..','',$path);
+	$path = str_replace('..','',$path);
+	$path = str_replace('./','',$path);
+	$path = str_replace(':','',$path);
+	if (substr($path,0,1) == '/') 
+		$path = substr($path,1);
+	return $path;
 }
