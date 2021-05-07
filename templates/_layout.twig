@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="en">
-    
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- roboto -->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 		<!-- bootstrap 5, which is just some rendering thing -->
 		<link rel="stylesheet" id="bootstrap" href="scssrender.php?path=bootstrap/bs{% if theme == 'dark' %}-dark{% endif %}.scss" type="text/css">
         <!-- jquery and bootstrap 3 javascript -->
 		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 		<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
-        <title>{% block title %}{% endblock %} - squareBracket</title>
+        <title>{% block title %}{% endblock %} - Squarebracket</title>
 		<script>
 			$(document).ready(function(){
 				$('#themeSelector').change(function(){
@@ -35,7 +37,7 @@
     <body>
         <nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md" style="margin-bottom:20px">
             <div class="container">
-                <a class="navbar-brand" href="/">[squareBracket] Milestone 1</a>
+                <a class="navbar-brand" href="/">Squarebracket Milestone 1</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
