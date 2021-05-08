@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
-    
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- bootstrap 5, which is just some rendering thing -->
 		<link rel="stylesheet" id="bootstrap" href="scssrender.php?path=bootstrap/bs{% if theme == 'dark' %}-dark{% endif %}.scss" type="text/css">
         <!-- jquery and bootstrap 3 javascript -->
 		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -35,7 +35,7 @@
     <body>
         <nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md" style="margin-bottom:20px">
             <div class="container">
-                <a class="navbar-brand" href="/">[squareBracket] Milestone 2</a>
+                <a class="navbar-brand" href="/">squareBracket Milestone 2</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
