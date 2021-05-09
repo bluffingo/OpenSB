@@ -1,5 +1,13 @@
-# squareBracket
-This is a video sharing site.
+<h1 align="center">squareBracket</h1>
+
+<p align="center">
+
+<img src="https://img.shields.io/discord/737791548435071037?style=plastic">
+<img src="https://img.shields.io/github/v/release/chazizsquarebracket/squarebracket?include_prereleases&label=lastest%20released&style=plastic">
+<img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=plastic">
+</p>
+
+<h3 align="center"><a href="https://185.86.231.49/">Live website here ></a></h3>
 
 ## How to setup squareBracket
 1. Install [composer](https://getcomposer.org/).
