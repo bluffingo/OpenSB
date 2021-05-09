@@ -1,6 +1,11 @@
 {% extends "_layout.twig" %} 
 	{% block title %}Login{% endblock%} 
-	{% block content %} 
+	{% block precontent %}
+	<div class="container">
+	<h1>Login to squareBracket</h1>
+	</div>
+	{% endblock %}
+	{% block content %}
 		{% if error %} 
 			{% autoescape %} 
 				{{ error | raw }}
@@ -16,7 +21,18 @@
 				{% endif %} 
 			{% endif %} 
 		{% endif %}
-		<form method="post" name="loginForm"
+		<div class="row">
+		<div class="col-8">
+		<h2>What is squareBracket?</h2>
+		squareBracket is a way to get your videos to the people who matter to you. With squareBracket you can:
+		<ul>
+		<li> Show off your favorite videos to the world
+		</li><li> Blog the videos you take with your digital camera or cell phone
+		</li><li> Securely and privately show videos to your friends and family around the world
+		</li><li> ... and much, much more!
+		</li></ul>
+		</div>
+		<div class="col-4">		<form method="post" name="loginForm"
 		id="loginForm" action="login.php">
 			<div class="input-group"> <span class="input-group-addon" id="basic-addon1" style="width:90px">Username</span>
 				<input
@@ -26,6 +42,7 @@
 				<input
 				type="password" name="password" class="form-control" aria-describedby="basic-addon1">
 			</div>
-			<input class="btn btn-primary" type="submit" value="Log In" name="loginsubmit">
-		</form>
+			<input class="btn btn-primary" type="submit" value="Login" name="loginsubmit">
+		</form></div>
+		</div>
 	{% endblock %}
