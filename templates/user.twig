@@ -3,14 +3,15 @@
 {% block title %}User{% endblock %}
 
 	{% block precontent %}
-	<div class="p-5 mb-4 bg-purple" style="margin-top:-20px;">
-	todo: find a way of making this taller and making coloring it possible. please don't do the same mistakes 
-	we did in the poktube semantic ui days, don't position stuff horizontally. maybe try making it more
-	like yt cosmic panda's channel layout.
+	<style>
+		{{ profCss | raw }}
+	</style>
+	<div class="p-5 mb-4 bg-custom-profile" style="margin-top:-20px;">
+		<div style="padding:50px;"></div>
 	</div>
 	{% endblock %}
 	{% block content %}
-	<div class="row" style="margin-top:-50px;">
+	<div class="row" style="margin-top:-150px;">
 		<div class="col-md-6 col-lg-4">
 			<div class="card">
 				<div class="card-body">
@@ -34,9 +35,7 @@
 				<div class="card-body">
 					<div class="caption">
 						<h3>Most recent uploaded video</h3>
-						<h4>Video title</h4>
-						<p>Upload date</p>
-						<p>Description</p>
+						{{ video_box(latestVideo)}} 
 					</div>
 				</div>
 			</div>
