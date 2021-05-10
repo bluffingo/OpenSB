@@ -20,20 +20,14 @@
 
 ## Questions
 
-### Will my old stuff on squareBracket 1.0 (PokTube) be on squareBracket 2.0?
-
+### Will my old videos/comments on PokTube be on squareBracket?
 Yes, but bulletins will not be imported.
 
-### Why not keep the old PokTube codebase and make it secure?
-It suffered from over-engineering and garbage programming.
+### Why not continue using the old PokTube codebase?
+A lot of the code was garbage, and around the time the codebase was abandonned in favor of squareBracket, spaghetti code problems had started appearing.
 
-1. There were features no one really used (half-assed profile customization, bulletins, etc)
-2. Tons of vunerbilities that were only patched up by making the SQL user not be able to use commands it wouldn't naturally use (so basically just by putting duct tape)
-3. It was just using the remains of a project that died a few weeks before squareBracket's developement started.
+### Why is the live website still running an old version of Milestone 1?
+Near the end of Milestone 1, we made the switch to Bootstrap 5 as it recently came out. However, the SCSS renderer PHP code used had some security vulnerabilities. This issue is not currently fixed, so Milestone 1 is still in use.
 
-### Why use Twig?
-Twig literally makes HTML injection attacks a thing of the past. It's more short and concise than PHP's "templating" syntax, it supports layout inheritance and it allows for more code reuse and it's versatile for creating more frontends in the future if you'd ever want that.
-
-It wouldn't look better if we removed Twig, It'd just be insecure as old PokTube as well.
-
-It's secure (it treats all variables as "unsafe" and automatically escapes them unless you explicitly mark them as safe), concise (its liquid-like syntax is shorter and way more appropriate for the context of templating) and fast (with caching enabled there's basically no overhead compared to not using Twig). At least 150 million PHP projects use Twig, based on Packagist's stats. It's not some obscure little thing, it's a major part of modern PHP.
+### Why Twig?
+Twig literally makes HTML injection attacks a thing of the past. It's more short and concise than PHP's "templating" syntax, it supports layout inheritance and it allows for more code reuse and it's versatile for creating more frontends in the future. It's secure (it treats all variables as "unsafe" and automatically escapes them unless you explicitly mark them as safe), concise (its liquid-like syntax is shorter and way more appropriate for the context of templating) and fast (with caching enabled there's basically no overhead compared to not using Twig).
