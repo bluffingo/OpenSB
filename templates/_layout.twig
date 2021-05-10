@@ -13,7 +13,21 @@
         <title>{% block title %}{% endblock %} - squareBracket</title>
 		<script>
 			$(document).ready(function(){
-				$("#themeSelect").click(function(){
+				$(window).click(function() {
+				  $("#mainMenu").removeClass("show");
+				  $("#themeSelection").removeClass("show");
+				});
+				$("#navbarDropdown").click(function(event){
+					event.stopPropagation();
+					$("#mainMenu").addClass("show");
+				});				
+				$("#back").click(function(event){
+					event.stopPropagation();
+					$("#themeSelection").removeClass("show");
+					$("#mainMenu").addClass("show");
+				});
+				$("#themeSelect").click(function(event){
+					event.stopPropagation();
 					$("#themeSelection").addClass("show");
 				});
 				$("#light").click(function(){
@@ -61,6 +75,7 @@
 								<li><a class="dropdown-item" id="themeSelect" href="#">Change theme</a></li>
 							</ul>
 							<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" id="back" href="#">Back</a></li>
 								<li><a class="dropdown-item" id="light" href="#">Light</a></li>
 								<li><a class="dropdown-item" id="dark" href="#">Dark</a></li>
 							</ul>
@@ -79,6 +94,7 @@
 								<li><a class="dropdown-item" id="themeSelect" href="#">Change theme</a></li>
 							</ul>
 							<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" id="back" href="#">Back</a></li>
 								<li><a class="dropdown-item" id="light" href="#">Light</a></li>
 								<li><a class="dropdown-item" id="dark" href="#">Dark</a></li>
 							</ul>
