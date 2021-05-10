@@ -10,6 +10,8 @@
 <a href="https://www.youtube.com/channel/UCMnG3eA5QcSgIPsavuW4ubA">
 <img src="https://img.shields.io/youtube/channel/subscribers/UCMnG3eA5QcSgIPsavuW4ubA?style=social">
 </a>
+<br>
+(pssst, we're doing a lot of the work on the visual-overhaul-ms2 branch now)
 </p>
 
 <h3 align="center"><a href="https://185.86.231.49/">Live website here ></a></h3>
