@@ -2,10 +2,16 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
 use ScssPhp\ScssPhp\Compiler;
 
+$username = (isset($_GET['name']) ? $_GET['name'] : null);
+
+$userData = fetch("SELECT * FROM users WHERE username = ?", [$username]);
+
+$latestVideoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT 1", [$userData['id']]);
+
 $scss = new Compiler();
 $scss->setImportPaths($_SERVER['DOCUMENT_ROOT']);
 $css = $scss->compile(
-	'$color: #abcdef; //todo: make this read from db
+	'$color: '.$userData['color'].';
 	@mixin gradient-y-three-colors($start-color: $blue, $mid-color: $purple, $color-stop: 50%, $end-color: $red) {
 		background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
 	}
@@ -26,13 +32,6 @@ $css = $scss->compile(
 		@include text-contrast($color);
 	}'
 );
-
-$username = (isset($_GET['name']) ? $_GET['name'] : null);
-
-$userData = fetch("SELECT * FROM users WHERE username = ?", [$username]);
-
-$latestVideoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT 1", [$userData['id']]);
-
 $twig = twigloader();
 
 echo $twig->render('user.twig', [
