@@ -7,23 +7,27 @@
 <img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=plastic">
 <img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/milestone-1?include_prereleases&style=plastic">
 <img src="https://img.shields.io/github/repo-size/chazizsquarebracket/squarebracket&style=plastic"><br><br>
+<a href="https://www.youtube.com/channel/UCMnG3eA5QcSgIPsavuW4ubA">
 <img src="https://img.shields.io/youtube/channel/subscribers/UCMnG3eA5QcSgIPsavuW4ubA?style=social">
+</a>
 </p>
 
 <h3 align="center"><a href="https://185.86.231.49/">Live website here ></a></h3>
 
-## How to setup squareBracket
+## How to setup your squareBracket environment.
 1. Install [composer](https://getcomposer.org/).
-2. From the command prompt/terminal run `composer i`.
+2. Run `composer i` from the terminal.
 3. Copy `config.sample.php` and name it as `config.php`
 4. Edit the config file, change the database auth details to the ones you use.
 
 ## Questions
 
-### Will my old videos/comments on PokTube be on squareBracket?
-Yes, but bulletins will not be imported.
+### Will my videos/comments on PokTube be on squareBracket?
+Yes, but note the following:
+* Bulletins are not going to be imported. They were barely used by anyone.
+* It is unknown if comment channels should be imported, along with some level of channel customization.
 
-### Why not continue using the old PokTube codebase?
+### Why not  still use the old PokTube codebase?
 A lot of the code was garbage, and around the time the codebase was abandonned in favor of squareBracket, spaghetti code problems had started appearing.
 
 ### Why is the live website still running an old version of Milestone 1?
