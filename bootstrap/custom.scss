@@ -175,3 +175,35 @@ $text-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) !default;
 // Progress bars ===============================================================
 
 // Containers ==================================================================
+
+// Callouts ====================================================================
+.callout {
+ padding:1.25rem;
+ margin-top:1.25rem;
+ margin-bottom:1.25rem;
+ border:1px solid #e9ecef;
+ border-left-width:.25rem;
+ border-radius:.25rem;
+ background-color: #ffffff;
+}
+.callout h4 {
+ margin-bottom:.25rem;
+}
+.callout p:last-child {
+ margin-bottom:0;
+}
+.callout code {
+ border-radius:.25rem;
+}
+.callout+.callout {
+ margin-top:-.25rem;
+}
+.callout-info {
+ border-left-color:#5bc0de
+}
+.callout-warning {
+ border-left-color:#f0ad4e
+}
+.callout-danger {
+ border-left-color:#d9534f
+}
