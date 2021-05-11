@@ -12,19 +12,7 @@
 	{% endblock %}
 	{% block content %}
 	<div class="row" style="margin-top:-150px;">
-	<div class="callout callout-info">We haven't finished making this vertical.</div>
-	<div class="p-1 mb-4 bg-dark rounded-3">
-      <div class="container-fluid py-5">
-	  	<div class="row">
-			<div class="col">
-				<img src="{{ profile_image(user.username) }}" width="128" alt="pfp"><h1 class="align-top display-5 fw-bold">{{ user.username }} (make text align to right of image i can't)</h1>
-			</div>
-		</div>
-        <p class="col-md-8 fs-4">{{ user.description }}</p>
-        <button class="btn btn-warning btn-lg" type="button">Subscribe</button>
-		<button class="btn btn-secondary btn-lg" type="button">Friend</button>
-      </div>
-    </div>
+		<div class="alert alert-info">We haven't finished making this vertical.</div>
 		<div class="col-md-6 col-lg-8">
 			<div class="card">
 				<div class="card-body">
@@ -33,6 +21,18 @@
 						{{ video_box(latestVideo)}} 
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="p-1 mb-4 col-md-6 col-lg-4 bg-dark rounded-3 text-white">
+			<div class="container-fluid py-5">
+				<div class="row">
+					<div class="col text-center">
+						<img src="{{ profile_image(user.username) }}" width="128" alt="pfp"><h1 class="align-top fw-bold">{{ user.username }}</h1>
+					</div>
+				</div>
+				<p class="col-md-8 fs-4">{{ user.description }}</p>
+				<button class="btn btn-warning btn-lg" type="button">Subscribe</button>
+				<button class="btn btn-secondary btn-lg" type="button">Friend</button>
 			</div>
 		</div>
 	</div>

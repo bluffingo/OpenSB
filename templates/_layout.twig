@@ -65,7 +65,7 @@
                     </ul>
 					<ul class="navbar-nav">
 						{% if logged_in %}
-                        <li class="nav-item"><a href="#" class="nav-link">{{ current_user.username }}</a></li>
+                        <li class="nav-item"><a href="user.php?name={{ current_user.username }}" class="nav-link">{{ current_user.username }}</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								Settings
@@ -112,16 +112,16 @@
 			{% block content %}{% endblock %}
 		</div>
 		<bir>
-<section class="">
-  <!-- Footer -->
-  <footer class="text-center text-white" style="background-color: #0a4275;">
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      Chaziz
-    </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
-</section>
+		<section class="">
+		  <!-- Footer -->
+		  <footer class="text-center text-white" style="background-color: #0a4275;">
+			<!-- Copyright -->
+			<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+			  Chaziz
+			</div>
+			<!-- Copyright -->
+		  </footer>
+		  <!-- Footer -->
+		</section>
     </body>
 </html>
