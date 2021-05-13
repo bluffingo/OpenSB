@@ -28,7 +28,33 @@
 	{% endblock %} 
 	{% block content %}
 		<div class="row">
-			<div class="col-xl-8">
+			<div class="col-xl 2">
+				<div class="card">
+				  <div class="card-header">
+					{% if logged_in %}
+					<div class="d-grid gap-2">
+						<a href="browse.php" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+</svg> Browse Videos</a>
+					</div>
+					{% else %}
+						No login
+					{% endif %}
+				  </div>
+		{% if logged_in %}
+			<!-- BAD HACK BAD HACK BAD HACK -->
+			<li class="list-group-item"><img class="float-start" style="max-width: 50%;" src="{{ profile_image(current_user.username) }}" alt="pfp">
+			<p class="text-end float-end">
+			<a href="#">My profile</a>
+			</p>
+			</li>
+			<li class="list-group-item">From squareBracket</li>
+		{% else %}
+			You're not logged in
+		{% endif %}
+				</div>
+			</div>
+			<div class="col-xl-7">
 				<div class="card">
 					<div class="card-header bg-dark text-white">From squareBracket</div>
 					<div class="card-body">
@@ -40,7 +66,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-4">
+			<div class="col-xl-3">
 					<p><small>Spotlight</small></p>
 					<h5>Welcome to squareBracket!</h5>
 					<p>squareBracket has been rewritten. Remember the old days 
