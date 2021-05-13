@@ -5,7 +5,8 @@
 | Version | Supported          |
 | ------- | ------------------ |
 | Milestone 2 Preview  | ❓ |
-| Milestone 1   | :white_check_mark: |
+| Milestone 1 Maintained | ✅ |
+| Milestone 1   | :x: |
 | Pre-Milestone 1   | :x: |
 
 ## Reporting a Vulnerability
