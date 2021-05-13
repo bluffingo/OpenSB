@@ -1,5 +1,5 @@
-# squareBracket 2.0
-An attempt at rewriting squareBracket, with a different vision.
+# squareBracket Milestone 1 Maintained
+This is a outdated version of Milestone 1 that doesn't have the BS5 stuff.
 
 ## How to set this up
 1. Install [composer](https://getcomposer.org/).
@@ -22,10 +22,6 @@ If it's an old youtube clone, then it's going to be a a circlejerk of young peop
 1. There were features no one really used (half-assed profile customization, bulletins, etc)
 2. Tons of vunerbilities that were only patched up by making the SQL user not be able to use commands it wouldn't naturally use (so basically just by putting duct tape)
 3. It was just using the remains of a project that died a few weeks before squareBracket's developement started.
-
-### Why use Bootstrap 3? Why not Bootstrap 4/5 or *insert name of other CSS framework*?
-
-Bootstrap 3 looked the best in my opinion. We had tried Bootstrap 5 and Semantic UI in the fact, but they didn't work.
 
 ### Why TWIG?
 Twig literally makes HTML injection attacks a thing of the past. It's more short and concise than PHP's "templating" syntax, it supports layout inheritance and it allows for more code reuse and it's versatile for creating more frontends in the future if you'd ever want that.
