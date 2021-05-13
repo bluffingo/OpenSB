@@ -4,7 +4,7 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
-| Milestone 2   | :white_check_mark: |
+| Milestone 2 Preview  | ❓ |
 | Milestone 1   | :white_check_mark: |
 | Pre-Milestone 1   | :x: |
 
