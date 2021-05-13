@@ -1,5 +1,24 @@
 name-template: 'Release'
 tag-template: 'Release'
+categories:
+  - title: 'Bug fixes'
+    labels:
+      - 'bugfix'
+      - 'bug'
+  - title: 'Enhancements'
+    labels:
+      - 'enhancement'
+  - title: 'Bootstrap 5-related'
+    labels:
+      - 'bootstrap 5'
+  - title: 'Dependencies'
+    labels:
+      - 'dependencies'
+  - title: 'Branding'
+    labels:
+      - 'branding'
+  - title: 'Maintenance'
+      - 'maintenance'
 change-template: '- $TITLE (#$NUMBER) @$AUTHOR'
 template: |
   ## Updates
