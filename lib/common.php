@@ -1,6 +1,6 @@
 <?php
 if (!file_exists('conf/config.php')) {
-	die('Please read the installing instructions in the README file.');
+	die('Fatal squareBracket Error: Please read the installing instructions in the README file.');
 }
 
 require('conf/config.php');
