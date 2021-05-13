@@ -1,19 +1,6 @@
-name-template: 'Placeholder Text 🌈'
-tag-template: 'Placeholder Text'
-categories:
-  - title: '🚀 New stuff'
-    labels:
-      - 'enhancement'
-  - title: '🐛 Bug/Oddity Fixes'
-    labels:
-      - 'bug'
-      - 'oddity'
-  - title: '🧰 Maintenance'
-    label: 'maintenance'
-    label: 'documentation'
-change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
-change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+name-template: 'Release'
+tag-template: 'Release'
+change-template: '- $TITLE (#$NUMBER) @$AUTHOR'
 template: |
-  ## Changes
-
+  ## Updates
   $CHANGES
