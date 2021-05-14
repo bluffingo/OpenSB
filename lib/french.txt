@@ -1,0 +1,35 @@
+rough french translations, text file form until the template goes out
+
+Welcome 1: Bienvenue
+Welcome 2: C'est comme les autres sites de vidéo... pour l'instant.
+Get started: Démarrer
+Login: Connexion
+Sign up: Inscrire
+Spotlight Text 1: squareBracket est en train d'être réécrit. Vous vous souvenez de l'époque où la programmation était mauvaise ? C'est du passé.
+Spotlight Text 2: Bienvenue à squareBracket !
+[number] views: [number] vues
+Settings: Réglages
+Change theme: Changer de thème
+Back: Retour
+Light: Clair
+Dark: Foncé
+
+Time example:
+5 years ago: il y a 5 ans
+3 months ago: il y a 3 mois
+3 weeks ago: il y a 3 semaines
+2 days ago: il y a 2 jours
+4 hours ago: il y a 4 heures
+21 seconds ago: il y a 21 secondes
+
+Login page:
+1: squareBracket est un site web pour partager vos vidéos au public. Avec squareBracket vous pouvez : 
+2: Montrez vos vidéos au monde entier.
+3: Publiez les vidéos prises avec votre appareil
+4: Montrez en toute sécurité des vidéos à vos amis et à votre famille dans le monde entier. 
+5: ... et bien plus encore !
+
+User page:
+Friend: Ajouter comme ami
+Subscribe: Abonner
+Most recent uploaded video: La dernière vidéo uploadée
