@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 /* do not move this to the bootstrap files in case if the bootstrap files get updated */
 .bs-docs-header, .bs-docs-masthead {
     position: relative;
@@ -7,15 +9,19 @@
     color: #b7cbe3;
     text-shadow: 0 1px 0 rgba(0,0,0,.1);
     background-color: #546c99;
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#563d7c),to(#6f5499));
+    /* background-image: -webkit-gradient(linear,left top,left bottom,from(#563d7c),to(#6f5499));
     background-image: -webkit-linear-gradient(top,#563d7c 0,#6f5499 100%);
-    background-image: -o-linear-gradient(top,#563d7c 0,#6f5499 100%);
-    background-image: linear-gradient(to bottom,#546c99 0,#484c88 100%);
+    background-image: -o-linear-gradient(top,#563d7c 0,#6f5499 100%); */
+    background-image: linear-gradient(#6954c8, #523bb8 60%, #4f39b0);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#563d7c", endColorstr="#6F5499", GradientType=0);
     background-repeat: repeat-x;
 	padding-top: 60px;
 	padding-bottom: 60px;
 	font-size: 20px;
+}
+
+body {
+font-family: Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 }
 
 .bs-docs-header h1 {
