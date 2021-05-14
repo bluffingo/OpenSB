@@ -5,7 +5,7 @@
 			<div class="col-xl-9">
 				<div class="card-group">
 					<div class="card, col-xl-3">
-					  <div class="card-header bg-dark text-white">
+					  <div class="card-header bg-dark text-white" style="border-top-right-radius: 0;">
 						{% if logged_in %}
 						<div class="d-grid gap-2">
 							<a href="browse.php" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
@@ -28,7 +28,7 @@
 				You're not logged in
 			{% endif %}
 					</div>
-					<div class="card">
+					<div class="card" style="border-left: 0;border-top: 0;">
 						<div class="card-header bg-dark text-white">From squareBracket</div>
 						<div class="card-body">
 							{% for video in videos %} 
