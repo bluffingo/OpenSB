@@ -8,7 +8,7 @@
 					  <div class="card-header bg-dark text-white" style="border-top-right-radius: 0;">
 						{% if logged_in %}
 						<div class="d-grid gap-2">
-							{{ __("Hi there, *USER*") }}
+							{{ __("Hi there, %s", [current_user.username]) }}
 						</div>
 						{% else %}
 							{{ __("Welcome") }}
