@@ -15,11 +15,10 @@
 
 	"Login to squareBracket": "",
 	"Incorrect username or password!": "",
-	"What is squareBracket?": "",
-	"squareBracket is a way to get your videos to the people who matter to you. With squareBracket you can:": "",
+	"squareBracket is a website to share your videos to the public. With squareBracket you can:": "",
 	"Show off your favorite videos to the world": "",
-	"Blog the videos you take with your digital camera or cell phone": "",
-	"Securely and privately show videos to your friends and family around the world": "",
+	"Post the videos you take with your camera or smartphone": "",
+	"Securely show videos to your friends and family around the world": "",
 	"... and much, much more!": "",
 	"Username": "",
 	"Password": "",
@@ -43,7 +42,7 @@
 	"Most recent uploaded video": "",
 
 	"Post": "",
-	
+
 	"Uploaded by %s on %s": "",
 	"Enter comment here, Markdown can be used here.": "",
 	"views": "",
