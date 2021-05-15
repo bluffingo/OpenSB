@@ -15,15 +15,21 @@ class Lang {
 
 	function translate($string, $placeholders = []) {
 		if ($this->langFile) {
-			$translatedString = $this->langData[$string];
-
-			if ($translatedString == "") {
+			if (isset($this->langData[$string])) {
+				$translatedString = $this->langData[$string];
+			} else {
 				$translatedString = $string;
 			}
 		} else {
 			$translatedString = $string;
 		}
 
-		return vsprintf($translatedString, $placeholders);
+		return vprintf($translatedString, $placeholders);
 	}
+}
+
+function __($string, $placeholders = []) {
+	global $lang;
+
+	$lang->translate($string, $placeholders);
 }
