@@ -1,0 +1,56 @@
+{
+	"Home": "",
+	"Hi there, %s": "",
+	"Browse": "",
+	"Edit my profile": "",
+	"Welcome to squareBracket": "Bienvenue",
+	"This is like any other video sharing site... for now at least.": "C'est comme les autres sites de vidéo... pour l'instant.",
+	"Get started": "Démarrer",
+	"Login": "Connexion",
+	"From squareBracket": "De squareBracket",
+	"No uploaded videos. :^((": "",
+	"Spotlight": "",
+	"Welcome to squareBracket!": "Bienvenue à squareBracket !",
+	"squareBracket has been rewritten. Remember the old days of inconsistent UI/CSS and garbage insecure code? That's in the past.": "squareBracket est en train d'être réécrit. Vous vous souvenez de l'époque où la programmation était mauvaise ? C'est du passé.",
+
+	"Login to squareBracket": "",
+	"Incorrect username or password!": "",
+	"What is squareBracket?": "",
+	"squareBracket is a way to get your videos to the people who matter to you. With squareBracket you can:": "squareBracket est un site web pour partager vos vidéos au public. Avec squareBracket vous pouvez : ",
+	"Show off your favorite videos to the world": "Montrez vos vidéos au monde entier.",
+	"Blog the videos you take with your digital camera or cell phone": "Publiez les vidéos prises avec votre appareil",
+	"Securely and privately show videos to your friends and family around the world": "Montrez en toute sécurité des vidéos à vos amis et à votre famille dans le monde entier. ",
+	"... and much, much more!": "... et bien plus encore !",
+	"Username": "Nom utilisateur",
+	"Password": "Mot de passe",
+
+	"Videos": "Vidéo",
+
+	"Email": "Email",
+	"Password (Again)": "Mot de passe (encore)",
+	"Submit": "Envoyer(?)",
+
+	"User Settings": "Parametres",
+	"Description": "",
+	"Update": "",
+
+	"Title": "Titre",
+	"Upload": "",
+	"Upload Video": "",
+
+	"Subscribe": "",
+	"Friend": "",
+	"Most recent uploaded video": "La dernière vidéo uploadée",
+
+	"Post": "Publier(?)",
+
+	"views": "vues",
+
+	"Settings": "Réglages",
+	"Profile Settings": "Réglages de Profile",
+	"Change theme": "Changer de style",
+	"Back": "Retour",
+	"Light": "Clair",
+	"Dark": "Sombre",
+	"Log Out": "Deconnection"
+}
