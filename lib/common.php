@@ -42,5 +42,8 @@ if ($loggedIn) {
 			printf('debug: logged in as %s', $currentUser['username']);
 		}
 	}
-} 
-// put any default settings here as they get added.
+} else {
+	// put any default settings here as they get added.
+}
+
+$lang = new Lang(sprintf("lib/lang/".$currentUser['language'].".json"));
