@@ -44,6 +44,8 @@
 
 	"Post": "Lägg upp",
 
+	"Uploaded by %s on %s": "Uppladdad av %s på %s",
+	"Enter comment here, Markdown can be used here.": "Skriv din kommentar, Markdown stöds såklart!",
 	"views": "visningar",
 
 	"Settings": "Inställningar",
