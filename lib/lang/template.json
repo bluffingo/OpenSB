@@ -43,7 +43,9 @@
 	"Most recent uploaded video": "",
 
 	"Post": "",
-
+	
+	"Uploaded by %s on %s": "",
+	"Enter comment here, Markdown can be used here.": "",
 	"views": "",
 
 	"Settings": "",
