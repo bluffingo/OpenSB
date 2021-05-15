@@ -8,9 +8,7 @@
 					  <div class="card-header bg-dark text-white" style="border-top-right-radius: 0;">
 						{% if logged_in %}
 						<div class="d-grid gap-2">
-							<a href="browse.php" class="btn btn-primary"><svg class="bi" width="16" height="16" fill="currentColor">
-						  <use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#plus-circle-fill"/>
-						</svg> {{ __("Browse") }}</a>
+							{{ __("Hi there, *USER*") }}
 						</div>
 						{% else %}
 							{{ __("Welcome") }}

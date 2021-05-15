@@ -1,8 +1,8 @@
 {
 	"Home": "Acceuil",
-	"Hi there, %s": "deprecated string - not used in upcoming redesign",
-	"Browse": "Naviger",
-	"Edit my profile": "Modifier mon profile",
+	"Hi there, %s": "Bienvenue, %s",
+	"Browse": "Vidéos",
+	"Edit my profile": "Mon profile",
 	"Welcome to squareBracket": "Bienvenue",
 	"This is like any other video sharing site... for now at least.": "C'est comme les autres sites de vidéo... pour l'instant.",
 	"Get started": "Démarrer",
@@ -24,7 +24,7 @@
 	"Username": "Nom utilisateur",
 	"Password": "Mot de passe",
 
-	"Videos": "Vidéo",
+	"Videos": "Vidéos",
 
 	"Email": "Email",
 	"Password (Again)": "Mot de passe (encore)",
@@ -49,7 +49,7 @@
 	"Uploaded by %s on %s": "Publiée par %s le %s",
 
 	"Settings": "Réglages",
-	"Profile Settings": "Réglages de profile",
+	"Profile Settings": "Réglages profile",
 	"Change theme": "Changer de style",
 	"Back": "Retour",
 	"Light": "Clair",
