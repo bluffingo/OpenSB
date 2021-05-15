@@ -11,5 +11,46 @@
 	"No uploaded videos. :^((": "Inga uppladdade videor. :^((",
 	"Spotlight": "Spotlight",
 	"Welcome to squareBracket!": "Välkommen till squareBracket!",
-	"squareBracket has been rewritten. Remember the old days of inconsistent UI/CSS and garbage insecure code? That's in the past.": "squareBracket har blivit omskriven. Kommer du ihåg de gamla dagarna med dåligt gränssnitt och osäker skräpkod? Det är förgånget nu."
+	"squareBracket has been rewritten. Remember the old days of inconsistent UI/CSS and garbage insecure code? That's in the past.": "squareBracket har blivit omskriven. Kommer du ihåg de gamla dagarna med dåligt gränssnitt och osäker skräpkod? Det är förgånget nu.",
+
+	"Login to squareBracket": "Logga in till squareBracket",
+	"Incorrect username or password!": "Fel användarnamn eller lösenord!",
+	"What is squareBracket?": "Vad är squareBracket?",
+	"squareBracket is a way to get your videos to the people who matter to you. With squareBracket you can:": "squareBracket är ett sätt att få videor till de som betyder något för dig. Med squareBracket kan du:",
+	"Show off your favorite videos to the world": "Visa dina favoritvideor till världen",
+	"Blog the videos you take with your digital camera or cell phone": "Blogga de videor du tar med din digitalkamera eller telefon",
+	"Securely and privately show videos to your friends and family around the world": "Säkert och privat visa videor till din familj och dina vänner",
+	"... and much, much more!": "... och så mycket mer!",
+	"Username": "Användarnamn",
+	"Password": "Lösenord",
+
+	"Videos": "Videor",
+
+	"Email": "E-mail",
+	"Password (Again)": "Lösenord (Igen)",
+	"Submit": "Skicka",
+
+	"User Settings": "Användarinställningar",
+	"Description": "Beskrivning",
+	"Update": "Uppdatera",
+
+	"Title": "Titel",
+	"Upload": "Ladda upp",
+	"Upload Video": "Ladda upp video",
+
+	"Subscribe": "Prenumerera",
+	"Friend": "Vän",
+	"Most recent uploaded video": "Nyligaste upladdade video",
+
+	"Post": "Lägg upp",
+
+	"views": "visningar",
+
+	"Settings": "Inställningar",
+	"Profile Settings": "Profilinställningar",
+	"Change theme": "Ändra tema",
+	"Back": "Tillbaka",
+	"Light": "Ljust",
+	"Dark": "Mörkt",
+	"Log Out": "Logga ut"
 }
