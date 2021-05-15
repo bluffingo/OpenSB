@@ -1,4 +1,5 @@
-<?php 
+<?php
+$rawOutputRequired = true;
 require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
 header("Content-type: text/css; charset: UTF-8");
 use ScssPhp\ScssPhp\Compiler;
