@@ -3,25 +3,25 @@
 {% block title %}{{ video.title }}{% endblock %}
 
 	{% block content %}
-<div class="row">
-	<h1>{{ video.title }}</h1>
-	<p>
-	<button class="btn btn-secondary" type="button">[username] (fix it later)</button>
-	<button class="btn btn-warning" type="button">{{ __("Subscribe") }}</button>
-	</p>
-	<div class="col-lg-9">
-		<div id="playerContainer"></div>
-		<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
-		<script>
-			const config = {
-				autoplay: true,
-				sources: [
-					{
-						type: 'dash',
-						src: '{{ video.videofile }}',
-					}
-				],
-			};
+		<div class="row">
+			<h2>{{ video.title }}</h2>
+			<p>
+			{{ userlink(video, 'u_', true, 'btn-secondary') }}
+			<button class="btn btn-warning" type="button">{{ __("Subscribe") }}<</button>
+			</p>
+				<div class="col-lg-9">
+					<div id="playerContainer"></div>
+									<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
+					<script>
+						const config = {
+							autoplay: true,
+							sources: [
+								{
+									type: 'dash',
+									src: '{{ video.videofile }}',
+								}
+							],
+						};
 
 			const element = document.getElementById('playerContainer');
 			const player = IndigoPlayer.init(element, config);

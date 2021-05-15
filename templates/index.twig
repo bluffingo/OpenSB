@@ -1,46 +1,54 @@
-{% extends "_layout.twig" %}
+{% extends "_layout.twig" %} 
 	{% block title %}{{ __("Home") }}{% endblock%}
-	{% block precontent %}
-	<div id="frontJumbo" class="p-5 mb-4 bg-purple text-white" style="margin-top:-20px;">
-      <div class="container">
-		{% if logged_in %}
-			<div class="row">
-				<div class="col-xl-10">
-					<h1 class="display-5 fw-bold">{{ __("Hi there, %s", [current_user.username]) }}</h1>
-					<a href="browse.php" class="btn btn-primary btn-lg">{{ __("Browse") }}</a>
-					<a href="settings.php" class="btn btn-secondary btn-lg">{{ __("Edit my profile") }}</a>
-				</div>
-				<div class="col-xl-2 text-end">
-					<img class="img-fluid" src="{{ profile_image(current_user.username) }}" alt="pfp">
-				</div>
-			</div>
-		{% else %}
-			<h1 class="display-5 fw-bold">{{ __("Welcome to squareBracket") }}</h1>
-			<p class="col-xl-8 fs-4">{{ __("This is like any other video sharing site... for now at least.") }}</p>
-			<p>	<div class="btn-group">
-					<a href="register.php" class="btn btn-primary btn-lg">{{ __("Get started") }}</a>
-					<a href="login.php" class="btn btn-light btn-lg">{{ __("Login") }}</a>
-				</div>
-			</p>
-		{% endif %}
-      </div>
-    </div>
-	{% endblock %}
 	{% block content %}
 		<div class="row">
-			<div class="col-xl-8">
-				<div class="card">
-					<div class="card-header bg-dark text-white">{{ __("From squareBracket") }}</div>
-					<div class="card-body">
-						{% for video in videos %}
-							{{ video_box(video) }}
+			<div class="col-xl-9">
+				<div class="card-group">
+					<div class="card, col-xl-3">
+					  <div class="card-header bg-dark text-white" style="border-top-right-radius: 0;">
+						{% if logged_in %}
+						<div class="d-grid gap-2">
+							<a href="browse.php" class="btn btn-primary"><svg class="bi" width="16" height="16" fill="currentColor">
+						  <use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#plus-circle-fill"/>
+						</svg> {{ __("Browse") }}</a>
+						</div>
 						{% else %}
-							<p>{{ __("No uploaded videos. :^((") }}</p>
-						{% endfor %}
+							{{ __("Welcome") }}
+						{% endif %}
+					  </div>
+			{% if logged_in %}
+				<!-- BAD HACK BAD HACK BAD HACK -->
+				<ul class="list-group list-group-flush">
+				<li class="list-group-item" style="height: 1.19%;"><img class="float-start" style="max-width: 50%;" src="{{ profile_image(current_user.username) }}" alt="pfp">
+				<p class="text-end float-end">
+				<a href="settings.php">{{ __("Edit my profile") }}</a>
+				</p>
+				</li>
+				<li class="list-group-item">{{ __("From squareBracket") }}</li>
+				</ul>
+			{% else %}
+				  <ul class="list-group list-group-flush">
+					<li class="list-group-item">{{ __("This is like any other video sharing site... for now at least.") }}</li>
+				  </ul>
+				   <div class="card-footer">
+					<a href="register.php" class="card-link">Get started</a>
+					<a href="login.php" class="card-link">Login</a>
+				  </div>
+			{% endif %}
+					</div>
+					<div class="card" style="border-left: 0;border-top: 0;">
+						<div class="card-header bg-dark text-white">{{ __("From squareBracket") }}</div>
+						<div class="card-body">
+							{% for video in videos %} 
+								{{ video_box(video) }} 
+							{% else %}
+								<p>{{ __("No uploaded videos. :^((") }}</p>
+							{% endfor %}
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-4">
+			<div class="col-xl-3">
 					<p><small>{{ __("Spotlight") }}</small></p>
 					<h5>{{ __("Welcome to squareBracket!") }}</h5>
 					<p>{{ __("squareBracket has been rewritten. Remember the old days of inconsistent UI/CSS and garbage insecure code? That's in the past.") }}</p>
