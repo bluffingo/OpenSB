@@ -15,7 +15,7 @@ class Lang {
 
 	function translate($string, $placeholders = []) {
 		if ($this->langFile) {
-			if (isset($this->langData[$string])) {
+			if (isset($this->langData[$string]) && $this->langData[$string]) {
 				$translatedString = $this->langData[$string];
 			} else {
 				$translatedString = $string;
