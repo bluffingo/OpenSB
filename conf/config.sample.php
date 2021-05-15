@@ -12,3 +12,4 @@ $ffprobePath = '';
 $tplCache = 'templates/cache';
 $tplNoCache = false; // **DO NOT SET AS TRUE IN PROD - DEV ONLY**
 
+$isDebug = false; // DEV ONLY
