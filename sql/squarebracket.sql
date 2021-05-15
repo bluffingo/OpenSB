@@ -14,8 +14,8 @@ CREATE TABLE `users` (
   `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Password, hashed in bcrypt.',
   `token` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User token for cookie authentication.',
   `joined` bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT 'User''s join date',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User''s description',
-  `color` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The color that the user has set for their profile',
+  `description` text COLLATE utf8mb4_unicode_ci NULL COMMENT 'User''s description',
+  `color` varchar(7) COLLATE utf8mb4_unicode_ci NULL COMMENT 'The color that the user has set for their profile',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- bootstrap 5, which is just some rendering thing -->
-		<link rel="stylesheet" id="bootstrap" href="scssrender.php?path=bootstrap/bs{% if theme == 'dark' %}-dark{% endif %}.scss" type="text/css">
+		<link rel="stylesheet" id="bootstrap" href="assets/bs{% if theme == 'dark' %}-dark{% endif %}.css" type="text/css">
         <!-- jquery and bootstrap 3 javascript -->
 		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
@@ -32,13 +32,13 @@
 				});
 				$("#light").click(function(){
 					$("#themeSelection").removeClass("show");
-					$("#bootstrap").attr("href", "scssrender.php?path=bootstrap/bs.scss");
+					$("#bootstrap").attr("href", "assets/bs.css");
 					$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
 					Cookies.set("theme", "light", { expires: 1000 });
 				});				
 				$("#dark").click(function(){
 					$("#themeSelection").removeClass("show");
-					$("#bootstrap").attr("href", "scssrender.php?path=bootstrap/bs-dark.scss");
+					$("#bootstrap").attr("href", "assets/bs-dark.css");
 					$("#navbar").attr("class", "navbar navbar-dark bg-dark navbar-static-top navbar-expand-md");
 					Cookies.set("theme", "dark", { expires: 1000 });
 				});
@@ -58,13 +58,12 @@
 				</button>
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a href="/" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-  <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-</svg> Home</a></li>
-                        <li class="nav-item"><a href="browse.php" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
-  <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
-</svg> Browse</a></li>
+                        <li class="nav-item"><a href="/" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
+						  <use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#house"/>
+						</svg> Home</a></li>
+                        <li class="nav-item"><a href="browse.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
+						  <use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#film"/>
+						</svg> Browse</a></li>
                     </ul>
 					<ul class="navbar-nav">
 						{% if logged_in %}
@@ -83,10 +82,9 @@
 								<li><a class="dropdown-item" id="dark" href="#">Dark</a></li>
 							</ul>
 						</li>
-                        <li class="nav-item"><a href="/upload.php" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-  <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
-</svg> Upload</a></li>
+                        <li class="nav-item"><a href="/upload.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
+						  <use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#upload"/>
+						</svg> Upload</a></li>
                         <li class="nav-item"><a href="logout.php" class="nav-link">Log Out</a></li>
 						{% else %}
 						<li class="nav-item dropdown">
