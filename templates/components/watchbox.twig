@@ -1,7 +1,7 @@
 <div class="card border-primary">
     <div class="card-body">
         <div class="col-lg-8">
-			<p><small>Uploaded by {{ userlink(data, 'u_') }} on {{ data.time | date('M j, Y') }}  &bull; {{ data.views }} {{ __("views") }}</small></p>
+			<p><small>{{ __("Uploaded by %s on %s", [userlink(data, 'u_'), data.time | date('M j, Y')]) }} &bull; {{ data.views }} {{ __("views") }}</small></p>
 			<p>{{ data.description }}</p>
         </div>
     </div>
