@@ -8,7 +8,7 @@
  * @return string Userlink HTML code.
  */
 function userlink($user, $prefix = '') {
-	// todo make this a twig component for epicness
+	// We should make this a Twig component for maximum epicness.
 	if (isset($user)) {
 		return <<<HTML
 			<a class="user" href="user.php?name={$user[$prefix.'username']}"><span class="t_user">{$user[$prefix.'username']}</span></a>
