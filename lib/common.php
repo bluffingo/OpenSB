@@ -37,7 +37,10 @@ if (isset($_COOKIE['theme'])) {
 
 if ($loggedIn) {
 	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
-	//printf('debug: logged in as %s', $currentUser['username']);
-} else {
-	// put any default settings here as they get added
-}
+	if ($isDebug) {
+		if(!isset($rawOutputRequired) OR !$rawOutputRequired) {
+			printf('debug: logged in as %s', $currentUser['username']);
+		}
+	}
+} 
+// put any default settings here as they get added.
