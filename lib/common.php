@@ -42,6 +42,5 @@ if ($loggedIn) {
 			printf('debug: logged in as %s', $currentUser['username']);
 		}
 	}
-} else {
-	// put any default settings here as they get added
-}
+} 
+// put any default settings here as they get added.

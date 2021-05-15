@@ -8,7 +8,7 @@
  * @return string Userlink HTML code.
  */
 function userlink($user, $prefix = '', $makeButton = false, $buttonType = '') {
-	// todo make this a twig component for epicness
+	// We should make this a Twig component for maximum epicness.
 	if (isset($user)) {
 		if($makeButton) {
 			return <<<HTML

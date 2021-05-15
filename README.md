@@ -31,8 +31,5 @@ Yes, but note the following:
 ### Why not  still use the old PokTube codebase?
 A lot of the code was garbage, and around the time the codebase was abandonned in favor of squareBracket, spaghetti code problems had started appearing.
 
-### Why is the live website still running an old version of Milestone 1?
-Near the end of Milestone 1, we made the switch to Bootstrap 5 as it recently came out. However, the SCSS renderer PHP code used had some security vulnerabilities. This issue is not currently fixed, so Milestone 1 is still in use.
-
 ### Why Twig?
 Twig literally makes HTML injection attacks a thing of the past. It's more short and concise than PHP's "templating" syntax, it supports layout inheritance and it allows for more code reuse and it's versatile for creating more frontends in the future. It's secure (it treats all variables as "unsafe" and automatically escapes them unless you explicitly mark them as safe), concise (its liquid-like syntax is shorter and way more appropriate for the context of templating) and fast (with caching enabled there's basically no overhead compared to not using Twig).
