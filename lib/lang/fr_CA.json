@@ -44,7 +44,9 @@
 
 	"Post": "Publier(?)",
 
+	"Enter comment here, Markdown can be used here.": "Écrit un commentaire ici. Markdown peut être utilisé.",
 	"views": "vues",
+	"Uploaded by %s on %s": "Publiée par %s le %s",
 
 	"Settings": "Réglages",
 	"Profile Settings": "Réglages de profile",
