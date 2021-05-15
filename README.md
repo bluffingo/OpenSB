@@ -20,6 +20,7 @@
 2. Run `composer i` from the terminal.
 3. Copy `config.sample.php` and name it as `config.php`
 4. Edit the config file, change the database auth details to the ones you use.
+5. Ethier run the compile-scss-sassc or compile-scss-pscss script available in the tools directory.
 
 ## Questions
 
