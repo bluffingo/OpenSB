@@ -4,8 +4,8 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
-| Milestone 2 Preview  | ❓ |
-| Milestone 1 Maintained | ✅ |
+| Milestone 2   | ✅ |
+| Milestone 1 Maintained | :x: |
 | Milestone 1   | :x: |
 | Pre-Milestone 1   | :x: |
 
