@@ -7,18 +7,12 @@
  * @param string $prefix $user key prefix.
  * @return string Userlink HTML code.
  */
-function userlink($user, $prefix = '', $makeButton = false, $buttonType = '') {
+function userlink($user, $prefix = '') {
 	// todo make this a twig component for epicness
 	if (isset($user)) {
-		if($makeButton) {
-			return <<<HTML
-			<a class="btn $buttonType" type="button" class="user" href="user.php?name={$user[$prefix.'username']}">{$user[$prefix.'username']}</a>
-HTML;
-		} else {
-			return <<<HTML
+		return <<<HTML
 			<a class="user" href="user.php?name={$user[$prefix.'username']}"><span class="t_user">{$user[$prefix.'username']}</span></a>
 HTML;
-		}
 	} else {
 		return <<<HTML
 		No data supplied!
