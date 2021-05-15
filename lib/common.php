@@ -37,10 +37,7 @@ if (isset($_COOKIE['theme'])) {
 
 if ($loggedIn) {
 	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
-	if ($isDebug) {
-		// todo: fix issue where font gets changed to browser's serif font when printing this string.
-		printf('debug: logged in as %s', $currentUser['username']);
-	}
+	//printf('debug: logged in as %s', $currentUser['username']);
 } else {
 	// put any default settings here as they get added
 }
