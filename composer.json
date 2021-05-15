@@ -6,13 +6,13 @@
 		"intervention/image": "^2.5",
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
-		"twbs/bootstrap": "5.0.0",
+		"twbs/bootstrap": "5.0.1",
 		"scssphp/scssphp": "^1.4.1"
 	},
 	"minimum-stability": "dev",
 	"config": {
 		"platform": {
-			"php": "7.3"
+			"php": "8.0"
 		}
 	}
 }
