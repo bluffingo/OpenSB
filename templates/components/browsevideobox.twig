@@ -9,7 +9,7 @@
 			</a>
             <div class="col-lg-12">
                 	<h3><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
-                <p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} views &bull;
+                <p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("views") }} &bull;
                     {{ data.time | relative_time }}</p>
             </div>
         </div>

@@ -1,22 +1,24 @@
-{% extends "_layout.twig" %} 
-	{% block title %}Register{% endblock%} 
-	{% block content %} 
-		{% if error %}
-			<div class="alert alert-danger" role="alert">{{ error }}</div>
-		{% endif %}
+{% extends "_layout.twig" %}
 
-	<h2>Register</h2>
-	<form method="POST">
-		<div class="form-group">Username:
-			<input type="text" name="username" class="form-control" placeholder="Username">
-		</div>
-		<div class="form-group">Email:
-			<input type="email" name="email" class="form-control" placeholder="Email">
-		</div>
-		<div class="form-group">Password:
-			<input type="password" name="pass1" class="form-control" placeholder="Password">
-			<input type="password" name="pass2" class="form-control" placeholder="Password (Again)">
-		</div>
-		<button type="submit" name="action" class="btn btn-primary">Submit</button>
-	</form>
+{% block title %}Register{% endblock%}
+
+	{% block content %}
+{% if error %}
+	<div class="alert alert-danger" role="alert">{{ error }}</div>
+{% endif %}
+
+<h2>Register</h2>
+<form method="POST">
+	<div class="form-group">{{ __("Username") }}:
+		<input type="text" name="username" class="form-control" placeholder="{{ __("Username") }}">
+	</div>
+	<div class="form-group">{{ __("Email") }}:
+		<input type="email" name="email" class="form-control" placeholder="{{ __("Email") }}">
+	</div>
+	<div class="form-group">{{ __("Password") }}:
+		<input type="password" name="pass1" class="form-control" placeholder="{{ __("Password") }}">
+		<input type="password" name="pass2" class="form-control" placeholder="{{ __("Password (Again)") }}">
+	</div>
+	<button type="submit" name="action" class="btn btn-primary">{{ __("Submit") }}</button>
+</form>
 	{% endblock %}

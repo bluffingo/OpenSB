@@ -1,16 +1,16 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Upload{% endblock %}
+{% block title %}{{ __("Upload") }}{% endblock %}
 
 	{% block content %}
-	<form name="uploadForm" id="uploadForm" method="post" action="upload.php"
-	enctype="multipart/form-data">
-		<input type="text" class="form-control" name="title" value="" placeholder="Title">
-		<textarea class="form-control" name="desc" maxlength="500" form="uploadForm"
-		style="overflow:hidden;resize:none" rows="3" placeholder="Description"></textarea>
-		<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
-		<br>
-		<input class="btn btn-primary" type="submit" id="upload" name="upload"
-		value="Upload Video">
-	</form>
+<form name="uploadForm" id="uploadForm" method="post" action="upload.php"
+enctype="multipart/form-data">
+	<input type="text" class="form-control" name="title" value="" placeholder="{{ __("Title") }}">
+	<textarea class="form-control" name="desc" maxlength="500" form="uploadForm"
+	style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}"></textarea>
+	<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
+	<br>
+	<input class="btn btn-primary" type="submit" id="upload" name="upload"
+	value="{{ __("Upload Video") }}">
+</form>
 	{% endblock %}
