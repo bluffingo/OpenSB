@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- bootstrap 5, which is just some rendering thing -->
-		<link rel="stylesheet" id="bootstrap" href="scssrender.php?path=bootstrap/bs{% if theme == 'dark' %}-dark{% endif %}.scss" type="text/css">
+		<link rel="stylesheet" id="bootstrap" href="assets/bs{% if theme == 'dark' %}-dark{% endif %}.css" type="text/css">
         <!-- jquery and bootstrap 3 javascript -->
 		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
@@ -32,13 +32,13 @@
 				});
 				$("#light").click(function(){
 					$("#themeSelection").removeClass("show");
-					$("#bootstrap").attr("href", "scssrender.php?path=bootstrap/bs.scss");
+					$("#bootstrap").attr("href", "assets/bs.css");
 					$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
 					Cookies.set("theme", "light", { expires: 1000 });
 				});				
 				$("#dark").click(function(){
 					$("#themeSelection").removeClass("show");
-					$("#bootstrap").attr("href", "scssrender.php?path=bootstrap/bs-dark.scss");
+					$("#bootstrap").attr("href", "assets/bs-dark.css");
 					$("#navbar").attr("class", "navbar navbar-dark bg-dark navbar-static-top navbar-expand-md");
 					Cookies.set("theme", "dark", { expires: 1000 });
 				});
