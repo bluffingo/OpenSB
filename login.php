@@ -9,14 +9,14 @@ $twig = twigloader();
 if(isset($_POST["loginsubmit"])){
 	//check if user has inputed a username.
 	if(empty(trim($_POST['username']))){
-        $error .= 'Please enter your username! ';
+        $error .= __('Please enter your username! ');
     } else{
         $username = trim(htmlspecialchars($_POST['username']));
     }
 
 	//check if user has inputed a password.
 	if(empty(trim($_POST['password']))){
-        $error .= 'Please enter your password! ';
+        $error .= __('Please enter your password! ');
     } else{
         $password = trim(htmlspecialchars($_POST['password']));
     }
