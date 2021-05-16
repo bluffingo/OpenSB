@@ -27,6 +27,13 @@
 
 	"Videos": "",
 
+	"Blank username. ": "Bwank usewnyame. ",
+	"Blank email. ": "Bwank emaiw. ",
+	"Password is too short. ": "Passwowd is too showt. ",
+	"The passwords don't match. ": "The passwowds dony't match. ",
+	"Username has already been taken. ": "Usewnyame has awweady been taken. ",
+	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "Usewnyame conytains inyvawid chawactews (Onyly alphanyumewic and unydewscowe awwowed). ",
+	"Email isn't valid. ": "Emaiw isny't valid. ",
 	"Email": "Emaiw",
 	"Password (Again)": "Passwowd (Again)",
 	"Submit": "",

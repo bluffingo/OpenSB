@@ -29,6 +29,13 @@
 
 	"Videos": "",
 
+	"Blank username. ": "",
+	"Blank email. ": "",
+	"Password is too short. ": "",
+	"The passwords don't match. ": "",
+	"Username has already been taken. ": "",
+	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "",
+	"Email isn't valid. ": "",
 	"Email": "",
 	"Password (Again)": "",
 	"Submit": "",
