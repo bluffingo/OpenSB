@@ -1,10 +1,4 @@
 {
-	"repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/twbs/icons"
-        }
-    ],
 	"require": {
 		"twig/twig": "^3.0",
 		"mpratt/relativetime": "dev-master",
@@ -21,5 +15,14 @@
 		"platform": {
 			"php": "8.0"
 		}
-	}
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/twbs/icons"
+		}, {
+			"type": "vcs",
+			"url": "https://github.com/chazizsquarebracket/RelativeTime"
+		}
+	]
 }

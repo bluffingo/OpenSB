@@ -79,7 +79,7 @@ function watchBox($videodata) {
 
 function relativeTime($time) {
 	$config = [
-		'language' => '\RelativeTime\Languages\English',
+		'language' => __('\RelativeTime\Languages\English'),
 		'separator' => ', ',
 		'suffix' => true,
 		'truncate' => 1,
