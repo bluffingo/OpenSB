@@ -63,6 +63,20 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 			unlink($target_file);
 			query("INSERT INTO videos (video_id, title, description, author, time, videofile, videolength) VALUES (?,?,?,?,?,?,?)",
 				[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),'videos/'.$new.'.mpd',ceil($metadata->getFormat()->get('duration'))]);
+
+			// Discord webhook stuff
+			if ($webhook) {
+				$webhookdata = [
+					'video_id' => $new,
+					'name' => $_POST['title'],
+					'description' => $_POST['desc'],
+					'u_id' => $currentUser['id'],
+					'u_name' => $currentUser['username']
+				];
+
+				newVideoHook($webhookdata);
+			}
+
 			redirect('./watch.php?v='.$new);
 		} catch (Exception $e) {
 			echo '<p>Something went wrong!:'.htmlspecialchars($e->getMessage()).'on line:'.htmlspecialchars($e->getLine()).'</p> <p>stack trace:'.htmlspecialchars($e->getTraceAsString()).'</p>';

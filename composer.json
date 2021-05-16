@@ -8,6 +8,7 @@
 		"erusev/parsedown": "dev-master",
 		"twbs/bootstrap": "5.0.1",
 		"scssphp/scssphp": "1.4.1",
+		"nopjmp/discord-webhooks": "dev-master",
 		"twbs/bootstrap-icons": "dev-composer"
 	},
 	"minimum-stability": "dev",
