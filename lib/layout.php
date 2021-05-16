@@ -46,13 +46,25 @@ function comment($comment) {
 }
 
 function profileImage($username) {
-	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/profpic/'.$username.'.png', 'r');
+	$connectOptions = array(
+		"ssl"=>array(
+			"verify_peer"=>false,
+			"verify_peer_name"=>false,
+		),
+	);  
+	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/profpic/'.$username.'.png', 'r', false, stream_context_create($connectOptions));
 	$twig = twigloader('components');
 	return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $handle]);
 }
 
 function videoThumbnail($videodata) {
-	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/thumb/'.$videodata.'.png', 'r');
+	$connectOptions = array(
+		"ssl" => array(
+			"verify_peer" => false,
+			"verify_peer_name" => false,
+		),
+	);  
+	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/thumb/'.$videodata.'.png', 'r', false, stream_context_create($connectOptions));
 	$twig = twigloader('components');
 	return $twig->render('videothumbnail.twig', ['data' => $videodata, 'file_exists' => $handle]);
 }
