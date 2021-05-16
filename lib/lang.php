@@ -24,12 +24,12 @@ class Lang {
 			$translatedString = $string;
 		}
 
-		return vprintf($translatedString, $placeholders);
+		return vsprintf($translatedString, $placeholders);
 	}
 }
 
 function __($string, $placeholders = []) {
 	global $lang;
 
-	$lang->translate($string, $placeholders);
+	return $lang->translate($string, $placeholders);
 }
