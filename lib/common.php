@@ -37,9 +37,8 @@ if (isset($_COOKIE['theme'])) {
 
 if ($loggedIn) {
 	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
-} else {
-	// put any default settings here as they get added.
 }
+// put any default settings here as they get added.
 if ($isDebug) {
 	$dat = getrusage();
 	if(!isset($rawOutputRequired) OR !$rawOutputRequired) ?>
