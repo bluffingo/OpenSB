@@ -1,6 +1,5 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
-
 $id = (isset($_GET['v']) ? $_GET['v'] : null);
 
 $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);

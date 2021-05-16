@@ -3,21 +3,23 @@
 {% block title %}{{ __("Login") }}{% endblock %}
 
 	{% block precontent %}
-<div class="container">
-<h1>{{ __("Login") }}</h1>
-</div>
+		<div class="container">
+		<h1>{{ __("Login") }}</h1>
+		</div>
 	{% endblock %}
 
 	{% block content %}
-{% if error %}
-	{% autoescape %}
-		{{ error | raw }}
-	{% endautoescape %}
-{% else %}
-	{% if not success == '' %}
-		{% if success %}
+		{% if error %}
+			{% autoescape %}
+				{{ error | raw }}
+			{% endautoescape %}
 		{% else %}
-			{{ __("Incorrect username or password!") }}
+			{% if not success == '' %}
+				{% if success %}
+				{% else %}
+					{{ __("Incorrect username or password!") }}
+				{% endif %}
+			{% endif %}
 		{% endif %}
 		<div class="row">
 		<div class="col-8">
@@ -30,18 +32,18 @@
 			</li>
 		</ul>
 		</div>
-		<div class="col-4">		<form method="post" name="loginForm"
-		id="loginForm" action="login.php">
-			<div class="input-group">
-				<span class="input-group-text" id="basic-addon1" style="width:90px">{{ __("Username") }}</span>
-				<input type="text" name="username" class="form-control" aria-describedby="basic-addon1">
-			</div>
-			<div class="input-group">
-				<span class="input-group-text" id="basic-addon1" style="width:90px">{{ __("Password") }}</span>
-				<input type="password" name="password" class="form-control" aria-describedby="basic-addon1">
-			</div>
-			<input class="btn btn-primary" type="submit" value="{{ __("Login") }}" name="loginsubmit">
-		</form>
+		<div class="col-4">		
+			<form method="post" name="loginForm" id="loginForm" action="login.php">
+				<div class="input-group">
+					<span class="input-group-text" id="basic-addon1" style="width:90px">{{ __("Username") }}</span>
+					<input type="text" name="username" class="form-control" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+					<span class="input-group-text" id="basic-addon1" style="width:90px">{{ __("Password") }}</span>
+					<input type="password" name="password" class="form-control" aria-describedby="basic-addon1">
+				</div>
+				<input class="btn btn-primary" type="submit" value="{{ __("Login") }}" name="loginsubmit">
+			</form>
+		</div>
 	</div>
-</div>
 	{% endblock %}
