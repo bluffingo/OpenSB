@@ -33,8 +33,8 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 		$config = [
 			'timeout'          => 3600, // The timeout for the underlying process
 			'ffmpeg.threads'   => 12,   // The number of threads that FFmpeg should use
-			'ffmpeg.binaries'  => $ffmpegPath,
-			'ffprobe.binaries' => $ffprobePath,
+			'ffmpeg.binaries'  => ($ffmpegPath ? $ffmpegPath : 'ffmpeg'),
+			'ffprobe.binaries' => ($ffprobePath ? $ffprobePath : 'ffprobe'),
 		];
 		try {
 			$ffmpeg = FFMpeg::create($config);
