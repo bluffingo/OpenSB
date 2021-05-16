@@ -46,15 +46,15 @@ function comment($comment) {
 }
 
 function profileImage($username) {
-	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/profpic/'.$username.'.png', 'r');
+	$file_exists = file_exists('assets/profpic/'.$username.'.png');
 	$twig = twigloader('components');
-	return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $handle]);
+	return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $file_exists]);
 }
 
 function videoThumbnail($videodata) {
-	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/thumb/'.$videodata.'.png', 'r');
+	$file_exists = file_exists('assets/thumb/'.$videodata.'.png');
 	$twig = twigloader('components');
-	return $twig->render('videothumbnail.twig', ['data' => $videodata, 'file_exists' => $handle]);
+	return $twig->render('videothumbnail.twig', ['data' => $videodata, 'file_exists' => $file_exists]);
 }
 
 function browseVideoBox($videodata) {
