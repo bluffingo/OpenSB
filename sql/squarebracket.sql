@@ -15,7 +15,7 @@ CREATE TABLE `users` (
   `token` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User token for cookie authentication.',
   `joined` bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT 'User''s join date',
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
-  `color` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'The color that the user has set for their profile',
+  `color` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en_US' COMMENT 'Language (Defaults to English)',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -31,6 +31,7 @@ CREATE TABLE `videos` (
   `views` bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT 'Video views',
   `flags` tinyint(4) unsigned NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',
   `category_id` int(11) DEFAULT NULL COMMENT 'Category ID for the video',
+  `tags` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video tags, serialized in JSON',
   `videofile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Path to the video file(?)',
   `videolength` bigint(20) unsigned DEFAULT NULL COMMENT 'Length of the video in seconds',
   PRIMARY KEY (`id`)
