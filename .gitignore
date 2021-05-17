@@ -16,3 +16,6 @@ bootstrap/css/bootstrap-theme.css
 ## pre-cached stylesheets
 assets/bs.css
 assets/bs-dark.css
+
+## Admin features
+adminer.php
