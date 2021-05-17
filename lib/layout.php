@@ -12,7 +12,7 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
 
 function twigloader($subfolder = '') {
-	global $tplCache, $tplNoCache, $loggedIn, $currentUser, $theme;
+	global $tplCache, $tplNoCache, $loggedIn, $currentUser, $theme, $languages;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
 
@@ -20,10 +20,10 @@ function twigloader($subfolder = '') {
 	$twig = new \Twig\Environment($loader, [
 		'cache' => $doCache,
 	]);
-	
+
 	// Add squareBracket specific extension
 	$twig->addExtension(new SBExtension());
-	
+
 	$twig->addRuntimeLoader(new class implements RuntimeLoaderInterface {
     public function load($class) {
         if (MarkdownRuntime::class === $class) {
@@ -32,10 +32,11 @@ function twigloader($subfolder = '') {
     }
 	});
 	$twig->addExtension(new MarkdownExtension());
-	
+
 	$twig->addGlobal('logged_in', $loggedIn);
 	$twig->addGlobal('current_user', $currentUser);
 	$twig->addGlobal('theme', $theme);
+	$twig->addGlobal('glob_languages', $languages);
 
 	return $twig;
 }
