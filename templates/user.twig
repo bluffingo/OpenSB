@@ -13,7 +13,13 @@
 
 	{% block content %}
 <div class="row" style="margin-top:-150px;">
-<p class="text-white">are you fucking kidding me guys this is literally just the poktube semantic ui profile layout but without the user infomation detail bullshit</p>
+	{% if edited %}
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		{{ __("Your profile settings was successfully updated.") }}
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+	{% endif %}
+<!--<p class="text-white">are you fucking kidding me guys this is literally just the poktube semantic ui profile layout but without the user infomation detail bullshit</p>-->
 	<div class="p-1 mb-4 col-md-6 col-lg-4 bg-dark rounded-3 text-white">
 		<div class="container-fluid py-5">
 			<div class="row">

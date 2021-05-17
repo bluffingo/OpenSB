@@ -18,7 +18,7 @@ $css = $scss->compile(
 	@mixin text-contrast($n) {
 		$color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
 		$light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
-		
+
 		@if abs($color-brightness) < ($light-color/2){
 			color: white;
 		}
@@ -37,5 +37,6 @@ $twig = twigloader();
 echo $twig->render('user.twig', [
     'user' => $userData,
 	'latestVideo' => $latestVideoData,
-	'profCss' => $css
+	'profCss' => $css,
+	'edited' => (isset($_GET['edited']) ? true : false),
 ]);

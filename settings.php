@@ -11,7 +11,7 @@ if (isset($_POST['updatesettings'])) {
 	query("UPDATE users SET description = ?, color = ?, language = ? WHERE id = ?",
 		[$description, $color, $language, $currentUser['id']]);
 
-	redirect(sprintf("user.php?name=%s", $currentUser['username']));
+	redirect(sprintf("user.php?name=%s&edited", $currentUser['username']));
 }
 
 $twig = twigloader();
