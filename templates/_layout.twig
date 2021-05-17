@@ -1,115 +1,118 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- bootstrap 5, which is just some rendering thing -->
-	<link rel="stylesheet" id="bootstrap" href="assets/bs{% if theme == 'dark' %}-dark{% endif %}.css" type="text/css">
-	<!-- jquery and bootstrap 3 javascript -->
-	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-	<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
-	<title>{% block title %}{% endblock %} - squareBracket</title>
-	<script>
-		$(document).ready(function(){
-			$(window).click(function() {
-				$("#mainMenu").removeClass("show");
-				$("#themeSelection").removeClass("show");
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- bootstrap 5, which is just some rendering thing -->
+		<link rel="stylesheet" id="bootstrap" href="assets/bs{% if theme == 'dark' %}-dark{% endif %}.css" type="text/css">
+        <!-- jquery and bootstrap 5 javascript
+		even though bootstrap 5 claims to no longer support jquery
+		we still need it for the settings dropdown menu
+		-->
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+		<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <title>{% block title %}{% endblock %} - squareBracket</title>
+		<script>
+			$(document).ready(function(){
+				$(window).click(function() {
+				  $("#mainMenu").removeClass("show");
+				  $("#themeSelection").removeClass("show");
+				});
+				$("#navbarDropdown").click(function(event){
+					event.stopPropagation();
+					$("#mainMenu").addClass("show");
+				});				
+				$("#back").click(function(event){
+					event.stopPropagation();
+					$("#themeSelection").removeClass("show");
+					$("#mainMenu").addClass("show");
+				});
+				$("#themeSelect").click(function(event){
+					event.stopPropagation();
+					$("#themeSelection").addClass("show");
+				});
+				$("#light").click(function(){
+					$("#themeSelection").removeClass("show");
+					$("#bootstrap").attr("href", "assets/bs.css");
+					$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
+					Cookies.set("theme", "light", { expires: 1000 });
+				});				
+				$("#dark").click(function(){
+					$("#themeSelection").removeClass("show");
+					$("#bootstrap").attr("href", "assets/bs-dark.css");
+					$("#navbar").attr("class", "navbar navbar-dark bg-dark navbar-static-top navbar-expand-md");
+					Cookies.set("theme", "dark", { expires: 1000 });
+				});
 			});
-			$("#navbarDropdown").click(function(event){
-				event.stopPropagation();
-				$("#themeSelection").removeClass("show");
-			});
-			$("#back").click(function(event){
-				event.stopPropagation();
-				$("#themeSelection").removeClass("show");
-				$("#mainMenu").addClass("show");
-			});
-			$("#themeSelect").click(function(event){
-				event.stopPropagation();
-				$("#themeSelection").addClass("show");
-			});
-			$("#light").click(function(){
-				$("#themeSelection").removeClass("show");
-				$("#bootstrap").attr("href", "assets/bs.css");
-				$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
-				Cookies.set("theme", "light", { expires: 1000 });
-			});
-			$("#dark").click(function(){
-				$("#themeSelection").removeClass("show");
-				$("#bootstrap").attr("href", "assets/bs-dark.css");
-				$("#navbar").attr("class", "navbar navbar-dark bg-dark navbar-static-top navbar-expand-md");
-				Cookies.set("theme", "dark", { expires: 1000 });
-			});
-		});
-	</script>
-</head>
-<body>
-	<nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md" style="margin-bottom:20px">
-		<div class="container">
-			<a class="navbar-brand" href="/">
-			<img src="/assets/logo.png" alt="[sb]" height="24" class="d-inline-block align-text-top">
-			squareBracket MS2
-			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div id="navbarCollapse" class="collapse navbar-collapse">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a href="/" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-						<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#house"/>
-					</svg> {{ __("Home") }}</a></li>
-					<li class="nav-item"><a href="browse.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-						<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#film"/>
-					</svg> {{ __("Browse") }}</a></li>
-				</ul>
-				<ul class="navbar-nav">
-					{% if logged_in %}
-					<li class="nav-item"><a href="user.php?name={{ current_user.username }}" class="nav-link">{{ current_user.username }}</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							{{ __("Settings") }}
-						</a>
-						<ul class="dropdown-menu" id="mainMenu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="settings.php">{{ __("Profile Settings") }}</a></li>
-							<li><a class="dropdown-item" id="themeSelect" href="#">{{ __("Change theme") }}</a></li>
-						</ul>
-						<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" id="back" href="#">{{ __("Back") }}</a></li>
-							<li><a class="dropdown-item" id="light" href="#">{{ __("Light") }}</a></li>
-							<li><a class="dropdown-item" id="dark" href="#">{{ __("Dark") }}</a></li>
-						</ul>
-					</li>
-					<li class="nav-item"><a href="/upload.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-						<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#upload"/>
-					</svg> {{ __("Upload") }}</a></li>
-					<li class="nav-item"><a href="logout.php" class="nav-link">{{ __("Log Out") }}</a></li>
-					{% else %}
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							{{ __("Settings") }}
-						</a>
-						<ul class="dropdown-menu" id="mainMenu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" id="themeSelect" href="#">{{ __("Change theme") }}</a></li>
-						</ul>
-						<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" id="back" href="#">{{ __("Back") }}</a></li>
-							<li><a class="dropdown-item" id="light" href="#">{{ __("Light") }}</a></li>
-							<li><a class="dropdown-item" id="dark" href="#">{{ __("Dark") }}</a></li>
-						</ul>
-					</li>
-					<li class="nav-item"><a href="login.php" class="nav-link">{{ __("Login") }}</a></li>
-					<li class="nav-item"><a href="register.php" class="nav-link">{{ __("Register") }}</a></li>
-					{% endif %}
-				</ul>
+		</script>
+	</head>
+	<body>
+		<nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md" style="margin-bottom:20px">
+			<div class="container">
+				<a class="navbar-brand" href="/">
+				<img src="/assets/logo.png" alt="[sb]" height="24" class="d-inline-block align-text-top">
+				squareBracket MS2
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div id="navbarCollapse" class="collapse navbar-collapse">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a href="/" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#house"/>
+						</svg> {{ __("Home") }}</a></li>
+						<li class="nav-item"><a href="browse.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#film"/>
+						</svg> {{ __("Browse") }}</a></li>
+					</ul>
+					<ul class="navbar-nav">
+						{% if logged_in %}
+						<li class="nav-item"><a href="user.php?name={{ current_user.username }}" class="nav-link">{{ current_user.username }}</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								{{ __("Settings") }}
+							</a>
+							<ul class="dropdown-menu" id="mainMenu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="settings.php">{{ __("Profile Settings") }}</a></li>
+								<li><a class="dropdown-item" id="themeSelect" href="#">{{ __("Change theme") }}</a></li>
+							</ul>
+							<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" id="back" href="#">{{ __("Back") }}</a></li>
+								<li><a class="dropdown-item" id="light" href="#">{{ __("Light") }}</a></li>
+								<li><a class="dropdown-item" id="dark" href="#">{{ __("Dark") }}</a></li>
+							</ul>
+						</li>
+						<li class="nav-item"><a href="/upload.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#upload"/>
+						</svg> {{ __("Upload") }}</a></li>
+						<li class="nav-item"><a href="logout.php" class="nav-link">{{ __("Log Out") }}</a></li>
+						{% else %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								{{ __("Settings") }}
+							</a>
+							<ul class="dropdown-menu" id="mainMenu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" id="themeSelect" href="#">{{ __("Change theme") }}</a></li>
+							</ul>
+							<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" id="back" href="#">{{ __("Back") }}</a></li>
+								<li><a class="dropdown-item" id="light" href="#">{{ __("Light") }}</a></li>
+								<li><a class="dropdown-item" id="dark" href="#">{{ __("Dark") }}</a></li>
+							</ul>
+						</li>
+						<li class="nav-item"><a href="login.php" class="nav-link">{{ __("Login") }}</a></li>
+						<li class="nav-item"><a href="register.php" class="nav-link">{{ __("Register") }}</a></li>
+						{% endif %}
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
 			</div>
-			<!--/.nav-collapse -->
+		</nav>
+		{% block precontent %}{% endblock %}
+		<div class="container">
+			{% block content %}{% endblock %}
 		</div>
-	</nav>
-	{% block precontent %}{% endblock %}
-	<div class="container">
-		{% block content %}{% endblock %}
-	</div>
-</body>
+	</body>
 </html>

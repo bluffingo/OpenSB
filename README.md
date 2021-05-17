@@ -5,7 +5,7 @@
 <img src="https://img.shields.io/discord/737791548435071037?style=plastic">
 <img src="https://img.shields.io/github/v/release/chazizsquarebracket/squarebracket?include_prereleases&label=lastest%20released&style=plastic">
 <img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=plastic">
-<img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/milestone-2-preview?include_prereleases&style=plastic">
+<img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/milestone-2-refresh-preview?include_prereleases&style=plastic">
 <img src="https://img.shields.io/github/repo-size/chazizsquarebracket/squarebracket?style=plastic"><br><br>
 <a href="https://www.youtube.com/channel/UCMnG3eA5QcSgIPsavuW4ubA">
 <img src="https://img.shields.io/youtube/channel/subscribers/UCMnG3eA5QcSgIPsavuW4ubA?style=social">
@@ -20,6 +20,7 @@
 2. Run `composer i` from the terminal.
 3. Copy `config.sample.php` and name it as `config.php`
 4. Edit the config file, change the database auth details to the ones you use.
+5. Ethier run the compile-scss-sassc or compile-scss-pscss script available in the tools directory.
 
 ## Questions
 
