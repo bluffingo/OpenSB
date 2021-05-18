@@ -15,7 +15,7 @@
 
 <h3 align="center"><a href="https://185.86.231.49/">Live website here ></a></h3>
 
-## How to setup your squareBracket environment.
+## How to setup a developement environment for squareBracket.
 1. Install [composer](https://getcomposer.org/).
 2. Run `composer i` from the terminal.
 3. Copy `config.sample.php` and name it as `config.php`
