@@ -1,5 +1,5 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
+require('lib/common.php');
 
 if (!$loggedIn) redirect('login.php');
 

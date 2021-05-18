@@ -1,14 +1,14 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
+require('lib/common.php');
 $id = (isset($_GET['v']) ? $_GET['v'] : null);
 
 $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
 $query = '';
-if($videoData['tags']) {
+if ($videoData['tags']) {
 	foreach(json_decode($videoData['tags']) as $key=>$value) {
 		if ($key < 1) {
 			$query .= "WHERE";
-		} else if ($key >= 1){
+		} else if ($key >= 1) {
 			$query .= "OR";
 		}
 		$query .= " tags LIKE '%" . addslashes($value) . "%' ";

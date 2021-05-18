@@ -1,5 +1,5 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
+require('lib/common.php');
 
 $min = ((isset($_GET['page']) ? $_GET['page'] : 1) - 1) * 20;
 $max = $min + 20;
