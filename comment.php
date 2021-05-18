@@ -1,5 +1,5 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
+require('lib/common.php');
 
 if(!isset($_POST['vidid'])) {
 	die('Wait, why are you trying to insert garbage to my database?');

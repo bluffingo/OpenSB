@@ -4,6 +4,13 @@ if (!file_exists('conf/config.php')) {
 }
 
 require('conf/config.php');
+
+if ($isDebug) {
+	// load profiler first
+	require_once('lib/profiler.php');
+	$profiler = new Profiler();
+}
+
 require('vendor/autoload.php');
 foreach (glob("lib/*.php") as $file) {
 	require_once($file);
@@ -37,17 +44,6 @@ if (isset($_COOKIE['theme'])) {
 
 if ($loggedIn) {
 	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
-}
-// put any default settings here as they get added.
-if ($isDebug) {
-	$dat = getrusage();
-	if(!isset($rawOutputRequired) OR !$rawOutputRequired) ?>
-		<div class="offcanvas offcanvas-bottom show" data-bs-scroll="true" data-bs-backdrop="false" style="visibility: visible; height: unset;">
-		  <div class="offcanvas-body small">
-			<?php printf('debug: logged in as %s, timings: user time used: %s system time used: %s, current locale: %s', (isset($currentUser['username']) ? $currentUser['username'] : 'not logged in'), $dat["ru_utime.tv_sec"], $dat["ru_stime.tv_sec"], (isset($currentUser['language']) ? $currentUser['language'] : 'en_US')); ?>
-		  </div>
-		</div>
-	<?php
 }
 
 $lang = new Lang(sprintf("lib/lang/".(isset($currentUser['language']) ? $currentUser['language'] : 'en_US').".json"));

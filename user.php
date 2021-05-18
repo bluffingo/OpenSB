@@ -1,5 +1,5 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
+require('lib/common.php');
 use ScssPhp\ScssPhp\Compiler;
 
 $username = (isset($_GET['name']) ? $_GET['name'] : null);
