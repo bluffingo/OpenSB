@@ -87,6 +87,17 @@
 					</ul>
 					<ul class="navbar-nav">
 						{% if logged_in %}
+						<div class="dropdown text-end">
+						  <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+							<img src="{{ profile_image(current_user.username) }}" alt="chaziz94" class="rounded" width="32" height="32">
+						  </a>
+						  <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+							<li><a class="dropdown-item" href="#">{{ __("Settings") }}</a></li>
+							<li><a class="dropdown-item" href="#">Profile</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">{{ __("Log Out") }}</a></li>
+						  </ul>
+						</div>
 						<li class="nav-item"><a href="user.php?name={{ current_user.username }}" class="nav-link">{{ current_user.username }}</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
