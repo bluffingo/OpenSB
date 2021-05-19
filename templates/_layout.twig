@@ -5,16 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		{% block head %}{% endblock %}
-		<!-- bootstrap 5, which is just some rendering thing 
-		also yes guys i'm sorry if the way the code works is super ass i just
-		couldn't be bothered to fix it, also icty please don't report this 
-		just because of how the code was written. when you were writing poor
-		code did roller reverted those? nope. -pf94 may 17th 2021   -->
-		{% if theme != 'vanilla' %}
+		<!-- bootstrap 5 with sb custom theme -->
 		<link rel="stylesheet" id="bootstrap" href="assets/bs{% if theme == 'dark' %}-dark{% endif %}.css" type="text/css">
-		{% else %}
-		<link id="bootstrap" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
-		{% endif %} 
         <!-- jquery and bootstrap 5 javascript
 		(IMPORTANT: even though bootstrap 5 claims to no longer support jquery
 		we still need it for the settings dropdown menu)
@@ -47,13 +39,7 @@
 					$("#bootstrap").attr("href", "assets/bs.css");
 					$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
 					Cookies.set("theme", "light", { expires: 1000 });
-				});		
-				$("#vanilla").click(function(){
-					$("#themeSelection").removeClass("show");
-					$("#bootstrap").attr("href", "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css");
-					$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
-					Cookies.set("theme", "vanilla", { expires: 1000 });
-				});								
+				});									
 				$("#dark").click(function(){
 					$("#themeSelection").removeClass("show");
 					$("#bootstrap").attr("href", "assets/bs-dark.css");
@@ -88,8 +74,13 @@
 					<ul class="navbar-nav">
 						{% if logged_in %}
 						<div class="dropdown text-end">
-						  <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="{{ profile_image(current_user.username) }}" alt="chaziz94" class="rounded" width="32" height="32">
+						  <style>
+							#dropdownUser1::after {
+								content: none;
+							}
+						  </style>
+						  <a href="#" class="dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+							<img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="32" height="32" style="margin-top: 4px;">
 						  </a>
 						  <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
 							<li><a class="dropdown-item" href="#">{{ __("Settings") }}</a></li>
@@ -111,7 +102,6 @@
 								<li><a class="dropdown-item" id="back" href="#">{{ __("Back") }}</a></li>
 								<li><a class="dropdown-item" id="light" href="#">{{ __("Light") }}</a></li>
 								<li><a class="dropdown-item" id="dark" href="#">{{ __("Dark") }}</a></li>
-								<li><a class="dropdown-item" id="vanilla" href="#">{{ __("Bootstrap Default") }}</a></li>
 							</ul>
 						</li>
 						<li class="nav-item"><a href="/upload.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
