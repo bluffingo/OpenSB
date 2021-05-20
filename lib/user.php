@@ -10,7 +10,7 @@
 function userlink($user, $prefix = '', $makeButton = false, $buttonType = '') {
 	// We should make this a Twig component for maximum epicness.
 	if (isset($user)) {
-		if($makeButton) {
+		if ($makeButton) {
 			return <<<HTML
 			<a class="btn $buttonType" type="button" class="user" href="user.php?name={$user[$prefix.'username']}">{$user[$prefix.'username']}</a>
 HTML;

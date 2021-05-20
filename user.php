@@ -35,7 +35,7 @@ $css = $scss->compile(
 $twig = twigloader();
 
 echo $twig->render('user.twig', [
-    'user' => $userData,
+	'user' => $userData,
 	'latestVideo' => $latestVideoData,
 	'profCss' => $css,
 	'edited' => (isset($_GET['edited']) ? true : false),

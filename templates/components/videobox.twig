@@ -1,6 +1,6 @@
 <div class="card" style="margin-bottom:10px">
-    <div class="card-body">
-        <div class="row">
+	<div class="card-body">
+		<div class="row">
 			<div class="col-lg-4">
 				<a href="watch.php?v={{ data.video_id }}">
 					<div class="img-thumbnail">
@@ -8,14 +8,14 @@
 					</div>
 				</a>
 			</div>
-            <div class="col-lg-6">
-                <h3><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
+			<div class="col-lg-6">
+				<h3><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
 				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("views") }}</p>
 				<p>{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description }}</p>
-            </div>
+			</div>
 			<div class="col-lg-2 text-end">
 			<small class="text-muted">{{ data.time | relative_time }}</small>
 			</div>
-        </div>
-    </div>
+		</div>
+	</div>
 </div>

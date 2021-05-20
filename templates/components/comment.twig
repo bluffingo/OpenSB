@@ -4,7 +4,7 @@
 			<img class="rounded" style="width:32px;height:32px" src="{{ profile_image(data.u_username) }}">
 		</a>
 	</div>
-    <div class="col-lg-10">
+	<div class="col-lg-10">
 		{{ userlink(data, 'u_') }} &bull; {{ data.date | relative_time}}
 		{% apply markdown_to_html | nl2br %}
 			{{ data.comment | raw }}

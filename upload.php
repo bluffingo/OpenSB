@@ -26,10 +26,10 @@ foreach(str_split($video_id) as $char){
 
 if (isset($_POST['upload']) and isset($currentUser['username'])) {
 	$name       = $_FILES['fileToUpload']['name'];
-    $temp_name  = $_FILES['fileToUpload']['tmp_name'];  // gets video info and thumbnail info
+	$temp_name  = $_FILES['fileToUpload']['tmp_name'];  // gets video info and thumbnail info
 	$ext  = pathinfo( $_FILES['fileToUpload']['name'], PATHINFO_EXTENSION );
 	$target_file = 'videos/'.$new.'.'.$ext;
-	if(move_uploaded_file($temp_name, $target_file)){
+	if (move_uploaded_file($temp_name, $target_file)){
 		$config = [
 			'timeout'          => 3600, // The timeout for the underlying process
 			'ffmpeg.threads'   => 12,   // The number of threads that FFmpeg should use
@@ -89,4 +89,3 @@ if (isset($_POST['upload']) and isset($currentUser['username'])) {
 
 $twig = twigloader();
 echo $twig->render('upload.twig');
-?>

@@ -25,11 +25,11 @@ function twigloader($subfolder = '') {
 	$twig->addExtension(new SBExtension());
 
 	$twig->addRuntimeLoader(new class implements RuntimeLoaderInterface {
-    public function load($class) {
-        if (MarkdownRuntime::class === $class) {
-            return new MarkdownRuntime(new DefaultMarkdown());
-        }
-    }
+	public function load($class) {
+		if (MarkdownRuntime::class === $class) {
+			return new MarkdownRuntime(new DefaultMarkdown());
+		}
+	}
 	});
 	$twig->addExtension(new MarkdownExtension());
 
