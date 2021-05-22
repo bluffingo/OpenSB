@@ -58,7 +58,7 @@ $(document).ready(function(){
 			vidid: video_id
 		},
 		function(data,status){
-			if (status = "success") {
+			if (status == "success") {
 				$('#comment').prepend(data);
 				$("#commentContents").val('');
 				$("#post").addClass("disabled");
@@ -72,7 +72,7 @@ $(document).ready(function(){
 			vidid: video_id
 		},
 		function(data,status){
-			if (status = "success") {
+			if (status == "success") {
 				if(data == 1) {
 					$("#like").attr("class", "text-info");
 					$("#likes").text(parseInt($("#likes").text()) + 1)
@@ -93,7 +93,7 @@ $(document).ready(function(){
 			vidid: video_id
 		},
 		function(data,status){
-			if (status = "success") {
+			if (status == "success") {
 				if (data == 1) {
 					$("#dislike").attr("class", "text-info");
 					$("#dislikes").text(parseInt($("#dislikes").text()) + 1)
