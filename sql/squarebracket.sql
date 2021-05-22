@@ -45,5 +45,11 @@ CREATE TABLE `comments` (
   `deleted` tinyint(4) NOT NULL COMMENT 'States that the comment is deleted'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE `rating` (
+  `user` bigint(20) unsigned NOT NULL COMMENT 'User that does the rating.',
+  `video` bigint(20) unsigned NOT NULL COMMENT 'Video that is being rated.',
+  `rating` tinyint(1) unsigned NOT NULL DEFAULT 1 COMMENT '1 for like, 0 for dislike.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 -- 2021-04-25 15:54:47
