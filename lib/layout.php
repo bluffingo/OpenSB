@@ -74,11 +74,6 @@ function videoBox($videodata) {
 	return $twig->render('videobox.twig', ['data' => $videodata]);
 }
 
-function watchBox($videodata) {
-	$twig = twigloader('components');
-	return $twig->render('watchbox.twig', ['data' => $videodata]);
-}
-
 function relativeTime($time) {
 	$config = [
 		'language' => __('\RelativeTime\Languages\English'),

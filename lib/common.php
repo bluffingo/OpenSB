@@ -5,7 +5,7 @@ if (!file_exists('conf/config.php')) {
 
 require('conf/config.php');
 
-if ($isDebug) {
+if ($isDebug and !isset($rawOutputRequired)) {
 	// load profiler first
 	require_once('lib/profiler.php');
 	$profiler = new Profiler();

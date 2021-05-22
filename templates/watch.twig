@@ -11,6 +11,7 @@
 	<meta property="twitter:description" content="{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description }}">
 	<meta property="twitter:image" content="{{ video_thumbnail(video.video_id) }}">
 	<meta name="twitter:card" content="summary_large_image">
+	<script>video_id = '{{ video.video_id }}';</script>
 {% endblock %}
 
 {% block title %}{{ video.title }}{% endblock %}
@@ -41,47 +42,31 @@
 
 			// You can use the player object now to access the player and it's methods (play, pause, ...)
 		</script>
-		<script>
-		$(document).ready(function(){
-			contents = $.trim($("#commentContents").val());
-			if (contents === null || contents == "" && $("#post").attr("class") != "btn btn-primary disabled") {
-				$("#post").addClass("disabled");
-			}
-			$("#commentContents").keydown(function(e){
-				if (e.key == "Backspace") {
-				contents = $.trim($("#commentContents").val()).slice(0, -1);;
-				} else {
-				contents = $.trim($("#commentContents").val()) + e.key;
-				}
-				if (contents == "") {
-				$("#post").addClass("disabled");
-				} else if (contents != "") {
-				$("#post").removeClass("disabled")
-				}
-			});
-
-			$("#post").click(function(){
-			$.post("comment.php",
-			{
-				comment: $.trim($("#commentContents").val()),
-				vidid:  '{{ video.video_id }}'
-			},
-			function(data,status){
-				if (status = "success") {
-					$('#comment').prepend(data);
-					$("#commentContents").val('');
-					$("#post").addClass("disabled");
-				}
-			});
-			});
-		});
-		</script>
-		<div style="margin-top:5px">{{ watch_box(video) }}</div> <!-- WATCH VIDEO BOX -->
+		<div style="margin-top:5px">
+			<div class="card border-primary">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-lg-11">
+							<p><small>{{ __("Uploaded by %s on %s", [userlink(video, 'u_'), video.time | date('M j, Y')]) }} &bull; {{ video.views }} {{ __("views") }}</small></p>
+							<p>{{ video.description }}</p>
+						</div>
+						<div class="col-lg-1">
+							<a href="#" id="{% if logged_in %}like{% endif %}" class="text-{% if rating %}info{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
+								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-up-fill"/>
+							</svg></a> <span id="likes">{{ total_likes }}</span>
+							<a href="#" id="{% if logged_in %}dislike{% endif %}" class="text-{% if rating == 0 %}info{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
+								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-down-fill"/>
+							</svg></a> <span id="dislikes">{{ total_dislikes }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- WATCH VIDEO BOX -->
 		<div style="margin-top:5px">
 			<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none"
 			rows="3" placeholder="{{ __("Enter comment here, Markdown can be used here.") }}"></textarea>
 			<div style="margin-top:5px"></div>
-			<button id="post" class="btn btn-primary">{{ __("Post") }}</button>
+			<button id="{% if logged_in %}post{% endif %}" class="btn btn-primary {% if not logged_in %}disabled{% endif %}">{{ __("Post") }}</button>
 			<div style="margin-top:5px"></div>
 			<div id="comment"></div>
 				{% for comment in comments %}
