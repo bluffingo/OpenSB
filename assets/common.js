@@ -40,7 +40,7 @@ $(document).ready(function(){
 	}
 	$("#commentContents").keydown(function(e){
 		if (e.key == "Backspace") {
-			contents = $.trim($("#commentContents").val()).slice(0, -1);;
+			contents = $.trim($("#commentContents").val()).slice(0, -1);
 		} else {
 			contents = $.trim($("#commentContents").val()) + e.key;
 		}
