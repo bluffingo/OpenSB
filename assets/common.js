@@ -66,45 +66,49 @@ $(document).ready(function(){
 		});
 	});
 	$("#like").click(function(){
-		$.post("rate.php",
-		{
-			rating: 1,
-			vidid: video_id
-		},
-		function(data,status){
-			if (status == "success") {
-				if(data == 1) {
-					$("#like").attr("class", "text-info");
-					$("#likes").text(parseInt($("#likes").text()) + 1)
-					$("#dislikes").text(parseInt($("#dislikes").text()) - 1)
-					$("#dislike").attr("class", "text-body");
-				} else if(data == 0) {
-					$("#like").click();
-				} else {
-					alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
+		if($("#like").attr("class") != "text-info") {
+			$.post("rate.php",
+			{
+				rating: 1,
+				vidid: video_id
+			},
+			function(data,status){
+				if (status == "success") {
+					if(data == 1) {
+						$("#like").attr("class", "text-info");
+						$("#likes").text(parseInt($("#likes").text()) + 1)
+						$("#dislikes").text(parseInt($("#dislikes").text()) - 1)
+						$("#dislike").attr("class", "text-body");
+					} else if(data == 0) {
+						$("#like").click();
+					} else {
+						alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
+					}
 				}
-			}
-		});
+			});
+		}
 	});	
 	$("#dislike").click(function(){
-		$.post("rate.php",
-		{
-			rating: 0,
-			vidid: video_id
-		},
-		function(data,status){
-			if (status == "success") {
-				if (data == 1) {
-					$("#dislike").attr("class", "text-info");
-					$("#dislikes").text(parseInt($("#dislikes").text()) + 1)
-					$("#likes").text(parseInt($("#likes").text()) - 1)
-					$("#like").attr("class", "text-body");
-				} else if (data == 0) {
-					$("#dislike").click();
-				} else {
-					alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
+		if($("#dislike").attr("class") != "text-info") {
+			$.post("rate.php",
+			{
+				rating: 0,
+				vidid: video_id
+			},
+			function(data,status){
+				if (status == "success") {
+					if (data == 1) {
+						$("#dislike").attr("class", "text-info");
+						$("#dislikes").text(parseInt($("#dislikes").text()) + 1)
+						$("#likes").text(parseInt($("#likes").text()) - 1)
+						$("#like").attr("class", "text-body");
+					} else if (data == 0) {
+						$("#dislike").click();
+					} else {
+						alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
+					}
 				}
-			}
-		});
+			});
+		}
 	});
 });
