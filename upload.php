@@ -1,6 +1,6 @@
 <?php
 //this uploads and converts the video, should switch to a better solution!
-require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
+require('lib/common.php');
 use Intervention\Image\ImageManager;
 use Streaming\FFMpeg;
 use FFMpeg\Coordinate;
@@ -24,17 +24,17 @@ foreach(str_split($video_id) as $char){
 	$new .= $char;
 }
 
-if(isset($_POST['upload']) AND isset($currentUser['username'])){
-	$name       = $_FILES['fileToUpload']['name'];  
-    $temp_name  = $_FILES['fileToUpload']['tmp_name'];  // gets video info and thumbnail info
+if (isset($_POST['upload']) and isset($currentUser['username'])) {
+	$name       = $_FILES['fileToUpload']['name'];
+	$temp_name  = $_FILES['fileToUpload']['tmp_name'];  // gets video info and thumbnail info
 	$ext  = pathinfo( $_FILES['fileToUpload']['name'], PATHINFO_EXTENSION );
-	$target_file = $_SERVER['DOCUMENT_ROOT'] . '/videos/'.$new.'.'.$ext;
-	if(move_uploaded_file($temp_name, $target_file)){
+	$target_file = 'videos/'.$new.'.'.$ext;
+	if (move_uploaded_file($temp_name, $target_file)){
 		$config = [
 			'timeout'          => 3600, // The timeout for the underlying process
 			'ffmpeg.threads'   => 12,   // The number of threads that FFmpeg should use
-			'ffmpeg.binaries'  => $ffmpegPath,
-			'ffprobe.binaries' => $ffprobePath,
+			'ffmpeg.binaries'  => ($ffmpegPath ? $ffmpegPath : 'ffmpeg'),
+			'ffprobe.binaries' => ($ffprobePath ? $ffprobePath : 'ffprobe'),
 		];
 		try {
 			$ffmpeg = FFMpeg::create($config);
@@ -48,21 +48,35 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 			if (floor($metadata->getFormat()->get('duration')) < 10) {
 				if (floor($metadata->getFormat()->get('duration')) == 0) {
 					$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration'))))
-						->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+						->save('assets/thumb/' . $new . '.png');
 				} else {
 					$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration')) - 1))
-						->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+						->save('assets/thumb/' . $new . '.png');
 				}
 			} else {
 				$video->frame(Coordinate\TimeCode::fromSeconds(10))
-					->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+					->save('assets/thumb/' . $new . '.png');
 			}
-			$img = $manager->make($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+			$img = $manager->make('assets/thumb/' . $new . '.png');
 			$img->resize(640, 360);
-			$img->save($_SERVER['DOCUMENT_ROOT'] . '/assets/thumb/' . $new . '.png');
+			$img->save('assets/thumb/' . $new . '.png');
 			unlink($target_file);
-			query("INSERT INTO videos (video_id, title, description, author, time, videofile, videolength) VALUES (?,?,?,?,?,?,?)",
-				[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),'videos/'.$new.'.mpd',ceil($metadata->getFormat()->get('duration'))]);
+			query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)",
+				[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),json_encode(explode(', ', $_POST['tags'])),'videos/'.$new.'.mpd',ceil($metadata->getFormat()->get('duration'))]);
+
+			// Discord webhook stuff
+			if ($webhook) {
+				$webhookdata = [
+					'video_id' => $new,
+					'name' => $_POST['title'],
+					'description' => $_POST['desc'],
+					'u_id' => $currentUser['id'],
+					'u_name' => $currentUser['username']
+				];
+
+				newVideoHook($webhookdata);
+			}
+
 			redirect('./watch.php?v='.$new);
 		} catch (Exception $e) {
 			echo '<p>Something went wrong!:'.htmlspecialchars($e->getMessage()).'on line:'.htmlspecialchars($e->getLine()).'</p> <p>stack trace:'.htmlspecialchars($e->getTraceAsString()).'</p>';
@@ -75,4 +89,3 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 
 $twig = twigloader();
 echo $twig->render('upload.twig');
-?>

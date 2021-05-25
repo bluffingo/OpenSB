@@ -1,5 +1,5 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
+require('lib/common.php');
 use ScssPhp\ScssPhp\Compiler;
 
 $username = (isset($_GET['name']) ? $_GET['name'] : null);
@@ -18,7 +18,7 @@ $css = $scss->compile(
 	@mixin text-contrast($n) {
 		$color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
 		$light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
-		
+
 		@if abs($color-brightness) < ($light-color/2){
 			color: white;
 		}
@@ -35,7 +35,8 @@ $css = $scss->compile(
 $twig = twigloader();
 
 echo $twig->render('user.twig', [
-    'user' => $userData,
+	'user' => $userData,
 	'latestVideo' => $latestVideoData,
-	'profCss' => $css
+	'profCss' => $css,
+	'edited' => (isset($_GET['edited']) ? true : false),
 ]);

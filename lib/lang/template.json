@@ -1,0 +1,70 @@
+{
+	"\\RelativeTime\\Languages\\English": "",
+
+	"Home": "",
+	"Hi there, %s": "",
+	"Browse": "",
+	"Edit my profile": "",
+	"Welcome to squareBracket": "",
+	"This is like any other video sharing site... for now at least.": "",
+	"Get started": "",
+	"Login": "",
+	"From squareBracket": "",
+	"No uploaded videos. :^((": "",
+	"Spotlight": "",
+	"Welcome to squareBracket!": "",
+	"squareBracket has been rewritten. Remember the old days of inconsistent UI/CSS and garbage insecure code? That's in the past.": "",
+
+	"Login to squareBracket": "",
+	"Please enter your username! ": "",
+	"Please enter your password! ": "",
+	"Incorrect username or password!": "",
+	"squareBracket is a website to share your videos to the public. With squareBracket you can:": "",
+	"Show off your favorite videos to the world": "",
+	"Post the videos you take with your camera or smartphone": "",
+	"Securely show videos to your friends and family around the world": "",
+	"... and much, much more!": "",
+	"Username": "",
+	"Password": "",
+
+	"Videos": "",
+
+	"Blank username. ": "",
+	"Blank email. ": "",
+	"Password is too short. ": "",
+	"The passwords don't match. ": "",
+	"Username has already been taken. ": "",
+	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "",
+	"Email isn't valid. ": "",
+	"Email": "",
+	"Password (Again)": "",
+	"Submit": "",
+
+	"User Settings": "",
+	"Description": "",
+	"Update": "",
+
+	"Title": "",
+	"Tags": "",
+	"Upload": "",
+	"Upload Video": "",
+
+	"Your profile settings was successfully updated.": "",
+	"Subscribe": "",
+	"Friend": "",
+	"Most recent uploaded video": "",
+
+	"Post": "",
+
+	"Uploaded by %s on %s": "",
+	"Enter comment here, Markdown can be used here.": "",
+	"views": "",
+
+	"Settings": "",
+	"Profile Settings": "",
+	"Change theme": "",
+	"Back": "",
+	"Light": "",
+	"Dark": "",
+	"Log Out": ""
+}

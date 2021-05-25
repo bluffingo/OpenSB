@@ -4,6 +4,13 @@ if (!file_exists('conf/config.php')) {
 }
 
 require('conf/config.php');
+
+if ($isDebug and !isset($rawOutputRequired)) {
+	// load profiler first
+	require_once('lib/profiler.php');
+	$profiler = new Profiler();
+}
+
 require('vendor/autoload.php');
 foreach (glob("lib/*.php") as $file) {
 	require_once($file);
@@ -37,10 +44,6 @@ if (isset($_COOKIE['theme'])) {
 
 if ($loggedIn) {
 	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
-	if ($isDebug) {
-		if(!isset($rawOutputRequired) OR !$rawOutputRequired) {
-			printf('debug: logged in as %s', $currentUser['username']);
-		}
-	}
-} 
-// put any default settings here as they get added.
+}
+
+$lang = new Lang(sprintf("lib/lang/".(isset($currentUser['language']) ? $currentUser['language'] : 'en_US').".json"));

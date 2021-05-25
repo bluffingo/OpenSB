@@ -6,11 +6,11 @@ class SBExtension extends \Twig\Extension\AbstractExtension {
 			new \Twig\TwigFunction('browse_video_box', 'browseVideoBox', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('small_video_box', 'smallVideoBox', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('video_box', 'videoBox', ['is_safe' => ['html']]),
-			new \Twig\TwigFunction('watch_box', 'watchBox', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('video_thumbnail', 'videoThumbnail', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('profile_image', 'profileImage', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('userlink', 'userlink', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('comment', 'comment', ['is_safe' => ['html']]),
+			new \Twig\TwigFunction('__', '__', ['is_safe' => ['html']])
 		];
 	}
 	public function getFilters() {

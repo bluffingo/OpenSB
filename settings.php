@@ -1,17 +1,18 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
+require('lib/common.php');
 
-if($loggedIn) {
-	if(isset($_POST['description']) AND $_POST['description'] != '') {
-		query("UPDATE `users` SET `description`= ? WHERE `username`= ?", [$_POST['description'], $currentUser['username']]);
-	} 
-	if(isset($_POST['color']) AND $_POST['color'] != '#000000') {
-		query("UPDATE `users` SET `color`= ? WHERE `username`= ?", [$_POST['color'], $currentUser['username']]);
-	} 
-	if(count($_POST) == 0) {
-		$twig = twigloader();
-		echo $twig->render('settings.twig');
-	}
-} else {
-	redirect('./login.php');
+if (!$loggedIn) redirect('login.php');
+
+if (isset($_POST['updatesettings'])) {
+	$description	= $_POST['description'] ? $_POST['description'] : null;
+	$color			= $_POST['color'] ? $_POST['color'] : null;
+	$language		= $_POST['language'] ? $_POST['language'] : 'en_US';
+
+	query("UPDATE users SET description = ?, color = ?, language = ? WHERE id = ?",
+		[$description, $color, $language, $currentUser['id']]);
+
+	redirect(sprintf("user.php?name=%s&edited", $currentUser['username']));
 }
+
+$twig = twigloader();
+echo $twig->render('settings.twig');

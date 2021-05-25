@@ -1,48 +1,49 @@
-{% extends "_layout.twig" %} 
-	{% block title %}Login{% endblock%} 
-	{% block precontent %}
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Login") }}{% endblock %}
+
+{% block precontent %}
 	<div class="container">
-	<h1>Login to squareBracket</h1>
+	<h1>{{ __("Login") }}</h1>
 	</div>
-	{% endblock %}
+{% endblock %}
+
 	{% block content %}
-		{% if error %} 
-			{% autoescape %} 
-				{{ error | raw }}
-			{% endautoescape %} 
-		{% else %} 
-			{% if not success == '' %} 
-				{% if success %} 
-				{% else %} 
-					{% set text = 'Incorrect username or password!' %} 
-					{% autoescape %} 
-						{{ text | raw }} 
-					{% endautoescape %} 
-				{% endif %} 
-			{% endif %} 
+{% if error %}
+	{% autoescape %}
+		{{ error | raw }}
+	{% endautoescape %}
+{% else %}
+	{% if not success == '' %}
+		{% if success %}
+		{% else %}
+			{{ __("Incorrect username or password!") }}
 		{% endif %}
-		<div class="row">
-		<div class="col-8">
-		<h2>What is squareBracket?</h2>
-		squareBracket is a way to get your videos to the people who matter to you. With squareBracket you can:
-		<ul>
-		<li> Show off your favorite videos to the world
-		</li><li> Blog the videos you take with your digital camera or cell phone
-		</li><li> Securely and privately show videos to your friends and family around the world
-		</li><li> ... and much, much more!
-		</li></ul>
-		</div>
-		<div class="col-4">		<form method="post" name="loginForm"
-		id="loginForm" action="login.php">
-			<div class="input-group"> 
-				<span class="input-group-text" id="basic-addon1" style="width:90px">Username</span>
+	{% endif %}
+{% endif %}
+<div class="row">
+	<div class="col-8">
+	{{ __("squareBracket is a website to share your videos to the public. With squareBracket you can:") }}
+	<ul>
+		<li> {{ __("Show off your favorite videos to the world") }}
+		</li><li> {{ __("Post the videos you take with your camera or smartphone") }}
+		</li><li> {{ __("Securely show videos to your friends and family around the world") }}
+		</li><li> {{ __("... and much, much more!") }}
+		</li>
+	</ul>
+	</div>
+	<div class="col-4">
+		<form method="post" name="loginForm" id="loginForm" action="login.php">
+			<div class="input-group">
+				<span class="input-group-text" id="basic-addon1" style="width:90px">{{ __("Username") }}</span>
 				<input type="text" name="username" class="form-control" aria-describedby="basic-addon1">
 			</div>
-			<div class="input-group"> 
-				<span class="input-group-text" id="basic-addon1" style="width:90px">Password</span>
+			<div class="input-group">
+				<span class="input-group-text" id="basic-addon1" style="width:90px">{{ __("Password") }}</span>
 				<input type="password" name="password" class="form-control" aria-describedby="basic-addon1">
 			</div>
-			<input class="btn btn-primary" type="submit" value="Login" name="loginsubmit">
-		</form></div>
-		</div>
+			<input class="btn btn-primary" type="submit" value="{{ __("Login") }}" name="loginsubmit">
+		</form>
+	</div>
+</div>
 	{% endblock %}

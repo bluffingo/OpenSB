@@ -1,7 +1,7 @@
 <h1 align="center">squareBracket</h1>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45898787/117596296-10d6b900-b111-11eb-9964-f5a3d931864f.png"><br>
+<img src="https://user-images.githubusercontent.com/45898787/118208261-6cb48100-b434-11eb-8eb7-dd6c900fb931.png"><br>
 <img src="https://img.shields.io/discord/737791548435071037?style=plastic">
 <img src="https://img.shields.io/github/v/release/chazizsquarebracket/squarebracket?include_prereleases&label=lastest%20released&style=plastic">
 <img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=plastic">
@@ -15,7 +15,7 @@
 
 <h3 align="center"><a href="https://185.86.231.49/">Live website here ></a></h3>
 
-## How to setup your squareBracket environment.
+## How to setup a developement environment for squareBracket.
 1. Install [composer](https://getcomposer.org/).
 2. Run `composer i` from the terminal.
 3. Copy `config.sample.php` and name it as `config.php`

@@ -12,7 +12,7 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
 
 function twigloader($subfolder = '') {
-	global $tplCache, $tplNoCache, $loggedIn, $currentUser, $theme;
+	global $tplCache, $tplNoCache, $loggedIn, $currentUser, $theme, $languages;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
 
@@ -20,22 +20,24 @@ function twigloader($subfolder = '') {
 	$twig = new \Twig\Environment($loader, [
 		'cache' => $doCache,
 	]);
-	
+
 	// Add squareBracket specific extension
 	$twig->addExtension(new SBExtension());
-	
+
 	$twig->addRuntimeLoader(new class implements RuntimeLoaderInterface {
-    public function load($class) {
-        if (MarkdownRuntime::class === $class) {
-            return new MarkdownRuntime(new DefaultMarkdown());
-        }
-    }
+	public function load($class) {
+		if (MarkdownRuntime::class === $class) {
+			return new MarkdownRuntime(new DefaultMarkdown());
+		}
+	}
 	});
 	$twig->addExtension(new MarkdownExtension());
-	
+
 	$twig->addGlobal('logged_in', $loggedIn);
 	$twig->addGlobal('current_user', $currentUser);
 	$twig->addGlobal('theme', $theme);
+	$twig->addGlobal('glob_languages', $languages);
+	$twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 
 	return $twig;
 }
@@ -46,27 +48,15 @@ function comment($comment) {
 }
 
 function profileImage($username) {
-	$connectOptions = array(
-		"ssl"=>array(
-			"verify_peer"=>false,
-			"verify_peer_name"=>false,
-		),
-	);  
-	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/profpic/'.$username.'.png', 'r', false, stream_context_create($connectOptions));
+	$file_exists = file_exists('assets/profpic/'.$username.'.png');
 	$twig = twigloader('components');
-	return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $handle]);
+	return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $file_exists]);
 }
 
 function videoThumbnail($videodata) {
-	$connectOptions = array(
-		"ssl" => array(
-			"verify_peer" => false,
-			"verify_peer_name" => false,
-		),
-	);  
-	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/thumb/'.$videodata.'.png', 'r', false, stream_context_create($connectOptions));
+	$file_exists = file_exists('assets/thumb/'.$videodata.'.png');
 	$twig = twigloader('components');
-	return $twig->render('videothumbnail.twig', ['data' => $videodata, 'file_exists' => $handle]);
+	return $twig->render('videothumbnail.twig', ['data' => $videodata, 'file_exists' => $file_exists]);
 }
 
 function browseVideoBox($videodata) {
@@ -84,14 +74,9 @@ function videoBox($videodata) {
 	return $twig->render('videobox.twig', ['data' => $videodata]);
 }
 
-function watchBox($videodata) {
-	$twig = twigloader('components');
-	return $twig->render('watchbox.twig', ['data' => $videodata]);
-}
-
 function relativeTime($time) {
 	$config = [
-		'language' => '\RelativeTime\Languages\English',
+		'language' => __('\RelativeTime\Languages\English'),
 		'separator' => ', ',
 		'suffix' => true,
 		'truncate' => 1,

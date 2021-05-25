@@ -1,9 +1,9 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
+require('lib/common.php');
 
-if(!isset($_POST['vidid'])) {
+if (!isset($_POST['vidid'])) {
 	die('Wait, why are you trying to insert garbage to my database?');
-} else if(!isset($_POST['comment']) OR $_POST['comment'] == '') {
+} else if (!isset($_POST['comment']) or $_POST['comment'] == '') {
 	die(); //don't output anything if this sneaky bastard didn't put anything to the comment field
 }
 

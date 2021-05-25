@@ -1,27 +1,18 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/lib/common.php');
+require('lib/common.php');
 
 $error = '';
 $success = '';
 
-$twig = twigloader();
+if (isset($_POST["loginsubmit"])) {
+	$username = (isset($_POST['username']) ? $_POST['username'] : null);
+	$password = (isset($_POST['password']) ? $_POST['password'] : null);
 
-if(isset($_POST["loginsubmit"])){
-	//check if user has inputed a username.
-	if(empty(trim($_POST['username']))){
-        $error .= 'Please enter your username! ';
-    } else{
-        $username = trim(htmlspecialchars($_POST['username']));
-    }
+	// Check to see if the user actually has entered anything.
+	if (!$username)	$error .= __('Please enter your username! ');
+	if (!$password) $error .= __('Please enter your password! ');
 
-	//check if user has inputed a password.
-	if(empty(trim($_POST['password']))){
-        $error .= 'Please enter your password! ';
-    } else{
-        $password = trim(htmlspecialchars($_POST['password']));
-    }
-
-	if(empty($error)) {
+	if (empty($error)) {
 		$logindata = fetch("SELECT password,token FROM users WHERE username = ?", [$username]);
 		if (password_verify($password, $logindata['password'])) {
 			setcookie('SBTOKEN', $logindata['token'], 2147483647);
@@ -33,7 +24,9 @@ if(isset($_POST["loginsubmit"])){
 	}
 }
 
+$twig = twigloader();
+
 echo $twig->render('login.twig', [
-'error' => $error,
-'success' => $success
+	'error' => $error,
+	'success' => $success
 ]);

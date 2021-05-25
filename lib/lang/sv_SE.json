@@ -1,0 +1,70 @@
+{
+	"\\RelativeTime\\Languages\\English": "\\RelativeTime\\Languages\\Swedish",
+
+	"Home": "Hem",
+	"Hi there, %s": "Hej där, %s",
+	"Browse": "Bläddra",
+	"Edit my profile": "Redigera min profil",
+	"Welcome to squareBracket": "Välkommen till squareBracket",
+	"This is like any other video sharing site... for now at least.": "Detta är som vilken videoplattform som helst... Åtminstonde just nu.",
+	"Get started": "Börja",
+	"Login": "Logga in",
+	"From squareBracket": "Från squareBracket",
+	"No uploaded videos. :^((": "Inga uppladdade videor. :^((",
+	"Spotlight": "Spotlight",
+	"Welcome to squareBracket!": "Välkommen till squareBracket!",
+	"squareBracket has been rewritten. Remember the old days of inconsistent UI/CSS and garbage insecure code? That's in the past.": "squareBracket har blivit omskriven. Kommer du ihåg de gamla dagarna med dåligt gränssnitt och osäker skräpkod? Det är förgånget nu.",
+
+	"Login to squareBracket": "Logga in till squareBracket",
+	"Please enter your username! ": "Skriv in ditt användarnamn!",
+	"Please enter your password! ": "Skriv in ditt lösenord!",
+	"Incorrect username or password!": "Fel användarnamn eller lösenord!",
+	"squareBracket is a website to share your videos to the public. With squareBracket you can:": "squareBracket är ett sätt att få videor till de som betyder något för dig. Med squareBracket kan du:",
+	"Show off your favorite videos to the world": "Visa dina favoritvideor till världen",
+	"Post the videos you take with your camera or smartphone": "Blogga de videor du tar med din digitalkamera eller telefon",
+	"Securely show videos to your friends and family around the world": "Säkert och privat visa videor till din familj och dina vänner",
+	"... and much, much more!": "",
+	"Username": "Användarnamn",
+	"Password": "Lösenord",
+
+	"Videos": "Videor",
+
+	"Blank username. ": "Tomt användarnamn. ",
+	"Blank email. ": "Tom e-mailadress. ",
+	"Password is too short. ": "Lösenordet är för kort. ",
+	"The passwords don't match. ": "Lösenorden är inte likadana. ",
+	"Username has already been taken. ": "Användarnamnet har redan blivit taget. ",
+	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "Användarnamnet innehåller ogiltiga tecken (Endast alfanumeriska och understreck tillåtet). ",
+	"Email isn't valid. ": "E-mail är ogiltig. ",
+	"Email": "E-mail",
+	"Password (Again)": "Lösenord (Igen)",
+	"Submit": "Skicka",
+
+	"User Settings": "Användarinställningar",
+	"Description": "Beskrivning",
+	"Update": "Uppdatera",
+
+	"Title": "Titel",
+	"Tags": "Taggar",
+	"Upload": "Ladda upp",
+	"Upload Video": "Ladda upp video",
+
+	"Your profile settings was successfully updated.": "Dina profilinställningar har uppdaterats.",
+	"Subscribe": "Prenumerera",
+	"Friend": "Vän",
+	"Most recent uploaded video": "Nyligaste upladdade video",
+
+	"Post": "Lägg upp",
+
+	"Uploaded by %s on %s": "Uppladdad av %s på %s",
+	"Enter comment here, Markdown can be used here.": "Skriv din kommentar, Markdown stöds såklart!",
+	"views": "visningar",
+
+	"Settings": "Inställningar",
+	"Profile Settings": "Profilinställningar",
+	"Change theme": "Ändra tema",
+	"Back": "Tillbaka",
+	"Light": "Ljust",
+	"Dark": "Mörkt",
+	"Log Out": "Logga ut"
+}
