@@ -5,7 +5,7 @@
 <div class="row">
 	<div class="col-xl-9">
 			<div class="card" style="border-left: 0;border-top: 0;">
-				<div class="card-header bg-dark text-white">{{ __("From squareBracket") }}</div>
+				<div class="card-header bg-dark text-white">{{ __("New Videos") }}</div>
 				<div class="card-body">
 					{% for video in videos %}
 						{{ video_box(video) }}
@@ -24,10 +24,17 @@
 			<a href="browse.php">{{ __("Browse") }}</a>
 			</p>
 		</p>
-		<br><br><br>
+		<br><br><br><hr/>
 		<h3>{{ __("Spotlight") }}</h3>
 		<h4>{{ __("Welcome to squareBracket!") }}</h4>
 		<p>{{ __("squareBracket has been rewritten. Remember the old days of inconsistent UI/CSS and garbage insecure code? That's in the past.") }}</p>
+		<hr/>
+		<h3>{{ __("Featured Videos") }}</h3>
+		{% for video in featuredVideos %}
+			{{ small_video_box(video) }}
+		{% else %}
+			<p>{{ __("No featured videos. :^((") }}</p>
+		{% endfor %}
 	</div>
 </div>
 	{% endblock %}

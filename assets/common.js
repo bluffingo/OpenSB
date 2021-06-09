@@ -19,7 +19,7 @@ $(document).ready(function(){
 	$("#light").click(function(){
 		$("#themeSelection").removeClass("show");
 		$("#bootstrap").attr("href", "assets/bs.css");
-		$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
+		$("#navbar").attr("class", "navbar navbar-dark bg-primary navbar-static-top navbar-expand-md");
 		Cookies.set("theme", "light", { expires: 1000 });
 	});
 	$("#vanilla").click(function(){
