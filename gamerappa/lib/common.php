@@ -1,9 +1,19 @@
 <?php
 if (!file_exists('conf/config.php')) {
-	die('Fatal squareBracket Error: Please read the installing instructions in the README file.');
+	die('Fatal error: Please read the squareBracket installing instructions in the README file.');
 }
 
-require('conf/config.php');
+require_once('conf/config.php');
+
+chdir('../');
+require_once('vendor/autoload.php');
+require_once('lib/mysql.php');
+
+chdir('gamerappa/');
+foreach (glob("lib/*.php") as $filename)
+    require_once($filename);
+
+echo("test");
 
 if ($isDebug and !isset($rawOutputRequired)) {
 	// load profiler first
@@ -14,19 +24,6 @@ if ($isDebug and !isset($rawOutputRequired)) {
 require('vendor/autoload.php');
 foreach (glob("lib/*.php") as $file) {
 	require_once($file);
-}
-
-function _twigloader($subfolder = '') {
-    $twig = twigloader($subfolder, function () use ($subfolder) {
-        return new \Twig\Loader\FilesystemLoader('templates/' . $subfolder);
-    }, function ($loader, $doCache) {
-
-        return new \Twig\Environment($loader, [
-            'cache' => ($doCache ? "../".$doCache : $doCache),
-        ]);
-    });
-
-    return $twig;
 }
 
 $userfields = userfields();
@@ -58,5 +55,3 @@ if (isset($_COOKIE['theme'])) {
 if ($loggedIn) {
 	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
 }
-
-$lang = new Lang(sprintf("lib/lang/".(isset($currentUser['language']) ? $currentUser['language'] : 'en_US').".json"));
