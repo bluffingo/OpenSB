@@ -4,16 +4,12 @@
 	{% block content %}
 <div class="row">
 	<div class="col-xl-8">
-			<div class="card" style="border-left: 0;border-top: 0;">
-				<div class="card-header bg-dark text-white">{{ __("New from squareBracket") }}</div>
-				<div class="card-body">
-					{% for video in videos %}
-						{{ video_box(video) }}
-					{% else %}
-						<p>{{ __("No uploaded videos.") }}</p>
-					{% endfor %}
-				</div>
-			</div>
+			<h3>{{ __("New from squareBracket") }}</h3>
+				{% for video in videos %}
+					{{ video_box(video) }}
+				{% else %}
+					<p>{{ __("No uploaded videos.") }}</p>
+				{% endfor %}
 		</div>
 	<div class="col-xl-4">
 		{% if logged_in %}
@@ -38,11 +34,11 @@
 			</div>
 		{% endif %}
 		<hr/>
-		<h3>{{ __("Spotlight") }}</h3>
-		<p>{{ __("Hello squareBracket users, We are working on a redesigned squareBracket for Milestone 3. We are still in Alpha, at the end of Milestone 3, we should have already finalized the UI for Beta.") }}</p>
+		<h3>{{ __("What's new?") }}</h3>
+		<p>{{ __("Hello squareBracket users, We are working on a redesigned version for Alpha 3. At the end of Alpha 3, we should have already finalized the UI for at least Beta 1.") }}</p>
 		<p class="blockquote-footer">Chaziz/Gamerappa</p>
 		<hr/>
-		<h3>{{ __("Featured Videos") }}</h3>
+		<h3>{{ __("Featured videos") }}</h3>
 		{% for video in featuredVideos %}
 			{{ small_video_box(video) }}
 		{% else %}

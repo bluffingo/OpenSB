@@ -60,7 +60,9 @@
 			<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none"
 			rows="3" placeholder="{{ __("Enter comment here, Markdown can be used here.") }}"></textarea>
 			<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top:5px;margin-bottom:15px">
-			<button id="{% if logged_in %}post{% endif %}" class="btn me-md-2 btn-primary {% if not logged_in %}disabled{% endif %}">{{ __("Post") }}</button>
+			<button id="{% if logged_in %}post{% endif %}" class="btn me-md-2 btn-primary {% if not logged_in %}disabled{% endif %}"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#pencil-square"/>
+						</svg> {{ __("Post") }}</button>
 			</div>
 			<div id="comment"></div>
 				{% for comment in comments %}
@@ -69,16 +71,10 @@
 		</div>
 	</div>
 	<div class="col-lg-3">
-		<div class="card">
-		<div class="card-header">
-			Recommended
-		</div>
-			<div class="card-body">
-				{% for related_video in related_videos %}
-					{{ small_video_box(related_video)}}
-				{% endfor %}
-			</div>
-		</div>
+	<h4>Recommended</h4>
+		{% for related_video in related_videos %}
+		{{ small_video_box(related_video)}}
+		{% endfor %}
 	</div>
 </div>
 	{% endblock %}
