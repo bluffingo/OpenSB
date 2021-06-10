@@ -33,14 +33,14 @@
 				<div id="navbarCollapse" class="collapse navbar-collapse">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item"><a href="/" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#house"/>
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#house-door"/>
 						</svg> {{ __("Home") }}</a></li>
 						<li class="nav-item"><a href="browse.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#film"/>
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#tv"/>
 						</svg> {{ __("Browse") }}</a></li>
 						<li class="nav-item"><a href="https://discord.gg/uGWvcDpmZS" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#chat-square-dots"/>
-						</svg> {{ __("Chat") }}</a></li>
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#discord"/>
+						</svg> {{ __("Discord") }}</a></li>
 					</ul>
 					<ul class="navbar-nav">
 						{% if logged_in %}
@@ -66,8 +66,12 @@
 								{{ __("Settings") }}
 							</a>
 							<ul class="dropdown-menu" id="mainMenu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="settings.php">{{ __("Profile Settings") }}</a></li>
-								<li><a class="dropdown-item" id="themeSelect" href="#">{{ __("Change theme") }}</a></li>
+								<li><a class="dropdown-item" href="settings.php"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#person-fill"/>
+						</svg> {{ __("Profile Settings") }}</a></li>
+								<li><a class="dropdown-item" id="themeSelect" href="#"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#palette"/>
+						</svg> {{ __("Change theme") }}</a></li>
 							</ul>
 							<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" id="back" href="#">{{ __("Back") }}</a></li>
@@ -77,7 +81,7 @@
 							</ul>
 						</li>
 						<li class="nav-item"><a href="/upload.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#upload"/>
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#camera-video"/>
 						</svg> {{ __("Upload") }}</a></li>
 						<li class="nav-item"><a href="logout.php" class="nav-link">{{ __("Log Out") }}</a></li>
 						{% else %}
@@ -86,7 +90,9 @@
 								{{ __("Settings") }}
 							</a>
 							<ul class="dropdown-menu" id="mainMenu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" id="themeSelect" href="#">{{ __("Change theme") }}</a></li>
+								<li><a class="dropdown-item" id="themeSelect" href="#"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#palette"/>
+						</svg> {{ __("Change theme") }}</a></li>
 							</ul>
 							<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" id="back" href="#">{{ __("Back") }}</a></li>

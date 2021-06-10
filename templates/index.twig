@@ -3,23 +3,23 @@
 {% block title %}{{ __("Home") }}{% endblock %}
 	{% block content %}
 <div class="row">
-	<div class="col-xl-9">
+	<div class="col-xl-8">
 			<div class="card" style="border-left: 0;border-top: 0;">
-				<div class="card-header bg-dark text-white">{{ __("New Videos") }}</div>
+				<div class="card-header bg-dark text-white">{{ __("New from squareBracket") }}</div>
 				<div class="card-body">
 					{% for video in videos %}
 						{{ video_box(video) }}
 					{% else %}
-						<p>{{ __("No uploaded videos. :^((") }}</p>
+						<p>{{ __("No uploaded videos.") }}</p>
 					{% endfor %}
 				</div>
 			</div>
 		</div>
-	<div class="col-xl-3">
+	<div class="col-xl-4">
 		{% if logged_in %}
 			<h3>{{ __("Hi there, %s", [current_user.username]) }}</h3>
 			</p>
-				<img class="float-end rounded" style="max-width: 35%" src="{{ profile_image(current_user.username) }}"  alt="pfp">
+				<img class="float-end rounded w-25" src="{{ profile_image(current_user.username) }}"  alt="pfp">
 				<p class="text-start float-start">
 					<!--todo: fix overflow, probably shorten the numbers too.-->
 					<p>You have 56854657 subscribers.</p>
@@ -39,13 +39,14 @@
 		{% endif %}
 		<hr/>
 		<h3>{{ __("Spotlight") }}</h3>
-		<p>{{ __("squareBracket has been rewritten. Remember the old days of inconsistent UI/CSS and garbage insecure code? That's in the past.") }}</p>
+		<p>{{ __("Hello squareBracket users, We are working on a redesigned squareBracket for Milestone 3. We are still in Alpha, at the end of Milestone 3, we should have already finalized the UI for Beta.") }}</p>
+		<p class="blockquote-footer">Chaziz/Gamerappa</p>
 		<hr/>
 		<h3>{{ __("Featured Videos") }}</h3>
 		{% for video in featuredVideos %}
 			{{ small_video_box(video) }}
 		{% else %}
-			<p>{{ __("No featured videos. :^((") }}</p>
+			<p>{{ __("No featured videos.") }}</p>
 		{% endfor %}
 	</div>
 </div>

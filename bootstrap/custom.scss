@@ -13,7 +13,7 @@ $text-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) !default;
 // Navbar ======================================================================
 
 .bg-primary {
-  @include btn-shadow($primary);
+  @include btn-shadow($poktube-blue);
 }
 
 .bg-dark {

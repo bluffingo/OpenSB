@@ -18,11 +18,6 @@
 
 	{% block content %}
 <div class="row">
-	<h2>{{ video.title }}</h2>
-	<p>
-	{{ userlink(video, 'u_', true, 'btn-secondary') }}
-	<button class="btn btn-warning" type="button">{{ __("Subscribe") }}</button>
-	</p>
 	<div class="col-lg-9">
 		<div id="playerContainer"></div>
 		<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
@@ -39,14 +34,13 @@
 
 			const element = document.getElementById('playerContainer');
 			const player = IndigoPlayer.init(element, config);
-
-			// You can use the player object now to access the player and it's methods (play, pause, ...)
 		</script>
 		<div style="margin-top:5px">
-			<div class="card border-primary">
+			<div class="card">
 				<div class="card-body">
 					<div class="row">
 						<div class="col-lg-11">
+							<h4>{{ video.title }}</h4> <button class="btn btn-warning" type="button">{{ __("Subscribe") }}</button>
 							<p><small>{{ __("Uploaded by %s on %s", [userlink(video, 'u_'), video.time | date('M j, Y')]) }} &bull; {{ video.views }} {{ __("views") }}</small></p>
 							<p>{{ video.description }}</p>
 						</div>
@@ -65,9 +59,9 @@
 		<div style="margin-top:5px">
 			<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none"
 			rows="3" placeholder="{{ __("Enter comment here, Markdown can be used here.") }}"></textarea>
-			<div style="margin-top:5px"></div>
-			<button id="{% if logged_in %}post{% endif %}" class="btn btn-primary {% if not logged_in %}disabled{% endif %}">{{ __("Post") }}</button>
-			<div style="margin-top:5px"></div>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top:5px;margin-bottom:15px">
+			<button id="{% if logged_in %}post{% endif %}" class="btn me-md-2 btn-primary {% if not logged_in %}disabled{% endif %}">{{ __("Post") }}</button>
+			</div>
 			<div id="comment"></div>
 				{% for comment in comments %}
 					{{ comment(comment) }}
@@ -75,7 +69,10 @@
 		</div>
 	</div>
 	<div class="col-lg-3">
-		<div class="card border-primary">
+		<div class="card">
+		<div class="card-header">
+			Recommended
+		</div>
 			<div class="card-body">
 				{% for related_video in related_videos %}
 					{{ small_video_box(related_video)}}
