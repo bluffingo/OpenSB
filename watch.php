@@ -4,22 +4,21 @@ $id = (isset($_GET['v']) ? $_GET['v'] : null);
 
 $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
 $query = '';
+$count = 0;
 if ($videoData['tags']) {
+	$count = count(json_decode($videoData['tags']));
 	foreach(json_decode($videoData['tags']) as $key=>$value) {
-		if ($key < 1) {
-			$query .= "WHERE";
-		} else if ($key >= 1) {
+		if ($key >= 1) {
 			$query .= "OR";
 		}
 		$query .= " tags LIKE '%" . addslashes($value) . "%' ";
 	}
 }
 $commentData = query("SELECT $userfields c.id, c.comment, c.author, c.date, c.deleted FROM comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$id]);
-$count = result("SELECT COUNT(video_id) FROM videos ".$query);
 if ($count == 0) {
-	$relatedVideosData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC");
+	$relatedVideosData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND()");
 } else {
-	$relatedVideosData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author FROM videos v JOIN users u ON v.author = u.id ".$query." ORDER BY v.id DESC"); //unsafe code, do not deply to production.
+	$relatedVideosData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY ".$query." DESC, RAND()"); //unsafe code, do not deply to production.
 }
 $totalLikes = result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$videoData['id']]);
 $totalDislikes = result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=0", [$videoData['id']]);
