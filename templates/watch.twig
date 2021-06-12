@@ -41,6 +41,11 @@
 					<div class="row">
 						<div class="col-lg-9">
 							<h4>{{ video.title }}</h4> 
+								<div class="col-lg-1" style="width:5.5%;padding-right:0">
+									<a href="user.php?name={{ data.u_username }}">
+										<img class="rounded w-100" src="{{ profile_image(data.u_username) }}">
+									</a>
+								</div>
 							<p><small>{{ __("Uploaded by %s on %s", [userlink(video, 'u_'), video.time | date('M j, Y')]) }} &bull; {{ video.views }} {{ __("views") }}</small></p>
 							<p>{{ video.description }}</p>
 						</div>
