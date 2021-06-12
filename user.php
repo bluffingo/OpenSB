@@ -6,7 +6,7 @@ $username = (isset($_GET['name']) ? $_GET['name'] : null);
 
 $userData = fetch("SELECT * FROM users WHERE username = ?", [$username]);
 
-$latestVideoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT 1", [$userData['id']]);
+$latestVideoData = query("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT 15", [$userData['id']]);
 
 $scss = new Compiler();
 $scss->setImportPaths($_SERVER['DOCUMENT_ROOT']);
@@ -36,7 +36,7 @@ $twig = twigloader();
 
 echo $twig->render('user.twig', [
 	'user' => $userData,
-	'latestVideo' => $latestVideoData,
+	'latestVideos' => $latestVideoData,
 	'profCss' => $css,
 	'edited' => (isset($_GET['edited']) ? true : false),
 ]);
