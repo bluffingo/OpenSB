@@ -21,7 +21,7 @@
 		<title>{% block title %}{% endblock %} - squareBracket</title>
 	</head>
 	<body>
-		<nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% else %} navbar-dark bg-primary {% endif %} navbar-static-top navbar-expand-md" style="margin-bottom:20px">
+		<nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% else %} {% if theme == 'light' %} navbar-dark bg-primary {% else %} navbar-light bg-light {% endif %} {% endif %} navbar-static-top navbar-expand-md" style="margin-bottom:20px">
 			<div class="container">
 				<a class="navbar-brand" href="/">
 				<img src="/assets/logo.png" alt="[sb]" height="24" class="d-inline-block align-text-top">
@@ -81,7 +81,7 @@
 							</ul>
 						</li>
 						<li class="nav-item"><a href="/upload.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#upload"/>
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#camera-video"/>
 						</svg> {{ __("Upload") }}</a></li>
 						<li class="nav-item"><a href="logout.php" class="nav-link">{{ __("Log Out") }}</a></li>
 						{% else %}

@@ -24,11 +24,10 @@
 			<div class="row">
 				<div class="col text-center">
 					<img src="{{ profile_image(user.username) }}" width="128" alt="pfp"><h1 class="align-top fw-bold">{{ user.username }}</h1>
+					<p class="fs-4">{{ user.description }}</p>
+					<button class="btn btn-warning btn-lg" type="button">{{ __("Subscribe") }}</button>
 				</div>
 			</div>
-			<p class="col-md-8 fs-4">{{ user.description }}</p>
-			<button class="btn btn-warning btn-lg" type="button">{{ __("Subscribe") }}</button>
-			<button class="btn btn-secondary btn-lg" type="button">{{ __("Friend") }}</button>
 		</div>
 	</div>
 	<div class="col-md-6 col-lg-8">
