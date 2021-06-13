@@ -75,8 +75,8 @@ if (isset($_POST['upload']) and isset($currentUser['username'])) {
 			$img->save('assets/thumb/' . $new . '.png');
 			unlink($target_file);
 
-			query("INSERT INTO videos (video_id, title, description, author, time, videofile, videolength) VALUES (?,?,?,?,?,?,?)",
-				[$new,$title,$description,$currentUser['id'],time(),'videos/'.$new.'.mpd',ceil($metadata->getFormat()->get('duration'))]);
+			query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, videolength) VALUES (?,?,?,?,?,?,?)",
+				[$new,$title,$description,$currentUser['id'],time(),json_encode(explode(', ', $_POST['tags'])),'videos/'.$new.'.mpd',ceil($metadata->getFormat()->get('duration'))]);
 
 			// Discord webhook stuff
 			if ($webhook) {
