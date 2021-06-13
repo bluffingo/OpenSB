@@ -38,9 +38,9 @@
 		<div style="margin-top:5px">
 			<div class="card">
 				<div class="card-body">
+					<h4>{{ video.title }}</h4><hr/>
 					<div class="row">
 						<div class="col-lg-9">
-							<h4>{{ video.title }}</h4> 
 							<div class="row">
 								<div class="col-lg-2" style="width:10%;padding-right:0">
 									<a href="user.php?name={{ data.u_username }}">
@@ -51,8 +51,7 @@
 									{{ userlink(video, 'u_') }}<br>
 									<small>{{ __("Uploaded on %s", [video.time | date('M j, Y')]) }} &bull; {{ video.views }} {{ __("views") }}</small>
 								</div>
-							</div> <br>
-							<p>{{ video.description }}</p>
+							</div>
 						</div>
 						<div class="col-3">
 							<a href="#" id="{% if logged_in %}like{% endif %}" class="text-{% if rating %}info{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
@@ -63,6 +62,7 @@
 							</svg></a> <span id="dislikes" style="padding-right: 10px">{{ total_dislikes }}</span>
 							<button class="btn btn-warning" type="button">{{ __("Subscribe") }}</button>
 						</div>
+						<p style="margin-top: 1rem;">{{ video.description }}</p>
 					</div>
 				</div>
 			</div>
