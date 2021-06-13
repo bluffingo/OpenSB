@@ -1,7 +1,7 @@
 <h1 align="center">squareBracket</h1>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45898787/118208261-6cb48100-b434-11eb-8eb7-dd6c900fb931.png"><br>
+<img src="(https://user-images.githubusercontent.com/45898787/121821018-0eadd000-cc64-11eb-8a26-c9211fc1a091.png"><br>
 <img src="https://img.shields.io/discord/737791548435071037?style=plastic">
 <img src="https://img.shields.io/github/v/release/chazizsquarebracket/squarebracket?include_prereleases&label=lastest%20released&style=plastic">
 <img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=plastic">
