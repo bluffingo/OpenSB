@@ -25,6 +25,19 @@ foreach(str_split($video_id) as $char){
 }
 
 if (isset($_POST['upload']) and isset($currentUser['username'])) {
+	$title = (isset($_POST['title']) ? $_POST['title'] : null);
+	$description = (isset($_POST['desc']) ? $_POST['desc'] : null);
+
+	// Prevent videos with duplicate metadata since they are probably accidentally uploaded.
+	if (result("SELECT COUNT(*) FROM videos WHERE title = ? AND description = ?", [$title, $description])) {
+		die("Your video is already uploading or has been uploaded.");
+	}
+
+	// Rate limit uploading to 30 minutes, both to prevent spam and to prevent double uploads.
+	if (result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60*30, $currentUser['id']])) {
+		die("Please wait 30 minutes before uploading again. If you've already uploaded a video, it is being processed.");
+	}
+
 	$name       = $_FILES['fileToUpload']['name'];
 	$temp_name  = $_FILES['fileToUpload']['tmp_name'];  // gets video info and thumbnail info
 	$ext  = pathinfo( $_FILES['fileToUpload']['name'], PATHINFO_EXTENSION );
@@ -61,15 +74,16 @@ if (isset($_POST['upload']) and isset($currentUser['username'])) {
 			$img->resize(640, 360);
 			$img->save('assets/thumb/' . $new . '.png');
 			unlink($target_file);
-			query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)",
-				[$new,$_POST['title'],$_POST['desc'],$currentUser['id'],time(),json_encode(explode(', ', $_POST['tags'])),'videos/'.$new.'.mpd',ceil($metadata->getFormat()->get('duration'))]);
+
+			query("INSERT INTO videos (video_id, title, description, author, time, videofile, videolength) VALUES (?,?,?,?,?,?,?)",
+				[$new,$title,$description,$currentUser['id'],time(),'videos/'.$new.'.mpd',ceil($metadata->getFormat()->get('duration'))]);
 
 			// Discord webhook stuff
 			if ($webhook) {
 				$webhookdata = [
 					'video_id' => $new,
-					'name' => $_POST['title'],
-					'description' => $_POST['desc'],
+					'name' => $title,
+					'description' => $description,
 					'u_id' => $currentUser['id'],
 					'u_name' => $currentUser['username']
 				];
