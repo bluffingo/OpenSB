@@ -13,7 +13,7 @@
 <br>
 </p>
 
-<h3 align="center"><a href="https://185.86.231.49/">Live website here ></a></h3>
+<h3 align="center"><a href="https://squarebracket.veselcraft.ru/">Live website here ></a></h3>
 
 ## How to setup a developement environment for squareBracket.
 1. Install [composer](https://getcomposer.org/).
