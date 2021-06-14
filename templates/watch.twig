@@ -40,9 +40,9 @@
 					}
 				],
 				ui: {
-					image: 'https://media.discordapp.net/attachments/832173626039861258/851193320788590664/scott.gif',
-				},
-				};
+					image: '{{ video_thumbnail(video.video_id) }}'
+				}
+			};
 
 			const element = document.getElementById('playerContainer');
 			const player = IndigoPlayer.init(element, config);
