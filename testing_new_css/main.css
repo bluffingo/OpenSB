@@ -15,6 +15,16 @@ background-color: #225dbd;
 background-color: #8a8a8a;
 }
 
+.btn-danger {
+background-color: #ad0707;
+}
+
+.alert {
+	padding: 1rem 1rem;
+	background-color: #d1d1d1;
+	border-radius: .25rem;
+}
+
 body {
 font-family: Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 background-color: #e9eaec;
