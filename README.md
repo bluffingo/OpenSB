@@ -15,12 +15,20 @@
 
 <h3 align="center"><a href="https://squarebracket.veselcraft.ru/">Live website here ></a></h3>
 
-## How to setup a developement environment for squareBracket.
-1. Install [composer](https://getcomposer.org/).
-2. Run `composer i` from the terminal.
-3. Copy `config.sample.php` and name it as `config.php`
-4. Edit the config file, change the database auth details to the ones you use.
-5. Ethier run the compile-scss-sassc or compile-scss-pscss script available in the tools directory.
+## How to setup squareBracket.
+1. Get a web server (Apache/NGINX) with PHP and MariaDB up and running, including Composer.
+1. Run `composer update` from the terminal.
+1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
+1. Import the database dump found in `sql/` into the database you want to use.
+1. Either run the `compile-scss-sassc` or `compile-scss-pscss` script available in the tools directory to generate CSS.
+1. (Optional for Discord webhook functionality) Enable the cURL module in PHP.
+
+### Production specific
+1. Make the `videos/` and `templates/cache/` directories writable by your web server.
+
+### Development specific
+1. Disable Twig's template caching by setting `$tplNoCache` to true.
+1. If you want to be able to upload videos during development, make the `videos/` directory writable by your web server.
 
 ## Questions
 
