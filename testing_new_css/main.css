@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
+.btn {
+padding: .375rem .75rem;
+border-radius: .125rem;
+background-color: #636363;
+border: 1px solid transparent;
+color: #fff;
+}
+
+.btn-primary {
+background-color: #225dbd;
+}
+
+.btn-secondary {
+background-color: #8a8a8a;
+}
+
+body {
+font-family: Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+background-color: #e9eaec;
+}
