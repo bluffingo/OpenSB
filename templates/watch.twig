@@ -21,6 +21,15 @@
 	<div class="col-lg-9">
 		<div id="playerContainer"></div>
 		<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
+		    <style>
+				.igui_seekbar_progress,
+				.igui_seekbar_scrubber {
+				  background-color: var(--bs-blue);
+				}
+				.ig-container {
+					font-family: var(--bs-font-sans-serif);
+				}
+			</style>
 		<script>
 			const config = {
 				autoplay: true,
@@ -30,7 +39,10 @@
 						src: '{{ video.videofile }}',
 					}
 				],
-			};
+				ui: {
+					image: 'https://media.discordapp.net/attachments/832173626039861258/851193320788590664/scott.gif',
+				},
+				};
 
 			const element = document.getElementById('playerContainer');
 			const player = IndigoPlayer.init(element, config);
