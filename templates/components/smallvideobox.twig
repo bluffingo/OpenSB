@@ -1,14 +1,14 @@
 <div class="card" style="margin-bottom:10px">
 	<div class="card-body">
 		<div class="row">
-			<div class="col-6">
+			<div class="col-5">
 				<a href="watch.php?v={{ data.video_id }}">
 					<div class="img-thumbnail" style="margin-bottom:0">
 						<img class="img-fluid" src="{{ video_thumbnail(data.video_id) }}">
 					</div>
 				</a>
 			</div>
-			<div class="col-6">
+			<div class="col-7">
 				<h5><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h5>
 				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("views") }} &bull; {{ data.time | relative_time }}</p>
 			</div>
