@@ -24,11 +24,11 @@
 1. (Optional for Discord webhook functionality) Enable the cURL module in PHP.
 
 ### Production specific
-1. Make the `videos/` and `templates/cache/` directories writable by your web server.
+1. Make the `videos/`, `templates/cache/` and `assets/thumb/` directories writable by your web server.
 
 ### Development specific
 1. Disable Twig's template caching by setting `$tplNoCache` to true.
-1. If you want to be able to upload videos during development, make the `videos/` directory writable by your web server.
+1. If you want to be able to upload videos during development, make the `videos/` and `assets/thumb/` directory writable by your web server.
 
 ## Questions
 
