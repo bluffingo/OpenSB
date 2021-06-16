@@ -38,12 +38,11 @@
 						<li class="nav-item"><a href="browse.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#play-btn"/>
 						</svg> {{ __("Browse") }}</a></li>
-						<li class="nav-item"><a href="https://discord.gg/uGWvcDpmZS" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#discord"/>
-						</svg> {{ __("Discord") }}</a></li>
-						<li class="nav-item"><a href="https://github.com/chazizsquarebracket/squarebracket" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#github"/>
-						</svg> {{ __("GitHub") }}</a></li>
+						{% for menu_link in menu_links %}
+						<li class="nav-item"><a href="{{ menu_link.url }}" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#{{ menu_link.icon }}"/>
+						</svg>{{ menu_link.name }}</a></li>
+						{% endfor %}
 					</ul>
 					<ul class="navbar-nav">
 						{% if logged_in %}

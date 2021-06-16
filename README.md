@@ -19,6 +19,7 @@
 1. Get a web server (Apache/NGINX) with PHP and MariaDB up and running, including Composer.
 1. Run `composer update` from the terminal.
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
+1. Copy `links.sample.yml`, rename it to `links.yml` and fill in your links that will be shown in menu bar.
 1. Import the database dump found in `sql/` into the database you want to use.
 1. Either run the `compile-scss-sassc` or `compile-scss-pscss` script available in the tools directory to generate CSS.
 1. (Optional for Discord webhook functionality) Enable the cURL module in PHP.

@@ -1,0 +1,10 @@
+# for "icon" field, check out icons.getbootstrap.com
+# rename me to "links.yml", btw :p
+
+links:
+- name: "Discord"
+  url: "https://discord.gg/uGWvcDpmZS"
+  icon: "discord"
+- name: "GitHub"
+  url: "https://github.com/chazizsquarebracket/squarebracket"
+  icon: "github"
