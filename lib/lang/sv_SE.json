@@ -48,7 +48,7 @@
 	"Choose the video you want to upload.": "Välj den video du vill ladda upp.",
 	"Upload Video": "Ladda up video",
 
-	"Uploaded on %s": "Uppladdad på den ",
+	"Uploaded on %s": "Uppladdad på den %s",
 	"views": "visningar",
 	"Enter comment here, Markdown can be used here.": "Skriv din kommentar, Markdown stöds såklart!",
 	"Post": "Lägg upp",

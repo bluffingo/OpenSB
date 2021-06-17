@@ -1,6 +1,9 @@
 {
 	"\\RelativeTime\\Languages\\English": "",
 
+	"Please enter your username! ": "",
+	"Please enter your password! ": "",
+
 	"Blank username. ": "",
 	"Blank email. ": "",
 	"Password is too short. ": "",
@@ -9,64 +12,11 @@
 	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "",
 	"Email isn't valid. ": "",
 
-	"Please enter your username! ": "",
-	"Please enter your password! ": "",
-
-	"Home": "",
 	"Browse": "",
-	"Settings": "",
-	"Profile": "",
-	"Log Out": "",
-	"Profile Settings": "",
-	"Change theme": "",
-	"Back": "",
-	"Light": "",
-	"Dark": "",
-	"Bootstrap Default": "",
-	"Upload": "",
-	"Login": "",
-	"Register": "",
-
-	"Your profile settings was successfully updated.": "",
-	"Subscribe": "",
-	"Latest Uploads": "",
-	"There are no videos uploaded by %s.": "",
-
-	"Username": "",
-	"Email": "",
-	"Password": "",
-	"Password (Again)": "",
-	"Submit": "",
-
 	"Videos": "",
 	"No uploaded videos.": "",
 
-	"Incorrect username or password!": "",
-	"squareBracket is a website to share your videos to the public. With squareBracket you can:": "",
-	"Show off your favorite videos to the world": "",
-	"Post the videos you take with your camera or smartphone": "",
-	"Securely show videos to your friends and family around the world": "",
-	"... and much, much more!": "",
-
-	"Warning": "",
-	"By uploading your videos onto squareBracket, you acknowledge about rules that should be common sense.": "",
-	"Video Info": "",
-	"Enter the name and description of your video.": "",
-	"Title": "",
-	"Description": "",
-	"Tags": "",
-	"Upload Video File": "",
-	"Choose the video you want to upload.": "",
-	"Upload Video": "",
-
-	"Uploaded on %s": "",
-	"views": "",
-	"Enter comment here, Markdown can be used here.": "",
-	"Post": "",
-
-	"User Settings": "",
-	"Update": "",
-
+	"Home": "",
 	"New from squareBracket": "",
 	"Hi there, %s": "",
 	"You have %s subscribers.": "",
@@ -79,5 +29,56 @@
 	"What's new?": "",
 	"Hello squareBracket users, We are working on a redesigned version for Alpha 3. At the end of Alpha 3, we should have already finalized the UI for at least Beta 1.": "",
 	"Featured videos": "",
-	"No featured videos.": ""
+	"No featured videos.": "",
+
+	"Login": "",
+	"Incorrect username or password!": "",
+	"squareBracket is a website to share your videos to the public. With squareBracket you can:": "",
+	"Show off your favorite videos to the world": "",
+	"Post the videos you take with your camera or smartphone": "",
+	"Securely show videos to your friends and family around the world": "",
+	"... and much, much more!": "",
+	"Username": "",
+	"Password": "",
+
+	"Email": "",
+	"Password (Again)": "",
+	"Submit": "",
+
+	"User Settings": "",
+	"Description": "",
+	"Update": "",
+
+	"Upload": "",
+	"Warning": "",
+	"By uploading your videos onto squareBracket, you acknowledge about rules that should be common sense.": "",
+	"Video Info": "",
+	"Enter the name and description of your video.": "",
+	"Title": "",
+	"Tags": "",
+	"Upload Video File": "",
+	"Choose the video you want to upload.": "",
+	"Upload Video": "",
+
+	"Your profile settings was successfully updated.": "",
+	"Subscribe": "",
+	"Latest Uploads": "",
+	"There are no videos uploaded by %s.": "",
+
+	"Uploaded on %s": "",
+	"views": "",
+	"Enter comment here, Markdown can be used here.": "",
+	"Post": "",
+
+	"Settings": "",
+	"Profile": "",
+	"Log Out": "",
+	"Profile Settings": "",
+	"Change theme": "",
+	"Back": "",
+	"Light": "",
+	"Dark": "",
+	"Bootstrap Default": "",
+	"Register": ""
+
 }
