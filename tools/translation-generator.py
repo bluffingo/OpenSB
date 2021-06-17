@@ -7,6 +7,10 @@ paths = [p for p in Path("./").rglob('*') if p.suffix in exts]
 
 strings = []
 
+# add relativetime setting at the very top
+strings.append("\\\\RelativeTime\\\\Languages\\\\English")
+strings.append("\n")
+
 for path in paths:
 	# Ignore composer dependency files
 	if platform.system() == "Windows":
@@ -29,7 +33,7 @@ for path in paths:
 				continue
 			strings.append(match)
 
-with open("lib/lang/template_new.json", "w") as f:
+with open("lib/lang/template.json", "w") as f:
 	f.write("{\n")
 	i = 0
 	for string in strings:
