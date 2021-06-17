@@ -22,8 +22,8 @@ for path in paths:
 			if len(strings):
 				if strings[-1] != "\n":
 					strings.append("\n")
-        
-		for match in file_matches:	
+
+		for match in file_matches:
 			# prevent duplicate strings (i.e. 6 "views")
 			if match in strings:
 				continue
@@ -33,12 +33,12 @@ with open("lib/lang/template_new.json", "w") as f:
 	f.write("{\n")
 	i = 0
 	for string in strings:
+		i += 1
 		if string == "\n":
 			f.write("\n")
 			continue
-		i += 1
 		f.write('\t"%s": ""' % string)
-		if not len(strings) == i:
+		if not len(strings) - 1 == i:
 			f.write(",")
 		f.write('\n')
 	f.write("}")
