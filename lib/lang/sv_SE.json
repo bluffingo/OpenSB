@@ -1,6 +1,17 @@
 {
 	"\\RelativeTime\\Languages\\English": "\\RelativeTime\\Languages\\Swedish",
 
+	"Blank username. ": "Tomt användarnamn. ",
+	"Blank email. ": "Tom e-mailadress. ",
+	"Password is too short. ": "Lösenordet är för kort. ",
+	"The passwords don't match. ": "Lösenorden är inte likadana. ",
+	"Username has already been taken. ": "Användarnamnet har redan blivit taget. ",
+	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "Användarnamnet innehåller ogiltiga tecken (Endast alfanumeriska och understreck tillåtet). ",
+	"Email isn't valid. ": "E-mail är ogiltig. ",
+
+	"Please enter your username! ": "Fyll i ditt användarnamn!",
+	"Please enter your password! ": "Fyll i ditt lösenord!",
+
 	"Home": "Hem",
 	"Browse": "Bläddra",
 	"Settings": "Inställningar",
