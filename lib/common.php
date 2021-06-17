@@ -16,13 +16,6 @@ foreach (glob("lib/*.php") as $file) {
 	require_once($file);
 }
 
-function parseLinksList() {
-	$ymlparsetemp = yaml_parse(file_get_contents("conf/links.yml"));
-	return $ymlparsetemp['links'];
-}
-
-$menuLinks = parseLinksList();
-
 function _twigloader($subfolder = '') {
     $twig = twigloader($subfolder, function () use ($subfolder) {
         return new \Twig\Loader\FilesystemLoader('templates/' . $subfolder);

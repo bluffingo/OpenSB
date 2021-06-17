@@ -16,3 +16,16 @@ $webhook = ""; // Webhook URL for the new video webhook
 
 $domain = 'http://squarebracket.local';
 $isDebug = false; // DEV ONLY
+
+// Add your own custom menu links here, or change the existing ones.
+$menuLinks = [
+	[
+		'name' => "Discord",
+		'url' => "https://discord.gg/uGWvcDpmZS",
+		'icon' => 'discord',
+	], [
+		'name' => "Github",
+		'url' => "https://github.com/chazizsquarebracket/squarebracket",
+		'icon' => 'github',
+	]
+];
