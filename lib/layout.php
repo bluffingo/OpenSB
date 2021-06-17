@@ -77,7 +77,7 @@ function videoBox($videodata) {
 
 function relativeTime($time) {
 	$config = [
-		'language' => __('\RelativeTime\Languages\English'),
+		'language' => __("\RelativeTime\Languages\English"),
 		'separator' => ', ',
 		'suffix' => true,
 		'truncate' => 1,

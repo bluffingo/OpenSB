@@ -1,6 +1,17 @@
 {
 	"\\RelativeTime\\Languages\\English": "",
 
+	"Blank username. ": "",
+	"Blank email. ": "",
+	"Password is too short. ": "",
+	"The passwords don't match. ": "",
+	"Username has already been taken. ": "",
+	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "",
+	"Email isn't valid. ": "",
+
+	"Please enter your username! ": "",
+	"Please enter your password! ": "",
+
 	"Home": "",
 	"Browse": "",
 	"Settings": "",
@@ -69,5 +80,4 @@
 	"Hello squareBracket users, We are working on a redesigned version for Alpha 3. At the end of Alpha 3, we should have already finalized the UI for at least Beta 1.": "",
 	"Featured videos": "",
 	"No featured videos.": ""
-
 }
