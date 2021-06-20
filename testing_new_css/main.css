@@ -1,4 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
+
+.navbar {
+    background-image: linear-gradient(#0067df, #0054B6 60%, #004ba2);
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.navbar-brand {
+	color: white;
+}
+
 .btn {
 padding: .375rem .75rem;
 border-radius: .125rem;
@@ -25,7 +42,16 @@ background-color: #ad0707;
 	border-radius: .25rem;
 }
 
+.container {
+	width: 95%;
+	padding-right: 0.75rem;
+	padding-left: 0.75rem;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 body {
-font-family: Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+font-family: Arial, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 background-color: #e9eaec;
+margin: 0;
 }
