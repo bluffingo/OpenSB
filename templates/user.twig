@@ -43,10 +43,10 @@
 	<div class="col-4">
 	<h4>{{ __("About %s", [user.username]) }}</h4>
 		<dl class="row">
-		  <dt class="col-sm-4">{{ __("Lastest Activity") }}</dt>
-		  <dd class="col-sm-8">Mayvember 32st 50 EC</dd>
+		  <dt class="col-sm-4">{{ __("Last Seen") }}</dt>
+		  <dd class="col-sm-8">{{ latestVideos[0].time | date('M j, Y') }}</dd> {# twig just does not want to return anything from a index, and just returns blank... #}
 		  <dt class="col-sm-4">{{ __("Date Joined") }}</dt>
-		  <dd class="col-sm-8">Octember 64nd 49 EC</dd>
+		  <dd class="col-sm-8">{{ user.joined | date('M j, Y') }}</dd>
 		</dl>
 	</div>
 </div>
