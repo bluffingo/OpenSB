@@ -3,7 +3,18 @@
 {% block title %}{{ __("User Settings") }}{% endblock %}
 
 	{% block content %}
-	<div class="h-100 p-4 bg-light border rounded-3">
+	<div class="row">
+	<div class="col-2">
+	<ul class="list-group">
+  <li class="list-group-item"><img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="40" height="40"> {{ current_user.username }}</li>
+  <li class="list-group-item">A second item</li>
+  <li class="list-group-item">A third item</li>
+  <li class="list-group-item">A fourth item</li>
+  <li class="list-group-item">And a fifth one</li>
+</ul>
+	</div>
+	<div class="col-8">
+	<div class="p-4 bg-light border rounded-3">
 		  <div class="row">
 		  <div class="col-1">
           <img class="img-fluid" src="/assets/settings.png" alt="{{ __("Settings") }}">
@@ -14,15 +25,15 @@
 		  </div>
         </div></div>
 		<br>
-<form action="settings.php" method="post">
-	<textarea class="form-control" id="description" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
-	<select class="form-select" name="language">
-		{% for code,name in glob_languages %}
-			<option value="{{ code }}" {% if code == current_user.language %}selected{% endif %}>{{ name }}</option>
-		{% endfor %}
-	</select>
-	<input type="color" class="form-control" id="color" name="color" value="">
-	<input type="hidden" name="updatesettings" value="yes">
-	<input type="submit" class="btn btn-primary" name="action" value="{{ __("Update") }}">
-</form>
+		<form action="settings.php" method="post">
+			<textarea class="form-control" id="description" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
+			<select class="form-select" name="language">
+				{% for code,name in glob_languages %}
+					<option value="{{ code }}" {% if code == current_user.language %}selected{% endif %}>{{ name }}</option>
+				{% endfor %}
+			</select>
+			<input type="color" class="form-control" id="color" name="color" value="">
+			<input type="hidden" name="updatesettings" value="yes">
+			<input type="submit" class="btn btn-primary" name="action" value="{{ __("Update") }}">
+		</form>
 	{% endblock %}
