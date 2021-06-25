@@ -70,6 +70,11 @@ function smallVideoBox($videodata) {
 	return $twig->render('smallvideobox.twig', ['data' => $videodata]);
 }
 
+function browseChannelBox($videodata) {
+	$twig = twigloader('components');
+	return $twig->render('browsechannelbox.twig', ['data' => $videodata]);
+}
+
 function videoBox($videodata) {
 	$twig = twigloader('components');
 	return $twig->render('videobox.twig', ['data' => $videodata]);
