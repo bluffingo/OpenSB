@@ -3,9 +3,19 @@
 {% block title %}{{ __("Login") }}{% endblock %}
 
 {% block precontent %}
-	<div class="container">
-	<h1>{{ __("Login") }}</h1>
-	</div>
+<style>
+.form-signin {
+  width: 100%;
+  padding: 12px;
+  margin: auto;
+}
+.god-is-dead {
+max-width: 330px;
+}
+.gamerappa-killed-the-render-star {
+width: 50%;
+}
+</style>
 {% endblock %}
 
 	{% block content %}
@@ -21,29 +31,24 @@
 		{% endif %}
 	{% endif %}
 {% endif %}
-<div class="row">
-	<div class="col-8">
-	{{ __("squareBracket is a website to share your videos to the public. With squareBracket you can:") }}
-	<ul>
-		<li> {{ __("Show off your favorite videos to the world") }}
-		</li><li> {{ __("Post the videos you take with your camera or smartphone") }}
-		</li><li> {{ __("Securely show videos to your friends and family around the world") }}
-		</li><li> {{ __("... and much, much more!") }}
-		</li>
-	</ul>
+<main class="text-center">
+  <form method="post" name="loginForm" id="loginForm" action="login.php">
+	<div class="text-center">
+    <img class="mb-2 gamerappa-killed-the-render-star" src="/assets/logo-wordmark.png" alt="squareBracket">
 	</div>
-	<div class="col-4">
-		<form method="post" name="loginForm" id="loginForm" action="login.php">
-			<div class="input-group">
-				<span class="input-group-text" id="basic-addon1" style="width:90px">{{ __("Username") }}</span>
-				<input type="text" name="username" class="form-control" aria-describedby="basic-addon1">
-			</div>
-			<div class="input-group">
-				<span class="input-group-text" id="basic-addon1" style="width:90px">{{ __("Password") }}</span>
-				<input type="password" name="password" class="form-control" aria-describedby="basic-addon1">
-			</div>
-			<input class="btn btn-primary" type="submit" value="{{ __("Login") }}" name="loginsubmit">
-		</form>
-	</div>
-</div>
+	<div class="form-signin god-is-dead text-center">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating">
+      <input type="text" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+	<br>
+    <input class="w-100 btn btn-lg btn-primary" type="submit" value="{{ __("Login") }}" name="loginsubmit">
+  </form>
+</main>
 	{% endblock %}

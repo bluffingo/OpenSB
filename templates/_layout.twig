@@ -25,7 +25,7 @@
 			<div class="container">
 				<a class="navbar-brand" href="/">
 				<img src="/assets/logo.png" alt="[sb]" height="24" class="d-inline-block align-text-top">
-				squareBracket Alpha 3
+				squareBracket <small>Alpha 3</small>
 				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -52,15 +52,7 @@
 								content: none;
 							}
 						  </style>
-						  <a href="#" class="dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="32" height="32" style="margin-top: 4px;">
-						  </a>
-						  <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-							<li><a class="dropdown-item" href="#">{{ __("Settings") }}</a></li>
-							<li><a class="dropdown-item" href="#">{{ __("Profile") }}</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">{{ __("Log Out") }}</a></li>
-						  </ul>
+						 <a href="user.php?name={{ current_user.username }}"><img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="32" height="32" style="margin-top: 4px;"></a>
 						</div>
 						<li class="nav-item"><a href="user.php?name={{ current_user.username }}" class="nav-link">{{ current_user.username }}</a></li>
 						<li class="nav-item dropdown">
@@ -86,6 +78,10 @@
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#camera-video"/>
 						</svg> {{ __("Upload") }}</a></li>
 						<li class="nav-item"><a href="logout.php" class="nav-link">{{ __("Log Out") }}</a></li>
+						<form class="d-flex">
+							<input class="form-control me-2" type="search" placeholder="Unimplemented" aria-label="Search">
+							<button class="btn btn-success" type="submit">Search</button>
+						</form>
 						{% else %}
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -105,6 +101,10 @@
 						</li>
 						<li class="nav-item"><a href="login.php" class="nav-link">{{ __("Login") }}</a></li>
 						<li class="nav-item"><a href="register.php" class="nav-link">{{ __("Register") }}</a></li>
+						<form class="d-flex">
+							<input class="form-control me-2" type="search" placeholder="Unimplemented" aria-label="Search">
+							<button class="btn btn-success" type="submit">Search</button>
+						</form>
 						{% endif %}
 					</ul>
 				</div>
@@ -114,6 +114,9 @@
 		{% block precontent %}{% endblock %}
 		<div class="container">
 			{% block content %}{% endblock %}
+		<footer class="pt-3 my-2 text-muted border-top">
+		Created by the squareBracket team · © <b><span style="font-family:arial">GAMERAPPA</span></b> 2020-{{ 'now' | date('Y') }}
+		</footer>
 		</div>
 	</body>
 </html>
