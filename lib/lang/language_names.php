@@ -6,5 +6,6 @@ $languages = [
 	'fr_CA' => "Français (Canada)",
 	'ohgodno' => "OwOSpeak",
 	'ru_RU' => "Русский",
-	'sv_SE' => "Svenska"
+	'sv_SE' => "Svenska",
+	'psuedo' => "[!!! Þƨèúδôℓôçáℓïƺáƭïôñ !!!]"
 ];

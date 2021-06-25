@@ -16,6 +16,9 @@
 	"Videos": "",
 	"No uploaded videos.": "",
 
+	"Channels": "",
+	"No users.": "",
+
 	"Home": "",
 	"New from squareBracket": "",
 	"Hi there, %s": "",
@@ -85,5 +88,4 @@
 	"Bootstrap Default": "",
 	"Created by the squareBracket team": "",
 	"<b><span style='font-family:arial'>GAMERAPPA</span></b>": ""
-
 }
