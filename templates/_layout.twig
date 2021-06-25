@@ -24,9 +24,14 @@
 		<nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% elseif theme == 'vanilla' %} navbar-light bg-light {% else %} navbar-dark bg-primary {% endif %} navbar-static-top navbar-expand-md" style="margin-bottom:20px">
 			<div class="container">
 				<a class="navbar-brand" href="/">
-				<img src="/assets/logo.png" alt="[sb]" height="24" class="d-inline-block align-text-top">
-				squareBracket <small>Alpha 3</small>
+				<img src="/assets/logo.png" alt="[sb]" height="32" class="d-inline-block align-text-top">
 				</a>
+																<form class="d-flex">
+							<input class="form-control me-2" type="search" placeholder="Unimplemented" aria-label="Search">
+							<button class="btn btn-success" type="submit"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#search"/>
+						</svg></button>
+						</form>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -46,18 +51,27 @@
 					</ul>
 					<ul class="navbar-nav">
 						{% if logged_in %}
-						<div class="dropdown text-end">
+						<div class="dropdown">
 						  <style>
 							#dropdownUser1::after {
 								content: none;
 							}
 						  </style>
-						 <a href="user.php?name={{ current_user.username }}"><img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="32" height="32" style="margin-top: 4px;"></a>
-						</div>
-						<li class="nav-item"><a href="user.php?name={{ current_user.username }}" class="nav-link">{{ current_user.username }}</a></li>
+<a href="#" class="dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+							<img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="32" height="32" style="margin-top: 4px;">
+						  </a>
+						  <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+							<li><a class="dropdown-item" href="#">{{ __("Settings") }}</a></li>
+							<li><a class="dropdown-item" id="themeSelect" href="#">{{ __("Theme") }}</a></li>
+							<li><a class="dropdown-item" href="#">{{ __("My profile") }}</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">{{ __("Log Out") }}</a></li>
+						  </ul>						</div>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								{{ __("Settings") }}
+								<svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#gear-wide-connected"/>
+						</svg> {{ __("Settings") }}
 							</a>
 							<ul class="dropdown-menu" id="mainMenu" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="settings.php"><svg class="bi" width="16" height="16" fill="currentColor">
@@ -78,14 +92,12 @@
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#camera-video"/>
 						</svg> {{ __("Upload") }}</a></li>
 						<li class="nav-item"><a href="logout.php" class="nav-link">{{ __("Log Out") }}</a></li>
-						<form class="d-flex">
-							<input class="form-control me-2" type="search" placeholder="Unimplemented" aria-label="Search">
-							<button class="btn btn-success" type="submit">Search</button>
-						</form>
 						{% else %}
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								{{ __("Settings") }}
+								<svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#gear-wide-connected"/>
+						</svg> {{ __("Settings") }}
 							</a>
 							<ul class="dropdown-menu" id="mainMenu" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" id="themeSelect" href="#"><svg class="bi" width="16" height="16" fill="currentColor">
@@ -101,10 +113,6 @@
 						</li>
 						<li class="nav-item"><a href="login.php" class="nav-link">{{ __("Login") }}</a></li>
 						<li class="nav-item"><a href="register.php" class="nav-link">{{ __("Register") }}</a></li>
-						<form class="d-flex">
-							<input class="form-control me-2" type="search" placeholder="Unimplemented" aria-label="Search">
-							<button class="btn btn-success" type="submit">Search</button>
-						</form>
 						{% endif %}
 					</ul>
 				</div>
