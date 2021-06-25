@@ -56,16 +56,10 @@
 								content: none;
 							}
 						  </style>
-<a href="#" class="dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+						<a href="user.php?name={{ current_user.username }}">
 							<img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="32" height="32" style="margin-top: 4px;">
 						  </a>
-						  <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-							<li><a class="dropdown-item" href="#">{{ __("Settings") }}</a></li>
-							<li><a class="dropdown-item" id="themeSelect" href="#">{{ __("Theme") }}</a></li>
-							<li><a class="dropdown-item" href="#">{{ __("My profile") }}</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">{{ __("Log Out") }}</a></li>
-						  </ul>						</div>
+						</div>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								<svg class="bi" width="16" height="16" fill="currentColor">
