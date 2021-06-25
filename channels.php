@@ -8,7 +8,7 @@ $max = $min + 20;
 $userData = fetch("SELECT * FROM users");
 
 $pageCount = ceil(fetch("SELECT COUNT(*) FROM users")['COUNT(*)'] / 20);
-$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/browse.php?page=';
+$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/channels.php?page=';
 
 $twig = twigloader();
 
