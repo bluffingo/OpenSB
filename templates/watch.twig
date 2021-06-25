@@ -77,7 +77,8 @@
 				],
 				ui: {
 					image: '{{ video_thumbnail(video.video_id) }}',
-					pip: true
+					pip: true,
+					locale: '{{ current_user.language | replace({'_': '-'}) }}'
 				}
 			};
 			const element = document.getElementById('playerContainer');

@@ -23,7 +23,6 @@
 	"You have %s views.": "",
 	"no": "",
 	"Your account was made %s.": "",
-	"Edit my profile": "",
 	"Welcome to squareBracket!": "",
 	"This is like any other video sharing site... for now at least.": "",
 	"Get started": "",
@@ -43,6 +42,9 @@
 	"Register": "",
 
 	"User Settings": "",
+	"Settings": "",
+	"Profile settings": "",
+	"Adjust your settings.": "",
 	"Description": "",
 	"Update": "",
 
@@ -71,7 +73,6 @@
 	"Post": "",
 
 	"Search": "",
-	"Settings": "",
 	"Theme": "",
 	"My profile": "",
 	"Log Out": "",
