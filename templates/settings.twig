@@ -26,13 +26,13 @@
         </div></div>
 		<br>
 		<form action="settings.php" method="post">
-			<textarea class="form-control" id="description" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
+			<textarea class="form-control" id="description" id="floatingInput" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
 			<select class="form-select" name="language">
 				{% for code,name in glob_languages %}
 					<option value="{{ code }}" {% if code == current_user.language %}selected{% endif %}>{{ name }}</option>
 				{% endfor %}
 			</select>
-			<input type="color" class="form-control" id="color" name="color" value="">
+			<input type="color" class="form-control" id="color" name="color" value="{{ current_user.color }}">
 			<input type="hidden" name="updatesettings" value="yes">
 			<input type="submit" class="btn btn-primary" name="action" value="{{ __("Update") }}">
 		</form>
