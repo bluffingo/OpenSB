@@ -4,7 +4,7 @@
 	{% block content %}
 <div class="row">
 	<div class="col-xl-8">
-			<h3>{{ __("New from squareBracket") }}</h3>
+			<h3>{{ __("New from squareBracket") }} <small>(Alpha 3)</small></h3>
 				{% for video in videos %}
 					{{ video_box(video) }}
 				{% else %}
@@ -29,14 +29,14 @@
 			<h3>{{ __("Welcome to squareBracket!") }}</h3>
 			<p>{{ __("This is like any other video sharing site... for now at least.") }}</p>
 			<div class="btn-group">
-				<a href="register.php" class="btn btn-primary">Get started</a>
-				<a href="login.php" class="btn btn-light">Login</a>
+				<a href="register.php" class="btn btn-primary">{{ __("Get started") }}</a>
+				<a href="login.php" class="btn btn-light">{{ __("Login") }}</a>
 			</div>
 		{% endif %}
 		<hr/>
 		<h3>{{ __("What's new?") }}</h3>
 		<p>{{ __("Hello squareBracket users, We are working on a redesigned version for Alpha 3. At the end of Alpha 3, we should have already finalized the UI for at least Beta 1.") }}</p>
-		<p class="blockquote-footer">Chaziz/Gamerappa</p>
+		<p class="blockquote-footer">{{ __("Chaziz/Gamerappa") }}</p>
 		<hr/>
 		<h3>{{ __("Featured videos") }}</h3>
 		{% for video in featuredVideos %}

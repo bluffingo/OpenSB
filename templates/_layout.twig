@@ -37,7 +37,7 @@
 				<img src="/assets/logo.png" alt="[sb]" height="32" class="d-inline-block align-text-top">
 				</a>
 																<form class="d-flex">
-							<input class="form-control me-2" type="search" placeholder="Unimplemented" aria-label="Search">
+							<input class="form-control me-2" type="search" placeholder="{{ __("Search") }}" aria-label="Search">
 							<button class="btn btn-success" type="submit"><svg class="bi" width="16" height="16" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#search"/>
 						</svg></button>
@@ -118,7 +118,7 @@
 				<!--/.nav-collapse -->
 			</div>
 		</nav>
-		<nav class="py-1 bg-dark border-bottom" style="margin-bottom:20px">
+		<nav class="py-1 bg-dark" style="margin-bottom:20px">
     <div class="container">
       <ul class="nav me-auto">
 	  						<li class="nav-item"><a href="/" class="nav-link link-light px-2"><svg class="bi" width="16" height="16" fill="currentColor">
@@ -139,7 +139,7 @@
 		<div class="container">
 			{% block content %}{% endblock %}
 		<footer class="text-center pt-3 my-2 text-muted border-top">
-		Created by the squareBracket team · <b><span style="font-family:arial">GAMERAPPA</span></b> 2020-{{ 'now' | date('Y') }}
+		{{ __("Created by the squareBracket team") }} · {{ __("<b><span style='font-family:arial'>GAMERAPPA</span></b>") }} 2020-{{ 'now' | date('Y') }}
 		</footer>
 		</div>
 	</body>

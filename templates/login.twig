@@ -37,15 +37,15 @@ width: 50%;
     <img class="mb-2 gamerappa-killed-the-render-star" src="/assets/logo-wordmark.png" alt="squareBracket">
 	</div>
 	<div class="form-signin god-is-dead text-center">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 fw-normal">{{ __("Please sign in") }}</h1>
 
     <div class="form-floating">
       <input type="text" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Username</label>
+      <label for="floatingInput">{{ __("Username") }}</label>
     </div>
     <div class="form-floating">
       <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
+      <label for="floatingPassword">{{ __("Password") }}</label>
     </div>
 	<br>
     <input class="w-100 btn btn-lg btn-primary" type="submit" value="{{ __("Login") }}" name="loginsubmit">

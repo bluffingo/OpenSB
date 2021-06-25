@@ -28,7 +28,7 @@ $css = $scss->compile(
 		}
 	}
 	.bg-custom-profile {
-		@include gradient-y-three-colors(darken($color, 0%), darken($color, 15%), 50%, darken($color, 40%));
+		@include gradient-y-three-colors(darken($color, 0%), darken($color, 15%), 50%, darken($color, 20%));
 		@include text-contrast($color);
 	}'
 );
