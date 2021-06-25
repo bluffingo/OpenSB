@@ -1,22 +1,6 @@
-{% extends "_layout.twig" %}
+{% extends "_layout-login.twig" %}
 
 {% block title %}Register{% endblock %}
-
-{% block precontent %}
-<style>
-.form-signin {
-  width: 100%;
-  padding: 12px;
-  margin: auto;
-}
-.god-is-dead {
-max-width: 330px;
-}
-.gamerappa-killed-the-render-star {
-width: 50%;
-}
-</style>
-{% endblock %}
 
 	{% block content %}
 {% if error %}
@@ -24,12 +8,18 @@ width: 50%;
 {% endif %}
 
 <main class="text-center">
+<div class="container">
+<div class="alert alert-secondary" role="alert">
+  todo: redesign this so that it has more consistency with login
+</div>
+</div>
   <form method="post" name="loginForm" id="loginForm" action="login.php">
 	<div class="text-center">
     <img class="mb-2 gamerappa-killed-the-render-star" src="/assets/logo-wordmark.png" alt="squareBracket">
 	</div>
 <h2>Register</h2>
 <form method="POST">
+<div class="form-signin god-is-dead text-center">
 	<div class="form-group">{{ __("Username") }}:
 		<input type="text" name="username" class="form-control" placeholder="{{ __("Username") }}">
 	</div>
@@ -41,6 +31,7 @@ width: 50%;
 		<input type="password" name="pass2" class="form-control" placeholder="{{ __("Password (Again)") }}">
 	</div>
 	<button class="w-100 btn btn-lg btn-primary" type="submit" name="action" class="btn btn-primary">{{ __("Register") }}</button>
+</div>
 </form>
 </main>
 	{% endblock %}

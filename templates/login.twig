@@ -1,22 +1,6 @@
-{% extends "_layout.twig" %}
+{% extends "_layout-login.twig" %}
 
 {% block title %}{{ __("Login") }}{% endblock %}
-
-{% block precontent %}
-<style>
-.form-signin {
-  width: 100%;
-  padding: 12px;
-  margin: auto;
-}
-.god-is-dead {
-max-width: 330px;
-}
-.gamerappa-killed-the-render-star {
-width: 50%;
-}
-</style>
-{% endblock %}
 
 	{% block content %}
 {% if error %}
