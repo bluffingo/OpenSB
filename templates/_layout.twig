@@ -21,7 +21,7 @@
 		<title>{% block title %}{% endblock %} - squareBracket</title>
 	</head>
 	<body>
-		<nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% elseif theme == 'vanilla' %} navbar-light bg-light {% else %} navbar-dark bg-primary {% endif %} navbar-static-top navbar-expand-md" style="margin-bottom:20px">
+		<nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% elseif theme == 'vanilla' %} navbar-light bg-light {% else %} navbar-dark bg-primary {% endif %} navbar-static-top navbar-expand-md">
 			<div class="container">
 				<a class="navbar-brand" href="/">
 				<img src="/assets/logo.png" alt="[sb]" height="32" class="d-inline-block align-text-top">
@@ -37,17 +37,6 @@
 				</button>
 				<div id="navbarCollapse" class="collapse navbar-collapse">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a href="/" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#house-door"/>
-						</svg> {{ __("Home") }}</a></li>
-						<li class="nav-item"><a href="browse.php" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#play-btn"/>
-						</svg> {{ __("Browse") }}</a></li>
-						{% for menu_link in menu_links %}
-						<li class="nav-item"><a href="{{ menu_link.url }}" class="nav-link"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#{{ menu_link.icon }}"/>
-						</svg> {{ menu_link.name }}</a></li>
-						{% endfor %}
 					</ul>
 					<ul class="navbar-nav">
 						{% if logged_in %}
@@ -119,11 +108,28 @@
 				<!--/.nav-collapse -->
 			</div>
 		</nav>
+		<nav class="py-1 bg-dark border-bottom" style="margin-bottom:20px">
+    <div class="container">
+      <ul class="nav me-auto">
+	  						<li class="nav-item"><a href="/" class="nav-link link-light px-2"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#house-door"/>
+						</svg> {{ __("Home") }}</a></li>
+						<li class="nav-item"><a href="browse.php" class="nav-link link-light px-2"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#play-btn"/>
+						</svg> {{ __("Browse") }}</a></li>
+						{% for menu_link in menu_links %}
+						<li class="nav-item"><a href="{{ menu_link.url }}" class="nav-link link-light px-2"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#{{ menu_link.icon }}"/>
+						</svg> {{ menu_link.name }}</a></li>
+						{% endfor %}
+      </ul>
+    </div>
+  </nav>
 		{% block precontent %}{% endblock %}
 		<div class="container">
 			{% block content %}{% endblock %}
 		<footer class="text-center pt-3 my-2 text-muted border-top">
-		Created by the squareBracket team · © <b><span style="font-family:arial">GAMERAPPA</span></b> 2020-{{ 'now' | date('Y') }}
+		Created by the squareBracket team · <b><span style="font-family:arial">GAMERAPPA</span></b> 2020-{{ 'now' | date('Y') }}
 		</footer>
 		</div>
 	</body>
