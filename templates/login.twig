@@ -21,7 +21,7 @@ width: 50%;
 	{% block content %}
 {% if error %}
 	{% autoescape %}
-		{{ error | raw }}
+		<div class="alert alert-warning" role="alert">{{ error | raw }}</div>
 	{% endautoescape %}
 {% else %}
 	{% if not success == '' %}
