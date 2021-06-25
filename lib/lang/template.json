@@ -23,13 +23,13 @@
 	"You have %s views.": "",
 	"no": "",
 	"Your account was made %s.": "",
-	"Edit my profile": "",
 	"Welcome to squareBracket!": "",
 	"This is like any other video sharing site... for now at least.": "",
 	"Get started": "",
 	"Login": "",
 	"What's new?": "",
 	"Hello squareBracket users, We are working on a redesigned version for Alpha 3. At the end of Alpha 3, we should have already finalized the UI for at least Beta 1.": "",
+	"Chaziz/Gamerappa": "",
 	"Featured videos": "",
 	"No featured videos.": "",
 
@@ -43,6 +43,9 @@
 	"Register": "",
 
 	"User Settings": "",
+	"Settings": "",
+	"Profile settings": "",
+	"Adjust your settings.": "",
 	"Description": "",
 	"Update": "",
 
@@ -71,7 +74,6 @@
 	"Post": "",
 
 	"Search": "",
-	"Settings": "",
 	"Theme": "",
 	"My profile": "",
 	"Log Out": "",
@@ -81,6 +83,7 @@
 	"Light": "",
 	"Dark": "",
 	"Bootstrap Default": "",
-	"Created by the squareBracket team": ""
+	"Created by the squareBracket team": "",
+	"<b><span style='font-family:arial'>GAMERAPPA</span></b>": ""
 
 }

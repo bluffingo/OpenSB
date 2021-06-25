@@ -17,12 +17,9 @@
 			</p>
 				<img class="float-end rounded w-25" src="{{ profile_image(current_user.username) }}"  alt="pfp">
 				<p class="text-start float-start">
-					<!--todo: fix overflow, probably shorten the numbers too.-->
 					<p>{{ __("You have %s subscribers.", ['0']) }}</p>
 					<p>{{ __("You have %s views.", [totalViews ?? __("no")]) }}</p>
 					<p>{{ __("Your account was made %s.", [creationDate | relative_time]) }}</p>
-					<!-- <a href="settings.php">{{ __("Edit my profile") }}</a><br> -->
-					<!-- <a href="browse.php">{{ __("Browse") }}</a> -->
 				</p>
 			</p>
 		{% else %}
@@ -36,7 +33,7 @@
 		<hr/>
 		<h3>{{ __("What's new?") }}</h3>
 		<p>{{ __("Hello squareBracket users, We are working on a redesigned version for Alpha 3. At the end of Alpha 3, we should have already finalized the UI for at least Beta 1.") }}</p>
-		<p class="blockquote-footer">Chaziz/Gamerappa</p>
+		<p class="blockquote-footer">{{ __("Chaziz/Gamerappa") }}</p>
 		<hr/>
 		<h3>{{ __("Featured videos") }}</h3>
 		{% for video in featuredVideos %}
