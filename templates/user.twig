@@ -36,7 +36,9 @@
 					<p class="fs-4">{{ user.description }}</p>
 			</div>
 			<div class="col-1 text-end">
-					<button class="btn btn-warning" type="button">{{ __("Subscribe") }}</button>
+					<button class="btn btn-warning" type="button"><svg data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __("Subscribe") }}" style="margin-left: 0.75%;" class="bi" width="32" height="32" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#plus"/>
+						</svg></button>
 			</div>
 			</div>
 		</div>
@@ -60,6 +62,7 @@
 	<div class="card">
   <div class="card-body">
 	<h4>{{ __("About %s", [user.username]) }}</h4>
+	<hr>
 		<dl class="row">
 		  <dt class="col-sm-4">{{ __("Last Seen") }}</dt>
 		  <dd class="col-sm-8">{{ latestVideos[0].time | date('M j, Y') }}</dd> {# twig just does not want to return anything from a index, and just returns blank... #}

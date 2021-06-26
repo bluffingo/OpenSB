@@ -25,11 +25,15 @@
 
     <div class="form-floating">
       <input type="text" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">{{ __("Username") }}</label>
+      <label for="floatingInput"><svg class="bi" width="24" height="24" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#person-fill"/>
+						</svg> {{ __("Username") }}</label>
     </div>
     <div class="form-floating">
       <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">{{ __("Password") }}</label>
+      <label for="floatingPassword"><svg class="bi" width="24" height="24" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#key-fill"/>
+						</svg> {{ __("Password") }}</label>
     </div>
 	<br>
     <input class="w-100 btn btn-lg btn-primary" type="submit" value="{{ __("Login") }}" name="loginsubmit">
