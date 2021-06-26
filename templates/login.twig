@@ -18,20 +18,20 @@
 <main class="text-center">
   <form method="post" name="loginForm" id="loginForm" action="login.php">
 	<div class="text-center">
-    <img class="mb-2 gamerappa-killed-the-render-star" src="/assets/logo-wordmark.png" alt="squareBracket">
+    <img class="mb-2 gamerappa-killed-the-render-star" src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="squareBracket">
 	</div>
 	<div class="form-signin god-is-dead text-center">
     <h1 class="h3 mb-3 fw-normal">{{ __("Please sign in") }}</h1>
 
     <div class="form-floating">
-      <input type="text" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput"><svg class="bi" width="24" height="24" fill="currentColor">
+      <input type="text" name="username" class="form-control" id="floatingUsername" placeholder="name@example.com">
+      <label for="floatingUsername"><svg class="bi" width="24" height="24" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#person-fill"/>
 						</svg> {{ __("Username") }}</label>
     </div>
     <div class="form-floating">
-      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword"><svg class="bi" width="24" height="24" fill="currentColor">
+      <input type="password" name="password" class="form-control" id="floatingLabel" placeholder="Password">
+      <label for="floatingLabel"><svg class="bi" width="24" height="24" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#key-fill"/>
 						</svg> {{ __("Password") }}</label>
     </div>

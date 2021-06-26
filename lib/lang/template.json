@@ -46,9 +46,10 @@
 	"Register": "",
 
 	"User Settings": "",
-	"Settings": "",
 	"Profile settings": "",
-	"Adjust your settings.": "",
+	"Partnership": "",
+	"Settings": "",
+	"Change the appearance of your profile.": "",
 	"Description": "",
 	"Update": "",
 
@@ -63,7 +64,8 @@
 	"Choose the video you want to upload.": "",
 	"Upload Video": "",
 
-	"Your profile settings was successfully updated.": "",
+	"Your profile settings were successfully updated.": "",
+	"squareBracket Partner": "",
 	"Subscribe": "",
 	"Uploaded videos": "",
 	"There are no videos uploaded by %s.": "",
@@ -86,6 +88,10 @@
 	"Light": "",
 	"Dark": "",
 	"Bootstrap Default": "",
+	"Sign off": "",
+	"Sign in": "",
+	"Sign up": "",
 	"Created by the squareBracket team": "",
 	"<b><span style='font-family:arial'>GAMERAPPA</span></b>": ""
+
 }
