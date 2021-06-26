@@ -4,6 +4,7 @@ templates/cache/
 cache/
 assets/profpic/
 assets/thumb/
+assets/backgrounds/
 *.mp4
 videos/
 

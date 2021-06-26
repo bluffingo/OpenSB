@@ -16,7 +16,7 @@
 		-->
 		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-		<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="assets/common.js"></script>
 		<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
@@ -141,6 +141,7 @@
 		<footer class="text-center pt-3 my-2 text-muted border-top">
 		{{ __("Created by the squareBracket team") }} · {{ __("<b><span style='font-family:arial'>GAMERAPPA</span></b>") }} 2020-{{ 'now' | date('Y') }}
 		</footer>
+		{% block postcontent %}{% endblock %}
 		</div>
 	</body>
 </html>

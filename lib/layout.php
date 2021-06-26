@@ -54,6 +54,12 @@ function profileImage($username) {
 	return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $file_exists]);
 }
 
+function channelBackground($username) {
+	$file_exists = file_exists('assets/backgrounds/'.$username.'.png');
+	$twig = twigloader('components');
+	return $twig->render('channelbackground.twig', ['data' => $username, 'file_exists' => $file_exists]);
+}
+
 function videoThumbnail($videodata) {
 	$file_exists = file_exists('assets/thumb/'.$videodata.'.png');
 	$twig = twigloader('components');
