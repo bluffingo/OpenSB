@@ -1,6 +1,6 @@
 .header1 {
-	margin: 0px auto;
-	padding: 20px 0px 2px 0px;
+	margin: 0 auto;
+	padding: 20px 0 2px;
 	/*! background-color: #eaeaea; */
 }
 
@@ -133,7 +133,7 @@
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   z-index: 1;
   text-align: left;
   background-image: linear-gradient(#f1f1f1, #ececec);
@@ -155,7 +155,7 @@
 .show {display:block;} 
 
 .headertext {
-	color: #fff !important;;
+	color: #fff !important;
 }
 
 a:hover { animation-name: link; animation-duration: 1s; animation-fill-mode: forwards; }
@@ -420,7 +420,7 @@ a.title:hover { /* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", 
 	background-image: -ms-linear-gradient(top, #f6f6f6 0%,#e8e8e8 100%); /* IE10 preview */
 	background-image: linear-gradient(to bottom, #f6f6f6 0%,#e8e8e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6f6', endColorstr='#e8e8e8',GradientType=0 ); /* IE6-9 */
-    margin-left: 0px;
+    margin-left: 0;
     border-radius: 3px;
     font: 12px Arial,Helvetica,sans-serif;
 	behavior: url(lib/PIE.php); /* polyfilling css3 for those who still use ie 6-8 */
@@ -864,7 +864,7 @@ a.title:hover { /* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", 
 
 .browsePagination {
 	background: #CCC;
-	padding: 6px 0px;
+	padding: 6px 0;
 	font-size: 13px;
 	color: #333;
 	font-weight: bold;
