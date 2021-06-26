@@ -17,7 +17,7 @@ CREATE TABLE `users` (
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
   `color` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en_US' COMMENT 'Language (Defaults to English)',
-  `flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties'
+  `u_flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties'
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
