@@ -1,21 +1,32 @@
 {% extends "_layout.twig" %}
 
-{% block title %}{{ __("User Settings") }}{% endblock %}
+{% block title %}{{ __("Settings") }}{% endblock %}
 
 	{% block content %}
 	<div class="row">
 	<div class="col-lg-2 col-4">
 	<ul class="list-group">
-  <li class="list-group-item"><img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="40" height="40"> {{ current_user.username }}</li>
-  <a href="settings.php" class="list-group-item list-group-item-action active">{{ __("Profile settings") }}</a>
-  <a href="partnership.php" class="list-group-item list-group-item-action">{{ __("Partnership") }}</a>
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+	<button class="nav-link active text-start" id="v-pills-account-tab" data-bs-toggle="pill" data-bs-target="#v-pills-account" type="button" role="tab" aria-controls="v-pills-account" aria-selected="false">
+	<svg class="bi" width="16" height="16" fill="currentColor"><use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#person-fill"/></svg> {{ __("Account") }}</button>
+    <button class="nav-link text-start" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+	<svg class="bi" width="16" height="16" fill="currentColor"><use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#person-lines-fill"/></svg> {{ __("Profile") }}</button>
+    <button class="nav-link text-start" id="v-pills-partner-tab" data-bs-toggle="pill" data-bs-target="#v-pills-partner" type="button" role="tab" aria-controls="v-pills-partner" aria-selected="false">
+	<svg class="bi" width="16" height="16" fill="currentColor"><use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#check2-circle"/></svg> {{ __("Partnership") }}</button>
+  </div>
 </ul>
 	</div>
 	<div class="col-lg-10 col-8">
-	<div class="p-4 bg-light border rounded-3">
+	<div class="d-flex align-items-start">
+  <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">
+	  Placeholder: add account info later
+	</div>
+    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+		<div class="p-4 bg-light border rounded-3">
 		  <div class="row">
 		  <div class="col-lg-1 col-3">
-          <img class="img-fluid" src="/assets/tweakutility.svg" alt="{{ __("Settings") }}">
+          <img class="img-fluid" src="/assets/tweakutility.svg" alt="{{ __("Profile") }}">
 		  </div>
 		  <div class="col-lg-11 col-9">
           <h2>{{ __("Profile settings") }}</h2>
@@ -35,4 +46,13 @@
 			<input type="submit" class="btn btn-primary" name="action" value="{{ __("Update") }}">
 		</form>
 	</div>
+    <div class="tab-pane fade" id="v-pills-partner" role="tabpanel" aria-labelledby="v-pills-partner-tab">
+	<div class="h-100 p-5 bg-light border rounded-3">
+          <h2>{{ __("Partner with squareBracket") }}</h2>
+          <p>Add some text later.</p>
+          <button class="btn btn-secondary" type="button">{{ __("Apply for Partner") }} (not functional)</button>
+        </div>
+	</div>
+  </div>
+</div></div>
 	{% endblock %}
