@@ -121,8 +121,8 @@
 			rows="3" placeholder="{{ __("Enter comment here, Markdown can be used here.") }}"></textarea>
 			<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top:5px;margin-bottom:15px">
 			<button id="{% if logged_in %}post{% endif %}" class="btn btn-primary {% if not logged_in %}disabled{% endif %}"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#pencil-square"/>
-						</svg> {{ __("Post") }}</button>
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#reply-fill"/>
+						</svg> {{ __("Send") }}</button>
 			</div>
 			<div id="comment"></div>
 				{% for comment in comments %}

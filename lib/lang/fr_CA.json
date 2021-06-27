@@ -17,9 +17,10 @@
 	"Hello squareBracket users, We are working on a redesigned version for Alpha 3. At the end of Alpha 3, we should have already finalized the UI for at least Beta 1.": "Bonjour, les utilisateurs de squareBracket, Nous travaillons sur un nouveau design de site Web pour Alpha 3.",
 	"Chaziz/Gamerappa": "Chaziz",
 
-	"Login to squareBracket": "Connection",
-	"Incorrect username or password!": "Mauvais nom/mot de passe.",
-	"Username": "Nom utilisateur",
+	"Please sign in": "Veuillez vous connecter",
+	"Incorrect username or password!": "Nom d'utilisateur ou mot de passe incorrect.",
+	"Had an account on PokTube? You can now log into squareBracket using your PokTube credentials.": "Vous aviez un compte sur PokTube ? Vous pouvez maintenant vous connecter à squareBracket en utilisant les informations d'identification de votre compte PokTube.",
+	"Username": "Nom d'utilisateur",
 	"Password": "Mot de passe",
 
 	"Videos": "Vidéos",
@@ -34,13 +35,16 @@
 	"Adjust your settings.": "Ajustez vos paramètres.",
 	"Description": "Description",
 	"Update": "Mettre à jour",
+	"Partner with squareBracket": "Partenariat avec squareBracket",
+	"Apply for Partner": "Appliquer",
 	
-	"Your profile settings was successfully updated.": "Vos paramètres ont été mis à jour.",
+	"Your profile settings were successfully updated.": "Les paramètres de votre profil ont été mis à jour.",
 	"Uploaded videos": "Vidéos publiées",
-	"There are no videos uploaded by %s.": "Il n'y a actuellement aucune vidéo publiée par %s.",
+	"There are no videos uploaded by %s.": "Il n'y a aucun vidéos publiées par %s.",
 	"About %s": "À propos de %s",
 	"Last Seen": "Vu",
 	"Date Joined": "Inscrit",
+	"squareBracket Partner": "Partenaire de squareBracket",
 
 	"Title": "Titre",
 	"Upload": "Publier",
@@ -54,9 +58,9 @@
 	"Upload Video": "Publier la video",
 
 	"Subscribe": "Abonnér",
-	"Post": "Envoyer",
+	"Send": "Envoyer",
 
-	"Enter comment here, Markdown can be used here.": "Écrit un commentaire ici. Markdown peut être utilisé.",
+	"Enter comment here, Markdown can be used here.": "Entrez votre commentaire ici, le format Markdown peut être utilisé ici.",
 	"views": "vues",
 
 	"Search": "Rechercher",
@@ -67,7 +71,9 @@
 	"Light": "Thème clair",
 	"Dark": "Thème sombre",
 	"Bootstrap Default": "Thème de base",
-	"Log Out": "Deconnection",
-	"Created by the squareBracket team": "Créé par l'équipe de squareBracket",
+	"Sign off": "Deconnecter",
+	"Sign in": "Connecter",
+	"Sign up": "Inscrire",
+	"Created by the squareBracket team": "Créé par les contributeurs de squareBracket",
 	"<b><span style='font-family:arial'>GAMERAPPA</span></b>": "<big><span style='font-family:tahoma'>chaziz</span></big>"
 }
