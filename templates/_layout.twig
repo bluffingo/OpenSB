@@ -36,12 +36,12 @@
 				<a class="navbar-brand" href="/">
 				<img src="/assets/logo.png" alt="[sb]" height="32" class="d-inline-block align-text-top">
 				</a>
-																<form class="d-flex">
-							<input class="form-control me-2" type="search" placeholder="{{ __("Search") }}" aria-label="Search">
-							<button class="btn btn-success" type="submit"><svg class="bi" width="20" height="20" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#search"/>
+					<form class="d-flex"  method="GET" action="search.php">
+						<input name="query" class="form-control me-2" type="search" placeholder="{{ __("Search") }}" aria-label="Search">
+						<button class="btn btn-success" type="submit"><svg class="bi" width="20" height="20" fill="currentColor">
+						<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#search"/>
 						</svg></button>
-						</form>
+					</form>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
