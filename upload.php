@@ -12,14 +12,19 @@ $manager = new ImageManager();
 $video_id = substr(base64_encode(md5(bin2hex(random_bytes(6)))), 0, 11); //you are never too sure how much randomness you need.
 $new = '';
 foreach(str_split($video_id) as $char){
-	if (rand(0, 1) == 1) {
-		$char = str_rot13($char);
-	} else if (rand(0, 2) == 2) {
-		$char = '_';
-	} else if (rand(0, 3) == 3) {
-		$char = mb_strtoupper($char);
-	} else if (rand(0, 4) == 4) {
-		$char = '-';
+	switch (rand(0, 4)) {
+		case 1:
+			$char = str_rot13($char);
+			break;
+		case 2:
+			$char = '_';
+			break;
+		case 3:
+			$char = mb_strtoupper($char);
+			break;
+		case 4:
+			$char = '-';
+			break;
 	}
 	$new .= $char;
 }
