@@ -50,6 +50,7 @@
 					</ul>
 					<ul class="navbar-nav">
 						<div class="dropdown">
+						<li class="nav-item">
 						  <style>
 							#openSettings::after {
 								content: none;
@@ -59,10 +60,10 @@
 							}
 						  </style>
 						<a href="#" id="openSettings" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
-							{% if logged_in %} <img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="36" height="36" style="margin-top: 3px;">{% else %}<svg class="bi" width="36" height="40" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#gear-fill"/>
-						</svg>{% endif %}
+							{% if logged_in %} <img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="36" height="36" style="margin-top: 3px;"> {{ current_user.username }}
+							{% else %}<img src="/assets/profileguest.png" alt="Guest" class="rounded" width="36" height="36" style="margin-top: 3px;"> {{ __("Not signed in") }}{% endif %}
 						  </a>
+						  </li>
 						  <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
 						  {% if logged_in %}
 							<li><a class="dropdown-item" href="settings.php"><svg class="bi" width="20" height="20" fill="currentColor">
