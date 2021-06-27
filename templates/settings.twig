@@ -20,19 +20,28 @@
 	<div class="d-flex align-items-start">
   <div class="tab-content" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">
-	  Placeholder: add account info later
-	</div>
+	  <div class="p-4 bg-light border rounded-3">
+	  <div class="row">
+	  <div class="col-4">
+	  <img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded img-fluid">
+	  </div>
+	  <div class="col-8">
+	  <h2>{{ current_user.username }}</h2>
+	  <p>
+	  {% if current_user.email == "poktube_migrated@squarebracket.me" %}
+	  {{ __("Migrated from PokTube") }}
+	  {% else %}
+	  <svg class="bi" width="20" height="20" fill="currentColor"><use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#envelope"/></svg>
+	  <b>{{ __("Email address:") }}</b> {{ current_user.email }}
+	  {% endif %}
+	  </p>
+	  </div>
+	</div></div></div>
     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 		<div class="p-4 bg-light border rounded-3">
-		  <div class="row">
-		  <div class="col-lg-1 col-3">
-          <img class="img-fluid" src="/assets/tweakutility.svg" alt="{{ __("Profile") }}">
-		  </div>
-		  <div class="col-lg-11 col-9">
           <h2>{{ __("Profile settings") }}</h2>
-          {{ __("Change the appearance of your profile.") }} (please add pfp and partner-only background changing for fuck sakes)
+          {{ __("Change the look of your user profile.") }}
 		  </div>
-        </div></div>
 		<br>
 		<form action="settings.php" method="post">
 			<textarea class="form-control" id="description" id="floatingInput" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
@@ -50,7 +59,7 @@
 	<div class="h-100 p-5 bg-light border rounded-3">
           <h2>{{ __("Partner with squareBracket") }}</h2>
           <p>Add some text later.</p>
-          <button class="btn btn-secondary" type="button">{{ __("Apply for Partner") }} (not functional)</button>
+          <button class="btn btn-primary" type="button">{{ __("Apply for Partner") }} (not functional)</button>
         </div>
 	</div>
   </div>

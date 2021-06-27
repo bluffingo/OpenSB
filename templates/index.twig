@@ -29,17 +29,17 @@
 				</p>
 			</p>
 		{% else %}
-			<h3>{{ __("Welcome to squareBracket!") }}</h3>
-			<p>{{ __("This is like any other video sharing site... for now at least.") }}</p>
+			<h3>{{ __("Welcome to squareBracket") }}</h3>
+			<p>{{ __("Yet another website where you can upload your videos.") }}</p>
 			<div class="btn-group">
 				<a href="register.php" class="btn btn-primary">{{ __("Get started") }}</a>
-				<a href="login.php" class="btn btn-light">{{ __("Login") }}</a>
+				<a href="login.php" class="btn btn-secondary">{{ __("Sign in") }}</a>
 			</div>
 		{% endif %}
 		<hr/>
 		<h3>{{ __("What's new?") }}</h3>
-		<p>{{ __("Hello squareBracket users, We are working on a redesigned version for Alpha 3. At the end of Alpha 3, we should have already finalized the UI for at least Beta 1.") }}</p>
-		<p class="blockquote-footer">{{ __("Chaziz/Gamerappa") }}</p>
+		<p>{{ __("If you have made an account on PokTube (the predecessor of squareBracket) from January 31st to April 24th 2021, then you can now sign onto squareBracket with your PokTube credentials.") }}</p>
+		<p class="blockquote-footer">{{ __("Gamerappa") }}</p>
 		<hr/>
 		<h3>{{ __("Featured videos") }}</h3>
 		{% for video in featuredVideos %}

@@ -53,6 +53,9 @@
 				.igui_icon_settings::before {
 					content: "\f3e2";
 				}
+				.igui_icon_back::before {
+					content: "\f131";
+				}
 				.igui_seekbar_progress,
 				.igui_seekbar_scrubber {
 					background-color: var(--bs-primary);
@@ -109,7 +112,7 @@
 							<a href="#" id="{% if logged_in %}dislike{% endif %}" class="text-{% if rating == 0 %}info{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
 								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-down-fill"/>
 							</svg></a> <span id="dislikes" style="padding-right: 10px">{{ total_dislikes }}</span>
-							<button class="btn btn-warning" type="button">{{ __("Subscribe") }}</button>
+							<button class="btn btn-warning" type="button" disabled>{{ __("Subscribe") }}</button>
 						</div>
 						<p style="margin-top: 1rem;">{{ video.description }}</p>
 					</div>

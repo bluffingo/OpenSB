@@ -59,20 +59,28 @@
 <a href="#" class="dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 							<img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="36" height="36" style="margin-top: 3px;">
 						  </a>
-						  <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-							<li><a class="dropdown-item" href="#">{{ __("Settings") }}</a></li>
-							<li><a class="dropdown-item" id="themeSelect" href="#">{{ __("Theme") }}</a></li>
-							<li><a class="dropdown-item" href="#">{{ __("My profile") }}</a></li>
+						  <ul class="dropdown-menu text-small" aria-labelledby="navbarDropdown" style="">
+							<li><a class="dropdown-item" href="settings.php"><svg class="bi" width="20" height="20" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#tools"/>
+						</svg> {{ __("Settings") }}</a></li>
+							<li><a class="dropdown-item" id="themeSelect" href="#"><svg class="bi" width="20" height="20" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#droplet-half"/>
+						</svg> {{ __("Theme") }}</a></li>
+							<li><a class="dropdown-item" href="user.php?name={{ current_user.username }}"><svg class="bi" width="20" height="20" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#person-lines-fill"/>
+						</svg> {{ __("My profile") }}</a></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">{{ __("Log Out") }}</a></li>
+							<li><a class="dropdown-item" href="logout.php"><svg class="bi" width="20" height="20" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#door-open"/>
+						</svg> {{ __("Sign off") }}</a></li>
 						  </ul>						</div>
-						<li class="nav-item dropdown">
+						<li class="nav-item dropdown"> 
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								<svg class="bi" width="20" height="20" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#tools"/>
-						</svg> {{ __("Settings") }}
+						</svg> {{ __("Settings") }} <small>{{ __("(deprecated)") }}</small>
 							</a>
-							<ul class="dropdown-menu" id="mainMenu" aria-labelledby="navbarDropdown">
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" href="settings.php"><svg class="bi" width="16" height="16" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#person-fill"/>
 						</svg> {{ __("Profile Settings") }}</a></li>
@@ -145,7 +153,7 @@
 		<div class="container">
 			{% block content %}{% endblock %}
 		<footer class="text-center pt-3 my-2 text-muted border-top">
-		{{ __("Created by the squareBracket team") }} · {{ __("<b><span style='font-family:arial'>GAMERAPPA</span></b>") }} 2020-{{ 'now' | date('Y') }}
+		{{ __("Created by squareBracket contributors") }} · {{ __("<b><span style='font-family:arial'>GAMERAPPA</span></b>") }} 2020-{{ 'now' | date('Y') }}
 		</footer>
 		{% block postcontent %}{% endblock %}
 		</div>

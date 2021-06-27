@@ -1,4 +1,4 @@
-{% extends "_layout-login.twig" %}
+{% extends "_layout.twig" %}
 
 {% block title %}Register{% endblock %}
 
@@ -7,19 +7,12 @@
 	<div class="alert alert-danger" role="alert">{{ error }}</div>
 {% endif %}
 
-<main class="text-center">
-<div class="container">
 <div class="alert alert-secondary" role="alert">
-  todo: redesign this so that it has more consistency with login
+  {{ __("todo: redesign this so that it has more consistency with login, we tried to redesign this page a while back but it broke registering.") }}"
 </div>
-</div>
-  <form method="post" name="loginForm" id="loginForm" action="login.php">
-	<div class="text-center">
-    <img class="mb-2 gamerappa-killed-the-render-star" src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="squareBracket">
-	</div>
+
 <h2>Register</h2>
 <form method="POST">
-<div class="form-signin god-is-dead text-center">
 	<div class="form-group">{{ __("Username") }}:
 		<input type="text" name="username" class="form-control" placeholder="{{ __("Username") }}">
 	</div>
@@ -30,8 +23,6 @@
 		<input type="password" name="pass1" class="form-control" placeholder="{{ __("Password") }}">
 		<input type="password" name="pass2" class="form-control" placeholder="{{ __("Password (Again)") }}">
 	</div>
-	<button class="w-100 btn btn-lg btn-primary" type="submit" name="action" class="btn btn-primary">{{ __("Register") }}</button>
-</div>
+	<button type="submit" name="action" class="btn btn-primary">{{ __("Submit") }}</button>
 </form>
-</main>
 	{% endblock %}
