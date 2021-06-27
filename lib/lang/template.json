@@ -13,6 +13,7 @@
 	"Email isn't valid. ": "",
 
 	"Browse": "",
+
 	"Videos": "",
 	"No uploaded videos.": "",
 
@@ -86,9 +87,11 @@
 	"Uploaded on %s": "",
 	"views": "",
 	"Enter comment here, Markdown can be used here.": "",
+	"Please sign in in order to comment.": "",
 	"Send": "",
 
 	"Search": "",
+	"Not signed in": "",
 	"Theme": "",
 	"My profile": "",
 	"Sign off": "",
