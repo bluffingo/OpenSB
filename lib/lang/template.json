@@ -43,10 +43,9 @@
 	"Username": "",
 	"Password": "",
 
-	"todo: redesign this so that it has more consistency with login, we tried to redesign this page a while back but it broke registering.": "",
-	"Email": "",
+	"E-mail": "",
 	"Password (Again)": "",
-	"Submit": "",
+	"Register": "",
 
 	"Settings": "",
 	"Account": "",
@@ -90,9 +89,6 @@
 	"Theme": "",
 	"My profile": "",
 	"Sign off": "",
-	"(deprecated)": "",
-	"Profile Settings": "",
-	"Change theme": "",
 	"Back": "",
 	"Light": "",
 	"Dark": "",

@@ -18,14 +18,14 @@
 	</div>
 	<div class="col-lg-10 col-8">
 	<div class="d-flex align-items-start">
-  <div class="tab-content" id="v-pills-tabContent">
+  <div class="tab-content" id="v-pills-tabContent" style="width: 100%;">
       <div class="tab-pane fade show active" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">
 	  <div class="p-4 bg-light border rounded-3">
 	  <div class="row">
-	  <div class="col-4">
+	  <div class="col-3">
 	  <img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded img-fluid">
 	  </div>
-	  <div class="col-8">
+	  <div class="col-9">
 	  <h2>{{ current_user.username }}</h2>
 	  <p>
 	  {% if current_user.email == "poktube_migrated@squarebracket.me" %}

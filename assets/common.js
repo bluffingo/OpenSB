@@ -7,7 +7,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	  $("#mainMenu").removeClass("show");
 	  $("#themeSelection").removeClass("show");
 	});
-	$("#navbarDropdown").click(function(event){
+	$("#openSettings").click(function(event){
 		event.stopPropagation();
 		$("#mainMenu").addClass("show");
 	});
@@ -18,6 +18,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	});
 	$("#themeSelect").click(function(event){
 		event.stopPropagation();
+		$("#mainMenu").removeClass("show");
 		$("#themeSelection").addClass("show");
 	});
 	$("#light").click(function(){

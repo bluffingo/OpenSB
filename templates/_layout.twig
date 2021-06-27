@@ -49,23 +49,30 @@
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					</ul>
 					<ul class="navbar-nav">
-						{% if logged_in %}
 						<div class="dropdown">
 						  <style>
-							#dropdownUser1::after {
+							#openSettings::after {
 								content: none;
 							}
+							#openSettings.nav-link {
+								padding: 0;
+							}
 						  </style>
-<a href="#" class="dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="36" height="36" style="margin-top: 3px;">
+						<a href="#" id="openSettings" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+							{% if logged_in %} <img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded" width="36" height="36" style="margin-top: 3px;">{% else %}<svg class="bi" width="36" height="40" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#gear-fill"/>
+						</svg>{% endif %}
 						  </a>
-						  <ul class="dropdown-menu text-small" aria-labelledby="navbarDropdown" style="">
+						  <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
+						  {% if logged_in %}
 							<li><a class="dropdown-item" href="settings.php"><svg class="bi" width="20" height="20" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#tools"/>
 						</svg> {{ __("Settings") }}</a></li>
+						  {% endif %}
 							<li><a class="dropdown-item" id="themeSelect" href="#"><svg class="bi" width="20" height="20" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#droplet-half"/>
 						</svg> {{ __("Theme") }}</a></li>
+						  {% if logged_in %}
 							<li><a class="dropdown-item" href="user.php?name={{ current_user.username }}"><svg class="bi" width="20" height="20" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#person-lines-fill"/>
 						</svg> {{ __("My profile") }}</a></li>
@@ -73,28 +80,16 @@
 							<li><a class="dropdown-item" href="logout.php"><svg class="bi" width="20" height="20" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#door-open"/>
 						</svg> {{ __("Sign off") }}</a></li>
-						  </ul>						</div>
-						<li class="nav-item dropdown"> 
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								<svg class="bi" width="20" height="20" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#tools"/>
-						</svg> {{ __("Settings") }} <small>{{ __("(deprecated)") }}</small>
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="settings.php"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#person-fill"/>
-						</svg> {{ __("Profile Settings") }}</a></li>
-								<li><a class="dropdown-item" id="themeSelect" href="#"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#palette"/>
-						</svg> {{ __("Change theme") }}</a></li>
-							</ul>
-							<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
+						  {% endif %}
+						  </ul>						
+						  	<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
 								<li><a class="dropdown-item" id="back" href="#">{{ __("Back") }}</a></li>
 								<li><a class="dropdown-item" id="light" href="#">{{ __("Light") }}</a></li>
 								<li><a class="dropdown-item" id="dark" href="#">{{ __("Dark") }}</a></li>
 								<li><a class="dropdown-item" id="vanilla" href="#">{{ __("Bootstrap Default") }}</a></li>
 							</ul>
-						</li>
+						  </div>
+						{% if logged_in %}
 						<li class="nav-item"><a href="/upload.php" class="nav-link"><svg class="bi" width="20" height="20" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#camera-video"/>
 						</svg> {{ __("Upload") }}</a></li>
@@ -102,24 +97,6 @@
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#door-open"/>
 						</svg> {{ __("Sign off") }}</a></li>
 						{% else %}
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								<svg class="bi" width="20" height="20" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#tools"/>
-						</svg> {{ __("Settings") }}
-							</a>
-							<ul class="dropdown-menu" id="mainMenu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" id="themeSelect" href="#"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#palette"/>
-						</svg> {{ __("Change theme") }}</a></li>
-							</ul>
-							<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" id="back" href="#">{{ __("Back") }}</a></li>
-								<li><a class="dropdown-item" id="light" href="#">{{ __("Light") }}</a></li>
-								<li><a class="dropdown-item" id="dark" href="#">{{ __("Dark") }}</a></li>
-								<li><a class="dropdown-item" id="vanilla" href="#">{{ __("Bootstrap Default") }}</a></li>
-							</ul>
-						</li>
 						<li class="nav-item"><a href="login.php" class="nav-link"><svg class="bi" width="20" height="20" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#key"/>
 						</svg> {{ __("Sign in") }}</a></li>
