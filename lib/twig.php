@@ -8,9 +8,11 @@ class SBExtension extends \Twig\Extension\AbstractExtension {
 			new \Twig\TwigFunction('video_box', 'videoBox', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('video_thumbnail', 'videoThumbnail', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('profile_image', 'profileImage', ['is_safe' => ['html']]),
+			new \Twig\TwigFunction('channel_background', 'channelBackground', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('userlink', 'userlink', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('comment', 'comment', ['is_safe' => ['html']]),
-			new \Twig\TwigFunction('__', '__', ['is_safe' => ['html']])
+			new \Twig\TwigFunction('__', '__', ['is_safe' => ['html']]),
+			new \Twig\TwigFunction('browse_channel_box', 'browseChannelBox', ['is_safe' => ['html']])
 		];
 	}
 	public function getFilters() {

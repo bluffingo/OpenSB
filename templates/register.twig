@@ -1,4 +1,4 @@
-{% extends "_layout.twig" %}
+{% extends "_layout-login.twig" %}
 
 {% block title %}Register{% endblock %}
 
@@ -7,18 +7,46 @@
 	<div class="alert alert-danger" role="alert">{{ error }}</div>
 {% endif %}
 
+<main class="text-center">
+<div class="container">
+</div>
+  <form method="post" name="registerForm" id="registerForm" action="register.php">
+	<div class="text-center">
+    <img class="mb-2 gamerappa-killed-the-render-star" src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="squareBracket">
+	</div>
 <h2>Register</h2>
 <form method="POST">
-	<div class="form-group">{{ __("Username") }}:
-		<input type="text" name="username" class="form-control" placeholder="{{ __("Username") }}">
-	</div>
-	<div class="form-group">{{ __("Email") }}:
-		<input type="email" name="email" class="form-control" placeholder="{{ __("Email") }}">
-	</div>
-	<div class="form-group">{{ __("Password") }}:
-		<input type="password" name="pass1" class="form-control" placeholder="{{ __("Password") }}">
-		<input type="password" name="pass2" class="form-control" placeholder="{{ __("Password (Again)") }}">
-	</div>
-	<button type="submit" name="action" class="btn btn-primary">{{ __("Submit") }}</button>
+<div class="form-signin god-is-dead text-center">
+	<div class="form-floating">
+		<input type="text" name="username" class="form-control" id="floatingUsername" placeholder="">
+		<label for="floatingUsername"><svg class="bi" width="24" height="24" fill="currentColor">
+			<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#person-fill"></use>
+			</svg> {{ __("Username") }}
+		</label>
+    </div>
+	<div class="form-floating">
+		<input type="email" name="email" class="form-control" id="floatingEmail" placeholder="">
+		<label for="floatingEmail"><svg class="bi" width="24" height="24" fill="currentColor">
+			<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#mailbox2"></use>
+			</svg> {{ __("E-mail") }}
+		</label>
+    </div>
+	<div class="form-floating">
+		<input type="password" name="pass1" class="form-control" id="floatingPass" placeholder="">
+		<label for="floatingPass"><svg class="bi" width="24" height="24" fill="currentColor">
+			<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#key-fill"></use>
+			</svg> {{ __("Password") }}
+		</label>
+    </div>
+	<div class="form-floating">
+		<input type="password" name="pass2" class="form-control" id="floatingPass2" placeholder="">
+		<label for="floatingPass2"><svg class="bi" width="24" height="24" fill="currentColor">
+			<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#key-fill"></use>
+			</svg> {{ __("Password (Again)") }}
+		</label>
+    </div>
+	<button class="w-100 btn btn-lg btn-primary" type="submit" name="action" class="btn btn-primary">{{ __("Register") }}</button>
+</div>
 </form>
+</main>
 	{% endblock %}

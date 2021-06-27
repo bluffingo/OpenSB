@@ -1,0 +1,890 @@
+.header1 {
+	margin: 0 auto;
+	padding: 20px 0 2px;
+	/*! background-color: #eaeaea; */
+}
+
+.header2 {
+	height: 35px;
+	line-height: 0;
+	background-image: url(/assets/admin_placeholder/subheader.gif);
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-border-radius: 10px 10px 0 0;
+	border-radius: 5px 5px 0 0;
+	/*! -webkit-box-shadow: #777 0 0 5px; */
+	-moz-box-shadow: #777 0 0 10px;
+	/*! box-shadow: #777 0 0 5px; */
+	behavior: url(lib/PIE.php); /* polyfilling css3 for those who still use ie 6-8 */
+}
+
+/* The welcome box, only intended for the main page for unlogged in users. */
+.welcomePokTube { 
+  background: url('img/www-refreshbg-vflC3wnbM.png') no-repeat center; 
+  background-size: cover;
+  padding: 35px;
+  /*! border-radius: 8px; */
+  height: 89px;
+  width: auto;
+}
+
+ /* The sidebar menu */
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar p {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #353535;
+  color: white;
+  /*! padding: 1px 6px; */
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  /*! padding: 20px; */
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+} 
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+#sectionHeader .title_browse {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 34px;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+  text-align: left;
+  background-image: linear-gradient(#f1f1f1, #ececec);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black !important;
+  padding: 7px 14px;
+  text-decoration: none;
+  display: block;
+  /*! background-image: linear-gradient(#f1f1f1, #ececec); */
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #d6f9ff42;/*! background-image: linear-gradient(#d6f9ff5c, #d6f9ff8c); */}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;} 
+
+.headertext {
+	color: #fff !important;
+}
+
+a:hover { animation-name: link; animation-duration: 1s; animation-fill-mode: forwards; }
+
+@keyframes link {
+  from {color: #03c;}
+	to {color: #2d57d6;}
+}
+
+.search_input {
+font:12px Arial,Helvetica,sans-serif;
+width: 245px;
+padding: 2px 4px 3px;
+margin: 0;
+box-sizing: border-box;
+}
+
+/* The alert message box */
+.alert {
+  color: white;
+  vertical-align: baseline;
+  background-color: #f44336; /* Red */
+}
+
+.alert:hover {
+  background-color: #f03c30; /* Red */
+}
+
+body {
+	margin: 0;
+
+	font-family: 'Open Sans', sans-serif; /* /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 12px;
+	color: #222;
+	background-color: #eaeaea;
+	background: url("/assets/admin_placeholder/www-refreshbg-vflC3wnbM.png");
+}
+
+a:link,
+ a:visited,
+ a:active {
+    color: #123bb7;
+}
+
+td {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 12px;
+}
+
+.small {
+	font-size: 10px;
+}
+
+.label {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 12px;
+	font-weight: bold;
+	color: #222;
+}
+
+.title {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 16px;
+	font-weight: 700;
+	color: #036;
+}
+
+.title_login {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 12px;
+	font-weight: 400;
+	color: #fff;
+}
+
+a.title:link { /* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+ font-size: 12px;
+ font-weight: bold;
+ color: #cff;
+ }
+
+a.title:active { /* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+ font-size: 12px;
+ font-weight: bold;
+ color: #cff;
+ }
+
+a.title:visited { /* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+ font-size: 12px;
+ font-weight: bold;
+ color: #cff;
+ }
+
+a.title:hover { /* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+ font-size: 12px;
+ font-weight: bolder;
+ color: #cff;
+ }
+
+.table_top {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 12px;
+	font-weight: 700;
+	color: #333;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.highlight {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 14px;
+	font-weight: 700;
+	color: #333;
+}
+
+.nav {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.nav_sub {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 13px;
+	font-weight: 400;
+}
+
+.footer {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 11px;
+	color: #111;
+}
+
+.success {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 14px;
+	font-weight: 700;
+	color: #333;
+}
+
+.error {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 14px;
+	font-weight: 700;
+	color: #f00;
+}
+
+.bodystyle {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 12px;
+}
+
+/* Modules */
+
+.moduleEntrySelected,
+ .moduleEntry:hover {
+	padding: 10px;
+	background-color: #ffc;
+	background-image: url(img/table_results_selected_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border-bottom: 1px dashed #999;
+}
+
+.moduleEntry {
+	padding: 10px;
+	background-color: #ddd;
+	background-image: url(img/table_results_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border-bottom: 1px dashed #999;
+}
+
+.moduleEntry_alt:hover {
+	padding: 10px;
+	background-color: #ffc;
+	background-image: url(img/table_results_selected_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border-right: 1px dashed #999;
+	border-bottom: 1px dashed #999;
+}
+
+.moduleEntry_alt {
+	padding: 10px;
+	background-color: #ddd;
+	background-image: url(img/table_results_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border-right: 1px dashed #999;
+	border-bottom: 1px dashed #999;
+}
+
+.moduleEntryThumb {
+	margin-right: 10px;
+	border: 5px solid #fff;
+}
+
+.moduleEntryTitle {
+	margin-bottom: 2px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+}
+
+.moduleEntryDescription {
+	padding-right: 10px;
+	margin-bottom: 6px;
+	font-size: 12px;
+	color: #333;
+
+}
+
+.moduleEntryTags {
+	margin-bottom: 5px;
+	font-size: 12px;
+	color: #444;
+}
+
+.moduleEntryDetails {
+	margin-bottom: 5px;
+	font-size: 11px;
+	color: #444;
+}
+
+.moduleTitle {
+	margin: 0 0 5px 5px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #444;
+}
+
+.moduleTitleBar {
+	width: 100%;
+	background-color: #ccc;
+	border-bottom: 1px dashed #999;
+}
+
+.moduleFeatured {
+	padding: 5px 5px 15px;
+	background-color: #ddd;
+	background-image: url(img/table_results_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border-bottom: 1px dashed #999;
+}
+
+.moduleFeaturedThumb {
+	margin: 5px;
+	border: 5px solid #fff;
+}
+
+.button {
+    padding: 3.6px 1em;
+    border: 1px solid #ccc;
+    background: #f6f6f6;
+	background-image: -moz-linear-gradient(top, #f6f6f6 0%, #e8e8e8 100%); /* FF3.6-15 */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#e8e8e8)); /* Chrome4-9,Safari4-5 */
+	background-image: -webkit-linear-gradient(top, #f6f6f6 0%,#e8e8e8 100%); /* Chrome10-25,Safari5.1-6 */
+	background-image: -o-linear-gradient(top, #f6f6f6 0%,#e8e8e8 100%); /* Opera 11.10-11.50 */
+	background-image: -ms-linear-gradient(top, #f6f6f6 0%,#e8e8e8 100%); /* IE10 preview */
+	background-image: linear-gradient(to bottom, #f6f6f6 0%,#e8e8e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6f6', endColorstr='#e8e8e8',GradientType=0 ); /* IE6-9 */
+    margin-left: 0;
+    border-radius: 3px;
+    font: 12px Arial,Helvetica,sans-serif;
+	behavior: url(lib/PIE.php); /* polyfilling css3 for those who still use ie 6-8 */
+}
+
+.button:hover {
+    border: 1px solid #ccc;
+    background: #f6f6f6;
+	background-image: -moz-linear-gradient(top, #ededed 0%, #e6e6e6 100%); /* FF3.6-15 */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#e6e6e6)); /* Chrome4-9,Safari4-5 */
+	background-image: -webkit-linear-gradient(top, #ededed 0%,#e6e6e6 100%); /* Chrome10-25,Safari5.1-6 */
+	background-image: -o-linear-gradient(top, #ededed 0%,#e6e6e6 100%); /* Opera 11.10-11.50 */
+	background-image: -ms-linear-gradient(top, #ededed 0%,#e6e6e6 100%); /* IE10 preview */
+	background-image: linear-gradient(to bottom, #ededed 0%,#e6e6e6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#e6e6e6',GradientType=0 ); /* IE6-9 */
+}
+
+.button:active {
+    border: 1px solid #ccc;
+    background: #d0d0d0;
+	background-image: -moz-linear-gradient(top, #d9d9d9 0%, #fdfdfd 100%); /* FF3.6-15 */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d9d9d9), color-stop(100%,#fdfdfd)); /* Chrome4-9,Safari4-5 */
+	background-image: -webkit-linear-gradient(top, #d9d9d9 0%,#fdfdfd 100%); /* Chrome10-25,Safari5.1-6 */
+	background-image: -o-linear-gradient(top, #d9d9d9 0%,#fdfdfd 100%); /* Opera 11.10-11.50 */
+	background-image: -ms-linear-gradient(top, #d9d9d9 0%,#fdfdfd 100%); /* IE10 preview */
+	background-image: linear-gradient(to bottom, #d9d9d9 0%,#fdfdfd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9d9d9', endColorstr='#fdfdfd',GradientType=0 ); /* IE6-9 */
+}
+
+.moduleFeaturedTitle {
+	margin-bottom: 3px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 11px;
+	font-weight: bold;
+	color: #03c;
+
+}
+
+.moduleFeaturedDetails {
+	margin-bottom: 3px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 10px;
+	font-weight: normal;
+	color: #666;
+}
+
+.moduleFrameBarTitle {
+	margin: 0 5px 5px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #444;
+}
+
+.moduleFrameEntrySelected,
+ .moduleFrameEntry:hover {
+	width: 270;
+	padding: 8px;
+	background-color: #ffc;
+	background-image: url(img/table_results_selected_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border-bottom: 1px dashed #999;
+}
+
+.moduleFrameEntry {
+	width: 270;
+	padding: 8px;
+	background-color: #ddd;
+	background-image: url(img/table_results_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border-bottom: 1px dashed #999;
+}
+
+.moduleFrameTitle {
+	margin-bottom: 3px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 11px;
+	font-weight: bold;
+	color: #03c;
+
+}
+
+.moduleFrameDetails {
+	margin-bottom: 5px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 10px;
+	font-weight: normal;
+	color: #737373;
+
+}
+
+.tableFavRemove {
+	margin-top: 8px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+
+}
+
+.tableVideoStats {
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: #ffc;
+	background-image: url(img/table_results_selected_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border: 1px dashed #cc6;
+}
+
+.tableSubTitle {
+	padding: 0 0 5px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #c63;
+	border-bottom: 1px dashed #ccc;
+}
+
+.tableSubTitleInfo {
+	padding: 3px;
+	padding-left: 10px;
+	font-size: 12px;
+}
+
+
+
+/* Form Elements */
+
+.formTitle {
+	padding: 4px;
+	padding-bottom: 5px;
+	padding-left: 7px;
+	margin-bottom: 10px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 14px;
+	font-weight: bold;
+	background-color: #e5ecf9;
+	border-bottom: 1px dashed #36c;
+}
+
+.formTable {
+	width: 80%;
+	padding: 5px;
+	margin-right: auto;
+	margin-bottom: 20px;
+	margin-left: auto;
+}
+
+.formIntro {
+	padding-left: 10px;
+	margin-bottom: 15px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 13px;
+	font-weight: normal;
+}
+
+.formHighlight {
+	padding: 7px;
+	padding-bottom: 10px;
+	margin-bottom: 5px;
+	background-color: #ffc;
+	background-image: url(img/table_results_selected_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border: 1px dashed #cc6;
+}
+
+.formHighlightText {
+	margin-top: 5px;
+	margin-left: 6px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 11px;
+	font-weight: normal;
+	color: #663;
+}
+
+.formFieldInfo {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 11px;
+	color: #555;
+}
+
+
+
+/* Page Elements */
+
+.pageTitle {
+	padding: 4px;
+	padding-bottom: 5px;
+	padding-left: 7px;
+	margin-bottom: 15px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 14px;
+	font-weight: bold;
+	background-color: #e5ecf9;
+	border-bottom: 1px dashed #36c;
+}
+
+.pageTable {
+	padding: 0 5px;
+	margin-bottom: 20px;
+}
+
+.pageText {
+	padding: 0 5px;
+}
+
+.pageIntro {
+	margin-bottom: 15px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 12px;
+	font-weight: normal;
+}
+
+/* Mail Elements */
+
+.mailMessageArea {
+	padding: 7px;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+	background-color: #fff;
+	border: 1px dashed #999;
+}
+
+
+
+/* Watch Elements */
+
+.watchTitleBar {
+	background-color: #ccc;
+	border-bottom: 1px dashed #999;
+}
+
+.watchTitle {
+	margin-bottom: 6px;
+	margin-left: 5px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 13px;
+	font-weight: bold;
+	color: #333;
+
+}
+
+.watchTable {
+	padding: 5px;
+	padding-bottom: 10px;
+	text-align: center;
+	background-color: #ddd;
+	background-image: url(img/table_results_bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border-bottom: 1px dashed #999;
+}
+
+#flashcontent {
+	width: 425px;
+	height: 350px;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #fff;
+	border: 1px solid #ccc;
+}
+
+.watchInfoArea {
+	width: 395px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+	text-align: left;
+	background-color: #fff;
+}
+
+.watchDescription {
+	padding-top: 10px;
+	padding-bottom: 5px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 12px;
+	color: #000;
+	border-bottom: 1px dashed #ccc;
+}
+
+.header-left-links {
+	 text-align: right;
+}
+
+.header-left-search {
+	margin-right: 320px;
+	margin-top: 1px;
+	margin-left: 35px;
+}
+
+#dadminPanel {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	behavior: url(lib/PIE.php); /* polyfilling css3 for those who still use ie 6-8 */
+}
+
+#needsToBeBlack {
+	color: #222 !important;
+}
+
+.header_profile {
+	background-image: url(img/header_profile.gif);
+	-webkit-box-shadow: #777 0 0 10px;
+	-moz-box-shadow: #777 0 0 10px;
+	box-shadow: #777 0 0 5px;
+	behavior: url(lib/PIE.php); /* polyfilling css3 for those who still use ie 6-8 */
+}
+
+/* kerflunkto please don't be horny as fuck to a wireframe rabbit */
+.vibriwentuwu {
+	background-image: url(/assets/admin_placeholder/header_admin.gif);
+}
+
+.header2_holder {
+	height: 35px;
+	background-color: #353535;
+}
+
+.watchTags {
+	margin: 5px 0 10px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 12px;
+	color: #333;
+}
+
+.watchAdded {
+	margin-bottom: 5px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 11px;
+	color: #333;
+}
+
+.watchDetails {
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 11px;
+	font-weight: normal;
+	color: #333;
+}
+
+.commentsTitle {
+	padding: 5px;
+	padding-bottom: 6px;
+
+	/* font-family: "Segoe UI", "Open Sans", "Noto Sans", "Roboto", "Ubuntu", "verdana", "arial", "sans-serif"; /* jesus christ this code dates from 2020 and was on 2003page */
+	font-size: 11px;
+	font-weight: bold;
+	color: #333;
+	background-color: #eee;
+	border-top: 1px dashed #999;
+	border-bottom: 1px dashed #999;
+
+}
+
+.commentsEntry {
+	padding: 10px;
+	font-size: 11px;
+	background-color: #ffc;
+	border-bottom: 1px dashed #999;
+}
+
+.commentsThumb {
+	margin-right: 5px;
+	border: 5px solid #fff;
+}
+
+.profileLabel {
+	margin: 10px 0 2px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #d83;
+}
+
+/* Code Elements */
+
+.codeArea {
+	padding: 7px;
+	margin-bottom: 15px;
+	background-color: #fff;
+	border: 1px dashed #999;
+}
+
+.apiLabel {
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	background-color: #e5ecf9;
+}
+
+.profile.video-time {
+    margin-top: -15px;
+    margin-right: 15px;
+}
+
+#hpVideoListHead {
+	float: left;
+	padding-right: 400px;
+}
+
+.home.video-time {
+    margin-top: -15px;
+    margin-right: 10px;
+}
+
+.small.home.video-time {
+    margin-right: 12px;
+}
+
+.subcription-videos-block {
+    float: left;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.browsePagination {
+	background: #CCC;
+	padding: 6px 0;
+	font-size: 13px;
+	color: #333;
+	font-weight: bold;
+	text-align: right;
+}
+.pagerCurrent {
+	color: #333; 
+	background-color: #FFF; 
+	padding: 1px 4px; 
+	border: 1px solid #999; 
+	margin-right: 5px;
+}
+	
+.pagerNotCurrent {
+	color: #333; 
+	background-color: #CCC; 
+	padding: 1px 4px; 
+	border: 1px solid #999; 
+	margin-right: 5px;
+    cursor: pointer;
+    cursor: hand;
+	text-decoration: underline;
+}	

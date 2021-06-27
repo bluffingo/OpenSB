@@ -9,8 +9,8 @@ if (isset($_POST["loginsubmit"])) {
 	$password = (isset($_POST['password']) ? $_POST['password'] : null);
 
 	// Check to see if the user actually has entered anything.
-	if (!$username)	$error .= __('Please enter your username! ');
-	if (!$password) $error .= __('Please enter your password! ');
+	if (!$username)	$error .= __("Please enter your username! ");
+	if (!$password) $error .= __("Please enter your password! ");
 
 	if (empty($error)) {
 		$logindata = fetch("SELECT password,token FROM users WHERE username = ?", [$username]);

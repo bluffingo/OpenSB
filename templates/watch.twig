@@ -22,17 +22,51 @@
 		<div id="playerContainer"></div>
 		<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
 		    <style>
+				@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+				.igui-icon-font {
+					font-family: 'bootstrap-icons';
+				}
+				.igui_icon_pip::before {
+					content: "\f4ef";
+				}
+				.igui_icon_fullscreen-exit::before {
+					content: "\f3de";
+				}
+				.igui_icon_fullscreen::before {
+					content: "\f3df";
+				}
+				.igui_icon_play::before {
+					content: "\f4f4";
+				}
+				.igui_icon_pause::before {
+					content: "\f4c3";
+				}
+				.igui_icon_volume-off::before {
+					content: "\f60c";
+				}
+				.igui_icon_volume-1::before {
+					content: "\f60a";
+				}
+				.igui_icon_volume-2::before {
+					content: "\f610";
+				}
+				.igui_icon_settings::before {
+					content: "\f3e2";
+				}
+				.igui_icon_back::before {
+					content: "\f131";
+				}
 				.igui_seekbar_progress,
 				.igui_seekbar_scrubber {
-				  background-color: var(--bs-primary);
+					background-color: var(--bs-primary);
 				}
 				.ig-container {
 					font-family: var(--bs-font-sans-serif);
 				}
 				.ig_contextmenu {
-				background: rgba(0,0,0,0.85);
-				border-radius: 5px;
-				padding: 8px 0;
+					background: rgba(0,0,0,0.85);
+					border-radius: 5px;
+					padding: 8px 0;
 				}
 			</style>
 		<script>
@@ -41,14 +75,15 @@
 				sources: [
 					{
 						type: 'dash',
-						src: '{{ video.videofile }}',
+						src: '{{ video.videofile }}'
 					}
 				],
 				ui: {
-					image: '{{ video_thumbnail(video.video_id) }}'
+					image: '{{ video_thumbnail(video.video_id) }}',
+					pip: true,
+					locale: '{{ current_user.language | replace({'_': '-'}) }}'
 				}
 			};
-
 			const element = document.getElementById('playerContainer');
 			const player = IndigoPlayer.init(element, config);
 		</script>
@@ -70,14 +105,14 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-3">
+						<div class="col-3 text-end">
 							<a href="#" id="{% if logged_in %}like{% endif %}" class="text-{% if rating %}info{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
 								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-up-fill"/>
 							</svg></a> <span id="likes">{{ total_likes }}</span>
 							<a href="#" id="{% if logged_in %}dislike{% endif %}" class="text-{% if rating == 0 %}info{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
 								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-down-fill"/>
 							</svg></a> <span id="dislikes" style="padding-right: 10px">{{ total_dislikes }}</span>
-							<button class="btn btn-warning" type="button">{{ __("Subscribe") }}</button>
+							<button class="btn btn-warning" type="button" disabled>{{ __("Subscribe") }}</button>
 						</div>
 						<p style="margin-top: 1rem;">{{ video.description }}</p>
 					</div>
@@ -88,9 +123,9 @@
 			<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none"
 			rows="3" placeholder="{{ __("Enter comment here, Markdown can be used here.") }}"></textarea>
 			<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top:5px;margin-bottom:15px">
-			<button id="{% if logged_in %}post{% endif %}" class="btn me-md-2 btn-primary {% if not logged_in %}disabled{% endif %}"><svg class="bi" width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#pencil-square"/>
-						</svg> {{ __("Post") }}</button>
+			<button id="{% if logged_in %}post{% endif %}" class="btn btn-primary {% if not logged_in %}disabled{% endif %}"><svg class="bi" width="16" height="16" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#reply-fill"/>
+						</svg> {{ __("Send") }}</button>
 			</div>
 			<div id="comment"></div>
 				{% for comment in comments %}

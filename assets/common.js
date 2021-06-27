@@ -1,9 +1,13 @@
 $(document).ready(function(){
+	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+});
 	$(window).click(function() {
 	  $("#mainMenu").removeClass("show");
 	  $("#themeSelection").removeClass("show");
 	});
-	$("#navbarDropdown").click(function(event){
+	$("#openSettings").click(function(event){
 		event.stopPropagation();
 		$("#mainMenu").addClass("show");
 	});
@@ -14,6 +18,7 @@ $(document).ready(function(){
 	});
 	$("#themeSelect").click(function(event){
 		event.stopPropagation();
+		$("#mainMenu").removeClass("show");
 		$("#themeSelection").addClass("show");
 	});
 	$("#light").click(function(){

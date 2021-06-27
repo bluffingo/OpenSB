@@ -9,6 +9,8 @@ use FFMpeg\Filters;
 
 $manager = new ImageManager();
 
+//TODO: make video IDs not use multiple underscores.
+
 $video_id = substr(base64_encode(md5(bin2hex(random_bytes(6)))), 0, 11); //you are never too sure how much randomness you need.
 $new = '';
 foreach(str_split($video_id) as $char){
@@ -38,9 +40,10 @@ if (isset($_POST['upload']) and isset($currentUser['username'])) {
 		die("Your video is already uploading or has been uploaded.");
 	}
 
-	// Rate limit uploading to 30 minutes, both to prevent spam and to prevent double uploads.
-	if (result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60*30, $currentUser['id']])) {
-		die("Please wait 30 minutes before uploading again. If you've already uploaded a video, it is being processed.");
+	// Rate limit uploading to 2 minutes, both to prevent spam and to prevent double uploads.
+	// Shortened because 30 minutes is retarded.
+	if (result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60*2, $currentUser['id']])) {
+		die("Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed.");
 	}
 
 	$name       = $_FILES['fileToUpload']['name'];

@@ -1,10 +1,10 @@
 ## User-generated files
 conf/config.php
-conf/links.yml
 templates/cache/
 cache/
 assets/profpic/
 assets/thumb/
+assets/backgrounds/
 *.mp4
 videos/
 
@@ -22,3 +22,6 @@ assets/bs-dark.css
 adminer-*.php
 
 
+## misc shit
+grdl/
+isos/
