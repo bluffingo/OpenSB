@@ -32,7 +32,7 @@ $css = $scss->compile(
 		@include text-contrast($color);
 	}
 	.bg-primary {
-		@include gradient-y-three-colors(darken($color, 0%), darken($color, 10%), 60%, darken($color, 20%));
+		@include gradient-y-three-colors(lighten($color, 8%), $color, 60%, darken($color, 4%));
 	}'
 );
 $twig = twigloader();
