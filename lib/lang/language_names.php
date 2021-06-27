@@ -4,8 +4,7 @@
 $languages = [
 	'en_US' => "English",
 	'fr_CA' => "Français (Canada)",
-	'ohgodno' => "OwOSpeak",
 	'ru_RU' => "Русский",
 	'sv_SE' => "Svenska",
-	'psuedo' => $isDebug ? "[!!! Þƨèúδôℓôçáℓïƺáƭïôñ !!!]": NULL
+	'ohgodno' => "OwOSpeak",
 ];
