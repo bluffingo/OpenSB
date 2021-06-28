@@ -52,7 +52,7 @@ function getUrl(url, async, handleStateChange) {
 	}
 	else
 	{
-		xmlHttpReq.onreadystatechange = function() {;}
+		xmlHttpReq.onreadystatechange = function() {}
 	}
 
 	xmlHttpReq.open("GET", url, async);

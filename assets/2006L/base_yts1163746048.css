@@ -29,18 +29,18 @@ dd { padding-bottom: 15px; }
 	
 emphasis { font-style: italic; }
 
-form { margin: 0px; padding: 0px; }
+form { margin: 0; padding: 0; }
 
 h1,h2,h3,h4,h5,h6 {
 	font-weight: bold;
 	color: #000;
 	margin-top: 5px;
 	margin-bottom: 3px;
-	padding: 0px;
+	padding: 0;
 	}
 
 h1 {
-	margin-top: 0px;
+	margin-top: 0;
 	font-size: 18px;
 }
 	
@@ -57,7 +57,7 @@ h5 { font-size: 10px; }
 h6 { font-size: 10px; }
 	
 hr {
-	border: 0px; 
+	border: 0; 
 	margin-top: 12px;
 	border-top: 1px dashed #999;
 	height: 1px;
@@ -126,14 +126,14 @@ hr {
 
 .headerTitleRight {
 	float: right; 
-	padding: 1px 5px 0px 0px;
+	padding: 1px 5px 0 0;
 	font-size: 12px;
 	font-weight: bold;
 	color: #333;
 	}
 
 .headerTitleCenter {
-	padding: 1px 5px 0px 0px;
+	padding: 1px 5px 0 0;
 	text-align: center;
 	font-size: 12px;
 	font-weight: normal;
@@ -151,10 +151,10 @@ hr {
 .eeeBG { background: #EEE; }
 .fffBG { background: #FFF; }
 
-.marT0 { margin-top: 0px;}
+.marT0 { margin-top: 0;}
 .marl15 { margin-left: 15px; }
 .marb5 { margin-bottom: 5px; }
-.marB0 { margin-bottom: 0px; }
+.marB0 { margin-bottom: 0; }
 
 .clear { clear: both; }
 .lclear { clear: left; }
@@ -259,14 +259,14 @@ on the contest page) */
 .headerRCBox .rch2 {
 	border-right: 1px solid #FAFAFA;
 	border-left: 1px solid #FAFAFA;
-	padding: 0px 1px;
+	padding: 0 1px;
 	background: #D6D6D6; /* rch3 */
-	margin: 0px 1px;
+	margin: 0 1px;
 	}
 .headerRCBox .rch3 {
 	border-right: 1px solid #D6D6D6;
 	border-left: 1px solid #D6D6D6;
-	margin: 0px 1px;
+	margin: 0 1px;
 	}
 .headerRCBox .rch4 {
 	border-right: 1px solid #E9E9E9;
@@ -278,7 +278,7 @@ on the contest page) */
 	}
 .headerRCBox .content {
 	background: #CCC;
-	padding: 0px 6px 2px 6px;
+	padding: 0 6px 2px;
 	}
 
 .headerHighlight {
@@ -304,15 +304,15 @@ on the contest page) */
 .headerHighlight2 {
 	border-right:1px solid #fff9e5;
 	border-left:1px solid #fff9e5;
-	padding:0px 1px;
+	padding:0 1px;
 	background:#ffd530;
-	margin:0px 1px;
+	margin:0 1px;
 	}
 
 .headerHighlight3 {
 	border-right:1px solid #ffd530;
 	border-left:1px solid #ffd530;
-	margin:0px 1px;
+	margin:0 1px;
 	}
 
 .headerHighlight4 {
@@ -325,16 +325,16 @@ on the contest page) */
 	}
 	
 .headerHighlight_content{
-	padding: 0px 6px 2px 6px;
+	padding: 0 6px 2px;
 	background:#ffcc00;
 	}
 
 .footerBox {
-	padding: 0px 5px;
+	padding: 0 5px;
 	border: 1px solid #CCC;
 	background-color: #CCC; 
 	margin-bottom: 15px;
-	margin-top: 0px;
+	margin-top: 0;
 	}
 
 .contentBox {
@@ -412,7 +412,7 @@ on the contest page) */
 #sideNav .navHead {
 	font-weight: bold;
 	font-size: 14px;
-	padding: 8px 0px 1px 0px;
+	padding: 8px 0 1px;
 	}
 #sideNav .navBody { padding-bottom: 10px; }
 #sideNav .navBody12 {
@@ -426,7 +426,7 @@ on the contest page) */
 	padding-bottom: 10px;
 	}
 #sideNav .navButton { padding-bottom: 4px; }
-#sideNav #bottomAdDiv { padding: 20px 0px; text-align: center; }
+#sideNav #bottomAdDiv { padding: 20px 0; text-align: center; }
 
 #mainContentWithNav {
 	width: 545px; /* this should be 550, but IE6 doesn't like it */
@@ -444,12 +444,12 @@ on the contest page) */
 	vertical-align: top;
 	}
 #manageNav ul {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	}
 #manageNav li {
 	list-style: none;
-	margin: 0px;
+	margin: 0;
 	padding: 5px;
 	font-weight: bold;
 	}
@@ -468,7 +468,7 @@ on the contest page) */
 	padding: 4px;
 	}
 #manageContent .empty {
-	padding: 24px 0px;
+	padding: 24px 0;
 	text-align: center;
 	}
 
@@ -520,7 +520,7 @@ on the contest page) */
 a.headerLink { }
 #iconMail {
 	vertical-align: text-bottom;
-	padding: 1px 0px 1px 0px;
+	padding: 1px 0;
 	}
 #searchDiv {
 	margin-top: 6px;
@@ -562,7 +562,7 @@ a.headerLink { }
 
 #gNavDiv .tabContent {
 	height: 19px;
-	padding: 5px 5px 0 5px;
+	padding: 5px 5px 0;
 	background: #BCE url(/web/20061124193821im_/http://www.youtube.com/img/navbar_tab_bg.gif) top left no-repeat;
 	text-align: center;
 	font-size: 13px;
@@ -583,7 +583,7 @@ a.headerLink { }
 	clear: both;
 	background: #DDD;
 	text-align: center;
-	padding: 8px 0px;
+	padding: 8px 0;
 	margin-bottom: 10px;
 	}
 
@@ -606,7 +606,7 @@ a.headerLink { }
 	background: #EEE;
 	border-top: 1px solid #CCC;
 	border-bottom: 1px solid #CCC;
-	padding: 8px 0px;;
+	padding: 8px 0;
 	}
 .footColumn { }
 .footColumnBar {
@@ -621,7 +621,7 @@ a.headerLink { }
 	color: #333;
 	}
 .footValues {
-	margin-left: 0px;
+	margin-left: 0;
 	padding-bottom: 6px;
 	font-size: 11px;
 	}
@@ -642,7 +642,7 @@ a.headerLink { }
 .myAccountMenu {
 	position: absolute;
 	top: 9px;
-	left: 0px;
+	left: 0;
 	z-index:2;
 	width:120px;
 	height:120px;
@@ -664,7 +664,7 @@ a.headerLink { }
 .menuBoxItem {
 	text-align: left;
 	padding: 2px;
-	margin: 0px;
+	margin: 0;
 	background-color: #FFF;
 	cursor: pointer;
 	cursor: hand;
@@ -694,14 +694,14 @@ a.dropdownLinks:active {
 	float: right; 
 	width: 185px; 
 	background-color: #EEE;
-	padding: 0px;
-	margin-top: 0px;
+	padding: 0;
+	margin-top: 0;
 	margin-left: 15px;
 	}
 	
 .navItem {
 	list-style: none;
-	margin: 0px;
+	margin: 0;
 	padding: 6px; 
 	border-bottom: 1px dashed #999;
 	font-weight: bold;
@@ -745,7 +745,7 @@ a.dropdownLinks:active {
 #contestOwnerInfo form {
 	width: 120px;
 	text-align: center;
-	margin: 0 0 20px 0;
+	margin: 0 0 20px;
 }
 #contestVoted {
 	margin: 20px 0 0 5px;
@@ -815,7 +815,7 @@ a.dropdownLinks:active {
 
 .pagingDiv {
 	background: #CCC;
-	padding: 5px 0px;
+	padding: 5px 0;
 	font-size: 13px;
 	color: #333;
 	font-weight: bold;
@@ -875,7 +875,7 @@ a.dropdownLinks:active {
 	}
 
 .vListBox {
-	padding: 0px 6px; 
+	padding: 0 6px; 
 	border: 1px solid #CCC;
 	background: #EEE;
 	}
@@ -955,9 +955,9 @@ a.dropdownLinks:active {
         }
 	
 img.rating {
-	border: 0px;
-	padding: 0px;
-	margin: 0px;
+	border: 0;
+	padding: 0;
+	margin: 0;
 	vertical-align: middle;
 	}
 
@@ -973,7 +973,7 @@ img.rating {
 	}
 	
 .desc {
-	margin: 3px 0px;
+	margin: 3px 0;
 	font-size: 12px;
 	}
 	
@@ -988,10 +988,10 @@ img.rating {
 
 .vtitle { font-weight: bold; }
 	
-.vdesc { margin: 3px 0px; }
+.vdesc { margin: 3px 0; }
 	
 .vfacets {
-	margin: 3px 0px;
+	margin: 3px 0;
 	font-size: 11px;
 	line-height: 13px;
 	}
@@ -1009,8 +1009,8 @@ img.rating {
 	}
 	
 .vTable {
-	border-spacing: 0px;
-	padding: 0px;
+	border-spacing: 0;
+	padding: 0;
 	}
 .vTable td { vertical-align: top; }
 .vTable .vinfo { padding-left: 8px; }
@@ -1019,17 +1019,17 @@ img.rating {
 
 
 .vEntry {
-	padding: 10px 0px;
+	padding: 10px 0;
 	border-bottom: 1px dashed #999;
 	}
 .vDetailEntry {
 	clear: left;
-	padding: 8px 0px;
+	padding: 8px 0;
 	border-bottom: 1px dashed #999;
 	}
 .vDetailEntry table {
-	border-spacing: 0px;
-	padding: 0px;
+	border-spacing: 0;
+	padding: 0;
 	}
 .vDetailEntry td { vertical-align: top; }
 
@@ -1042,8 +1042,8 @@ img.rating {
 	}
 	
 .vDetailEntry .tagTable {
-	border-spacing: 0px;
-	padding: 0px;
+	border-spacing: 0;
+	padding: 0;
 	margin-bottom: 3px;
 	}
 
@@ -1149,19 +1149,19 @@ img.rating {
 	float: left;
 	width: 23%;
 	text-align: center;
-	padding: 0px 3px;
+	padding: 0 3px;
 	}
 
 #hpSubsBlock {
 	border-top: 1px dashed #999;
 	margin-top: 6px;
 	}
-#hpSubsHeader { padding: 5px 0px; }
+#hpSubsHeader { padding: 5px 0; }
 #hpSubsTable {
 	width: 100%;
-	border-spacing: 0px;
-	padding: 0px;
-	margin: 0px;
+	border-spacing: 0;
+	padding: 0;
+	margin: 0;
 	}
 #hpSubsTable td { vertical-align: top; }
 #hpSubsTable td.next { vertical-align: middle; }
@@ -1239,12 +1239,12 @@ img.rating {
 
 #ibNav { width: 130px; }
 #ibNav ul {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	}
 #ibNav li {
 	list-style: none;
-	margin: 0px;
+	margin: 0;
 	padding: 4px;
 	font-weight: bold;
 	}
@@ -1252,7 +1252,7 @@ img.rating {
 
 #ibContent { border: 3px solid #CCC; }
 
-#ibSubmitDiv { margin: 6px 0px 6px 12px; }
+#ibSubmitDiv { margin: 6px 0 6px 12px; }
 
 #ibFilterDiv { margin-top: 12px; }
 #ibFilterSelect { font-size: 11px; }
@@ -1298,7 +1298,7 @@ a.ibLink:hover {
 .catNameHeader {
 	font-size: 16px;
 	font-weight: bold;
-	padding: 6px 0px 4px 0px;
+	padding: 6px 0 4px;
 	}
 .catNameHeader a { text-decoration: none; }
 .catNameHeader a:hover { text-decoration: underline; }
@@ -1306,7 +1306,7 @@ a.ibLink:hover {
 .catFeatureVidDiv { padding-bottom: 5px; }
 .catMoreDiv { font-size: 11px; }
 .catSearchDiv {
-	margin: 4px 0px 12px 0px;
+	margin: 4px 0 12px;
 	padding: 6px;
 	background: #EEE;
 	border: 1px solid #CCC;
@@ -1320,7 +1320,7 @@ a.ibLink:hover {
 /* Mini Explanation Popup Code */
 #set_of_links {
 	position: relative;
-	padding: 0px;
+	padding: 0;
 	border: none;
 	background: #FFF;
 	margin-bottom: 20px;
@@ -1342,9 +1342,9 @@ a.ibLink:hover {
 #set_of_links a:hover span {
 	display: inline;
 	position: absolute;
-	left: 0px;
+	left: 0;
 	background: #FFC;
-	padding: 5px 15px 5px 0px;
+	padding: 5px 15px 5px 0;
 	}
 
 
@@ -1545,7 +1545,7 @@ div.watchlist_videos {
 
 .saveRowSetting {
 	float:left;
-	margin-top:0px;
+	margin-top:0;
 }
 
 .nextVideoDisplay {
@@ -1577,7 +1577,7 @@ div.watchlist_videos {
 	font-weight: bold;
 	font-size: 16px;
 	}
-#groupLinks { margin: 6px 0px; }
+#groupLinks { margin: 6px 0; }
 #groupDesc {}
 #groupOptionsDiv {
 	float: right;
@@ -1587,7 +1587,7 @@ div.watchlist_videos {
 #groupFlagAsDiv { padding-top: 5px; }
 
 #groupRecentVideosDiv { padding-top: 2px; }
-#groupRecentTopicsDiv { padding: 12px 0px 16px 0px; }
+#groupRecentTopicsDiv { padding: 12px 0 16px; }
 #groupAboutGroupDiv { padding-bottom: 6px; }
 
 .groupControlsTop {
@@ -1611,7 +1611,7 @@ div.watchlist_videos {
 	padding: 6px;
 	margin-bottom: 24px;
 	}
-#groupTopicPostCommentDiv { padding: 10px 0px; }
+#groupTopicPostCommentDiv { padding: 10px 0; }
 
 .brandedInfoBox{
 	float: left;
@@ -1625,7 +1625,7 @@ div.watchlist_videos {
 	float: left;
 }
 .brandedStatBox {
-	padding: 25px 0 0 0;
+	padding: 25px 0 0;
 	width: 285px;
 	float: right;
 	font-size: 11px;
@@ -1640,7 +1640,7 @@ div.watchlist_videos {
 	color: #333;
 	font-size: 13px;
 	font-weight: bold;
-	margin: 5px 0 4px 0;
+	margin: 5px 0 4px;
 	}
 
 .votingThumb {
@@ -1672,7 +1672,7 @@ div.watchlist_videos {
 
 }
 .cfacets {
-	margin: 5px 0px;
+	margin: 5px 0;
 	font-size: 11px;
 	line-height: 13px;
 	}
@@ -1690,7 +1690,7 @@ div.watchlist_videos {
 	background-color: #ddd;
 	margin: 5px 10px 0 0;
 	border: 2px #ccc solid;
-	padding: 15px 15px 50px 15px;
+	padding: 15px 15px 50px;
 }
 #termsBox {
 	padding: 5px;
@@ -1726,7 +1726,7 @@ margin-left: 50px;
 }
 .pitchedItem {
 	width: 135px;
-	margin: 0 22px 0 0px;
+	margin: 0 22px 0 0;
 	float: left;
 	text-align: left;
 }
@@ -1742,7 +1742,7 @@ margin-left: 50px;
 	font-weight: bold;
 	color: #000;
 	size: 11px;
-	margin: 0px 0 0 0px;
+	margin: 0;
 }
 .pitchedItem .info {
 	display: block;
