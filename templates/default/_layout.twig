@@ -41,9 +41,7 @@
 				<input name="query" class="form-control me-2" type="search" placeholder="{{ __(" Search") }}"
 					aria-label="Search">
 				<button class="btn btn-success" type="submit">
-					<svg class="bi" width="20" height="20" fill="currentColor">
-						<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#search" />
-					</svg>
+					{{ icon('search', 20) }}
 				</button>
 			</form>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,29 +72,13 @@
 						</li>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
 							{% if logged_in %}
-							<li><a class="dropdown-item" href="settings.php"><svg class="bi" width="20" height="20"
-										fill="currentColor">
-										<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#tools" />
-									</svg> {{ __("Settings") }}</a></li>
+								<li><a class="dropdown-item" href="settings.php">{{ icon('tools', 20) }} {{ __("Settings") }}</a></li>
 							{% endif %}
-							<li><a class="dropdown-item" id="themeSelect" href="#"><svg class="bi" width="20"
-										height="20" fill="currentColor">
-										<use
-											xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#droplet-half" />
-									</svg> {{ __("Theme") }}</a></li>
+							<li><a class="dropdown-item" id="themeSelect" href="#">{{ icon('droplet-half', 20) }} {{ __("Theme") }}</a></li>
 							{% if logged_in %}
-							<li><a class="dropdown-item" href="user.php?name={{ current_user.username }}"><svg
-										class="bi" width="20" height="20" fill="currentColor">
-										<use
-											xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#person-lines-fill" />
-									</svg> {{ __("My profile") }}</a></li>
-							<li>
-								<hr class="dropdown-divider">
-							</li>
-							<li><a class="dropdown-item" href="logout.php"><svg class="bi" width="20" height="20"
-										fill="currentColor">
-										<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#door-open" />
-									</svg> {{ __("Sign off") }}</a></li>
+							<li><a class="dropdown-item" href="user.php?name={{ current_user.username }}">{{ icon('person-lines-fill', 20) }} {{ __("My profile") }}</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="logout.php">{{ icon('door-open', 20) }} {{ __("Sign off") }}</a></li>
 							{% endif %}
 						</ul>
 						<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
@@ -107,23 +89,11 @@
 						</ul>
 					</div>
 					{% if logged_in %}
-					<li class="nav-item"><a href="/upload.php" class="nav-link"><svg class="bi" width="20" height="20"
-								fill="currentColor">
-								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#camera-video" />
-							</svg> {{ __("Upload") }}</a></li>
-					<li class="nav-item"><a href="logout.php" class="nav-link"><svg class="bi" width="20" height="20"
-								fill="currentColor">
-								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#door-open" />
-							</svg> {{ __("Sign off") }}</a></li>
+						<li class="nav-item"><a href="upload.php" class="nav-link">{{ icon('camera-video', 20) }} {{ __("Upload") }}</a></li>
+						<li class="nav-item"><a href="logout.php" class="nav-link">{{ icon('door-open', 20) }} {{ __("Sign off") }}</a></li>
 					{% else %}
-					<li class="nav-item"><a href="login.php" class="nav-link"><svg class="bi" width="20" height="20"
-								fill="currentColor">
-								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#key" />
-							</svg> {{ __("Sign in") }}</a></li>
-					<li class="nav-item"><a href="register.php" class="nav-link"><svg class="bi" width="20" height="20"
-								fill="currentColor">
-								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#pencil-square" />
-							</svg> {{ __("Sign up") }}</a></li>
+						<li class="nav-item"><a href="login.php" class="nav-link">{{ icon('key', 20) }} {{ __("Sign in") }}</a></li>
+						<li class="nav-item"><a href="register.php" class="nav-link">{{ icon('pencil-square', 20) }} {{ __("Sign up") }}</a></li>
 					{% endif %}
 				</ul>
 			</div>
@@ -133,19 +103,10 @@
 	<nav class="py-1 bg-dark" style="margin-bottom:20px">
 		<div class="container">
 			<ul class="nav me-auto">
-				<li class="nav-item"><a href="/" class="nav-link link-light px-2"><svg class="bi" width="16" height="16"
-							fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#house-door" />
-						</svg> {{ __("Home") }}</a></li>
-				<li class="nav-item"><a href="browse.php" class="nav-link link-light px-2"><svg class="bi" width="16"
-							height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#play-btn" />
-						</svg> {{ __("Browse") }}</a></li>
+				<li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} {{ __("Home") }}</a></li>
+				<li class="nav-item"><a href="browse.php" class="nav-link link-light px-2">{{ icon('play-btn', 16) }} {{ __("Browse") }}</a></li>
 				{% for menu_link in menu_links %}
-				<li class="nav-item"><a href="{{ menu_link.url }}" class="nav-link link-light px-2"><svg class="bi"
-							width="16" height="16" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#{{ menu_link.icon }}" />
-						</svg> {{ menu_link.name }}</a></li>
+					<li class="nav-item"><a href="{{ menu_link.url }}" class="nav-link link-light px-2">{{ icon(menu_link.icon, 16) }} {{ menu_link.name }}</a></li>
 				{% endfor %}
 			</ul>
 		</div>

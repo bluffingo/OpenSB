@@ -86,6 +86,11 @@ function videoBox($videodata) {
 	return $twig->render('videobox.twig', ['data' => $videodata]);
 }
 
+function icon($icon, $size) {
+	$twig = twigloader('components');
+	return $twig->render('icon.twig', ['icon' => $icon, 'size' => $size]);
+}
+
 function relativeTime($time) {
 	$config = [
 		'language' => __('\RelativeTime\Languages\English'),
