@@ -127,6 +127,7 @@
 			</div>{% endif %}
 			<div id="comment"></div>
 				{% for comment in comments %}
+					{{ userlink(comment, 'u_') }}
 					{{ comment(comment) }}
 				{% endfor %}
 		</div>

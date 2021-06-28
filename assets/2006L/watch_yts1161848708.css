@@ -1,0 +1,505 @@
+#adLeaderboard {
+width:875px;
+text-align:center;
+display:none;
+margin:12px 0;
+}
+
+#adFullBanner {
+display:none;
+margin:12px 0;
+}
+
+#adMediumRectangle {
+margin-top:12px;
+margin-bottom:12px;
+display:none;
+}
+
+#adSquareRectangle {
+width:250px;
+height:250px;
+display:none;
+margin:12px auto;
+}
+
+#adSkyscraper {
+float:left;
+width:120px;
+background:#333;
+display:none;
+}
+
+#interactDiv {
+width:450px;
+margin-right:15px;
+}
+
+#aboutExploreDiv {
+width:300px;
+margin-right:15px;
+}
+
+#sideAdDiv {
+width:90px;
+}
+#ratingDiv {
+}
+#ratingDiv .rating {
+	height: auto;
+}
+#actionsAndStatsDiv {
+width: 450px;
+position: relative;
+padding: 6px 0 0;
+margin-top:12px;
+margin-bottom:12px;
+background:#f6f6f6;
+border:1px #ccc solid;
+}
+
+#ratingDivWrapper {
+float:left;
+text-align:center;
+width:26%;
+}
+
+#ratingMessage {
+margin-bottom:2px;
+font-size:11px;
+}
+
+#ratingLogin {
+margin-top:12px;
+font-size:11px;
+}
+
+.ratingNote {
+width:90px;
+font-size:11px;
+margin:4px 0;
+}
+
+.actionsDiv {
+float:left;
+text-align:left;
+width:28%;
+margin-top: 4px;
+}
+
+.actionsDiv.sm {
+width:22%;
+padding-left:4px;
+}
+
+.actionRow {
+line-height: 1.4em;
+}
+
+#statsDiv {
+text-align:center;
+width:100%;
+border-top: 1px #ccc solid;
+margin:4px 0 0;
+padding:4px 0;
+}
+
+.statRow {
+display: inline;
+float:left;
+border-left:1px #ccc solid;
+padding: 5px 10px;
+margin:5px;
+}
+.statVal {
+	font-weight: bold;
+}
+.statDivider {
+	margin:2px 10px;
+	vertical-align: middle;
+	color: #ccc;
+	display: inline;
+}
+#honorLinkDiv {
+display: block;
+text-align:center;
+font-weight: bold;
+border-top: 1px #ccc solid;
+margin:4px 0 0;
+padding:4px 0;
+}
+
+/* Popups (divs and windows) */
+
+.popupDiv {
+	background: #FFF;
+	padding: 6px;
+	border: 1px #ccc solid;
+	}
+.popupDiv .closeDiv {
+	float: right;
+	font-size: 11px;
+	}
+.popupDiv .okTable {
+	width: 100%;
+	border-spacing: 0px;
+	padding: 0px;
+	margin: 0px;
+	text-align: right;
+	}
+#fullStats {
+display:none;
+}
+#fullStatsClose {
+	float: right;
+	margin: 0 10px 10px 0;
+}
+.moreStats {
+border-top: 1px #ccc solid;
+text-align:left;
+font-size: 85%;
+margin:4px 0 0;
+padding:4px 20px;
+}
+.statItem {
+	margin: 0 0 0 15px;
+}
+#referDiv {
+}
+#honorsDiv {
+}
+
+
+
+
+#linksToValue {
+padding-top:4px;
+margin-left:55px;
+}
+
+#addFavsDiv {
+display:none;
+position:absolute;
+top:0;
+left:0;
+width:430px;
+overflow:auto;
+}
+
+#addPlaylistsDiv {
+margin-top:8px;
+border-top:1px dashed #666;
+padding-top:8px;
+}
+
+#addGroupsDiv {
+display:none;
+position:absolute;
+top:0;
+left:0;
+width:430px;
+height:250px;
+overflow:auto;
+}
+
+#embedTextarea {
+width:400px;
+height:100px;
+}
+
+.gpEntry {
+margin:0 0 6px 8px;
+}
+
+#commentsDiv {
+clear:both;
+margin-top:20px;
+}
+
+.standaloneComments {
+width:550px;
+}
+
+.commentHeading {
+margin:24px 0 0;
+}
+
+.commentEntry {
+clear:both;
+margin:6px 0 16px;
+}
+
+.commentEntryReply {
+margin:6px 0 16px 40px;
+}
+
+.commentHead {
+background-color:#EEE;
+padding:4px;
+}
+
+.commentSpam {
+background-color:#FFE;
+padding:4px;
+}
+
+.commentBody {
+margin-top:4px;
+margin-left:4px;
+}
+
+.commentAction {
+margin-top:0;
+text-align:right;
+}
+
+#commentPostDiv {
+margin-top:12px;
+}
+
+#commentTextarea {
+width:400px;
+height:80px;
+}
+
+#commentTopAction {
+text-align:right;
+margin:-8px 0 10px;
+}
+
+#vResponseParent {
+background-color:#FFC;
+border:1px solid #FC3;
+margin-top:6px;
+font-weight:700;
+padding:6px;
+}
+
+#vResponseDiv {
+margin-bottom:10px;
+}
+
+#vResponseHeading {
+background:#EEE;
+margin:10px 0 6px;
+padding:4px;
+}
+
+#aboutVidDiv {
+margin-bottom:12px;
+}
+
+#userStatsDiv {
+margin-left:18px;
+}
+
+#aboutDirectorTable {
+width:100%;
+border-spacing:0;
+margin:3px 0 0;
+padding:0;
+}
+
+#aboutDirectorTable td {
+vertical-align:bottom;
+}
+
+.dvnvp {
+margin:1px 0;
+}
+
+#vidDescDiv {
+margin:8px 0;
+}
+
+#vidTagsDiv {
+width:140px;
+margin-left:245px;
+}
+
+#vidTagsValue {
+margin-left:38px;
+}
+
+#vidFacetsDiv {
+margin-top:8px;
+}
+
+#vidFacetsTable {
+border-spacing:0;
+padding:0;
+}
+
+#vidFacetsTable td {
+vertical-align:middle;
+}
+
+#vidFacetsTable td.tags {
+padding-bottom:5px;
+font-size:11px;
+}
+
+.vidURLField {
+width:230px;
+font-size:10px;
+}
+
+#subscribeDiv {
+float:right;
+text-align:center;
+width:100px;
+}
+
+#exploreBody {
+height:450px;
+}
+
+.exploreContent {
+height:405px;
+overflow:auto;
+}
+
+#exploreDiv a.selectedNavLink {
+color:#000;
+font-weight:700;
+text-decoration:none;
+}
+
+#exploreDiv a.unSelectedNavLink {
+color:#03C;
+font-weight:400;
+text-decoration:none;
+border-bottom:1px dotted #03C;
+}
+
+#exSubNavTable {
+width:100%;
+border-spacing:0;
+margin:4px 0 8px;
+padding:0;
+}
+
+#exUserHeadDiv {
+font-size:14px;
+font-weight:700;
+padding-bottom:6px;
+}
+
+#plList {
+margin-top:4px;
+line-height:18px;
+}
+
+.showingTable {
+width:100%;
+border-collapse:separate;
+border-spacing:0;
+margin:0;
+padding:3px;
+}
+
+.vWatchEntry {
+margin:6px 0 2px;
+}
+
+.vWatchEntry table {
+border-collapse:separate;
+border-spacing:0;
+margin:0 4px;
+padding:0;
+}
+
+.vWatchEntry .title {
+font-size:12px;
+}
+
+.vWatchEntry .facets {
+margin-top:2px;
+font-size:11px;
+}
+
+.vNowPlaying {
+background:#FFC;
+padding:2px 0;
+}
+
+#dVidsDiv {
+margin-bottom:24px;
+}
+
+#dVidsDiv .heading {
+margin-bottom:6px;
+text-align:center;
+font-weight:700;
+color:#999;
+padding:3px 0;
+}
+
+#dVidsDiv .vimgMd {
+width:90px;
+height:70px;
+border-width:0;
+}
+
+.dvidEntry {
+width:90px;
+margin-left:auto;
+margin-right:auto;
+margin-bottom:12px;
+}
+
+.dvidEntry .img {
+margin-bottom:2px;
+}
+
+#watchTable,#commentsDiv table {
+border-collapse:separate;
+border-spacing:0;
+width:100%;
+margin:0;
+padding:0;
+}
+
+#watchTable td,.vWatchEntry td {
+vertical-align:top;
+}
+
+#ratingCount,#mobileNote,#subscribeCount {
+margin-top:2px;
+}
+
+#linksToLabel,#vidTagsLabel {
+float:left;
+}
+
+#linkstoDiv,#inappropriateVidDiv,#blogVidDiv,#embedVidDiv {
+display:none;
+left:0;
+position:absolute;
+top:0;
+width:430px;
+}
+
+#commentSubmit,#directorLogo {
+margin-top:4px;
+}
+
+#aboutDirectorTable .img,.vWatchEntry .img {
+padding-right:6px;
+}
+
+#vidDescBegin,#vidDescMore,#vidTagsBegin,#vidTagsMore {
+display:inline;
+}
+
+#vidDescRemain,#vidDescLess,#vidTagsRemain,#vidTagsLess {
+display:none;
+}
+
+#exContentWrapper,#exRelatedDiv,#exUserContentDiv,#exPlaylistDiv {
+background:#EEE;
+}
+
+.dvidEntry .title,.dvidEntry .facets {
+font-size:11px;
+}

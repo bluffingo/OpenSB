@@ -1,0 +1,1159 @@
+{% extends "_layout.twig" %}
+{% block css %}
+<link rel="stylesheet" href="/assets/2006l/watch_yts1161848708.css" type="text/css">
+{% endblock %}
+{% block content %}
+<h1 id="video_title">{{ video.title }}</h1>
+<table cellspacing="0" cellpadding="0" align="center"><tbody><tr valign="top">
+<td>
+<div id="interactDiv">
+
+	<div id="playerDiv">
+	<!-- i am sorry but trying to get some old-ass flash player to work with MPDs would be next to impossible -->
+			<div id="playerContainer"></div>
+		<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
+		    <style>
+				@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+				.igui-icon-font {
+					font-family: 'bootstrap-icons';
+				}
+				.igui_icon_pip::before {
+					content: "\f4ef";
+				}
+				.igui_icon_fullscreen-exit::before {
+					content: "\f3de";
+				}
+				.igui_icon_fullscreen::before {
+					content: "\f3df";
+				}
+				.igui_icon_play::before {
+					content: "\f4f4";
+				}
+				.igui_icon_pause::before {
+					content: "\f4c3";
+				}
+				.igui_icon_volume-off::before {
+					content: "\f60c";
+				}
+				.igui_icon_volume-1::before {
+					content: "\f60a";
+				}
+				.igui_icon_volume-2::before {
+					content: "\f610";
+				}
+				.igui_icon_settings::before {
+					content: "\f3e2";
+				}
+				.igui_icon_back::before {
+					content: "\f131";
+				}
+				.igui_seekbar_scrubber {
+					background-color: #8C8C8C;
+				}
+				.igui_seekbar_progress {
+					background-color: #FF2B27;
+					background-image: linear-gradient(0deg, rgba(194,71,66,1) 0%, rgba(239,59,58,1) 100%);
+				}
+				.ig-container {
+					font-family: Arial, Helvetica, sans-serif;
+				}
+				.ig_contextmenu {
+					background: rgba(0,0,0,0.85);
+					border-radius: 5px;
+					padding: 8px 0;
+				}
+			</style>
+		<script>
+			const config = {
+				autoplay: true,
+				aspectRatio: 4/3,
+				sources: [
+					{
+						type: 'dash',
+						src: '{{ video.videofile }}'
+					}
+				],
+				ui: {
+					image: '{{ video_thumbnail(video.video_id) }}',
+					pip: true,
+					locale: '{{ current_user.language | replace({'_': '-'}) }}'
+				}
+			};
+			const element = document.getElementById('playerContainer');
+			const player = IndigoPlayer.init(element, config);
+		</script>
+	</div>
+        <div id="watchqueueStartNew" class="quicklist_container hid">
+	<div><img src="/web/20061115140409im_/http://youtube.com/img/pic_curves_top_450x4.gif" border="1"></div>
+	<div id="nextvideoRow" class="nextVideoRowDiv">
+		<table width="440" cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr>
+				<td width="77" valign="top" align="left">
+					<div class="headerTitleLite">&nbsp;QuickList</div>
+				</td>
+				<td width="30" valign="top" align="right">
+						<a href="#" onclick="play_all_start_new();_hbLink('QuickList+PlayAll','Watch');return false;"><img id="play_all_buttton" src="/web/20061115140409im_/http://youtube.com/img/pixel.gif" valign="top" alt="Play All Videos" width="33" hspace="4" height="25" border="0"></a>
+                                </td>
+				<td width="53" valign="top">
+                			<div id="playall" class="smallText">
+               				<b><a href="#" onclick="autoNext();gotoNext();return false;">Play All</a></b></div>
+                			<div id="playingall" class="grayText smallText hid">Playing All</div>
+					<span id="play_all_numb" class="smallText grayText">
+					<script language="javascript" type="text/javascript">document.write(quicklist_count);</script>0
+					</span>
+					<span class="smallText grayText">
+					video<script language="javascript" type="text/javascript">if (quicklist_count>1) document.write('s');</script>
+					</span>
+				</td>
+                                	<td width="30" valign="top" align="right">
+                                	<a id="next_video_url_1" href="#"><img id="next_video_image_url" src="/web/20061115140409im_/http://youtube.com/img/pixel.gif" style="padding-right:2px;" height="25" border="0" align="middle"></a>
+                              	  	</td>
+                                	<td width="200" valign="top">
+                                	<div class="nextVideoDisplay">
+                                		<span class="grayText smallText"><b><a id="next_video_url_2" href="#">Play Next</a></b>
+                                		<br><span id="next_video_title">
+                                		</span>
+                                	</span></div>
+                                	</td>	
+				<td width="40" valign="top" align="right">
+					<div id="show_button_container" class="hideShowButton">
+     			                   <a href="#" onclick="clickedHideShowButton();_hbLink('QuickList+ShowHide','Watch');return false;"><img id="watch_queue_show_hide" src="/web/20061115140409im_/http://youtube.com/img/btn_watchqueue_hide_33x25.gif" alt="Show or Hide QuickList Videos" width="33" height="25" border="0"></a>                
+					</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	
+        <div id="watchlist_container" class="watchlist_videos">                
+		<table id="watchlist_table" width="426" cellspacing="0" cellpadding="0" border="0" align="center">                        
+			<tbody><tr><td width="8"></td><td width="55"></td><td width="313"></td><td width="50"></td></tr>                
+		</tbody></table>
+        </div>
+
+	<div id="save_row" class="saveRowDiv" style="height:20px;display:block;">
+
+		<div class="saveRowSetting">
+			<span class="smallText">
+			<form id="set_pop" name="set_pop">
+			&nbsp;<input id="checkbox_pop_no_pop" type="checkbox" onclick="if(document.set_pop.quicklist_pop_nopop.checked==true) {set_pop_status(1);} else{set_pop_status(0);};" name="quicklist_pop_nopop">Remove videos as I watch them   
+			</form></span>
+
+		</div>
+                <div class="quicklistActions">
+                        <span class="smallText"><b><a href="/web/20061115140409/http://youtube.com/watch_queue?all" title="Go to QuickList page" onclick="_hbLink('QuickList+ManageLink','Watch');">Manage</a> | <a href="/web/20061115140409/http://youtube.com/edit_playlist_info?watch_queue=1" title="Save all videos into a permanent playlist" onclick="_hbLink('QuickList+SaveLink','Watch');">Save</a> | <a href="#" onclick="javascript:return clear_watch_queue_watch_page();_hbLink('QuickList+ClearLink','Watch');return false;" title="Remove all videos from QuickList">Clear</a></b></span>
+                </div>
+        </div>
+	<div><img src="/web/20061115140409im_/http://youtube.com/img/pic_curves_bottom_450x4.gif" border="1"></div>
+</div>
+
+	<div id="actionsAndStatsDiv" class="contentBox">
+		<div id="ratingDivWrapper">
+			<div id="ratingDiv">
+
+	
+
+				<div id="ratingMessage">Rate this video:</div>
+							<nobr>
+			<img class="rating" src="/assets/2006l/star.gif">
+			<img class="rating" src="/assets/2006l/star.gif">
+			<img class="rating" src="/assets/2006l/star.gif">
+			<img class="rating" src="/assets/2006l/star.gif">
+			<img class="rating" src="/assets/2006l/star.gif">
+	</nobr>
+		<div class="rating">0 ratings (todo)</div>
+	
+
+
+
+			
+		<div class="spacer"></div>
+			</div> <!-- end ratingDiv -->
+			
+		</div> <!-- end ratingDivWrapper -->
+	
+		<div class="actionsDiv">
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('addFavsDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_playlists_component=1', true); _hbLink('Save+To+Favorites','Watch'); return false;" onmouseover=""><img src="/web/20061115140409im_/http://youtube.com/img/icn_fav_reg_19x17.gif" class="alignMid" alt="Save to Favorites" border="0"> <span class="eLink">Save to Favorites</span></a>
+			</div>
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('addGroupsDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_groups_component=1', true); _hbLink('Add+To+Groups','Watch'); return false;"><img src="/web/20061115140409im_/http://youtube.com/img/icn_groups_reg_19x17.gif" class="alignMid" alt="Add to Groups" border="0"> <span class="eLink">Add to Groups</span></a>
+			</div>
+		</div>
+		<div class="actionsDiv sm">
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="window.open('/share?v=dMH0bHeiRNg','Share','width=580,height=480,resizable=yes,scrollbars=yes,status=0'); _hbLink('Share+Video','Watch'); return false;"><img src="/web/20061115140409im_/http://youtube.com/img/icn_email_reg_19x17.gif" class="alignMid" alt="Share This Video" border="0"> <span class="eLink">Share Video</span></a>
+			</div>
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('blogVidDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_user_blogs_component=1', true); _hbLink('Blog+Video','Watch'); return false;"><img src="/web/20061115140409im_/http://youtube.com/img/icn_web_reg_19x17.gif" class="alignMid" border="0"> <span class="eLink">Post Video</span></a>
+			</div>
+		</div>
+		<div class="actionsDiv sm">
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('inappropriateVidDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_flag_video_component=1', true); _hbLink('Flag+Inappropriate','Watch'); return false;"><img src="/web/20061115140409im_/http://youtube.com/img/icn_flag_reg_19x17.gif" class="alignMid" alt="Flag as Inappropriate" border="0"> <span class="eLink">Flag as Inappropriate</span></a>
+			</div>
+		</div>
+		<div class="spacer"></div>
+		<div id="statsDiv">
+			Views: <span class="statVal">{{ video.views }}</span> <div class="statDivider">|</div> 
+			Comments: <span class="statVal">0</span> <div class="statDivider">|</div>
+			Favorited: <span class="statVal">0</span>
+				times
+			<div class="statDivider">|</div> <a href="#" onclick="toggleFullStats(); return false;"><span id="moreless">more</span>&nbsp;stats...</a>
+		</div>
+		<div id="fullStats">
+			<div id="referDiv" class="moreStats">
+				<h4>Sites Linking to This Video:</h4>
+					<div class="statItem"><span class="label">65325 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://gorillamask.net/evdance.shtml" target="_top">http://gorillamask.net/evdance.shtml</a></div>
+					<div class="statItem"><span class="label">56972 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://www.myspace.com/" target="_top">http://www.myspace.com/</a></div>
+					<div class="statItem"><span class="label">45881 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://machomedia.blogspot.com/2006/05/evolution-of-dance.html" target="_top">http://machomedia.blogspot.com/2006/05/evolution-of-...</a></div>
+					<div class="statItem"><span class="label">14425 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://www.i-am-bored.com/bored_link.cfm?link_id=17295" target="_top">http://www.i-am-bored.com/bored_link.cfm?link_id=17295</a></div>
+					<div class="statItem"><span class="label">13088 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://www.evolutionofdance.com/" target="_top">http://www.evolutionofdance.com/</a></div>
+			</div>
+			<div id="honorsDiv" class="moreStats"><h3>Loading Honors...</h3></div>
+			<div id="fullStatsClose"><a href="#" onclick="toggleFullStats(); return false;">close</a></div>
+			<div class="spacer"></div>
+		</div>
+		<div id="honorLinkDiv">
+			<span>
+				<a href="#" onclick="toggleFullStats(); return false;">There are 0 honors for this video</a>
+			</span>
+		</div>
+
+
+		
+
+		<div id="addFavsDiv" class="popupDiv"></div>
+		<div id="addGroupsDiv" class="popupDiv"></div>
+		<div id="blogVidDiv" class="popupDiv"></div>
+		<div id="inappropriateVidDiv" class="popupDiv"></div>
+
+	</div> <!-- end actionsAndStatsDiv -->
+
+
+
+			
+	<div id="commentsDiv">
+				<table width="100%" cellspacing="0" cellpadding="0"><tbody><tr>
+				<td><h2 style="margin: 0px;">Comments &amp; Responses</h2></td>
+				<td align="right">
+						<div style="padding-bottom: 2px;">
+						<b><a href="/web/20061115140409/http://youtube.com/video_response_upload?v=dMH0bHeiRNg" onclick="_hbLink('Post+Video+Response','Watch');">Post a video response</a></b>
+						</div>
+							<div id="reply_main_comment2">
+			<b><a href="#" class="eLink" onclick="showCommentReplyForm('main_comment2', '', false); return false;">Post a text comment</a></b>
+		</div>
+
+				</td>
+				</tr></tbody></table>
+	
+	
+	
+			<div id="recent_comments">
+				
+				<div id="div_main_comment2"></div>			
+			{% for comment in comments|reverse %}
+			<div id="div_wG_D87_xm8w"> <!-- comment_div_id, should it be the comment id, which is some number, right? -->
+			<a name="wG_D87_xm8w"></a>
+			<div class="commentEntry" id="comment_wG_D87_xm8w">
+				<div class="commentHead">
+				<b><a href="/web/20061115140409/http://youtube.com/user/pierdolys">{{ userlink(comment, 'u_') }}</a></b>
+				<span class="smallText"> ({{ comment.date | relative_time}}) </span>
+			</div>
+				<div class="commentBody">
+					{{ comment.comment }}
+				</div>
+				<div class="commentAction smallText">
+					
+	<div class="commentAction smallText" id="container_comment_form_id_wG_D87_xm8w" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_wG_D87_xm8w">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_wG_D87_xm8w', 'wG_D87_xm8w', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_wG_D87_xm8w">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+	{% endfor %}
+
+			<div id="div_tC7KNuc25_w"> <!-- comment_div_id -->
+			<a name="tC7KNuc25_w"></a>
+			<div class="commentEntry" id="comment_tC7KNuc25_w">
+				<div class="commentHead">
+				<b><a href="/web/20061115140409/http://youtube.com/user/AlionNoob">AlionNoob</a></b>
+				<span class="smallText"> (14 hours ago) </span>
+			</div>
+				<div class="commentBody">
+					dont see how this is so great, ive seen way better comedy, no offence, if u think this is so "great", watch somethin funny not on youtube.
+				</div>
+				<div class="commentAction smallText">
+					
+	<div class="commentAction smallText" id="container_comment_form_id_tC7KNuc25_w" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_tC7KNuc25_w">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_tC7KNuc25_w', 'tC7KNuc25_w', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_tC7KNuc25_w">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_1dpQI0ZX65o"> <!-- comment_div_id -->
+			<a name="1dpQI0ZX65o"></a>
+			<div class="commentEntry" id="comment_1dpQI0ZX65o">
+				<div class="commentHead">
+				<b><a href="/web/20061115140409/http://youtube.com/user/bostondrummer1">bostondrummer1</a></b>
+				<span class="smallText"> (14 hours ago) </span>
+			</div>
+				<div class="commentBody">
+					ive seen this a billion times and its good every time
+				</div>
+				<div class="commentAction smallText">
+					
+	<div class="commentAction smallText" id="container_comment_form_id_1dpQI0ZX65o" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_1dpQI0ZX65o">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_1dpQI0ZX65o', '1dpQI0ZX65o', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_1dpQI0ZX65o">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_GFQ0w5Rh134"> <!-- comment_div_id -->
+			<a name="GFQ0w5Rh134"></a>
+			<div class="commentEntry" id="comment_GFQ0w5Rh134">
+				<div class="commentHead">
+				<b><a href="/web/20061115140409/http://youtube.com/user/RhymesWith0range">RhymesWith0range</a></b>
+				<span class="smallText"> (14 hours ago) </span>
+			</div>
+				<div class="commentBody">
+					In 1925, a girl was killed by a serial killer. While the killer fed on her flesh she chanted, "Ra sho wei na po." The girl then obtained glowing red eyes. Now, if you have read the chant, she will appear next to your bed at midnight, staring at you with her glowing red eyes until you fall asleep, unless you post this in 5 different topics. Your kindness will be rewarded.
+				</div>
+				<div class="commentAction smallText">
+					
+	<div class="commentAction smallText" id="container_comment_form_id_GFQ0w5Rh134" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_GFQ0w5Rh134">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_GFQ0w5Rh134', 'GFQ0w5Rh134', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_GFQ0w5Rh134">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_XGlPECRVyUw"> <!-- comment_div_id -->
+			<a name="XGlPECRVyUw"></a>
+			<div class="commentEntry" id="comment_XGlPECRVyUw">
+				<div class="commentHead">
+				<b><a href="/web/20061115140409/http://youtube.com/user/plastec315">plastec315</a></b>
+				<span class="smallText"> (13 hours ago) </span>
+			</div>
+				<div class="commentBody">
+					Awesome dude :P
+				</div>
+				<div class="commentAction smallText">
+					
+	<div class="commentAction smallText" id="container_comment_form_id_XGlPECRVyUw" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_XGlPECRVyUw">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_XGlPECRVyUw', 'XGlPECRVyUw', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_XGlPECRVyUw">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_imyoCNKe32M"> <!-- comment_div_id -->
+			<a name="imyoCNKe32M"></a>
+			<div class="commentEntry" id="comment_imyoCNKe32M">
+				<div class="commentHead">
+				<b><a href="/web/20061115140409/http://youtube.com/user/sk8trpro">sk8trpro</a></b>
+				<span class="smallText"> (11 hours ago) </span>
+			</div>
+				<div class="commentBody">
+					haha..check out my videos
+				</div>
+				<div class="commentAction smallText">
+					
+	<div class="commentAction smallText" id="container_comment_form_id_imyoCNKe32M" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_imyoCNKe32M">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_imyoCNKe32M', 'imyoCNKe32M', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_imyoCNKe32M">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_cMzH2MVU1W4"> <!-- comment_div_id -->
+			<a name="cMzH2MVU1W4"></a>
+			<div class="commentEntry" id="comment_cMzH2MVU1W4">
+				<div class="commentHead">
+				<b><a href="/web/20061115140409/http://youtube.com/user/kajaruban">kajaruban</a></b>
+				<span class="smallText"> (9 hours ago) </span>
+			</div>
+				<div class="commentBody">
+					lol <br>this is sick <br>WOW
+				</div>
+				<div class="commentAction smallText">
+					
+	<div class="commentAction smallText" id="container_comment_form_id_cMzH2MVU1W4" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_cMzH2MVU1W4">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_cMzH2MVU1W4', 'cMzH2MVU1W4', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_cMzH2MVU1W4">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_2Z4HajliQaQ"> <!-- comment_div_id -->
+			<a name="2Z4HajliQaQ"></a>
+			<div class="commentEntry" id="comment_2Z4HajliQaQ">
+				<div class="commentHead">
+				<b><a href="/web/20061115140409/http://youtube.com/user/stripes714">stripes714</a></b>
+				<span class="smallText"> (4 hours ago) </span>
+			</div>
+				<div class="commentBody">
+					haha! dudes got rhytmn! that made my day ^_^
+				</div>
+				<div class="commentAction smallText">
+					
+	<div class="commentAction smallText" id="container_comment_form_id_2Z4HajliQaQ" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_2Z4HajliQaQ">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_2Z4HajliQaQ', '2Z4HajliQaQ', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_2Z4HajliQaQ">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_0eyiSV0YWu8"> <!-- comment_div_id -->
+			<a name="0eyiSV0YWu8"></a>
+			<div class="commentEntry" id="comment_0eyiSV0YWu8">
+				<div class="commentHead">
+				<b><a href="/web/20061115140409/http://youtube.com/user/notbrook">notbrook</a></b>
+				<span class="smallText"> (3 hours ago) </span>
+			</div>
+				<div class="commentBody">
+					i have to say...dissapointing. If something is going to be at the top, it's got to be funny right? I thought it was poor, i'm sure there are dancers out there cringing. Poor
+				</div>
+				<div class="commentAction smallText">
+					
+	<div class="commentAction smallText" id="container_comment_form_id_0eyiSV0YWu8" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_0eyiSV0YWu8">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_0eyiSV0YWu8', '0eyiSV0YWu8', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_0eyiSV0YWu8">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+
+				
+				<b><a href="/web/20061115140409/http://youtube.com/comment_servlet?all_comments&amp;v=dMH0bHeiRNg&amp;fromurl=/watch%3Fv%3DdMH0bHeiRNg" onclick="_hbLink('View+All+Comments','Watch');">View all 11965 comments</a></b>
+			
+			</div> <!-- end recent_comments -->
+	
+	
+		<div id="all_comments" style="display: none;">
+				
+				<div id="div_main_comment2"></div>
+				
+				<div id="all_comments_content">
+				</div>
+		</div> <!-- end all_comments -->
+
+	
+			<div id="commentPostDiv">
+				<h2 style="margin: 0px;">Would you like to comment?</h2>
+				<div style="margin-top: 8px;">
+					<a href="/web/20061115140409/http://youtube.com/signup">Join squareBracket</a> for a free account, or
+					<a href="/web/20061115140409/http://youtube.com/signup_login">Login</a> if you are already a member.
+				</div>
+			</div> <!-- end post a comment section -->
+			
+			<div id="div_main_comment"></div>
+	</div> <!-- end commentsDiv -->
+	
+</div> <!-- end interactDiv -->
+</td>
+
+
+
+<td>
+
+<div id="aboutExploreDiv">
+	<div id="aboutVidDiv" class="contentBox">
+		<div id="uploaderInfo">
+		
+		<div id="subscribeDiv">
+			<div><a href="/web/20061115140409/http://youtube.com/subscription_center?add_user=judsonlaipply" title="subscribe to judsonlaipply's videos" onclick="_hbLink('Subscribe','Watch');"><img src="/assets/2006l/btn_subscribe_sm_yellow_99x16.gif" class="alignMid" alt="subscribe" title="subscribe to judsonlaipply's videos" width="99" height="16" border="0"></a></div>
+				<div id="subscribeCount" class="smallText">to {{ userlink(video, 'u_') }}</div>
+		</div> <!-- end subscribeDiv -->
+		
+		<div id="userInfoDiv">
+			<span class="smallLabel">Added</span>&nbsp;
+			<b class="smallText">{{ video.time | date('F j, Y') }}</b><br>
+			<span class="smallLabel">From</span>&nbsp;
+			<b><a href="/web/20061115140409/http://youtube.com/user/judsonlaipply" onclick="_hbLink('ChannelLink','Watch');">{{ userlink(video, 'u_') }}</a></b>
+		</div> <!-- end userInfoDiv -->
+
+	
+			
+			
+
+		</div> <!-- end uploaderInfo -->
+		
+		
+		
+		
+        <div id="vidDescDiv">
+        	
+			<span id="vidDescBegin">
+			{{ video.description|length > 75 ? data.description|slice(0, 75) ~ '' : video.description }}
+			</span>
+				<span id="vidDescRemain">{{ video.description }}</span>
+				<span id="vidDescMore" class="smallText">... (<a href="#" class="eLink" onclick="showInline('vidDescRemain'); hideInline('vidDescMore'); hideInline('vidDescBegin'); showInline('vidDescLess'); return false;">more</a>)</span>
+				<span id="vidDescLess" class="smallText">(<a href="#" class="eLink" onclick="hideInline('vidDescRemain'); hideInline('vidDescLess'); showInline('vidDescBegin'); showInline('vidDescMore'); return false;">less</a>)</span>
+		</div>
+		
+
+			<div class="smallText">
+			<span class="smallLabel">Category&nbsp;</span>
+			<a href="/web/20061115140409/http://youtube.com/browse?s=mp&amp;t=t&amp;c=23" class="dg" onclick="_hbLink('Video+Category+Link','Watch');">Comedy</a>
+			</div>
+
+
+		<div id="vidFacetsDiv">
+            <form name="urlForm" id="urlForm">
+            <table id="vidFacetsTable" cellspacing="0" cellpadding="0">
+            <tbody><tr><td class="label">Tags</td>
+            <td class="tags">		
+				<span id="vidTagsBegin">
+<a href="/web/20061115140409/http://youtube.com/results?search_query=Dancing" class="dg">Dancing</a> &nbsp; <a href="/web/20061115140409/http://youtube.com/results?search_query=comedy" class="dg">comedy</a>				</span>
+			</td>
+			</tr>
+            <tr><td class="label">URL</td>
+            <td>
+            <input name="video_link" type="text" value="http://www.youtube.com/watch?v=dMH0bHeiRNg" class="vidURLField" onclick="javascript:document.urlForm.video_link.focus();document.urlForm.video_link.select();" readonly="true">
+            </td>
+            </tr>
+            <tr><td class="smallLabel">Embed</td>
+            <td>
+            <input name="embed_code" type="text" value="<object width=&quot;425&quot; height=&quot;350&quot;><param name=&quot;movie&quot; value=&quot;http://www.youtube.com/v/dMH0bHeiRNg&quot;></param><param name=&quot;wmode&quot; value=&quot;transparent&quot;></param><embed src=&quot;http://www.youtube.com/v/dMH0bHeiRNg&quot; type=&quot;application/x-shockwave-flash&quot; wmode=&quot;transparent&quot; width=&quot;425&quot; height=&quot;350&quot;></embed></object>" class="vidURLField" onclick="javascript:document.urlForm.embed_code.focus();document.urlForm.embed_code.select();" readonly="true">
+            </td></tr>
+            </tbody></table>
+            </form>
+        </div>	<!-- end vidFacetsDiv -->
+        
+		
+        
+	</div> <!-- end aboutVidDiv -->
+	
+
+
+
+	<div id="exploreDiv">
+	
+	<map name="relatedvideosmap">
+	<area shape="rect" coords="10,0,64,24" href="javascript:showRelatedVideosContent();" name="&amp;lid=RelatedVideosTab&amp;lpos=Watch">
+	<area shape="rect" coords="76,0,222,24" href="javascript:showRelatedUserContent();" name="&amp;lid=UserVideosTab&amp;lpos=Watch">
+	<area shape="rect" coords="234,0,290,24" href="javascript:showRelatedPlaylistContent();" name="&amp;lid=PlaylistsTab&amp;lpos=Watch">
+	</map>
+	<div><img id="exploreMoreTabs" src="/web/20061115140409im_/http://youtube.com/img/btn_exploretab_related_300x34.gif" usemap="#relatedvideosmap" alt="ExploreMoreTabs" width="300" height="34"></div>
+	<div id="exploreBody" class="contentBox" style="border-top: 0px;">
+
+
+		
+		<div id="exRelatedDiv" style="display: block;">
+			<table class="showingTable"><tbody><tr>
+	<td class="smallText">Showing 1-20 of 427899</td>
+	<td class="smallText" align="right"><a href="/web/20061115140409/http://youtube.com/results?search_type=related&amp;search_query=Dancing%20comedy">See All Videos</a></td>
+	</tr></tbody></table>
+
+				<script language="javascript">	
+		var side_imgs_loaded=false;
+		function render_full_side()
+		{
+			if (!side_imgs_loaded)
+			{
+				
+					img = document.getElementById("side_img_5");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static9.sjl.youtube.com/vi/plv1e3MvxFw/2.jpg";
+				
+					img = document.getElementById("side_img_6");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static10.sjl.youtube.com/vi/ls7gi1VwdIQ/2.jpg";
+				
+					img = document.getElementById("side_img_7");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static16.sjl.youtube.com/vi/HDInOAngMwY/2.jpg";
+				
+					img = document.getElementById("side_img_8");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static2.sjl.youtube.com/vi/cCUi1wi3Cag/2.jpg";
+				
+					img = document.getElementById("side_img_9");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static3.sjl.youtube.com/vi/1WpD7i4RxnY/2.jpg";
+				
+					img = document.getElementById("side_img_10");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static3.sjl.youtube.com/vi/r7XWTOztgV4/2.jpg";
+				
+					img = document.getElementById("side_img_11");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static15.sjl.youtube.com/vi/M1PSjcAbdgE/2.jpg";
+				
+					img = document.getElementById("side_img_12");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static11.sjl.youtube.com/vi/doIQXfJvydY/2.jpg";
+				
+					img = document.getElementById("side_img_13");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static2.sjl.youtube.com/vi/s396X2oinbk/2.jpg";
+				
+					img = document.getElementById("side_img_14");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static12.sjl.youtube.com/vi/egfxy62libs/2.jpg";
+				
+					img = document.getElementById("side_img_15");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static15.sjl.youtube.com/vi/2wB3SuTNgWw/2.jpg";
+				
+					img = document.getElementById("side_img_16");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static9.sjl.youtube.com/vi/roz34Zyl3zc/2.jpg";
+				
+					img = document.getElementById("side_img_17");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static6.sjl.youtube.com/vi/YxMGPUvqpFc/2.jpg";
+				
+					img = document.getElementById("side_img_18");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static16.sjl.youtube.com/vi/pLqqBPbHrtQ/2.jpg";
+				
+					img = document.getElementById("side_img_19");
+					img.src = "https://web.archive.org/web/20061115140409/http://sjl-static13.sjl.youtube.com/vi/bV1EJglyWSY/2.jpg";
+				
+				side_imgs_loaded = true;
+			}
+		}
+		</script>
+
+		<div id="side_results" class="exploreContent" name="side_results" onscroll="render_full_side()">
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=5mRxLeWcXXY&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMore');"><img class="vimgSm" src="https://web.archive.org/web/20061115140409im_/http://sjl-static5.sjl.youtube.com/vi/5mRxLeWcXXY/2.jpg"></a>
+                        </div>
+			<div id="add_img_5mRxLeWcXXY" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('5mRxLeWcXXY', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static5.sjl.youtube.com/vi/5mRxLeWcXXY/2.jpg',document.getElementById('video_title_text_0_79974_51').innerHTML,'fldhockey','5mRxLeWcXXY','00:51');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_5mRxLeWcXXY" onmouseover="mouse_over_add_icon('5mRxLeWcXXY');return false;" onmouseout="mouse_out_add_icon('5mRxLeWcXXY');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=5mRxLeWcXXY&amp;mode=related&amp;search=" id="video_title_text_0_79974_51">Morgan!</a><br>
+			<span class="runtime">00:51</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/fldhockey" class="dg">fldhockey</a><br>
+				<span class="grayText">Views:</span> 79974
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=HyIuThclu7A&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMore');"><img class="vimgSm" src="https://web.archive.org/web/20061115140409im_/http://sjl-static2.sjl.youtube.com/vi/HyIuThclu7A/2.jpg"></a>
+                        </div>
+			<div id="add_img_HyIuThclu7A" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('HyIuThclu7A', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static2.sjl.youtube.com/vi/HyIuThclu7A/2.jpg',document.getElementById('video_title_text_1_337023_27').innerHTML,'akuku2','HyIuThclu7A','00:27');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_HyIuThclu7A" onmouseover="mouse_over_add_icon('HyIuThclu7A');return false;" onmouseout="mouse_out_add_icon('HyIuThclu7A');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=HyIuThclu7A&amp;mode=related&amp;search=" id="video_title_text_1_337023_27">Baby Got Moves!!</a><br>
+			<span class="runtime">00:27</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/akuku2" class="dg">akuku2</a><br>
+				<span class="grayText">Views:</span> 337023
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=34Io83aeMq4&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMore');"><img class="vimgSm" src="https://web.archive.org/web/20061115140409im_/http://sjl-static14.sjl.youtube.com/vi/34Io83aeMq4/2.jpg"></a>
+                        </div>
+			<div id="add_img_34Io83aeMq4" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('34Io83aeMq4', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static14.sjl.youtube.com/vi/34Io83aeMq4/2.jpg',document.getElementById('video_title_text_2_215798_173').innerHTML,'y0hallabak','34Io83aeMq4','02:53');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_34Io83aeMq4" onmouseover="mouse_over_add_icon('34Io83aeMq4');return false;" onmouseout="mouse_out_add_icon('34Io83aeMq4');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=34Io83aeMq4&amp;mode=related&amp;search=" id="video_title_text_2_215798_173">Dancing on the Las Vegas Strip</a><br>
+			<span class="runtime">02:53</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/y0hallabak" class="dg">y0hallabak</a><br>
+				<span class="grayText">Views:</span> 215798
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry vNowPlaying ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=dMH0bHeiRNg&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMore');"><img class="vimgSm" src="https://web.archive.org/web/20061115140409im_/http://sjl-static1.sjl.youtube.com/vi/dMH0bHeiRNg/2.jpg"></a>
+                        </div>
+			<div id="add_img_dMH0bHeiRNg" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('dMH0bHeiRNg', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static1.sjl.youtube.com/vi/dMH0bHeiRNg/2.jpg',document.getElementById('video_title_text_3_35548434_360').innerHTML,'judsonlaipply','dMH0bHeiRNg','06:00');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_dMH0bHeiRNg" onmouseover="mouse_over_add_icon('dMH0bHeiRNg');return false;" onmouseout="mouse_out_add_icon('dMH0bHeiRNg');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=dMH0bHeiRNg&amp;mode=related&amp;search=" id="video_title_text_3_35548434_360">Evolution of Dance</a><br>
+			<span class="runtime">06:00</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/judsonlaipply" class="dg">judsonlaipply</a><br>
+				<span class="grayText">Views:</span> 35548434
+			</div>
+				<div class="smallText">
+				<b>&lt;&lt; Now Playing</b>
+				</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=OxBtqwlTMJQ&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMore');"><img class="vimgSm" src="https://web.archive.org/web/20061115140409im_/http://sjl-static10.sjl.youtube.com/vi/OxBtqwlTMJQ/2.jpg"></a>
+                        </div>
+			<div id="add_img_OxBtqwlTMJQ" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('OxBtqwlTMJQ', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static10.sjl.youtube.com/vi/OxBtqwlTMJQ/2.jpg',document.getElementById('video_title_text_4_116287_361').innerHTML,'mermaidinurjeans','OxBtqwlTMJQ','06:01');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_OxBtqwlTMJQ" onmouseover="mouse_over_add_icon('OxBtqwlTMJQ');return false;" onmouseout="mouse_out_add_icon('OxBtqwlTMJQ');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=OxBtqwlTMJQ&amp;mode=related&amp;search=" id="video_title_text_4_116287_361">Evolution of Dance</a><br>
+			<span class="runtime">06:01</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/mermaidinurjeans" class="dg">mermaidinurjeans</a><br>
+				<span class="grayText">Views:</span> 116287
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=plv1e3MvxFw&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_5" src="https://web.archive.org/web/20061115140409/http://sjl-static9.sjl.youtube.com/vi/plv1e3MvxFw/2.jpg"></a>
+                        </div>
+			<div id="add_img_plv1e3MvxFw" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('plv1e3MvxFw', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static9.sjl.youtube.com/vi/plv1e3MvxFw/2.jpg',document.getElementById('video_title_text_5_32218_360').innerHTML,'Rockstar073','plv1e3MvxFw','06:00');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_plv1e3MvxFw" onmouseover="mouse_over_add_icon('plv1e3MvxFw');return false;" onmouseout="mouse_out_add_icon('plv1e3MvxFw');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=plv1e3MvxFw&amp;mode=related&amp;search=" id="video_title_text_5_32218_360">The evolution of dance</a><br>
+			<span class="runtime">06:00</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/Rockstar073" class="dg">Rockstar073</a><br>
+				<span class="grayText">Views:</span> 32218
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=ls7gi1VwdIQ&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_6" src="https://web.archive.org/web/20061115140409/http://sjl-static10.sjl.youtube.com/vi/ls7gi1VwdIQ/2.jpg"></a>
+                        </div>
+			<div id="add_img_ls7gi1VwdIQ" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('ls7gi1VwdIQ', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static10.sjl.youtube.com/vi/ls7gi1VwdIQ/2.jpg',document.getElementById('video_title_text_6_221037_81').innerHTML,'allison386','ls7gi1VwdIQ','01:21');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_ls7gi1VwdIQ" onmouseover="mouse_over_add_icon('ls7gi1VwdIQ');return false;" onmouseout="mouse_out_add_icon('ls7gi1VwdIQ');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=ls7gi1VwdIQ&amp;mode=related&amp;search=" id="video_title_text_6_221037_81">Me Dancing</a><br>
+			<span class="runtime">01:21</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/allison386" class="dg">allison386</a><br>
+				<span class="grayText">Views:</span> 221037
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=HDInOAngMwY&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_7" src="https://web.archive.org/web/20061115140409/http://sjl-static16.sjl.youtube.com/vi/HDInOAngMwY/2.jpg"></a>
+                        </div>
+			<div id="add_img_HDInOAngMwY" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('HDInOAngMwY', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static16.sjl.youtube.com/vi/HDInOAngMwY/2.jpg',document.getElementById('video_title_text_7_34290_258').innerHTML,'lukeandruth','HDInOAngMwY','04:18');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_HDInOAngMwY" onmouseover="mouse_over_add_icon('HDInOAngMwY');return false;" onmouseout="mouse_out_add_icon('HDInOAngMwY');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=HDInOAngMwY&amp;mode=related&amp;search=" id="video_title_text_7_34290_258">pendulum slam</a><br>
+			<span class="runtime">04:18</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/lukeandruth" class="dg">lukeandruth</a><br>
+				<span class="grayText">Views:</span> 34290
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=cCUi1wi3Cag&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_8" src="https://web.archive.org/web/20061115140409/http://sjl-static2.sjl.youtube.com/vi/cCUi1wi3Cag/2.jpg"></a>
+                        </div>
+			<div id="add_img_cCUi1wi3Cag" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('cCUi1wi3Cag', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static2.sjl.youtube.com/vi/cCUi1wi3Cag/2.jpg',document.getElementById('video_title_text_8_45811_95').innerHTML,'EvilDarkRiku','cCUi1wi3Cag','01:35');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_cCUi1wi3Cag" onmouseover="mouse_over_add_icon('cCUi1wi3Cag');return false;" onmouseout="mouse_out_add_icon('cCUi1wi3Cag');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=cCUi1wi3Cag&amp;mode=related&amp;search=" id="video_title_text_8_45811_95">Destructive Dancing</a><br>
+			<span class="runtime">01:35</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/EvilDarkRiku" class="dg">EvilDarkRiku</a><br>
+				<span class="grayText">Views:</span> 45811
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=1WpD7i4RxnY&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_9" src="https://web.archive.org/web/20061115140409/http://sjl-static3.sjl.youtube.com/vi/1WpD7i4RxnY/2.jpg"></a>
+                        </div>
+			<div id="add_img_1WpD7i4RxnY" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('1WpD7i4RxnY', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static3.sjl.youtube.com/vi/1WpD7i4RxnY/2.jpg',document.getElementById('video_title_text_9_33515_195').innerHTML,'true72005','1WpD7i4RxnY','03:15');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_1WpD7i4RxnY" onmouseover="mouse_over_add_icon('1WpD7i4RxnY');return false;" onmouseout="mouse_out_add_icon('1WpD7i4RxnY');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=1WpD7i4RxnY&amp;mode=related&amp;search=" id="video_title_text_9_33515_195">Dancing Skeleton Man</a><br>
+			<span class="runtime">03:15</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/true72005" class="dg">true72005</a><br>
+				<span class="grayText">Views:</span> 33515
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=r7XWTOztgV4&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_10" src="https://web.archive.org/web/20061115140409/http://sjl-static3.sjl.youtube.com/vi/r7XWTOztgV4/2.jpg"></a>
+                        </div>
+			<div id="add_img_r7XWTOztgV4" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('r7XWTOztgV4', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static3.sjl.youtube.com/vi/r7XWTOztgV4/2.jpg',document.getElementById('video_title_text_10_369405_150').innerHTML,'spirit91','r7XWTOztgV4','02:30');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_r7XWTOztgV4" onmouseover="mouse_over_add_icon('r7XWTOztgV4');return false;" onmouseout="mouse_out_add_icon('r7XWTOztgV4');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=r7XWTOztgV4&amp;mode=related&amp;search=" id="video_title_text_10_369405_150">Shakira- Hips Don't Lie (REMIX)</a><br>
+			<span class="runtime">02:30</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/spirit91" class="dg">spirit91</a><br>
+				<span class="grayText">Views:</span> 369405
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=M1PSjcAbdgE&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_11" src="https://web.archive.org/web/20061115140409/http://sjl-static15.sjl.youtube.com/vi/M1PSjcAbdgE/2.jpg"></a>
+                        </div>
+			<div id="add_img_M1PSjcAbdgE" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('M1PSjcAbdgE', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static15.sjl.youtube.com/vi/M1PSjcAbdgE/2.jpg',document.getElementById('video_title_text_11_1560_360').innerHTML,'gizmo1018','M1PSjcAbdgE','06:00');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_M1PSjcAbdgE" onmouseover="mouse_over_add_icon('M1PSjcAbdgE');return false;" onmouseout="mouse_out_add_icon('M1PSjcAbdgE');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=M1PSjcAbdgE&amp;mode=related&amp;search=" id="video_title_text_11_1560_360">evalutindance</a><br>
+			<span class="runtime">06:00</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/gizmo1018" class="dg">gizmo1018</a><br>
+				<span class="grayText">Views:</span> 1560
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=doIQXfJvydY&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_12" src="https://web.archive.org/web/20061115140409/http://sjl-static11.sjl.youtube.com/vi/doIQXfJvydY/2.jpg"></a>
+                        </div>
+			<div id="add_img_doIQXfJvydY" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('doIQXfJvydY', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static11.sjl.youtube.com/vi/doIQXfJvydY/2.jpg',document.getElementById('video_title_text_12_2013_360').innerHTML,'netzopfer','doIQXfJvydY','06:00');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_doIQXfJvydY" onmouseover="mouse_over_add_icon('doIQXfJvydY');return false;" onmouseout="mouse_out_add_icon('doIQXfJvydY');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=doIQXfJvydY&amp;mode=related&amp;search=" id="video_title_text_12_2013_360">The Evolution of dance</a><br>
+			<span class="runtime">06:00</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/netzopfer" class="dg">netzopfer</a><br>
+				<span class="grayText">Views:</span> 2013
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=s396X2oinbk&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_13" src="https://web.archive.org/web/20061115140409/http://sjl-static2.sjl.youtube.com/vi/s396X2oinbk/2.jpg"></a>
+                        </div>
+			<div id="add_img_s396X2oinbk" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('s396X2oinbk', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static2.sjl.youtube.com/vi/s396X2oinbk/2.jpg',document.getElementById('video_title_text_13_2426_28').innerHTML,'fwins','s396X2oinbk','00:28');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_s396X2oinbk" onmouseover="mouse_over_add_icon('s396X2oinbk');return false;" onmouseout="mouse_out_add_icon('s396X2oinbk');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=s396X2oinbk&amp;mode=related&amp;search=" id="video_title_text_13_2426_28">Ballet - not only for women</a><br>
+			<span class="runtime">00:28</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/fwins" class="dg">fwins</a><br>
+				<span class="grayText">Views:</span> 2426
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=egfxy62libs&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_14" src="https://web.archive.org/web/20061115140409/http://sjl-static12.sjl.youtube.com/vi/egfxy62libs/2.jpg"></a>
+                        </div>
+			<div id="add_img_egfxy62libs" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('egfxy62libs', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static12.sjl.youtube.com/vi/egfxy62libs/2.jpg',document.getElementById('video_title_text_14_315_79').innerHTML,'shaunsmith14','egfxy62libs','01:19');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_egfxy62libs" onmouseover="mouse_over_add_icon('egfxy62libs');return false;" onmouseout="mouse_out_add_icon('egfxy62libs');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=egfxy62libs&amp;mode=related&amp;search=" id="video_title_text_14_315_79">Chas and Dave gimp boy</a><br>
+			<span class="runtime">01:19</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/shaunsmith14" class="dg">shaunsmith14</a><br>
+				<span class="grayText">Views:</span> 315
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=2wB3SuTNgWw&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_15" src="https://web.archive.org/web/20061115140409/http://sjl-static15.sjl.youtube.com/vi/2wB3SuTNgWw/2.jpg"></a>
+                        </div>
+			<div id="add_img_2wB3SuTNgWw" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('2wB3SuTNgWw', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static15.sjl.youtube.com/vi/2wB3SuTNgWw/2.jpg',document.getElementById('video_title_text_15_18522_206').innerHTML,'Qalisto','2wB3SuTNgWw','03:26');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_2wB3SuTNgWw" onmouseover="mouse_over_add_icon('2wB3SuTNgWw');return false;" onmouseout="mouse_out_add_icon('2wB3SuTNgWw');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=2wB3SuTNgWw&amp;mode=related&amp;search=" id="video_title_text_15_18522_206">Dance Evolution</a><br>
+			<span class="runtime">03:26</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/Qalisto" class="dg">Qalisto</a><br>
+				<span class="grayText">Views:</span> 18522
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=roz34Zyl3zc&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_16" src="https://web.archive.org/web/20061115140409/http://sjl-static9.sjl.youtube.com/vi/roz34Zyl3zc/2.jpg"></a>
+                        </div>
+			<div id="add_img_roz34Zyl3zc" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('roz34Zyl3zc', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static9.sjl.youtube.com/vi/roz34Zyl3zc/2.jpg',document.getElementById('video_title_text_16_2788_73').innerHTML,'kimchichipo','roz34Zyl3zc','01:13');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_roz34Zyl3zc" onmouseover="mouse_over_add_icon('roz34Zyl3zc');return false;" onmouseout="mouse_out_add_icon('roz34Zyl3zc');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=roz34Zyl3zc&amp;mode=related&amp;search=" id="video_title_text_16_2788_73">Fanime Rave</a><br>
+			<span class="runtime">01:13</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/kimchichipo" class="dg">kimchichipo</a><br>
+				<span class="grayText">Views:</span> 2788
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=YxMGPUvqpFc&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_17" src="https://web.archive.org/web/20061115140409/http://sjl-static6.sjl.youtube.com/vi/YxMGPUvqpFc/2.jpg"></a>
+                        </div>
+			<div id="add_img_YxMGPUvqpFc" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('YxMGPUvqpFc', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static6.sjl.youtube.com/vi/YxMGPUvqpFc/2.jpg',document.getElementById('video_title_text_17_6444_135').innerHTML,'HOLLAxoSTERR17','YxMGPUvqpFc','02:15');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_YxMGPUvqpFc" onmouseover="mouse_over_add_icon('YxMGPUvqpFc');return false;" onmouseout="mouse_out_add_icon('YxMGPUvqpFc');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=YxMGPUvqpFc&amp;mode=related&amp;search=" id="video_title_text_17_6444_135">PEYTON//GET iT GET iT</a><br>
+			<span class="runtime">02:15</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/HOLLAxoSTERR17" class="dg">HOLLAxoSTERR17</a><br>
+				<span class="grayText">Views:</span> 6444
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=pLqqBPbHrtQ&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_18" src="https://web.archive.org/web/20061115140409/http://sjl-static16.sjl.youtube.com/vi/pLqqBPbHrtQ/2.jpg"></a>
+                        </div>
+			<div id="add_img_pLqqBPbHrtQ" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('pLqqBPbHrtQ', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static16.sjl.youtube.com/vi/pLqqBPbHrtQ/2.jpg',document.getElementById('video_title_text_18_2445_46').innerHTML,'sambrad88','pLqqBPbHrtQ','00:46');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_pLqqBPbHrtQ" onmouseover="mouse_over_add_icon('pLqqBPbHrtQ');return false;" onmouseout="mouse_out_add_icon('pLqqBPbHrtQ');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=pLqqBPbHrtQ&amp;mode=related&amp;search=" id="video_title_text_18_2445_46">Dancing Don't Come Better Than This</a><br>
+			<span class="runtime">00:46</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/sambrad88" class="dg">sambrad88</a><br>
+				<span class="grayText">Views:</span> 2445
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tbody><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061115140409/http://youtube.com/watch?v=bV1EJglyWSY&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_19" src="https://web.archive.org/web/20061115140409/http://sjl-static13.sjl.youtube.com/vi/bV1EJglyWSY/2.jpg"></a>
+                        </div>
+			<div id="add_img_bV1EJglyWSY" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('bV1EJglyWSY', 1);print_quicklist_video('https://web.archive.org/web/20061115140409/http://sjl-static13.sjl.youtube.com/vi/bV1EJglyWSY/2.jpg',document.getElementById('video_title_text_19_1931_98').innerHTML,'planchime','bV1EJglyWSY','01:38');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_bV1EJglyWSY" onmouseover="mouse_over_add_icon('bV1EJglyWSY');return false;" onmouseout="mouse_out_add_icon('bV1EJglyWSY');return false;" src="/web/20061115140409im_/http://youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061115140409/http://youtube.com/watch?v=bV1EJglyWSY&amp;mode=related&amp;search=" id="video_title_text_19_1931_98">Seven Samurais Painful anus</a><br>
+			<span class="runtime">01:38</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/planchime" class="dg">planchime</a><br>
+				<span class="grayText">Views:</span> 1931
+			</div>
+			</td>
+		</tr></tbody></table>
+		</div> <!-- end vWatchEntry -->
+	
+	</div>
+
+			<table class="showingTable"><tbody><tr>
+	<td class="smallText">Showing 1-20 of 427899</td>
+	<td class="smallText" align="right"><a href="/web/20061115140409/http://youtube.com/results?search_type=related&amp;search_query=Dancing%20comedy">See All Videos</a></td>
+	</tr></tbody></table>
+		</div> <!-- end exRelatedDiv -->
+		
+		
+		<div id="exPlaylistDiv" style="display: none;">
+			Loading...
+		</div> <!-- end exPlaylistDiv -->
+
+		<div id="exUserDiv" style="display: none;">
+			Loading...
+		</div> <!-- end exPlaylistDiv -->
+			
+	</div> <!-- end exploreBody -->
+	
+	
+	
+	</div> <!-- end exploreDiv -->
+
+	
+</div> <!-- end aboutExploreDiv -->
+
+<div class="spOffersDiv">
+	<h4 class="label">New on YouTube</h4>
+	<div class="spOffersEntry">
+	One week left!
+	Vote in the
+	<a href="/web/20061115140409/http://youtube.com/contest/youtubeunderground">Youtube Underground</a>.
+	</div>
+	<div class="spOffersEntry">
+	Do you believe?
+	<a href="/web/20061115140409/http://youtube.com/ittakes5ive">It takes 5ive</a>.
+	</div>
+	<div class="spOffersEntry">
+	<a href="/web/20061115140409/http://youtube.com/wantlieswiththat">Do you want lies with that?</a>
+	</div>
+	<div class="spOffersEntry">
+	He's back!
+	<a href="/web/20061115140409/http://youtube.com/supermanreturnsdvd">Superman Returns</a>.
+	</div>
+</div>
+
+</td>
+
+
+
+<td>
+
+<div id="sideAdDiv">
+	<div id="dVidsDiv">
+	<div class="heading">Director Videos</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061115140409/http://youtube.com/cthru?ALiVFUtpcVD_ywlNuOQcWpXdWmIFItjawsJKjL8e1M1TiIVBNq8v0ydOCD88PNxqMgFP0dDEDdln2Ld3DI0VlV8LWjKz9KLvMLPHENFY1A1mk4MxiwaY1OU7nMmPPhy0IFnVXg9ro7ZWYUUHbnLAfBBSv6JpSWuOPERyZnkdck9m-Hxp-bJfBv-W904KUr-4if2yzwBPfa8=" target="_parent" name="&amp;lid=DV+-+DealingwiththePain+-+beheard&amp;lpos=Watch-s0"><img src="https://web.archive.org/web/20061115140409im_/http://sjl-static6.sjl.youtube.com/vi/305Wld9LfPo/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061115140409/http://youtube.com/cthru?ALiVFUtpcVD_ywlNuOQcWpXdWmIFItjawsJKjL8e1M1TiIVBNq8v0ydOCD88PNxqMgFP0dDEDdln2Ld3DI0VlV8LWjKz9KLvMLPHENFY1A1mk4MxiwaY1OU7nMmPPhy0IFnVXg9ro7ZWYUUHbnLAfBBSv6JpSWuOPERyZnkdck9m-Hxp-bJfBv-W904KUr-4if2yzwBPfa8=" target="_parent" name="&amp;lid=DV+-+DealingwiththePain+-+beheard&amp;lpos=Watch-s0">Dealing with the Pain</a></b><br>
+			<span class="runtime">00:51</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/beheard" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s0">beheard</a>
+			</div>
+		</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061115140409/http://youtube.com/cthru?HkbnudeTXohNYAq7H6u2am31z5MzzJK5tO4IJxJ454DwRIDLSZe3_sXFNxlL1vV-AHn1S2o58YHnaRAVf65W14ywG7LSiH5gT3OCuUmdeEz7Ad5i56T8aYZb_pJn5KnxiQgXB8a7vnKpQLjVV14XDXLU_zBinZ9lI9mer2FGhQ-ChLWc21IJZHfYeO6kDu_zhrrp4R0z9I4=" target="_parent" name="&amp;lid=DV+-+RonaldinhoTouchofGold+-+Nikesoccer&amp;lpos=Watch-s1"><img src="https://web.archive.org/web/20061115140409im_/http://sjl-static13.sjl.youtube.com/vi/lsO6D1rwrKc/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061115140409/http://youtube.com/cthru?HkbnudeTXohNYAq7H6u2am31z5MzzJK5tO4IJxJ454DwRIDLSZe3_sXFNxlL1vV-AHn1S2o58YHnaRAVf65W14ywG7LSiH5gT3OCuUmdeEz7Ad5i56T8aYZb_pJn5KnxiQgXB8a7vnKpQLjVV14XDXLU_zBinZ9lI9mer2FGhQ-ChLWc21IJZHfYeO6kDu_zhrrp4R0z9I4=" target="_parent" name="&amp;lid=DV+-+RonaldinhoTouchofGold+-+Nikesoccer&amp;lpos=Watch-s1">Ronaldinho:  Touch of Gold</a></b><br>
+			<span class="runtime">02:44</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/Nikesoccer" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s1">Nikesoccer</a>
+			</div>
+		</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061115140409/http://youtube.com/cthru?8MwQdV23Hljx0hvFgXQZCkC7Ewz677iVWCHUZpD27c1oB2mETOzKUBIQeGok6UnMeejQg8IG5Vov0imozvLhyEiq3WnafA4tP8WcXMTUIXq3W_W35P3D4pKKD4cN92oC3AOXsDFk3abAZJ_jsnskoNi8gBBnTkg3OLUh2xKKW_fYPbLK4LNE6MKdw8jVXUAaSEi6M11UfW8=" target="_parent" name="&amp;lid=DV+-+JohnnyCashGodsGonnaCutYouDown+-+JohnnyCash&amp;lpos=Watch-s2"><img src="https://web.archive.org/web/20061115140409im_/http://sjl-static3.sjl.youtube.com/vi/1e0EQlQXoEo/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061115140409/http://youtube.com/cthru?8MwQdV23Hljx0hvFgXQZCkC7Ewz677iVWCHUZpD27c1oB2mETOzKUBIQeGok6UnMeejQg8IG5Vov0imozvLhyEiq3WnafA4tP8WcXMTUIXq3W_W35P3D4pKKD4cN92oC3AOXsDFk3abAZJ_jsnskoNi8gBBnTkg3OLUh2xKKW_fYPbLK4LNE6MKdw8jVXUAaSEi6M11UfW8=" target="_parent" name="&amp;lid=DV+-+JohnnyCashGodsGonnaCutYouDown+-+JohnnyCash&amp;lpos=Watch-s2">Johnny Cash God's Gonna Cut You Down</a></b><br>
+			<span class="runtime">02:57</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/JohnnyCash" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s2">JohnnyCash</a>
+			</div>
+		</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061115140409/http://youtube.com/cthru?Gy5mB-qLzprTZ4XkH7wme0q6Q5EX1EJGOs2qugEwOOt2gEdAgwO0SeKqgbxsZVw6OhhBic9n7qFlPcY2ae2iuGZyPTo5cFnujsN0AS9H6_GdemMLZqZcgfG8vT9z4OEOCv7tcVisqkw8bL6DBbIWUW1kHOZnJg2aINwFZ78kDnaaVNtApNepj2DKuhJW2ligqK989TlAMfg=" target="_parent" name="&amp;lid=DV+-+TNATheJamesGangQuitTNAWrestling+-+TNAwrestling&amp;lpos=Watch-s3"><img src="https://web.archive.org/web/20061115140409im_/http://sjl-static15.sjl.youtube.com/vi/_fvtUejbM5U/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061115140409/http://youtube.com/cthru?Gy5mB-qLzprTZ4XkH7wme0q6Q5EX1EJGOs2qugEwOOt2gEdAgwO0SeKqgbxsZVw6OhhBic9n7qFlPcY2ae2iuGZyPTo5cFnujsN0AS9H6_GdemMLZqZcgfG8vT9z4OEOCv7tcVisqkw8bL6DBbIWUW1kHOZnJg2aINwFZ78kDnaaVNtApNepj2DKuhJW2ligqK989TlAMfg=" target="_parent" name="&amp;lid=DV+-+TNATheJamesGangQuitTNAWrestling+-+TNAwrestling&amp;lpos=Watch-s3">TNA: The James Gang Quit TNA Wrestling</a></b><br>
+			<span class="runtime">03:35</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/TNAwrestling" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s3">TNAwrestling</a>
+			</div>
+		</div>
+	</div> <!-- end dVidsDiv -->
+</div> <!-- end sideAdDiv -->
+
+</td>
+
+
+</tr></tbody></table>
+{% endblock %}

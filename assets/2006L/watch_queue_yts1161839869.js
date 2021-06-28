@@ -97,27 +97,27 @@ function clicked_add_icon(video_ID, fromRelated) {
 	}
 	var button_name = 'add_button_' + video_ID;
 	document.getElementById('quicklist_numb').innerHTML='<a href=/watch_queue?all>' + quicklist_count + '</a>';
-	document.getElementById(button_name).src='/img/icn_add_done_20x20.gif';
+	document.getElementById(button_name).src='/assets/2006l/icn_add_done_20x20.gif';
 	document.getElementById(button_name).blur();
 }
 
 function mouse_over_add_icon(video_ID) {
 	var button_name = 'add_button_' + video_ID;
 	if (document.getElementById(button_name).src.match('done')){
-		document.getElementById(button_name).src='/img/icn_add_done_20x20.gif';
+		document.getElementById(button_name).src='/assets/2006l/icn_add_done_20x20.gif';
 	}
 	else {
-		document.getElementById(button_name).src='/img/icn_add_over_20x20.gif';
+		document.getElementById(button_name).src='/assets/2006l/icn_add_over_20x20.gif';
 	}			
 }
 
 function mouse_out_add_icon(video_ID) {
 	var button_name = 'add_button_' + video_ID;
 	if (document.getElementById(button_name).src.match('done')){
-		document.getElementById(button_name).src='/img/icn_add_done_20x20.gif';
+		document.getElementById(button_name).src='/assets/2006l/icn_add_done_20x20.gif';
 	}
 	else {
-		document.getElementById(button_name).src='/img/icn_add_20x20.gif';
+		document.getElementById(button_name).src='/assets/2006l/icn_add_20x20.gif';
 	}			
 }
 

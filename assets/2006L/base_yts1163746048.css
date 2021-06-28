@@ -563,20 +563,20 @@ a.headerLink { }
 #gNavDiv .tabContent {
 	height: 19px;
 	padding: 5px 5px 0;
-	background: #BCE url(/web/20061124193821im_/http://www.youtube.com/img/navbar_tab_bg.gif) top left no-repeat;
+	background: #BCE url(/assets/2006l/navbar_tab_bg.gif) top left no-repeat;
 	text-align: center;
 	font-size: 13px;
 	font-weight: bold;
 	border-bottom: 1px solid #FFF;
 }
 #gNavDiv .selected {
-	background: #ddd url(/web/20061124193821im_/http://www.youtube.com/img/navbar_tab_bg_sel.gif) top left no-repeat;
+	background: #ddd url(/assets/2006l/navbar_tab_bg_sel.gif) top left no-repeat;
 	border-bottom: 1px solid #DDD;
 	}
 
 #gNavBottom {
 	height: 24px;
-	background: #DDD url(/web/20061124193821im_/http://www.youtube.com/img/pic_globalnav_gradation_8x24.gif) top left repeat-x;
+	background: #DDD url(/assets/2006l/pic_globalnav_gradation_8x24.gif) top left repeat-x;
 	}
 	
 #gSubNavDiv {
@@ -1719,10 +1719,10 @@ margin-left: 50px;
 	padding: 10px 0 0 160px;
 }
 #pitchSection #popularChannels {
-	background: url(/web/20061124193821im_/http://www.youtube.com/img/pic_postsignup_picks_790x155.gif) top left no-repeat;
+	background: url(/assets/2006l/pic_postsignup_picks_790x155.gif) top left no-repeat;
 }
 #pitchSection #partnerChannels {
-	background: url(/web/20061124193821im_/http://www.youtube.com/img/pic_postsignup_partners_790x155.gif) top left no-repeat;
+	background: url(/assets/2006l/pic_postsignup_partners_790x155.gif) top left no-repeat;
 }
 .pitchedItem {
 	width: 135px;
