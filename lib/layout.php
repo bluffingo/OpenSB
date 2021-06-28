@@ -12,11 +12,11 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
 
 function twigloader($subfolder = '') {
-	global $tplCache, $tplNoCache, $loggedIn, $currentUser, $theme, $languages, $menuLinks;
+	global $tplCache, $tplNoCache, $loggedIn, $currentUser, $theme, $languages, $frontend, $menuLinks;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
 
-	$loader = new \Twig\Loader\FilesystemLoader('templates/' . $subfolder);
+	$loader = new \Twig\Loader\FilesystemLoader('templates/' . $frontend . '/' . $subfolder);
 	$twig = new \Twig\Environment($loader, [
 		'cache' => $doCache,
 	]);

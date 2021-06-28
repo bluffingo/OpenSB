@@ -60,3 +60,7 @@ if ($loggedIn) {
 }
 
 $lang = new Lang(sprintf("lib/lang/".(isset($currentUser['language']) ? $currentUser['language'] : 'en_US').".json"));
+
+if ($isDebug) {
+	$frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
+}
