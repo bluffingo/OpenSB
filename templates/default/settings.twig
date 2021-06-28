@@ -52,7 +52,12 @@
 					{{ __("Change the look of your user profile.") }}
 				</div>
 				<br>
-				<form action="settings.php" method="post">
+				<form action="settings.php" method="post" enctype="multipart/form-data">
+					<img class="float-start rounded" src="{{ profile_image(current_user.username) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
+					<input class="form-control" type="file" name="profilePicture" id="profilePicture">
+					<br/>
+					channel background, only for partners, placeholder text, do not locafgjdf
+					<input class="form-control" type="file" name="profileBackground" id="profileBackground" {% if current_user.u_flags != 1 %}disabled{% endif %}>
 					<textarea class="form-control" id="description" id="floatingInput" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
 					<select class="form-select" name="language">
 						{% for code,name in glob_languages %}
