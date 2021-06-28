@@ -152,7 +152,7 @@
 
 	
 
-				<div id="ratingMessage">Rate this video:</div>
+				<div id="ratingMessage">{{ __("Rate this video:") }}</div>
 							<nobr>
 			<img class="rating" src="/assets/2006l/star.gif">
 			<img class="rating" src="/assets/2006l/star.gif">
@@ -160,7 +160,7 @@
 			<img class="rating" src="/assets/2006l/star.gif">
 			<img class="rating" src="/assets/2006l/star.gif">
 	</nobr>
-		<div class="rating">0 ratings (todo)</div>
+		<div class="rating">0 {{ __("ratings") }} (todo)</div>
 	
 
 
@@ -194,15 +194,15 @@
 		</div>
 		<div class="spacer"></div>
 		<div id="statsDiv">
-			Views: <span class="statVal">{{ video.views }}</span> <div class="statDivider">|</div> 
-			Comments: <span class="statVal">0</span> <div class="statDivider">|</div>
-			Favorited: <span class="statVal">0</span>
+			{{ __("Views:") }} <span class="statVal">{{ video.views }}</span> <div class="statDivider">|</div> 
+			{{ __("Comments:") }}: <span class="statVal">0</span> <div class="statDivider">|</div>
+			{{ __("Favorited:") }}: <span class="statVal">0</span>
 				times
 			<div class="statDivider">|</div> <a href="#" onclick="toggleFullStats(); return false;"><span id="moreless">more</span>&nbsp;stats...</a>
 		</div>
 		<div id="fullStats">
 			<div id="referDiv" class="moreStats">
-				<h4>Sites Linking to This Video:</h4>
+				<h4>{{ __("Sites Linking to This Video:") }}</h4>
 					<div class="statItem"><span class="label">65325 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://gorillamask.net/evdance.shtml" target="_top">http://gorillamask.net/evdance.shtml</a></div>
 					<div class="statItem"><span class="label">56972 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://www.myspace.com/" target="_top">http://www.myspace.com/</a></div>
 					<div class="statItem"><span class="label">45881 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://machomedia.blogspot.com/2006/05/evolution-of-dance.html" target="_top">http://machomedia.blogspot.com/2006/05/evolution-of-...</a></div>
@@ -215,7 +215,7 @@
 		</div>
 		<div id="honorLinkDiv">
 			<span>
-				<a href="#" onclick="toggleFullStats(); return false;">There are 0 honors for this video</a>
+				<a href="#" onclick="toggleFullStats(); return false;">{{ __("There are 0 honors for this video") }}</a>
 			</span>
 		</div>
 
@@ -234,7 +234,7 @@
 			
 	<div id="commentsDiv">
 				<table width="100%" cellspacing="0" cellpadding="0"><tbody><tr>
-				<td><h2 style="margin: 0px;">Comments &amp; Responses</h2></td>
+				<td><h2 style="margin: 0px;">{{ __("Comments & Responses") }}</h2></td>
 				<td align="right">
 						<div style="padding-bottom: 2px;">
 						<b><a href="/web/20061115140409/http://youtube.com/video_response_upload?v=dMH0bHeiRNg" onclick="_hbLink('Post+Video+Response','Watch');">Post a video response</a></b>
@@ -1081,7 +1081,7 @@
 </div> <!-- end aboutExploreDiv -->
 
 <div class="spOffersDiv">
-	<h4 class="label">New on YouTube</h4>
+	<h4 class="label">{{ __("New on squareBracket") }}</h4>
 	<div class="spOffersEntry">
 	One week left!
 	Vote in the
