@@ -3,9 +3,9 @@
 {% block title %}{{ __("Browse") }}{% endblock %}
 
 	{% block content %}
-		<h2>Videos</h2>
-		<h3>Approved</h3>
-		{% for video in videos %}
-			{{ video_box(video) }}
-		{% endfor %}
+<h2>Videos</h2>
+<h3>Approved</h3>
+{% for video in videos %}
+	{{ video_box(video) }}
+{% endfor %}
 	{% endblock %}

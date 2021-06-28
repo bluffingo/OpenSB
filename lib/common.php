@@ -17,16 +17,16 @@ foreach (glob("lib/*.php") as $file) {
 }
 
 function _twigloader($subfolder = '') {
-    $twig = twigloader($subfolder, function () use ($subfolder) {
-        return new \Twig\Loader\FilesystemLoader('templates/' . $subfolder);
-    }, function ($loader, $doCache) {
+	$twig = twigloader($subfolder, function () use ($subfolder) {
+		return new \Twig\Loader\FilesystemLoader('templates/' . $subfolder);
+	}, function ($loader, $doCache) {
 
-        return new \Twig\Environment($loader, [
-            'cache' => ($doCache ? "../".$doCache : $doCache),
-        ]);
-    });
+		return new \Twig\Environment($loader, [
+			'cache' => ($doCache ? "../".$doCache : $doCache),
+		]);
+	});
 
-    return $twig;
+	return $twig;
 }
 
 $userfields = userfields();
