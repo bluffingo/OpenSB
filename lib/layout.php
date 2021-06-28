@@ -91,6 +91,11 @@ function icon($icon, $size) {
 	return $twig->render('icon.twig', ['icon' => $icon, 'size' => $size]);
 }
 
+function pagination($total, $current, $url, $nearbyPagesLimit = 4) {
+	$twig = twigloader('components');
+	return $twig->render('pagination.twig', ['total' => $total, 'current' => $current, 'url' => $url, 'nearbyPagesLimit' => $nearbyPagesLimit]);
+}
+
 function relativeTime($time) {
 	$config = [
 		'language' => __('\RelativeTime\Languages\English'),

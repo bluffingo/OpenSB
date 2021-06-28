@@ -14,7 +14,7 @@ class SBExtension extends \Twig\Extension\AbstractExtension {
 			new \Twig\TwigFunction('__', '__', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('browse_channel_box', 'browseChannelBox', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('icon', 'icon', ['is_safe' => ['html']]),
-
+			new \Twig\TwigFunction('pagination', 'pagination', ['is_safe' => ['html']]),
 		];
 	}
 	public function getFilters() {

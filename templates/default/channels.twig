@@ -19,44 +19,7 @@
 			{% else %}
 				<p>{{ __("No users.") }}</p>
 			{% endfor %}
-			{# twig pagination code from: https://gist.github.com/maxpou/612359ed4af4cc5c4f06#gistcomment-3694029 #}
-			{# TODO: move this out to its own component, same as with browse.twig #}
-			{% macro pagination(total, current, url, nearbyPagesLimit = 4) %}
-				{% if total > 1 %}
-					<ul class="pagination my-4">
-						{% if current > 1 %}
-							<li><a class="page-link" href="{{ (url ~ (current-1))|e }}">&laquo;</a></li>
-						{% endif %}
-						{% for i in 1..total %}
-							{% if 0 == (current - nearbyPagesLimit) - loop.index %}
-								<li class="page-item"><a href="{{ (app.request.pathInfo ~ '?' ~ (app.request.query.all|merge({(pageQueryParam): 1})|url_encode))|e }}" class="page-link">1</a></li>
-								{% if 1 != loop.index %}
-									<li class="page-item">
-										<a href="javascript:void(0)" class="page-link">...</a>
-									</li>
-								{% endif %}
-							{% elseif 0 == (current + nearbyPagesLimit) - loop.index  and (current + nearbyPagesLimit) < total %}
-								<li class="page-item">
-									<a href="javascript:void(0)" class="page-link">...</a>
-								</li>
-							{% elseif 0 < (current - nearbyPagesLimit) - loop.index %}
-							{% elseif 0 > (current + nearbyPagesLimit) - loop.index %}
-							{% else %}
-								<li class="page-item{{ current == loop.index ? ' active' }}">
-									<a href="{{ url ~ loop.index }}" class="page-link">{{ loop.index }}</a>
-								</li>
-							{% endif %}
-						{% endfor %}
-						{% if current != total  and (current + nearbyPagesLimit) < total %}
-							<li class="page-item"><a href="{{ (app.request.pathInfo ~ '?' ~ (app.request.query.all|merge({(pageQueryParam): total})|url_encode))|e }}" class="page-link">{{ total }}</a></li>
-						{% endif %}
-						{% if current < total %}
-							<li><a class="page-link" href="{{ (url ~ (current+1))|e }}">&raquo;</a></li>
-						{% endif %}
-					</ul>
-				{% endif %}
-			{% endmacro %}
-			{{ _self.pagination(pageCount,currentPage, url) }}
+			{{ pagination(pageCount, currentPage, url) }}
 		</div>
 	</div>
 </div></div>
