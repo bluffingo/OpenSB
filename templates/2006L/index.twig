@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+	<title>YouTube - Broadcast Yourself.</title>
+
+	<link rel="stylesheet" href="/assets/2006l/http://www.youtube.com/css/styles_yts1162330703.css" type="text/css">
+	<link rel="stylesheet" href="/assets/2006l/base_yts1163746048.css" type="text/css">
+	<link rel="icon" href="/assets/2006l/favicon.ico" type="image/x-icon"> <!--- taken from poktube --->
+	<link rel="shortcut icon" href="/assets/2006l/favicon.ico" type="image/x-icon">
+	
+	
+	<meta name="keywords" content="video,sharing,camera phone,video phone">
+
+	<link rel="alternate" title="YouTube - [RSS]" href="/web/20061124193253/http://www.youtube.com/rssls">
+
+	<script type="text/javascript" src="/assets/2006l/ui_yts1161839869.js"></script>
+	<script type="text/javascript" src="/assets/2006l/AJAX_yts1161839869.js"></script>
+	<script type="text/javascript" src="/assets/2006l/watch_queue_yts1161839869.js"></script>
+	
+	<script language="javascript" type="text/javascript"> function _hbLink (a,b) { return false; } </script>
+
+
+</head>
+
+
+<body onload="performOnLoadFunctions();">
+<div id="baseDiv">	
+		<div id="logoTagDiv">
+		<a href="index.php?frontend=2006L" name="&amp;lid=Logo&amp;lpos=GlobalNav"><img src="/assets/2006l/logo_tagline_sm.gif" alt="squareBracket" width="254" height="48" border="0"></a>
+	</div>
+
+	<div id="utilDiv" style="height:13px;">
+                        <b><a href="/web/20061124193253/http://www.youtube.com/signup" onclick="_hbLink('SignUp','UtilityLinks');">Sign Up</a></b>
+                        <span class="utilDelim">|</span>
+                        <a href="/web/20061124193253/http://www.youtube.com/my_account">My Account</a>
+                        <span class="utilDelim">|</span>
+                        <a href="/web/20061124193253/http://www.youtube.com/recently_watched" onclick="_hbLink('ViewingHistory','UtilityLinks');">History</a>
+                        <span class="utilDelim">|</span>
+                        <a href="/web/20061124193253/http://www.youtube.com/watch_queue?all" onclick="_hbLink('QuickList','UtilityLinks');">QuickList</a>
+			(<span id="quicklist_numb"><a href="/web/20061124193253/http://www.youtube.com/watch_queue?all"><script type="text/javascript">var quicklist_count=0;document.write(quicklist_count);</script>0</a></span>)                        
+                        <span class="utilDelim">|</span>
+                        <a href="/web/20061124193253/http://www.youtube.com/t/help_center">Help</a>
+                        <span class="utilDelim">|</span>
+                        <a href="/web/20061124193253/http://www.youtube.com/login?next=/" onclick="_hbLink('LogIn','UtilityLinks');">Log In</a>
+        </div>
+        <form name="logoutForm" method="post" action="/web/20061124193253/http://www.youtube.com/index">
+                <input type="hidden" name="action_logout" value="1">
+        </form>
+
+	
+	<div id="searchDiv">
+		<form name="searchForm" id="searchForm" method="get" action="/web/20061124193253/http://www.youtube.com/results">
+		<span class="smallLabel">Search for&nbsp;</span>
+		<input tabindex="10000" type="text" name="search_query" maxlength="128" class="searchField" value="">
+		&nbsp;
+		<input type="submit" name="search" value="Search">
+	</form>
+
+	</div>
+		
+	<table width="100%" cellspacing="0" cellpadding="0" border="0">
+	<tbody><tr><td>
+		<div id="gNavDiv">
+				
+				<div class="ltab">
+				<div class="tabContent selected">
+				<a href="/web/20061124193253/http://www.youtube.com/index" name="&amp;lid=Home&amp;lpos=GlobalNav">Home</a>
+				</div>
+				</div>
+				
+				<div class="tab">
+				<div class="tabContent">
+				<a href="/web/20061124193253/http://www.youtube.com/browse?s=mp" name="&amp;lid=Videos&amp;lpos=GlobalNav">Videos</a>
+				</div>
+				</div>
+				
+				<div class="tab">
+				<div class="tabContent">
+				<a href="/web/20061124193253/http://www.youtube.com/members" name="&amp;lid=Channels&amp;lpos=GlobalNav">Channels</a>
+				</div>
+				</div>
+				
+				<div class="tab">
+				<div class="tabContent">
+				<a href="/web/20061124193253/http://www.youtube.com/groups_main" name="&amp;lid=Groups&amp;lpos=GlobalNav">Groups</a>
+				</div>
+				</div>
+				
+				<div class="tab">
+				<div class="tabContent">
+				<a href="/web/20061124193253/http://www.youtube.com/categories" name="&amp;lid=Categories&amp;lpos=GlobalNav">Categories</a>
+				</div>
+				</div>
+				
+				<div class="rtab">
+				<div class="tabContent">
+				<a href="/web/20061124193253/http://www.youtube.com/my_videos_upload" name="&amp;lid=Upload&amp;lpos=GlobalNav">Upload</a>
+				</div>
+				</div>
+		</div>
+	</td></tr>
+	<tr><td>
+			<div id="gSubNavDiv">
+				&nbsp;
+						<a href="/web/20061124193253/http://www.youtube.com/my_account" onclick="_hbLink('MyAccount','SubNav');">My Account</a>
+							<span style="padding: 0px 8px;">|</span>
+						<a href="/web/20061124193253/http://www.youtube.com/my_videos" onclick="_hbLink('MyVideos','SubNav');">My Videos</a>
+							<span style="padding: 0px 8px;">|</span>
+						<a href="/web/20061124193253/http://www.youtube.com/my_favorites" onclick="_hbLink('MyFavorites','SubNav');">My Favorites</a>
+							<span style="padding: 0px 8px;">|</span>
+						<a href="/web/20061124193253/http://www.youtube.com/my_friends?sort=n" onclick="_hbLink('MyFriends','SubNav');">My Friends</a>
+							<span style="padding: 0px 8px;">|</span>
+						<a href="/web/20061124193253/http://www.youtube.com/my_messages" onclick="_hbLink('MyInbox','SubNav');">My Inbox</a>
+							<span style="padding: 0px 8px;">|</span>
+						<a href="/web/20061124193253/http://www.youtube.com/subscription_center" onclick="_hbLink('MySubscriptions','SubNav');">My Subscriptions</a>
+							<span style="padding: 0px 8px;">|</span>
+						<a href="/web/20061124193253/http://www.youtube.com/groups_my" onclick="_hbLink('MyGroups','SubNav');">My Groups</a>
+							<span style="padding: 0px 8px;">|</span>
+						<a href="/web/20061124193253/http://www.youtube.com/my_profile" onclick="_hbLink('MyChannel','SubNav');">My Channel</a>
+				&nbsp;
+			</div> <!-- end gSubNavDiv -->
+	</td></tr>
+	</tbody></table>
+
+	
+	
+	
+	
+
+
+
+
+<script type="text/javascript" src="/web/20061124193253js_/http://www.youtube.com/js/components_yts1157352107.js"></script>
+<script type="text/javascript" src="/web/20061124193253js_/http://www.youtube.com/js/AJAX_yts1161839869.js"></script>
+<script type="text/javascript" src="/web/20061124193253js_/http://www.youtube.com/js/video_bar_yts1157352107.js"></script>
+
+<script type="text/javascript">
+</script>
+
+
+
+
+<div id="hpMainContent"> 
+			<div class="hpContentBlock">
+		<!-- <div id="hpSVidAboutLink"><a href="#">Advertise on YouTube</a></div> -->
+		<div id="hpSVidHeader">Director Videos</div>
+		<div>
+			<div class="hpSVidEntry " style="margin-bottom: 0px;">
+				<div class="vstill"><a href="/web/20061124193253/http://www.youtube.com/cthru?4FjSK7GGUO-6JY-V11D-wb0pyUPIyQ8YNKsw4y4iJYnqE4WfI6KCL6EE8UixiCMatOMQdsUoE2xuCnQihHS6HbmhyvUH-7iRgaxIfIqNAj3l5XjOGuOAlhC4cr51H2sGM0dtsH-A5fwgMfGHDZQ6ZlwoITAiSUjMMnBp6c1DsGkDpfymlo64ULROJrV5HFMq1aotJvw_ZJ0=" name="&amp;lid=DV+-+Pancakes+-+GiR2007&amp;lpos=Homepage-s0"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static15.sjl.youtube.com/vi/PnCVZozHTG8/2.jpg" class="vimg80"></a></div>
+				<div class="vtitle xsmallText">
+				
+				<a href="/web/20061124193253/http://www.youtube.com/cthru?4FjSK7GGUO-6JY-V11D-wb0pyUPIyQ8YNKsw4y4iJYnqE4WfI6KCL6EE8UixiCMatOMQdsUoE2xuCnQihHS6HbmhyvUH-7iRgaxIfIqNAj3l5XjOGuOAlhC4cr51H2sGM0dtsH-A5fwgMfGHDZQ6ZlwoITAiSUjMMnBp6c1DsGkDpfymlo64ULROJrV5HFMq1aotJvw_ZJ0=" name="&amp;lid=DV+-+Pancakes+-+GiR2007&amp;lpos=Homepage-s0">Pancakes!</a>
+				</div>
+				
+			</div>
+			<div class="hpSVidEntry " style="margin-bottom: 0px;">
+				<div class="vstill"><a href="/web/20061124193253/http://www.youtube.com/cthru?Lmr9owrKw8VI5isHif0hClQGxXtWd-JT6Z5unnNxyQhnFtwh46GD529FYVnSV_2hLQFyU77fLDjLPLwQsCO-OPPr3Af3Ol8mEXD-P8R_4jJoUGdxTHIovJMSqz-C-Yvo2B5wEw9Evl62-LnUujv2W5lpBklNZMxCYVQvlny_XqdaMcNnrjLijxLrrkqYqd2gHdmbp2Z-pck=" name="&amp;lid=DV+-+DenzelDiscussesDjVuCBSNews+-+CBS&amp;lpos=Homepage-s1"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static15.sjl.youtube.com/vi/LAp_p2hKQ_Y/2.jpg" class="vimg80"></a></div>
+				<div class="vtitle xsmallText">
+				
+				<a href="/web/20061124193253/http://www.youtube.com/cthru?Lmr9owrKw8VI5isHif0hClQGxXtWd-JT6Z5unnNxyQhnFtwh46GD529FYVnSV_2hLQFyU77fLDjLPLwQsCO-OPPr3Af3Ol8mEXD-P8R_4jJoUGdxTHIovJMSqz-C-Yvo2B5wEw9Evl62-LnUujv2W5lpBklNZMxCYVQvlny_XqdaMcNnrjLijxLrrkqYqd2gHdmbp2Z-pck=" name="&amp;lid=DV+-+DenzelDiscussesDjVuCBSNews+-+CBS&amp;lpos=Homepage-s1">Denzel Discusses 'Déjà Vu' (CBS News)</a>
+				</div>
+				
+			</div>
+			<div class="hpSVidEntry " style="margin-bottom: 0px;">
+				<div class="vstill"><a href="/web/20061124193253/http://www.youtube.com/cthru?ndVYK0SB8b0iuQXmPoSBykHTNrlHnlZ68Ti6TtRSSLpb_m9aZATwhL7vcWbxNGRKhzopRow6P5pcFqKYfJp48JzTLswLhnqZqqI4HNhy0czT0C2BJ67_Tc3EDMleLgUT63I77EQLhDZGJiNtqa8jMS6xjScSgrqFQl1yWbwEPcn7BwW3InIHsgyCeDuwth4wakNyoiHX_Bg=" name="&amp;lid=DV+-+AskANinjaQuestion9NinjaLove+-+digitalfilmmaker&amp;lpos=Homepage-s2"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static13.sjl.youtube.com/vi/qdS5lkeN8_8/2.jpg" class="vimg80"></a></div>
+				<div class="vtitle xsmallText">
+				
+				<a href="/web/20061124193253/http://www.youtube.com/cthru?ndVYK0SB8b0iuQXmPoSBykHTNrlHnlZ68Ti6TtRSSLpb_m9aZATwhL7vcWbxNGRKhzopRow6P5pcFqKYfJp48JzTLswLhnqZqqI4HNhy0czT0C2BJ67_Tc3EDMleLgUT63I77EQLhDZGJiNtqa8jMS6xjScSgrqFQl1yWbwEPcn7BwW3InIHsgyCeDuwth4wakNyoiHX_Bg=" name="&amp;lid=DV+-+AskANinjaQuestion9NinjaLove+-+digitalfilmmaker&amp;lpos=Homepage-s2">Ask A Ninja: Question 9 "Ninja Love"</a>
+				</div>
+				
+			</div>
+			<div class="hpSVidEntry " style="margin-bottom: 0px;">
+				<div class="vstill"><a href="/web/20061124193253/http://www.youtube.com/cthru?-XC7hZWyNVMWqVsMd_4HIDP1oqQKNezwqSwlVMYB9g-aaXTpDTY8FRHevpYLV7Vfp_RZk_Z8FXc2AErpU3V2CxKA8qoB9zuPT4tlaj4qyGpIfcvue4GvZRBFb24s7GFWg7ItyCOAX-20HB60jhGSqTjdRor3ZlawM_J_V5YdW1f1zQkU36bT0b6bNQNbl9jS_6hS2gozH2g=" name="&amp;lid=DV+-+CoasttoCoastGoalGretzkyStyle+-+CBS&amp;lpos=Homepage-s3"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static1.sjl.youtube.com/vi/Yba-exnn9pQ/2.jpg" class="vimg80"></a></div>
+				<div class="vtitle xsmallText">
+				
+				<a href="/web/20061124193253/http://www.youtube.com/cthru?-XC7hZWyNVMWqVsMd_4HIDP1oqQKNezwqSwlVMYB9g-aaXTpDTY8FRHevpYLV7Vfp_RZk_Z8FXc2AErpU3V2CxKA8qoB9zuPT4tlaj4qyGpIfcvue4GvZRBFb24s7GFWg7ItyCOAX-20HB60jhGSqTjdRor3ZlawM_J_V5YdW1f1zQkU36bT0b6bNQNbl9jS_6hS2gozH2g=" name="&amp;lid=DV+-+CoasttoCoastGoalGretzkyStyle+-+CBS&amp;lpos=Homepage-s3">Coast to Coast Goal - Gretzky Style</a>
+				</div>
+				
+			</div>
+		<div class="lclear" style="height: 1px;"></div>
+		</div>
+	</div> <!-- end hpContentBlock -->
+
+
+		<div class="headerRCBox">
+	<b class="rch">
+	<b class="rch1"><b></b></b>
+	<b class="rch2"><b></b></b>
+	<b class="rch3"></b>
+	<b class="rch4"></b>
+	<b class="rch5"></b>
+	</b> <div class="content">		<div class="headerTitle">
+			<div class="headerTitleRight">
+				<a href="/web/20061124193253/http://www.youtube.com/browse?s=rf">See More Videos</a>
+			</div>
+			<span>Featured Videos</span>
+		</div>
+</div>
+	</div>
+
+	<div class="vListBox">
+			<div class="vEntry">
+		<table class="vTable"><tbody><tr>
+			<td>
+				<a href="/web/20061124193253/http://www.youtube.com/watch?v=2w84qzHdEms" onclick="_hbLink('ComplaintsChoirofBirmingham','VidHorz');"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static13.sjl.youtube.com/vi/2w84qzHdEms/2.jpg" class="vimg120" border="0"></a>
+				        <script language="javascript" type="text/javascript">
+                if (navigator.appName.indexOf('Microsoft') != -1) {
+                        document.write('<div id="add_img_2w84qzHdEms" style="width:20px;margin-top:-29px;margin-left:1px;">');
+                }
+                else {
+                        document.write('<div id="add_img_2w84qzHdEms" style="width:20px;margin-top:-26px;margin-left:1px;">');
+                }
+        </script><div id="add_img_2w84qzHdEms" style="width:20px;margin-top:-26px;margin-left:1px;">
+        <a href="#" onclick="clicked_add_icon('2w84qzHdEms', 0);return false;" title="Add Video to QuickList"><img id="add_button_2w84qzHdEms" onmouseover="mouse_over_add_icon('2w84qzHdEms');return false;" onmouseout="mouse_out_add_icon('2w84qzHdEms');return false;" src="/web/20061124193253im_/http://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+        </div>
+
+			</td>
+			<td class="vinfo">
+				<div class="vtitle">
+					<a href="/web/20061124193253/http://www.youtube.com/watch?v=2w84qzHdEms" onclick="_hbLink('ComplaintsChoirofBirmingham','VidHorz');">Complaints Choir of Birmingham</a><br>
+					<span class="runtime">08:53</span>
+				</div>
+				<div class="vdesc">		
+			<span id="BeginvidDesc2w84qzHdEms">
+	The Complaints Choir invites people to complain as much as they want and to sing their complaints out loud together with fellow complainers. The first choir was organised in Birmingham followed by the Complaints Choir of Helsinki and Hambur
+	</span>
+	
+			<span id="RemainvidDesc2w84qzHdEms" style="display: none">The Complaints Choir invites people to complain as much as they want and to sing their complaints out loud together with fellow complainers. The first choir was organised in Birmingham followed by the Complaints Choir of Helsinki and Hamburg. The lyrics were written by the Choir, Music by Mike Hurley. Project by Tellervo Kalleinen and Oliver Kochta-Kalleinen</span>
+			<span id="MorevidDesc2w84qzHdEms" class="smallText">(<a href="#" class="eLink" onclick="showInline('RemainvidDesc2w84qzHdEms'); hideInline('MorevidDesc2w84qzHdEms'); hideInline('BeginvidDesc2w84qzHdEms'); showInline('LessvidDesc2w84qzHdEms'); return false;">more</a>)</span>
+			<span id="LessvidDesc2w84qzHdEms" style="display: none" class="smallText">(<a href="#" class="eLink" onclick="hideInline('RemainvidDesc2w84qzHdEms'); hideInline('LessvidDesc2w84qzHdEms'); showInline('BeginvidDesc2w84qzHdEms'); showInline('MorevidDesc2w84qzHdEms'); return false;">less</a>)</span>
+
+
+</div>
+				<div class="vfacets">
+					<div class="vtagLabel">Tags:</div>
+					<div class="vtagValue"><a href="/web/20061124193253/http://www.youtube.com/results?search_query=complaining" class="dg">complaining</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=complaints" class="dg">complaints</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=choir" class="dg">choir</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=birmingham" class="dg">birmingham</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=helsinki" class="dg">helsinki</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=hamburg" class="dg">hamburg</a></div>
+						<span class="grayText">Added:</span> 3 months ago
+						<span class="grayText"> &nbsp; in Category:</span> <a href="/web/20061124193253/http://www.youtube.com/browse?s=mp&amp;t=t&amp;c=1" class="dg">Arts &amp; Animation</a><br>
+							<span class="grayText">From:</span> <a href="/web/20061124193253/http://www.youtube.com/user/atomipommi">atomipommi</a><br>
+						<span class="grayText">Views:</span> 13,039
+				</div>
+							<nobr>
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_half.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_bg.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_bg.gif">
+	</nobr>
+		<div class="rating">143 ratings</div>
+	
+
+
+
+			</td>
+		</tr>
+		</tbody></table>
+	</div> <!-- end vEntry -->
+
+			<div class="vEntry">
+		<table class="vTable"><tbody><tr>
+			<td>
+				<a href="/web/20061124193253/http://www.youtube.com/watch?v=-jW1vWgogLQ" onclick="_hbLink('TheGobbleSong','VidHorz');"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static11.sjl.youtube.com/vi/-jW1vWgogLQ/2.jpg" class="vimg120" border="0"></a>
+				        <script language="javascript" type="text/javascript">
+                if (navigator.appName.indexOf('Microsoft') != -1) {
+                        document.write('<div id="add_img_-jW1vWgogLQ" style="width:20px;margin-top:-29px;margin-left:1px;">');
+                }
+                else {
+                        document.write('<div id="add_img_-jW1vWgogLQ" style="width:20px;margin-top:-26px;margin-left:1px;">');
+                }
+        </script><div id="add_img_-jW1vWgogLQ" style="width:20px;margin-top:-26px;margin-left:1px;">
+        <a href="#" onclick="clicked_add_icon('-jW1vWgogLQ', 0);return false;" title="Add Video to QuickList"><img id="add_button_-jW1vWgogLQ" onmouseover="mouse_over_add_icon('-jW1vWgogLQ');return false;" onmouseout="mouse_out_add_icon('-jW1vWgogLQ');return false;" src="/web/20061124193253im_/http://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+        </div>
+
+			</td>
+			<td class="vinfo">
+				<div class="vtitle">
+					<a href="/web/20061124193253/http://www.youtube.com/watch?v=-jW1vWgogLQ" onclick="_hbLink('TheGobbleSong','VidHorz');">The Gobble Song</a><br>
+					<span class="runtime">03:02</span>
+				</div>
+				<div class="vdesc">		
+			<span id="BeginvidDesc-jW1vWgogLQ">
+	Celebrate the warmth of Thanksgiving with the "The Gobble Song," by Spencer the Gardener. Video conceived and created by Russ Spencer of Bison Films.<br>See www.spencerthegardener.com or www.bisonfilms.com. <br>Enjoy it with a smile.
+	</span>
+	
+
+
+</div>
+				<div class="vfacets">
+					<div class="vtagLabel">Tags:</div>
+					<div class="vtagValue"><a href="/web/20061124193253/http://www.youtube.com/results?search_query=Thanksgiving" class="dg">Thanksgiving</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=turkey" class="dg">turkey</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=gobble" class="dg">gobble</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=dance" class="dg">dance</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=music" class="dg">music</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=video" class="dg">video</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=dancing" class="dg">dancing</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Spencer" class="dg">Spencer</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=The" class="dg">The</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Gardener" class="dg">Gardener</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Russ" class="dg">Russ</a></div>
+						<span class="grayText">Added:</span> 4 days ago
+						<span class="grayText"> &nbsp; in Category:</span> <a href="/web/20061124193253/http://www.youtube.com/browse?s=mp&amp;t=t&amp;c=24" class="dg">Entertainment</a><br>
+							<span class="grayText">From:</span> <a href="/web/20061124193253/http://www.youtube.com/user/bisonfilms">bisonfilms</a><br>
+						<span class="grayText">Views:</span> 163,117
+				</div>
+							<nobr>
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_half.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_bg.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_bg.gif">
+	</nobr>
+		<div class="rating">826 ratings</div>
+	
+
+
+
+			</td>
+		</tr>
+		</tbody></table>
+	</div> <!-- end vEntry -->
+
+			<div class="vEntry">
+		<table class="vTable"><tbody><tr>
+			<td>
+				<a href="/web/20061124193253/http://www.youtube.com/watch?v=hGOTf3Xl6Qs" onclick="_hbLink('DOUBLEJOINTED','VidHorz');"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static6.sjl.youtube.com/vi/hGOTf3Xl6Qs/2.jpg" class="vimg120" border="0"></a>
+				        <script language="javascript" type="text/javascript">
+                if (navigator.appName.indexOf('Microsoft') != -1) {
+                        document.write('<div id="add_img_hGOTf3Xl6Qs" style="width:20px;margin-top:-29px;margin-left:1px;">');
+                }
+                else {
+                        document.write('<div id="add_img_hGOTf3Xl6Qs" style="width:20px;margin-top:-26px;margin-left:1px;">');
+                }
+        </script><div id="add_img_hGOTf3Xl6Qs" style="width:20px;margin-top:-26px;margin-left:1px;">
+        <a href="#" onclick="clicked_add_icon('hGOTf3Xl6Qs', 0);return false;" title="Add Video to QuickList"><img id="add_button_hGOTf3Xl6Qs" onmouseover="mouse_over_add_icon('hGOTf3Xl6Qs');return false;" onmouseout="mouse_out_add_icon('hGOTf3Xl6Qs');return false;" src="/web/20061124193253im_/http://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+        </div>
+
+			</td>
+			<td class="vinfo">
+				<div class="vtitle">
+					<a href="/web/20061124193253/http://www.youtube.com/watch?v=hGOTf3Xl6Qs" onclick="_hbLink('DOUBLEJOINTED','VidHorz');">DOUBLE JOINTED</a><br>
+					<span class="runtime">03:51</span>
+				</div>
+				<div class="vdesc">		
+			<span id="BeginvidDeschGOTf3Xl6Qs">
+	Yea im double jointed in alot parts of my body and idk i found out some of the weird stuff i can do decided to record it and yea...im not really proud of it so i wore some weird mask i found in my room....enjoy<br><br>if you want to see what i 
+	</span>
+	
+			<span id="RemainvidDeschGOTf3Xl6Qs" style="display: none">Yea im double jointed in alot parts of my body and idk i found out some of the weird stuff i can do decided to record it and yea...im not really proud of it so i wore some weird mask i found in my room....enjoy<br><br>if you want to see what i look like, or if you wanna just talk or ask me any questions add me on myspace :D<br>myspace.com/skater888</span>
+			<span id="MorevidDeschGOTf3Xl6Qs" class="smallText">(<a href="#" class="eLink" onclick="showInline('RemainvidDeschGOTf3Xl6Qs'); hideInline('MorevidDeschGOTf3Xl6Qs'); hideInline('BeginvidDeschGOTf3Xl6Qs'); showInline('LessvidDeschGOTf3Xl6Qs'); return false;">more</a>)</span>
+			<span id="LessvidDeschGOTf3Xl6Qs" style="display: none" class="smallText">(<a href="#" class="eLink" onclick="hideInline('RemainvidDeschGOTf3Xl6Qs'); hideInline('LessvidDeschGOTf3Xl6Qs'); showInline('BeginvidDeschGOTf3Xl6Qs'); showInline('MorevidDeschGOTf3Xl6Qs'); return false;">less</a>)</span>
+
+
+</div>
+				<div class="vfacets">
+					<div class="vtagLabel">Tags:</div>
+					<div class="vtagValue"><a href="/web/20061124193253/http://www.youtube.com/results?search_query=weird" class="dg">weird</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=gross" class="dg">gross</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=contortionist" class="dg">contortionist</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=double" class="dg">double</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=jointed" class="dg">jointed</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=steve" class="dg">steve</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=freaky" class="dg">freaky</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=arm" class="dg">arm</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=leg" class="dg">leg</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=dislocate" class="dg">dislocate</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=sick" class="dg">sick</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=disgusting" class="dg">disgusting</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=hand" class="dg">hand</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=twist" class="dg">twist</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=break" class="dg">break</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=crazy" class="dg">crazy</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=insane" class="dg">insane</a></div>
+						<span class="grayText">Added:</span> 4 months ago
+						<span class="grayText"> &nbsp; in Category:</span> <a href="/web/20061124193253/http://www.youtube.com/browse?s=mp&amp;t=t&amp;c=24" class="dg">Entertainment</a><br>
+							<span class="grayText">From:</span> <a href="/web/20061124193253/http://www.youtube.com/user/TAMAdrums8">TAMAdrums8</a><br>
+						<span class="grayText">Views:</span> 645,817
+				</div>
+							<nobr>
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_half.gif">
+	</nobr>
+		<div class="rating">4190 ratings</div>
+	
+
+
+
+			</td>
+		</tr>
+		</tbody></table>
+	</div> <!-- end vEntry -->
+
+			<div class="vEntry">
+		<table class="vTable"><tbody><tr>
+			<td>
+				<a href="/web/20061124193253/http://www.youtube.com/watch?v=ayhTMr1VhaY" onclick="_hbLink('Thanksgiving','VidHorz');"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static5.sjl.youtube.com/vi/ayhTMr1VhaY/2.jpg" class="vimg120" border="0"></a>
+				        <script language="javascript" type="text/javascript">
+                if (navigator.appName.indexOf('Microsoft') != -1) {
+                        document.write('<div id="add_img_ayhTMr1VhaY" style="width:20px;margin-top:-29px;margin-left:1px;">');
+                }
+                else {
+                        document.write('<div id="add_img_ayhTMr1VhaY" style="width:20px;margin-top:-26px;margin-left:1px;">');
+                }
+        </script><div id="add_img_ayhTMr1VhaY" style="width:20px;margin-top:-26px;margin-left:1px;">
+        <a href="#" onclick="clicked_add_icon('ayhTMr1VhaY', 0);return false;" title="Add Video to QuickList"><img id="add_button_ayhTMr1VhaY" onmouseover="mouse_over_add_icon('ayhTMr1VhaY');return false;" onmouseout="mouse_out_add_icon('ayhTMr1VhaY');return false;" src="/web/20061124193253im_/http://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+        </div>
+
+			</td>
+			<td class="vinfo">
+				<div class="vtitle">
+					<a href="/web/20061124193253/http://www.youtube.com/watch?v=ayhTMr1VhaY" onclick="_hbLink('Thanksgiving','VidHorz');">Thanksgiving</a><br>
+					<span class="runtime">02:54</span>
+				</div>
+				<div class="vdesc">		
+			<span id="BeginvidDescayhTMr1VhaY">
+	Tavin's got so much to be thankful for this year.
+	</span>
+	
+
+
+</div>
+				<div class="vfacets">
+					<div class="vtagLabel">Tags:</div>
+					<div class="vtagValue"><a href="/web/20061124193253/http://www.youtube.com/results?search_query=Sweet" class="dg">Sweet</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Tea" class="dg">Tea</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Films" class="dg">Films</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=sweetteafilms" class="dg">sweetteafilms</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Southern" class="dg">Southern</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Samplin%27" class="dg">Samplin'</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=clean" class="dg">clean</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=comedy" class="dg">comedy</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=trailer" class="dg">trailer</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=park" class="dg">park</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Shortstop" class="dg">Shortstop</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Kelvin" class="dg">Kelvin</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Duball" class="dg">Duball</a></div>
+						<span class="grayText">Added:</span> 4 days ago
+						<span class="grayText"> &nbsp; in Category:</span> <a href="/web/20061124193253/http://www.youtube.com/browse?s=mp&amp;t=t&amp;c=23" class="dg">Comedy</a><br>
+							<span class="grayText">From:</span> <a href="/web/20061124193253/http://www.youtube.com/user/sweetteafilms">sweetteafilms</a><br>
+						<span class="grayText">Views:</span> 220,792
+				</div>
+							<nobr>
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_half.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_bg.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_bg.gif">
+	</nobr>
+		<div class="rating">762 ratings</div>
+	
+
+
+
+			</td>
+		</tr>
+		</tbody></table>
+	</div> <!-- end vEntry -->
+
+			<div class="vEntry">
+		<table class="vTable"><tbody><tr>
+			<td>
+				<a href="/web/20061124193253/http://www.youtube.com/watch?v=mCwKbUVyHLY" onclick="_hbLink('PMSSURVIVALTIPS','VidHorz');"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static9.sjl.youtube.com/vi/mCwKbUVyHLY/2.jpg" class="vimg120" border="0"></a>
+				        <script language="javascript" type="text/javascript">
+                if (navigator.appName.indexOf('Microsoft') != -1) {
+                        document.write('<div id="add_img_mCwKbUVyHLY" style="width:20px;margin-top:-29px;margin-left:1px;">');
+                }
+                else {
+                        document.write('<div id="add_img_mCwKbUVyHLY" style="width:20px;margin-top:-26px;margin-left:1px;">');
+                }
+        </script><div id="add_img_mCwKbUVyHLY" style="width:20px;margin-top:-26px;margin-left:1px;">
+        <a href="#" onclick="clicked_add_icon('mCwKbUVyHLY', 0);return false;" title="Add Video to QuickList"><img id="add_button_mCwKbUVyHLY" onmouseover="mouse_over_add_icon('mCwKbUVyHLY');return false;" onmouseout="mouse_out_add_icon('mCwKbUVyHLY');return false;" src="/web/20061124193253im_/http://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+        </div>
+
+			</td>
+			<td class="vinfo">
+				<div class="vtitle">
+					<a href="/web/20061124193253/http://www.youtube.com/watch?v=mCwKbUVyHLY" onclick="_hbLink('PMSSURVIVALTIPS','VidHorz');">PMS SURVIVAL TIPS</a><br>
+					<span class="runtime">02:45</span>
+				</div>
+				<div class="vdesc">		
+			<span id="BeginvidDescmCwKbUVyHLY">
+	A parody of 1950 educational and goverment propaganda videos.
+	</span>
+	
+
+
+</div>
+				<div class="vfacets">
+					<div class="vtagLabel">Tags:</div>
+					<div class="vtagValue"><a href="/web/20061124193253/http://www.youtube.com/results?search_query=COMEDY" class="dg">COMEDY</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=PARODY" class="dg">PARODY</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=SHORT" class="dg">SHORT</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=FILM" class="dg">FILM</a></div>
+						<span class="grayText">Added:</span> 4 days ago
+						<span class="grayText"> &nbsp; in Category:</span> <a href="/web/20061124193253/http://www.youtube.com/browse?s=mp&amp;t=t&amp;c=23" class="dg">Comedy</a><br>
+							<span class="grayText">From:</span> <a href="/web/20061124193253/http://www.youtube.com/user/MauriceDevereaux">MauriceDevereaux</a><br>
+						<span class="grayText">Views:</span> 796,992
+				</div>
+							<nobr>
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_half.gif">
+	</nobr>
+		<div class="rating">5574 ratings</div>
+	
+
+
+
+			</td>
+		</tr>
+		</tbody></table>
+	</div> <!-- end vEntry -->
+
+			<div class="vEntry">
+		<table class="vTable"><tbody><tr>
+			<td>
+				<a href="/web/20061124193253/http://www.youtube.com/watch?v=QDdkFkMUsMA" onclick="_hbLink('MasterofHeadspin','VidHorz');"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static4.sjl.youtube.com/vi/QDdkFkMUsMA/2.jpg" class="vimg120" border="0"></a>
+				        <script language="javascript" type="text/javascript">
+                if (navigator.appName.indexOf('Microsoft') != -1) {
+                        document.write('<div id="add_img_QDdkFkMUsMA" style="width:20px;margin-top:-29px;margin-left:1px;">');
+                }
+                else {
+                        document.write('<div id="add_img_QDdkFkMUsMA" style="width:20px;margin-top:-26px;margin-left:1px;">');
+                }
+        </script><div id="add_img_QDdkFkMUsMA" style="width:20px;margin-top:-26px;margin-left:1px;">
+        <a href="#" onclick="clicked_add_icon('QDdkFkMUsMA', 0);return false;" title="Add Video to QuickList"><img id="add_button_QDdkFkMUsMA" onmouseover="mouse_over_add_icon('QDdkFkMUsMA');return false;" onmouseout="mouse_out_add_icon('QDdkFkMUsMA');return false;" src="/web/20061124193253im_/http://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+        </div>
+
+			</td>
+			<td class="vinfo">
+				<div class="vtitle">
+					<a href="/web/20061124193253/http://www.youtube.com/watch?v=QDdkFkMUsMA" onclick="_hbLink('MasterofHeadspin','VidHorz');">Master of Headspin</a><br>
+					<span class="runtime">00:49</span>
+				</div>
+				<div class="vdesc">		
+			<span id="BeginvidDescQDdkFkMUsMA">
+	No more words to say... he's the master of headspin!<br><br>Yeah :)
+	</span>
+	
+
+
+</div>
+				<div class="vfacets">
+					<div class="vtagLabel">Tags:</div>
+					<div class="vtagValue"><a href="/web/20061124193253/http://www.youtube.com/results?search_query=headspin" class="dg">headspin</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=breakdance" class="dg">breakdance</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=spinning" class="dg">spinning</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=dance" class="dg">dance</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=style" class="dg">style</a></div>
+						<span class="grayText">Added:</span> 7 months ago
+						<span class="grayText"> &nbsp; in Category:</span> <a href="/web/20061124193253/http://www.youtube.com/browse?s=mp&amp;t=t&amp;c=24" class="dg">Entertainment</a><br>
+							<span class="grayText">From:</span> <a href="/web/20061124193253/http://www.youtube.com/user/dfusion">dfusion</a><br>
+						<span class="grayText">Views:</span> 723,987
+				</div>
+							<nobr>
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_half.gif">
+	</nobr>
+		<div class="rating">3128 ratings</div>
+	
+
+
+
+			</td>
+		</tr>
+		</tbody></table>
+	</div> <!-- end vEntry -->
+
+			<div class="vEntry">
+		<table class="vTable"><tbody><tr>
+			<td>
+				<a href="/web/20061124193253/http://www.youtube.com/watch?v=hbbfJClypYg" onclick="_hbLink('PieceofMindVancouverFilmSchoolVFS','VidHorz');"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static13.sjl.youtube.com/vi/hbbfJClypYg/2.jpg" class="vimg120" border="0"></a>
+				        <script language="javascript" type="text/javascript">
+                if (navigator.appName.indexOf('Microsoft') != -1) {
+                        document.write('<div id="add_img_hbbfJClypYg" style="width:20px;margin-top:-29px;margin-left:1px;">');
+                }
+                else {
+                        document.write('<div id="add_img_hbbfJClypYg" style="width:20px;margin-top:-26px;margin-left:1px;">');
+                }
+        </script><div id="add_img_hbbfJClypYg" style="width:20px;margin-top:-26px;margin-left:1px;">
+        <a href="#" onclick="clicked_add_icon('hbbfJClypYg', 0);return false;" title="Add Video to QuickList"><img id="add_button_hbbfJClypYg" onmouseover="mouse_over_add_icon('hbbfJClypYg');return false;" onmouseout="mouse_out_add_icon('hbbfJClypYg');return false;" src="/web/20061124193253im_/http://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+        </div>
+
+			</td>
+			<td class="vinfo">
+				<div class="vtitle">
+					<a href="/web/20061124193253/http://www.youtube.com/watch?v=hbbfJClypYg" onclick="_hbLink('PieceofMindVancouverFilmSchoolVFS','VidHorz');">Piece of Mind - Vancouver Film School (VFS)</a><br>
+					<span class="runtime">02:38</span>
+				</div>
+				<div class="vdesc">		
+			<span id="BeginvidDeschbbfJClypYg">
+	Created by Vancouver Film School graduate Ori Ben-Shabat through the VFS 3D Animation &amp; Visual Effects program. The audio was created by Colin Janz, a VFS Sound Design program graduate, and recently received the award for "Best Original Mus
+	</span>
+	
+			<span id="RemainvidDeschbbfJClypYg" style="display: none">Created by Vancouver Film School graduate Ori Ben-Shabat through the VFS 3D Animation &amp; Visual Effects program. The audio was created by Colin Janz, a VFS Sound Design program graduate, and recently received the award for "Best Original Musical Score" at the CAEAA awards.</span>
+			<span id="MorevidDeschbbfJClypYg" class="smallText">(<a href="#" class="eLink" onclick="showInline('RemainvidDeschbbfJClypYg'); hideInline('MorevidDeschbbfJClypYg'); hideInline('BeginvidDeschbbfJClypYg'); showInline('LessvidDeschbbfJClypYg'); return false;">more</a>)</span>
+			<span id="LessvidDeschbbfJClypYg" style="display: none" class="smallText">(<a href="#" class="eLink" onclick="hideInline('RemainvidDeschbbfJClypYg'); hideInline('LessvidDeschbbfJClypYg'); showInline('BeginvidDeschbbfJClypYg'); showInline('MorevidDeschbbfJClypYg'); return false;">less</a>)</span>
+
+
+</div>
+				<div class="vfacets">
+					<div class="vtagLabel">Tags:</div>
+					<div class="vtagValue"><a href="/web/20061124193253/http://www.youtube.com/results?search_query=Vancouver" class="dg">Vancouver</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Film" class="dg">Film</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=School" class="dg">School</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=VFS" class="dg">VFS</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=3d" class="dg">3d</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=graphic" class="dg">graphic</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=maya" class="dg">maya</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=3dsmax" class="dg">3dsmax</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=xsi" class="dg">xsi</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=texture" class="dg">texture</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=model" class="dg">model</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=demo" class="dg">demo</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=reel" class="dg">reel</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=modeling" class="dg">modeling</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=vfx" class="dg">vfx</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Colin" class="dg">Colin</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Janz" class="dg">Janz</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Ori" class="dg">Ori</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Ben-Shabat" class="dg">Ben-Shabat</a></div>
+						<span class="grayText">Added:</span> 1 month ago
+						<span class="grayText"> &nbsp; in Category:</span> <a href="/web/20061124193253/http://www.youtube.com/browse?s=mp&amp;t=t&amp;c=1" class="dg">Arts &amp; Animation</a><br>
+							<span class="grayText">From:</span> <a href="/web/20061124193253/http://www.youtube.com/user/VancouverFilmSchool">VancouverFilmSchool</a><br>
+						<span class="grayText">Views:</span> 284,767
+				</div>
+							<nobr>
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_half.gif">
+	</nobr>
+		<div class="rating">2075 ratings</div>
+	
+
+
+
+			</td>
+		</tr>
+		</tbody></table>
+	</div> <!-- end vEntry -->
+
+			<div class="vEntry">
+		<table class="vTable"><tbody><tr>
+			<td>
+				<a href="/web/20061124193253/http://www.youtube.com/watch?v=Gw4bQKiLkQ4" onclick="_hbLink('ThingsyouCANTdowhenyoureNOTinapool','VidHorz');"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static3.sjl.youtube.com/vi/Gw4bQKiLkQ4/2.jpg" class="vimg120" border="0"></a>
+				        <script language="javascript" type="text/javascript">
+                if (navigator.appName.indexOf('Microsoft') != -1) {
+                        document.write('<div id="add_img_Gw4bQKiLkQ4" style="width:20px;margin-top:-29px;margin-left:1px;">');
+                }
+                else {
+                        document.write('<div id="add_img_Gw4bQKiLkQ4" style="width:20px;margin-top:-26px;margin-left:1px;">');
+                }
+        </script><div id="add_img_Gw4bQKiLkQ4" style="width:20px;margin-top:-26px;margin-left:1px;">
+        <a href="#" onclick="clicked_add_icon('Gw4bQKiLkQ4', 0);return false;" title="Add Video to QuickList"><img id="add_button_Gw4bQKiLkQ4" onmouseover="mouse_over_add_icon('Gw4bQKiLkQ4');return false;" onmouseout="mouse_out_add_icon('Gw4bQKiLkQ4');return false;" src="/web/20061124193253im_/http://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+        </div>
+
+			</td>
+			<td class="vinfo">
+				<div class="vtitle">
+					<a href="/web/20061124193253/http://www.youtube.com/watch?v=Gw4bQKiLkQ4" onclick="_hbLink('ThingsyouCANTdowhenyoureNOTinapool','VidHorz');">Things you CAN'T do when you're NOT in a pool</a><br>
+					<span class="runtime">03:10</span>
+				</div>
+				<div class="vdesc">		
+			<span id="BeginvidDescGw4bQKiLkQ4">
+	a HILARIOUS look at the quirky things people get away with in swimming pools
+	</span>
+	
+
+
+</div>
+				<div class="vfacets">
+					<div class="vtagLabel">Tags:</div>
+					<div class="vtagValue"><a href="/web/20061124193253/http://www.youtube.com/results?search_query=pool" class="dg">pool</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=edition" class="dg">edition</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=dont" class="dg">dont</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=be" class="dg">be</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=that" class="dg">that</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=guy" class="dg">guy</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=films" class="dg">films</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=funny" class="dg">funny</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=comedy" class="dg">comedy</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=video" class="dg">video</a></div>
+						<span class="grayText">Added:</span> 7 months ago
+						<span class="grayText"> &nbsp; in Category:</span> <a href="/web/20061124193253/http://www.youtube.com/browse?s=mp&amp;t=t&amp;c=23" class="dg">Comedy</a><br>
+							<span class="grayText">From:</span> <a href="/web/20061124193253/http://www.youtube.com/user/dontbethatguyfilms">dontbethatguyfilms</a><br>
+						<span class="grayText">Views:</span> 1,366,448
+				</div>
+							<nobr>
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_half.gif">
+	</nobr>
+		<div class="rating">9599 ratings</div>
+	
+
+
+
+			</td>
+		</tr>
+		</tbody></table>
+	</div> <!-- end vEntry -->
+
+			<div class="vEntry">
+		<table class="vTable"><tbody><tr>
+			<td>
+				<a href="/web/20061124193253/http://www.youtube.com/watch?v=FT7E0vwlYYM" onclick="_hbLink('DreamAwakeScienceofSleepmix','VidHorz');"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static2.sjl.youtube.com/vi/FT7E0vwlYYM/2.jpg" class="vimg120" border="0"></a>
+				        <script language="javascript" type="text/javascript">
+                if (navigator.appName.indexOf('Microsoft') != -1) {
+                        document.write('<div id="add_img_FT7E0vwlYYM" style="width:20px;margin-top:-29px;margin-left:1px;">');
+                }
+                else {
+                        document.write('<div id="add_img_FT7E0vwlYYM" style="width:20px;margin-top:-26px;margin-left:1px;">');
+                }
+        </script><div id="add_img_FT7E0vwlYYM" style="width:20px;margin-top:-26px;margin-left:1px;">
+        <a href="#" onclick="clicked_add_icon('FT7E0vwlYYM', 0);return false;" title="Add Video to QuickList"><img id="add_button_FT7E0vwlYYM" onmouseover="mouse_over_add_icon('FT7E0vwlYYM');return false;" onmouseout="mouse_out_add_icon('FT7E0vwlYYM');return false;" src="/web/20061124193253im_/http://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+        </div>
+
+			</td>
+			<td class="vinfo">
+				<div class="vtitle">
+					<a href="/web/20061124193253/http://www.youtube.com/watch?v=FT7E0vwlYYM" onclick="_hbLink('DreamAwakeScienceofSleepmix','VidHorz');">DreamAwake (Science of Sleep mix)</a><br>
+					<span class="runtime">01:59</span>
+				</div>
+				<div class="vdesc">		
+			<span id="BeginvidDescFT7E0vwlYYM">
+	Inspired by: Michel Gondry's "Science of Sleep"<br>Music: "Channel" by Pete Moraites
+	</span>
+	
+
+
+</div>
+				<div class="vfacets">
+					<div class="vtagLabel">Tags:</div>
+					<div class="vtagValue"><a href="/web/20061124193253/http://www.youtube.com/results?search_query=dream" class="dg">dream</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Gael" class="dg">Gael</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Garcia" class="dg">Garcia</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Bernal" class="dg">Bernal</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=pete" class="dg">pete</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=moraites" class="dg">moraites</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=michel" class="dg">michel</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=gondry" class="dg">gondry</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=science" class="dg">science</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=of" class="dg">of</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=sleep" class="dg">sleep</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=How" class="dg">How</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Do" class="dg">Do</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=You" class="dg">You</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=Dream" class="dg">Dream</a></div>
+						<span class="grayText">Added:</span> 2 months ago
+						<span class="grayText"> &nbsp; in Category:</span> <a href="/web/20061124193253/http://www.youtube.com/browse?s=mp&amp;t=t&amp;c=1" class="dg">Arts &amp; Animation</a><br>
+							<span class="grayText">From:</span> <a href="/web/20061124193253/http://www.youtube.com/user/petemoraites">petemoraites</a><br>
+						<span class="grayText">Views:</span> 204,610
+				</div>
+							<nobr>
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_half.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_bg.gif">
+	</nobr>
+		<div class="rating">733 ratings</div>
+	
+
+
+
+			</td>
+		</tr>
+		</tbody></table>
+	</div> <!-- end vEntry -->
+
+			<div class="vEntry">
+		<table class="vTable"><tbody><tr>
+			<td>
+				<a href="/web/20061124193253/http://www.youtube.com/watch?v=sl7sV98QgfE" onclick="_hbLink('ModernDayRobinHoodNewYorkCashBlowOut','VidHorz');"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static1.sjl.youtube.com/vi/sl7sV98QgfE/2.jpg" class="vimg120" border="0"></a>
+				        <script language="javascript" type="text/javascript">
+                if (navigator.appName.indexOf('Microsoft') != -1) {
+                        document.write('<div id="add_img_sl7sV98QgfE" style="width:20px;margin-top:-29px;margin-left:1px;">');
+                }
+                else {
+                        document.write('<div id="add_img_sl7sV98QgfE" style="width:20px;margin-top:-26px;margin-left:1px;">');
+                }
+        </script><div id="add_img_sl7sV98QgfE" style="width:20px;margin-top:-26px;margin-left:1px;">
+        <a href="#" onclick="clicked_add_icon('sl7sV98QgfE', 0);return false;" title="Add Video to QuickList"><img id="add_button_sl7sV98QgfE" onmouseover="mouse_over_add_icon('sl7sV98QgfE');return false;" onmouseout="mouse_out_add_icon('sl7sV98QgfE');return false;" src="/web/20061124193253im_/http://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList" border="0"></a>
+        </div>
+
+			</td>
+			<td class="vinfo">
+				<div class="vtitle">
+					<a href="/web/20061124193253/http://www.youtube.com/watch?v=sl7sV98QgfE" onclick="_hbLink('ModernDayRobinHoodNewYorkCashBlowOut','VidHorz');">Modern Day Robin Hood - New York - Cash Blow Out!!</a><br>
+					<span class="runtime">04:08</span>
+				</div>
+				<div class="vdesc">		
+			<span id="BeginvidDescsl7sV98QgfE">
+	18th November 2006 - Modern Day Robin Hood - New York - Cash Blow Out!!<br>Modern Day New York Launch<br><br>Join us at<br>www.moderndayrobinhood.com<br>www.myspace.com/moderndayrobinhood
+	</span>
+	
+
+
+</div>
+				<div class="vfacets">
+					<div class="vtagLabel">Tags:</div>
+					<div class="vtagValue"><a href="/web/20061124193253/http://www.youtube.com/results?search_query=robinhood" class="dg">robinhood</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=moderndayrobinhood" class="dg">moderndayrobinhood</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=robin" class="dg">robin</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=hood" class="dg">hood</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=NewYork" class="dg">NewYork</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=cash" class="dg">cash</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=launch" class="dg">launch</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=new" class="dg">new</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=york" class="dg">york</a></div>
+						<span class="grayText">Added:</span> 5 days ago
+						<span class="grayText"> &nbsp; in Category:</span> <a href="/web/20061124193253/http://www.youtube.com/browse?s=mp&amp;t=t&amp;c=22" class="dg">People</a><br>
+							<span class="grayText">From:</span> <a href="/web/20061124193253/http://www.youtube.com/user/moderndayrobinhood">moderndayrobinhood</a><br>
+						<span class="grayText">Views:</span> 446,051
+				</div>
+							<nobr>
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_half.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_sm_bg.gif">
+	</nobr>
+		<div class="rating">1573 ratings</div>
+	
+
+
+
+			</td>
+		</tr>
+		</tbody></table>
+	</div> <!-- end vEntry -->
+
+	</div> <!-- end vListBox -->
+	<div class="footerBox">
+		<div style="padding: 3px 0px; text-align: right;"><a href="/web/20061124193253/http://www.youtube.com/browse?s=rf">See More Videos</a></div>
+	</div>
+</div> <!-- end hpMainCol -->
+
+
+<div id="hpSideContent">
+
+	<div class="hpContentBlock">
+		<div id="hpEmbedTopCap">
+		<!-- 300x35 ad block above embed player -->
+	 	
+				
+		
+			
+
+							
+	<!-- begin ad tag -->
+	<script type="text/javascript">
+		ord=Math.random()*10000000000000000 + 4;
+		document.write('<script language="JavaScript" src="https://web.archive.org/web/20061124193253/http://ad.doubleclick.net/adj/you.home/_default;sz=300x35;kch=3000513466;kbg=FFFFFF;kvideoid=2QShD1BsscY;ord=' + ord + '?" type="text/javascript"><\/script>');
+	</script><script language="JavaScript" src="https://web.archive.org/web/20061124193253/http://ad.doubleclick.net/adj/you.home/_default;sz=300x35;kch=3000513466;kbg=FFFFFF;kvideoid=2QShD1BsscY;ord=4654063786008235?" type="text/javascript"></script>
+	<noscript><a href="https://web.archive.org/web/20061124193253/http://ad.doubleclick.net/jump/you.home/_default;sz=300x35;ord=123456789" target="_blank"><img src="https://web.archive.org/web/20061124193253im_/http://ad.doubleclick.net/ad/you.home/_default;sz=300x35;ord=123456789" width="300" height="35" border="0" alt=""></a>
+	</noscript>
+	<!-- End ad tag -->
+	
+
+		
+
+		</div> <!-- end ad block -->
+					<div id="hpEmbedVideo">
+		<object width="300" height="250"><param name="movie" value="/admp.swf?vids=2QShD1BsscY&amp;eurl=/index&amp;iurl=http%3A//sjl-static15.sjl.youtube.com/vi/2QShD1BsscY/2.jpg&amp;t=OEgsToPDskL9yPT3dEXb8c3yxeRQqy-Q"><embed src="/web/20061124193253oe_/http://www.youtube.com/admp.swf?vids=2QShD1BsscY&amp;eurl=/index&amp;iurl=http%3A//sjl-static15.sjl.youtube.com/vi/2QShD1BsscY/2.jpg&amp;t=OEgsToPDskL9yPT3dEXb8c3yxeRQqy-Q" type="application/x-shockwave-flash" width="300" height="250"></object>
+		</div>
+		
+		<div id="hpEmbedUnderBlock">
+		
+			<table width="100%" cellspacing="0" cellpadding="0"><tbody><tr valign="top">
+			<td width="80%"> <!-- begin embedInfo -->
+				<div class="vtitle"><a href="/web/20061124193253/http://www.youtube.com/watch?v=2QShD1BsscY">(RED) Manifesto</a></div>
+				<div class="vfacets">
+					<span class="grayText">From:</span> <i><a href="/web/20061124193253/http://www.youtube.com/user/joinred" class="dg">joinred</a></i><br>
+					<span class="grayText">Comments:</span> <a href="/web/20061124193253/http://www.youtube.com/comment_servlet?all_comments&amp;v=2QShD1BsscY&amp;fromurl=/watch?v=2QShD1BsscY">51</a>
+				</div>
+			</td> <!-- end embedInfo -->
+			
+			<td width="20%" nowrap="" align="center">
+				<div id="ratingDiv">
+						<div id="ratingMessage" class="label">Login to rate video</div>
+									<nobr>
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_bg.gif">
+			<img class="rating" src="/web/20061124193253im_/http://www.youtube.com/img/star_bg.gif">
+	</nobr>
+		<div class="rating">599 ratings</div>
+	
+
+
+
+				</div> <!-- end ratings Div -->
+			</td>
+			
+			</tr></tbody></table>
+			
+			
+
+
+		</div> <!-- end embedUnderBlock -->	
+
+
+	</div> <!-- end hpContentBlock -->
+
+	
+	
+
+
+		<div class="hpContentBlock">
+				<div class="headerRCBox">
+	<b class="rch">
+	<b class="rch1"><b></b></b>
+	<b class="rch2"><b></b></b>
+	<b class="rch3"></b>
+	<b class="rch4"></b>
+	<b class="rch5"></b>
+	</b> <div class="content"><span class="headerTitle">Member Login</span></div>
+	</div>
+
+			<div class="contentBox">
+				<table>
+					<form method="post" name="loginForm" id="loginForm" action="signup"></form>
+					<input type="hidden" name="action_login" value="1">
+					<tbody><tr>
+					<td><b>User Name:</b></td>
+					<td><input tabindex="1" type="text" name="username" value="" class="hpLoginField"></td>
+					</tr>
+					<tr>
+					<td><b>Password:</b></td>
+					<td><input tabindex="2" type="password" name="password" class="hpLoginField"></td>
+					</tr>
+					<tr>
+					<td>&nbsp;</td>
+					<td>
+						<div style="float: right;"><b><a href="/web/20061124193253/http://www.youtube.com/signup">Sign Up</a></b></div><b>
+						<div><input type="submit" value="Login"></div>
+						<div class="hpLoginForgot smallText">
+						<b>Forgot:</b> <a href="forgot_username">Username</a> | <a href="/web/20061124193253/http://www.youtube.com/forgot">Password</a>
+						</div>
+					</b></td>
+					</tr>
+					
+				</tbody></table>
+				
+			</div>
+		</div> <!-- end hpContentBlock -->
+	
+	
+	
+	
+	
+	<div class="hpContentBlock">
+			<div class="headerRCBox">
+	<b class="rch">
+	<b class="rch1"><b></b></b>
+	<b class="rch2"><b></b></b>
+	<b class="rch3"></b>
+	<b class="rch4"></b>
+	<b class="rch5"></b>
+	</b> <div class="content"><span class="headerTitle">What's New at YouTube</span></div>
+	</div>
+
+		<div class="contentBox">
+			<p style="margin-top:0px;">
+				<b><a href="/web/20061124193253/http://www.youtube.com/watch_queue?all"><img src="/web/20061124193253im_/http://www.youtube.com/img/pic_home_quicklist_30x37.gif" style="float: left; margin: 2px 6px 10px 0px;" border="0">QuickList</a></b><br>
+				Too much good stuff to watch now? Click the "+" on any video to save it for later.
+			</p>
+			<p style="margin-top:0px;">
+				<b><a href="/web/20061124193253/http://www.youtube.com/underground"><img src="/web/20061124193253im_/http://www.youtube.com/img/pic_home_underground_30x37.gif" style="float: left; margin: 2px 6px 10px 0px;" border="0"> YouTube Underground</a></b><br>
+				Voting is underway—help pick the winners!
+			</p>
+			<a href="/web/20061124193253/http://www.youtube.com/blog">Read our Blog</a> to see what else is new!
+		</div>
+	</div> <!-- end hpContentBlock -->
+	
+	
+	<div class="hpContentBlock">
+			<div class="headerRCBox">
+	<b class="rch">
+	<b class="rch1"><b></b></b>
+	<b class="rch2"><b></b></b>
+	<b class="rch3"></b>
+	<b class="rch4"></b>
+	<b class="rch5"></b>
+	</b> <div class="content"><span class="headerTitle">Recently Released</span></div>
+	</div>
+
+		<div class="contentBox">
+			
+			<p style="margin-top:0px;">
+			<b><a href="/web/20061124193253/http://www.youtube.com/signup?signup_type=c"><img src="/web/20061124193253im_/http://www.youtube.com/img/pic_home_comedians_30x37.gif" style="float: left; margin: 2px 6px 10px 0px;" border="0"> Comedian Accounts</a></b><br>
+			Get your standup, improv, or sketches out to a huge audience!
+			</p>
+			
+			<p>
+				<b><a href="/web/20061124193253/http://www.youtube.com/school_main"><img src="/web/20061124193253im_/http://www.youtube.com/img/colleges.gif" style="float: left; margin: 2px 6px 10px 0px;" border="0">YouTube Colleges</a></b><br>
+				Join or request your college now and start sharing your college experience!
+			</p>
+		</div>
+	</div> <!-- end hpContentBlock -->
+	
+	
+	
+	
+	
+	<div class="hpContentBlock">
+			<div class="headerRCBox">
+	<b class="rch">
+	<b class="rch1"><b></b></b>
+	<b class="rch2"><b></b></b>
+	<b class="rch3"></b>
+	<b class="rch4"></b>
+	<b class="rch5"></b>
+	</b> <div class="content"><span class="headerTitle">Active Channels</span></div>
+	</div>
+
+		<div class="contentBox">
+			<div class="hpChannelEntry v80hEntry">
+				<div class="vstill"><a href="/web/20061124193253/http://www.youtube.com/profile?user=Lunaaa711"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static16.sjl.youtube.com/vi/wF8gc4OnuJM/2.jpg" class="vimg" style="background: #333;"></a></div>
+				<div class="vinfo">
+					<b><a href="/web/20061124193253/http://www.youtube.com/profile?user=Lunaaa711">Lunaaa711</a></b>
+					<div class="vfacets">9 Videos | 155 Subscribers</div>
+				</div>
+				<div class="clear"></div>
+			</div> <!-- end hpChannelEntry -->
+						<div class="hpChannelEntry v80hEntry">
+				<div class="vstill"><a href="/web/20061124193253/http://www.youtube.com/profile?user=tycoony"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static14.sjl.youtube.com/vi/Fb8-SDGpVHE/2.jpg" class="vimg" style="background: #333;"></a></div>
+				<div class="vinfo">
+					<b><a href="/web/20061124193253/http://www.youtube.com/profile?user=tycoony">tycoony</a></b>
+					<div class="vfacets">12 Videos | 95 Subscribers</div>
+				</div>
+				<div class="clear"></div>
+			</div> <!-- end hpChannelEntry -->
+						<div class="hpChannelEntry v80hEntry">
+				<div class="vstill"><a href="/web/20061124193253/http://www.youtube.com/profile?user=southparkstudios"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static15.sjl.youtube.com/vi/JBxsJdWdm0Q/2.jpg" class="vimg" style="background: #333;"></a></div>
+				<div class="vinfo">
+					<b><a href="/web/20061124193253/http://www.youtube.com/profile?user=southparkstudios">southparkstudios</a></b>
+					<div class="vfacets">6 Videos | 167 Subscribers</div>
+				</div>
+				<div class="clear"></div>
+			</div> <!-- end hpChannelEntry -->
+						<div class="hpChannelEntry v80hEntry">
+				<div class="vstill"><a href="/web/20061124193253/http://www.youtube.com/profile?user=BoratFamilyMember"><img src="https://web.archive.org/web/20061124193253im_/http://sjl-static7.sjl.youtube.com/vi/W5gKqQDxXoc/2.jpg" class="vimg" style="background: #333;"></a></div>
+				<div class="vinfo">
+					<b><a href="/web/20061124193253/http://www.youtube.com/profile?user=BoratFamilyMember">BoratFamilyMember</a></b>
+					<div class="vfacets">64 Videos | 549 Subscribers</div>
+				</div>
+				<div class="clear"></div>
+			</div> <!-- end hpChannelEntry -->
+			
+			<div style="text-align: right;"><a href="/web/20061124193253/http://www.youtube.com/members">See More Channels</a></div>
+		</div>
+	</div> <!-- end hpContentBlock -->
+
+
+	<div class="hpContentBlock">
+			<div class="headerRCBox">
+	<b class="rch">
+	<b class="rch1"><b></b></b>
+	<b class="rch2"><b></b></b>
+	<b class="rch3"></b>
+	<b class="rch4"></b>
+	<b class="rch5"></b>
+	</b> <div class="content"><span class="headerTitle">Active Groups</span></div>
+	</div>
+
+		<div class="contentBox">
+			<div class="hpGroupEntry v80hEntry">
+				<div class="vstill"><a href="/web/20061124193253/http://www.youtube.com/group/beheard"><img class="vimg" src="https://web.archive.org/web/20061124193253im_/http://sjl-static6.sjl.youtube.com/vi/305Wld9LfPo/2.jpg"></a></div>
+				<div class="vinfo">
+					<b><a href="/web/20061124193253/http://www.youtube.com/group/beheard">beheard</a></b>
+					
+					<div class="vfacets"> 340 Videos | 13 Discussions</div>
+				</div>
+				<div class="clear"></div>
+			</div> <!-- end hpGroupEntry -->
+						<div class="hpGroupEntry v80hEntry">
+				<div class="vstill"><a href="/web/20061124193253/http://www.youtube.com/group/cybersmack"><img class="vimg" src="https://web.archive.org/web/20061124193253im_/http://sjl-static4.sjl.youtube.com/vi/x78EEDGOW0c/2.jpg"></a></div>
+				<div class="vinfo">
+					<b><a href="/web/20061124193253/http://www.youtube.com/group/cybersmack">cybersmack</a></b>
+					
+					<div class="vfacets"> 11 Videos | 444 Discussions</div>
+				</div>
+				<div class="clear"></div>
+			</div> <!-- end hpGroupEntry -->
+			
+			<div style="text-align: right;"><a href="/web/20061124193253/http://www.youtube.com/groups_main">See More Groups</a></div>
+		</div>
+	</div> <!-- end hpContentBlock -->
+	
+	
+	
+</div> <!-- end hpSideCol -->
+
+
+
+		<div class="spacer">&nbsp;</div>
+	<div id="footerDiv">
+		<div id="footerContent">
+		<div id="footerLinks">
+			
+			<table width="90%" cellspacing="0" cellpadding="0" border="0" align="center"><tbody><tr valign="top">
+			
+			<td>
+			<div class="footColumnBar">
+				<div class="footLabel">Your&nbsp;&nbsp;Account</div>
+				<div class="footValues">
+					<div class="column">
+					<a href="/web/20061124193253/http://www.youtube.com/my_videos">Videos</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/my_favorites">Favorite</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/my_playlists">Playlists</a>
+					</div>
+					<div class="column">
+					<a href="/web/20061124193253/http://www.youtube.com/subscription_center">Subscriptions</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/my_messages">Inbox</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/my_account">more...</a>
+					</div>
+				</div>
+			</div>
+			</td>
+			
+			<td>
+			<div class="footColumnBar">
+				<div class="footLabel">YouTube</div>
+				<div class="footValues">
+					<div class="column">
+					<a href="/web/20061124193253/http://www.youtube.com/t/about">About</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/blog">Blog</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/contact">Contact</a>
+					</div>
+					<div class="column">
+					<a href="/web/20061124193253/http://www.youtube.com/advertise">Advertising</a><br>
+					<a href="https://web.archive.org/web/20061124193253/http://www.pcrecruiter.net/pcrbin/regmenu.exe?uid=youtube.youtube">Jobs</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/press_room">Press</a><br>
+					</div>
+				</div>
+			</div>
+			</td>
+			
+			<td>
+			<div class="footColumn">
+				<div class="footLabel">Help &amp; Info</div>
+				<div class="footValues">
+					<div class="column">
+					<a href="/web/20061124193253/http://www.youtube.com/t/help_center">Help Center</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/t/video_toolbox">Video Toolbox</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/dev">Developer APIs</a>
+					</div>
+					<div class="column">
+					<a href="/web/20061124193253/http://www.youtube.com/t/safety">Safety Tips</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/rssls">RSS Syndication</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/t/community_guidelines">Community Guidelines</a>
+					</div>
+					<div class="column">
+					<a href="/web/20061124193253/http://www.youtube.com/t/terms">Terms of Use</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/t/privacy">Privacy Policy</a><br>
+					<a href="/web/20061124193253/http://www.youtube.com/t/dmca_policy">Copyright Info</a>
+					</div>
+				</div>
+			</div>
+			</td>
+			
+			</tr></tbody></table>
+			
+		</div> <!-- end footerLinks -->
+		</div> <!-- end footerContent -->
+		
+		<div id="footerSearch">
+			
+			<form name="searchFormFooter" id="searchFormFooter" method="get" action="/web/20061124193253/http://www.youtube.com/results">
+			<span class="smallLabel">Search for&nbsp;</span>
+			<input type="text" name="search_query" maxlength="128" class="searchField" value="">
+			&nbsp;
+			<input type="submit" name="search" value="Search">
+			</form>
+		</div> <!-- end footerSearch -->
+		
+		<div id="footerCopyright">
+			Copyright © 2006 YouTube, Inc.
+		</div> <!-- end footerCopyright -->
+		
+	</div> <!-- end footerDiv -->
+
+</div> <!-- end baseDiv -->
+
+
+
+</body><style id="stylus-9" type="text/css" class="stylus">#wm-ipp-base {
+    min-height: 0px;
+}</style></html>
