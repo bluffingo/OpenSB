@@ -63,4 +63,6 @@ $lang = new Lang(sprintf("lib/lang/".(isset($currentUser['language']) ? $current
 
 if ($isDebug) {
 	$frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
+} else {
+	$frontend = 'default';
 }
