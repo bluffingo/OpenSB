@@ -20,6 +20,7 @@ class SBExtension extends \Twig\Extension\AbstractExtension {
 	public function getFilters() {
 		return [
 			new \Twig\TwigFilter('relative_time', 'relativeTime'),
+			new \Twig\TwigFilter('json_decode', 'jsonDecode'),
 		];
 	}
 }

@@ -678,7 +678,12 @@
             <tbody><tr><td class="label">Tags</td>
             <td class="tags">		
 				<span id="vidTagsBegin">
-<a href="/web/20061115140409/http://youtube.com/results?search_query=Dancing" class="dg">Dancing</a> &nbsp; <a href="/web/20061115140409/http://youtube.com/results?search_query=comedy" class="dg">comedy</a>				</span>
+					{% for tag in video.tags|json_decode %}
+						{{ tag }}  &nbsp; 
+					{% else %}
+						{{ __("None") }}
+					{% endfor %}
+				</span>
 			</td>
 			</tr>
             <tr><td class="label">URL</td>
