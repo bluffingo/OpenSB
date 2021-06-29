@@ -495,23 +495,23 @@
 	
 		<div class="actionsDiv">
 			<div class="actionRow">
-				<a href="#" class="noul" onclick="showAjaxDiv('addFavsDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_playlists_component=1', true); _hbLink('Save+To+Favorites','Watch'); return false;" onmouseover=""><img src="/web/20061115140409im_/http://youtube.com/img/icn_fav_reg_19x17.gif" class="alignMid" alt="Save to Favorites" border="0"> <span class="eLink">Save to Favorites</span></a>
+				<a href="#" class="noul" onclick="showAjaxDiv('addFavsDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_playlists_component=1', true); _hbLink('Save+To+Favorites','Watch'); return false;" onmouseover=""><img src="assets/2006L/icn_fav_reg_19x17.gif" class="alignMid" alt="Save to Favorites" border="0"> <span class="eLink">{{ __("Save to Favorites") }}</span></a>
 			</div>
 			<div class="actionRow">
-				<a href="#" class="noul" onclick="showAjaxDiv('addGroupsDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_groups_component=1', true); _hbLink('Add+To+Groups','Watch'); return false;"><img src="/web/20061115140409im_/http://youtube.com/img/icn_groups_reg_19x17.gif" class="alignMid" alt="Add to Groups" border="0"> <span class="eLink">Add to Groups</span></a>
-			</div>
-		</div>
-		<div class="actionsDiv sm">
-			<div class="actionRow">
-				<a href="#" class="noul" onclick="window.open('/share?v=dMH0bHeiRNg','Share','width=580,height=480,resizable=yes,scrollbars=yes,status=0'); _hbLink('Share+Video','Watch'); return false;"><img src="/web/20061115140409im_/http://youtube.com/img/icn_email_reg_19x17.gif" class="alignMid" alt="Share This Video" border="0"> <span class="eLink">Share Video</span></a>
-			</div>
-			<div class="actionRow">
-				<a href="#" class="noul" onclick="showAjaxDiv('blogVidDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_user_blogs_component=1', true); _hbLink('Blog+Video','Watch'); return false;"><img src="/web/20061115140409im_/http://youtube.com/img/icn_web_reg_19x17.gif" class="alignMid" border="0"> <span class="eLink">Post Video</span></a>
+				<a href="#" class="noul" onclick="showAjaxDiv('addGroupsDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_groups_component=1', true); _hbLink('Add+To+Groups','Watch'); return false;"><img src="assets/2006L/icn_groups_reg_19x17.gif" class="alignMid" alt="Add to Groups" border="0"> <span class="eLink">{{ __("Add to Groups") }}</span></a>
 			</div>
 		</div>
 		<div class="actionsDiv sm">
 			<div class="actionRow">
-				<a href="#" class="noul" onclick="showAjaxDiv('inappropriateVidDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_flag_video_component=1', true); _hbLink('Flag+Inappropriate','Watch'); return false;"><img src="/web/20061115140409im_/http://youtube.com/img/icn_flag_reg_19x17.gif" class="alignMid" alt="Flag as Inappropriate" border="0"> <span class="eLink">Flag as Inappropriate</span></a>
+				<a href="#" class="noul" onclick="window.open('/share?v=dMH0bHeiRNg','Share','width=580,height=480,resizable=yes,scrollbars=yes,status=0'); _hbLink('Share+Video','Watch'); return false;"><img src="assets/2006L/icn_email_reg_19x17.gif" class="alignMid" alt="Share This Video" border="0"> <span class="eLink">{{ __("Share Video") }}</span></a>
+			</div>
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('blogVidDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_user_blogs_component=1', true); _hbLink('Blog+Video','Watch'); return false;"><img src="assets/2006L/icn_web_reg_19x17.gif" class="alignMid" border="0"> <span class="eLink">{{ __("Post Video") }}</span></a>
+			</div>
+		</div>
+		<div class="actionsDiv sm">
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('inappropriateVidDiv', '/watch_ajax?video_id=dMH0bHeiRNg&amp;action_get_flag_video_component=1', true); _hbLink('Flag+Inappropriate','Watch'); return false;"><img src="assets/2006L/icn_flag_reg_19x17.gif" class="alignMid" alt="Flag as Inappropriate" border="0"> <span class="eLink">{{ __("Flag as Inappropriate") }}</span></a>
 			</div>
 		</div>
 		<div class="spacer"></div>
@@ -559,10 +559,10 @@
 				<td><h2 style="margin: 0px;">{{ __("Comments & Responses") }}</h2></td>
 				<td align="right">
 						<div style="padding-bottom: 2px;">
-						<b><a href="/web/20061115140409/http://youtube.com/video_response_upload?v=dMH0bHeiRNg" onclick="_hbLink('Post+Video+Response','Watch');">Post a video response</a></b>
+						<b><a href="/web/20061115140409/http://youtube.com/video_response_upload?v=dMH0bHeiRNg" onclick="_hbLink('Post+Video+Response','Watch');">{{ __("Post a video response") }}</a></b>
 						</div>
 							<div id="reply_main_comment2">
-			<b><a href="#" class="eLink" onclick="showCommentReplyForm('main_comment2', '', false); return false;">Post a text comment</a></b>
+			<b><a href="#" class="eLink" onclick="showCommentReplyForm('main_comment2', '', false); return false;">{{ __("Post a text comment") }}</a></b>
 		</div>
 
 				</td>
@@ -613,7 +613,7 @@
 
 	
 			<div id="commentPostDiv">
-				<h2 style="margin: 0px;">Would you like to comment?</h2>
+				<h2 style="margin: 0px;">{{ __("Would you like to comment?") }}</h2>
 				<div style="margin-top: 8px;">
 					<a href="/web/20061115140409/http://youtube.com/signup">Join squareBracket</a> for a free account, or
 					<a href="/web/20061115140409/http://youtube.com/signup_login">Login</a> if you are already a member.
