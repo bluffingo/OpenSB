@@ -12,6 +12,7 @@
 
 	<link rel="alternate" title="YouTube - [RSS]" href="/web/20061124193253/http://www.youtube.com/rssls">
 
+	{% block js %}{% endblock %}
 	<script type="text/javascript" src="/assets/2006L/ui_yts1161839869.js"></script>
 	<script type="text/javascript" src="/assets/2006L/AJAX_yts1161839869.js"></script>
 	<script type="text/javascript" src="/assets/2006L/watch_queue_yts1161839869.js"></script>
@@ -30,18 +31,33 @@
 		<a href="index.php?frontend=2006L" name="&amp;lid=Logo&amp;lpos=GlobalNav"><img src="/assets/2006L/logo_tagline_sm.gif" alt="squareBracket" width="254" height="48" border="0"></a>
 	</div>
 	<div id="utilDiv" style="height:13px;">
-                        <b><a href="/web/20061124193253/http://www.youtube.com/signup" onclick="_hbLink('SignUp','UtilityLinks');">{{ __("Sign Up") }}</a></b>
+					{% if logged_in %}
+					<b>{{ __("Hello,") }} <a href="user.php?name={{ current_user.username }}&frontend=2006L">{{ current_user.username }}</a></b>
+					<img src="assets/2006L/mail.gif" style="width:14px;height:10px;margin-left:4px;position:relative;top:1.5px"> (<a href="">0</a>)
+					<span class="utilDelim">|</span> <a href="">{{ __("My Account") }} ▼</a>
+                    <span class="utilDelim">|</span>
+					<a href="/web/20061124193253/http://www.youtube.com/recently_watched" onclick="_hbLink('ViewingHistory','UtilityLinks');">{{ __("History") }}</a>
+                    <span class="utilDelim">|</span>
+                    <a href="/web/20061124193253/http://www.youtube.com/watch_queue?all" onclick="_hbLink('QuickList','UtilityLinks');">{{ __("QuickList") }}</a>
+					(<span id="quicklist_numb"><a href="/web/20061124193253/http://www.youtube.com/watch_queue?all"><script type="text/javascript">var quicklist_count=0;document.write(quicklist_count);</script></a></span>)   
+					<span class="utilDelim">|</span>
+					<a href="/web/20061124193253/http://www.youtube.com/t/help_center">Help</a>
+					<span class="utilDelim">|</span>
+					<a href="">Log Out</a>
+					{% else %}
+						<b><a href="/web/20061124193253/http://www.youtube.com/signup" onclick="_hbLink('SignUp','UtilityLinks');">{{ __("Sign Up") }}</a></b>
                         <span class="utilDelim">|</span>
                         <a href="/web/20061124193253/http://www.youtube.com/my_account">{{ __("My Account") }}</a>
                         <span class="utilDelim">|</span>
                         <a href="/web/20061124193253/http://www.youtube.com/recently_watched" onclick="_hbLink('ViewingHistory','UtilityLinks');">{{ __("History") }}</a>
                         <span class="utilDelim">|</span>
                         <a href="/web/20061124193253/http://www.youtube.com/watch_queue?all" onclick="_hbLink('QuickList','UtilityLinks');">{{ __("QuickList") }}</a>
-			(<span id="quicklist_numb"><a href="/web/20061124193253/http://www.youtube.com/watch_queue?all"><script type="text/javascript">var quicklist_count=0;document.write(quicklist_count);</script>0</a></span>)                        
+			(<span id="quicklist_numb"><a href="/web/20061124193253/http://www.youtube.com/watch_queue?all"><script type="text/javascript">var quicklist_count=0;document.write(quicklist_count);</script></a></span>)                        
                         <span class="utilDelim">|</span>
                         <a href="/web/20061124193253/http://www.youtube.com/t/help_center">Help</a>
                         <span class="utilDelim">|</span>
                         <a href="/web/20061124193253/http://www.youtube.com/login?next=/" onclick="_hbLink('LogIn','UtilityLinks');">{{ __("Log In") }}</a>
+					{% endif %}
         </div>
         <form name="logoutForm" method="post" action="/web/20061124193253/http://www.youtube.com/index">
                 <input type="hidden" name="action_logout" value="1">
@@ -122,7 +138,7 @@
 	</td></tr>
 	</tbody></table>
 
-<div class="errorBox">{{ __("The 2006L frontend is not complete.") }}</div>
+<div class="errorBox">{{ __("Notice: The 2006L frontend is not complete. Expect a lot of broken stuff and dead links.") }}</div>
 {% block content %}{% endblock %}
 		<div class="spacer">&nbsp;</div>
 	<div id="footerDiv">
@@ -169,7 +185,7 @@
 			
 			<td>
 			<div class="footColumn">
-				<div class="footLabel">Help &amp; Info</div>
+				<div class="footLabel">{{ __("Help & Info") }}</div>
 				<div class="footValues">
 					<div class="column">
 					<a href="/web/20061124193253/http://www.youtube.com/t/help_center">{{ __("Help Center") }}</a><br>
