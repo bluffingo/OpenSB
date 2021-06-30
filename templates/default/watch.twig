@@ -123,7 +123,11 @@
 			<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none"
 			rows="3" placeholder="{% if logged_in %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
 			{% if logged_in %}<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top:5px;margin-bottom:15px">
-			<button id="{% if logged_in %}post{% endif %}" class="btn btn-primary {% if not logged_in %}disabled{% endif %}">{{ icon('reply-fill', 16) }} {{ __("Send") }}</button>
+			<button id="{% if logged_in %}post{% endif %}" class="btn btn-primary {% if not logged_in %}disabled{% endif %}">
+			{{ icon('reply-fill', 16) }} 
+			{{ __("Send") }}
+			<div class="spinner-border spinner-border-sm d-none" id="commentPostingSpinner" role="status" aria-hidden="true"><span class="visually-hidden">Posting...</span></div>
+			</button>
 			</div>{% endif %}
 			<div id="comment"></div>
 				{% for comment in comments %}

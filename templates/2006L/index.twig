@@ -94,7 +94,13 @@
 </div>
 				<div class="vfacets">
 					<div class="vtagLabel">Tags:</div>
-					<div class="vtagValue"><a href="/web/20061124193253/http://www.youtube.com/results?search_query=complaining" class="dg">complaining</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=complaints" class="dg">complaints</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=choir" class="dg">choir</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=birmingham" class="dg">birmingham</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=helsinki" class="dg">helsinki</a> &nbsp; <a href="/web/20061124193253/http://www.youtube.com/results?search_query=hamburg" class="dg">hamburg</a></div>
+					<div class="vtagValue">
+						{% for tag in video.tags|json_decode %}
+							{{ tag }}  &nbsp; 
+						{% else %}
+							{{ __("None") }}
+						{% endfor %}
+					</div>
 						<span class="grayText">Added:</span> {{ video.time | relative_time }}
 						<span class="grayText"> &nbsp; in Category:</span> <a href="/web/20061124193253/http://www.youtube.com/browse?s=mp&amp;t=t&amp;c=1" class="dg">Arts &amp; Animation</a><br>
 							<span class="grayText">From:</span> <a href="/web/20061124193253/http://www.youtube.com/user/atomipommi">{{ userlink(video, 'u_') }}</a><br>

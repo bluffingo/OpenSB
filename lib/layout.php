@@ -109,6 +109,10 @@ function relativeTime($time) {
 	return $relativeTime->timeAgo($time);
 }
 
+function jsonDecode($str) {
+	return json_decode($str);
+}
+
 function redirect($url) {
 	header(sprintf('Location: %s', $url));
 	die();
