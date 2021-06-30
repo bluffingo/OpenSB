@@ -19,7 +19,7 @@ class Profiler {
 		$memoryUsage = memory_get_usage(false) / 1024;
 		$renderTime = microtime(true) - $this->starttime;
 		$res = getrusage();
-		if ($_GET['frontend'] == 'default') {
+		if (isset($_GET['frontend']) == false) {
 				printf(
 		'<div class="offcanvas offcanvas-bottom show" data-bs-scroll="true" data-bs-backdrop="false" style="visibility: visible; height: unset;">
 			<div class="offcanvas-body small">
