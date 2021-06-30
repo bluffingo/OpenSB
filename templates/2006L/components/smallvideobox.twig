@@ -10,7 +10,13 @@
 		</td>
 		<td>
 			<div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="watch.php?v={{ data.video_id }}&frontend=2006L">{{ data.title }}</a><br>
-				<span class="runtime">{{ data.videolength|date('i:s', '+00:00 GMT')  }}</span>
+				<span class="runtime">
+					{% if data.videolength > 3600 %}
+						<span class="runtime">{{ data.videolength|date('H:i:s', '+00:00 GMT') }}</span>
+					{% else %}
+						<span class="runtime">{{ data.videolength|date('i:s', '+00:00 GMT') }}</span>
+					{% endif %}
+				</span>
 			</div>
 			<div class="facets">
 				<span class="grayText">From:</span> {{ userlink(data, 'u_') }}<br>
