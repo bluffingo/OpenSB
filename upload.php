@@ -15,16 +15,16 @@ $video_id = substr(base64_encode(md5(bin2hex(random_bytes(6)))), 0, 11); //you a
 $new = '';
 foreach(str_split($video_id) as $char){
 	switch (rand(0, 4)) {
-		case 1:
+		case rand(0, 1):
 			$char = str_rot13($char);
 			break;
-		case 2:
+		case rand(0, 2):
 			$char = '_';
 			break;
-		case 3:
+		case rand(0, 3):
 			$char = mb_strtoupper($char);
 			break;
-		case 4:
+		case rand(0, 4):
 			$char = '-';
 			break;
 	}
