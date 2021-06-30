@@ -14,5 +14,8 @@ any static assets should ethier be on the assets folder, or if it's for 2006L, o
 # BRANDING
 
 the logo is made with illustator, when exporting the logo, some touch ups are required to remove the white background.
+
+# ICONS (now on root directory due to some technical issues)
+
 all of the iOS/Android/Win8 related icons (if someone wants to add squareBracket onto their home screen for god knows what) are generated using https://realfavicongenerator.net/.
 Do not use the safari-pinned-tab.svg as a replacement for a png, it's a poorly converted svg meant for the 0.01% chance that someone uses squareBracket on a macbook with touch bar.
