@@ -79,7 +79,7 @@
 			<td class="vinfo">
 				<div class="vtitle">
 					<a href="watch.php?v={{ video.video_id }}&frontend=2006L">{{ video.title }}</a><br>
-					<span class="runtime">{{ video.videolength }}</span>
+					<span class="runtime">{{ video.videolength|date('i:s', '+00:00 GMT')  }}</span>
 				</div>
 				<div class="vdesc">	
 			<span id="BeginvidDesc{{ video.video_id }}">
