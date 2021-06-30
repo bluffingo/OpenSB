@@ -57,6 +57,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	});
 	
 	$("#post").click(function(){
+		$("#commentPostingSpinner").removeClass('d-none');
 		$.post("comment.php",
 		{
 			comment: $.trim($("#commentContents").val()),
@@ -67,6 +68,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 				$('#comment').prepend(data);
 				$("#commentContents").val('');
 				$("#post").addClass("disabled");
+				$("#commentPostingSpinner").addClass('d-none');
 			}
 		});
 	});
