@@ -13,7 +13,7 @@
 		}
 		var fsd = document.getElementById('fullStats').style.display;
 		if (fsd == 'none' || fsd == '') {
-			showAjaxDivNotLoggedIn('honorsDiv', '/watch_ajax.php?v=dMH0bHeiRNg&action_get_honors=1&l=EN', false);
+			showAjaxDivNotLoggedIn('honorsDiv', '/watch_ajax.php?v={{ video.video_id }}&action_get_honors=1&l=EN&frontend=2006L', false);
 			document.getElementById('moreless').innerHTML = 'fewer';
 		}
 		else
@@ -28,22 +28,22 @@
 	
 	
 	function showRelatedVideosContent() {
-		getAndShowNavContent('exRelated', '/watch_ajax.php?video_id=dMH0bHeiRNg&action_get_related_videos_component&search=Dancing%20comedy');
+		getAndShowNavContent('exRelated', '/watch_ajax.php?video_id={{ video.video_id }}&action_get_related_videos_component&search=Dancing%20comedy&frontend=2006L');
 	}
 	
 	function showRelatedPlaylistContent() {
-		getAndShowNavContent('exPlaylist', '/watch_ajax.php?feature=PlayList&video_id=dMH0bHeiRNg&action_get_related_playlist_component&p=&index=0');
+		getAndShowNavContent('exPlaylist', '/watch_ajax.php?feature=PlayList&video_id={{ video.video_id }}&action_get_related_playlist_component&p=&index=0&frontend=2006L');
 	}
 	function showRelatedUserContent() {
-		getAndShowNavContent('exUser', '/watch_ajax.php?video_id=dMH0bHeiRNg&action_get_user_videos_component&user_id=K9y5CeIv4CI&video_count=3');
+		getAndShowNavContent('exUser', '/watch_ajax.php?video_id={{ video.video_id }}&action_get_user_videos_component&user_id=K9y5CeIv4CI&video_count=3&frontend=2006L');
 	}
 	function showHonorsContent() {
-		getAndShowNavContent('honors', '/watch_ajax.php?v=dMH0bHeiRNg&action_get_honors=1&l=EN');
+		getAndShowNavContent('honors', '/watch_ajax.php?v={{ video.video_id }}&action_get_honors=1&l=EN&frontend=2006L');
 	}
 	
 	function showAllQueuedVideos() {
 		setInnerHTML('show_all_queued_videos_div', 'Loading..');
-		getAndShowNavContent('watchlist_container', '/watch_queue_ajax?action_get_all_queue_videos_component&v=dMH0bHeiRNg', postShowAllQueuedVideos);
+		getAndShowNavContent('watchlist_container', '/watch_queue_ajax?action_get_all_queue_videos_component&v={{ video.video_id }}', postShowAllQueuedVideos);
 	}
 	function postShowAllQueuedVideos() {
 		setInnerHTML('show_all_queued_videos_div', 'Showing All Videos');
@@ -495,10 +495,10 @@
 	
 		<div class="actionsDiv">
 			<div class="actionRow">
-				<a href="#" class="noul" onclick="showAjaxDiv('addFavsDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_playlists_component=1', true); _hbLink('Save+To+Favorites','Watch'); return false;" onmouseover=""><img src="assets/2006L/icn_fav_reg_19x17.gif" class="alignMid" alt="Save to Favorites" border="0"> <span class="eLink">{{ __("Save to Favorites") }}</span></a>
+				<a href="#" class="noul" onclick="showAjaxDiv('addFavsDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_playlists_component=1&frontend=2006L', true); _hbLink('Save+To+Favorites','Watch'); return false;" onmouseover=""><img src="assets/2006L/icn_fav_reg_19x17.gif" class="alignMid" alt="Save to Favorites" border="0"> <span class="eLink">{{ __("Save to Favorites") }}</span></a>
 			</div>
 			<div class="actionRow">
-				<a href="#" class="noul" onclick="showAjaxDiv('addGroupsDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_groups_component=1', true); _hbLink('Add+To+Groups','Watch'); return false;"><img src="assets/2006L/icn_groups_reg_19x17.gif" class="alignMid" alt="Add to Groups" border="0"> <span class="eLink">{{ __("Add to Groups") }}</span></a>
+				<a href="#" class="noul" onclick="showAjaxDiv('addGroupsDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_groups_component=1&frontend=2006L', true); _hbLink('Add+To+Groups','Watch'); return false;"><img src="assets/2006L/icn_groups_reg_19x17.gif" class="alignMid" alt="Add to Groups" border="0"> <span class="eLink">{{ __("Add to Groups") }}</span></a>
 			</div>
 		</div>
 		<div class="actionsDiv sm">
@@ -506,12 +506,12 @@
 				<a href="#" class="noul" onclick="window.open('/share?v=dMH0bHeiRNg','Share','width=580,height=480,resizable=yes,scrollbars=yes,status=0'); _hbLink('Share+Video','Watch'); return false;"><img src="assets/2006L/icn_email_reg_19x17.gif" class="alignMid" alt="Share This Video" border="0"> <span class="eLink">{{ __("Share Video") }}</span></a>
 			</div>
 			<div class="actionRow">
-				<a href="#" class="noul" onclick="showAjaxDiv('blogVidDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_user_blogs_component=1', true); _hbLink('Blog+Video','Watch'); return false;"><img src="assets/2006L/icn_web_reg_19x17.gif" class="alignMid" border="0"> <span class="eLink">{{ __("Post Video") }}</span></a>
+				<a href="#" class="noul" onclick="showAjaxDiv('blogVidDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_user_blogs_component=1&frontend=2006L', true); _hbLink('Blog+Video','Watch'); return false;"><img src="assets/2006L/icn_web_reg_19x17.gif" class="alignMid" border="0"> <span class="eLink">{{ __("Post Video") }}</span></a>
 			</div>
 		</div>
 		<div class="actionsDiv sm">
 			<div class="actionRow">
-				<a href="#" class="noul" onclick="showAjaxDiv('inappropriateVidDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_flag_video_component=1', true); _hbLink('Flag+Inappropriate','Watch'); return false;"><img src="assets/2006L/icn_flag_reg_19x17.gif" class="alignMid" alt="Flag as Inappropriate" border="0"> <span class="eLink">{{ __("Flag as Inappropriate") }}</span></a>
+				<a href="#" class="noul" onclick="showAjaxDiv('inappropriateVidDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_flag_video_component=1&frontend=2006L', true); _hbLink('Flag+Inappropriate','Watch'); return false;"><img src="assets/2006L/icn_flag_reg_19x17.gif" class="alignMid" alt="Flag as Inappropriate" border="0"> <span class="eLink">{{ __("Flag as Inappropriate") }}</span></a>
 			</div>
 		</div>
 		<div class="spacer"></div>
