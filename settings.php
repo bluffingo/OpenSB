@@ -24,7 +24,7 @@ if (isset($_POST['updatesettings'])) {
 	$backtemp_name  = $_FILES['profileBackground']['tmp_name'];
 	$backext  = pathinfo( $_FILES['profileBackground']['name'], PATHINFO_EXTENSION );
 	$backtarget_file = 'assets/backgrounds/' . $currentUser['username'] . '.png';
-	if (move_uploaded_file($backtemp_name, $backtarget_file))
+	if (move_uploaded_file($backtemp_name, $backtarget_file)) { }
 	query("UPDATE users SET description = ?, color = ?, language = ? WHERE id = ?",
 		[$description, $color, $language, $currentUser['id']]);
 
