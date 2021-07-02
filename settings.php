@@ -18,13 +18,16 @@ if (isset($_POST['updatesettings'])) {
 	if (move_uploaded_file($temp_name, $target_file)){
 		$img = $manager->make($target_file);
 		$img->resize(640, 640);
-		$img->save($target_file);
+		$img->save($target_file, 0, 'png');
 	}
 	$backname       = $_FILES['profileBackground']['name'];
 	$backtemp_name  = $_FILES['profileBackground']['tmp_name'];
 	$backext  = pathinfo( $_FILES['profileBackground']['name'], PATHINFO_EXTENSION );
 	$backtarget_file = 'assets/backgrounds/' . $currentUser['username'] . '.png';
-	if (move_uploaded_file($backtemp_name, $backtarget_file)) { }
+	if (move_uploaded_file($backtemp_name, $backtarget_file)) {
+		$img = $manager->make($backtarget_file);
+		$img->save($backtarget_file, 0, 'png');
+	}
 	query("UPDATE users SET description = ?, color = ?, language = ? WHERE id = ?",
 		[$description, $color, $language, $currentUser['id']]);
 
