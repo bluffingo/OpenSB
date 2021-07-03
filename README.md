@@ -32,6 +32,9 @@
 
 ## Questions
 
+### Why is Rollerguy part of this project?
+People change.
+
 ### Will my videos/comments on PokTube be on squareBracket?
 Yes, but note the following:
 * Bulletins are not going to be imported. They were barely used by anyone.
