@@ -48,3 +48,54 @@ This entrypoint fetches all relevant data for the specified video.
 	}
 }
 ```
+
+## /api/v1/get_videos.php
+This entrypoint fetches all recent videos and the data for the videos.
+
+### Input arguments
+| field | type    | description                         |
+| ----- | ------- | ----------------------------------- |
+| start | integer | Integer to start querying data from |
+
+### Output data
+todo: add table
+
+### Example output
+```json
+[
+  {
+    "id": "__9A1ssnr73",
+    "title": "Test Video 2",
+    "description": "This is a testing video.",
+    "time": 1619437888,
+    "views": 0,
+    "videofile": "videos/__9A1ssnr73.mpd",
+    "videolength": 78,
+    "flags": {
+      "processing": 0,
+      "featured": 0
+    },
+    "tags": null,
+    "author": {
+      "username": "icanttellyou"
+    }
+  },
+  {
+    "id": "25r__1s5b5n",
+    "title": "Test Video",
+    "description": "This is a testing video.",
+    "time": 1619437793,
+    "views": 1,
+    "videofile": "videos/25r__1s5b5n.mpd",
+    "videolength": 78,
+    "flags": {
+      "processing": 0,
+      "featured": 0
+    },
+    "tags": null,
+    "author": {
+      "username": "icanttellyou"
+    }
+  }
+]
+```
