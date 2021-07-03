@@ -58,16 +58,15 @@
 								}
 
 								#openSettings.nav-link {
-									padding: 0;
+									padding: 0.25rem;
 								}
 							</style>
 							<a href="#" id="openSettings" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"
 								aria-expanded="false">
 								{% if logged_in %} <img src="{{ profile_image(current_user.username) }}"
-									alt="{{ current_user.username }}" class="rounded" width="36" height="36"
-									style="margin-top: 3px;"> {{ current_user.username }}
+									alt="{{ current_user.username }}" class="rounded" width="36" height="36"> {{ current_user.username }}
 								{% else %}<img src="/assets/profileguest.png" alt="Guest" class="rounded" width="36"
-									height="36" style="margin-top: 3px;"> {{ __("Not signed in") }}{% endif %}
+									height="36"> {{ __("Not signed in") }}{% endif %}
 							</a>
 						</li>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
