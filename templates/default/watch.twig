@@ -3,6 +3,7 @@
 {% block head %}
 	<meta name="title" content="{{ video.title }} - squareBracket">
 	<meta name="description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
+	<meta property="og:site_name" content="SquareBracket"/>
 	<meta property="og:title" content="{{ video.title }} - squareBracket">
 	<meta property="og:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
 	<meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
