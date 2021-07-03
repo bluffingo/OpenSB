@@ -15,36 +15,21 @@
 		{% endif %}
 	{% endif %}
 {% endif %}
-<main class="text-center">
-	<form method="post" name="loginForm" id="loginForm" action="login.php">
-		<div class="text-center">
-			<img class="mb-2 gamerappa-killed-the-render-star" src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="squareBracket">
-		</div>
-		<div class="form-signin god-is-dead text-center">
-			<h1 class="h3 mb-3 fw-normal">{{ __("Please sign in") }}</h1>
+<main class="form-signin">
+  <form method="post" name="loginForm" id="loginForm" action="login.php">
+    <img class="mb-4" src="/assets/logo.png" alt="squareBracket" width="72">
 
-			<div class="alert alert-primary" role="alert">
-				<div class="row">
-					<div class="col-3">
-						<img class="img-fluid" src="/assets/poktube.png" alt="PokTube">
-					</div>
-					<div class="col-9">
-						{{ __("Had an account on PokTube? You can now log into squareBracket using your PokTube credentials.") }}
-					</div>
-				</div>
-			</div>
-
-			<div class="form-floating">
-				<input type="text" name="username" class="form-control" id="floatingUsername" placeholder="name@example.com">
-				<label for="floatingUsername">{{ icon('person-fill', 24) }} {{ __("Username") }}</label>
-			</div>
-			<div class="form-floating">
-				<input type="password" name="password" class="form-control" id="floatingLabel" placeholder="Password">
-				<label for="floatingLabel">{{ icon('key-fill', 24) }} {{ __("Password") }}</label>
-			</div>
-			<br>
-			<input class="w-100 btn btn-lg btn-primary" type="submit" value="{{ __("Login") }}" name="loginsubmit">
-		</div>
-	</form>
+    <div class="form-floating">
+      <input type="text" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+	
+	<input class="w-100 btn btn-lg btn-primary" type="submit" value="Sign in" name="loginsubmit">
+    <p class="mt-5 mb-3 text-muted">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
+  </form>
 </main>
 	{% endblock %}
