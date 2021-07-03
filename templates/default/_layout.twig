@@ -73,7 +73,7 @@
 							{% if logged_in %}
 								<li><a class="dropdown-item" href="settings.php">{{ icon('tools', 20) }} {{ __("Settings") }}</a></li>
 							{% endif %}
-							<li><a class="dropdown-item" id="themeSelect" href="#">{{ icon('droplet-half', 20) }} {{ __("Theme") }}</a></li>
+							<li><a class="dropdown-item" id="themeSelect" href="#">{{ icon('brush', 20) }} {{ __("Change theme") }}</a></li>
 							{% if logged_in %}
 							<li><a class="dropdown-item" href="user.php?name={{ current_user.username }}">{{ icon('person-lines-fill', 20) }} {{ __("My profile") }}</a></li>
 							<li><hr class="dropdown-divider"></li>
@@ -104,9 +104,6 @@
 			<ul class="nav me-auto">
 				<li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} {{ __("Home") }}</a></li>
 				<li class="nav-item"><a href="browse.php" class="nav-link link-light px-2">{{ icon('play-btn', 16) }} {{ __("Browse") }}</a></li>
-				{% for menu_link in menu_links %}
-					<li class="nav-item"><a href="{{ menu_link.url }}" class="nav-link link-light px-2">{{ icon(menu_link.icon, 16) }} {{ menu_link.name }}</a></li>
-				{% endfor %}
 			</ul>
 		</div>
 	</nav>
@@ -114,7 +111,12 @@
 	<div class="container">
 		{% block content %}{% endblock %}
 		<footer class="text-center pt-3 my-2 text-muted border-top">
-			{{ __("Created by squareBracket contributors") }} · {{ __("<b><span style='font-family:arial'>GAMERAPPA</span></b>") }} 2020-{{ 'now' | date('Y') }}
+		<h4 class="mb-2">squareBracket Alpha 3.5</h4>
+			{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}
+		<br><br>
+		{% for menu_link in menu_links %}
+					<a href="{{ menu_link.url }}" class="text-muted px-2">{{ icon(menu_link.icon, 16) }} {{ menu_link.name }}</a>
+		{% endfor %}
 		</footer>
 		{% block postcontent %}{% endblock %}
 	</div>
