@@ -5,11 +5,11 @@
 	<meta name="description" content="{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description }}">
 	<meta property="og:title" content="{{ video.title }} - squareBracket">
 	<meta property="og:description" content="{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description }}">
-	<meta property="og:image" content="{{ video_thumbnail(video.video_id) }}">
+	<meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
 	<meta property="og:url" content="{{ page_url }}">
 	<meta property="twitter:title" content="{{ video.title }} - squareBracket">
 	<meta property="twitter:description" content="{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description }}">
-	<meta property="twitter:image" content="{{ video_thumbnail(video.video_id) }}">
+	<meta property="twitter:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
 	<meta name="twitter:card" content="summary_large_image">
 	<script>video_id = '{{ video.video_id }}';</script>
 {% endblock %}
