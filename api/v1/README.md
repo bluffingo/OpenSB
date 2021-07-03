@@ -53,9 +53,10 @@ This entrypoint fetches all relevant data for the specified video.
 This entrypoint fetches all recent videos and the data for the videos.
 
 ### Input arguments
-| field | type    | description                         |
-| ----- | ------- | ----------------------------------- |
-| start | integer | Integer to start querying data from |
+| field | type    | description                                    |
+| ----- | ------- | ---------------------------------------------- |
+| start | integer | Integer to start querying data from            |
+| limit | integer | Integer to limit the amount of videos to query |
 
 ### Output data
 todo: add table
