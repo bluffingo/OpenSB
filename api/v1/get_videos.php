@@ -33,4 +33,4 @@ foreach ($videoData as $video) {
 	]);
 }
 
-echo json_encode($apiOutput);
+echo json_encode(array('videos' => $apiOutput));
