@@ -1,19 +1,20 @@
 <?php
 chdir('../../');
 $rawOutputRequired = true;
-require('lib/common.php');
+require(getcwd() . '/lib/common.php');
 
 header('Content-Type: application/json');
 
-$start = (isset($_GET['start']) ? $_GET['start'] : 0);
 $limit = (isset($_GET['limit']) ? $_GET['limit'] : 10);
+$offset = (isset($_GET['offset']) ? $_GET['offset'] : 0);
 
-$videoData = query("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT ?, ?", [$start, $limit]);
+$videoDataCount = result("SELECT COUNT(1) FROM videos v JOIN users u ON v.author = u.id");
+$videoData = query("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT ? OFFSET ?", [$limit, $offset]);
 
-// TODO: comments? likes?
+// TODO: comments? likes? sex?
 $apiOutput = [];
 foreach ($videoData as $video) {
-	array_push($apiOutput, 
+	$apiOutput[] = 
 	[
 		'id'	=> $video['video_id'],
 		'title'	=> $video['title'],
@@ -30,7 +31,7 @@ foreach ($videoData as $video) {
 		'author' => [ // supposed to be an "user" object
 			'username' => $video['u_username']
 		]
-	]);
+	];
 }
 
-echo json_encode(array('videos' => $apiOutput));
+echo json_encode(array('videos' => $apiOutput, 'count' => $videoDataCount));
