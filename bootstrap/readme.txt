@@ -6,4 +6,6 @@ Colors are a bit inconsistent, since some shades of gray have a "blue"-ish tint,
 
 Dark theme looks decent but is a bit unpolished.
 
+The Dashboard and Signin css files are from the Bootstrap documentation.
+
 Compiling 5.0.2 is broken. https://github.com/scssphp/scssphp/issues/434

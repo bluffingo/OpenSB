@@ -27,6 +27,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		$("#navbar").attr("class", "navbar navbar-dark bg-primary navbar-static-top navbar-expand-md");
 		Cookies.set("theme", "light", { expires: 1000 });
 	});
+	$("#classic").click(function(){
+		$("#themeSelection").removeClass("show");
+		$("#bootstrap").attr("href", "assets/bs-classicish.css");
+		$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
+		Cookies.set("theme", "classicish", { expires: 1000 });
+	});
 	$("#vanilla").click(function(){
 		$("#themeSelection").removeClass("show");
 		$("#bootstrap").attr("href", "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css");

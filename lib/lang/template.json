@@ -14,6 +14,7 @@
 
 	"See More Videos": "",
 	"Recently Uploaded Videos": "",
+	"None": "",
 	"No uploaded videos.": "",
 
 	"Please login to perform this operation.": "",
@@ -97,7 +98,7 @@
 
 	"No users.": "",
 
-	"New from squareBracket": "",
+	"Recently uploaded to squareBracket": "",
 	"Hi there, %s": "",
 	"You have %s subscribers.": "",
 	"You have %s views.": "",
@@ -107,7 +108,7 @@
 	"Yet another website where you can upload your videos.": "",
 	"Get started": "",
 	"Sign in": "",
-	"What's new?": "",
+	"News and updates": "",
 	"If you have made an account on PokTube (the predecessor of squareBracket) from January 31st to April 24th 2021, then you can now sign onto squareBracket with your PokTube credentials.": "",
 	"Gamerappa": "",
 	"Featured videos": "",
@@ -115,12 +116,11 @@
 
 	"Login": "",
 	"Incorrect username or password!": "",
-	"Please sign in": "",
-	"Had an account on PokTube? You can now log into squareBracket using your PokTube credentials.": "",
-	"Username": "",
-	"Password": "",
+	"By squareBracket contributors": "",
 
+	"Username": "",
 	"E-mail": "",
+	"Password": "",
 	"Password (Again)": "",
 	"Register": "",
 
@@ -165,16 +165,17 @@
 	"Please sign in in order to comment.": "",
 	"Send": "",
 
+	"<b><span style='font-family:arial'>GAMERAPPA</span></b>": "",
+
 	" Search": "",
 	"Not signed in": "",
-	"Theme": "",
+	"Change theme": "",
 	"My profile": "",
 	"Sign off": "",
 	"Back": "",
 	"Light": "",
 	"Dark": "",
 	"Bootstrap Default": "",
-	"Sign up": "",
-	"<b><span style='font-family:arial'>GAMERAPPA</span></b>": ""
+	"Sign up": ""
 
 }
