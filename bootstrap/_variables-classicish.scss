@@ -1,6 +1,6 @@
 $white: #fff;
-$gray-100: #F9F9F9;
-$gray-200: #ECECEC;
+$gray-100: #F8F8F8;
+$gray-200: #EEEEEE;
 $gray-300: #E2E2E2;
 $gray-400: #D3D3D3;
 $gray-500: #B4B4B4;
@@ -22,7 +22,8 @@ $dark: $gray-800;
 $enable-responsive-font-sizes: true;
 $secondary: $gray-200;
 $enable-hover-media-query: true;
-$enable-shadows: true;
+$enable-shadows: false;
+$enable-gradient: true;
 $link-decoration: none;
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-size-base: 0.875rem;
