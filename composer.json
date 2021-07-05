@@ -7,7 +7,7 @@
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
 		"twbs/bootstrap": "5.0.1",
-		"scssphp/scssphp": "1.5.1",
+		"scssphp/scssphp": "1.6.0",
 		"nopjmp/discord-webhooks": "dev-master",
 		"twbs/bootstrap-icons": "dev-composer"
 	},
