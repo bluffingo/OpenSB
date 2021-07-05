@@ -1,6 +1,6 @@
 <?php
 if (!file_exists('conf/config.php')) {
-	die('Please read the installing instructions in the README file.');
+	die('Welcome to your squareBracket envirorment. A config file could\'nt be found. Please read the installing instructions in the README file.');
 }
 
 require('conf/config.php');
