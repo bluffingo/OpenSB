@@ -1,0 +1,35 @@
+{% extends "_layout-login.twig" %}
+
+{% block title %}{{ __("Login") }}{% endblock %}
+
+	{% block content %}
+{% if error %}
+	{% autoescape %}
+		<div class="alert alert-warning" role="alert">{{ error | raw }}</div>
+	{% endautoescape %}
+{% else %}
+	{% if not success == '' %}
+		{% if success %}
+		{% else %}
+			{{ __("Incorrect username or password!") }}
+		{% endif %}
+	{% endif %}
+{% endif %}
+<main class="form-signin">
+  <form method="post" name="loginForm" id="loginForm" action="login.php">
+    <img class="mb-4" src="/assets/logo.png" alt="squareBracket" width="72">
+
+    <div class="form-floating">
+      <input type="text" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+	
+	<input class="w-100 btn btn-lg btn-primary" type="submit" value="Sign in" name="loginsubmit">
+    <p class="mt-5 mb-3 text-muted">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
+  </form>
+</main>
+	{% endblock %}

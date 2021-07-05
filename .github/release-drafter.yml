@@ -1,0 +1,6 @@
+name-template: 'Release'
+tag-template: 'Release'
+change-template: '- $TITLE (#$NUMBER) @$AUTHOR'
+template: |
+  ## Updates
+  $CHANGES

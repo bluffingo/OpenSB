@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root><html_content><![CDATA[<table class="showingTable">
+	{% if type == 2 %}
+		<tr>
+		<td class="smallText">Showing 1-20 of 198677</td>
+		<td align="right" class="smallText"><a href="/results?search_type=related&search_query=werder%20bremen%20vfl%20wolsburg%20bundesliga%202006/07%20naldo%20daniel%20jensen%20torfabrik%20stunner%20klasse%20tor%20herbstmeister%20boakye">See All Videos</a></td>
+		</tr></table>
+		<div id="side_results" class="exploreContent" name="side_results">
+	{% elseif type == 1 %}
+		<tr>
+			<td class="label">Playlists containing this video</td>
+			<div class="errorBox">playlists aren't implemented on squarebracket</div>
+		</tr>
+		</table>
+		<div id="plList" class="exploreContent">
+	{% else %}
+		<tr>
+		<td class="smallText">Showing 1-20 of 198677</td>
+		<td align="right" class="smallText"><a href="/results?search_type=related&search_query=werder%20bremen%20vfl%20wolsburg%20bundesliga%202006/07%20naldo%20daniel%20jensen%20torfabrik%20stunner%20klasse%20tor%20herbstmeister%20boakye">See All Videos</a></td>
+		</tr></table>
+		<div id="side_results" class="exploreContent" name="side_results">
+	{% endif %}
+		{% for video in videos %}
+			{{ small_video_box(video)}}
+		{% endfor %}
+	</div>
+</table>]]></html_content><return_code><![CDATA[0]]></return_code></root>

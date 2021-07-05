@@ -1,0 +1,52 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Home") }}{% endblock %}
+	{% block content %}
+<div class="row">
+	<div class="col-xl-8">
+			<div class="row">
+			<div class="col-8">
+			<h3>{{ __("Recently uploaded to squareBracket") }}</h3>
+			</div><div class="col-4">
+			<div class="text-end"><a href="browse.php" class="btn btn-secondary btn-sm">More videos</a></div>
+			</div>
+			</div>
+				{% for video in videos %}
+					{{ video_box(video) }}
+				{% else %}
+					<p>{{ __("No uploaded videos.") }}</p>
+				{% endfor %}
+		</div>
+	<div class="col-xl-4">
+		{% if logged_in %}
+			<h3>{{ __("Hi there, %s", [current_user.username]) }}</h3>
+			</p>
+				<img class="float-end rounded w-25" src="{{ profile_image(current_user.username) }}"  alt="pfp">
+				<p class="text-start float-start">
+					<p>{{ __("You have %s subscribers.", ['0']) }}</p>
+					<p>{{ __("You have %s views.", [totalViews ?? __("no")]) }}</p>
+					<p>{{ __("Your account was made %s.", [creationDate | relative_time]) }}</p>
+				</p>
+			</p>
+		{% else %}
+			<h3>{{ __("Welcome to squareBracket") }}</h3>
+			<p>{{ __("Yet another website where you can upload your videos.") }}</p>
+			<div class="btn-group">
+				<a href="register.php" class="btn btn-primary">{{ __("Get started") }}</a>
+				<a href="login.php" class="btn btn-secondary">{{ __("Sign in") }}</a>
+			</div>
+		{% endif %}
+		<hr/>
+		<h3>{{ __("News and updates") }}</h3>
+		<p>{{ __("If you have made an account on PokTube (the predecessor of squareBracket) from January 31st to April 24th 2021, then you can now sign onto squareBracket with your PokTube credentials.") }}</p>
+		<p class="blockquote-footer">{{ __("Gamerappa") }}</p>
+		<hr/>
+		<h3>{{ __("Featured videos") }}</h3>
+		{% for video in featuredVideos %}
+			{{ small_video_box(video) }}
+		{% else %}
+			<p>{{ __("No featured videos.") }}</p>
+		{% endfor %}
+	</div>
+</div>
+	{% endblock %}

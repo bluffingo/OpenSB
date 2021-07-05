@@ -1,0 +1,23 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Browse") }}{% endblock %}
+
+	{% block content %}
+<div class="row"><div class="col">
+	<h3>{{ __("Videos") }}</h3>
+	<div class="card-body">
+		{% for video in videos|batch(4) %}
+		<div class="row">
+			{% for cell in video %}
+				<div class="col-3">
+					{{ browse_video_box(cell) }}
+				</div>
+			{% endfor %}
+		</div>
+		{% else %}
+			<p>{{ __("No uploaded videos.") }}</p>
+		{% endfor %}
+		{{ pagination(pageCount, currentPage, url) }}
+	</div>
+</div></div>
+	{% endblock %}

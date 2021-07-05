@@ -1,0 +1,75 @@
+@mixin btn-border($color){
+  border-color: darken($color, 13%);
+}
+
+.btn-primary {
+  @include btn-border($primary);
+}
+
+.btn-secondary {
+  @include btn-border($secondary);
+}
+
+.btn-success {
+  @include btn-border($success);
+  color: #fff;
+}
+
+.btn-info {
+  @include btn-border($info);
+  color: #fff;
+}
+
+.btn-warning {
+  @include btn-border($warning);
+  color: #fff;
+}
+
+.btn-danger {
+  @include btn-border($danger);
+  color: #fff;
+}
+
+.btn-light {
+  @include btn-border($light);
+}
+
+.btn-dark {
+  @include btn-border($dark);
+}
+
+.btn-primary:hover {
+  @include btn-border(darken($primary, 5%));
+}
+
+.btn-secondary:hover {
+  @include btn-border(darken($secondary, 5%));
+}
+
+.btn-success:hover {
+  @include btn-border(darken($success, 5%));
+  color: #fff;
+}
+
+.btn-info:hover {
+  @include btn-border(darken($info, 5%));
+  color: #fff;
+}
+
+.btn-warning:hover {
+  @include btn-border(darken($warning, 5%));
+  color: #fff;
+}
+
+.btn-danger:hover {
+  @include btn-border(darken($danger, 5%));
+  color: #fff;
+}
+
+.btn-light:hover {
+  @include btn-border(darken($light, 5%));
+}
+
+.btn-dark:hover {
+  @include btn-border(darken($dark, 5%));
+}

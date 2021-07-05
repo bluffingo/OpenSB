@@ -1,0 +1,19 @@
+<div class="card" style="margin-bottom:10px">
+	<div class="card-body">
+		<div class="row">
+			<div class="span4">
+				<a href="watch.php?v={{ data.video_id }}">
+					<div class="img-thumbnail">
+						<img class="img-fluid" src="{{ video_thumbnail(data.video_id) }}">
+					</div>
+				</a>
+			</div>
+			<div class="span8">
+				<h3><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
+				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("views") }}	&bull;
+				<span class="text-muted">{{ data.time | relative_time }}</span></p>
+				<p>{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description }}</p>
+			</div>
+		</div>
+	</div>
+</div>

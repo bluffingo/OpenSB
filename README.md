@@ -1,19 +1,47 @@
-# squareBracket 2.0
-An attempt at rewriting squareBracket, with a different vision.
+<h1 align="center">squareBracket Alpha 3.5</h1>
 
-## How to set this up
-1. Install [composer](https://getcomposer.org/).
-2. From the command prompt/terminal run `composer i`.
-3. Copy `config.sample.php` and name it as `config.php`
-4. Edit the config file, change the database auth details to the ones you use.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/60856959/123635056-798e0800-d81b-11eb-9742-5bc19a4f35a2.png"><br>
+<img src="https://img.shields.io/discord/853036368712040498?style=plastic">
+<img src="https://img.shields.io/github/v/release/chazizsquarebracket/squarebracket?include_prereleases&label=lastest%20released&style=plastic">
+<img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=plastic">
+<img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/alpha3?include_prereleases&style=plastic">
+<img src="https://img.shields.io/github/repo-size/chazizsquarebracket/squarebracket?style=plastic"><br><br>
+<a href="https://www.youtube.com/channel/UCMnG3eA5QcSgIPsavuW4ubA">
+<img src="https://img.shields.io/youtube/channel/subscribers/UCMnG3eA5QcSgIPsavuW4ubA?style=social">
+</a>
+<br>
+</p>
 
-## Not-so frequently asked questions
+<h3 align="center"><a href="https://squarebracket.veselcraft.ru/">Live website here ></a></h3>
 
-### Why is this no longer an old youtube clone?
-If it's an old youtube clone, then people are going to think it's a circlejerk of special-ed children nostalgizing about some version of a popular website from years ago.
+## How to setup squareBracket.
+1. Get a web server (Apache/NGINX) with PHP and MariaDB up and running, including Composer.
+1. Run `composer update` from the terminal.
+1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
+1. Import the database dump found in `sql/` into the database you want to use.
+1. Either run the `compile-scss-sassc` or `compile-scss-pscss` script available in the tools directory to generate CSS.
+1. (Optional for Discord webhook functionality) Enable the cURL module in PHP.
 
-If it's some generic video sharing site and if it's good, Then hey! People could start using squareBracket!
+### Production specific
+1. Make the `videos/`, `templates/cache/` and `assets/thumb/` directories writable by your web server.
 
-### Why Bootstrap 3? Why not Bootstrap 4/5 or *insert name of other CSS framework*
+### Development specific
+1. Disable Twig's template caching by setting `$tplNoCache` to true.
+1. If you want to be able to upload videos during development, make the `videos/` and `assets/thumb/` directory writable by your web server.
 
-Bootstrap 3 looked the best in my opinion. There were [2](https://cdn.discordapp.com/attachments/832695674662420500/832704559893708810/unknown.png) [attempts](https://cdn.discordapp.com/attachments/832695674662420500/832718470068043807/unknown.png) at converting the old codebase to use Bootstrap 5, but they all failed. Addtionally, we had [used Semantic UI](https://web.archive.org/web/20210301000232/https://squarebracket.me/) at one point, to lukewarm reception.
+## Questions
+
+### Why is Rollerguy part of this project?
+People change.
+
+### Will my videos/comments on PokTube be on squareBracket?
+Yes, but note the following:
+* Bulletins are not going to be imported. They were barely used by anyone.
+* It is unknown if comment channels should be imported, along with some level of channel customization.
+
+### Why not  still use the old PokTube codebase?
+A lot of the code was garbage, and around the time the codebase was abandonned in favor of squareBracket, spaghetti code problems had started appearing.
+
+### Why Twig?
+Twig literally makes HTML injection attacks a thing of the past. It's more short and concise than PHP's "templating" syntax, it supports layout inheritance and it allows for more code reuse and it's versatile for creating more frontends in the future. It's secure (it treats all variables as "unsafe" and automatically escapes them unless you explicitly mark them as safe), concise (its liquid-like syntax is shorter and way more appropriate for the context of templating) and fast (with caching enabled there's basically no overhead compared to not using Twig).
