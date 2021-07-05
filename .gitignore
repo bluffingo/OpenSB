@@ -17,6 +17,7 @@ bootstrap/css/bootstrap-theme.css
 ## pre-cached stylesheets
 assets/bs.css
 assets/bs-dark.css
+assets/bs-classicish.css
 
 ## Admin features
 adminer-*.php
@@ -25,4 +26,3 @@ adminer-*.php
 ## misc shit
 grdl/
 isos/
-assets/bs-classicish.css
