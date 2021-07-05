@@ -6,10 +6,34 @@ body {
     font-size: 13px;
 }
 
+.span8 {
+    width: 66.6666666667%;
+}
+
+.span4 {
+    width: 33.3333333333%;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
 @media only screen and (max-width: 1100px) {
     #header-links,#nav-links,#content {
         padding: 0 8px 0 8px;
     }
+}
+
+.card {
+    display: block;
+    padding: 4px;
+	background-color: white;
+    line-height: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    transition: all 0.2s ease-in-out;
 }
 
 #header {
