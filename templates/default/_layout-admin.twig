@@ -51,7 +51,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link" href="#">
               {{ icon('camera-video-fill', 16) }} Videos
             </a>
           </li>
@@ -100,12 +100,14 @@
       </div>
     </nav>
 	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-		<div class="alert alert-primary" role="alert">
-		  If you think you are a "cool hacker" because you accessed the admin panel. Note that this isn't functional for now. Have fun!
-		</div>
 		{% block content %}{% endblock %}
 		<footer class="text-center pt-3 my-2 text-muted border-top">
-			{{ __("Created by squareBracket contributors") }} · {{ __("<b><span style='font-family:arial'>GAMERAPPA</span></b>") }} 2020-{{ 'now' | date('Y') }}
+			<h4 class="mb-2">squareBracket Alpha 3.5</h4>
+				{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}
+			<br><br>
+			{% for menu_link in menu_links %}
+						<a href="{{ menu_link.url }}" class="text-muted px-2">{{ icon(menu_link.icon, 16) }} {{ menu_link.name }}</a>
+			{% endfor %}
 		</footer>
 	</main>
 	</div>
