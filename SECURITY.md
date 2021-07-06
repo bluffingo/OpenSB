@@ -1,4 +1,4 @@
-# squareBracket Security Policy
+# squareBracket Security Policy (OUTDATED)
 
 ## Supported Versions
 
