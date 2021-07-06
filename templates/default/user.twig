@@ -6,7 +6,7 @@
 <style>
 	{{ profCss | raw }}
 	.bg-channel-background {
-	background-image: url({{ channel_background(user.username) }});
+	background-image: url('{{ channel_background(user.username) }}');
     margin-top: -20px;
 	padding-bottom: 25px;
     padding-top: 20px;
@@ -23,53 +23,70 @@
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
 	{% endif %}
-	<div class="p-1 mb-4 bg-custom-profile rounded-3 text-white"> <!-- This prevents the user info box from being extremely tall. Box probably needs to be redesigned... -->
+	<!-- This prevents the user info box from being extremely tall. Box probably needs to be redesigned... -->
+	<div class="p-1 mb-4 bg-custom-profile rounded-3 text-white">
 		<div class="container-fluid py-4">
 			<div class="row">
-			<div class="col-md-11">
-					<img class="float-start rounded" src="{{ profile_image(user.username) }}" style="margin-right: 1.5%;" width="128" alt="pfp"><h1 class="align-top fw-bold">
-					{{ user.username }}{% if user.u_flags == 1 %}<svg data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __("squareBracket Partner") }}" style="margin-left: 0.75%;" class="bi" width="32" height="32" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#patch-check-fill"/>
+				<div class="col-md-11">
+					<img class="float-start rounded" src="{{ profile_image(user.username) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
+					<h1 class="align-top fw-bold">
+						{{ user.username }}{% if user.u_flags == 1 %}<svg data-bs-toggle="tooltip"
+							data-bs-placement="top" title="{{ __(" squareBracket Partner") }}"
+							style="margin-left: 0.75%;" class="bi" width="32" height="32" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#patch-check-fill" />
 						</svg>{% endif %}</h1>
 					<p class="fs-4">{{ user.description }}</p>
-			</div>
-						<div class="col-md-1 text-end">
-					<button class="btn btn-warning" type="button" disabled><svg data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __("Subscribe") }}" style="margin-left: 0.75%;" class="bi" width="32" height="32" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#plus"/>
+				</div>
+				<div class="col-md-1 text-end">
+					<button class="btn btn-warning" type="button" disabled><svg data-bs-toggle="tooltip"
+							data-bs-placement="top" title="{{ __(" Subscribe") }}" style="margin-left: 0.75%;"
+							class="bi" width="32" height="32" fill="currentColor">
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#plus" />
 						</svg></button>
-			</div>
+				</div>
 			</div>
 		</div>
-	</div></div>
-	<div class="row">
+	</div>
+</div>
+<div class="row">
 	<div class="col-md-8 order-2 order-md-1">
-	<div class="card">
-  <div class="card-body">
+		<div class="card">
+			<div class="card-body">
 				<div class="caption">
 					<h3>{{ __("Uploaded videos") }}</h3>
 					{% for latestVideo in latestVideos %}
-						{{ video_box(latestVideo) }}
+					{{ video_box(latestVideo) }}
 					{% else %}
-						<p>{{ __("There are no videos uploaded by %s.", [user.username]) }}</p>
+					<p>{{ __("There are no videos uploaded by %s.", [user.username]) }}</p>
 					{% endfor %}
+				</div>
+			</div>
 		</div>
 	</div>
-	  </div>
-</div>
 	<div class="col-md-4 order-1 order-md-2">
-	<div class="card">
-  <div class="card-body">
-	<h4>{{ __("About %s", [user.username]) }}</h4>
-	<hr>
-		<dl class="row">
-		  <dt class="col-sm-4">{{ __("Last Seen") }}</dt>
-		  <dd class="col-sm-8">{{ latestVideos[0].time | date('M j, Y') }}</dd> {# twig just does not want to return anything from a index, and just returns blank... #}
-		  <dt class="col-sm-4">{{ __("Date Joined") }}</dt>
-		  <dd class="col-sm-8">{{ user.joined | date('M j, Y') }}</dd>
-		</dl>
-		  </div>
-</div>
+		<div class="card">
+			<div class="card-body">
+				<h4>{{ __("About %s", [user.username]) }}</h4>
+				<hr>
+				<dl class="row">
+					<dt class="col-sm-4">{{ __("Last Seen") }}</dt>
+					<dd class="col-sm-8">{{ latestVideos[0].time | date('M j, Y') }}</dd> {# twig just does not want to return anything from a index, and just returns blank... #}
+					<dt class="col-sm-4">{{ __("Date Joined") }}</dt>
+					<dd class="col-sm-8">{{ user.joined | date('M j, Y') }}</dd>
+				</dl>
+				{% if current_user.powerlevel > 2 %}
+				<hr>
+				<h4>{{ __("Administrator Actions") }}</h4>
+				<hr>
+				<dl class="row">
+					<a href="resetpassword.php?grf={{ user.id }}">Generate password reset for user</a>
+				</dl>
+				{% endif %}
+			</div>
+		</div>
 	</div>
-</div></div></div>
+</div>
+</div>
+</div>
 <div class="container">
 	{% endblock %}
