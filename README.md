@@ -36,9 +36,7 @@
 People change.
 
 ### Will my videos/comments on PokTube be on squareBracket?
-Yes, but note the following:
-* Bulletins are not going to be imported. They were barely used by anyone.
-* It is unknown if comment channels should be imported, along with some level of channel customization.
+Nope. We have since decided to only import users, and not any videos and comments from PokTube.
 
 ### Why not  still use the old PokTube codebase?
 A lot of the code was garbage, and around the time the codebase was abandonned in favor of squareBracket, spaghetti code problems had started appearing.
