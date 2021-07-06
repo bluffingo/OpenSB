@@ -74,6 +74,14 @@
 					<dt class="col-sm-4">{{ __("Date Joined") }}</dt>
 					<dd class="col-sm-8">{{ user.joined | date('M j, Y') }}</dd>
 				</dl>
+				{% if current_user.powerlevel > 2 %}
+				<hr>
+				<h4>{{ __("Administrator Actions") }}</h4>
+				<hr>
+				<dl class="row">
+					<a href="resetpassword.php?grf={{ user.id }}">Generate password reset for user</a>
+				</dl>
+				{% endif %}
 			</div>
 		</div>
 	</div>
