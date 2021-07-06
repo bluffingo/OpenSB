@@ -17,7 +17,8 @@ CREATE TABLE `users` (
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
   `color` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en_US' COMMENT 'Language (Defaults to English)',
-  `u_flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties'
+  `u_flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties',
+  `powerlevel` tinyint(4) unsigned NOT NULL DEFAULT 1 COMMENT '0 - banned. 1 - normal user. 2 - moderator. 3 - administrator',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -52,5 +53,12 @@ CREATE TABLE `rating` (
   `rating` tinyint(1) unsigned NOT NULL DEFAULT 1 COMMENT '1 for like, 0 for dislike.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE `passwordresets` (
+  `id` varchar(64) NOT NULL,
+  `user` int(11) NOT NULL,
+  `time` int(11) NOT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 2021-04-25 15:54:47
+-- Gamerappa is gay
+-- ROllerozxa is gay

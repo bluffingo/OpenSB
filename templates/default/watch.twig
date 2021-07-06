@@ -20,7 +20,17 @@
 	{% block content %}
 <div class="row">
 	<div class="col-lg-9">
-		<div id="playerContainer"></div>
+		<div id="playerContainer">
+			{% if video.flags == 0010 %}
+				<div style="height: 30rem; background-color: black; color: white; text-align: center; padding: 15rem">
+					{{ __("This video is being processed. Try again later.") }}
+				</div>
+			{% elseif video.flags == 0020 %}
+				<div style="height: 30rem; background-color: black; color: white; text-align: center; padding: 15rem">
+					{{ __("This video failed to convert!") }}
+				</div>
+			{% endif %}
+		</div>
 		<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
 		    <style>
 				@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
@@ -71,22 +81,24 @@
 				}
 			</style>
 		<script>
-			const config = {
-				autoplay: true,
-				sources: [
-					{
-						type: 'dash',
-						src: '{{ video.videofile }}'
+			{% if not video.flags == 0010 %}
+				const config = {
+					autoplay: true,
+					sources: [
+						{
+							type: 'dash',
+							src: '{{ video.videofile }}'
+						}
+					],
+					ui: {
+						image: '{{ video_thumbnail(video.video_id) }}',
+						pip: true,
+						locale: '{{ current_user.language | replace({'_': '-'}) }}'
 					}
-				],
-				ui: {
-					image: '{{ video_thumbnail(video.video_id) }}',
-					pip: true,
-					locale: '{{ current_user.language | replace({'_': '-'}) }}'
-				}
-			};
-			const element = document.getElementById('playerContainer');
-			const player = IndigoPlayer.init(element, config);
+				};
+				const element = document.getElementById('playerContainer');
+				const player = IndigoPlayer.init(element, config);
+			{% endif %}
 		</script>
 		<div style="margin-top:5px">
 			<div class="card">
