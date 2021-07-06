@@ -18,6 +18,8 @@ bootstrap/css/bootstrap-theme.css
 assets/bs.css
 assets/bs-dark.css
 assets/bs-classicish.css
+assets/bs.css.map
+assets/bs-dark.css.map
 
 ## Admin features
 adminer-*.php
