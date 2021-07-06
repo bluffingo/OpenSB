@@ -8,4 +8,3 @@ common_arguments="--style=compressed"
 
 php ${pscss_path} ${common_arguments} bootstrap/bs.scss > assets/bs.css
 php ${pscss_path} ${common_arguments} bootstrap/bs-dark.scss > assets/bs-dark.css
-php ${pscss_path} ${common_arguments} bootstrap/bs-classicish.scss > assets/bs-classicish.css

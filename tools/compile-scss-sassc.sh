@@ -6,4 +6,3 @@ common_arguments="--style compressed --load-path ./"
 
 sassc ${common_arguments} bootstrap/bs.scss assets/bs.css
 sassc ${common_arguments} bootstrap/bs-dark.scss assets/bs-dark.css
-sassc ${common_arguments} bootstrap/bs-classicish.scss assets/bs-classicish.css

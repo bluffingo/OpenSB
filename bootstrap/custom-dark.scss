@@ -1,213 +1,194 @@
-// Darkly 5.0.0-beta3 <--- needs to be updated, 5.0.0 came out.
-// Bootswatch
+//
+// Buttons
+// --------------------------------------------------
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto');
+// Mixin for generating new styles
+@mixin btn-styles($btn-color: #555) {
+  @include gradient-y($start-color: $btn-color, $end-color: darken($btn-color, 12%));
+  background-repeat: repeat-x;
+  border-color: darken($btn-color, 14%);
 
-@mixin btn-shadow($color){
-  @include gradient-y-three-colors(lighten($color, 8%), $color, 60%, darken($color, 4%));
-}
-
-$text-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) !default;
-
-// Typography
-
-.blockquote {
-  &-footer {
-    color: $gray-600;
-  }
-}
-
-// Forms
-
-.input-group-addon {
-  color: $white;
-}
-
-.form-floating > label {
-  color: $gray-700;
-}
-
-// Navs
-
-.nav-tabs,
-.nav-pills {
-  .nav-link,
-  .nav-link.active,
-  .nav-link.active:focus,
-  .nav-link.active:hover,
-  .nav-item.open .nav-link,
-  .nav-item.open .nav-link:focus,
-  .nav-item.open .nav-link:hover {
-    color: $white;
-  }
-}
-
-.breadcrumb a {
-  color: $white;
-}
-
-.pagination {
-  a:hover {
-    text-decoration: none;
-  }
-}
-
-.bg-primary {
-  @include btn-shadow($primary);
-}
-
-.bg-dark {
-  @include gradient-y-three-colors(darken($gray-800, 5%), darken($gray-800, 10%), 50%, darken($gray-800, 20%));
-}
-
-.bg-light {
-  @include gradient-y-three-colors(darken($gray-400, 5%), darken($gray-400, 10%), 60%, darken($gray-400, 20%));
-}
-
-.alert-warning {
-  @include gradient-y-three-colors(darken($warning, 5%), darken($warning, 10%), 80%, darken($warning, 20%));
-}
-
-.alert-danger {
-  @include gradient-y-three-colors(darken($danger, 5%), darken($danger, 10%), 80%, darken($danger, 20%));
-}
-
-.alert-success {
-  @include gradient-y-three-colors(darken($success, 5%), darken($success, 10%), 80%, darken($success, 20%));
-}
-
-.alert-info {
-  @include gradient-y-three-colors(darken($info, 5%), darken($info, 10%), 80%, darken($info, 20%));
-}
-
-.alert-primary {
-  @include gradient-y-three-colors(darken($primary, 5%), darken($primary, 10%), 80%, darken($primary, 20%));
-}
-
-.alert-secondary {
-  @include gradient-y-three-colors(darken($secondary, 5%), darken($secondary, 10%), 80%, darken($secondary, 20%));
-}
-
-.alert-light {
-  @include gradient-y-three-colors(darken($gray-400, 5%), darken($gray-400, 10%), 60%, darken($gray-400, 20%));
-}
-
-.progress-bar {
-  @include gradient-y-three-colors(darken($primary, 8%), $primary, 60%, darken($primary, 2%));
-}
-
-.bg-success {
-  @include gradient-y-three-colors(darken($success, 5%), darken($success, 10%), 80%, darken($success, 20%));
-}
-
-.bg-info {
-  @include gradient-y-three-colors(darken($info, 5%), darken($info, 10%), 80%, darken($info, 20%));
-}
-
-.bg-warning {
-  @include gradient-y-three-colors(darken($warning, 5%), darken($warning, 10%), 80%, darken($warning, 20%));
-}
-
-.bg-danger {
-  @include gradient-y-three-colors(darken($danger, 5%), darken($danger, 10%), 80%, darken($danger, 20%));
-}
-
-.bg-secondary {
-  @include gradient-y-three-colors(darken($secondary, 5%), darken($secondary, 10%), 80%, darken($secondary, 20%));
-}
-
-.bg-purple {
-  @include gradient-y-three-colors(darken($purple-500, 5%), darken($purple-500, 10%), 80%, darken($purple-500, 20%));
-}
-
-.progress-bar-striped {
-    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-    background-size: 1rem 1rem;
-    background-repeat: repeat;
-}
-
-.card-header {
-  @include gradient-y-three-colors(rgba($gray-100, 0.35), rgba(darken($gray-100, 6%), 0.25), 60%, rgba(darken($gray-100, 10%), 0.25));
-}
-
-.navbar-brand,
-.nav-link {
-  text-shadow: $text-shadow
-}
-
-// Indicators
-
-.alert {
-  border: none;
-  color: $white;
-
-  a,
-  .alert-link {
-    color: $white;
-    text-decoration: underline;
+  &:hover,
+  &:focus  {
+    background-color: darken($btn-color, 12%);
+    background-position: 0 -15px;
   }
 
-  @each $color, $value in $theme-colors {
-    &-#{$color} {
-      @if $enable-gradients {
-        background: $value linear-gradient(180deg, mix($white, $value, 15%), $value) repeat-x;
-      } @else {
-        background-color: $value;
-      }
+  &:active,
+  &.active {
+    background-color: darken($btn-color, 12%);
+    border-color: darken($btn-color, 14%);
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: darken($btn-color, 12%);
     }
   }
 }
 
-// Containers
-
-.list-group-item-action {
-  color: $white;
-
-  &:hover,
-  &:focus {
-    background-color: $gray-700;
-    color: $white;
-  }
-
-  .list-group-item-heading {
-    color: $white;
-  }
+// Common styles
+.btn-success, .btn-info, .btn-warning, .btn-danger, .btn-success:hover, .btn-info:hover, .btn-warning:hover, .btn-danger:hover, .btn-success.disabled, .btn-info.disabled, .btn-warning.disabled, .btn-danger.disabled, {
+  color: #fff;
 }
-
-// Buttons
 
 .btn {
-  text-shadow: $text-shadow
+  // Remove the gradient for the pressed/active state
+  &:active,
+  &.active {
+    background-image: none;
+  }
 }
 
-.btn-primary {
-  @include btn-shadow($primary);
+// Apply the mixin to the buttons
+@each $state, $value in $theme-colors {
+  .btn-#{$state} {
+    @include btn-styles($value);
+  }
 }
 
-.btn-secondary {
-  @include btn-shadow($secondary);
+
+//
+// Images
+// --------------------------------------------------
+
+.thumbnail,
+.img-thumbnail {
+  @include box-shadow(0 1px 2px rgba(0,0,0,.075));
 }
 
-.btn-success {
-  @include btn-shadow($success);
+
+//
+// Dropdowns
+// --------------------------------------------------
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  @include gradient-y($start-color: $dropdown-link-hover-bg, $end-color: darken($dropdown-link-hover-bg, 5%));
+  background-color: darken($dropdown-link-hover-bg, 5%);
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  @include gradient-y($start-color: $gray-100, $end-color: darken($gray-100, 5%));
+  background-color: darken($gray-100, 5%);
 }
 
-.btn-info {
-  @include btn-shadow($info);
+
+//
+// Navbar
+// --------------------------------------------------
+
+@each $state, $value in $theme-colors {
+  .bg-#{$state} {
+    @include gradient-y($start-color: lighten($value, 10%), $end-color: $value);
+  }
+}
+.bg-light {
+	color: #242424;
+}
+.bg-warning {
+	color: #fff;
+}
+// Inverted navbar
+.navbar-dark {
+  .navbar-brand,
+  .navbar-nav > li > a {
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  }
 }
 
-.btn-warning {
-  @include btn-shadow($warning);
+//
+// Alerts
+// --------------------------------------------------
+
+// Common styles
+.alert {
+  text-shadow: 0 1px 0 rgba(255,255,255,.2);
+  $shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.05);
+  @include box-shadow($shadow);
 }
 
-.btn-danger {
-  @include btn-shadow($danger);
+// Mixin for generating new styles
+@mixin alert-styles($color) {
+  @include gradient-y($start-color: $color, $end-color: darken($color, 7.5%));
+  border-color: darken($color, 15%);
 }
 
-.btn-light {
-  @include btn-shadow($light);
+@each $state, $value in $theme-colors {
+  $alert-background: shift-color($value, $alert-bg-scale);
+  .alert-#{$state} {
+    @include alert-styles($alert-background);
+  }
 }
 
-.btn-dark {
-  @include btn-shadow($dark);
+
+//
+// Progress bars
+// --------------------------------------------------
+
+// Give the progress background some depth
+.progress {
+  @include gradient-y($start-color: darken($progress-bg, 4%), $end-color: $progress-bg)
 }
+
+.progress-bar-striped {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent) !important;
+}
+
+//
+// List groups
+// --------------------------------------------------
+
+.list-group {
+  border-radius: $list-group-border-radius;
+  @include box-shadow(0 1px 2px rgba(0,0,0,.075));
+}
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+  text-shadow: 0 -1px 0 darken($list-group-active-bg, 10%);
+  @include gradient-y($start-color: $list-group-active-bg, $end-color: darken($list-group-active-bg, 7.5%));
+  border-color: darken($list-group-active-border-color, 7.5%);
+
+  .badge {
+    text-shadow: none;
+  }
+}
+
+
+//
+// Panels
+// --------------------------------------------------
+
+// Common styles
+.card {
+  @include box-shadow(0 1px 2px rgba(0,0,0,.05));
+}
+
+// Mixin for generating new styles
+@mixin panel-heading-styles($color) {
+  @include gradient-y($start-color: $color, $end-color: opacify($color, 0.05));
+}
+
+// Apply the mixin to the panel headings only
+.card-header { @include panel-heading-styles($card-cap-bg); }
+
+
+//
+// Wells
+// --------------------------------------------------
+
+//.well {
+//  @include gradient-y($start-color: darken($well-bg, 5%), $end-color: $well-bg);
+//  border-color: darken($well-bg, 10%);
+//  $shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
+//  @include box-shadow($shadow);
+//}
