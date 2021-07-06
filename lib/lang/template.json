@@ -140,6 +140,9 @@
 	"Partner with squareBracket": "",
 	"Apply for Partner": "",
 
+	"Your video has been uploaded!": "",
+	"Please wait for the video to be converted. This may take a few minutes.": "",
+	"When it's done you can watch it <a href='%s'>here</a>": "",
 	"Warning": "",
 	"By uploading your videos onto squareBracket, you acknowledge about rules that should be common sense.": "",
 	"Video Info": "",
@@ -159,6 +162,8 @@
 	"Last Seen": "",
 	"Date Joined": "",
 
+	"This video is being processed. Try again later.": "",
+	"This video failed to convert!": "",
 	"Uploaded on %s": "",
 	"views": "",
 	"Enter comment here, Markdown can be used here.": "",
@@ -176,6 +181,7 @@
 	"Light": "",
 	"Dark": "",
 	"Bootstrap Default": "",
+	"Classicish (experimental)": "",
 	"Sign up": ""
 
 }
