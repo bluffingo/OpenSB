@@ -171,7 +171,7 @@
 
 // Mixin for generating new styles
 @mixin panel-heading-styles($color) {
-  @include gradient-y($start-color: $color, $end-color: opacify($color, 5%));
+  @include gradient-y($start-color: $color, $end-color: opacify($color, 0.05));
 }
 
 // Apply the mixin to the panel headings only
