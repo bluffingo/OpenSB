@@ -47,7 +47,6 @@ body {
 }
 
 .card {
-    display: flex;
     padding: 4px;
 	background-color: white;
     line-height: 20px;
