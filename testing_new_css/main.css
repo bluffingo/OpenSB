@@ -6,12 +6,27 @@ body {
     font-size: 13px;
 }
 
-.span8 {
-    width: 66.6666666667%;
+
+
+.col-8 {
+    width: 66.66666667%;
 }
 
-.span4 {
-    width: 33.3333333333%;
+.col-4 {
+    width: 33.33333333%;
+}
+
+.col {
+    float: left;
+}
+
+.row {
+    *zoom: 1;
+}
+
+.row::before {
+    display: table;
+    content: " ";
 }
 
 .img-fluid {
@@ -26,7 +41,7 @@ body {
 }
 
 .card {
-    display: block;
+    display: flex;
     padding: 4px;
 	background-color: white;
     line-height: 20px;

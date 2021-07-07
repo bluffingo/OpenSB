@@ -3,11 +3,13 @@
 <h1>squareBracket</h1>
 <button type="button" class="btn btn-grey">Button 1</button>
 <button type="button" class="btn btn-blue">Button 2</button> 
+<div class="row">
 {% for video in videos %}
 	{{ video_box(video) }}
 {% else %}
 	<p>{{ __("No uploaded videos.") }}</p>
 {% endfor %}
+</div>
 <br><br>
 <div class="alert">Woah.</div>
 {% endblock %}
