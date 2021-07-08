@@ -6,7 +6,24 @@ body {
     font-size: 13px;
 }
 
+.text-end {
+    text-align: right !important;
+}
 
+.text-center {
+    text-align: middle !important;
+}
+
+.text-start {
+    text-align: left !important;
+}
+
+.form-horizontal .control-label {
+    float: left;
+    width: 160px;
+    padding-top: 5px;
+    text-align: right;
+}
 
 .col-8 {
     width: 66.66666667%;
