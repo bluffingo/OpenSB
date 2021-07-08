@@ -204,6 +204,18 @@ a:hover #header-logo {
     border: 1px solid;
 }
 
+.btn-large {
+    padding: 9px 18px;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.btn-small {
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
 .btn:active {
     box-shadow: inset 0 1px 3px rgba(59, 31, 31, 0.75) !important;
 }
@@ -262,4 +274,40 @@ a:hover #header-logo {
 
 .btn-dark:active {
     background: linear-gradient(to bottom,#151515 0,#252525 100%);
+}
+
+.btn-danger {
+    background: linear-gradient(#ee5f5b, #c43c35);
+    color: white;
+    border-color: #bd362f #bd362f #802420;
+    box-shadow: inset 0 1px 0 rgba(256,256,256,.35);
+    text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+}
+
+.btn-danger:hover {
+    border-color: #780000 #780000 #000;
+    box-shadow: inset 0 1px 0 rgba(256,256,256,0.35),0 1px 3px rgba(0,0,0,0.5);
+    background: linear-gradient(#c43c35, #b5322b);
+}
+
+.btn-danger:active {
+    background: linear-gradient(to bottom,#b5322b 0,#942923 100%);
+}
+
+.btn-warning {
+    background: linear-gradient(#fbb450, #f89406);
+    color: #ffffff;
+    border-color: #bd762f #bd762f #802420;
+    box-shadow: inset 0 1px 0 rgba(256,256,256,.35);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btn-warning:hover {
+    border-color: #593a00 #593a00 #000;
+    box-shadow: inset 0 1px 0 rgba(256,256,256,0.35),0 1px 3px rgba(0,0,0,0.5);
+    background: linear-gradient(#ffac38, #e08400);
+}
+
+.btn-warning:active {
+    background: linear-gradient(to bottom,#e08400 0,#cf8804 100%);
 }
