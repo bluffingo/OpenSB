@@ -2,7 +2,7 @@ body {
     margin: 0;
     background: url('../assets/noise.png');
     background-color: #ebebeb;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 13px;
 }
 
@@ -11,7 +11,7 @@ body {
 }
 
 .text-center {
-    text-align: middle !important;
+    text-align: center !important;
 }
 
 .text-start {
@@ -106,13 +106,17 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 }
 
 .card {
-    padding: 4px;
+    padding: 10px;
 	background-color: white;
     line-height: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
     transition: all 0.2s ease-in-out;
+}
+
+.card-info {
+    padding: 4px;
 }
 
 #header {
@@ -191,7 +195,7 @@ a:hover #header-logo {
 
 #content {
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 5px auto;
 }
 
 .btn {
@@ -205,9 +209,9 @@ a:hover #header-logo {
 }
 
 .btn-large {
-    padding: 9px 18px;
+    padding: 10px 18px;
     font-size: 16px;
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
 .btn-small {
@@ -310,4 +314,19 @@ a:hover #header-logo {
 
 .btn-warning:active {
     background: linear-gradient(to bottom,#e08400 0,#cf8804 100%);
+}
+
+hr {
+    color: inherit;
+    background-color: currentColor;
+    border: 1;
+    opacity: 0.25;
+}
+
+.small-margin {
+    margin: 0.5rem 0px 0.5rem;
+}
+
+.no-margin {
+    margin: 0;
 }
