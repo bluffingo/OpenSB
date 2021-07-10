@@ -85,8 +85,8 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 }
 
 .row > * {
-	padding-right: calc(1.5rem / 2);
-	padding-left: calc(1.5rem / 2);
+	padding-right: 0.375rem;
+	padding-left: 0.375rem;
 }
 
 .row::before {
@@ -117,6 +117,22 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 
 .card-info {
     padding: 4px;
+}
+
+.70percent-width {
+    width: 70%;
+}
+
+.comment-text {
+    font-size: 13px;
+    line-height: 16px;
+	padding: 0;
+    margin-bottom: 6px;
+}
+
+.metadata {
+    font-size: 11px;
+    margin-bottom: 2px;
 }
 
 #header {
