@@ -35,9 +35,18 @@
 				const player = IndigoPlayer.init(element, config);
 			{% endif %}
 		</script>
-		<p class="uploader-info">
-		{{ __("Published on %s", [video.time | date('M j, Y')]) }} by <a href="user.php?name={{ video.u_username }}">{{ userlink(video, 'u_') }}</a>
-        </p>
+		<p class="uploader-info">{{ __("Published on %s", [video.time | date('M j, Y')]) }} by <a href="user.php?name={{ video.u_username }}">{{ userlink(video, 'u_') }}</a></p>
+		<p>{{ video.description }}</p>
+		<h3>Comments (redesign this later)</h3>
+		<textarea rows="3" placeholder="Not implemented"></textarea>
+				{% for comment in comments %}
+					{{ comment(comment) }}
+				{% endfor %}
+				</div>
+<div class="col-4">
+		{% for related_video in related_videos %}
+			{{ small_video_box(related_video)}}
+		{% endfor %}
 </div>
 </div>
 {% endblock %}
