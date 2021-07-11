@@ -9,8 +9,7 @@
 		"twbs/bootstrap": "5.0.2",
 		"scssphp/scssphp": "1.6.0",
 		"nopjmp/discord-webhooks": "dev-master",
-		"twbs/bootstrap-icons": "dev-composer",
-		"spatie/async": "dev-master"
+		"twbs/bootstrap-icons": "dev-composer"
 	},
 	"minimum-stability": "dev",
 	"config": {

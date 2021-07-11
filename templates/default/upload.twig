@@ -4,32 +4,26 @@
 
 	{% block content %}
 <h1>{{ __("Upload") }}</h1>
-{% if uploaded %}
-	<h3>{{ __("Your video has been uploaded!") }}</h3>
-	{{ __("Please wait for the video to be converted. This may take a few minutes.") }}<br/>
-	{{ __("When it's done you can watch it <a href='%s'>here</a>", ["watch.php?v=" ~ video_id]) }}
-{% else %}
-	<p><span class="badge bg-warning">{{ icon('exclamation-triangle-fill', 16) }} {{ __("Warning") }}</span> {{ __("By uploading your videos onto squareBracket, you acknowledge about rules that should be common sense.") }}</p>
-	<form name="uploadForm" id="uploadForm" method="post" action="upload.php"
-	enctype="multipart/form-data">
+<p><span class="badge bg-warning">{{ icon('exclamation-triangle-fill', 16) }} {{ __("Warning") }}</span> {{ __("By uploading your videos onto squareBracket, you acknowledge about rules that should be common sense.") }}</p>
+<form name="uploadForm" id="uploadForm" method="post" action="upload.php"
+enctype="multipart/form-data">
+<br>
+<dl class="row">
+  <dt class="col-sm-2">{{ __("Video Info") }}</dt>
+  <dd class="col-sm-10">{{ __("Enter the name and description of your video.") }}</dd>
+</dl>
+	<input type="text" class="form-control" name="title" value="" placeholder="{{ __("Title") }}">
+	<textarea class="form-control" name="desc" maxlength="500" form="uploadForm"
+	style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}"></textarea>
+	<input type="text" class="form-control" name="tags" value="" placeholder="{{ __("Tags") }}">
 	<br>
-	<dl class="row">
-	  <dt class="col-sm-2">{{ __("Video Info") }}</dt>
-	  <dd class="col-sm-10">{{ __("Enter the name and description of your video.") }}</dd>
-	</dl>
-		<input type="text" class="form-control" name="title" value="" placeholder="{{ __("Title") }}">
-		<textarea class="form-control" name="desc" maxlength="500" form="uploadForm"
-		style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}"></textarea>
-		<input type="text" class="form-control" name="tags" value="" placeholder="{{ __("Tags") }}">
-		<br>
-	<dl class="row">
-	  <dt class="col-sm-2">{{ __("Upload Video File") }}</dt>
-	  <dd class="col-sm-10">{{ __("Choose the video you want to upload.") }}</dd>
-	</dl>
-		<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
-		<br>
-		<input class="btn btn-primary" type="submit" id="upload" name="upload"
-		value="{{ __("Upload Video") }}">
-	</form>
-{% endif %}
+<dl class="row">
+  <dt class="col-sm-2">{{ __("Upload Video File") }}</dt>
+  <dd class="col-sm-10">{{ __("Choose the video you want to upload.") }}</dd>
+</dl>
+	<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
+	<br>
+	<input class="btn btn-primary" type="submit" id="upload" name="upload"
+	value="{{ __("Upload Video") }}">
+</form>
 	{% endblock %}
