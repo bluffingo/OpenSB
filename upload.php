@@ -46,8 +46,12 @@ if (isset($_POST['upload']) and isset($currentUser['username'])) {
 		query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags) VALUES (?,?,?,?,?,?,?,?)",
 			[$new,$title,$description,$currentUser['id'],time(),json_encode(explode(', ', $_POST['tags'])),'videos/'.$new.'.mpd', 0x2]);
 
-		// TODO: Windows Support
-		system(sprintf('php lib/scripts/processingworker.php "%s" "%s" > /dev/null 2>&1 &', $new, $target_file));
+		if (substr(php_uname(), 0, 7) == "Windows") {
+			pclose(popen(sprintf('start /B  php lib/scripts/processingworker.php "%s" "%s" > nul', $new, $target_file), "r")); 
+		}
+		else {
+			system(sprintf('php lib/scripts/processingworker.php "%s" "%s" > /dev/null 2>&1 &', $new, $target_file));
+		}
 
 		redirect('./watch.php?v='.$new);
 	}
