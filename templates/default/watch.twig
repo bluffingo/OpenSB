@@ -18,6 +18,12 @@
 {% block title %}{{ video.title }}{% endblock %}
 
 	{% block content %}
+{% if (video.flags b-and 2) %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+	{{ __("Your video has been successfully uploaded and is currently being processed.") }}
+	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
 <div class="row">
 	<div class="col-lg-9">
 		<div id="playerContainer"></div>
