@@ -18,15 +18,15 @@
 {% block title %}{{ video.title }}{% endblock %}
 
 	{% block content %}
-{% if (video.flags b-and 2) %}
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-	{{ __("Your video has been successfully uploaded and is currently being processed.") }}
-	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-{% endif %}
 <div class="row">
 	<div class="col-lg-9">
-		<div id="playerContainer"></div>
+		<div id="playerContainer">
+			{% if (video.flags b-and 2) %}
+				<div style="height: 30rem; background-color: black; color: white; text-align: center; padding: 15rem">
+					{{ __("This video is being processed. Try again later.") }}
+				</div>
+			{% endif %}
+		</div>
 		<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
 		    <style>
 				@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
@@ -77,22 +77,24 @@
 				}
 			</style>
 		<script>
-			const config = {
-				autoplay: true,
-				sources: [
-					{
-						type: 'dash',
-						src: '{{ video.videofile }}'
+			{% if not (video.flags b-and 2) %}
+				const config = {
+					autoplay: true,
+					sources: [
+						{
+							type: 'dash',
+							src: '{{ video.videofile }}'
+						}
+					],
+					ui: {
+						image: '{{ video_thumbnail(video.video_id) }}',
+						pip: true,
+						locale: '{{ current_user.language | replace({'_': '-'}) }}'
 					}
-				],
-				ui: {
-					image: '{{ video_thumbnail(video.video_id) }}',
-					pip: true,
-					locale: '{{ current_user.language | replace({'_': '-'}) }}'
-				}
-			};
-			const element = document.getElementById('playerContainer');
-			const player = IndigoPlayer.init(element, config);
+				};
+				const element = document.getElementById('playerContainer');
+				const player = IndigoPlayer.init(element, config);
+			{% endif %}
 		</script>
 		<div style="margin-top:5px">
 			<div class="card">

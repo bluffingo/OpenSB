@@ -4,13 +4,9 @@
 <div class="col-8">
 <h1>{{ video.title }}</h1>
 		<div id="playerContainer">
-			{% if video.flags == 0010 %}
+			{% if (video.flags b-and 2) %}
 				<div style="height: 30rem; background-color: black; color: white; text-align: center; padding: 15rem">
 					{{ __("This video is being processed. Try again later.") }}
-				</div>
-			{% elseif video.flags == 0020 %}
-				<div style="height: 30rem; background-color: black; color: white; text-align: center; padding: 15rem">
-					{{ __("This video failed to convert!") }}
 				</div>
 			{% endif %}
 		</div>
