@@ -55,20 +55,21 @@ if (isset($_COOKIE['theme'])) {
 	$theme = 'default';
 }
 
-if ($loggedIn) {
-	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
-}
-
-// Intended for testing sbNext on the production server (squarebracket.veselcraft.ru)
-// without forcing everyone to use some incomplete crap. -gr 7/11/21
-if ($currentUser['username'] == "squareBracket") {
-    $frontend = 'new';
-}
-
 $lang = new Lang(sprintf("lib/lang/".(isset($currentUser['language']) ? $currentUser['language'] : 'en_US').".json"));
 
 if ($sbNext) {
     $frontend = 'new';
 } else {
     $frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
+}
+
+if ($loggedIn) {
+	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
+	// Intended for testing sbNext on the production server (squarebracket.veselcraft.ru)
+	// without forcing everyone to use some incomplete crap. -gr 7/11/21
+	if ($currentUser['username'] == "squareBracket") {
+		$frontend = 'new';
+	} else {
+    $frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
+	}
 }
