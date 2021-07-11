@@ -1,6 +1,6 @@
 <?php
 if (!file_exists('conf/config.php')) {
-	die('Welcome to your squareBracket server. A config file could\'nt be found. Please read the installing instructions in the README file.');
+	die('A configuration file could not be found. Please read the installing instructions in the README file.');
 }
 
 require('conf/config.php');
@@ -59,7 +59,16 @@ if ($loggedIn) {
 	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
 }
 
+// Intended for testing sbNext on the production server (squarebracket.veselcraft.ru)
+// without forcing everyone to use some incomplete crap. -gr 7/11/21
+if ($currentUser['username'] == "squareBracket") {
+    $frontend = 'new';
+}
+
 $lang = new Lang(sprintf("lib/lang/".(isset($currentUser['language']) ? $currentUser['language'] : 'en_US').".json"));
 
-
-$frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
+if ($sbNext) {
+    $frontend = 'new';
+} else {
+    $frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
+}
