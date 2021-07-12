@@ -15,16 +15,11 @@ bootstrap/css/bootstrap.css
 bootstrap/css/bootstrap-theme.css
 
 ## pre-cached stylesheets
-assets/bs.css
-assets/bs-dark.css
-assets/bs-classicish.css
-assets/bs.css.map
-assets/bs-dark.css.map
+assets/bs*.css
+assets/bs*.css.map
 
 ## Admin features
 adminer-*.php
 
-
 ## misc shit
-grdl/
-isos/
+grdlisos/

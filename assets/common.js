@@ -24,7 +24,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	$("#light").click(function(){
 		$("#themeSelection").removeClass("show");
 		$("#bootstrap").attr("href", "assets/bs.css");
-		$("#navbar").attr("class", "navbar navbar-dark bg-poktube navbar-static-top navbar-expand-md");
+		$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
 		Cookies.set("theme", "light", { expires: 1000 });
 	});
 	$("#vanilla").click(function(){
@@ -38,6 +38,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		$("#bootstrap").attr("href", "assets/bs-dark.css");
 		$("#navbar").attr("class", "navbar navbar-dark bg-dark navbar-static-top navbar-expand-md");
 		Cookies.set("theme", "dark", { expires: 1000 });
+	});
+	$("#finalium").click(function(){
+		$("#themeSelection").removeClass("show");
+		$("#bootstrap").attr("href", "assets/bs-finalium.css");
+		$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
+		Cookies.set("theme", "finalium", { expires: 1000 });
 	});
 	contents = $.trim($("#commentContents").val());
 	if (contents === null || contents == "" && $("#post").attr("class") != "btn btn-primary disabled") {
