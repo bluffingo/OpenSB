@@ -16,24 +16,24 @@ register page should be merged with login page on sbnext
   <form method="post" name="registerForm" id="registerForm" action="register.php">
     <img class="mb-4" src="/assets/logo.png" alt="squareBracket" width="72">
 <form method="POST">
-	<div class="form-floating">
+	<div class="form-floating my-2">
 		<input type="text" name="username" class="form-control" id="floatingUsername" placeholder="">
 		<label for="floatingUsername">{{ __("Username") }}</label>
     </div>
-	<div class="form-floating">
+	<div class="form-floating my-2">
 		<input type="email" name="email" class="form-control" id="floatingEmail" placeholder="">
 		<label for="floatingEmail">{{ __("E-mail") }}</label>
     </div>
-	<div class="form-floating">
+	<div class="form-floating my-2">
 		<input type="password" name="pass1" class="form-control" id="floatingPass" placeholder="">
 		<label for="floatingPass">{{ __("Password") }}</label>
     </div>
-	<div class="form-floating">
+	<div class="form-floating my-2">
 		<input type="password" name="pass2" class="form-control" id="floatingPass2" placeholder="">
 		<label for="floatingPass2">{{ __("Password (Again)") }}</label>
     </div>
 	<button class="w-100 btn btn-lg btn-primary" type="submit" name="action" class="btn btn-primary">{{ __("Register") }}</button>
-	<p class="mt-5 mb-3 text-muted">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
+	<p class="mt-5 mb-3 text-light">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
 </form>
 </main>
 	{% endblock %}

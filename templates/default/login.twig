@@ -17,17 +17,17 @@
 	<form method="post" name="loginForm" id="loginForm" action="login.php">
 		<img class="mb-4" src="/assets/logo.png" alt="squareBracket" width="72">
 
-		<div class="form-floating">
+		<div class="form-floating my-2">
 			<input type="text" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
 			<label for="floatingInput">Username</label>
 		</div>
-		<div class="form-floating">
+		<div class="form-floating my-2">
 			<input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
 			<label for="floatingPassword">Password</label>
 		</div>
 
 		<input class="w-100 btn btn-lg btn-primary" type="submit" value="Sign in" name="loginsubmit">
-		<p class="mt-5 mb-3 text-muted">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
+		<p class="mt-5 mb-3 text-light">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
 	</form>
 </main>
 	{% endblock %}

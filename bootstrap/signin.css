@@ -8,6 +8,10 @@ body {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
+  background-image: url("/assets/login.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .form-signin {
