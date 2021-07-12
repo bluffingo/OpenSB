@@ -36,11 +36,6 @@
   }
 }
 
-// Common styles
-.btn-success, .btn-info, .btn-warning, .btn-danger, .btn-success:hover, .btn-info:hover, .btn-warning:hover, .btn-danger:hover, .btn-success.disabled, .btn-info.disabled, .btn-warning.disabled, .btn-danger.disabled, {
-  color: #fff;
-}
-
 .btn {
   // Remove the gradient for the pressed/active state
   &:active,
