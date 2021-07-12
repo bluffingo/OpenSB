@@ -109,10 +109,15 @@
 	{% block precontent %}{% endblock %}
 	<div class="container">
 		{% block content %}{% endblock %}
-		<footer class="text-center pt-3 my-2 text-muted border-top">
-			<h4 class="mb-2">squareBracket Pre-Beta</h4>
-				{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}
-			<br><br>
+	</div>
+		<div class="p-3">
+			<div class="container">
+			<div class="card">
+			<div class="card-body">
+			<h4 class="my-0">squareBracket Pre-Beta</h4>
+			<p class="my-0"><b>{{ __("By squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Registered Users") }}</b>: [placeholder] | <b>{{ __("Videos Uploaded") }}</b>: [placeholder]</p>
+			</div>
+			</div>
 		</footer>
 		{% block postcontent %}{% endblock %}
 	</div>

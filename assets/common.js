@@ -79,7 +79,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		});
 	});
 	$("#like").click(function(){
-		if($("#like").attr("class") != "text-info") {
+		if($("#like").attr("class") != "text-success") {
 			$.post("rate.php",
 			{
 				rating: 1,
@@ -88,7 +88,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			function(data,status){
 				if (status == "success") {
 					if(data == 1) {
-						$("#like").attr("class", "text-info");
+						$("#like").attr("class", "text-success");
 						$("#likes").text(parseInt($("#likes").text()) + 1)
 						$("#dislikes").text(parseInt($("#dislikes").text()) - 1)
 						$("#dislike").attr("class", "text-body");
@@ -102,7 +102,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		}
 	});	
 	$("#dislike").click(function(){
-		if($("#dislike").attr("class") != "text-info") {
+		if($("#dislike").attr("class") != "text-danger") {
 			$.post("rate.php",
 			{
 				rating: 0,
@@ -111,7 +111,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			function(data,status){
 				if (status == "success") {
 					if (data == 1) {
-						$("#dislike").attr("class", "text-info");
+						$("#dislike").attr("class", "text-danger");
 						$("#dislikes").text(parseInt($("#dislikes").text()) + 1)
 						$("#likes").text(parseInt($("#likes").text()) - 1)
 						$("#like").attr("class", "text-body");

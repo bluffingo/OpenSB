@@ -88,7 +88,6 @@
 					],
 					ui: {
 						image: '{{ video_thumbnail(video.video_id) }}',
-						pip: true,
 						locale: '{{ current_user.language | replace({'_': '-'}) }}'
 					}
 				};
@@ -115,10 +114,10 @@
 							</div>
 						</div>
 						<div class="col-3 text-end">
-							<a href="#" id="{% if logged_in %}like{% endif %}" class="text-{% if rating %}info{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
+							<a href="#" id="{% if logged_in %}like{% endif %}" class="text-{% if rating %}success{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
 								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-up-fill"/>
 							</svg></a> <span id="likes">{{ total_likes }}</span>
-							<a href="#" id="{% if logged_in %}dislike{% endif %}" class="text-{% if rating == 0 %}info{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
+							<a href="#" id="{% if logged_in %}dislike{% endif %}" class="text-{% if rating == 0 %}danger{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
 								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-down-fill"/>
 							</svg></a> <span id="dislikes" style="padding-right: 10px">{{ total_dislikes }}</span>
 							<button class="btn btn-warning" type="button" disabled>{{ __("Subscribe") }}</button>
