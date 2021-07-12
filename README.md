@@ -1,4 +1,4 @@
-<h1 align="center">squareBracket Alpha 3.5</h1>
+<h1 align="center">squareBracket Alpha 4</h1>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/60856959/123635056-798e0800-d81b-11eb-9742-5bc19a4f35a2.png"><br>

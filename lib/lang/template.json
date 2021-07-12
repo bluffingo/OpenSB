@@ -41,6 +41,8 @@
 	"No featured videos.": "",
 
 	"Login": "",
+	"Password successfully reset! Please login with your new password.": "",
+	"You have been successfully logged out of all devices!": "",
 	"By squareBracket contributors": "",
 
 	"Username": "",
@@ -61,6 +63,12 @@
 	"Partnership": "",
 	"Migrated from PokTube": "",
 	"Email address:": "",
+	"Security options": "",
+	"Change Password": "",
+	"Current Password": "",
+	"Change": "",
+	"Other": "",
+	"Log out from all devices": "",
 	"Profile settings": "",
 	"Change the look of your user profile.": "",
 	"Description": "",

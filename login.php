@@ -28,4 +28,6 @@ $twig = twigloader();
 echo $twig->render('login.twig', [
 	'error' => $error,
 	'resetted' => isset($_GET['resetted']) ? true : false,
+	'new_pass' => isset($_GET['new_pass']) ? true : false,
+	'new_token' => isset($_GET['new_token']) ? true : false,
 ]);

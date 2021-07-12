@@ -34,7 +34,8 @@ if (isset($_POST['action'])) {
 	if ($pass != $pass2) $error .= "Passwords aren't identical.";
 
 	if ($error == '') {
-		query("UPDATE users SET password = ? WHERE id = ?", [password_hash($pass, PASSWORD_DEFAULT), $resetdata['user']]);
+		query("UPDATE users SET password = ?, token = ? WHERE id = ?", 
+			[password_hash($pass, PASSWORD_DEFAULT), bin2hex(random_bytes(32)), $resetdata['user']]);
 		query("UPDATE passwordresets SET active = 0 WHERE id = ?", [$id]);
 
 		redirect('login.php?resetted');
