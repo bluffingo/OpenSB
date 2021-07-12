@@ -94,6 +94,10 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     content: " ";
 }
 
+img, svg {
+    vertical-align: middle;
+}
+
 .img-fluid {
     max-width: 100%;
     height: auto;
