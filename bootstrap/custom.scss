@@ -10,8 +10,8 @@
 
   &:hover,
   &:focus  {
-    background-color: darken($btn-color, 12%);
-    background-position: 0 -15px;
+    //Hack to fix the smooth fade between hover and normal button style.
+    @include gradient-y($start-color: darken($btn-color, 12%), $end-color: darken($btn-color, 12%));
   }
 
   &:active,
