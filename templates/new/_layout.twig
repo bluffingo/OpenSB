@@ -21,14 +21,17 @@
             <a href="index.php?frontend=new" class="nav-link nav-selected">Home</a>
             <a href="/browse.php?frontend=new" class="nav-link">Browse</a>
             <a href="" class="nav-link">Community</a>
+			{% for menu_link in menu_links %}
+			<a href="{{ menu_link.url }}" class="nav-link">{{ menu_link.name }}</a>
+			{% endfor %}
         </div>
     </div>
 <div id="content">
 {% block content %}{% endblock %}
 <center>
-<h4>squareBracket Alpha 3.5/sbNext Preview</h4>
+<h4>squareBracket Pre-Beta/sbNext Preview</h4>
 <p>By squareBracket contributors · 2020-2021</p>
-<p>CSS based on the GoodTube website by Diyamund.</p>
+<p><small>CSS based on the GoodTube website by Diyamund.</small></p>
 </center>
 </div>
 </body>

@@ -12,6 +12,7 @@ $gray-500: #B4B4B4;
 $gray-700: #4F4F4F;
 $gray-800: #393939;
 $gray-900: #242424;
+$light: $gray-100;
 $black: #000;
 $indigo: #371cd4;
 $purple: #523bb8;
@@ -27,7 +28,7 @@ $dark: $gray-800;
 $enable-responsive-font-sizes: true;
 $secondary: $gray-200;
 $enable-hover-media-query: true;
-$enable-shadows: false;
+$enable-shadows: true;
 $enable-transitions: false;
 $link-decoration: none;
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -38,3 +39,15 @@ $h3-font-size: $font-size-base * 1.7;
 $h4-font-size: $font-size-base * 1.25;
 $h5-font-size: $font-size-base;
 $h6-font-size: $font-size-base * 0.85;
+$body-bg: #e9eaec;
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "poktube":    $poktube-blue
+);

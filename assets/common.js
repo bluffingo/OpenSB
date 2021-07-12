@@ -24,12 +24,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	$("#light").click(function(){
 		$("#themeSelection").removeClass("show");
 		$("#bootstrap").attr("href", "assets/bs.css");
-		$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
+		$("#navbar").attr("class", "navbar navbar-dark bg-poktube navbar-static-top navbar-expand-md");
 		Cookies.set("theme", "light", { expires: 1000 });
 	});
 	$("#vanilla").click(function(){
 		$("#themeSelection").removeClass("show");
-		$("#bootstrap").attr("href", "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css");
+		$("#bootstrap").attr("href", "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css");
 		$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
 		Cookies.set("theme", "vanilla", { expires: 1000 });
 	});

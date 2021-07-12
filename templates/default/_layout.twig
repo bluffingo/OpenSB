@@ -29,7 +29,7 @@
 	<title>{% block title %}{% endblock %} - squareBracket</title>
 </head>
 <body>
-	<nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md">
+	<nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% elseif theme == 'light' %} navbar-dark bg-poktube {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md">
 		<div class="container">
 			<a class="navbar-brand" href="/"><img src="/assets/logo.png" alt="[sb]" height="32"
 					class="d-inline-block align-text-top"></a>
@@ -100,6 +100,9 @@
 			<ul class="nav me-auto">
 				<li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} {{ __("Home") }}</a></li>
 				<li class="nav-item"><a href="browse.php" class="nav-link link-light px-2">{{ icon('play-btn', 16) }} {{ __("Browse") }}</a></li>
+				{% for menu_link in menu_links %}
+					<li class="nav-item"><a href="{{ menu_link.url }}" class="nav-link link-light px-2">{{ icon(menu_link.icon, 16) }} {{ menu_link.name }}</a></li>
+				{% endfor %}
 			</ul>
 		</div>
 	</nav>
@@ -110,9 +113,6 @@
 			<h4 class="mb-2">squareBracket Pre-Beta</h4>
 				{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}
 			<br><br>
-			{% for menu_link in menu_links %}
-						<a href="{{ menu_link.url }}" class="text-muted px-2">{{ icon(menu_link.icon, 16) }} {{ menu_link.name }}</a>
-			{% endfor %}
 		</footer>
 		{% block postcontent %}{% endblock %}
 	</div>
