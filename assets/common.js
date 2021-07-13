@@ -61,7 +61,10 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			$("#post").removeClass("disabled")
 		}
 	});
-	
+	function play() {
+	  var audio = new Audio('/assets/sounds/clickMove.wav');
+	  audio.play();
+	}
 	$("#post").click(function(){
 		$("#commentPostingSpinner").removeClass('d-none');
 		$.post("comment.php",
@@ -75,6 +78,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 				$("#commentContents").val('');
 				$("#post").addClass("disabled");
 				$("#commentPostingSpinner").addClass('d-none');
+				play();
 			}
 		});
 	});

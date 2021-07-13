@@ -26,8 +26,8 @@ class Profiler {
 
 		if ($frontend == 'default') {
 			printf(
-				'<div class="offcanvas offcanvas-bottom show" data-bs-scroll="true" data-bs-backdrop="false" style="visibility:visible;height:unset;">
-					<div class="offcanvas-body small">%s</div>
+				'<div class="offcanvas offcanvas-bottom text-center show" data-bs-scroll="true" data-bs-backdrop="false" style="visibility:visible;height:unset;">
+					<div class="offcanvas-body py-1">%s</div>
 				</div>', $debugData);
 		} else {
 			printf('<center>%s</center>', $debugData);
