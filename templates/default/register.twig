@@ -3,26 +3,26 @@
 {% block title %}Register{% endblock %}
 
 	{% block content %}
+<main class="form-signin">
 {% if error %}
 	<div class="alert alert-danger" role="alert">{{ error }}</div>
 {% endif %}
-
-<main class="form-signin">
 <div class="container">
 </div>
 <!-- HOLY SHIT the page looked broken for a while.
 register page should be merged with login page on sbnext 
 -gamerappa 7/10/2021 -->
   <form method="post" name="registerForm" id="registerForm" action="register.php">
-    <img class="mb-4" src="/assets/logo.png" alt="squareBracket" width="72">
+    <img class="mb-2" src="/assets/logo.png" alt="squareBracket" width="72">
+	<h3 class="mt-4 mb-4 text-light">{{ __("Register") }}</h3>
 <form method="POST">
-	<div class="form-floating my-2">
-		<input type="text" name="username" class="form-control" id="floatingUsername" placeholder="">
-		<label for="floatingUsername">{{ __("Username") }}</label>
-    </div>
 	<div class="form-floating my-2">
 		<input type="email" name="email" class="form-control" id="floatingEmail" placeholder="">
 		<label for="floatingEmail">{{ __("E-mail") }}</label>
+    </div>
+	<div class="form-floating my-2">
+		<input type="text" name="username" class="form-control" id="floatingUsername" placeholder="">
+		<label for="floatingUsername">{{ __("Username") }}</label>
     </div>
 	<div class="form-floating my-2">
 		<input type="password" name="pass1" class="form-control" id="floatingPass" placeholder="">
@@ -33,6 +33,7 @@ register page should be merged with login page on sbnext
 		<label for="floatingPass2">{{ __("Password (Again)") }}</label>
     </div>
 	<button class="w-100 btn btn-lg btn-primary" type="submit" name="action" class="btn btn-primary">{{ __("Register") }}</button>
+	<p class="mt-2 text-light">{{ __("By creating an account, you acknowledge the fact you should at least be 13 years old prior to registering.") }} {{ __("Account passwords are hashed with bcrypt.") }}</p>
 	<p class="mt-5 mb-3 text-light">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
 </form>
 </main>

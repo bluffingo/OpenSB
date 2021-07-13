@@ -24,6 +24,7 @@ for path in paths:
 		file_matches = re.findall('__\("([^"]+)"', f.read())
 		if len(file_matches):
 			if len(strings):
+				print(path)
 				if strings[-1] != "\n":
 					strings.append("\n")
 
@@ -32,6 +33,7 @@ for path in paths:
 			if match in strings:
 				continue
 			strings.append(match)
+			print(match)
 
 with open("lib/lang/template.json", "w") as f:
 	f.write("{\n")

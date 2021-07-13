@@ -42,14 +42,16 @@
 
 	"Login": "",
 	"Password successfully reset! Please login with your new password.": "",
-	"You have been successfully logged out of all devices!": "",
+	"You have been successfully logged out of all devices.": "",
+	"Username": "",
+	"Password": "",
+	"Account passwords are hashed with bcrypt.": "",
 	"By squareBracket contributors": "",
 
-	"Username": "",
-	"E-mail": "",
-	"Password": "",
-	"Password (Again)": "",
 	"Register": "",
+	"E-mail": "",
+	"Password (Again)": "",
+	"By creating an account, you acknowledge the fact you should at least be 13 years old prior to registering.": "",
 
 	"Hello %s. Please choose a new secure password, and be sure to remember it!": "",
 	"Submit": "",

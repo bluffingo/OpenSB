@@ -6,5 +6,4 @@ $languages = [
 	'fr_CA' => "Français (Canada)",
 	'ru_RU' => "Русский",
 	'sv_SE' => "Svenska",
-	'ohgodno' => "OwOSpeak",
 ];
