@@ -62,7 +62,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		}
 	});
 	function play() {
-	  var audio = new Audio('/assets/sounds/clickMove.wav');
+	  var audio = new Audio('/assets/sounds/comment.wav');
 	  audio.play();
 	}
 	$("#post").click(function(){
