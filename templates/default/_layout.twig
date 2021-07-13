@@ -28,7 +28,7 @@
 	<title>{% block title %}{% endblock %} - squareBracket</title>
 </head>
 <body>
-<!--<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>-->
+<!--<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
 
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
   <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
@@ -42,7 +42,7 @@
       Cookie can't feed nor seed.
     </div>
   </div>
-</div>
+</div>-->
 
 	<nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md">
 		<div class="container">
@@ -118,7 +118,8 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<nav class="py-1 bg-dark" style="margin-bottom:20px">
+	<div style="margin-bottom:20px">
+	<nav class="py-1 bg-dark">
 		<div class="container">
 			<ul class="nav me-auto">
 				<li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} {{ __("Home") }}</a></li>
@@ -129,6 +130,7 @@
 			</ul>
 		</div>
 	</nav>
+	</div>
 	{% block precontent %}{% endblock %}
 	<div class="container">
 		{% block content %}{% endblock %}
