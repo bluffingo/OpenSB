@@ -16,6 +16,8 @@ register page should be merged with login page on sbnext
     <img class="mb-2" src="/assets/logo.png" alt="squareBracket" width="72">
 	<h3 class="mt-4 mb-4 text-light">{{ __("Register") }}</h3>
 <form method="POST">
+				<div class="card">
+					<div class="card-body">
 	<div class="form-floating my-2">
 		<input type="email" name="email" class="form-control" id="floatingEmail" placeholder="">
 		<label for="floatingEmail">{{ __("E-mail") }}</label>
@@ -33,6 +35,8 @@ register page should be merged with login page on sbnext
 		<label for="floatingPass2">{{ __("Password (Again)") }}</label>
     </div>
 	<button class="w-100 btn btn-lg btn-primary" type="submit" name="action" class="btn btn-primary">{{ __("Register") }}</button>
+					</div>
+				</div>
 	<p class="mt-2 text-light">{{ __("By creating an account, you acknowledge the fact you should at least be 13 years old prior to registering.") }} {{ __("Account passwords are hashed with bcrypt.") }}</p>
 	<p class="mt-5 mb-3 text-light">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
 </form>

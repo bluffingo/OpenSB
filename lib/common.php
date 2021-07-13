@@ -1,6 +1,6 @@
 <?php
 if (!file_exists('conf/config.php')) {
-	die('A configuration file could not be found. Please read the installing instructions in the README file.');
+	die('<center><b>A configuration file could not be found. Please read the installing instructions in the README file.</b></center>');
 }
 
 require('conf/config.php');
