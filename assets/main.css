@@ -1,7 +1,6 @@
 body {
     margin: 0;
-    background: url('../assets/noise.png');
-    background-color: #ebebeb;
+    background-color: #FFFFFF;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 13px;
 }
@@ -142,7 +141,8 @@ img, svg {
 #header {
     height: 48px;
     width: 100%;
-    background: linear-gradient(#585858, #2a2a2a);
+	background: rgb(78,78,78);
+	background: linear-gradient(97deg, rgba(78,78,78,1) 0%, rgba(165,165,165,1) 50%, rgba(78,78,78,1) 100%); 
 }
 
 #header-links {
@@ -181,7 +181,8 @@ a:hover #header-logo {
     height: 32px;
     line-height: 28px;
     width: 100%;
-    background: linear-gradient(#191919, #151515);
+	background: rgb(36,67,142);
+	background: linear-gradient(97deg, rgba(36,67,142,1) 0%, rgba(85,115,187,1) 50%, rgba(36,67,142,1) 100%); 
     box-sizing: border-box;
     border-top: 1px solid #323232;
     border-bottom: 1px solid #0b0b0b;
@@ -210,7 +211,7 @@ a:hover #header-logo {
     background: linear-gradient(#292929, #252525);
     color: white;
     font-weight: bold;
-    border-bottom: 3px solid #2f96ff !important;
+    border-bottom: 3px solid #E68B2C !important;
 }
 
 #content {
