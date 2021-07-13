@@ -28,16 +28,39 @@
 	<title>{% block title %}{% endblock %} - squareBracket</title>
 </head>
 <body>
+<!--<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>-->
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="/assets/profiledef_next.png" width="20px" class="rounded me-2" alt="...">
+      <strong class="me-auto">Sneed</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Cookie can't feed nor seed.
+    </div>
+  </div>
+</div>
+
 	<nav id="navbar" class="navbar {% if theme == 'dark' %} navbar-dark bg-dark {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md">
 		<div class="container">
 			<a class="navbar-brand" href="/"><img src="/assets/logo.png" alt="[sb]" height="32"
 					class="d-inline-block align-text-top"></a>
 			<form class="d-flex" method="GET" action="search.php">
-				<input name="query" class="form-control me-2" type="search" placeholder="{{ __(" Search") }}"
+			<div class="input-group">
+				<input name="query" class="form-control" type="search" placeholder="{{ __("Search videos") }}"
 					aria-label="Search">
-				<button class="btn btn-success" type="submit">
+				<button class="btn btn-success dropdown-toggle" type="submit" data-bs-toggle="dropdown" aria-expanded="false">
 					{{ icon('search', 20) }}
 				</button>
+				  <ul class="dropdown-menu dropdown-menu-end">
+					<li><a class="dropdown-item" href="#">{{ __("Videos") }}</a></li>
+					<li><a class="dropdown-item" href="#">{{ __("Users") }}</a></li>
+					<li><a class="dropdown-item" href="#">Posts?</a></li>
+				  </ul>
+			</div>
 			</form>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -115,7 +138,7 @@
 			<div class="card">
 			<div class="card-body">
 			<h4 class="my-0">squareBracket Pre-Beta</h4>
-			<p class="my-0"><b>{{ __("By squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Registered Users") }}</b>: [placeholder] | <b>{{ __("Videos Uploaded") }}</b>: [placeholder]</p>
+			<p class="my-0"><b>{{ __("By squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
 			</div>
 			</div>
 		</footer>

@@ -3,6 +3,16 @@ $(document).ready(function(){
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 });
+	function play(sound) {
+		var audio = new Audio('/assets/sounds/'+sound+'.wav');
+		audio.play();
+	}
+	//document.getElementById("liveToastBtn").onclick = function() {
+    //var myAlert =document.getElementById('liveToast');//select id of toast
+    //var bsAlert = new bootstrap.Toast(myAlert);//inizialize it
+    //bsAlert.show();//show it
+	//play("toast_show")
+	//};
 	$(window).click(function() {
 	  $("#mainMenu").removeClass("show");
 	  $("#themeSelection").removeClass("show");
@@ -61,10 +71,6 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			$("#post").removeClass("disabled")
 		}
 	});
-	function play() {
-	  var audio = new Audio('/assets/sounds/comment.wav');
-	  audio.play();
-	}
 	$("#post").click(function(){
 		$("#commentPostingSpinner").removeClass('d-none');
 		$.post("comment.php",
@@ -78,7 +84,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 				$("#commentContents").val('');
 				$("#post").addClass("disabled");
 				$("#commentPostingSpinner").addClass('d-none');
-				play();
+				play("comment");
 			}
 		});
 	});

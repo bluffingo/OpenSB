@@ -34,8 +34,9 @@
 	"Get started": "",
 	"Login": "",
 	"News and updates": "",
-	"squareBracket's now in pre-beta. We are working on two redesigns for some reason.": "",
-	"If you have an account on both AIM Phoenix and squareBracket, we recommend changing your passwords due to a database leak that happended a while back.": "",
+	"Hello people, we have reached the next stage of development. squareBracket is now in pre-beta. We intend of going to the first beta stage pretty soon.": "",
+	"It has been reported that SubRocks has one security hole. Mister Bazinga hasen't noticed it and keeps muting the hell out of everyone on SubRocks.": "",
+	"It went from PokTube having security holes to SubRocks having security holes. The tables have been turned.": "",
 	"Gamerappa": "",
 	"Featured videos": "",
 	"No featured videos.": "",
@@ -106,7 +107,8 @@
 	"Please sign in in order to comment.": "",
 	"Send": "",
 
-	" Search": "",
+	"Search videos": "",
+	"Users": "",
 	"Not signed in": "",
 	"Change theme": "",
 	"My profile": "",
@@ -116,8 +118,8 @@
 	"Dark": "",
 	"Bootstrap": "",
 	"Finalium Preview": "",
-	"Registered Users": "",
-	"Videos Uploaded": "",
+	"Users registered": "",
+	"Videos uploaded": "",
 
 	"Published on %s": ""
 
