@@ -70,7 +70,7 @@
 				<hr>
 				<dl class="row">
 					<dt class="col-sm-4">{{ __("Last Seen") }}</dt>
-					<dd class="col-sm-8">{{ latestVideos[0].time | date('M j, Y') }}</dd> {# twig just does not want to return anything from a index, and just returns blank... #}
+					<dd class="col-sm-8">{{ user.lastview | date('M j, Y') }}</dd>
 					<dt class="col-sm-4">{{ __("Date Joined") }}</dt>
 					<dd class="col-sm-8">{{ user.joined | date('M j, Y') }}</dd>
 				</dl>
