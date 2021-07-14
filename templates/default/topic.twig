@@ -1,0 +1,30 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Browse") }}{% endblock %}
+
+	{% block content %}
+	<h1>{{ post_data.title }}</h1>
+<table class="table table-striped" width="100%" cellspacing="0" cellpadding="5">
+<tbody><tr>
+<td rowspan="2" width="15%" valign="top">
+<b><a href="">{{ post_data.author }}</a></b><br>
+<span class="smalltext">
+<img src="/assets/profiledef.png" alt="" width="75px"><br>
+</span>
+</td>
+<td width="85%" valign="top" height="100%">
+<table width="100%" border="0"><tbody><tr>
+<td valign="middle" align="left">
+<div style="font-weight: bold;" id="subject_{{ post_data.id }}">
+<a href="">{{ post_data.title }}</a>
+</div>
+<span class="smalltext">« {{ post_data.date }} »</span></td>
+<td style="font-size: smaller;" valign="bottom" nowrap="nowrap" height="20" align="right">
+</td>
+</tr></tbody></table>
+<hr class="my-2">
+<div>{{ post_data.description }}</div>
+</td></tr>
+</tbody>
+</table>
+	{% endblock %}
