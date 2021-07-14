@@ -1,17 +1,14 @@
 <div class="card" style="margin-bottom:10px">
 	<div class="card-body text-center">
-		<div class="row"><a href="watch.php?v={{ data.video_id }}">
-				<div class="col-lg-12" style="margin-bottom:15px">
-					<div class="img-thumbnail">
-						<img class="img-fluid" src="{{ profile_image(id.username) }}">
-					</div>
+		<div class="row"><a href="user.php?name={{ data.username }}">
+			<div class="col-lg-12" style="margin-bottom:15px">
+				<div class="img-thumbnail">
+					<img class="img-fluid" src="{{ profile_image(data.username) }}">
 				</div>
-			</a>
-			<div class="col-lg-12">
-					<h4><a href="user.php?name={{ data.username }}">{{ data.username }}</a></h4>
-				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("views") }} &bull;
-					{{ data.time | relative_time }}</p>
 			</div>
-		</div>
+			<div class="col-lg-12">
+				<h4>{{ data.username }}</h4>
+			</div>
+		</a></div>
 	</div>
 </div>
