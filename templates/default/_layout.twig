@@ -124,6 +124,7 @@
 			<ul class="nav me-auto">
 				<li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} {{ __("Home") }}</a></li>
 				<li class="nav-item"><a href="browse.php" class="nav-link link-light px-2">{{ icon('play-btn', 16) }} {{ __("Browse") }}</a></li>
+				<li class="nav-item"><a href="channels.php" class="nav-link link-light px-2">{{ icon('people', 16) }} {{ __("Channels") }}</a></li>
 				{% for menu_link in menu_links %}
 					<li class="nav-item"><a href="{{ menu_link.url }}" class="nav-link link-light px-2">{{ icon(menu_link.icon, 16) }} {{ menu_link.name }}</a></li>
 				{% endfor %}
