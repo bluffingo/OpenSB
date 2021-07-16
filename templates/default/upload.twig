@@ -3,13 +3,15 @@
 {% block title %}{{ __("Upload") }}{% endblock %}
 
 	{% block content %}
+<div class="row">
 <h1>{{ __("Upload") }}</h1>
-<p><span class="badge bg-warning">{{ icon('exclamation-triangle-fill', 16) }} {{ __("Warning") }}</span> {{ __("By uploading your videos onto squareBracket, you acknowledge about rules that should be common sense.") }}</p>
+<p><span class="badge bg-primary">{{ icon('info-circle', 16) }} {{ __("Important") }}</span> {{ __("By uploading your videos onto squareBracket, you acknowledge about the warning shown on the right.") }}</p>
+<div class="col-8">
 <form name="uploadForm" id="uploadForm" method="post" action="upload.php"
 enctype="multipart/form-data">
 <br>
 <dl class="row">
-  <dt class="col-sm-2">{{ __("Video Info") }}</dt>
+  <dt class="col-sm-2">{{ __("Video info") }}</dt>
   <dd class="col-sm-10">{{ __("Enter the name and description of your video.") }}</dd>
 </dl>
 	<input type="text" class="form-control" name="title" value="" placeholder="{{ __("Title") }}">
@@ -18,12 +20,26 @@ enctype="multipart/form-data">
 	<input type="text" class="form-control" name="tags" value="" placeholder="{{ __("Tags") }}">
 	<br>
 <dl class="row">
-  <dt class="col-sm-2">{{ __("Upload Video File") }}</dt>
-  <dd class="col-sm-10">{{ __("Choose the video you want to upload.") }}</dd>
+  <dt class="col-sm-2">{{ __("Upload file") }}</dt>
+  <dd class="col-sm-10">{{ __("Select the video file you want to upload.") }}</dd>
 </dl>
 	<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
 	<br>
+	</div>
+	<div class="col-4">
+<div class="card">
+  <h5 class="card-header">{{ __("Warning") }}</h5>
+  <div class="card-body">
+    <p class="card-text">{{ __("Please, for god sakes, do not upload anything related to logos or cartoons meant for children. The viewer-base of those videos indirectly caused the downfall of the Gamerappa YouTube channel.") }}</p>
+    <a href="https://studio.youtube.com/" class="btn btn-secondary">{{ __("But I want to!") }}</a>
+  </div>
+</div>
+	</div>
+	
+	<div class="text-end">
 	<input class="btn btn-primary" type="submit" id="upload" name="upload"
-	value="{{ __("Upload Video") }}">
+	value="{{ __("Upload") }}">
+	</div>
 </form>
+</div>
 	{% endblock %}

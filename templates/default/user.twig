@@ -24,8 +24,8 @@
 	</div>
 	{% endif %}
 	<!-- This prevents the user info box from being extremely tall. Box probably needs to be redesigned... -->
-	<div class="col-12">
-	<div class="p-1 mb-4 bg-custom-profile rounded-3 text-white">
+	<div class="col-12 mb-2">
+	<div class="p-1 bg-custom-profile rounded-3 text-white">
 		<div class="container-fluid py-4">
 			<div class="row">
 				<div class="col-md-11">
@@ -54,7 +54,7 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="caption">
-					<h3>{{ __("Uploaded videos") }}</h3>
+					<h3>{{ __("Uploaded by %s", [user.username]) }}</h3>
 					{% for latestVideo in latestVideos %}
 					{{ video_box(latestVideo) }}
 					{% else %}
