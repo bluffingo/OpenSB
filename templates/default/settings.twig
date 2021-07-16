@@ -29,14 +29,12 @@
 				aria-labelledby="v-pills-account-tab">
 				<div class="p-4 bg-light border rounded-3">
 					<div class="row">
-						<div class="col-3">
-							<img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded img-fluid">
-						</div>
-						<div class="col-9">
+						<div class="col-12">
+							<img class="float-start rounded" src="{{ profile_image(current_user.username) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
 							<h2>{{ current_user.username }}</h2>
 							<p>
 								{% if current_user.email == "poktube_migrated@squarebracket.me" %}
-								{{ __("Migrated from PokTube") }}
+								{{ __("Account migrated from PokTube") }}
 								{% else %}
 								{{ icon('envelope', 20) }}
 								<b>{{ __("Email address:") }}</b> {{ current_user.email }}
@@ -49,17 +47,16 @@
 				<h2>{{ __("Security options") }}</h2>
 				<hr/>
 				<h4>{{ __("Change Password") }}</h4>
-				<hr/>
 				<form action="settings.php" method="post" enctype="multipart/form-data">
-					<div class="form-floating">
+					<div class="form-floating my-1">
 						<input type="password" name="current_pass" class="form-control" id="floatingCurrentPass" placeholder="">
 						<label for="floatingCurrentPass">{{ __("Current Password") }}</label>
 					</div>
-					<div class="form-floating">
+					<div class="form-floating my-1">
 						<input type="password" name="pass" class="form-control" id="floatingPass" placeholder="">
 						<label for="floatingPass">{{ __("Password") }}</label>
 					</div>
-					<div class="form-floating">
+					<div class="form-floating my-1">
 						<input type="password" name="pass2" class="form-control" id="floatingPass2" placeholder="">
 						<label for="floatingPass2">{{ __("Password (Again)") }}</label>
 					</div>
@@ -75,17 +72,20 @@
 			</div>
 			<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 				<div class="p-4 bg-light border rounded-3">
-					<h2>{{ __("Profile settings") }}</h2>
+					<h2>{{ __("Profile settings") }} (redesign this in beta)</h2>
 					{{ __("Change the look of your user profile.") }}
 				</div>
 				<br>
-				<form action="settings.php" method="post" enctype="multipart/form-data">
+					<h3>{{ __("Profile picture") }}</h3>
+					<form action="settings.php" method="post" enctype="multipart/form-data">
 					<img class="float-start rounded" src="{{ profile_image(current_user.username) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
 					<input class="form-control" type="file" name="profilePicture" id="profilePicture">
 					<br/>
-					channel background, only for partners, placeholder text, do not locafgjdf
+					<h3>{{ __("Channel background (Partner only)") }}</h3>
 					<input class="form-control" type="file" name="profileBackground" id="profileBackground" {% if current_user.u_flags != 1 %}disabled{% endif %}>
+					<h3>{{ __("Channel description") }}</h3>
 					<textarea class="form-control" id="description" id="floatingInput" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
+					todo: move the language selector shit to account
 					<select class="form-select" name="language">
 						{% for code,name in glob_languages %}
 						{% if name %}<option value="{{ code }}" {% if code==current_user.language %}selected{% endif %}>{{ name }}</option>{% endif %}

@@ -57,6 +57,8 @@ if (isset($_COOKIE['theme'])) {
 
 $lang = new Lang(sprintf("lib/lang/".(isset($currentUser['language']) ? $currentUser['language'] : 'en_US').".json"));
 
+
+// Reminder: sbNext is no longer a priority to us and is currently deprecated. -gr 7/16/21
 if ($sbNext) {
     $frontend = 'new';
 } else {
@@ -66,12 +68,5 @@ if ($sbNext) {
 if ($loggedIn) {
 	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);
 	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
-
-	// Intended for testing sbNext on the production server (squarebracket.veselcraft.ru)
-	// without forcing everyone to use some incomplete crap. -gr 7/11/21
-	if ($currentUser['username'] == "squareBracket") {
-		$frontend = 'new';
-	} else {
     $frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
-	}
 }
