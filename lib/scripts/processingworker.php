@@ -43,6 +43,7 @@ if (floor($metadata->getFormat()->get('duration')) < 10) {
 $img = $manager->make('assets/thumb/' . $new . '.png');
 $img->resize(640, 360);
 $img->save('assets/thumb/' . $new . '.png');
+unlink($target_file);
 
 $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);
 
