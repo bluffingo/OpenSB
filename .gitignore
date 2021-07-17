@@ -17,6 +17,8 @@ bootstrap/css/bootstrap-theme.css
 ## pre-cached stylesheets
 assets/bs*.css
 assets/bs*.css.map
+assets/main.css
+assets/main.css.map
 
 ## Admin features
 adminer-*.php
