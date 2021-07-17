@@ -51,7 +51,7 @@ $theme-colors: (
 	}
 
 	&:active {
-		background: linear-gradient(to bottom,#c8c8c8 0,#e6e6e6 100%);
+		background: linear-gradient(to bottom,darken(darken($color, 13%), 6%) 0,darken(darken($color, 16%), 9%) 100%);
 	}
 }
 
