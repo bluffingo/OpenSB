@@ -1,3 +1,60 @@
+@use "sass:math";
+
+$primary: #4495e7;
+$secondary: #fafafa;
+$success: #5cb85c;
+$info: #5bc0de;
+$warning: #fbb450;
+$danger: #ee5f5b;
+$light: #fff;
+$dark: #383838;
+$poktube-blue: #0051b3;
+$olive: #789922;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "poktube":    $poktube-blue,
+  "sneed":		$olive,
+);
+
+@function text-contrast($n, $white: #fff, $black: #000) {
+	$color-brightness: round((red($n) * 299) + (green($n) * 587) + math.div((blue($n) * 114), 1000));
+	$light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + math.div((blue(#ffffff) * 114), 1000));
+
+	@if abs($color-brightness) < math.div($light-color, 1.1){
+		@return $white;
+	}
+	
+	@else {
+		@return $black;
+	}	
+}
+
+@mixin make-btn($color: #555) {
+	background: linear-gradient(to bottom,$color 0,darken($color, 17%) 100%);
+	color: text-contrast($color, #fff, rgb(85, 85, 85));
+	box-shadow: text-contrast($color, rgba(256,256,256,.35), rgba(256,256,256,.1)) 0 1px 0 inset;
+	border-color: darken($color, 25%) darken($color, 25%) darken($color, 27%);
+	text-shadow: 0 1px 0 text-contrast($color, #000, #fff);
+
+	&:hover {
+		background: linear-gradient(to bottom,darken(darken($color, 6%), 3%) 0,darken(darken($color, 9%), 4%) 100%);
+		box-shadow: 0 1px 2px text-contrast($color, rgba(256,256,256,.35), rgba(0,0,0,0.25)),inset 0 0 3px text-contrast($color, rgba(0,0,0,0.5), #fff);
+		border-color: darken($color, 28%) darken($color, 28%) darken($color, 36%);
+	}
+
+	&:active {
+		background: linear-gradient(to bottom,#c8c8c8 0,#e6e6e6 100%);
+	}
+}
+
 body {
 	margin: 0;
 	background-color: #FFFFFF;
@@ -245,96 +302,10 @@ img, svg {
 	border-radius: 3px;
 }
 
-.btn-grey {
-	background: linear-gradient(to bottom,#fafafa 0,#dcdcdc 100%);
-	color: rgb(85, 85, 85);
-	box-shadow: rgb(255, 255, 255) 0 0 1px inset;
-	border-color: #ccc #ccc #aaa;
-	text-shadow: 0 1px 0 #fff;
-
-	&:hover {
-		background: linear-gradient(to bottom,#f0f0f0 0,#e6e6e6 100%);
-		box-shadow: 0 1px 2px rgba(0,0,0,0.25),inset 0 0 3px #fff;
-		border-color: #aaa #aaa #999;
-	}
-
-	&:active {
-		background: linear-gradient(to bottom,#c8c8c8 0,#e6e6e6 100%);
-	}
-}
-
-.btn-blue {
-	background: linear-gradient(to bottom,#4495e7 0,#0053a6 100%);
-	color: white;
-	font-weight: bold;
-	border-color: #0053a6 #0053a6 #000;
-	box-shadow: inset 0 1px 0 rgba(256,256,256,.35);
-	text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-
-	&:hover {
-		border-color: #002d59 #002d59 #000;
-		box-shadow: inset 0 1px 0 rgba(256,256,256,0.35),0 1px 3px rgba(0,0,0,0.5);
-		background: -webkit-linear-gradient(top,#096bd2 0,#0053a6 100%);
-	}
-
-	&:active {
-		background: linear-gradient(to bottom,#014488 0,#175ea6 100%);
-	}
-}
-
-.btn-dark {
-	background: linear-gradient(to bottom,#383838 0,#151515 100%);
-	box-shadow: inset 0 1px 0 rgba(256,256,256,.1);
-	border-color: #151515 #151515 #000;
-	color: white;
-	text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-	box-shadow: inset 0 1px 0 rgba(256,256,256,.1);
-
-	&:hover {
-		background: linear-gradient(to bottom,#383838 0,#252525 100%);
-		box-shadow: inset 0 1px 0 rgba(256,256,256,.1),0 1px 3px rgba(0,0,0,.5);
-		border-color: #111 #111 #000;
-	}
-
-	&:active {
-		background: linear-gradient(to bottom,#151515 0,#252525 100%);
-	}
-}
-
-.btn-danger {
-	background: linear-gradient(#ee5f5b, #c43c35);
-	color: white;
-	border-color: #bd362f #bd362f #802420;
-	box-shadow: inset 0 1px 0 rgba(256,256,256,.35);
-	text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-
-	&:hover {
-		border-color: #780000 #780000 #000;
-		box-shadow: inset 0 1px 0 rgba(256,256,256,0.35),0 1px 3px rgba(0,0,0,0.5);
-		background: linear-gradient(#c43c35, #b5322b);
-	}
-
-	&:active {
-		background: linear-gradient(to bottom,#b5322b 0,#942923 100%);
-	}
-}
-
-.btn-warning {
-	background: linear-gradient(#fbb450, #f89406);
-	color: #ffffff;
-	border-color: #bd762f #bd762f #802420;
-	box-shadow: inset 0 1px 0 rgba(256,256,256,.35);
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-
-	&:hover {
-		border-color: #593a00 #593a00 #000;
-		box-shadow: inset 0 1px 0 rgba(256,256,256,0.35),0 1px 3px rgba(0,0,0,0.5);
-		background: linear-gradient(#ffac38, #e08400);
-	}
-
-	&:active {
-		background: linear-gradient(to bottom,#e08400 0,#cf8804 100%);
-	}
+@each $state, $value in $theme-colors {
+  .btn-#{$state} {
+    @include make-btn($value);
+  }
 }
 
 hr {
