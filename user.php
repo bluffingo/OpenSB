@@ -35,6 +35,13 @@ $css = $scss->compile(
 		@include gradient-y-three-colors(lighten($color, 8%), $color, 60%, darken($color, 4%));
 	}'
 );
+
+if (isset($currentUser)) {
+	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$currentUser['id'], $userData['id']]);
+} else {
+	$subscribed = 0;
+}
+
 $twig = twigloader();
 
 echo $twig->render('user.twig', [
@@ -42,4 +49,5 @@ echo $twig->render('user.twig', [
 	'latestVideos' => $latestVideoData,
 	'profCss' => $css,
 	'edited' => (isset($_GET['edited']) ? true : false),
+	'subscribed' => $subscribed
 ]);

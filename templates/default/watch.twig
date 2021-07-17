@@ -12,7 +12,10 @@
 	<meta property="twitter:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
 	<meta property="twitter:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
 	<meta name="twitter:card" content="summary_large_image">
-	<script>video_id = '{{ video.video_id }}';</script>
+	<script>
+		video_id = '{{ video.video_id }}';
+		user_id = '{{ video.author }}';
+	</script>
 {% endblock %}
 
 {% block title %}{{ video.title }}{% endblock %}
@@ -120,7 +123,7 @@
 							<a href="#" id="{% if logged_in %}dislike{% endif %}" class="text-{% if rating == 0 %}danger{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
 								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-down-fill"/>
 							</svg></a> <span id="dislikes" style="padding-right: 10px">{{ total_dislikes }}</span>
-							<button class="btn btn-warning" type="button" disabled>{{ __("Subscribe") }}</button>
+							<button id="subscribe" class="btn btn-warning" type="button" {% if not logged_in or current_user.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unsubscribe") }}{% else %}{{ __("Subscribe") }}{% endif %}</button>
 						</div>
 						<p style="margin-top: 1rem;">{{ video.description }}</p>
 					</div>

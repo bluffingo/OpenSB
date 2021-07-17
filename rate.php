@@ -1,5 +1,5 @@
 <?php
-$rawOutputRequired = false;
+$rawOutputRequired = true;
 require('lib/common.php');
 
 if (!isset($_POST['vidid'])) {

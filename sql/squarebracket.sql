@@ -55,10 +55,15 @@ CREATE TABLE `rating` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `passwordresets` (
-  `id` varchar(64) NOT NULL,
-  `user` int(11) NOT NULL,
-  `time` int(11) NOT NULL,
-  `active` tinyint(4) NOT NULL DEFAULT 1
+  `id` varchar(64) NOT NULL COMMENT 'ID for password reset URL.',
+  `user` int(11) NOT NULL COMMENT 'The user that requested a password reset.',
+  `time` int(11) NOT NULL COMMENT 'The time when the password reset request was mades.',
+  `active` tinyint(4) NOT NULL DEFAULT 1 COMMENT 'Boolean to check if password reset URL is active.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `subscriptions` (
+  `id` int(11) NOT NULL COMMENT 'ID of the user that wants to subscribe to a user.',
+  `user` int(11) NOT NULL COMMENT 'The user that the user wants to subscribe to.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Gamerappa is gay

@@ -25,8 +25,10 @@ $totalLikes = result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=
 $totalDislikes = result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=0", [$videoData['id']]);
 if (isset($currentUser)) {
 	$rating = result("SELECT rating FROM rating WHERE video=? AND user=?", [$videoData['id'], $currentUser['id']]);
+	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$currentUser['id'], $videoData['author']]);
 } else {
 	$rating = 2;
+	$subscribed = 0;
 }
 query("UPDATE videos SET views = views + '1' WHERE video_id = ?", [$id]);
 $videoData['views']++;
@@ -38,5 +40,6 @@ echo $twig->render('watch.twig', [
 	'comments' => $commentData,
 	'total_likes' => $totalLikes,
 	'total_dislikes' => $totalDislikes,
-	'rating' => $rating
+	'rating' => $rating,
+	'subscribed' => $subscribed
 ]);

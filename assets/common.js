@@ -88,6 +88,23 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			}
 		});
 	});
+	$("#subscribe").click(function(){
+		$.post("subscribe.php",
+		{
+			subscription: user_id
+		},
+		function(data,status){
+			if (status == "success") {
+				if(data == subscribe_string) {
+					$("#subscribe").text(subscribe_string);
+				} else if(data == unsubscribe_string) {
+					$("#subscribe").text(unsubscribe_string);
+				} else {
+					alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
+				}
+			}
+		});
+	});	
 	$("#like").click(function(){
 		if($("#like").attr("class") != "text-success") {
 			$.post("rate.php",
@@ -110,7 +127,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 				}
 			});
 		}
-	});	
+	});
 	$("#dislike").click(function(){
 		if($("#dislike").attr("class") != "text-danger") {
 			$.post("rate.php",

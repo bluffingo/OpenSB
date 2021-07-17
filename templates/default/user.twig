@@ -2,6 +2,12 @@
 
 {% block title %}{{ user.username }}{% endblock %}
 
+	{% block head %}
+		<script>
+			user_id = '{{ user.id }}';
+		</script>
+	{% endblock %}
+
 	{% block precontent %}
 <style>
 	{{ profCss | raw }}
@@ -39,8 +45,8 @@
 					<p class="fs-4 text-break">{{ user.description }}</p>
 				</div>
 				<div class="col-md-1 text-end">
-					<button class="btn btn-warning" type="button" disabled><svg data-bs-toggle="tooltip"
-							data-bs-placement="top" title="{{ __(" Subscribe") }}" style="margin-left: 0.75%;"
+					<button id="subscribe" class="btn btn-warning" type="button" {% if not logged_in or current_user.id == user.id %}disabled{% endif %}><svg data-bs-toggle="tooltip"
+							data-bs-placement="top" title="{% if subscribed %}{{ __("Unsubscribe") }}{% else %}{{ __("Subscribe") }}{% endif %}" style="margin-left: 0.75%;"
 							class="bi" width="32" height="32" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#plus" />
 						</svg></button>

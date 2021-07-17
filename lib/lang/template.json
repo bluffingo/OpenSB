@@ -14,6 +14,9 @@
 	"Please enter your password! ": "",
 	"Incorrect username or password.": "",
 
+	"Subscribe": "",
+	"Unsubscribe": "",
+
 	"Browse": "",
 
 	"Videos": "",
@@ -94,7 +97,6 @@
 
 	"Your profile settings were successfully updated.": "",
 	" squareBracket Partner": "",
-	" Subscribe": "",
 	"Uploaded by %s": "",
 	"There are no videos uploaded by %s.": "",
 	"About %s": "",
@@ -105,7 +107,6 @@
 	"This video is being processed. Try again later.": "",
 	"Uploaded on %s": "",
 	"views": "",
-	"Subscribe": "",
 	"Enter comment here, Markdown can be used here.": "",
 	"Please sign in in order to comment.": "",
 	"Send": "",
