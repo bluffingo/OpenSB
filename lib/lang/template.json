@@ -19,18 +19,22 @@
 
 	"Browse": "",
 
+	"Videos from subscriptions": "",
 	"Videos": "",
+	"Your subscriptions haven't uploaded videos yet.": "",
 	"No uploaded videos.": "",
 
 	"Channels": "",
 	"No users.": "",
 
 	"Home": "",
+	"More videos": "",
 	"Recently uploaded to squareBracket": "",
 	"Hi there, %s": "",
-	"You have %s subscribers.": "",
-	"You have %s views.": "",
+	"s": "",
+	"You have %s subscriber%s.": "",
 	"no": "",
+	"You have %s view%s.": "",
 	"Your account was made %s.": "",
 	"Welcome to squareBracket": "",
 	"I can't believe it's not PokTube": "",
