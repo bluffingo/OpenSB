@@ -3,18 +3,25 @@
 {% block title %}{{ __("Browse") }}{% endblock %}
 
 	{% block content %}
+	<style>
+		@media (max-width: 768px) {
+			.img-md-card {
+				max-width: 100px !important;
+			}
+		}
+
+		@media (min-width: 768px) {
+			.img-md-card {
+				max-width: 150px !important;
+			}
+		}
+	</style>
 <div class="row"><div class="col">
 	<div class="card">
 		<div class="card-header bg-dark text-white">{{ __("Channels") }}</div>
-		<div class="card-body">
-			{% for user in users|batch(4) %}
-			<div class="row">
-				{% for cell in user %}
-					<div class="col-3">
-						{{ browse_channel_box(cell) }}
-					</div>
-				{% endfor %}
-			</div>
+		<div class="card-body d-flex align-content-start flex-wrap">
+			{% for user in users %}
+				{{ browse_channel_box(user) }}
 			{% else %}
 				<p>{{ __("No users.") }}</p>
 			{% endfor %}
