@@ -72,6 +72,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		}
 	});
 	$("#post").click(function(){
+		play("click");
 		$("#commentPostingSpinner").removeClass('d-none');
 		$.post("comment.php",
 		{
@@ -97,9 +98,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			if (status == "success") {
 				if(data == subscribe_string) {
 					$("#subscribe").text(subscribe_string);
+					play("click");
 				} else if(data == unsubscribe_string) {
 					$("#subscribe").text(unsubscribe_string);
+					play("subscribe");
 				} else {
+					play("error");
 					alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
 				}
 			}
@@ -119,9 +123,11 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 						$("#likes").text(parseInt($("#likes").text()) + 1)
 						$("#dislikes").text(parseInt($("#dislikes").text()) - 1)
 						$("#dislike").attr("class", "text-body");
+						play("like");
 					} else if(data == 0) {
 						$("#like").click();
 					} else {
+						play("error");
 						alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
 					}
 				}
@@ -142,9 +148,11 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 						$("#dislikes").text(parseInt($("#dislikes").text()) + 1)
 						$("#likes").text(parseInt($("#likes").text()) - 1)
 						$("#like").attr("class", "text-body");
+						play("dislike");
 					} else if (data == 0) {
 						$("#dislike").click();
 					} else {
+						play("error");
 						alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
 					}
 				}

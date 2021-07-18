@@ -1,11 +1,11 @@
-<h1 align="center">squareBracket Pre-Beta</h1>
+<h1 align="center">squareBracket Beta 1</h1>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/45898787/125540116-d1963f1b-315c-4794-998d-7d4faa2ecc62.png"><br>
 <img src="https://img.shields.io/discord/853036368712040498?style=plastic">
 <img src="https://img.shields.io/github/v/release/chazizsquarebracket/squarebracket?include_prereleases&label=lastest%20released&style=plastic">
 <img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=plastic">
-<img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/prebeta-preview?include_prereleases&style=plastic">
+<img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/pre-beta?include_prereleases&style=plastic">
 <img src="https://img.shields.io/github/repo-size/chazizsquarebracket/squarebracket?style=plastic"><br><br>
 <a href="https://www.youtube.com/channel/UCMnG3eA5QcSgIPsavuW4ubA">
 <img src="https://img.shields.io/youtube/channel/subscribers/UCMnG3eA5QcSgIPsavuW4ubA?style=social">
