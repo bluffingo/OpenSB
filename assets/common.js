@@ -97,8 +97,10 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			if (status == "success") {
 				if(data == subscribe_string) {
 					$("#subscribe").text(subscribe_string);
+					play("click");
 				} else if(data == unsubscribe_string) {
 					$("#subscribe").text(unsubscribe_string);
+					play("subscribe");
 				} else {
 					alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
 				}
