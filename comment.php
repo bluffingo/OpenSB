@@ -2,9 +2,9 @@
 require('lib/common.php');
 
 if (!isset($_POST['vidid'])) {
-	die('Wait, why are you trying to insert garbage to my database?');
+	die('No data.');
 } else if (!isset($_POST['comment']) or $_POST['comment'] == '') {
-	die(); //don't output anything if this sneaky bastard didn't put anything to the comment field
+	die(); //don't output anything if there is no data.
 }
 
 $comment = [
