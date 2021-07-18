@@ -28,7 +28,7 @@ $theme-colors: (
 	$color-brightness: round((red($n) * 299) + (green($n) * 587) + math.div((blue($n) * 114), 1000));
 	$light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + math.div((blue(#ffffff) * 114), 1000));
 
-	@if abs($color-brightness) < math.div($light-color, 1.1){
+	@if abs($color-brightness) < math.div($light-color, 1.25){
 		@return $white;
 	}
 	
@@ -53,6 +53,22 @@ $theme-colors: (
 	&:active {
 		background: linear-gradient(to bottom,darken(darken($color, 13%), 6%) 0,darken(darken($color, 16%), 9%) 100%);
 	}
+}
+
+@mixin make-alert($color: #555) {
+	background: linear-gradient(to bottom,lighten($color, 17%) 0,darken(lighten($color, 17%), 23%) 100%);
+	color: text-contrast(lighten($color, 17%), #fff, rgb(85, 85, 85));
+	box-shadow: text-contrast(lighten($color, 17%), rgba(256,256,256,.35), rgba(256,256,256,.1)) 0 1px 0 inset;
+	border-color: darken($color, 25%) darken($color, 25%) darken($color, 27%);
+	text-shadow: 0 1px 0 text-contrast(lighten($color, 17%), #000, #fff);
+}
+
+@mixin make-bg($color: #555) {
+	background: linear-gradient(to bottom,$color 0,darken($color, 17%) 100%);
+	color: text-contrast($color, #fff, rgb(85, 85, 85));
+	box-shadow: text-contrast($color, rgba(256,256,256,.35), rgba(256,256,256,.1)) 0 1px 0 inset;
+	border-color: darken($color, 25%) darken($color, 25%) darken($color, 27%);
+	text-shadow: 0 1px 0 text-contrast($color, #000, #fff);
 }
 
 body {
@@ -305,6 +321,27 @@ img, svg {
 @each $state, $value in $theme-colors {
   .btn-#{$state} {
     @include make-btn($value);
+  }
+}
+
+.alert {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	padding: 14px;
+	border-radius: 3px;
+	border: 1px solid;
+	width: auto;
+}
+
+@each $state, $value in $theme-colors {
+  .alert-#{$state} {
+    @include make-alert($value);
+  }
+}
+
+@each $state, $value in $theme-colors {
+  .bg-#{$state} {
+    @include make-bg($value);
   }
 }
 
