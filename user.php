@@ -42,6 +42,8 @@ if (isset($currentUser)) {
 	$subscribed = 0;
 }
 
+$subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$userData['id']])['COUNT(user)'];
+
 $twig = twigloader();
 
 echo $twig->render('user.twig', [
@@ -49,5 +51,6 @@ echo $twig->render('user.twig', [
 	'latestVideos' => $latestVideoData,
 	'profCss' => $css,
 	'edited' => (isset($_GET['edited']) ? true : false),
-	'subscribed' => $subscribed
+	'subscribed' => $subscribed,
+	'subCount' => $subCount
 ]);

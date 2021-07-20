@@ -26,7 +26,7 @@
 					<img class="float-start rounded me-3" src="{{ profile_image(user.username) }}" width="144" alt="pfp">
 					<h1 class="align-top">
 						{{ user.username }}{% if user.u_flags == 1 %}<svg data-bs-toggle="tooltip"
-							data-bs-placement="top" title="{{ __(" squareBracket Partner") }}"
+							data-bs-placement="top" title="{{ __("Checkmarked") }}"
 							style="margin-left: 0.75%;" class="bi" width="32" height="32" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#patch-check-fill" />
 						</svg>{% endif %}</h1>
@@ -71,24 +71,29 @@
 		</div>
 	</div>
 	<div class="col-md-4 order-1 order-md-2">
-		<div class="card">
+		<div class="card mb-2">
 			<div class="card-body">
 				<h4>{{ __("About %s", [user.username]) }}</h4>
 				<hr>
 				<dl class="row">
-					<dt class="col-sm-4">{{ __("Last Seen") }}</dt>
+					<dt class="col-sm-4">{{ __("Last seen") }}</dt>
 					<dd class="col-sm-8">{{ user.lastview | relative_time }}</dd>
-					<dt class="col-sm-4">{{ __("Date Joined") }}</dt>
+					<dt class="col-sm-4">{{ __("Joined") }}</dt>
 					<dd class="col-sm-8">{{ user.joined | date('M j, Y') }}</dd>
+					<dt class="col-sm-4">{{ __("Subscribers") }}</dt>
+					<dd class="col-sm-8">{{ subCount }}</dd>
 				</dl>
-				{% if current_user.powerlevel > 2 %}
-				<hr>
-				<h4>{{ __("Administrator Actions") }}</h4>
-				<hr>
-				<dl class="row">
-					<a href="resetpassword.php?grf={{ user.id }}">Generate password reset for user</a>
-				</dl>
-				{% endif %}
+				</div>
+			</div>
+			<div class="card mb-2">
+				<div class="card-body">
+					{% if current_user.powerlevel > 2 %}
+					<h4>{{ __("Administrator Actions") }}</h4>
+					<hr>
+					<dl class="row">
+						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset for %s", [user.username]) }}</a>
+					</dl>
+					{% endif %}
 			</div>
 		</div>
 	</div>

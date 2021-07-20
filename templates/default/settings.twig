@@ -18,7 +18,7 @@
 			<button class="nav-link text-start" id="v-pills-partner-tab" data-bs-toggle="pill"
 				data-bs-target="#v-pills-partner" type="button" role="tab" aria-controls="v-pills-partner"
 				aria-selected="false">
-				{{ icon('check2-circle', 16) }} {{ __("Partnership") }}</button>
+				{{ icon('check2-circle', 16) }} {{ __("Checkmark") }}</button>
 		</div>
 	</ul>
 </div>
@@ -73,7 +73,7 @@
 			<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 				<div class="p-4 bg-light border rounded-3">
 					<h2>{{ __("Profile settings") }} (redesign this in beta)</h2>
-					{{ __("Change the look of your user profile.") }}
+					{{ __("Change the look and feel of your channel's page.") }}
 				</div>
 				<br>
 					<h3>{{ __("Profile picture") }}</h3>
@@ -81,7 +81,7 @@
 					<img class="float-start rounded" src="{{ profile_image(current_user.username) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
 					<input class="form-control" type="file" name="profilePicture" id="profilePicture">
 					<br/>
-					<h3>{{ __("Channel background (Partner only)") }}</h3>
+					<h3>{{ __("Channel background") }} {{ __("(Checkmark only)") }}</h3>
 					<input class="form-control" type="file" name="profileBackground" id="profileBackground" {% if current_user.u_flags != 1 %}disabled{% endif %}>
 					<h3>{{ __("Channel description") }}</h3>
 					<textarea class="form-control" id="description" id="floatingInput" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
@@ -99,9 +99,9 @@
 			</div>
 			<div class="tab-pane fade" id="v-pills-partner" role="tabpanel" aria-labelledby="v-pills-partner-tab">
 				<div class="h-100 p-5 bg-light border rounded-3">
-					<h2>{{ __("Partner with squareBracket") }}</h2>
-					<p>{{ __("Partnering with squareBracket can give you some benefits, which haven't been decided. No, there won't be anything related to money/ads.") }}</p>
-					<a class="btn btn-primary" href="https://forms.gle/rD8sFd58S9pdCj617">{{ __("Apply for Partner") }}</a><br>
+					<h2>{{ __("squareBracket Checkmark Program") }}</h2>
+					<p>{{ __("Getting checkmarked on squareBracket can give you some benefits, which haven't been decided. No, there won't be anything related to money/ads.") }}</p>
+					<a class="btn btn-primary" href="https://forms.gle/rD8sFd58S9pdCj617">{{ __("Apply for Checkmark") }}</a><br>
 					<small>{{ __("Made using Google Forms.") }}</small>
 				</div>
 			</div>

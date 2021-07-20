@@ -7,9 +7,9 @@
 		{% if subscriptionVideos %}
 			<div class="row">
 				<div class="col-8">
-				<h3>{{ __("Videos from subscriptions") }}</h3>
+				<h3>{{ __("From my subscriptions") }}</h3>
 				</div><div class="col-4">
-				<div class="text-end"><a href="browse.php?subscriptions" class="btn btn-light btn-sm">{{ __("More videos") }}</a></div>
+				<div class="text-end"><a href="browse.php?subscriptions" class="btn btn-light btn-sm">{{ __("Browse subscriptions") }}</a></div>
 				</div>
 				<h3></h3>
 				<div class="row">
@@ -18,7 +18,7 @@
 							{{ browse_video_box(video) }}
 						</div>
 					{% else %}
-						<p>{{ __("Your subscriptions haven't uploaded videos yet.") }}</p>
+						<p>{{ __("There are currently no videos from your subscriptions.") }}</p>
 					{% endfor %}
 				</div>
 			</div>
@@ -27,7 +27,7 @@
 			<div class="col-8">
 			<h3>{{ __("Recently uploaded to squareBracket") }}</h3>
 			</div><div class="col-4">
-			<div class="text-end"><a href="browse.php" class="btn btn-light btn-sm">{{ __("More videos") }}</a></div>
+			<div class="text-end"><a href="browse.php" class="btn btn-light btn-sm">{{ __("Browse videos") }}</a></div>
 			</div>
 		</div>
 		{% for video in videos %}
@@ -49,22 +49,16 @@
 					{% if totalViews != 1 %}
 						{% set pluralViews = __("s") %}
 					{% endif %}
-					<p>{{ __("You have %s subscriber%s.", [totalSubscribers ?? __("no"), pluralSubscribers]) }}</p>
-					<p>{{ __("You have %s view%s.", [totalViews ?? __("no"), pluralViews]) }}</p>
-					<p>{{ __("Your account was made %s.", [creationDate | relative_time]) }}</p>
-				</p>
-			</p>
+					<p class="mb-2">{{ __("You have %s subscriber%s.", [totalSubscribers ?? __("no"), pluralSubscribers]) }}</p>
+					<p class="mb-2">{{ __("You have %s view%s.", [totalViews ?? __("no"), pluralViews]) }}</p>
+					<p class="mb-5">{{ __("Your account was made %s.", [creationDate | relative_time]) }}</p>
 		{% else %}
 			<h3>{{ __("Welcome to squareBracket") }}</h3>
 			<p>{{ __("I can't believe it's not PokTube") }}</p>
-			<div class="btn-group">
-				<a href="register.php" class="btn btn-primary">{{ __("Get started") }}</a>
-				<a href="login.php" class="btn btn-light">{{ __("Login") }}</a>
-			</div>
 		{% endif %}
 		<hr/>
 		<h3>{{ __("News and updates") }}</h3>
-		<p>{{ __("Hello people, we have reached the next stage of development. squareBracket is now in pre-beta. We plan of going to the first beta stage pretty soon.") }}</p>
+		<p>{{ __("After nearly 3 months of development after the reset, squareBracket has now entered beta.") }}</p>
 		<p class="blockquote-footer">{{ __("The squareBracket team") }}</p>
 		<hr/>
 		<h3>{{ __("Featured videos") }}</h3>

@@ -33,6 +33,8 @@ if (isset($currentUser)) {
 query("UPDATE videos SET views = views + '1' WHERE video_id = ?", [$id]);
 $videoData['views']++;
 
+$subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$videoData['author']])['COUNT(user)'];
+
 $twig = twigloader();
 echo $twig->render('watch.twig', [
 	'video' => $videoData,
@@ -41,5 +43,6 @@ echo $twig->render('watch.twig', [
 	'total_likes' => $totalLikes,
 	'total_dislikes' => $totalDislikes,
 	'rating' => $rating,
-	'subscribed' => $subscribed
+	'subscribed' => $subscribed,
+	'subCount' => $subCount
 ]);
