@@ -25,5 +25,8 @@
 			"type": "vcs",
 			"url": "https://github.com/chazizsquarebracket/RelativeTime"
 		}
-	]
+	],
+	"require-dev": {
+		"arokettu/pseudolocale": "dev-master"
+	}
 }

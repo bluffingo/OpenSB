@@ -17,6 +17,9 @@
 	"Subscribe": "",
 	"Unsubscribe": "",
 
+	"Your video is already uploading or has been uploaded.": "",
+	"Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed.": "",
+
 	"Admin": "",
 	"All videos": "",
 	"Approved videos": "",
@@ -55,6 +58,7 @@
 	"You have been successfully logged out of all devices.": "",
 	"Username": "",
 	"Password": "",
+	"Back": "",
 	"Account passwords are hashed with bcrypt.": "",
 	"By squareBracket contributors": "",
 
@@ -130,7 +134,6 @@
 	"Change theme": "",
 	"My profile": "",
 	"Sign off": "",
-	"Back": "",
 	"Light": "",
 	"Dark": "",
 	"Bootstrap": "",

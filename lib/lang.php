@@ -9,7 +9,7 @@ class Lang {
 			$contents = file_get_contents($langFile);
 			$this->langData = json_decode($contents, true);
 		}
-
+		
 		$this->langFile = $langFile;
 	}
 
@@ -23,14 +23,17 @@ class Lang {
 		} else {
 			$translatedString = $string;
 		}
-
+		
+		if($this->langFile == 'lib/lang/qps-plocm.json') {
+			return \Arokettu\Pseudolocale\Pseudolocale::pseudolocalize(vsprintf($translatedString, $placeholders));
+		}
 		return vsprintf($translatedString, $placeholders);
 	}
 }
 
 function __($string, $placeholders = []) {
 	global $lang;
-
+	
 	return $lang->translate($string, $placeholders);
 }
 

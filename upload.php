@@ -30,12 +30,12 @@ if (isset($_POST['upload']) and isset($currentUser['username'])) {
 
 	// Prevent videos with duplicate metadata since they are probably accidentally uploaded.
 	if (result("SELECT COUNT(*) FROM videos WHERE title = ? AND description = ?", [$title, $description])) {
-		die("Your video is already uploading or has been uploaded.");
+		die(__("Your video is already uploading or has been uploaded."));
 	}
 
 	// Rate limit uploading to 2 minutes, both to prevent spam and to prevent double uploads.
 	if (result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60*2, $currentUser['id']])) {
-		die("Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed.");
+		die(__("Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed."));
 	}
 
 	$name       = $_FILES['fileToUpload']['name'];
