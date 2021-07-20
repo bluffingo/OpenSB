@@ -6,4 +6,5 @@ $languages = [
 	'fr_CA' => "Français (Canada)",
 	'ru_RU' => "Русский",
 	'sv_SE' => "Svenska",
+	'qps-plocm' => "Pseudolocalization [DEBUG ONLY]",
 ];
