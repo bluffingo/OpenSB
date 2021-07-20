@@ -85,19 +85,19 @@
 				</dl>
 				</div>
 			</div>
+			{% if current_user.powerlevel > 2 %}
 			<div class="card mb-2">
-				<div class="card-body">
-					{% if current_user.powerlevel > 2 %}
+				<div class="card-body">			
 					<h4>{{ __("Administrator Actions") }}</h4>
 					<hr>
 					<dl class="row">
 						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset for %s", [user.username]) }}</a>
 					</dl>
-					{% endif %}
+				</div>
 			</div>
+			{% endif %}
 		</div>
 	</div>
-</div>
 </div>
 </div>
 <div class="container">
