@@ -55,7 +55,12 @@ if (isset($_COOKIE['theme'])) {
 	$theme = 'default';
 }
 
-$frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
+// Reminder: sbNext is no longer a priority to us and is currently deprecated. -gr 7/16/21
+if ($sbNext) {
+    $frontend = 'new';
+} else {
+    $frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
+}
 
 if ($loggedIn) {
 	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);
