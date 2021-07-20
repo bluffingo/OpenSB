@@ -94,14 +94,15 @@
 					<input type="color" class="form-control" id="color" name="color"
 						value="{{ current_user.color }}">
 					<input type="hidden" name="updatesettings" value="yes">
-					<input type="submit" class="btn btn-primary" name="action" value="{{ __(" Update") }}">
+					<input type="submit" class="btn btn-primary" name="action" value="{{ __("Update") }}">
 				</form>
 			</div>
 			<div class="tab-pane fade" id="v-pills-partner" role="tabpanel" aria-labelledby="v-pills-partner-tab">
 				<div class="h-100 p-5 bg-light border rounded-3">
 					<h2>{{ __("Partner with squareBracket") }}</h2>
-					<p>Add some text later.</p>
-					<button class="btn btn-primary" type="button">{{ __("Apply for Partner") }} (not functional)</button>
+					<p>{{ __("Partnering with squareBracket can give you some benefits, which haven't been decided. No, there won't be anything related to money/ads.") }}</p>
+					<a class="btn btn-primary" href="https://forms.gle/rD8sFd58S9pdCj617">{{ __("Apply for Partner") }}</a><br>
+					<small>{{ __("Made using Google Forms.") }}</small>
 				</div>
 			</div>
 		</div>

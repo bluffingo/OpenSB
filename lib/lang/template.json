@@ -17,8 +17,11 @@
 	"Subscribe": "",
 	"Unsubscribe": "",
 
-	"Browse": "",
+	"Admin": "",
+	"All videos": "",
+	"Approved videos": "",
 
+	"Browse": "",
 	"Videos from subscriptions": "",
 	"Videos": "",
 	"Your subscriptions haven't uploaded videos yet.": "",
@@ -82,9 +85,11 @@
 	"Channel background (Partner only)": "",
 	"Channel description": "",
 	"Description": "",
-	" Update": "",
+	"Update": "",
 	"Partner with squareBracket": "",
+	"Partnering with squareBracket can give you some benefits, which haven't been decided. No, there won't be anything related to money/ads.": "",
 	"Apply for Partner": "",
+	"Made using Google Forms.": "",
 
 	"Upload": "",
 	"Important": "",
