@@ -33,10 +33,10 @@
 					<p class="fs-4 text-break">{{ user.description }}</p>
 				</div>
 				<div class="col-md-1 text-end">
-					<button id="subscribe" class="btn btn-warning" type="button" {% if not logged_in or current_user.id == user.id %}disabled{% endif %}><svg data-bs-toggle="tooltip"
+					<button id="subscribe" class="btn btn-{% if subscribed %}secondary{% else %}warning{% endif %}" type="button" {% if not logged_in or current_user.id == user.id %}disabled{% endif %}><svg data-bs-toggle="tooltip"
 							data-bs-placement="top" title="{% if subscribed %}{{ __("Unsubscribe") }}{% else %}{{ __("Subscribe") }}{% endif %}" style="margin-left: 0.75%;"
 							class="bi" width="32" height="32" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#plus" />
+							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#{% if subscribed %}dash{% else %}plus{% endif %}" />
 						</svg></button>
 				</div>
 			</div>
