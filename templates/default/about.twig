@@ -4,4 +4,20 @@
 
 {% block content %}
 <h1>{{ __("About squareBracket") }}</h1>
+<div style="background:white;">
+<img class="mx-auto d-block" width="45%" src="/assets/logo-wordmark.png">
+</div>
+<div style="background:linear-gradient(90deg, #000428, #004e92, #000428);height:10px;">
+</div>
+<div style="background:#D4D0C8;">
+	<div class="row">
+		<div class="col-4"></div>
+		<div class="col-8">
+			{{ __("Gamerappa squareBracket") }}<br>
+			{{ __("Version 2.0 (Build 47101)") }}<br>
+			{{ __("By squareBracket contributors") }} 2020-{{ 'now' | date('Y') }}<br>
+			{{ __("The squareBracket website is open source on GitHub.") }}
+		</div>
+	</div>
+</div>
 {% endblock %}
