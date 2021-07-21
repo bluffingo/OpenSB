@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<html>
-<head>
-<meta charset="utf-8">
-<title>sbNext</title>
-<link rel="stylesheet" href="/assets/main.css"> 
-</head>
-<body>
-<div id="content">
+{% extends "_layout.twig" %}
+	{% block content %}
 <h1>squareBracket Next CSS Testing Area</h1>
 <h2>Buttons</h2>
 <button type="submit" class="btn btn-primary">Primary</button>
@@ -66,6 +58,4 @@
 <div style="width: 100%; padding: 25px" class="bg-dark">Dark</div>
 <div style="width: 100%; padding: 25px" class="bg-poktube">PokTube</div>
 <div style="width: 100%; padding: 25px" class="bg-sneed">Sneed</div>
-<div id="content">
-</div>
-</body>
+{% endblock %}

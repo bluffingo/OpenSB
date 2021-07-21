@@ -157,11 +157,11 @@
 			<h4 class="my-0">squareBracket Beta 1</h4>
 			<!-- 2020 was when work on PokTube (the predecessor of squareBracket) was started. Techically, PokTube and squareBracket are the same project, just with different codebases. -gr 7/20/2021 -->
 			<p class="my-0"><b>{{ __("By squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
-			<p class="my-0"><a class="me-1">{{ __("About") }}</a> <a class="me-1">{{ __("Terms") }}</a> <a class="me-1">{{ __("Guidelines") }}</a> <a class="me-1">{{ __("Contact") }}</a></p>
+			<p class="my-0"><a href="about.php" class="me-1">{{ __("About") }}</a> <a class="me-1">{{ __("Terms") }}</a> <a class="me-1">{{ __("Guidelines") }}</a> <a class="me-1">{{ __("Contact") }}</a></p>
 			</div>
 			</div>
 		</footer>
-		{% block postcontent %}{% endblock %}
+	{% block postcontent %}{% endblock %}
 	</div>
 </body>
 </html>

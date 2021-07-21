@@ -4,5 +4,5 @@ require('lib/common.php');
 
 $twig = twigloader();
 
-echo $twig->render('bs5_cheatsheet.twig', [
+echo $twig->render('cheatsheet.twig', [
 ]);
