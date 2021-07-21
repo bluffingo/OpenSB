@@ -9,7 +9,7 @@
 		"twbs/bootstrap": "5.0.2",
 		"scssphp/scssphp": "1.6.0",
 		"nopjmp/discord-webhooks": "dev-master",
-		"twbs/bootstrap-icons": "dev-composer"
+		"twbs/bootstrap-icons": "dev-main"
 	},
 	"minimum-stability": "dev",
 	"config": {
@@ -20,7 +20,7 @@
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "https://github.com/twbs/icons"
+			"url": "https://github.com/chazizsquarebracket/bs-icons-but-with-composer"
 		}, {
 			"type": "vcs",
 			"url": "https://github.com/chazizsquarebracket/RelativeTime"
