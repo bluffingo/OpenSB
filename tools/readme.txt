@@ -1,1 +1,1 @@
-SCSS compilation is broken. https://github.com/scssphp/scssphp/issues/434
+The translation generator doesn't check PHP. so some localizable strings may not be listed in the JSON template.

@@ -126,18 +126,18 @@
 	"About %s": "",
 	"Last seen": "",
 	"Joined": "",
-	"Subscribers": "",
+	"subscriber%s.": "",
 	"Administrator Actions": "",
 	"Generate password reset for %s": "",
 
 	"This video is being processed. Try again later.": "",
 	"Uploaded on %s": "",
 	"view%s.": "",
-	"subscriber%s.": "",
 	"Edit video": "",
 	"Enter comment here, Markdown can be used here.": "",
 	"Please sign in in order to comment.": "",
 	"Send": "",
+	"Posting...": "",
 
 	"Sorry about that.": "",
 
@@ -155,8 +155,8 @@
 	"Guidelines": "",
 	"Contact": "",
 
-	"views": "",
+	"Published on %s": "",
 
-	"Published on %s": ""
+	"views": ""
 
 }
