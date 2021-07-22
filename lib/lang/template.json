@@ -132,8 +132,8 @@
 
 	"This video is being processed. Try again later.": "",
 	"Uploaded on %s": "",
-	"views": "",
-	"subscribers": "",
+	"view%s.": "",
+	"subscriber%s.": "",
 	"Edit video": "",
 	"Enter comment here, Markdown can be used here.": "",
 	"Please sign in in order to comment.": "",
@@ -154,6 +154,8 @@
 	"Terms": "",
 	"Guidelines": "",
 	"Contact": "",
+
+	"views": "",
 
 	"Published on %s": ""
 

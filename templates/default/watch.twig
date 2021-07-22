@@ -112,7 +112,14 @@
 								</div>
 								<div class="col-lg-10">
 									{{ userlink(video, 'u_') }}<br>
-									<small>{{ __("Uploaded on %s", [video.time | date('M j, Y')]) }} &bull; {{ video.views }} {{ __("views") }} &bull; {{ subCount }} {{ __("subscribers") }}</small>
+									{# hack to prevent twig from outputing the number 1 #}
+									{% if subCount != 1 %}
+										{% set pluralSubscribers = __("s") %}
+									{% endif %}
+									{% if video.views != 1 %}
+										{% set pluralViews = __("s") %}
+									{% endif %}
+									<small>{{ __("Uploaded on %s", [video.time | date('M j, Y')]) }} &bull; {{ video.views }} {{ __("view%s.", [pluralViews]) }} &bull; {{ subCount }} {{ __("subscriber%s.", [pluralSubscribers]) }}</small>
 								</div>
 							</div>
 						</div>
