@@ -8,9 +8,13 @@
 				</div>
 			</a>
 			<div class="col-lg-12">
-					<h4><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h4>
-				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("views") }} &bull;
-					{{ data.time | relative_time }}</p>
+				<h4><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h4>
+				{# hack to prevent twig from outputing the number 1 #}
+				{% if data.views != 1 %}
+					{% set pluralViews = __("s") %}
+				{% endif %}
+				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("view%s.", [pluralViews]) }} &bull;
+				{{ data.time | relative_time }}</p>
 			</div>
 		</div>
 	</div>

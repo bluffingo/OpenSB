@@ -10,7 +10,11 @@
 			</div>
 			<div class="col-6">
 				<h3><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
-				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("views") }}	&bull;
+				{# hack to prevent twig from outputing the number 1 #}
+				{% if data.views != 1 %}
+					{% set pluralViews = __("s") %}
+				{% endif %}
+				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("view%s.", [pluralViews]) }}	&bull;
 				<span class="text-muted">{{ data.time | relative_time }}</span></p>
 				<p>{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description }}</p>
 			</div>

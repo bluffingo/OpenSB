@@ -80,7 +80,11 @@
 					<dd class="col-sm-8">{{ user.lastview | relative_time }}</dd>
 					<dt class="col-sm-4">{{ __("Joined") }}</dt>
 					<dd class="col-sm-8">{{ user.joined | date('M j, Y') }}</dd>
-					<dt class="col-sm-4">{{ __("Subscribers") }}</dt>
+					{# hack to prevent twig from outputing the number 1 #}
+					{% if subCount != 1 %}
+						{% set pluralSubscribers = __("s") %}
+					{% endif %}
+					<dt class="col-sm-4">{{ __("subscriber%s.", [pluralSubscribers]) }}</dt>
 					<dd class="col-sm-8">{{ subCount }}</dd>
 				</dl>
 				</div>
