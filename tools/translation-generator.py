@@ -43,7 +43,7 @@ with open("lib/lang/template.json", "w") as f:
 		if string == "\n":
 			f.write("\n")
 			continue
-		f.write('\t"%s": ""' % string)
+		f.write('\t"%s": "%s"' % (string, string))
 		if not len(strings) - 1 == i:
 			f.write(",")
 		f.write('\n')
