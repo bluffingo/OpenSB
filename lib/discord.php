@@ -25,8 +25,9 @@ function newVideoHook($video) {
 		->description($video['description'])
 		->url(sprintf("%s/watch.php?v=%s", $domain, $video['video_id']))
 		->timestamp(date(DATE_ISO8601))
-		->color(13056)
-		->footer("squareBracket Videos")
+		// todo: make this use the uploader's profile banner color. -gr 7/22/2021
+		->color(3181273)
+		->footer("squareBracket")
 		->thumbnail(sprintf("%s/assets/thumb/%s.png", $domain, $video['video_id']))
 		->author(
 			$video['u_name'],

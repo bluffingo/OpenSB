@@ -1,0 +1,3 @@
+files:
+  - source: /lib/lang/template.json
+    translation: /lib/lang/%locale%.json

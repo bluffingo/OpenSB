@@ -7,8 +7,9 @@
  * @param string $prefix $user key prefix.
  * @return string Userlink HTML code.
  */
+ 
+ // what the fuck does t_user mean? -gr 7/22/2021
 function userlink($user, $prefix = '') {
-	// We should make this a Twig component for maximum epicness.
 	if (isset($user)) {
 			return <<<HTML
 			<a class="user" href="user.php?name={$user[$prefix.'username']}"><span class="t_user">{$user[$prefix.'username']}</span></a>
