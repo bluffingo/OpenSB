@@ -21,9 +21,6 @@
 		{
 			"type": "vcs",
 			"url": "https://github.com/chazizsquarebracket/bs-icons-but-with-composer"
-		}, {
-			"type": "vcs",
-			"url": "https://github.com/chazizsquarebracket/RelativeTime"
 		}
 	],
 	"require-dev": {
