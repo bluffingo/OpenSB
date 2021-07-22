@@ -1,7 +1,9 @@
 {
 	"\\RelativeTime\\Languages\\English": "",
 
-	"403 Forbidden": "",
+	"Access Denined": "",
+
+	"No POST data.": "",
 
 	"Blank username. ": "",
 	"Blank email. ": "",
@@ -13,6 +15,11 @@
 	"Please enter your username! ": "",
 	"Please enter your password! ": "",
 	"Incorrect username or password.": "",
+
+	"No reset data.": "",
+
+	"do not reset": "",
+	"Passwords aren't identical.": "",
 
 	"Subscribe": "",
 	"Unsubscribe": "",

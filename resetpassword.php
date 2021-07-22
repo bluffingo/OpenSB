@@ -20,7 +20,7 @@ if (isset($_GET['grf']) && $currentUser['powerlevel'] > 2) {
 
 $resetdata = fetch("SELECT pr.*, u.username FROM passwordresets pr JOIN users u ON pr.user = u.id WHERE pr.id = ?", [$id]);
 
-if (!$resetdata) die("<center><b>No reset data.</b></center>");
+if (!$resetdata) die("<center><b>" . __("No reset data.") . "</b></center>");
 // TODO: we need a nice error page template
 if ((time() - $resetdata['time']) >= 60*15) die("<center><b>Password reset request expired.</b></center>");
 if (!$resetdata['active']) die("<center><b>Your password has already been reset by this request.</b></center>");

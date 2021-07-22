@@ -3,9 +3,9 @@ $rawOutputRequired = true;
 require('lib/common.php');
 
 if (!isset($_POST['vidid'])) {
-	die('Wait, why are you trying to insert garbage to my database?');
+	die(__("No POST data."));
 } else if (!isset($_POST['rating']) or $_POST['rating'] == '') {
-	die(); //don't output anything if this sneaky bastard didn't put anything to the comment field
+	die(); //don't output anything if there is no data.
 }
 if (result("SELECT COUNT(rating) FROM rating WHERE video=? AND user=?", [result("SELECT id FROM videos WHERE video_id=?", [$_POST['vidid']]),$currentUser['id']]) != 0) {
 	query("DELETE FROM rating WHERE user=? AND video=?",

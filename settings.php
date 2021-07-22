@@ -18,10 +18,10 @@ if (isset($_POST['updatesettings'])) {
 	$pass2          = (isset($_POST['pass2']) ? $_POST['pass2'] : null);
 	
 	$error = "";
-	if (!$currentPass) $error .= "do not reset";
-	if (!$pass) $error .= "do not reset";
-	if (!$pass2) $error .= "do not reset";
-	if ($pass != $pass2) $error .= "Passwords aren't identical.";
+	if (!$currentPass) $error .= __("do not reset");
+	if (!$pass) $error .= __("do not reset");
+	if (!$pass2) $error .= __("do not reset");
+	if ($pass != $pass2) $error .= __("Passwords aren't identical.");
 	
 	$logindata = fetch("SELECT password FROM users WHERE id = ?", [$currentUser['id']]);
 	if ($logindata && password_verify($currentPass, $logindata['password'])) {

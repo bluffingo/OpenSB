@@ -2,8 +2,8 @@
 require('lib/common.php');
 
 if (!isset($_POST['vidid'])) {
-	die('No data.');
-} else if (!isset($_POST['comment']) or $_POST['comment'] == '') {
+	die(__("No POST data."));
+} else if (!isset($_POST['rating']) or $_POST['rating'] == '') {
 	die(); //don't output anything if there is no data.
 }
 
