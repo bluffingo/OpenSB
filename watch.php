@@ -3,6 +3,9 @@ require('lib/common.php');
 $id = (isset($_GET['v']) ? $_GET['v'] : null);
 
 $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
+
+if (!$videoData) error("The specified video wasn't found.");
+
 $query = '';
 $count = 0;
 if ($videoData['tags']) {

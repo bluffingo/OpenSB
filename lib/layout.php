@@ -45,6 +45,12 @@ function twigloader($subfolder = '') {
 	return $twig;
 }
 
+function error($message) {
+	$twig = twigloader();
+	echo $twig->render('_error.twig', ['err_message' => $message]);
+	die();
+}
+
 function comment($comment) {
 	$twig = twigloader('components');
 	return $twig->render('comment.twig', ['data' => $comment]);
