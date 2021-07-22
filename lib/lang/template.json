@@ -20,6 +20,15 @@
 	"Your video is already uploading or has been uploaded.": "",
 	"Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed.": "",
 
+	"The video you were looking for cannot be found.": "",
+
+	"About": "",
+	"About squareBracket": "",
+	"Gamerappa squareBracket": "",
+	"Version 2.0 (Build 47101)": "",
+	"By squareBracket contributors": "",
+	"The squareBracket website is open source on GitHub.": "",
+
 	"Admin": "",
 	"All videos": "",
 	"Approved videos": "",
@@ -60,7 +69,6 @@
 	"Password": "",
 	"Back": "",
 	"Account passwords are hashed with bcrypt.": "",
-	"By squareBracket contributors": "",
 
 	"Register": "",
 	"E-mail": "",
@@ -126,9 +134,12 @@
 	"Uploaded on %s": "",
 	"views": "",
 	"subscribers": "",
+	"Edit video": "",
 	"Enter comment here, Markdown can be used here.": "",
 	"Please sign in in order to comment.": "",
 	"Send": "",
+
+	"Sorry about that.": "",
 
 	"Search": "",
 	"Change theme": "",
@@ -140,7 +151,6 @@
 	"Finalium": "",
 	"Users registered": "",
 	"Videos uploaded": "",
-	"About": "",
 	"Terms": "",
 	"Guidelines": "",
 	"Contact": "",

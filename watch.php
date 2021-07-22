@@ -4,7 +4,7 @@ $id = (isset($_GET['v']) ? $_GET['v'] : null);
 
 $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
 
-if (!$videoData) error("The video you were looking for cannot be found.");
+if (!$videoData) error(__("The video you were looking for cannot be found."));
 
 $query = '';
 $count = 0;
