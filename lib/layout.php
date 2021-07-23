@@ -12,7 +12,7 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
 
 function twigloader($subfolder = '') {
-	global $tplCache, $tplNoCache, $loggedIn, $currentUser, $theme, $languages, $frontend, $menuLinks;
+	global $tplCache, $tplNoCache, $loggedIn, $currentUser, $theme, $languages, $frontend, $menuLinks, $hCaptchaSiteKey;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
 
@@ -41,6 +41,7 @@ function twigloader($subfolder = '') {
 	$twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 	$twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
 	$twig->addGlobal('stats', fetch("SELECT (SELECT COUNT(*) FROM users) usercount, (SELECT COUNT(*) FROM videos) videocount"));
+	$twig->addGlobal('hcaptcha_sitekey', $hCaptchaSiteKey);
 
 	return $twig;
 }

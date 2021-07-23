@@ -17,6 +17,11 @@ if (isset($_POST['action'])) {
 	if (!preg_match('/[a-zA-Z0-9_]+$/', $username)) $error .= __("Username contains invalid characters (Only alphanumeric and underscore allowed). ");
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $error .= __("Email isn't valid. ");
 
+	// hCaptcha verification
+	if ($hCaptchaSiteKey && $hCaptchaSecret) {
+		if (!hCaptcha($_POST['h-captcha-response'])) $error .= __("Incorrect CAPTCHA. Please try again.");
+	}
+
 	if ($error == '') {
 		$token = bin2hex(random_bytes(32));
 		query("INSERT INTO users (username, password, email, token, joined) VALUES (?,?,?,?,?)",

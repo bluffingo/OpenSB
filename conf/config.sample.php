@@ -18,6 +18,11 @@ $webhook = ""; // Webhook URL for the new video webhook
 $domain = 'http://squarebracket.local';
 $isDebug = false; // DEV ONLY
 
+// hCaptcha secret and sitekey,
+// if these are empty, hCaptcha is disabled.
+$hCaptchaSiteKey = '';
+$hCaptchaSecret = '';
+
 $sbNext = false; // DEV ONLY (for now), intended to make sbNext development easier.
 
 // Add your own custom menu links here, or change the existing ones.

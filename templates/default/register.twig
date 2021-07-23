@@ -10,7 +10,7 @@
 <div class="container">
 </div>
 <!-- HOLY SHIT the page looked broken for a while.
-register page should be merged with login page on sbnext 
+register page should be merged with login page on sbnext
 -gamerappa 7/10/2021 -->
   <form method="post" name="registerForm" id="registerForm" action="register.php">
     <img class="mb-2" src="/assets/logo_border_placeholder.png" alt="squareBracket" width="90">
@@ -34,6 +34,11 @@ register page should be merged with login page on sbnext
 			<input type="password" name="pass2" class="form-control" id="floatingPass2" placeholder="">
 			<label for="floatingPass2">{{ __("Password (Again)") }}</label>
 		</div>
+		{% if hcaptcha_sitekey %}
+		<div class="form-floating my-2">
+			<div class="h-captcha" data-sitekey="{{ hcaptcha_sitekey }}"></div>
+		</div>
+		{% endif %}
 		<div class="d-grid gap-2 d-md-flex justify-content-between">
 			<input class="btn btn-lg btn-primary flex-grow-1" type="submit" value="{{ __("Register") }}" name="action">
 			<a class="btn btn-lg btn-light" href="/">{{ __("Back") }}</a>
@@ -44,4 +49,5 @@ register page should be merged with login page on sbnext
 	<p class="mt-5 mb-3 text-light">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
 </form>
 </main>
+<script src='https://www.hCaptcha.com/1/api.js' async defer></script>
 	{% endblock %}
