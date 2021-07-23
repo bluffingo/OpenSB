@@ -36,3 +36,7 @@ function newVideoHook($video) {
 
 	$webhook->embed($mbd)->send();
 }
+
+function newUserHook($user) {
+	throw new Exception('Not implemented');
+}
