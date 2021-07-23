@@ -8,7 +8,7 @@ profpic: profile pictures, dynamic. uploadable by users
 backgrounds: channel backgrounds, dynamic, uploadable by partner-only users (requirement could be removed due to 2006L)
 thumb: video thumbnails, dynamic, automatically generated, cannot be currently changed on the website (there was an instance of a squarebracket video having it's thumbnail changed, but that was done by using wget)
 
-any static assets should ethier be on the assets folder, or if it's for 2006L, on the 2006L folder.
+any static assets should ethier be on the assets folder, or if it's for sbnext, on the sbnext folder.
 
 # BRANDING
 
