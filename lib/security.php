@@ -15,8 +15,6 @@ function hCaptcha($response) {
 	curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
 	$response = curl_exec($verify);
 
-	var_dump($response);
-
 	$responseData = json_decode($response);
 
 	return $responseData->success;
