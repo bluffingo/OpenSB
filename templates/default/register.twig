@@ -49,5 +49,7 @@ register page should be merged with login page on sbnext
 	<p class="mt-5 mb-3 text-light">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
 </form>
 </main>
-<script src='https://www.hCaptcha.com/1/api.js' async defer></script>
+{% if hcaptcha_sitekey %}
+	<script src='https://www.hCaptcha.com/1/api.js' async defer></script>
+{% endif %}
 	{% endblock %}
