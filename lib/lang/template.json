@@ -16,6 +16,8 @@
 	"Please enter your password! ": "Please enter your password! ",
 	"Incorrect username or password.": "Incorrect username or password.",
 
+	"Incorrect CAPTCHA. Please try again.": "Incorrect CAPTCHA. Please try again.",
+
 	"No reset data.": "No reset data.",
 
 	"do not reset": "do not reset",
