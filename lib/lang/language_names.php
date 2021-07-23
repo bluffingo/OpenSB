@@ -2,11 +2,11 @@
 require('conf/config.php');
 // Each corresponding language should have its local language name.
 $languages = [
-	'en_US' => "English",
-	'fr_CA' => "Français (Canada)",
-	'ru_RU' => "Русский",
-	'sv_SE' => "Svenska",
+	'en-US' => "English",
+	'fr-CA' => "Français (Canada)",
+	'ru-RU' => "Русский",
+	'sv-SE' => "Svenska",
 ];
 if ($isDebug) {
-	$languages['qps_plocm'] = "Pseudolocalization [DEBUG ONLY]";
+	$languages['qps-plocm'] = "Pseudolocalization [DEBUG ONLY]";
 }

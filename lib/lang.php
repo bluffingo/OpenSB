@@ -24,7 +24,7 @@ class Lang {
 			$translatedString = $string;
 		}
 		
-		if($this->langFile == 'lib/lang/qps_plocm.json') {
+		if($this->langFile == 'lib/lang/qps-plocm.json') {
 			return \Arokettu\Pseudolocale\Pseudolocale::pseudolocalize(vsprintf($translatedString, $placeholders));
 		}
 		return vsprintf($translatedString, $placeholders);
