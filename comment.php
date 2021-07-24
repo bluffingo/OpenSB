@@ -3,7 +3,7 @@ require('lib/common.php');
 
 if (!isset($_POST['vidid'])) {
 	die(__("No POST data."));
-} else if (!isset($_POST['rating']) or $_POST['rating'] == '') {
+} else if (!isset($_POST['vidid']) or $_POST['vidid'] == '') {
 	die(); //don't output anything if there is no data.
 }
 
