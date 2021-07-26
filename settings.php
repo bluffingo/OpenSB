@@ -8,8 +8,8 @@ if (!$loggedIn) redirect('login.php');
 
 if (isset($_POST['updatesettings'])) {
 	$description	= isset($_POST['description']) ? $_POST['description'] : null;
-	$color			= isset($_POST['color']) ? $_POST['color'] : null;
-	$language		= isset($_POST['language']) ? $_POST['language'] : 'en_US';
+	$color			= isset($_POST['color']) ? $_POST['color'] : '#523bb8'; // setting color to "null" would fuck up the scss compiler(?) -gr 7/26/2021
+	$language		= isset($_POST['language']) ? $_POST['language'] : 'en-US';
 	
 	$resetToken		= isset($_POST['reset_token']) ? $_POST['reset_token'] : null;
 	
@@ -18,7 +18,7 @@ if (isset($_POST['updatesettings'])) {
 	$pass2          = (isset($_POST['pass2']) ? $_POST['pass2'] : null);
 	
 	$error = "";
-	if (!$currentPass) $error .= __("do not reset");
+	if (!$currentPass) $error .= __("do not reset"); // Placeholder strings? -gr 7/26/2021
 	if (!$pass) $error .= __("do not reset");
 	if (!$pass2) $error .= __("do not reset");
 	if ($pass != $pass2) $error .= __("Passwords aren't identical.");
@@ -43,6 +43,15 @@ if (isset($_POST['updatesettings'])) {
 	$ext  = pathinfo( $_FILES['profilePicture']['name'], PATHINFO_EXTENSION );
 	$target_file = 'assets/profpic/' . $currentUser['username'] . '.png';
 	if (move_uploaded_file($temp_name, $target_file)){
+		// Back in PokTube there was a debate over if we should make profiles pictures use 1:1.
+		// The result was to not resize strech profile pictures. That was back when PokTube
+		// wasn't going to be a modern site (other than the Semantic UI bullshit). however
+		// squareBracket is a modern site so any non-1:1 profile pictures should be strected 
+		// to 1:1. there are some non-1:1 profile pictures being used on squarebracket but they 
+		// came from PokTube user data getting migrated (included profile pictures). Just like 
+		// how Twitter still keeps GIF profile pictures for those who haven't changed their profile
+		// picture to a new static one. We should keep PokTube-migrated non-1:1 profile pictures.
+		//                                                                 -Gamerappa, 7/26/2021
 		$img = $manager->make($target_file);
 		$img->resize(640, 640);
 		$img->save($target_file, 0, 'png');
@@ -62,4 +71,10 @@ if (isset($_POST['updatesettings'])) {
 }
 
 $twig = twigloader();
-echo $twig->render('settings.twig');
+if ($isDebug) {
+	// COMPLETE (yes) revamp of the whole settings page, could make changing settings unusable so 
+	// DEBUG ONLY -gr 7/26/2021 (holy shit the gamerappa name is 5 years old now)
+	echo $twig->render('settings_redesign.twig'); 
+} else {
+	echo $twig->render('settings.twig');
+}
