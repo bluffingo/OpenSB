@@ -15,6 +15,7 @@ CREATE TABLE `users` (
   `token` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User token for cookie authentication.',
   `joined` bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT 'User''s join date',
   `lastview` bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT 'Timestamp of last view',
+  `display_name` text COLLATE 'utf8mb4_unicode_ci' NULL COMMENT 'Display Name',
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
   `color` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en_US' COMMENT 'Language (Defaults to English)',

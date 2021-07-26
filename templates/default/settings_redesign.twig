@@ -7,7 +7,7 @@
 					<div class="row">
 						<div class="col-12">
 							<img class="float-start rounded" src="{{ profile_image(current_user.username) }}" style="margin-right: 1.5%;" width="64" alt="pfp">
-							<h2>Display names aren't implemented</h2>
+							<h2>{{ current_user.display_name }}</h2>
 							<p>Your squareBracket account (or channel?)</p>
 						</div>
 					</div>
@@ -42,7 +42,7 @@
 					<div class="row">
 						<div class="col-12">
 							<img class="float-start rounded" src="{{ profile_image(current_user.username) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
-							<h2>Display names aren't implemented</h2>
+							<h2>{{ current_user.display_name }}</h2>
 							<p>
 								{{ icon('at', 20) }}
 								<b>{{ __("Username:") }}</b> {{ current_user.username }}<br>
@@ -70,8 +70,10 @@
 					{{ __("Change the look of your channel's profile.") }}
 				</div>
 				<br>
-					<h3>{{ __("Profile picture") }}</h3>
 					<form action="settings.php" method="post" enctype="multipart/form-data">
+					<label for="inputDisplayName" class="form-label">Display Name</label>
+					<input id="inputDisplayName" class="form-control">
+					<h3>{{ __("Profile picture") }}</h3>
 					<div class="row">
 						<div class="col-10">
 							<input class="form-control" type="file" name="profilePicture" id="profilePicture">
