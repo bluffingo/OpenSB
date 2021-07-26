@@ -14,7 +14,7 @@
 				{% if data.views != 1 %}
 					{% set pluralViews = __("s") %}
 				{% endif %}
-				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("view%s.", [pluralViews]) }} &bull; {{ data.time | relative_time }}</p>
+				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("view%s", [pluralViews]) }} &bull; {{ data.time | relative_time }}</p>
 			</div>
 		</div>
 	</div>

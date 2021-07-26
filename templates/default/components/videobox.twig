@@ -14,7 +14,7 @@
 				{% if data.views != 1 %}
 					{% set pluralViews = __("s") %}
 				{% endif %}
-				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("view%s.", [pluralViews]) }}	&bull;
+				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("view%s", [pluralViews]) }}	&bull;
 				<span class="text-muted">{{ data.time | relative_time }}</span></p>
 				<p>{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description }}</p>
 			</div>
