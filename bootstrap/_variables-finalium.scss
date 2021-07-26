@@ -8,7 +8,6 @@ $yellow: #ffbf00;
 $cyan: #17a2b8;
 $blue: #1b9ade;
 $green: #00b843;
-$olive: #789922;
 $poktube-blue: #0051b3;
 $teal: #20c997;
 $primary: $blue;
@@ -28,7 +27,7 @@ $gray-900: #242424;
 $light: #f8f9fa;
 $dark: #343a40;
 $secondary: $gray-200;
-$font-family-sans-serif: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $font-size-base: 0.875rem;
 $h1-font-size: $font-size-base * 2.5;
 $h2-font-size: $font-size-base * 2;
@@ -41,6 +40,27 @@ $alert-bg-scale: 0%;
 $alert-padding-y: 0.75rem;
 $alert-padding-x: 1.25rem;
 
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  xxxl: 1500px
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1750px
+);
+
+
+
 $theme-colors: (
   "primary":    $primary,
   "secondary":  $secondary,
@@ -50,7 +70,6 @@ $theme-colors: (
   "danger":     $danger,
   "light":      $light,
   "dark":       $dark,
-  "sneed":		$olive
 );
 
 $min-contrast-ratio:   1.50 !default;
