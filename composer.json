@@ -9,8 +9,7 @@
 		"twbs/bootstrap": "5.0.2",
 		"scssphp/scssphp": "1.6.0",
 		"nopjmp/discord-webhooks": "dev-master",
-		"twbs/bootstrap-icons": "dev-main",
-		"primer/css": "dev-main"
+		"twbs/bootstrap-icons": "dev-main"
 	},
 	"minimum-stability": "dev",
 	"config": {
@@ -21,11 +20,7 @@
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "https://github.com/squarebracket-gamerappa/bs-icons-but-with-composer"
-		},
-		{
-			"type": "vcs",
-			"url": "https://github.com/squarebracket-gamerappa/primer"
+			"url": "https://github.com/chazizsquarebracket/bs-icons-but-with-composer"
 		}
 	],
 	"require-dev": {
