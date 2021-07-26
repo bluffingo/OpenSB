@@ -120,7 +120,7 @@
 									{% if video.views != 1 %}
 										{% set pluralViews = __("s") %}
 									{% endif %}
-									<small>{{ __("Uploaded on %s", [video.time | date('M j, Y')]) }} &bull; {{ video.views }} {{ __("view%s.", [pluralViews]) }} &bull; {{ subCount }} {{ __("subscriber%s.", [pluralSubscribers]) }}</small>
+									<small>{{ __("Uploaded on %s", [video.time | date('M j, Y')]) }} &bull; {{ video.views }} {{ __("view%s", [pluralViews]) }} &bull; {{ subCount }} {{ __("subscriber%s", [pluralSubscribers]) }}</small>
 								</div>
 							</div>
 						</div>

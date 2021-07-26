@@ -59,11 +59,8 @@
 					class="d-inline-block align-text-top"></a>
 			<form class="d-flex" method="GET" action="search.php">
 			<div class="input-group">
-				<input name="query" class="form-control" type="search" placeholder="{{ __("Search") }}"
+				{{ icon('search', 20) }} <input name="query" class="form-control" type="search" placeholder="{{ __("Search") }}"
 					aria-label="Search">
-				<button class="btn btn-success" type="submit" aria-expanded="false">
-					{{ icon('search', 20) }}
-				</button>
 			</div>
 			</form>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,9 +100,8 @@
 							<a href="#" id="openSettings" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"
 								aria-expanded="false">
 								{% if logged_in %} <img src="{{ profile_image(current_user.username) }}"
-									alt="{{ current_user.username }}" class="rounded" width="30" height="30">
-								{% else %}<img src="/assets/profileguest.png" alt="Guest" class="rounded" width="30"
-									height="30">{% endif %}
+									alt="{{ current_user.username }}" class="rounded" width="30" height="30">{{ icon('caret-down-fill', 14) }}
+								{% else %}{{ icon('three-dots-vertical', 30) }}{% endif %}
 							</a>
 						</li>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
