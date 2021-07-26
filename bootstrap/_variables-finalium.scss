@@ -3,17 +3,17 @@ $indigo: #6610f2;
 $purple: #6f42c1;
 $pink: #e83e8c;
 $red: #ff5252;
-$orange: #fd7e14;
-$yellow: #ffb300;
+$orange: #fd9814;
+$yellow: #ffbf00;
 $cyan: #17a2b8;
-$blue: #039be5;
-$green: #00b857;
+$blue: #1b9ade;
+$green: #00b843;
 $olive: #789922;
 $poktube-blue: #0051b3;
 $teal: #20c997;
 $primary: $blue;
 $success: $green;
-$info: #ba68c8;
+$info: #7960bf;
 $warning: $yellow;
 $danger: $red;
 $white: #fff;
@@ -40,15 +40,6 @@ $body-bg: #f0f0f0;
 $alert-bg-scale: 0%;
 $alert-padding-y: 0.75rem;
 $alert-padding-x: 1.25rem;
-$enable-shadows: true;
-
-$box-shadow:                  0 .5rem 1rem rgba($black, .36) !default;
-$box-shadow-sm:               0 .125rem .25rem rgba($black, .161) !default;
-$box-shadow-lg:               0 1rem 3rem rgba($black, .37) !default;
-$box-shadow-inset:            inset 0 1px 2px rgba($black, .161) !default;
-$btn-box-shadow:              inset 0 1px 0 rgba($white, .25), 0 1px 1px rgba($black, .38) !default;
-$btn-active-box-shadow:       inset 0 3px 5px rgba($black, .35) !default;
-$form-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .7) !default;
 
 $theme-colors: (
   "primary":    $primary,
