@@ -34,11 +34,10 @@
 
 ## Questions
 
-### Will my videos/comments on PokTube be on squareBracket?
-Nope. We have since decided to only import users, and not any videos and comments from PokTube. This wasn't worth it, as most accounts haven't been logged on or the account's owner ended up registering a new one. The only PokTube account that had any activity on squareBracket was owned by a underaged kid, which got banned(?).
+### How do I translate squareBracket?
+squareBracket Translations: https://crowdin.com/project/squarebracket
 
-### Why not continue using the old PokTube codebase?
-99.99% of the code was garbage, and security holes were in nearly every PHP script.
+RelativeTime Repo (used for dates): https://github.com/mpratt/RelativeTime
 
 ### Why use Twig? Why not just PHP?
 Twig literally makes HTML injection attacks a thing of the past. It's more short and concise than PHP's "templating" syntax, it supports layout inheritance and it allows for more code reuse and it's versatile for creating more frontends in the future. It's secure (it treats all variables as "unsafe" and automatically escapes them unless you explicitly mark them as safe), concise (its liquid-like syntax is shorter and way more appropriate for the context of templating) and fast (with caching enabled there's basically no overhead compared to not using Twig).
