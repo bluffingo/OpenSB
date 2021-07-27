@@ -4,31 +4,43 @@
 
 	{% block content %}
 <div class="row">
-<h1>{{ __("Upload") }}</h1>
-<p><span class="badge bg-primary">{{ icon('info-circle', 16) }} {{ __("Important") }}</span> {{ __("By uploading your videos onto squareBracket, you acknowledge about the warning shown on the right.") }}</p>
+<h3>{{ __("Upload video") }}</h3>
+<p><span class="badge bg-primary">{{ icon('info-circle', 16) }} {{ __("Important") }}</span> {{ __("By uploading your videos onto squareBracket, you acknowledge about the upload guidelines.") }}</p>
 <div class="col-8">
 <form name="uploadForm" id="uploadForm" method="post" action="upload.php"
 enctype="multipart/form-data">
 <br>
-<dl class="row">
-  <dt class="col-sm-2">{{ __("Video info") }}</dt>
-  <dd class="col-sm-10">{{ __("Enter the title and description of your video.") }}</dd>
-</dl>
-	<input type="text" class="form-control" name="title" value="" placeholder="{{ __("Title") }}">
-	<textarea class="form-control" name="desc" maxlength="500" form="uploadForm"
+
+<div class="row">
+	<div class="col-auto pe-0">
+		{{ icon('text-left', 24) }}
+	</div>
+	<div class="col-auto">
+		<h4>{{ __("Video info") }}</h4>
+	</div>
+</div>
+<p>{{ __("Enter the title and description of your video.") }}</p>
+
+	<input type="text" class="form-control mb-1" name="title" value="" placeholder="{{ __("Title") }}">
+	<textarea class="form-control mb-1" name="desc" maxlength="2000" form="uploadForm"
 	style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}"></textarea>
 	<input type="text" class="form-control" name="tags" value="" placeholder="{{ __("Tags") }}">
 	<br>
-<dl class="row">
-  <dt class="col-sm-2">{{ __("Upload file") }}</dt>
-  <dd class="col-sm-10">{{ __("Select the video file you want to upload.") }}</dd>
-</dl>
+<div class="row">
+	<div class="col-auto pe-0">
+		{{ icon('file-earmark-play', 24) }}
+	</div>
+	<div class="col-auto">
+		<h4>{{ __("Video file") }}</h4>
+	</div>
+</div>
+<p>{{ __("Select the video file you want to upload.") }}</p>
 	<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
 	<br>
 	</div>
 	<div class="col-4">
 <div class="card">
-  <h5 class="card-header">{{ __("Warning") }}</h5>
+  <h5 class="card-header">{{ __("Upload Guideines") }}</h5>
   <div class="card-body">
     <p class="card-text">{{ __("Please, for god sakes, do not upload anything related to logos or cartoons meant for children. The viewer-base of those videos indirectly caused the downfall of the Gamerappa YouTube channel.") }}</p>
     <a href="https://studio.youtube.com/" class="btn btn-secondary">{{ __("Upload anyways") }}</a>
