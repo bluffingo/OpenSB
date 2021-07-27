@@ -110,10 +110,11 @@
 	"Change theme": "Change theme",
 	"My profile": "My profile",
 	"Sign off": "Sign off",
+	"Finalium Light": "Finalium Light",
+	"Finalium Dark": "Finalium Dark",
 	"Light": "Light",
 	"Dark": "Dark",
 	"Bootstrap": "Bootstrap",
-	"Finalium": "Finalium",
 	"Home": "Home",
 	"Users registered": "Users registered",
 	"Videos uploaded": "Videos uploaded",
@@ -131,18 +132,19 @@
 	"Edit video": "Edit video",
 	"Enter comment here, Markdown can be used here.": "Enter comment here, Markdown can be used here.",
 	"Please sign in in order to comment.": "Please sign in in order to comment.",
-	"Send": "Send",
+	"Comment": "Comment",
 	"Posting...": "Posting...",
 
+	"Upload video": "Upload video",
 	"Important": "Important",
-	"By uploading your videos onto squareBracket, you acknowledge about the warning shown on the right.": "By uploading your videos onto squareBracket, you acknowledge about the warning shown on the right.",
+	"By uploading your videos onto squareBracket, you acknowledge about the upload guidelines.": "By uploading your videos onto squareBracket, you acknowledge about the upload guidelines.",
 	"Video info": "Video info",
 	"Enter the title and description of your video.": "Enter the title and description of your video.",
 	"Title": "Title",
 	"Tags": "Tags",
-	"Upload file": "Upload file",
+	"Video file": "Video file",
 	"Select the video file you want to upload.": "Select the video file you want to upload.",
-	"Warning": "Warning",
+	"Upload Guideines": "Upload Guideines",
 	"Please, for god sakes, do not upload anything related to logos or cartoons meant for children. The viewer-base of those videos indirectly caused the downfall of the Gamerappa YouTube channel.": "Please, for god sakes, do not upload anything related to logos or cartoons meant for children. The viewer-base of those videos indirectly caused the downfall of the Gamerappa YouTube channel.",
 	"Upload anyways": "Upload anyways",
 
@@ -173,7 +175,6 @@
 	"Sorry about that.": "Sorry about that.",
 
 	"Hello %s. Please choose a new secure password, and be sure to remember it!": "Hello %s. Please choose a new secure password, and be sure to remember it!",
-	"Submit": "Submit",
+	"Submit": "Submit"
 
-	"view%s.": "view%s.",
 }

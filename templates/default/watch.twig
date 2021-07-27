@@ -142,13 +142,12 @@
 				<div class="card">
 				<div class="card-body">
 				<h5>Comments</h5><hr class="mt-2 mb-3"/>
-							<textarea class="form-control mt-2 mb-3" id="commentContents" style="overflow:hidden;resize:none"
+							<textarea class="form-control mt-2 mb-2" id="commentContents" style="overflow:hidden;resize:none"
 			rows="3" placeholder="{% if logged_in %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
 			{% if logged_in %}<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top:5px;margin-bottom:15px">
 			<class=
 			<button id="{% if logged_in %}post{% endif %}" class="btn btn-primary {% if not logged_in %}disabled{% endif %}">
-			{{ icon('reply-fill', 16) }} 
-			{{ __("Send") }}
+			{{ __("Comment") }}
 			<div class="spinner-border spinner-border-sm d-none" id="commentPostingSpinner" role="status" aria-hidden="true"><span class="visually-hidden">{{ __("Posting...") }}</span></div>
 			</button>
 			</div>{% endif %}

@@ -75,9 +75,10 @@
 							<a href="upload.php" class="nav-link">
 								<div class="d-flex align-items-center">
 									<div class="flex-grow-1 pe-1">
-										{{ icon('camera-video', 24) }}
+										{{ icon('plus', 24) }}
 									</div>
-									{{ __("Upload") }}
+									<span class="pe-1">{{ __("Upload") }}</span>
+									{{ icon('caret-down-fill', 8) }}
 								</div>
 							</a>
 						</li>
@@ -118,10 +119,11 @@
 						</ul>
 						<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" id="back" href="#">{{ __("Back") }}</a></li>
+							<li><a class="dropdown-item" id="finalium" href="#">{{ __("Finalium Light") }}</a></li>
+							<li><a class="dropdown-item" id="finalium-dark" href="#">{{ __("Finalium Dark") }}</a></li>
 							<li><a class="dropdown-item" id="light" href="#">{{ __("Light") }}</a></li>
 							<li><a class="dropdown-item" id="dark" href="#">{{ __("Dark") }}</a></li>
 							<li><a class="dropdown-item" id="vanilla" href="#">{{ __("Bootstrap") }}</a></li>
-							<li><a class="dropdown-item" id="finalium" href="#">{{ __("Finalium") }}</a></li>
 						</ul>
 					</div>
 				</ul>
