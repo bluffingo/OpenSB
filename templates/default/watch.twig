@@ -132,7 +132,7 @@
 								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-down-fill"/>
 							</svg></a> <span id="dislikes" style="padding-right: 10px">{{ total_dislikes }}</span>
 							<button id="subscribe" class="btn btn-{% if subscribed %}secondary{% elseif current_user.id == video.author %}primary{% else %}warning{% endif %}" type="button" {% if not logged_in or current_user.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unsubscribe") }}{% elseif current_user.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Subscribe") }}{% endif %}</button>
-						</div>
+							</div>
 						<p style="margin-top: 1rem;">{{ video.description }}</p>
 					</div>
 				</div>

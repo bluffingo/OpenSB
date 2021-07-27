@@ -98,13 +98,15 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			if (status == "success") {
 				if(data == subscribe_string) {
 					$("#subscribe").text(subscribe_string);
+					$("#subscribe").attr("class", "btn btn-warning");
 					play("click");
 				} else if(data == unsubscribe_string) {
 					$("#subscribe").text(unsubscribe_string);
+					$("#subscribe").attr("class", "btn btn-secondary");
 					play("subscribe");
 				} else {
 					play("error");
-					alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
+					alert('unexpected output! report to https://github.com/squarebracket-gamerappa/squarebracket/issues');
 				}
 			}
 		});
@@ -128,7 +130,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 						$("#like").click();
 					} else {
 						play("error");
-						alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
+						alert('unexpected output! report to https://github.com/squarebracket-gamerappa/squarebracket/issues');
 					}
 				}
 			});
@@ -153,7 +155,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 						$("#dislike").click();
 					} else {
 						play("error");
-						alert('unexpected output! report to https://github.com/chazizsquarebracket/squarebracket/issues');
+						alert('unexpected output! report to https://github.com/squarebracket-gamerappa/squarebracket/issues');
 					}
 				}
 			});

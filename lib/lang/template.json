@@ -22,13 +22,14 @@
 	"Please enter your password! ": "Please enter your password! ",
 	"Incorrect username or password.": "Incorrect username or password.",
 
-	"Blank username. ": "Blank username. ",
-	"Blank email. ": "Blank email. ",
-	"Password is too short. ": "Password is too short. ",
-	"The passwords don't match. ": "The passwords don't match. ",
+	"Blank username.": "Blank username.",
+	"Blank email.": "Blank email.",
+	"Password is too short.": "Password is too short.",
+	"The passwords don't match.": "The passwords don't match.",
+	"Blank display name.": "Blank display name.",
 	"Username has already been taken. ": "Username has already been taken. ",
-	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "Username contains invalid characters (Only alphanumeric and underscore allowed). ",
-	"Email isn't valid. ": "Email isn't valid. ",
+	"Username contains invalid characters (Only alphanumeric and underscore allowed).": "Username contains invalid characters (Only alphanumeric and underscore allowed).",
+	"Email isn't valid.": "Email isn't valid.",
 	"Incorrect CAPTCHA. Please try again.": "Incorrect CAPTCHA. Please try again.",
 
 	"This video is being processed. Try again later.": "This video is being processed. Try again later.",
@@ -72,6 +73,15 @@
 	"Other": "Other",
 	"Log out from all devices": "Log out from all devices",
 
+	"Register": "Register",
+	"E-mail": "E-mail",
+	"Display Name": "Display Name",
+	"Username": "Username",
+	"Back": "Back",
+	"You must be 13 years or older to register to squareBracket.": "You must be 13 years or older to register to squareBracket.",
+	"Account passwords are hashed with bcrypt.": "Account passwords are hashed with bcrypt.",
+	"By squareBracket contributors": "By squareBracket contributors",
+
 	"Checkmarked": "Checkmarked",
 	"Your profile settings were successfully updated.": "Your profile settings were successfully updated.",
 	"Uploaded by %s": "Uploaded by %s",
@@ -84,13 +94,7 @@
 	"Administrator Actions": "Administrator Actions",
 	"Generate password reset for %s": "Generate password reset for %s",
 
-	"Register": "Register",
-	"E-mail": "E-mail",
-	"Username": "Username",
-	"Back": "Back",
 	"By creating an account, you acknowledge the fact you should at least be 13 years old prior to registering.": "By creating an account, you acknowledge the fact you should at least be 13 years old prior to registering.",
-	"Account passwords are hashed with bcrypt.": "Account passwords are hashed with bcrypt.",
-	"By squareBracket contributors": "By squareBracket contributors",
 
 	"Videos from subscriptions": "Videos from subscriptions",
 	"Videos": "Videos",
@@ -151,6 +155,8 @@
 	"Search Results for %s": "Search Results for %s",
 	"No search results found.": "No search results found.",
 
+	"There are currently no videos uploaded by %s.": "There are currently no videos uploaded by %s.",
+
 	"From my subscriptions": "From my subscriptions",
 	"Browse subscriptions": "Browse subscriptions",
 	"There are currently no videos from your subscriptions.": "There are currently no videos from your subscriptions.",
@@ -164,8 +170,10 @@
 	"Welcome to squareBracket": "Welcome to squareBracket",
 	"I can't believe it's not PokTube": "I can't believe it's not PokTube",
 	"News and updates": "News and updates",
-	"After nearly 3 months of development after the reset, squareBracket has now entered beta.": "After nearly 3 months of development after the reset, squareBracket has now entered beta.",
-	"The squareBracket team": "The squareBracket team",
+	"In memory of Vlare": "In memory of Vlare",
+	"That's right, no more VidLii 2.0 for you.": "That's right, no more VidLii 2.0 for you.",
+	"August 30th 2018 - July 26th 2021": "August 30th 2018 - July 26th 2021",
+	"Gamerappa": "Gamerappa",
 	"Featured videos": "Featured videos",
 	"No featured videos.": "No featured videos.",
 

@@ -18,6 +18,8 @@ $webhook = ""; // Webhook URL for the new video webhook
 $domain = 'http://squarebracket.local';
 $isDebug = false; // DEV ONLY
 
+$testNewLayout = false; // DEV ONLY
+
 // hCaptcha secret and sitekey,
 // if these are empty, hCaptcha is disabled.
 $hCaptchaSiteKey = '';

@@ -71,9 +71,9 @@ if (isset($_POST['updatesettings'])) {
 }
 
 $twig = twigloader();
-if ($isDebug) {
+if ($testNewLayout) {
 	// COMPLETE (yes) revamp of the whole settings page, could make changing settings unusable so 
-	// DEBUG ONLY -gr 7/26/2021 (holy shit the gamerappa name is 5 years old now)
+	// DEV ONLY -gr 7/26/2021 (holy shit the gamerappa name is 5 years old now)
 	echo $twig->render('settings_redesign.twig'); 
 } else {
 	echo $twig->render('settings.twig');
