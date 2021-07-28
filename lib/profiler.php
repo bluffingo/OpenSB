@@ -15,14 +15,15 @@ class Profiler {
 		global $currentUser, $frontend;
 
 		$username = (isset($currentUser['username']) ? $currentUser['username'] : '(not logged in)');
+		$displayname = (isset($currentUser['display_name']) ? $currentUser['display_name'] : '(not logged in)');
 		$language = (isset($currentUser['language']) ? $currentUser['language'] : 'en_US');
 		$memoryUsage = memory_get_usage(false) / 1024;
 		$renderTime = microtime(true) - $this->starttime;
 		$res = getrusage();
 
 		$debugData = sprintf(
-			'[debug]: logged in as %s | user time used: %s | system time used: %s | current locale: %s | page rendered in %1.3f secs with %dKB used',
-		$username, $res["ru_utime.tv_sec"], $res["ru_stime.tv_sec"], $language, $renderTime, $memoryUsage);
+			'[debug]: logged in as %s (@%s) | user time used: %s | system time used: %s | current locale: %s | page rendered in %1.3f secs with %dKB used',
+		$displayname, $username, $res["ru_utime.tv_sec"], $res["ru_stime.tv_sec"], $language, $renderTime, $memoryUsage);
 
 		if ($frontend == 'default') {
 			printf(
