@@ -155,7 +155,9 @@
 	"Search Results for %s": "Search Results for %s",
 	"No search results found.": "No search results found.",
 
+	"Your profile has been successfully updated.": "Your profile has been successfully updated.",
 	"There are currently no videos uploaded by %s.": "There are currently no videos uploaded by %s.",
+	"Administrative Actions": "Administrative Actions",
 
 	"From my subscriptions": "From my subscriptions",
 	"Browse subscriptions": "Browse subscriptions",
