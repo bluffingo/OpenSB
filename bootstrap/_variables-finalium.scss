@@ -5,14 +5,14 @@ $pink: #e83e8c;
 $red: #ff5252;
 $orange: #fd9814;
 $yellow: #ffbf00;
-$cyan: #17a2b8;
+$cyan: #1778b8;
 $blue: #1b9ade;
-$green: #00b843;
+$green: #00b856;
 $poktube-blue: #0051b3;
 $teal: #20c997;
 $primary: $blue;
 $success: $green;
-$info: #7960bf;
+$info: $cyan;
 $warning: $yellow;
 $danger: $red;
 $white: #fff;
@@ -39,6 +39,7 @@ $body-bg: #f0f0f0;
 $alert-bg-scale: 0%;
 $alert-padding-y: 0.75rem;
 $alert-padding-x: 1.25rem;
+$gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0));
 
 $container-max-widths: (
   sm: 540px,
