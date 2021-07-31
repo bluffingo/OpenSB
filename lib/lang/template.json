@@ -32,6 +32,8 @@
 	"Email isn't valid.": "Email isn't valid.",
 	"Incorrect CAPTCHA. Please try again.": "Incorrect CAPTCHA. Please try again.",
 
+	"This feature is not ready for production.": "This feature is not ready for production.",
+
 	"This video is being processed. Try again later.": "This video is being processed. Try again later.",
 	"Published on %s": "Published on %s",
 
@@ -96,6 +98,14 @@
 
 	"By creating an account, you acknowledge the fact you should at least be 13 years old prior to registering.": "By creating an account, you acknowledge the fact you should at least be 13 years old prior to registering.",
 
+	"Write a Forum Thread": "Write a Forum Thread",
+	"As you can tell, this page is not complete": "As you can tell, this page is not complete",
+	"Your post": "Your post",
+	"Write whatever you want to post on the squareBracket Forums": "Write whatever you want to post on the squareBracket Forums",
+	"Thread's title": "Thread's title",
+	"Thread's contents": "Thread's contents",
+	"Post Thread": "Post Thread",
+
 	"Videos from subscriptions": "Videos from subscriptions",
 	"Videos": "Videos",
 	"Your subscriptions haven't uploaded videos yet.": "Your subscriptions haven't uploaded videos yet.",
@@ -114,12 +124,13 @@
 	"Change theme": "Change theme",
 	"My profile": "My profile",
 	"Sign off": "Sign off",
-	"Finalium Light": "Finalium Light",
-	"Finalium Dark": "Finalium Dark",
 	"Light": "Light",
 	"Dark": "Dark",
+	"Classic Light": "Classic Light",
+	"Classic Dark": "Classic Dark",
 	"Bootstrap": "Bootstrap",
 	"Home": "Home",
+	"By the squareBracket contributors": "By the squareBracket contributors",
 	"Users registered": "Users registered",
 	"Videos uploaded": "Videos uploaded",
 	"Terms": "Terms",
