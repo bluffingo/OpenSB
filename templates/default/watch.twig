@@ -37,11 +37,17 @@
 		<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
 		<script src="https://unpkg.com/plyr@3.6.8/dist/plyr.min.js"></script>
 		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
+		<!-- indigo player (the player we used back in the milestone/alpha days) was starting to have a lot of techincal issues by the time of alpha 3.
+		videos would randomly glitch on indigo and sometimes it wouldn't even load the goddamn video (not a ffmpeg issue this time). 
+		we at squarebracket have decided to use plyr instead of indigo. the aspect ratio is a bit wonky but that should be fixed soon 
+		-gamerappa, July 31st 2021 -->
 		    <style>
 				.plyr--video {
 					height: 30rem;
+					--plyr-color-main: var(--bs-primary);
+					--plyr-font-family: var(--bs-font-sans-serif);
 				}
-			</style>
+		    </style>
 		<script>
 			{% if not (video.flags b-and 2) %}
 				document.addEventListener('DOMContentLoaded', () => {

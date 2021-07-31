@@ -1,3 +1,7 @@
+// we don't need a duplicate custom file, so we just finalium 's custom stuff.
+// which looks good on finalium dark. the variables are modified versions of the
+// classicish dark variables. which originated from the initial dark theme that 
+// was used in ms2/alpha 3, which originated from darkly(?) -gamerappa 7/31/2021
 @import "_variables-finalium-dark.scss";
 @import "../vendor/twbs/bootstrap/scss/bootstrap.scss";
 @import "custom-finalium.scss";
