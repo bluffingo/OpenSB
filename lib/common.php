@@ -29,10 +29,9 @@ function _twigloader($subfolder = '') {
 	return $twig;
 }
 
-// Makes incomplete unready features not available on production (aka squarebracket.veselcraft.ru)
-function notReady() {
+function accessDenied() {
 	http_response_code(403);
-	die(__("This feature is not ready for production.")); 
+	die(__("Access Denied")); 
 }
 
 $userfields = userfields();
@@ -61,13 +60,7 @@ if (isset($_COOKIE['theme'])) {
 	$theme = 'finalium';
 }
 
-// Reminder: sbNext is no longer a priority to us and is currently deprecated. -gr 7/16/21
-// Note: how the fuck do i compile the sbnext css without having to go to node hell? -gr 7/30/2021
-if ($sbNext) {
-    $frontend = 'new';
-} else {
-    $frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
-}
+$frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
 
 if ($loggedIn) {
 	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);

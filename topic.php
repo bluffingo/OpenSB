@@ -3,7 +3,7 @@ require('lib/common.php');
 
 // This isn't ready for production.
 if (!$isDebug) {
-	notReady();
+	accessDenied();
 }
 
 $id = (isset($_GET['thread']) ? $_GET['thread'] : null);
@@ -20,5 +20,3 @@ $twig = twigloader();
 echo $twig->render('topic.twig', [
 	'post_data' => $postData
 ]);
-
-echo $id;
