@@ -5,7 +5,7 @@
 	{% block content %}
 <main class="form-signin">
 {% if error %}
-	<div class="alert alert-danger" role="alert">{{ error }}</div>
+	<div class="alert alert-warning" role="alert">{{ error }}</div>
 {% endif %}
 <div class="container">
 </div>
@@ -21,6 +21,10 @@ register page should be merged with login page on sbnext
 		<div class="form-floating my-2">
 			<input type="email" name="email" class="form-control" id="floatingEmail" placeholder="">
 			<label for="floatingEmail">{{ __("E-mail") }}</label>
+		</div>
+		<div class="form-floating my-2">
+			<input type="text" name="displayName" class="form-control" id="floatingDname" placeholder="">
+			<label for="floatingDname">{{ __("Display Name") }}</label>
 		</div>
 		<div class="form-floating my-2">
 			<input type="text" name="username" class="form-control" id="floatingUsername" placeholder="">
@@ -39,13 +43,13 @@ register page should be merged with login page on sbnext
 			<div class="h-captcha" data-sitekey="{{ hcaptcha_sitekey }}"></div>
 		</div>
 		{% endif %}
-		<div class="d-grid gap-2 d-md-flex justify-content-between">
+		<div class="d-flex gap-2 justify-content-between">
 			<input class="btn btn-lg btn-primary flex-grow-1" type="submit" value="{{ __("Register") }}" name="action">
 			<a class="btn btn-lg btn-secondary" href="/">{{ __("Back") }}</a>
 		</div>
 	</div>
 </div>
-	<p class="mt-2 text-light">{{ __("By creating an account, you acknowledge the fact you should at least be 13 years old prior to registering.") }} {{ __("Account passwords are hashed with bcrypt.") }}</p>
+	<p class="mt-2 text-light"><b>{{ __("You must be 13 years or older to register to squareBracket.") }}</b> <br>{{ __("Account passwords are hashed with bcrypt.") }}</p>
 	<p class="mt-5 mb-3 text-light">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
 </form>
 </main>
