@@ -7,6 +7,7 @@ $manager = new ImageManager();
 if (!$loggedIn) redirect('login.php');
 
 if (isset($_POST['updatesettings'])) {
+	$displayName	= isset($_POST['displayName']) ? $_POST['displayName'] : null;
 	$description	= isset($_POST['description']) ? $_POST['description'] : null;
 	$color			= isset($_POST['color']) ? $_POST['color'] : '#523bb8'; // setting color to "null" would fuck up the scss compiler(?) -gr 7/26/2021
 	$language		= isset($_POST['language']) ? $_POST['language'] : 'en-US';
@@ -64,8 +65,8 @@ if (isset($_POST['updatesettings'])) {
 		$img = $manager->make($backtarget_file);
 		$img->save($backtarget_file, 0, 'png');
 	}
-	query("UPDATE users SET description = ?, color = ?, language = ? WHERE id = ?",
-		[$description, $color, $language, $currentUser['id']]);
+	query("UPDATE users SET display_name = ?, description = ?, color = ?, language = ? WHERE id = ?",
+		[$displayName, $description, $color, $language, $currentUser['id']]);
 
 	redirect(sprintf("user.php?name=%s&edited", $currentUser['username']));
 }
