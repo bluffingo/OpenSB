@@ -55,6 +55,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
 		Cookies.set("theme", "finalium", { expires: 1000 });
 	});
+	$("#finalium-dark").click(function(){
+		$("#themeSelection").removeClass("show");
+		$("#bootstrap").attr("href", "assets/bs-finalium-dark.css");
+		$("#navbar").attr("class", "navbar navbar-dark bg-dark navbar-static-top navbar-expand-md");
+		Cookies.set("theme", "finalium-dark", { expires: 1000 });
+	});
 	contents = $.trim($("#commentContents").val());
 	if (contents === null || contents == "" && $("#post").attr("class") != "btn btn-primary disabled") {
 		$("#post").addClass("disabled");

@@ -58,10 +58,11 @@ if (isset($_COOKIE['theme'])) {
 	$theme = $_COOKIE['theme'];
 } else {
 	// No cookie, default to the default theme
-	$theme = 'default';
+	$theme = 'finalium';
 }
 
 // Reminder: sbNext is no longer a priority to us and is currently deprecated. -gr 7/16/21
+// Note: how the fuck do i compile the sbnext css without having to go to node hell? -gr 7/30/2021
 if ($sbNext) {
     $frontend = 'new';
 } else {
