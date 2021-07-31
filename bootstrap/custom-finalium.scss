@@ -27,14 +27,18 @@
 }
 
 @mixin btn-styles($btn-color: #555) {
-  @include gradient-y($start-color: $btn-color, $end-color: darken($btn-color, 12%));
+  @include gradient-y($start-color: $btn-color, $end-color: darken($btn-color, 5%));
   background-repeat: repeat-x;
   border-color: darken($btn-color, 14%);
 
-  &:hover,
-  &:focus  {
+  &:hover  {
     //Hack to fix the smooth fade between hover and normal button style.
-    @include gradient-y($start-color: darken($btn-color, 12%), $end-color: darken($btn-color, 12%));
+    @include gradient-y($start-color: darken($btn-color, 5%), $end-color: darken($btn-color, 10%));
+  }
+
+  &:focus {
+    //Hack to fix the smooth fade between focus and normal button style.
+    @include gradient-y($start-color: darken($btn-color, 7%), $end-color: darken($btn-color, 12%));
   }
 
   &:active,
