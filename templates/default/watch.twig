@@ -16,6 +16,7 @@
 		video_id = '{{ video.video_id }}';
 		user_id = '{{ video.author }}';
 	</script>
+	<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
 {% endblock %}
 
 {% block title %}{{ video.title }}{% endblock %}
@@ -23,80 +24,41 @@
 	{% block content %}
 <div class="row">
 	<div class="col-lg-9">
-		<div id="playerContainer">
+		<div id="container" style="height: 30rem;">
 			<!--- todo: redo "video processed" message to use _error.twig -gr 7/22/2021 --->
 			{% if (video.flags b-and 2) %}
-				<div style="height: 30rem; background-color: black; color: white; text-align: center; padding: 15rem">
+				<div style="background-color: black; color: white; text-align: center; padding: 15rem">
 					{{ __("This video is being processed. Try again later.") }}
 				</div>
+			{% else %}
+				<video controls crossorigin playsinline poster=""></video>
 			{% endif %}
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
+		<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+		<script src="https://unpkg.com/plyr@3.6.8/dist/plyr.min.js"></script>
+		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
 		    <style>
-				@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
-				.igui-icon-font {
-					font-family: 'bootstrap-icons';
-				}
-				.igui_icon_pip::before {
-					content: "\f4ef";
-				}
-				.igui_icon_fullscreen-exit::before {
-					content: "\f3de";
-				}
-				.igui_icon_fullscreen::before {
-					content: "\f3df";
-				}
-				.igui_icon_play::before {
-					content: "\f4f4";
-				}
-				.igui_icon_pause::before {
-					content: "\f4c3";
-				}
-				.igui_icon_volume-off::before {
-					content: "\f60c";
-				}
-				.igui_icon_volume-1::before {
-					content: "\f60a";
-				}
-				.igui_icon_volume-2::before {
-					content: "\f610";
-				}
-				.igui_icon_settings::before {
-					content: "\f3e2";
-				}
-				.igui_icon_back::before {
-					content: "\f131";
-				}
-				.igui_seekbar_progress,
-				.igui_seekbar_scrubber {
-					background-color: var(--bs-primary);
-				}
-				.ig-container {
-					font-family: var(--bs-font-sans-serif);
-				}
-				.ig_contextmenu {
-					background: rgba(0,0,0,0.85);
-					border-radius: 5px;
-					padding: 8px 0;
+				.plyr--video {
+					height: 30rem;
 				}
 			</style>
 		<script>
 			{% if not (video.flags b-and 2) %}
-				const config = {
-					autoplay: true,
-					sources: [
-						{
-							type: 'dash',
-							src: '{{ video.videofile }}'
-						}
-					],
-					ui: {
-						image: '{{ video_thumbnail(video.video_id) }}',
-						locale: '{{ current_user.language | replace({'_': '-'}) }}'
-					}
-				};
-				const element = document.getElementById('playerContainer');
-				const player = IndigoPlayer.init(element, config);
+				document.addEventListener('DOMContentLoaded', () => {
+					const source = '{{ video.videofile }}';
+					// For more dash options, see https://github.com/Dash-Industry-Forum/dash.js
+					const dash = dashjs.MediaPlayer().create();
+					const video = document.querySelector('video');
+					dash.initialize(video, source, true);
+
+					// Update caption tracks after initializing Plyr to get the generated captions
+					// For more options see: https://github.com/sampotts/plyr/#options
+					const player = new Plyr(video);
+
+					// Expose player and dash so they can be used from the console
+					window.player = player;
+					window.dash = dash;
+				});
 			{% endif %}
 		</script>
 		<div style="margin-top:5px">
