@@ -28,8 +28,9 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'The post''s ID.',
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The post''s title.',
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The post''s contents.',
-  `author` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The post''s author, which is the author''s internal counting ID.',
+  `author` int(11) NOT NULL COMMENT 'The post''s author, which is the author''s internal counting ID.',
   `time` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The time when the post was posted.',
+  `thread_id` int(11) NOT NULL COMMENT 'The ID of the thread of WHATEVER THE FUCK IS THE POST',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -44,6 +45,13 @@ CREATE TABLE `rating` (
 CREATE TABLE `subscriptions` (
   `id` int(11) NOT NULL COMMENT 'ID of the user that wants to subscribe to a user.',
   `user` int(11) NOT NULL COMMENT 'The user that the user wants to subscribe to.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE `threads` (
+  `t_id` int(11) NOT NULL COMMENT 'This will fucking fail.',
+  `title` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The title of the thread.',
+  `author` int(11) NOT NULL COMMENT 'Author Id of The Thread.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
@@ -82,4 +90,4 @@ CREATE TABLE `videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- 2021-07-31 02:51:56
+-- 2021-07-31 21:23:00
