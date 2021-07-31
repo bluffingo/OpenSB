@@ -16,8 +16,6 @@
 	"do not reset": "do not reset",
 	"Passwords aren't identical.": "Passwords aren't identical.",
 
-	"Access Denined": "Access Denined",
-
 	"Please enter your username! ": "Please enter your username! ",
 	"Please enter your password! ": "Please enter your password! ",
 	"Incorrect username or password.": "Incorrect username or password.",
@@ -32,14 +30,7 @@
 	"Email isn't valid.": "Email isn't valid.",
 	"Incorrect CAPTCHA. Please try again.": "Incorrect CAPTCHA. Please try again.",
 
-	"This feature is not ready for production.": "This feature is not ready for production.",
-
-	"This video is being processed. Try again later.": "This video is being processed. Try again later.",
-	"Published on %s": "Published on %s",
-
-	"No uploaded videos.": "No uploaded videos.",
-
-	"views": "views",
+	"Access Denied": "Access Denied",
 
 	"Browse": "Browse",
 	"Channels": "Channels",
@@ -107,6 +98,7 @@
 	"Videos from subscriptions": "Videos from subscriptions",
 	"Videos": "Videos",
 	"Your subscriptions haven't uploaded videos yet.": "Your subscriptions haven't uploaded videos yet.",
+	"No uploaded videos.": "No uploaded videos.",
 
 	"About": "About",
 	"About squareBracket": "About squareBracket",
@@ -140,6 +132,7 @@
 	"All videos": "All videos",
 	"Approved videos": "Approved videos",
 
+	"This video is being processed. Try again later.": "This video is being processed. Try again later.",
 	"Uploaded on %s": "Uploaded on %s",
 	"view%s": "view%s",
 	"subscriber%s": "subscriber%s",
@@ -158,7 +151,7 @@
 	"Tags": "Tags",
 	"Video file": "Video file",
 	"Select the video file you want to upload.": "Select the video file you want to upload.",
-	"Upload Guideines": "Upload Guideines",
+	"Upload Guidelines": "Upload Guidelines",
 	"Please, for god sakes, do not upload anything related to logos or cartoons meant for children. The viewer-base of those videos indirectly caused the downfall of the Gamerappa YouTube channel.": "Please, for god sakes, do not upload anything related to logos or cartoons meant for children. The viewer-base of those videos indirectly caused the downfall of the Gamerappa YouTube channel.",
 	"Upload anyways": "Upload anyways",
 
