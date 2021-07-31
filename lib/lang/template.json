@@ -75,15 +75,6 @@
 	"Other": "Other",
 	"Log out from all devices": "Log out from all devices",
 
-	"Register": "Register",
-	"E-mail": "E-mail",
-	"Display Name": "Display Name",
-	"Username": "Username",
-	"Back": "Back",
-	"You must be 13 years or older to register to squareBracket.": "You must be 13 years or older to register to squareBracket.",
-	"Account passwords are hashed with bcrypt.": "Account passwords are hashed with bcrypt.",
-	"By squareBracket contributors": "By squareBracket contributors",
-
 	"Checkmarked": "Checkmarked",
 	"Your profile settings were successfully updated.": "Your profile settings were successfully updated.",
 	"Uploaded by %s": "Uploaded by %s",
@@ -96,7 +87,14 @@
 	"Administrator Actions": "Administrator Actions",
 	"Generate password reset for %s": "Generate password reset for %s",
 
-	"By creating an account, you acknowledge the fact you should at least be 13 years old prior to registering.": "By creating an account, you acknowledge the fact you should at least be 13 years old prior to registering.",
+	"Register": "Register",
+	"E-mail": "E-mail",
+	"Display Name": "Display Name",
+	"Username": "Username",
+	"Back": "Back",
+	"You must be 13 years or older to register to squareBracket.": "You must be 13 years or older to register to squareBracket.",
+	"Account passwords are hashed with bcrypt.": "Account passwords are hashed with bcrypt.",
+	"By squareBracket contributors": "By squareBracket contributors",
 
 	"Write a Forum Thread": "Write a Forum Thread",
 	"As you can tell, this page is not complete": "As you can tell, this page is not complete",
@@ -117,6 +115,7 @@
 	"The squareBracket website is open source on GitHub.": "The squareBracket website is open source on GitHub.",
 
 	"Change the look and feel of your channel's page.": "Change the look and feel of your channel's page.",
+	"Channel background image": "Channel background image",
 
 	"Search": "Search",
 	"Upload": "Upload",
@@ -175,7 +174,6 @@
 	"There are currently no videos from your subscriptions.": "There are currently no videos from your subscriptions.",
 	"Recently uploaded to squareBracket": "Recently uploaded to squareBracket",
 	"Browse videos": "Browse videos",
-	"Hi there, %s": "Hi there, %s",
 	"You have %s subscriber%s.": "You have %s subscriber%s.",
 	"no": "no",
 	"You have %s view%s.": "You have %s view%s.",
