@@ -31,7 +31,7 @@
 					{{ __("This video is being processed. Try again later.") }}
 				</div>
 			{% else %}
-				<video controls crossorigin playsinline poster=""></video>
+				<video controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}"></video>
 			{% endif %}
 		</div>
 		<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
