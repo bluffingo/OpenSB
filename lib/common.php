@@ -29,6 +29,12 @@ function _twigloader($subfolder = '') {
 	return $twig;
 }
 
+// Makes incomplete unready features not available on production (aka squarebracket.veselcraft.ru)
+function notReady() {
+	http_response_code(403);
+	die(__("This feature is not ready for production.")); 
+}
+
 $userfields = userfields();
 
 // Cookie auth

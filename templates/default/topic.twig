@@ -10,10 +10,11 @@
   <div class="card-body">
    <div class="row">
    	<div class="col-md-2">
-   	 {{ post_data.author }}
+   	{{ post_data.u_username }}
+	<img class="float-start rounded w-75" src="{{ profile_image(video.u_username) }}">
    	</div>
    	<div class="col-md-10">
-   	 {{ post_data.description }}
+   	 {{ post_data.content }}
    	</div>
     </div>
   </div>
