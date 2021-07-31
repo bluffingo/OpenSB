@@ -6,6 +6,7 @@ $languages = [
 	'fr-CA' => "Français Canadien",
 	'ru-RU' => "Русский",
 	'sv-SE' => "Svenska",
+	'zh-CN' => "Simplified Chinese", //todo, use proper language name
 ];
 if ($isDebug) {
 	$languages['qps-plocm'] = "Pseudolocalization [DEBUG ONLY]";
