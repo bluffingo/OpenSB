@@ -20,35 +20,39 @@ $config = [
 $new = $argv[1];
 $target_file = $argv[2];
 
-$ffmpeg = FFMpeg::create($config);
-$video = $ffmpeg->open($target_file);
-$dash = $video->dash()
-	->setAdaption('id=0,streams=v id=1,streams=a') // Set the adaption.
-	->x264() // Format of the video. Alternatives: x264() and vp9()
-	->autoGenerateRepresentations() // Auto generate representations
-	->save(); // It can be passed a path to the method or it can be null
-$metadata = $dash->metadata();
-if (floor($metadata->getFormat()->get('duration')) < 10) {
-	if (floor($metadata->getFormat()->get('duration')) == 0) {
-		$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration'))))
-			->save('assets/thumb/' . $new . '.png');
+try {
+	$ffmpeg = FFMpeg::create($config);
+	$video = $ffmpeg->open($target_file);
+	$dash = $video->dash()
+		->setAdaption('id=0,streams=v id=1,streams=a') // Set the adaption.
+		->x264() // Format of the video. Alternatives: x264() and vp9()
+		->autoGenerateRepresentations() // Auto generate representations
+		->save(); // It can be passed a path to the method or it can be null
+	$metadata = $dash->metadata();
+	if (floor($metadata->getFormat()->get('duration')) < 10) {
+		if (floor($metadata->getFormat()->get('duration')) == 0) {
+			$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration'))))
+				->save('assets/thumb/' . $new . '.png');
+		} else {
+			$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration')) - 1))
+				->save('assets/thumb/' . $new . '.png');
+		}
 	} else {
-		$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration')) - 1))
+		$video->frame(Coordinate\TimeCode::fromSeconds(10))
 			->save('assets/thumb/' . $new . '.png');
 	}
-} else {
-	$video->frame(Coordinate\TimeCode::fromSeconds(10))
-		->save('assets/thumb/' . $new . '.png');
+	$img = $manager->make('assets/thumb/' . $new . '.png');
+	$img->resize(640, 360);
+	$img->save('assets/thumb/' . $new . '.png');
+	unlink($target_file);
+
+	$videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);
+
+	query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
+		[ceil($metadata->getFormat()->get('duration')), $videoData['flags'] ^ 0x2, $new]);
+} catch (Exception $e) {
+	echo "Something went wrong!:". $e->getMessage();
 }
-$img = $manager->make('assets/thumb/' . $new . '.png');
-$img->resize(640, 360);
-$img->save('assets/thumb/' . $new . '.png');
-unlink($target_file);
-
-$videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);
-
-query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
-	[ceil($metadata->getFormat()->get('duration')), $videoData['flags'] ^ 0x2, $new]);
 
 // Discord webhook stuff
 if ($webhook) {
