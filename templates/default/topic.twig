@@ -3,20 +3,22 @@
 {% block title %}{{ post_data.title }}{% endblock %}
 
 	{% block content %}
+{% for post in post_data %}
 <div class="card">
   <div class="card-header">
-    {{ post_data.title }}
+    {{ post.title }}
   </div>
   <div class="card-body">
    <div class="row">
    	<div class="col-md-2">
-   	{{ post_data.u_username }}
-	<img class="float-start rounded w-75" src="{{ profile_image(video.u_username) }}">
+   	USER ID: {{ post.author }} (FIX LATER)
+	<img class="float-start rounded w-75" src="{{ profile_image(post.author) }}">
    	</div>
    	<div class="col-md-10">
-   	 {{ post_data.content }}
+   	 {{ post.content }}
    	</div>
     </div>
   </div>
 </div>
+{% endfor %}
 	{% endblock %}
