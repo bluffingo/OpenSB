@@ -81,7 +81,9 @@
 					<img class="float-start rounded" src="{{ profile_image(current_user.username) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
 					<input class="form-control" type="file" name="profilePicture" id="profilePicture">
 					<br/>
-					<h3>{{ __("Channel background") }} {{ __("(Checkmark only)") }}</h3>
+					<h3>{{ __("Display Name") }}</h3>
+					<input type="text" class="form-control" name="displayName" id="displayName" placeholder="{{ current_user.display_name }}">
+					<h3>{{ __("Channel background image") }} {{ __("(Checkmark only)") }}</h3>
 					<input class="form-control" type="file" name="profileBackground" id="profileBackground" {% if current_user.u_flags != 1 %}disabled{% endif %}>
 					<h3>{{ __("Channel description") }}</h3>
 					<textarea class="form-control" id="description" id="floatingInput" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
