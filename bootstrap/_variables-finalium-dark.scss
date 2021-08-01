@@ -38,6 +38,9 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-200 !default;
 $dark:          $gray-800 !default;
+$indigo-color:	$indigo;
+$teal-color:	$teal;
+$orange-color:	$orange;
 
 $min-contrast-ratio:   1.50 !default;
 
@@ -194,4 +197,18 @@ $grid-breakpoints: (
   xl: 1200px,
   xxl: 1400px,
   xxxl: 1750px
+);
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "violet":     $indigo-color,
+  "pale-green": $teal-color,
+  "carrot": $orange-color,
 );
