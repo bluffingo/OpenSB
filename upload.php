@@ -47,10 +47,10 @@ if (isset($_POST['upload']) and isset($currentUser['username'])) {
 			[$new,$title,$description,$currentUser['id'],time(),json_encode(explode(', ', $_POST['tags'])),'videos/'.$new.'.mpd', 0x2]);
 
 		if (substr(php_uname(), 0, 7) == "Windows") {
-			pclose(popen(sprintf('start /B  php lib/scripts/processingworker.php "%s" "%s" > nul', $new, $target_file), "r")); 
+			pclose(popen(sprintf('start /B  php lib/scripts/processingworker.php "%s" "%s" > %s', $new, $target_file, 'videos/'.$new.'.log'), "r")); 
 		}
 		else {
-			system(sprintf('php lib/scripts/processingworker.php "%s" "%s" > /dev/null 2>&1 &', $new, $target_file));
+			system(sprintf('php lib/scripts/processingworker.php "%s" "%s" > %s 2>&1 &', $new, $target_file, 'videos/'.$new.'.log'));
 		}
 
 		redirect('./watch.php?v='.$new);
