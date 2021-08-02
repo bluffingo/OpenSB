@@ -35,6 +35,9 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-500 !default;
 $dark:          $gray-800 !default;
+$indigo-color:	$indigo;
+$teal-color:	$teal;
+$orange-color:	$orange;
 
 $theme-colors: (
   "primary":    $primary,
@@ -45,6 +48,9 @@ $theme-colors: (
   "danger":     $danger,
   "light":      $light,
   "dark":       $dark,
+  "violet":     $indigo-color,
+  "pale-green": $teal-color,
+  "carrot": $orange-color,
 );
 
 $min-contrast-ratio:   1.50 !default;
