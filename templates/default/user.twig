@@ -22,22 +22,19 @@
 	<div class="p-1 bg-custom-profile text-white">
 		<div class="container py-4">
 			<div class="row">
-				<div class="col-md-11">
-					<img class="float-start rounded me-3" src="{{ profile_image(user.username) }}" width="144" alt="pfp">
-					<h1 class="align-top">
-						{{ user.username }}{% if user.u_flags == 1 %}<svg data-bs-toggle="tooltip"
+				<div class="col-md-10">
+					<img class="float-start rounded me-3" src="{{ profile_image(user.username) }}" width="150" alt="pfp">
+					<h1 class="align-top fw-bold mb-0">
+						{{ user.display_name }}{% if user.u_flags == 1 %}<svg data-bs-toggle="tooltip"
 							data-bs-placement="top" title="{{ __("Checkmarked") }}"
 							style="margin-left: 0.75%;" class="bi" width="32" height="32" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#patch-check-fill" />
 						</svg>{% endif %}</h1>
-					<p class="fs-4 text-break">{{ user.description }}</p>
+						<div class="fs-4">@{{ user.username }}</div>
+					<p class="fs-6 text-break">{{ user.description }}</p>
 				</div>
-				<div class="col-md-1 text-end">
-					<button id="subscribe" class="btn btn-{% if subscribed %}secondary{% else %}warning{% endif %}" type="button" {% if not logged_in or current_user.id == user.id %}disabled{% endif %}><svg data-bs-toggle="tooltip"
-							data-bs-placement="top" title="{% if subscribed %}{{ __("Unsubscribe") }}{% else %}{{ __("Subscribe") }}{% endif %}" style="margin-left: 0.75%;"
-							class="bi" width="32" height="32" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#{% if subscribed %}dash{% else %}plus{% endif %}" />
-						</svg></button>
+				<div class="col-md-2">
+					<button id="subscribe" class="btn btn-{% if subscribed %}secondary{% else %}warning{% endif %}" type="button" {% if not logged_in or current_user.id == user.id %}disabled{% endif %}>{% if subscribed %}{{ __("Unsubscribe") }}{% else %}{{ __("Subscribe") }}{% endif %}</button>
 				</div>
 			</div>
 		</div>
@@ -50,7 +47,7 @@
 	{% if edited %}
 	<div class="col-12">
 		<div class="alert alert-success alert-dismissible fade show" role="alert">
-			{{ __("Your profile settings were successfully updated.") }}
+			{{ __("Your profile has been successfully updated.") }}
 			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
 	</div>
@@ -60,11 +57,11 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="caption">
-					<h3>{{ __("Uploaded by %s", [user.username]) }}</h3>
+					<h3>{{ __("Uploaded by %s", [user.display_name]) }}</h3>
 					{% for latestVideo in latestVideos %}
 					{{ video_box(latestVideo) }}
 					{% else %}
-					<p>{{ __("There are no videos uploaded by %s.", [user.username]) }}</p>
+					<p>{{ __("There are currently no videos uploaded by %s.", [user.display_name]) }}</p>
 					{% endfor %}
 				</div>
 			</div>
@@ -73,26 +70,30 @@
 	<div class="col-md-4 order-1 order-md-2">
 		<div class="card mb-2">
 			<div class="card-body">
-				<h4>{{ __("About %s", [user.username]) }}</h4>
+				<h4>{{ __("About %s", [user.display_name]) }}</h4>
 				<hr>
-				<dl class="row">
-					<dt class="col-sm-4">{{ __("Last seen") }}</dt>
-					<dd class="col-sm-8">{{ user.lastview | relative_time }}</dd>
-					<dt class="col-sm-4">{{ __("Joined") }}</dt>
-					<dd class="col-sm-8">{{ user.joined | date('M j, Y') }}</dd>
+				<dl class="row mb-0">
+					<dt class="col-auto">{{ __("Last seen") }}</dt>
+					<dd class="col-auto">{{ user.lastview | relative_time }}</dd>
+				</dl>
+				<dl class="row mb-0">
+					<dt class="col-auto">{{ __("Joined") }}</dt>
+					<dd class="col-auto">{{ user.joined | date('M j, Y') }}</dd>
+				</dl>
+				<dl class="row mb-0">
 					{# hack to prevent twig from outputing the number 1 #}
 					{% if subCount != 1 %}
 						{% set pluralSubscribers = __("s") %}
 					{% endif %}
-					<dt class="col-sm-4">{{ __("Subscriber%s", [pluralSubscribers]) }}</dt>
-					<dd class="col-sm-8">{{ subCount }}</dd>
+					<dt class="col-auto">{{ __("Subscriber%s", [pluralSubscribers]) }}</dt>
+					<dd class="col-auto">{{ subCount }}</dd>
 				</dl>
 				</div>
 			</div>
 			{% if current_user.powerlevel > 2 %}
 			<div class="card mb-2">
 				<div class="card-body">			
-					<h4>{{ __("Administrator Actions") }}</h4>
+					<h4>{{ __("Administrative Actions") }}</h4>
 					<hr>
 					<dl class="row">
 						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset for %s", [user.username]) }}</a>
