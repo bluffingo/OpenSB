@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Return HTML code for an userlink, including stuff like custom colors
+ * Return HTML code for an userlink.
  *
  * @param array $user User array containing user fields. Retrieve this from the database using userfields().
  * @param string $prefix $user key prefix.
  * @return string Userlink HTML code.
  */
  
- // what the fuck does t_user mean? -gr 7/22/2021
+ // todo: use display name instead of username -gr 8/2/2021
 function userlink($user, $prefix = '') {
 	if (isset($user)) {
 			return <<<HTML
-			<a class="user" href="user.php?name={$user[$prefix.'username']}"><span class="t_user">{$user[$prefix.'username']}</span></a>
+			<a class="user" href="user.php?name={$user[$prefix.'username']}">{$user[$prefix.'username']}</a>
 HTML;
 		}
 	 else {
