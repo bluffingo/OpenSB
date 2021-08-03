@@ -10,8 +10,8 @@ body {
   padding-bottom: 40px;
   background-image: url("/assets/login.png");
   background-position: center;
-  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-color: #324270;
 }
 
 /*@keyframes example {
