@@ -5,10 +5,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% block head %}{% endblock %}
+	<!-- REDO THIS REDO THIS REDO THIS REDO THIS -->
 	{% if theme != 'vanilla' %}
-	<link rel="stylesheet" id="bootstrap" href="assets/bs{% if theme == 'dark' %}-dark{% elseif theme == 'finalium' %}-finalium{% endif %}.css" type="text/css">
+	<link rel="stylesheet" id="bootstrap" href="assets/bs{% if theme == 'dark' %}-dark{% elseif theme == 'finalium' %}-finalium{% elseif theme == 'finalium-dark' %}-finalium-dark{% endif %}.css" type="text/css">
 	{% else %}
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/bs-vanilla.css" rel="stylesheet" id="bootstrap">
 	{% endif %}
 	<link rel="stylesheet" id="bootstrap_dashboard" href="bootstrap/dashboard.css" type="text/css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"

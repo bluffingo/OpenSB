@@ -76,7 +76,7 @@
 							<div class="row">
 								<div class="col-lg-2" style="width:10%;padding-right:0">
 									<a href="user.php?name={{ video.u_username }}">
-										<img class="float-start rounded w-100" src="{{ profile_image(video.u_username) }}">
+										<img class="float-start rounded-circle w-100" src="{{ profile_image(video.u_username) }}">
 									</a>
 								</div>
 								<div class="col-lg-10">
@@ -96,7 +96,7 @@
 							<a href="#" id="{% if logged_in %}like{% endif %}" class="text-{% if rating %}success{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
 								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-up-fill"/>
 							</svg></a> <span id="likes">{{ total_likes }}</span>
-							<a href="#" id="{% if logged_in %}dislike{% endif %}" class="text-{% if rating == 0 %}danger{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
+							<a href="#" id="{% if logged_in %}dislike{% endif %}" class="text-{% if total_dislikes != 0 %}danger{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
 								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-down-fill"/>
 							</svg></a> <span id="dislikes" style="padding-right: 10px">{{ total_dislikes }}</span>
 							<button id="subscribe" class="btn btn-{% if subscribed %}secondary{% elseif current_user.id == video.author %}primary{% else %}warning{% endif %}" type="button" {% if not logged_in or current_user.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unsubscribe") }}{% elseif current_user.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Subscribe") }}{% endif %}</button>

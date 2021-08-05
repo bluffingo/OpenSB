@@ -17,6 +17,7 @@ $webhook = ""; // Webhook URL for the new video webhook
 
 $domain = 'http://squarebracket.local';
 $isDebug = false; // DEV ONLY
+$isMaintenance = false;
 
 $testNewLayout = false; // DEV ONLY
 

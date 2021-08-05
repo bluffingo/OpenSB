@@ -39,7 +39,7 @@
 	<div class="col-xl-4">
 		{% if logged_in %}
 			</p>
-				<img class="float-start rounded w-25 me-3" src="{{ profile_image(current_user.username) }}"  alt="pfp">
+				<img class="float-start rounded-circle w-25 me-3" src="{{ profile_image(current_user.username) }}"  alt="{{ current_user.username }}">
 				<p class="text-start float-end">
 				<h3>{{ current_user.display_name }}</h3>
 					{# hack to prevent twig from outputing the number 1 #}
@@ -49,10 +49,9 @@
 					{% if totalViews != 1 %}
 						{% set pluralViews = __("s") %}
 					{% endif %}
-					<p class="fs-5">@{{ current_user.username }}</p><br><br>
-					<p class="mb-2">{{ __("You have %s subscriber%s.", [totalSubscribers ?? __("no"), pluralSubscribers]) }}</p>
-					<p class="mb-2">{{ __("You have %s view%s.", [totalViews ?? __("no"), pluralViews]) }}</p>
-					<p class="mb-5">{{ __("Your account was made %s.", [creationDate | relative_time]) }}</p>
+					<p class="fs-5 mb-1">@{{ current_user.username }}</p>
+					<p class="mb-2">{{ __("%s subscriber%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}</p>
+					<p class="mb-2">{{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
 		{% else %}
 			<h3>{{ __("Welcome to squareBracket") }}</h3>
 			<p>{{ __("I can't believe it's not PokTube") }}</p>
