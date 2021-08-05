@@ -1,9 +1,15 @@
 <?php
+
 if (!file_exists('conf/config.php')) {
 	die('<center><b>A configuration file could not be found. Please read the installing instructions in the README file.</b></center>');
 }
 
 require('conf/config.php');
+
+// todo: make this load a html page
+if ($isMaintenance) {
+	die('<center><b>squareBracket is currently offline for maintenance and upgrades.</b></center>');
+}
 
 if ($isDebug and !isset($rawOutputRequired)) {
 	// load profiler first
