@@ -61,6 +61,10 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		$("#navbar").attr("class", "navbar navbar-dark bg-dark navbar-static-top navbar-expand-md");
 		Cookies.set("theme", "finalium-dark", { expires: 1000 });
 	});
+	$("#action_unlogged").click(function(){
+		play("error");
+		alert('you must be logged in.');
+	});
 	contents = $.trim($("#commentContents").val());
 	if (contents === null || contents == "" && $("#post").attr("class") != "btn btn-primary disabled") {
 		$("#post").addClass("disabled");
