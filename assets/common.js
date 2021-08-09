@@ -86,11 +86,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		$("#commentPostingSpinner").removeClass('d-none');
 		$.post("comment.php",
 		{
-			comment: $.trim($("#commentContents").val()),
+			comment: $.trim($('#commentContents').val()),
 			vidid: video_id
 		},
 		function(data,status){
 			if (status == "success") {
+				console.log("Commented " + $('#commentContents').val());
 				$('#comment').prepend(data);
 				$("#commentContents").val('');
 				$("#post").addClass("disabled");
@@ -109,10 +110,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 				if(data == subscribe_string) {
 					$("#subscribe").text(subscribe_string);
 					$("#subscribe").attr("class", "btn btn-warning");
+					console.log("Unsubscribed " + user_id);
 					play("click");
 				} else if(data == unsubscribe_string) {
 					$("#subscribe").text(unsubscribe_string);
 					$("#subscribe").attr("class", "btn btn-secondary");
+					console.log("Subscribed " + user_id);
 					play("subscribe");
 				} else {
 					play("error");
