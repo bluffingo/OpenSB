@@ -1,0 +1,48 @@
+{% extends "_layout.twig" %}
+{% block content %}
+<div class="row">
+<div class="col-8">
+<h1>{{ video.title }}</h1>
+		<div id="playerContainer">
+			{% if (video.flags b-and 2) %}
+				<div style="height: 30rem; background-color: black; color: white; text-align: center; padding: 15rem">
+					{{ __("This video is being processed. Try again later.") }}
+				</div>
+			{% endif %}
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
+		<script>
+			{% if not video.flags == 0010 %}
+				const config = {
+					autoplay: true,
+					sources: [
+						{
+							type: 'dash',
+							src: '{{ video.videofile }}'
+						}
+					],
+					ui: {
+						image: '{{ video_thumbnail(video.video_id) }}',
+						pip: true,
+						locale: '{{ current_user.language | replace({'_': '-'}) }}'
+					}
+				};
+				const element = document.getElementById('playerContainer');
+				const player = IndigoPlayer.init(element, config);
+			{% endif %}
+		</script>
+		<p class="uploader-info">{{ __("Published on %s", [video.time | date('M j, Y')]) }} by <a href="user.php?name={{ video.u_username }}">{{ userlink(video, 'u_') }}</a></p>
+		<p>{{ video.description }}</p>
+		<h3>Comments (redesign this later)</h3>
+		<textarea rows="3" placeholder="Not implemented"></textarea>
+				{% for comment in comments %}
+					{{ comment(comment) }}
+				{% endfor %}
+				</div>
+<div class="col-4">
+		{% for related_video in related_videos %}
+			{{ small_video_box(related_video)}}
+		{% endfor %}
+</div>
+</div>
+{% endblock %}

@@ -26,6 +26,8 @@ $testNewLayout = false; // DEV ONLY
 $hCaptchaSiteKey = '';
 $hCaptchaSecret = '';
 
+$sbNext = false; // DEV ONLY (for now), intended to make sbNext development easier.
+
 // Add your own custom menu links here, or change the existing ones.
 // This is really only used in the Bootstrap layout, not sure if
 // sbNext should have them. I'm guessing no one clicked the links.

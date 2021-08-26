@@ -4,10 +4,12 @@ require('lib/common.php');
 
 if ($loggedIn) {
 	if ($currentUser['powerlevel'] < 2) {
-		accessDenied();
+		http_response_code(403);
+		die(__("Access Denined"));
 	}
 } else { 
-	accessDenied();
+	http_response_code(403);
+	die(__("Access Denined")); 
 }
 
 // currently selects all uploaded videos, should turn it into all featured only
