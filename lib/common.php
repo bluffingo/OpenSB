@@ -22,19 +22,6 @@ foreach (glob("lib/*.php") as $file) {
 	require_once($file);
 }
 
-function _twigloader($subfolder = '') {
-	$twig = twigloader($subfolder, function () use ($subfolder) {
-		return new \Twig\Loader\FilesystemLoader('templates/' . $subfolder);
-	}, function ($loader, $doCache) {
-
-		return new \Twig\Environment($loader, [
-			'cache' => ($doCache ? "../".$doCache : $doCache),
-		]);
-	});
-
-	return $twig;
-}
-
 // Makes incomplete unready features not available on production (aka squarebracket.veselcraft.ru)
 function notReady() {
 	http_response_code(403);

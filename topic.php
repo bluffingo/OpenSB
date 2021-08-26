@@ -20,5 +20,3 @@ $twig = twigloader();
 echo $twig->render('topic.twig', [
 	'post_data' => $postData
 ]);
-
-echo $id;
