@@ -15,8 +15,6 @@
 
 <h3 align="center"><a href="https://squarebracket.veselcraft.ru/">squareBracket's live website</a></h3>
 
-<p align="center"><b>Development has been put into a halt due to harassment.</b></p>
-
 ## How to setup squareBracket.
 1. Get a web server (Apache/NGINX) with PHP and MariaDB up and running, including Composer.
 1. Run `composer update` from the terminal.
