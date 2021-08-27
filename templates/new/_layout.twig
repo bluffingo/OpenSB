@@ -3,34 +3,51 @@
 <head>
 	<meta charset="utf-8">
 	<title>sbNext</title>
-	<link rel="stylesheet" href="/assets/main.css">
+	<link rel="stylesheet" href="/assets/bs-finalium.css">
 	{% block customcss %}{% endblock %}
 </head>
 <body>
-	<div class="header">
-		<div class="links">
-			<a width="121" height="32" href="index.php?frontend=new">
-				<div class="logo"></div>
-			</a>
-			<a href="gordon.php?frontend=new" class="btn btn-primary header-right">Login</a>
-		</div>
-	</div>
-	<div class="nav">
-		<div class="links">
-			<a href="index.php?frontend=new" class="link selected">Home</a>
-			<a href="/browse.php?frontend=new" class="link">Browse</a>
-			<a href="" class="link">Community</a>
-			{% for menu_link in menu_links %}
-				<a href="{{ menu_link.url }}" class="link">{{ menu_link.name }}</a>
-			{% endfor %}
-		</div>
-	</div>
-	<div id="content">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">sbNext</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+	<div class="container">
 		{% block content %}{% endblock %}
 		<div class="text-center">
-			<h4>squareBracket Beta 1</h4>
+			<h4>squareBracket Beta 1.9</h4>
 			<p>By squareBracket contributors · 2020-{{ 'now' | date('Y') }}</p>
-			<p><small>CSS based on the GoodTube website by Diyamund.</small></p>
 		</div>
 	</div>
 </body>
