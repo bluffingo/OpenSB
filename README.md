@@ -13,7 +13,7 @@
 <br>
 </p>
 
-<h3 align="center"><a href="https://squarebracket.veselcraft.ru/">squareBracket's live website</a></h3>
+<!--<h3 align="center"><a href="https://squarebracket.veselcraft.ru/">squareBracket's live website</a></h3>-->
 
 ## How to setup squareBracket.
 1. Get a web server (Apache/NGINX) with PHP and MariaDB up and running, including Composer.
