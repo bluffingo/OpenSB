@@ -59,13 +59,11 @@ if (isset($_COOKIE['theme'])) {
 	$theme = 'finalium';
 }
 
-// Reminder: sbNext is no longer a priority to us and is currently deprecated. -gr 7/16/21
-// Note: how the fuck do i compile the sbnext css without having to go to node hell? -gr 7/30/2021
-// ^ lmao we don't use goodtube css anymore -gr 8/26/2021
-if ($sbNext) {
-    $frontend = 'new';
+//
+if ($oldTemplateSwitching) {
+	$frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
 } else {
-    $frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
+	$frontend = (isset($useTemplate) ? $useTemplate : 'default');
 }
 
 if ($loggedIn) {
