@@ -1,0 +1,15 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Login") }}{% endblock %}
+
+	{% block content %}
+<form name="loginForm" id="loginForm" action="login.php">
+  <label for="floatingInput">Username:</label>
+  <input type="text" id="floatingInput" name="username"><br><br>
+  <label for="floatingPassword">Password:</label>
+  <input type="password" id="floatingPassword" name="password"><br><br>
+  <input type="submit" name="loginsubmit" value="Login">
+</form>
+
+<p>{{ __("Account passwords are hashed with bcrypt.") }}</p>
+	{% endblock %}
