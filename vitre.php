@@ -1,4 +1,6 @@
 <?php
+//fun fact: some of the code is based on a php file that became the bases of Escargot -gr 10/6/2021
+require('lib/common.php');
 set_time_limit(0);
 
 $address = '127.0.0.1';
@@ -34,8 +36,9 @@ while( true )
 		var_dump ($test);
 		echo $test['authType'];
 		if ($test['authType'] == 'daa') {
-			//tried making this a function (something would have been like glass live's connection.sendObject function) but php would keep freaking out so fuck that -gr 10/6/2021
-			socket_write($client, json_encode(array('type' => "MessageBox", 'title' => "Digest Access Authentication", 'text' => "squareBracket Vitre does not support DAA."))."\n");
+			v_debugEcho("User uses BLG DAA, disconnecting");
+			v_messageBox($client, "Digest Access Authentication", "squareBracket Vitre does not support DAA."); //how tf do you expect me to implement this on web client? -gr 10/6/2021
+			socket_close($socket);
 		}
 	}
 	for( $i = 0; $i < count($test); $i ++ )
