@@ -53,6 +53,19 @@ while (true)
                     'type' => "auth",
                     'status' => 'success'
                 )) . "\n");
+                $currentFriends = query("SELECT * FROM vitre_friends WHERE userID = ?", [$currentBLID['blockland_id']]);
+                while ($friends = $currentFriends->fetch())
+                {
+                    $selectedFriend = fetch("SELECT * FROM users WHERE blockland_id = ?", [$friends['friendID']]);
+                    v_debugEcho("Attempting to send friend list to " . implode([$currentBLID['username']]));
+                    socket_write($client, json_encode(array( //doesn't work, check later.
+                        'type' => "friendsList",
+                        'friends' => ['username' => 'testing',
+                        'blid' => '1337',
+                        'status' => 'busy',
+                        'icon' => 'bart']
+                    )) . "\n");
+                }
             }
         }
         elseif ($action['type'] == 'ping')
@@ -63,15 +76,26 @@ while (true)
                 'key' => $action['key']
             )) . "\n");
         }
-        //elseif ($action['type'] == 'getRoomList')
-        //{ //queries rooms, why. it's broken, fuck this.
-        //    v_debugEcho($currentBLID['username'] . " is currently looking for rooms.");
-        //    $allRooms = query("SELECT * FROM vitre_rooms");
-        //    socket_write($client, json_encode(array(
-        //        'type' => "roomList",
-        //        'rooms' => "Fuck",
-        //        "\n")));
-        //}
+        elseif ($action['type'] == 'getRoomList')
+        { //queries rooms, why. it's broken, fuck this.
+            v_debugEcho($currentBLID['username'] . " is currently looking for rooms.");
+            $allRooms = query("SELECT * FROM vitre_rooms");
+            socket_write($client, json_encode(array(
+                'type' => "roomList",
+                'rooms' => ['id' => '1',
+                'image' => 'bart',
+                'title' => 'fake room',
+                'users' => '0']
+            )) . "\n");
+        }
+        elseif ($action['type'] == 'friendRequest')
+        { //ping because it disconnects when there's no reply.
+            v_debugEcho($currentBLID['username'] . " pings, respond with pong to avoid disconnection.");
+            socket_write($client, json_encode(array(
+                'type' => "pong",
+                'key' => $action['key']
+            )) . "\n");
+        }
     }
     socket_close($socket);
 }
