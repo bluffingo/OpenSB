@@ -87,7 +87,7 @@ if ($isDebug)
 {
     function v_debugEcho($text)
     {
-        echo $text."\n";
+        echo "DEBUG: ".$text."\n";
     }
 }
 else
