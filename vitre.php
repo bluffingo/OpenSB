@@ -11,8 +11,10 @@ $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1);
 
 socket_bind($socket, $address, $port) or die('Could not bind to address'); //0 for localhost
-//socket_set_nonblock($socket);
+
 socket_listen($socket);
+
+echo("Listening on " . $address . " with port " . $port);
 
 while (true)
 {
@@ -35,18 +37,28 @@ while (true)
         if ($action['type'] == 'auth') //user tries to auth
         
         {
-            if ($action['authType'] == 'daa') //user has DAA enabled
-            
+            if ($action['version'] > '4.2')
             {
-                v_debugEcho("User uses BLG DAA, disconnecting");
-                v_messageBox($client, "Digest Access Authentication", "squareBracket Vitre does not support DAA."); //how tf do you expect me to implement this on web client? -gr 10/6/2021
-                socket_close($socket);
+                if ($action['authType'] == 'daa') //user has DAA enabled
+                
+                {
+                    v_debugEcho("User uses BLG DAA, disconnecting");
+                    v_messageBox($client, "Digest Access Authentication", "squareBracket Vitre does not support DAA."); //how tf do you expect me to implement this on web client? -gr 10/6/2021
+                    socket_close($socket);
+                }
             }
             else
             //user doesn't have DAA enabled
             
             {
-                v_debugEcho("User doesn't use BLG DAA, connecting.");
+                if ($action['version'] > '4.2')
+                {
+                    v_debugEcho("User doesn't use BLG DAA, connecting.");
+                }
+                else
+                {
+                    v_debugEcho("User is using " . $action['version'] . ", connecting.");
+                }
                 $currentBLID = fetch("SELECT * FROM users WHERE blockland_id = ?", [$action['blid']]);
                 v_debugEcho("User appears to be " . implode([$currentBLID['username']]));
                 socket_write($client, json_encode(array(
@@ -62,8 +74,8 @@ while (true)
                         'type' => "friendsList",
                         'friends' => ['username' => 'testing',
                         'blid' => '1337',
-                        'status' => 'busy',
-                        'icon' => 'bart']
+                        'online' => 'false',
+                        'status' => 'busy']
                     )) . "\n");
                 }
             }
@@ -89,14 +101,27 @@ while (true)
             )) . "\n");
         }
         elseif ($action['type'] == 'friendRequest')
-        { //ping because it disconnects when there's no reply.
-            v_debugEcho($currentBLID['username'] . " pings, respond with pong to avoid disconnection.");
+        { //should be sending friend request, however i don't fucking know how to do this.
+            v_debugEcho($currentBLID['username'] . " sends a friend request.");
+            $currentFriend = fetch("SELECT * FROM users WHERE blockland_id = ?", [$action['target']]);
+			$friendName = implode([$currentFriend['username']]);
             socket_write($client, json_encode(array(
-                'type' => "pong",
-                'key' => $action['key']
+                'type' => "friendAdd",
+                'username' => $friendName,
+                'blid' => $action['target']
             )) . "\n");
+        }
+        elseif ($action['type'] == 'disconnect')
+        { //doesn't work?
+            echo "disconnect";
+            socket_write($client, json_encode(array(
+                'type' => "disconnected",
+                'reason' => '-1'
+            )) . "\n");
+            socket_close($socket);
         }
     }
     socket_close($socket);
 }
+socket_close($socket);
 ?>
