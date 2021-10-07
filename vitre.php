@@ -63,15 +63,15 @@ while (true)
                 'key' => $action['key']
             )) . "\n");
         }
-        elseif ($action['type'] == 'getRoomList')
-        { //queries rooms, why.
-            v_debugEcho($currentBLID['username'] . " is currently looking for rooms.");
-            $allRooms = query("SELECT * FROM vitre_rooms WHERE id = 1");
-            socket_write($client, json_encode(array(
-                'type' => "roomList",
-                'rooms' => $allRooms
-            )) . "\n");
-        }
+        //elseif ($action['type'] == 'getRoomList')
+        //{ //queries rooms, why. it's broken, fuck this.
+        //    v_debugEcho($currentBLID['username'] . " is currently looking for rooms.");
+        //    $allRooms = query("SELECT * FROM vitre_rooms");
+        //    socket_write($client, json_encode(array(
+        //        'type' => "roomList",
+        //        'rooms' => "Fuck",
+        //        "\n")));
+        //}
     }
     socket_close($socket);
 }
