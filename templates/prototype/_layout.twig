@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>{% block title %}{% endblock %} - squareBracket </title>
+	<title>{% block title %}{% endblock %} - squareBracket Next</title>
 	<link rel="stylesheet" id="bootstrap" href="assets/bs-finalium.css" type="text/css">
 	<script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<style>
@@ -36,16 +36,22 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-secondary" type="submit">Search</button>
       </form>
+	  <li class="nav-item">
+        <a class="nav-link" href="upload.php">{{ icon('upload', 24) }} Upload</a>
+      </li>
 	  {% if logged_in %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 		  <img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded-circle bi" width="24" height="24"> {{current_user.username}}</a>
 		  	<ul class="dropdown-menu" aria-labelledby="userDropdown">
 				<li><a class="dropdown-item" href="#">{{ icon('circle', 24) }} My profile</a></li>
+				<li><a class="dropdown-item" href="#">{{ icon('circle', 24) }} Studio</a></li>
 				<li><a class="dropdown-item" href="#">{{ icon('circle', 24) }} Appearance</a></li>
 				<li><a class="dropdown-item" href="#">{{ icon('circle', 24) }} Settings</a></li>
 				<li><hr class="dropdown-divider"></li>
 				<li><a class="dropdown-item" href="#">{{ icon('circle', 24) }} Sign off</a></li>
+				<li><hr class="dropdown-divider"></li>
+				<li><a class="dropdown-item" href="#">{{ icon('circle', 24) }} Send feedback</a></li>
 			</ul>
         </li>
 	  {% endif %}
@@ -58,5 +64,14 @@
 	<h1>{{ block('title') }}</h1>
 		{% block content %}{% endblock %}
 	</div>
+		<footer class="p-3">
+		<div class="container">
+		<div class="card">
+		<div class="card-body">
+		<h4 class="my-0">squareBracket Next</h4>
+		<p class="my-0"><b>{{ __("By the squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
+		</div>
+		</div>
+	</footer>
 </body>
 </html>
