@@ -1,8 +1,8 @@
 {% extends "_layout.twig" %}
+{% block title %}{{ video.title }}{% endblock %}
 {% block content %}
 <div class="row">
 <div class="col-8">
-<h1>{{ video.title }}</h1>
 		<div id="playerContainer">
 			{% if (video.flags b-and 2) %}
 				<div style="height: 30rem; background-color: black; color: white; text-align: center; padding: 15rem">
