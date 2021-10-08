@@ -1,0 +1,92 @@
+{% extends "_layout.twig" %}
+{% block title %}Upload{% endblock %}
+{% block customcss %}
+<style>
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #fff;
+  border-radius: .75rem;
+}
+
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+}
+.icon-link > .bi {
+  margin-top: .125rem;
+  margin-left: .125rem;
+  transition: transform .25s ease-in-out;
+  fill: currentColor;
+}
+.icon-link:hover > .bi {
+  transform: translate(.25rem);
+}
+
+.icon-square {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  border-radius: .75rem;
+}
+
+.rounded-4 { border-radius: .5rem; }
+.rounded-5 { border-radius: 1rem; }
+
+.text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
+.text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
+.text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
+
+.card-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="row">
+<div class="row g-4 pb-5 row-cols-1 row-cols-lg-3">
+      <div class="feature col">
+        <div class="feature-icon bg-primary bg-gradient">
+          {{ icon('film', 32) }}
+        </div>
+        <h2>{{ __("Video") }}</h2>
+        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+        <a href="#" class="icon-link">
+          {{ __("Upload video") }}
+          {{ icon('chevron-right', 16) }}
+        </a>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon bg-carrot bg-gradient">
+          {{ icon('music-note-beamed', 32) }}
+        </div>
+        <h2>{{ __("Music") }}</h2>
+        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+        <a href="#" class="icon-link">
+          {{ __("Upload music") }}
+          {{ icon('chevron-right', 16) }}
+        </a>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon bg-primary bg-success">
+          {{ icon('easel', 32) }}
+        </div>
+        <h2>{{ __("Artwork") }}</h2>
+        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+		<a href="#" class="icon-link">
+          {{ __("Upload artwork") }}
+          {{ icon('chevron-right', 16) }}
+        </a>
+      </div>
+    </div>
+{% endblock %}
