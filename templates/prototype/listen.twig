@@ -1,0 +1,11 @@
+{% extends "_layout.twig" %}
+{% block title %}{{ music.title }}{% endblock %}
+{% block content %}
+<script src="assets/audiojs/audio.js"></script>
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>
+<audio src="{{ music.file }}" preload="auto" />
+{% endblock %}

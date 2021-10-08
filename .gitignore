@@ -7,6 +7,7 @@ assets/thumb/
 assets/backgrounds/
 *.mp4
 videos/
+music/
 
 ## Composer
 vendor/

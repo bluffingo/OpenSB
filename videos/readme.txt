@@ -1,1 +1,1 @@
-this is where videos are placed (for now at least)
+this is where videos are placed

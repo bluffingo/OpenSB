@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2021 at 08:00 PM
+-- Generation Time: Oct 08, 2021 at 09:35 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -34,6 +34,20 @@ CREATE TABLE `comments` (
   `date` bigint(20) NOT NULL COMMENT 'UNIX timestamp when the comment was posted.',
   `deleted` tinyint(4) NOT NULL COMMENT 'States that the comment is deleted'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `music`
+--
+
+CREATE TABLE `music` (
+  `ID` int(11) NOT NULL,
+  `music_id` varchar(11) NOT NULL,
+  `title` text NOT NULL,
+  `author` int(11) NOT NULL,
+  `file` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -170,6 +184,12 @@ CREATE TABLE `vitre_rooms` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `music`
+--
+ALTER TABLE `music`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `posts`
