@@ -31,7 +31,8 @@
 				const player = IndigoPlayer.init(element, config);
 			{% endif %}
 		</script>
-		<p class="uploader-info">{{ __("Published on %s", [video.time | date('M j, Y')]) }} by <a href="user.php?name={{ video.u_username }}">{{ userlink(video, 'u_') }}</a></p>
+		<p class="uploader-info">{{ __("Published on %s", [video.time | date('M j, Y')]) }} by <a href="user.php?name={{ video.u_username }}">{{ userlink(video, 'u_') }}</a><br>
+		Category: {{ video.category_id | category_id_to_name() }}</p>
 		<p>{{ video.description }}</p>
 		<h3>Comments (redesign this later)</h3>
 		<textarea rows="3" placeholder="Not implemented"></textarea>

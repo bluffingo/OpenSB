@@ -3,12 +3,13 @@
 
 function categoryIDToName($id) {
     return match ($id) {
-        1 => 'Entertainment',
-        2 => 'Shitposting & Comedy',
-        3 => 'Gaming',
-        4 => 'News and Updates',
-        5 => 'Life',
-        6 => 'Science & Technology',
-        7 => 'Archive Dump'
+		0 => __('Miscellanous'),
+        1 => __('Entertainment'),
+        2 => __('Shitposting & Comedy'),
+        3 => __('Gaming'),
+        4 => __('News and Updates'),
+        5 => __('Life'),
+        6 => __('Science & Technology'),
+        7 => __('Archive Dump')
     };
 }
