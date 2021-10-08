@@ -4,11 +4,33 @@
 <div class="row">
 	<div class="col-8">
 	<div class="p-1 mb-4 bg-light rounded-3">
-	  <div class="container-fluid py-5">
+	  <div class="container-fluid {% if logged_in %}py-3{% else %}py-5{% endif %}">
+	  		{% if logged_in %}
+			<div class="row">
+				<div class="col-3 d-none d-md-block">
+					<img class="rounded w-100" src="{{ profile_image(current_user.username) }}"  alt="{{ current_user.username }}">
+				</div>
+				<div class="col-12 col-md-9">
+					<p class="text-start">
+					<h3>Welcome, {{ current_user.display_name }}</h3>
+						{# hack to prevent twig from outputing the number 1 #}
+						{% if totalSubscribers != 1 %}
+							{% set pluralSubscribers = __("s") %}
+						{% endif %}
+						{% if totalViews != 1 %}
+							{% set pluralViews = __("s") %}
+						{% endif %}
+						<p class="fs-5 mb-1">@{{ current_user.username }}</p>
+						<p class="mb-2">{{ __("%s subscriber%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}</p>
+						<p class="mb-2">{{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
+				</div>
+			</div>
+		{% else %}
 		<h1 class="fw-bold">Welcome to squareBracket</h1>
 		<p class="col-md-8 fs-4">I can't believe it's not PokTube</p>
 		<a class="btn btn-primary btn-lg" href="register.php">Register {{ icon('caret-right-fill', 16) }}</a>
 		<big>Already have an account? <a href="login.php">Sign in</a></big>
+		{% endif %}
 	  </div>
     </div>
 	<h1>Recently uploaded to squareBracket</h1>

@@ -21,20 +21,14 @@
 
 	{% block content %}
 <div class="row">
-	<div class="col-12">
-		<div class="alert alert-info" role="alert">
-			I am going to implement the header later when most of the design has been finalized. -gr 10/7/2021
-		</div>
-	</div>
 	{% if edited %}
 	<div class="col-12">
 		<div class="alert alert-success alert-dismissible fade show" role="alert">
-			{{ __("Your profile has been successfully updated.") }}
+			{{ __("Your profile settings have been successfully updated.") }}
 			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
 	</div>
 	{% endif %}
-	<!-- This prevents the user info box from being extremely tall. Box probably needs to be redesigned... -->
 	<div class="col-md-8 order-2">
 		<div class="card">
 			<div class="card-body">
@@ -51,34 +45,47 @@
 	</div>
 	<div class="col-md-4 order-1">
 		<div class="card mb-2">
+		  <div class="card-header">
+			<h5 class="mb-0">{{ __("About %s", [user.display_name]) }}</h5>
+		  </div>
 			<div class="card-body">
-				<h4>{{ __("About %s", [user.display_name]) }}</h4>
-				<hr>
-				<dl class="row mb-0">
-					<dt class="col-auto">{{ __("Last seen") }}</dt>
-					<dd class="col-auto">{{ user.lastview | relative_time }}</dd>
-				</dl>
-				<dl class="row mb-0">
-					<dt class="col-auto">{{ __("Joined") }}</dt>
-					<dd class="col-auto">{{ user.joined | date('M j, Y') }}</dd>
-				</dl>
-				<dl class="row mb-0">
-					{# hack to prevent twig from outputing the number 1 #}
-					{% if subCount != 1 %}
-						{% set pluralSubscribers = __("s") %}
-					{% endif %}
-					<dt class="col-auto">{{ __("Subscriber%s", [pluralSubscribers]) }}</dt>
-					<dd class="col-auto">{{ subCount }}</dd>
-				</dl>
+				<div class="row">
+					<div class="col-4">
+					<img class="rounded w-100" src="{{ profile_image(user.username) }}"  alt="{{ user.username }}">
+					</div>
+					<div class="col-8">
+						<dl class="row mb-0">
+							<dt class="col-auto">{{ __("Last seen") }}</dt>
+							<dd class="col-auto">{{ user.lastview | relative_time }}</dd>
+						</dl>
+						<dl class="row mb-0">
+							<dt class="col-auto">{{ __("Joined") }}</dt>
+							<dd class="col-auto">{{ user.joined | date('M j, Y') }}</dd>
+						</dl>
+						<dl class="row mb-0">
+							{# hack to prevent twig from outputing the number 1 #}
+							{% if subCount != 1 %}
+								{% set pluralSubscribers = __("s") %}
+							{% endif %}
+							<dt class="col-auto">{{ __("Subscriber%s", [pluralSubscribers]) }}</dt>
+							<dd class="col-auto">{{ subCount }}</dd>
+						</dl>
+						<dl class="row mb-0">
+							<dt class="col-auto">{{ __("Username") }}</dt>
+							<dd class="col-auto">{{ user.username }}</dd>
+						</dl>
+					</div>
+					</div>
 				</div>
 			</div>
 			{% if current_user.powerlevel > 2 %}
 			<div class="card mb-2">
+				<div class="card-header">
+					<h5 class="mb-0">{{ __("Administrative Actions") }}</h5>
+				</div>
 				<div class="card-body">			
-					<h4>{{ __("Administrative Actions") }}</h4>
-					<hr>
 					<dl class="row">
-						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset for %s", [user.username]) }}</a>
+						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset for %s", [user.display_name]) }}</a>
 					</dl>
 				</div>
 			</div>
