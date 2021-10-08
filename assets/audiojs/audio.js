@@ -463,7 +463,7 @@
             prepend = style.innerHTML;
             break;
           }
-        };
+        }
 
         var head = document.getElementsByTagName('head')[0],
             firstchild = head.firstChild,
