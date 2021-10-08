@@ -3,7 +3,7 @@
 {% block title %}{{ __("Login") }}{% endblock %}
 
 	{% block content %}
-<form name="loginForm" id="loginForm" action="login.php">
+<form method="post" name="loginForm" id="loginForm" action="login.php">
   <label for="floatingInput">Username:</label>
   <input type="text" id="floatingInput" name="username"><br><br>
   <label for="floatingPassword">Password:</label>

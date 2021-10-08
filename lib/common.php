@@ -68,7 +68,6 @@ if ($oldTemplateSwitching) {
 if ($loggedIn) {
 	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);
 	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
-    $frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
 }
 
 $lang = new Lang(sprintf("lib/lang/".(isset($currentUser['language']) ? $currentUser['language'] : 'en-US').".json"));

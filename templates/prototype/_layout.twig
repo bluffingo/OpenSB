@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>{% block title %}{% endblock %} - squareBracket </title>
 	<link rel="stylesheet" id="bootstrap" href="assets/bs-finalium.css" type="text/css">
+	<script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<style>
 	.bi {
     display: inline-block;
@@ -13,11 +14,10 @@
 	</style>
 	{% block customcss %}{% endblock %}
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
   <div class="container">
     <a class="navbar-brand" href="index.php">
-		<img src="/assets/sbnext/placeholder.png" class="bi" height="24">
-		squareBracket
+		<img src="/assets/logo.png" class="bi" height="24">
 	</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -25,16 +25,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="index.php">{{ icon('circle-fill', 24) }} Home</a>
+          <a class="nav-link" href="index.php">{{ icon('house-door', 24) }} Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">{{ icon('circle-fill', 24) }} Videos</a>
+          <a class="nav-link" href="browse.php">{{ icon('film', 24) }} Videos</a>
         </li>
       </ul>
+	  <div class="navbar-nav">
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-secondary" type="submit">Search</button>
       </form>
+	  {% if logged_in %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+		  <img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded-circle bi" width="24" height="24"> {{current_user.username}}</a>
+		  	<ul class="dropdown-menu" aria-labelledby="userDropdown">
+				<li><a class="dropdown-item" href="#">{{ icon('circle', 24) }} My profile</a></li>
+				<li><a class="dropdown-item" href="#">{{ icon('circle', 24) }} Appearance</a></li>
+				<li><a class="dropdown-item" href="#">{{ icon('circle', 24) }} Settings</a></li>
+				<li><hr class="dropdown-divider"></li>
+				<li><a class="dropdown-item" href="#">{{ icon('circle', 24) }} Sign off</a></li>
+			</ul>
+        </li>
+	  {% endif %}
+	  </div>
     </div>
   </div>
 </nav>
