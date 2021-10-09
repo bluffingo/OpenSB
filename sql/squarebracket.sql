@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2021 at 12:35 AM
+-- Generation Time: Oct 10, 2021 at 01:02 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -48,6 +48,20 @@ CREATE TABLE `music` (
   `author` int(11) NOT NULL,
   `time` int(11) NOT NULL,
   `file` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `level` int(11) DEFAULT NULL,
+  `recipient` int(11) NOT NULL,
+  `sender` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -135,31 +149,6 @@ CREATE TABLE `videos` (
   `videofile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Path to the video file(?)',
   `videolength` bigint(20) UNSIGNED DEFAULT NULL COMMENT 'Length of the video in seconds'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `vitre_friends`
---
-
-CREATE TABLE `vitre_friends` (
-  `userID` int(11) NOT NULL,
-  `friendID` int(11) NOT NULL,
-  `isPending` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `vitre_rooms`
---
-
-CREATE TABLE `vitre_rooms` (
-  `id` int(11) NOT NULL,
-  `image` text NOT NULL,
-  `title` text NOT NULL,
-  `users` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -338,6 +327,12 @@ ALTER TABLE `music`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -347,18 +342,6 @@ ALTER TABLE `users`
 -- Indexes for table `videos`
 --
 ALTER TABLE `videos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vitre_friends`
---
-ALTER TABLE `vitre_friends`
-  ADD PRIMARY KEY (`userID`);
-
---
--- Indexes for table `vitre_rooms`
---
-ALTER TABLE `vitre_rooms`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -437,6 +420,12 @@ ALTER TABLE `z_threadsread`
 --
 ALTER TABLE `music`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -69,8 +69,10 @@ if ($oldTemplateSwitching) {
 }
 
 if ($log) {
-	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);
 	$userdata = fetch("SELECT * FROM users WHERE id = ?", [$id]);
+	$notificationCount = result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$userdata['id']]);
+	
+	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);
 } else {
 	$userdata['powerlevel'] = 1;
 	$userdata['darkmode'] = $darkModeDefault;
