@@ -4,9 +4,9 @@ $acmlm = true;
 // List of smilies
 $smilies = [];
 
-// Change directory to principia-web and include core principia-web code.
+// Change directory to squareBracket and include core squareBracket code.
 chdir('../');
-require_once('conf/config.php'); // include principia-web config
+require_once('conf/config.php'); // include squareBracket config
 require_once('vendor/autoload.php');
 require_once('lib/common.php');
 

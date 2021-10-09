@@ -12,7 +12,7 @@ if (isset($_POST["loginsubmit"])) {
 	if (!$password) $error = __("Please enter your password! ");
 
 	if (empty($error)) {
-		$logindata = fetch("SELECT password,token FROM users WHERE username = ?", [$username]);
+		$logindata = fetch("SELECT password,token FROM users WHERE name = ?", [$username]);
 		if ($logindata && password_verify($password, $logindata['password'])) {
 			setcookie('SBTOKEN', $logindata['token'], 2147483647);
 

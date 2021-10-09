@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2021 at 09:35 PM
+-- Generation Time: Oct 09, 2021 at 10:10 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -46,6 +46,7 @@ CREATE TABLE `music` (
   `music_id` varchar(11) NOT NULL,
   `title` text NOT NULL,
   `author` int(11) NOT NULL,
+  `time` int(11) NOT NULL,
   `file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -98,18 +99,6 @@ CREATE TABLE `rating` (
 CREATE TABLE `subscriptions` (
   `id` int(11) NOT NULL COMMENT 'ID of the user that wants to subscribe to a user.',
   `user` int(11) NOT NULL COMMENT 'The user that the user wants to subscribe to.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `threads`
---
-
-CREATE TABLE `threads` (
-  `t_id` int(11) NOT NULL COMMENT 'This will fucking fail.',
-  `title` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The title of the thread.',
-  `author` int(11) NOT NULL COMMENT 'Author Id of The Thread.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -181,6 +170,172 @@ CREATE TABLE `vitre_rooms` (
   `users` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `z_categories`
+--
+
+CREATE TABLE `z_categories` (
+  `id` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `title` varchar(255) NOT NULL,
+  `ord` tinyint(3) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `z_forums`
+--
+
+CREATE TABLE `z_forums` (
+  `id` int(5) UNSIGNED NOT NULL DEFAULT 0,
+  `cat` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `ord` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `title` varchar(255) NOT NULL,
+  `descr` varchar(255) NOT NULL,
+  `threads` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `posts` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `lastdate` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `lastuser` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `lastid` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `private` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `readonly` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `z_forumsread`
+--
+
+CREATE TABLE `z_forumsread` (
+  `uid` int(10) UNSIGNED NOT NULL,
+  `fid` int(5) UNSIGNED NOT NULL,
+  `time` int(11) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `z_groups`
+--
+
+CREATE TABLE `z_groups` (
+  `id` tinyint(3) UNSIGNED NOT NULL,
+  `title` varchar(32) NOT NULL,
+  `nc` varchar(6) NOT NULL,
+  `inherit_group_id` tinyint(3) UNSIGNED NOT NULL,
+  `sortorder` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
+  `visible` tinyint(3) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `z_perm`
+--
+
+CREATE TABLE `z_perm` (
+  `id` varchar(64) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `permbind_id` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `z_permx`
+--
+
+CREATE TABLE `z_permx` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `x_id` int(11) UNSIGNED NOT NULL,
+  `x_type` varchar(64) NOT NULL,
+  `perm_id` varchar(64) NOT NULL,
+  `permbind_id` varchar(64) NOT NULL,
+  `bindvalue` int(11) UNSIGNED NOT NULL,
+  `revoke` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `z_pmsgs`
+--
+
+CREATE TABLE `z_pmsgs` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `date` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `userto` int(10) UNSIGNED NOT NULL,
+  `userfrom` int(10) UNSIGNED NOT NULL,
+  `unread` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
+  `del_from` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `del_to` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `z_posts`
+--
+
+CREATE TABLE `z_posts` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `user` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `thread` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `date` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `z_poststext`
+--
+
+CREATE TABLE `z_poststext` (
+  `id` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `text` text NOT NULL,
+  `revision` smallint(5) UNSIGNED NOT NULL DEFAULT 1,
+  `date` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `user` int(10) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `z_threads`
+--
+
+CREATE TABLE `z_threads` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `replies` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `views` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `forum` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `user` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `lastdate` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `lastuser` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `lastid` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `sticky` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `closed` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `z_threadsread`
+--
+
+CREATE TABLE `z_threadsread` (
+  `uid` int(10) UNSIGNED NOT NULL,
+  `tid` int(10) UNSIGNED NOT NULL,
+  `time` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -222,8 +377,81 @@ ALTER TABLE `vitre_rooms`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `z_categories`
+--
+ALTER TABLE `z_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `z_forums`
+--
+ALTER TABLE `z_forums`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `z_forumsread`
+--
+ALTER TABLE `z_forumsread`
+  ADD UNIQUE KEY `uid` (`uid`,`fid`);
+
+--
+-- Indexes for table `z_groups`
+--
+ALTER TABLE `z_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `z_perm`
+--
+ALTER TABLE `z_perm`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `z_permx`
+--
+ALTER TABLE `z_permx`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `z_pmsgs`
+--
+ALTER TABLE `z_pmsgs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `z_posts`
+--
+ALTER TABLE `z_posts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `threadid` (`thread`);
+
+--
+-- Indexes for table `z_poststext`
+--
+ALTER TABLE `z_poststext`
+  ADD PRIMARY KEY (`id`,`revision`);
+
+--
+-- Indexes for table `z_threads`
+--
+ALTER TABLE `z_threads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `z_threadsread`
+--
+ALTER TABLE `z_threadsread`
+  ADD UNIQUE KEY `uid` (`uid`,`tid`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `music`
+--
+ALTER TABLE `music`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -242,6 +470,36 @@ ALTER TABLE `users`
 --
 ALTER TABLE `videos`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.';
+
+--
+-- AUTO_INCREMENT for table `z_groups`
+--
+ALTER TABLE `z_groups`
+  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `z_permx`
+--
+ALTER TABLE `z_permx`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `z_pmsgs`
+--
+ALTER TABLE `z_pmsgs`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `z_posts`
+--
+ALTER TABLE `z_posts`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `z_threads`
+--
+ALTER TABLE `z_threads`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

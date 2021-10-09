@@ -44,14 +44,14 @@ if (isset($_COOKIE['SBTOKEN'])) {
 
 	if ($id) {
 		// Valid cookie, logged in
-		$loggedIn = true;
+		$log = true;
 	} else {
 		// Invalid cookie, not logged in
-		$loggedIn = false;
+		$log = false;
 	}
 } else {
 	// No cookie, not logged in
-	$loggedIn = false;
+	$log = false;
 }
 
 // Theme selector stuff
@@ -68,9 +68,9 @@ if ($oldTemplateSwitching) {
 	$frontend = (isset($useTemplate) ? $useTemplate : 'default');
 }
 
-if ($loggedIn) {
+if ($log) {
 	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);
-	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
+	$userdata = fetch("SELECT * FROM users WHERE id = ?", [$id]);
 }
 
-$lang = new Lang(sprintf("lib/lang/".(isset($currentUser['language']) ? $currentUser['language'] : 'en-US').".json"));
+$lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['language'] : 'en-US').".json"));

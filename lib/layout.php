@@ -11,31 +11,31 @@ use Twig\Extra\Markdown\MarkdownRuntime;
 use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
 
-function twigloader($subfolder = '') {
-	global $tplCache, $tplNoCache, $loggedIn, $currentUser, $theme, $languages, $frontend, $menuLinks, $hCaptchaSiteKey;
+function twigloader($subfolder = '', $customloader = null, $customenv = null) {
+	global $tplCache, $tplNoCache, $log, $userdata, $theme, $languages, $frontend, $menuLinks, $hCaptchaSiteKey;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
 
-	$loader = new \Twig\Loader\FilesystemLoader('templates/' . $frontend . '/' . $subfolder);
-	$twig = new \Twig\Environment($loader, [
-		'cache' => $doCache,
-	]);
-
-	// Add squareBracket specific extension
-	$twig->addExtension(new SBExtension());
-
-	$twig->addRuntimeLoader(new class implements RuntimeLoaderInterface {
-	public function load($class) {
-		if (MarkdownRuntime::class === $class) {
-			return new MarkdownRuntime(new DefaultMarkdown());
-		}
+	if (!isset($customloader)) {
+		$loader = new \Twig\Loader\FilesystemLoader('templates/' . $frontend . '/' . $subfolder);
+	} else {
+		$loader = $customloader();
 	}
-	});
+
+	if (!isset($customenv)) {
+		$twig = new \Twig\Environment($loader, [
+			'cache' => $doCache,
+		]);
+	} else {
+		$twig = $customenv($loader, $doCache);
+	}
+
+	$twig->addExtension(new SBExtension());
 	$twig->addExtension(new MarkdownExtension());
 
-	$twig->addGlobal('logged_in', $loggedIn);
+	$twig->addGlobal('logged_in', $log);
 	$twig->addGlobal('menu_links', $menuLinks);
-	$twig->addGlobal('current_user', $currentUser);
+	$twig->addGlobal('current_user', $userdata);
 	$twig->addGlobal('theme', $theme);
 	$twig->addGlobal('glob_languages', $languages);
 	$twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");

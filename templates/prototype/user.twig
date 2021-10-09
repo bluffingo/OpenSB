@@ -12,7 +12,7 @@
 <style>
 	{{ profCss | raw }}
 	.bg-channel-background {
-	background-image: url('{{ channel_background(user.username) }}');
+	background-image: url('{{ channel_background(user.name) }}');
     margin-top: -24px;
 	padding-bottom: 25px;
 	}
@@ -51,7 +51,7 @@
 			<div class="card-body">
 				<div class="row">
 					<div class="col-4">
-					<img class="rounded w-100" src="{{ profile_image(user.username) }}"  alt="{{ user.username }}">
+					<img class="rounded w-100" src="{{ profile_image(user.name) }}"  alt="{{ user.name }}">
 					</div>
 					<div class="col-8">
 						<dl class="row mb-0">
@@ -72,7 +72,7 @@
 						</dl>
 						<dl class="row mb-0">
 							<dt class="col-auto">{{ __("Username") }}</dt>
-							<dd class="col-auto">{{ user.username }}</dd>
+							<dd class="col-auto">{{ user.name }}</dd>
 						</dl>
 					</div>
 					</div>

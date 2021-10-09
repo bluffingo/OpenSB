@@ -12,7 +12,7 @@
 function userlink($user, $prefix = '') {
 	if (isset($user)) {
 			return <<<HTML
-			<a class="user" href="user.php?name={$user[$prefix.'username']}">{$user[$prefix.'username']}</a>
+			<a class="user" href="user.php?name={$user[$prefix.'name']}">{$user[$prefix.'name']}</a>
 HTML;
 		}
 	 else {
@@ -29,7 +29,7 @@ HTML;
  */
 if(!isset($acmlm)) {
 function userfields() {
-	$fields = ['id', 'username'];
+	$fields = ['id', 'name'];
 
 	$out = '';
 	foreach ($fields as $field) {

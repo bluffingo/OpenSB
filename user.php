@@ -4,14 +4,14 @@ use ScssPhp\ScssPhp\Compiler;
 
 $username = (isset($_GET['name']) ? $_GET['name'] : null);
 
-$userData = fetch("SELECT * FROM users WHERE username = ?", [$username]);
+$userData = fetch("SELECT * FROM users WHERE name = ?", [$username]);
 
 $latestVideoData = query("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT 15", [$userData['id']]);
 
 $scss = new Compiler();
 $scss->setImportPaths($_SERVER['DOCUMENT_ROOT']);
 $css = $scss->compile(
-	'$color: '.$userData['color'].';
+	'$color: '.$userData['customcolor'].';
 	@mixin gradient-y-three-colors($start-color: $blue, $mid-color: $purple, $color-stop: 50%, $end-color: $red) {
 		background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
 	}

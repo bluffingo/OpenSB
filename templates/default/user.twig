@@ -1,6 +1,6 @@
 {% extends "_layout.twig" %}
 
-{% block title %}{{ user.username }}{% endblock %}
+{% block title %}{{ user.name }}{% endblock %}
 
 	{% block head %}
 		<script>
@@ -12,7 +12,7 @@
 <style>
 	{{ profCss | raw }}
 	.bg-channel-background {
-	background-image: url('{{ channel_background(user.username) }}');
+	background-image: url('{{ channel_background(user.name) }}');
     margin-top: -24px;
 	padding-bottom: 25px;
 	}
@@ -23,14 +23,14 @@
 		<div class="container py-4">
 			<div class="row">
 				<div class="col-md-10">
-					<img class="float-start rounded-circle me-3" src="{{ profile_image(user.username) }}" width="150" alt="pfp">
+					<img class="float-start rounded-circle me-3" src="{{ profile_image(user.name) }}" width="150" alt="pfp">
 					<h1 class="align-top fw-bold mb-0">
 						{{ user.display_name }}{% if user.u_flags == 1 %}<svg data-bs-toggle="tooltip"
 							data-bs-placement="top" title="{{ __("Checkmarked") }}"
 							style="margin-left: 0.75%;" class="bi" width="32" height="32" fill="currentColor">
 							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#patch-check-fill" />
 						</svg>{% endif %}</h1>
-						<div class="fs-4">@{{ user.username }}</div>
+						<div class="fs-4">@{{ user.name }}</div>
 					<p class="fs-6 text-break">{{ user.description }}</p>
 				</div>
 				<div class="col-md-2">
@@ -96,7 +96,7 @@
 					<h4>{{ __("Administrative Actions") }}</h4>
 					<hr>
 					<dl class="row">
-						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset for %s", [user.username]) }}</a>
+						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset for %s", [user.name]) }}</a>
 					</dl>
 				</div>
 			</div>
