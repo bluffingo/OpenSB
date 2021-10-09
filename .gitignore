@@ -28,3 +28,6 @@ adminer-*.php
 downloads/
 wiki/
 *.sfk
+assets/_style_forums.css
+assets/darkmode.css
+assets/style.css

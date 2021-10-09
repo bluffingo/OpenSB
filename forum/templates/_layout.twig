@@ -3,15 +3,14 @@
 	<head>
 		<meta charset="utf-8">
 		<title>{% block title %}Forum{% endblock %} - principia-web</title>
-		<base href="{{ basepath }}forum/">
-		<link rel="stylesheet" href="../assets/css/style.css" type="text/css">
-		{% if userdata.darkmode %}<link rel="stylesheet" href="../assets/css/darkmode.css" type="text/css">{% endif %}
+		<link rel="stylesheet" href="../assets/style.css" type="text/css">
+		{% if userdata.darkmode %}<link rel="stylesheet" href="../assets/darkmode.css" type="text/css">{% endif %}
 		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 		<script src="assets/js/tools.js"></script>
 	</head>
 	<body {% if is_android_webview() %}style="zoom:0.6"{% endif %}>
 		<div class="top">
-			<a href="../"><img class="picon" src="../assets/icon.png"/></a>
+			<a href="../"><img class="picon" src="../assets/logo.png"/></a>
 			<ul class="menu left">
 				<li><a href="../popular.php" class="btn">Popular</a></li>
 				<li><a href="../top.php" class="btn">Top</a></li>
@@ -57,8 +56,8 @@
 			<a href="about.php">About</a>
 			{{ custom_info() }}
 			<br>
-			Running <a href="https://github.com/principia-preservation-project/principia-web">principia-web</a>,
-			on commit <a href="https://github.com/principia-preservation-project/principia-web/commit/{{ git_commit(false) }}">{{ git_commit() }}</a><br>
+			Running <a href="https://github.com/gr-sb/squarebracket">squareBracket</a>,
+			on commit <a href="https://github.com/gr-sb/squarebracket/commit/{{ git_commit(false) }}">{{ git_commit() }}</a><br>
 			{{ profiler_stats() }}
 		</div>
 		<script type="text/javascript" src="assets/base.js"></script>
