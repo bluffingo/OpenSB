@@ -25,7 +25,7 @@ try {
 	$video = $ffmpeg->open($target_file);
 	$dash = $video->dash()
 		->setAdaption('id=0,streams=v id=1,streams=a') // Set the adaption.
-		->x264() // Format of the video. Alternatives: x264() and vp9()
+		->x264() // Format of the video. vp9 would have been a better idea if it weren't for slow-ass speeds and no way of changing speeds.
 		->autoGenerateRepresentations() // Auto generate representations
 		->save(); // It can be passed a path to the method or it can be null
 	$metadata = $dash->metadata();

@@ -46,22 +46,11 @@ $subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$user
 
 $twig = twigloader();
 
-if ($testNewLayout) {
-	echo $twig->render('user_redesign.twig', [
-	'user' => $userData,
-	'latestVideos' => $latestVideoData,
-	'profCss' => $css,
-	'edited' => (isset($_GET['edited']) ? true : false),
-	'subscribed' => $subscribed,
-	'subCount' => $subCount
+echo $twig->render('user.twig', [
+'user' => $userData,
+'latestVideos' => $latestVideoData,
+'profCss' => $css,
+'edited' => (isset($_GET['edited']) ? true : false),
+'subscribed' => $subscribed,
+'subCount' => $subCount
 ]);
-} else {
-	echo $twig->render('user.twig', [
-	'user' => $userData,
-	'latestVideos' => $latestVideoData,
-	'profCss' => $css,
-	'edited' => (isset($_GET['edited']) ? true : false),
-	'subscribed' => $subscribed,
-	'subCount' => $subCount
-]);
-}

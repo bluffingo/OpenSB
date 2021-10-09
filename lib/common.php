@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 
 if (!file_exists('conf/config.php')) {
 	die('<center><b>A configuration file could not be found. Please read the installing instructions in the README file.</b></center>');

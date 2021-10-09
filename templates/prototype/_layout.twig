@@ -3,8 +3,21 @@
 <head>
 	<meta charset="utf-8">
 	<title>{% block title %}{% endblock %} - squareBracket Next</title>
+	{% block head %}{% endblock %}
 	<link rel="stylesheet" id="bootstrap" href="assets/bs-finalium.css" type="text/css">
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 	<script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/common.js"></script>
+	<script> 
+	var $buoop = {required:{e:-6,f:-6,o:-6,s:12,c:-6},insecure:true,api:2021.10 }; 
+	function $buo_f(){ 
+	 var e = document.createElement("script"); 
+	 e.src = "//browser-update.org/update.min.js"; 
+	 document.body.appendChild(e);
+	};
+	try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+	catch(e){window.attachEvent("onload", $buo_f)}
+	</script>
 	<style>
 	.bi {
     display: inline-block;
@@ -34,7 +47,7 @@
           <a class="nav-link" href="#">{{ icon('music-note-beamed', 24) }} Music</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">{{ icon('easel', 24) }} Art</a>
+          <a class="nav-link" href="#">{{ icon('easel', 24) }} Artwork</a>
         </li>
       </ul>
 	  <div class="navbar-nav">

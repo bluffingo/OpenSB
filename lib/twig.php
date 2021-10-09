@@ -11,9 +11,10 @@ class SBExtension extends \Twig\Extension\AbstractExtension {
 			new \Twig\TwigFunction('channel_background', 'channelBackground', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('userlink', 'userlink', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('comment', 'comment', ['is_safe' => ['html']]),
-			new \Twig\TwigFunction('__', '__', ['is_safe' => ['html']]),
+			new \Twig\TwigFunction('__', '__', ['is_safe' => ['html']]), //localization
 			new \Twig\TwigFunction('browse_channel_box', 'browseChannelBox', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('icon', 'icon', ['is_safe' => ['html']]),
+			new \Twig\TwigFunction('icon_alt', 'icon_alt', ['is_safe' => ['html']]), //intended for sbnext's upload_start -gr 10/8/2021
 			new \Twig\TwigFunction('pagination', 'pagination', ['is_safe' => ['html']]),
 		];
 	}
