@@ -27,6 +27,7 @@ HTML;
  *
  * @return string String to put inside a SQL statement.
  */
+if(!isset($acmlm)) {
 function userfields() {
 	$fields = ['id', 'username'];
 
@@ -36,4 +37,5 @@ function userfields() {
 	}
 
 	return $out;
+}
 }
