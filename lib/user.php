@@ -9,17 +9,22 @@
  */
  
  // todo: use display name instead of username -gr 8/2/2021
-function userlink($user, $prefix = '') {
-	if (isset($user)) {
-			return <<<HTML
-			<a class="user" href="user.php?name={$user[$prefix.'name']}">{$user[$prefix.'name']}</a>
-HTML;
-		}
-	 else {
-		return <<<HTML
-		No data supplied!
-HTML;
+function userlink($user, $pre = '') {
+	global $acmlm;
+
+	//if ($user[$pre.'id'] == 1) {
+	//	$user[$pre.'name'] = '<span style="color:#D60270">ROll</span><span style="color:#9B4F96">er</span><span style="color:#0038A8">ozxa</span>';
+	//}
+
+	if ($user[$pre.'customcolor']) {
+		$user[$pre.'colorname'] = sprintf('<span style="color:%s">%s</span>', $user[$pre.'customcolor'], $user[$pre.'name']);
 	}
+
+	$htmlrelpathfuckery = (isset($acmlm) ? '../' : '');
+
+	return <<<HTML
+		<a class="user" href="{$htmlrelpathfuckery}user.php?name={$user[$pre.'name']}"><span class="t_user">{$user[$pre.'colorname']}</span></a>
+HTML;
 }
 
 /**
@@ -29,7 +34,7 @@ HTML;
  */
 if(!isset($acmlm)) {
 function userfields() {
-	$fields = ['id', 'name'];
+	$fields = ['id', 'name', 'customcolor'];
 
 	$out = '';
 	foreach ($fields as $field) {

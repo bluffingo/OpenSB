@@ -9,7 +9,7 @@ require('conf/config.php');
 
 // todo: make this load a html page
 if ($isMaintenance) {
-	die('<center><b>squareBracket is currently offline for maintenance and upgrades.</b></center>');
+	die('<center><b>squareBracket is currently offline.</b></center>');
 }
 
 if ($isDebug and !isset($rawOutputRequired)) {
@@ -71,6 +71,9 @@ if ($oldTemplateSwitching) {
 if ($log) {
 	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);
 	$userdata = fetch("SELECT * FROM users WHERE id = ?", [$id]);
+} else {
+	$userdata['powerlevel'] = 1;
+	$userdata['darkmode'] = $darkModeDefault;
 }
 
 $lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['language'] : 'en-US').".json"));
