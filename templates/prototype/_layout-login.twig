@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% block head %}{% endblock %}
+		<!-- REDO THIS REDO THIS REDO THIS REDO THIS -->
+		{% if theme != 'vanilla' %}
+		<link rel="stylesheet" id="bootstrap" href="assets/bs{% if theme == 'dark' %}-dark{% elseif theme == 'finalium' %}-finalium{% elseif theme == 'finalium-dark' %}-finalium-dark{% endif %}.css" type="text/css">
+		{% else %}
+		<link href="assets/bs-vanilla.css" rel="stylesheet" id="bootstrap">
+		{% endif %}
+	    <link rel="stylesheet" id="bootstrap_dashboard" href="bootstrap/signin.css" type="text/css">
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+		<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="assets/common.js"></script>
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0065d8">
+		<meta name="apple-mobile-web-app-title" content="squareBracket">
+		<meta name="application-name" content="squareBracket">
+		<meta name="msapplication-TileColor" content="#2d89ef">
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+		<meta name="theme-color" content="#0065d8">
+		<title>{% block title %}{% endblock %} - squareBracket</title>
+	</head>
+	<body class="text-center">
+		{% block content %}{% endblock %}
+	</body>
+</html>

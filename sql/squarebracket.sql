@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2021 at 10:10 PM
+-- Generation Time: Oct 10, 2021 at 12:35 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -66,21 +66,6 @@ CREATE TABLE `passwordresets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
---
-
-CREATE TABLE `posts` (
-  `id` int(11) NOT NULL COMMENT 'The post''s ID.',
-  `title` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The post''s title.',
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The post''s contents.',
-  `author` int(11) NOT NULL COMMENT 'The post''s author, which is the author''s internal counting ID.',
-  `time` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The time when the post was posted.',
-  `thread_id` int(11) NOT NULL COMMENT 'The ID of the thread of WHATEVER THE FUCK IS THE POST'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `rating`
 --
 
@@ -109,19 +94,25 @@ CREATE TABLE `subscriptions` (
 
 CREATE TABLE `users` (
   `id` bigint(20) NOT NULL COMMENT 'Incrementing ID for internal purposes.',
-  `username` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Username, chosen by the user',
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Username, chosen by the user',
   `email` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User Email.',
   `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Password, hashed in bcrypt.',
   `token` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User token for cookie authentication.',
   `joined` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'User''s join date',
   `lastview` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Timestamp of last view',
-  `display_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lastpost` int(11) NOT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
-  `color` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
+  `customcolor` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en-US' COMMENT 'Language (Defaults to English)',
+  `avatar` tinyint(1) NOT NULL DEFAULT 0,
   `u_flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties',
   `powerlevel` tinyint(4) UNSIGNED NOT NULL DEFAULT 1 COMMENT '0 - banned. 1 - normal user. 2 - moderator. 3 - administrator',
-  `blockland_id` int(11) NOT NULL COMMENT 'Blockland ID, intended for internal Vitre testing.'
+  `group_id` int(11) NOT NULL DEFAULT 3 COMMENT 'Legacy Acmlmboard-related group ID field.',
+  `posts` int(11) NOT NULL,
+  `threads` int(11) NOT NULL,
+  `blockland_id` int(11) NOT NULL COMMENT 'Blockland ID, intended for internal Vitre testing.',
+  `signature` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -347,12 +338,6 @@ ALTER TABLE `music`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `posts`
---
-ALTER TABLE `posts`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -452,12 +437,6 @@ ALTER TABLE `z_threadsread`
 --
 ALTER TABLE `music`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `posts`
---
-ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'The post''s ID.';
 
 --
 -- AUTO_INCREMENT for table `users`

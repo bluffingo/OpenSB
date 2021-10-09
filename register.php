@@ -15,7 +15,7 @@ if (isset($_POST['action'])) {
 	if (!isset($pass) || strlen($pass) < 6) $error .= __("Password is too short.");
 	if (!isset($pass2) || $pass != $pass2) $error .= __("The passwords don't match.");
 	if (!isset($displayName)) $error .= __("Blank display name.");
-	if (result("SELECT COUNT(*) FROM users WHERE username = ?", [$username])) $error .= __("Username has already been taken. "); //ashley2012 bypassed this -gr 7/26/2021
+	if (result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= __("Username has already been taken. "); //ashley2012 bypassed this -gr 7/26/2021
 	if (!preg_match('/[a-zA-Z0-9_]+$/', $username)) $error .= __("Username contains invalid characters (Only alphanumeric and underscore allowed)."); //ashley2012 bypassed this with the long-ass arabic character. -gr 7/26/2021
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $error .= __("Email isn't valid."); //60% of squarebracket accounts (excluding poktube accs) have invalid emails. this isn't even fucking working. -gr 7/26/2021
 
@@ -26,7 +26,7 @@ if (isset($_POST['action'])) {
 
 	if ($error == '') {
 		$token = bin2hex(random_bytes(32));
-			query("INSERT INTO users (name, password, email, token, joined, display_name) VALUES (?,?,?,?,?,?)",
+			query("INSERT INTO users (name, password, email, token, joined, title) VALUES (?,?,?,?,?,?)",
 			[$username,password_hash($pass, PASSWORD_DEFAULT), $email, $token, time(), $displayName]);
 
 		setcookie('SBTOKEN', $token, 2147483647);

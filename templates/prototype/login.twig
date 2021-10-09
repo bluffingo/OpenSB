@@ -1,15 +1,41 @@
-{% extends "_layout.twig" %}
+{% extends "_layout-login.twig" %}
 
 {% block title %}{{ __("Login") }}{% endblock %}
 
 	{% block content %}
-<form method="post" name="loginForm" id="loginForm" action="login.php">
-  <label for="floatingInput">Username:</label>
-  <input type="text" id="floatingInput" name="username"><br><br>
-  <label for="floatingPassword">Password:</label>
-  <input type="password" id="floatingPassword" name="password"><br><br>
-  <input type="submit" name="loginsubmit" value="Login">
-</form>
-
-<p>{{ __("Account passwords are hashed with bcrypt.") }}</p>
+<main class="form-signin">
+	{% if error %}
+		<div class="alert alert-warning" role="alert">{{ error }}</div>
+	{% elseif resetted %}
+		<div class="alert alert-success" role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>	
+	{% elseif new_pass %}
+		<div class="alert alert-success" role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>
+	{% elseif new_token %}
+		<div class="alert alert-success" role="alert">{{ __("You have been successfully logged out of all devices.") }}</div>
+	{% endif %}
+		<form method="post" name="loginForm" id="loginForm" action="login.php">
+			<img class="mb-2" src="/assets/logo_border_placeholder.png" alt="squareBracket" width="90">
+			<div class="login-box">
+			<h3 class="mb-4 text-white">{{ __("Login") }}</h3>
+				<div class="card">
+					<div class="card-body">
+						<div class="form-floating my-2">
+							<input type="text" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
+							<label for="floatingInput">{{ __("Username") }}</label>
+						</div>
+						<div class="form-floating my-2">
+							<input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+							<label for="floatingPassword">{{ __("Password") }}</label>
+						</div>
+						<div class="d-grid gap-2 d-md-flex justify-content-between">
+						  <input class="btn btn-lg btn-primary flex-grow-1" type="submit" value="{{ __("Login") }}" name="loginsubmit">
+						  <a class="btn btn-lg btn-secondary" href="/">{{ __("Back") }}</a>
+						</div>
+					</div>
+				</div>
+			<p class="mt-2 text-white">{{ __("Account passwords are hashed with bcrypt.") }}</p>
+			<p class="mt-5 mb-3 text-white">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
+			</div>
+		</form>
+</main>
 	{% endblock %}
