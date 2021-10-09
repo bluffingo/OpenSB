@@ -49,6 +49,9 @@
         <li class="nav-item">
           <a class="nav-link" href="#">{{ icon('easel', 24) }} Artwork</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/forum/">{{ icon('chat-left-text', 24) }} Forums</a>
+        </li>
       </ul>
 	  <div class="navbar-nav">
       <form class="d-flex pe-2">
@@ -61,19 +64,19 @@
       </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		  <img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded bi" width="24" height="24"></a>
+		  <img src="{{ profile_image(current_user.name) }}" alt="{{ current_user.name }}" class="rounded bi" width="24" height="24"></a>
 		  	<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
 				<div class="p-2 mb-2 bg-light border-bottom">
 				<div class="row">
 					<div class="col-5">
-					<img src="{{ profile_image(current_user.username) }}" alt="{{ current_user.username }}" class="rounded w-100 bi"></a>
+					<img src="{{ profile_image(current_user.name) }}" alt="{{ current_user.name }}" class="rounded w-100 bi"></a>
 					</div>
 					<div class="col-7 ps-0">
-						<p>@{{current_user.username}}</p>
+						<p>@{{current_user.name}}</p>
 					</div>
 				</div>
 				</div>
-				<li><a class="dropdown-item" href="user.php?name={{ current_user.username }}">{{ icon('person-square', 16) }} My profile</a></li>
+				<li><a class="dropdown-item" href="user.php?name={{ current_user.name }}">{{ icon('person-square', 16) }} My profile</a></li>
 				<li><a class="dropdown-item" href="#">{{ icon('gear', 16) }} Studio</a></li>
 				<li><a class="dropdown-item" href="#">{{ icon('palette2', 16) }} Appearance</a></li>
 				<li><a class="dropdown-item" href="settings.php">{{ icon('sliders', 16) }} Settings</a></li>

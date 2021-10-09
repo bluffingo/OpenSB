@@ -27,12 +27,13 @@ function userlink($user, $pre = '') {
 HTML;
 }
 
+if (!isset($acmlm)) {
+
 /**
  * Get list of SQL SELECT fields for userlinks.
  *
  * @return string String to put inside a SQL statement.
  */
-if(!isset($acmlm)) {
 function userfields() {
 	$fields = ['id', 'name', 'customcolor'];
 
@@ -43,4 +44,5 @@ function userfields() {
 
 	return $out;
 }
+
 }

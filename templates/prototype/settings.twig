@@ -6,8 +6,8 @@
 <div class="row">
 					<div class="row">
 						<div class="col-12">
-							<img class="float-start rounded-circle" src="{{ profile_image(current_user.username) }}" style="margin-right: 1.5%;" width="64" alt="pfp">
-							<h2>{{ current_user.display_name }}</h2>
+							<img class="float-start rounded-circle" src="{{ profile_image(current_user.name) }}" style="margin-right: 1.5%;" width="64" alt="pfp">
+							<h2>{{ current_user.title }}</h2>
 							<p>Your squareBracket account (or channel?)</p>
 						</div>
 					</div>
@@ -41,11 +41,11 @@
 				<div class="p-4 bg-light border rounded-3">
 					<div class="row">
 						<div class="col-12">
-							<img class="float-start rounded" src="{{ profile_image(current_user.username) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
-							<h2>{{ current_user.display_name }}</h2>
+							<img class="float-start rounded" src="{{ profile_image(current_user.name) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
+							<h2>{{ current_user.title }}</h2>
 							<p>
 								{{ icon('at', 20) }}
-								<b>{{ __("Username:") }}</b> {{ current_user.username }}<br>
+								<b>{{ __("Username:") }}</b> {{ current_user.name }}<br>
 								{% if current_user.email == "poktube_migrated@squarebracket.me" %}
 								{{ __("Account migrated from PokTube") }}
 								{% else %}
@@ -79,7 +79,7 @@
 							<input class="form-control" type="file" name="profilePicture" id="profilePicture">
 						</div>
 						<div class="col-2">
-							<img class="float-end rounded" src="{{ profile_image(current_user.username) }}" width="128" alt="pfp">
+							<img class="float-end rounded" src="{{ profile_image(current_user.name) }}" width="128" alt="pfp">
 						</div>
 					</div>
 					<h3>{{ __("Channel background") }} {{ __("(Checkmark only)") }}</h3>

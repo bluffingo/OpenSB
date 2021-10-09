@@ -34,6 +34,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addExtension(new MarkdownExtension());
 
 	$twig->addGlobal('logged_in', $log);
+	$twig->addGlobal('log', $log); //for forums
 	$twig->addGlobal('menu_links', $menuLinks);
 	$twig->addGlobal('current_user', $userdata);
 	$twig->addGlobal('theme', $theme);

@@ -1,6 +1,6 @@
 {% extends "_layout.twig" %}
 
-{% block title %}{{ user.display_name }}{% endblock %}
+{% block title %}{{ user.title }}{% endblock %}
 
 	{% block head %}
 		<script>
@@ -33,11 +33,11 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="caption">
-					<h3>{{ __("Uploaded by %s", [user.display_name]) }}</h3>
+					<h3>{{ __("Uploaded by %s", [user.title]) }}</h3>
 					{% for latestVideo in latestVideos %}
 					{{ video_box(latestVideo) }}
 					{% else %}
-					<p>{{ __("There are currently no videos uploaded by %s.", [user.display_name]) }}</p>
+					<p>{{ __("There are currently no videos uploaded by %s.", [user.title]) }}</p>
 					{% endfor %}
 				</div>
 			</div>
@@ -46,7 +46,7 @@
 	<div class="col-md-4 order-1">
 		<div class="card mb-2">
 		  <div class="card-header">
-			<h5 class="mb-0">{{ __("About %s", [user.display_name]) }}</h5>
+			<h5 class="mb-0">{{ __("About %s", [user.title]) }}</h5>
 		  </div>
 			<div class="card-body">
 				<div class="row">
@@ -85,7 +85,7 @@
 				</div>
 				<div class="card-body">			
 					<dl class="row">
-						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset for %s", [user.display_name]) }}</a>
+						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset for %s", [user.title]) }}</a>
 					</dl>
 				</div>
 			</div>

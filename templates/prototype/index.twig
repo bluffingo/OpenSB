@@ -8,11 +8,11 @@
 	  		{% if logged_in %}
 			<div class="row">
 				<div class="col-3 d-none d-md-block">
-					<img class="rounded w-100" src="{{ profile_image(current_user.username) }}"  alt="{{ current_user.username }}">
+					<img class="rounded w-100" src="{{ profile_image(current_user.name) }}"  alt="{{ current_user.name }}">
 				</div>
 				<div class="col-12 col-md-9">
 					<p class="text-start">
-					<h3>Welcome, {{ current_user.display_name }}</h3>
+					<h3>Welcome, {{ current_user.title }}</h3>
 						{# hack to prevent twig from outputing the number 1 #}
 						{% if totalSubscribers != 1 %}
 							{% set pluralSubscribers = __("s") %}
@@ -20,7 +20,7 @@
 						{% if totalViews != 1 %}
 							{% set pluralViews = __("s") %}
 						{% endif %}
-						<p class="fs-5 mb-1">@{{ current_user.username }}</p>
+						<p class="fs-5 mb-1">@{{ current_user.name }}</p>
 						<p class="mb-2">{{ __("%s subscriber%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}</p>
 						<p class="mb-2">{{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
 				</div>
