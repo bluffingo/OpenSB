@@ -12,11 +12,11 @@ class Profiler {
 	}
 
 	function getStats() {
-		global $currentUser, $frontend;
+		global $userdata, $frontend;
 
-		$username = (isset($currentUser['username']) ? $currentUser['username'] : 'not logged in');
-		$displayname = (isset($currentUser['display_name']) ? $currentUser['display_name'] : '');
-		$language = (isset($currentUser['language']) ? $currentUser['language'] : 'en_US');
+		$username = (isset($userdata['name']) ? $userdata['name'] : 'not logged in');
+		$displayname = (isset($userdata['display_name']) ? $userdata['display_name'] : '');
+		$language = (isset($userdata['language']) ? $userdata['language'] : 'en_US');
 		$memoryUsage = memory_get_usage(false) / 1024;
 		$renderTime = microtime(true) - $this->starttime;
 		$res = getrusage();

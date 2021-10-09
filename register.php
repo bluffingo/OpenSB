@@ -26,7 +26,7 @@ if (isset($_POST['action'])) {
 
 	if ($error == '') {
 		$token = bin2hex(random_bytes(32));
-			query("INSERT INTO users (username, password, email, token, joined, display_name) VALUES (?,?,?,?,?,?)",
+			query("INSERT INTO users (name, password, email, token, joined, display_name) VALUES (?,?,?,?,?,?)",
 			[$username,password_hash($pass, PASSWORD_DEFAULT), $email, $token, time(), $displayName]);
 
 		setcookie('SBTOKEN', $token, 2147483647);

@@ -34,7 +34,9 @@ function accessDenied() {
 	die(__("Access Denied"));
 }
 
+if(!isset($acmlm)) {
 $userfields = userfields();
+}
 
 // Cookie auth
 if (isset($_COOKIE['SBTOKEN'])) {
@@ -42,14 +44,14 @@ if (isset($_COOKIE['SBTOKEN'])) {
 
 	if ($id) {
 		// Valid cookie, logged in
-		$loggedIn = true;
+		$log = true;
 	} else {
 		// Invalid cookie, not logged in
-		$loggedIn = false;
+		$log = false;
 	}
 } else {
 	// No cookie, not logged in
-	$loggedIn = false;
+	$log = false;
 }
 
 // Theme selector stuff
@@ -66,34 +68,9 @@ if ($oldTemplateSwitching) {
 	$frontend = (isset($useTemplate) ? $useTemplate : 'default');
 }
 
-if ($loggedIn) {
+if ($log) {
 	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);
-	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
+	$userdata = fetch("SELECT * FROM users WHERE id = ?", [$id]);
 }
 
-$lang = new Lang(sprintf("lib/lang/".(isset($currentUser['language']) ? $currentUser['language'] : 'en-US').".json"));
-
-//Vitre functions because the only other place I could put them would cause the script to crash.
-//These may be Blockland-centric, and will need to be hacked a FUCKTON in case we make a proper Vitre client.
-//-GR 10/6/2021
-
-//Spawns a Message Box
-function v_messageBox($client, $title, $text) {
-socket_write($client, json_encode(array('type' => "MessageBox", 'title' => $title, 'text' => $text))."\n");
-}
-
-//echos debug-only shit, much more useful for a CLI than a web page so this is vitre server-only.
-if ($isDebug)
-{
-    function v_debugEcho($text)
-    {
-        echo "DEBUG: ".$text."\n";
-    }
-}
-else
-{
-    function v_debugEcho($text)
-    {
-        return;
-    }
-}
+$lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['language'] : 'en-US').".json"));

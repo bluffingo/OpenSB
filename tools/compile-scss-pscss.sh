@@ -6,6 +6,12 @@ pscss_path="vendor/scssphp/scssphp/bin/pscss"
 # Load path is assuming you're running this script from the root of the sB site directory
 common_arguments="--style=compressed"
 
+echo "Compiling Forum Styles"
+php ${pscss_path} ${common_arguments} assets/style.scss > assets/style.css
+echo "Compiling Forum Dark Styles"
+php ${pscss_path} ${common_arguments} assets/darkmode.scss > assets/darkmode.css
+echo "Compiling Forum Alternative Shit? Wtf"
+php ${pscss_path} ${common_arguments} assets/_style_forums.scss > assets/_style_forums.css
 echo "Compiling Finalium Light"
 php ${pscss_path} ${common_arguments} bootstrap/bs-finalium.scss > assets/bs-finalium.css
 echo "Compiling Finalium Dark"
