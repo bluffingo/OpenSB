@@ -24,7 +24,7 @@ foreach(str_split($music_id) as $char){
 	$new .= $char;
 }
 
-if (isset($_POST['upload']) and isset($currentUser['username'])) {
+if (isset($_POST['upload']) and isset($userdata['name'])) {
 	$title = (isset($_POST['title']) ? $_POST['title'] : null);
 
 	// Prevent videos with duplicate metadata since they are probably accidentally uploaded.
@@ -33,7 +33,7 @@ if (isset($_POST['upload']) and isset($currentUser['username'])) {
 	}
 
 	// Rate limit uploading to 2 minutes, both to prevent spam and to prevent double uploads.
-	if (result("SELECT COUNT(*) FROM music WHERE time > ? AND author = ?", [time() - 60*2, $currentUser['id']])) {
+	if (result("SELECT COUNT(*) FROM music WHERE time > ? AND author = ?", [time() - 60*2, $userdata['id']])) {
 		die(__("Please wait 2 minutes before uploading again. If you've already uploaded a music, it is being processed."));
 	}
 
@@ -43,7 +43,7 @@ if (isset($_POST['upload']) and isset($currentUser['username'])) {
 	$target_file = 'music/'.$new.'.'.$ext;
 	if (move_uploaded_file($temp_name, $target_file)){
 		query("INSERT INTO music (music_id, title, author, time, file) VALUES (?,?,?,?,?)",
-			[$new,$title,$currentUser['id'],time(),'music/'.$new.'.'.$ext]);
+			[$new,$title,$userdata['id'],time(),'music/'.$new.'.'.$ext]);
 
 		redirect('./listen.php?m='.$new);
 	}
