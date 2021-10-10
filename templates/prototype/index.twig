@@ -1,12 +1,12 @@
 {% extends "_layout.twig" %}
 {% block title %}Main page{% endblock %}
 	{% block content %}
-<div class="row">
+<div class="grid">
 	<div class="col-8">
 	<div class="p-1 mb-4 bg-light rounded-3">
 	  <div class="container-fluid {% if log %}py-3{% else %}py-5{% endif %}">
 	  		{% if log %}
-			<div class="row">
+			<div class="grid">
 				<div class="col-3 d-none d-md-block">
 					<img class="rounded w-100" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}">
 				</div>

@@ -1,3 +1,88 @@
+@import "_normalize";
+/* SB CSS STARTS HERE ======================================================== */
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// Small devices
+@mixin sm {
+   @media (min-width: #{$screen-sm-min}) {
+       @content;
+   }
+}
+
+// Medium devices
+@mixin md {
+   @media (min-width: #{$screen-md-min}) {
+       @content;
+   }
+}
+
+// Large devices
+@mixin lg {
+   @media (min-width: #{$screen-lg-min}) {
+       @content;
+   }
+}
+
+// Extra large devices
+@mixin xl {
+   @media (min-width: #{$screen-xl-min}) {
+       @content;
+   }
+}
+
+$columns: 12;
+$gap: 30px;
+$breakpoints: (
+    sm: 500px,
+    md: 700px,
+    lg: 800px,
+    xl: 1000px
+);
+
+@mixin create-selectors($breakpoint: null) {
+    $infix: if($breakpoint == null, '', '-#{$breakpoint}');
+
+    @for $i from 1 through $columns {
+        .col#{$infix}-#{$i} {
+            grid-column-end: span $i;
+        }
+        .col-offset#{$infix}-#{$i} {
+            grid-column-start: $i + 1;
+        }
+        .row#{$infix}-#{$i} {
+            grid-row-end: span $i;
+        }
+        .row-offset#{$infix}-#{$i} {
+            grid-row-start: $i + 1;
+        }
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    grid-gap: $gap;
+    gap: $gap;
+}
+
+@include create-selectors;
+
+@each $breakpoint, $width in $breakpoints {
+    @media (min-width: $width) {
+        @include create-selectors($breakpoint);
+    }
+}
 
 body {
 	background-color: #ffffff;
@@ -449,4 +534,6 @@ form.reglog {
 }
 
 /// Forums \\\
-@import "_style_forums"
+@import "_style_forums";
+/// Containers \\\
+@import "_containers";
