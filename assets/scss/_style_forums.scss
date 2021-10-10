@@ -67,6 +67,11 @@ table.c1 {
 	.sidebar {
 		border-top: 0 !important;
 		text-align: center;
+
+		.avatar {
+			max-width: 160px;
+			max-height: 160px;
+		}
 	}
 
 	.mainbar {

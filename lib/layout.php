@@ -123,11 +123,6 @@ function relativeTime($time) {
 	return $relativeTime->timeAgo($time);
 }
 
-//is this from 2006L? -gr 7/26/2021
-function jsonDecode($str) {
-	return json_decode($str);
-}
-
 function redirect($url) {
 	header(sprintf('Location: %s', $url));
 	die();

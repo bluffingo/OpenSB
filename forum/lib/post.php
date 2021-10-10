@@ -82,7 +82,7 @@ HTML;
 	$pdate = date($dateformat, $post['date']);
 	$lastpost = ($post['ulastpost'] ? timeunits(time() - $post['ulastpost']) : 'none');
 	$lastview = timeunits(time() - $post['ulastview']);
-	$picture = ($post['uavatar'] ? "<img src=\"assets/profpic/{$post['uid']}\">" : '');
+	$picture = ($post['uavatar'] ? "<img src=\"/assets/profpic/{$post['uname']}.png\" class=\"avatar\">" : '');
 	if (!$log) $post['usignature'] = '';
 	else if ($post['usignature']) {
 		$post['usignature'] = '<div class="siggy">' . postfilter($post['usignature']) . '</div>';

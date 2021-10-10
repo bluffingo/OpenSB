@@ -7,11 +7,9 @@ pscss_path="vendor/scssphp/scssphp/bin/pscss"
 common_arguments="--style=compressed"
 
 echo "Compiling Forum Styles"
-php ${pscss_path} ${common_arguments} assets/style.scss > assets/style.css
+php ${pscss_path} ${common_arguments} assets/scss/style.scss > assets/css/style.css
 echo "Compiling Forum Dark Styles"
-php ${pscss_path} ${common_arguments} assets/darkmode.scss > assets/darkmode.css
-echo "Compiling Forum Alternative Shit? Wtf"
-php ${pscss_path} ${common_arguments} assets/_style_forums.scss > assets/_style_forums.css
+php ${pscss_path} ${common_arguments} assets/scss/darkmode.scss > assets/css/darkmode.css
 echo "Compiling Finalium Light"
 php ${pscss_path} ${common_arguments} bootstrap/bs-finalium.scss > assets/bs-finalium.css
 echo "Compiling Finalium Dark"

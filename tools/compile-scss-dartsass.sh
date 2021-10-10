@@ -2,6 +2,6 @@
 
 # "Compressed" style gives lowest filesize
 # Load path is assuming you're running this script from the root of the sB site directory
-common_arguments="--style compressed --load-path ./"
+common_arguments="--style compressed --no-source-map --load-path ./ --watch"
 
-sass ${common_arguments} bootstrap/bs.scss:assets/bs.css bootstrap/bs-dark.scss:assets/bs-dark.css bootstrap/bs-finalium.scss:assets/bs-finalium.css bootstrap/bs-finalium-dark.scss:assets/bs-finalium-dark.css bootstrap/bs-vanilla.scss:assets/bs-vanilla.css
+sass ${common_arguments} bootstrap/:assets/ assets/scss/:assets/css/
