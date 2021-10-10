@@ -37,11 +37,11 @@
 		{% endfor %}
 	</div>
 	<div class="col-xl-4">
-		{% if logged_in %}
+		{% if log %}
 			</p>
-				<img class="float-start rounded-circle w-25 me-3" src="{{ profile_image(current_user.username) }}"  alt="{{ current_user.username }}">
+				<img class="float-start rounded-circle w-25 me-3" src="{{ profile_image(userdata.username) }}"  alt="{{ userdata.name }}">
 				<p class="text-start float-end">
-				<h3>{{ current_user.display_name }}</h3>
+				<h3>{{ userdata.display_name }}</h3>
 					{# hack to prevent twig from outputing the number 1 #}
 					{% if totalSubscribers != 1 %}
 						{% set pluralSubscribers = __("s") %}
@@ -49,7 +49,7 @@
 					{% if totalViews != 1 %}
 						{% set pluralViews = __("s") %}
 					{% endif %}
-					<p class="fs-5 mb-1">@{{ current_user.username }}</p>
+					<p class="fs-5 mb-1">@{{ userdata.name }}</p>
 					<p class="mb-2">{{ __("%s subscriber%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}</p>
 					<p class="mb-2">{{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
 		{% else %}

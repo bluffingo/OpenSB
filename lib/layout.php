@@ -33,10 +33,9 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addExtension(new SBExtension());
 	$twig->addExtension(new MarkdownExtension());
 
-	$twig->addGlobal('logged_in', $log);
 	$twig->addGlobal('log', $log); //for forums
 	$twig->addGlobal('menu_links', $menuLinks);
-	$twig->addGlobal('current_user', $userdata);
+	$twig->addGlobal('userdata', $userdata);
 	$twig->addGlobal('theme', $theme);
 	$twig->addGlobal('glob_languages', $languages);
 	$twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");

@@ -34,7 +34,7 @@
 					<p class="fs-6 text-break">{{ user.description }}</p>
 				</div>
 				<div class="col-md-2">
-					<button id="subscribe" class="btn btn-{% if subscribed %}secondary{% else %}warning{% endif %}" type="button" {% if not logged_in or current_user.id == user.id %}disabled{% endif %}>{% if subscribed %}{{ __("Unsubscribe") }}{% else %}{{ __("Subscribe") }}{% endif %}</button>
+					<button id="subscribe" class="btn btn-{% if subscribed %}secondary{% else %}warning{% endif %}" type="button" {% if not log or userdata.id == user.id %}disabled{% endif %}>{% if subscribed %}{{ __("Unsubscribe") }}{% else %}{{ __("Subscribe") }}{% endif %}</button>
 				</div>
 			</div>
 		</div>
@@ -90,9 +90,9 @@
 				</dl>
 				</div>
 			</div>
-			{% if current_user.powerlevel > 2 %}
+			{% if userdata.powerlevel > 2 %}
 			<div class="card mb-2">
-				<div class="card-body">			
+				<div class="card-body">
 					<h4>{{ __("Administrative Actions") }}</h4>
 					<hr>
 					<dl class="row">

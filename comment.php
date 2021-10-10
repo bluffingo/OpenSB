@@ -8,13 +8,13 @@ if (!isset($_POST['vidid'])) {
 }
 
 $comment = [
-	'u_username' => $currentUser['username'],
+	'u_username' => $userdata['name'],
 	'comment' => $_POST['comment'],
 	'date' => time()
 ];
 
 query("INSERT INTO comments (id, comment, author, date, deleted) VALUES (?,?,?,?,?)",
-	[$_POST['vidid'],$_POST['comment'],$currentUser['id'],time(),0]);
+	[$_POST['vidid'],$_POST['comment'],$userdata['id'],time(),0]);
 
 $twig = twigloader();
 echo $twig->render('components/comment.twig', [

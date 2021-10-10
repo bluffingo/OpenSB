@@ -8,11 +8,11 @@ if (!$isDebug) {
 	notReady();
 }
 
-if (isset($_POST['upload']) and isset($currentUser['username'])) {
+if (isset($_POST['upload']) and isset($userdata['name'])) {
 	$title = (isset($_POST['title']) ? $_POST['title'] : null);
 	$description = (isset($_POST['desc']) ? $_POST['desc'] : null);
 	query("INSERT INTO posts (title, content, author, time) VALUES (?,?,?,?)",
-			[$title,$description,$currentUser['id'],time()]);
+			[$title,$description,$userdata['id'],time()]);
 }
 
 $twig = twigloader();

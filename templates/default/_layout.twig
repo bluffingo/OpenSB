@@ -20,11 +20,11 @@
 		subscribe_string = '{{ __("Subscribe") }}';
 		unsubscribe_string = '{{ __("Unsubscribe") }}';
 	</script>
-	<script> 
-	var $buoop = {required:{e:-6,f:-6,o:-6,s:12,c:-6},insecure:true,api:2021.10 }; 
-	function $buo_f(){ 
-	 var e = document.createElement("script"); 
-	 e.src = "//browser-update.org/update.min.js"; 
+	<script>
+	var $buoop = {required:{e:-6,f:-6,o:-6,s:12,c:-6},insecure:true,api:2021.10 };
+	function $buo_f(){
+	 var e = document.createElement("script");
+	 e.src = "//browser-update.org/update.min.js";
 	 document.body.appendChild(e);
 	};
 	try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
@@ -81,7 +81,7 @@
 			<div id="navbarCollapse" class="collapse navbar-collapse">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
 				<ul class="navbar-nav">
-					{% if logged_in %}
+					{% if log %}
 					<!-- can't put dropdown-toggle properly wtf -->
 						<li class="nav-item">
 							<a href="upload.php" class="nav-link">
@@ -106,18 +106,18 @@
 							</style>
 							<a href="#" id="openSettings" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"
 								aria-expanded="false">
-								{% if logged_in %} <img src="{{ profile_image(current_user.username) }}"
-									alt="{{ current_user.username }}" class="rounded-circle" width="30" height="30">
+								{% if log %} <img src="{{ profile_image(userdata.username) }}"
+									alt="{{ userdata.name }}" class="rounded-circle" width="30" height="30">
 								{% else %}{{ icon('three-dots-vertical', 30) }}{% endif %}
 							</a>
 						</li>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
-							{% if logged_in %}
+							{% if log %}
 							<li><a class="dropdown-item" href="settings.php">{{ icon('tools', 16) }} {{ __("Settings") }}</a></li>
 							{% endif %}
 							<li><a class="dropdown-item" id="themeSelect" href="#">{{ icon('brush', 16) }} {{ __("Change theme") }}</a></li>
-							{% if logged_in %}
-							<li><a class="dropdown-item" href="user.php?name={{ current_user.username }}">{{ icon('person-lines-fill', 16) }} {{ __("My profile") }}</a></li>
+							{% if log %}
+							<li><a class="dropdown-item" href="user.php?name={{ userdata.name }}">{{ icon('person-lines-fill', 16) }} {{ __("My profile") }}</a></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="logout.php">{{ icon('door-open', 16) }} {{ __("Sign off") }}</a></li>
 							{% endif %}
