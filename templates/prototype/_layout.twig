@@ -4,9 +4,8 @@
 	<meta charset="utf-8">
 	<title>{% block title %}{% endblock %} - squareBracket Next</title>
 	{% block head %}{% endblock %}
-	<link rel="stylesheet" id="bootstrap" href="assets/bs-finalium.css" type="text/css">
+	<link rel="stylesheet" id="bootstrap" href="assets/style.css" type="text/css">
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-	<script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="assets/common.js"></script>
 	<script> 
 	var $buoop = {required:{e:-6,f:-6,o:-6,s:12,c:-6},insecure:true,api:2021.10 }; 
@@ -96,6 +95,29 @@
   </div>
 </nav>
 <body>
+		<div class="top">
+			<a href="../"><img class="picon" src="../assets/logo.png"/></a>
+			<ul class="menu left">
+				<li><a href="../" class="btn">Home</a></li>
+				<li><a href="../browse.php" class="btn">Videos</a></li>
+				<li><a href="../music.php" class="btn">Music</a></li>
+				<li><a href="../artwork.php" class="btn">Artwork</a></li>
+				<li><a href="./" class="btn">Forums</a></li>
+				<li><a href="../search.php" class="btn"><img src="../assets/icons/search.svg" class="search"></a></li>
+			</ul>
+			<ul class="menu right">
+				<li><em>
+					{% if log %}
+						{{ userlink(userdata) }}
+						{% if notification_count > 0 %}
+							<span class="notifs">[{{ notification_count }}]</span>
+						{% endif %}
+					{% else %}
+						<a href="../login.php">Login</a>
+					{% endif %}
+				</em></li>
+			</ul>
+		</div>
 	<div class="container">
 	<h1>{{ block('title') }}</h1>
 		{% block content %}{% endblock %}
