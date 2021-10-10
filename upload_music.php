@@ -24,7 +24,7 @@ foreach(str_split($music_id) as $char){
 	$new .= $char;
 }
 
-if (isset($_POST['upload']) and isset($userdata['username'])) {
+if (isset($_POST['upload']) and isset($userdata['name'])) {
 	$title = (isset($_POST['title']) ? $_POST['title'] : null);
 
 	// Prevent videos with duplicate metadata since they are probably accidentally uploaded.

@@ -8,7 +8,7 @@ if (!$isDebug) {
 	notReady();
 }
 
-if (isset($_POST['upload']) and isset($userdata['username'])) {
+if (isset($_POST['upload']) and isset($userdata['name'])) {
 	$title = (isset($_POST['title']) ? $_POST['title'] : null);
 	$description = (isset($_POST['desc']) ? $_POST['desc'] : null);
 	query("INSERT INTO posts (title, content, author, time) VALUES (?,?,?,?)",

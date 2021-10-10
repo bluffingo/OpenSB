@@ -19,7 +19,7 @@ if (!$userData) {
 // TODO: comments? likes?
 $apiOutput = [
 	'id'	=> $userData['id'],
-	'username'	=> $userData['username'],
+	'username'	=> $userData['name'],
 	'joinDate' => $userData['joined'],
 	'lastConnection' => $userData['lastview'],
 	'profileColor' => $userData['color'],
