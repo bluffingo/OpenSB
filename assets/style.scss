@@ -1,18 +1,23 @@
 
 body {
-	background-color: #f0f0f0;
-	font-family: "Roboto", "Arial", sans-serif;
+	background-color: #ffffff;
+	font-family: verdana, arial, helvetica, sans-serif;
 	font-size: 0.9em;
 	margin: auto;
-	max-width: 1000px;
+	max-width: 95%;
 	padding-bottom: 30px;
 	padding-left: 10px;
 	padding-right: 10px;
 }
 
-a {
-	color: #0000ff;
+a:link, a:visited {
+	color: #005177;
 	text-decoration: none;
+}
+
+a:hover {
+    color: #cc3333;
+    text-decoration: none;
 }
 
 p {
