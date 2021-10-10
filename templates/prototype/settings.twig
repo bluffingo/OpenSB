@@ -71,7 +71,7 @@
 				</div>
 				<br>
 					<form action="settings.php" method="post" enctype="multipart/form-data">
-					<label for="displayName" class="form-label">Display Name</label>
+					<label for="displayName" class="form-label" value="{{ current_user.title }}">Display Name</label>
 					<input id="displayName" class="form-control" name="displayName">
 					<h3>{{ __("Profile picture") }}</h3>
 					<div class="row">
@@ -88,7 +88,7 @@
 					<textarea class="form-control" id="description" id="floatingInput" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
 					<h3>{{ __("Channel banner color") }}</h3>
 					<input type="color" class="form-control" id="color" name="color"
-						value="{{ current_user.color }}">
+						value="{{ current_user.customcolor }}">
 					<input type="hidden" name="updatesettings" value="yes">
 					<input type="submit" class="btn btn-primary" name="action" value="{{ __("Update") }}">
 				</form>

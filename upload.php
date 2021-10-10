@@ -24,7 +24,7 @@ foreach(str_split($video_id) as $char){
 	$new .= $char;
 }
 
-if (isset($_POST['upload']) and isset($currentUser['username'])) {
+if (isset($_POST['upload']) and isset($userdata['username'])) {
 	$title = (isset($_POST['title']) ? $_POST['title'] : null);
 	$description = (isset($_POST['desc']) ? $_POST['desc'] : null);
 
@@ -34,7 +34,7 @@ if (isset($_POST['upload']) and isset($currentUser['username'])) {
 	}
 
 	// Rate limit uploading to 2 minutes, both to prevent spam and to prevent double uploads.
-	if (result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60*2, $currentUser['id']])) {
+	if (result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60*2, $userdata['id']])) {
 		die(__("Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed."));
 	}
 
@@ -44,7 +44,7 @@ if (isset($_POST['upload']) and isset($currentUser['username'])) {
 	$target_file = 'videos/'.$new.'.'.$ext;
 	if (move_uploaded_file($temp_name, $target_file)){
 		query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags) VALUES (?,?,?,?,?,?,?,?)",
-			[$new,$title,$description,$currentUser['id'],time(),json_encode(explode(', ', $_POST['tags'])),'videos/'.$new.'.mpd', 0x2]);
+			[$new,$title,$description,$userdata['id'],time(),json_encode(explode(', ', $_POST['tags'])),'videos/'.$new.'.mpd', 0x2]);
 
 		if (substr(php_uname(), 0, 7) == "Windows") {
 			pclose(popen(sprintf('start /B  php lib/scripts/processingworker.php "%s" "%s" > %s', $new, $target_file, 'videos/'.$new.'.log'), "r")); 

@@ -4,7 +4,7 @@ use Intervention\Image\ImageManager;
 
 $manager = new ImageManager();
 
-if (!$loggedIn) redirect('login.php');
+if (!$log) redirect('login.php');
 
 if (isset($_POST['updatesettings'])) {
 	$displayName	= isset($_POST['displayName']) ? $_POST['displayName'] : null;
@@ -24,25 +24,25 @@ if (isset($_POST['updatesettings'])) {
 	if (!$pass2) $error .= __("do not reset");
 	if ($pass != $pass2) $error .= __("Passwords aren't identical.");
 	
-	$logindata = fetch("SELECT password FROM users WHERE id = ?", [$currentUser['id']]);
+	$logindata = fetch("SELECT password FROM users WHERE id = ?", [$userdata['id']]);
 	if ($logindata && password_verify($currentPass, $logindata['password'])) {
 		if ($error == '') {
 			query("UPDATE users SET password = ?, token = ? WHERE id = ?", 
-				[password_hash($pass, PASSWORD_DEFAULT), bin2hex(random_bytes(32)), $currentUser['id']]);
+				[password_hash($pass, PASSWORD_DEFAULT), bin2hex(random_bytes(32)), $userdata['id']]);
 
 			redirect('login.php?new_pass');
 		}
 	}
 	
 	if($resetToken) {
-		query("UPDATE users SET token = ? WHERE id = ?", [bin2hex(random_bytes(32)), $currentUser['id']]);
+		query("UPDATE users SET token = ? WHERE id = ?", [bin2hex(random_bytes(32)), $userdata['id']]);
 		redirect('login.php?new_token');
 	}
 	
 	$name       = $_FILES['profilePicture']['name'];
 	$temp_name  = $_FILES['profilePicture']['tmp_name'];
 	$ext  = pathinfo( $_FILES['profilePicture']['name'], PATHINFO_EXTENSION );
-	$target_file = 'assets/profpic/' . $currentUser['username'] . '.png';
+	$target_file = 'assets/profpic/' . $userdata['name'] . '.png';
 	if (move_uploaded_file($temp_name, $target_file)){
 		// Back in PokTube there was a debate over if we should make profiles pictures use 1:1.
 		// The result was to not resize strech profile pictures. That was back when PokTube
@@ -60,15 +60,15 @@ if (isset($_POST['updatesettings'])) {
 	$backname       = $_FILES['profileBackground']['name'];
 	$backtemp_name  = $_FILES['profileBackground']['tmp_name'];
 	$backext  = pathinfo( $_FILES['profileBackground']['name'], PATHINFO_EXTENSION );
-	$backtarget_file = 'assets/backgrounds/' . $currentUser['username'] . '.png';
+	$backtarget_file = 'assets/backgrounds/' . $userdata['name'] . '.png';
 	if (move_uploaded_file($backtemp_name, $backtarget_file)) {
 		$img = $manager->make($backtarget_file);
 		$img->save($backtarget_file, 0, 'png');
 	}
-	query("UPDATE users SET display_name = ?, description = ?, color = ?, language = ? WHERE id = ?",
-		[$displayName, $description, $color, $language, $currentUser['id']]);
+	query("UPDATE users SET title = ?, description = ?, customcolor = ?, language = ? WHERE id = ?",
+		[$displayName, $description, $color, $language, $userdata['id']]);
 
-	redirect(sprintf("user.php?name=%s&edited", $currentUser['username']));
+	redirect(sprintf("user.php?name=%s&edited", $userdata['name']));
 }
 
 $twig = twigloader();
