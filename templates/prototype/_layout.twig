@@ -54,10 +54,9 @@
         </li>
       </ul>
 	  <div class="navbar-nav">
-      <form class="d-flex pe-2">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-secondary" type="submit">Search</button>
-      </form>
+	    <li class="nav-item">
+          <a class="nav-link" href="search.php">{{ icon('search', 24) }} Search</a>
+        </li>
 	  {% if log %}
 	  <li class="nav-item">
         <a class="nav-link" href="upload_start.php">{{ icon('upload', 24) }}</a>
