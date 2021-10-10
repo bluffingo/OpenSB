@@ -3,7 +3,7 @@ require('lib/common.php');
 
 $id = (isset($_GET['id']) ? $_GET['id'] : null);
 
-if (isset($_GET['grf']) && $currentUser['powerlevel'] > 2) {
+if (isset($_GET['grf']) && $userdata['powerlevel'] > 2) {
 	$generateResetFor = (isset($_GET['grf']) ? $_GET['grf'] : null);
 
 	if ($generateResetFor) {
@@ -34,7 +34,7 @@ if (isset($_POST['action'])) {
 	if ($pass != $pass2) $error .= "Passwords aren't identical.";
 
 	if ($error == '') {
-		query("UPDATE users SET password = ?, token = ? WHERE id = ?", 
+		query("UPDATE users SET password = ?, token = ? WHERE id = ?",
 			[password_hash($pass, PASSWORD_DEFAULT), bin2hex(random_bytes(32)), $resetdata['user']]);
 		query("UPDATE passwordresets SET active = 0 WHERE id = ?", [$id]);
 

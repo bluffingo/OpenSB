@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 
 $username = (isset($_GET['name']) ? $_GET['name'] : null);
 
-$userData = fetch("SELECT * FROM users WHERE username = ?", [$username]);
+$userData = fetch("SELECT * FROM users WHERE name = ?", [$username]);
 
 if (!$userData) {
 	$apiOutput = [ 'error' => "No user specified or invalid video ID", 'code' => "52e44102" ];

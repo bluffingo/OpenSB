@@ -6,8 +6,8 @@
 <div class="row">
 					<div class="row">
 						<div class="col-12">
-							<img class="float-start rounded-circle" src="{{ profile_image(current_user.name) }}" style="margin-right: 1.5%;" width="64" alt="pfp">
-							<h2>{{ current_user.title }}</h2>
+							<img class="float-start rounded-circle" src="{{ profile_image(userdata.name) }}" style="margin-right: 1.5%;" width="64" alt="pfp">
+							<h2>{{ userdata.title }}</h2>
 							<p>Your squareBracket account (or channel?)</p>
 						</div>
 					</div>
@@ -41,16 +41,16 @@
 				<div class="p-4 bg-light border rounded-3">
 					<div class="row">
 						<div class="col-12">
-							<img class="float-start rounded" src="{{ profile_image(current_user.name) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
-							<h2>{{ current_user.title }}</h2>
+							<img class="float-start rounded" src="{{ profile_image(userdata.name) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
+							<h2>{{ userdata.title }}</h2>
 							<p>
 								{{ icon('at', 20) }}
-								<b>{{ __("Username:") }}</b> {{ current_user.name }}<br>
-								{% if current_user.email == "poktube_migrated@squarebracket.me" %}
+								<b>{{ __("Username:") }}</b> {{ userdata.name }}<br>
+								{% if userdata.email == "poktube_migrated@squarebracket.me" %}
 								{{ __("Account migrated from PokTube") }}
 								{% else %}
 								{{ icon('envelope', 20) }}
-								<b>{{ __("Email address:") }}</b> {{ current_user.email }}
+								<b>{{ __("Email address:") }}</b> {{ userdata.email }}
 								{% endif %}
 							</p>
 						</div>
@@ -60,7 +60,7 @@
 				<h4>Language</h4>
 				<select class="form-select" name="language">
 					{% for code,name in glob_languages %}
-					{% if name %}<option value="{{ code }}" {% if code==current_user.language %}selected{% endif %}>{{ name }}</option>{% endif %}
+					{% if name %}<option value="{{ code }}" {% if code==userdata.language %}selected{% endif %}>{{ name }}</option>{% endif %}
 					{% endfor %}
 				</select>
 			</div>
@@ -71,7 +71,7 @@
 				</div>
 				<br>
 					<form action="settings.php" method="post" enctype="multipart/form-data">
-					<label for="displayName" class="form-label" value="{{ current_user.title }}">Display Name</label>
+					<label for="displayName" class="form-label" value="{{ userdata.title }}">Display Name</label>
 					<input id="displayName" class="form-control" name="displayName">
 					<h3>{{ __("Profile picture") }}</h3>
 					<div class="row">
@@ -79,16 +79,16 @@
 							<input class="form-control" type="file" name="profilePicture" id="profilePicture">
 						</div>
 						<div class="col-2">
-							<img class="float-end rounded" src="{{ profile_image(current_user.name) }}" width="128" alt="pfp">
+							<img class="float-end rounded" src="{{ profile_image(userdata.name) }}" width="128" alt="pfp">
 						</div>
 					</div>
 					<h3>{{ __("Channel background") }} {{ __("(Checkmark only)") }}</h3>
-					<input class="form-control" type="file" name="profileBackground" id="profileBackground" {% if current_user.u_flags != 1 %}disabled{% endif %}>
+					<input class="form-control" type="file" name="profileBackground" id="profileBackground" {% if userdata.u_flags != 1 %}disabled{% endif %}>
 					<h3>{{ __("Channel description") }}</h3>
-					<textarea class="form-control" id="description" id="floatingInput" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
+					<textarea class="form-control" id="description" id="floatingInput" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ userdata.description }}</textarea>
 					<h3>{{ __("Channel banner color") }}</h3>
 					<input type="color" class="form-control" id="color" name="color"
-						value="{{ current_user.customcolor }}">
+						value="{{ userdata.customcolor }}">
 					<input type="hidden" name="updatesettings" value="yes">
 					<input type="submit" class="btn btn-primary" name="action" value="{{ __("Update") }}">
 				</form>

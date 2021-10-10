@@ -4,14 +4,14 @@ use ScssPhp\ScssPhp\Compiler;
 
 $username = (isset($_GET['name']) ? $_GET['name'] : null);
 
-$userData = fetch("SELECT * FROM users WHERE name = ?", [$username]);
+$userPageData = fetch("SELECT * FROM users WHERE name = ?", [$username]);
 
-$latestVideoData = query("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT 15", [$userData['id']]);
+$latestVideoData = query("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT 15", [$userPageData['id']]);
 
 $scss = new Compiler();
 $scss->setImportPaths($_SERVER['DOCUMENT_ROOT']);
 $css = $scss->compile(
-	'$color: '.$userData['customcolor'].';
+	'$color: '.$userPageData['customcolor'].';
 	@mixin gradient-y-three-colors($start-color: $blue, $mid-color: $purple, $color-stop: 50%, $end-color: $red) {
 		background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
 	}
@@ -36,18 +36,18 @@ $css = $scss->compile(
 	}'
 );
 
-if (isset($currentUser)) {
-	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$currentUser['id'], $userData['id']]);
+if (isset($userdata)) {
+	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $userPageData['id']]);
 } else {
 	$subscribed = 0;
 }
 
-$subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$userData['id']])['COUNT(user)'];
+$subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$userPageData['id']])['COUNT(user)'];
 
 $twig = twigloader();
 
 echo $twig->render('user.twig', [
-'user' => $userData,
+'user' => $userPageData,
 'latestVideos' => $latestVideoData,
 'profCss' => $css,
 'edited' => (isset($_GET['edited']) ? true : false),

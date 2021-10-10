@@ -93,13 +93,13 @@
 							</div>
 						</div>
 						<div class="col-3 text-end">
-							<a href="#" id="{% if logged_in %}like{% else %}action_unlogged{% endif %}" class="text-{% if total_likes != 0 %}success{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
+							<a href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="text-{% if total_likes != 0 %}success{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
 								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-up-fill"/>
 							</svg></a> <span id="likes">{{ total_likes }}</span>
-							<a href="#" id="{% if logged_in %}dislike{% else %}action_unlogged{% endif %}" class="text-{% if total_dislikes != 0 %}danger{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
+							<a href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" class="text-{% if total_dislikes != 0 %}danger{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
 								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-down-fill"/>
 							</svg></a> <span id="dislikes" style="padding-right: 10px">{{ total_dislikes }}</span>
-							<button id="subscribe" class="btn btn-{% if subscribed %}secondary{% elseif current_user.id == video.author %}primary{% else %}warning{% endif %}" type="button" {% if not logged_in or current_user.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unsubscribe") }}{% elseif current_user.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Subscribe") }}{% endif %}</button>
+							<button id="subscribe" class="btn btn-{% if subscribed %}secondary{% elseif userdata.id == video.author %}primary{% else %}warning{% endif %}" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unsubscribe") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Subscribe") }}{% endif %}</button>
 							</div>
 						<p style="margin-top: 1rem;">{{ video.description }}</p>
 					</div>
@@ -111,10 +111,10 @@
 				<div class="card-body">
 				<h5>Comments</h5><hr class="mt-2 mb-3"/>
 							<textarea class="form-control mt-2 mb-2" id="commentContents" style="overflow:hidden;resize:none"
-			rows="3" placeholder="{% if logged_in %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
-			{% if logged_in %}<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top:5px;margin-bottom:15px">
+			rows="3" placeholder="{% if log %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
+			{% if log %}<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top:5px;margin-bottom:15px">
 			<class=
-			<button id="{% if logged_in %}post{% endif %}" class="btn btn-primary {% if not logged_in %}disabled{% endif %}">
+			<button id="{% if log %}post{% endif %}" class="btn btn-primary {% if not log %}disabled{% endif %}">
 			{{ __("Comment") }}
 			<div class="spinner-border spinner-border-sm d-none" id="commentPostingSpinner" role="status" aria-hidden="true"><span class="visually-hidden">{{ __("Posting...") }}</span></div>
 			</button>

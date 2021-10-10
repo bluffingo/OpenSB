@@ -26,9 +26,9 @@ if ($count == 0) {
 }
 $totalLikes = result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$videoData['id']]);
 $totalDislikes = result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=0", [$videoData['id']]);
-if (isset($currentUser)) {
-	$rating = result("SELECT rating FROM rating WHERE video=? AND user=?", [$videoData['id'], $currentUser['id']]);
-	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$currentUser['id'], $videoData['author']]);
+if (isset($userdata)) {
+	$rating = result("SELECT rating FROM rating WHERE video=? AND user=?", [$videoData['id'], $userdata['id']]);
+	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $videoData['author']]);
 } else {
 	$rating = 2;
 	$subscribed = 0;
