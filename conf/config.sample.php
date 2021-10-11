@@ -25,7 +25,7 @@ $testNewLayout = false; // DEV ONLY, deprecated
 $darkModeDefault = true;
 
 // TEMPLATE OPTIONS (redone 9/17/2021 by gr):
-$useTemplate = "default" // check the templates folder for available options
+$useTemplate = "prototype" // check the templates folder for available options
 $oldTemplateSwitching = false // old alpha 3.5 template switching
 
 // hCaptcha secret and sitekey,
