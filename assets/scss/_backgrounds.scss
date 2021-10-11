@@ -1,0 +1,5 @@
+@each $state, $value in $theme-colors {
+  .bg-#{$state} {
+    @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
+  }
+}

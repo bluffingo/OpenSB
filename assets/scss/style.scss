@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/// Normalize \\\
 @import "_normalize";
+/// Variables \\\
 @import "_variables";
-@import "_gradients";
 /* SB CSS STARTS HERE ======================================================== */
 
 // Small tablets and large smartphones (landscape view)
@@ -87,12 +88,6 @@ $breakpoints: (
     }
 }
 
-@each $state, $value in $theme-colors {
-  .bg-#{$state} {
-    @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
-  }
-}
-
 body {
 	background-color: #F0F0F0;
 	font-family: Inter, tahoma, verdana, arial, helvetica, sans-serif;
@@ -100,16 +95,6 @@ body {
 	margin: auto;
 	width: 100%;
 	padding-bottom: 30px;
-}
-
-a:link, a:visited {
-	color: $teal;
-	text-decoration: none;
-}
-
-a:hover {
-    color: $red;
-    text-decoration: none;
 }
 
 p {
@@ -287,7 +272,7 @@ div.level {
 	min-height: 40px;
 }
 
-// Buttons for the Latest Levels page \\
+// Buttons for the browsing pages \\
 .latest-buttons a {
 	border: 2px outset black;
 	border-radius: 8px;
@@ -541,7 +526,10 @@ form.reglog {
 		}
 	}
 }
-
+/// Gradients \\\
+@import "_gradients";
+/// Backgrounds \\\
+@import "_backgrounds";
 /// Forums \\\
 @import "_style_forums";
 /// Containers \\\
@@ -550,3 +538,15 @@ form.reglog {
 @import "_images";
 /// Cards \\\
 @import "_cards";
+/// Buttons \\\
+@import "_buttons";
+
+a:link, a:visited {
+	color: $teal;
+	text-decoration: none;
+}
+
+a:hover {
+    color: $red;
+    text-decoration: none;
+}

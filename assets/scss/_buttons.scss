@@ -1,0 +1,31 @@
+@function contrast-color($color, $dark, $light) {
+  @return if(lightness($color) < $threshold, $light, $dark)
+}
+
+.button {
+	border: 1px solid black;
+	border-radius: 3px;
+	color: white;
+	padding: 5px 9px;
+	margin: 2px;
+	margin-bottom: 1em;
+	display: inline-block;
+
+	&:hover {
+		background-color: #dddddd;
+	}
+	&.sel {
+		background-color: #ccccff;
+
+		&:hover {
+			background-color: #bbbbee;
+		}
+	}
+}
+
+@each $state, $value in $theme-colors {
+  .button-#{$state} {
+    @include gradient-y($start-color: lighten($value, 15%), $end-color: $value);
+	color: contrast-color($value, $dark, $light) !important;
+  }
+}
