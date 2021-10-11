@@ -10,7 +10,6 @@
 {% endif %}
 
 {% if userdata.id == id and not forceuser %}
-<h2>{{ name }}</h2>
 
 <p>Welcome to your personal user page. Here, you can see and manage your uploaded levels, customize your profile, and edit your settings.</p>
 
@@ -29,16 +28,6 @@
 	<input type="hidden" name="logout" value="yes">
 </form>
 
-<h3>Links</h3>
-
-<ul>
-	<li><a href="download.php">Download principia-web mods</a></li>
-	<li><a href="level-archive.php">Browse the Community Level Archive</a></li>
-	{% if discord_invite %}
-		<li><a href="{{ discord_invite }}">Unofficial Principia Discord Server</a></li>
-	{% endif %}
-</ul>
-
 <h3>Notifications</h3>
 <ul>
 	{% for notif in notifs %}
@@ -51,18 +40,16 @@
 	{% endif %}
 </ul>
 {% else %}
-<div class="user_stats">
-	<div class="topthing"><b>General information</b></div>
+<div class="user_stats card">
+	<div class="card-header">General information</div>
+	<div class="card-body">
 	{% if glob_forum %}
-		<div class="row">
-			<b>Forum Threads</b>: {{ userpagedata.threads }}
-			<span class="pad"><b>Forum Posts</b>: {{ userpagedata.posts }}</span>
-		</div>
+		<b>Forum Threads</b>: {{ userpagedata.threads }}
+		<span class="pad"><b>Forum Posts</b>: {{ userpagedata.posts }}</span>
+		<br>
 	{% endif %}
-	<div class="row">
 		<b>Registered on</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
-	</div>
-	<div class="row">
+		<br><br>
 		<b>Last view</b>: {{ userpagedata.lastview | relative_time }}
 	</div>
 </div>

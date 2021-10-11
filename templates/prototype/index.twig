@@ -1,18 +1,13 @@
 {% extends "_layout.twig" %}
 {% block title %}Main page{% endblock %}
-	{% block content %}
-<div class="grid">
-	<div class="col-8">
-	<div class="card">
-	  <div class="card-body">
+	{% block precontent %}
+	<div class="main-content">
+		<div class="container">
 	  		{% if log %}
 			<div class="grid">
-				<div class="col-4">
-					<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}">
-				</div>
-				<div class="col-8">
+				<div class="col-10">
 					<p class="text-start">
-					<h3>Welcome, {{ userdata.title }}</h3>
+					<h1>Welcome, {{ userdata.title }}</h1>
 						{# hack to prevent twig from outputing the number 1 #}
 						{% if totalSubscribers != 1 %}
 							{% set pluralSubscribers = __("s") %}
@@ -20,19 +15,27 @@
 						{% if totalViews != 1 %}
 							{% set pluralViews = __("s") %}
 						{% endif %}
-						<p class="fs-5 mb-1">@{{ userdata.name }}</p>
-						<p class="mb-2">{{ __("%s subscriber%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}</p>
-						<p class="mb-2">{{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
+						<p class="fs-5 mb-1">@{{ userdata.name }}
+						&bull; {{ __("%s subscriber%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
+						&bull; {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
+						<a class="button button-primary btn-lg" href="../studio.php">Go to studio</a>
+				</div>
+				<div class="col-2">
+					<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}">
 				</div>
 			</div>
 		{% else %}
-		<h1 class="fw-bold">Welcome to squareBracket</h1>
-		<p class="col-md-8 fs-4">I can't believe it's not PokTube</p>
-		<a class="btn btn-primary btn-lg" href="register.php">Register {{ icon('caret-right-fill', 16) }}</a>
-		<big>Already have an account? <a href="login.php">Sign in</a></big>
-		{% endif %}
-	  </div>
-    </div>
+			<h1 class="fw-bold">Welcome to squareBracket</h1>
+			<p>I can't believe it's not PokTube</p>
+			<a class="button button-primary btn-lg" href="register.php">Register {{ icon('caret-right-fill', 16) }}</a>
+			<big>Already have an account? <a href="login.php">Sign in</a></big>
+			{% endif %}
+		</div>
+	</div>
+	{% endblock %}
+	{% block content %}
+<div class="grid">
+	<div class="col-8">
 	<h3>Recently uploaded to squareBracket</h3>
 	{% for video in videos %}
 		{{ video_box(video) }}
