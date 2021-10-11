@@ -1,0 +1,79 @@
+$teal: #005177;
+$red: #cc3333;
+$white: #FCFCFC;
+$black: #000;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$orange: #fd9814;
+$yellow: #ffbf00;
+$cyan: #1778b8;
+$blue: #1b9ade;
+$green: #00b856;
+$poktube-blue: #0051b3;
+$aqua: #20c997;
+$primary: $blue;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$gray-100: #F8F8F8;
+$gray-200: #EEEEEE;
+$gray-300: #E2E2E2;
+$gray-400: #D3D3D3;
+$gray-500: #B4B4B4;
+$gray-600: #858585;
+$gray-700: #4F4F4F;
+$gray-800: #393939;
+$gray-900: #242424;
+$light: #f8f9fa;
+$dark: #343a40;
+$indigo-color:	$indigo;
+$teal-color:	$teal;
+$orange-color:	$orange;
+$secondary: $gray-200;
+
+$colors: (
+  "blue":       $blue,
+  "teal":       $teal,
+  "indigo":     $indigo,
+  "purple":     $purple,
+  "pink":       $pink,
+  "red":        $red,
+  "orange":     $orange,
+  "yellow":     $yellow,
+  "green":      $green,
+  "teal":       $teal,
+  "cyan":       $cyan,
+  "white":      $white,
+  "gray":       $gray-600,
+  "gray-dark":  $gray-800
+);
+
+$primary:       $blue;
+$secondary:     $gray-600;
+$success:       $green;
+$info:          $cyan;
+$warning:       $yellow;
+$danger:        $red;
+$light:         $gray-100;
+$dark:          $gray-900;
+$indigo-color:	$indigo;
+$teal-color:	$teal;
+$aqua-color:	$aqua;
+$orange-color:	$orange;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "violet":     $indigo-color,
+  "blue-green": $teal-color,
+  "aqua": $aqua-color,
+  "carrot": $orange-color,
+);

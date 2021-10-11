@@ -9,18 +9,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="row"><div class="col">
-	<h3>
-	</h3>
+<div class="grid"><div class="col">
 	<div class="card-body">
 		{% for video in videos|batch(4) %}
-		<div class="row">
 			{% for cell in video %}
 				<div class="col-3">
 					{{ browse_video_box(cell) }}
 				</div>
 			{% endfor %}
-		</div>
 		{% else %}
 			<p>
 				{% if 'subscriptions' in url %}

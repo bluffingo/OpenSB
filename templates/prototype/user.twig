@@ -20,7 +20,7 @@
 	{% endblock %}
 
 	{% block content %}
-<div class="row">
+<div class="grid">
 	{% if edited %}
 	<div class="col-12">
 		<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -29,50 +29,36 @@
 		</div>
 	</div>
 	{% endif %}
-	<div class="col-md-8 order-2">
-		<div class="card">
-			<div class="card-body">
-				<div class="caption">
-					<h3>{{ __("Uploaded by %s", [user.title]) }}</h3>
-					{% for latestVideo in latestVideos %}
-					{{ video_box(latestVideo) }}
-					{% else %}
-					<p>{{ __("There are currently no videos uploaded by %s.", [user.title]) }}</p>
-					{% endfor %}
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4 order-1">
+	<div class="col-md-4">
 		<div class="card mb-2">
 		  <div class="card-header">
 			<h5 class="mb-0">{{ __("About %s", [user.title]) }}</h5>
 		  </div>
 			<div class="card-body">
-				<div class="row">
+				<div class="grid">
 					<div class="col-4">
-					<img class="rounded w-100" src="{{ profile_image(user.name) }}"  alt="{{ user.name }}">
+					<img class="rounded img-fluid" src="{{ profile_image(user.name) }}"  alt="{{ user.name }}">
 					</div>
 					<div class="col-8">
-						<dl class="row mb-0">
-							<dt class="col-auto">{{ __("Last seen") }}</dt>
-							<dd class="col-auto">{{ user.lastview | relative_time }}</dd>
+						<dl>
+							<dt class="col">{{ __("Last seen") }}</dt>
+							<dd class="col">{{ user.lastview | relative_time }}</dd>
 						</dl>
-						<dl class="row mb-0">
-							<dt class="col-auto">{{ __("Joined") }}</dt>
-							<dd class="col-auto">{{ user.joined | date('M j, Y') }}</dd>
+						<dl>
+							<dt class="col">{{ __("Joined") }}</dt>
+							<dd class="col">{{ user.joined | date('M j, Y') }}</dd>
 						</dl>
-						<dl class="row mb-0">
+						<dl>
 							{# hack to prevent twig from outputing the number 1 #}
 							{% if subCount != 1 %}
 								{% set pluralSubscribers = __("s") %}
 							{% endif %}
-							<dt class="col-auto">{{ __("Subscriber%s", [pluralSubscribers]) }}</dt>
-							<dd class="col-auto">{{ subCount }}</dd>
+							<dt class="col">{{ __("Subscriber%s", [pluralSubscribers]) }}</dt>
+							<dd class="col">{{ subCount }}</dd>
 						</dl>
-						<dl class="row mb-0">
-							<dt class="col-auto">{{ __("Username") }}</dt>
-							<dd class="col-auto">{{ user.name }}</dd>
+						<dl>
+							<dt class="col">{{ __("Username") }}</dt>
+							<dd class="col">{{ user.name }}</dd>
 						</dl>
 					</div>
 					</div>
@@ -84,13 +70,29 @@
 					<h5 class="mb-0">{{ __("Administrative Actions") }}</h5>
 				</div>
 				<div class="card-body">			
-					<dl class="row">
-						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset for %s", [user.title]) }}</a>
+					<dl>
+						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset") }}</a>
 					</dl>
 				</div>
 			</div>
 			{% endif %}
 		</div>
+	<div class="col-md-8 order-2">
+		<div class="card">
+			<div class="card-header">
+				<h5>{{ __("Uploaded by %s", [user.title]) }}</h5>
+		    </div>
+			<div class="card-body">
+				<div class="caption">
+					{% for latestVideo in latestVideos %}
+					{{ video_box(latestVideo) }}
+					{% else %}
+					<p>{{ __("There are currently no videos uploaded by %s.", [user.title]) }}</p>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
 	</div>
 </div>
 </div>

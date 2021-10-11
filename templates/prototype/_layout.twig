@@ -26,74 +26,6 @@
 	</style>
 	{% block customcss %}{% endblock %}
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-  <div class="container">
-    <a class="navbar-brand me-2" href="index.php">
-		<img src="/assets/logo.png" class="bi" height="24">
-	</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php">{{ icon('house-door', 24) }} Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="browse.php">{{ icon('collection-play', 24) }} Videos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">{{ icon('music-note-beamed', 24) }} Music</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">{{ icon('easel', 24) }} Artwork</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/forum/">{{ icon('chat-left-text', 24) }} Forums</a>
-        </li>
-      </ul>
-	  <div class="navbar-nav">
-	    <li class="nav-item">
-          <a class="nav-link" href="search.php">{{ icon('search', 24) }} Search</a>
-        </li>
-	  {% if log %}
-	  <li class="nav-item">
-        <a class="nav-link" href="upload_start.php">{{ icon('upload', 24) }}</a>
-      </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		  <img src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}" class="rounded bi" width="24" height="24"></a>
-		  	<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-				<div class="p-2 mb-2 bg-light border-bottom">
-				<div class="row">
-					<div class="col-5">
-					<img src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}" class="rounded w-100 bi"></a>
-					</div>
-					<div class="col-7 ps-0">
-						<p>@{{userdata.name}}</p>
-					</div>
-				</div>
-				</div>
-				<li><a class="dropdown-item" href="user.php?name={{ userdata.name }}">{{ icon('person-square', 16) }} My profile</a></li>
-				<li><a class="dropdown-item" href="#">{{ icon('gear', 16) }} Studio</a></li>
-				<li><a class="dropdown-item" href="#">{{ icon('palette2', 16) }} Appearance</a></li>
-				<li><a class="dropdown-item" href="settings.php">{{ icon('sliders', 16) }} Settings</a></li>
-				<li><hr class="dropdown-divider"></li>
-				<li><a class="dropdown-item" href="logout.php">{{ icon('door-open', 16) }} Sign out</a></li>
-				<li><hr class="dropdown-divider"></li>
-				<li><a class="dropdown-item" href="#">{{ icon('chat-left-text', 16) }} Send feedback</a></li>
-			</ul>
-        </li>
-	  {% else %}
-	  <div class="d-grid gap-2 d-md-block">
-		<a href="login.php" class="btn btn-primary me-md-1">{{ __("Login") }}</a>
-		<a href="register.php" class="btn btn-secondary">{{ __("Register") }}</a>
-	  </div>
-	  {% endif %}
-	  </div>
-    </div>
-  </div>
-</nav>
 <body>
 		<div class="top">
 			<a href="../"><img class="picon" src="../assets/logo.png"/></a>
@@ -102,12 +34,13 @@
 				<li><a href="../browse.php" class="btn">Videos</a></li>
 				<li><a href="../music.php" class="btn">Music</a></li>
 				<li><a href="../artwork.php" class="btn">Artwork</a></li>
-				<li><a href="./" class="btn">Forums</a></li>
-				<li><a href="../search.php" class="btn"><img src="../assets/icons/search.svg" class="search"></a></li>
+				<li><a href="../forum/" class="btn">Forums</a></li>
 			</ul>
 			<ul class="menu right">
 				<li><em>
+				<a href="../search.php" class="btn"><img src="../assets/icons/search.svg" class="search"></a>
 					{% if log %}
+						<a href="../upload.php">Upload</a>
 						{{ userlink(userdata) }}
 						{% if notification_count > 0 %}
 							<span class="notifs">[{{ notification_count }}]</span>

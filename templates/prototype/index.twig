@@ -3,14 +3,14 @@
 	{% block content %}
 <div class="grid">
 	<div class="col-8">
-	<div class="p-1 mb-4 bg-light rounded-3">
-	  <div class="container-fluid {% if log %}py-3{% else %}py-5{% endif %}">
+	<div class="card">
+	  <div class="card-body">
 	  		{% if log %}
 			<div class="grid">
-				<div class="col-3 d-none d-md-block">
-					<img class="rounded w-100" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}">
+				<div class="col-4">
+					<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}">
 				</div>
-				<div class="col-12 col-md-9">
+				<div class="col-8">
 					<p class="text-start">
 					<h3>Welcome, {{ userdata.title }}</h3>
 						{# hack to prevent twig from outputing the number 1 #}
