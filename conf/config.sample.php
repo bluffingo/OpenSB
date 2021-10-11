@@ -24,6 +24,8 @@ $testNewLayout = false; // DEV ONLY, deprecated
 // Should dark mode be default? (FORUM ONLY)
 $darkModeDefault = true;
 
+$lpp = 20; //Fuck.
+
 // TEMPLATE OPTIONS (redone 9/17/2021 by gr):
 $useTemplate = "prototype" // check the templates folder for available options
 $oldTemplateSwitching = false // old alpha 3.5 template switching
