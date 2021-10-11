@@ -107,7 +107,7 @@ p {
 	border-top: 1px solid #ccc;
 	margin-top: 0px;
 	overflow: hidden;
-	padding: 10px 8px;
+	padding: 8px 16px;
 }
 
 .top {
@@ -151,8 +151,8 @@ ul.menu {
 	a {
 		display: inline-block;
 		color: #222;
-		font-size: 1.1em;
-		font-weight: bold;
+		font-size: 1em;
+		font-weight: 500;
 		text-decoration: none;
 		padding-left: 0.25em;
 		padding-right: 0.25em;
@@ -531,7 +531,7 @@ form.reglog {
     background-size: cover;
     margin: 0;
     padding: 0;
-    min-height: 300px;
+    min-height: 250px;
     color: #ffffff;
     display: flex;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) !important;
