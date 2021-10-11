@@ -12,7 +12,7 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
-	global $tplCache, $tplNoCache, $log, $userdata, $theme, $languages, $frontend, $menuLinks, $hCaptchaSiteKey;
+	global $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $languages, $frontend, $menuLinks, $hCaptchaSiteKey;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
 
@@ -42,6 +42,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
 	$twig->addGlobal('stats', fetch("SELECT (SELECT COUNT(*) FROM users) usercount, (SELECT COUNT(*) FROM videos) videocount"));
 	$twig->addGlobal('hcaptcha_sitekey', $hCaptchaSiteKey);
+	$twig->addGlobal('glob_lpp', $lpp);
 
 	return $twig;
 }
@@ -105,9 +106,9 @@ function icon_alt($icon, $size) {
 	return $twig->render('icon_alt.twig', ['icon' => $icon, 'size' => $size]);
 }
 
-function pagination($total, $current, $url, $nearbyPagesLimit = 4) {
+function pagination($levels, $lpp, $url, $current) {
 	$twig = twigloader('components');
-	return $twig->render('pagination.twig', ['total' => $total, 'current' => $current, 'url' => $url, 'nearbyPagesLimit' => $nearbyPagesLimit]);
+	return $twig->render('pagination.twig', ['levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current]);
 }
 
 function relativeTime($time) {

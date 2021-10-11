@@ -1,100 +1,106 @@
 {% extends "_layout.twig" %}
 
-{% block title %}{{ user.title }}{% endblock %}
-
-	{% block head %}
-		<script>
-			user_id = '{{ user.id }}';
-		</script>
-	{% endblock %}
-
-	{% block precontent %}
-<style>
-	{{ profCss | raw }}
-	.bg-channel-background {
-	background-image: url('{{ channel_background(user.name) }}');
-    margin-top: -24px;
-	padding-bottom: 25px;
-	}
-</style>
-	{% endblock %}
+{% block title %}{{ name }}{% endblock %}
 
 	{% block content %}
-<div class="grid">
-	{% if edited %}
-	<div class="col-12">
-		<div class="alert alert-success alert-dismissible fade show" role="alert">
-			{{ __("Your profile settings have been successfully updated.") }}
-			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-		</div>
-	</div>
+{% if markread %}
+	<div class="header_message">Marked all notifications as read.</div>
+{% elseif edited %}
+	<div class="header_message">Settings successfully saved!</div>
+{% endif %}
+
+{% if userdata.id == id and not forceuser %}
+<h2>{{ name }}</h2>
+
+<p>Welcome to your personal user page. Here, you can see and manage your uploaded levels, customize your profile, and edit your settings.</p>
+
+<p><a href="settings.php">Edit my settings</a>
+{% if glob_forum %}
+	&bull; <a href="forum/private.php">View my private messages</a>
+{% endif %}
+&bull; <a href="user.php?id={{ id }}&forceuser">View user page as viewer</a>
+&bull; <a href="javascript:document.logout.submit()">Log out</a></p>
+
+{% if userdata.powerlevel > 2 %}
+<p><a href="admin.php">Admin panel</a></p>
+{% endif %}
+
+<form action="login.php" method="post" name="logout">
+	<input type="hidden" name="logout" value="yes">
+</form>
+
+<h3>Links</h3>
+
+<ul>
+	<li><a href="download.php">Download principia-web mods</a></li>
+	<li><a href="level-archive.php">Browse the Community Level Archive</a></li>
+	{% if discord_invite %}
+		<li><a href="{{ discord_invite }}">Unofficial Principia Discord Server</a></li>
 	{% endif %}
-	<div class="col-md-4">
-		<div class="card mb-2">
-		  <div class="card-header">
-			<h5 class="mb-0">{{ __("About %s", [user.title]) }}</h5>
-		  </div>
-			<div class="card-body">
-				<div class="grid">
-					<div class="col-4">
-					<img class="rounded img-fluid" src="{{ profile_image(user.name) }}"  alt="{{ user.name }}">
-					</div>
-					<div class="col-8">
-						<dl>
-							<dt class="col">{{ __("Last seen") }}</dt>
-							<dd class="col">{{ user.lastview | relative_time }}</dd>
-						</dl>
-						<dl>
-							<dt class="col">{{ __("Joined") }}</dt>
-							<dd class="col">{{ user.joined | date('M j, Y') }}</dd>
-						</dl>
-						<dl>
-							{# hack to prevent twig from outputing the number 1 #}
-							{% if subCount != 1 %}
-								{% set pluralSubscribers = __("s") %}
-							{% endif %}
-							<dt class="col">{{ __("Subscriber%s", [pluralSubscribers]) }}</dt>
-							<dd class="col">{{ subCount }}</dd>
-						</dl>
-						<dl>
-							<dt class="col">{{ __("Username") }}</dt>
-							<dd class="col">{{ user.name }}</dd>
-						</dl>
-					</div>
-					</div>
-				</div>
-			</div>
-			{% if userdata.powerlevel > 2 %}
-			<div class="card mb-2">
-				<div class="card-header">
-					<h5 class="mb-0">{{ __("Administrative Actions") }}</h5>
-				</div>
-				<div class="card-body">			
-					<dl>
-						<a href="resetpassword.php?grf={{ user.id }}">{{ __("Generate password reset") }}</a>
-					</dl>
-				</div>
-			</div>
-			{% endif %}
+</ul>
+
+<h3>Notifications</h3>
+<ul>
+	{% for notif in notifs %}
+		<li>{{ notif | raw }}</li>
+	{% else %}
+		<li>No new notifications!</li>
+	{% endfor %}
+	{% if notifs %}
+		<br><li><a href="user.php?id={{ id }}&markread">Mark all as read</a></li>
+	{% endif %}
+</ul>
+{% else %}
+<div class="user_stats">
+	<div class="topthing"><b>General information</b></div>
+	{% if glob_forum %}
+		<div class="row">
+			<b>Forum Threads</b>: {{ userpagedata.threads }}
+			<span class="pad"><b>Forum Posts</b>: {{ userpagedata.posts }}</span>
 		</div>
-	<div class="col-md-8 order-2">
-		<div class="card">
-			<div class="card-header">
-				<h5>{{ __("Uploaded by %s", [user.title]) }}</h5>
-		    </div>
-			<div class="card-body">
-				<div class="caption">
+	{% endif %}
+	<div class="row">
+		<b>Registered on</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
+	</div>
+	<div class="row">
+		<b>Last view</b>: {{ userpagedata.lastview | relative_time }}
+	</div>
+</div>
+<h2>{{ name }} {% if userpagedata.powerlevel > 1 %}<img class="sdsd" src="assets/icons/shield.svg" height="16" title="User is a moderator.">{% endif %}</h2>
+
+<div class="user_about">
+	<h3>About this user</h3>
+	{{ userpagedata.about | raw }}
+</div>
+
+<p class="clear_right">
+	{% if glob_forum %}
+		<a href="forum/forum.php?user={{ id }}">View threads</a>
+		&bull; <a href="forum/thread.php?user={{ id }}">Show posts</a>
+		{% if log %}
+			{% if userdata.id != id %}
+				&bull; <a href="forum/sendprivate.php?uid={{ id }}">Send private message</a>
+			{% endif %}
+			{% if userdata.powerlevel > 2 %}
+				&bull; <a href="resetpassword.php?grf={{ id }}">Generate password reset for user</a>
+				&bull; <a href="forum/editperms.php?uid={{ id }}">Edit forum permissions</a>
+			{% endif %}
+		{% endif %}
+	{% endif %}
+</p>
+
 					{% for latestVideo in latestVideos %}
 					{{ video_box(latestVideo) }}
 					{% else %}
 					<p>{{ __("There are currently no videos uploaded by %s.", [user.title]) }}</p>
 					{% endfor %}
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
-</div>
-</div>
-<div class="container">
+
+{% if userdata.id == id %}
+	{% set forceuser = "&forceuser" %}
+{% else %}
+	{% set forceuser = "" %}
+{% endif %}
+{% set le_url = 'user.php?id=' ~ id ~ '&page=%s' ~ forceuser %}
+{{ pagination(level_count, glob_lpp, le_url, page) }}
+{% endif %}
 	{% endblock %}

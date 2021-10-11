@@ -1,30 +1,18 @@
 <?php
 require('lib/common.php');
-$offset = ((isset($_GET['page']) ? $_GET['page'] : 1) - 1) * 20;
 
-// currently selects all uploaded videos
-if(isset($_GET['subscriptions'])) {
-	$query = implode(', ', array_column(fetchArray(query("SELECT user FROM subscriptions WHERE id = ?", [$userdata['id']])), 'user'));
-	if($query != null) {
-		$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.videolength, v.tags, v.author FROM videos v JOIN users u ON v.author = u.id WHERE v.author IN(".$query.") ORDER BY v.id DESC LIMIT 20 OFFSET ?", [$offset]);
-		$pageCount = ceil(fetch("SELECT COUNT(*) FROM videos WHERE author IN(".$query.")")['COUNT(*)'] / 20);
-		$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/browse.php?subscriptions&page=';
-	} else {
-		$videoData = null;
-		$pageCount = 0;
-		$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/browse.php?subscriptions&page=';
-	}	
-} else {
-	$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT 20 OFFSET ?", [$offset]);
-	$pageCount = ceil(fetch("SELECT COUNT(*) FROM videos")['COUNT(*)'] / 20);
-	$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/browse.php?page=';
-}
+$type = (isset($_GET['type']) ? $_GET['type'] : 'all');
+$page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
+
+$where = ($type != 'all' ? "WHERE v.category_id = ".type_to_cat($type) : '');
+$limit = sprintf("LIMIT %s,%s", (($page - 1) * $lpp), $lpp);
+$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author, v.category_id FROM videos v JOIN users u ON v.author = u.id $where ORDER BY v.id DESC $limit");
+$count = result("SELECT COUNT(*) FROM videos v $where");
 
 $twig = twigloader();
-
 echo $twig->render('browse.twig', [
-	'videos' => $videoData,
-	'currentPage' => (isset($_GET['page']) ? $_GET['page'] : 1),
-	'pageCount' => $pageCount,
-	'url' => $url
+	'type' => $type,
+	'levels' => fetchArray($videoData),
+	'page' => $page,
+	'level_count' => $count
 ]);

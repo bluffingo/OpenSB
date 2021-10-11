@@ -1,32 +1,32 @@
 {% extends "_layout.twig" %}
 
-{% block title %}
-		{% if 'subscriptions' in url %}
-			{{ __("Videos from subscriptions") }}
-		{% else %}
-			{{ __("Videos") }}
-		{% endif %}
-{% endblock %}
+{% block title %}Latest videos {% if page != 1 %}(Page {{ page }}){% endif %}{% endblock %}
 
-{% block content %}
-<div class="grid"><div class="col">
-	<div class="card-body">
-		{% for video in videos|batch(4) %}
-			{% for cell in video %}
-				<div class="col-3">
-					{{ browse_video_box(cell) }}
-				</div>
-			{% endfor %}
-		{% else %}
-			<p>
-				{% if 'subscriptions' in url %}
-					{{ __("Your subscriptions haven't uploaded videos yet.") }}
-				{% else %}
-					{{ __("No uploaded videos.") }}
-				{% endif %}
-			</p>
-		{% endfor %}
-		{{ pagination(pageCount, currentPage, url) }}
-	</div>
-</div></div>
+	{% block content %}
+<div class="latest-buttons">
+	<a {% if type == 'misc' %}class="sel"{% endif %} href="latest.php?type=misc">Miscellanous</a>
+	<a {% if type == 'entertainment' %}class="sel"{% endif %} href="latest.php?type=entertainment">Entertainment</a>
+	<a {% if type == 'comedy' %}class="sel"{% endif %} href="latest.php?type=comedy">Shitposting & Comedy</a>
+	<a {% if type == 'gaming' %}class="sel"{% endif %} href="latest.php?type=gaming">Gaming</a>
+	<a {% if type == 'news' %}class="sel"{% endif %} href="latest.php?type=news">News and Updates</a>
+	<a {% if type == 'life' %}class="sel"{% endif %} href="latest.php?type=life">Life</a>
+	<a {% if type == 'technology' %}class="sel"{% endif %} href="latest.php?type=technology">Science & Technology</a>
+	<a {% if type == 'backup' %}class="sel"{% endif %} href="latest.php?type=backup">Archive Dump</a>
+	<a {% if type == 'all' %}class="sel"{% endif %} href="latest.php?type=all">All</a>
+</div>
+
+{% for level in levels %}
+	{{ video_box(level) }}
+{% else %}
+	There are no {% if type != 'all' %}{{ type }}{% endif %} videos. You could create one!
+{% endfor %}
+
+{% if type == 'all' %}
+	{% set le_url = 'latest.php?page=%s' %}
+{% else %}
+	{% set le_url = 'latest.php?type=' ~ type ~ '&page=%s' %}
+{% endif %}
+{{ pagination(level_count, glob_lpp, le_url, page) }}
+
+<br><br>
 	{% endblock %}

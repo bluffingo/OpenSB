@@ -1,0 +1,32 @@
+{% extends "_layout.twig" %}
+
+{% block title %}
+		{% if 'subscriptions' in url %}
+			{{ __("Videos from subscriptions") }}
+		{% else %}
+			{{ __("Videos") }}
+		{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="grid"><div class="col">
+	<div class="card-body">
+		{% for video in videos|batch(4) %}
+			{% for cell in video %}
+				<div class="col-3">
+					{{ browse_video_box(cell) }}
+				</div>
+			{% endfor %}
+		{% else %}
+			<p>
+				{% if 'subscriptions' in url %}
+					{{ __("Your subscriptions haven't uploaded videos yet.") }}
+				{% else %}
+					{{ __("No uploaded videos.") }}
+				{% endif %}
+			</p>
+		{% endfor %}
+		{{ pagination(pageCount, currentPage, url) }}
+	</div>
+</div></div>
+	{% endblock %}

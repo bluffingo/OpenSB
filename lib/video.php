@@ -13,3 +13,16 @@ function categoryIDToName($id) {
         7 => __('Archive Dump')
     };
 }
+
+function type_to_cat($type) {
+	return match ($type) {
+		'misc'	=> 0,
+		'entertainment'	=> 1,
+		'comedy'	=> 2,
+		'gaming'	=> 3,
+		'news'	=> 4,
+		'life'	=> 5,
+		'technology'	=> 6,
+		'backup'	=> 7,
+	};
+}
