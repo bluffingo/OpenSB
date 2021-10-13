@@ -9,7 +9,7 @@ $error = '';
 if (isset($_POST['magic'])) {
 	$displayName	= isset($_POST['displayName']) ? $_POST['displayName'] : null;
 	$color			= isset($_POST['color']) ? $_POST['color'] : '#523bb8'; // setting color to "null" would fuck up the scss compiler(?) -gr 7/26/2021
-	$description	= isset($_POST['description']) ? $_POST['description'] : null;
+	$about			= isset($_POST['about']) ? $_POST['about'] : null;
 	$signature		= isset($_POST['signature']) ? $_POST['signature'] : null;
 
 	$language		= isset($_POST['language']) ? $_POST['language'] : 'en-US';
@@ -65,8 +65,8 @@ if (isset($_POST['magic'])) {
 		}
 	}
 
-	query("UPDATE users SET title = ?, description = ?, customcolor = ?, language = ?, signature = ? WHERE id = ?",
-		[$displayName, $description, $color, $language, $signature, $userdata['id']]);
+	query("UPDATE users SET title = ?, about = ?, customcolor = ?, language = ?, signature = ? WHERE id = ?",
+		[$displayName, $about, $color, $language, $signature, $userdata['id']]);
 
 	if (!$error) {
 		redirect(sprintf("user.php?name=%s&edited", $userdata['name']));

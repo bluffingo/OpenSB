@@ -116,7 +116,7 @@ CREATE TABLE `users` (
   `lastview` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Timestamp of last view',
   `lastpost` int(11) NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
+  `about` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
   `customcolor` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en-US' COMMENT 'Language (Defaults to English)',
   `avatar` tinyint(1) NOT NULL DEFAULT 0,
