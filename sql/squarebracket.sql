@@ -126,7 +126,6 @@ CREATE TABLE `users` (
   `posts` int(11) NOT NULL,
   `threads` int(11) NOT NULL,
   `blockland_id` int(11) NOT NULL COMMENT 'Blockland ID, intended for internal Vitre testing.',
-  `darkmode` tinyint(1) NOT NULL DEFAULT 0,
   `signature` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

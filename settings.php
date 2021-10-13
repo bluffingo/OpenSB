@@ -12,7 +12,6 @@ if (isset($_POST['magic'])) {
 	$description	= isset($_POST['description']) ? $_POST['description'] : null;
 	$signature		= isset($_POST['signature']) ? $_POST['signature'] : null;
 
-	$darkmode		= isset($_POST['darkmode']) ? $_POST['darkmode'] : false;
 	$language		= isset($_POST['language']) ? $_POST['language'] : 'en-US';
 
 	$currentPass    = (isset($_POST['current_pass']) ? $_POST['current_pass'] : null);
@@ -66,8 +65,8 @@ if (isset($_POST['magic'])) {
 		}
 	}
 
-	query("UPDATE users SET title = ?, description = ?, customcolor = ?, language = ?, signature = ?, darkmode = ? WHERE id = ?",
-		[$displayName, $description, $color, $language, $signature, $darkmode, $userdata['id']]);
+	query("UPDATE users SET title = ?, description = ?, customcolor = ?, language = ?, signature = ? WHERE id = ?",
+		[$displayName, $description, $color, $language, $signature, $userdata['id']]);
 
 	if (!$error) {
 		redirect(sprintf("user.php?name=%s&edited", $userdata['name']));
