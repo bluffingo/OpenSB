@@ -14,38 +14,46 @@
 		<td class="a">Email address</td>
 		<td class="b">{{ userdata.email }}</td>
 	</tr>
+	<tr>
+		<td class="a">Change Password</td>
+		<td class="b">
+			<p><input type="password" name="current_pass" size="30" maxlength="256" placeholder="Current Password (For verification)"></p>
+			<p><input type="password" name="pass" size="30" maxlength="256" placeholder="New Password">
+			<input type="password" name="pass2" size="30" maxlength="256" placeholder="Repeat new Password"></p>
+		</td>
+	</tr>
 </table>
 
 <h3>Customize your profile</h3>
 <table class="settings">
 	<tr>
+		<td class="a">Profile Picture</td>
+		<td class="b">
+			<img class="float-start rounded" src="{{ profile_image(userdata.username) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
+			<input class="form-control" type="file" name="profilePicture" id="profilePicture">
+		</td>
+	</tr>
+	<tr>
 		<td class="a">Display Name</td>
 		<td class="b"><input type="text" name="title" size="45" maxlength="256" value="{{ userdata.title }}"></td>
+	</tr>
 	{% if userdata.powerlevel > 1 %}
 	<tr>
 		<td class="a">Custom color</td>
 		<td class="b"><input type="color" name="customcolor" value="{{ userdata.customcolor | default('0000aa') }}"></td>
 	</tr>
 	{% endif %}
-	<!--<tr>
-		<td class="a">Avatar</td>
-		<td class="b"><input type="file" name="avatar" size="40"></td>
-	</tr>-->
 	<tr>
 		<td class="a">
-			About
-			<br><em>Introduce yourself! Markdown allowed.</em>
+			Channel Description
+			<br><em>Markdown allowed.</em>
 		</td>
-		<td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual">{{ userdata.about }}</textarea></td>
+		<td class="b"><textarea name="description" rows="5" cols="80" wrap="virtual">{{ userdata.description }}</textarea></td>
 	</tr>
-	{% if glob_forum %}
 	<tr>
 		<td class="a">Forum signature</td>
 		<td class="b"><textarea name="signature" rows="5" cols="80" wrap="virtual">{{ userdata.signature }}</textarea></td>
 	</tr>
-	{% else %}
-	<input type="hidden" name="signature" value="{{ userdata.signature }}">
-	{% endif %}
 </table>
 
 <h3>Options</h3>
@@ -56,6 +64,17 @@
 			<label><input type="radio" name="darkmode" value="0" {% if not userdata.darkmode %}checked{% endif %}>Disabled </label>
 			<label><input type="radio" name="darkmode" value="1" {% if userdata.darkmode %}checked{% endif %}>Enabled </label>
 		</td>
+	<tr>
+	<tr>
+		<td class="a">Language</td>
+		<td class="b">
+			<select class="form-select" name="language">
+				{% for code,name in glob_languages %}
+					{% if name %}<option value="{{ code }}" {% if code==userdata.language %}selected{% endif %}>{{ name }}</option>{% endif %}
+				{% endfor %}
+			</select>
+		</td>
+	</tr>
 </table>
 <input type="hidden" name="magic" value="please change my settings :)">
 <input class="button button-primary" type="submit" name="action" value="Save Changes">
