@@ -18,7 +18,7 @@ if (isset($_GET['grf']) && $userdata['powerlevel'] > 2) {
 	die();
 }
 
-$resetdata = fetch("SELECT pr.*, u.username FROM passwordresets pr JOIN users u ON pr.user = u.id WHERE pr.id = ?", [$id]);
+$resetdata = fetch("SELECT pr.*, u.name FROM passwordresets pr JOIN users u ON pr.user = u.id WHERE pr.id = ?", [$id]);
 
 if (!$resetdata) die("<center><b>" . __("No reset data.") . "</b></center>");
 // TODO: we need a nice error page template
