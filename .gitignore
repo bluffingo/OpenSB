@@ -21,6 +21,8 @@ assets/bs*.css.map
 assets/main.css
 assets/main.css.map
 assets/css/
+assets/dashboard.css
+assets/signin.css
 
 ## Admin features
 adminer-*.php
@@ -32,3 +34,4 @@ wiki/
 assets/_style_forums.css
 assets/darkmode.css
 assets/style.css
+.vscode/
