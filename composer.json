@@ -17,12 +17,6 @@
 			"php": "8.0"
 		}
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/chazizsquarebracket/bs-icons-but-with-composer"
-		}
-	],
 	"require-dev": {
 		"arokettu/pseudolocale": "dev-master"
 	}
