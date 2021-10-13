@@ -20,13 +20,6 @@ $count = result("SELECT COUNT(*) FROM videos l WHERE l.author = ?", [$userpageda
 
 // Personal user page stuff
 if (isset($userdata['id']) && $userdata['id'] == $userpagedata['id'] && !$forceuser) {
-	if ($log && isset($_GET['darkmode'])) {
-		$newopt = ($userdata['darkmode'] ? 0 : 1);
-
-		query("UPDATE users SET darkmode = ? WHERE id = ?", [$newopt, $userdata['id']]);
-		$userdata['darkmode'] = $newopt;
-	}
-
 	if (isset($_GET['markread'])) {
 		query("DELETE FROM notifications WHERE recipient = ?", [$userdata['id']]);
 		$notificationCount = 0;

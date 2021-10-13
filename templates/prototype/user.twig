@@ -14,9 +14,7 @@
 <p>Welcome to your personal user page. Here, you can see and manage your uploaded levels, customize your profile, and edit your settings.</p>
 
 <p><a href="settings.php">Edit my settings</a>
-{% if glob_forum %}
-	&bull; <a href="forum/private.php">View my private messages</a>
-{% endif %}
+&bull; <a href="forum/private.php">View my private messages</a>
 &bull; <a href="user.php?id={{ id }}&forceuser">View user page as viewer</a>
 &bull; <a href="javascript:document.logout.submit()">Log out</a></p>
 
@@ -43,11 +41,9 @@
 <div class="user_stats card">
 	<div class="card-header">General information</div>
 	<div class="card-body">
-	{% if glob_forum %}
 		<b>Forum Threads</b>: {{ userpagedata.threads }}
 		<span class="pad"><b>Forum Posts</b>: {{ userpagedata.posts }}</span>
-		<br>
-	{% endif %}
+		<br><br>
 		<b>Registered on</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
 		<br><br>
 		<b>Last view</b>: {{ userpagedata.lastview | relative_time }}
@@ -61,26 +57,24 @@
 </div>
 
 <p class="clear_right">
-	{% if glob_forum %}
-		<a href="forum/forum.php?user={{ id }}">View threads</a>
-		&bull; <a href="forum/thread.php?user={{ id }}">Show posts</a>
-		{% if log %}
-			{% if userdata.id != id %}
-				&bull; <a href="forum/sendprivate.php?uid={{ id }}">Send private message</a>
-			{% endif %}
-			{% if userdata.powerlevel > 2 %}
-				&bull; <a href="resetpassword.php?grf={{ id }}">Generate password reset for user</a>
-				&bull; <a href="forum/editperms.php?uid={{ id }}">Edit forum permissions</a>
-			{% endif %}
+	<a href="forum/forum.php?user={{ id }}">View threads</a>
+	&bull; <a href="forum/thread.php?user={{ id }}">Show posts</a>
+	{% if log %}
+		{% if userdata.id != id %}
+			&bull; <a href="forum/sendprivate.php?uid={{ id }}">Send private message</a>
+		{% endif %}
+		{% if userdata.powerlevel > 2 %}
+			&bull; <a href="resetpassword.php?grf={{ id }}">Generate password reset for user</a>
+			&bull; <a href="forum/editperms.php?uid={{ id }}">Edit forum permissions</a>
 		{% endif %}
 	{% endif %}
 </p>
 
-					{% for latestVideo in latestVideos %}
-					{{ video_box(latestVideo) }}
-					{% else %}
-					<p>{{ __("There are currently no videos uploaded by %s.", [user.title]) }}</p>
-					{% endfor %}
+{% for latestVideo in latestVideos %}
+	{{ video_box(latestVideo) }}
+{% else %}
+	<p>{{ __("There are currently no videos uploaded by %s.", [user.title]) }}</p>
+{% endfor %}
 
 {% if userdata.id == id %}
 	{% set forceuser = "&forceuser" %}

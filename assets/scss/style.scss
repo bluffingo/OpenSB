@@ -510,20 +510,9 @@ form.reglog {
 	width: 300px;
 	float: right;
 
-	.topthing {
-		background: #3367aa;
-		padding: 7px;
-	}
-
-	.row {
-		border-top: 1px solid black;
-		padding: 10px;
-		display: block;
-
 		.pad {
 			float: right;
 		}
-	}
 }
 
 .main-content {
@@ -535,7 +524,7 @@ form.reglog {
     color: #ffffff;
     display: flex;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) !important;
-	
+
 	.container {
     display: flex;
     flex-direction: column;
