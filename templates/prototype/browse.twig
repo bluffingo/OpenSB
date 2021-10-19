@@ -3,6 +3,22 @@
 {% block title %}Latest videos {% if page != 1 %}(Page {{ page }}){% endif %}{% endblock %}
 
 	{% block content %}
+<h1>Latest videos {% if page != 1 %}(Page {{ page }}){% endif %}</h1>
+<div class="grid">
+<div class="col-4">
+<div class="well sidebar-nav">
+    <ul class="nav nav-list">
+        <li class="nav-header">Categories</li>
+        <li class="active"><a href="#">All</a></li>
+        <li><a href="#">Miscellanous</a></li>
+        <li><a href="#">Shitposting & Comedy</a></li>
+        <li><a href="#">Gaming</a></li>
+        <li><a href="#">News and Updates</a></li>
+        <li><a href="#">Life</a></li>
+        <li><a href="#">Science and Technology</a></li>
+        <li><a href="#">Archive Dump</a></li>
+    </ul>
+</div>
 	<a class="{% if type == 'misc' %}sel{% endif %} button button-primary" href="browse.php?type=misc">Miscellanous</a>
 	<a class="{% if type == 'entertainment' %}sel{% endif %} button button-primary" href="browse.php?type=entertainment">Entertainment</a>
 	<a class="{% if type == 'comedy' %}sel{% endif %} button button-primary" href="browse.php?type=comedy">Shitposting & Comedy</a>
@@ -13,6 +29,8 @@
 	<a class="{% if type == 'backup' %}sel{% endif %} button button-primary" href="browse.php?type=backup">Archive Dump</a>
 	<a class="{% if type == 'all' %}sel{% endif %} button button-primary" href="browse.php?type=all">All</a>
 	<br>
+</div>
+<div class="col-8">
 
 {% for level in levels %}
 	{{ video_box(level) }}
@@ -28,4 +46,6 @@
 {{ pagination(level_count, glob_lpp, le_url, page) }}
 
 <br><br>
+</div>
+</div>
 	{% endblock %}

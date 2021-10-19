@@ -2,6 +2,40 @@
 
 {% block title %}{{ name }}{% endblock %}
 
+	{% block precontent %}
+	<div class="main-content">
+		<div class="container">
+	  		{% if log %}
+			<div class="grid">
+				<div class="col-2">
+					<img class="rounded img-fluid" src="{{ profile_image(userpagedata.name) }}"  alt="{{ userpagedata.name }}">
+				</div>
+				<div class="col-10">
+					<p class="text-start">
+					<h1>{{ userpagedata.title }}</h1>
+						{# hack to prevent twig from outputing the number 1 #}
+						{% if subCount != 1 %}
+							{% set pluralSubscribers = __("s") %}
+						{% endif %}
+						{% if totalViews != 1 %}
+							{% set pluralViews = __("s") %}
+						{% endif %}
+						<p class="fs-5 mb-1">@{{ userpagedata.name }}
+						&bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
+						&bull; {{ __("%s view%s", [totalViews ?? __("Not implemented"), pluralViews]) }}</p>
+						<a class="button button-primary btn-lg" href="../studio.php">Follow</a>
+				</div>
+			</div>
+		{% else %}
+			<h1 class="fw-bold">Welcome to squareBracket</h1>
+			<p>I can't believe it's not PokTube</p>
+			<a class="button button-primary btn-lg" href="register.php">Register {{ icon('caret-right-fill', 16) }}</a>
+			<big>Already have an account? <a href="login.php">Sign in</a></big>
+			{% endif %}
+		</div>
+	</div>
+	{% endblock %}
+
 	{% block content %}
 {% if markread %}
 	<div class="header_message">Marked all notifications as read.</div>
