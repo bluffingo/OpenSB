@@ -42,7 +42,7 @@
 }
 
 .nav-list > li > a {
-    padding: 3px 15px;
+    padding: 6px 15px;
 }
 
 .nav-list > li > a, .nav-list .nav-header {
@@ -59,4 +59,9 @@
     color: #ffffff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
     background-color: $primary;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #eeeeee;
 }
