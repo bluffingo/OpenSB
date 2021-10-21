@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 function PaleMoonWarning() { // Fuck you Moonchild. -GR 10/20/2021
 	$agent = $_SERVER["HTTP_USER_AGENT"];
 	if( preg_match('/PaleMoon[\/\s](\d+\.\d+)/', $agent) ) {
-	  echo "<div class='alert'>Pale moon is not supported. Why bother maining a Firefox ESR 2X build with ESR 52's CSS shoehorned in?</div>";
+	  echo "<center><b>Pale moon is not supported. Why bother maining a Firefox ESR 2X build with ESR 52's CSS shoehorned in?</b></center>";
 	}
 }
 
