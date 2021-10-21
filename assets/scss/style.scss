@@ -105,7 +105,7 @@ p {
 	background-color: #f5f5f5;
 	border-bottom: 1px solid #ccc;
 	border-top: 1px solid #ccc;
-	margin-top: 0px;
+	margin-top: 0;
 	overflow: hidden;
 	padding: 8px 16px;
 }
@@ -114,9 +114,9 @@ p {
 	background-color: black;
 	border-bottom: 1px solid #ccc;
 	border-top: 1px solid #ccc;
-	margin-top: 0px;
+	margin-top: 0;
 	overflow: hidden;
-	padding: 8px 8px;
+	padding: 8px;
 	height: 16px !important;
 	
 	ul.menu {
@@ -388,7 +388,7 @@ form.reglog {
 			padding: 10px 20px;
 
 			&:hover {
-				box-shadow: 0 0px 4px #666;
+				box-shadow: 0 0 4px #666;
 			}
 		}
 
@@ -505,7 +505,7 @@ form.reglog {
 			text-align: center;
 
 			&:hover {
-				box-shadow: 0 0px 4px #666;
+				box-shadow: 0 0 4px #666;
 			}
 		}
 	}
