@@ -128,3 +128,11 @@ function redirect($url) {
 	header(sprintf('Location: %s', $url));
 	die();
 }
+
+// how many times did i change this shit -gr 10/20/2021
+function oldBrowser() {
+$agent = $_SERVER["HTTP_USER_AGENT"];
+if( preg_match('/PaleMoon[\/\s](\d+\.\d+)/', $agent) ) {
+	printf("<center><b>Your browser is outdated.</b></center>");
+}
+}

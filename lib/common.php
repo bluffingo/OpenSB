@@ -1,13 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 
-function PaleMoonWarning() { // Fuck you Moonchild. -GR 10/20/2021
-	$agent = $_SERVER["HTTP_USER_AGENT"];
-	if( preg_match('/PaleMoon[\/\s](\d+\.\d+)/', $agent) ) {
-	  echo "<center><b>Pale moon is not supported. We recommend that you switch to a newer, modern and better browser.</b></center>";
-	}
-}
-
 if (!file_exists('conf/config.php')) {
 	die('<center><b>A configuration file could not be found. Please read the installing instructions in the README file.</b></center>');
 }
@@ -88,5 +81,3 @@ if ($log) {
 $lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['language'] : 'en-US').".json"));
 
 $userdata['timezone'] = 'America/New York';
-
-PaleMoonWarning();
