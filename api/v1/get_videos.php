@@ -29,7 +29,7 @@ foreach ($videoData as $video) {
 		],
 		'tags' => $video['tags'],
 		'author' => [ // supposed to be an "user" object
-			'username' => $video['u_username']
+			'username' => $video['u_name']
 		]
 	];
 }

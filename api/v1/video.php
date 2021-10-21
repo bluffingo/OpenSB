@@ -31,7 +31,7 @@ $apiOutput = [
 	],
 	'tags' => $videoData['tags'],
 	'author' => [ // supposed to be an "user" object
-		'username' => $videoData['u_username']
+		'username' => $videoData['u_name']
 	]
 ];
 
