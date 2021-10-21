@@ -5,12 +5,11 @@
 	{% block precontent %}
 	<div class="main-content">
 		<div class="container">
-	  		{% if log %}
 			<div class="grid">
 				<div class="col-2">
 					<img class="rounded img-fluid" src="{{ profile_image(userpagedata.name) }}"  alt="{{ userpagedata.name }}">
 				</div>
-				<div class="col-10">
+				<div class="col-6">
 					<p class="text-start">
 					<h1>{{ userpagedata.title }}</h1>
 						{# hack to prevent twig from outputing the number 1 #}
@@ -25,13 +24,20 @@
 						&bull; {{ __("%s view%s", [totalViews ?? __("Not implemented"), pluralViews]) }}</p>
 						<a class="button button-primary btn-lg" href="../studio.php">Follow</a>
 				</div>
+				<div class="col-4">
+				<div class="card">
+					<div class="card-header">General information</div>
+					<div class="card-body">
+						<b>Forum Threads</b>: {{ userpagedata.threads }}
+						<span class="pad"><b>Forum Posts</b>: {{ userpagedata.posts }}</span>
+						<br><br>
+						<b>Registered on</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
+						<br><br>
+						<b>Last view</b>: {{ userpagedata.lastview | relative_time }}
+					</div>
+				</div>
+				</div>
 			</div>
-		{% else %}
-			<h1 class="fw-bold">Welcome to squareBracket</h1>
-			<p>I can't believe it's not PokTube</p>
-			<a class="button button-primary btn-lg" href="register.php">Register {{ icon('caret-right-fill', 16) }}</a>
-			<big>Already have an account? <a href="login.php">Sign in</a></big>
-			{% endif %}
 		</div>
 	</div>
 	{% endblock %}
@@ -45,12 +51,12 @@
 
 {% if userdata.id == id and not forceuser %}
 
-<p>Welcome to your personal user page. Here, you can see and manage your uploaded levels, customize your profile, and edit your settings.</p>
+<p>Welcome to your personal user page. Here, you can see and manage your uploaded content, customize your profile, and edit your settings.</p>
 
 <p><a href="settings.php">Edit my settings</a>
 &bull; <a href="forum/private.php">View my private messages</a>
 &bull; <a href="user.php?id={{ id }}&forceuser">View user page as viewer</a>
-&bull; <a href="javascript:document.logout.submit()">Log out</a></p>
+&bull; <a href="logout.php">Log out</a></p>
 
 {% if userdata.powerlevel > 2 %}
 <p><a href="admin.php">Admin panel</a></p>
@@ -72,17 +78,6 @@
 	{% endif %}
 </ul>
 {% else %}
-<div class="user_stats card">
-	<div class="card-header">General information</div>
-	<div class="card-body">
-		<b>Forum Threads</b>: {{ userpagedata.threads }}
-		<span class="pad"><b>Forum Posts</b>: {{ userpagedata.posts }}</span>
-		<br><br>
-		<b>Registered on</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
-		<br><br>
-		<b>Last view</b>: {{ userpagedata.lastview | relative_time }}
-	</div>
-</div>
 <h2>{{ name }} {% if userpagedata.powerlevel > 1 %}<img class="sdsd" src="assets/icons/shield.svg" height="16" title="User is a moderator.">{% endif %}</h2>
 
 <div class="user_about">

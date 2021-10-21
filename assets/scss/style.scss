@@ -110,6 +110,28 @@ p {
 	padding: 8px 16px;
 }
 
+.top_forum {
+	background-color: black;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	margin-top: 0px;
+	overflow: hidden;
+	padding: 8px 8px;
+	height: 16px !important;
+	
+	ul.menu {
+	line-height: 16px;
+	}
+	
+	ul.menu a {
+	color: white;
+	}
+	
+	ul.menu a:hover {
+    background-color: #515151;
+	}
+}
+
 .top {
 	height: 32px;
 	border-top-width: 0;
@@ -531,6 +553,25 @@ form.reglog {
     align-self: center;
 	width: 100%;
 	}
+	
+	.card {
+	color: black;
+	text-shadow: none;
+	}
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px;
+    font-size: 11.844px;
+    font-weight: bold;
+    line-height: 14px;
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #999999;
+    border-radius: 3px;
 }
 
 /// Gradients \\\

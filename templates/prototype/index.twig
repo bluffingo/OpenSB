@@ -18,18 +18,20 @@
 						<p class="fs-5 mb-1">@{{ userdata.name }}
 						&bull; {{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
 						&bull; {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
-						<a class="button button-primary btn-lg" href="../studio.php">Go to studio</a>
+						<a class="button button-primary button-large" href="../studio.php">Go to studio {{ icon('caret-right-fill', 16) }}</a>
 				</div>
 				<div class="col-2">
 					<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}">
 				</div>
 			</div>
 		{% else %}
-			<h1 class="fw-bold">Welcome to squareBracket</h1>
-			<p>I can't believe it's not PokTube</p>
-			<a class="button button-primary btn-lg" href="register.php">Register {{ icon('caret-right-fill', 16) }}</a>
-			<big>Already have an account? <a href="login.php">Sign in</a></big>
-			{% endif %}
+			<div class="grid"><div class="col-12">
+				<h1 class="fw-bold">Welcome to squareBracket</h1>
+				<p>I can't believe it's not PokTube</p>
+				<a class="button button-primary button-large" href="register.php">Register {{ icon('caret-right-fill', 16) }}</a>
+				<big>Already have an account? <a href="login.php">Sign in</a></big>
+			</div></div>
+				{% endif %}
 		</div>
 	</div>
 	{% endblock %}

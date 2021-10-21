@@ -9,26 +9,17 @@
 <div class="well sidebar-nav">
     <ul class="nav nav-list">
         <li class="nav-header">Categories</li>
-        <li class="active"><a href="#">All</a></li>
-        <li><a href="#">Miscellanous</a></li>
-        <li><a href="#">Shitposting & Comedy</a></li>
-        <li><a href="#">Gaming</a></li>
-        <li><a href="#">News and Updates</a></li>
-        <li><a href="#">Life</a></li>
-        <li><a href="#">Science and Technology</a></li>
-        <li><a href="#">Archive Dump</a></li>
+        <li {% if type == 'all' %}class="active"{% endif %}><a href="browse.php?type=all">All</a></li>
+        <li {% if type == 'misc' %}class="active"{% endif %}><a href="browse.php?type=misc">Miscellanous</a></li>
+		<li {% if type == 'entertainment' %}class="active"{% endif %}><a href="browse.php?type=entertainment">Entertainment</a></li>
+        <li {% if type == 'comedy' %}class="active"{% endif %}><a href="browse.php?type=comedy">Shitposting & Comedy</a></li>
+        <li {% if type == 'gaming' %}class="active"{% endif %}><a href="browse.php?type=gaming">Gaming</a></li>
+        <li {% if type == 'news' %}class="active"{% endif %}><a href="browse.php?type=news">News and Updates</a></li>
+        <li {% if type == 'life' %}class="active"{% endif %}><a href="browse.php?type=life">Lifestyle</a></li>
+        <li {% if type == 'technology' %}class="active"{% endif %}><a href="browse.php?type=technology">Science and Technology</a></li>
+        <li {% if type == 'backup' %}class="active"{% endif %}><a href="browse.php?type=backup">Archive Dump</a></li>
     </ul>
 </div>
-	<a class="{% if type == 'misc' %}sel{% endif %} button button-primary" href="browse.php?type=misc">Miscellanous</a>
-	<a class="{% if type == 'entertainment' %}sel{% endif %} button button-primary" href="browse.php?type=entertainment">Entertainment</a>
-	<a class="{% if type == 'comedy' %}sel{% endif %} button button-primary" href="browse.php?type=comedy">Shitposting & Comedy</a>
-	<a class="{% if type == 'gaming' %}sel{% endif %} button button-primary" href="browse.php?type=gaming">Gaming</a>
-	<a class="{% if type == 'news' %}sel{% endif %} button button-primary" href="browse.php?type=news">News and Updates</a>
-	<a class="{% if type == 'life' %}sel{% endif %} button button-primary" href="browse.php?type=life">Life</a>
-	<a class="{% if type == 'technology' %}sel{% endif %} button button-primary" href="browse.php?type=technology">Science & Technology</a>
-	<a class="{% if type == 'backup' %}sel{% endif %} button button-primary" href="browse.php?type=backup">Archive Dump</a>
-	<a class="{% if type == 'all' %}sel{% endif %} button button-primary" href="browse.php?type=all">All</a>
-	<br>
 </div>
 <div class="col-8">
 

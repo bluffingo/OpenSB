@@ -19,6 +19,7 @@
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
+<h1>{{ video.title }}</h1>
 <div class="grid">
 <div class="col-8">
 		<div id="container" style="height: 30rem;">
@@ -64,9 +65,6 @@
 				});
 			{% endif %}
 		</script>
-		<p class="uploader-info">{{ __("Published on %s", [video.time | date('M j, Y')]) }} by <a href="user.php?name={{ video.u_username }}">{{ userlink(video, 'u_') }}</a><br>
-		Category: {{ video.category_id | category_id_to_name() }}</p>
-		<p>{{ video.description }}</p>
 		<h3>Comments (redesign this later)</h3>
 		<textarea rows="3" placeholder="Not implemented"></textarea>
 				{% for comment in comments %}
@@ -74,9 +72,23 @@
 				{% endfor %}
 				</div>
 <div class="col-4">
-		{% for related_video in related_videos %}
-			{{ small_video_box(related_video)}}
-		{% endfor %}
-</div>
+	<div class="card">
+	  <div class="card-header"><h5>{{ __("About This Video") }}</h5></div>
+	  <div class="card-body">
+		<p>{{ __("Published: %s", [video.time | date('M j, Y')]) }}</p>
+		<p>{{ __("Uploader:") }} {{ userlink(video, 'u_') }}</p>
+		<p>{{ __("Category:") }} {{ video.category_id | category_id_to_name() }}</p>
+		<p>{{ __("Description:") }} {{ video.description }}</p>
+	  </div>
+	</div>
+	<div class="card">
+		<div class="card-header"><h5>{{ __("Explore More Videos") }}</h5></div>
+			<div class="card-body">
+			{% for related_video in related_videos %}
+				{{ small_video_box(related_video)}}
+			{% endfor %}
+			</div>
+		</div>
+	</div>
 </div>
 {% endblock %}
