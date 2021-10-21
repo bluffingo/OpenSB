@@ -1,10 +1,10 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 
-function PaleMoonBlock() { // Fuck you Moonchild. -GR 10/20/2021
+function PaleMoonWarning() { // Fuck you Moonchild. -GR 10/20/2021
 	$agent = $_SERVER["HTTP_USER_AGENT"];
 	if( preg_match('/PaleMoon[\/\s](\d+\.\d+)/', $agent) ) {
-	  die("Pale moon is not supported. Why bother maining a Firefox ESR 2X build with ESR 52's CSS shoehorned in?");
+	  echo "<div class='alert'>Pale moon is not supported. Why bother maining a Firefox ESR 2X build with ESR 52's CSS shoehorned in?</div>";
 	}
 }
 
@@ -89,4 +89,4 @@ $lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['
 
 $userdata['timezone'] = 'America/New York';
 
-PaleMoonBlock();
+PaleMoonWarning();
