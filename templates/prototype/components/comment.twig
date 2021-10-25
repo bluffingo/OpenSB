@@ -1,13 +1,12 @@
-<div class="comment-text" dir="ltr">
-    {% apply markdown_to_html %}
-			{{ data.comment | raw }}
-		{% endapply %}
+<div class="grid" style="gap:0px">
+	<div class="col-1">
+		<a href="user.php?name={{ data.u_username }}">
+			<img class="rounded" style="width:48px" src="{{ profile_image(data.u_username) }}">
+		</a>
+	</div>
+	<div class="col-11">
+		{{ userlink(data, 'u_') }} &bull; {{ data.date | relative_time}}
+		<br>
+		{{ data.comment | raw }}
+	</div>
 </div>
-<p class="metadata">
-          <span class="author ">
-                <a href="user.php?name={{ data.u_username }}" class="yt-user-name " dir="ltr">{{ userlink(data, 'u_') }}</a>
-          </span>
-    <span class="time">
-        {{ data.date | relative_time}}
-    </span>
-</p>
