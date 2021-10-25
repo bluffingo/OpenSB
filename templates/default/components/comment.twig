@@ -5,9 +5,8 @@
 		</a>
 	</div>
 	<div class="col-lg-10">
-		{{ userlink(data, 'u_') }} &bull; {{ data.date | relative_time}}
-		{% apply markdown_to_html | nl2br %}
-			{{ data.comment | raw }}
-		{% endapply %}
+		{{ userlink(data, 'u_') }} &bull; {{ data.date | relative_time}} (markdown is broken)
+		<br>
+		{{ data.comment | raw }}
 	</div>
 </div>
