@@ -3,11 +3,12 @@ conf/config.php
 templates/cache/
 cache/
 assets/profpic/
-assets/thumb/
+assets/thumb/*.png
 assets/backgrounds/
 *.mp4
 videos/
-music/
+music/*.mp3
+music/*.wav
 
 ## Composer
 vendor/
@@ -20,7 +21,7 @@ assets/bs*.css
 assets/bs*.css.map
 assets/main.css
 assets/main.css.map
-assets/css/
+assets/css/*.css
 assets/dashboard.css
 assets/signin.css
 
