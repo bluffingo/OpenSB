@@ -84,7 +84,11 @@
 	  </div>
 	</div>
 		<h3>Comments (redesign this later)</h3>
-		<textarea rows="3" placeholder="Not implemented"></textarea>
+		<textarea class="form-control mt-2 mb-2" id="commentContents" style="overflow:hidden;resize:none" rows="3" 
+		placeholder="{% if log %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}
+		{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
+		<button id="{% if log %}post{% endif %}" class="button button-primary {% if not log %}disabled{% endif %}">{{ __("Comment") }}</button>
+				<div id="comment"></div>
 				{% for comment in comments %}
 					{{ comment(comment) }}
 				{% endfor %}
