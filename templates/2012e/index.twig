@@ -59,7 +59,7 @@
                         <img src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="" class="system-icon category">
                         </span>
                         <span class="display-name">
-                        From CleberTube
+                        From squareBracket
                         </span>
                         </a>
                      </h3>
@@ -249,12 +249,6 @@
             </div>
             <div class="guide-background"></div>
             <div id="video-sidebar">
-               <div id="ad_creative_expand_btn_1" class="masthead-ad-control open hid">
-                  <a onclick="masthead.expand_ad(); return false;">
-                  <span>Show ad</span>
-                  <img src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
-                  </a>
-               </div>
                <div id="ppv-placeholder" style="display: none;">
                   <div class="pyv-large-thumb">
                      <a class="large-thumb" title="Okami - Episode 71" href="/web/20120118121554/http://www.youtube.com/watch?v=dqz4NyITxnI&amp;feature=fvhr">
@@ -289,47 +283,42 @@
                <h3 class="sidebar-module-header">
                   Spotlight
                </h3>
-               <h2>TOMORROW: Watch David Beckham Live on YouTube</h2>
+               <h2>squareBracket 2012?</h2>
                <p class="sidebar-module-description">
-                  We're live streaming an interview with the soccer star tomorrow at 9 a.m. PT, so post your questions on Google+ using #googlebeckham, and watch the interview live on youtube.com/atgoogletalks
+                  Now, we've made sexBarack more harder to use! Fuck you.
                </p>
                <p class="sidebar-module-description">
-                  Presented by: <a href="/web/20120118121554/http://www.youtube.com/AtGoogleTalks">AtGoogleTalks</a>
+                  Presented by: Gamerappa
                </p>
                <ul>
-                  <li class="video-list-item "><a href="/web/20120118121554/http://www.youtube.com/watch?v=8E-rlXdv0Kc&amp;feature=g-sptl&amp;cid=inp-hs-bkm" class="video-list-item-link "><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb ux-thumb-110 "><span class="clip"><span class="clip-inner"><img src="//web.archive.org/web/20120118121554/http://i1.ytimg.com/vi/8E-rlXdv0Kc/default.jpg" alt="Thumbnail
-                     " data-thumb="//web.archive.org/web/20120118121554/http://i1.ytimg.com/vi/8E-rlXdv0Kc/default.jpg" data-group-key="thumb-group-3"><span class="vertical-align"></span></span></span></span><span class="video-time">0:31</span><button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" onclick=";return false;" data-button-menu-action="yt.www.lists.addto.toggleMenu" data-button-menu-id="shared-addto-menu" data-video-ids="8E-rlXdv0Kc" data-feature="thumbnail" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-addto" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""><span class="yt-uix-button-content"><span class="addto-label">Add to</span> </span><img class="yt-uix-button-arrow" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""></button></span><span dir="ltr" class="title" title="Google+David Beckham">Google+David Beckham</span><span class="stat">by     <span class="yt-user-name " dir="ltr">
-                     AtGoogleTalks
-                     </span>
-                     </span><span class="stat view-count">241,381 views
-                     </span></a>
-                  </li>
                </ul>
                <h3>
                   Featured
                </h3>
                <ul>
-                  <li class="video-list-item "><a href="/web/20120118121554/http://www.youtube.com/watch?v=0axTQran9YQ&amp;feature=g-feat&amp;context=G2c6da24YFAAAAAAAAAA" class="video-list-item-link "><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb ux-thumb-110 "><span class="clip"><span class="clip-inner"><img src="//web.archive.org/web/20120118121554/http://i1.ytimg.com/vi/0axTQran9YQ/default.jpg" alt="Thumbnail
-                     " data-thumb="//web.archive.org/web/20120118121554/http://i1.ytimg.com/vi/0axTQran9YQ/default.jpg" data-group-key="thumb-group-3"><span class="vertical-align"></span></span></span></span><span class="video-time">2:09</span><button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" onclick=";return false;" data-button-menu-action="yt.www.lists.addto.toggleMenu" data-button-menu-id="shared-addto-menu" data-video-ids="0axTQran9YQ" data-feature="thumbnail" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-addto" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""><span class="yt-uix-button-content"><span class="addto-label">Add to</span> </span><img class="yt-uix-button-arrow" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""></button></span><span dir="ltr" class="title" title="Ek Nayaa Shivalaya Patriotic Song by Rabbani Brothers - Smith &amp; Jones Music Ka Tadka">Ek Nayaa Shivalaya Patriotic Song by Rabbani Br...</span><span class="stat">by     <span class="yt-user-name " dir="ltr">
-                     musickatadka
+			   {% for video in featuredVideos %}
+                  <li class="video-list-item "><a href="watch.php?v={{ video.video_id }}" 
+				  class="video-list-item-link "><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb ux-thumb-110 "><span class="clip"><span class="clip-inner">
+				  <img src="{{ video_thumbnail(video.video_id) }}" 
+				  alt="Thumbnail" data-thumb="{{ video_thumbnail(video.video_id) }}" data-group-key="thumb-group-3">
+					 <span class="vertical-align"></span></span></span></span><span class="video-time">{{ video.videolength|date('i:s', '+00:00 GMT')  }}</span>
+					 <button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" 
+					 onclick=";return false;" data-button-menu-action="yt.www.lists.addto.toggleMenu" 
+					 data-button-menu-id="shared-addto-menu" data-video-ids="{{ video.video_id }}" data-feature="thumbnail" 
+					 role="button"><img class="yt-uix-button-icon yt-uix-button-icon-addto" 
+					 src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" 
+					 alt=""><span class="yt-uix-button-content"><span class="addto-label">Add to</span> </span>
+					 <img class="yt-uix-button-arrow" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif"
+					 alt=""></button></span><span dir="ltr" class="title" title="{{ video.title }}">
+					 {{ video.title }}</span><span class="stat">by     <span class="yt-user-name " dir="ltr">
+                     {{ video.u_name }}
                      </span>
-                     </span><span class="stat view-count">70,276 views
+                     </span><span class="stat view-count">{{ video.views }} views
                      </span></a>
                   </li>
-                  <li class="video-list-item "><a href="/web/20120118121554/http://www.youtube.com/watch?v=vDWhfsQHq1o&amp;feature=g-feat&amp;context=G2818e3aYFAAAAAAAAAQ" class="video-list-item-link "><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb ux-thumb-110 "><span class="clip"><span class="clip-inner"><img src="//web.archive.org/web/20120118121554/http://i3.ytimg.com/vi/vDWhfsQHq1o/default.jpg" alt="Thumbnail
-                     " data-thumb="//web.archive.org/web/20120118121554/http://i3.ytimg.com/vi/vDWhfsQHq1o/default.jpg" data-group-key="thumb-group-4"><span class="vertical-align"></span></span></span></span><span class="video-time">3:39</span><button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" onclick=";return false;" data-button-menu-action="yt.www.lists.addto.toggleMenu" data-button-menu-id="shared-addto-menu" data-video-ids="vDWhfsQHq1o" data-feature="thumbnail" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-addto" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""><span class="yt-uix-button-content"><span class="addto-label">Add to</span> </span><img class="yt-uix-button-arrow" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""></button></span><span dir="ltr" class="title" title="Gavin DeGraw - Not Over You">Gavin DeGraw - Not Over You</span><span class="stat">by     <span class="yt-user-name " dir="ltr">
-                     GavinDeGrawVEVO
-                     </span>
-                     </span><span class="stat view-count">4,838,250 views
-                     </span></a>
-                  </li>
-                  <li class="video-list-item "><a href="/web/20120118121554/http://www.youtube.com/watch?v=khmcTCfprIA&amp;feature=g-feat&amp;context=G236cf35YFAAAAAAAAAg" class="video-list-item-link "><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb ux-thumb-110 "><span class="clip"><span class="clip-inner"><img src="//web.archive.org/web/20120118121554/http://i4.ytimg.com/vi/khmcTCfprIA/default.jpg" alt="Thumbnail
-                     " data-thumb="//web.archive.org/web/20120118121554/http://i4.ytimg.com/vi/khmcTCfprIA/default.jpg" data-group-key="thumb-group-4"><span class="vertical-align"></span></span></span></span><span class="video-time">7:18</span><button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" onclick=";return false;" data-button-menu-action="yt.www.lists.addto.toggleMenu" data-button-menu-id="shared-addto-menu" data-video-ids="khmcTCfprIA" data-feature="thumbnail" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-addto" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""><span class="yt-uix-button-content"><span class="addto-label">Add to</span> </span><img class="yt-uix-button-arrow" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""></button></span><span dir="ltr" class="title" title="Sal y Pimienta - J.Lo y Marc Anthony se reencontraron">Sal y Pimienta - J.Lo y Marc Anthony se reencon...</span><span class="stat">by     <span class="yt-user-name " dir="ltr">
-                     Univision
-                     </span>
-                     </span><span class="stat view-count">6,762 views
-                     </span></a>
-                  </li>
+				{% else %}
+					<p>{{ __("No featured videos.") }}</p>
+				{% endfor %}
                </ul>
                <script>
                   if (window.yt.timing) {
@@ -345,7 +334,7 @@
                      </div>
                      <div class="feed-header-details">
                         <h2>
-                           From CleberTube
+                           From squareBracket
                         </h2>
                      </div>
                   </div>
@@ -358,7 +347,7 @@
 								  <div class="feed-item-content">
 									 <h3 class="feed-item-title">
 										<span class="feed-item-author">    <a href="/web/20120118121554/http://www.youtube.com/user/RyanJamesYezak?feature=g-logo" class="yt-user-photo ">
-										<span class="video-thumb ux-thumb ux-thumb-profile-24"><span class="clip"><span class="clip-inner"><img src="{{ profile_image(data.author) }}" alt="RyanJamesYezak" data-thumb="https://web.archive.org/web/20120118121554/http://i3.ytimg.com/i/n26WjLOuTrZNEq7yN92_fg/1.jpg?v=a82222" data-group-key="thumb-group-8"><span class="vertical-align"></span></span></span></span>
+										<span class="video-thumb ux-thumb ux-thumb-profile-24"><span class="clip"><span class="clip-inner"><img src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}" data-thumb="https://web.archive.org/web/20120118121554/http://i3.ytimg.com/i/n26WjLOuTrZNEq7yN92_fg/1.jpg?v=a82222" data-group-key="thumb-group-8"><span class="vertical-align"></span></span></span></span>
 										</a>
 										</span>
 										<span class="feed-item-owner">    {{ userlink(video, 'u_') }}
@@ -368,23 +357,26 @@
 									 </h3>
 									 <div class="feed-item-visual">
 										<div class="feed-item-visual-thumb">
-										   <a class="ux-thumb-wrap contains-addto" href="/web/20120118121554/http://www.youtube.com/watch?v=u62OtM_vt5k&amp;feature=g-logo&amp;context=G208d680FOAAAAAAAbAA">
+										   <a class="ux-thumb-wrap contains-addto" href="watch.php?v={{ video.video_id }}">
 										   <span class="video-thumb ux-thumb ux-thumb-288 "><span class="clip"><span class="clip-inner"><img src="{{ video_thumbnail(video.video_id) }}" alt="Thumbnail
 											  " data-thumb="{{ video_thumbnail(video.video_id) }}" data-group-key="thumb-group-8"><span class="vertical-align"></span></span></span></span>
 										   <span class="video-time">{{ video.videolength|date('i:s', '+00:00 GMT')  }}</span>
-										   <button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" onclick=";return false;" data-button-menu-action="yt.www.lists.addto.toggleMenu" data-button-menu-id="shared-addto-menu" data-video-ids="u62OtM_vt5k" data-feature="thumbnail" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-addto" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""><span class="yt-uix-button-content"><span class="addto-label">Add to</span> </span><img class="yt-uix-button-arrow" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""></button>
+										   <button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" onclick=";return false;" 
+										   data-button-menu-action="yt.www.lists.addto.toggleMenu" data-button-menu-id="shared-addto-menu" data-video-ids="{{ video.video_id }}" 
+										   data-feature="thumbnail" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-addto" 
+										   src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
+										   <span class="yt-uix-button-content"><span class="addto-label">Add to</span> 
+										   </span><img class="yt-uix-button-arrow" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""></button>
 										   </a>
 										</div>
 										<div class="feed-item-visual-content">
 										   <div class="feed-item-visual-description">
-											  <h4><a class="title" href="/web/20120118121554/http://www.youtube.com/watch?v=u62OtM_vt5k&amp;feature=g-logo&amp;context=G208d680FOAAAAAAAbAA" dir="ltr">{{ video.title }}</a></h4>
+											  <h4><a class="title" href="watch.php?v={{ video.video_id }}" dir="ltr">{{ video.title }}</a></h4>
 											  <div class="description" dir="ltr">
 												 {{ video.description|length > 100 ? video.description|slice(0, 100) ~ '...' : video.description }}
 											  </div>
 										   </div>
-										   <p class="metadata">
-											  {{ userlink(video, 'u_') }}
-											  <span class="view-count">
+									  <span class="view-count">
 											  {{ video.views }} views
 											  </span>
 										   </p>
@@ -394,7 +386,8 @@
 							   </div>
 							</li>
                            {% endfor %}
-                        </ul>
+      							   <p class="metadata">
+					                  </ul>
                      </div>
                   </div>
                </div>
