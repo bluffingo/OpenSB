@@ -1,0 +1,890 @@
+{% extends "_layout.twig" %}
+{% block css %}
+<link rel="stylesheet" href="/assets/2006L/watch_yts1161848708.css" type="text/css">
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="/assets/2006L/comments_yts1157352107.js"></script>
+<script language="javascript" type="text/javascript">
+	function toggleFullStats() {
+		if (document.getElementById('honorLinkDiv'))
+		{
+			if (document.getElementById('honorLinkDiv').style.display=='') document.getElementById('honorLinkDiv').style.display= 'block';
+			toggleDisplay('honorLinkDiv');
+		}
+		var fsd = document.getElementById('fullStats').style.display;
+		if (fsd == 'none' || fsd == '') {
+			showAjaxDivNotLoggedIn('honorsDiv', '/watch_ajax.php?v={{ video.video_id }}&action_get_honors=1&l=EN&frontend=2006L', false);
+			document.getElementById('moreless').innerHTML = 'fewer';
+		}
+		else
+		{
+			document.getElementById('moreless').innerHTML = 'more';
+		}
+		toggleDisplay('fullStats');
+	}
+	function CheckLogin() {
+			return false;
+	}
+	
+	
+	function showRelatedVideosContent() {
+		getAndShowNavContent('exRelated', '/watch_ajax.php?video_id={{ video.video_id }}&action_get_related_videos_component&search=Dancing%20comedy&frontend=2006L');
+	}
+	
+	function showRelatedPlaylistContent() {
+		getAndShowNavContent('exPlaylist', '/watch_ajax.php?feature=PlayList&video_id={{ video.video_id }}&action_get_related_playlist_component&p=&index=0&frontend=2006L');
+	}
+	function showRelatedUserContent() {
+		getAndShowNavContent('exUser', '/watch_ajax.php?video_id={{ video.video_id }}&action_get_user_videos_component&user_id=K9y5CeIv4CI&video_count=3&frontend=2006L');
+	}
+	function showHonorsContent() {
+		getAndShowNavContent('honors', '/watch_ajax.php?v={{ video.video_id }}&action_get_honors=1&l=EN&frontend=2006L');
+	}
+	
+	function showAllQueuedVideos() {
+		setInnerHTML('show_all_queued_videos_div', 'Loading..');
+		getAndShowNavContent('watchlist_container', '/watch_queue_ajax?action_get_all_queue_videos_component&v={{ video.video_id }}', postShowAllQueuedVideos);
+	}
+	function postShowAllQueuedVideos() {
+		setInnerHTML('show_all_queued_videos_div', 'Showing All Videos');
+		jumpToNowPlaying();
+	}
+		
+	// This can be split out...
+	var contentTab=new Array();	
+	function getAndShowNavContent(nameprefix, url, postShowNavContent) {
+		selectNavLink(nameprefix + "Link");
+	
+		if(contentTab[nameprefix]) {
+			return;
+		}
+		
+		self.nameprefix = nameprefix;
+		self.showRelatedVideosResponse = showRelatedVideosResponse;
+		self.postShowNavContent = postShowNavContent
+		getUrlXMLResponse(url, showRelatedVideosResponse);
+	}
+	function showRelatedVideosResponse(req) {
+		document.getElementById(self.nameprefix + "Div").innerHTML=getNodeValue(req.responseXML, "html_content");
+		setContentLoaded(self.nameprefix);
+		
+		if(self.postShowNavContent) {
+			self.postShowNavContent();
+		}
+	}
+		
+	function setContentLoaded(nameprefix) {
+		selectNavLink(nameprefix + "Link");
+		contentTab[nameprefix] = 1;
+	}
+	function showAjaxDivNotLoggedIn(divName, url) {
+			self.divName = divName
+			self.showAjaxDivResponse = showAjaxDivResponse
+			getUrlXMLResponse(url, self.showAjaxDivResponse);
+	}
+	function showAjaxDiv(divName, url) {
+		if(CheckLogin()) {
+			showAjaxDivNotLoggedIn(divName,url)
+		} else {
+			alert("{{ __("Please login to perform this operation.") }}");
+		}
+	}
+	function showAjaxDivResponse(req) {
+		document.getElementById(self.divName).innerHTML=getNodeValue(req.responseXML, "html_content");
+		openDiv(self.divName);
+	}
+	
+	function postAjaxForm(divName, formName) {
+		self.postAjaxFormCompleted = postAjaxFormCompleted;	
+		self.divName = divName;
+		
+		postFormXMLResponse(formName, self.postAjaxFormCompleted);
+	}
+	function postAjaxFormCompleted(req) {
+		if(self.divName != null)
+			hideAjaxDiv(self.divName);
+	}
+	function hideAjaxDiv(divName) {
+		closeDiv(divName);
+	}
+	
+	function xmlrpccallback(req) {
+		alert('xmlrpccallback: ' + req.responseText);
+	}
+
+	function debugCompleted(req) {
+		url = getNodeValue(req.responseXML, 'url');
+		xmldata = getNodeValue(req.responseXML, 'xmldata');
+		proxy = getNodeValue(req.responseXML, 'proxy');
+		//alert('url: '+ url + '\nxmldata: ' + xmldata);
+		postUrlXMLResponse(url, xmldata, xmlrpccallback);
+		//alert ("url: " + url + "\nxmldata: " + xmldata + "\nproxy: " + proxy);
+	}
+
+
+	
+	function getXMLRPCData(divName, formName) {
+		self.callback = debugCompleted;
+		postFormXMLResponse(formName, self.callback);
+	}
+	
+	
+	// Player stuff
+	
+	function openFull()
+	{
+	  var fs = window.open( "/watch_fullscreen?video_id=dMH0bHeiRNg&l=360&t=OEgsToPDskJTogvCVCeXuKyv6cPFV4-9&fs=1&title=" + "Evolution of Dance" ,
+			   "FullScreenVideo", "toolbar=no,width=" + screen.availWidth  + ",height=" + screen.availHeight 
+			 + ",status=no,resizable=yes,fullscreen=yes,scrollbars=no");
+	  fs.focus();
+	}
+	
+	function gotoNext()
+	{
+		add_video_to_stream();
+	}
+	
+	function hideDiv(d) 
+	{                   
+		d.style.display = "none";
+	}               
+	
+	function showDiv(d)
+	{
+		d.style.display = "block";
+	}
+
+	function add_video_to_stream()
+	{
+		var s = document.getElementById("stream_bar");
+		s.SetVariable("stream_current_video", "1");
+	
+	}
+	
+	function autoNext()
+	{
+		var p = document.getElementById("movie_player");
+		p.SetVariable("playnext", "1");
+	
+		var pa = document.getElementById("playall");
+		var pga = document.getElementById("playingall");
+		hideDiv(pa);
+		showDiv(pga);
+	}
+
+	function postToTrackerForWatch(time_played)
+	{
+	}
+
+
+		function showCommentReplyForm(form_id, reply_parent_id, is_main_comment_form) {
+		if(!CheckLogin()) {
+			alert("{{ __("Please login to post a comment.") }}");
+			return false;
+		}
+			
+		printCommentReplyForm(form_id, reply_parent_id, is_main_comment_form);
+	}
+	function printCommentReplyForm(form_id, reply_parent_id, is_main_comment_form) {
+
+		var div_id = "div_" + form_id;
+		var reply_id = "reply_" + form_id;
+		var reply_comment_form = "comment_form" + form_id;
+		
+		if (is_main_comment_form)
+			discard_visible="style='display: none'";
+		else
+			discard_visible="";
+		
+		var innerHTMLContent = '\
+		<form name="' + reply_comment_form + '" id="' + reply_comment_form + '" method="post" action="/comment_servlet" >\
+			<input type="hidden" name="video_id" value="dMH0bHeiRNg">\
+			<input type="hidden" name="add_comment" value="">\
+			<input type="hidden" name="form_id" value="' + reply_comment_form + '">\
+			<input type="hidden" name="reply_parent_id" value="' + reply_parent_id + '">\
+			<input type="hidden" name="comment_type" value="V">\
+			<textarea tabindex="2" name="comment" cols="55" rows="3"></textarea>\
+			<br>\
+			<input align="right" type="button" name="add_comment_button" \
+								value="Post Comment" \
+								onclick="postThreadedComment(\'' + reply_comment_form + '\');">\
+			<input align="right" type="button" name="discard_comment_button"\
+								value="Discard" ' + discard_visible + '\
+								onclick="hideCommentReplyForm(\'' + form_id + '\',false);">\
+		</form><br><br>';
+		if(!is_main_comment_form) {
+			toggleVisibility(reply_id, false);
+		}
+		setInnerHTML(div_id, innerHTMLContent);
+		toggleVisibility(div_id, true);
+	}
+
+	
+	
+	function blockUser(form) 
+	{
+        if (!confirm("{{ __("Are you sure you want to block this user?") }}"))
+            return false;
+
+		postFormByForm(form, true, execOnSuccess(function (xmlHttpRequest) { 
+			response_str = xmlHttpRequest.responseText;
+			if(response_str == "SUCCESS") {
+				form.block_button.value = "{{ __("User blocked") }}"
+			} else {
+				alert ("{{ __("An error occured while blocking the user.") }}");
+				form.block_button.value = "{{ __("Block this user") }}"
+				form.block_button.disabled = false;
+			}
+		}));
+		form.block_button.disabled = true
+		form.block_button.value = "Please wait.."
+		return true;
+	}
+	function unblockUser(form) 
+	{
+        if (!confirm("{{ __("Are you sure you want to unblock this user?") }}"))
+            return false;
+
+		postFormByForm(form, true, execOnSuccess(function (xmlHttpRequest) { 
+			response_str = xmlHttpRequest.responseText;
+			if(response_str == "SUCCESS") {
+				form.unblock_button.value = "{{ __("User unblocked") }}"
+			} else {
+				alert ("{{ __("An error occured while unblocking the user.") }}");
+				form.unblock_button.value = "{{ __("Unblock this user") }}"
+				form.unblock_button.disabled = false;
+			}
+		}));
+
+		form.unblock_button.disabled = true
+		form.unblock_button.value = "Please wait.."
+		return true;
+	}
+	
+	function unblockUserLink(friend_id, url)
+	{
+        if (!confirm("{{ __("Are you sure you want to unblock this user?") }}"))
+            return true;
+		getUrlSync("/link_servlet?unblock_user=1&friend_id=" + friend_id);
+	    window.location.href = url;
+		return true;
+	}
+	function blockUserLink(friend_id, url)
+	{
+        if (!confirm("{{ __("Are you sure you want to block this user?") }}"))
+            return true;
+		getUrlSync("/link_servlet?block_user=1&friend_id=" + friend_id);
+	    window.location.href = url;
+		return true;
+	}
+
+
+		onLoadFunctionList.push(function() { setContentLoaded("exRelated"); } );
+	
+	
+	function selectNavLink (linkName) {
+		if (linkName == "exRelatedLink") {
+			closeDiv("exUserDiv");
+			closeDiv("exPlaylistDiv");
+			openDiv("exRelatedDiv");
+			unSelectLink("exPlaylistLink");
+			unSelectLink("exUserLink");
+			selectLink("exRelatedLink");
+			blurElement("exRelatedLink");
+			replaceExploreTab("exploreMoreTabs", "/assets/2006L/btn_exploretab_related_300x34.gif");
+		}
+		if (linkName == "exPlaylistLink") {
+			closeDiv("exRelatedDiv");
+			closeDiv("exUserDiv");
+			openDiv("exPlaylistDiv");
+			unSelectLink("exUserLink");
+			unSelectLink("exRelatedLink");
+			selectLink("exPlaylistLink");
+			blurElement("exPlaylistLink");
+			replaceExploreTab("exploreMoreTabs", "/assets/2006L/btn_exploretab_playlist_300x34.gif");
+		}
+		if (linkName == "exUserLink") {
+			closeDiv("exRelatedDiv");
+			closeDiv("exPlaylistDiv");
+			openDiv("exUserDiv");
+			unSelectLink("exPlaylistLink");
+			unSelectLink("exRelatedLink");
+			selectLink("exUserLink");
+			blurElement("exUserLink");
+			replaceExploreTab("exploreMoreTabs", "/assets/2006L/btn_exploretab_morefromuser_300x34.gif");
+		}
+	}
+	
+	function replaceExploreTab(elid, imgSrc) {
+		var theElement = document.getElementById(elid);
+		if (theElement) {
+			theElement.src = imgSrc;
+		}
+	}
+
+</script>
+{% endblock %}
+{% block content %}
+<h1 id="video_title">{{ video.title }}</h1>
+<table cellspacing="0" cellpadding="0" align="center"><tbody><tr valign="top">
+<td>
+<div id="interactDiv">
+
+	<div id="playerDiv">
+	<!-- i am sorry but trying to get some old-ass flash player to work with MPDs would be next to impossible -->
+			<div id="playerContainer"></div>
+		<script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
+		    <style>
+				@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+				.igui-icon-font {
+					font-family: 'bootstrap-icons';
+				}
+				.igui_icon_pip::before {
+					content: "\f4ef";
+				}
+				.igui_icon_fullscreen-exit::before {
+					content: "\f3de";
+				}
+				.igui_icon_fullscreen::before {
+					content: "\f3df";
+				}
+				.igui_icon_play::before {
+					content: "\f4f4";
+				}
+				.igui_icon_pause::before {
+					content: "\f4c3";
+				}
+				.igui_icon_volume-off::before {
+					content: "\f60c";
+				}
+				.igui_icon_volume-1::before {
+					content: "\f60a";
+				}
+				.igui_icon_volume-2::before {
+					content: "\f610";
+				}
+				.igui_icon_settings::before {
+					content: "\f3e2";
+				}
+				.igui_icon_back::before {
+					content: "\f131";
+				}
+				.igui_seekbar_scrubber {
+					background-color: #8C8C8C;
+				}
+				.igui_seekbar_progress {
+					background-color: #FF2B27;
+					background-image: linear-gradient(0deg, rgba(194,71,66,1) 0%, rgba(239,59,58,1) 100%);
+				}
+				.ig-container {
+					font-family: Arial, Helvetica, sans-serif;
+				}
+				.ig_contextmenu {
+					background: rgba(0,0,0,0.85);
+					border-radius: 5px;
+					padding: 8px 0;
+				}
+			</style>
+		<script>
+			const config = {
+				autoplay: true,
+				aspectRatio: 4/3,
+				sources: [
+					{
+						type: 'dash',
+						src: '{{ video.videofile }}'
+					}
+				],
+				ui: {
+					image: '{{ video_thumbnail(video.video_id) }}',
+					pip: true,
+					locale: '{{ current_user.language | replace({'_': '-'}) }}'
+				}
+			};
+			const element = document.getElementById('playerContainer');
+			const player = IndigoPlayer.init(element, config);
+		</script>
+	</div>
+        <div id="watchqueueStartNew" class="quicklist_container hid">
+	<div><img src="/web/20061115140409im_/http://youtube.com/img/pic_curves_top_450x4.gif" border="1"></div>
+	<div id="nextvideoRow" class="nextVideoRowDiv">
+		<table width="440" cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr>
+				<td width="77" valign="top" align="left">
+					<div class="headerTitleLite">&nbsp;QuickList</div>
+				</td>
+				<td width="30" valign="top" align="right">
+						<a href="#" onclick="play_all_start_new();_hbLink('QuickList+PlayAll','Watch');return false;"><img id="play_all_buttton" src="/web/20061115140409im_/http://youtube.com/img/pixel.gif" valign="top" alt="Play All Videos" width="33" hspace="4" height="25" border="0"></a>
+                                </td>
+				<td width="53" valign="top">
+                			<div id="playall" class="smallText">
+               				<b><a href="#" onclick="autoNext();gotoNext();return false;">Play All</a></b></div>
+                			<div id="playingall" class="grayText smallText hid">Playing All</div>
+					<span id="play_all_numb" class="smallText grayText">
+					<script language="javascript" type="text/javascript">document.write(quicklist_count);</script>0
+					</span>
+					<span class="smallText grayText">
+					video<script language="javascript" type="text/javascript">if (quicklist_count>1) document.write('s');</script>
+					</span>
+				</td>
+                                	<td width="30" valign="top" align="right">
+                                	<a id="next_video_url_1" href="#"><img id="next_video_image_url" src="/web/20061115140409im_/http://youtube.com/img/pixel.gif" style="padding-right:2px;" height="25" border="0" align="middle"></a>
+                              	  	</td>
+                                	<td width="200" valign="top">
+                                	<div class="nextVideoDisplay">
+                                		<span class="grayText smallText"><b><a id="next_video_url_2" href="#">Play Next</a></b>
+                                		<br><span id="next_video_title">
+                                		</span>
+                                	</span></div>
+                                	</td>	
+				<td width="40" valign="top" align="right">
+					<div id="show_button_container" class="hideShowButton">
+     			                   <a href="#" onclick="clickedHideShowButton();_hbLink('QuickList+ShowHide','Watch');return false;"><img id="watch_queue_show_hide" src="/web/20061115140409im_/http://youtube.com/img/btn_watchqueue_hide_33x25.gif" alt="Show or Hide QuickList Videos" width="33" height="25" border="0"></a>                
+					</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	
+        <div id="watchlist_container" class="watchlist_videos">                
+		<table id="watchlist_table" width="426" cellspacing="0" cellpadding="0" border="0" align="center">                        
+			<tbody><tr><td width="8"></td><td width="55"></td><td width="313"></td><td width="50"></td></tr>                
+		</tbody></table>
+        </div>
+
+	<div id="save_row" class="saveRowDiv" style="height:20px;display:block;">
+
+		<div class="saveRowSetting">
+			<span class="smallText">
+			<form id="set_pop" name="set_pop">
+			&nbsp;<input id="checkbox_pop_no_pop" type="checkbox" onclick="if(document.set_pop.quicklist_pop_nopop.checked==true) {set_pop_status(1);} else{set_pop_status(0);};" name="quicklist_pop_nopop">Remove videos as I watch them   
+			</form></span>
+
+		</div>
+                <div class="quicklistActions">
+                        <span class="smallText"><b><a href="/web/20061115140409/http://youtube.com/watch_queue?all" title="Go to QuickList page" onclick="_hbLink('QuickList+ManageLink','Watch');">Manage</a> | <a href="/web/20061115140409/http://youtube.com/edit_playlist_info?watch_queue=1" title="Save all videos into a permanent playlist" onclick="_hbLink('QuickList+SaveLink','Watch');">Save</a> | <a href="#" onclick="javascript:return clear_watch_queue_watch_page();_hbLink('QuickList+ClearLink','Watch');return false;" title="Remove all videos from QuickList">Clear</a></b></span>
+                </div>
+        </div>
+	<div><img src="/web/20061115140409im_/http://youtube.com/img/pic_curves_bottom_450x4.gif" border="1"></div>
+</div>
+
+	<div id="actionsAndStatsDiv" class="contentBox">
+		<div id="ratingDivWrapper">
+			<div id="ratingDiv">
+
+	
+
+				<div id="ratingMessage">{{ __("Rate this video:") }}</div>
+							<nobr>
+			<img class="rating" src="/assets/2006L/star.gif">
+			<img class="rating" src="/assets/2006L/star.gif">
+			<img class="rating" src="/assets/2006L/star.gif">
+			<img class="rating" src="/assets/2006L/star.gif">
+			<img class="rating" src="/assets/2006L/star.gif">
+	</nobr>
+		<div class="rating">0 {{ __("ratings") }} (todo)</div>
+	
+
+
+
+			
+		<div class="spacer"></div>
+			</div> <!-- end ratingDiv -->
+			
+		</div> <!-- end ratingDivWrapper -->
+	
+		<div class="actionsDiv">
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('addFavsDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_playlists_component=1&frontend=2006L', true); _hbLink('Save+To+Favorites','Watch'); return false;" onmouseover=""><img src="assets/2006L/icn_fav_reg_19x17.gif" class="alignMid" alt="Save to Favorites" border="0"> <span class="eLink">{{ __("Save to Favorites") }}</span></a>
+			</div>
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('addGroupsDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_groups_component=1&frontend=2006L', true); _hbLink('Add+To+Groups','Watch'); return false;"><img src="assets/2006L/icn_groups_reg_19x17.gif" class="alignMid" alt="Add to Groups" border="0"> <span class="eLink">{{ __("Add to Groups") }}</span></a>
+			</div>
+		</div>
+		<div class="actionsDiv sm">
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="window.open('/share?v=dMH0bHeiRNg','Share','width=580,height=480,resizable=yes,scrollbars=yes,status=0'); _hbLink('Share+Video','Watch'); return false;"><img src="assets/2006L/icn_email_reg_19x17.gif" class="alignMid" alt="Share This Video" border="0"> <span class="eLink">{{ __("Share Video") }}</span></a>
+			</div>
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('blogVidDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_user_blogs_component=1&frontend=2006L', true); _hbLink('Blog+Video','Watch'); return false;"><img src="assets/2006L/icn_web_reg_19x17.gif" class="alignMid" border="0"> <span class="eLink">{{ __("Post Video") }}</span></a>
+			</div>
+		</div>
+		<div class="actionsDiv sm">
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('inappropriateVidDiv', '/watch_ajax.php?video_id=dMH0bHeiRNg&amp;action_get_flag_video_component=1&frontend=2006L', true); _hbLink('Flag+Inappropriate','Watch'); return false;"><img src="assets/2006L/icn_flag_reg_19x17.gif" class="alignMid" alt="Flag as Inappropriate" border="0"> <span class="eLink">{{ __("Flag as Inappropriate") }}</span></a>
+			</div>
+		</div>
+		<div class="spacer"></div>
+		<div id="statsDiv">
+			{{ __("Views:") }} <span class="statVal">{{ video.views }}</span> <div class="statDivider">|</div> 
+			{{ __("Comments:") }} <span class="statVal">0</span> <div class="statDivider">|</div>
+			{{ __("Favorited:") }} <span class="statVal">0</span>
+				times
+			<div class="statDivider">|</div> <a href="#" onclick="toggleFullStats(); return false;"><span id="moreless">more</span>&nbsp;stats...</a>
+		</div>
+		<div id="fullStats">
+			<div id="referDiv" class="moreStats">
+				<h4>{{ __("Sites Linking to This Video:") }}</h4>
+					<div class="statItem"><span class="label">65325 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://gorillamask.net/evdance.shtml" target="_top">http://gorillamask.net/evdance.shtml</a></div>
+					<div class="statItem"><span class="label">56972 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://www.myspace.com/" target="_top">http://www.myspace.com/</a></div>
+					<div class="statItem"><span class="label">45881 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://machomedia.blogspot.com/2006/05/evolution-of-dance.html" target="_top">http://machomedia.blogspot.com/2006/05/evolution-of-...</a></div>
+					<div class="statItem"><span class="label">14425 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://www.i-am-bored.com/bored_link.cfm?link_id=17295" target="_top">http://www.i-am-bored.com/bored_link.cfm?link_id=17295</a></div>
+					<div class="statItem"><span class="label">13088 clicks from</span> <a href="https://web.archive.org/web/20061115140409/http://www.evolutionofdance.com/" target="_top">http://www.evolutionofdance.com/</a></div>
+			</div>
+			<div id="honorsDiv" class="moreStats"><h3>{{ __("Loading Honors...") }}</h3></div>
+			<div id="fullStatsClose"><a href="#" onclick="toggleFullStats(); return false;">{{ __("close") }}</a></div>
+			<div class="spacer"></div>
+		</div>
+		<div id="honorLinkDiv">
+			<span>
+				<a href="#" onclick="toggleFullStats(); return false;">{{ __("There are 0 honors for this video") }}</a>
+			</span>
+		</div>
+
+
+		
+
+		<div id="addFavsDiv" class="popupDiv"></div>
+		<div id="addGroupsDiv" class="popupDiv"></div>
+		<div id="blogVidDiv" class="popupDiv"></div>
+		<div id="inappropriateVidDiv" class="popupDiv"></div>
+
+	</div> <!-- end actionsAndStatsDiv -->
+
+
+
+			
+	<div id="commentsDiv">
+				<table width="100%" cellspacing="0" cellpadding="0"><tbody><tr>
+				<td><h2 style="margin: 0px;">{{ __("Comments & Responses") }}</h2></td>
+				<td align="right">
+						<div style="padding-bottom: 2px;">
+						<b><a href="/web/20061115140409/http://youtube.com/video_response_upload?v=dMH0bHeiRNg" onclick="_hbLink('Post+Video+Response','Watch');">{{ __("Post a video response") }}</a></b>
+						</div>
+							<div id="reply_main_comment2">
+			<b><a href="#" class="eLink" onclick="showCommentReplyForm('main_comment2', '', false); return false;">{{ __("Post a text comment") }}</a></b>
+		</div>
+
+				</td>
+				</tr></tbody></table>
+	
+	
+	
+			<div id="recent_comments">
+				
+				<div id="div_main_comment2"></div>			
+			{% for comment in comments|reverse %}
+			<div id="div_wG_D87_xm8w"> <!-- comment_div_id, should it be the comment id, which is some number, right? -->
+			<a name="wG_D87_xm8w"></a>
+			<div class="commentEntry" id="comment_wG_D87_xm8w">
+				<div class="commentHead">
+				<b><a href="/web/20061115140409/http://youtube.com/user/pierdolys">{{ userlink(comment, 'u_') }}</a></b>
+				<span class="smallText"> ({{ comment.date | relative_time}}) </span>
+			</div>
+				<div class="commentBody">
+					{{ comment.comment }}
+				</div>
+				<div class="commentAction smallText">
+					
+	<div class="commentAction smallText" id="container_comment_form_id_wG_D87_xm8w" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_wG_D87_xm8w">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_wG_D87_xm8w', 'wG_D87_xm8w', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_wG_D87_xm8w">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+	{% endfor %}
+				<b><a href="/web/20061115140409/http://youtube.com/comment_servlet?all_comments&amp;v=dMH0bHeiRNg&amp;fromurl=/watch%3Fv%3DdMH0bHeiRNg" onclick="_hbLink('View+All+Comments','Watch');">View all [number] comments</a></b>
+			
+			</div> <!-- end recent_comments -->
+	
+	
+		<div id="all_comments" style="display: none;">
+				
+				<div id="div_main_comment2"></div>
+				
+				<div id="all_comments_content">
+				</div>
+		</div> <!-- end all_comments -->
+
+	
+			<div id="commentPostDiv">
+				<h2 style="margin: 0px;">{{ __("Would you like to comment?") }}</h2>
+				<div style="margin-top: 8px;">
+					<a href="/web/20061115140409/http://youtube.com/signup">Join squareBracket</a> for a free account, or
+					<a href="/web/20061115140409/http://youtube.com/signup_login">Login</a> if you are already a member.
+				</div>
+			</div> <!-- end post a comment section -->
+			
+			<div id="div_main_comment"></div>
+	</div> <!-- end commentsDiv -->
+	
+</div> <!-- end interactDiv -->
+</td>
+
+
+
+<td>
+
+<div id="aboutExploreDiv">
+	<div id="aboutVidDiv" class="contentBox">
+		<div id="uploaderInfo">
+		
+		<div id="subscribeDiv">
+			<div><a href="/web/20061115140409/http://youtube.com/subscription_center?add_user=judsonlaipply" title="subscribe to judsonlaipply's videos" onclick="_hbLink('Subscribe','Watch');"><img src="/assets/2006L/btn_subscribe_sm_yellow_99x16.gif" class="alignMid" alt="subscribe" title="subscribe to judsonlaipply's videos" width="99" height="16" border="0"></a></div>
+				<div id="subscribeCount" class="smallText">to {{ userlink(video, 'u_') }}</div>
+		</div> <!-- end subscribeDiv -->
+		
+		<div id="userInfoDiv">
+			<span class="smallLabel">Added</span>&nbsp;
+			<b class="smallText">{{ video.time | date('F j, Y') }}</b><br>
+			<span class="smallLabel">From</span>&nbsp;
+			<b><a href="/web/20061115140409/http://youtube.com/user/judsonlaipply" onclick="_hbLink('ChannelLink','Watch');">{{ userlink(video, 'u_') }}</a></b>
+		</div> <!-- end userInfoDiv -->
+
+	
+			
+			
+
+		</div> <!-- end uploaderInfo -->
+		
+		
+		
+		
+        <div id="vidDescDiv">
+        	
+			<span id="vidDescBegin">
+			{{ video.description|length > 75 ? data.description|slice(0, 75) ~ '' : video.description }}
+			</span>
+				<span id="vidDescRemain">{{ video.description }}</span>
+				<span id="vidDescMore" class="smallText">... (<a href="#" class="eLink" onclick="showInline('vidDescRemain'); hideInline('vidDescMore'); hideInline('vidDescBegin'); showInline('vidDescLess'); return false;">more</a>)</span>
+				<span id="vidDescLess" class="smallText">(<a href="#" class="eLink" onclick="hideInline('vidDescRemain'); hideInline('vidDescLess'); showInline('vidDescBegin'); showInline('vidDescMore'); return false;">less</a>)</span>
+		</div>
+		
+
+			<div class="smallText">
+			<span class="smallLabel">Category&nbsp;</span>
+			<a href="/web/20061115140409/http://youtube.com/browse?s=mp&amp;t=t&amp;c=23" class="dg" onclick="_hbLink('Video+Category+Link','Watch');">Comedy</a>
+			</div>
+
+
+		<div id="vidFacetsDiv">
+            <form name="urlForm" id="urlForm">
+            <table id="vidFacetsTable" cellspacing="0" cellpadding="0">
+            <tbody><tr><td class="label">Tags</td>
+            <td class="tags">		
+				<span id="vidTagsBegin">
+					{% for tag in video.tags|json_decode %}
+						{{ tag }}  &nbsp; 
+					{% else %}
+						{{ __("None") }}
+					{% endfor %}
+				</span>
+			</td>
+			</tr>
+            <tr><td class="label">URL</td>
+            <td>
+            <input name="video_link" type="text" value="http://www.youtube.com/watch?v=dMH0bHeiRNg" class="vidURLField" onclick="javascript:document.urlForm.video_link.focus();document.urlForm.video_link.select();" readonly="true">
+            </td>
+            </tr>
+            <tr><td class="smallLabel">Embed</td>
+            <td>
+            <input name="embed_code" type="text" value="<object width=&quot;425&quot; height=&quot;350&quot;><param name=&quot;movie&quot; value=&quot;http://www.youtube.com/v/dMH0bHeiRNg&quot;></param><param name=&quot;wmode&quot; value=&quot;transparent&quot;></param><embed src=&quot;http://www.youtube.com/v/dMH0bHeiRNg&quot; type=&quot;application/x-shockwave-flash&quot; wmode=&quot;transparent&quot; width=&quot;425&quot; height=&quot;350&quot;></embed></object>" class="vidURLField" onclick="javascript:document.urlForm.embed_code.focus();document.urlForm.embed_code.select();" readonly="true">
+            </td></tr>
+            </tbody></table>
+            </form>
+        </div>	<!-- end vidFacetsDiv -->
+        
+		
+        
+	</div> <!-- end aboutVidDiv -->
+	
+
+
+
+	<div id="exploreDiv">
+	
+	<map name="relatedvideosmap">
+	<area shape="rect" coords="10,0,64,24" href="javascript:showRelatedVideosContent();" name="&amp;lid=RelatedVideosTab&amp;lpos=Watch">
+	<area shape="rect" coords="76,0,222,24" href="javascript:showRelatedUserContent();" name="&amp;lid=UserVideosTab&amp;lpos=Watch">
+	<area shape="rect" coords="234,0,290,24" href="javascript:showRelatedPlaylistContent();" name="&amp;lid=PlaylistsTab&amp;lpos=Watch">
+	</map>
+	<div><img id="exploreMoreTabs" src="/assets/2006L/btn_exploretab_related_300x34.gif" usemap="#relatedvideosmap" alt="ExploreMoreTabs" width="300" height="34"></div>
+	<div id="exploreBody" class="contentBox" style="border-top: 0px;">
+
+
+		
+		<div id="exRelatedDiv" style="display: block;">
+			<table class="showingTable"><tbody><tr>
+	<td class="smallText">Showing 1-20 of 427899</td>
+	<td class="smallText" align="right"><a href="/web/20061115140409/http://youtube.com/results?search_type=related&amp;search_query=Dancing%20comedy">See All Videos</a></td>
+	</tr></tbody></table>
+
+				<script language="javascript">	
+		var side_imgs_loaded=false;
+		function render_full_side()
+		{
+			if (!side_imgs_loaded)
+			{
+				
+					img = document.getElementById("side_img_5");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_6");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_7");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_8");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_9");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_10");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_11");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_12");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_13");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_14");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_15");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_16");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_17");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_18");
+					img.src = "/assets/2006L/placeholder.png";
+				
+					img = document.getElementById("side_img_19");
+					img.src = "/assets/2006L/placeholder.png";
+				
+				side_imgs_loaded = true;
+			}
+		}
+		</script>
+
+		<div id="side_results" class="exploreContent" name="side_results" onscroll="render_full_side()">
+		{% for related_video in related_videos %}
+			{{ small_video_box(related_video)}}
+		{% endfor %}
+	</div>
+
+			<table class="showingTable"><tbody><tr>
+	<td class="smallText">Showing 1-20 of 427899</td>
+	<td class="smallText" align="right"><a href="/web/20061115140409/http://youtube.com/results?search_type=related&amp;search_query=Dancing%20comedy">See All Videos</a></td>
+	</tr></tbody></table>
+		</div> <!-- end exRelatedDiv -->
+		
+		
+		<div id="exPlaylistDiv" style="display: none;">
+			{{ __("Loading...") }}
+		</div> <!-- end exPlaylistDiv -->
+
+		<div id="exUserDiv" style="display: none;">
+			{{ __("Loading...") }}
+		</div> <!-- end exPlaylistDiv -->
+			
+	</div> <!-- end exploreBody -->
+	
+	
+	
+	</div> <!-- end exploreDiv -->
+
+	
+</div> <!-- end aboutExploreDiv -->
+
+<div class="spOffersDiv">
+	<h4 class="label">{{ __("New on squareBracket") }}</h4>
+	<div class="spOffersEntry">
+	One week left!
+	Vote in the
+	<a href="/web/20061115140409/http://youtube.com/contest/youtubeunderground">Youtube Underground</a>.
+	</div>
+	<div class="spOffersEntry">
+	Do you believe?
+	<a href="/web/20061115140409/http://youtube.com/ittakes5ive">It takes 5ive</a>.
+	</div>
+	<div class="spOffersEntry">
+	<a href="/web/20061115140409/http://youtube.com/wantlieswiththat">Do you want lies with that?</a>
+	</div>
+	<div class="spOffersEntry">
+	He's back!
+	<a href="/web/20061115140409/http://youtube.com/supermanreturnsdvd">Superman Returns</a>.
+	</div>
+</div>
+
+</td>
+
+
+
+<td>
+
+<div id="sideAdDiv">
+	<div id="dVidsDiv">
+	<div class="heading">Director Videos</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061115140409/http://youtube.com/cthru?ALiVFUtpcVD_ywlNuOQcWpXdWmIFItjawsJKjL8e1M1TiIVBNq8v0ydOCD88PNxqMgFP0dDEDdln2Ld3DI0VlV8LWjKz9KLvMLPHENFY1A1mk4MxiwaY1OU7nMmPPhy0IFnVXg9ro7ZWYUUHbnLAfBBSv6JpSWuOPERyZnkdck9m-Hxp-bJfBv-W904KUr-4if2yzwBPfa8=" target="_parent" name="&amp;lid=DV+-+DealingwiththePain+-+beheard&amp;lpos=Watch-s0"><img src="https://web.archive.org/web/20061115140409im_/http://sjl-static6.sjl.youtube.com/vi/305Wld9LfPo/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061115140409/http://youtube.com/cthru?ALiVFUtpcVD_ywlNuOQcWpXdWmIFItjawsJKjL8e1M1TiIVBNq8v0ydOCD88PNxqMgFP0dDEDdln2Ld3DI0VlV8LWjKz9KLvMLPHENFY1A1mk4MxiwaY1OU7nMmPPhy0IFnVXg9ro7ZWYUUHbnLAfBBSv6JpSWuOPERyZnkdck9m-Hxp-bJfBv-W904KUr-4if2yzwBPfa8=" target="_parent" name="&amp;lid=DV+-+DealingwiththePain+-+beheard&amp;lpos=Watch-s0">Dealing with the Pain</a></b><br>
+			<span class="runtime">00:51</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/beheard" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s0">beheard</a>
+			</div>
+		</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061115140409/http://youtube.com/cthru?HkbnudeTXohNYAq7H6u2am31z5MzzJK5tO4IJxJ454DwRIDLSZe3_sXFNxlL1vV-AHn1S2o58YHnaRAVf65W14ywG7LSiH5gT3OCuUmdeEz7Ad5i56T8aYZb_pJn5KnxiQgXB8a7vnKpQLjVV14XDXLU_zBinZ9lI9mer2FGhQ-ChLWc21IJZHfYeO6kDu_zhrrp4R0z9I4=" target="_parent" name="&amp;lid=DV+-+RonaldinhoTouchofGold+-+Nikesoccer&amp;lpos=Watch-s1"><img src="https://web.archive.org/web/20061115140409im_/http://sjl-static13.sjl.youtube.com/vi/lsO6D1rwrKc/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061115140409/http://youtube.com/cthru?HkbnudeTXohNYAq7H6u2am31z5MzzJK5tO4IJxJ454DwRIDLSZe3_sXFNxlL1vV-AHn1S2o58YHnaRAVf65W14ywG7LSiH5gT3OCuUmdeEz7Ad5i56T8aYZb_pJn5KnxiQgXB8a7vnKpQLjVV14XDXLU_zBinZ9lI9mer2FGhQ-ChLWc21IJZHfYeO6kDu_zhrrp4R0z9I4=" target="_parent" name="&amp;lid=DV+-+RonaldinhoTouchofGold+-+Nikesoccer&amp;lpos=Watch-s1">Ronaldinho:  Touch of Gold</a></b><br>
+			<span class="runtime">02:44</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/Nikesoccer" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s1">Nikesoccer</a>
+			</div>
+		</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061115140409/http://youtube.com/cthru?8MwQdV23Hljx0hvFgXQZCkC7Ewz677iVWCHUZpD27c1oB2mETOzKUBIQeGok6UnMeejQg8IG5Vov0imozvLhyEiq3WnafA4tP8WcXMTUIXq3W_W35P3D4pKKD4cN92oC3AOXsDFk3abAZJ_jsnskoNi8gBBnTkg3OLUh2xKKW_fYPbLK4LNE6MKdw8jVXUAaSEi6M11UfW8=" target="_parent" name="&amp;lid=DV+-+JohnnyCashGodsGonnaCutYouDown+-+JohnnyCash&amp;lpos=Watch-s2"><img src="https://web.archive.org/web/20061115140409im_/http://sjl-static3.sjl.youtube.com/vi/1e0EQlQXoEo/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061115140409/http://youtube.com/cthru?8MwQdV23Hljx0hvFgXQZCkC7Ewz677iVWCHUZpD27c1oB2mETOzKUBIQeGok6UnMeejQg8IG5Vov0imozvLhyEiq3WnafA4tP8WcXMTUIXq3W_W35P3D4pKKD4cN92oC3AOXsDFk3abAZJ_jsnskoNi8gBBnTkg3OLUh2xKKW_fYPbLK4LNE6MKdw8jVXUAaSEi6M11UfW8=" target="_parent" name="&amp;lid=DV+-+JohnnyCashGodsGonnaCutYouDown+-+JohnnyCash&amp;lpos=Watch-s2">Johnny Cash God's Gonna Cut You Down</a></b><br>
+			<span class="runtime">02:57</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/JohnnyCash" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s2">JohnnyCash</a>
+			</div>
+		</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061115140409/http://youtube.com/cthru?Gy5mB-qLzprTZ4XkH7wme0q6Q5EX1EJGOs2qugEwOOt2gEdAgwO0SeKqgbxsZVw6OhhBic9n7qFlPcY2ae2iuGZyPTo5cFnujsN0AS9H6_GdemMLZqZcgfG8vT9z4OEOCv7tcVisqkw8bL6DBbIWUW1kHOZnJg2aINwFZ78kDnaaVNtApNepj2DKuhJW2ligqK989TlAMfg=" target="_parent" name="&amp;lid=DV+-+TNATheJamesGangQuitTNAWrestling+-+TNAwrestling&amp;lpos=Watch-s3"><img src="https://web.archive.org/web/20061115140409im_/http://sjl-static15.sjl.youtube.com/vi/_fvtUejbM5U/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061115140409/http://youtube.com/cthru?Gy5mB-qLzprTZ4XkH7wme0q6Q5EX1EJGOs2qugEwOOt2gEdAgwO0SeKqgbxsZVw6OhhBic9n7qFlPcY2ae2iuGZyPTo5cFnujsN0AS9H6_GdemMLZqZcgfG8vT9z4OEOCv7tcVisqkw8bL6DBbIWUW1kHOZnJg2aINwFZ78kDnaaVNtApNepj2DKuhJW2ligqK989TlAMfg=" target="_parent" name="&amp;lid=DV+-+TNATheJamesGangQuitTNAWrestling+-+TNAwrestling&amp;lpos=Watch-s3">TNA: The James Gang Quit TNA Wrestling</a></b><br>
+			<span class="runtime">03:35</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061115140409/http://youtube.com/user/TNAwrestling" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s3">TNAwrestling</a>
+			</div>
+		</div>
+	</div> <!-- end dVidsDiv -->
+</div> <!-- end sideAdDiv -->
+
+</td>
+
+
+</tr></tbody></table>
+{% endblock %}

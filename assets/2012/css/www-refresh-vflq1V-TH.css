@@ -216,7 +216,7 @@ sup {
  cursor:auto;
  width:34px;
  height:34px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -144px 0
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -144px 0
 }
 .yt-alert.yt-alert-small .icon {
  width:19px;
@@ -341,7 +341,7 @@ sup {
  text-indent:-99em;
  width:14px;
  height:14px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -21px -117px
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -21px -117px
 }
 .yt-alert-error .close {
  background-color:#990000
@@ -366,13 +366,13 @@ sup {
 .yt-help-icon {
  width:13px;
  height:13px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -214px 0
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -214px 0
 }
 .yt-help-icon.active,
 .yt-uix-helpcard-active .yt-help-icon {
  width:13px;
  height:13px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -195px -56px
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -195px -56px
 }
 .std-p p {
  line-height:1.4;
@@ -464,17 +464,17 @@ label {
 .comment-small {
  width:18px;
  height:18px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -144px -72px
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -144px -72px
 }
 .mail-small {
  width:16px;
  height:12px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) 0 -36px
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) 0 -36px
 }
 .live-streaming-badge {
  width:18px;
  height:18px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -211px -91px
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -211px -91px
 }
 .yt-uix-clickcard-close,
 .close-small {
@@ -484,7 +484,7 @@ label {
  overflow:hidden;
  width:14px;
  height:14px;
- background:#666 no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -21px -117px
+ background:#666 no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -21px -117px
 }
 .yt-uix-clickcard-close:hover,
 .yt-uix-clickcard-close:focus,
@@ -1155,7 +1155,7 @@ a.yt-uix-button {
  width:110px;
  height:40px;
  margin:0 10px 0 0;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -69px -92px
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -69px -92px
 }
 #logo.doodle {
  width:100px;
@@ -1232,7 +1232,7 @@ a.yt-uix-button {
 #vkeyboard.icon {
  width:16px;
  height:11px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -45px -109px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -45px -109px;
  top:7px;
  right:5px
 }
@@ -1325,12 +1325,12 @@ a.yt-uix-button {
  float:right
 }
 #footer .questionmark {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -63px 0;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -63px 0;
  width:16px;
  height:16px
 }
 #footer .yt-uix-button-active .questionmark {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -72px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -72px;
  width:16px;
  height:16px
 }
@@ -1444,7 +1444,7 @@ ul.pickers li {
 }
 #ticker button img {
  vertical-align:-2px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -51px -92px;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -51px -92px;
  width:12px;
  height:12px
 }
@@ -1501,22 +1501,22 @@ ul.pickers li {
 #ticker.lw-announce button img {
  width:8px;
  height:8px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-lwbanner-vflDGOCAo.png) 0 -47px
+ background:no-repeat url(/assets/2012/img/www-lwbanner-vflDGOCAo.png) 0 -47px
 }
 #ticker.lw-announce button:hover img {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-lwbanner-vflDGOCAo.png) 0 0;
+ background:no-repeat url(/assets/2012/img/www-lwbanner-vflDGOCAo.png) 0 0;
  width:22px;
  height:21px
 }
 #ticker.lw-announce button:active img {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-lwbanner-vflDGOCAo.png) 0 -23px;
+ background:no-repeat url(/assets/2012/img/www-lwbanner-vflDGOCAo.png) 0 -23px;
  width:22px;
  height:22px
 }
 #ticker.lw-announce img.lw-down-arrow {
  width:44px;
  height:57px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-lwbanner-vflDGOCAo.png) -24px 0;
+ background:no-repeat url(/assets/2012/img/www-lwbanner-vflDGOCAo.png) -24px 0;
  float:right;
  margin-top:-16px;
  margin-right:5px
@@ -2062,13 +2062,13 @@ ul.pickers li {
 #masthead-expanded .yt-uix-button-icon-playlist-bar-slider-prev {
  width:32px;
  height:60px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -19px -218px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -19px -218px
 }
 .rtl #masthead-expanded .yt-uix-button-icon-playlist-bar-slider-prev,
 #masthead-expanded .yt-uix-button-icon-playlist-bar-slider-next {
  width:32px;
  height:60px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -72px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -72px
 }
 #masthead-expanded .light-lolz .playlist-bar-item a .video-thumb,
 #masthead-expanded .light-lolz .playlist-bar-item .video-thumb {
@@ -2102,7 +2102,7 @@ ul.pickers li {
  filter:alpha(opacity=85)
 }
 #masthead-expanded .play-arrow {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -143px -73px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -143px -73px;
  width:10px;
  height:13px;
  top:-6px;
@@ -2159,7 +2159,7 @@ ul.pickers li {
  padding-bottom:6px
 }
 .masthead-expanded-acct-sw-sel-arrow {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) 0 -71px;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) 0 -71px;
  width:25px;
  height:22px;
  position:relative;
@@ -2337,7 +2337,7 @@ ul.pickers li {
  background:rgba(0,0,0,0.1)
 }
 #masthead #sb-button-share .yt-uix-button-icon-share-plus {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -109px 0;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -109px 0;
  width:11px;
  height:11px;
  margin:-3px 0 0 0
@@ -2993,7 +2993,7 @@ a.search-title-lego:hover {
  margin-right:5px
 }
 .tiny-video-icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -15px -56px;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -15px -56px;
  height:8px;
  width:10px;
  margin-right:5px
@@ -3053,7 +3053,7 @@ ul.snippet-metadata li {
 }
 .video-comment-icon,
 img.video-comment-icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -144px -72px;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -144px -72px;
  width:18px;
  height:18px;
  float:left;
@@ -3424,7 +3424,7 @@ img.video-comment-icon {
  padding:10px 4px
 }
 .hd-video-logo {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -87px -40px;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -87px -40px;
  width:18px;
  height:15px;
  margin:0 0 5px 2px;
@@ -3438,7 +3438,7 @@ img.video-comment-icon {
  cursor:default
 }
 .search-option-expander-link img {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -250px 0;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -250px 0;
  width:13px;
  height:13px;
  vertical-align:text-top
@@ -3795,12 +3795,12 @@ img.comments-rating-thumbs-down {
 img.comments-rating-thumbs-up {
  width:12px;
  height:12px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 0
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 0
 }
 img.comments-rating-thumbs-down {
  width:12px;
  height:12px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -192px -180px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -192px -180px
 }
 .comments-section {
  margin-bottom:15px
@@ -4071,7 +4071,7 @@ img.comments-rating-thumbs-down {
 .yt-uix-button .yt-uix-button-icon-watch-comment-reply {
  width:12px;
  height:12px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 0;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 0;
  margin:2px
 }
 .yt-uix-button .yt-uix-button-icon-watch-comment-vote-up {
@@ -4154,7 +4154,7 @@ img.comments-rating-thumbs-down {
  top:5px
 }
 .comment-share-area .close-button {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -71px -260px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -71px -260px;
  height:16px;
  width:16px
 }
@@ -4176,17 +4176,17 @@ img.comments-rating-thumbs-down {
  width:50%
 }
 .icon-comment-share-facebook {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-sharing-vflZJbYfF.png) 0 -965px;
+ background:no-repeat url(/assets/2012/img/www-sharing-vflZJbYfF.png) 0 -965px;
  width:16px;
  height:16px
 }
 .icon-comment-share-twitter {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-sharing-vflZJbYfF.png) 0 -129px;
+ background:no-repeat url(/assets/2012/img/www-sharing-vflZJbYfF.png) 0 -129px;
  width:16px;
  height:16px
 }
 .icon-comment-share-myspace {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-sharing-vflZJbYfF.png) 0 -471px;
+ background:no-repeat url(/assets/2012/img/www-sharing-vflZJbYfF.png) 0 -471px;
  width:16px;
  height:16px
 }
@@ -4820,12 +4820,12 @@ a.video-list-item-link:hover .video-thumb .img {
  display:none
 }
 .yt-uix-button-icon-chevron-up {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -90px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -90px;
  width:16px;
  height:16px
 }
 .yt-uix-button-icon-close {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -71px -260px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -71px -260px;
  width:16px;
  height:16px
 }
@@ -4996,7 +4996,7 @@ body.fullscreen * {
  margin-left:2px
 }
 #watch-description-extra-info .metadata-icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -110px -42px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -110px -42px;
  width:16px;
  height:16px;
  float:left;
@@ -5015,12 +5015,12 @@ body.fullscreen * {
  background-position:-37px -36px
 }
 #watch-description-extra-info .metadata-icon.age-restricted {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -211px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -211px;
  position:relative;
  top:3px
 }
 #watch-description-extra-info .metadata-icon.medal {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-medals-vfl0onnSj.png) 0 -144px
+ background:no-repeat url(/assets/2012/img/www-medals-vfl0onnSj.png) 0 -144px
 }
 #watch-description-extra-info .metadata-icon.medal.trending-gold {
  background-position:0 -180px
@@ -5119,16 +5119,16 @@ body.fullscreen * {
  vertical-align:baseline
 }
 #watch-description .expand .yt-uix-button img {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -18px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -18px
 }
 #watch-description .expand .yt-uix-button:hover img {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -51px -72px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -51px -72px
 }
 #watch-description .collapse .yt-uix-button img {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -37px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -37px
 }
 #watch-description .collapse .yt-uix-button:hover img {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -148px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -148px
 }
 #downloadable-info-box {
  margin-top:10px;
@@ -5270,7 +5270,7 @@ body.fullscreen * {
  margin-left:5px
 }
 img.yt-uix-button-icon-transcript {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -102px -153px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -102px -153px;
  width:17px;
  height:19px
 }
@@ -5366,13 +5366,13 @@ img.yt-uix-button-icon-transcript {
  margin-bottom:7px
 }
 .yt-uix-button .yt-uix-button-icon-watch-insight {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -51px -106px;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -51px -106px;
  width:16px;
  height:14px
 }
 .yt-uix-button .yt-uix-button-icon-watch-like,
 .watch-ratings-stats-table .watch-ratings-stats-like {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -27px -56px;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -27px -56px;
  width:16px;
  height:18px
 }
@@ -5382,7 +5382,7 @@ img.yt-uix-button-icon-transcript {
 }
 .yt-uix-button .yt-uix-button-icon-watch-unlike,
 .watch-ratings-stats-table .watch-ratings-stats-unlike {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -181px -18px;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -181px -18px;
  width:16px;
  height:18px
 }
@@ -5398,7 +5398,7 @@ img.yt-uix-button-icon-transcript {
  cursor:default
 }
 .yt-uix-button .yt-uix-button-icon-watch-flag {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -181px -111px;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -181px -111px;
  width:15px;
  height:17px
 }
@@ -5415,7 +5415,7 @@ img.yt-uix-button-icon-transcript {
 #watch-actions-area .close-button,
 #watch-main .close-button,
 #watch-content .close-button {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -71px -260px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -71px -260px;
  width:16px;
  height:16px
 }
@@ -5427,7 +5427,7 @@ img.yt-uix-button-icon-transcript {
  width:15px;
  height:17px;
  margin-right:14px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -181px -111px
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -181px -111px
 }
 #watch-like-share,
 #watch-colike-videos {
@@ -5622,7 +5622,7 @@ img.yt-uix-button-icon-transcript {
  font-size:.9166em
 }
 .yt-uix-button-icon-popout {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -187px -229px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -187px -229px;
  width:13px;
  height:11px
 }
@@ -5646,12 +5646,12 @@ img.yt-uix-button-icon-transcript {
  z-index:3;
  right:5px;
  top:23px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -23px 0;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -23px 0;
  width:7px;
  height:10px
 }
 .rtl .context-seeall-icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -14px 0
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -14px 0
 }
 .context-link {
  position:relative;
@@ -5851,7 +5851,7 @@ a.context-link:hover .context-title {
 .yt-uix-expander-arrow {
  height:16px;
  width:16px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -90px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -90px;
  vertical-align:middle;
  float:right;
  margin:0
@@ -5859,7 +5859,7 @@ a.context-link:hover .context-title {
 .yt-uix-expander-arrow-left {
  height:16px;
  width:16px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -90px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -90px;
  vertical-align:middle;
  float:left;
  margin:0 5px 0 0
@@ -5876,7 +5876,7 @@ a.context-link:hover .context-title {
 }
 .yt-uix-expander-collapsed .yt-uix-expander-arrow-left,
 .yt-uix-expander-collapsed .yt-uix-expander-arrow {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -53px -229px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -53px -229px
 }
 .yt-uix-expander-collapsed .yt-uix-expander-body {
  display:none
@@ -6225,7 +6225,7 @@ body.rtl .yt-uix-slider-shade-left {
  line-height:1.3333em
 }
 .yt-uix-button-icon-addto {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -143px -42px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -143px -42px;
  width:8px;
  height:9px
 }
@@ -6397,7 +6397,7 @@ body.rtl .yt-uix-slider-shade-left {
 #shared-addto-menu .playlists .private-icon {
  float:left;
  margin-right:5px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -140px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -140px;
  width:9px;
  height:11px
 }
@@ -6448,7 +6448,7 @@ body.rtl .yt-uix-slider-shade-left {
 #addto-note-saved-panel img {
  margin-right:2px;
  vertical-align:middle;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -197px -51px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -197px -51px;
  width:18px;
  height:19px
 }
@@ -6460,7 +6460,7 @@ body.rtl .yt-uix-slider-shade-left {
 #addto-list-error-panel img {
  display:block;
  margin:0 auto 5px auto;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -51px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -51px;
  width:19px;
  height:19px
 }
@@ -6606,12 +6606,12 @@ body.rtl .yt-uix-slider-shade-left {
  opacity:0
 }
 .close-note .close-button {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -36px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -36px;
  width:20px;
  height:20px
 }
 .close-note .close-button:hover {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -104px -64px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -104px -64px;
  width:20px;
  height:20px
 }
@@ -8202,7 +8202,7 @@ body.rtl #playlist-bar .yt-uix-slider-shade-left {
  top:6px;
  width:10px;
  height:10px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -99px -24px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -99px -24px
 }
 .playlist-bar-item .title {
  top:25px;
@@ -8619,47 +8619,47 @@ body.rtl #playlist-bar .yt-uix-slider-shade-left {
  display:none
 }
 .yt-uix-button-icon-playlist-bar-prev {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -235px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -235px;
  width:17px;
  height:18px
 }
 .yt-uix-button-icon-playlist-bar-next {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -143px -119px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -143px -119px;
  width:17px;
  height:18px
 }
 .yt-uix-button-icon-playlist-bar-play {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -77px -120px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -77px -120px;
  width:13px;
  height:17px
 }
 .yt-uix-button-icon-playlist-bar-autoplay {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -181px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -181px;
  width:20px;
  height:17px
 }
 #playlist-bar.autoplay-on .yt-uix-button-icon-playlist-bar-autoplay {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -143px -53px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -143px -53px;
  width:20px;
  height:18px
 }
 .yt-uix-button-icon-playlist-bar-shuffle {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -143px -88px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -143px -88px;
  width:24px;
  height:17px
 }
 #playlist-bar.shuffle-on .yt-uix-button-icon-playlist-bar-shuffle {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -81px -101px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -81px -101px;
  width:24px;
  height:17px
 }
 .yt-uix-button-icon-playlist-bar-toggle {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -147px -24px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -147px -24px;
  width:14px;
  height:13px
 }
 #playlist-bar.max .yt-uix-button-icon-playlist-bar-toggle {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -155px -73px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -155px -73px;
  width:14px;
  height:13px
 }
@@ -8764,7 +8764,7 @@ body[data-player-size=fullscreen] #playlist-bar {
  display:none
 }
 .pyv-large-thumb .watch-video-label img {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -87px 0;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -87px 0;
  width:18px;
  height:18px;
  vertical-align:top
@@ -9212,7 +9212,7 @@ body[data-player-size=fullscreen] #playlist-bar {
  text-decoration:underline
 }
 .share-service-button .share-service-icon {
- background-image:url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-sharing-vflZJbYfF.png);
+ background-image:url(/assets/2012/img/www-sharing-vflZJbYfF.png);
  background-repeat:no-repeat;
  width:32px;
  height:32px;
@@ -9320,7 +9320,7 @@ body[data-player-size=fullscreen] #playlist-bar {
 .share-service-icon-google-hangout {
  width:24px;
  height:25px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-sharing-vflZJbYfF.png) 0 -68px;
+ background:no-repeat url(/assets/2012/img/www-sharing-vflZJbYfF.png) 0 -68px;
  margin-right:5px;
  vertical-align:middle
 }
@@ -9674,7 +9674,7 @@ body[data-player-size=fullscreen] #playlist-bar {
  text-indent:-99em;
  width:14px;
  height:14px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -21px -117px;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -21px -117px;
  z-index:1
 }
 .subscription-menu-expandable .close {
@@ -10013,7 +10013,7 @@ body[data-player-size=fullscreen] #playlist-bar {
  right:6px;
  width:22px;
  height:22px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -144px 0
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -144px 0
 }
 .yt-alert .close:hover {
  background-color:rgba(0,0,0,.15);
@@ -10074,7 +10074,7 @@ body[data-player-size=fullscreen] #playlist-bar {
 }
 .yt-alert-error .icon,
 .yt-alert-error.yt-alert-small .icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -242px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -242px
 }
 .yt-alert-error.yt-alert-small.yt-alert-naked .icon {
  background-position:-37px -136px
@@ -10092,7 +10092,7 @@ body[data-player-size=fullscreen] #playlist-bar {
 }
 .yt-alert-warn .icon,
 .yt-alert-warn.yt-alert-small .icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -22px -181px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -22px -181px
 }
 .yt-alert-warn.yt-alert-small.yt-alert-naked .icon {
  background-position:0 -153px
@@ -10110,7 +10110,7 @@ body[data-player-size=fullscreen] #playlist-bar {
 }
 .yt-alert-success .icon,
 .yt-alert-success.yt-alert-small .icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px 0
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px 0
 }
 .yt-alert-success.yt-alert-small.yt-alert-naked .icon {
  background-position:-74px -42px
@@ -10128,7 +10128,7 @@ body[data-player-size=fullscreen] #playlist-bar {
 }
 .yt-alert-info .icon,
 .yt-alert-info.yt-alert-small .icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -63px -64px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -63px -64px
 }
 .yt-alert-info.yt-alert-small.yt-alert-naked .icon {
  background-position:-122px 0
@@ -10141,16 +10141,16 @@ body[data-player-size=fullscreen] #playlist-bar {
  text-align:center
 }
 .yt-alert-player.yt-alert-error .yt-alert-icon .icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -242px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -242px
 }
 .yt-alert-player.yt-alert-success .yt-alert-icon .icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px 0
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px 0
 }
 .yt-alert-player.yt-alert-info .yt-alert-icon .icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -63px -64px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -63px -64px
 }
 .yt-alert-player.yt-alert-warn .yt-alert-icon .icon {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -22px -181px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -22px -181px
 }
 .yt-alert-promo .yt-alert-content {
  background-color:#fff;
@@ -10173,7 +10173,7 @@ body[data-player-size=fullscreen] #playlist-bar {
  opacity:.4;
  width:9px;
  height:9px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -229px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -229px
 }
 .yt-alert-promo .yt-alert-content .close:hover {
  opacity:1;
@@ -10281,7 +10281,7 @@ span.yt-badge-live-thumb {
 }
 span.yt-badge-live img,
 span.yt-badge-live-thumb img {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-master-vflJFhv9g.png) -199px -91px;
+ background:no-repeat url(/assets/2012/img/www-master-vflJFhv9g.png) -199px -91px;
  border-width:0;
  height:10px;
  width:10px;
@@ -10917,22 +10917,22 @@ a.yt-uix-button .yt-uix-button-content {
  position:relative;
  top:1px;
  *top:0;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -37px -86px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -37px -86px;
  width:19px;
  height:21px
 }
 .enable-fancy-subscribe-button .yt-subscription-button:hover .yt-uix-button-icon-subscribe {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -194px -157px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -194px -157px;
  width:19px;
  height:21px
 }
 .enable-fancy-subscribe-button .yt-uix-button.subscribed .yt-uix-button-icon-subscribe {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -38px -158px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -38px -158px;
  width:19px;
  height:21px
 }
 .enable-fancy-subscribe-button .yt-uix-button.subscribed:hover .yt-uix-button-icon-subscribe {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -81px -153px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -81px -153px;
  width:19px;
  height:21px
 }
@@ -11091,30 +11091,30 @@ ul.yt-uix-button-menu {
 .yt-uix-form-input-radio-element {
  width:16px;
  height:16px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -158px -176px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -158px -176px;
  -moz-border-radius:30px;
  -webkit-border-radius:30px;
  border-radius:30px
 }
 #ie .yt-uix-form-input-radio-container.checked .yt-uix-form-input-radio-element {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -111px -24px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -111px -24px
 }
 .yt-uix-form-input-radio-container input:checked+.yt-uix-form-input-radio-element {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -111px -24px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -111px -24px
 }
 .yt-uix-form-input-checkbox-element {
  width:16px;
  height:16px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -81px -24px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -81px -24px;
  -moz-border-radius:3px;
  -webkit-border-radius:3px;
  border-radius:3px
 }
 #ie .yt-uix-form-input-checkbox-container.checked .yt-uix-form-input-checkbox-element {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -200px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -200px
 }
 .yt-uix-form-input-checkbox-container input:checked+.yt-uix-form-input-checkbox-element {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -200px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -200px
 }
 .yt-uix-form-input-radio-container,
 .yt-uix-form-input-checkbox-container {
@@ -11174,7 +11174,7 @@ input.yt-uix-form-input-checkbox {
 #logo {
  float:none;
  margin:0;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -71px -218px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -71px -218px;
  width:100px;
  height:40px
 }
@@ -11294,7 +11294,7 @@ input.yt-uix-form-input-checkbox {
  display:block;
  border:none;
  padding:0;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -92px -134px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -92px -134px;
  width:14px;
  height:14px;
  opacity:.6;
@@ -11757,12 +11757,12 @@ input.yt-uix-form-input-checkbox {
  position:absolute;
  top:0;
  right:0;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -22px -36px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -22px -36px;
  width:13px;
  height:118px
 }
 .rtl #footer-logo #footer-divider {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -128px -42px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -128px -42px
 }
 #footer-logo #logo-container {
  float:none
@@ -11828,7 +11828,7 @@ input.yt-uix-form-input-checkbox {
 }
 #footer-logo img {
  opacity:.6;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -63px -176px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -63px -176px;
  width:93px;
  height:40px
 }
@@ -11854,7 +11854,7 @@ input.yt-uix-form-input-checkbox {
 }
 #yt-admin #vm-pageheader-container h1,
 #vm-video-actions-inner {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refreshbg-vflC3wnbM.png) 0 0;
+ background:no-repeat url(/assets/2012/img/www-refreshbg-vflC3wnbM.png) 0 0;
  background-color:#ebebeb;
  background-repeat:repeat
 }
@@ -11979,7 +11979,7 @@ input.yt-uix-form-input-checkbox {
 .yt-uix-overlay-header .yt-uix-overlay-close .yt-uix-button-content {
  display:block;
  text-indent:-9999em;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -229px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -229px;
  width:9px;
  height:9px;
  -moz-border-radius:3px;
@@ -12813,12 +12813,12 @@ input.yt-uix-form-input-checkbox {
 }
 body {
  color:#333;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refreshbg-vflC3wnbM.png) 0 0;
+ background:no-repeat url(/assets/2012/img/www-refreshbg-vflC3wnbM.png) 0 0;
  background-color:#ebebeb;
  background-repeat:repeat
 }
 body.ie8 {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refreshbg-vflC3wnbM.png) 0 0;
+ background:no-repeat url(/assets/2012/img/www-refreshbg-vflC3wnbM.png) 0 0;
  background-repeat:repeat
 }
 a {
@@ -12854,14 +12854,14 @@ a:focus {
  _display:none
 }
 .horizontal-rule .first {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-dividers-vflkSTcwN.png) 0 0;
+ background:no-repeat url(/assets/2012/img/www-dividers-vflkSTcwN.png) 0 0;
  background:-webkit-radial-gradient(bottom right,circle,rgba(0,0,0,0.06),rgba(0,0,0,0) 80px);
  background:-moz-radial-gradient(bottom right,rgba(0,0,0,0.06),rgba(0,0,0,0) 80px);
  width:80px;
  left:0
 }
 .horizontal-rule .second {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-dividers-vflkSTcwN.png) -114px 0;
+ background:no-repeat url(/assets/2012/img/www-dividers-vflkSTcwN.png) -114px 0;
  background:-webkit-radial-gradient(bottom left,circle,rgba(0,0,0,0.06),rgba(0,0,0,0) 80px);
  background:-moz-radial-gradient(bottom left,rgba(0,0,0,0.06),rgba(0,0,0,0) 80px);
  width:80px;
@@ -12931,13 +12931,13 @@ a:focus {
 }
 .vertical-rule-corner-top,
 .rtl .vertical-rule-corner-top-flip {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-dividers-vflkSTcwN.png) -82px 0;
+ background:no-repeat url(/assets/2012/img/www-dividers-vflkSTcwN.png) -82px 0;
  background:-webkit-radial-gradient(left bottom,circle,rgba(0,0,0,.08),transparent 30px,transparent 100%);
  background:-moz-radial-gradient(left bottom,circle,rgba(0,0,0,.08),transparent 30px,transparent 100%)
 }
 .vertical-rule-corner-top-flip,
 .rtl .vertical-rule-corner-top {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-dividers-vflkSTcwN.png) -82px -32px;
+ background:no-repeat url(/assets/2012/img/www-dividers-vflkSTcwN.png) -82px -32px;
  background:-webkit-radial-gradient(right bottom,circle,rgba(0,0,0,.08),transparent 30px,transparent 100%);
  background:-moz-radial-gradient(right bottom,circle,rgba(0,0,0,.08),transparent 30px,transparent 100%)
 }
@@ -12947,13 +12947,13 @@ a:focus {
 }
 .vertical-rule-corner-bottom,
 .rtl .vertical-rule-corner-bottom-flip {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-dividers-vflkSTcwN.png) -196px 0;
+ background:no-repeat url(/assets/2012/img/www-dividers-vflkSTcwN.png) -196px 0;
  background:-webkit-radial-gradient(left top,circle,rgba(0,0,0,.08),transparent 30px,transparent 100%);
  background:-moz-radial-gradient(left top,circle,rgba(0,0,0,.08),transparent 30px,transparent 100%)
 }
 .vertical-rule-corner-bottom-flip,
 .rtl .vertical-rule-corner-bottom {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-dividers-vflkSTcwN.png) -196px -32px;
+ background:no-repeat url(/assets/2012/img/www-dividers-vflkSTcwN.png) -196px -32px;
  background:-webkit-radial-gradient(right top,circle,rgba(0,0,0,.08),transparent 30px,transparent 100%);
  background:-moz-radial-gradient(right top,circle,rgba(0,0,0,.08),transparent 30px,transparent 100%)
 }
@@ -12985,7 +12985,7 @@ p.loading-spinner {
  opacity:.4;
  width:9px;
  height:9px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -229px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -229px
 }
 .box-close-link:hover img,
 .yt-uix-clickcard-close:hover,
@@ -13028,7 +13028,7 @@ p.loading-spinner {
  float:left;
  margin-right:10px;
  margin-top:-3px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -63px -64px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -63px -64px;
  width:39px;
  height:29px
 }
@@ -13042,7 +13042,7 @@ p.loading-spinner {
  -moz-border-radius:3px;
  -webkit-border-radius:3px;
  border-radius:3px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -144px 0;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -144px 0;
  width:22px;
  height:22px
 }
@@ -13200,7 +13200,7 @@ a.video-list-item-link:hover,
  line-height:1.5
 }
 #watch-headline-user-info .yt-uix-button-icon-subscribe {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -63px -153px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -63px -153px;
  width:16px;
  height:16px
 }
@@ -13213,10 +13213,10 @@ a.video-list-item-link:hover,
  border-bottom-left-radius:0
 }
 #watch-headline-user-info .subscribed .yt-uix-button-icon-subscribe {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -63px -24px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -63px -24px
 }
 #watch-headline-user-info .yt-uix-button.subscribed:hover .yt-uix-button-icon-subscribe {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -37px -54px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -37px -54px
 }
 #watch-mfu-button {
  margin-left:0.5em
@@ -13323,7 +13323,7 @@ a.video-list-item-link:hover,
 #watch-main .close-button,
 #watch-content .close-button {
  opacity:.4;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -229px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -229px;
  width:9px;
  height:9px
 }
@@ -13333,35 +13333,35 @@ a.video-list-item-link:hover,
  opacity:1
 }
 #watch-actions .yt-uix-button-icon-watch-like {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -108px -120px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -108px -120px;
  width:13px;
  height:15px
 }
 #watch-actions .yt-uix-button:hover .yt-uix-button-icon-watch-like,
 #watch-actions .liked .yt-uix-button-icon-watch-like {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -218px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -218px
 }
 #watch-actions .yt-uix-button-icon-watch-unlike {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -143px -139px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -143px -139px;
  width:13px;
  height:15px
 }
 #watch-actions .yt-uix-button:hover .yt-uix-button-icon-watch-unlike,
 #watch-actions .unliked .yt-uix-button-icon-watch-unlike {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -176px -194px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -194px
 }
 #watch-actions .yt-uix-button-icon-watch-flag {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -37px -109px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -37px -109px;
  width:6px;
  height:10px
 }
 #watch-actions .yt-uix-button:hover .yt-uix-button-icon-watch-flag {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -143px -107px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -143px -107px
 }
 #watch-actions-area .watch-gray-flag {
  vertical-align:middle;
  margin-right:14px;
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -37px -109px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -37px -109px;
  width:6px;
  height:10px
 }
@@ -13369,12 +13369,12 @@ a.video-list-item-link:hover,
  padding:5px
 }
 #watch-actions .yt-uix-button-icon-watch-insight {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -53px -218px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -53px -218px;
  width:14px;
  height:9px
 }
 #watch-actions .yt-uix-button:hover .yt-uix-button-icon-watch-insight {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -187px -37px
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -187px -37px
 }
 .watch-view-count {
  line-height:3em
@@ -13632,7 +13632,7 @@ a.context-link:hover {
 }
 .context-icon,
 .context-icon-guide-default {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-guide-vflBXAd_P.png) 0 -110px
+ background:no-repeat url(/assets/2012/img/www-guide-vflBXAd_P.png) 0 -110px
 }
 .context-icon-empty,
 .context-icon-guide-empty {
@@ -13753,7 +13753,7 @@ a.context-link:hover {
 }
 #page.watch-branded #watch-sidebar,
 #page.watch-branded #watch-main-container {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refreshbg-vflC3wnbM.png) 0 0;
+ background:no-repeat url(/assets/2012/img/www-refreshbg-vflC3wnbM.png) 0 0;
  background-color:#ebebeb;
  background-repeat:repeat
 }
@@ -13814,19 +13814,19 @@ a.context-link:hover {
 }
 .comment .yt-uix-button .yt-uix-button-icon-watch-comment-vote-up,
 .comment .yt-uix-button:hover .yt-uix-button-icon-watch-comment-vote-up {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -203px -37px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -203px -37px;
  width:12px;
  height:12px
 }
 .comment .yt-uix-button .yt-uix-button-icon-watch-comment-vote-down,
 .comment .yt-uix-button:hover .yt-uix-button-icon-watch-comment-vote-down {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) -37px -72px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -37px -72px;
  width:12px;
  height:12px
 }
 .comment .yt-uix-button .yt-uix-button-icon-watch-comment-reply,
 .comment .yt-uix-button:hover .yt-uix-button-icon-watch-comment-reply {
- background:no-repeat url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/imgbin/www-refresh-vflcB5eQ_.png) 0 -58px;
+ background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) 0 -58px;
  width:12px;
  height:12px
 }
