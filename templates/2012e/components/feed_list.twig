@@ -3,42 +3,34 @@
       <div class="feed-item-content">
          <h3 class="feed-item-title">
             <span class="feed-item-author">    <a href="/web/20120118121554/http://www.youtube.com/user/RyanJamesYezak?feature=g-logo" class="yt-user-photo ">
-            <span class="video-thumb ux-thumb ux-thumb-profile-24"><span class="clip"><span class="clip-inner"><img src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="RyanJamesYezak" data-thumb="https://web.archive.org/web/20120118121554/http://i3.ytimg.com/i/n26WjLOuTrZNEq7yN92_fg/1.jpg?v=a82222" data-group-key="thumb-group-8"><span class="vertical-align"></span></span></span></span>
+            <span class="video-thumb ux-thumb ux-thumb-profile-24"><span class="clip"><span class="clip-inner"><img src="{{ profile_image(data.author) }}" alt="RyanJamesYezak" data-thumb="https://web.archive.org/web/20120118121554/http://i3.ytimg.com/i/n26WjLOuTrZNEq7yN92_fg/1.jpg?v=a82222" data-group-key="thumb-group-8"><span class="vertical-align"></span></span></span></span>
             </a>
             </span>
-            <span class="feed-item-owner">    <a href="/web/20120118121554/http://www.youtube.com/user/RyanJamesYezak?feature=g-logo" class="yt-user-name " dir="ltr">
-            RyanJamesYezak
-            </a>
+            <span class="feed-item-owner">userlink is borked, fuck this
             </span>
             uploaded
-            <span class="time-created">1 day ago</span>
+            <span class="time-created">{{ data.time | relative_time }}</span>
          </h3>
          <div class="feed-item-visual">
             <div class="feed-item-visual-thumb">
                <a class="ux-thumb-wrap contains-addto" href="/web/20120118121554/http://www.youtube.com/watch?v=u62OtM_vt5k&amp;feature=g-logo&amp;context=G208d680FOAAAAAAAbAA">
-               <span class="video-thumb ux-thumb ux-thumb-288 "><span class="clip"><span class="clip-inner"><img src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="Thumbnail
-                  " data-thumb="//web.archive.org/web/20120118121554/http://i2.ytimg.com/vi/u62OtM_vt5k/hqdefault.jpg" data-group-key="thumb-group-8"><span class="vertical-align"></span></span></span></span>
+               <span class="video-thumb ux-thumb ux-thumb-288 "><span class="clip"><span class="clip-inner"><img src="{{ video_thumbnail(data.video_id) }}" alt="Thumbnail
+                  " data-thumb="{{ video_thumbnail(data.video_id) }}" data-group-key="thumb-group-8"><span class="vertical-align"></span></span></span></span>
                <span class="video-time">6:52</span>
                <button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" onclick=";return false;" data-button-menu-action="yt.www.lists.addto.toggleMenu" data-button-menu-id="shared-addto-menu" data-video-ids="u62OtM_vt5k" data-feature="thumbnail" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-addto" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""><span class="yt-uix-button-content"><span class="addto-label">Add to</span> </span><img class="yt-uix-button-arrow" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""></button>
                </a>
             </div>
             <div class="feed-item-visual-content">
                <div class="feed-item-visual-description">
-                  <h4><a class="title" href="/web/20120118121554/http://www.youtube.com/watch?v=u62OtM_vt5k&amp;feature=g-logo&amp;context=G208d680FOAAAAAAAbAA" dir="ltr">The Gay Rights Movement</a></h4>
+                  <h4><a class="title" href="/web/20120118121554/http://www.youtube.com/watch?v=u62OtM_vt5k&amp;feature=g-logo&amp;context=G208d680FOAAAAAAAbAA" dir="ltr">{{ data.title }}</a></h4>
                   <div class="description" dir="ltr">
-                     <p>Click here to be part of this effort to create change: <a href="https://web.archive.org/web/20120118121554/http://kck.st/zUspXy" target="_blank" title="http://kck.st/zUspXy" rel="nofollow" dir="ltr" class="yt-uix-redirect-link">http://kck.st/zUspXy</a></p>
-                     <p></p>
-                     <p>Click here to tweet this video: <a href="https://web.archive.org/web/20120118121554/http://clicktotweet.com/fRNEm" target="_blank" title="http://clicktotweet.com/fRNEm" rel="nofollow" dir="ltr" class="yt-uix-redirect-link">http://clicktotweet.com/fRNEm</a></p>
-                     <p></p>
-                     <p>http://...</p>
+                     {{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description }}
                   </div>
                </div>
                <p class="metadata">
-                  <a href="/web/20120118121554/http://www.youtube.com/user/RyanJamesYezak?feature=g-logo" class="yt-user-name " dir="ltr">
-                  RyanJamesYezak
-                  </a>
+                  userlink is borked, fuck this
                   <span class="view-count">
-                  720,945 views
+                  {{ data.views }} views
                   </span>
                </p>
             </div>
@@ -46,4 +38,3 @@
       </div>
    </div>
 </li>
-
