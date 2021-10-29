@@ -401,7 +401,7 @@ h6 {
  margin-bottom:3px
 }
 hr {
- border:0px;
+ border:0;
  border-top:1px dashed #999;
  height:1px;
  margin-top:12px
@@ -433,7 +433,7 @@ label {
  width:970px;
  margin-left:auto;
  margin-right:auto;
- padding:0 5px 25px 5px
+ padding:0 5px 25px
 }
 .error {
  font-weight:bold;
@@ -480,7 +480,7 @@ label {
 .close-small {
  display:inline-block;
  text-indent:-999em;
- font-size:0px;
+ font-size:0;
  overflow:hidden;
  width:14px;
  height:14px;
@@ -690,9 +690,9 @@ label {
  border-bottom-right-radius:0
 }
 .yt-uix-button-group-active .yt-uix-button-reverse.end {
- -moz-border-radius:0 0 3px 0;
- -webkit-border-radius:0 0 3px 0;
- border-radius:0 0 3px 0
+ -moz-border-radius:0 0 3px;
+ -webkit-border-radius:0 0 3px;
+ border-radius:0 0 3px
 }
 .yt-uix-button-group .end-edge {
  border-right-style:none
@@ -1404,7 +1404,7 @@ ul.pickers li {
  text-align:center
 }
 #chrome-promo {
- margin:15px 0 10px 0
+ margin:15px 0 10px
 }
 #chrome-promo #chrome-link {
  background-color:#ffffe5;
@@ -1800,7 +1800,7 @@ ul.pickers li {
 }
 #masthead-expanded .exp .playlist-data-item {
  display:block;
- padding:4px 5px 5px 5px;
+ padding:4px 5px 5px;
  height:15px;
  font-size:11px;
  white-space:normal;
@@ -1975,7 +1975,7 @@ ul.pickers li {
 }
 #masthead-expanded .exp #howto-addto {
  position:relative;
- padding:0px 15px 0px;
+ padding:0 15px;
  border:1px solid #d4d4d4;
  width:214px;
  height:82px;
@@ -2245,7 +2245,7 @@ ul.pickers li {
  font-size:100%
 }
 .with-sandbar .masthead-expanded-menu-item {
- padding:4px 0 0 0
+ padding:4px 0 0
 }
 #masthead-expanded-menu-email {
  color:#888
@@ -2268,7 +2268,7 @@ ul.pickers li {
  margin:7px 0
 }
 #ie #masthead-expanded-menu-account-info.email-only {
- margin:12px 0 7px 0
+ margin:12px 0 7px
 }
 #masthead .sb-button {
  height:29px;
@@ -2340,7 +2340,7 @@ ul.pickers li {
  background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -109px 0;
  width:11px;
  height:11px;
- margin:-3px 0 0 0
+ margin:-3px 0 0
 }
 #sb-wrapper {
  position:relative;
@@ -2562,13 +2562,13 @@ ul.pickers li {
  width:149px;
  height:193px;
  float:left;
- padding:0px;
+ padding:0;
  margin-right:11px
 }
 #instant-drawer-frame .result-item-main-content {
  width:149px;
  float:left;
- padding-left:0px
+ padding-left:0
 }
 #instant-drawer-frame .description {
  display:none
@@ -2734,7 +2734,7 @@ a.search-title-lego:hover {
  color:#333;
  clear:both;
  overflow:hidden;
- margin:5px 0 10px 0;
+ margin:5px 0 10px;
  padding-bottom:5px;
  padding-top:4px;
  border-bottom:1px solid #ccc
@@ -2901,7 +2901,7 @@ a.search-title-lego:hover {
  padding-top:1px
 }
 .toolbelt-top-options-container .sort-by {
- margin:0px 6px
+ margin:0 6px
 }
 #search-advanced-form {
  clear:both;
@@ -3063,7 +3063,7 @@ img.video-comment-icon {
 .video-comment-text {
  color:#686;
  font-size:11px;
- margin:4px 0px;
+ margin:4px 0;
  height:16px;
  overflow:hidden
 }
@@ -3310,7 +3310,7 @@ img.video-comment-icon {
  font-size:13px
 }
 .music-onebox-videos .tiny-video-icon {
- margin-right:0px
+ margin-right:0
 }
 .music-onebox .navigational-video-cell .video-main-content,
 .music-onebox .navigational-video-cell .video-description {
@@ -3345,7 +3345,7 @@ img.video-comment-icon {
  background-color:#eee
 }
 .show-onebox .left-pane .result-item-main-content {
- padding-left:0px;
+ padding-left:0;
  width:150px
 }
 .show-onebox .left-pane .result-item-main-content h3 {
@@ -3372,7 +3372,7 @@ img.video-comment-icon {
  margin-bottom:5px
 }
 #results-main-content .video-translation-links a {
- padding:0px 5px
+ padding:0 5px
 }
 .show-snippet-video .ux-thumb-wrap {
  margin-right:5px
@@ -3397,7 +3397,7 @@ img.video-comment-icon {
  background:#eee
 }
 .offsite-results {
- margin:8px 0 8px 0;
+ margin:8px 0;
  padding:5px 3px 5px 5px;
  background:#fff9dd
 }
@@ -3405,7 +3405,7 @@ img.video-comment-icon {
  background:#fff9dd
 }
 .promoted-videos {
- margin:0 0 10px 0
+ margin:0 0 10px
 }
 .promoted-videos .video-description {
  width:auto
@@ -3598,7 +3598,7 @@ td.spons-vid-thumb .user-thumb-jumbo img {
 }
 .fpr-message,
 .didyoumean-message {
- margin:10px 0 5px 0
+ margin:10px 0 5px
 }
 .fpr-text {
  color:#333;
@@ -3644,8 +3644,8 @@ td.spons-vid-thumb .user-thumb-jumbo img {
 .yva-expanded {
  height:538px;
  width:970px;
- left:0px;
- padding:0 5px 0 5px
+ left:0;
+ padding:0 5px
 }
 .yva-expanded object,
 .yva-expanded embed {
@@ -3679,7 +3679,7 @@ td.spons-vid-thumb .user-thumb-jumbo img {
  zoom:1
 }
 .result-item h3 {
- margin:0 0 5px 0;
+ margin:0 0 5px;
  overflow:hidden;
  white-space:nowrap;
  word-wrap:normal;
@@ -4162,7 +4162,7 @@ img.comments-rating-thumbs-down {
  padding:5px
 }
 .comment-share-content .watch-actions-share-input {
- margin:5px 0 10px 0
+ margin:5px 0 10px
 }
 .comment-share-content span {
  margin-right:3px
@@ -4191,7 +4191,7 @@ img.comments-rating-thumbs-down {
  height:16px
 }
 .live-comments-setting {
- margin:10px 0px;
+ margin:10px 0;
  padding:5px;
  font-weight:bold;
  border:1px solid #cccccc;
@@ -4240,14 +4240,14 @@ img.comments-rating-thumbs-down {
 .edit_subscription_wrapper {
  font-weight:normal;
  border-top:1px solid #cccccc;
- margin:5px -8px 0px -8px;
+ margin:5px -8px 0;
  text-align:left
 }
 #channel-body .edit_subscription_wrapper {
- margin:5px 0px 0px 0px
+ margin:5px 0 0
 }
 .actions .edit_subscription_wrapper {
- margin:10px 5px 10px;
+ margin:10px 5px;
  border:1px solid #cccccc;
  background-color:#f3f3f3
 }
@@ -4262,7 +4262,7 @@ img.comments-rating-thumbs-down {
 #position-edit-subscription-in-old-channel .edit_subscription_wrapper {
  border-top:none;
  border-bottom:1px solid #cccccc;
- margin:0px -8px 5px
+ margin:0 -8px 5px
 }
 .edit_subscription {
  padding:10px
@@ -4275,7 +4275,7 @@ img.comments-rating-thumbs-down {
  font-size:11px
 }
 #position-edit-subscription-in-old-channel .edit_subscription {
- padding:5px 10px 10px 10px
+ padding:5px 10px 10px
 }
 #edit_subscription div.choice_title {
  font-weight:bold
@@ -4298,7 +4298,7 @@ img.comments-rating-thumbs-down {
  border:1px solid #cccccc;
  padding:10px;
  background-color:#ffffff;
- margin:5px 0px
+ margin:5px 0
 }
 .edit-subscription div {
  padding-bottom:5px
@@ -4909,7 +4909,7 @@ body.fullscreen * {
  display:none;
  position:absolute;
  bottom:18px;
- left:0px;
+ left:0;
  height:8px;
  width:450px;
  z-index:1;
@@ -5292,7 +5292,7 @@ img.yt-uix-button-icon-transcript {
  vertical-align:center
 }
 #watch-actions-area h3 {
- margin:0 0 5px 0
+ margin:0 0 5px
 }
 #watch-actions-area p {
  line-height:1.4;
@@ -5571,7 +5571,7 @@ img.yt-uix-button-icon-transcript {
 }
 #watch-popup-help {
  position:absolute;
- bottom:0px;
+ bottom:0;
  height:20px;
  padding-left:8px;
  border-top:solid 1px #ccc;
@@ -5658,7 +5658,7 @@ img.yt-uix-button-icon-transcript {
  z-index:2;
  display:block;
  overflow:hidden;
- padding:5px 5px;
+ padding:5px;
  color:#333;
  background:#f6f6f6;
  background-image:-moz-linear-gradient(top,#ffffff,#efefef);
@@ -5846,7 +5846,7 @@ a.context-link:hover .context-title {
  margin-left:5px
 }
 .ytg-last {
- margin-right:0px
+ margin-right:0
 }
 .yt-uix-expander-arrow {
  height:16px;
@@ -6005,7 +6005,7 @@ a.context-link:hover .context-title {
  zoom:1
 }
 .yt-uix-slider-title {
- padding:3px 0px;
+ padding:3px 0;
  font-size:1.1666em
 }
 .yt-uix-slider-nums {
@@ -6027,17 +6027,17 @@ a.context-link:hover .context-title {
 }
 .yt-uix-slider-next-arrow,
 .yt-uix-slider-prev-arrow {
- width:0px;
- height:0px;
+ width:0;
+ height:0;
  border:1px solid transparent;
  vertical-align:middle
 }
 .yt-uix-slider-next-arrow {
- border-width:10px 0px 10px 10px;
+ border-width:10px 0 10px 10px;
  border-left-color:#999
 }
 .yt-uix-slider-prev-arrow {
- border-width:10px 10px 10px 0px;
+ border-width:10px 10px 10px 0;
  border-right-color:#999
 }
 .yt-uix-button:hover .yt-uix-slider-next-arrow,
@@ -6067,7 +6067,7 @@ a.context-link:hover .context-title {
 }
 .yt-uix-slider-slide {
  float:left;
- padding:0px 10px;
+ padding:0 10px;
  zoom:1
 }
 .yt-uix-slider-fluid .yt-uix-slider-slide {
@@ -6152,12 +6152,12 @@ body.rtl .yt-uix-slider-shade-left {
 .yt-uix-tooltip-tip-arrow {
  position:absolute;
  z-index:1000;
- bottom:0px;
- width:0px;
- height:0px;
+ bottom:0;
+ width:0;
+ height:0;
  vertical-align:top;
  border:1px solid transparent;
- border-width:5px 5px 0px 5px;
+ border-width:5px 5px 0;
  border-top-color:#000;
  border-top-color:rgba(0,0,0,0.85)
 }
@@ -6180,10 +6180,10 @@ body.rtl .yt-uix-slider-shade-left {
  -moz-border-radius:5px;
  -webkit-border-radius:5px;
  border-radius:5px;
- -moz-box-shadow:0px 0px 3px #333;
- -ms-box-shadow:0px 0px 3px #333;
- -webkit-box-shadow:0px 0px 3px #333;
- box-shadow:0px 0px 3px #333
+ -moz-box-shadow:0 0 3px #333;
+ -ms-box-shadow:0 0 3px #333;
+ -webkit-box-shadow:0 0 3px #333;
+ box-shadow:0 0 3px #333
 }
 @-moz-document url-prefix() {
  .yt-uix-tooltip-tip-mask+.yt-uix-tooltip-tip-body>.yt-uix-tooltip-tip-content {
@@ -6201,8 +6201,8 @@ body.rtl .yt-uix-slider-shade-left {
 }
 .yt-uix-tooltip-tip-reverse .yt-uix-tooltip-tip-arrow {
  bottom:auto;
- top:0px;
- border-width:0px 5px 5px 5px;
+ top:0;
+ border-width:0 5px 5px;
  border-color:#000;
  border-color:rgba(0,0,0,0.85);
  border-left-color:transparent;
@@ -6324,7 +6324,7 @@ body.rtl .yt-uix-slider-shade-left {
  visibility:hidden
 }
 #shared-addto-menu .loading-content {
- margin:82px auto 0 auto;
+ margin:82px auto 0;
  text-align:center
 }
 #shared-addto-menu .loading-content img {
@@ -6430,7 +6430,7 @@ body.rtl .yt-uix-slider-shade-left {
 #addto-note-error-panel .panel-content,
 #addto-list-error-panel .panel-content,
 #addto-list-saving-panel .panel-content {
- margin:50px 12px 12px 12px
+ margin:50px 12px 12px
 }
 #addto-list-saved-panel .panel-content {
  margin:12px
@@ -6454,12 +6454,12 @@ body.rtl .yt-uix-slider-shade-left {
 }
 #addto-note-saved-panel .panel-content img {
  display:block;
- margin:0 auto 5px auto
+ margin:0 auto 5px
 }
 #addto-note-error-panel img,
 #addto-list-error-panel img {
  display:block;
- margin:0 auto 5px auto;
+ margin:0 auto 5px;
  background:no-repeat url(/assets/2012/img/www-refresh-vflcB5eQ_.png) -176px -51px;
  width:19px;
  height:19px
@@ -6679,7 +6679,7 @@ body.rtl .yt-uix-slider-shade-left {
 .yt-badge-edit-group {
  float:left;
  padding:10px;
- border:0px;
+ border:0;
  background-color:transparent
 }
 .yt-badge-edit-group-border {
@@ -6845,7 +6845,7 @@ body.rtl .yt-uix-slider-shade-left {
  margin:-5px -5px 5px 5px
 }
 .yt-uix-hovercard-card h3 {
- margin:5px 10px 0px 10px;
+ margin:5px 10px 0;
  color:#000;
  font-weight:normal;
  font-size:1.3333em
@@ -7349,7 +7349,7 @@ a.video-thumb-120:hover {
 .playlist-extra-thumb-inner,
 .playlist-extra-thumb-outer {
  font-size:0;
- padding:0 0 4px 0
+ padding:0 0 4px
 }
 .playlist-extra-thumb-inner .video-thumb,
 .playlist-extra-thumb-inner {
@@ -7463,7 +7463,7 @@ a:hover .video-thumb-pyv .video-time,
  z-index:1
 }
 .watch-related-playlist-video-thumbs .playlist-thumb-2 {
- right:0px
+ right:0
 }
 .watch-related-playlist-video-thumbs .playlist-thumb-1 img,
 .watch-related-playlist-video-thumbs .playlist-thumb-2 img {
@@ -7490,7 +7490,7 @@ a:hover .video-thumb-pyv .video-time,
  top:20px
 }
 .playlist-rec-video-thumbs .playlist-thumb-2 {
- right:0px
+ right:0
 }
 .playlist-rec-video-thumbs .playlist-thumb-1 img,
 .playlist-rec-video-thumbs .playlist-thumb-2 img {
@@ -7606,18 +7606,18 @@ a:hover .video-thumb-pyv .video-time,
  background:transparent url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/img/autoshare-vflhXH0Mt.png) no-repeat scroll -32px -16px
 }
 .img-autoshare-orkut {
- background:transparent url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/img/autoshare-vflhXH0Mt.png) no-repeat scroll -0px -32px
+ background:transparent url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/img/autoshare-vflhXH0Mt.png) no-repeat scroll -0 -32px
 }
 .img-autoshare-logo {
- background:transparent url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/img/autoshare-vflhXH0Mt.png) no-repeat scroll 0px -48px;
+ background:transparent url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/img/autoshare-vflhXH0Mt.png) no-repeat scroll 0 -48px;
  float:left;
  margin-right:15px
 }
 .autoshare-service-icon .img-autoshare-success-icon {
- background:transparent url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/img/autoshare-vflhXH0Mt.png) no-repeat scroll 0px 0px
+ background:transparent url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/img/autoshare-vflhXH0Mt.png) no-repeat scroll 0 0
 }
 .autoshare-service-icon .img-autoshare-failure-icon {
- background:transparent url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/img/autoshare-vflhXH0Mt.png) no-repeat scroll -16px 0px
+ background:transparent url(//web.archive.org/web/20120118102941im_/http://s.ytimg.com/yt/img/autoshare-vflhXH0Mt.png) no-repeat scroll -16px 0
 }
 .upload-inner-box .autoshare-introtext {
  float:left;
@@ -8182,8 +8182,8 @@ body.rtl #playlist-bar .yt-uix-slider-shade-left {
  line-height:70px;
  width:25px;
  height:70px;
- top:0px;
- left:0px;
+ top:0;
+ left:0;
  text-align:center;
  text-shadow:0 0 2px #000
 }
@@ -8302,7 +8302,7 @@ body.rtl #playlist-bar .yt-uix-slider-shade-left {
  display:block;
  position:relative;
  width:104px;
- padding:0 0 5px 0;
+ padding:0 0 5px;
  -moz-border-radius:3px;
  -webkit-border-radius:3px;
  border-radius:3px
@@ -8729,9 +8729,9 @@ body[data-player-size=fullscreen] #playlist-bar {
  -moz-border-radius:3px;
  -webkit-border-radius:3px;
  border-radius:3px;
- -moz-box-shadow:0px 0px 3px #000;
- -webkit-box-shadow:0px 0px 3px #000;
- box-shadow:0px 0px 3px #000
+ -moz-box-shadow:0 0 3px #000;
+ -webkit-box-shadow:0 0 3px #000;
+ box-shadow:0 0 3px #000
 }
 #ie .pyv-large-thumb h3 a {
  background:none;
@@ -9613,7 +9613,7 @@ body[data-player-size=fullscreen] #playlist-bar {
 }
 #ie .subscription-subscribed-container .yt-uix-expander-arrow {
  *float:none;
- *margin:0px 5px 0 0
+ *margin:0 5px 0 0
 }
 .subscription-subscribed-container .yt-uix-expander-head {
  border:1px solid transparent;
@@ -9753,9 +9753,9 @@ body[data-player-size=fullscreen] #playlist-bar {
  -moz-border-radius:3px;
  -webkit-border-radius:3px;
  border-radius:3px;
- -moz-box-shadow:0px 0px 9px #000;
- -webkit-box-shadow:0px 0px 9px #000;
- box-shadow:0px 0px 9px #000;
+ -moz-box-shadow:0 0 9px #000;
+ -webkit-box-shadow:0 0 9px #000;
+ box-shadow:0 0 9px #000;
  background-color:#000;
  background-color:rgba(0,0,0,0.8);
  filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr="#cc000000",endColorStr="#cc000000");
@@ -9810,13 +9810,13 @@ body[data-player-size=fullscreen] #playlist-bar {
 .rental-gadget-terms {
  position:absolute;
  bottom:8px;
- left:0px;
+ left:0;
  width:100%
 }
 .rental-gadget-live-terms {
  position:absolute;
  bottom:8px;
- left:0px;
+ left:0;
  width:100%;
  text-align:left;
  font-size:11px;
@@ -9888,7 +9888,7 @@ body[data-player-size=fullscreen] #playlist-bar {
 }
 #watch-stats-main-column-insight {
  width:100%;
- padding:0 0 0 0
+ padding:0
 }
 .watch-stats-title-cell {
  text-align:left;
@@ -9914,7 +9914,7 @@ body[data-player-size=fullscreen] #playlist-bar {
  padding-bottom:6px
 }
 #watch-honors .statItem {
- padding:6px 0 0 0
+ padding:6px 0 0
 }
 #watch-badges-content {
  margin:10px
@@ -9971,7 +9971,7 @@ body[data-player-size=fullscreen] #playlist-bar {
 #insight-ratings td {
  color:black;
  font-size:100%;
- padding:1px 5px 1px 0px
+ padding:1px 5px 1px 0
 }
 .yt-alert,
 .yt-alert.yt-alert-small {
@@ -11223,7 +11223,7 @@ input.yt-uix-form-input-checkbox {
  border:1px solid #ccc;
  height:32px;
  *height:30px;
- margin:0 0 2px 0;
+ margin:0 0 2px;
  font-size:14px;
  line-height:30px;
  background-color:#fff;
@@ -11582,7 +11582,7 @@ input.yt-uix-form-input-checkbox {
 #masthead-expanded-container {
  position:relative;
  width:954px;
- padding:10px 8px 10px;
+ padding:10px 8px;
  margin-bottom:10px;
  background:#e0e0e0;
  background:rgba(0,0,0,.03);
@@ -11927,7 +11927,7 @@ input.yt-uix-form-input-checkbox {
  border-color:#aaa
 }
 .yt-uix-overlay-fg-content {
- padding:0 20px 20px 20px;
+ padding:0 20px 20px;
  color:#666;
  border-color:#aaa;
  text-shadow:0 1px 1px #fff;
@@ -12522,7 +12522,7 @@ input.yt-uix-form-input-checkbox {
  *line-height:31px
 }
 #lego-refine-toggle.yt-uix-button-toggled .yt-uix-button-arrow {
- border-width:0 4px 4px 4px;
+ border-width:0 4px 4px;
  border-top-color:transparent;
  border-bottom-color:#8d8d8d
 }
@@ -12736,7 +12736,7 @@ input.yt-uix-form-input-checkbox {
  margin-left:15px
 }
 .share-panel.refresh .share-panel-main-buttons {
- padding:0 10px 20px 10px;
+ padding:0 10px 20px;
  border-left:1px solid #e8e8e8;
  border-right:1px solid #e8e8e8
 }
@@ -13287,7 +13287,7 @@ a.video-list-item-link:hover,
  width:26px
 }
 #watch-channel-discoverbox .yt-uix-slider-prev-arrow {
- border-width:6px 6px 6px 0px
+ border-width:6px 6px 6px 0
 }
 #watch-channel-discoverbox .yt-uix-slider-next-arrow {
  border-width:6px 0 6px 6px
@@ -13473,7 +13473,7 @@ a.video-list-item-link:hover,
  margin-left:0
 }
 #watch-sidebar h4.watch-sidebar-head {
- padding:0 16px 0;
+ padding:0 16px;
  min-height:25px
 }
 #watch-sidebar .horizontal-rule {

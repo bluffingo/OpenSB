@@ -438,7 +438,7 @@ h3 .guide-item {
 #guide-builder-promo h2 {
  font-weight:bold;
  font-size:20px;
- margin:5px 0 13px 0;
+ margin:5px 0 13px;
  padding:0;
  line-height:1
 }
@@ -493,7 +493,7 @@ h3 .guide-item {
 }
 #personal-feeds li,
 #personal-feeds .guide-item {
- border:0px
+ border:0
 }
 #guide-reminders {
  clear:left;
@@ -615,17 +615,17 @@ h3 .guide-item {
  background:#ccc
 }
 #connect-accounts {
- padding:13px 0 13px 0
+ padding:13px 0
 }
 #connect-accounts-header {
  font-weight:bold
 }
 #connect-accounts-body {
- padding:13px 0 13px 0;
+ padding:13px 0;
  font-style:italic;
  color:#222;
  font-size:13px;
- margin:10px 0 10px 0
+ margin:10px 0
 }
 #connect-accounts-buttons span {
  padding-right:6px
@@ -774,7 +774,7 @@ a.profile-thumb-preview span {
  width:20px;
  height:20px;
  display:block;
- margin:28px auto 0 auto;
+ margin:28px auto 0;
  color:#fff;
  text-align:center;
  z-index:3
@@ -907,7 +907,7 @@ a.profile-thumb-preview span {
 }
 #builder-preview-header .upper-left-section {
  float:left;
- margin:18px 0px 18px 10px;
+ margin:18px 0 18px 10px;
  width:210px
 }
 #builder-preview-header .profile-thumb,
@@ -926,7 +926,7 @@ a.profile-thumb-preview span {
  height:77px
 }
 #builder-preview-header .video-thumb {
- padding:0px;
+ padding:0;
  -moz-border-radius:3px;
  -webkit-border-radius:3px;
  border-radius:3px;
@@ -993,7 +993,7 @@ a.profile-thumb-preview span {
  display:block
 }
 #builder-preview-pane {
- padding:20px 20px;
+ padding:20px;
  clear:left;
  background:#ededed;
  height:314px;
@@ -1167,10 +1167,10 @@ a.profile-thumb-preview span {
 #new-user-promo {
  background:#fff;
  min-height:80px;
- -moz-box-shadow:0px 1px 2px rgba(0,0,0,0.5);
- -ms-box-shadow:0px 1px 2px rgba(0,0,0,0.5);
- -webkit-box-shadow:0px 1px 2px rgba(0,0,0,0.5);
- box-shadow:0px 1px 2px rgba(0,0,0,0.5);
+ -moz-box-shadow:0 1px 2px rgba(0,0,0,0.5);
+ -ms-box-shadow:0 1px 2px rgba(0,0,0,0.5);
+ -webkit-box-shadow:0 1px 2px rgba(0,0,0,0.5);
+ box-shadow:0 1px 2px rgba(0,0,0,0.5);
  -moz-border-radius:2px;
  -webkit-border-radius:2px;
  border-radius:2px;
@@ -1204,7 +1204,7 @@ a.profile-thumb-preview span {
 #builder-help-header {
  font-size:16px;
  font-weight:bold;
- padding:0 0 10px 0
+ padding:0 0 10px
 }
 #builder-help {
  margin:0 20px 0 0;
@@ -1242,7 +1242,7 @@ a.profile-thumb-preview span {
 }
 #builder-error {
  font-weight:bold;
- margin:60px 0 20px 0;
+ margin:60px 0 20px;
  text-align:center
 }
 #feed {
@@ -1557,13 +1557,13 @@ body>.yt-uix-button-menu-view-choices .yt-uix-button-menu-item.checked:hover {
 .suggested-channels {
  color:#666;
  text-align:center;
- margin:30px 0 40px 0
+ margin:30px 0 40px
 }
 .suggested-channels h2 img {
  margin-bottom:1px
 }
 .suggested-channels-list {
- margin:20px 0 40px 0;
+ margin:20px 0 40px;
  z-index:1;
  position:relative
 }
