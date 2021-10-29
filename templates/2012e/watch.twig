@@ -58,27 +58,25 @@
       </style>
    </head>
                <div id="watch-container" itemscope="" itemtype="http://schema.org/VideoObject">
-                  <link itemprop="url" href="http://www.youtube.com/watch?v=ARxfNM3vBrI">
-                  <meta itemprop="name" content="The Woman with Two Vaginas!">
-                  <meta itemprop="description" content="A WOMAN told yesterday how a one-in-a-million medical condition led to her being born with TWO fully-formed vaginas. Hazel Jones, 27, said it means she has l...">
-                  <link itemprop="thumbnailUrl" href="http://i2.ytimg.com/vi/ARxfNM3vBrI/hqdefault.jpg">
-                  <meta itemprop="playerType" content="Flash">
-                  <link itemprop="embedURL" href="http://www.youtube.com/v/ARxfNM3vBrI?version=3&amp;autohide=1">
+                  <link itemprop="url" href="{{ domain }}/watch.php?v={{ video.id }}">
+                  <meta itemprop="name" content="{{ video.title }}">
+                  <meta itemprop="description" content={{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
+                  <link itemprop="thumbnailUrl" href="{{ video_thumbnail(video.video_id) }}">
                   <meta itemprop="width" content="480">
                   <meta itemprop="height" content="360">
                   <!-- begin watch-headline-container -->
                   <div id="watch-headline-container">
                      <div id="watch-headline" class="watch-headline">
                         <h1 id="watch-headline-title">
-                           <span id="eow-title" class="" dir="ltr" title="The Woman with Two Vaginas!">
-                           The Woman with Two Vaginas!
+                           <span id="eow-title" class="" dir="ltr" title="title">
+                           {{ video.title }}
                            </span>
                         </h1>
                         <div id="watch-headline-user-info">
                            <span class="yt-uix-button-group">
-                              <button href="/user/GCCMelbourne?feature=watch" type="button" class="start yt-uix-button" onclick=";window.location.href=this.getAttribute('href');return false;" role="button"><span class="yt-uix-button-content">GCCMelbourne</span></button>
+                              <button href="/user/GCCMelbourne?feature=watch" type="button" class="start yt-uix-button" onclick=";window.location.href=this.getAttribute('href');return false;" role="button"><span class="yt-uix-button-content">{{ video.u_name }}</span></button>
                               <div class="yt-subscription-button-hovercard yt-uix-hovercard">
-                                 <button href="https://accounts.google.com/ServiceLogin?uilel=3&amp;service=youtube&amp;passive=true&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26nomobiletemp%3D1%26hl%3Den_US%26next%3D%252Fwatch%253Fv%253DARxfNM3vBrI&amp;hl=en_US&amp;ltmpl=sso" type="button" class="yt-subscription-button yt-subscription-button-js-default end  yt-uix-button" onclick=";window.location.href=this.getAttribute('href');return false;" data-enable-hovercard="true" data-subscription-value="vkHIyvxymVzFDqM1RcSW1Q" data-force-position="true" data-position="topright" data-subscription-feature="watch" data-subscription-type="" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-subscribe" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""><span class="yt-uix-button-content">  <span class="subscribe-label">Subscribe</span>
+                                 <button href="https://accounts.google.com/ServiceLogin?uilel=3&amp;service=youtube&amp;passive=true&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26nomobiletemp%3D1%26hl%3Den_US%26next%3D%252Fwatch%253Fv%253DARxfNM3vBrI&amp;hl=en_US&amp;ltmpl=sso" type="button" class="yt-subscription-button yt-subscription-button-js-default end  yt-uix-button" onclick=";window.location.href=this.getAttribute('href');return false;" data-enable-hovercard="true" data-subscription-value="vkHIyvxymVzFDqM1RcSW1Q" data-force-position="true" data-position="topright" data-subscription-feature="watch" data-subscription-type="" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-subscribe" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""><span class="yt-uix-button-content"><span class="subscribe-label">Subscribe</span>
                                  <span class="subscribed-label">Subscribed</span>
                                  <span class="unsubscribe-label">Unsubscribe</span>
                                  </span></button>
@@ -110,20 +108,45 @@
                   <!-- end watch-headline-container -->
                   <div id="watch-video-container">
                      <div id="watch-video">
+					 <div id="watch-player" class="flash-player">
                         <script>
                            if (window.yt.timing) {
                              yt.timing.tick('bf');
                            }
                         </script>
-                        <div id="watch-player" class="flash-player">
-                           <embed type="application/x-shockwave-flash" src="http://s.ytimg.com/yt/swfbin/watch_as3-vfln2y8gL.swf" id="movie_player" flashvars="ttsurl=http%3A%2F%2Fwww.youtube.com%2Fapi%2Ftimedtext%3Fsparams%3Dasr_langs%252Ccaps%252Cexpire%252Cv%26asr_langs%3Den%252Cko%252Cja%26caps%3Dasr%26expire%3D1326567600%26key%3Dyttt1%26signature%3D4B2D0D6A3D78C5172703E51F79F5838564E2ED5D.1C6ADAE086C1F03D0FF83892373C62647B3678BE%26hl%3Den_US&amp;fexp=904443%2C901604%2C911108&amp;enablecsi=1&amp;allow_embed=1&amp;rvs=view_count%3D19%252C041%26author%3Dtvtribunasbt%26length_seconds%3D120%26id%3DtycGY8jyxu4%26title%3DAcidente%2Bna%2BBR%2B101%2BSul%2Bdeixa%2Bex-Miss%2BBrasil%2Bem%2Bestado%2Bgrave%2Cview_count%3D1%252C107%252C134%26author%3Dchaaan69%26length_seconds%3D82%26id%3DbHCNjp4CIIw%26title%3DEu%2Bqueria%2Bassim%2Bque..%2BDeus%2Btivesse%2Bpiedadehahahaahahahahaha%2Cview_count%3D9%252C608%26author%3Dzclg3%26length_seconds%3D141%26id%3DPRfdxkE7ukw%26title%3DVideo%2Bno%2Bexato%2Bmomento%2Bdo%2Bacidente%2Bcom%2BMiss%2BBrasil%2B2010%2Bno%2BES%2Cview_count%3D380%252C603%26author%3Dtiagoluizvideos%26length_seconds%3D57%26id%3DFBp_bfWkWEc%26title%3DUm%2Bcarro%252C%2Btr%25C3%25AAs%2Bamigos%2Be%2Buma%2Bdescida%2521%2Cview_count%3D1%252C368%252C643%26author%3Dadamforgie%26length_seconds%3D266%26id%3DXLiB0OONjec%26title%3DMy%2B90-year-old%2BGrandma%2BDances%2Bto%2BLMFAO%2B-%2BParty%2BRock%2BAnthem%2B%2528ORIGINAL%2529%2Cview_count%3D63%252C533%26author%3DStadson%26length_seconds%3D33%26id%3DU7FMItSjWjs%26title%3D%25D0%259A%25D0%25BE%25D1%2582%2Bvs%2B%25D0%25AF%25D1%2589%25D0%25B5%25D1%2580%25D0%25B8%25D1%2586%25D0%25B0%2Cview_count%3D3%252C519%26author%3DOneBelough%26length_seconds%3D210%26id%3D6sl6BlztMNw%26title%3DWoman%2BWith%2BTwo%2BVaginas%2BTells%2BAll%2521%2Cview_count%3D28%252C734%26author%3Dhodgetwins%26length_seconds%3D247%26id%3DZz7Dq3t62DE%26title%3DWoman%2Bwith%2B2%2BVagina%2527s%2BShe%2BLost%2BHer%2BVirginity%2BTwice%2521%2521%2521%2Cview_count%3D21%252C567%26author%3Ditn%26length_seconds%3D106%26id%3DqA_SlBt9WJI%26title%3DTV%2BNEWS%253A%2BWoman%2Bwith%2Btwo%2Bvaginas%2Bshocks%2BThis%2BMorning%2Cview_count%3D336%252C101%26author%3DJesusLovesUYesHeDo%26length_seconds%3D258%26id%3Dtplfas9OIFI%26title%3DPole%2BDancing%2BFor%2BJesus%2Cview_count%3D18%252C151%26author%3DNkoyoProduction%26length_seconds%3D218%26id%3Dv22e5dfMZ_o%26title%3DWoman%2BBorn%2BWith%2B2%2BVaginas%2B%2522Think%2BOf%2BIt%2BLike%2BHaving%2BA%2BDouble%2BBarrel%2BShotgun%2522%2Cview_count%3D55%252C255%26author%3DFakeLeslie%26length_seconds%3D62%26id%3DiLDplW79wS4%26title%3DTyra%2Btalks%2Bto%2Ba%2Bwoman%2Bwith%2Btwo%2Bvaginas&amp;vq=auto&amp;account_playback_token=&amp;autohide=2&amp;csi_page_type=watch5&amp;keywords=Vagina%2CWOMAN%2Csex%2CITV1%2CHigh+Wycombe%2Ctelevision%2CThis+Morning%2Cmedical%2Cuterus%2Cdidelphys%2Cfetish%2CThis+Morning+%28TV+Series%29%2CLondon%2CEngland%2Cvirginity%2CVirgin&amp;cr=US&amp;cc3_module=http%3A%2F%2Fs.ytimg.com%2Fyt%2Fswfbin%2Fsubtitles3_module-vfl2KTtwW.swf&amp;fmt_list=43%2F640x360%2F99%2F0%2F0%2C34%2F640x360%2F9%2F0%2F115%2C18%2F640x360%2F9%2F0%2F115%2C5%2F320x240%2F7%2F0%2F0&amp;length_seconds=210&amp;enablejsapi=1&amp;theme=tlb&amp;plid=AAS2fCIIhdubXFHs&amp;cc_font=Arial+Unicode+MS%2C+arial%2C+verdana%2C+_sans&amp;sdetail=p%3A%2Fembed%2FARxfNM3vBrI&amp;url_encoded_fmt_stream_map=url%3Dhttp%253A%252F%252Fo-o.preferred.sjc07s15.v13.lscache5.c.youtube.com%252Fvideoplayback%253Fsparams%253Did%25252Cexpire%25252Cip%25252Cipbits%25252Citag%25252Csource%25252Cratebypass%25252Ccp%2526fexp%253D904443%25252C901604%25252C911108%2526itag%253D43%2526ip%253D207.0.0.0%2526signature%253D91344B2E8C0E402EB232C41DB5127B6DBC8F162A.881D36DD56635AE8930CE9DB394D3C396CEE2AFE%2526sver%253D3%2526ratebypass%253Dyes%2526source%253Dyoutube%2526expire%253D1326567963%2526key%253Dyt1%2526ipbits%253D8%2526cp%253DU0hRS1VRVV9LTUNOMV9NS1lKOkg4LVE5VFVpVFZI%2526id%253D011c5f34cdef06b2%26quality%3Dmedium%26fallback_host%3Dtc.v13.cache5.c.youtube.com%26type%3Dvideo%252Fwebm%253B%2Bcodecs%253D%2522vp8.0%252C%2Bvorbis%2522%26itag%3D43%2Curl%3Dhttp%253A%252F%252Fo-o.preferred.sjc07s15.v1.lscache3.c.youtube.com%252Fvideoplayback%253Fsparams%253Did%25252Cexpire%25252Cip%25252Cipbits%25252Citag%25252Csource%25252Calgorithm%25252Cburst%25252Cfactor%25252Ccp%2526fexp%253D904443%25252C901604%25252C911108%2526algorithm%253Dthrottle-factor%2526itag%253D34%2526ip%253D207.0.0.0%2526burst%253D40%2526sver%253D3%2526signature%253D968727F9F95AE33A160278BF66CCC7EFFCE3E64B.7CF007E5AA66E8F3388FCB30E175C30DD21B926C%2526source%253Dyoutube%2526expire%253D1326567963%2526key%253Dyt1%2526ipbits%253D8%2526factor%253D1.25%2526cp%253DU0hRS1VRVV9LTUNOMV9NS1lKOkg4LVE5VFVpVFZI%2526id%253D011c5f34cdef06b2%26quality%3Dmedium%26fallback_host%3Dtc.v1.cache3.c.youtube.com%26type%3Dvideo%252Fx-flv%26itag%3D34%2Curl%3Dhttp%253A%252F%252Fo-o.preferred.sjc07s15.v14.lscache3.c.youtube.com%252Fvideoplayback%253Fsparams%253Did%25252Cexpire%25252Cip%25252Cipbits%25252Citag%25252Csource%25252Cratebypass%25252Ccp%2526fexp%253D904443%25252C901604%25252C911108%2526itag%253D18%2526ip%253D207.0.0.0%2526signature%253D5C732CADCD3B74DB06B2F00AC81453216DAB818C.3D5444A09A83EA584D99446B4C3BE0EE2955C668%2526sver%253D3%2526ratebypass%253Dyes%2526source%253Dyoutube%2526expire%253D1326567963%2526key%253Dyt1%2526ipbits%253D8%2526cp%253DU0hRS1VRVV9LTUNOMV9NS1lKOkg4LVE5VFVpVFZI%2526id%253D011c5f34cdef06b2%26quality%3Dmedium%26fallback_host%3Dtc.v14.cache3.c.youtube.com%26type%3Dvideo%252Fmp4%253B%2Bcodecs%253D%2522avc1.42001E%252C%2Bmp4a.40.2%2522%26itag%3D18%2Curl%3Dhttp%253A%252F%252Fo-o.preferred.sjc07s15.v17.lscache3.c.youtube.com%252Fvideoplayback%253Fsparams%253Did%25252Cexpire%25252Cip%25252Cipbits%25252Citag%25252Csource%25252Calgorithm%25252Cburst%25252Cfactor%25252Ccp%2526fexp%253D904443%25252C901604%25252C911108%2526algorithm%253Dthrottle-factor%2526itag%253D5%2526ip%253D207.0.0.0%2526burst%253D40%2526sver%253D3%2526signature%253DBED0D0334417721435CC0A536510C75EDEC9A56F.A405A666A4B45F14AC0B07438D344ED14FA7C859%2526source%253Dyoutube%2526expire%253D1326567963%2526key%253Dyt1%2526ipbits%253D8%2526factor%253D1.25%2526cp%253DU0hRS1VRVV9LTUNOMV9NS1lKOkg4LVE5VFVpVFZI%2526id%253D011c5f34cdef06b2%26quality%3Dsmall%26fallback_host%3Dtc.v17.cache3.c.youtube.com%26type%3Dvideo%252Fx-flv%26itag%3D5&amp;watermark=%2Chttp%3A%2F%2Fs.ytimg.com%2Fyt%2Fimg%2Fwatermark%2Fyoutube_watermark-vflHX6b6E.png%2Chttp%3A%2F%2Fs.ytimg.com%2Fyt%2Fimg%2Fwatermark%2Fyoutube_hd_watermark-vflAzLcD6.png&amp;sourceid=y&amp;timestamp=1326544170&amp;cc_asr=1&amp;endscreen_module=http%3A%2F%2Fs.ytimg.com%2Fyt%2Fswfbin%2Fendscreen-vflQj8PJL.swf&amp;showpopout=1&amp;hl=en_US&amp;tmi=1&amp;no_get_video_log=1&amp;cc_module=http%3A%2F%2Fs.ytimg.com%2Fyt%2Fswfbin%2Fsubtitle_module-vfl7Ut0Yi.swf&amp;supersizefeatured=1&amp;referrer=http%3A%2F%2Fwww.youtube.com%2Fembed%2FARxfNM3vBrI&amp;video_id=ARxfNM3vBrI&amp;sendtmp=1&amp;sk=Da8FnSfwrwaBna3kd3asW73yqEFDDPRoC&amp;t=vjVQa1PpcFNrkU_yHYETL2NqOvf9sb5ZLbMUeS0nJ-o%3D" allowscriptaccess="always" allowfullscreen="true" bgcolor="#000000" width="640" height="390">
-                           <noembed>
-                              <div  class="yt-alert yt-alert-error yt-alert-player yt-rounded ">
-                                 <span class="yt-alert-icon"><img src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="icon master-sprite" alt="Alert icon"></span>
-                                 <div  class="yt-alert-content">        You need Adobe Flash Player to watch this video. <br> <a href="http://get.adobe.com/flashplayer/">Download it from Adobe.</a></div>
-                              </div>
-                           </noembed>
-                        </div>
+						<video controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}"></video>
+						<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+		<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+		<script src="https://unpkg.com/plyr@3.6.8/dist/plyr.min.js"></script>
+		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
+		<!-- indigo player (the player we used back in the milestone/alpha days) was starting to have a lot of techincal issues by the time of alpha 3.
+		videos would randomly glitch on indigo and sometimes it wouldn't even load the goddamn video (not a ffmpeg issue this time). 
+		we at squarebracket have decided to use plyr instead of indigo. the aspect ratio is a bit wonky but that should be fixed soon 
+		-gamerappa, July 31st 2021 -->
+		    <style>
+				.plyr--video {
+					height: 340px;
+				}
+		    </style>
+		<script>
+			{% if not (video.flags b-and 2) %}
+				document.addEventListener('DOMContentLoaded', () => {
+					const source = '{{ video.videofile }}';
+					// For more dash options, see https://github.com/Dash-Industry-Forum/dash.js
+					const dash = dashjs.MediaPlayer().create();
+					const video = document.querySelector('video');
+					dash.initialize(video, source, true);
+
+					// Update caption tracks after initializing Plyr to get the generated captions
+					// For more options see: https://github.com/sampotts/plyr/#options
+					const player = new Plyr(video);
+
+					// Expose player and dash so they can be used from the console
+					window.player = player;
+					window.dash = dash;
+				});
+			{% endif %}
+		</script>
                         <!-- begin watch-video-extra -->
                         <div id="watch-video-extra">
                         </div>
@@ -134,15 +157,10 @@
                   <div id="watch-main-container">
                      <div id="watch-main">
                         <div id="watch-panel">
-                           <div id="flash10-promo-div" style="display: none;" class="yt-alert yt-alert-warn yt-rounded ">
-                              <span class="yt-alert-icon"><img src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="icon master-sprite" alt="Alert icon"></span>
-                              <div class="yt-alert-content">        Upgrade to Flash Player 10 for improved playback performance. <a href="http://www.adobe.com/go/getflashplayer/" onmousedown="urchinTracker('/Events/VideoWatch/GetFlashUpgrade');">Upgrade Now</a> or <a href="http://support.google.com/youtube/bin/answer.py?answer=95402">More Info</a>.</div>
-                              <button type="button" onclick="_hidediv(this.parentNode);" class="close">Close</button>
-                           </div>
                            <div id="watch-actions">
                               <div id="watch-actions-right">
                                  <span class="watch-view-count">
-                                 <strong>920,511</strong>
+                                 <strong>{{ video.views }}</strong>
                                  </span>
                                  <button onclick=";return false;" title="Show video statistics" type="button" id="watch-insight-button" class="yt-uix-tooltip yt-uix-tooltip-reverse yt-uix-button yt-uix-tooltip yt-uix-button-empty" data-button-action="yt.www.watch.actions.stats" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-watch-insight" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="Show video statistics"></button>
                               </div>
@@ -188,37 +206,22 @@
                                        on <span id="eow-date" class="watch-video-date">Jan 11, 2012</span>
                                     </p>
                                     <div id="watch-description-text">
-                                       <p id="eow-description">A WOMAN told yesterday how a one-in-a-million medical condition led to her being born with TWO fully-formed vaginas. <br>Hazel Jones, 27, said it means she has lost her virginity TWICE.<br><br>But she added she was so at ease with her body that she goes to sex clubs with her husband.<br><br>First, Hazel told ITV1's This Morning hosts Holly Willoughby and Phillip Schofield she was 18 before being diagnosed with uterus didelphys. <br>It occurs when a barrier between two tubes that form the uterus fails to break down during development, leaving two internal channels.<br><br>Hazel, of High Wycombe, Bucks, did not realise she was different until her periods started at 14. She said: "I told friends. They looked even more confused than me."<br><br>She went to hospital four years later to learn the truth. She added: "I thought it was amazing."<br><br>Hazel told The Sun last night she and hubby Riki visited fetish clubs, explaining: "It shows how relaxed I am.<br><br>"My quirky condition does not make me shy or hold me back. In fact, it's something I celebrate."</p>
+                                       <p id="eow-description">{{ video.description }}</p>
                                     </div>
                                     <div id="watch-description-extras">
                                        <h4>
                                           Category:
                                        </h4>
-                                       <p id="eow-category"><a href="/news">News &amp; Politics</a></p>
+                                       <p id="eow-category"><a href="/news">{{ video.category_id | category_id_to_name() }}</a></p>
                                        <h4>
                                           Tags:
                                        </h4>
                                        <ul id="eow-tags" class="watch-info-tag-list">
-                                          <li><a href="/results?search_query=Vagina&amp;search=tag">Vagina</a></li>
-                                          <li><a href="/results?search_query=WOMAN&amp;search=tag">WOMAN</a></li>
-                                          <li><a href="/results?search_query=sex&amp;search=tag">sex</a></li>
-                                          <li><a href="/results?search_query=ITV1&amp;search=tag">ITV1</a></li>
-                                          <li><a href="/results?search_query=High%20Wycombe&amp;search=tag">High Wycombe</a></li>
-                                          <li><a href="/results?search_query=television&amp;search=tag">television</a></li>
-                                          <li><a href="/results?search_query=This%20Morning&amp;search=tag">This Morning</a></li>
-                                          <li><a href="/results?search_query=medical&amp;search=tag">medical</a></li>
-                                          <li><a href="/results?search_query=uterus&amp;search=tag">uterus</a></li>
-                                          <li><a href="/results?search_query=didelphys&amp;search=tag">didelphys</a></li>
-                                          <li><a href="/results?search_query=fetish&amp;search=tag">fetish</a></li>
-                                          <li><a href="/results?search_query=This%20Morning%20%28TV%20Series%29&amp;search=tag">This Morning (TV Series)</a></li>
-                                          <li><a href="/results?search_query=London&amp;search=tag">London</a></li>
-                                          <li><a href="/results?search_query=England&amp;search=tag">England</a></li>
-                                          <li><a href="/results?search_query=virginity&amp;search=tag">virginity</a></li>
-                                          <li><a href="/results?search_query=Virgin&amp;search=tag">Virgin</a></li>
+                                          <li><a href="#">Placeholder, json export shit not implemented.</a></li>
                                        </ul>
                                        <h4>License:</h4>
                                        <p id="eow-reuse">
-                                          Standard YouTube License
+                                          Standard squareBracket License
                                        </p>
                                     </div>
                                  </div>
