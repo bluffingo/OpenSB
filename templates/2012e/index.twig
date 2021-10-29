@@ -40,16 +40,16 @@
                         <a href="user.php?name={{ userdata.name }}" style="color:#999;">My channel <img src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="see-more-arrow" alt=""></a>
                      </div>
                      <div style="font-size: 11px;margin-bottom: 4px;">
-                        <a href="my_videos.php" style="color:#999;">Videos</a>
+                        <a href="my_videos.php" style="color:#999;">{{ __("Videos") }}</a>
                      </div>
                      <div style="font-size: 11px;margin-bottom: 4px;">
-                        <a href="likes.php" style="color:#999;">Likes</a>
+                        <a href="likes.php" style="color:#999;">{{ __("Likes") }}</a>
                      </div>
                      <div style="font-size: 11px;margin-bottom: 4px;">
-                        <a href="history.php" style="color:#999;">History</a>
+                        <a href="history.php" style="color:#999;">{{ __("History") }}</a>
                      </div>
                      <div style="font-size: 11px;margin-bottom: 4px;">
-                        <a href="quicklist.php" style="color:#999;">Watch Later</a>
+                        <a href="quicklist.php" style="color:#999;">{{ __("Watch Later") }}</a>
                      </div>
                   </div>
                </div>
@@ -107,32 +107,12 @@
                         </a>
                      </li>
                      <li class="guide-item-container hideable">
-                        <a class="guide-item " data-feed-name="sports" data-feed-type="chart">
-                        <span class="thumb">
-                        <img class="system-icon chart sports" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
-                        </span>
-                        <span class="display-name">
-                        Sports
-                        </span>
-                        </a>
-                     </li>
-                     <li class="guide-item-container hideable">
-                        <a class="guide-item " data-feed-name="film" data-feed-type="chart">
-                        <span class="thumb">
-                        <img class="system-icon chart film" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
-                        </span>
-                        <span class="display-name">
-                        Film &amp; Animation
-                        </span>
-                        </a>
-                     </li>
-                     <li class="guide-item-container hideable">
                         <a class="guide-item " data-feed-name="news" data-feed-type="chart">
                         <span class="thumb">
                         <img class="system-icon chart news" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
                         </span>
                         <span class="display-name">
-                        News &amp; Politics
+                        News &amp; Updates
                         </span>
                         </a>
                      </li>
@@ -142,17 +122,7 @@
                         <img class="system-icon chart comedy" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
                         </span>
                         <span class="display-name">
-                        Comedy
-                        </span>
-                        </a>
-                     </li>
-                     <li class="guide-item-container hideable">
-                        <a class="guide-item " data-feed-name="people" data-feed-type="chart">
-                        <span class="thumb">
-                        <img class="system-icon chart people" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
-                        </span>
-                        <span class="display-name">
-                        People &amp; Blogs
+                        Shitposting &amp; Comedy
                         </span>
                         </a>
                      </li>
@@ -177,62 +147,12 @@
                         </a>
                      </li>
                      <li class="guide-item-container hideable">
-                        <a class="guide-item " data-feed-name="howto" data-feed-type="chart">
+                        <a class="guide-item " data-feed-name="people" data-feed-type="chart">
                         <span class="thumb">
-                        <img class="system-icon chart howto" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
+                        <img class="system-icon chart people" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
                         </span>
                         <span class="display-name">
-                        Howto &amp; Style
-                        </span>
-                        </a>
-                     </li>
-                     <li class="guide-item-container hideable">
-                        <a class="guide-item " data-feed-name="education" data-feed-type="system">
-                        <span class="thumb">
-                        <img class="system-icon system education" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
-                        </span>
-                        <span class="display-name">
-                        Education
-                        </span>
-                        </a>
-                     </li>
-                     <li class="guide-item-container hideable">
-                        <a class="guide-item " data-feed-name="animals" data-feed-type="chart">
-                        <span class="thumb">
-                        <img class="system-icon chart animals" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
-                        </span>
-                        <span class="display-name">
-                        Pets &amp; Animals
-                        </span>
-                        </a>
-                     </li>
-                     <li class="guide-item-container hideable">
-                        <a class="guide-item " data-feed-name="vehicles" data-feed-type="chart">
-                        <span class="thumb">
-                        <img class="system-icon chart vehicles" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
-                        </span>
-                        <span class="display-name">
-                        Autos &amp; Vehicles
-                        </span>
-                        </a>
-                     </li>
-                     <li class="guide-item-container hideable">
-                        <a class="guide-item " data-feed-name="travel" data-feed-type="chart">
-                        <span class="thumb">
-                        <img class="system-icon chart travel" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
-                        </span>
-                        <span class="display-name">
-                        Travel &amp; Events
-                        </span>
-                        </a>
-                     </li>
-                     <li class="guide-item-container hideable">
-                        <a class="guide-item " data-feed-name="nonprofits" data-feed-type="chart">
-                        <span class="thumb">
-                        <img class="system-icon chart nonprofits" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
-                        </span>
-                        <span class="display-name">
-                        Nonprofits &amp; Activism
+                        Life
                         </span>
                         </a>
                      </li>
@@ -253,7 +173,7 @@
          <div id="video-sidebar">
             <div id="pyv-placeholder"></div>
             <h3 class="sidebar-module-header">
-               Spotlight
+               {{ __("Spotlight") }}
             </h3>
             <h2>squareBracket 2012?</h2>
             <p class="sidebar-module-description">
@@ -360,14 +280,14 @@
             </div>
             <div id="feed-error" class="individual-feed hid">
                <p class="feed-message">
-                  We were unable to complete the request, please try again later.
+                  {{ __("We were unable to complete the request, please try again later.") }}
                </p>
             </div>
             <div id="feed-loading-template" class="hid">
                <div class="feed-message">
                   <p class="loading-spinner">
                      <img src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="">
-                     Loading...
+                     {{ __("Loading...") }}
                   </p>
                </div>
             </div>

@@ -9,6 +9,12 @@ switch($_GET['feed_type']) {
 	case "popular":
 		$type = 1;
 		break;
+	case "trending":
+		$type = 2;
+		break;
+	case "music":
+		$type = 3;
+		break;
 }
 require('lib/common.php');
 switch($type) {
@@ -23,7 +29,14 @@ switch($type) {
 		$title = "Popular";
 		break;
 	case 2:
-		$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author, v.videolength FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? AND NOT v.flags = 0010 AND NOT v.flags = 0020 AND v.author = ? ORDER BY RAND() LIMIT 6", [$videoID, $videoInfo['author']]);
+		$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.videolength, v.tags, v.category_id, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY v.views DESC LIMIT 10");
+		$icon = "trending";
+		$title = "Trending";		
+		break;
+	case 3:
+		$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.videolength, v.tags, v.category_id, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY v.views DESC LIMIT 10");
+		$icon = "music";
+		$title = "Music";		
 		break;
 	default:
 		$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author, v.videolength FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? AND NOT v.flags = 0010 AND NOT v.flags = 0020 ORDER BY RAND() LIMIT 6", [$videoID]);
