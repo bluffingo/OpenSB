@@ -68,7 +68,38 @@
       <script>
          yt.setConfig('TIMING_ACTION', 'glo');
       </script>
+<div id="page" class="">
+   <!-- begin pagetop -->
+   <div id="masthead-container">
+      <div id="masthead" class="" dir="ltr">
+         <a id="logo-container" href="/" title="squareBracket home">
+         <img id="logo" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="squareBracket home">
+         </a>
+         <div id="masthead-user-bar-container">
+            <div id="masthead-user-bar">
+               <div id="masthead-user">
+                  <a class="start" href="signup.php">Create Account</a>    <span class="masthead-link-separator">|</span>  <a class="end" href="login.php">Sign In</a>
+               </div>
+            </div>
+         </div>
+         <div id="masthead-search-bar-container">
+            <div id="masthead-search-bar">
+               <div id="masthead-nav"><a href="/web/20120118121554/http://www.youtube.com/videos?feature=mh">Browse</a><span class="masthead-link-separator">|</span><a href="/web/20120118121554/http://www.youtube.com/movies?feature=mh">Movies</a>              <span class="masthead-link-separator">|</span><a href="https://web.archive.org/web/20120118121554/http://upload.youtube.com/my_videos_upload">Upload</a></div>
+               <form id="masthead-search" class="search-form consolidated-form" action="/web/20120118121554/http://www.youtube.com/results" onsubmit="if (_gel('masthead-search-term').value == '') return false;">
+                  <button class="search-btn-compontent search-button yt-uix-button" onclick="if (_gel('masthead-search-term').value == '') return false; _gel('masthead-search').submit(); return false;;return true;" type="submit" id="search-btn" dir="ltr" tabindex="2" role="button"><span class="yt-uix-button-content">Search </span></button>
+                  <div id="masthead-search-terms" dir="ltr" style="border-color: rgb(192, 192, 192) rgb(217, 217, 217) rgb(217, 217, 217);"><label><input id="masthead-search-term" onfocus="_addclass(_gel('masthead-search'), 'focused'); " onblur="_removeclass(_gel('masthead-search'), 'focused');" autocomplete="off" class="search-term " name="search_query" value="" type="text" tabindex="1" onkeyup="goog.i18n.bidi.setDirAttribute(event,this)" title="Search" dir="ltr" spellcheck="false" style="outline: currentcolor none medium;"></label></div>
+                  <script>document.getElementById('masthead-search-term').focus();</script>  <input type="hidden" name="oq"><input type="hidden" name="aq"><input type="hidden" name="aqi"><input type="hidden" name="aql"><input type="hidden" name="gs_sm"><input type="hidden" name="gs_upl">
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- end pagetop -->
+   <!-- begin pagemiddle -->
+   <div id="content-container">
       {% block content %}{% endblock %}
+	     </div>
+</div>
    <!-- end pagemiddle -->
    <!-- begin pagebottom -->
    <div id="footer-container">
