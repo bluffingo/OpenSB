@@ -26,6 +26,7 @@
       </style>
       <link rel="stylesheet" href="/assets/2012/css/www-guide-vfl4MukmA.css">
       <script id="www-core-js" src="//web.archive.org/web/20120118121554js_/http://s.ytimg.com/yt/jsbin/www-core-vflwwszXl.js"></script>
+	  {% block prestart_scripts %}{% endblock %}
       <script>
          yt.setConfig({
          'XSRF_TOKEN': 'TtLcnNITKkBecOkz5Lz-rzyuuvt8MTMyNjk3NTM1NEAxMzI2ODg4OTU0',
@@ -261,6 +262,7 @@
    <!-- end pagebottom -->
 </div>
 <!-- end page -->
+		{% block scripts %}{% endblock %}
       <script>
          yt.setMsg({
            'LIST_CLEARED': "List cleared",
