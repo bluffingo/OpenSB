@@ -273,9 +273,12 @@
                                              {{ video.description|length > 100 ? video.description|slice(0, 100) ~ '...' : video.description }}
                                           </div>
                                        </div>
-                                       <span class="view-count">
-                                       {{ video.views }} views
-                                       </span>
+										<p class="metadata">
+											{{ userlink(video, 'u_') }}
+											<span class="view-count">
+										{{ video.views }} views
+											</span>
+										  </p>
                                        </p>
                                     </div>
                                  </div>
