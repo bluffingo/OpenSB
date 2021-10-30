@@ -8,7 +8,8 @@ if (!isset($_POST['vidid'])) {
 }
 
 $comment = [
-	'u_username' => $userdata['name'],
+	'u_name' => $userdata['name'],
+	'u_customcolor' => $userdata['customcolor'],
 	'comment' => $_POST['comment'],
 	'date' => time()
 ];
