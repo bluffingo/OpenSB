@@ -21,8 +21,8 @@
 
 	"No reset data.": "No reset data.",
 
-	"do not reset": "do not reset",
-	"Passwords aren't identical.": "Passwords aren't identical.",
+	" The new passwords aren't identical.": " The new passwords aren't identical.",
+	"Your current password is incorrect.": "Your current password is incorrect.",
 
 	"Subscribe": "Subscribe",
 	"Unsubscribe": "Unsubscribe",
@@ -30,16 +30,39 @@
 	"Your video is already uploading or has been uploaded.": "Your video is already uploading or has been uploaded.",
 	"Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed.": "Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed.",
 
+	"Your music is already uploading or has been uploaded.": "Your music is already uploading or has been uploaded.",
+	"Please wait 2 minutes before uploading again. If you've already uploaded a music, it is being processed.": "Please wait 2 minutes before uploading again. If you've already uploaded a music, it is being processed.",
+
 	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
 
 	"This feature is not ready for production.": "This feature is not ready for production.",
 	"Access Denied": "Access Denied",
 
+	"Videos": "Videos",
+	"Likes": "Likes",
+	"History": "History",
+	"Watch Later": "Watch Later",
+	"Spotlight": "Spotlight",
+	"No featured videos.": "No featured videos.",
+	"We were unable to complete the request, please try again later.": "We were unable to complete the request, please try again later.",
+	"Loading...": "Loading...",
+
+	"Sign up for a new squareBracket account": "Sign up for a new squareBracket account",
+	"Sign in": "Sign in",
+	"squareBracket Username": "squareBracket Username",
+	"Password": "Password",
+	"squareBracket": "squareBracket",
+	"Sign in to squareBracket with your squareBracket account": "Sign in to squareBracket with your squareBracket account",
+	"Sign in to squareBracket": "Sign in to squareBracket",
+	"Get full access to squareBracket with your account:": "Get full access to squareBracket with your account:",
+	"Upload and share your own videos": "Upload and share your own videos",
+	"Comment on and rate your favorite videos": "Comment on and rate your favorite videos",
+	"By squareBracket contributors": "By squareBracket contributors",
+
 	"About": "About",
 	"About squareBracket": "About squareBracket",
 	"Gamerappa squareBracket": "Gamerappa squareBracket",
 	"Version 2.0 (Build 47101)": "Version 2.0 (Build 47101)",
-	"By squareBracket contributors": "By squareBracket contributors",
 	"The squareBracket website is open source on GitHub.": "The squareBracket website is open source on GitHub.",
 
 	"Admin": "Admin",
@@ -48,7 +71,6 @@
 
 	"Browse": "Browse",
 	"Videos from subscriptions": "Videos from subscriptions",
-	"Videos": "Videos",
 	"Your subscriptions haven't uploaded videos yet.": "Your subscriptions haven't uploaded videos yet.",
 	"No uploaded videos.": "No uploaded videos.",
 
@@ -70,23 +92,13 @@
 	"News and updates": "News and updates",
 	"There are currently no updates.": "There are currently no updates.",
 	"Featured videos": "Featured videos",
-	"No featured videos.": "No featured videos.",
 
 	"Login": "Login",
 	"Password successfully reset! Please login with your new password.": "Password successfully reset! Please login with your new password.",
 	"You have been successfully logged out of all devices.": "You have been successfully logged out of all devices.",
 	"Username": "Username",
-	"Password": "Password",
 	"Back": "Back",
 	"Account passwords are hashed with bcrypt.": "Account passwords are hashed with bcrypt.",
-
-	"Write a Forum Thread": "Write a Forum Thread",
-	"As you can tell, this page is not complete": "As you can tell, this page is not complete",
-	"Your post": "Your post",
-	"Write whatever you want to post on the squareBracket Forums": "Write whatever you want to post on the squareBracket Forums",
-	"Thread's title": "Thread's title",
-	"Thread's contents": "Thread's contents",
-	"Post Thread": "Post Thread",
 
 	"Register": "Register",
 	"E-mail": "E-mail",
@@ -180,19 +192,32 @@
 	"By the squareBracket contributors": "By the squareBracket contributors",
 	"Users registered": "Users registered",
 	"Videos uploaded": "Videos uploaded",
-	"Terms": "Terms",
-	"Guidelines": "Guidelines",
-	"Contact": "Contact",
+
+	"%s follower%s": "%s follower%s",
+
+	"Upload music": "Upload music",
+	"By uploading your music onto squareBracket, you acknowledge about the upload guidelines.": "By uploading your music onto squareBracket, you acknowledge about the upload guidelines.",
+	"Music info": "Music info",
+	"Enter the title of your music.": "Enter the title of your music.",
+	"Music file": "Music file",
+	"Select the music file you want to upload.": "Select the music file you want to upload.",
 
 	"Video": "Video",
 	"Music": "Music",
-	"Upload music": "Upload music",
 	"Artwork": "Artwork",
 	"Upload artwork": "Upload artwork",
 
 	"Your profile settings have been successfully updated.": "Your profile settings have been successfully updated.",
+	"Generate password reset": "Generate password reset",
 
-	"Published on %s": "Published on %s",
+	"Not implemented": "Not implemented",
+
+	"About This Video": "About This Video",
+	"Published: %s": "Published: %s",
+	"Uploader:": "Uploader:",
+	"Category:": "Category:",
+	"Description:": "Description:",
+	"Explore More Videos": "Explore More Videos",
 
 	"views": "views"
 
