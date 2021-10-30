@@ -1,5 +1,6 @@
 .container {
     padding: 0 15px;
+	transition: max-width ease-out 1s, padding 1s;
 // 576px window width and more
     @include sm {
         padding: 0 20px;
@@ -9,5 +10,10 @@
         margin-left: auto;
         margin-right: auto;
         max-width: 1100px;
+    }
+// i have no idea
+    @include xl {
+        max-width: 1150px;
+		padding: 0 50px;
     }
 }

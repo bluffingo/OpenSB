@@ -27,9 +27,9 @@
 }
 
 .button-large {
-    padding: 11px 19px;
-    border-radius: 6px;
-	font-size: 17.5px;
+    padding: 11px 15px;
+    border-radius: 5px;
+	font-size: 16px;
 }
 
 @each $state, $value in $theme-colors {

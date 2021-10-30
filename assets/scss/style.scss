@@ -46,7 +46,7 @@ $screen-xl-min: 1200px;
 }
 
 $columns: 12;
-$gap: 30px;
+$gap: 20px;
 $breakpoints: (
     sm: 500px,
     md: 700px,
@@ -91,7 +91,7 @@ $breakpoints: (
 body {
 	background-color: #F0F0F0;
 	font-family: Inter, tahoma, verdana, arial, helvetica, sans-serif;
-	font-size: 0.9em;
+	font-size: 0.85em;
 	margin: auto;
 	width: 100%;
 	padding-bottom: 30px;
@@ -133,8 +133,12 @@ p {
 }
 
 .top {
-	height: 32px;
+	height: 48px;
+	transition: height ease-out 1s;
 	border-top-width: 0;
+	@include sm {
+		height: 32px;
+    }
 }
 
 .footer {
@@ -142,16 +146,26 @@ p {
 }
 
 .picon {
-	width: 32px;
-	height: 32px;
+	width: 48px;
+	height: 48px;
+	transition: width ease-out 1s, height ease-out 1s;
 	float: left;
+	@include sm {
+		width: 32px;
+		height: 32px;
+    }
 }
 
 ul.menu {
 	display: inline;
-	line-height: 32px;
+	line-height: 24px;
 	text-align: center;
+	transition: line-height ease-out 1s;
 
+	@include sm {
+		line-height: 32px;
+    }
+	
 	li {
 		list-style-type: none;
 		float: left;
@@ -542,7 +556,7 @@ form.reglog {
     background-size: cover;
     margin: 0;
     padding: 0;
-    min-height: 250px;
+    min-height: 225px;
     color: #ffffff;
     display: flex;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) !important;
