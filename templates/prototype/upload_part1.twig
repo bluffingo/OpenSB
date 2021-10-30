@@ -55,7 +55,7 @@
 {% block content %}
 <h1>Upload</h1>
 <div class="grid">
-      <div class="feature col-4">
+      <div class="feature col-6">
         <div class="feature-icon bg-primary">
           {{ icon_alt('film', 32) }}
         </div>
@@ -66,7 +66,7 @@
           {{ icon('chevron-right', 16) }}
         </a>
       </div>
-      <div class="feature col-4">
+      <div class="feature col-6">
         <div class="feature-icon bg-carrot">
           {{ icon_alt('music-note-beamed', 32) }}
         </div>
@@ -77,15 +77,4 @@
           {{ icon('chevron-right', 16) }}
         </a>
       </div>
-      <div class="feature col-4">
-        <div class="feature-icon bg-violet">
-          {{ icon_alt('easel', 32) }}
-        </div>
-        <h2>{{ __("Artwork") }}</h2>
-        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-		<a href="#" class="icon-link">
-          {{ __("Upload artwork") }} (Unfinished)
-          {{ icon('chevron-right', 16) }}
-        </a>
-    </div>
 {% endblock %}
