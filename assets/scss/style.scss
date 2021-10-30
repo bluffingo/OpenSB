@@ -97,6 +97,17 @@ body {
 	padding-bottom: 30px;
 }
 
+
+a:link, a:visited {
+	color: $teal;
+	text-decoration: none;
+}
+
+a:hover {
+    color: $red;
+    text-decoration: none;
+}
+
 p {
 	line-height: 1.25em;
 }
@@ -629,7 +640,60 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
     margin-bottom: 15px;
     padding: 7px 9px;
 }
+ /* The side navigation menu */
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: $gray-900;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
 
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: #FFFFFF;
+  padding: 8px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: $primary;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 200px;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+} 
 /// Gradients \\\
 @import "_gradients";
 /// Backgrounds \\\
@@ -646,13 +710,3 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 @import "_buttons";
 /// Navs \\\
 @import "_navs";
-
-a:link, a:visited {
-	color: $teal;
-	text-decoration: none;
-}
-
-a:hover {
-    color: $red;
-    text-decoration: none;
-}
