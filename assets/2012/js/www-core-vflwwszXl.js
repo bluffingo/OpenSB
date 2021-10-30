@@ -8466,7 +8466,7 @@
         window.parent != window.top ? Fn() : te(Hn) || jg("/roger_rabbit?" + ("location=" + encodeURIComponent(Hn) + "&self=" + encodeURIComponent(window.location.href)), {
             onComplete: Gn
         })
-    };
+    }
     var In = m,
         Jn = function() {
             Ne("init");
