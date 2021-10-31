@@ -86,17 +86,25 @@
 			</div>
 		</div>
 		<h3>Comments (redesign this later)</h3>
-		<div class="grid" style="gap:0px">
-	<div class="col-1">
-		<img class="rounded" style="width:48px" src="{{ profile_image(userdata.name) }}">
-	</div>
-	<div class="col-11">
-		<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3" 
-		placeholder="{% if log %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}
-		{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
-	</div>
-</div>
-		<button id="{% if log %}post{% endif %}" class="button button-primary">{{ __("Comment") }}</button>
+		<div class="card">
+			<div class="card-body">
+				<div class="grid" style="gap:0px">
+					<div class="col-1">
+						<img class="rounded" style="width:48px" src="{{ profile_image(userdata.name) }}">
+					</div>
+					<div class="col-11">
+						<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3" 
+						placeholder="{% if log %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}
+						{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
+					</div>
+				</div>
+				<div class="grid">
+					<div class="col-offset-12">
+						<button id="{% if log %}post{% endif %}" class="button button-primary">{{ __("Comment") }}</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div id="comment"></div>
 		{% for comment in comments %}
 		{{ comment(comment) }}
@@ -127,4 +135,3 @@
 	</div>
 </div>
 {% endblock %}
-
