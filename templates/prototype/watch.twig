@@ -86,7 +86,7 @@
 				</div>
 			</div>
 		</div>
-		<h3>Comments (redesign this later)</h3>
+		<h3>Comments</h3>
 		<div class="card">
 			<div class="card-body-fat">
 				<div class="grid" style="gap:0px">
@@ -94,10 +94,13 @@
 						<img class="rounded" style="width:85%" src="{{ profile_image(userdata.name) }}">
 					</div>
 					<div class="col-11">
-						<div style="background-color:red;">
+						<div>
 						<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3" 
-						placeholder="{% if log %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}
-						{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
+						placeholder="{% if log %}
+						{{ __("Enter comment here, Markdown can be used here.") }}
+						{% else %}
+						{{ __("Please sign in in order to comment.") }}
+						{% endif %}"></textarea>
 						</div>
 					</div>
 				</div>
@@ -116,7 +119,7 @@
 	<div class="col-4">
 		<div class="card">
 			<div class="card-header">
-				<h5>{{ __("About This Video") }}</h5>
+				<h5>{{ __("About this video") }}</h5>
 			</div>
 			<div class="card-body">
 				<p>{{ __("Published: %s", [video.time | date('M j, Y')]) }}</p>

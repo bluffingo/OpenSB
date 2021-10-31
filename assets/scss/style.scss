@@ -645,13 +645,9 @@ input[type="color"],
 .uneditable-input {
   background-color: #ffffff;
   border: 1px solid #cccccc;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
+  border-radius: 5px;
 }
 
 textarea:focus,
@@ -701,6 +697,8 @@ input[type="color"]:focus,
   height: auto;
   margin-bottom: 15px;
   padding: 7px 9px;
+  width: 100%;
+  box-sizing: border-box;
 }
 /* The side navigation menu */
 .sidebar {
