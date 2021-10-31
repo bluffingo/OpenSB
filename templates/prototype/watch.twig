@@ -22,6 +22,7 @@
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
 <h1>{{ video.title }}</h1>
+<button id="subscribe" class="button button-{% if subscribed %}secondary{% elseif userdata.id == video.author %}primary{% else %}warning{% endif %}" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unsubscribe") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Subscribe") }}{% endif %}</button>
 <div class="grid">
 	<div class="col-8">
 		<div id="container" style="height: 30rem;">
@@ -72,14 +73,14 @@
 			<div class="card-body">
 				<div class="grid">
 					<div class="col-4">
-						Rate this video (unimplemented)
-						<br>
+						<h3 style="margin-top:0">Rate this video</h3>
 						<div>
-							{{ icon('star-fill', 16) }}
-							{{ icon('star-fill', 16) }}
-							{{ icon('star-fill', 16) }}
-							{{ icon('star-fill', 16) }}
-							{{ icon('star-fill', 16) }}
+<a href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="text-{% if total_likes != 0 %}success{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
+								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-up-fill"/>
+							</svg></a> <span id="likes">{{ total_likes }}</span>
+							<a href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" class="text-{% if total_dislikes != 0 %}danger{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
+								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-down-fill"/>
+							</svg></a> <span id="dislikes" style="padding-right: 10px">{{ total_dislikes }}</span>
 						</div>
 					</div>
 				</div>

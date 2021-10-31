@@ -7,7 +7,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		var audio = new Audio('/assets/sounds/'+sound+'.wav');
 		audio.play();
 	}
-	//document.getElementById("liveToastBtn").onclick = function() {
+	//document.getElementById("liveToastbutton").onclick = function() {
     //var myAlert =document.getElementById('liveToast');//select id of toast
     //var bsAlert = new bootstrap.Toast(myAlert);//inizialize it
     //bsAlert.show();//show it
@@ -66,7 +66,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		alert('you must be logged in.');
 	});
 	contents = $.trim($("#commentContents").val());
-	if (contents === null || contents == "" && $("#post").attr("class") != "btn btn-primary disabled") {
+	if (contents === null || contents == "" && $("#post").attr("class") != "button button-primary disabled") {
 		$("#post").addClass("disabled");
 	}
 	$("#commentContents").keydown(function(e){
@@ -109,12 +109,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			if (status == "success") {
 				if(data == subscribe_string) {
 					$("#subscribe").text(subscribe_string);
-					$("#subscribe").attr("class", "btn btn-warning");
+					$("#subscribe").attr("class", "button button-warning");
 					console.log("Unsubscribed " + user_id);
 					play("click");
 				} else if(data == unsubscribe_string) {
 					$("#subscribe").text(unsubscribe_string);
-					$("#subscribe").attr("class", "btn btn-secondary");
+					$("#subscribe").attr("class", "button button-secondary");
 					console.log("Subscribed " + user_id);
 					play("subscribe");
 				} else {
