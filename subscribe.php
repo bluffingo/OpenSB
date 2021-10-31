@@ -7,9 +7,9 @@ if (!isset($_POST['subscription']) or $_POST['subscription'] == '') {
 }
 if (result("SELECT COUNT(user) FROM subscriptions WHERE user=? AND id=?", [$_POST['subscription'], $userdata['id']]) != 0) {
 	query("DELETE FROM subscriptions WHERE user=? AND id=?", [$_POST['subscription'], $userdata['id']]);
-	echo __("Subscribe");
+	echo __("Follow");
 } else {
 	query("INSERT INTO subscriptions (id, user) VALUES (?,?)",
 		[$userdata['id'],$_POST['subscription']]);
-	echo __("Unsubscribe");
+	echo __("Unfollow");
 }

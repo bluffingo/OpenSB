@@ -109,7 +109,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			if (status == "success") {
 				if(data == subscribe_string) {
 					$("#subscribe").text(subscribe_string);
-					$("#subscribe").attr("class", "button button-warning");
+					$("#subscribe").attr("class", "button button-primary");
 					console.log("Unsubscribed " + user_id);
 					play("click");
 				} else if(data == unsubscribe_string) {
