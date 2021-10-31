@@ -206,7 +206,7 @@ ul.menu {
 		border-radius: 5px;
 
 		&:hover {
-			background-color: #fff;
+			background-color: $gray-800;
 		}
 	}
 
@@ -667,7 +667,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 
 /* Links on mouse-over */
 .sidebar a:hover:not(.active) {
-  background-color: #555;
+  background-color: $gray-800;
   color: white;
 }
 
