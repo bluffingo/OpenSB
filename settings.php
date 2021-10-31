@@ -7,8 +7,8 @@ if (!$log) redirect('login.php');
 $error = '';
 
 if (isset($_POST['magic'])) {
-	$displayName	= isset($_POST['displayName']) ? $_POST['displayName'] : null;
-	$color			= isset($_POST['color']) ? $_POST['color'] : '#523bb8'; // setting color to "null" would fuck up the scss compiler(?) -gr 7/26/2021
+	$title	= isset($_POST['title']) ? $_POST['title'] : null;
+	$customcolor			= isset($_POST['customcolor']) ? $_POST['customcolor'] : '#523bb8'; // setting color to "null" would fuck up the scss compiler(?) -gr 7/26/2021
 	$about			= isset($_POST['about']) ? $_POST['about'] : null;
 	$signature		= isset($_POST['signature']) ? $_POST['signature'] : null;
 
@@ -66,7 +66,7 @@ if (isset($_POST['magic'])) {
 	}
 
 	query("UPDATE users SET title = ?, about = ?, customcolor = ?, language = ?, signature = ? WHERE id = ?",
-		[$displayName, $about, $color, $language, $signature, $userdata['id']]);
+		[$title, $about, $customcolor, $language, $signature, $userdata['id']]);
 
 	if (!$error) {
 		redirect(sprintf("user.php?name=%s&edited", $userdata['name']));
