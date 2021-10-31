@@ -1,51 +1,53 @@
+
+
 {% extends "_layout.twig" %}
 {% block head %}
-	<meta name="title" content="{{ video.title }} - squareBracket">
-	<meta name="description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-	<meta property="og:site_name" content="SquareBracket"/>
-	<meta property="og:title" content="{{ video.title }} - squareBracket">
-	<meta property="og:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-	<meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
-	<meta property="og:url" content="{{ page_url }}">
-	<meta property="twitter:title" content="{{ video.title }} - squareBracket">
-	<meta property="twitter:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-	<meta property="twitter:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
-	<meta name="twitter:card" content="summary_large_image">
-	<script>
-		video_id = '{{ video.video_id }}';
-		user_id = '{{ video.author }}';
-	</script>
-	<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+<meta name="title" content="{{ video.title }} - squareBracket">
+<meta name="description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
+<meta property="og:site_name" content="SquareBracket"/>
+<meta property="og:title" content="{{ video.title }} - squareBracket">
+<meta property="og:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
+<meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
+<meta property="og:url" content="{{ page_url }}">
+<meta property="twitter:title" content="{{ video.title }} - squareBracket">
+<meta property="twitter:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
+<meta property="twitter:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
+<meta name="twitter:card" content="summary_large_image">
+<script>
+	video_id = '{{ video.video_id }}';
+	user_id = '{{ video.author }}';
+</script>
+<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
 <h1>{{ video.title }}</h1>
 <div class="grid">
-<div class="col-8">
+	<div class="col-8">
 		<div id="container" style="height: 30rem;">
 			<!--- todo: redo "video processed" message to use _error.twig -gr 7/22/2021 --->
 			{% if (video.flags b-and 2) %}
-				<div style="background-color: black; color: white; text-align: center; padding: 15rem">
-					{{ __("This video is being processed. Try again later.") }}
-				</div>
+			<div style="background-color: black; color: white; text-align: center; padding: 15rem">
+				{{ __("This video is being processed. Try again later.") }}
+			</div>
 			{% else %}
-				<video controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}"></video>
+			<video controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}"></video>
 			{% endif %}
 		</div>
 		<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
 		<script src="https://unpkg.com/plyr@3.6.8/dist/plyr.min.js"></script>
 		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
 		<!-- indigo player (the player we used back in the milestone/alpha days) was starting to have a lot of techincal issues by the time of alpha 3.
-		videos would randomly glitch on indigo and sometimes it wouldn't even load the goddamn video (not a ffmpeg issue this time). 
-		we at squarebracket have decided to use plyr instead of indigo. the aspect ratio is a bit wonky but that should be fixed soon 
-		-gamerappa, July 31st 2021 -->
-		    <style>
-				.plyr--video {
-					height: 30rem;
-					--plyr-color-main: #2da5e5;
-					--plyr-font-family: Inter, tahoma, verdana, arial, helvetica, sans-serif;
-				}
-		    </style>
+			videos would randomly glitch on indigo and sometimes it wouldn't even load the goddamn video (not a ffmpeg issue this time). 
+			we at squarebracket have decided to use plyr instead of indigo. the aspect ratio is a bit wonky but that should be fixed soon 
+			-gamerappa, July 31st 2021 -->
+		<style>
+			.plyr--video {
+			height: 30rem;
+			--plyr-color-main: #2da5e5;
+			--plyr-font-family: Inter, tahoma, verdana, arial, helvetica, sans-serif;
+			}
+		</style>
 		<script>
 			{% if not (video.flags b-and 2) %}
 				document.addEventListener('DOMContentLoaded', () => {
@@ -54,11 +56,11 @@
 					const dash = dashjs.MediaPlayer().create();
 					const video = document.querySelector('video');
 					dash.initialize(video, source, true);
-
+			
 					// Update caption tracks after initializing Plyr to get the generated captions
 					// For more options see: https://github.com/sampotts/plyr/#options
 					const player = new Plyr(video);
-
+			
 					// Expose player and dash so they can be used from the console
 					window.player = player;
 					window.dash = dash;
@@ -66,51 +68,56 @@
 			{% endif %}
 		</script>
 		<br>
-	<div class="card">
-	  <div class="card-body">
-		<div class="grid">
-			<div class="col-4">
-			Rate this video (unimplemented)
-			<br>
-			<div>
-			{{ icon('star-fill', 16) }}
-			{{ icon('star-fill', 16) }}
-			{{ icon('star-fill', 16) }}
-			{{ icon('star-fill', 16) }}
-			{{ icon('star-fill', 16) }}
-			</div>
+		<div class="card">
+			<div class="card-body">
+				<div class="grid">
+					<div class="col-4">
+						Rate this video (unimplemented)
+						<br>
+						<div>
+							{{ icon('star-fill', 16) }}
+							{{ icon('star-fill', 16) }}
+							{{ icon('star-fill', 16) }}
+							{{ icon('star-fill', 16) }}
+							{{ icon('star-fill', 16) }}
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	  </div>
-	</div>
 		<h3>Comments (redesign this later)</h3>
-		<textarea class="form-control mt-2 mb-2" id="commentContents" style="overflow:hidden;resize:none" rows="3" 
+		<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3" 
 		placeholder="{% if log %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}
 		{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
-		<button id="{% if log %}post{% endif %}" class="button button-primary {% if not log %}disabled{% endif %}">{{ __("Comment") }}</button>
-				<div id="comment"></div>
-				{% for comment in comments %}
-					{{ comment(comment) }}
-				{% endfor %}
-				</div>
-<div class="col-4">
-	<div class="card">
-	  <div class="card-header"><h5>{{ __("About This Video") }}</h5></div>
-	  <div class="card-body">
-		<p>{{ __("Published: %s", [video.time | date('M j, Y')]) }}</p>
-		<p>{{ __("Uploader:") }} {{ userlink(video, 'u_') }}</p>
-		<p>{{ __("Category:") }} {{ video.category_id | category_id_to_name() }}</p>
-		<p>{{ __("Description:") }} {{ video.description }}</p>
-	  </div>
+		<button id="{% if log %}post{% endif %}" class="button button-primary right">{{ __("Comment") }}</button>
+		<div id="comment"></div>
+		{% for comment in comments %}
+		{{ comment(comment) }}
+		{% endfor %}
 	</div>
-	<div class="card">
-		<div class="card-header"><h5>{{ __("Explore More Videos") }}</h5></div>
+	<div class="col-4">
+		<div class="card">
+			<div class="card-header">
+				<h5>{{ __("About This Video") }}</h5>
+			</div>
 			<div class="card-body">
-			{% for related_video in related_videos %}
+				<p>{{ __("Published: %s", [video.time | date('M j, Y')]) }}</p>
+				<p>{{ __("Uploader:") }} {{ userlink(video, 'u_') }}</p>
+				<p>{{ __("Category:") }} {{ video.category_id | category_id_to_name() }}</p>
+				<p>{{ __("Description:") }} {{ video.description }}</p>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-header">
+				<h5>{{ __("Explore More Videos") }}</h5>
+			</div>
+			<div class="card-body">
+				{% for related_video in related_videos %}
 				{{ small_video_box(related_video)}}
-			{% endfor %}
+				{% endfor %}
 			</div>
 		</div>
 	</div>
 </div>
 {% endblock %}
+
