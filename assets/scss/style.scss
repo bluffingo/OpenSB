@@ -113,9 +113,9 @@ p {
 }
 
 .top, .footer {
-	background-color: $dark;
-	border-bottom: 1px solid $gray-800;
-	border-top: 1px solid $gray-800;
+	background-color: $light;
+	border-bottom: 1px solid $gray-100;
+	border-top: 1px solid $gray-100;
 	margin-top: 0;
 	overflow: hidden;
 	padding: 8px 16px;
@@ -197,7 +197,7 @@ ul.menu {
 
 	a {
 		display: inline-block;
-		color: white;
+		color: black;
 		font-size: 1em;
 		font-weight: 500;
 		text-decoration: none;
@@ -206,7 +206,7 @@ ul.menu {
 		border-radius: 5px;
 
 		&:hover {
-			background-color: $gray-800;
+			background-color: $gray-200;
 		}
 	}
 
@@ -645,7 +645,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
   margin: 0;
   padding: 0;
   width: 200px;
-  background-color: $gray-900;
+  background-color: $gray-100;
   position: fixed;
   height: 100%;
   overflow: auto;
@@ -654,7 +654,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 /* Sidebar links */
 .sidebar a {
   display: block;
-  color: #FFFFFF;
+  color: black;
   padding: 8px;
   text-decoration: none;
 }
@@ -667,8 +667,8 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 
 /* Links on mouse-over */
 .sidebar a:hover:not(.active) {
-  background-color: $gray-800;
-  color: white;
+  background-color: $gray-300;
+  color: black;
 }
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
