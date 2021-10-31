@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap');
 /// Normalize \\\
 @import "_normalize";
 /// Variables \\\
@@ -46,7 +46,7 @@ $screen-xl-min: 1200px;
 }
 
 $columns: 12;
-$gap: 20px;
+$gap: 25px;
 $breakpoints: (
     sm: 500px,
     md: 700px,
@@ -90,7 +90,7 @@ $breakpoints: (
 
 body {
 	background-color: #F0F0F0;
-	font-family: Inter, tahoma, verdana, arial, helvetica, sans-serif;
+	font-family: Roboto, tahoma, verdana, arial, helvetica, sans-serif;
 	font-size: 0.85em;
 	margin: auto;
 	width: 100%;
@@ -113,9 +113,9 @@ p {
 }
 
 .top, .footer {
-	background-color: #f5f5f5;
-	border-bottom: 1px solid #ccc;
-	border-top: 1px solid #ccc;
+	background-color: $dark;
+	border-bottom: 1px solid $gray-800;
+	border-top: 1px solid $gray-800;
 	margin-top: 0;
 	overflow: hidden;
 	padding: 8px 16px;
@@ -197,7 +197,7 @@ ul.menu {
 
 	a {
 		display: inline-block;
-		color: #222;
+		color: white;
 		font-size: 1em;
 		font-weight: 500;
 		text-decoration: none;

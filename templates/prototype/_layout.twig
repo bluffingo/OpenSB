@@ -1,77 +1,86 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>{% block title %}{% endblock %} - squareBracket Next</title>
-	{% block head %}{% endblock %}
-	<link rel="stylesheet" id="bootstrap" href="assets/css/style.css" type="text/css">
-	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-	<script src="assets/common-sbnext.js"></script>
-	<script> 
-	var $buoop = {required:{e:-6,f:-6,o:-6,s:12,c:-6},insecure:true,api:2021.10 }; 
-	function $buo_f(){ 
-	 var e = document.createElement("script"); 
-	 e.src = "//browser-update.org/update.min.js"; 
-	 document.body.appendChild(e);
-	};
-	try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
-	catch(e){window.attachEvent("onload", $buo_f)}
-	</script>
-	<style>
-	.bi {
-    display: inline-block;
-    margin-top: -0.2em;
-	vertical-align: middle;
-	}
-	</style>
-	{% block customcss %}{% endblock %}
-</head>
-<body>
-		<div class="top bg-light">
-			<a href="../"><img class="picon" src="../assets/logo.png"/></a>
-			<ul class="menu left">
-				<li><a href="../" class="btn">{{ icon('circle', 16) }} Home</a></li>
-				<li><a href="../browse.php" class="btn">{{ icon('circle', 16) }} Videos</a></li>
-				<li><a href="../music.php" class="btn">{{ icon('circle', 16) }} Music</a></li>
-				<li><a href="../forum/" class="btn">{{ icon('circle', 16) }} Forums</a></li>
-			</ul>
-			<ul class="menu right">
-				<li><em>
-				<a href="../search.php" class="btn">{{ icon('search', 16) }}</a>
-					{% if log %}
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock %} - squareBracket Next</title>
+		{% block head %}{% endblock %}
+		<link rel="stylesheet" id="bootstrap" href="assets/css/style.css" type="text/css">
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+		<script src="assets/common-sbnext.js"></script>
+		<script> 
+			var $buoop = {required:{e:-6,f:-6,o:-6,s:12,c:-6},insecure:true,api:2021.10 }; 
+			function $buo_f(){ 
+			 var e = document.createElement("script"); 
+			 e.src = "//browser-update.org/update.min.js"; 
+			 document.body.appendChild(e);
+			};
+			try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+			catch(e){window.attachEvent("onload", $buo_f)}
+		</script>
+		<style>
+			.bi {
+			display: inline-block;
+			margin-top: -0.2em;
+			vertical-align: middle;
+			}
+		</style>
+		{% block customcss %}{% endblock %}
+	</head>
+	<body>
+		
+			<div class="top bg-dark">
+				<a href="../"><img class="picon" src="../assets/logo.png"/></a>
+				<ul class="menu left">
+					<li><a href="../" class="btn">{{ icon('circle', 16) }} Home</a></li>
+					<li><a href="../browse.php" class="btn">{{ icon('circle', 16) }} Videos</a></li>
+					<li><a href="../music.php" class="btn">{{ icon('circle', 16) }} Music</a></li>
+					<li><a href="../forum/" class="btn">{{ icon('circle', 16) }} Forums</a></li>
+				</ul>
+				<ul class="menu right">
+					<li><em>
+						<a href="../search.php" class="btn">{{ icon('search', 16) }}</a>
+						{% if log %}
 						<a href="../upload_start.php">{{ icon('upload', 16) }}</a>
 						{{ userlink(userdata) }}
 						{% if notification_count > 0 %}
-							<span class="notifs">[{{ notification_count }}]</span>
+						<span class="notifs">[{{ notification_count }}]</span>
 						{% endif %}
-					{% else %}
+						{% else %}
 						<a href="../login.php">Sign in</a>
 						<a href="../register.php">Register</a>
-					{% endif %}
-				</em></li>
-			</ul>
-		</div>
-<div class="sidebar">
-  <a class="active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-</div>
-<div class="content">
-	{% block precontent %}{% endblock %}
-	<div class="container">
-		{% block content %}{% endblock %}
-	</div>
-		<footer class="p-3">
+						{% endif %}
+						</em>
+					</li>
+				</ul>
+			</div>
+			<div class="sidebar">
+				{% if log %}
+				<a href="settings.php">Settings</a>
+				<a href="/forum/private.php">Private messages</a>
+				<a href="logout.php">Log out</a>
+				{% else %}
+				<a href="../login.php">Sign in</a>
+				<a href="../register.php">Register</a>
+				{% endif %}
+			</div>
+		
+		<div class="content">
+		{% block precontent %}{% endblock %}
 		<div class="container">
-		<div class="card">
-		<div class="card-body">
-		<h4 class="my-0">squareBracket Next</h4>
-		<p class="my-0"><b>{{ __("By the squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
+			{% block content %}{% endblock %}
 		</div>
+		<footer class="p-3">
+			<div class="container">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="my-0">squareBracket Next</h4>
+						<p class="my-0"><b>{{ __("By the squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
+					</div>
+				</div>
+		</footer>
 		</div>
-	</footer>
-</div>
-</body>
+	</body>
 </html>
