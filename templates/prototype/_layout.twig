@@ -44,17 +44,7 @@
             </li>
          </ul>
       </div>
-      <div class="sidebar">
-         {% if log %}
-         <a href="settings.php">{{ icon('gear', 16) }} Settings</a>
-         <a href="/forum/private.php">{{ icon('envelope', 16) }} Private messages</a>
-         <a href="logout.php">{{ icon('door-closed', 16) }} Log out</a>
-         {% else %}
-         <a href="../login.php">Sign in</a>
-         <a href="../register.php">Register</a>
-         {% endif %}
-      </div>
-      <div class="content">
+     
       {% block precontent %}{% endblock %}
       <div class="container">
          {% block content %}{% endblock %}
@@ -68,6 +58,6 @@
                </div>
             </div>
       </footer>
-      </div>
+     
    </body>
 </html>
