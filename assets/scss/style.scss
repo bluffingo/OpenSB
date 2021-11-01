@@ -4,6 +4,10 @@
 @import "_variables";
 /* SB CSS STARTS HERE ======================================================== */
 
+h1 {
+	font-size: 19px;
+}
+
 // Small tablets and large smartphones (landscape view)
 $screen-sm-min: 576px;
 
@@ -94,6 +98,7 @@ body {
   margin: auto;
   width: 100%;
   padding-bottom: 30px;
+  min-width: 800px;
 }
 
 a:link,
@@ -113,15 +118,17 @@ p {
 
 .top,
 .footer {
+  min-width: 1003px;
   background-color: $gray-150;
   border-bottom: 1px solid $gray-250;
   border-top: 1px solid $gray-250;
   margin-top: 0;
   overflow: hidden;
-  padding: 8px 16px;
+  padding: 7px 8px;
 }
 
 .top_forum {
+  min-width: 1003px;
   background-color: black;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
@@ -144,12 +151,8 @@ p {
 }
 
 .top {
-  height: 48px;
-  transition: height ease-out 1s;
+  height: 35px;
   border-top-width: 0;
-  @include sm {
-    height: 32px;
-  }
 }
 
 .footer {
@@ -157,25 +160,16 @@ p {
 }
 
 .picon {
-  width: 48px;
-  height: 48px;
-  transition: width ease-out 1s, height ease-out 1s;
+  width: 35px;
+  height: 35px;
   float: left;
-  @include sm {
-    width: 32px;
-    height: 32px;
-  }
 }
 
 ul.menu {
   display: inline;
-  line-height: 24px;
+  line-height: 35px;
   text-align: center;
   transition: line-height ease-out 1s;
-
-  @include sm {
-    line-height: 32px;
-  }
 
   li {
     list-style-type: none;
