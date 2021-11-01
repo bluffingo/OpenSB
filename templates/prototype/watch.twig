@@ -21,7 +21,7 @@
 {% block content %}
 <h1>{{ video.title }}</h1>
 <div class="button-group">
-<a href="user.php?name={{ video.u_name }}" class="button button-secondary">{{ video.u_name }}</a>
+<b><a href="user.php?name={{ video.u_name }}" class="button button-secondary">{{ video.u_name }}</a></b>
 <button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Follow") }}{% endif %}</button>
 </div>
 <div class="grid">
