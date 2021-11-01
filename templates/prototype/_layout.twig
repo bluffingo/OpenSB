@@ -46,9 +46,9 @@
       </div>
       <div class="sidebar">
          {% if log %}
-         <a href="settings.php">Settings</a>
-         <a href="/forum/private.php">Private messages</a>
-         <a href="logout.php">Log out</a>
+         <a href="settings.php">{{ icon('gear', 16) }} Settings</a>
+         <a href="/forum/private.php">{{ icon('envelope', 16) }} Private messages</a>
+         <a href="logout.php">{{ icon('door-closed', 16) }} Log out</a>
          {% else %}
          <a href="../login.php">Sign in</a>
          <a href="../register.php">Register</a>
