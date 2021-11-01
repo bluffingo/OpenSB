@@ -4,10 +4,6 @@
 @import "_variables";
 /* SB CSS STARTS HERE ======================================================== */
 
-h1 {
-	font-size: 19px;
-}
-
 // Small tablets and large smartphones (landscape view)
 $screen-sm-min: 576px;
 
@@ -103,12 +99,12 @@ body {
 
 a:link,
 a:visited {
-  color: $teal;
+  color: #333;
   text-decoration: none;
 }
 
 a:hover {
-  color: $red;
+  color: $teal;
   text-decoration: none;
 }
 
@@ -714,6 +710,12 @@ padding: 0.25em;
 #commentContents {
 width: 100%;
 box-sizing: border-box;
+}
+
+.watchNext {
+	h1 {
+		font-size: 19px;
+	}
 }
 
 /// Gradients \\\

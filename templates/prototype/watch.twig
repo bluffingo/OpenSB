@@ -19,6 +19,12 @@
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
+<div class="watchNext">
+<h1>{{ video.title }}</h1>
+<div class="button-group">
+<a href="user.php?name={{ video.u_name }}" class="button button-secondary"><b>{{ video.u_name }}</b></a>
+<button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Follow") }}{% endif %}</button>
+</div>
 <div class="grid">
 	<div class="col-8">
 		<div id="container" style="height: 30rem;">
@@ -65,11 +71,6 @@
 			{% endif %}
 		</script>
 		<br>
-<h1>{{ video.title }}</h1>
-<div class="button-group">
-<a href="user.php?name={{ video.u_name }}" class="button button-secondary"><b>{{ video.u_name }}</b></a>
-<button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Follow") }}{% endif %}</button>
-</div>
 		<div class="card">
 			<div class="card-body">
 				<div class="grid">
@@ -146,5 +147,6 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 {% endblock %}
