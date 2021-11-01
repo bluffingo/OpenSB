@@ -1,46 +1,39 @@
 {% extends "_layout.twig" %}
-
 {% block title %}{{ __("Upload") }}{% endblock %}
-
-	{% block content %}
-<h3>{{ __("Upload video") }}</h3>
-<p><span class="badge bg-primary">{{ icon('info-circle', 16) }} {{ __("Important") }}</span> {{ __("By uploading your videos onto squareBracket, you acknowledge about the upload guidelines.") }}</p>
-
+{% block content %}
+<h1>{{ __("Upload video") }}</h1>
 <div class="grid">
-<div class="col-8">
-<form name="uploadForm" id="uploadForm" method="post" action="upload.php"
-enctype="multipart/form-data">
-<br>
-	{{ icon('text-left', 24) }}
-	<h4>{{ __("Video info") }}</h4>
-	<p>{{ __("Enter the title and description of your video.") }}</p>
-	<input type="text" class="form-control mb-1" name="title" value="" placeholder="{{ __("Title") }}">
-	<br>
-	<textarea class="form-control mb-1" name="desc" maxlength="2000" form="uploadForm"
-	style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}"></textarea>
-	<br>
-	<input type="text" class="form-control" name="tags" value="" placeholder="{{ __("Tags") }}">
-	<br>
-		{{ icon('file-earmark-play', 24) }}
-		<h4>{{ __("Video file") }}</h4>
-		<p>{{ __("Select the video file you want to upload.") }}</p>
-	<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
-	<br>
-	</div>
-	<div class="col-4">
-<div class="card">
-  <div class="card-header"><h5>{{ __("Upload Guidelines") }}</h5></div>
-  <div class="card-body">
-    <p>{{ __("Please, for god sakes, do not upload anything related to logos or cartoons meant for children. The viewer-base of those videos indirectly caused the downfall of the Gamerappa YouTube channel.") }}</p>
-    <a href="https://studio.youtube.com/" class="button button-secondary">{{ __("Upload anyways") }}</a>
-  </div>
+   <div class="col-8">
+	<div class="card"><div class="card-body-fat">
+      <form name="uploadForm" id="uploadForm" method="post" action="upload.php"
+         enctype="multipart/form-data">
+         <h2 style="margin-bottom: 0.5em;">{{ __("Video info") }}</h4>
+         <p>{{ __("Enter the title and description of your video.") }}</p>
+         <input type="text" class="form-control form-long uploader-form" name="title" value="" placeholder="{{ __("Title") }}">
+         <br>
+         <textarea class="form-control form-long uploader-form" name="desc" maxlength="2000" form="uploadForm"
+         style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}"></textarea>
+         <br>
+         <input type="text" class="form-control form-long uploader-form" name="tags" value="" placeholder="{{ __("Tags") }}">
+         <h2 style="margin-bottom: 0.5em;">{{ __("Video file") }}</h4>
+         <p>{{ __("Select the video file you want to upload.") }}</p>
+         <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
+         <br>
+		 <div class="grid">
+<div class="col-offset-12">
+<input class="button button-primary" type="submit" id="upload" name="upload"
+value="{{ __("Upload") }}">
 </div>
-	</div>
-	
-	<div class="text-end">
-	<input class="button button-primary" type="submit" id="upload" name="upload"
-	value="{{ __("Upload") }}">
-	</div>
+</div></div></div>
+   </div>
+   <div class="col-4">
+   <div class="card">
+   <div class="card-header"><h5>{{ __("Upload guidelines") }}</h5></div>
+   <div class="card-body">
+   <p>{{ __("Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.") }}</p>
+   </div>
+   </div>
+   </div>
+</div>
 </form>
-</div>
-	{% endblock %}
+{% endblock %}
