@@ -1,5 +1,5 @@
 $threshold: 65%;
-$teal: #005177;
+$teal: #468aca;
 $red: #cc3333;
 $white: #FCFCFC;
 $black: #000;
@@ -25,6 +25,7 @@ $gray-250: #E8E8E8;
 $gray-300: #E2E2E2;
 $gray-400: #D3D3D3;
 $gray-500: #B4B4B4;
+$gray-650: #999999;
 $gray-600: #858585;
 $gray-700: #4F4F4F;
 $gray-800: #393939;
@@ -51,7 +52,7 @@ $colors: (
 );
 
 $primary:       $blue;
-$secondary:     $gray-400;
+$secondary:     $gray-250;
 $success:       $green;
 $info:          $cyan;
 $warning:       $yellow;

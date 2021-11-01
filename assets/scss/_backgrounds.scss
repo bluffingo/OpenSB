@@ -3,3 +3,13 @@
     @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
   }
 }
+
+@each $state, $value in $theme-colors {
+  .text-#{$state} {
+    color: $value;
+  }
+}
+
+.text-body {
+	color: black;
+}

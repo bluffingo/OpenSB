@@ -1,14 +1,12 @@
 .card {
-  border: 1px solid #E0E0E0;
-  border-radius: 4px;
-  background-color: #FCFCFC;
-  margin-bottom: 1em;
+  border: 1px solid #e2e2e2;
+  margin-bottom: 0.5em;
 }
 
 .card-header {
   padding: 0.5em;
-  border-bottom: 1px solid #D6D6D6;
-  background-color: #EBEBEB;
+  border-bottom: 1px solid $gray-400;
+  background-color: $gray-200;
   height: 1em;
 }
 
@@ -25,7 +23,6 @@
 }
 
 .card h3 {
-  color: rebeccapurple;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: start;
@@ -35,8 +32,4 @@
   padding: 0.25em;
   background-color: #eddbff;
   border-radius: 4px;
-}
-
-.card p {
-  color: #757575;
 }
