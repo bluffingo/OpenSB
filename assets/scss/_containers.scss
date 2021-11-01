@@ -3,7 +3,7 @@
 	transition: max-width ease-out 1s, padding 1s;
 // 576px window width and more
     @include sm {
-        padding: 0 20px;
+        padding: 0 24px;
     }
 // 992px window width and more
     @include lg {

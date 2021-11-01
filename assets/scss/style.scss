@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 /// Normalize \\\
 @import "_normalize";
 /// Variables \\\
@@ -88,9 +90,10 @@ $breakpoints: (
 }
 
 body {
-  background-color: #fff;
-  font-family: arial, helvetica, sans-serif;
-  font-size: 0.85em;
+  background-color: #ebebeb;
+  background-image: url(/assets/bg.png);
+  font-family: Roboto, tahoma, arial, -apple-system, helvetica, sans-serif;
+  font-size: 0.8em;
   margin: auto;
   width: 100%;
   padding-bottom: 30px;

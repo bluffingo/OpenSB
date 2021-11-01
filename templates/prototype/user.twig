@@ -2,29 +2,19 @@
 
 {% block title %}{{ name }}{% endblock %}
 
-	{% block precontent %}
-	<div class="main-content">
-		<div class="container">
+	{% block content %}
+	<style>
+	.channel-header-bg {
+	background-image: url('/assets/sbnext_channel_header_template.png');
+	background-position: center;
+	}
+</style>
+	<div class="main-content channel-header-bg">
 			<div class="grid">
 				<div class="col-2">
-					<img class="rounded img-fluid" src="{{ profile_image(userpagedata.name) }}"  alt="{{ userpagedata.name }}">
+					<img class="rounded img-pfp-profiles" src="{{ profile_image(userpagedata.name) }}"  alt="{{ userpagedata.name }}">
 				</div>
-				<div class="col-6">
-					<p class="text-start">
-					<h1>{{ userpagedata.title }}</h1>
-						{# hack to prevent twig from outputing the number 1 #}
-						{% if subCount != 1 %}
-							{% set pluralSubscribers = __("s") %}
-						{% endif %}
-						{% if totalViews != 1 %}
-							{% set pluralViews = __("s") %}
-						{% endif %}
-						<p class="fs-5 mb-1">@{{ userpagedata.name }}
-						&bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
-						&bull; {{ __("%s view%s", [totalViews ?? __("Not implemented"), pluralViews]) }}</p>
-						<a class="button button-primary btn-lg" href="../studio.php">Follow</a>
-				</div>
-				<div class="col-4">
+				<div class="col-5 col-offset-10">
 				<div class="card">
 					<div class="card-header">General information</div>
 					<div class="card-body">
@@ -38,11 +28,12 @@
 				</div>
 				</div>
 			</div>
-		</div>
 	</div>
-	{% endblock %}
-
-	{% block content %}
+	<div class="bg-light" style="padding: 15px 10px;"><h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}<img class="sdsd" src="assets/icons/shield.svg" height="16" title="User is a moderator.">{% endif %}</h1>
+	<p>@{{ userpagedata.name }}
+						&bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
+						&bull; {{ __("%s view%s", [totalViews ?? __("Not implemented"), pluralViews]) }}</p>
+						</div>
 {% if markread %}
 	<div class="header_message">Marked all notifications as read.</div>
 {% elseif edited %}
@@ -78,7 +69,7 @@
 	{% endif %}
 </ul>
 {% else %}
-<h2>{{ name }} {% if userpagedata.powerlevel > 1 %}<img class="sdsd" src="assets/icons/shield.svg" height="16" title="User is a moderator.">{% endif %}</h2>
+<h2></h2>
 
 <div class="user_about">
 	<h3>About this user</h3>
