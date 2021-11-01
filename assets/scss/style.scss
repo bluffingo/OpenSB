@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap");
 /// Normalize \\\
 @import "_normalize";
 /// Variables \\\
@@ -89,8 +88,8 @@ $breakpoints: (
 }
 
 body {
-  background-color: #f0f0f0;
-  font-family: Roboto, tahoma, verdana, arial, helvetica, sans-serif;
+  background-color: #fff;
+  font-family: arial, helvetica, sans-serif;
   font-size: 0.85em;
   margin: auto;
   width: 100%;
@@ -114,9 +113,9 @@ p {
 
 .top,
 .footer {
-  background-color: $light;
-  border-bottom: 1px solid $gray-100;
-  border-top: 1px solid $gray-100;
+  background-color: $gray-150;
+  border-bottom: 1px solid $gray-250;
+  border-top: 1px solid $gray-250;
   margin-top: 0;
   overflow: hidden;
   padding: 8px 16px;
@@ -710,64 +709,6 @@ width: 100%;
 margin-bottom: 0.5em;
 font-size: 1.05em;
 padding: 0.25em;
-}
-/* The side navigation menu */
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: $gray-100;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-}
-
-/* Sidebar links */
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 8px;
-  text-decoration: none;
-}
-
-/* Active/current link */
-.sidebar a.active {
-  background-color: $primary;
-  color: white;
-}
-
-/* Links on mouse-over */
-.sidebar a:hover:not(.active) {
-  background-color: $gray-300;
-  color: black;
-}
-
-/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-div.content {
-  margin-left: 200px;
-}
-
-/* On screens that are less than 700px wide, make the sidebar into a topbar */
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {
-    float: left;
-  }
-  div.content {
-    margin-left: 0;
-  }
-}
-
-/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
 }
 
 .bi {
