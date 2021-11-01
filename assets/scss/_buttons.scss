@@ -56,6 +56,22 @@ input[type=file]::file-selector-button, {
 	font-size: 14px;
 }
 
+.button-group {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.button-group > .button-group:not(:last-child) > .button, .button-group > .button:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.button-group > .button-group:not(:first-child) > .button, .button-group > .button:nth-child(n+3), .button-group > :not(.button-check) + .button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 @each $state, $value in $theme-colors {
   .button-#{$state} {
     border: 1px solid darken($value, 2.25%);
