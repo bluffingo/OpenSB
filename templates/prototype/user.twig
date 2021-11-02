@@ -1,107 +1,111 @@
 {% extends "_layout.twig" %}
-
 {% block title %}{{ name }}{% endblock %}
-
-	{% block content %}
-	<style>
+{% block head %}
+<script>
+	user_id = '{{ userpagedata.id }}';
+</script>
+<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<style>
 	.channel-header-bg {
 	background: url('/assets/backgrounds/{{ userpagedata.name }}.png'), linear-gradient(#888, #444);
 	background-position: center;
 	}
 </style>
-	<div class="main-content channel-header-bg">
-			<div class="grid">
-				<div class="col-2">
-					<img class="rounded img-pfp-profiles" src="{{ profile_image(userpagedata.name) }}"  alt="{{ userpagedata.name }}">
-				</div>
-				<div class="col-5 col-offset-10">
-				<div class="card">
-					<div class="card-header">General information</div>
-					<div class="card-body">
-						<b>Forum Threads</b>: {{ userpagedata.threads }}
-						<span class="pad"><b>Forum Posts</b>: {{ userpagedata.posts }}</span>
-						<br><br>
-						<b>Registered on</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
-						<br><br>
-						<b>Last view</b>: {{ userpagedata.lastview | relative_time }}
-					</div>
-				</div>
+<div class="main-content channel-header-bg">
+	<div class="grid">
+		<div class="col-2">
+			<img class="rounded img-pfp-profiles" src="{{ profile_image(userpagedata.name) }}"  alt="{{ userpagedata.name }}">
+		</div>
+		<div class="col-5 col-offset-10">
+			<div class="card">
+				<div class="card-header">General information</div>
+				<div class="card-body">
+					<b>Forum Threads</b>: {{ userpagedata.threads }}
+					<span class="pad"><b>Forum Posts</b>: {{ userpagedata.posts }}</span>
+					<br><br>
+					<b>Registered on</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
+					<br><br>
+					<b>Last view</b>: {{ userpagedata.lastview | relative_time }}
 				</div>
 			</div>
+		</div>
 	</div>
-	<div class="bg-light" style="padding: 15px 10px;"><h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}<img class="sdsd" src="assets/icons/shield.svg" height="16" title="User is a moderator.">{% endif %}</h1>
-	<p>@{{ userpagedata.name }}
-						&bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
-						&bull; {{ __("%s view%s", [totalViews ?? __("Not implemented"), pluralViews]) }}</p>
-						</div>
+</div>
+<div class="bg-light" style="padding: 15px 10px;">
+<h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}<img class="sdsd" src="assets/icons/shield.svg" height="16" title="User is a moderator.">{% endif %}</h1>
+<div class="grid">
+	<div class="col-4">
+		<p>@{{ userpagedata.name }}
+			&bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
+			&bull; {{ __("%s view%s", [totalViews ?? __("Not implemented"), pluralViews]) }}
+		</p>
+	</div>
+	<div class="col-offset-12 col-4">
+		<button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}" type="button" {% if not log or userpagedata.id == userdata.id %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userpagedata.id == userdata.id %}{{ __("Edit profile") }}{% else %}{{ __("Follow") }}{% endif %}</button>
+	</div>
+</div>
 {% if markread %}
-	<div class="header_message">Marked all notifications as read.</div>
+<div class="header_message">Marked all notifications as read.</div>
 {% elseif edited %}
-	<div class="header_message">Settings successfully saved!</div>
+<div class="header_message">Settings successfully saved!</div>
 {% endif %}
-
 {% if userdata.id == id and not forceuser %}
-
 <p>Welcome to your personal user page. Here, you can see and manage your uploaded content, customize your profile, and edit your settings.</p>
-
 <p><a href="settings.php">Edit my settings</a>
-&bull; <a href="forum/private.php">View my private messages</a>
-&bull; <a href="user.php?id={{ id }}&forceuser">View user page as viewer</a>
-&bull; <a href="logout.php">Log out</a></p>
-
+	&bull; <a href="forum/private.php">View my private messages</a>
+	&bull; <a href="user.php?id={{ id }}&forceuser">View user page as viewer</a>
+	&bull; <a href="logout.php">Log out</a>
+</p>
 {% if userdata.powerlevel > 2 %}
 <p><a href="admin.php">Admin panel</a></p>
 {% endif %}
-
 <form action="login.php" method="post" name="logout">
 	<input type="hidden" name="logout" value="yes">
 </form>
-
 <h3>Notifications</h3>
 <ul>
 	{% for notif in notifs %}
-		<li>{{ notif | raw }}</li>
+	<li>{{ notif | raw }}</li>
 	{% else %}
-		<li>No new notifications!</li>
+	<li>No new notifications!</li>
 	{% endfor %}
 	{% if notifs %}
-		<br><li><a href="user.php?id={{ id }}&markread">Mark all as read</a></li>
+	<br>
+	<li><a href="user.php?id={{ id }}&markread">Mark all as read</a></li>
 	{% endif %}
 </ul>
 {% else %}
 <h2></h2>
-
 <div class="user_about">
 	<h3>About this user</h3>
 	{{ userpagedata.about | raw }}
 </div>
-
 <p class="clear_right">
 	<a href="forum/forum.php?user={{ id }}">View threads</a>
 	&bull; <a href="forum/thread.php?user={{ id }}">Show posts</a>
 	{% if log %}
-		{% if userdata.id != id %}
-			&bull; <a href="forum/sendprivate.php?uid={{ id }}">Send private message</a>
-		{% endif %}
-		{% if userdata.powerlevel > 2 %}
-			&bull; <a href="resetpassword.php?grf={{ id }}">Generate password reset for user</a>
-			&bull; <a href="forum/editperms.php?uid={{ id }}">Edit forum permissions</a>
-		{% endif %}
+	{% if userdata.id != id %}
+	&bull; <a href="forum/sendprivate.php?uid={{ id }}">Send private message</a>
+	{% endif %}
+	{% if userdata.powerlevel > 2 %}
+	&bull; <a href="resetpassword.php?grf={{ id }}">Generate password reset for user</a>
+	&bull; <a href="forum/editperms.php?uid={{ id }}">Edit forum permissions</a>
+	{% endif %}
 	{% endif %}
 </p>
-
 {% for latestVideo in latestVideos %}
-	{{ video_box(latestVideo) }}
+{{ video_box(latestVideo) }}
 {% else %}
-	<p>{{ __("There are currently no videos uploaded by %s.", [user.title]) }}</p>
+<p>{{ __("There are currently no videos uploaded by %s.", [user.title]) }}</p>
 {% endfor %}
-
 {% if userdata.id == id %}
-	{% set forceuser = "&forceuser" %}
+{% set forceuser = "&forceuser" %}
 {% else %}
-	{% set forceuser = "" %}
+{% set forceuser = "" %}
 {% endif %}
 {% set le_url = 'user.php?id=' ~ id ~ '&page=%s' ~ forceuser %}
 {{ pagination(level_count, glob_lpp, le_url, page) }}
 {% endif %}
-	{% endblock %}
+{% endblock %}
