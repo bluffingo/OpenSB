@@ -16,6 +16,7 @@ class SBExtension extends \Twig\Extension\AbstractExtension {
 			new \Twig\TwigFunction('icon', 'icon', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('icon_alt', 'icon_alt', ['is_safe' => ['html']]), //intended for sbnext's upload_start -gr 10/8/2021
 			new \Twig\TwigFunction('pagination', 'pagination', ['is_safe' => ['html']]),
+			new \Twig\TwigFunction('git_commit', 'gitCommit'),
 		];
 	}
 	public function getFilters() {

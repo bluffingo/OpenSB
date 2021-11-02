@@ -1,63 +1,57 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <title>{% block title %}{% endblock %} - squareBracket Next</title>
-      {% block head %}{% endblock %}
-      <link rel="stylesheet" id="bootstrap" href="assets/css/style.css" type="text/css">
-      <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-      <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-      <script src="assets/common-sbnext.js"></script>
-	<script>
-		subscribe_string = '{{ __("Follow") }}';
-		unsubscribe_string = '{{ __("Unfollow") }}';
-	</script>
-      <style>
-      </style>
-      {% block customcss %}{% endblock %}
-   </head>
-   <body>
-      <div class="top">
-         <a href="../"><img class="picon" src="../assets/logo.png"/></a>
-         <ul class="menu left">
-            <li><a href="../" class="btn">{{ icon('house-door', 16) }} Home</a></li>
-            <li><a href="../browse.php" class="btn">{{ icon('film', 16) }} Videos</a></li>
-            <li><a href="../music.php" class="btn">{{ icon('music-note-beamed', 16) }} Music</a></li>
-            <li><a href="../forum/" class="btn">{{ icon('chat-dots', 16) }} Forums</a></li>
-         </ul>
-         <ul class="menu right">
-            <li><em>
-               <a href="../search.php" class="btn">{{ icon('search', 16) }}</a>
-               {% if log %}
-               <a href="../upload_start.php">{{ icon('upload', 16) }}</a>
-               {{ userlink(userdata) }}
-               {% if notification_count > 0 %}
-               <span class="notifs">[{{ notification_count }}]</span>
-               {% endif %}
-               {% else %}
-               <a href="../login.php">Sign in</a>
-               <a href="../register.php">Register</a>
-               {% endif %}
-               </em>
-            </li>
-         </ul>
-      </div>
-     
-      {% block precontent %}{% endblock %}
-      <div class="container">
-         {% block content %}{% endblock %}
-      </div>
-      <footer class="p-3">
-         <div class="container">
-            <div class="card">
-               <div class="card-body">
-                  <h4>squareBracket Beta 2 (squareBracket Next Preview)</h4>
-                  <p><b>{{ __("By the squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
-               </div>
-            </div>
-      </footer>
-     
-   </body>
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock %} - squareBracket Next</title>
+		{% block head %}{% endblock %}
+		<link rel="stylesheet" id="bootstrap" href="assets/css/style.css" type="text/css">
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+		<script src="assets/common-sbnext.js"></script>
+		<script>
+			subscribe_string = '{{ __("Follow") }}';
+			unsubscribe_string = '{{ __("Unfollow") }}';
+		</script>
+		<style>
+		</style>
+		{% block customcss %}{% endblock %}
+	</head>
+	<body>
+		<div id="masthead-container">
+			<div id="masthead">
+				<a href="../" id="logo-container">
+				<img id="logo" src="../assets/logo-masthead.png">
+				</a>
+				<div id="masthead-signin">
+					<a href="../logn.php.php" class="button button-primary">Sign in</a>
+				</div>
+				<div id="masthead-content">
+					<class id="masthead-upload-button-group">
+						<a href="../upload_start.php" class="button button-secondary">Upload</a>
+					</class>
+					<form id="masthead-search" action="results.php">
+						<button id="search-btn" class="button button-secondary">
+						<span>{{ icon('search', 14) }}</span>
+						</button>
+						<div id="masthead-search-terms">
+							<label>
+								<input type="text" placeholder="Search..">
+							</label>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		{% block precontent %}{% endblock %}
+		<div class="container">
+			{% block content %}{% endblock %}
+		</div>
+		<footer class="container">
+			<div class="footer">
+				<h3>squareBracket Beta 2 (squareBracket Next Preview)</h3>
+				<p><b>{{ __("By the squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
+				<h5>Git Commit <a href="https://github.com/gr-sb/squarebracket/commit/{{ git_commit(false) }}">{{ git_commit() }}</a><br></h5>
+			</div>
+		</footer>
+	</body>
 </html>

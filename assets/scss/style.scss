@@ -770,25 +770,89 @@ box-sizing: border-box;
   background-size: cover;
 }
 
-/* .tooltip {
-  color: #900;
-  text-decoration: none;
+#masthead-container {
+    background: #f1f1f1;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 7px 0 8px;
 }
 
-.tooltip:hover {
-  position: relative;
+#masthead {
+	margin-right: 45px !important;
+	margin-left: 45px !important;
+	
+	.button {
+		margin: 0;
+		padding: 6px 10px;
+	}
+	
+	#logo-container {
+		position: relative;
+		margin-left: 9px;
+		margin-right: 99px;
+		margin-top: 2px;
+	}
+	
+	#logo {
+		background-size: auto;
+		width: 72px;
+		height: 30px;
+		border: 0;
+	}
+	
+	#masthead-search-terms {
+		border-radius: 0;
+		height: 29px;
+		overflow: hidden;
+		
+		input {
+		display: inline-block;
+		width: 100%;
+		padding: 2px 6px;
+		margin: 0;
+		border: 0;
+		font-size: 16px;
+		box-sizing: border-box;
+		height: 29px;
+		}
+	}
 }
 
-[data-tooltip]:hover:after {
-  content: attr(data-tooltip);
-  padding: 4px 8px;
-  position: absolute;
-  white-space: nowrap;
-  z-index: 20;
+#masthead-search {
+    position: relative;
+    padding: 0;
+    margin-top: 3px;
+    overflow: hidden;
+    *zoom: 1;
+		label {
+		height: 100%;
+		line-height: 30px;
+		padding: 0;
+		border: none;
+		overflow: hidden;
+	}
+	#search-btn {
+		height: 29px;
+		float: right;
+		span {
+			margin: 0 12px;
+		}
+	}
+}
 
-  background-color: #000;
-  color: #fff;
-} */
+#logo-container {
+    float: left;
+}
+
+#masthead-content {
+	max-width: 640px;
+	overflow: hidden;
+}
+
+#masthead-content #masthead-upload-button-group, #masthead-signin {
+	float: right;
+	margin-top: 3px;
+	margin-left: 25px;
+}
 
 /// Gradients \\\
 @import "_gradients";
