@@ -90,8 +90,7 @@ $breakpoints: (
 }
 
 body {
-  background-color: #ebebeb;
-  background-image: url(/assets/bg.png);
+  background: #fbfbfb;
   font-family: Roboto, tahoma, arial, -apple-system, helvetica, sans-serif;
   font-size: 0.8em;
   margin: auto;
@@ -113,6 +112,10 @@ a:hover {
 
 p {
   line-height: 1.25em;
+}
+
+menu, ol, ul, il {
+    list-style: none;
 }
 
 .top,
@@ -852,6 +855,43 @@ box-sizing: border-box;
 	float: right;
 	margin-top: 3px;
 	margin-left: 25px;
+}
+
+.guide-channels-list {
+    clear: both;
+    max-height: 247px;
+    padding: 0 0 3px;
+    overflow: hidden;
+	
+	.guide-channel {
+		position: relative;
+		height: 26px;
+		line-height: 26px;
+	}
+}
+
+.guide-item {
+    white-space: nowrap;
+    line-height: 24px;
+    display: block;
+    height: 26px;
+	
+	.thumb {
+    margin-right: 5px;
+    margin-left: 4px;
+	width:18px;
+	vertical-align: middle;
+	}
+}
+
+.guide-item:hover {
+    background: #444;
+    background-image: none;
+    color: #fff;
+}
+
+.guide {
+padding: 0;
 }
 
 /// Gradients \\\

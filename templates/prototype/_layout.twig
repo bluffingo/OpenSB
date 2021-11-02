@@ -23,7 +23,11 @@
 				<img id="logo" src="../assets/logo-masthead.png">
 				</a>
 				<div id="masthead-signin">
+					{% if log %}
+					<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}">
+					{% else %}
 					<a href="../login.php" class="button button-primary">Sign in</a>
+					{% endif %}
 				</div>
 				<div id="masthead-content">
 					<class id="masthead-upload-button-group">
@@ -44,7 +48,20 @@
 		</div>
 		{% block precontent %}{% endblock %}
 		<div class="container">
-			{% block content %}{% endblock %}
+			<div class="grid">
+				<div class="col-1">
+					<div class="guide-channels-list">
+					<ul class="guide"><li class="guide-channel">
+						<a class="guide-item"><img class="thumb" src="../assets/logo_square_icon.png">squarebracket</a>
+					  </li></ul>
+					</div>
+				</div>
+				<div class="col-10">
+					<div class="container" style="margin-left: 0; padding: 0 70px 0 0;">
+						{% block content %}{% endblock %}
+					</div>
+				</div>
+			</div>
 		</div>
 		<footer class="container">
 			<div class="footer">
