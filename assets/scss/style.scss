@@ -101,13 +101,12 @@ body {
 
 a:link,
 a:visited {
-  color: #333;
+  color: $teal;
   text-decoration: none;
 }
 
 a:hover {
-  color: $teal;
-  text-decoration: none;
+  text-decoration-line: underline;
 }
 
 p {
@@ -816,6 +815,7 @@ box-sizing: border-box;
 		font-size: 16px;
 		box-sizing: border-box;
 		height: 29px;
+		border-radius: 0;
 		}
 	}
 }
@@ -855,6 +855,7 @@ box-sizing: border-box;
 	float: right;
 	margin-top: 3px;
 	margin-left: 25px;
+	position: relative;
 }
 
 .guide-channels-list {

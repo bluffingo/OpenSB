@@ -24,7 +24,7 @@
 				</a>
 				<div id="masthead-signin">
 					{% if log %}
-					<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}">
+					<div style="display: flex;justify-content: center;align-items: center;gap: 5px;">{{ userdata.name }}<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}"></div>
 					{% else %}
 					<a href="../login.php" class="button button-primary">Sign in</a>
 					{% endif %}
