@@ -12,7 +12,11 @@
 	</tr>
 	<tr>
 		<td class="a">Email address</td>
-		<td class="b">{{ userdata.email }}</td>
+		{% if userdata.email == "poktube_migrated@squarebracket.me" %}
+			<td class="b">{{ __("Account migrated from PokTube") }}</td>
+		{% else %}
+			<td class="b">{{ userdata.email }}</td>
+		{% endif %}
 	</tr>
 	<tr>
 		<td class="a">Change Password</td>
@@ -37,12 +41,10 @@
 		<td class="a">Display Name</td>
 		<td class="b"><input type="text" name="title" size="45" maxlength="256" value="{{ userdata.title }}"></td>
 	</tr>
-	{% if userdata.powerlevel > 1 %}
 	<tr>
 		<td class="a">Custom color</td>
-		<td class="b"><input type="color" name="customcolor" value="{{ userdata.customcolor | default('0000aa') }}"></td>
+		<td class="b"><input type="color" name="customcolor" value="{{ userdata.customcolor | default('523bb8') }}"></td>
 	</tr>
-	{% endif %}
 	<tr>
 		<td class="a">
 			About
@@ -69,7 +71,7 @@
 		</td>
 	</tr>
 </table>
-<input type="hidden" name="magic" value="please change my settings :)">
+<input type="hidden" name="magic" value="FOR GOD SAKES OPEN THE SILO DOOR">
 <input class="button button-primary" type="submit" name="action" value="Save Changes">
 	{% endblock %}
 
