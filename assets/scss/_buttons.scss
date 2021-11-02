@@ -59,7 +59,6 @@ input[type=file]::file-selector-button, {
 .button-group {
     position: relative;
     display: inline-flex;
-    vertical-align: middle;
 }
 
 .button-group > .button-group:not(:last-child) > .button, .button-group > .button:not(:last-child):not(.dropdown-toggle) {
