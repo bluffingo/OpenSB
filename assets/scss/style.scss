@@ -97,7 +97,7 @@ body {
   margin: auto;
   width: 100%;
   padding-bottom: 30px;
-  min-width: 800px;
+  min-width: 1000px;
 }
 
 a:link,
@@ -117,7 +117,7 @@ p {
 
 .top,
 .footer {
-  min-width: 1003px;
+  min-width: 984px;
   background-color: $gray-150;
   border-bottom: 1px solid $gray-250;
   border-top: 1px solid $gray-250;
@@ -127,7 +127,7 @@ p {
 }
 
 .top_forum {
-  min-width: 1003px;
+  min-width: 984px;
   background-color: black;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
@@ -768,6 +768,29 @@ box-sizing: border-box;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+}
+
+/* Some basic styling to notify users
+   about the tooltips*/
+.tooltip {
+  color: #900;
+  text-decoration: none;
+}
+
+.tooltip:hover {
+  position: relative;
+}
+
+/* Tooltip on Top */
+[data-tooltip]:hover:after {
+  content: attr(data-tooltip);
+  padding: 4px 8px;
+  position: absolute;
+  white-space: nowrap;
+  z-index: 20;
+
+  background-color: #000;
+  color: #fff;
 }
 
 /// Gradients \\\

@@ -125,7 +125,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		});
 	});	
 	$("#like").click(function(){
-		if($("#like").attr("class") != "text-success") {
+		if($("#like").attr("class") != "button button-success") {
 			$.post("rate.php",
 			{
 				rating: 1,
@@ -134,10 +134,10 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			function(data,status){
 				if (status == "success") {
 					if(data == 1) {
-						$("#like").attr("class", "text-success");
+						$("#like").attr("class", "button button-success");
 						$("#likes").text(parseInt($("#likes").text()) + 1)
 						$("#dislikes").text(parseInt($("#dislikes").text()) - 1)
-						$("#dislike").attr("class", "text-body");
+						$("#dislike").attr("class", "button button-secondary");
 						play("like");
 					} else if(data == 0) {
 						$("#like").click();
@@ -150,7 +150,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		}
 	});
 	$("#dislike").click(function(){
-		if($("#dislike").attr("class") != "text-danger") {
+		if($("#dislike").attr("class") != "button button-danger") {
 			$.post("rate.php",
 			{
 				rating: 0,
@@ -159,10 +159,10 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			function(data,status){
 				if (status == "success") {
 					if (data == 1) {
-						$("#dislike").attr("class", "text-danger");
+						$("#dislike").attr("class", "button button-danger");
 						$("#dislikes").text(parseInt($("#dislikes").text()) + 1)
 						$("#likes").text(parseInt($("#likes").text()) - 1)
-						$("#like").attr("class", "text-body");
+						$("#like").attr("class", "button button-secondary");
 						play("dislike");
 					} else if (data == 0) {
 						$("#dislike").click();
