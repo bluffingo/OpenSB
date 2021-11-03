@@ -20,14 +20,14 @@
 		</div>
 		<div class="col-5 col-offset-10">
 			<div class="card">
-				<div class="card-header">General information</div>
+				<div class="card-header">{{ __("General information") }}</div>
 				<div class="card-body">
-					<b>Forum Threads</b>: {{ userpagedata.threads }}
-					<span class="pad"><b>Forum Posts</b>: {{ userpagedata.posts }}</span>
+					<b>{{ __("Forum Threads") }}</b>: {{ userpagedata.threads }}
+					<span class="pad"><b>{{ __("Forum Posts") }}</b>: {{ userpagedata.posts }}</span>
 					<br><br>
-					<b>Registered on</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
+					<b>{{ __("Registered on") }}</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
 					<br><br>
-					<b>Last view</b>: {{ userpagedata.lastview | relative_time }}
+					<b>{{ __("Last view") }}</b>: {{ userpagedata.lastview | relative_time }}
 				</div>
 			</div>
 		</div>

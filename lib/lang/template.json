@@ -130,6 +130,11 @@
 
 	"Video": "Video",
 
+	"General information": "General information",
+	"Forum Threads": "Forum Threads",
+	"Forum Posts": "Forum Posts",
+	"Registered on": "Registered on",
+	"Last view": "Last view",
 	"Not implemented": "Not implemented",
 	"Edit profile": "Edit profile",
 	"Marked all notifications as read.": "Marked all notifications as read.",
