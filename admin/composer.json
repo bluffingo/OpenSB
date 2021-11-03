@@ -1,0 +1,14 @@
+{
+	"require": {
+		"twig/twig": "^3.0",
+		"mpratt/relativetime": "dev-master",
+		"aminyazdanpanah/php-ffmpeg-video-streaming": "dev-master",
+		"intervention/image": "^2.5"
+	},
+	"minimum-stability": "dev",
+	"config": {
+		"platform": {
+			"php": "7.3"
+		}
+	}
+}

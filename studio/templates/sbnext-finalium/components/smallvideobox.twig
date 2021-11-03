@@ -1,0 +1,16 @@
+<div class="row">
+	<a href="watch.php?v={{ data.video_id }}">
+	<div class="col-md-6">
+		<div class="thumbnail" style="margin-bottom:0">
+			<img src="{{ video_thumbnail(data.video_id) }}">
+		</div>
+		</div>
+	</a>
+	<div class="row col-md-7">
+	<h5><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h5>
+	<p>{{ userlink(data, 'u_') }}</p>
+	</div>
+	<div class="col-md-12">
+		<p>{{ data.views }} views &bull; {{ data.time | relative_time }}</p>
+	</div>
+</div>
