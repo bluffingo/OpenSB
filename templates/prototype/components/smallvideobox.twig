@@ -2,14 +2,14 @@
 	<div class="card-body">
 		<div class="grid">
 			<div class="col col-4">
-				<a href="watch.php?v={{ data.video_id }}&frontend=new">
+				<a href="watch.php?v={{ data.video_id }}">
 					<div class="card card-info">
 						<img class="img-fluid" src="{{ video_thumbnail(data.video_id) }}">
 					</div>
 				</a>
 			</div>
 			<div class="col col-8">
-				<h3><a href="watch.php?v={{ data.video_id }}&frontend=new">{{ data.title }}</a></h3>
+				<h3><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
 				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("views") }}	&bull;
 				<span class="text-muted">{{ data.time | relative_time }}</span></p>
 			</div>

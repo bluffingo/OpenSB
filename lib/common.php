@@ -63,9 +63,9 @@ if (isset($_COOKIE['theme'])) {
 }
 
 if ($oldTemplateSwitching) {
-	$frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'default');
+	$frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'prototype');
 } else {
-	$frontend = (isset($useTemplate) ? $useTemplate : 'default');
+	$frontend = (isset($useTemplate) ? $useTemplate : 'prototype');
 }
 
 if ($log) {

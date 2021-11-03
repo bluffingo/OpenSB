@@ -7,7 +7,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		var audio = new Audio('/assets/sounds/'+sound+'.wav');
 		audio.play();
 	}
-	//document.getElementById("liveToastBtn").onclick = function() {
+	//document.getElementById("liveToastbutton").onclick = function() {
     //var myAlert =document.getElementById('liveToast');//select id of toast
     //var bsAlert = new bootstrap.Toast(myAlert);//inizialize it
     //bsAlert.show();//show it
@@ -31,42 +31,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		$("#mainMenu").removeClass("show");
 		$("#themeSelection").addClass("show");
 	});
-	$("#light").click(function(){
-		$("#themeSelection").removeClass("show");
-		$("#bootstrap").attr("href", "assets/bs.css");
-		$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
-		Cookies.set("theme", "light", { expires: 1000 });
-	});
-	$("#vanilla").click(function(){
-		$("#themeSelection").removeClass("show");
-		$("#bootstrap").attr("href", "assets/bs-vanilla.css");
-		$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
-		Cookies.set("theme", "vanilla", { expires: 1000 });
-	});
-	$("#dark").click(function(){
-		$("#themeSelection").removeClass("show");
-		$("#bootstrap").attr("href", "assets/bs-dark.css");
-		$("#navbar").attr("class", "navbar navbar-dark bg-dark navbar-static-top navbar-expand-md");
-		Cookies.set("theme", "dark", { expires: 1000 });
-	});
-	$("#finalium").click(function(){
-		$("#themeSelection").removeClass("show");
-		$("#bootstrap").attr("href", "assets/bs-finalium.css");
-		$("#navbar").attr("class", "navbar navbar-light bg-light navbar-static-top navbar-expand-md");
-		Cookies.set("theme", "finalium", { expires: 1000 });
-	});
-	$("#finalium-dark").click(function(){
-		$("#themeSelection").removeClass("show");
-		$("#bootstrap").attr("href", "assets/bs-finalium-dark.css");
-		$("#navbar").attr("class", "navbar navbar-dark bg-dark navbar-static-top navbar-expand-md");
-		Cookies.set("theme", "finalium-dark", { expires: 1000 });
-	});
 	$("#action_unlogged").click(function(){
 		play("error");
 		alert('you must be logged in.');
 	});
 	contents = $.trim($("#commentContents").val());
-	if (contents === null || contents == "" && $("#post").attr("class") != "btn btn-primary disabled") {
+	if (contents === null || contents == "" && $("#post").attr("class") != "button button-primary disabled") {
 		$("#post").addClass("disabled");
 	}
 	$("#commentContents").keydown(function(e){
@@ -109,12 +79,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			if (status == "success") {
 				if(data == subscribe_string) {
 					$("#subscribe").text(subscribe_string);
-					$("#subscribe").attr("class", "btn btn-warning");
+					$("#subscribe").attr("class", "button button-primary");
 					console.log("Unsubscribed " + user_id);
 					play("click");
 				} else if(data == unsubscribe_string) {
 					$("#subscribe").text(unsubscribe_string);
-					$("#subscribe").attr("class", "btn btn-secondary");
+					$("#subscribe").attr("class", "button button-secondary");
 					console.log("Subscribed " + user_id);
 					play("subscribe");
 				} else {
@@ -125,7 +95,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		});
 	});	
 	$("#like").click(function(){
-		if($("#like").attr("class") != "text-success") {
+		if($("#like").attr("class") != "button button-success") {
 			$.post("rate.php",
 			{
 				rating: 1,
@@ -134,10 +104,10 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			function(data,status){
 				if (status == "success") {
 					if(data == 1) {
-						$("#like").attr("class", "text-success");
+						$("#like").attr("class", "button button-success");
 						$("#likes").text(parseInt($("#likes").text()) + 1)
 						$("#dislikes").text(parseInt($("#dislikes").text()) - 1)
-						$("#dislike").attr("class", "text-body");
+						$("#dislike").attr("class", "button button-secondary");
 						play("like");
 					} else if(data == 0) {
 						$("#like").click();
@@ -150,7 +120,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		}
 	});
 	$("#dislike").click(function(){
-		if($("#dislike").attr("class") != "text-danger") {
+		if($("#dislike").attr("class") != "button button-danger") {
 			$.post("rate.php",
 			{
 				rating: 0,
@@ -159,10 +129,10 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			function(data,status){
 				if (status == "success") {
 					if (data == 1) {
-						$("#dislike").attr("class", "text-danger");
+						$("#dislike").attr("class", "button button-danger");
 						$("#dislikes").text(parseInt($("#dislikes").text()) + 1)
 						$("#likes").text(parseInt($("#likes").text()) - 1)
-						$("#like").attr("class", "text-body");
+						$("#like").attr("class", "button button-secondary");
 						play("dislike");
 					} else if (data == 0) {
 						$("#dislike").click();

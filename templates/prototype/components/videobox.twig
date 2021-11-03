@@ -9,7 +9,7 @@
 				</a>
 			</div>
 			<div class="col-8">
-				<h3><a href="watch.php?v={{ data.video_id }}&frontend=new">{{ data.title }}</a></h3>
+				<h3><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
 				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("views") }}	&bull;
 				<span class="text-muted">{{ data.time | relative_time }}</span> &bull; {{ data.category_id | category_id_to_name() }}</p>
 				<p>{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description }}</p>

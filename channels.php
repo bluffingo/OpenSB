@@ -1,6 +1,8 @@
 <?php
 require('lib/common.php');
 
+echo 'TODO: channels template for prototype frontend';
+
 $offset = ((isset($_GET['page']) ? $_GET['page'] : 1) - 1) * 20;
 
 // currently selects all registered users (channels)
