@@ -36,8 +36,8 @@
 			<script src="https://unpkg.com/plyr@3.6.8/dist/plyr.min.js"></script>
 			<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
 			<!-- indigo player (the player we used back in the milestone/alpha days) was starting to have a lot of techincal issues by the time of alpha 3.
-				videos would randomly glitch on indigo and sometimes it wouldn't even load the goddamn video (not a ffmpeg issue this time). 
-				we at squarebracket have decided to use plyr instead of indigo. the aspect ratio is a bit wonky but that should be fixed soon 
+				videos would randomly glitch on indigo and sometimes it wouldn't even load the goddamn video (not a ffmpeg issue this time).
+				we at squarebracket have decided to use plyr instead of indigo. the aspect ratio is a bit wonky but that should be fixed soon
 				-gamerappa, July 31st 2021 -->
 			<style>
 				.plyr--video {
@@ -54,11 +54,11 @@
 						const dash = dashjs.MediaPlayer().create();
 						const video = document.querySelector('video');
 						dash.initialize(video, source, true);
-				
+
 						// Update caption tracks after initializing Plyr to get the generated captions
 						// For more options see: https://github.com/sampotts/plyr/#options
 						const player = new Plyr(video);
-				
+
 						// Expose player and dash so they can be used from the console
 						window.player = player;
 						window.dash = dash;
@@ -76,21 +76,15 @@
 					<br>
 					<div class="button-group">
 						<button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="button button-secondary">
-							<svg class="bi" width="20" height="20" fill="currentColor">
-								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-up-fill"/>
-							</svg>
+							{{ icon("hand-thumbs-up-fill", 20) }}
 							Like
 						</button>
 						<button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" data-tooltip="Dislike" class="button button-secondary tooltip tooltip-top">
-							<svg class="bi" width="20" height="20" fill="currentColor">
-								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-down-fill"/>
-							</svg>
+							{{ icon("hand-thumbs-down-fill", 20) }}
 						</button>
 					</div>
 					<button href="#" id="{% if log %}quicklist{% else %}action_unlogged{% endif %}" data-tooltip="Add to Quicklist" class="button button-secondary tooltip tooltip-top">
-						<svg class="bi" width="20" height="20" fill="currentColor">
-							<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#plus-lg"/>
-						</svg>
+						{{ icon("plus-lg", 20) }}
 					</button>
 					<p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
 					<p>{{ video.description }}</p>
@@ -98,8 +92,11 @@
 					<p><b>{{ __("License:") }}</b> {{ __("Standard squareBracket License") }}</b>
 				</div>
 				<div class="col-6 right">
-				<h1>{{ video.views }}</h1>
-				<h4>Ratio: {{ videoRatio }}%</h4>
+				<h1>{{ video.views }} {{ __("views") }}</h1>
+				<h4>{{ icon("hand-thumbs-up-fill", 20) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 20) }} {{ total_dislikes }}  </h4>
+				<div class="likesaber">
+					<div class="like" style="width:{{ videoRatio}}%"></div>
+				</div>
 				</div>
 			</div>
 			<h3>Comments</h3>
@@ -111,7 +108,7 @@
 						</div>
 						<div class="col-11">
 							<div>
-								<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3" 
+								<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
 								placeholder="{% if log %}
 								{{ __("Enter comment here, Markdown can be used here.") }}
 								{% else %}

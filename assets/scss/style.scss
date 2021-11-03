@@ -895,6 +895,20 @@ box-sizing: border-box;
 padding: 0;
 }
 
+/// "Likesaber" for watch page \\\
+.likesaber {
+	width: 200px;
+	height: 5px;
+	background-color: $gray-400;
+	float: right;
+
+	.like {
+		float:left;
+		height: 5px;
+		background-color: $green;
+	}
+}
+
 /// Gradients \\\
 @import "_gradients";
 /// Backgrounds \\\
