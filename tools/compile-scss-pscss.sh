@@ -10,6 +10,3 @@ echo "Compiling Forum Styles"
 php ${pscss_path} ${common_arguments} assets/scss/style.scss > assets/css/style.css
 echo "Compiling Forum Dark Styles"
 php ${pscss_path} ${common_arguments} assets/scss/darkmode.scss > assets/css/darkmode.css
-
-echo "Compiling Finalium Light"
-php ${pscss_path} ${common_arguments} bootstrap/bs-finalium.scss > assets/bs-finalium.css

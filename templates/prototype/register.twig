@@ -1,59 +1,32 @@
-{% extends "_layout-login.twig" %}
+{% extends "_layout.twig" %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{{ __("Register") }}{% endblock %}
 
-	{% block content %}
-<main class="form-signin">
+{% block content %}
+
 {% if error %}
 	<div class="alert alert-warning" role="alert">{{ error }}</div>
 {% endif %}
-<div class="container">
-</div>
-<!-- HOLY SHIT the page looked broken for a while.
-register page should be merged with login page on sbnext
--gamerappa 7/10/2021 -->
-  <form method="post" name="registerForm" id="registerForm" action="register.php">
-    <img class="mb-2" src="/assets/logo_border_placeholder.png" alt="squareBracket" width="90">
-	<h3 class="mb-4 text-white">{{ __("Register") }}</h3>
-<form method="POST">
-	<div class="card">
-		<div class="card-body">
-		<div class="form-floating my-2">
-			<input type="email" name="email" class="form-control" id="floatingEmail" placeholder="">
-			<label for="floatingEmail">{{ __("E-mail") }}</label>
-		</div>
-		<div class="form-floating my-2">
-			<input type="text" name="displayName" class="form-control" id="floatingDname" placeholder="">
-			<label for="floatingDname">{{ __("Display Name") }}</label>
-		</div>
-		<div class="form-floating my-2">
-			<input type="text" name="username" class="form-control" id="floatingUsername" placeholder="">
-			<label for="floatingUsername">{{ __("Username") }}</label>
-		</div>
-		<div class="form-floating my-2">
-			<input type="password" name="pass1" class="form-control" id="floatingPass" placeholder="">
-			<label for="floatingPass">{{ __("Password") }}</label>
-		</div>
-		<div class="form-floating my-2">
-			<input type="password" name="pass2" class="form-control" id="floatingPass2" placeholder="">
-			<label for="floatingPass2">{{ __("Password (Again)") }}</label>
-		</div>
-		{% if hcaptcha_sitekey %}
+<form method="post" name="loginForm" id="loginForm" action="register.php" class="form-signin">
+	<h2 class="form-signin-heading">Register</h2>
+	<input type="text" name="email" class="input-block-level" placeholder="Email">
+
+	<input type="text" name="displayName" class="input-block-level" placeholder="Display Name">
+	<input type="text" name="username" class="input-block-level" placeholder="Username">
+
+	<input type="password" name="pass1" class="input-block-level" placeholder="Password">
+	<input type="password" name="pass2" class="input-block-level" placeholder="Password (Again)">
+
+	{% if hcaptcha_sitekey %}
 		<div class="form-floating my-2">
 			<div class="h-captcha" data-sitekey="{{ hcaptcha_sitekey }}"></div>
 		</div>
-		{% endif %}
-		<div class="d-flex gap-2 justify-content-between">
-			<input class="btn btn-lg btn-primary flex-grow-1" type="submit" value="{{ __("Register") }}" name="action">
-			<a class="btn btn-lg btn-secondary" href="/">{{ __("Back") }}</a>
-		</div>
-	</div>
-</div>
-	<p class="mt-2 text-white"><b>{{ __("You must be 13 years or older to register to squareBracket.") }}</b> <br>{{ __("Account passwords are hashed with bcrypt.") }}</p>
-	<p class="mt-5 mb-3 text-white">{{ __("By squareBracket contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
+	{% endif %}
+
+	<br>
+	<input class="button button-large button-primary" type="submit" value="{{ __("Register") }}" name="registersubmit">
 </form>
-</main>
 {% if hcaptcha_sitekey %}
 	<script src='https://www.hCaptcha.com/1/api.js' async defer></script>
 {% endif %}
-	{% endblock %}
+{% endblock %}

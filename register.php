@@ -3,7 +3,7 @@ include('lib/common.php');
 
 $error = '';
 
-if (isset($_POST['action'])) {
+if (isset($_POST['registersubmit'])) {
 	$username = (isset($_POST['username']) ? $_POST['username'] : null);
 	$email = (isset($_POST['email']) ? $_POST['email'] : null);
 	$pass = (isset($_POST['pass1']) ? $_POST['pass1'] : null);

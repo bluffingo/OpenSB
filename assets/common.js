@@ -7,12 +7,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		var audio = new Audio('/assets/sounds/'+sound+'.wav');
 		audio.play();
 	}
-	//document.getElementById("liveToastbutton").onclick = function() {
-    //var myAlert =document.getElementById('liveToast');//select id of toast
-    //var bsAlert = new bootstrap.Toast(myAlert);//inizialize it
-    //bsAlert.show();//show it
-	//play("toast_show")
-	//};
+
 	$(window).click(function() {
 	  $("#mainMenu").removeClass("show");
 	  $("#themeSelection").removeClass("show");

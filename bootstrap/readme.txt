@@ -1,1 +1,0 @@
-Remnants of squareBracket's bootstrap theme for compatibility with the registration page which hasn't been rewritten yet.

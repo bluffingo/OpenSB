@@ -2,12 +2,12 @@
 
 {% block title %}{{ __("Sign in") }}{% endblock %}
 
-	{% block content %}
+{% block content %}
 
 	{% if error %}
 		<div class="alert alert-warning" role="alert">{{ error }}</div>
 	{% elseif resetted %}
-		<div class="alert alert-success" role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>	
+		<div class="alert alert-success" role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>
 	{% elseif new_pass %}
 		<div class="alert alert-success" role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>
 	{% elseif new_token %}
@@ -21,4 +21,4 @@
         <input class="button button-large button-primary" type="submit" value="{{ __("Sign in") }}" name="loginsubmit">
       </form>
 
-	{% endblock %}
+{% endblock %}
