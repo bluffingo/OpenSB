@@ -68,7 +68,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	$("#fromUser").click(function(){
 		index = 0;
 		if ($("#fromUserVideoList").attr("class") != "card-body") {
-			$.post("ajax.php",
+			$.post("ajax_watch.php",
 			{
 				from: index,
 				limit: 6,
