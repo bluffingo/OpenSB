@@ -24,12 +24,11 @@ function _twigloader($subfolder = '') {
 	return $twig;
 }
 
-function _profileImage($username) {
-	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/profpic/'.$username.'.png', 'r');
+function _profileImage($name) {
+	$file_exists = file_exists('../assets/profpic/'.$name.'.png');
 	$twig = twigloader('components');
-	return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $handle]);
+	return $twig->render('profileimage.twig', ['data' => $name, 'file_exists' => $file_exists]);
 }
-
 function _videoThumbnail($videodata) {
 	$handle = @fopen((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/assets/thumb/'.$videodata.'.png', 'r');
 	$twig = twigloader('components');

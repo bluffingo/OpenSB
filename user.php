@@ -104,7 +104,6 @@ echo $twig->render('user.twig', [
 	'id' => $userpagedata['id'],
 	'name' => $userpagedata['name'],
 	'userpagedata' => $userpagedata,
-	'user' => $userpagedata, // compat with old sb layout
 	'latestVideos' => $latestVideoData,
 	'forceuser' => $forceuser,
 	'page' => $page,
