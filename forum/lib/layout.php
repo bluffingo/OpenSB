@@ -177,10 +177,10 @@ function ifEmptyQuery($message, $colspan = 0, $table = false) {
 }
 
 function _twigloader($subfolder = '') {
-	global $dateformat;
-
-	$twig = twigloader($subfolder, function () use ($subfolder) {
-		return new \Twig\Loader\FilesystemLoader('templates/' . $subfolder);
+	global $dateformat, $frontend;
+	
+	$twig = twigloader($subfolder, function () use ($subfolder, $frontend) {
+		return new \Twig\Loader\FilesystemLoader('templates/' . $frontend . $subfolder);
 	}, function ($loader, $doCache) {
 
 		return new \Twig\Environment($loader, [
