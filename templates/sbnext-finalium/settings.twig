@@ -1,17 +1,17 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Settings{% endblock %}
+{% block title %}{{ __("Settings") }}{% endblock %}
 
 	{% block content %}
 <form action="settings.php" method="post">
-<h3>Credentials</h3>
+<h3>{{ __("Credentials") }}</h3>
 <table class="settings">
 	<tr>
-		<td class="a">Username</td>
+		<td class="a">{{ __("Username") }}</td>
 		<td class="b">{{ userdata.name }}</td>
 	</tr>
 	<tr>
-		<td class="a">Email address</td>
+		<td class="a">{{ __("Email address") }}</td>
 		{% if userdata.email == "poktube_migrated@squarebracket.me" %}
 			<td class="b">{{ __("Account migrated from PokTube") }}</td>
 		{% else %}
@@ -19,49 +19,49 @@
 		{% endif %}
 	</tr>
 	<tr>
-		<td class="a">Change Password</td>
+		<td class="a">{{ __("Change Password") }}</td>
 		<td class="b">
-			<p><input type="password" name="current_pass" size="30" maxlength="256" placeholder="Current Password (For verification)"></p>
-			<p><input type="password" name="pass" size="30" maxlength="256" placeholder="New Password">
-			<input type="password" name="pass2" size="30" maxlength="256" placeholder="Repeat new Password"></p>
+			<p><input type="password" name="current_pass" size="30" maxlength="256" placeholder="{{ __("Current Password (For verification)") }}"></p>
+			<p><input type="password" name="pass" size="30" maxlength="256" placeholder="{{ __("New Password") }}">
+			<input type="password" name="pass2" size="30" maxlength="256" placeholder="{{ __("Repeat new Password") }}"></p>
 		</td>
 	</tr>
 </table>
 
-<h3>Customize your profile</h3>
+<h3>{{ __("Customize your profile") }}</h3>
 <table class="settings">
 	<tr>
-		<td class="a">Profile Picture</td>
+		<td class="a">{{ __("Profile Picture") }}</td>
 		<td class="b">
 			<img class="float-start rounded" src="{{ profile_image(userdata.name) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
 			<input class="form-control" type="file" name="profilePicture" id="profilePicture">
 		</td>
 	</tr>
 	<tr>
-		<td class="a">Display Name</td>
+		<td class="a">{{ __("Display Name") }}</td>
 		<td class="b"><input type="text" name="title" size="45" maxlength="256" value="{{ userdata.title }}"></td>
 	</tr>
 	<tr>
-		<td class="a">Custom color</td>
+		<td class="a">{{ __("Custom color") }}</td>
 		<td class="b"><input type="color" name="customcolor" value="{{ userdata.customcolor | default('523bb8') }}"></td>
 	</tr>
 	<tr>
 		<td class="a">
-			About
-			<br><em>Markdown allowed.</em>
+			{{ __("About") }}
+			<br><em>{{ __("Markdown allowed.") }}</em>
 		</td>
 		<td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual">{{ userdata.about }}</textarea></td>
 	</tr>
 	<tr>
-		<td class="a">Forum signature</td>
+		<td class="a">{{ __("Forum signature") }}</td>
 		<td class="b"><textarea name="signature" rows="5" cols="80" wrap="virtual">{{ userdata.signature }}</textarea></td>
 	</tr>
 </table>
 
-<h3>Options</h3>
+<h3>{{ __("Options") }}</h3>
 <table class="settings">
 	<tr>
-		<td class="a">Language</td>
+		<td class="a">{{ __("Language") }}</td>
 		<td class="b">
 			<select class="form-select" name="language">
 				{% for code,name in glob_languages %}
@@ -72,7 +72,7 @@
 	</tr>
 </table>
 <input type="hidden" name="magic" value="FOR GOD SAKES OPEN THE SILO DOOR">
-<input class="button button-primary" type="submit" name="action" value="Save Changes">
+<input class="button button-primary" type="submit" name="action" value="{{ __("Save Changes") }}">
 	{% endblock %}
 
 {% block custom_footer %}

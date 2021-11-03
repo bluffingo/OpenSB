@@ -1,13 +1,17 @@
 {
 	"\\RelativeTime\\Languages\\English": "\\RelativeTime\\Languages\\English",
 
-	"No POST data.": "No POST data.",
-
 	"The music you were looking for cannot be found.": "The music you were looking for cannot be found.",
 
-	"Please enter your username! ": "Please enter your username! ",
-	"Please enter your password! ": "Please enter your password! ",
-	"Incorrect username or password.": "Incorrect username or password.",
+	"No reset data.": "No reset data.",
+
+	"Follow": "Follow",
+	"Unfollow": "Unfollow",
+
+	" The new passwords aren't identical.": " The new passwords aren't identical.",
+	"Your current password is incorrect.": "Your current password is incorrect.",
+
+	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
 
 	"Blank username.": "Blank username.",
 	"Blank email.": "Blank email.",
@@ -19,52 +23,32 @@
 	"Email isn't valid.": "Email isn't valid.",
 	"Incorrect CAPTCHA. Please try again.": "Incorrect CAPTCHA. Please try again.",
 
-	"No reset data.": "No reset data.",
-
-	" The new passwords aren't identical.": " The new passwords aren't identical.",
-	"Your current password is incorrect.": "Your current password is incorrect.",
-
-	"Follow": "Follow",
-	"Unfollow": "Unfollow",
-
-	"Your video is already uploading or has been uploaded.": "Your video is already uploading or has been uploaded.",
-	"Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed.": "Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed.",
+	"No POST data.": "No POST data.",
 
 	"Your music is already uploading or has been uploaded.": "Your music is already uploading or has been uploaded.",
 	"Please wait 2 minutes before uploading again. If you've already uploaded a music, it is being processed.": "Please wait 2 minutes before uploading again. If you've already uploaded a music, it is being processed.",
 
-	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
+	"Please enter your username! ": "Please enter your username! ",
+	"Please enter your password! ": "Please enter your password! ",
+	"Incorrect username or password.": "Incorrect username or password.",
 
-	"This feature is not ready for production.": "This feature is not ready for production.",
-	"Access Denied": "Access Denied",
+	"Your video is already uploading or has been uploaded.": "Your video is already uploading or has been uploaded.",
+	"Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed.": "Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed.",
 
-	"s": "s",
-	"%s follower%s": "%s follower%s",
-	"no": "no",
-	"%s view%s": "%s view%s",
-	"No uploaded videos.": "No uploaded videos.",
+	"Video": "Video",
+	"Upload video": "Upload video",
+	"Music": "Music",
+	"Upload music": "Upload music",
 
 	"Sign in": "Sign in",
-	"Password successfully reset! Please login with your new password.": "Password successfully reset! Please login with your new password.",
-	"You have been successfully logged out of all devices.": "You have been successfully logged out of all devices.",
-
-	"Register": "Register",
-
-	"Account migrated from PokTube": "Account migrated from PokTube",
-
 	"Upload": "Upload",
-	"Upload video": "Upload video",
-	"Video info": "Video info",
-	"Enter the title and description of your video.": "Enter the title and description of your video.",
-	" Title": " Title",
-	" Description": " Description",
-	" Tags": " Tags",
-	"Video file": "Video file",
-	"Select the video file you want to upload.": "Select the video file you want to upload.",
-	"Upload guidelines": "Upload guidelines",
-	"Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.": "Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.",
+	"Search...": "Search...",
+	"By the squareBracket contributors": "By the squareBracket contributors",
+	"Users registered": "Users registered",
+	"Videos uploaded": "Videos uploaded",
 
-	"Upload music": "Upload music",
+	"Sorry about that.": "Sorry about that.",
+
 	"Important": "Important",
 	"By uploading your music onto squareBracket, you acknowledge about the upload guidelines.": "By uploading your music onto squareBracket, you acknowledge about the upload guidelines.",
 	"Music info": "Music info",
@@ -76,11 +60,44 @@
 	"Please, for god sakes, do not upload anything related to logos or cartoons meant for children. The viewer-base of those videos indirectly caused the downfall of the Gamerappa YouTube channel.": "Please, for god sakes, do not upload anything related to logos or cartoons meant for children. The viewer-base of those videos indirectly caused the downfall of the Gamerappa YouTube channel.",
 	"Upload anyways": "Upload anyways",
 
-	"Video": "Video",
-	"Music": "Music",
-
+	"%s follower%s": "%s follower%s",
+	"no": "no",
+	"%s view%s": "%s view%s",
 	"Not implemented": "Not implemented",
 	"There are currently no videos uploaded by %s.": "There are currently no videos uploaded by %s.",
+
+	"Register": "Register",
+	"Display Name": "Display Name",
+	"Username": "Username",
+	"Password": "Password",
+	"Password (Again)": "Password (Again)",
+
+	"Latest videos": "Latest videos",
+	"(Page %s)": "(Page %s)",
+	"Categories": "Categories",
+	"All": "All",
+	"Miscellanous": "Miscellanous",
+	"Entertainment": "Entertainment",
+	"Shitposting & Comedy": "Shitposting & Comedy",
+	"Gaming": "Gaming",
+	"News and Updates": "News and Updates",
+	"Lifestyle": "Lifestyle",
+	"Science and Technology": "Science and Technology",
+	"Archive Dump": "Archive Dump",
+	"There are no videos of that category. You could create one!": "There are no videos of that category. You could create one!",
+
+	"Password successfully reset! Please login with your new password.": "Password successfully reset! Please login with your new password.",
+	"You have been successfully logged out of all devices.": "You have been successfully logged out of all devices.",
+
+	"Video info": "Video info",
+	"Enter the title and description of your video.": "Enter the title and description of your video.",
+	" Title": " Title",
+	" Description": " Description",
+	" Tags": " Tags",
+	"Video file": "Video file",
+	"Select the video file you want to upload.": "Select the video file you want to upload.",
+	"Upload guidelines": "Upload guidelines",
+	"Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.": "Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.",
 
 	"This video is being processed. Try again later.": "This video is being processed. Try again later.",
 	"Edit video": "Edit video",
@@ -93,14 +110,41 @@
 	"Comment": "Comment",
 	"Explore More Videos": "Explore More Videos",
 
-	"Sorry about that.": "Sorry about that.",
+	"Settings": "Settings",
+	"Credentials": "Credentials",
+	"Email address": "Email address",
+	"Account migrated from PokTube": "Account migrated from PokTube",
+	"Change Password": "Change Password",
+	"Current Password (For verification)": "Current Password (For verification)",
+	"New Password": "New Password",
+	"Repeat new Password": "Repeat new Password",
+	"Customize your profile": "Customize your profile",
+	"Profile Picture": "Profile Picture",
+	"Custom color": "Custom color",
+	"About": "About",
+	"Markdown allowed.": "Markdown allowed.",
+	"Forum signature": "Forum signature",
+	"Options": "Options",
+	"Language": "Language",
+	"Save Changes": "Save Changes",
 
-	"By the squareBracket contributors": "By the squareBracket contributors",
-	"Users registered": "Users registered",
-	"Videos uploaded": "Videos uploaded",
+	"Welcome,": "Welcome,",
+	"s": "s",
+	"Go to studio": "Go to studio",
+	"Welcome to squareBracket": "Welcome to squareBracket",
+	"I can't believe it's not PokTube": "I can't believe it's not PokTube",
+	"Already have an account?": "Already have an account?",
+	"Recently uploaded to squareBracket": "Recently uploaded to squareBracket",
+	"No uploaded videos.": "No uploaded videos.",
+	"What's new?": "What's new?",
+	"Welcome to the brand new squareBracket! We've heard it, the old layout sucked so we have redesigned squareBracket to have a better user interface.": "Welcome to the brand new squareBracket! We've heard it, the old layout sucked so we have redesigned squareBracket to have a better user interface.",
+	"We have introduced many new features! Including:": "We have introduced many new features! Including:",
+	"Forums": "Forums",
+
+	"views": "views",
 
 	"view%s": "view%s",
 
-	"views": "views"
-
+	"This feature is not ready for production.": "This feature is not ready for production.",
+	"Access Denied": "Access Denied"
 }

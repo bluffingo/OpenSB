@@ -1,42 +1,41 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Latest videos {% if page != 1 %}(Page {{ page }}){% endif %}{% endblock %}
+{% block title %}{{ __("Latest videos") }} {% if page != 1 %}{{ __("(Page %s)", [page]) }}{% endif %}{% endblock %}
 
 	{% block content %}
-<h1>Latest videos {% if page != 1 %}(Page {{ page }}){% endif %}</h1>
+<h1>{{ title }}</h1>
 <div class="grid">
-<div class="col-4">
-<div class="well sidebar-nav">
-    <ul class="nav nav-list">
-        <li class="nav-header">Categories</li>
-        <li {% if type == 'all' %}class="active"{% endif %}><a href="browse.php?type=all">All</a></li>
-        <li {% if type == 'misc' %}class="active"{% endif %}><a href="browse.php?type=misc">Miscellanous</a></li>
-		<li {% if type == 'entertainment' %}class="active"{% endif %}><a href="browse.php?type=entertainment">Entertainment</a></li>
-        <li {% if type == 'comedy' %}class="active"{% endif %}><a href="browse.php?type=comedy">Shitposting & Comedy</a></li>
-        <li {% if type == 'gaming' %}class="active"{% endif %}><a href="browse.php?type=gaming">Gaming</a></li>
-        <li {% if type == 'news' %}class="active"{% endif %}><a href="browse.php?type=news">News and Updates</a></li>
-        <li {% if type == 'life' %}class="active"{% endif %}><a href="browse.php?type=life">Lifestyle</a></li>
-        <li {% if type == 'technology' %}class="active"{% endif %}><a href="browse.php?type=technology">Science and Technology</a></li>
-        <li {% if type == 'backup' %}class="active"{% endif %}><a href="browse.php?type=backup">Archive Dump</a></li>
-    </ul>
-</div>
-</div>
-<div class="col-8">
+	<div class="col-4">
+		<div class="well sidebar-nav">
+			<ul class="nav nav-list">
+				<li class="nav-header">{{ __("Categories") }}</li>
+				<li {% if type=='all' %}class="active" {% endif %}><a href="browse.php?type=all">{{ __("All") }}</a></li>
+				<li {% if type=='misc' %}class="active" {% endif %}><a href="browse.php?type=misc">{{ __("Miscellanous") }}</a></li>
+				<li {% if type=='entertainment' %}class="active" {% endif %}><a href="browse.php?type=entertainment">{{ __("Entertainment") }}</a></li>
+				<li {% if type=='comedy' %}class="active" {% endif %}><a href="browse.php?type=comedy">{{ __("Shitposting & Comedy") }}</a></li>
+				<li {% if type=='gaming' %}class="active" {% endif %}><a href="browse.php?type=gaming">{{ __("Gaming") }}</a></li>
+				<li {% if type=='news' %}class="active" {% endif %}><a href="browse.php?type=news">{{ __("News and Updates") }}</a></li>
+				<li {% if type=='life' %}class="active" {% endif %}><a href="browse.php?type=life">{{ __("Lifestyle") }}</a></li>
+				<li {% if type=='technology' %}class="active" {% endif %}><a href="browse.php?type=technology">{{ __("Science and Technology") }}</a></li>
+				<li {% if type=='backup' %}class="active" {% endif %}><a href="browse.php?type=backup">{{ __("Archive Dump") }}</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-8">
+		{% for level in levels %}
+			{{ video_box(level) }}
+		{% else %}
+			{{ __("There are no videos of that category. You could create one!") }}
+		{% endfor %}
 
-{% for level in levels %}
-	{{ video_box(level) }}
-{% else %}
-	There are no {% if type != 'all' %}{{ type }}{% endif %} videos. You could create one!
-{% endfor %}
+		{% if type == 'all' %}
+			{% set le_url = 'browse.php?page=%s' %}
+		{% else %}
+			{% set le_url = 'browse.php?type=' ~ type ~ '&page=%s' %}
+		{% endif %}
+		{{ pagination(level_count, glob_lpp, le_url, page) }}
 
-{% if type == 'all' %}
-	{% set le_url = 'browse.php?page=%s' %}
-{% else %}
-	{% set le_url = 'browse.php?type=' ~ type ~ '&page=%s' %}
-{% endif %}
-{{ pagination(level_count, glob_lpp, le_url, page) }}
-
-<br><br>
-</div>
+		<br><br>
+	</div>
 </div>
 	{% endblock %}

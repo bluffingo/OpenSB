@@ -1,60 +1,62 @@
 {% extends "_layout.twig" %}
+
 {% block title %}Main page{% endblock %}
+
 	{% block precontent %}
-	<div class="main-content">
-		<div class="container" style="max-width:1200px;">
-	  		{% if log %}
-			<div class="grid">
-				<div class="col-10">
-					<p class="text-start">
-					<h1>Welcome, {{ userdata.title }}</h1>
-						{# hack to prevent twig from outputing the number 1 #}
-						{% if totalSubscribers != 1 %}
-							{% set pluralSubscribers = __("s") %}
-						{% endif %}
-						{% if totalViews != 1 %}
-							{% set pluralViews = __("s") %}
-						{% endif %}
-						<p class="fs-5 mb-1">@{{ userdata.name }}
-						&bull; {{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
-						&bull; {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
-						<a class="button button-primary button-large" href="../studio.php">Go to studio {{ icon('caret-right-fill', 16) }}</a>
-				</div>
-				<div class="col-2">
-					<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}">
-				</div>
-			</div>
-		{% else %}
-			<div class="grid"><div class="col-12">
-				<h1 class="fw-bold">Welcome to squareBracket</h1>
-				<p>I can't believe it's not PokTube</p>
-				<a class="button button-primary button-large" href="register.php">Register {{ icon('caret-right-fill', 16) }}</a>
-				<big>Already have an account? <a href="login.php">Sign in</a></big>
-			</div></div>
+<div class="main-content">
+	<div class="container" style="max-width:1200px;">
+		{% if log %}
+		<div class="grid">
+			<div class="col-10">
+				<p class="text-start">
+				<h1>{{ __("Welcome,") }} {{ userdata.title }}</h1>
+				{# hack to prevent twig from outputing the number 1 #}
+				{% if totalSubscribers != 1 %}
+					{% set pluralSubscribers = __("s") %}
 				{% endif %}
+				{% if totalViews != 1 %}
+					{% set pluralViews = __("s") %}
+				{% endif %}
+				<p class="fs-5 mb-1">@{{ userdata.name }}
+					&bull; {{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
+					&bull; {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
+				<a class="button button-primary button-large" href="../studio.php">{{ __("Go to studio") }} {{ icon('caret-right-fill', 16) }}</a>
+			</div>
+			<div class="col-2">
+				<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
+			</div>
 		</div>
+		{% else %}
+		<div class="grid">
+			<div class="col-12">
+				<h1 class="fw-bold">{{ __("Welcome to squareBracket") }}</h1>
+				<p>{{ __("I can't believe it's not PokTube") }}</p>
+				<a class="button button-primary button-large" href="register.php">{{ __("Register") }} {{ icon('caret-right-fill', 16) }}</a>
+				<big>{{ __("Already have an account?") }} <a href="login.php">{{ __("Sign in") }}</a></big>
+			</div>
+		</div>
+		{% endif %}
 	</div>
+</div>
 	{% endblock %}
+
 	{% block content %}
 <div class="grid">
 	<div class="col-8">
-	<h3>Recently uploaded to squareBracket</h3>
-	{% for video in videos %}
+		<h3>{{ __("Recently uploaded to squareBracket") }}</h3>
+		{% for video in videos %}
 		{{ video_box(video) }}
-	{% else %}
+		{% else %}
 		<p>{{ __("No uploaded videos.") }}</p>
-	{% endfor %}
+		{% endfor %}
 	</div>
 	<div class="col-4">
-		<h3>What's new?</h3>
-		<p>Welcome to the brand new squareBracket!
-		We've heard it, the old layout sucked so
-		we have redesigned squareBracket to have
-		a better user interface.</p>
-		<p>We have introduced many new features! Including:</p>
-		<li>Categories</li>
-		<li>Forums</li>
-		<li>Music</li>
+		<h3>{{ __("What's new?") }}</h3>
+		<p>{{ __("Welcome to the brand new squareBracket! We've heard it, the old layout sucked so we have redesigned squareBracket to have a better user interface.") }}</p>
+		<p>{{ __("We have introduced many new features! Including:") }}</p>
+		<li>{{ __("Categories") }}</li>
+		<li>{{ __("Forums") }}</li>
+		<li>{{ __("Music") }}</li>
 	</div>
 </div>
 <br><br>
