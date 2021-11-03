@@ -48,7 +48,7 @@
 				.plyr--video {
 				height: 30rem;
 				--plyr-color-main: #2da5e5;
-				--plyr-font-family: arial, helvetica, sans-serif;
+				--plyr-font-family: Roboto, tahoma, arial, -apple-system, helvetica, sans-serif;
 				}
 			</style>
 			<script>
@@ -91,7 +91,20 @@
 							</svg>
 							</a>
 				</div>
+				<div class="col-8">
+							<div class="card">
+				<div class="card-header">
+					<h5>{{ __("About this video") }}</h5>
+				</div>
+				<div class="card-body">
+					<p>{{ __("Published: %s", [video.time | date('M j, Y')]) }}</p>
+					<p>{{ __("Uploader:") }} {{ userlink(video, 'u_') }}</p>
+					<p>{{ __("Category:") }} {{ video.category_id | category_id_to_name() }}</p>
+					<p>{{ __("Description:") }} {{ video.description }}</p>
+				
+				</div>
 			</div>
+			</div></div>
 			<h3>Comments</h3>
 			<div class="card">
 			<div class="card-body-fat">
@@ -123,17 +136,6 @@
 			{% endfor %}
 		</div>
 		<div class="col-4">
-			<div class="card">
-				<div class="card-header">
-					<h5>{{ __("About this video") }}</h5>
-				</div>
-				<div class="card-body">
-					<p>{{ __("Published: %s", [video.time | date('M j, Y')]) }}</p>
-					<p>{{ __("Uploader:") }} {{ userlink(video, 'u_') }}</p>
-					<p>{{ __("Category:") }} {{ video.category_id | category_id_to_name() }}</p>
-					<p>{{ __("Description:") }} {{ video.description }}</p>
-				</div>
-			</div>
 			<div class="card">
 				<div class="card-header">
 					<h5>{{ __("Explore More Videos") }}</h5>
