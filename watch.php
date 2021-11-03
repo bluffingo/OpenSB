@@ -26,6 +26,10 @@ if ($count == 0) {
 }
 $totalLikes = result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$videoData['id']]);
 $totalDislikes = result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=0", [$videoData['id']]);
+$combinedRatings = $totalDislikes + $totalLikes;
+
+$allRatings = calculateRatio($totalDislikes, $totalLikes, $combinedRatings);
+
 if (isset($userData)) {
 	$rating = result("SELECT rating FROM rating WHERE video=? AND user=?", [$videoData['id'], $userdata['id']]);
 	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $videoData['author']]);
@@ -47,5 +51,6 @@ echo $twig->render('watch.twig', [
 	'total_dislikes' => $totalDislikes,
 	'rating' => $rating,
 	'subscribed' => $subscribed,
-	'subCount' => $subCount
+	'subCount' => $subCount,
+	'videoRatio' => $allRatings,
 ]);

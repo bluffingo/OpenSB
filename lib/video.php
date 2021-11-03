@@ -26,3 +26,14 @@ function type_to_cat($type) {
 		'backup'	=> 7,
 	};
 }
+
+// This is for the like-to-dislike ratio lightsaber. -Gamerappa, November 2nd 2021
+function calculateRatio($number, $percent, $total){
+	// If there's no ratio or dislikes, it returns 100.
+	if ($total == 0 or $number == 0) {
+		return 100;
+	} else {
+	// It returns the Like-to-dislike ratio.
+    return ($percent / $total) * $number * 100;
+	}
+}
