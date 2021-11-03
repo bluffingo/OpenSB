@@ -44,58 +44,58 @@
 	</div>
 	<div class="col-offset-12 col-4 right">
 	{% if userpagedata.id == userdata.id %}
-		<a class="button button-primary" href="settings.php">Edit profile</a>
+		<a class="button button-primary" href="settings.php">{{ __("Edit profile") }}</a>
 	{% else %}
 		<button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}" type="button" {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
 	{% endif %}
 	</div>
 </div>
 {% if markread %}
-<div class="header_message">Marked all notifications as read.</div>
+<div class="header_message">{{ __("Marked all notifications as read.") }}</div>
 {% elseif edited %}
-<div class="header_message">Settings successfully saved!</div>
+<div class="header_message">{{ __("Settings successfully saved!") }}</div>
 {% endif %}
 {% if userdata.id == id and not forceuser %}
-<p>Welcome to your personal user page. Here, you can see and manage your uploaded content, customize your profile, and edit your settings.</p>
-<p><a href="settings.php">Edit my settings</a>
-	&bull; <a href="forum/private.php">View my private messages</a>
-	&bull; <a href="user.php?id={{ id }}&forceuser">View user page as viewer</a>
-	&bull; <a href="logout.php">Log out</a>
+<p>{{ __("Welcome to your personal user page. Here, you can see and manage your uploaded content, customize your profile, and edit your settings.") }}</p>
+<p><a href="settings.php">{{ __("Edit my settings") }}</a>
+	&bull; <a href="forum/private.php">{{ __("View my private messages") }}</a>
+	&bull; <a href="user.php?id={{ id }}&forceuser">{{ __("View user page as viewer") }}</a>
+	&bull; <a href="logout.php">{{ __("Log out") }}</a>
 </p>
 {% if userdata.powerlevel > 2 %}
-<p><a href="admin.php">Admin panel</a></p>
+<p><a href="admin.php">{{ __("Admin panel") }}</a></p>
 {% endif %}
 <form action="login.php" method="post" name="logout">
 	<input type="hidden" name="logout" value="yes">
 </form>
-<h3>Notifications</h3>
+<h3>{{ __("Notifications") }}</h3>
 <ul>
 	{% for notif in notifs %}
 	<li>{{ notif | raw }}</li>
 	{% else %}
-	<li>No new notifications!</li>
+	<li>{{ __("No new notifications!") }}</li>
 	{% endfor %}
 	{% if notifs %}
 	<br>
-	<li><a href="user.php?id={{ id }}&markread">Mark all as read</a></li>
+	<li><a href="user.php?id={{ id }}&markread">{{ __("Mark all as read") }}</a></li>
 	{% endif %}
 </ul>
 {% else %}
 <h2></h2>
 <div class="user_about">
-	<h3>About this user</h3>
+	<h3>{{ __("About this user") }}</h3>
 	{{ userpagedata.about | raw }}
 </div>
 <p class="clear_right">
-	<a href="forum/forum.php?user={{ id }}">View threads</a>
-	&bull; <a href="forum/thread.php?user={{ id }}">Show posts</a>
+	<a href="forum/forum.php?user={{ id }}">{{ __("View threads") }}</a>
+	&bull; <a href="forum/thread.php?user={{ id }}">{{ __("Show posts") }}</a>
 	{% if log %}
 	{% if userdata.id != id %}
-	&bull; <a href="forum/sendprivate.php?uid={{ id }}">Send private message</a>
+	&bull; <a href="forum/sendprivate.php?uid={{ id }}">{{ __("Send private message") }}</a>
 	{% endif %}
 	{% if userdata.powerlevel > 2 %}
-	&bull; <a href="resetpassword.php?grf={{ id }}">Generate password reset for user</a>
-	&bull; <a href="forum/editperms.php?uid={{ id }}">Edit forum permissions</a>
+	&bull; <a href="resetpassword.php?grf={{ id }}">{{ __("Generate password reset for user") }}</a>
+	&bull; <a href="forum/editperms.php?uid={{ id }}">{{ __("Edit forum permissions") }}</a>
 	{% endif %}
 	{% endif %}
 </p>
