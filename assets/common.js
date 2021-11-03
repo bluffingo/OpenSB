@@ -64,6 +64,27 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 				play("comment");
 			}
 		});
+	});	
+	$("#fromUser").click(function(){
+		index = 0;
+		if ($("#fromUserVideoList").attr("class") != "card-body") {
+			$.post("ajax.php",
+			{
+				from: index,
+				limit: 6,
+				user: user_id
+			},
+			function(data,status){
+				if (status == "success") {
+					index += 6;
+					$('#fromUserVideoList').append(data);
+					$("#fromUserVideoList").removeClass("collapsed")
+				}
+			});
+		} else {
+			$("#fromUserVideoList").empty();
+			$("#fromUserVideoList").addClass("collapsed");
+		}
 	});
 	$("#subscribe").click(function(){
 		$.post("subscribe.php",

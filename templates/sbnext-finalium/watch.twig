@@ -135,6 +135,13 @@
 					<h5>{{ __("Explore More Videos") }}</h5>
 				</div>
 				<div class="card-body">
+					<div class="card">
+						<div class="card-header" id="fromUser">
+							<h5>{{ __("More videos from %s", [video.u_name]) }}</h5>
+						</div>
+						<div class="card-body collapsed" id="fromUserVideoList">
+						</div>
+					</div>
 					{% for related_video in related_videos %}
 					{{ small_video_box(related_video)}}
 					{% endfor %}
