@@ -1,7 +1,7 @@
 <h1 align="center">squareBracket Beta 2.0.1</h1>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45898787/139552585-667dd1f3-2e5f-4fae-b7cc-2954ea742db0.png"><br>
+<img src="https://user-images.githubusercontent.com/45898787/140172623-b471f76c-05d0-4087-99e0-21712176846d.png"><br>
 <img src="https://img.shields.io/discord/853036368712040498?style=plastic">
 <img src="https://img.shields.io/github/v/release/chazizsquarebracket/squarebracket?include_prereleases&label=lastest%20released&style=plastic">
 <img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=plastic">
@@ -43,4 +43,4 @@ RelativeTime Repo (used for dates): https://github.com/mpratt/RelativeTime
 Twig literally makes HTML injection attacks a thing of the past. It's more short and concise than PHP's "templating" syntax, it supports layout inheritance and it allows for more code reuse and it's versatile for creating more frontends in the future. It's secure (it treats all variables as "unsafe" and automatically escapes them unless you explicitly mark them as safe), concise (its liquid-like syntax is shorter and way more appropriate for the context of templating) and fast (with caching enabled there's basically no overhead compared to not using Twig).
 
 ### Why ditch Bootstrap?
-We're in the process of writing new CSS intended for squareBracket. This should hopefully resolve the issue of "Bootstrap Spaghetti".
+We had problems with it, hense we're writing our own custom SCSS for squareBracket's new layout, which is sbNext.
