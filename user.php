@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
 }
 
 if (!isset($userpagedata) || !$userpagedata) {
-	error('No user specified');
+	error('404', 'No user specified');
 }
 
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
