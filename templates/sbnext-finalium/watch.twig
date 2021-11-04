@@ -22,7 +22,7 @@
 <div class="watchNext">
 	<div class="grid">
 		<div class="col-8">
-			<div id="container" style="height: 30rem;">
+			<div id="container">
 				<!--- todo: redo "video processed" message to use _error.twig -gr 7/22/2021 --->
 				{% if (video.flags b-and 2) %}
 				<div style="background-color: black; color: white; text-align: center; padding: 15rem">
@@ -41,7 +41,6 @@
 				-gamerappa, July 31st 2021 -->
 			<style>
 				.plyr--video {
-				height: 30rem;
 				--plyr-color-main: #2da5e5;
 				--plyr-font-family: Roboto, tahoma, arial, -apple-system, helvetica, sans-serif;
 				}
@@ -92,11 +91,11 @@
 					<p><b>{{ __("License:") }}</b> {{ __("Standard squareBracket License") }}</b>
 				</div>
 				<div class="col-6 right">
-				<h1>{{ video.views }} {{ __("views") }}</h1>
-				<h4>{{ icon("hand-thumbs-up-fill", 20) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 20) }} {{ total_dislikes }}  </h4>
+				<h1>{{ video.views }}</h1>
 				<div class="likesaber">
 					<div class="like" style="width:{{ videoRatio}}%"></div>
 				</div>
+				<div style="margin-top: 22px;">{{ icon("hand-thumbs-up-fill", 14) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 14) }} {{ total_dislikes }}  </div>
 				</div>
 			</div>
 			<h3>Comments</h3>

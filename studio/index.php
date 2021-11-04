@@ -13,6 +13,7 @@ if ($log) {
 	$totalViews = 0;
 	$creationDate = 0;
 }
+
 $twig = twigloader();
 
 echo $twig->render('index.twig', [
