@@ -3,15 +3,15 @@ require('lib/common.php');
 
 $permlist = null;
 
-if (!hasPerm('edit-permissions')) error('403', 'You have no permissions to do this!');
+if (!hasPerm('edit-permissions')) error('403', __("You have no permissions to do this!"));
 
 if (isset($_GET['gid'])) {
 	$id = (int)$_GET['gid'];
 	if ((isRootGid($id) || (!canEditGroupAssets() && $id!=$userdata['group_id'])) && !hasPerm('no-restrictions')) {
-		error('403', 'You have no permissions to do this!');
+		error('403', __("You have no permissions to do this!"));
 	}
 	if ($userdata['group_id'] == $id && !hasPerm('edit-own-permissions')) {
-		error('403', 'You have no permissions to do this!');
+		error('403', __("You have no permissions to do this!"));
 	}
 	$permowner = fetch("SELECT id,title,inherit_group_id FROM z_groups WHERE id=?", [$id]);
 	$type = 'group';
@@ -20,11 +20,11 @@ if (isset($_GET['gid'])) {
 
 	$tuser = result("SELECT group_id FROM users WHERE id = ?",[$id]);
 	if ((isRootGid($tuser) || (!canEditUserAssets() && $id != $userdata['id'])) && !hasPerm('no-restrictions')) {
-		error('403', 'You have no permissions to do this!');
+		error('403', __("You have no permissions to do this!"));
 	}
 
 	if ($id == $userdata['id'] && !hasPerm('edit-own-permissions')) {
-		error('403', 'You have no permissions to do this!');
+		error('403', __("You have no permissions to do this!"));
 	}
 	$permowner = fetch("SELECT u.id,u.name title,u.group_id,g.title group_title FROM users u LEFT JOIN z_groups g ON g.id=u.group_id WHERE u.id=?", [$id]);
 	$type = 'user';
@@ -38,7 +38,7 @@ if (isset($_GET['gid'])) {
 	$type = '';
 }
 
-if (!$permowner) error("404", "Invalid {$type} ID.");
+if (!$permowner) error("404", __("Invalid {$type} ID."));
 
 $errmsg = '';
 
@@ -50,9 +50,9 @@ if (isset($_POST['addnew'])) {
 	if (hasPerm('no-restrictions') || $permid != 'no-restrictions') {
 		query("INSERT INTO z_permx (x_id,x_type,perm_id,permbind_id,bindvalue,`revoke`) VALUES (?,?,?,'',?,?)",
 			[$id, $type, $permid, $bindval, $revoke]);
-		$msg = "The %s permission has been successfully assigned!";
+		$msg = __("The %s permission has been successfully assigned!");
 	} else {
-		$msg = "You do not have the permissions to assign the %s permission!";
+		$msg = __("You do not have the permissions to assign the %s permission!");
 	}
 } else if (isset($_POST['apply'])) {
 	$keys = array_keys($_POST['apply']);
@@ -65,9 +65,9 @@ if (isset($_POST['addnew'])) {
 	if (hasPerm('no-restrictions') || $permid != 'no-restrictions') {
 		query("UPDATE z_permx SET perm_id = ?, bindvalue = ?, `revoke` = ? WHERE id = ?",
 			[$permid, $bindval, $revoke, $pid]);
-		$msg = "The %s permission has been successfully edited!";
+		$msg = __("The %s permission has been successfully edited!");
 	} else {
-		$msg = "You do not have the permissions to edit the %s permission!";
+		$msg = __("You do not have the permissions to edit the %s permission!");
 	}
 } else if (isset($_POST['del'])) {
 	$keys = array_keys($_POST['del']);
@@ -75,17 +75,17 @@ if (isset($_POST['addnew'])) {
 	$permid = $_POST['permid'][$pid];
 	if (hasPerm('no-restrictions') || $permid != 'no-restrictions') {
 		query("DELETE FROM z_permx WHERE id = ?", [$pid]);
-		$msg = "The %s permission has been successfully deleted!";
+		$msg = __("The %s permission has been successfully deleted!");
 	} else {
-		$msg = "You do not have the permissions to delete the %s permission!";
+		$msg = __("You do not have the permissions to delete the %s permission!");
 	}
 }
 
 ob_start();
 
 $pagebar = [
-	'breadcrumb' => [['href'=>'./', 'title'=>'Main']],
-	'title' => 'Edit permissions',
+	'breadcrumb' => [['href'=>'./', 'title'=>__("Main")]],
+	'title' => __("Edit permissions"),
 	'actions' => [],
 	'message' => (isset($msg) ? sprintf($msg, titleForPerm($permid)) : '')
 ];
@@ -105,9 +105,9 @@ while ($perm = $permset->fetch()) {
 	$field = RevokeSelect("revoke[{$pid}]", $perm['revoke'])
 			.PermSelect("permid[{$pid}]", $perm['perm_id'])
 			.sprintf(
-				 ' for ID <input type="text" name="bindval[%s]" value="%s" size="3" maxlength="8">'
-				.' <input type="submit" name="apply[%s]" value="Apply">'
-				.' <input type="submit" name="del[%s]" value="Remove">',
+				__("for ID").' <input type="text" name="bindval[%s]" value="%s" size="3" maxlength="8">'
+				.' <input type="submit" name="apply[%s]" value="'.__("Apply").'">'
+				.' <input type="submit" name="del[%s]" value="'.__("Remove").'">',
 			$pid, $perm['bindvalue'], $pid, $pid);
 	$row['c'.$i] = $field;
 
@@ -125,11 +125,11 @@ if (($i % 2) != 0) {
 
 renderTable($data, $header);
 
-$header = ['c0' => ['name' => 'Add permission']];
+$header = ['c0' => ['name' => __("Add permission")]];
 
 $field = RevokeSelect("revoke_new", 0)
 		.PermSelect("permid_new", null)
-		.'for ID <input type="text" name="bindval_new" value="" size=3 maxlength=8> <input type="submit" name="addnew" value="Add">';
+		.__("for ID").' <input type="text" name="bindval_new" value="" size=3 maxlength=8> <input type="submit" name="addnew" value="'.__("Add").'">';
 $data = [['c0' => $field]];
 renderTable($data, $header);
 
@@ -141,10 +141,10 @@ $permsassigned = [];
 $permoverview = '<strong>'.ucfirst($type).' permissions:</strong><br>'.PermTable($permset);
 
 if ($type == 'group' && $permowner['inherit_group_id'] > 0) {
-	$permoverview .= '<br><hr><strong>Permissions inherited from parent groups:</strong><br>';
+	$permoverview .= '<br><hr><strong>'.__("Permissions inherited from parent groups:").'</strong><br>';
 	$parentid = $permowner['inherit_group_id'];
 } else if ($type == 'user') {
-	$permoverview .= '<hr><strong>Permissions inherited from the group "'.esc($permowner['group_title']).'":</strong><br>';
+	$permoverview .= '<hr><strong>'.__('Permissions inherited from the group %s.', [esc($permowner['group_title'])]).'":</strong><br>';
 	$parentid = $permowner['group_id'];
 }
 
@@ -154,7 +154,7 @@ while (isset($parentid) && $parentid > 0) {
 	$parentid = $parent['inherit_group_id'];
 }
 
-$header = ['cell' => ['name'=>"Permissions overview for {$type} '".esc($permowner['title'])."'"]];
+$header = ['cell' => ['name'=>__("Permissions overview for {$type} '%s'", [esc($permowner['title'])])]];
 $data = [['cell' => $permoverview]];
 renderTable($data, $header);
 
@@ -166,8 +166,8 @@ $content = ob_get_contents();
 ob_end_clean();
 
 $twig = _twigloader();
-echo $twig->render('_legacy.twig', [
-	'page_title' => 'Edit perms',
+echo $twig->render('forum/_legacy.twig', [
+	'page_title' => __("Edit perms"),
 	'content' => $content
 ]);
 
@@ -198,7 +198,7 @@ function PermSelect($name, $sel) {
 }
 
 function RevokeSelect($name, $sel) {
-	$out = sprintf('<select name="%s"><option value="0"%s>Grant</option><option value="1"%s>Revoke</option></select> ',
+	$out = sprintf('<select name="%s"><option value="0"%s>'.__("Grant").'</option><option value="1"%s>'.__("Revoke").'</option></select> ',
 		$name, ($sel == 0 ? ' selected="selected"' : ''), ($sel == 1 ? ' selected="selected"' : ''));
 	return $out;
 }
@@ -225,8 +225,8 @@ function PermTable($permset) {
 
 		$ret .= '<td style="width:25%">&bull; ';
 		if ($discarded) $ret .= '<s>';
-		if ($perm['revoke']) $ret .= '<span style="color:#f88;">Revoke</span>: ';
-		else $ret .= '<span style="color:#8f8;">Grant</span>: ';
+		if ($perm['revoke']) $ret .= '<span style="color:#f88;">'.__("Revoke").'</span>: ';
+		else $ret .= '<span style="color:#8f8;">'.__("Grant").'</span>: ';
 		$ret .= "'".esc($permtitle)."'";
 
 		if ($perm['bindvalue']) {

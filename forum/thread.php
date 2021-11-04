@@ -2,7 +2,7 @@
 require('lib/common.php');
 
 $page = isset($_REQUEST['page']) ? (int)$_REQUEST['page'] : 1;
-if ($page < 0) error("404", "Invalid page number");
+if ($page < 0) error("404", __("Invalid page number"));
 
 $fieldlist = userfields('u', 'u') . ',' . userfields_post();
 
@@ -22,13 +22,13 @@ if (isset($_REQUEST['id'])) {
 elseif (isset($_GET['pid'])) {
 	$pid = (int)$_GET['pid'];
 	$numpid = fetch("SELECT t.id tid FROM z_posts p LEFT JOIN z_threads t ON p.thread = t.id WHERE p.id = ?", [$pid]);
-	if (!$numpid) error("404", "Thread post does not exist.");
+	if (!$numpid) error("404", __("Thread post does not exist."));
 
 	$tid = result("SELECT thread FROM z_posts WHERE id = ?", [$pid]);
 	$page = floor(result("SELECT COUNT(*) FROM z_posts WHERE thread = ? AND id < ?", [$tid, $pid]) / $ppp) + 1;
 	$viewmode = "thread";
 } else {
-	error("404", "Thread does not exist.");
+	error("404", __("Thread does not exist."));
 }
 
 if ($viewmode == "thread")
@@ -51,7 +51,7 @@ if (isset($tid) && $log && $act && (canEditForumThreads(getForumByThread($tid)) 
 	elseif ($act == 'trash')	editThread($tid, '', $trashid, 1);
 	elseif ($act == 'rename')	$action = ",title=?";
 	elseif ($act == 'move')		editThread($tid, '', $_POST['arg']);
-	else						error("400", "Unknown action.");
+	else						error("400", __("Unknown action."));
 }
 
 $pin = (isset($_GET['pin']) && is_numeric($_GET['pin']) ? $_GET['pin'] : null);
@@ -112,9 +112,9 @@ if ($viewmode == "thread") {
 } elseif ($viewmode == "user") {
 	$user = fetch("SELECT * FROM users WHERE id = ?", [$uid]);
 
-	if ($user == null) error("404", "User doesn't exist.");
+	if ($user == null) error("404", __("User doesn't exist."));
 
-	$title = "Posts by " . $user['name'];
+	$title = __("Posts by ") . $user['name'];
 	$posts = query("SELECT $fieldlist p.*, pt.text, pt.date ptdate, pt.user ptuser, pt.revision, t.id tid, f.id fid, f.private fprivate, t.title ttitle, t.forum tforum "
 		. "FROM z_posts p "
 		. "LEFT JOIN z_poststext pt ON p.id=pt.id "
@@ -130,7 +130,7 @@ if ($viewmode == "thread") {
 } elseif ($viewmode == "time") {
 	$mintime = ($time > 0 && $time <= 2592000 ? time() - $time : 86400);
 
-	$title = 'Latest posts';
+	$title = __('Latest posts');
 
 	$posts = query("SELECT $fieldlist p.*, pt.text, pt.date ptdate, pt.user ptuser, pt.revision, t.id tid, f.id fid, f.private fprivate, t.title ttitle, t.forum tforum "
 		. "FROM z_posts p "
@@ -166,50 +166,52 @@ if ($viewmode == "thread") {
 	$faccess = fetch("SELECT id,private,readonly FROM z_forums WHERE id = ?",[$thread['forum']]);
 	if (canCreateForumPost($faccess)) {
 		if (hasPerm('override-closed') && $thread['closed'])
-			$topbot['actions'] = [['title' => 'Thread closed'],['href' => "newreply.php?id=$tid", 'title' => 'New reply']];
+			$topbot['actions'] = [['title' => __('Thread closed')],['href' => "newreply.php?id=$tid", 'title' => __('New reply')]];
 		else if ($thread['closed'])
-			$topbot['actions'] = [['title' => 'Thread closed']];
+			$topbot['actions'] = [['title' => __('Thread closed')]];
 		else
-			$topbot['actions'] = [['href' => "newreply.php?id=$tid", 'title' => 'New reply']];
+			$topbot['actions'] = [['href' => "newreply.php?id=$tid", 'title' => __('New reply')]];
 	}
 } elseif ($viewmode == "user") {
 	$topbot = [
-		'breadcrumb' => [['href' => './', 'title' => 'Main'], ['href' => "../user.php?id=$uid", 'title' => $user['name']]],
-		'title' => 'Posts'
+		'breadcrumb' => [['href' => './', 'title' => __('Main')], ['href' => "../user.php?id=$uid", 'title' => $user['name']]],
+		'title' => __('Posts')
 	];
 } elseif ($viewmode == "time") {
 	$topbot = [];
 	$time = $_GET['time'];
 } else {
-	error("404", "Thread does not exist.<br><a href=./>Back to main</a>");
+	error("404", __("Thread does not exist.<br><a href=./>Back to main</a>"));
 }
 
 $modlinks = '';
 if (isset($tid) && (canEditForumThreads($thread['forum']) || ($userdata['id'] == $thread['user'] && !$thread['closed'] && hasPerm('rename-own-thread')))) {
 	$link = "<a href=javascript:submitmod";
 	if (canEditForumThreads($thread['forum'])) {
-		$stick = ($thread['sticky'] ? "$link('unstick')>Unstick</a>" : "$link('stick')>Stick</a>");
+		$stick = ($thread['sticky'] ? "$link('unstick')>".__("Unstick")."</a>" : "$link('stick')>".__("Stick")."</a>");
 		$stick2 = addcslashes($stick, "'");
 
-		$close = '| ' . ($thread['closed'] ? "$link('open')>Open</a>" : "$link('close')>Close</a>");
+		$close = '| ' . ($thread['closed'] ? "$link('open')>".__("Open")."</a>" : "$link('close')>".__("Close")."</a>");
 		$close2 = addcslashes($close, "'");
 
-		$trash = '| ' . ($thread['forum'] != $trashid ? '<a href=javascript:submitmod(\'trash\') onclick="trashConfirm(event)">Trash</a>' : '');
+		$trash = '| ' . ($thread['forum'] != $trashid ? '<a href=javascript:submitmod(\'trash\') onclick="trashConfirm(event)">'.__("Trash").'</a>' : '');
 		$trash2 = addcslashes($trash, "'");
 
-		$edit = '| <a href="javascript:showrbox()">Rename</a> | <a href="javascript:showmove()">Move</a>';
+		$edit = '| <a href="javascript:showrbox()">"'.__("Rename").'</a> | <a href="javascript:showmove()">'.__("Move").'</a>';
 
 		$fmovelinks = addslashes(forumlist($thread['forum']))
-		.	'<input type="submit" id="move" value="Submit" name="movethread" onclick="submitmove(movetid())">'
-		.	'<input type="button" value="Cancel" onclick="hidethreadedit(); return false;">';
+		.	'<input type="submit" id="move" value="'.__("Submit").'" name="movethread" onclick="submitmove(movetid())">'
+		.	'<input type="button" value="'.__("Cancel").'" onclick="hidethreadedit(); return false;">';
+		$movetext = __("Move to:");	
 	} else {
 		$fmovelinks = $stick = $stick2 = $close = $close2 = $trash = $trash2 = '';
 		$edit = '<a href=javascript:showrbox()>Rename</a>';
 	}
 
 	$renamefield = '<input type="text" name="title" id="title" size=60 maxlength=255 value="'.esc($thread['title']).'">';
-	$renamefield.= '<input type="submit" name="submit" value="Rename" onclick="submitmod(\'rename\')">';
-	$renamefield.= '<input type="button" value="Cancel" onclick="hidethreadedit(); return false">';
+	$renamefield.= '<input type="submit" name="submit" value="'.__("Rename").'" onclick="submitmod(\'rename\')">';
+	$renamefield.= '<input type="button" value="'.__("Cancel").'" onclick="hidethreadedit(); return false">';
+	$renametext = __("Rename thread:");
 	$renamefield = addcslashes($renamefield, "'"); //because of javascript, single quotes will gum up the works
 
 	$threadtitle = addcslashes(htmlentities($thread['title'], ENT_COMPAT | ENT_HTML401, 'UTF-8'), "'");
@@ -223,12 +225,12 @@ if (isset($tid) && (canEditForumThreads($thread['forum']) || ($userdata['id'] ==
 		<span id="canceledit"></span>
 		<script>
 function showrbox(){
-	document.getElementById('moptions').innerHTML='Rename thread:';
+	document.getElementById('moptions').innerHTML='$renametext';
 	document.getElementById('mappend').innerHTML='$renamefield';
 	document.getElementById('mappend').style.display = '';
 }
 function showmove(){
-	document.getElementById('moptions').innerHTML='Move to: ';
+	document.getElementById('moptions').innerHTML='$movetext';
 	document.getElementById('mappend').innerHTML='$fmovelinks';
 	document.getElementById('mappend').style.display = '';
 }
@@ -247,7 +249,7 @@ HTML;
 }
 
 $twig = _twigloader();
-echo $twig->render('thread.twig', [
+echo $twig->render('forum/thread.twig', [
 	'thread' => $thread,
 	'posts' => $posts,
 	'topbot' => $topbot,

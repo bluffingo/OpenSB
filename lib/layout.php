@@ -15,7 +15,9 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	global $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $languages, $frontend, $menuLinks, $hCaptchaSiteKey;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
-
+	//ugly hack to prevent reading templates from the wrong place
+	chdir(__DIR__);
+	chdir('../');
 	if (!isset($customloader)) {
 		$loader = new \Twig\Loader\FilesystemLoader('templates/' . $frontend . '/' . $subfolder);
 	} else {
@@ -47,9 +49,9 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	return $twig;
 }
 
-function error($message) {
+function error($errorCode, $message) {
 	$twig = twigloader();
-	echo $twig->render('_error.twig', ['err_message' => $message]);
+	echo $twig->render('_error.twig', ['err_message' => $message, 'err_code' => $errorCode]);
 	die();
 }
 

@@ -7,9 +7,9 @@
 {{ render_page_bar(topbot) }}
 {% if time %}
 	<table class="c1 autowidth">
-		<tr class="h"><td class="b">Latest Threads</td></tr>
+		<tr class="h"><td class="b">{{ __("Latest Threads") }}</td></tr>
 		<tr><td class="b n1 center">
-			By Threads | <a href="thread.php?time={{ time }}">By Posts</a></a><br><br>
+			{{ __("By Threads") }} | <a href="thread.php?time={{ time }}">{{ __("By Posts") }}</a></a><br><br>
 			{{ timelinks('forum') }}
 		</td></tr>
 	</table>
@@ -19,13 +19,13 @@
 	<tr class="h">
 		<td class="b h" style="width:30px">&nbsp;</td>
 		{% if showforum %}
-			<td class="b h">Forum</td>
+			<td class="b h">{{ __("Forum") }}</td>
 		{% endif %}
-		<td class="b h">Title</td>
-		<td class="b h" width="130">Started by</td>
-		<td class="b h" width="50">Replies</td>
-		<td class="b h" width="50">Views</td>
-		<td class="b h" width="130">Last post</td>
+		<td class="b h">{{ __("Title") }}</td>
+		<td class="b h" width="130">{{ __("Started by") }}</td>
+		<td class="b h" width="50">{{ __("Replies") }}</td>
+		<td class="b h" width="50">{{ __("Views") }}</td>
+		<td class="b h" width="130">{{ __("Last post") }}</td>
 	</tr>
 	{% set i = 1 %}
 	{% for thread in threads %}
@@ -69,13 +69,13 @@
 			<td class="b">{{ thread.views }}</td>
 			<td class="b">
 				<nobr>{{ thread.lastdate | date(forum_dateformat) }}</nobr><br>
-				<span>by {{ userlink(thread, 'u2') }} <a href="thread.php?pid={{ thread.lastid }}#{{ thread.lastid }}">&raquo;</a></span>
+				<span>{{ __("by") }} {{ userlink(thread, 'u2') }} <a href="thread.php?pid={{ thread.lastid }}#{{ thread.lastid }}">&raquo;</a></span>
 			</td>
 		</tr>
 		{% set i = i + 1 %}
 	{% else %}
 		<tr>
-			<td class="b n1 center" colspan="{% if showforum %}7{% else %}6{% endif %}"><p>No threads found.</p></td>
+			<td class="b n1 center" colspan="{% if showforum %}7{% else %}6{% endif %}"><p>{{ __("No threads found.") }}</p></td>
 		</tr>
 	{% endfor %}
 </table>

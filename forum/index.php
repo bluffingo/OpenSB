@@ -35,7 +35,7 @@ $forums = query("SELECT f.*, ".($log ? "r.time rtime, " : '').userfields('u', 'u
 		. " ORDER BY c.ord,c.id,f.ord,f.id", []);
 
 $twig = _twigloader();
-echo $twig->render('index.twig', [
+echo $twig->render('forum/index.twig', [
 	'forums' => $forums,
 	'categories' => $categ
 ]);

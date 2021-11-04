@@ -14,7 +14,7 @@
 	<meta name="msapplication-TileColor" content="#2b5797">
 	<meta name="msapplication-config" content="/assets/icons/browserconfig.xml">
 	<meta name="theme-color" content="#dfecff">
-	<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style.css" type="text/css">
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 	<script src="assets/common.js"></script>
@@ -29,7 +29,7 @@
 <body>
 	<div id="masthead-container">
 		<div id="masthead">
-			<a href="/" id="logo-container"><img id="logo" src="assets/logo-masthead.png"></a>
+			<a href="/" id="logo-container"><img id="logo" src="/assets/logo-masthead.png"></a>
 			<div id="masthead-signin">
 				{% if log %}
 				<div style="display: flex;justify-content: center;align-items: center;gap: 5px;">{{ userdata.name }}<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}"></div>
@@ -39,9 +39,9 @@
 			</div>
 			<div id="masthead-content">
 				<class id="masthead-upload-button-group">
-					<a href="../upload_start.php" class="button button-secondary">{{ __("Upload") }}</a>
+					<a href="/upload_start.php" class="button button-secondary">{{ __("Upload") }}</a>
 				</class>
-				<form id="masthead-search" action="results.php">
+				<form id="masthead-search" action="/results.php">
 					<button id="search-btn" class="button button-secondary">
 					<span>{{ icon('search', 14) }}</span>
 					</button>
@@ -62,10 +62,10 @@
 							<a href="/" class="guide-item"><img class="thumb" src="/assets/logo_square_icon.png">{{ __("Home") }}</a>
 						</li>
 						<li class="guide-channel">
-							<a href="browse.php" class="guide-item"><img class="thumb" src="/assets/logo_square_icon.png">{{ __("Videos") }}</a>
+							<a href="/browse.php" class="guide-item"><img class="thumb" src="/assets/logo_square_icon.png">{{ __("Videos") }}</a>
 						</li>
 						<li class="guide-channel">
-							<a href="music.php" class="guide-item"><img class="thumb" src="/assets/logo_square_icon.png">{{ __("Music") }}</a>
+							<a href="/music.php" class="guide-item"><img class="thumb" src="/assets/logo_square_icon.png">{{ __("Music") }}</a>
 						</li>
 						<li class="guide-channel">
 							<a href="/forum/" class="guide-item"><img class="thumb" src="/assets/logo_square_icon.png">{{ __("Forums") }}</a>

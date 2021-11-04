@@ -1,10 +1,10 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Active users{% endblock %}
+{% block title %}{{ __("Active users") }}{% endblock %}
 
 	{% block content %}
 <table class="c1 autowidth">
-	<tr class="h"><td class="b">Active users during the last {{ timeunits(time) }}</td></tr>
+	<tr class="h"><td class="b">{{ __("Active users during the last %s", [timeunits(time)]) }}</td></tr>
 	<tr class="n1"><td class="b n1 center">
 		{{ timelinks('activeusers') }}
 	</td></tr>
@@ -12,10 +12,10 @@
 <table class="c1">
 	<tr class="h">
 		<td class="b h" width="30">#</td>
-		<td class="b h">Username</td>
-		<td class="b h" width="200">Registered on</td>
-		<td class="b h" width="50">Posts</td>
-		<td class="b h" width="50">Total</td>
+		<td class="b h">{{ __("Username") }}</td>
+		<td class="b h" width="200">{{ __("Registered on") }}</td>
+		<td class="b h" width="50">{{ __("Posts") }}</td>
+		<td class="b h" width="50">{{ __("Total") }}</td>
 	</tr>
 	{% set i = 1 %}
 	{% for user in users %}
@@ -28,7 +28,7 @@
 		</tr>
 		{% set i = i + 1 %}
 	{% else %}
-		{{ if_empty_query("There are no active users in the given timespan.", 5) }}
+		{{ if_empty_query(__("There are no active users in the given timespan."), 5) }}
 	{% endfor %}
 </table>
 	{% endblock %}

@@ -1,6 +1,6 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Forum{% endblock %}
+{% block title %}{{ __("Forum") }}{% endblock %}
 
 	{% block content %}
 {% set category = -1 %}
@@ -19,9 +19,9 @@
 			<tr class="h">
 				<td class="b h" style="width:30px">&nbsp;</td>
 				<td class="b h">{{ categories[forum.cat] }}</td>
-				<td class="b h" width="50">Threads</td>
-				<td class="b h" width="50">Posts</td>
-				<td class="b h" width="150">Last post</td>
+				<td class="b h" width="50">{{ __("Threads") }}</td>
+				<td class="b h" width="50">{{ __("Posts") }}</td>
+				<td class="b h" width="150">{{ __("Last post") }}</td>
 			</tr>
 	{% endif %}
 
@@ -43,7 +43,7 @@
 			{% if forum.posts > 0 and forum.lastdate > 0 %}
 				<nobr>{{ forum.lastdate | date(forum_dateformat) }}</nobr>
 				<br>
-				<span>by {{ userlink(forum, 'u') }} <a href="thread.php?pid={{ forum.lastid }}#{{ forum.lastid }}">&raquo;</a></span>
+				<span>{{ __("by") }} {{ userlink(forum, 'u') }} <a href="thread.php?pid={{ forum.lastid }}#{{ forum.lastid }}">&raquo;</a></span>
 			{% else %}
 				None
 			{% endif %}

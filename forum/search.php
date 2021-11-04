@@ -9,18 +9,18 @@ ob_start();
 
 ?>
 <table class="c1">
-	<tr class="h"><td class="b h">Search</td>
+	<tr class="h"><td class="b h"><?php echo __("Search")?></td>
 	<tr><td class="b n1">
 		<form action="search.php" method="get"><table>
 			<tr>
-				<td>Search for</td>
+				<td><?php echo __("Search for")?></td>
 				<td><input type="text" name="q" size="40" value="<?=htmlspecialchars($query, ENT_QUOTES) ?>"></td>
 			</tr><tr>
 				<td></td>
 				<td>
-					in <input type="radio" class="radio" name="w" value="0" id="threadtitle" <?=(($where == 0) ? 'checked' : '') ?>><label for="threadtitle">thread title</label>
-					<input type="radio" class="radio" name="w" value="1" id="posttext" <?=(($where == 1) ? 'checked' : '') ?>><label for="posttext">post text</label>
-					<br><input type="submit" name="action" value="Search">
+					in <input type="radio" class="radio" name="w" value="0" id="threadtitle" <?=(($where == 0) ? 'checked' : '') ?>><label for="threadtitle"><?php echo __("thread title")?></label>
+					<input type="radio" class="radio" name="w" value="1" id="posttext" <?=(($where == 1) ? 'checked' : '') ?>><label for="posttext"><?php echo __("post text")?></label>
+					<br><input type="submit" name="action" value="<?php echo __("Search")?>">
 				</td>
 			</tr>
 		</table></form>
@@ -29,14 +29,14 @@ ob_start();
 <?php
 if (!isset($_GET['action']) || strlen($query) < 3) {
 	if (isset($_GET['action']) && strlen($query) < 3) {
-		echo '<br><table class="c1"><tr><td class="b n1 center">Please enter more than 2 characters!</td></tr></table>';
+		echo '<br><table class="c1"><tr><td class="b n1 center">'.__("Please enter more than 2 characters!").'</td></tr></table>';
 	}
 	$content = ob_get_contents();
 	ob_end_clean();
 
 	$twig = _twigloader();
-	echo $twig->render('_legacy.twig', [
-		'page_title' => "Search",
+	echo $twig->render('forum/_legacy.twig', [
+		'page_title' => __("Search"),
 		'content' => $content
 	]);
 
@@ -44,7 +44,7 @@ if (!isset($_GET['action']) || strlen($query) < 3) {
 }
 
 ?><br>
-<table class="c1"><tr class="h"><td class="b h" style="border-bottom:0">Results</td></tr></table>
+<table class="c1"><tr class="h"><td class="b h" style="border-bottom:0"><?php echo __("Results")?></td></tr></table>
 <?php
 $squery = preg_replace("@[^\" a-zA-Z0-9]@", '', $query);
 preg_match_all("@\"([^\"]+)\"@", $squery, $matches);
@@ -107,7 +107,7 @@ if ($where == 1) {
 	}
 
 	if ($i == 1) {
-		ifEmptyQuery('No posts found.', 1, true);
+		ifEmptyQuery(__("No posts found."), 1, true);
 	}
 } else {
 	$page = (isset($_GET['page']) ? $_GET['page'] : 1);
@@ -125,9 +125,9 @@ if ($where == 1) {
 		."WHERE $string AND f.id IN ".forumsWithViewPerm());
 	?><table class="c1">
 		<tr class="c">
-			<td class="b h">Title</td>
-			<td class="b h" style="min-width:80px">Started by</td>
-			<td class="b h" width="200">Date</td>
+			<td class="b h"><?php echo __("Title")?></td>
+			<td class="b h" style="min-width:80px"><?php echo __("Started by")?></td>
+			<td class="b h" width="200"><?php echo __("Date")?></td>
 		</tr><?php
 
 	for ($i = 1; $thread = $threads->fetch(); $i++) {
@@ -137,14 +137,14 @@ if ($where == 1) {
 
 		?><tr class="<?=$tr ?> center">
 			<td class="b left wbreak">
-				<a href="thread.php?id=<?=$thread['id'] ?>"><?=esc($thread['title']) ?></a> <?=($thread['sticky'] ? ' (Sticky)' : '')?>
+				<a href="thread.php?id=<?=$thread['id'] ?>"><?=esc($thread['title']) ?></a> <?=($thread['sticky'] ? __(" (Sticky)") : '')?>
 			</td>
 			<td class="b"><?=userlink($thread,'u') ?></td>
 			<td class="b"><?=date($dateformat,$thread['lastdate']) ?></td>
 		</tr><?php
 	}
 	if ($i == 1) {
-		ifEmptyQuery("No threads found.", 6);
+		ifEmptyQuery(__("No threads found."), 6);
 	}
 
 	$query = urlencode($query);
@@ -156,7 +156,7 @@ $content = ob_get_contents();
 ob_end_clean();
 
 $twig = _twigloader();
-echo $twig->render('_legacy.twig', [
-	'page_title' => "Search",
+echo $twig->render('forum/_legacy.twig', [
+	'page_title' => __("Search"),
 	'content' => $content
 ]);

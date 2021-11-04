@@ -1,7 +1,7 @@
 <?php
 require('lib/common.php');
 
-if (!hasPerm('edit-forums')) error('403', 'You have no permissions to do this!');
+if (!hasPerm('edit-forums')) error('403', __("You have no permissions to do this!"));
 
 $error = '';
 
@@ -11,7 +11,7 @@ if (isset($_POST['savecat'])) {
 	$title = $_POST['title'];
 	$ord = (int)$_POST['ord'];
 	if (!trim($title))
-		$error = 'Please enter a title for the category.';
+		$error = __("Please enter a title for the category.");
 	else {
 		if ($cid == 'new') {
 			$cid = result("SELECT MAX(id) FROM z_categories");
@@ -42,7 +42,7 @@ if (isset($_POST['savecat'])) {
 	$readonly = isset($_POST['readonly']) ? 1 : 0;
 
 	if (!trim($title))
-		$error = 'Please enter a title for the forum.';
+		$error = __("Please enter a title for the forum.");
 	else {
 		if ($fid == 'new') {
 			$fid = result("SELECT MAX(id) FROM z_forums");
@@ -84,21 +84,21 @@ if (isset($_GET['cid']) && $cid = $_GET['cid']) {
 	}
 	?><form action="" method="POST">
 		<table class="c1">
-			<tr class="h"><td class="b h" colspan="2"><?=($cid == 'new' ? 'Create' : 'Edit') ?> category</td></tr>
+			<tr class="h"><td class="b h" colspan="2"><?=($cid == 'new' ? __("Create") : __("Edit")) ?> <?php echo __("category")?></td></tr>
 			<tr>
-				<td class="b n1 center">Title:</td>
+				<td class="b n1 center"><?php __("Title:")?></td>
 				<td class="b n2"><input type="text" name="title" value="<?=esc($cat['title']) ?>" size="50" maxlength="500"></td>
 			</tr><tr>
-				<td class="b n1 center">Display order:</td>
+				<td class="b n1 center"><?php echo __("Display order:")?></td>
 				<td class="b n2"><input type="text" name="ord" value="<?=$cat['ord'] ?>" size="4" maxlength="10"></td>
 			</tr>
 			<tr class="h"><td class="b h" colspan="2">&nbsp;</td></tr>
 			<tr>
 				<td class="b n1 center"></td>
 				<td class="b n2">
-					<input type="submit" name="savecat" value="Save category">
-						<?=($cid == 'new' ? '' : '<input type="submit" name="delcat" value="Delete category" onclick="if (!confirm("Really delete this category?")) return false;"> ') ?>
-					<button type="button" id="back" onclick="window.location='manageforums.php';">Back</button>
+					<input type="submit" name="savecat" value="<?php echo __("Save category")?>">
+						<?=($cid == 'new' ? '' : '<input type="submit" name="delcat" value="'.__("Delete category").'" onclick="if (!confirm("'.__("Really delete this category?").'")) return false;"> ') ?>
+					<button type="button" id="back" onclick="window.location='manageforums.php';"><?php echo __("Back")?></button>
 				</td>
 			</tr>
 		</table>
@@ -119,33 +119,33 @@ if (isset($_GET['cid']) && $cid = $_GET['cid']) {
 
 	?><form action="" method="POST">
 		<table class="c1">
-			<tr class="h"><td class="b h" colspan="2"><?=($fid == 'new' ? 'Create' : 'Edit') ?> forum</td></tr>
+			<tr class="h"><td class="b h" colspan="2"><?=($fid == 'new' ? __("Create") : __("Edit")) ?> <?php __("forum")?></td></tr>
 			<tr>
-				<td class="b n1 center">Title:</td>
+				<td class="b n1 center"><?php echo __("Title:")?></td>
 				<td class="b n2"><input type="text" name="title" value="<?=esc($forum['title']) ?>" size="50" maxlength="500"></td>
 			</tr><tr>
-				<td class="b n1 center">Description:<br><small>HTML allowed.</small></td>
+				<td class="b n1 center"><?php echo __("Description:")?><br><small><?php echo __("HTML allowed.")?></small></td>
 				<td class="b n2"><textarea wrap="virtual" name="descr" rows="3" cols="50"><?=esc($forum['descr']) ?></textarea></td>
 			</tr><tr>
-				<td class="b n1 center">Category:</td>
+				<td class="b n1 center"><?php echo __("Category:")?></td>
 				<td class="b n2"><?=$catlist ?></td>
 			</tr><tr>
-				<td class="b n1 center">Display order:</td>
+				<td class="b n1 center"><?php echo __("Display order:")?></td>
 				<td class="b n2"><input type="text" name="ord" value="<?=$forum['ord'] ?>" size="4" maxlength="10"></td>
 			</tr><tr>
 				<td class="b n1 center"></td>
 				<td class="b n2">
-					<label><input type="checkbox" name="private" value="1" <?=($forum['private'] ? ' checked':'') ?>> Private forum</label>
-					<label><input type="checkbox" name="readonly" value="1" <?=($forum['readonly'] ? ' checked' : '')?>> Read-only</label>
+					<label><input type="checkbox" name="private" value="1" <?=($forum['private'] ? ' checked':'') ?>> <?php echo __("Private forum")?></label>
+					<label><input type="checkbox" name="readonly" value="1" <?=($forum['readonly'] ? ' checked' : '')?>> <?php echo __("Read-only")?></label>
 				</td>
 			</tr>
 			<tr class="h"><td class="b h" colspan="2">&nbsp;</td></tr>
 			<tr>
 				<td class="b n1 center"></td>
 				<td class="b n2">
-					<input type="submit" name="saveforum" value="Save forum">
-					<?=($fid == 'new' ? '' : '<input type="submit" name="delforum" value="Delete forum" onclick="if (!confirm("Really delete this forum?")) return false;">') ?>
-					<button type="button" id="back" onclick="window.location='manageforums.php'">Back</button>
+					<input type="submit" name="saveforum" <?php echo 'value="'.__("Save forum")?>">
+					<?=($fid == 'new' ? '' : '<input type="submit" name="delforum" value="'.__("Delete forum").'" onclick="if (!confirm("'.__("Really delete this forum?").'")) return false;">') ?>
+					<button type="button" id="back" onclick="window.location='manageforums.php'"><?php echo __("Back")?></button>
 				</td>
 			</tr>
 		</table><br>
@@ -184,18 +184,18 @@ if (isset($_GET['cid']) && $cid = $_GET['cid']) {
 		<tr>
 			<td class="nb" style="width:50%; vertical-align:top;">
 				<table class="c1">
-					<tr class="h"><td class="b">Categories</td></tr>
+					<tr class="h"><td class="b"><?php echo __("Categories")?></td></tr>
 					<?=$catlist ?>
 					<tr class="h"><td class="b">&nbsp;</td></tr>
-					<tr><td class="b n1"><a href="manageforums.php?cid=new">New category</a></td></tr>
+					<tr><td class="b n1"><a href="manageforums.php?cid=new"><?php echo __("New category")?></a></td></tr>
 				</table>
 			</td>
 			<td class="nb" style="width:50%; vertical-align:top;">
 				<table class="c1">
-					<tr class="h"><td class="b">Forums</td></tr>
+					<tr class="h"><td class="b"><?php echo __("Forums")?></td></tr>
 					<?=$forumlist ?>
 					<tr class="h"><td class="b">&nbsp;</td></tr>
-					<tr><td class="b n1"><a href="manageforums.php?fid=new">New forum</a></td></tr>
+					<tr><td class="b n1"><a href="manageforums.php?fid=new"><?php echo __("New forum")?></a></td></tr>
 				</table>
 			</td>
 		</tr>
@@ -206,8 +206,8 @@ $content = ob_get_contents();
 ob_end_clean();
 
 $twig = _twigloader();
-echo $twig->render('_legacy.twig', [
-	'page_title' => 'Forum management',
+echo $twig->render('forum/_legacy.twig', [
+	'page_title' => __("Forum management"),
 	'content' => $content
 ]);
 
@@ -234,7 +234,7 @@ function grouplist() {
 }
 function permtable($bind, $id) {
 	global $rootgroup;
-
+	
 	$qperms = query("SELECT id,title FROM z_perm WHERE permbind_id=?",[$bind]);
 	$perms = [];
 	while ($perm = $qperms->fetch())
@@ -248,7 +248,7 @@ function permtable($bind, $id) {
 	while ($perm = $qpermdata->fetch())
 		$permdata[$perm['x_id']][$perm['perm_id']] = !$perm['revoke'];
 
-	echo '<table class="c1"><tr class="h"><td class="b">Group</td><td class="b" colspan="2">Permissions</td></tr>';
+	echo '<table class="c1"><tr class="h"><td class="b">Group</td><td class="b" colspan="2">'.__("Permissions").'</td></tr>';
 
 	$c = 1;
 	foreach ($groups as $group) {
@@ -270,7 +270,7 @@ function permtable($bind, $id) {
 
 			$check = $doinherit ? ' checked="checked"' : '';
 			$inherit = sprintf(
-				'<label><input type="checkbox" name="inherit[%s]" value="1" onclick="toggleAll(\'perm_%s\',!this.checked);"%s> Inherit from parent</label>&nbsp;',
+				'<label><input type="checkbox" name="inherit[%s]" value="1" onclick="toggleAll(\'perm_%s\',!this.checked);"%s> '.__("Inherit from parent").'</label>&nbsp;',
 			$gid, $gid, $check);
 		}
 
@@ -295,7 +295,7 @@ function permtable($bind, $id) {
 	?><tr class="n<?=$c ?>">
 		<td class="b"></td>
 		<td class="b" colspan="2">
-			<input type="submit" name="saveforum" value="Save forum">
+			<input type="submit" name="saveforum" <?php echo 'value="'.__("Save forum")?>">
 		</td>
 	</tr></table><?php
 }
@@ -318,8 +318,10 @@ function saveperms($bind, $id) {
 
 	// apply the new perms
 	foreach ($usergroups as $gid => $group) {
+		echo $gid;
 		if (isRootGid($gid)) continue;
-
+		
+		
 		if ($_POST['inherit'][$gid])
 			continue;
 

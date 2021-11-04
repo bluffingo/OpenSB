@@ -1,5 +1,5 @@
 <?php
-require('lib/common.php');
+require("lib/common.php");
 
 $_GET['act'] = (isset($_GET['act']) ? $_GET['act'] : 'needle');
 $_POST['action'] = (isset($_POST['action']) ? $_POST['action'] : '');
@@ -23,22 +23,22 @@ $thread = fetch("SELECT p.user puser, t.*, f.title ftitle, f.private fprivate, f
 if (!$thread) $pid = 0;
 
 if ($thread['closed'] && !canCreateForumPosts($thread['forum'])) {
-	error("403", "You can't edit a post in closed threads!");
+	error("403", __("You can't edit a post in closed threads!"));
 } else if (!canEditPost(['user' => $thread['puser'], 'tforum' => $thread['forum']])) {
-	error("403", "You do not have permission to edit this post.");
+	error("403", __("You do not have permission to edit this post."));
 } else if ($pid == -1) {
-	error("404", "Invalid post ID.");
+	error("404", __("Invalid post ID."));
 }
 
 $post = fetch("SELECT u.id, p.user, pt.text FROM z_posts p LEFT JOIN z_poststext pt ON p.id=pt.id "
 		."JOIN (SELECT id,MAX(revision) toprev FROM z_poststext GROUP BY id) as pt2 ON pt2.id = pt.id AND pt2.toprev = pt.revision "
 		."LEFT JOIN users u ON p.user = u.id WHERE p.id = ?", [$pid]);
 
-if (!isset($post)) $err = "Post doesn't exist.";
+if (!isset($post)) $err = __("Post doesn't exist.");
 
-if ($action == 'Submit') {
+if ($action == __("Submit")) {
 	if ($post['text'] == $_POST['message']) {
-		error("400", "No changes detected.");
+		error("400", __("No changes detected."));
 	}
 
 	$rev = result("SELECT MAX(revision) FROM z_poststext WHERE id = ?", [$pid]) + 1;
@@ -49,7 +49,7 @@ if ($action == 'Submit') {
 } else if ($action == 'delete' || $action == 'undelete') {
 
 	if (!(canDeleteForumPosts($thread['forum']))) {
-		error("403", "You do not have the permission to do this.");
+		error("403", __("You do not have the permission to do this."));
 	} else {
 		query("UPDATE z_posts SET deleted = ? WHERE id = ?", [($action == 'delete' ? 1 : 0), $pid]);
 		redirect("thread.php?pid=$pid#edit");
@@ -62,22 +62,22 @@ $topbot = [
 		['href' => "forum.php?id={$thread['forum']}", 'title' => $thread['ftitle']],
 		['href' => "thread.php?id={$thread['id']}", 'title' => esc($thread['title'])]
 	],
-	'title' => 'Edit post'
+	'title' => __("Edit post")
 ];
 
 $euser = fetch("SELECT * FROM users WHERE id = ?", [$post['id']]);
 $post['date'] = time();
-$post['text'] = ($action == 'Preview' ? $_POST['message'] : $post['text']);
+$post['text'] = ($action == __("Preview") ? $_POST['message'] : $post['text']);
 foreach ($euser as $field => $val)
 	$post['u'.$field] = $val;
 $post['ulastpost'] = time();
 
-if ($action == 'Preview') {
-	$topbot['title'] .= ' (Preview)';
+if ($action == __("Preview")) {
+	$topbot['title'] .= __(" (Preview)");
 }
 
 $twig = _twigloader();
-echo $twig->render('editpost.twig', [
+echo $twig->render("forum/editpost.twig", [
 	'post' => $post,
 	'topbot' => $topbot,
 	'action' => $action,
