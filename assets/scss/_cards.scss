@@ -1,6 +1,5 @@
 .card {
   border: 1px solid $gray-300;
-  border-radius: 4px;
   margin-bottom: 0.75em;
   background-color: white;
 }
@@ -26,13 +25,6 @@
 .card-body-fat {
   padding: 1em;
 }
-
-.card h3 {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: start;
-}
-
 .card h3 em {
   padding: 0.25em;
   background-color: #eddbff;

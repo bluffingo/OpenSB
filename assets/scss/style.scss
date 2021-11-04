@@ -898,15 +898,26 @@ padding: 0;
 /// "Likesaber" for watch page \\\
 .likesaber {
 	width: 200px;
-	height: 5px;
-	background-color: $gray-400;
+	height: 3px;
+	background-color: $gray-450;
 	float: right;
 
 	.like {
 		float:left;
-		height: 5px;
+		height: 3px;
 		background-color: $green;
 	}
+}
+
+.subscribe-count {
+    padding: 0 6px;
+    height: 32px;
+    border: 1px solid #ccc;
+    color: #777;
+    font-size: 12px;
+    text-align: center;
+    line-height: 32px;
+    display: inline-block;
 }
 
 /// Gradients \\\

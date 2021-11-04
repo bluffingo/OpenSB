@@ -41,8 +41,31 @@
 				-gamerappa, July 31st 2021 -->
 			<style>
 				.plyr--video {
-				--plyr-color-main: #2da5e5;
+				--plyr-color-main: #1b8ade;
 				--plyr-font-family: Roboto, tahoma, arial, -apple-system, helvetica, sans-serif;
+				--plyr-control-spacing: 10px;
+				}
+				.plyr--video .plyr__controls {
+				padding: 1px 3px !important;
+				background: var(--plyr-video-controls-background,linear-gradient(#292929,#0B0B0B));
+				}
+				.plyr__control svg {
+					fill: #656565;
+				}
+				.plyr__control svg:hover {
+					fill: #CDCDCD;
+				}
+				.plyr--video .plyr__control.plyr__tab-focus, .plyr--video .plyr__control:hover, .plyr--video .plyr__control[aria-expanded="true"] {
+					background: #FFFFFF11;
+					color: var(--plyr-video-control-color-hover,#fff);
+				}
+				.plyr__control--overlaid {
+					background: #fff;
+				}
+				.plyr__controls .plyr__controls__item:first-child {
+					margin-left: 0;
+					margin-right: auto;
+					padding: 6px 19px;
 				}
 			</style>
 			<script>
@@ -65,13 +88,14 @@
 				{% endif %}
 			</script>
 			<br>
-			<div class="grid">
+			<div class="grid card card-body-fat" style="padding-top:0;">
 				<div class="col-6">
 					<h1>{{ video.title }}</h1>
 					<img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
 					<a href="user.php?name={{ video.u_name }}"><b>{{ video.u_name }}</b></a>
 					<br>
 					<button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Follow") }}{% endif %}</button>
+					<div class="subscribe-count">{{ subCount }}</div>
 					<br>
 					<div class="button-group">
 						<button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="button button-secondary">
@@ -95,12 +119,11 @@
 				<div class="likesaber">
 					<div class="like" style="width:{{ videoRatio}}%"></div>
 				</div>
-				<div style="margin-top: 22px;">{{ icon("hand-thumbs-up-fill", 14) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 14) }} {{ total_dislikes }}  </div>
+				<div style="margin-top: 22px;color:#666666;">{{ icon("hand-thumbs-up-fill", 14) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 14) }} {{ total_dislikes }}  </div>
 				</div>
 			</div>
-			<h3>Comments</h3>
-			<div class="card">
-				<div class="card-body-fat">
+			<div class="card"><div class="card-body-fat">
+			<h3>Comments ({{ comCount }})</h3>
 					<div class="grid" style="gap:0px">
 						<div class="col-1">
 							<img class="rounded" style="width:85%" src="{{ profile_image(userdata.name) }}">
@@ -114,8 +137,6 @@
 								{{ __("Please sign in in order to comment.") }}
 								{% endif %}"></textarea>
 							</div>
-						</div>
-					</div>
 					<div class="grid">
 						<div class="col-offset-12">
 							<button id="{% if log %}post{% endif %}" class="button button-primary" style="margin-bottom:0;">{{ __("Comment") }}</button>
@@ -127,7 +148,7 @@
 			{% for comment in comments %}
 			{{ comment(comment) }}
 			{% endfor %}
-		</div>
+		</div></div></div>
 		<div class="col-4">
 			<div class="card">
 				<div class="card-header">

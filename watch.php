@@ -41,6 +41,7 @@ query("UPDATE videos SET views = views + '1' WHERE video_id = ?", [$id]);
 $videoData['views']++;
 
 $subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$videoData['author']])['COUNT(user)'];
+$commentCount = fetch("SELECT COUNT(comment) FROM comments WHERE id=?", [$videoData['id']])['COUNT(comment)']; //broken,, fix -gr 11/3/2021
 
 $twig = twigloader();
 echo $twig->render('watch.twig', [
@@ -52,5 +53,6 @@ echo $twig->render('watch.twig', [
 	'rating' => $rating,
 	'subscribed' => $subscribed,
 	'subCount' => $subCount,
+	'comCount' => $commentCount,
 	'videoRatio' => $allRatings,
 ]);
