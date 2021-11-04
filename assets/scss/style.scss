@@ -851,11 +851,18 @@ box-sizing: border-box;
 	overflow: hidden;
 }
 
-#masthead-content #masthead-upload-button-group, #masthead-signin {
+#masthead-content #masthead-upload-button-group, .masthead-user {
 	float: right;
 	margin-top: 3px;
 	margin-left: 25px;
 	position: relative;
+}
+
+#masthead-below {
+    background: #f1f1f1;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 7px 15px 8px;
+	display: none;
 }
 
 .guide-channels-list {
@@ -876,11 +883,15 @@ box-sizing: border-box;
     line-height: 24px;
     display: block;
     height: 26px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 	
 	.thumb {
     margin-right: 5px;
     margin-left: 4px;
-	width:18px;
+	width: 18px;
+	height: 18px;
 	vertical-align: middle;
 	}
 }

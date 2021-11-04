@@ -55,6 +55,11 @@ input[type=file]::file-selector-button, {
 	font-size: 14px;
 }
 
+.button-small {
+    padding: 7px 5px;
+    border-radius: 5px;
+}
+
 .button-group {
     position: relative;
     display: inline-flex;

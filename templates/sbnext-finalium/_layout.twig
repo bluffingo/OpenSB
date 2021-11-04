@@ -30,7 +30,7 @@
 	<div id="masthead-container">
 		<div id="masthead">
 			<a href="/" id="logo-container"><img id="logo" src="assets/logo-masthead.png"></a>
-			<div id="masthead-signin">
+			<div {% if log %}onclick="openMastheadBelow"{% endif %} id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
 				{% if log %}
 				<div style="display: flex;justify-content: center;align-items: center;gap: 5px;">{{ userdata.name }}<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}"></div>
 				{% else %}
@@ -52,6 +52,21 @@
 			</div>
 		</div>
 	</div>
+	<div id="masthead-below">
+		<div class="grid">
+			<div class="col-6">
+			Todo: add something.
+			</div>
+			<div class="col-4">
+			<h4 style="margin:10px 0">squareBracket</h4>
+			<ul style="padding:0">
+			<li><a href="user.php?name={{ userdata.name }}">{{ userdata.name }}</a></li>
+			<li><a href="/studio/">{{ __("Studio") }}</a></li>
+			<li><a href="/settings.php">{{ __("Settings") }}</a></li>
+			</ul>
+			</div>
+		</div>
+	</div>
 	{% block precontent %}{% endblock %}
 	<div class="container">
 		<div class="grid">
@@ -59,16 +74,16 @@
 				<div class="guide-channels-list">
 					<ul class="guide">
 						<li class="guide-channel">
-							<a href="/" class="guide-item"><img class="thumb" src="/assets/logo_square_icon.png">{{ __("Home") }}</a>
+							<a href="/" class="guide-item"><div class="thumb">{{ icon_alt('house', 16) }}</div><div>{{ __("Home") }}</div></a>
 						</li>
 						<li class="guide-channel">
-							<a href="browse.php" class="guide-item"><img class="thumb" src="/assets/logo_square_icon.png">{{ __("Videos") }}</a>
+							<a href="browse.php" class="guide-item"><div class="thumb">{{ icon_alt('film', 16) }}</div><div>{{ __("Videos") }}</div></a>
 						</li>
 						<li class="guide-channel">
-							<a href="music.php" class="guide-item"><img class="thumb" src="/assets/logo_square_icon.png">{{ __("Music") }}</a>
+							<a href="music.php" class="guide-item"><div class="thumb">{{ icon_alt('music-note-beamed', 16) }}</div><div>{{ __("Music") }}</div></a>
 						</li>
 						<li class="guide-channel">
-							<a href="/forum/" class="guide-item"><img class="thumb" src="/assets/logo_square_icon.png">{{ __("Forums") }}</a>
+							<a href="/forum/" class="guide-item"><div class="thumb">{{ icon_alt('chat-left-text', 16) }}</div><div>{{ __("Forums") }}</div></a>
 						</li>
 					</ul>
 				</div>
