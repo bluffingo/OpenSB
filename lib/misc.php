@@ -7,9 +7,7 @@
  * @return void
  */
 function gitCommit($trim = true) {
-	global $acmlm;
-	$htmlrelpathfuckery = (isset($acmlm) ? '../' : '');
-	$commit = file_get_contents($htmlrelpathfuckery.'.git/refs/heads/main');
+	$commit = file_get_contents('.git/refs/heads/main');
 
 	if ($trim)
 		return substr($commit, 0, 7);

@@ -1,6 +1,6 @@
 {% extends "_layout.twig" %}
 
-{% block title %}New thread{% endblock %}
+{% block title %}{{ __("New thread") }}{% endblock %}
 
 	{% block precontent %}
 {% if error %}
@@ -11,28 +11,28 @@
 	{% block content %}
 {{ render_page_bar(topbot) }}
 
-{% if action == 'Preview' %}
+{% if action == __("Preview") %}
 	<br>
-	<table class="c1"><tr class="h"><td class="b h" colspan="2">Post preview</table>
+	<table class="c1"><tr class="h"><td class="b h" colspan="2">{{ __("Post preview") }}</table>
 	{{ threadpost(post) }}
 {% endif %}
 
 <br>
 <form action="newthread.php" method="post">
 	<table class="c1">
-		<tr class="h"><td class="b h" colspan="2">Thread</td></tr>
+		<tr class="h"><td class="b h" colspan="2">{{ __("Thread") }}</td></tr>
 		<tr>
-			<td class="b n1 center" width="120">Thread title:</td>
+			<td class="b n1 center" width="120">{{ __("Thread title:") }}</td>
 			<td class="b n2"><input type="text" name="title" size="75" maxlength="100" value="{{ title }}"></td>
 		</tr><tr>
-			<td class="b n1 center">Post:</td>
+			<td class="b n1 center">{{ __("Post:") }}</td>
 			<td class="b n2"><textarea name="message" id="message" rows="15" cols="80">{{ message }}</textarea></td>
 		</tr><tr>
 			<td class="b n1"></td>
 			<td class="b n1">
 				<input type="hidden" name="fid" value="{{ fid }}">
-				<input type="submit" name="action" value="Submit">
-				<input type="submit" name="action" value="Preview">
+				<input type="submit" name="action" value="{{ __("Submit") }}">
+				<input type="submit" name="action" value="{{ __("Preview") }}">
 			</td>
 		</tr>
 	</table>

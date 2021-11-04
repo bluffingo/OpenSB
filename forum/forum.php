@@ -15,7 +15,7 @@ if (isset($_GET['id']) && $fid = $_GET['id']) {
 	} else
 		$forum = fetch("SELECT * FROM z_forums WHERE id = ? AND id IN " . forumsWithViewPerm(), [$fid]);
 
-	if (!isset($forum['id'])) error("404", "Forum does not exist.");
+	if (!isset($forum['id'])) error("404", __("Forum does not exist."));
 
 	$title = $forum['title'];
 
@@ -31,15 +31,15 @@ if (isset($_GET['id']) && $fid = $_GET['id']) {
 		[$fid]);
 
 	$topbot = [
-		'breadcrumb' => [['href' => './', 'title' => 'Main']],
+		'breadcrumb' => [['href' => './', 'title' => __("Main")]],
 		'title' => $forum['title']
 	];
 	if (canCreateForumThread($forum))
-		$topbot['actions'] = [['href' => "newthread.php?id=$fid", 'title' => 'New thread']];
+		$topbot['actions'] = [['href' => "newthread.php?id=$fid", 'title' => __("New thread")]];
 } elseif (isset($_GET['user']) && $uid = $_GET['user']) {
 	$user = fetch("SELECT name FROM users WHERE id = ?", [$uid]);
 
-	if (!isset($user)) error("404", "User does not exist.");
+	if (!isset($user)) error("404", __("User does not exist."));
 
 	$title = "Threads by " . $user['name'];
 
@@ -62,13 +62,13 @@ if (isset($_GET['id']) && $fid = $_GET['id']) {
 		. "WHERE t.user = ? AND f.id IN " . forumsWithViewPerm(), [$uid]);
 
 	$topbot = [
-		'breadcrumb' => [['href' => './', 'title' => 'Main'], ['href' => "../user.php?id=$uid", 'title' => $user['name']]],
-		'title' => 'Threads'
+		'breadcrumb' => [['href' => './', 'title' => __("Main")], ['href' => "../user.php?id=$uid", 'title' => $user['name']]],
+		'title' => __("Threads")
 	];
 } elseif ($time = $_GET['time']) {
 	$mintime = ($time > 0 && $time <= 2592000 ? time() - $time : 86400);
 
-	$title = 'Latest threats';
+	$title = __("Latest threats");
 
 	$threads = query("SELECT $fieldlist, t.*, f.id fid,
 		f.title ftitle" . ($log ? ', (NOT (r.time<t.lastdate OR isnull(r.time)) OR t.lastdate<fr.time) isread ' : ' ')
@@ -93,7 +93,7 @@ if (isset($_GET['id']) && $fid = $_GET['id']) {
 
 	$topbot = [];
 } else {
-	error("404", "Forum does not exist.");
+	error("404", __("Forum does not exist."));
 }
 
 $showforum = (isset($time) ? $time : $uid);
@@ -109,7 +109,7 @@ if ($forum['threads'] <= $userdata['tpp']) {
 }
 
 $twig = _twigloader();
-echo $twig->render('forum.twig', [
+echo $twig->render('forum/forum.twig', [
 	'title' => $title,
 	'threads' => $threads,
 	'showforum' => $showforum,

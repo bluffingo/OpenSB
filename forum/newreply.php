@@ -11,23 +11,23 @@ $thread = fetch("SELECT t.*, f.title ftitle, f.private fprivate, f.readonly frea
 	WHERE t.id = ? AND t.forum IN " . forumsWithViewPerm(), [$tid]);
 
 if (!$thread) {
-	error("404", "Thread does not exist.");
+	error("404", __("Thread does not exist."));
 } else if (!canCreateForumPost(['id' => $thread['forum'], 'private' => $thread['fprivate'], 'readonly' => $thread['freadonly']])) {
-	error("403", "You have no permissions to create posts in this forum!");
+	error("403", __("You have no permissions to create posts in this forum!"));
 } elseif ($thread['closed'] && !hasPerm('override-closed')) {
-	error("400", "You can't post in closed threads.");
+	error("400", __("You can't post in closed threads."));
 }
 
 $error = '';
 
-if ($action == 'Submit') {
+if ($action == __("Submit")) {
 	$lastpost = fetch("SELECT id,user,date FROM z_posts WHERE thread = ? ORDER BY id DESC LIMIT 1", [$thread['id']]);
 	if ($lastpost['user'] == $userdata['id'] && $lastpost['date'] >= (time() - 86400) && !hasPerm('consecutive-posts'))
-		$error = "You can't double post until it's been at least one day!";
+		$error = __("You can't double post until it's been at least one day!");
 	if ($lastpost['user'] == $userdata['id'] && $lastpost['date'] >= (time() - 2) && !hasPerm('consecutive-posts'))
-		$error = "You must wait 2 seconds before posting consecutively.";
+		$error = __("You must wait 2 seconds before posting consecutively.");
 	if (strlen(trim($_POST['message'])) == 0)
-		$error = "Your post is empty! Enter a message and try again.";
+		$error = __("Your post is empty! Enter a message and try again.");
 
 	if (!$error) {
 		query("UPDATE users SET posts = posts + 1, lastpost = ? WHERE id = ?", [time(), $userdata['id']]);
@@ -50,10 +50,10 @@ if ($action == 'Submit') {
 
 $topbot = [
 	'breadcrumb' => [
-		['href' => './', 'title' => 'Main'], ['href' => "forum.php?id={$thread['forum']}", 'title' => $thread['ftitle']],
+		['href' => './', 'title' => __("Main")], ['href' => "forum.php?id={$thread['forum']}", 'title' => $thread['ftitle']],
 		['href' => "thread.php?id={$thread['id']}", 'title' => esc($thread['title'])]
 	],
-	'title' => "New reply"
+	'title' => __("New reply")
 ];
 
 $pid = isset($_GET['pid']) ? (int)$_GET['pid'] : 0;
@@ -78,17 +78,17 @@ if ($pid) {
 }
 
 $post['date'] = time();
-$post['text'] = ($action == 'Preview' ? $_POST['message'] : $quotetext);
+$post['text'] = ($action == __("Preview") ? $_POST['message'] : $quotetext);
 foreach ($userdata as $field => $val)
 	$post['u' . $field] = $val;
 $post['ulastpost'] = time();
 
-if ($action == 'Preview') {
-	$topbot['title'] .= ' (Preview)';
+if ($action == __("Preview")) {
+	$topbot['title'] .= __(" (Preview)");
 }
 
 $twig = _twigloader();
-echo $twig->render('newreply.twig', [
+echo $twig->render('forum/newreply.twig', [
 	'post' => $post,
 	'topbot' => $topbot,
 	'action' => $action,

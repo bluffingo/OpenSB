@@ -55,7 +55,7 @@ function renderActions($actions, $ret = false) {
 	foreach ($actions as $action) {
 		if (isset($action['confirm'])) {
 			if ($action['confirm'] === true)
-				$confirmmsg = 'Are you sure you want to ' . $action['title'] . '?';
+				$confirmmsg = __('Are you sure you want to %s?', [$action['title']]);
 			else
 				$confirmmsg = str_replace("'", "\\'", $action['confirm']);
 
@@ -178,7 +178,7 @@ function ifEmptyQuery($message, $colspan = 0, $table = false) {
 
 function _twigloader($subfolder = '') {
 	global $dateformat, $frontend;
-	
+	chdir('../');
 	$twig = twigloader($subfolder, function () use ($subfolder, $frontend) {
 		return new \Twig\Loader\FilesystemLoader('templates/' . $frontend . $subfolder);
 	}, function ($loader, $doCache) {
@@ -187,7 +187,7 @@ function _twigloader($subfolder = '') {
 			'cache' => ($doCache ? "../".$doCache : $doCache),
 		]);
 	});
-
+	
 	$twig->addExtension(new PrincipiaForumExtension());
 
 	$twig->addGlobal('forum_dateformat', $dateformat);

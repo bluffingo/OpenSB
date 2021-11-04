@@ -7,9 +7,9 @@
 
 {% if time %}
 	<table class="c1 autowidth">
-		<tr class="h"><td class="b">Latest Posts</td></tr>
+		<tr class="h"><td class="b">{{ __("Latest Posts") }}</td></tr>
 		<tr><td class="b n1 center">
-			<a href="forum.php?time={{ time }}">By Threads</a> | By Posts</a><br><br>
+			<a href="forum.php?time={{ time }}">{{ __("By Threads") }}</a> | {{ __("By Posts") }}</a><br><br>
 			{{ timelinks('thread') }}
 		</td></tr>
 	</table><br>
@@ -38,7 +38,7 @@
 		<br>{{ threadpost(post, pthread) }}
 	{% endif %}
 {% else %}
-	{{ if_empty_query("No posts were found.", 0, true) }}
+	{{ if_empty_query(__("No posts were found."), 0, true) }}
 {% endfor %}
 
 {{ pagelist | raw }}
@@ -47,16 +47,16 @@
 {% if thread.id and can_create_forum_post(faccess) and not thread.closed %}
 <form action="newreply.php" method="post">
 	<table class="c1">
-		<tr class="h"><td class="b h" colspan="2">Quick Reply</a></td>
+		<tr class="h"><td class="b h" colspan="2">{{ __("Quick Reply") }}</a></td>
 		<tr>
-			<td class="b n1 center" width="120">Reply:</td>
+			<td class="b n1 center" width="120">{{ __("Reply:") }}</td>
 			<td class="b n2"><textarea wrap="virtual" name="message" id="message" rows="8" cols="80"></textarea></td>
 		</tr><tr class="n1">
 			<td class="b"></td>
 			<td class="b">
 				<input type="hidden" name="tid" value="{{ tid }}">
-				<input type="submit" name="action" class="button button-secondary" value="Submit">
-				<input type="submit" name="action" class="button button-secondary"value="Preview">
+				<input type="submit" name="action" class="button button-secondary" value="{{ __("Submit") }}">
+				<input type="submit" name="action" class="button button-secondary"value="{{ __("Preview") }}">
 			</td>
 		</tr>
 	</table>

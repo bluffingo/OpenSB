@@ -26,15 +26,15 @@ if (isset($_GET['action']) && $_GET['action'] == "del") {
 	if (hasPerm('delete-user-pms') || ($owner == $userdata['id'] && hasPerm('delete-own-pms'))) {
 		query("UPDATE z_pmsgs SET del_$fieldn2 = ? WHERE id = ?", [!$showdel, $id]);
 	} else {
-		error("403", "You are not allowed to (un)delete that message.");
+		error("403", __("You are not allowed to (un)delete that message."));
 	}
 	$id = 0;
 }
 
-$ptitle = 'Private messages' . ($sent ? ' (sent)' : '');
+$ptitle = __("Private messages") . ($sent ? __(" (sent)") : '');
 if ($id && hasPerm('view-user-pms')) {
 	$user = fetch("SELECT id,name,group_id FROM users WHERE id = ?", [$id]);
-	if ($user == null) error("404", "User doesn't exist.");
+	if ($user == null) error("404", __("User doesn't exist."));
 	$headtitle = $user['name']."'s ".strtolower($ptitle);
 	$title = userlink($user)."'s ".strtolower($ptitle);
 } else {
@@ -53,16 +53,16 @@ $pmsgs = query("SELECT ".userfields('u', 'u').", p.* FROM z_pmsgs p "
 				[$id, $showdel]);
 
 $topbot = [
-	'breadcrumb' => [['href' => './', 'title' => 'Main']],
+	'breadcrumb' => [['href' => './', 'title' => __("Main")]],
 	'title' => $title
 ];
 
 if ($sent)
-	$topbot['actions'] = [['href' => 'private.php'.($id != $userdata['id'] ? "?id=$id&" : ''), 'title' => "View received"]];
+	$topbot['actions'] = [['href' => 'private.php'.($id != $userdata['id'] ? "?id=$id&" : ''), 'title' => __("View received")]];
 else
-	$topbot['actions'] = [['href' => 'private.php?'.($id != $userdata['id'] ? "id=$id&" : '').'view=sent', 'title' => "View sent"]];
+	$topbot['actions'] = [['href' => 'private.php?'.($id != $userdata['id'] ? "id=$id&" : '').'view=sent', 'title' => __("View sent")]];
 
-$topbot['actions'][] = ['href' => 'sendprivate.php', 'title' => 'Send new'];
+$topbot['actions'][] = ['href' => 'sendprivate.php', 'title' => __("Send new")];
 
 if ($pmsgc <= $userdata['tpp'])
 	$fpagelist = '<br>';
@@ -75,7 +75,7 @@ else {
 }
 
 $twig = _twigloader();
-echo $twig->render('private.twig', [
+echo $twig->render('forum/private.twig', [
 	'id' => $id,
 	'pmsgs' => $pmsgs,
 	'topbot' => $topbot,

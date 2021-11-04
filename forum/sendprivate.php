@@ -6,11 +6,11 @@ $action = (isset($_POST['action']) ? $_POST['action'] : null);
 needsLogin();
 
 $topbot = [
-	'breadcrumb' => [['href' => './', 'title' => 'Main'], ['href' => "private.php", 'title' => 'Private messages']],
+	'breadcrumb' => [['href' => './', 'title' => 'Main'], ['href' => "private.php", 'title' => __("Private messages")]],
 	'title' => 'Send'
 ];
 
-if (!hasPerm('create-pms')) error('403', 'You have no permissions to do this!');
+if (!hasPerm('create-pms')) error('403', __("You have no permissions to do this!"));
 
 $error = '';
 
@@ -21,7 +21,7 @@ if ($action == 'Submit') {
 	if ($userto && $_POST['message']) {
 		$recentpms = fetch("SELECT date FROM z_pmsgs WHERE date >= (UNIX_TIMESTAMP() - 30) AND userfrom = ?", [$userdata['id']]);
 		if ($recentpms) {
-			$error = "You can't send more than one PM within 30 seconds!";
+			$error = __("You can't send more than one PM within 30 seconds!");
 		} else {
 			query("INSERT INTO z_pmsgs (date,userto,userfrom,title,text) VALUES (?,?,?,?,?)",
 				[time(),$userto,$userdata['id'],$_POST['title'],$_POST['message']]);
@@ -33,9 +33,9 @@ if ($action == 'Submit') {
 			redirect("private.php");
 		}
 	} elseif (!$userto) {
-		$error = "That user doesn't exist!";
+		$error = __("That user doesn't exist!");
 	} elseif (!$_POST['message']) {
-		$error = "You can't send a blank message!";
+		$error = __("You can't send a blank message!");
 	}
 }
 
@@ -54,7 +54,7 @@ if (!$action) {
 				'[reply="%s" id="%s"]%s[/reply]'.PHP_EOL.PHP_EOL,
 			$post['name'], $pid, $post['text']);
 
-			$title = 'Re:' . $post['title'];
+			$title = __("Re:") . $post['title'];
 			$userto = $post['name'];
 		}
 	}
@@ -64,7 +64,7 @@ if (!$action) {
 	} elseif (!isset($userto)) {
 		$userto = $_POST['userto'];
 	}
-} else if ($action == 'Preview') { // Previewing PM
+} else if ($action == __("Preview")) { // Previewing PM
 	$post['date'] = time();
 	$post['text'] = $_POST['message'];
 	foreach ($userdata as $field => $val)
@@ -74,11 +74,11 @@ if (!$action) {
 	$userto = $_POST['userto'];
 	$title = $_POST['title'];
 	$quotetext = $_POST['message'];
-	$topbot['title'] .= ' (Preview)';
+	$topbot['title'] .= __(" (Preview)");
 }
 
 $twig = _twigloader();
-echo $twig->render('sendprivate.twig', [
+echo $twig->render('forum/sendprivate.twig', [
 	'post' => (isset($post) ? $post : null),
 	'userto' => $userto,
 	'title' => $title,

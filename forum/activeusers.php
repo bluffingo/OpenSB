@@ -7,7 +7,7 @@ $users = query("SELECT ".userfields('u').",u.posts,u.joined,COUNT(*) num FROM us
 	[(time() - $time)]);
 
 $twig = _twigloader();
-echo $twig->render('activeusers.twig', [
+echo $twig->render('forum/activeusers.twig', [
 	'time' => $time,
 	'users' => $users
 ]);
