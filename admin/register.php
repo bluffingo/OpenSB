@@ -29,4 +29,4 @@ if (isset($_POST['action'])) {
 }
 
 $twig = twigloader();
-echo $twig->render('register.twig', ['error' => $error]);
+echo $twig->render('admin/register.twig', ['error' => $error]);

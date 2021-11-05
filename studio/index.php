@@ -16,7 +16,7 @@ if ($log) {
 
 $twig = twigloader();
 
-echo $twig->render('index.twig', [
+echo $twig->render('studio/index.twig', [
 	'videos' => $videoData,
 	'totalSubscribers' => $totalSubscribers,
 	'totalViews' => $totalViews,

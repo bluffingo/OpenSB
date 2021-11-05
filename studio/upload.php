@@ -60,5 +60,5 @@ if(isset($_POST['upload']) AND isset($currentUser['username'])){
 }
 
 $twig = twigloader();
-echo $twig->render('upload.twig');
+echo $twig->render('studio/upload.twig');
 ?>

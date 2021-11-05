@@ -6,6 +6,6 @@ $videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.tim
 
 $twig = twigloader();
 
-echo $twig->render('index.twig', [
+echo $twig->render('admin/index.twig', [
 	'videos' => $videoData
 ]);

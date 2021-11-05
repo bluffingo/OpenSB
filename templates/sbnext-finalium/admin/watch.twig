@@ -24,7 +24,15 @@
 					// You can use the player object now to access the player and it's methods (play, pause, ...)
 				</script>
 				<div style="margin-top:5px">
-					{{ watch_box(video) }}
+					<div class="card border-primary">
+					<div class="card-body">
+						<div class="col-lg-8">
+							<h3>{{ video.title }}</h3>
+							<p>{{ userlink(video, 'u_') }} &bull; {{ video.views }} views &bull; {{ video.time | date('M j, Y') }}</p>
+							<p>{{ video.description }}</p>
+						</div>
+					</div>
+				</div>
 				</div>
 			</div>
 			<div class="col-md-3">

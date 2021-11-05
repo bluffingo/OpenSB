@@ -29,7 +29,7 @@
 <body>
 	<div id="masthead-container">
 		<div id="masthead">
-			<a href="/" id="logo-container"><img id="logo" src="assets/logo-masthead.png"></a>
+			<a href="/" id="logo-container"><img id="logo" src="/assets/logo-masthead.png"></a>
 			<div {% if log %}onclick="openMastheadBelow"{% endif %} id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
 				{% if log %}
 				<div style="display: flex;justify-content: center;align-items: center;gap: 5px;">{{ userdata.name }}<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}"></div>

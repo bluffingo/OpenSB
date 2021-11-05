@@ -33,7 +33,7 @@ if(isset($_POST["loginsubmit"])){
 	}
 }
 
-echo $twig->render('login.twig', [
+echo $twig->render('studio/login.twig', [
 'error' => $error,
 'success' => $success
 ]);

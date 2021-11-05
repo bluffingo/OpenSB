@@ -7,6 +7,6 @@ $userData = fetch("SELECT * FROM users WHERE name = ?", [$username]);
 
 $twig = twigloader();
 
-echo $twig->render('user.twig', [
+echo $twig->render('admin/user.twig', [
     'user' => $userData,
 ]);
