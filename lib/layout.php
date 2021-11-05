@@ -49,6 +49,10 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	return $twig;
 }
 
+function jsonDecode($str) {
+	return json_decode($str);
+}
+
 function error($errorCode, $message) {
 	$twig = twigloader();
 	echo $twig->render('_error.twig', ['err_message' => $message, 'err_code' => $errorCode]);
