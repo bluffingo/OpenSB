@@ -56,13 +56,13 @@
 				</div>
 				</div>
 		
-				
+				{% for video in videos %}
 					<div class="moduleEntry">
 					<table width="565" cellspacing="0" cellpadding="0" border="0">
 						<tbody><tr valign="top">
-							<td><a href="index.php?v=WEUN1h6r1U0"><img src="get_still.php?video_id=WEUN1h6r1U0" class="moduleEntryThumb" width="120" height="90"></a></td>
-							<td width="100%"><div class="moduleEntryTitle"><a href="index.php?v=WEUN1h6r1U0">candid shot of a cute girl</a></div>
-							<div class="moduleEntryDescription">candid shot of a cute girl</div>
+							<td><a href="index.php?v=WEUN1h6r1U0"><img src="{{ video_thumbnail(data.video_id) }}" class="moduleEntryThumb" width="120" height="90"></a></td>
+							<td width="100%"><div class="moduleEntryTitle"><a href="index.php?v=WEUN1h6r1U0">{{ video.title }}</a></div>
+							<div class="moduleEntryDescription">{{ video.description }}</div>
 							<div class="moduleEntryTags">
 							Tags // <a href="results.php?search=candid">candid</a> : <a href="results.php?search=shot">shot</a> : <a href="results.php?search=cute">cute</a> : <a href="results.php?search=girl">girl</a> : 							</div>
 							<div class="moduleEntryDetails">Added: July 24, 2005 by <a href="profile.php?user=tunafat">tunafat</a></div>
@@ -71,7 +71,7 @@
 						</tr>
 					</tbody></table>
 					</div>
-					
+				{% endfor %}	
 					
 					<div class="moduleEntry">
 					<table width="565" cellspacing="0" cellpadding="0" border="0">

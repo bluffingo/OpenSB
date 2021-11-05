@@ -26,11 +26,19 @@
 				<table cellspacing="0" cellpadding="0" border="0">
 					<tbody><tr>
 					
+				{% if log %}
+				<td>Hello, <a href="user.php?name={{ userdata.name }}" class="bold">{{ userdata.title }}</a></td>
+				<td>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+				<td><a href="signout.php">Log Out</a></td>
+				<td>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+				<td style="padding-right: 5px;"><a href="help.php">Help</a></td>
+				{% else %}
 				<td><a href="signup.php" class="bold">Sign Up</a></td>
 				<td>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 				<td><a href="login.php">Log In</a></td>
 				<td>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 				<td style="padding-right: 5px;"><a href="help.php">Help</a></td>
+				{% endif %}
 
 				
 			</tr>
@@ -83,13 +91,8 @@
 						<tbody><tr>
 							<td>&nbsp;<a href="index.php" class="bold">Home</a></td>
 							<td>&nbsp;|&nbsp;</td>
-							<td><a href="my_videos.php">My Videos</a></td>
+							<td><a href="browse.php">Videos</a></td>
 							<td>&nbsp;|&nbsp;</td>
-							<td><a href="my_favorites.php">My Favorites</a></td>
-							<td>&nbsp;|&nbsp;</td>
-							<td><a href="my_friends.php">My Friends</a>&nbsp;<img src="./assets/retro/new.gif"></td>
-							<td>&nbsp;|&nbsp;</td>
-							<td><a href="my_profile.php">My Profile</a></td>
 						</tr>
 						</tbody></table>
 					</td>
