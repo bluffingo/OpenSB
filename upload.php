@@ -34,7 +34,7 @@ if (isset($_POST['upload']) and isset($userdata['name'])) {
 	}
 
 	// Rate limit uploading to 2 minutes, both to prevent spam and to prevent double uploads.
-	if (result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60*2, $userdata['id']])) {
+	if (result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60*2, $userdata['id']]) && !$isDebug) {
 		die(__("Please wait 2 minutes before uploading again. If you've already uploaded a video, it is being processed."));
 	}
 

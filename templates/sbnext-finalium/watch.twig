@@ -29,7 +29,7 @@
 					{{ __("This video is being processed. Try again later.") }}
 				</div>
 				{% else %}
-				<video controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}"></video>
+				<video id="videoContainer" controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}"></video>
 				{% endif %}
 			</div>
 			<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
@@ -70,20 +70,44 @@
 			</style>
 			<script>
 				{% if not (video.flags b-and 2) %}
-					document.addEventListener('DOMContentLoaded', () => {
-						const source = '{{ video.videofile }}';
-						// For more dash options, see https://github.com/Dash-Industry-Forum/dash.js
-						const dash = dashjs.MediaPlayer().create();
-						const video = document.querySelector('video');
-						dash.initialize(video, source, true);
+					//code taken from https://codepen.io/adis0308/pen/bGpQmwr
+					const video = document.getElementById("videoContainer");
+					document.addEventListener("DOMContentLoaded", function(){
+					  const source = "{{ video.videofile }}";
+					  const dash = dashjs.MediaPlayer().create();
+					  var defaultOptions = {
+						"ratio":"16:9",
+					  };
 
-						// Update caption tracks after initializing Plyr to get the generated captions
-						// For more options see: https://github.com/sampotts/plyr/#options
-						const player = new Plyr(video);
-
-						// Expose player and dash so they can be used from the console
+					  dash.initialize(video, source, false);
+					  dash.updateSettings({
+						streaming: {
+						  abr: {
+							autoSwitchBitrate: {audio: false, video: false}
+						  },
+						  fastSwitchEnabled: true,
+						  lowLatencyEnabled: true
+						}
+					  });
+					  dash.on("streamInitialized", function() {
+						const availableQualities = dash.getBitrateInfoListFor("video").map((l) => l.height);
+						defaultOptions.quality = {
+						  default: availableQualities[0].height,
+						  options: availableQualities,
+						  forced: true,
+						  onChange: function (newQuality) {
+							dash.getBitrateInfoListFor("video").forEach((level, levelIndex) => {
+							  if (level.height === newQuality) {
+								dash.setQualityFor("video", level.qualityIndex);
+							  }
+							});
+						  },
+						};
+						const player = new Plyr(video, defaultOptions);
 						window.player = player;
 						window.dash = dash;
+					  });
+					  dash.attachView(video);
 					});
 				{% endif %}
 			</script>
