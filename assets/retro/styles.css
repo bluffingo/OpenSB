@@ -409,13 +409,13 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 }
 
 #flashcontent {
-	background-color: #FFFFFF;
+	background-color: #16181a;
 	width: 425px;
 	height: 350px;
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
-	border: 1px solid #CCC;
+	border: 1px solid #2A2C2F;
 }
 
 .watchInfoArea {
@@ -434,7 +434,7 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	padding-bottom: 5px;
-	color: #000;
+	color: #fff;
 	border-bottom: 1px dashed #CCC;
 }
 
@@ -442,41 +442,41 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	margin: 5px 0 10px;
-	color: #333333;
+	color: #eaeaea;
 }
 
 .watchAdded {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;
 	margin-bottom: 5px;
-	color: #333333;
+	color: #a4a4a4;
 }
 
 .watchDetails {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;
 	font-weight: normal;
-	color: #333333;
+	color: a4a4a4;
 }
 
 .commentsTitle {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;
 	font-weight: bold;
-	color: #333333;
-	background-color: #EEEEEE;
+	color: #fff;
+	background-color: #444548;
 	padding: 5px;
 	padding-bottom: 6px;
-	border-top: 1px dashed #999999;
-	border-bottom: 1px dashed #999999;
+	border-top: 1px dashed #424951;
+	border-bottom: 1px dashed #424951;
 
 }
 
 .commentsEntry {
 	font-size: 11px;
-	background-color: #FFFFCC;
+	background-color: #292a2d;
 	padding: 10px;
-	border-bottom: 1px dashed #999999;
+	border-bottom: 1px dashed #424951;
 }
 
 .commentsThumb {
