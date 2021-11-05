@@ -85,4 +85,10 @@ $lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['
 
 $userdata['timezone'] = 'America/New York';
 
-oldBrowser();
+$browser = get_browser();
+$browserArray = json_decode(json_encode($browser),true);
+//if ($enableRetroTesting) {
+//if ($browserArray['parent'] == "IE 6.0" or "Firefox 2.0") {
+//	$frontend = 'retro';
+//}
+//}

@@ -18,6 +18,7 @@ $webhook = ""; // Webhook URL for the new video webhook
 $domain = 'http://squarebracket.local';
 $isDebug = false; // DEV ONLY
 $isMaintenance = false;
+$enableRetroTesting; = false; // DEV ONLY (for now, requires IE6)
 
 // Should dark mode be default? (FORUM ONLY)
 $darkModeDefault = true;
