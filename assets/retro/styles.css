@@ -107,7 +107,7 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 	background-color: #FFFFCC;
 	background-position: left top;
 	border-bottom: 1px dashed #999999;
-	padding: 10px 10px 0px 10px;
+	padding: 10px 10px 0;
 }
 
 .moduleEntry {
@@ -154,7 +154,7 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 .moduleTitle {
 	font-size: 14px;
 	font-weight: bold;
-	margin: 0px 0px 5px 5px;
+	margin: 0 0 5px 5px;
 	color: #444;
 }
 
@@ -170,7 +170,7 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 	background-position: left top;
 	background-repeat: repeat-x;
 	border-bottom: 1px dashed #999999;
-	padding: 5px 5px 15px 5px;
+	padding: 5px 5px 15px;
 }
 
 .moduleFeaturedThumb {
@@ -198,7 +198,7 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 .moduleFrameBarTitle {
 	font-size: 12px;
 	font-weight: bold;
-	margin: 0px 5px 5px 5px;
+	margin: 0 5px 5px;
 	color: #444;
 }
 
@@ -262,7 +262,7 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 }
 
 .tableSubTitle {
-	padding: 0px 0px 5px 0px;
+	padding: 0 0 5px;
 	border-bottom: 1px dashed #CCC;
 	margin-bottom: 10px;
 	font-size: 14px;
@@ -352,12 +352,12 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 }
 
 .pageTable {
-	padding: 0px 5px 0px 5px;
+	padding: 0 5px;
 	margin-bottom: 20px;
 }
 
 .pageText {
-	padding: 0px 5px 0px 5px;
+	padding: 0 5px;
 }
 
 .pageIntro {
@@ -441,7 +441,7 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 .watchTags {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	margin: 5px 0px 10px 0px;
+	margin: 5px 0 10px;
 	color: #333333;
 }
 
@@ -488,7 +488,7 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 	font-size: 12px;
 	font-weight: bold;
 	color:#DD8833;
-	margin: 10px 0px 2px 0px;
+	margin: 10px 0 2px;
 }
 
 /* Code Elements */
