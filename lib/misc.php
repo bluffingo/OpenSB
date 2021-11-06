@@ -7,12 +7,6 @@ function isCli() {
 	return php_sapi_name() == "cli";
 }
 
-// Makes incomplete unready features not available on production (aka squarebracket.veselcraft.ru)
-function notReady() {
-	http_response_code(403);
-	die(__("This feature is not ready for production."));
-}
-
 function accessDenied() {
 	http_response_code(403);
 	die(__("Access Denied"));
