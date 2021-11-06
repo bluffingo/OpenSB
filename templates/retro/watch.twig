@@ -81,12 +81,12 @@ function CommentHandler()
 			
 								
 					<div class="watchAdded">
-					Added: June 11, 2005 by <a href="profile.php?user=jawed">jawed</a> //
+					Added: {{ video.time | date('M j, Y') }} by {{ userlink(video, 'u_') }} //
 					<a href="profile_videos.php?user=jawed">Videos</a> (64) | <a href="profile_favorites.php?user=jawed">Favorites</a> (123) | <a href="profile_friends.php?user=jawed">Friends</a> (16)
 					</div>
 			
 					<div class="watchDetails">
-					Views: 27965 | <a href="#comment">Comments</a>: 8 | Category: {{ video.category_id | category_id_to_name() }}</div>
+					Views: {{ video.views }} | <a href="#comment">Comments</a>: 8 | Category: {{ video.category_id | category_id_to_name() }}</div>
 
 				</td>
 			</tr>
@@ -139,8 +139,10 @@ function CommentHandler()
 
 		<div class="commentsTitle">Comments ({{ comCount }}):</div>
 		
-<div class="commentsEntry">"awsome!"<br>
- - <a href="profile.php?user=larfus">larfus</a> // <a href="profile_videos.php?user=larfus">Videos</a> (41) | <a href="profile_favorites.php?user=larfus">Favorites</a> (6) | <a href="profile_friends.php?user=larfus">Friends</a> (0) - (41 days, 13 hours, 53 minutes ago)</div>		
+{% for comment in comments %}
+<div class="commentsEntry">{{ comment.comment | raw }}<br>
+ - {{ userlink(comment, 'u_') }} //  ({{ comment.date | relative_time}})</div>
+{% endfor %} 
 		</td>
 		<td width="280">
 		
