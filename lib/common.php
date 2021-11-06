@@ -10,11 +10,6 @@ if (!file_exists('conf/config.php')) {
 
 require('conf/config.php');
 
-// todo: make this load a html page
-if ($isMaintenance) {
-	die('<center><b>squareBracket is currently offline.</b></center>');
-}
-
 if ($isDebug and !isset($rawOutputRequired)) {
 	// load profiler first
 	require_once('lib/profiler.php');
@@ -26,15 +21,9 @@ foreach (glob("lib/*.php") as $file) {
 	require_once($file);
 }
 
-// Makes incomplete unready features not available on production (aka squarebracket.veselcraft.ru)
-function notReady() {
-	http_response_code(403);
-	die(__("This feature is not ready for production.")); 
-}
-
-function accessDenied() {
-	http_response_code(403);
-	die(__("Access Denied"));
+// todo: make this load a html page
+if ($isMaintenance && !isCli()) {
+	die('<center><b>squareBracket is currently offline.</b></center>');
 }
 
 if(!isset($acmlm)) {
@@ -74,7 +63,7 @@ if ($oldTemplateSwitching) {
 if ($log) {
 	$userdata = fetch("SELECT * FROM users WHERE id = ?", [$id]);
 	$notificationCount = result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$userdata['id']]);
-	
+
 	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);
 } else {
 	$userdata['powerlevel'] = 1;
@@ -84,10 +73,12 @@ $lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['
 
 $userdata['timezone'] = 'America/New York';
 
-$browser = get_browser();
-$browserArray = json_decode(json_encode($browser),true);
-//if ($enableRetroTesting) {
-//if ($browserArray['parent'] == "IE 6.0" or "Firefox 2.0") {
-//	$frontend = 'retro';
-//}
-//}
+if (!isCli()) {
+	$browser = get_browser();
+	$browserArray = json_decode(json_encode($browser),true);
+	//if ($enableRetroTesting) {
+	//if ($browserArray['parent'] == "IE 6.0" or "Firefox 2.0") {
+	//	$frontend = 'retro';
+	//}
+	//}
+}

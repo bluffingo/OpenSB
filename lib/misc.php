@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * Returns true if it is executed from the command-line. (For command-line tools)
+ */
+function isCli() {
+	return php_sapi_name() == "cli";
+}
+
+function accessDenied() {
+	http_response_code(403);
+	die(__("Access Denied"));
+}
+
+/**
  * Get hash of latest git commit
  *
  * @param bool $trim Trim the hash to the first 7 characters

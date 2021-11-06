@@ -14,6 +14,8 @@ class Profiler {
 	function getStats() {
 		global $userdata;
 
+		if (isCli()) return;
+
 		$username = (isset($userdata['name']) ? $userdata['name'] : 'not logged in');
 		$displayname = (isset($userdata['title']) ? $userdata['title'] : '');
 		$language = (isset($userdata['language']) ? $userdata['language'] : 'en_US');
