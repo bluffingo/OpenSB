@@ -7,14 +7,14 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		var audio = new Audio('/assets/sounds/'+sound+'.wav');
 		audio.play();
 	}
-	function openMastheadBelow() {
+	$("#masthead-loggedin").click(function() {
 	  var x = document.getElementById("masthead-below");
 	  if (x.style.display === "none") {
 		x.style.display = "block";
 	  } else {
 		x.style.display = "none";
 	  }
-	} 
+	});
 	$(window).click(function() {
 	  $("#mainMenu").removeClass("show");
 	  $("#themeSelection").removeClass("show");
