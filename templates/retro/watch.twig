@@ -57,9 +57,9 @@ function CommentHandler()
 	<tbody><tr valign="top">
 		<td style="padding-right: 15px;" width="515">
 		
-		<div class="tableSubTitle">Under the Bridge!</div>
+		<div class="tableSubTitle">{{ video.title }}</div>
 		<div style="font-size: 13px; font-weight: bold; text-align:center;">
-		<a href="mailto:?subject=Under the Bridge!&amp;body=http://www.youtube.com/?v=vy8evhya_9E">Share</a>
+		<a href="mailto:?subject=Under the Bridge!&amp;body=https://squarebracket.veselcraft.ru/watch.php?v={{ video.video_id }}">Share</a>
 		// <a href="#comment">Comment</a>
 		// <a href="add_favorites.php?video_id=vy8evhya_9E" target="invisible" onclick="return FavoritesHandler();">Add to Favorites</a>
 		// <a href="outbox.php?user=jawed&amp;subject=Re: Under+the+Bridge%21">Contact Me</a>
@@ -67,14 +67,14 @@ function CommentHandler()
 		
 		<div style="text-align: center; padding-bottom: 10px;">
 		<div id="flashcontent">
-		<embed name="player" width="425" height="350" id="player" src="player.swf" flashvars="video_id=/videos/MGK4__YyOWY.flv" type="application/x-shockwave-flash" quality="high" bgcolor="#FFFFFF">
+		<embed name="player" width="450" height="371" id="player" src="player.swf" flashvars="video_id=/videos/MGK4__YyOWY.flv" type="application/x-shockwave-flash" quality="high" bgcolor="#1b1d20">
 		</div>
 		</div>
 
 		<table width="425" cellspacing="0" cellpadding="0" border="0" align="center">
 			<tbody><tr>
 				<td>
-					<div class="watchDescription">An aerobatic Sukhoi being flown INVERTED under a river bridge.					<div class="watchAdded" style="margin-top: 5px;">
+					<div class="watchDescription">{{ video.description }}<div class="watchAdded" style="margin-top: 5px;">
 										</div>
 					</div>
 					<div class="watchTags">Tags // <a href="results.php?search=aerobatic">aerobatic</a> : <a href="results.php?search=sukhoi">sukhoi</a> : <a href="results.php?search=airplane">airplane</a> : <a href="results.php?search=stunt">stunt</a> : <a href="results.php?search=trick">trick</a> : 					</div>
@@ -86,7 +86,7 @@ function CommentHandler()
 					</div>
 			
 					<div class="watchDetails">
-					Views: 27965 | <a href="#comment">Comments</a>: 8					</div>
+					Views: 27965 | <a href="#comment">Comments</a>: 8 | Category: {{ video.category_id | category_id_to_name() }}</div>
 
 				</td>
 			</tr>
@@ -95,7 +95,7 @@ function CommentHandler()
 		<!-- watchTable -->
 		
 		<div style="padding: 15px 0px 10px 0px;">
-		<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#E5ECF9" align="center">
+		<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#42454a" align="center">
 			<tbody><tr>
 				<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
 				<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
@@ -106,7 +106,7 @@ function CommentHandler()
 				<td><img src="img/pixel.gif" width="5" height="1"></td>
 				<td align="center">
 		
-				<div style="font-size: 11px; font-weight: bold; color: #CC6600; padding: 5px 0px 5px 0px;">Share this video! Copy and paste this link:</div>
+				<div style="font-size: 11px; font-weight: bold; padding: 5px 0px 5px 0px;">Share this video! Copy and paste this link:</div>
 				<div style="font-size: 11px; padding-bottom: 15px;">
 				<input name="video_link" type="text" onclick="javascript:document.linkForm.video_link.focus();document.linkForm.video_link.select();" value="http://www.youtube.com/?v=vy8evhya_9E" size="50" readonly="true" style="font-size: 10px; text-align: center;">
 				</div>
@@ -124,10 +124,10 @@ function CommentHandler()
 		</div>
 		
 		<a name="comment"></a>
-		<div style="padding-bottom: 5px; font-weight: bold; color: #444;">Comment on this video:</div>
+		<div style="padding-bottom: 5px; font-weight: bold;">Comment on this video:</div>
 
 		<form name="comment_form" id="comment_form" method="post" action="add_comment.php" target="invisible" onsubmit="return CommentHandler();">
-		<input type="hidden" name="video_id" value="vy8evhya_9E">
+		<input type="hidden" name="video_id" value="{{ video.video_id }}">
 
 		<textarea name="comment" cols="55" rows="3"></textarea>
 		<br>
@@ -137,17 +137,9 @@ function CommentHandler()
 		</form>
 		<br>
 
-		<div class="commentsTitle">Comments (8):</div>
+		<div class="commentsTitle">Comments ({{ comCount }}):</div>
 		
-		<div class="commentsEntry">"nice shot"<br>
- - (9 days, 15 hours, 34 minutes ago)</div><div class="commentsEntry">"By he way, Vilnius is Lithuania's Capital. Riga is Latvia's capital is Riga. I'km living in Lthuania, so ... :)   And This was performed by Jurgis Kairys.Not Paksas !!!"<br>
- - (29 days, 20 hours, 52 minutes ago)</div><div class="commentsEntry">"This was done by Jurgis Kairys in Kaunas, Lithuania in 2001."<br>
- - (31 days, 2 hours, 33 minutes ago)</div><div class="commentsEntry">"yeah yeah nice shot man ..."<br>
- - (33 days, 14 hours, 31 minutes ago)</div><div class="commentsEntry">"This was performed by  Jurgis Kairys.<br>
-Not Paksas"<br>
- - (33 days, 18 hours, 59 minutes ago)</div><div class="commentsEntry">"Vilnius/LITHUANIA you mean ;)"<br>
- - (34 days, 2 hours, 38 minutes ago)</div><div class="commentsEntry">"This trick was done in Vilnius/Latvia in Eastern Europe (old USSR baltiv republic) by Mr Paksas formerly known as later president of this country...deleted by impeachment ;))"<br>
- - (40 days, 19 hours, 44 minutes ago)</div><div class="commentsEntry">"awsome!"<br>
+<div class="commentsEntry">"awsome!"<br>
  - <a href="profile.php?user=larfus">larfus</a> // <a href="profile_videos.php?user=larfus">Videos</a> (41) | <a href="profile_favorites.php?user=larfus">Favorites</a> (6) | <a href="profile_friends.php?user=larfus">Friends</a> (0) - (41 days, 13 hours, 53 minutes ago)</div>		
 		</td>
 		<td width="280">
@@ -164,7 +156,7 @@ Not Paksas"<br>
 				<div class="moduleTitleBar">
 				<table width="270" cellspacing="0" cellpadding="0" border="0">
 					<tbody><tr valign="top">
-						<td><div class="moduleFrameBarTitle">Tag // aerobatic sukhoi airplane stunt trick (71)</div></td>
+						<td><div class="moduleFrameBarTitle">Recommended Videos</div></td>
 						<td align="right"><div style="font-size: 11px; margin-right: 5px;"><a href="results.php?&amp;search=aerobatic+sukhoi+airplane+stunt+trick" target="_parent">See more Results</a></div></td>
 					</tr>
 				</tbody></table>
@@ -184,7 +176,7 @@ Not Paksas"<br>
 		</tbody></table><br>
 		
 		
-		<div style="font-weight: bold; color: #333; margin: 10px 0px 5px 0px;">Related tags:</div>
+		<div style="font-weight: bold; margin: 10px 0px 5px 0px;">Related tags:</div>
 		<div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=airplane">airplane</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=landing">landing</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=crazy">crazy</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=stunt">stunt</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=skill">skill</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=stunts">stunts</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=COBALT">COBALT</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=backflip">backflip</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=rc">rc</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=crash">crash</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=747">747</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=tricks">tricks</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=grocery">grocery</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=house">house</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=takeoff">takeoff</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=store">store</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=freestyle">freestyle</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=flight">flight</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=jumping">jumping</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=motorcycles">motorcycles</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=trick">trick</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=cockpit">cockpit</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=A340">A340</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=philipsburg">philipsburg</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=motorcycle">motorcycle</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=concorde">concorde</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=flying">flying</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=streetbikes">streetbikes</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=runway">runway</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=airport">airport</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=STUNTS">STUNTS</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=FLIPS">FLIPS</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=camera">camera</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=jet">jet</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=dog">dog</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=f14">f14</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=bikes">bikes</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=funny">funny</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=burnout">burnout</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=dutch">dutch</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=helicopter">helicopter</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=police">police</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=collision">collision</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=DC10">DC10</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=netherlands">netherlands</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=motor">motor</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=race">race</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=boat">boat</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=snowmobile">snowmobile</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=kid">kid</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=accident">accident</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=horse">horse</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=pool">pool</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=biplane">biplane</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=fast">fast</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=malaysia">malaysia</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=ejection">ejection</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=gulfstream">gulfstream</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=minnesota">minnesota</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=learjet">learjet</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=tomcat">tomcat</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=flyby">flyby</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=b52">b52</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=sukhoi">sukhoi</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=aerobatic">aerobatic</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=supersonic">supersonic</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=harrier">harrier</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=fly">fly</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=approach">approach</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=instrument">instrument</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=arabics">arabics</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=KLM">KLM</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=jets">jets</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=airshow">airshow</a></div><div style="padding: 0px 0px 5px 0px; color: #999;">» <a href="results.php?search=aviation">aviation</a></div>		</td></tr>
 
 		

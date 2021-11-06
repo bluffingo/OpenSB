@@ -199,7 +199,7 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 	font-size: 12px;
 	font-weight: bold;
 	margin: 0 5px 5px;
-	color: #444;
+	color: #fff;
 }
 
 .moduleFrameEntrySelected {
@@ -263,11 +263,11 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 
 .tableSubTitle {
 	padding: 0 0 5px;
-	border-bottom: 1px dashed #CCC;
+	border-bottom: 1px dashed #333239;
 	margin-bottom: 10px;
 	font-size: 14px;
 	font-weight: bold;
-	color: #CC6633;
+	color: #FF6E25;
 }
 
 .tableSubTitleInfo {
@@ -410,8 +410,8 @@ a.title:hover {font-family: Arial, Helvetica, sans-serif; color: #CCFFFF; font-s
 
 #flashcontent {
 	background-color: #16181a;
-	width: 425px;
-	height: 350px;
+	width: 450px;
+	height: 370px;
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
