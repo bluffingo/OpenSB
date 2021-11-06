@@ -1,11 +1,11 @@
-<h1 align="center">squareBracket Beta 2.0.2</h1>
+<h1 align="center">squareBracket Beta 2.0.3</h1>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45898787/140172623-b471f76c-05d0-4087-99e0-21712176846d.png"><br>
+<img src="https://user-images.githubusercontent.com/45898787/140625956-159dc830-1048-49fe-9e1e-b557824cccd2.png"><br>
 <img src="https://img.shields.io/discord/853036368712040498?style=flat">
 <img src="https://img.shields.io/github/v/release/chazizsquarebracket/squarebracket?include_prereleases&label=lastest%20released&style=flat">
 <img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=flat">
-<img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/beta-2.0.1?include_prereleases&style=flat">
+<img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/beta-2.0.2?include_prereleases&style=flat">
 <img src="https://img.shields.io/github/repo-size/chazizsquarebracket/squarebracket?style=flat">
 <a title="Crowdin" target="_blank" href="https://crowdin.com/project/squarebracket"><img src="https://badges.crowdin.net/squarebracket/localized.svg"></a>
 <br><br>
