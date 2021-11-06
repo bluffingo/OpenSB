@@ -33,6 +33,18 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		$("#mainMenu").removeClass("show");
 		$("#themeSelection").addClass("show");
 	});
+	$("#light").click(function(){
+		$( "#darkthm" ).remove();
+		$("#light").attr("hidden", true);
+		$("#dark").attr("hidden", false);
+		Cookies.set("theme", "default", { expires: 1000 });
+	});	
+	$("#dark").click(function(){
+		$( "head" ).append( "<link id=\"darkthm\" rel=\"stylesheet\" href=\"/assets/css/darkmode.css\" type=\"text/css\">" );
+		$("#light").attr("hidden", false);
+		$("#dark").attr("hidden", true);
+		Cookies.set("theme", "dark", { expires: 1000 });
+	});
 	$("#action_unlogged").click(function(){
 		play("error");
 		alert('you must be logged in.');

@@ -1,7 +1,68 @@
+@import "_variables";
+@import "_gradients";
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $gray-800,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "violet":     $indigo-color,
+  "blue-green": $teal-color,
+  "aqua": $aqua-color,
+  "carrot": $orange-color,
+);
+
+@import "_buttons";
+@import "_backgrounds";
+
 
 body {
 	background-color: #0F0F0F;
 	color: white;
+}
+
+#masthead-container {
+    background: $gray-900;
+    border-bottom: 1px solid #000;
+}
+
+.card {
+    border: 1px solid #2e2e2e;
+    background-color: #000;
+}
+
+.card-header {
+    border-bottom: 1px solid #2e2e2e;
+    background-color: #080808;
+}
+
+.well {
+    background-color: #0b0b0b;
+    border: 1px solid #2d2d2d;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: #222;
+}
+
+.subscribe-count {
+    border: 1px solid #444;
+    color: #aaa;
+}
+
+.main-content {
+  .card {
+    color: white;
+  }
+}
+
+.form-signin {
+    background-color: #000;
+    border: 1px solid #2a2a2a;
 }
 
 a {
@@ -172,7 +233,7 @@ table.c1 {
 
 textarea, input[type=text], input[type=password] {
 	background-color: #0f0f0f;
-	border: 2px solid #aaa;
+	border: 2px solid #222;
 	color: white;
 }
 

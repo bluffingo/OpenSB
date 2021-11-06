@@ -20,9 +20,6 @@ $isDebug = false; // DEV ONLY
 $isMaintenance = false;
 $enableRetroTesting; = false; // DEV ONLY (for now, requires IE6)
 
-// Should dark mode be default? (FORUM ONLY)
-$darkModeDefault = true;
-
 $lpp = 20; //Fuck.
 
 // TEMPLATE OPTIONS (redone 9/17/2021 by gr):

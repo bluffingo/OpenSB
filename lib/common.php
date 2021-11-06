@@ -62,7 +62,7 @@ if (isset($_COOKIE['theme'])) {
 	$theme = $_COOKIE['theme'];
 } else {
 	// No cookie, default to the default theme
-	$theme = 'finalium';
+	$theme = 'default';
 }
 
 if ($oldTemplateSwitching) {
@@ -78,7 +78,6 @@ if ($log) {
 	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);
 } else {
 	$userdata['powerlevel'] = 1;
-	$userdata['darkmode'] = $darkModeDefault;
 }
 
 $lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['language'] : 'en-US').".json"));

@@ -15,6 +15,9 @@
 	<meta name="msapplication-config" content="/assets/icons/browserconfig.xml">
 	<meta name="theme-color" content="#dfecff">
 	<link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+	{% if theme == 'dark' %}
+		<link id="darkthm" rel="stylesheet" href="/assets/css/darkmode.css" type="text/css">
+	{% endif %}
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 	<script src="assets/common.js"></script>
@@ -100,6 +103,7 @@
 			<h3>squareBracket Beta 2</h3>
 			<p><b>{{ __("By the squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
 			<h5>{{ __("Git Commit") }} <a href="https://github.com/gr-sb/squarebracket/commit/{{ git_commit(false) }}">{{ git_commit() }}</a><br></h5>
+			<a id="dark" href="#" {% if theme == 'dark' %}hidden{% endif %}>{{ __("Enable dark mode") }}</a><a id="light" href="#" {% if theme == 'default' %}hidden{% endif %}>{{ __("Disable dark mode") }}</a>
 		</div>
 	</footer>
 </body>
