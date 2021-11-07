@@ -5,7 +5,7 @@
 <img src="https://img.shields.io/discord/853036368712040498?style=flat">
 <img src="https://img.shields.io/github/v/release/chazizsquarebracket/squarebracket?include_prereleases&label=lastest%20released&style=flat">
 <img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=flat">
-<img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/beta-2.0.2?include_prereleases&style=flat">
+<img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/beta-2.0.3.0?include_prereleases&style=flat">
 <img src="https://img.shields.io/github/repo-size/chazizsquarebracket/squarebracket?style=flat">
 <a title="Crowdin" target="_blank" href="https://crowdin.com/project/squarebracket"><img src="https://badges.crowdin.net/squarebracket/localized.svg"></a>
 <br><br>
