@@ -21,9 +21,9 @@
 	<tr>
 		<td class="a">{{ __("Change Password") }}</td>
 		<td class="b">
-			<p><input type="password" name="current_pass" size="30" maxlength="256" placeholder="{{ __("Current Password (For verification)") }}"></p>
-			<p><input type="password" name="pass" size="30" maxlength="256" placeholder="{{ __("New Password") }}">
-			<input type="password" name="pass2" size="30" maxlength="256" placeholder="{{ __("Repeat new Password") }}"></p>
+			<input type="password" name="current_pass" size="30" maxlength="256" placeholder="{{ __("Current Password (For verification)") }}"><br>
+			<input type="password" name="pass" size="30" maxlength="256" placeholder="{{ __("New Password") }}"><br>
+			<input type="password" name="pass2" size="30" maxlength="256" placeholder="{{ __("Repeat new Password") }}">
 		</td>
 	</tr>
 </table>
@@ -47,7 +47,7 @@
 	</tr>
 	<tr>
 		<td class="a">
-			{{ __("About") }}
+			{{ __("Description") }}
 			<br><em>{{ __("Markdown allowed.") }}</em>
 		</td>
 		<td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual">{{ userdata.about }}</textarea></td>
