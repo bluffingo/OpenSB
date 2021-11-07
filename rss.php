@@ -11,8 +11,8 @@ $channel = new Channel();
 $channel
     ->title('squareBracket')
     ->description('Recently uploaded videos')
-    ->url('http://squarebracket.veselcraft.ru')
-    ->feedUrl('http://squarebracket.veselcraft.ru/rss.php')
+    ->url('http://192.168.242.1')
+    ->feedUrl('http://192.168.242.1/rss.php')
     ->language('en-US')
     ->copyright('By the squareBracket contributors')
     ->pubDate(strtotime(date("Y-m-d")))
@@ -35,4 +35,4 @@ $item
     ->preferCdata(true) // By this, title and description become CDATA wrapped HTML.
     ->appendTo($channel);
 
-echo $feed; // or echo $feed->render();
+echo $feed->render();
