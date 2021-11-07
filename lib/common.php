@@ -57,6 +57,7 @@ if (isset($_COOKIE['theme'])) {
 if (isset($_COOKIE['frontend'])) {
 	$frontend = $_COOKIE['frontend'];
 } else {
+	// todo: automatically switch to retro mode when "Mozilla/4.0" is detected in the user agent.
 	$frontend = (isset($useTemplate) ? $useTemplate : 'sbnext-finalium');
 }
 
@@ -72,7 +73,6 @@ if ($log) {
 $lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['language'] : 'en-US').".json"));
 
 $userdata['timezone'] = 'America/New York';
-
 
 // what to do with this? -gr 11/6/2021
 if (!isCli()) {
