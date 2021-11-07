@@ -17,7 +17,9 @@ $comment = [
 query("INSERT INTO comments (id, comment, author, date, deleted) VALUES (?,?,?,?,?)",
 	[$_POST['vidid'],$_POST['comment'],$userdata['id'],time(),0]);
 
+if ($frontend != "retro") {
 $twig = twigloader();
 echo $twig->render('components/comment.twig', [
 	'data' => $comment
 ]);
+}

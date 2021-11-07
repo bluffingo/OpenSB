@@ -8,7 +8,6 @@
  * @return string Userlink HTML code.
  */
  
- // todo: use display name instead of username -gr 8/2/2021
 function userlink($user, $pre = '') {
 	global $acmlm;
 

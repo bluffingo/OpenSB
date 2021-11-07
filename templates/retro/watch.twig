@@ -5,29 +5,8 @@
 
 <script>
 
-function CheckLogin()
-{
-	
-		alert("You must be logged in to to perform this action!");
-		return false;
-
-		
-	return true;
-}
-
-function FavoritesHandler()
-{
-	if (CheckLogin() == false)
-		return false;
-
-	alert("Video has been added to Favorites!");
-	return true;
-}
-
 function CommentHandler()
 {
-	if (CheckLogin() == false)
-		return false;
 
 	var comment = document.comment_form.comment;
 	var comment_button = document.comment_form.comment_button;
@@ -61,8 +40,6 @@ function CommentHandler()
 		<div style="font-size: 13px; font-weight: bold; text-align:center;">
 		<a href="mailto:?subject=Under the Bridge!&amp;body=https://squarebracket.veselcraft.ru/watch.php?v={{ video.video_id }}">Share</a>
 		// <a href="#comment">Comment</a>
-		// <a href="add_favorites.php?video_id=vy8evhya_9E" target="invisible" onclick="return FavoritesHandler();">Add to Favorites</a>
-		// <a href="outbox.php?user=jawed&amp;subject=Re: Under+the+Bridge%21">Contact Me</a>
 		</div>
 		
 		<div style="text-align: center; padding-bottom: 10px;">
@@ -126,8 +103,8 @@ function CommentHandler()
 		<a name="comment"></a>
 		<div style="padding-bottom: 5px; font-weight: bold;">Comment on this video:</div>
 
-		<form name="comment_form" id="comment_form" method="post" action="add_comment.php" target="invisible" onsubmit="return CommentHandler();">
-		<input type="hidden" name="video_id" value="{{ video.video_id }}">
+		<form name="comment_form" id="comment_form" method="post" action="comment.php" target="invisible" onsubmit="return CommentHandler();">
+		<input type="hidden" name="vidid" value="{{ video.video_id }}">
 
 		<textarea name="comment" cols="55" rows="3"></textarea>
 		<br>

@@ -12,6 +12,11 @@ function accessDenied() {
 	die(__("Access Denied"));
 }
 
+function redirect($url) {
+	header(sprintf('Location: %s', $url));
+	die();
+}
+
 /**
  * Get hash of latest git commit
  *
