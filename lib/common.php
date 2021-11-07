@@ -73,9 +73,3 @@ if ($log) {
 $lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['language'] : 'en-US').".json"));
 
 $userdata['timezone'] = 'America/New York';
-
-// what to do with this? -gr 11/6/2021
-if (!isCli()) {
-	$browser = get_browser();
-	$browserArray = json_decode(json_encode($browser),true);
-}
