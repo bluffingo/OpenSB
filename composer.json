@@ -8,7 +8,8 @@
 		"erusev/parsedown": "dev-master",
 		"scssphp/scssphp": "1.8.1",
 		"nopjmp/discord-webhooks": "dev-master",
-		"twbs/bootstrap-icons": "dev-main"
+		"twbs/bootstrap-icons": "dev-main",
+		"suin/php-rss-writer": "dev-master"
 	},
 	"minimum-stability": "dev",
 	"config": {
