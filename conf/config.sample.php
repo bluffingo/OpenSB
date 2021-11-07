@@ -18,13 +18,11 @@ $webhook = ""; // Webhook URL for the new video webhook
 $domain = 'http://squarebracket.local';
 $isDebug = false; // DEV ONLY
 $isMaintenance = false;
-$enableRetroTesting; = false; // DEV ONLY (for now, requires IE6)
 
 $lpp = 20; //Fuck.
 
 // TEMPLATE OPTIONS (redone 9/17/2021 by gr):
 $useTemplate = "sbnext-finalium"; // check the templates folder for available options
-$oldTemplateSwitching = false; // old alpha 3.5 template switching
 
 // hCaptcha secret and sitekey,
 // if these are empty, hCaptcha is disabled.

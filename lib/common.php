@@ -54,10 +54,10 @@ if (isset($_COOKIE['theme'])) {
 	$theme = 'default';
 }
 
-if ($oldTemplateSwitching) {
-	$frontend = (isset($_GET['frontend']) ? $_GET['frontend'] : 'prototype');
+if (isset($_COOKIE['frontend'])) {
+	$frontend = $_COOKIE['frontend'];
 } else {
-	$frontend = (isset($useTemplate) ? $useTemplate : 'prototype');
+	$frontend = (isset($useTemplate) ? $useTemplate : 'sbnext-finalium');
 }
 
 if ($log) {
@@ -73,12 +73,9 @@ $lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['
 
 $userdata['timezone'] = 'America/New York';
 
+
+// what to do with this? -gr 11/6/2021
 if (!isCli()) {
 	$browser = get_browser();
 	$browserArray = json_decode(json_encode($browser),true);
-	//if ($enableRetroTesting) {
-	//if ($browserArray['parent'] == "IE 6.0" or "Firefox 2.0") {
-	//	$frontend = 'retro';
-	//}
-	//}
 }
