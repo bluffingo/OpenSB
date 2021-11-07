@@ -117,7 +117,7 @@ CREATE TABLE `users` (
   `lastpost` int(11) NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `about` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
-  `customcolor` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
+  `customcolor` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#3e3ecf' COMMENT 'The color that the user has set for their profile',
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en-US' COMMENT 'Language (Defaults to English)',
   `avatar` tinyint(1) NOT NULL DEFAULT 0,
   `u_flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties',

@@ -8,7 +8,7 @@ $error = '';
 
 if (isset($_POST['magic'])) {
 	$title	= isset($_POST['title']) ? $_POST['title'] : null;
-	$customcolor			= isset($_POST['customcolor']) ? $_POST['customcolor'] : '#523bb8'; // setting color to "null" would fuck up the scss compiler(?) -gr 7/26/2021
+	$customcolor			= isset($_POST['customcolor']) ? $_POST['customcolor'] : '#3e3ecf'; // setting color to "null" would fuck up the scss compiler(?) -gr 7/26/2021
 	$about			= isset($_POST['about']) ? $_POST['about'] : null;
 	$signature		= isset($_POST['signature']) ? $_POST['signature'] : null;
 
