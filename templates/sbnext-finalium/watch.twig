@@ -11,12 +11,12 @@
 <meta property="twitter:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
 <meta property="twitter:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
 <meta name="twitter:card" content="summary_large_image">
+<link id="css-4047501374" class="www-embed-player" rel="stylesheet" href="/assets/css/embed.css" type="text/css">
 <script>var ytcsi = {gt: function(n) {n = (n || '') + 'data_';return ytcsi[n] || (ytcsi[n] = {tick: {},span: {},info: {}});},tick: function(l, t, n) {ytcsi.gt(n).tick[l] = t || +new Date();},span: function(l, s, n) {ytcsi.gt(n).span[l] = (typeof s == 'number') ? s :+new Date() - ytcsi.data_.tick[l];},info: function(k, v, n) {ytcsi.gt(n).info[k] = v;}};(function() {var perf = window['performance'] || window['mozPerformance'] ||window['msPerformance'] || window['webkitPerformance'];ytcsi.tick('_start', perf ? perf['timing']['responseStart'] : null);})();if (document.webkitVisibilityState == 'prerender') {ytcsi.info('prerender', 1);document.addEventListener('webkitvisibilitychange', function() {ytcsi.tick('_start');}, false);}try {ytcsi.pt_ = (window.chrome && chrome.csi().pageT ||window.gtbExternal && gtbExternal.pageT() ||window.external && external.pageT);if (ytcsi.pt_) {ytcsi.info('pt', Math.floor(ytcsi.pt_));}} catch(e) {}</script></head>
 <script>
 	video_id = '{{ video.video_id }}';
 	user_id = '{{ video.author }}';
 </script>
-<link id="css-4047501374" class="www-embed-player" rel="stylesheet" href="//s.ytimg.com/yts/cssbin/www-embed-player-vfl6VVwMv.css" data-loaded="true">
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
@@ -30,6 +30,7 @@
 					{{ __("This video is being processed. Try again later.") }}
 				</div>
 				{% else %}
+				<!-- todo: make light theme look good -->
 				<div id="player"></div>  <script id="js-2900126986" class="www-embed-player" src="//s.ytimg.com/yts/jsbin/www-embed-player-vflUmkt61.js" data-loaded="true"></script>
 <script>yt.setConfig({
     'EVENT_ID': "RUXDUpmwIoiRiQLA54GABQ",
@@ -57,7 +58,6 @@ yt.setConfig({
             "fexp": "931319,927606,901479,930102,916624,909717,924616,932295,936912,936910,923305,936913,907231,907240,921090",
             "hl": "en_US",
             "eurl": "http:\/\/www.itv.com\/news\/topic\/gangnam-style\/",
-            "el": "embedded",
             "allow_embed": 1,
             "avg_rating": 4.57515427974,
             "idpj": "-7",
@@ -70,7 +70,7 @@ yt.setConfig({
             "cc_module": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/subtitle_module.swf",
             "iurl": "http:\/\/i1.ytimg.com\/vi\/LHdA7Yc-8Rg\/hqdefault.jpg",
             "cc_font": "Arial Unicode MS, arial, verdana, _sans",
-            "length_seconds": 253,
+            "length_seconds": {{ video.videolength }},
             "title": "{{ video.title }}",
             "cr": "US",
             "advideo": "1",
