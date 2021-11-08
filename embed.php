@@ -61,7 +61,7 @@ yt.setConfig({
         },
         "attrs": {
             "height": "100%",
-            "id": "video-player",
+            "id": "movie-player",
             "width": "100%"
         },
         "url_v9as2": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",

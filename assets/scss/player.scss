@@ -1,3 +1,4 @@
+@import "_variables";
 #player {
 	body {
 		font: 12px Arial,sans-serif;
@@ -390,8 +391,8 @@
   .yt-uix-button-destructive[disabled]:hover,
   .yt-uix-button-destructive[disabled]:active,
   .yt-uix-button-destructive[disabled]:focus {
-    border-color: #cc181e;
-    background: #cc181e;
+    border-color: $primary;
+    background: $primary;
     color: #fff;
   }
   .yt-uix-button-destructive:hover {
@@ -1746,7 +1747,7 @@
     opacity: 0.9;
   }
   .html5-video-player:hover .ytp-large-play-button-svg {
-    fill: #cc181e;
+    fill: $primary;
     opacity: 1;
   }
   .html5-video-player:hover .ytp-housebrand-large-play-button-svg {
@@ -1810,7 +1811,7 @@
   .ytp-progress-magnifier-scrubber-button:focus,
   .ytp-progress-magnifier-scrubber-button:active,
   .ytp-progress-magnifier-scrubber-button:hover {
-    background: #cc181e;
+    background: $primary;
   }
   .html5-progress-bar.white .ytp-progress-magnifier-scrubber-button:hover,
   .html5-progress-bar.white .ytp-progress-magnifier-scrubber-button:active,
@@ -1899,7 +1900,7 @@
   .html5-scrubber-button:focus,
   .html5-scrubber-button:active,
   .html5-scrubber-button:hover {
-    background: #cc181e;
+    background: $primary;
   }
   .hide-controls.autohide-on.buffering-mode .html5-scrubber-button,
   .hide-controls.autohide-on.playing-mode .html5-scrubber-button,
@@ -2016,7 +2017,7 @@
   }
   .ytp-play-progress {
     z-index: 933;
-    background: #cc181e;
+    background: $primary;
   }
   .ytp-chapter-marker {
     background-image: radial-gradient(#eaeaea 35%, transparent 40%),
@@ -2732,7 +2733,7 @@
     display: block;
     width: 55px;
     height: 4px;
-    background: #b91f1f;
+    background: $primary;
     content: '';
   }
   .html5-volume-slider-foreground:after {
@@ -3347,7 +3348,7 @@
   }
   .show-share .ytp-button-share,
   .show-more-info .ytp-button-info {
-    border-bottom: 3px solid #b91f1f;
+    border-bottom: 3px solid $primary;
   }
   .ytp-button-info {
     float: right;
@@ -3676,7 +3677,7 @@
   .yt-uix-button-menu.yt-uix-button-menu-player .yt-uix-button-menu-item:focus,
   .yt-uix-button-menu.yt-uix-button-menu-player .yt-uix-button-menu-item:hover {
     color: #fff;
-    background-color: #cc181e;
+    background-color: $primary;
   }
   .yt-uix-button-menu.yt-uix-button-menu-player
     .yt-uix-button-menu-item.disabled:focus,
@@ -3737,7 +3738,7 @@
     .yt-uix-button-menu-item.selected
     span {
     color: #fff;
-    background-color: #cc181e;
+    background-color: $primary;
     border-radius: 20px;
   }
   .html5-popup-menu
@@ -5938,7 +5939,7 @@
     left: 0;
     width: 48px;
     height: 6px;
-    background: #cc181e;
+    background: $primary;
     -moz-transition: 200ms;
     -webkit-transition: 200ms;
     transition: 200ms;

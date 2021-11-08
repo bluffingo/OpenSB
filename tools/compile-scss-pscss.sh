@@ -11,4 +11,4 @@ php ${pscss_path} ${common_arguments} assets/scss/style.scss > assets/css/style.
 echo "Compiling sbNext Dark Styles"
 php ${pscss_path} ${common_arguments} assets/scss/darkmode.scss > assets/css/darkmode.css
 echo "Compiling Embed Player Styles"
-php ${pscss_path} ${common_arguments} assets/scss/embed.scss > assets/css/embed.css
+php ${pscss_path} ${common_arguments} assets/scss/player.scss > assets/css/player.css

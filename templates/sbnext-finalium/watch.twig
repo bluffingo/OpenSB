@@ -11,12 +11,12 @@
 <meta property="twitter:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
 <meta property="twitter:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
 <meta name="twitter:card" content="summary_large_image">
-<link id="css-4047501374" class="www-embed-player" rel="stylesheet" href="/assets/css/embed.css" type="text/css">
 <script>var ytcsi = {gt: function(n) {n = (n || '') + 'data_';return ytcsi[n] || (ytcsi[n] = {tick: {},span: {},info: {}});},tick: function(l, t, n) {ytcsi.gt(n).tick[l] = t || +new Date();},span: function(l, s, n) {ytcsi.gt(n).span[l] = (typeof s == 'number') ? s :+new Date() - ytcsi.data_.tick[l];},info: function(k, v, n) {ytcsi.gt(n).info[k] = v;}};(function() {var perf = window['performance'] || window['mozPerformance'] ||window['msPerformance'] || window['webkitPerformance'];ytcsi.tick('_start', perf ? perf['timing']['responseStart'] : null);})();if (document.webkitVisibilityState == 'prerender') {ytcsi.info('prerender', 1);document.addEventListener('webkitvisibilitychange', function() {ytcsi.tick('_start');}, false);}try {ytcsi.pt_ = (window.chrome && chrome.csi().pageT ||window.gtbExternal && gtbExternal.pageT() ||window.external && external.pageT);if (ytcsi.pt_) {ytcsi.info('pt', Math.floor(ytcsi.pt_));}} catch(e) {}</script></head>
 <script>
 	video_id = '{{ video.video_id }}';
 	user_id = '{{ video.author }}';
 </script>
+<link id="css-4047501374" class="www-embed-player" rel="stylesheet" href="/assets/css/player.css" type="text/css">
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
@@ -80,14 +80,13 @@ yt.setConfig({
         },
         "attrs": {
             "height": "600px",
-            "id": "video-player",
+            "id": "movie-player",
             "width": "100%"
         },
         "url_v9as2": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
         "assets": {
             "js": "\/\/s.ytimg.com\/yts\/jsbin\/html5player-vflG49soT.js",
             "html": "\/html5_player_template",
-            "css": "\/\/s.ytimg.com\/yts\/cssbin\/www-player-vflBjKccE.css"
         }
     },
     'EMBED_HTML_TEMPLATE': "\u003ciframe width=\"__width__\" height=\"__height__\" src=\"__url__\" frameborder=\"0\" allowfullscreen\u003e\u003c\/iframe\u003e",
