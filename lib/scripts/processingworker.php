@@ -40,7 +40,27 @@ try {
 	$img = $manager->make('assets/thumb/' . $new . '.png');
 	$img->resize(640, 360);
 	$img->save('assets/thumb/' . $new . '.png'); */
-	$video->save(new webm(), 'videos/' . $new . '.webm');
+	
+	$format = new webm();
+	
+	$format
+    ->setKiloBitrate(2560)
+    ->setAudioChannels(2)
+    ->setAudioKiloBitrate(256);
+	
+	// BROKEN SO COMMENTED OUT
+	// fyi: this shit exists in the package's code,
+	// but there's some retardation going on that
+	// makes it so that the package doesn't know
+	// that this literally fucking exists.
+	//
+	// have fun, post ya fucken 16000x16000 vids and
+	// everything will go fine. -gr 11/8/2021
+	//$video
+	//	->filters()
+	//	->resize(new FFMpeg\Coordinate\Dimension(320, 240));
+	$video
+		->save($format, 'videos/' . $new . '.webm');
 	unlink($target_file);
 
 	$videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);
