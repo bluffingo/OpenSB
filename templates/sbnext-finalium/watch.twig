@@ -15,6 +15,9 @@
 	video_id = '{{ video.video_id }}';
 	user_id = '{{ video.author }}';
 </script>
+<script>
+document.getElementById("defaultOpen").click();
+</script>
 <link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
@@ -42,7 +45,7 @@
 			<style>
 				.plyr--video {
 				--plyr-color-main: #1b8ade;
-				--plyr-font-family: Roboto, tahoma, arial, -apple-system, helvetica, sans-serif;
+				--plyr-font-family: arial, helvetica, sans-serif;
 				--plyr-control-spacing: 10px;
 				}
 				.plyr--video .plyr__controls {
@@ -112,13 +115,14 @@
 				{% endif %}
 			</script>
 			<br>
-			<div class="grid card card-body-fat" style="padding-top:0;">
-				<div class="col-6">
+			<div class="card card-body-fat" style="padding-top:0;">
+			<div class="grid">
+				<div class="col-8">
 					<h1>{{ video.title }}</h1>
 					<img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
-					<a href="user.php?name={{ video.u_name }}"><b>{{ video.u_name }}</b></a>
+					<a href="user.php?name={{ video.u_name }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
 					<br>
-					<button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Follow") }}{% endif %}</button>
+					<button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Follow") }}{% endif %}</button>
 					<div class="subscribe-count">{{ subCount }}</div>
 					<br>
 					<div class="button-group">
@@ -133,17 +137,23 @@
 					<button href="#" id="{% if log %}quicklist{% else %}action_unlogged{% endif %}" data-tooltip="Add to Quicklist" class="button button-secondary tooltip tooltip-top">
 						{{ icon("plus-lg", 20) }}
 					</button>
-					<p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
-					<p>{{ video.description }}</p>
-					<p><b>{{ __("Category:") }}</b> {{ video.category_id | category_id_to_name() }}</b>
-					<p><b>{{ __("License:") }}</b> {{ __("Standard squareBracket License") }}</b>
 				</div>
-				<div class="col-6 right">
-				<h1>{{ video.views }}</h1>
+				<div class="col-4 right">
+				<h1 style="color:#333;font-weight:normal;">{{ video.views }}</h1>
 				<div class="likesaber">
 					<div class="like" style="width:{{ videoRatio}}%"></div>
 				</div>
 				<div style="margin-top: 22px;color:#666666;">{{ icon("hand-thumbs-up-fill", 14) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 14) }} {{ total_dislikes }}  </div>
+					<div class="tab">
+					  <button class="tablinks" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
+					</div>
+				</div>
+				</div>
+				<div id="About" class="tabcontent">
+					<p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
+					<p>{{ video.description }}</p>
+					<p><b>{{ __("Category:") }}</b> {{ video.category_id | category_id_to_name() }}</b>
+					<p><b>{{ __("License:") }}</b> {{ __("Standard squareBracket License") }}</b>
 				</div>
 			</div>
 			<div class="card"><div class="card-body-fat">
