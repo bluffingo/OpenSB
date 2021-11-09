@@ -91,8 +91,8 @@ $breakpoints: (
 
 body {
   background: #fbfbfb;
-  font-family: Roboto, tahoma, arial, -apple-system, helvetica, sans-serif;
-  font-size: 0.8em;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 13px;
   margin: auto;
   width: 100%;
   padding-bottom: 30px;
@@ -784,7 +784,7 @@ box-sizing: border-box;
 	
 	.button {
 		margin: 0;
-		padding: 6px 10px;
+		padding: 0.65em 10px;
 	}
 	
 	#logo-container {
@@ -922,13 +922,75 @@ padding: 0;
 
 .subscribe-count {
     padding: 0 6px;
-    height: 32px;
+    height: 22px;
     border: 1px solid #ccc;
     color: #777;
     font-size: 12px;
     text-align: center;
-    line-height: 32px;
+    line-height: 24px;
     display: inline-block;
+}
+
+.tab {
+  overflow: hidden;
+  margin-top: 4px;
+	/* Style the buttons that are used to open the tab content */
+	button {
+	  background-color: inherit;
+	  border: none;
+	  outline: none;
+	  cursor: pointer;
+	  padding: 9px 13px;
+	  transition: 0.3s;
+	  border-bottom: 3px solid white;
+	  font-weight: bold;
+	  color: #3336;
+}
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  border-bottom-color: $gray-600;
+  color: #333;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  border-bottom-color: $primary;
+  color: #333;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+}
+
+#About {
+line-height: 17px;
+	p {
+	margin: 0;
+	}
+	.description-extra {
+    margin: 10px 0;
+		li {
+			clear: both;
+			margin-bottom: 5px;
+			line-height: 1.2;
+		}
+		.title {
+			float: left;
+			margin: 0 10px 0 0;
+			width: 80px;
+			text-align: right;
+			font-size: 11px;
+			color: #333;
+			font-weight: bold;
+		}
+		.content {
+			color: #999;
+			font-size: 11px;
+		}
+	}
 }
 
 /// Gradients \\\

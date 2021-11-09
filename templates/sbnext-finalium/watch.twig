@@ -13,25 +13,27 @@
 <meta name="twitter:card" content="summary_large_image">
 <script>var ytcsi = {gt: function(n) {n = (n || '') + 'data_';return ytcsi[n] || (ytcsi[n] = {tick: {},span: {},info: {}});},tick: function(l, t, n) {ytcsi.gt(n).tick[l] = t || +new Date();},span: function(l, s, n) {ytcsi.gt(n).span[l] = (typeof s == 'number') ? s :+new Date() - ytcsi.data_.tick[l];},info: function(k, v, n) {ytcsi.gt(n).info[k] = v;}};(function() {var perf = window['performance'] || window['mozPerformance'] ||window['msPerformance'] || window['webkitPerformance'];ytcsi.tick('_start', perf ? perf['timing']['responseStart'] : null);})();if (document.webkitVisibilityState == 'prerender') {ytcsi.info('prerender', 1);document.addEventListener('webkitvisibilitychange', function() {ytcsi.tick('_start');}, false);}try {ytcsi.pt_ = (window.chrome && chrome.csi().pageT ||window.gtbExternal && gtbExternal.pageT() ||window.external && external.pageT);if (ytcsi.pt_) {ytcsi.info('pt', Math.floor(ytcsi.pt_));}} catch(e) {}</script></head>
 <script>
-	video_id = '{{ video.video_id }}';
-	user_id = '{{ video.author }}';
+   video_id = '{{ video.video_id }}';
+   user_id = '{{ video.author }}';
+</script>
+<script>
+   document.getElementById("defaultOpen").click();
 </script>
 <link id="css-4047501374" class="www-embed-player" rel="stylesheet" href="/assets/css/player.css" type="text/css">
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
 <div class="watchNext">
-	<div class="grid">
-		<div class="col-8">
-			<div id="container">
-				<!--- todo: redo "video processed" message to use _error.twig -gr 7/22/2021 --->
-				{% if (video.flags b-and 2) %}
-				<div style="background-color: black; color: white; text-align: center; padding: 15rem">
-					{{ __("This video is being processed. Try again later.") }}
-				</div>
-				{% else %}
-				<!-- todo: make light theme look good -->
-				<div id="player"></div>  <script id="js-2900126986" class="www-embed-player" src="//s.ytimg.com/yts/jsbin/www-embed-player-vflUmkt61.js" data-loaded="true"></script>
+   <div class="grid">
+      <div class="col-8">
+         <div id="container">
+            <!--- todo: redo "video processed" message to use _error.twig -gr 7/22/2021 --->
+            {% if (video.flags b-and 2) %}
+            <div style="background-color: black; color: white; text-align: center; padding: 15rem">
+               {{ __("This video is being processed. Try again later.") }}
+            </div>
+            {% else %}
+            				<div id="player"></div>  <script id="js-2900126986" class="www-embed-player" src="//s.ytimg.com/yts/jsbin/www-embed-player-vflUmkt61.js" data-loaded="true"></script>
 <script>yt.setConfig({
     'EVENT_ID': "RUXDUpmwIoiRiQLA54GABQ",
     'VIDEO_ID': "<?php echo $id ?>",
@@ -101,90 +103,107 @@ yt.setMsg('AUTOPLAY_MESSAGE', {
 });
 
 writeEmbed();</script>
-				{% endif %}
+            {% endif %}
+         </div>
+         <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
+		                   <h1>{{ video.title }}</h1>
+
+            <div class="grid">
+               <div class="col-8">                  <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
+                  <a href="user.php?name={{ video.u_name }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
+                  <br>
+                  <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Follow") }}{% endif %}</button>
+                  <div class="subscribe-count">{{ subCount }}</div>
+                  <br>
+               </div>
+               <div class="col-4 right">
+                  <h1 style="color:#333;font-weight:normal;margin-bottom: 4px;">{{ video.views }}</h1>
+                  <div class="likesaber">
+                     <div class="like" style="width:{{ videoRatio}}%"></div>
+                  </div>
+                  <div style="margin-top: 16px;color:#666666;">{{ icon("hand-thumbs-up-fill", 14) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 14) }} {{ total_dislikes }}  </div>
+               </div>
+            </div>
+			<div class="grid" style="margin-top:5px;">
+			<div class="col-8">
+			                  <div style="margin-top:-9px;">
+                     <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="button button-secondary-invis">
+                     {{ icon("hand-thumbs-up-fill", 20) }}
+                     {{ __("Like") }}
+                     </button>
+                     <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" data-tooltip="Dislike" class="button button-secondary-invis">
+                     {{ icon("hand-thumbs-down-fill", 20) }}
+                     </button>
+                  </div>
 			</div>
-			<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
-			<br>
-			<div class="grid card card-body-fat" style="padding-top:0;">
-				<div class="col-6">
-					<h1>{{ video.title }}</h1>
-					<img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
-					<a href="user.php?name={{ video.u_name }}"><b>{{ video.u_name }}</b></a>
-					<br>
-					<button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Follow") }}{% endif %}</button>
-					<div class="subscribe-count">{{ subCount }}</div>
-					<br>
-					<div class="button-group">
-						<button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="button button-secondary">
-							{{ icon("hand-thumbs-up-fill", 20) }}
-							{{ __("Like") }}
-						</button>
-						<button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" data-tooltip="Dislike" class="button button-secondary tooltip tooltip-top">
-							{{ icon("hand-thumbs-down-fill", 20) }}
-						</button>
-					</div>
-					<button href="#" id="{% if log %}quicklist{% else %}action_unlogged{% endif %}" data-tooltip="Add to Quicklist" class="button button-secondary tooltip tooltip-top">
-						{{ icon("plus-lg", 20) }}
-					</button>
-					<p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
-					<p>{{ video.description }}</p>
-					<p><b>{{ __("Category:") }}</b> {{ video.category_id | category_id_to_name() }}</b>
-					<p><b>{{ __("License:") }}</b> {{ __("Standard squareBracket License") }}</b>
-				</div>
-				<div class="col-6 right">
-				<h1>{{ video.views }}</h1>
-				<div class="likesaber">
-					<div class="like" style="width:{{ videoRatio}}%"></div>
-				</div>
-				<div style="margin-top: 22px;color:#666666;">{{ icon("hand-thumbs-up-fill", 14) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 14) }} {{ total_dislikes }}  </div>
-				</div>
+			<div class="col-4 right">
+			                  <div class="tab">
+                     <button class="tablinks" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
+                  </div>
 			</div>
-			<div class="card"><div class="card-body-fat">
-			<h3>Comments ({{ comCount }})</h3>
-					<div class="grid" style="gap:0px">
-						<div class="col-1">
-							<img class="rounded" style="width:85%" src="{{ profile_image(userdata.name) }}">
-						</div>
-						<div class="col-11">
-							<div>
-								<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
-								placeholder="{% if log %}
-								{{ __("Enter comment here, Markdown can be used here.") }}
-								{% else %}
-								{{ __("Please sign in in order to comment.") }}
-								{% endif %}"></textarea>
-							</div>
-					<div class="grid">
-						<div class="col-offset-12">
-							<button id="{% if log %}post{% endif %}" class="button button-primary" style="margin-bottom:0;">{{ __("Comment") }}</button>
-						</div>
-					</div>
-				</div>
 			</div>
-			<div id="comment"></div>
-			{% for comment in comments %}
-			{{ comment(comment) }}
-			{% endfor %}
-		</div></div></div>
-		<div class="col-4">
-			<div class="card">
-				<div class="card-header">
-					<h5>{{ __("Explore More Videos") }}</h5>
-				</div>
-				<div class="card-body">
-					<div class="card">
-						<div class="card-header" id="fromUser">
-							<h5>{{ __("More videos from %s", [video.u_name]) }}</h5>
-						</div>
-						<div class="card-body collapsed" id="fromUserVideoList">
-						</div>
-					</div>
-					{% for related_video in related_videos %}
-					{{ small_video_box(related_video)}}
-					{% endfor %}
-				</div>
-			</div>
+         </div>
+		 <div class="card card-body-fat">
+            <div id="About" class="tabcontent">
+               <p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
+               <p>{{ video.description }}</p>
+			   <div class="description-extra">
+			   <ul>
+               <li><h4 class="title">{{ __("Category:") }}</h4> <div class="content">{{ video.category_id | category_id_to_name() }}</div></li>
+               <li><h4 class="title">{{ __("License:") }}</h4> <div class="content">{{ __("Standard squareBracket License") }}</div></li>
+			   </ul>
+			   </div>
+            </div>
 		</div>
-	</div>
+         <div class="card">
+            <div class="card-body-fat">
+               <h3>Comments ({{ comCount }})</h3>
+               <div class="grid" style="gap:0px">
+                  <div class="col-1">
+                     <img class="rounded" style="width:85%" src="{{ profile_image(userdata.name) }}">
+                  </div>
+                  <div class="col-11">
+                     <div>
+                        <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
+                        placeholder="{% if log %}
+                        {{ __("Enter comment here, Markdown can be used here.") }}
+                        {% else %}
+                        {{ __("Please sign in in order to comment.") }}
+                        {% endif %}"></textarea>
+                     </div>
+                     <div class="grid">
+                        <div class="col-offset-12">
+                           <button id="{% if log %}post{% endif %}" class="button button-primary" style="margin-bottom:0;">{{ __("Comment") }}</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div id="comment"></div>
+               {% for comment in comments %}
+               {{ comment(comment) }}
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+      <div class="col-4">
+         <div class="card">
+            <div class="card-header">
+               <h5>{{ __("Explore More Videos") }}</h5>
+            </div>
+            <div class="card-body">
+               <div class="card">
+                  <div class="card-header" id="fromUser">
+                     <h5>{{ __("More videos from %s", [video.u_name]) }}</h5>
+                  </div>
+                  <div class="card-body collapsed" id="fromUserVideoList">
+                  </div>
+               </div>
+               {% for related_video in related_videos %}
+               {{ small_video_box(related_video)}}
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 {% endblock %}
