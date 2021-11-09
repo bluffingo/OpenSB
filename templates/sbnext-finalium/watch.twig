@@ -22,7 +22,7 @@
 {% block content %}
 <div class="watchNext">
    <div class="grid">
-      <div class="col-8">
+      <div class="col-md-8">
          <div id="container">
             <!--- todo: redo "video processed" message to use _error.twig -gr 7/22/2021 --->
             {% if (video.flags b-and 2) %}
@@ -116,14 +116,14 @@
 		                   <h1>{{ video.title }}</h1>
 
             <div class="grid">
-               <div class="col-6">                  <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
+               <div class="col-md-6">                  <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
                   <a href="user.php?name={{ video.u_name }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
                   <br>
                   <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Follow") }}{% endif %}</button>
                   <div class="subscribe-count">{{ subCount }}</div>
                   <br>
                </div>
-               <div class="col-6 right">
+               <div class="col-md-6 right">
                   <h1 style="color:#333;font-weight:normal;margin-bottom: 4px;">{{ video.views }}</h1>
                   <div class="likesaber">
                      <div class="like" style="width:{{ videoRatio}}%"></div>
@@ -132,7 +132,7 @@
                </div>
             </div>
 			<div class="grid" style="margin-top:5px;">
-			<div class="col-8">
+			<div class="col-md-8">
 			                  <div style="margin-top:-9px;">
                      <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="button button-secondary-invis">
                      {{ icon("hand-thumbs-up-fill", 20) }}
@@ -143,7 +143,7 @@
                      </button>
                   </div>
 			</div>
-			<div class="col-4 right">
+			<div class="col-md-4 right">
 			      <div class="tab">
                      <button class="tablinks" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
 					 <button class="tablinks" onclick="openTab(event, 'About')">Share</button>
@@ -168,11 +168,11 @@
          <div class="card">
             <div class="card-body-fat">
                <h3>Comments ({{ comCount }})</h3>
-               <div class="grid" style="gap:0px">
-                  <div class="col-1">
-                     <img class="rounded" style="width:85%" src="{{ profile_image(userdata.name) }}">
+               <div class="grid">
+                  <div class="col-md-1">
+                     <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
                   </div>
-                  <div class="col-11">
+                  <div class="col-md-11">
                      <div>
                         <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
                         placeholder="{% if log %}
@@ -181,10 +181,8 @@
                         {{ __("Please sign in in order to comment.") }}
                         {% endif %}"></textarea>
                      </div>
-                     <div class="grid">
-                        <div class="col-offset-12">
-                           <button id="{% if log %}post{% endif %}" class="button button-primary" style="margin-bottom:0;">{{ __("Comment") }}</button>
-                        </div>
+                     <div class="right">
+                        <button id="{% if log %}post{% endif %}" class="button button-primary" style="margin-bottom:0;">{{ __("Comment") }}</button>
                      </div>
                   </div>
                </div>
@@ -195,7 +193,7 @@
             </div>
          </div>
       </div>
-      <div class="col-4">
+      <div class="col-md-4">
                {% for related_video in related_videos %}
                {{ small_video_box(related_video)}}
                {% endfor %}

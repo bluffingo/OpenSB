@@ -1,10 +1,10 @@
 <div class="grid" style="gap:0px;margin-bottom: 17.5px;">
-	<div class="col-1">
+	<div class="col-md-1">
 		<a href="user.php?name={{ data.u_name }}">
-			<img class="rounded" style="width:85%" src="{{ profile_image(data.u_name) }}">
+			<img class="rounded img-fluid" src="{{ profile_image(data.u_name) }}">
 		</a>
 	</div>
-	<div class="col-11">
+	<div class="col-md-11">
 		{{ userlink(data, 'u_') }} &bull; {{ data.date | relative_time}}
 		<br>
 		{{ data.comment | raw }}

@@ -40,7 +40,7 @@ $screen-xl-min: 1200px;
 
 $columns: 12;
 $grid-columns: 12;
-$gap: 50px;
+$gap: 10px;
 $breakpoints: (
     sm: 500px,
     md: 700px,
@@ -48,9 +48,9 @@ $breakpoints: (
     xl: 1000px
 );
 
-@mixin make-grid-columns($i: 1, $list: ".col-#{$i}") {
+@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}") {
   @for $i from (1 + 1) through $columns {
-    $list: "#{$list}, .col-#{$i}";
+    $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
   }
   #{$list} {
     position: relative;
@@ -66,8 +66,6 @@ $breakpoints: (
 
 // Creates a wrapper for a series of columns
 @mixin make-row($gutter: $gap) {
-  margin-right: floor(($gap / -2));
-  margin-left: ceil(($gap / -2));
   @include clearfix;
 }
 

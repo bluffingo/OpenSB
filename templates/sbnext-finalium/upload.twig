@@ -6,7 +6,7 @@
 <h1>{{ __("Upload video") }}</h1>
 <form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data">
 <div class="grid">
-	<div class="col-8">
+	<div class="col-md-8">
 		<div class="card">
 			<div class="card-body-fat">
 				<h2 style="margin-bottom: 0.5em;">{{ __("Video info") }}</h2>
@@ -23,15 +23,13 @@
 				<p>{{ __("Select the video file you want to upload.") }}</p>
 				<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
 				<br>
-				<div class="grid">
-					<div class="col-offset-12">
-						<input class="button button-primary" type="submit" id="upload" name="upload" value="{{ __("Upload") }}">
-					</div>
+				<div class="right">
+					<input class="button button-primary" type="submit" id="upload" name="upload" value="{{ __("Upload") }}">
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-4">
+	<div class="col-md-4">
 		<div class="card">
 			<div class="card-header">
 				<h5>{{ __("Upload guidelines") }}</h5>

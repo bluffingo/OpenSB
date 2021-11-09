@@ -1,12 +1,12 @@
 		<div class="grid" style="gap: 2px; margin-bottom: 5px;">
-			<div class="col-4 flex-center">
+			<div class="col-md-4 flex-center">
 				<a href="watch.php?v={{ data.video_id }}">
 					<div>
 						<img class="img-fluid img-center" src="{{ video_thumbnail(data.video_id) }}" width="120">
 					</div>
 				</a>
 			</div>
-			<div class="col-8 vid-info">
+			<div class="col-md-8 vid-info">
 				<h3 class="title"><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
 				<span class="stat">by {{ userlink(data, 'u_') }}</span>
 				<span class="stat">{{ data.views }} {{ __("views") }}</span>

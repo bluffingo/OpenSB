@@ -7,7 +7,7 @@
 	<div class="container" style="max-width:1200px;">
 		{% if log %}
 		<div class="grid">
-			<div class="col-10 flex-center">
+			<div class="col-md-10 flex-center">
 				<p class="text-start">
 				<h2>{{ __("Welcome,") }} {{ userdata.title }}</h2>
 				{# hack to prevent twig from outputing the number 1 #}
@@ -22,13 +22,13 @@
 					&bull; {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
 				<a class="button button-primary button-large" href="../studio/">{{ __("Go to studio") }} {{ icon('caret-right-fill', 16) }}</a>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2">
 				<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
 			</div>
 		</div>
 		{% else %}
 		<div class="grid">
-			<div class="col-12">
+			<div class="col-md-12">
 				<h1 class="fw-bold">{{ __("Welcome to squareBracket") }}</h1>
 				<p>{{ __("I can't believe it's not PokTube") }}</p>
 				<a class="button button-primary button-large" href="register.php">{{ __("Register") }} {{ icon('caret-right-fill', 16) }}</a>
@@ -42,14 +42,14 @@
 
 	{% block content %}
 <div class="grid">
-	<div class="col-8">
+	<div class="col-md-8">
 	<div class="grid">
-			<div class="col-6">
+			<div class="col-md-6">
 			<div class="card card-body">
 				Placeholder, should be featured video.
 			</div>
 			</div>
-			<div class="col-6">
+			<div class="col-md-6">
 				<div class="card card-body">
 				{% for video in videos_right %}
 				{{ small_video_box(video) }}
@@ -64,7 +64,7 @@
 		<p>{{ __("No uploaded videos.") }}</p>
 		{% endfor %}
 	</div>
-	<div class="col-4">
+	<div class="col-md-4">
 		<h3>{{ __("What's new?") }}</h3>
 		<p>{{ __("Welcome to the brand new squareBracket! We've heard it, the old layout sucked so we have redesigned squareBracket to have a better user interface.") }}</p>
 		<p>{{ __("We have introduced many new features! Including:") }}</p>

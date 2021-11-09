@@ -56,7 +56,7 @@ input[type=file]::file-selector-button, {
 .button-small {
     padding: 5px 13px;
     border-radius: 2px;
-	height: 24px;
+	height: 26px;
 }
 
 .button-group {
@@ -77,12 +77,14 @@ input[type=file]::file-selector-button, {
 @each $state, $value in $theme-colors {
   .button-#{$state} {
     border: 1px solid darken($value, 7.5%);
+	background-color: lighten($value, 1.5%);
     @include gradient-y($start-color: lighten($value, 3.5%), $end-color: darken($value, 2.5%));
 	color: contrast-color($value, $dark, $light) !important;
   }
   
   .button-#{$state}:hover {
     @include gradient-y($start-color: lighten($value, 5%), $end-color: $value;
+	background-color: lighten($value, 3.5%);
     border: 1px solid darken($value, 1%);
 	color: contrast-color($value, $dark, $light) !important;
   }
@@ -90,6 +92,7 @@ input[type=file]::file-selector-button, {
   .button-#{$state}:active {
     border: 1px solid darken($value, 10%);
     @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
+	background-color: lighten($value, 10%);
 	color: contrast-color($value, $dark, $light) !important;
   }
   

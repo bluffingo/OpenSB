@@ -15,10 +15,10 @@
 </style>
 <div class="main-content channel-header-bg">
 	<div class="grid">
-		<div class="col-2">
+		<div class="col-md-4">
 			<img class="rounded img-pfp-profiles" src="{{ profile_image(userpagedata.name) }}"  alt="{{ userpagedata.name }}">
 		</div>
-		<div class="col-5 col-offset-10">
+		<div class="col-md-8 col-md-push-12">
 			<div class="card">
 				<div class="card-header">{{ __("General information") }}</div>
 				<div class="card-body">
@@ -36,13 +36,13 @@
 <div class="bg-neutral" style="padding: 15px 10px;">
 <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}<img class="sdsd" src="assets/icons/shield.svg" height="16" title="User is a moderator.">{% endif %}</h1>
 <div class="grid">
-	<div class="col-4">
+	<div class="col-md-8">
 		<p>@{{ userpagedata.name }}
 			&bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
 			&bull; {{ __("%s view%s", [totalViews ?? __("Not implemented"), pluralViews]) }}
 		</p>
 	</div>
-	<div class="col-offset-12 col-4 right">
+	<div class="col-md-4 right">
 	{% if userpagedata.id == userdata.id %}
 		<a class="button button-primary" href="settings.php">{{ __("Edit profile") }}</a>
 	{% else %}
