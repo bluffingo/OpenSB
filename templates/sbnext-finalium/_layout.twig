@@ -26,8 +26,8 @@
 		unsubscribe_string = '{{ __("Unfollow") }}';
 	</script>
 	<style>
-	</style>
 	{% block customcss %}{% endblock %}
+	</style>
 </head>
 <body>
 	<div id="masthead-container">
@@ -106,5 +106,7 @@
 			<a id="dark" href="#" {% if theme == 'dark' %}hidden{% endif %}>{{ __("Enable dark mode") }}</a><a id="light" href="#" {% if theme == 'default' %}hidden{% endif %}>{{ __("Disable dark mode") }}</a>
 		</div>
 	</footer>
+{% block custom_footer %}
+{% endblock %}
 </body>
 </html>

@@ -1,18 +1,14 @@
-<div class="card card-info" style="margin-bottom:4px; line-height: 15px;">
-	<div class="card-body">
-		<div class="grid">
-			<div class="col col-4">
+		<div class="grid" style="gap: 2px; margin-bottom: 5px;">
+			<div class="col-4 flex-center">
 				<a href="watch.php?v={{ data.video_id }}">
-					<div class="card card-info">
-						<img class="img-fluid" src="{{ video_thumbnail(data.video_id) }}">
+					<div>
+						<img class="img-fluid img-center" src="{{ video_thumbnail(data.video_id) }}" width="120">
 					</div>
 				</a>
 			</div>
-			<div class="col col-8">
-				<h3><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
-				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("views") }}	&bull;
-				<span class="text-muted">{{ data.time | relative_time }}</span></p>
+			<div class="col-8 vid-info">
+				<h3 class="title"><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
+				<span class="stat">by {{ userlink(data, 'u_') }}</span>
+				<span class="stat">{{ data.views }} {{ __("views") }}</span>
 			</div>
 		</div>
-	</div>
-</div>
