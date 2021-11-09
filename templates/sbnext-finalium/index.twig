@@ -7,9 +7,9 @@
 	<div class="container" style="max-width:1200px;">
 		{% if log %}
 		<div class="grid">
-			<div class="col-10">
+			<div class="col-10 flex-center">
 				<p class="text-start">
-				<h1>{{ __("Welcome,") }} {{ userdata.title }}</h1>
+				<h2>{{ __("Welcome,") }} {{ userdata.title }}</h2>
 				{# hack to prevent twig from outputing the number 1 #}
 				{% if totalSubscribers != 1 %}
 					{% set pluralSubscribers = __("s") %}
@@ -20,7 +20,7 @@
 				<p class="fs-5 mb-1">@{{ userdata.name }}
 					&bull; {{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
 					&bull; {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
-				<a class="button button-primary button-large" href="../studio.php">{{ __("Go to studio") }} {{ icon('caret-right-fill', 16) }}</a>
+				<a class="button button-primary button-large" href="../studio/">{{ __("Go to studio") }} {{ icon('caret-right-fill', 16) }}</a>
 			</div>
 			<div class="col-2">
 				<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
@@ -43,6 +43,20 @@
 	{% block content %}
 <div class="grid">
 	<div class="col-8">
+	<div class="grid">
+			<div class="col-6">
+			<div class="card card-body">
+				Placeholder, should be featured video.
+			</div>
+			</div>
+			<div class="col-6">
+				<div class="card card-body">
+				{% for video in videos_right %}
+				{{ small_video_box(video) }}
+				{% endfor %}
+				</div>
+			</div>
+	</div>
 		<h3>{{ __("Recently uploaded to squareBracket") }}</h3>
 		{% for video in videos %}
 		{{ video_box(video) }}
