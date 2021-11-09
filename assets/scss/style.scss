@@ -60,22 +60,28 @@ $breakpoints: (
 
   @for $i from 1 through $columns {
     .col#{$infix}-#{$i} {
+	  -ms-grid-column: $i;
       grid-column-end: span $i;
     }
     .col-offset#{$infix}-#{$i} {
+	 -ms-grid-column: $i;
       grid-column-start: $i + 1;
     }
     .row#{$infix}-#{$i} {
+	 -ms-grid-column: $i;
       grid-row-end: span $i;
     }
     .row-offset#{$infix}-#{$i} {
+	 -ms-grid-column: $i;
       grid-row-start: $i + 1;
     }
   }
 }
 
 .grid {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-template-columns: $columns $columns $columns 1fr;
   grid-template-columns: repeat($columns, 1fr);
   grid-gap: $gap;
   gap: $gap;
@@ -607,10 +613,16 @@ form.reglog {
   min-height: 225px;
   color: #ffffff;
   display: flex;
+display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) !important;
 
   .container {
     display: flex;
+display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
     flex-direction: column;
     align-self: center;
     width: 100%;
@@ -899,6 +911,9 @@ box-sizing: border-box;
     display: block;
     height: 26px;
 	display: flex;
+display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
 	justify-content: flex-start;
 	align-items: center;
 	
