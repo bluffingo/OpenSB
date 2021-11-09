@@ -34,7 +34,7 @@ $fmt_stream_map = [
     "url" => './videos/' . $videoData['video_id'] . '.webm',
     "sig" => "gordon.freeman.died.after.he.waited.for.subrocks.2012",
     "quality" => "hd720",
-    "type" => "video/webm; codecs=\"vp8.0, vorbis\""
+    "type" => "video/mp4; codecs=\"avc1.4d002a\""
 	],
 ];
 
