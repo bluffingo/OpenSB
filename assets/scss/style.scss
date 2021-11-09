@@ -563,6 +563,21 @@ form.reglog {
   float: right;
 }
 
+.flex-left {
+	align-items: left;
+	justify-content: left;
+}
+
+.flex-center {
+	align-items: center;
+	justify-content: center;
+}
+
+.flex-right {
+	align-items: right;
+	justify-content: right;
+}
+
 .clear_right {
   clear: right;
 }
@@ -945,6 +960,7 @@ padding: 0;
 	  border-bottom: 3px solid white;
 	  font-weight: bold;
 	  color: #3336;
+	  font-size: 11px;
 }
 }
 
@@ -990,6 +1006,29 @@ line-height: 17px;
 			color: #999;
 			font-size: 11px;
 		}
+	}
+}
+
+.vid-info {
+	.title {
+		font-size: 13px;
+		max-height: 2.4em;
+		line-height: 1.2;
+		display: block;
+		margin: 0 0 2px;
+		a {
+			color: #333;
+		}
+		a:hover {
+			color: #438bc5;
+		}
+	}
+	.stat {
+		color: #999;
+		font-size: 11px;
+		display: block;
+		line-height: 1.4em;
+		height: 1.4em;
 	}
 }
 

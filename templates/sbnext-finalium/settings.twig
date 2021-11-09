@@ -1,8 +1,11 @@
 {% extends "_layout.twig" %}
-
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.6/jscolor.min.js"></script>
+{% endblock %}
 {% block title %}{{ __("Settings") }}{% endblock %}
 
 	{% block content %}
+	<h1>Missing function! "Log out from all devices" was in the old Bootstrap 5 layout</h1>
 <form action="settings.php" method="post">
 <h3>{{ __("Credentials") }}</h3>
 <table class="settings">
@@ -31,19 +34,19 @@
 <h3>{{ __("Customize your profile") }}</h3>
 <table class="settings">
 	<tr>
-		<td class="a">{{ __("Profile Picture") }}</td>
+		<td class="a">{{ __("Profile picture") }}</td>
 		<td class="b">
 			<img class="float-start rounded" src="{{ profile_image(userdata.name) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
 			<input class="form-control" type="file" name="profilePicture" id="profilePicture">
 		</td>
 	</tr>
 	<tr>
-		<td class="a">{{ __("Display Name") }}</td>
+		<td class="a">{{ __("Display name") }}</td>
 		<td class="b"><input type="text" name="title" size="45" maxlength="256" value="{{ userdata.title }}"></td>
 	</tr>
 	<tr>
 		<td class="a">{{ __("Custom color") }}</td>
-		<td class="b"><input type="color" name="customcolor" value="{{ userdata.customcolor | default('523bb8') }}"></td>
+		<td class="b"><input name="customcolor" data-jscolor="" value="{{ userdata.customcolor | default('523bb8') }}"></td>
 	</tr>
 	<tr>
 		<td class="a">
@@ -74,7 +77,3 @@
 <input type="hidden" name="magic" value="FOR GOD SAKES OPEN THE SILO DOOR">
 <input class="button button-primary" type="submit" name="action" value="{{ __("Save Changes") }}">
 	{% endblock %}
-
-{% block custom_footer %}
-	<script src="assets/js/jscolor.min.js"></script>
-{% endblock %}

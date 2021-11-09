@@ -11,6 +11,7 @@
 <meta property="twitter:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
 <meta property="twitter:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
 <meta name="twitter:card" content="summary_large_image">
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script>var ytcsi = {gt: function(n) {n = (n || '') + 'data_';return ytcsi[n] || (ytcsi[n] = {tick: {},span: {},info: {}});},tick: function(l, t, n) {ytcsi.gt(n).tick[l] = t || +new Date();},span: function(l, s, n) {ytcsi.gt(n).span[l] = (typeof s == 'number') ? s :+new Date() - ytcsi.data_.tick[l];},info: function(k, v, n) {ytcsi.gt(n).info[k] = v;}};(function() {var perf = window['performance'] || window['mozPerformance'] ||window['msPerformance'] || window['webkitPerformance'];ytcsi.tick('_start', perf ? perf['timing']['responseStart'] : null);})();if (document.webkitVisibilityState == 'prerender') {ytcsi.info('prerender', 1);document.addEventListener('webkitvisibilitychange', function() {ytcsi.tick('_start');}, false);}try {ytcsi.pt_ = (window.chrome && chrome.csi().pageT ||window.gtbExternal && gtbExternal.pageT() ||window.external && external.pageT);if (ytcsi.pt_) {ytcsi.info('pt', Math.floor(ytcsi.pt_));}} catch(e) {}</script></head>
 <script>
    video_id = '{{ video.video_id }}';
@@ -109,14 +110,14 @@ writeEmbed();</script>
 		                   <h1>{{ video.title }}</h1>
 
             <div class="grid">
-               <div class="col-8">                  <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
+               <div class="col-6">                  <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
                   <a href="user.php?name={{ video.u_name }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
                   <br>
                   <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Follow") }}{% endif %}</button>
                   <div class="subscribe-count">{{ subCount }}</div>
                   <br>
                </div>
-               <div class="col-4 right">
+               <div class="col-6 right">
                   <h1 style="color:#333;font-weight:normal;margin-bottom: 4px;">{{ video.views }}</h1>
                   <div class="likesaber">
                      <div class="like" style="width:{{ videoRatio}}%"></div>
@@ -137,8 +138,11 @@ writeEmbed();</script>
                   </div>
 			</div>
 			<div class="col-4 right">
-			                  <div class="tab">
+			      <div class="tab">
                      <button class="tablinks" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
+					 <button class="tablinks" onclick="openTab(event, 'About')">Share</button>
+					 <button class="tablinks" onclick="openTab(event, 'About')" id="flag">{{ icon("bar-chart-fill", 14) }}</button>
+					 <button class="tablinks" onclick="openTab(event, 'About')" id="flag">{{ icon("flag-fill", 14) }}</button>
                   </div>
 			</div>
 			</div>
@@ -186,11 +190,9 @@ writeEmbed();</script>
          </div>
       </div>
       <div class="col-4">
-         <div class="card">
-            <div class="card-header">
-               <h5>{{ __("Explore More Videos") }}</h5>
-            </div>
-            <div class="card-body">
+               {% for related_video in related_videos %}
+               {{ small_video_box(related_video)}}
+               {% endfor %}
                <div class="card">
                   <div class="card-header" id="fromUser">
                      <h5>{{ __("More videos from %s", [video.u_name]) }}</h5>
@@ -198,11 +200,6 @@ writeEmbed();</script>
                   <div class="card-body collapsed" id="fromUserVideoList">
                   </div>
                </div>
-               {% for related_video in related_videos %}
-               {{ small_video_box(related_video)}}
-               {% endfor %}
-            </div>
-         </div>
       </div>
    </div>
 </div>
