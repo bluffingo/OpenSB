@@ -5,7 +5,7 @@
 	{% block content %}
 <h1>{{ title }}</h1>
 <div class="grid">
-	<div class="col-4">
+	<div class="col-md-4">
 		<div class="well sidebar-nav">
 			<ul class="nav nav-list">
 				<li class="nav-header">{{ __("Categories") }}</li>
@@ -21,7 +21,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="col-8">
+	<div class="col-md-8">
 		{% for level in levels %}
 			{{ video_box(level) }}
 		{% else %}

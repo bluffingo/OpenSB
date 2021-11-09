@@ -887,7 +887,7 @@ padding: 0;
   margin-top: 4px;
 	/* Style the buttons that are used to open the tab content */
 	button {
-	  background-color: inherit;
+	  background-color: #0000; // BUG: IE USES SOME WEIRD BEIGE COLOR ON CLASSIC THEME
 	  border: none;
 	  outline: none;
 	  cursor: pointer;
