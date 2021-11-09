@@ -135,12 +135,12 @@
             </div>
 			<div class="grid" style="margin-top:5px;">
 			<div class="col-8">
-			                  <div class="button-group" style="margin-top:-15px;">
-                     <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="button button-secondary">
+			                  <div style="margin-top:-9px;">
+                     <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="button button-secondary-invis">
                      {{ icon("hand-thumbs-up-fill", 20) }}
                      {{ __("Like") }}
                      </button>
-                     <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" data-tooltip="Dislike" class="button button-secondary tooltip tooltip-top">
+                     <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" data-tooltip="Dislike" class="button button-secondary-invis">
                      {{ icon("hand-thumbs-down-fill", 20) }}
                      </button>
                   </div>

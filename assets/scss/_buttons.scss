@@ -92,4 +92,23 @@ input[type=file]::file-selector-button, {
     @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
 	color: contrast-color($value, $dark, $light) !important;
   }
+  
+	.button-#{$state}-invis {
+		border: 1px solid #0000;
+		background: none;
+		box-shadow: none;
+		color: contrast-color($value, $dark, $light) !important;
+	}
+	
+  .button-#{$state}-invis:hover {
+    @include gradient-y($start-color: lighten($value, 5%), $end-color: $value;
+    border: 1px solid darken($value, 1%);
+	color: contrast-color($value, $dark, $light) !important;
+  }
+  
+  .button-#{$state}-invis:active {
+    border: 1px solid darken($value, 10%);
+    @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
+	color: contrast-color($value, $dark, $light) !important;
+  }
 }
