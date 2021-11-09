@@ -12,11 +12,15 @@
 <meta property="twitter:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
 <meta name="twitter:card" content="summary_large_image">
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script>var ytcsi = {gt: function(n) {n = (n || '') + 'data_';return ytcsi[n] || (ytcsi[n] = {tick: {},span: {},info: {}});},tick: function(l, t, n) {ytcsi.gt(n).tick[l] = t || +new Date();},span: function(l, s, n) {ytcsi.gt(n).span[l] = (typeof s == 'number') ? s :+new Date() - ytcsi.data_.tick[l];},info: function(k, v, n) {ytcsi.gt(n).info[k] = v;}};(function() {var perf = window['performance'] || window['mozPerformance'] ||window['msPerformance'] || window['webkitPerformance'];ytcsi.tick('_start', perf ? perf['timing']['responseStart'] : null);})();if (document.webkitVisibilityState == 'prerender') {ytcsi.info('prerender', 1);document.addEventListener('webkitvisibilitychange', function() {ytcsi.tick('_start');}, false);}try {ytcsi.pt_ = (window.chrome && chrome.csi().pageT ||window.gtbExternal && gtbExternal.pageT() ||window.external && external.pageT);if (ytcsi.pt_) {ytcsi.info('pt', Math.floor(ytcsi.pt_));}} catch(e) {}</script></head>
 <script>
    video_id = '{{ video.video_id }}';
    user_id = '{{ video.author }}';
 </script>
-<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+<script>
+   document.getElementById("defaultOpen").click();
+</script>
+<link id="css-4047501374" class="www-embed-player" rel="stylesheet" href="/assets/css/player.css" type="text/css">
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
@@ -30,88 +34,78 @@
                {{ __("This video is being processed. Try again later.") }}
             </div>
             {% else %}
-            <video id="videoContainer" controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}"></video>
+            				<div id="player"></div>  <script id="js-2900126986" class="www-embed-player" src="//s.ytimg.com/yts/jsbin/www-embed-player-vflUmkt61.js" data-loaded="true"></script>
+<script>yt.setConfig({
+    'EVENT_ID': "RUXDUpmwIoiRiQLA54GABQ",
+    'VIDEO_ID': "<?php echo $id ?>",
+    'POST_MESSAGE_ORIGIN': "*",
+    'EURL': "http:\/\/www.itv.com\/news\/topic\/gangnam-style\/"
+});
+yt.setConfig({
+    'PLAYER_CONFIG': {
+        "sts": 16057,
+        "params": {
+            "allowfullscreen": "true",
+            "allowscriptaccess": "always",
+            "bgcolor": "#000000"
+        },
+        "url_v8": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
+        "min_version": "8.0.0",
+        "html5": true,
+        "url": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/watch_as3.swf",
+        "args": {
+            "enablejsapi": "0",
+            "iurlmaxres": "http:\/\/i1.ytimg.com\/vi\/LHdA7Yc-8Rg\/maxresdefault.jpg",
+            "threed_module": "1",
+            "ldpj": "-3",
+            "fexp": "931319,927606,901479,930102,916624,909717,924616,932295,936912,936910,923305,936913,907231,907240,921090",
+            "hl": "en_US",
+            "eurl": "http:\/\/www.itv.com\/news\/topic\/gangnam-style\/",
+            "allow_embed": 1,
+            "avg_rating": 4.57515427974,
+            "idpj": "-7",
+            "video_id": "{{ video.video_id }}",
+            "view_count": 5462747,
+            "allow_ratings": 1,
+            "cc3_module": "1",
+            "sw": "1.0",
+            "iurlsd": "http:\/\/i1.ytimg.com\/vi\/LHdA7Yc-8Rg\/sddefault.jpg",
+            "cc_module": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/subtitle_module.swf",
+            "iurl": "http:\/\/i1.ytimg.com\/vi\/LHdA7Yc-8Rg\/hqdefault.jpg",
+            "cc_font": "Arial Unicode MS, arial, verdana, _sans",
+            "length_seconds": {{ video.videolength }},
+            "title": "{{ video.title }}",
+            "cr": "US",
+            "advideo": "1",
+            "streaminglib_module": "1",
+            "rel": "1",
+            "is_html5_mobile_device": false
+        },
+        "attrs": {
+            "height": "390px",
+            "id": "movie-player",
+            "width": "640px"
+        },
+        "url_v9as2": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
+        "assets": {
+            "js": "\/\/s.ytimg.com\/yts\/jsbin\/html5player-vflG49soT.js",
+            "html": "\/html5_player_template",
+        }
+    },
+    'EMBED_HTML_TEMPLATE': "\u003ciframe width=\"__width__\" height=\"__height__\" src=\"__url__\" frameborder=\"0\" allowfullscreen\u003e\u003c\/iframe\u003e",
+    'EMBED_HTML_URL': "\/\/www.youtube.com\/embed\/__videoid__"
+});
+yt.setMsg('FLASH_UPGRADE', "\u003cdiv class=\"yt-alert yt-alert-default yt-alert-error  yt-alert-player\"\u003e  \u003cdiv class=\"yt-alert-icon\"\u003e\n    \u003cimg s\u0072c=\"http:\/\/s.ytimg.com\/yts\/img\/pixel-vfl3z5WfW.gif\" class=\"icon master-sprite\" alt=\"Alert icon\"\u003e\n  \u003c\/div\u003e\n\u003cdiv class=\"yt-alert-buttons\"\u003e\u003c\/div\u003e\u003cdiv class=\"yt-alert-content\" role=\"alert\"\u003e    \u003cspan class=\"yt-alert-vertical-trick\"\u003e\u003c\/span\u003e\n    \u003cdiv class=\"yt-alert-message\"\u003e\n            You need to upgrade your Adobe Flash Player to watch this video. \u003cbr\u003e \u003ca href=\"http:\/\/get.adobe.com\/flashplayer\/\"\u003eDownload it from Adobe.\u003c\/a\u003e\n    \u003c\/div\u003e\n\u003c\/div\u003e\u003c\/div\u003e");
+yt.setMsg('PLAYER_FALLBACK', "The Adobe Flash Player or an HTML5 supported browser is required for video playback. \u003cbr\u003e \u003ca href=\"http:\/\/get.adobe.com\/flashplayer\/\"\u003eGet the latest Flash Player\u003c\/a\u003e \u003cbr\u003e \u003ca href=\"\/html5\"\u003eLearn more about upgrading to an HTML5 browser\u003c\/a\u003e");
+yt.setMsg('QUICKTIME_FALLBACK', "The Adobe Flash Player or QuickTime is required for video playback. \u003cbr\u003e \u003ca href=\"http:\/\/get.adobe.com\/flashplayer\/\"\u003eGet the latest Flash Player\u003c\/a\u003e \u003cbr\u003e \u003ca href=\"http:\/\/www.apple.com\/quicktime\/download\/\"\u003eGet the latest version of QuickTime\u003c\/a\u003e");
+yt.setMsg('AUTOPLAY_MESSAGE', {
+    "other": "Next video in #",
+    "case1": "Next video in 1"
+});
+
+writeEmbed();</script>
             {% endif %}
          </div>
-         <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
-         <script src="https://unpkg.com/plyr@3.6.8/dist/plyr.min.js"></script>
-         <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
-         <!-- indigo player (the player we used back in the milestone/alpha days) was starting to have a lot of techincal issues by the time of alpha 3.
-            videos would randomly glitch on indigo and sometimes it wouldn't even load the goddamn video (not a ffmpeg issue this time).
-            we at squarebracket have decided to use plyr instead of indigo. the aspect ratio is a bit wonky but that should be fixed soon
-            -gamerappa, July 31st 2021 -->
-         <style>
-            .plyr--video {
-            --plyr-color-main: #1b8ade;
-            --plyr-font-family: arial, helvetica, sans-serif;
-            --plyr-control-spacing: 10px;
-            }
-            .plyr--video .plyr__controls {
-            padding: 1px 3px !important;
-            background: var(--plyr-video-controls-background,linear-gradient(#292929,#0B0B0B));
-            }
-            .plyr__control svg {
-            fill: #656565;
-            }
-            .plyr__control svg:hover {
-            fill: #CDCDCD;
-            }
-            .plyr--video .plyr__control.plyr__tab-focus, .plyr--video .plyr__control:hover, .plyr--video .plyr__control[aria-expanded="true"] {
-            background: #FFFFFF11;
-            color: var(--plyr-video-control-color-hover,#fff);
-            }
-            .plyr__control--overlaid {
-            background: #fff;
-            }
-            .plyr__controls .plyr__controls__item:first-child {
-            margin-left: 0;
-            margin-right: auto;
-            padding: 6px 19px;
-            }
-         </style>
-         <script>
-            {% if not (video.flags b-and 2) %}
-            	//code taken from https://codepen.io/adis0308/pen/bGpQmwr
-            	const video = document.getElementById("videoContainer");
-            	document.addEventListener("DOMContentLoaded", function(){
-            	  const source = "{{ video.videofile }}";
-            	  const dash = dashjs.MediaPlayer().create();
-            	  var defaultOptions = {
-            		"ratio":"16:9",
-            	  };
-            
-            	  dash.initialize(video, source, false);
-            	  dash.updateSettings({
-            		streaming: {
-            		  abr: {
-            			autoSwitchBitrate: {audio: false, video: false}
-            		  },
-            		  fastSwitchEnabled: true,
-            		  lowLatencyEnabled: true
-            		}
-            	  });
-            	  dash.on("streamInitialized", function() {
-            		const availableQualities = dash.getBitrateInfoListFor("video").map((l) => l.height);
-            		defaultOptions.quality = {
-            		  default: availableQualities[0].height,
-            		  options: availableQualities,
-            		  forced: true,
-            		  onChange: function (newQuality) {
-            			dash.getBitrateInfoListFor("video").forEach((level, levelIndex) => {
-            			  if (level.height === newQuality) {
-            				dash.setQualityFor("video", level.qualityIndex);
-            			  }
-            			});
-            		  },
-            		};
-            		const player = new Plyr(video, defaultOptions);
-            		window.player = player;
-            		window.dash = dash;
-            	  });
-            	  dash.attachView(video);
-            	});
-            {% endif %}
-         </script>
          <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
 		                   <h1>{{ video.title }}</h1>
 

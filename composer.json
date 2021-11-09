@@ -2,13 +2,13 @@
 	"require": {
 		"twig/twig": "^3.0",
 		"mpratt/relativetime": "dev-master",
-		"aminyazdanpanah/php-ffmpeg-video-streaming": "dev-master",
 		"intervention/image": "^2.5",
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
 		"scssphp/scssphp": "1.8.1",
 		"nopjmp/discord-webhooks": "dev-master",
-		"twbs/bootstrap-icons": "dev-main"
+		"twbs/bootstrap-icons": "dev-main",
+		"php-ffmpeg/php-ffmpeg": "0.x-dev"
 	},
 	"minimum-stability": "dev",
 	"config": {
