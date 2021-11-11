@@ -3,7 +3,8 @@
 include('lib/common.php');
 
 use Intervention\Image\ImageManager;
-use Streaming\FFMpeg;
+use FFMpeg\FFMpeg;
+use FFMpeg\Format\Video\WebM;
 use FFMpeg\Coordinate;
 use FFMpeg\Media;
 use FFMpeg\Filters;
@@ -23,13 +24,8 @@ $target_file = $argv[2];
 try {
 	$ffmpeg = FFMpeg::create($config);
 	$video = $ffmpeg->open($target_file);
-	$dash = $video->dash()
-		->setAdaption('id=0,streams=v id=1,streams=a') // Set the adaption.
-		->x264() // Format of the video. vp9 would have been a better idea if it weren't for slow-ass speeds and no way of changing speeds.
-		->autoGenerateRepresentations() // Auto generate representations
-		->save(); // It can be passed a path to the method or it can be null
-	$metadata = $dash->metadata();
-	if (floor($metadata->getFormat()->get('duration')) < 10) {
+/*	$metadata = $video->metadata();
+ 	if (floor($metadata->getFormat()->get('duration')) < 10) {
 		if (floor($metadata->getFormat()->get('duration')) == 0) {
 			$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration'))))
 				->save('assets/thumb/' . $new . '.png');
@@ -43,13 +39,34 @@ try {
 	}
 	$img = $manager->make('assets/thumb/' . $new . '.png');
 	$img->resize(640, 360);
-	$img->save('assets/thumb/' . $new . '.png');
+	$img->save('assets/thumb/' . $new . '.png'); */
+	
+	$format = new webm();
+	
+	$format
+    ->setKiloBitrate(2560)
+    ->setAudioChannels(2)
+    ->setAudioKiloBitrate(256);
+	
+	// BROKEN SO COMMENTED OUT
+	// fyi: this shit exists in the package's code,
+	// but there's some retardation going on that
+	// makes it so that the package doesn't know
+	// that this literally fucking exists.
+	//
+	// have fun, post ya fucken 16000x16000 vids and
+	// everything will go fine. -gr 11/8/2021
+	//$video
+	//	->filters()
+	//	->resize(new FFMpeg\Coordinate\Dimension(320, 240));
+	$video
+		->save($format, 'videos/' . $new . '.webm');
 	unlink($target_file);
 
 	$videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);
 
 	query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
-		[ceil($metadata->getFormat()->get('duration')), $videoData['flags'] ^ 0x2, $new]);
+		['69', $videoData['flags'] ^ 0x2, $new]);
 } catch (Exception $e) {
 	echo "Something went wrong!:". $e->getMessage();
 }

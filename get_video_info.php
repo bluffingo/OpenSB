@@ -31,10 +31,10 @@ $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.autho
 $fmt_stream_map = [
 	[
 	"itag" => "43",
-    "url" => './videos/' . $videoData['video_id'] . '.webm',
+    "url" => './videos/' . $videoData['video_id'] . '.converted.mp4',
     "sig" => "gordon.freeman.died.after.he.waited.for.subrocks.2012",
     "quality" => "hd720",
-    "type" => "video/mp4; codecs=\"avc1.4d002a\""
+    "type" => "video/mp4; codecs='avc1.4d002a'"
 	],
 ];
 
