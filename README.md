@@ -45,4 +45,6 @@ RelativeTime Repo (used for dates): https://github.com/mpratt/RelativeTime
 Twig literally makes HTML injection attacks a thing of the past. It's more short and concise than PHP's "templating" syntax, it supports layout inheritance and it allows for more code reuse and it's versatile for creating more frontends in the future. It's secure (it treats all variables as "unsafe" and automatically escapes them unless you explicitly mark them as safe), concise (its liquid-like syntax is shorter and way more appropriate for the context of templating) and fast (with caching enabled there's basically no overhead compared to not using Twig).
 
 ### Why ditch Bootstrap?
-We had problems with it, hense we're writing our own custom SCSS for squareBracket's new layout, which is sbNext.
+We had problems with it, hense we're writing our own custom SCSS (called Finalium) for squareBracket's new layout, which is sbNext.
+
+However, Finalium uses parts of the Bootstrap 3 grid system for better compatibility.
