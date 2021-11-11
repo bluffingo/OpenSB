@@ -893,7 +893,7 @@ padding: 0;
 	  cursor: pointer;
 	  padding: 9px 13px;
 	  transition: 0.3s;
-	  border-bottom: 3px solid white;
+	  border-bottom: 3px solid #FFF0;
 	  font-weight: bold;
 	  color: #3336;
 	  font-size: 11px;
@@ -966,6 +966,30 @@ line-height: 17px;
 		line-height: 1.4em;
 		height: 1.4em;
 	}
+}
+
+.video-time {
+    padding: 0 4px;
+    font-weight: bold;
+    font-size: 11px;
+    background-color: #000;
+    color: #fff !important;
+    height: 14px;
+    line-height: 14px;
+    opacity: 0.75;
+    filter: alpha(opacity=75);
+    display: -moz-inline-stack;
+    vertical-align: top;
+    zoom: 1;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+	right: 8px;
+	bottom: 5px;
+	position: absolute;
 }
 
 /// Gradients \\\
