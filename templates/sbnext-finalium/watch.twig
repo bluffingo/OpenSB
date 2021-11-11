@@ -68,6 +68,25 @@
             margin-right: auto;
             padding: 6px 19px;
             }
+			.plyr--full-ui input[type="range"]::-moz-range-progress {
+			  background: linear-gradient(#1d89dc,#1a78c1);
+			}
+			.plyr__tooltip {
+			background: var(--plyr-tooltip-background,hsla(0, 0%, 7.5%, 0.9));
+			color: var(--plyr-tooltip-color,#fff);
+			}
+			.plyr__tooltip::before {
+			border-top: var(--plyr-tooltip-arrow-size,4px) solid var(--plyr-tooltip-background,hsla(0, 0%, 7.5%, 0.9));
+			}
+			.plyr__menu__container {
+			background: var(--plyr-menu-background,hsla(0, 0%, 7.5%, 0.9));
+			}
+			.plyr__menu__container::after {
+			border-top: var(--plyr-menu-arrow-size,4px) solid hsla(0, 0%, 7.5%, 0.9);
+			}
+			.plyr__menu__container .plyr__control {
+			  color: var(--plyr-menu-color,#cbcbcb);
+			}
          </style>
          <script>
             {% if not (video.flags b-and 2) %}
