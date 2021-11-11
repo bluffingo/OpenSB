@@ -230,7 +230,7 @@ function showrbox(){
 	document.getElementById('mappend').style.display = '';
 }
 function showmove(){
-	document.getElementById('moptions').innerHTML='$movetext';
+	document.getElementById('moptions').innerHTML='Move text';
 	document.getElementById('mappend').innerHTML='$fmovelinks';
 	document.getElementById('mappend').style.display = '';
 }
