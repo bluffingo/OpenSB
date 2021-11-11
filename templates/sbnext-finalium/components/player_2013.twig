@@ -1,4 +1,4 @@
-         <div id="container">
+         <div id="container" style="aspect-ratio: 16/9;">
             <!--- todo: redo "video processed" message to use _error.twig -gr 7/22/2021 --->
             {% if (video.flags b-and 2) %}
             <div style="background-color: black; color: white; text-align: center; padding: 15rem">
@@ -53,9 +53,9 @@ yt.setConfig({
             "is_html5_mobile_device": false
         },
         "attrs": {
-            "height": "390px",
+            "height": "100%",
             "id": "movie-player",
-            "width": "640px"
+            "width": "100%"
         },
         "url_v9as2": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
         "assets": {
@@ -76,3 +76,4 @@ yt.setMsg('AUTOPLAY_MESSAGE', {
 
 writeEmbed();</script>
             {% endif %}
+</div>

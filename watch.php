@@ -6,6 +6,12 @@ $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.autho
 
 if (!$videoData) error('404', __("The video you were looking for cannot be found."));
 
+if ( isset( $_GET['use_2013'] ) && !empty( $_GET['use_2013'] ) ) {
+	$use2013 = true;
+} else {
+	$use2013 = false;
+}
+
 $query = '';
 $count = 0;
 if ($videoData['tags']) {
@@ -55,4 +61,5 @@ echo $twig->render('watch.twig', [
 	'subCount' => $subCount,
 	'comCount' => $commentCount,
 	'videoRatio' => $allRatings,
+	'use2013' => $use2013,
 ]);
