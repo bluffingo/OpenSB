@@ -6,6 +6,7 @@
 		"intervention/image": "^2.5",
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
+		"scssphp/scssphp": "1.8.1",
 		"nopjmp/discord-webhooks": "dev-master",
 		"twbs/bootstrap-icons": "dev-main"
 	},
