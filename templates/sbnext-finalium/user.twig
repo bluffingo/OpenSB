@@ -10,9 +10,24 @@
 <style>
 	.channel-header-bg {
 	background: url('/assets/backgrounds/{{ userpagedata.name }}.png'), linear-gradient(#888, #444) !important;
-	background-position: center;
+	background-position: center !important;
 	}
 </style>
+{% if userdata.id == id and not forceuser %}
+<div class="bg-dark" style="padding:1px 15px;">
+<p><a href="settings.php" style="color:white;">{{ __("Edit my settings") }}</a>
+	&bull; <a href="forum/private.php" style="color:white;">{{ __("View my private messages") }}</a>
+	&bull; <a href="user.php?id={{ id }}&forceuser" style="color:white;">{{ __("View user page as viewer") }}</a>
+	&bull; <a href="logout.php" style="color:white;">{{ __("Log out") }}</a>
+</p>
+</div>
+<form action="login.php" method="post" name="logout">
+	<input type="hidden" name="logout" value="yes">
+</form>
+{% endif %}
+{% if userdata.powerlevel > 2 %}
+<p><a href="admin.php">{{ __("Admin panel") }}</a></p>
+{% endif %}
 <div class="main-content channel-header-bg">
 	<div class="grid">
 		<div class="col-md-4">
@@ -56,18 +71,6 @@
 <div class="header_message">{{ __("Settings successfully saved!") }}</div>
 {% endif %}
 {% if userdata.id == id and not forceuser %}
-<p>{{ __("Welcome to your personal user page. Here, you can see and manage your uploaded content, customize your profile, and edit your settings.") }}</p>
-<p><a href="settings.php">{{ __("Edit my settings") }}</a>
-	&bull; <a href="forum/private.php">{{ __("View my private messages") }}</a>
-	&bull; <a href="user.php?id={{ id }}&forceuser">{{ __("View user page as viewer") }}</a>
-	&bull; <a href="logout.php">{{ __("Log out") }}</a>
-</p>
-{% if userdata.powerlevel > 2 %}
-<p><a href="admin.php">{{ __("Admin panel") }}</a></p>
-{% endif %}
-<form action="login.php" method="post" name="logout">
-	<input type="hidden" name="logout" value="yes">
-</form>
 <h3>{{ __("Notifications") }}</h3>
 <ul>
 	{% for notif in notifs %}
@@ -80,7 +83,7 @@
 	<li><a href="user.php?id={{ id }}&markread">{{ __("Mark all as read") }}</a></li>
 	{% endif %}
 </ul>
-{% else %}
+{% endif %}
 <h2></h2>
 <div class="user_about">
 	<h3>{{ __("About this user") }}</h3>
@@ -111,5 +114,4 @@
 {% endif %}
 {% set le_url = 'user.php?id=' ~ id ~ '&page=%s' ~ forceuser %}
 {{ pagination(level_count, glob_lpp, le_url, page) }}
-{% endif %}
 {% endblock %}
