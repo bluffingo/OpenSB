@@ -5,7 +5,9 @@
                {{ __("This video is being processed. Try again later.") }}
             </div>
             {% else %}
-            <video id="videoContainer" controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}"></video>
+            <video style="aspect-ratio: 16 / 9;width: -moz-available;" id="videoContainer" controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}">
+			<source src="./videos/{{ video.video_id }}.webm" type="video/webm" />
+			<source src="./videos/{{ video.video_id }}.mp4" type="video/mp4" />
             {% endif %}
          </div>
          <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
