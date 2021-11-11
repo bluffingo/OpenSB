@@ -12,7 +12,7 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
-	global $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $languages, $frontend, $menuLinks, $hCaptchaSiteKey;
+	global $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $languages, $frontend, $menuLinks, $notificationCount, $hCaptchaSiteKey;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
 	//ugly hack to prevent reading templates from the wrong place
@@ -45,6 +45,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('stats', fetch("SELECT (SELECT COUNT(*) FROM users) usercount, (SELECT COUNT(*) FROM videos) videocount"));
 	$twig->addGlobal('hcaptcha_sitekey', $hCaptchaSiteKey);
 	$twig->addGlobal('glob_lpp', $lpp);
+	$twig->addGlobal('notification_count', $notificationCount);
 
 	return $twig;
 }

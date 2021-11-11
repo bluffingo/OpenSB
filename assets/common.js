@@ -166,7 +166,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 						$("#like").attr("class", "button button-success");
 						$("#likes").text(parseInt($("#likes").text()) + 1)
 						$("#dislikes").text(parseInt($("#dislikes").text()) - 1)
-						$("#dislike").attr("class", "button button-secondary");
+						$("#dislike").attr("class", "button button-secondary-invis");
 						play("like");
 					} else if(data == 0) {
 						$("#like").click();
@@ -191,7 +191,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 						$("#dislike").attr("class", "button button-danger");
 						$("#dislikes").text(parseInt($("#dislikes").text()) + 1)
 						$("#likes").text(parseInt($("#likes").text()) - 1)
-						$("#like").attr("class", "button button-secondary");
+						$("#like").attr("class", "button button-secondary-invis");
 						play("dislike");
 					} else if (data == 0) {
 						$("#dislike").click();

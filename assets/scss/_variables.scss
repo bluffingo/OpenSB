@@ -59,6 +59,7 @@ $success:       $green;
 $info:          $cyan;
 $warning:       $yellow;
 $danger:        $red;
+$gray-dark: 	$gray-800;
 $neutral:         $gray-100;
 $indigo-color:	$indigo;
 $teal-color:	$teal;
@@ -73,6 +74,8 @@ $theme-colors: (
   "warning":    $warning,
   "danger":     $danger,
   "neutral":      $neutral,
+  "light":      $gray-100,
+  "dark":      $gray-dark,
   "violet":     $indigo-color,
   "blue-green": $teal-color,
   "aqua": $aqua-color,

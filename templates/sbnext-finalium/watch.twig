@@ -112,6 +112,17 @@
             	});
             {% endif %}
          </script>
+		 {% if userdata.id == video.author %}
+		 <div class="bg-dark text-light card card-body" style="margin:0;border-bottom:none;border-color:black;">
+		 <div class="grid"><div class="col-md-4">
+			<a class="button button-dark-invis">{{ icon("pencil-fill", 16) }}</a>
+		</div><div class="col-md-8 right">
+		<a class="button button-dark">Analytics</a>
+		<a class="button button-dark">Video Manager</a>
+		</div>
+		</div>
+		 </div>
+		 {% endif %}
          <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
 		                   <h1>{{ video.title }}</h1>
 
@@ -119,8 +130,10 @@
                <div class="col-md-6">                  <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
                   <a href="user.php?name={{ video.u_name }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
                   <br>
-                  <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% elseif userdata.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Follow") }}{% endif %}</button>
+				  {% if userdata.id == video.author %}<a class="button button-secondary button-small">Channel settings</a>{% else %}
+                  <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
                   <div class="subscribe-count">{{ subCount }}</div>
+				  {% endif %}
                   <br>
                </div>
                <div class="col-md-6 right">
@@ -128,11 +141,11 @@
                   <div class="likesaber">
                      <div class="like" style="width:{{ videoRatio}}%"></div>
                   </div>
-                  <div style="margin-top: 16px;color:#666666;">{{ icon("hand-thumbs-up-fill", 14) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 14) }} {{ total_dislikes }}  </div>
+                  <div style="margin-top: 16px;color:#666666;">{{ icon("hand-thumbs-up-fill", 12) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 12) }} {{ total_dislikes }}  </div>
                </div>
             </div>
 			<div class="grid" style="margin-top:5px;">
-			<div class="col-md-8">
+			<div class="col-md-4">
 			                  <div style="margin-top:-9px;">
                      <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="button button-secondary-invis">
                      {{ icon("hand-thumbs-up-fill", 20) }}
@@ -143,12 +156,12 @@
                      </button>
                   </div>
 			</div>
-			<div class="col-md-4 right">
+			<div class="col-md-8 right">
 			      <div class="tab">
                      <button class="tablinks" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
 					 <button class="tablinks" onclick="openTab(event, 'About')">Share</button>
-					 <button class="tablinks" onclick="openTab(event, 'About')" id="flag">{{ icon("bar-chart-fill", 14) }}</button>
-					 <button class="tablinks" onclick="openTab(event, 'About')" id="flag">{{ icon("flag-fill", 14) }}</button>
+					 <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("bar-chart-fill", 12) }}</button>
+					 <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("flag-fill", 12) }}</button>
                   </div>
 			</div>
 			</div>
