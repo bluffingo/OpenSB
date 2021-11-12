@@ -1,7 +1,7 @@
 <h1 align="center">squareBracket Beta 2.0.4</h1>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45898787/140625956-159dc830-1048-49fe-9e1e-b557824cccd2.png"><br>
+<img src="https://user-images.githubusercontent.com/45898787/141394589-9776ec34-8698-4812-bf07-0f45b89707f4.png"><br>
 <img src="https://img.shields.io/discord/853036368712040498?style=flat">
 <img src="https://img.shields.io/github/v/release/chazizsquarebracket/squarebracket?include_prereleases&label=lastest%20released&style=flat">
 <img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=flat">
