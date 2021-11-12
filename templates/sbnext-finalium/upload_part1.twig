@@ -1,12 +1,12 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Upload{% endblock %}
+{% block title %}{{ __("Upload") }}{% endblock %}
 
 	{% block content %}
-<h4 class="bg-dark text-light card-body" style="margin-bottom:0;">Upload</h4>
+<h4 class="bg-dark text-light card-body" style="margin-bottom:0;">{{ __("Upload") }}</h4>
 <div class="card card-body-fat">
 	<div class="grid">
-		<div class="feature col-md-6">
+		<div class="feature col-md-6 center">
 			<div class="feature-icon bg-primary">
 				{{ icon_alt('film', 32) }}
 			</div>
@@ -16,7 +16,7 @@
 				{{ icon('chevron-right', 16) }}
 			</a>
 		</div>
-		<div class="feature col-md-6">
+		<div class="feature col-md-6 center">
 			<div class="feature-icon bg-carrot">
 				{{ icon_alt('music-note-beamed', 32) }}
 			</div>
