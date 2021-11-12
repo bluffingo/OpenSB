@@ -1,29 +1,31 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Upload{% endblock %}
+{% block title %}{{ __("Upload") }}{% endblock %}
 
 	{% block content %}
-<h1>Upload</h1>
-<div class="grid">
-	<div class="feature col-md-6">
-		<div class="feature-icon bg-primary">
-			{{ icon_alt('film', 32) }}
+<h4 class="bg-dark text-light card-body" style="margin-bottom:0;">{{ __("Upload") }}</h4>
+<div class="card card-body-fat">
+	<div class="grid">
+		<div class="feature col-md-6 center">
+			<div class="feature-icon bg-primary">
+				{{ icon_alt('film', 32) }}
+			</div>
+			<h2 style="margin-top: 0;">{{ __("Video") }}</h2>
+			<a href="upload.php" class="icon-link">
+				{{ __("Upload video") }}
+				{{ icon('chevron-right', 16) }}
+			</a>
 		</div>
-		<h2 style="margin-top: 0;">{{ __("Video") }}</h2>
-		<a href="upload.php" class="icon-link">
-			{{ __("Upload video") }}
-			{{ icon('chevron-right', 16) }}
-		</a>
-	</div>
-	<div class="feature col-md-6">
-		<div class="feature-icon bg-danger">
-			{{ icon_alt('music-note-beamed', 32) }}
+		<div class="feature col-md-6 center">
+			<div class="feature-icon bg-carrot">
+				{{ icon_alt('music-note-beamed', 32) }}
+			</div>
+			<h2 style="margin-top: 0;">{{ __("Music") }}</h2>
+			<a href="upload_music.php" class="icon-link">
+				{{ __("Upload music") }}
+				{{ icon('chevron-right', 16) }}
+			</a>
 		</div>
-		<h2 style="margin-top: 0;">{{ __("Music") }}</h2>
-		<a href="upload_music.php" class="icon-link">
-			{{ __("Upload music") }}
-			{{ icon('chevron-right', 16) }}
-		</a>
 	</div>
 </div>
 	{% endblock %}

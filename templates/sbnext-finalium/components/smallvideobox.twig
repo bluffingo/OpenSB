@@ -2,7 +2,7 @@
 			<div class="col-md-4 ">
 				<a href="watch.php?v={{ data.video_id }}">
 						<img class="img-fluid " src="{{ video_thumbnail(data.video_id) }}">
-						<span class="video-time">Placeholder</span>
+						<span class="video-time">{{ video_length(data) }}</span>
 				</a>
 			</div>
 			<div class="col-md-8 vid-info">

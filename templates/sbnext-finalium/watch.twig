@@ -78,7 +78,7 @@
 			</div>
 			<div class="col-md-8 right">
 			      <div class="tab">
-                     <button class="tablinks" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
+                     <button class="tablinks active" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
 					 <button class="tablinks" onclick="openTab(event, 'About')">Share</button>
 					 <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("bar-chart-fill", 12) }}</button>
 					 <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("flag-fill", 12) }}</button>
@@ -87,7 +87,7 @@
 			</div>
          </div>
 		 <div class="card card-body-fat">
-            <div id="About" class="tabcontent">
+            <div id="About" class="tabcontent" style="display: block;">
                <p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
                <p>{{ video.description }}</p>
 			   <div class="description-extra">
@@ -108,11 +108,7 @@
                   <div class="col-md-11">
                      <div>
                         <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
-                        placeholder="{% if log %}
-                        {{ __("Enter comment here, Markdown can be used here.") }}
-                        {% else %}
-                        {{ __("Please sign in in order to comment.") }}
-                        {% endif %}"></textarea>
+                        placeholder="{% if log %}{{ __("Enter comment here.") }}{% else %}{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
                      </div>
                      <div class="right">
                         <button id="{% if log %}post{% endif %}" class="button button-primary" style="margin-bottom:0;">{{ __("Comment") }}</button>

@@ -83,6 +83,11 @@ function videoThumbnail($videodata) {
 	return $twig->render('videothumbnail.twig', ['data' => $videodata, 'file_exists' => $file_exists]);
 }
 
+function videoLength($videodata) {
+	$twig = twigloader('components');
+	return $twig->render('videolength.twig', ['data' => $videodata]);
+}
+
 function browseVideoBox($videodata) {
 	$twig = twigloader('components');
 	return $twig->render('browsevideobox.twig', ['data' => $videodata]);

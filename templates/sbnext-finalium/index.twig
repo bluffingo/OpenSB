@@ -7,9 +7,12 @@
 	<div class="container" style="max-width:1125px;">
 		{% if log %}
 		<div class="grid">
+			<div class="col-md-2">
+				<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
+			</div>
 			<div class="col-md-10">
 				<p class="text-start">
-				<h1>{{ __("Welcome,") }} {{ userdata.title }}</h1>
+				<h1 style="padding:0;margin:8px 0;">{{ __("Welcome,") }} {{ userdata.title }}</h1>
 				{# hack to prevent twig from outputing the number 1 #}
 				{% if totalSubscribers != 1 %}
 					{% set pluralSubscribers = __("s") %}
@@ -17,22 +20,21 @@
 				{% if totalViews != 1 %}
 					{% set pluralViews = __("s") %}
 				{% endif %}
-				<h3>@{{ userdata.name }}</h3>
-				<p>{{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
+				<h3 style="padding:0;margin:8px 0;">@{{ userdata.name }}</h3>
+				<p style="padding:0;margin:8px 0;">{{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
 					&bull; {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
-				<a class="button button-neutral" href="../studio/">{{ __("Manage content") }} {{ icon('caret-right-fill', 12) }}</a>
-			</div>
-			<div class="col-md-2">
-				<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
+				<a class="button button-neutral button-large" href="../studio/">{{ __("Manage my content") }} {{ icon('caret-right-fill', 12) }}</a>
 			</div>
 		</div>
 		{% else %}
 		<div class="grid">
-			<div class="col-md-12">
-				<h1 class="fw-bold">{{ __("Welcome to squareBracket") }}</h1>
-				<p>{{ __("I can't believe it's not PokTube") }}</p>
-				<a class="button button-primary button-large" href="register.php">{{ __("Register") }} {{ icon('caret-right-fill', 16) }}</a>
-				<big>{{ __("Already have an account?") }} <a href="login.php">{{ __("Sign in") }}</a></big>
+			<div class="col-md-8">
+				<h1 style="padding:0;margin:8px 0;">{{ __("Welcome to squareBracket") }}</h1>
+				<h3 style="padding:0;margin:0;">{{ __("Unbelivable, This is not PokTube.") }}</h3>
+			</div>
+			<div class="col-md-4">
+				<a class="button button-neutral button-large" href="register.php">{{ __("Get started") }} {{ icon('caret-right-fill', 16) }}</a><br><br>
+				<big>{{ __("Already have an account?") }} <a class="button button-neutral" href="login.php">{{ __("Sign in") }}</a></big>
 			</div>
 		</div>
 		{% endif %}
@@ -66,11 +68,7 @@
 	</div>
 	<div class="col-md-4">
 		<h3>{{ __("What's new?") }}</h3>
-		<p>{{ __("Welcome to the brand new squareBracket! We've heard it, the old layout sucked so we have redesigned squareBracket to have a better user interface.") }}</p>
-		<p>{{ __("We have introduced many new features! Including:") }}</p>
-		<li>{{ __("Categories") }}</li>
-		<li>{{ __("Forums") }}</li>
-		<li>{{ __("Music") }}</li>
+		<p>{{ __("Welcome to the brand new squareBracket! We've heard it, the old layout sucked, so we have redesigned squareBracket to have a better user interface.") }}</p>
 	</div>
 </div>
 <br><br>

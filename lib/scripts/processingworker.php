@@ -6,6 +6,7 @@ use Intervention\Image\ImageManager;
 use FFMpeg\FFMpeg;
 use FFMpeg\Format\Video\WebM;
 use FFMpeg\Format\Video\x264;
+use FFMpeg\FFProbe;
 use FFMpeg\Coordinate;
 use FFMpeg\Media;
 use FFMpeg\Filters;
@@ -24,10 +25,16 @@ $target_file = $argv[2];
 
 try {
 	$ffmpeg = FFMpeg::create($config);
+	$ffprobe = FFProbe::create($config);
+	$duration = $ffprobe
+           ->streams($target_file)
+           ->videos()                   
+           ->first()                  
+           ->get('duration');
 	$video = $ffmpeg->open($target_file);
-/*	$metadata = $video->metadata();
- 	if (floor($metadata->getFormat()->get('duration')) < 10) {
-		if (floor($metadata->getFormat()->get('duration')) == 0) {
+	$metadata = $vide->metadata();
+	if (floor($duration) < 10) {
+		if (floor($duration) == 0) {
 			$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration'))))
 				->save('assets/thumb/' . $new . '.png');
 		} else {
@@ -49,7 +56,7 @@ try {
 	$videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);
 
 	query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
-		['69', $videoData['flags'] ^ 0x2, $new]);
+		[ceil($duration), $videoData['flags'] ^ 0x2, $new]);
 } catch (Exception $e) {
 	echo "Something went wrong!:". $e->getMessage();
 }
