@@ -47,7 +47,7 @@ try {
 	}
 	$img = $manager->make('assets/thumb/' . $new . '.png');
 	$img->resize(640, 360);
-	$img->save('assets/thumb/' . $new . '.png'); */
+	$img->save('assets/thumb/' . $new . '.png');
 
 	$video->save(new x264(), 'videos/' . $new . '.converted.mp4');
 	$video->save(new webm(), 'videos/' . $new . '.webm');
