@@ -7,6 +7,7 @@ class SBExtension extends \Twig\Extension\AbstractExtension {
 			new \Twig\TwigFunction('small_video_box', 'smallVideoBox', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('video_box', 'videoBox', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('video_thumbnail', 'videoThumbnail', ['is_safe' => ['html']]),
+			new \Twig\TwigFunction('video_length', 'videoLength', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('profile_image', 'profileImage', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('channel_background', 'channelBackground', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('userlink', 'userlink', ['is_safe' => ['html']]),
