@@ -12,14 +12,15 @@
 					<div class="card-body-fat">
 						<h2 style="margin-bottom: 0.5em;">{{ __("Video info") }}</h2>
 						<p>{{ __("Enter the title and description of your video.") }}</p>
-						<input type="text" class="form-control form-long uploader-form" name="title" value=""
-							placeholder="{{ __(" Title") }}">
+						<h4 style="margin-bottom: 0.5em;">{{ __(" Title") }}</h4>
+						<input type="text" class="form-control form-long uploader-form" name="title">
 						<br>
+						<h4 style="margin-bottom: 0.5em;">{{ __(" Description") }}</h4>
 						<textarea class="form-control form-long uploader-form" name="desc" maxlength="2000" form="uploadForm"
-							style="overflow:hidden;resize:none" rows="3" placeholder="{{ __(" Description") }}"></textarea>
+							style="overflow:hidden;resize:none" rows="3"></textarea>
 						<br>
-						<input type="text" class="form-control form-long uploader-form" name="tags" value=""
-							placeholder="{{ __(" Tags") }}">
+						<h4 style="margin-bottom: 0.5em;">{{ __(" Tags") }}</h4>
+						<input type="text" class="form-control form-long uploader-form" name="tags">
 						<h2 style="margin-bottom: 0.5em;">{{ __("Video file") }}</h2>
 						<p>{{ __("Select the video file you want to upload.") }}</p>
 						<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
