@@ -1,53 +1,41 @@
 {% extends "_layout.twig" %}
 
-{% block title %}{{ __("Upload music") }}{% endblock %}
+{% block title %}{{ __("Upload") }}{% endblock %}
 
 	{% block content %}
-<div class="row">
-<p><span class="badge bg-primary">{{ icon('info-circle', 16) }} {{ __("Important") }}</span> {{ __("By uploading your music onto squareBracket, you acknowledge about the upload guidelines.") }}</p>
-<div class="col-8">
-<form name="uploadForm" id="uploadForm" method="post" action="upload_music.php"
-enctype="multipart/form-data">
-<br>
-
-<div class="row">
-	<div class="col-auto pe-0">
-		{{ icon('text-left', 24) }}
-	</div>
-	<div class="col-auto">
-		<h4>{{ __("Music info") }}</h4>
-	</div>
-</div>
-<p>{{ __("Enter the title of your music.") }}</p>
-
-	<input type="text" class="form-control mb-1" name="title" value="" placeholder="{{ __("Title") }}">
-	<br>
-<div class="row">
-	<div class="col-auto pe-0">
-		{{ icon('file-earmark-play', 24) }}
-	</div>
-	<div class="col-auto">
-		<h4>{{ __("Music file") }}</h4>
-	</div>
-</div>
-<p>{{ __("Select the music file you want to upload.") }}</p>
-	<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
-	<br>
-	</div>
-	<div class="col-4">
-<div class="card">
-  <h5 class="card-header">{{ __("Upload Guidelines") }}</h5>
-  <div class="card-body">
-    <p class="card-text">{{ __("Please, for god sakes, do not upload anything related to logos or cartoons meant for children. The viewer-base of those videos indirectly caused the downfall of the Gamerappa YouTube channel.") }}</p>
-    <a href="https://studio.youtube.com/" class="btn btn-secondary">{{ __("Upload anyways") }}</a>
-  </div>
-</div>
-	</div>
-	
-	<div class="text-end">
-	<input class="btn btn-primary" type="submit" id="upload" name="upload"
-	value="{{ __("Upload") }}">
-	</div>
-</form>
+<h4 class="bg-dark text-light card-body" style="margin-bottom:0;">{{ __("Upload music") }}</h4>
+<div class="card card-body-fat">
+	<form name="uploadForm" id="uploadForm" method="post" action="upload_music.php" enctype="multipart/form-data">
+		<div class="grid">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-body-fat">
+						<h2 style="margin-bottom: 0.5em;">{{ __("Song info") }}</h2>
+						<p>{{ __("Enter the title and description of your video.") }}</p>
+						<h4 style="margin-bottom: 0.5em;">{{ __(" Title") }}</h4>
+						<input type="text" class="form-control form-long uploader-form" name="title">
+						<br>
+						<h2 style="margin-bottom: 0.5em;">{{ __("Song file") }}</h2>
+						<p>{{ __("Select the Music file you want to upload.") }}</p>
+						<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
+						<br>
+						<div class="right">
+							<input class="button button-primary" type="submit" id="upload" name="upload" value="{{ __("Upload") }}">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-header">
+						<h5>{{ __("Upload guidelines") }}</h5>
+					</div>
+					<div class="card-body">
+						<p>{{ __("Do not upload any songs that you haven't created.") }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 </div>
 	{% endblock %}
