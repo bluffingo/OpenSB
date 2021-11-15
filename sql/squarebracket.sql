@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2021 at 04:15 AM
+-- Generation Time: Nov 13, 2021 at 06:57 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -42,7 +42,7 @@ CREATE TABLE `comments` (
 --
 
 CREATE TABLE `music` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `music_id` varchar(11) NOT NULL,
   `title` text NOT NULL,
   `author` int(11) NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE `music` (
 --
 
 CREATE TABLE `notifications` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` int(11) NOT NULL,
   `level` int(11) DEFAULT NULL,
   `recipient` int(11) NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE `subscriptions` (
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL COMMENT 'Incrementing ID for internal purposes.',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.',
   `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Username, chosen by the user',
   `email` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User Email.',
   `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Password, hashed in bcrypt.',
@@ -125,7 +125,6 @@ CREATE TABLE `users` (
   `group_id` int(11) NOT NULL DEFAULT 3 COMMENT 'Legacy Acmlmboard-related group ID field.',
   `posts` int(11) NOT NULL,
   `threads` int(11) NOT NULL,
-  `blockland_id` int(11) NOT NULL COMMENT 'Blockland ID, intended for internal Vitre testing.',
   `signature` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -136,7 +135,7 @@ CREATE TABLE `users` (
 --
 
 CREATE TABLE `videos` (
-  `id` bigint(20) UNSIGNED NOT NULL COMMENT 'Incrementing ID for internal purposes.',
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.',
   `video_id` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Random alphanumeric video ID which will be visible.',
   `title` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Video title',
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video description',
@@ -156,8 +155,9 @@ CREATE TABLE `videos` (
 --
 
 CREATE TABLE `views` (
-  `video_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Internal ID.',
+  `video_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video ID used to count all views on videos.',
+  `user` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Hashed IP address used to see who viewed the video.',
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -187,35 +187,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `videos`
   ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `music`
---
-ALTER TABLE `music`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `notifications`
---
-ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.';
-
---
--- AUTO_INCREMENT for table `videos`
---
-ALTER TABLE `videos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.';
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
