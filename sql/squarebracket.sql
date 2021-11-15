@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2021 at 06:57 PM
+-- Generation Time: Nov 15, 2021 at 04:15 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -125,6 +125,7 @@ CREATE TABLE `users` (
   `group_id` int(11) NOT NULL DEFAULT 3 COMMENT 'Legacy Acmlmboard-related group ID field.',
   `posts` int(11) NOT NULL,
   `threads` int(11) NOT NULL,
+  `blockland_id` int(11) NOT NULL COMMENT 'Blockland ID, intended for internal Vitre testing.',
   `signature` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -155,9 +156,9 @@ CREATE TABLE `videos` (
 --
 
 CREATE TABLE `views` (
-  `id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video ID used to count all views on videos.',
-  `user` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Hashed IP address used to see who viewed the video.',
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `video_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
