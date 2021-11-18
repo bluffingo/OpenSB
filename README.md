@@ -40,7 +40,6 @@
 We get it from a file sharing service's scrapped rebrand, and it was the name of the first 
 squareBracket domain we've had (squareBracket.me in February-April 2021). Gamerappa did not 
 come up with the name "PokTube" (as it was someone else who cut ties with him quickly).
-
 so it wasn't publically used after February 2021.
 
 ### How do I translate squareBracket?
