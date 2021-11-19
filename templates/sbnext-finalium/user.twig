@@ -9,10 +9,6 @@
 <meta property="og:description" content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
 <meta property="og:image" content="{{ domain }}/assets/profpic/{{ userpagedata.name }}.png">
 <meta property="og:url" content="{{ page_url }}">
-<meta property="twitter:title" content="{{ userpagedata.title }} - squareBracket">
-<meta property="twitter:description" content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
-<meta property="twitter:image" content="{{ domain }}/assets/profpic/{{ userpagedata.name }}.png">
-<meta name="twitter:card" content="summary_large_image">
 <script>
 	user_id = '{{ userpagedata.id }}';
 </script>

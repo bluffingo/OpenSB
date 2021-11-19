@@ -7,10 +7,6 @@
 <meta property="og:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
 <meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
 <meta property="og:url" content="{{ page_url }}">
-<meta property="twitter:title" content="{{ video.title }} - squareBracket">
-<meta property="twitter:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-<meta property="twitter:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
-<meta name="twitter:card" content="summary_large_image">
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script>
    video_id = '{{ video.video_id }}';
