@@ -20,7 +20,7 @@
 	&bull; <a href="user.php?id={{ id }}&forceuser" style="color:white;">{{ __("View user page as viewer") }}</a>
 	&bull; <a href="logout.php" style="color:white;">{{ __("Log out") }}</a>
 	{% if userdata.powerlevel > 2 %}
-	&bull; <a href="admin.php">{{ __("Admin panel") }}</a></p>
+	&bull; <a href="admin.php" style="color:white;">{{ __("Admin panel") }}</a></p>
 	{% endif %}
 </p>
 </div>
@@ -32,19 +32,6 @@
 	<div class="grid">
 		<div class="col-md-4">
 			<img class="rounded img-pfp-profiles" src="{{ profile_image(userpagedata.name) }}"  alt="{{ userpagedata.name }}">
-		</div>
-		<div class="col-md-8 col-md-push-12">
-			<div class="card">
-				<div class="card-header">{{ __("General information") }}</div>
-				<div class="card-body">
-					<b>{{ __("Forum Threads") }}</b>: {{ userpagedata.threads }}
-					<span class="pad"><b>{{ __("Forum Posts") }}</b>: {{ userpagedata.posts }}</span>
-					<br><br>
-					<b>{{ __("Registered on") }}</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
-					<br><br>
-					<b>{{ __("Last view") }}</b>: {{ userpagedata.lastview | relative_time }}
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
@@ -65,6 +52,13 @@
 	{% endif %}
 	</div>
 </div>
+			      <div class="tab">
+                     <button class="tablinks active" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
+					 <button class="tablinks" onclick="openTab(event, 'Videos')">Videos</button>
+					 <button class="tablinks" onclick="openTab(event, 'Discussion')">Discussion</button>
+					 <button class="tablinks" onclick="openTab(event, 'About')">About</button>
+                  </div>
+<div id="Home" class="tabcontent" style="display: block;">
 {% if markread %}
 <div class="header_message">{{ __("Marked all notifications as read.") }}</div>
 {% elseif edited %}
@@ -102,6 +96,8 @@
 	{% endif %}
 	{% endif %}
 </p>
+</div>
+<div id="Videos" class="tabcontent">
 {% for latestVideo in latestVideos %}
 {{ video_box(latestVideo) }}
 {% else %}
@@ -114,4 +110,18 @@
 {% endif %}
 {% set le_url = 'user.php?id=' ~ id ~ '&page=%s' ~ forceuser %}
 {{ pagination(level_count, glob_lpp, le_url, page) }}
+</div>
+<div id="About" class="tabcontent">
+			<div class="card">
+				<div class="card-header">{{ __("General information") }}</div>
+				<div class="card-body">
+					<b>{{ __("Forum Threads") }}</b>: {{ userpagedata.threads }}
+					<span class="pad"><b>{{ __("Forum Posts") }}</b>: {{ userpagedata.posts }}</span>
+					<br><br>
+					<b>{{ __("Registered on") }}</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
+					<br><br>
+					<b>{{ __("Last view") }}</b>: {{ userpagedata.lastview | relative_time }}
+				</div>
+			</div>
+		</div>
 {% endblock %}
