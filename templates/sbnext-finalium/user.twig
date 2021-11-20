@@ -106,7 +106,7 @@
 </div>
 <div id="Videos" class="tabcontent">
 {% for latestVideo in latestVideos %}
-{{ video_box(latestVideo) }}
+{{ small_video_box(latestVideo) }}
 {% else %}
 <p>{{ __("There are currently no videos uploaded by %s.", [userpagedata.title]) }}</p>
 {% endfor %}

@@ -9,9 +9,8 @@
 				</div>
 				<div class="col-md-12">
 				<h3><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
-				<p style="line-height:1;">{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("views") }}	&bull;
+				<p style="line-height:1;">{{ userlink(data, 'u_') }}<br> {{ data.views }} {{ __("views") }}	&bull;
 				<span class="text-muted">{{ data.time | relative_time }}</span> &bull; {{ data.category_id | category_id_to_name() }}</p>
-				<p>{{ data.description|length > 250 ? data.description|slice(0, 250) ~ '...' : data.description }}</p>
 				</div>
 		</div>
 	</div>
