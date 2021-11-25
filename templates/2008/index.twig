@@ -1,0 +1,229 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+<div id="homepage-main-content">
+        
+        <div>
+        <div class="homepage-content-block" style="margin-left:18px; border:0px #CCC solid;">
+        <div class="homepage-block-heading homepage-block-heading-gray">Recently Viewed</div>
+        <div>
+                                    <div class="homepage-sponsored-video fav1 rec-view marB0" style="-webkit-animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;">
+             <div class="videoIconWrapperOuter fav">
+                <div class="videoIconWrapperInner">
+                    <div class="vstill"><a href="/watch.php?v=jZ2RXLpplbN"><img src="/u/thmp/jZ2RXLpplbN.jpg" class="vimg120"></a></div>
+                    </div> 
+
+                </div>
+                <div class="vtitle fav smallText">
+                    <a href="/watch.php?v=jZ2RXLpplbN" name="Sonic Adventure 2 Escape From The ">Sonic Adventure 2 Escape From The </a>
+                </div>
+                <div class="vfacets fav" style="margin-bottom: 0px;">
+                <div class="dg">3 seconds ago</div>
+                </div>
+            </div>
+                                    <div class="homepage-sponsored-video fav2 rec-view marB0" style="-webkit-animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;">
+             <div class="videoIconWrapperOuter fav">
+                <div class="videoIconWrapperInner">
+                    <div class="vstill"><a href="/watch.php?v=h6aHhhYwfQM"><img src="/u/thmp/h6aHhhYwfQM.jpg" class="vimg120"></a></div>
+                    </div> 
+
+                </div>
+                <div class="vtitle fav smallText">
+                    <a href="/watch.php?v=h6aHhhYwfQM" name="MegaMan X4/SonAmy - Makenai ai ga ">MegaMan X4/SonAmy - Makenai ai ga </a>
+                </div>
+                <div class="vfacets fav" style="margin-bottom: 0px;">
+                <div class="dg">3 seconds ago</div>
+                </div>
+            </div>
+                                    <div class="homepage-sponsored-video fav3 rec-view marB0" style="-webkit-animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;">
+             <div class="videoIconWrapperOuter fav">
+                <div class="videoIconWrapperInner">
+                    <div class="vstill"><a href="/watch.php?v=Kl45oj6l"><img src="/u/thmp/Kl45oj6l.jpg" class="vimg120"></a></div>
+                    </div> 
+
+                </div>
+                <div class="vtitle fav smallText">
+                    <a href="/watch.php?v=Kl45oj6l" name="OLA SOY WAXI SOY GEY ME GUSTAN LOS">OLA SOY WAXI SOY GEY ME GUSTAN LOS</a>
+                </div>
+                <div class="vfacets fav" style="margin-bottom: 0px;">
+                <div class="dg">4 seconds ago</div>
+                </div>
+            </div>
+                                    <div class="homepage-sponsored-video fav4 rec-view marB0" style="-webkit-animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;">
+             <div class="videoIconWrapperOuter fav">
+                <div class="videoIconWrapperInner">
+                    <div class="vstill"><a href="/watch.php?v=ceNlMJGWH2y"><img src="/u/thmp/ceNlMJGWH2y.jpg" class="vimg120"></a></div>
+                    </div> 
+
+                </div>
+                <div class="vtitle fav smallText">
+                    <a href="/watch.php?v=ceNlMJGWH2y" name="Loquendo la Everdrive 64.">Loquendo la Everdrive 64.</a>
+                </div>
+                <div class="vfacets fav" style="margin-bottom: 0px;">
+                <div class="dg">4 seconds ago</div>
+                </div>
+            </div>
+                                <div class="clearL" style="height: 1px;"></div>
+        </div>
+    </div>
+
+    <div id="homepage-featured-heading">
+            <div id="homepage-featured-more-top"><a href="/videos.php?t=6">See More Featured Videos</a></div>
+        <h1 id="hpVideoListHead">Featured Videos</h1>
+    </div>
+
+
+    <div id="homepage-video-list" class="browseListView">
+        <div id="hpFeatured" style="display: block;">
+
+	{% for video in videos %}
+    <div class="vlentry"> <!-- start vlentry -->
+        <div class="vlcontainer"><div class="v120WideEntry"><div class="v120WrapperOuter"><div class="v120WrapperInner"><a href="/watch.php?v=fS0WWc3K"><img src="{{ video_thumbnail(data.video_id) }}" class="vimg120" title="cs go video" alt="video"></a>
+</div></div>
+            </div>
+
+
+            <div class="vldescbox">
+        
+                <div class="vltitle">
+                    <div class="vllongTitle">
+                        <a href="/watch.php?v=fS0WWc3K" title="{{ video.title }}">{{ video.title }}</a>
+                    </div>
+                </div>
+
+                
+                <div class="vldesc">
+                    
+                        <span id="BeginvidDescfS0WWc3K">
+        {{ video.description }}        </span>
+    
+
+    
+                </div>
+            </div>
+
+            <div class="vlclearaltl"></div>
+
+
+
+        </div>
+
+        <div class="vlfacets">
+            <div class="vladded">
+
+            </div>
+                <div><span class="grayText vlfromlbl">From:</span><span class="vlfrom"><a href="/profile.php?user=prokokspl">{{ userlink(video, 'u_') }}</a></span></div>
+                <div class="clearL"></div>
+
+            <span class="grayText">Views:</span> <span class="vlViews"> {{ video.views }}</span><br>
+
+            <div class="video-thumb-duration-rating">
+                                
+
+    <div>
+
+    <img src="/assets/2008/full_star.gif" width="13px" height="13px"> <img src="/assets/2008/full_star.gif" width="13px" height="13px"> <img src="/assets/2008/full_star.gif" width="13px" height="13px"> <img src="/assets/2008/half_star.gif" width="13px" height="13px"> <img src="/assets/2008/no_star.gif" width="13px" height="13px"> 
+    </div>
+
+
+
+
+
+                <div class="runtime">{{ video_length(video) }}</div>
+            </div>
+
+                <div class="clear"></div>
+
+        </div>
+
+        <div class="vlclearaltl"></div>
+
+
+
+    </div> <!-- end vEntry -->
+	{% endfor %}
+        </div>
+    </div> <!-- end Video List -->
+    <div id="homepage-featured-more-bottom"><a href="/videos.php?t=6">See More Featured Videos</a></div>
+</div>
+</div>
+<div id="homepage-side-content" style="white-space: normal;">
+        <div class="homepage-content-block">
+  <div class="signInBoxBorder">
+    <div class="signInBoxContent">
+            <strong>Want to personalize this homepage?</strong><br>
+        <a href="/login.php"><strong>Login to squareBracket now!</strong></a>
+        <div class="homepage-border-dotted"></div>
+        <span class="smgrayText">
+        <a href="/signup.php">Don't have an account? Sign up!</a>
+        </span>
+        <a href="/about.php" rel="nofollow"><img src="/assets/2008/pixel.gif" class="alignMid gaiaHelpBtn" alt="" border="0"></a>
+    </div>  
+        </div>  
+                <br>
+        <div>
+                <div class="clear"></div>
+            </div>
+        </div> <!-- end homepage-content-block -->
+                <div style="width:120;margin:0 auto;text-align:center">
+            <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- squareBracketside -->
+        </div>
+        <div class="clear"></div>
+<div class="homepage-side-block padT10">
+    <div class="homepage-yellow-block">
+        <div class="homepage-block-heading" style="color:#CC6600">What's New</div>
+                <div class="homepage-whatsnew-entry">
+            <div class="homepage-whatsnew-image"><a href="/channels.php"><img src="/assets/2008/icons/newupload.png" width="30" height="37" border="0"></a></div>
+            <div class="homepage-whatsnew-desc">
+                <b><a href="/my_videos_upload_new.php" style="color:#CC6600">Upload videos up to 2 GB with the new Uploader</a></b><br>
+                    Tired of having to render your videos with very low quality? Not anymore! Try the new uploader for better video upload experience. (Supports only HTML5 browsers)
+            </div>
+        </div>
+                <div class="homepage-whatsnew-entry">
+            <div class="homepage-whatsnew-image"><a href="/channels.php"><img src="/assets/2008/icons/newf_icon.png" width="30" height="37" border="0"></a></div>
+            <div class="homepage-whatsnew-desc">
+                <b><a href="/channels.php" style="color:#CC6600">New Function: Report User &amp; More Bug Fixes</a></b><br>
+                    We added the "Report User" function. Do you think the user is breaking squareBracket Community Guidelines? Report the user to us!
+            </div>
+        </div>
+                <div class="homepage-whatsnew-entry">
+            <div class="homepage-whatsnew-image"><a href="/my_videos_upload.php"><img src="/assets/2008/icons/hq_icon.png" width="30" height="37" border="0"></a></div>
+            <div class="homepage-whatsnew-desc">
+               <b><a href="/my_videos_upload.php" style="color:#CC6600">New Video &amp; Audio Quality</a></b><br>
+                    Say hello to 360p with 64kb/s audio bitrate - start uploading your videos with better quality now! 
+            </div>
+        </div>
+<div class="clear"></div>
+
+        <div class="alignR padT5">
+                <a href="/whats_new.php" style="color:#CC6600">Read more in our Blog</a>
+        </div>
+        <div style="font-size: 1px; height: 1px;"><br></div>
+    </div><img class="homepage-yellow-block-bot" src="/assets/2008/pixel.gif">
+</div>
+    <table width="180" cellspacing="0" cellpadding="0" border="0" bgcolor="#eaf0fa" align="center">
+        <tbody><tr>
+            <td><img src="/assets/2008/box_login_tl.gif" width="5" height="5"></td>
+            <td><img src="/assets/2008/pixel.gif" width="1" height="5"></td>
+            <td><img src="/assets/2008/box_login_tr.gif" width="5" height="5"></td>
+        </tr>
+        <tr>
+            <td><img src="/assets/2008/pixel.gif" width="5" height="1"></td>
+            <td style="padding: 5px; text-align: center;" width="170">
+                <div style="font-weight: bold; font-size: 13px;">November 2021 Video Contest!</div>
+                <a href="/results.php?search=Animation&amp;t=Search+Videos"><img src="/assets/2008/contests/Animation.jpg" style="border: 5px solid #FFFFFF; margin-top: 10px;" width="80" height="60"></a>
+                <div style="font-size: 16px; font-weight: bold; padding-top: 5px;"><a href="/results.php?search=Animation&amp;t=Search+Videos">Animation</a></div>
+                <br>
+                <div style="font-size: 12px; font-weight: bold; margin-bottom: 7px;"><a href="/monthly_contest.php">Join the contest now!</a></div>
+            </td>
+            <td><img src="/assets/2008/pixel.gif" width="5" height="1"></td>
+        </tr>
+        <tr>
+            <td><img src="/assets/2008/box_login_bl.gif" width="5" height="5"></td>
+            <td><img src="/assets/2008/pixel.gif" width="1" height="5"></td>
+            <td><img src="/assets/2008/box_login_br.gif" width="5" height="5"></td>
+        </tr>
+        </tbody></table>
+</div>
+{% endblock %}
