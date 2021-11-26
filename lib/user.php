@@ -30,7 +30,7 @@ if (!isset($acmlm)) {
  * @return string String to put inside a SQL statement.
  */
 function userfields() {
-	$fields = ['id', 'name', 'customcolor'];
+	$fields = ['id', 'name', 'customcolor', 'joined'];
 
 	$out = '';
 	foreach ($fields as $field) {

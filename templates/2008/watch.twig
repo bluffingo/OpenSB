@@ -1,6 +1,7 @@
 {% extends "_layout.twig" %}
 {% block content %}
 <script type="text/javascript" src="./assets/2008/js/watch.js"></script>
+<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
 <style>
 	.watch-player-div {
     margin: 0 auto;
@@ -93,7 +94,7 @@ function hide_ratingnli() {
                         document.getElementById("cid_"+id).outerHTML = "";
                     }
 function rate_video(rating) {
-    window.open("/a/rate_video.php?stars="+rating+"&v=HAhZ8EvtCfu");
+    window.open("/a/rate_video.php?stars="+rating+"&v={{ video.video_id }}");
 }	
 
 function exp_col_desc() {
@@ -135,6 +136,7 @@ function vidres_change(num) {
 </div>
 <!-- Left side of the watch page where the video player is !-->
 <div id="watch-this-vid">
+{{ include('/components/player.twig') }}
     	<div id="watch-ratings-views">
 	<!-- nwm jak zrobić ocenianie ja to pieprze !-->
 		<div id="watch-rating-div" class="ratingMultiline">
@@ -142,7 +144,7 @@ function vidres_change(num) {
 <div id="ratingWrapper">
 	<div class="floatL">
 			<div id="rateStars">
-		                            	<nobr class="rating" data-default-rating="5" style="display: inline-block;"></nobr>
+		                            	<nobr class="rating" data-default-rating="{{ starRatio }}" style="display: inline-block;"></nobr>
                             	<link rel="stylesheet" href="/assets/2008/star/starrating.css">
                             	<script src="/assets/2008/star/starrating.js"></script>
                             	<script>
@@ -158,7 +160,7 @@ function vidres_change(num) {
         						</script>
 
                             							</div>
-				<div id="ratingMessage"><div id="defaultRatingMessage" style="display: block;" class="wasblock"><span id="ratings_text" class="smallText">2 ratings</span></div>
+				<div id="ratingMessage"><div id="defaultRatingMessage" style="display: block;" class="wasblock"><span id="ratings_text" class="smallText">{{ total_rating }} ratings</span></div>
 				</div>
 		<!-- do glosowania !-->
 	</div>
@@ -168,7 +170,7 @@ function vidres_change(num) {
 			<div class="floatR">
 				<span class="statLabel">Views:</span>
 				<span id="watch-view-count">
-										13										</span>
+										{{ viewCount }}										</span>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -443,18 +445,18 @@ function vidres_change(num) {
 	<div id="watch-channel-vids-div" class="watch-wrapper">
 		<div id="watch-channel-vids-top">
 			<div id="watch-channel-icon" class="user-thumb-medium">
-				<a href="/profile.php?user=CFV" onmousedown=""><img src="/u/av/CFV.jpg?81" alt="Channel Icon"></a>
+				<a href="/user.php?name={{ video.u_name }}" onmousedown=""><img src="{{ profile_image(video.u_name) }}" alt="Channel Icon"></a>
 			</div>
 			               <div id="unsubscribeDiv" class="watch-channel-subscribe">
-                 <a href="/a/subscription_center.php?user=CFV" class="action-button">
+                 <a href="/a/subscription_center.php?user={{ video.u_name }}" class="action-button">
                  <span class="action-button-leftcap"></span>
-                 <span class="action-button-text">Unsubscribe</span>
+                 <span class="action-button-text">Subscribe</span>
                  <span class="action-button-rightcap"></span>
                  </a>
              </div>
              			<div id="watch-channel-stats">
-				<span class="watch-channel-stat">From: </span> <a href="/profile.php?user=CFV">CFV</a><br>
-				<span class="watch-channel-stat">Joined:</span> 5 months ago<br>
+				<span class="watch-channel-stat">From: </span> <a href="/profile.php?user=CFV">{{ video.u_name }}</a><br>
+				<span class="watch-channel-stat">Joined:</span> {{ video.u_joined | relative_time() }}<br>
 				<span class="watch-channel-stat">Videos:</span> <span id="watch-channel-videos">56</span>
 			</div>
 			<div class="clear"></div>
@@ -465,7 +467,7 @@ function vidres_change(num) {
 			<div class="collapse-content" id="collapse-content">
 				<div>
 					<span class="watch-channel-stat">Added:</span>
-					<span class="watch-video-added">November 25, 2021, 07:42 PM</span>
+					<span class="watch-video-added">{{ video.time | date() }}</span>
 					<span class="smallText">(<a class="eLink" onclick="exp_col_desc()">More info</a>)</span>
 				</div>
 
@@ -478,7 +480,7 @@ function vidres_change(num) {
 			<div class="expand-content" id="expand-content">
 				<div>
 					<span class="watch-channel-stat">Added:</span>
-					<span class="watch-video-added">November 25, 2021, 07:42 PM</span>
+					<span class="watch-video-added">{{ video.time | date() }}</span>
 					<span class="smallText">(<a class="eLink" onclick="exp_col_desc()">Less info</a>)</span>
 				</div>
 				
@@ -491,7 +493,7 @@ function vidres_change(num) {
 
 				<div>
 					<span class="watch-channel-stat">Category:&nbsp;</span>
-					 <a href="/videos.php?category=9">Humor</a>
+					 <a href="/videos.php?category=9">{{ video.category_id | category_id_to_name() }}</a>
 				</div>
 								
 				<div id="watch-video-tags-div">
@@ -505,7 +507,7 @@ function vidres_change(num) {
 				<div id="watch-url-div">
 					<form action="" name="urlForm" id="urlForm">
 					<label for="watch-url-field">URL:</label>
-					<input name="video_link" id="watch-url-field" type="text" value="http://www.bitview.net/watch.php?v=HAhZ8EvtCfu" onclick="javascript:document.urlForm.video_link.focus();document.urlForm.video_link.select();" readonly="">
+					<input name="video_link" id="watch-url-field" type="text" value="{{ page_url }}" onclick="javascript:document.urlForm.video_link.focus();document.urlForm.video_link.select();" readonly="">
 					</form>
 				</div>
 			</div> 
