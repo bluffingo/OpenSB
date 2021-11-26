@@ -28,6 +28,12 @@ if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
 		$token = bin2hex(random_bytes(32));
 			query("INSERT INTO users (name, password, email, token, joined, title) VALUES (?,?,?,?,?,?)",
 			[$username,password_hash($pass, PASSWORD_DEFAULT), $email, $token, time(), $displayName]);
+			
+			$newUser = result("SELECT `id` from `users` where `name` = ?",[$username]);
+			
+			fetch("INSERT INTO `channel_settings` 
+			(`user`, `background`, `fontcolor`, `titlefont`, `link`, `headerfont`, `highlightheader`, `highlightinside`, `regularheader`, `regularinside`) 
+			VALUES (?, '#ffffff', '#222222', '#ffffff', '#0033CC', '#ffffff', '#3399cc', '#ecf4fb', '#3399cc', '#ffffff')",[$newUser]);
 
 		setcookie('SBTOKEN', $token, 2147483647);
 

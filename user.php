@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
 
 $customProfile = fetch("SELECT * FROM channel_settings WHERE user = ?", [$userpagedata['id']]);
 
-var_dump($customProfile);
+// var_dump($customProfile);
 
 if ($customProfile == false) {
 	query("INSERT INTO `channel_settings` 

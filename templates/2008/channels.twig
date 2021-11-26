@@ -1,0 +1,118 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+<style type="text/css">
+.videoModifiers {
+    padding: 5px 0px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+.videoModifiers div.first {
+    border-left: 0px;
+    padding: 0px 10px 0px 2px;
+}
+.videoModifiers div.subcategory {
+    border-left: 1px solid #ccc;
+    padding: 0px 10px;
+    font-size: 11px;
+    display: inline;
+}
+</style>
+<div id="header-wrapper">
+    <div id="header-left">
+    Channels
+    </div>
+    <div id="header-middle">
+                Last Login
+                            </div>
+    <div class="clearL"></div>
+</div>
+<div class="videoModifiers">
+            <div class="subcategory first">
+                    <a href="/channels.php" style="font-weight:bold">Last Login</a>
+            </div>
+            <div class="subcategory">
+                    <a href="/channels.php?order=subscribers">Subscribers</a>
+            </div>
+            <div class="subcategory">
+                    <a href="/channels.php?order=videos">Videos</a>
+            </div>
+        <div class="clear"></div>
+<div></div></div>
+<div id="left-column">
+
+                        <div class="category-selected">All</div>
+            
+                        <div><a href="?type=1">Members</a></div>
+            
+                        <div><a href="?type=2">Comedians</a></div>
+            
+                        <div><a href="?type=3">Directors</a></div>
+            
+
+                        <div><a href="?type=4">Gurus</a></div>
+            
+                        <div><a href="?type=5">Musicians</a></div>
+            
+                        <div><a href="?type=6">Reporters</a></div>
+            
+
+<div class="clear"></div>
+
+</div>
+<div id="body-column">
+ <div id="browseMain">
+        <div id="video_grid" class="membersGridView">
+        <div class="padB5">
+        </div>
+    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+{% for user in users|batch(4) %}
+            <tr valign="top">
+                                <td>
+		{% for cell in user %}
+        <div class="memberContainer">
+            <div class="memberBoxList">
+                <div class="user-thumb-large">
+                    <a href="/profile.php?name={{ cell.name }}"><img src="{{ profile_image(cell.name) }}" alt="{{ cell.name }}"></a>
+                </div>
+            </div>
+            <div class="vldescbox">
+                <div class="vltitle">
+                                <a href="/profile.php?user=A524">{{ cell.name }}</a>
+
+                </div>
+            </div>
+            <div class="vlclearalt"></div>
+            <div class="memberBoxGrid">
+                <div class="user-thumb-large">
+                    <a href="/user.php?name={{ cell.name }}"><img src="{{ profile_image(cell.name) }}" alt="{{ cell.name }}"></a>
+                </div>
+            </div>
+            <div class="vlclearalt"></div>
+            <div class="vlfacets">
+                <div class="memberBoxTypeContainer">
+                    <div class="memberStat"><span class="grayText">Type:</span> Member</div>
+                </div>
+                    <div class="memberStat"><span class="grayText">                         Videos:
+</span> 1</div>
+                    <div class="memberStat"><span class="grayText">                         Views:
+</span> 44</div>
+                    <div class="memberStat"><span class="grayText">                         Subscribers:
+</span> 0</div>
+            </div>
+            <div class="vlclear"></div>
+        </div> 
+		{% endfor %}
+{% endfor %}
+  </td>
+    </tr>
+                                                                    </tr>
+    </tbody></table>
+        
+
+        </div>
+    </div>
+    </div>
+	<div class="clear"></div>
+{% endblock %}
