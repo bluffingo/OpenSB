@@ -78,7 +78,7 @@
 
 	{% for video in videos %}
     <div class="vlentry"> <!-- start vlentry -->
-        <div class="vlcontainer"><div class="v120WideEntry"><div class="v120WrapperOuter"><div class="v120WrapperInner"><a href="/watch.php?v=fS0WWc3K"><img src="{{ video_thumbnail(data.video_id) }}" class="vimg120" title="cs go video" alt="video"></a>
+        <div class="vlcontainer"><div class="v120WideEntry"><div class="v120WrapperOuter"><div class="v120WrapperInner"><a href="/watch.php?v={{ video.video_id }}"><img src="{{ video_thumbnail(video.video_id) }}" class="vimg120" title="cs go video" alt="video"></a>
 </div></div>
             </div>
 
@@ -87,7 +87,7 @@
         
                 <div class="vltitle">
                     <div class="vllongTitle">
-                        <a href="/watch.php?v=fS0WWc3K" title="{{ video.title }}">{{ video.title }}</a>
+                        <a href="/watch.php?v={{ video.video_id }}" title="{{ video.title }}">{{ video.title }}</a>
                     </div>
                 </div>
 
@@ -149,6 +149,41 @@
 </div>
 <div id="homepage-side-content" style="white-space: normal;">
         <div class="homepage-content-block">
+{% if log %}
+<div class="homepage-content-block">
+            <div class="contentBox">
+                <div>
+                    <div class="floatR"><span class="smallText"><b><a href="/my_profile.php">Profile Settings</a></b></span></div>
+                    <div class="floatL">
+                        <span class="headerTitle hpBlockHeadingGray"> Welcome back, {{ userdata.name }}! </span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+				{% if totalViews != 1 %}
+					{% set pluralViews = __("s") %}
+				{% endif %}
+                <table>
+                    <tbody>
+                    <tr><td>You have <b><a href="/my_friends_invite.php">0 friend requests</a></b> and <b><a href="/my_messages.php">0 new messages</a></b>!</td></tr>
+                    <tr><td>Your Videos have been viewed <b>{{ __("%s ", [totalViews]) }}</b> times.</td></tr>
+                    <tr><td>You have <b>0 <a href="/my_friends.php">Friends</a></b>.</td></tr>
+                    <tr><td>You've watched <b>0</b> videos.</td></tr>
+                    <tr><td>Your account was created <b>{{ userdata.joined | relative_time }}</b>. Wow!</td></tr>
+                </tbody></table>
+                <div class="hpLoginForgot smallText">
+                    <p class="marT0 marB0" align="center"><a href="/profile.php?user=gamerappa47101">My Channel</a> | <a href="/my_videos.php">My Videos</a></p>
+                <p class="marT0 marB0" align="center">
+                </p></div>
+                <div class="bottomBorderDotted"></div>
+        </div><br>
+         <div class="contentBox textInfo">
+            <div>
+                <p align="center">Deez nuts<br> 
+HAH! GOTTEM
+</p>
+            </div>
+        </div></div>
+{% else %}
   <div class="signInBoxBorder">
     <div class="signInBoxContent">
             <strong>Want to personalize this homepage?</strong><br>
@@ -158,12 +193,10 @@
         <a href="/signup.php">Don't have an account? Sign up!</a>
         </span>
         <a href="/about.php" rel="nofollow"><img src="/assets/2008/pixel.gif" class="alignMid gaiaHelpBtn" alt="" border="0"></a>
-    </div>  
+    </div> 
         </div>  
+{% endif %}
                 <br>
-        <div>
-                <div class="clear"></div>
-            </div>
         </div> <!-- end homepage-content-block -->
                 <div style="width:120;margin:0 auto;text-align:center">
             <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -173,25 +206,11 @@
 <div class="homepage-side-block padT10">
     <div class="homepage-yellow-block">
         <div class="homepage-block-heading" style="color:#CC6600">What's New</div>
-                <div class="homepage-whatsnew-entry">
-            <div class="homepage-whatsnew-image"><a href="/channels.php"><img src="/assets/2008/icons/newupload.png" width="30" height="37" border="0"></a></div>
-            <div class="homepage-whatsnew-desc">
-                <b><a href="/my_videos_upload_new.php" style="color:#CC6600">Upload videos up to 2 GB with the new Uploader</a></b><br>
-                    Tired of having to render your videos with very low quality? Not anymore! Try the new uploader for better video upload experience. (Supports only HTML5 browsers)
-            </div>
-        </div>
-                <div class="homepage-whatsnew-entry">
+               <div class="homepage-whatsnew-entry">
             <div class="homepage-whatsnew-image"><a href="/channels.php"><img src="/assets/2008/icons/newf_icon.png" width="30" height="37" border="0"></a></div>
             <div class="homepage-whatsnew-desc">
-                <b><a href="/channels.php" style="color:#CC6600">New Function: Report User &amp; More Bug Fixes</a></b><br>
-                    We added the "Report User" function. Do you think the user is breaking squareBracket Community Guidelines? Report the user to us!
-            </div>
-        </div>
-                <div class="homepage-whatsnew-entry">
-            <div class="homepage-whatsnew-image"><a href="/my_videos_upload.php"><img src="/assets/2008/icons/hq_icon.png" width="30" height="37" border="0"></a></div>
-            <div class="homepage-whatsnew-desc">
-               <b><a href="/my_videos_upload.php" style="color:#CC6600">New Video &amp; Audio Quality</a></b><br>
-                    Say hello to 360p with 64kb/s audio bitrate - start uploading your videos with better quality now! 
+                <b><a href="/channels.php" style="color:#CC6600">This is another public service announcement Brought to you in part by Slim Shady</a></b><br>
+                    Slim Shady does not give a fuck what you think
             </div>
         </div>
 <div class="clear"></div>
@@ -202,28 +221,5 @@
         <div style="font-size: 1px; height: 1px;"><br></div>
     </div><img class="homepage-yellow-block-bot" src="/assets/2008/pixel.gif">
 </div>
-    <table width="180" cellspacing="0" cellpadding="0" border="0" bgcolor="#eaf0fa" align="center">
-        <tbody><tr>
-            <td><img src="/assets/2008/box_login_tl.gif" width="5" height="5"></td>
-            <td><img src="/assets/2008/pixel.gif" width="1" height="5"></td>
-            <td><img src="/assets/2008/box_login_tr.gif" width="5" height="5"></td>
-        </tr>
-        <tr>
-            <td><img src="/assets/2008/pixel.gif" width="5" height="1"></td>
-            <td style="padding: 5px; text-align: center;" width="170">
-                <div style="font-weight: bold; font-size: 13px;">November 2021 Video Contest!</div>
-                <a href="/results.php?search=Animation&amp;t=Search+Videos"><img src="/assets/2008/contests/Animation.jpg" style="border: 5px solid #FFFFFF; margin-top: 10px;" width="80" height="60"></a>
-                <div style="font-size: 16px; font-weight: bold; padding-top: 5px;"><a href="/results.php?search=Animation&amp;t=Search+Videos">Animation</a></div>
-                <br>
-                <div style="font-size: 12px; font-weight: bold; margin-bottom: 7px;"><a href="/monthly_contest.php">Join the contest now!</a></div>
-            </td>
-            <td><img src="/assets/2008/pixel.gif" width="5" height="1"></td>
-        </tr>
-        <tr>
-            <td><img src="/assets/2008/box_login_bl.gif" width="5" height="5"></td>
-            <td><img src="/assets/2008/pixel.gif" width="1" height="5"></td>
-            <td><img src="/assets/2008/box_login_br.gif" width="5" height="5"></td>
-        </tr>
-        </tbody></table>
 </div>
 {% endblock %}

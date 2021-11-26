@@ -4,7 +4,7 @@
 <meta name="description" content="squareBracket is the best place to share your videos with the world and your friends and family.">
 <meta name="keywords" content="video, clips, camera, recording, upload, share">
 
-<title>squareBracket - Your Digital Video Repository</title>
+<title>squareBracket - Can't believe it's not PokTube</title>
 <link href="/assets/2008/main.css" rel="stylesheet" type="text/css">
 <style>
 		body { word-break:break-word; }
@@ -13,14 +13,24 @@
     <body> 
         <div id="baseDiv" class=" date-20080710">
         <div id="masthead">
-                <a href="/" class="logo"><img src="/assets/2008/logo_sm.gif" alt="squareBracket - Your Digital Video Repository" width="120" height="48" border="0"></a>
+                <a href="/" class="logo"><img src="/assets/2008/logo_sm.gif" alt="squareBracket - Can't believe it's not PokTube" width="120" height="48" border="0"></a>
                 <div class="user-info">
+	{% if log %}
+<div id="util-links" class="normal-utility-links">
+                        <span class="util-item first">Hi, <b><a href="/user.php?name={{ userdata.name }}" onclick="">{{ userdata.name }}</a></b>! <img src="/assets/2008/mail.gif" style="width:14px;height:10px;margin-left:4px;position:relative;top:1.5px"> (<a href="/my_messages.php">0</a>)</span>
+        <span class="util-item"><a href="/my_profile.php">Profile</a></span>
+        <span class="util-item"><a href="/viewing_history.php">History</a></span>
+        <span class="util-item"><a href="/help.php">Help</a></span>
+                <span class="util-item"><a href="/logout.php" class="loginBoxZ eLink" onclick="">Log Out</a></span>
+            </div>
+	{% else %}
     <div id="util-links" class="normal-utility-links">
                 <span class="util-item first"><b><a href="/signup.php" onclick="">Sign Up</a></b></span>
         <span class="util-item"><a href="/viewing_history.php">Viewing History</a></span>
         <span class="util-item"><a href="/help.php">Help</a></span>
         <span class="util-item"><a href="/login.php" class="loginBoxZ eLink" onclick="">Log In</a></span>
             </div>
+	{% endif %}
         </div>
         <div class="nav">
             <div class="nav-item first  selected " id="nav-item-home">
