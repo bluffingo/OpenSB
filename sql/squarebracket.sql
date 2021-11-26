@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2021 at 06:57 PM
+-- Generation Time: Nov 26, 2021 at 09:11 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `squarebracket`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `channel_settings`
+--
+
+CREATE TABLE `channel_settings` (
+  `user` int(11) NOT NULL,
+  `background` varchar(7) NOT NULL DEFAULT '#ffffff',
+  `fontcolor` varchar(7) NOT NULL DEFAULT '#ffffff',
+  `titlefont` varchar(7) NOT NULL DEFAULT '#ffffff',
+  `link` varchar(7) NOT NULL DEFAULT '#0033CC',
+  `headerfont` varchar(7) NOT NULL DEFAULT '#ffffff',
+  `highlightheader` varchar(7) NOT NULL DEFAULT '#3399cc',
+  `highlightinside` varchar(7) NOT NULL DEFAULT '#ecf4fb',
+  `regularheader` varchar(7) NOT NULL DEFAULT '#3399cc',
+  `regularinside` varchar(7) NOT NULL DEFAULT '#ffffff'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -42,7 +61,7 @@ CREATE TABLE `comments` (
 --
 
 CREATE TABLE `music` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL,
   `music_id` varchar(11) NOT NULL,
   `title` text NOT NULL,
   `author` int(11) NOT NULL,
@@ -57,7 +76,7 @@ CREATE TABLE `music` (
 --
 
 CREATE TABLE `notifications` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   `level` int(11) DEFAULT NULL,
   `recipient` int(11) NOT NULL,
@@ -107,7 +126,7 @@ CREATE TABLE `subscriptions` (
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.',
+  `id` bigint(20) NOT NULL COMMENT 'Incrementing ID for internal purposes.',
   `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Username, chosen by the user',
   `email` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User Email.',
   `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Password, hashed in bcrypt.',
@@ -125,6 +144,7 @@ CREATE TABLE `users` (
   `group_id` int(11) NOT NULL DEFAULT 3 COMMENT 'Legacy Acmlmboard-related group ID field.',
   `posts` int(11) NOT NULL,
   `threads` int(11) NOT NULL,
+  `blockland_id` int(11) NOT NULL COMMENT 'Blockland ID, intended for internal Vitre testing.',
   `signature` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -135,12 +155,14 @@ CREATE TABLE `users` (
 --
 
 CREATE TABLE `videos` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.',
+  `id` bigint(20) UNSIGNED NOT NULL COMMENT 'Incrementing ID for internal purposes.',
   `video_id` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Random alphanumeric video ID which will be visible.',
   `title` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Video title',
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video description',
   `author` bigint(20) UNSIGNED NOT NULL COMMENT 'User ID of the video author',
   `time` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Unix timestamp for the time the video was uploaded',
+  `most_recent_view` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'anti-bot shit is useless for this tbh',
+  `views` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Video views',
   `flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',
   `category_id` int(11) DEFAULT 0 COMMENT 'Category ID for the video',
   `tags` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video tags, serialized in JSON',
@@ -155,14 +177,19 @@ CREATE TABLE `videos` (
 --
 
 CREATE TABLE `views` (
-  `id` int(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Internal ID.',
-  `video_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video ID used to count all views on videos.',
-  `user` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Hashed IP address used to see who viewed the video.',
+  `video_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `channel_settings`
+--
+ALTER TABLE `channel_settings`
+  ADD PRIMARY KEY (`user`);
 
 --
 -- Indexes for table `music`
@@ -187,6 +214,35 @@ ALTER TABLE `users`
 --
 ALTER TABLE `videos`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `music`
+--
+ALTER TABLE `music`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.';
+
+--
+-- AUTO_INCREMENT for table `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.';
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

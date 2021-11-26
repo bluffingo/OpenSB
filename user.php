@@ -99,6 +99,14 @@ $css = $scss->compile(
 	}'
 );
 
+$customProfile = fetch("SELECT * FROM channel_settings WHERE user = ?", [$userdata['id']]);
+
+var_dump($customProfile);
+
+//if (isset($userdata['id']) {
+//query("INSERT INTO channel_settings (user) values (?)",[$userdata['id']]);
+//}
+
 $twig = twigloader();
 echo $twig->render('user.twig', [
 	'id' => $userpagedata['id'],
@@ -112,5 +120,6 @@ echo $twig->render('user.twig', [
 	'markread' => (isset($_GET['markread']) ? true : false),
 	'edited' => (isset($_GET['edited']) ? true : false),
 	'comments' => (isset($comments) ? $comments : null),
-	'subCount' => $subCount
+	'subCount' => $subCount,
+	'customProfile' => $customProfile
 ]);
