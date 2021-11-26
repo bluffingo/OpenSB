@@ -214,25 +214,25 @@ function vidres_change(num) {
 				<div id="aggregationServicesDiv" style="text-align: left;">	
 										<div class="watch-recent-shares-div">
 			<div class="watch-recent-share">
-				<a href="https://www.reddit.com/submit?url=http://www.bitview.net/watch.php?v=HAhZ8EvtCfu" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_reddit" alt="" width="16" height="16">
+				<a href="https://www.reddit.com/submit?url=http://www.bitview.net/watch.php?v={{ video.video_id }}" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_reddit" alt="" width="16" height="16">
 					<span>Reddit</span></a>
 			</div>
 		</div>
 		<div class="watch-recent-shares-div">
 			<div class="watch-recent-share">
-				<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.bitview.net/watch.php?v=HAhZ8EvtCfu" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_facebook" alt="" width="16" height="16">
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.bitview.net/watch.php?v={{ video.video_id }}" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_facebook" alt="" width="16" height="16">
 					<span>Facebook</span></a>
 			</div>
 		</div>
 		<div class="watch-recent-shares-div">
 			<div class="watch-recent-share">
-				<a href="https://twitter.com/share?text=Check out my new BitView Video!&amp;url=http://www.bitview.net/watch.php?v=HAhZ8EvtCfu&amp;hashtags=bitview" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_twitter" alt="" width="16" height="16">
+				<a href="https://twitter.com/share?text=Check out my new BitView Video!&amp;url=http://www.bitview.net/watch.php?v={{ video.video_id }}&amp;hashtags=bitview" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_twitter" alt="" width="16" height="16">
 					<span>Twitter</span></a>
 			</div>
 		</div>
 				<div class="watch-recent-shares-div">
 			<div class="watch-recent-share">
-				<a href="https://bwitter.me/share?text=gay+people+on+game+boy+color+%7C+http%3A%2F%2Fwww.bitview.net%2Fwatch.php%3Fv%3DHAhZ8EvtCfu" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_bwitter" alt="" width="16" height="16">
+				<a href="https://bwitter.me/share?text=gay+people+on+game+boy+color+%7C+http%3A%2F%2Fwww.bitview.net%2Fwatch.php%3Fv%3D{{ video.video_id }}" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_bwitter" alt="" width="16" height="16">
 					<span>Bwitter</span></a>
 			</div>
 		</div>
@@ -245,14 +245,14 @@ function vidres_change(num) {
 			</div>
 			<div id="watch-tab-favorite-body" class="watch-tab-body">
 				<div id="watch-add-faves-div" class="watch-more-action"> 
-					<h3 style="text-align: center;"><a href="/a/favorite_video.php?v=HAhZ8EvtCfu&amp;close=1" onclick="favorite_video(this)" target="_blank">Add to Favorites</a></h3>
+					<h3 style="text-align: center;"><a href="/a/favorite_video.php?v={{ video.video_id }}&amp;close=1" onclick="favorite_video(this)" target="_blank">Add to Favorites</a></h3>
 				</div>
 							</div>
 			<div id="watch-tab-playlists-body" class="watch-tab-body">
 				<div id="addToPlaylistDiv" class="watch-more-action">To add a new video to your playlist, go to the <a href="/my_playlists.php">"My Playlists"</a> page.</div>
 							</div>
 			<div id="watch-tab-flag-body" class="watch-tab-body">
-				<div id="inappropriateVidDiv" class="watch-more-action"><h3 style="text-align: center;"><a href="/a/flag_video.php?v=HAhZ8EvtCfu" onclick="flag_video(this)" target="_blank">Flag This Video</a></h3>
+				<div id="inappropriateVidDiv" class="watch-more-action"><h3 style="text-align: center;"><a href="/a/flag_video.php?v={{ video.video_id }}" onclick="flag_video(this)" target="_blank">Flag This Video</a></h3>
 					<i style="text-align: center; font-size: 12px !important;">Before reporting: please make sure that video break any rule. Don't report just because you don't like that video, otherwise you'll be be hindering moderators' job.</i>
 					</div>
 
@@ -282,7 +282,7 @@ function vidres_change(num) {
 	<div class="expand-panel expanded small-expand-panel">
 			<div class="floatR">
 								<a class="hLink bold" href="javascript:void(0)" onclick="document.getElementById('res_add_video').style.display = 'inline-block';document.getElementById('video_res_submit').style.display = 'inline-block';this.style.display = 'none'" rel="nofollow">Post a Video Response</a>
-				<form action="/watch.php?v=HAhZ8EvtCfu" method="post">
+				<form action="/watch.php?v={{ video.video_id }}" method="post">
 					<input type="text" name="res_add_video" maxlength="100" id="res_add_video" placeholder="Video URL" style="display:none">
 					<input type="submit" id="video_res_submit" name="video_res_submit" value="Add Response" style="display:none">
 				</form>
@@ -302,11 +302,12 @@ function vidres_change(num) {
 		<div class="expand-content">
 			<div id="div_main_comment2"></div>
 				<div id="recent_comments">
+				{% for comment in comments %}
 											<div id="cid_60973" class="watch-comment-entry">
 		<div class="watch-comment-head">
 			<div class="watch-comment-info">
-				<a class="watch-comment-auth" href="/profile.php?user=PF94onBitView" rel="nofollow">PF94onBitView</a>
-				<span class="watch-comment-time"> (25 minutes ago) </span>
+				<a class="watch-comment-auth" href="/user.php?name={{ comment.u_name }}" rel="nofollow">{{ comment.u_name }}</a>
+				<span class="watch-comment-time"> ({{ comment.date | relative_time}}) </span>
 								<a id="show_link_commentid" class="watch-comment-head-link" onclick="">Show</a>
 				<a id="hide_link_commentid" class="watch-comment-head-link" onclick="">Hide</a>
 			</div>	
@@ -318,10 +319,11 @@ function vidres_change(num) {
 		</div>
 			<div id="comment_body_commentid">
 				<div class="watch-comment-body">
-					@SonicGamingTV2019: Ur Gay				</div>
+					{{ comment.comment | raw }}				</div>
 				<div id="div_comment_form_id_commentid"></div>
 			</div>
-	</div> 
+	</div>
+	{% endfor %}
 			<div id="cid_60972" class="watch-comment-entry">
 		<div class="watch-comment-head" style="background-color: #fffcc2;">
 			<div class="watch-comment-info">
@@ -399,8 +401,8 @@ function vidres_change(num) {
 <div class="clear"></div>
 </div> !-->
 				</div> <!-- end recent_comments -->
-					<div id="watch-comment-view-all"><a href="watch.php?v=HAhZ8EvtCfu&amp;c=all" class="hLink" onmousedown="" rel="nofollow">View  4 comments</a></div>				<div id="watch-comment-post">
-			            <form action="/watch.php?v=HAhZ8EvtCfu" method="post" style="margin:0 0 1em 0">
+					<div id="watch-comment-view-all"><a href="watch.php?v={{ video.video_id }}&amp;c=all" class="hLink" onmousedown="" rel="nofollow">View  4 comments</a></div>				<div id="watch-comment-post">
+			            <form action="/watch.php?v={{ video.video_id }}" method="post" style="margin:0 0 1em 0">
                 <textarea cols="55" rows="3" id="comment_text" name="comment_text" maxlength="256"></textarea><br>
                 <input style="margin-top: 5px" type="submit" name="comment_submit" value="Add Comment">
             </form>
@@ -429,13 +431,6 @@ function vidres_change(num) {
 <!-- POCZĄTEK PRAWEJ STRONY !-->
 <div id="watch-other-vids">
 	<div id="watch-channel-brand-div">
-					<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Vlare_Main -->
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8433080377364721" data-ad-slot="6350738097" data-ad-format="auto" data-full-width-responsive="true"><iframe id="aswift_0" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;"><iframe id="google_ads_frame0"></iframe></iframe></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-		<div class="alignC xsmallText grayText padT3">Advertisement</div>
 	</div>
 
 		<div id="watch-channel-brand-cap">
@@ -467,7 +462,7 @@ function vidres_change(num) {
 			<div class="collapse-content" id="collapse-content">
 				<div>
 					<span class="watch-channel-stat">Added:</span>
-					<span class="watch-video-added">{{ video.time | date() }}</span>
+					<span class="watch-video-added">{{ video.time | date('F j, Y, h:i A') }}</span>
 					<span class="smallText">(<a class="eLink" onclick="exp_col_desc()">More info</a>)</span>
 				</div>
 
@@ -480,7 +475,7 @@ function vidres_change(num) {
 			<div class="expand-content" id="expand-content">
 				<div>
 					<span class="watch-channel-stat">Added:</span>
-					<span class="watch-video-added">{{ video.time | date() }}</span>
+					<span class="watch-video-added">{{ video.time | date('F j, Y, h:i A') }}</span>
 					<span class="smallText">(<a class="eLink" onclick="exp_col_desc()">Less info</a>)</span>
 				</div>
 				
@@ -501,7 +496,11 @@ function vidres_change(num) {
 						<span class="watch-channel-stat">Tags:&nbsp;</span>
 					</div>
 					<div id="watch-video-tags" class="floatL">
-														                                                                                    <a href="/results.php?search=gay+people&amp;t=Search+Videos">gay people</a>,                                                                                     <a href="/results.php?search=+ytpmv&amp;t=Search+Videos"> ytpmv</a>                                                        					</div>
+					{% for tag in video.tags|json_decode %}
+					<a href="/results.php?search=gay+people&amp;t=Search+Videos">{{ tag }}</a>
+					{% endfor %}
+					<a href="/results.php?search=gay+people&amp;t=Search+Videos">gay people</a>
+					<a href="/results.php?search=+ytpmv&amp;t=Search+Videos"> ytpmv</a></div>
 					<div class="clearL"></div>
 				</div>
 				<div id="watch-url-div">
@@ -520,7 +519,7 @@ function vidres_change(num) {
 				<div class="clearR"></div>
 				<div>
 					<form action="" name="embedForm" id="embedForm">
-						<input id="embed_code" name="embed_code" type="text" value="<iframe id=&quot;embedplayer&quot; src=&quot;http://www.bitview.net/embed.php?v=HAhZ8EvtCfu&quot; width=&quot;448&quot; height=&quot;382&quot; allowfullscreen scrolling=&quot;off&quot; frameborder=&quot;0&quot;></iframe>" onclick="javascript:document.embedForm.embed_code.focus();document.embedForm.embed_code.select();" readonly="">
+						<input id="embed_code" name="embed_code" type="text" value="<iframe id=&quot;embedplayer&quot; src=&quot;http://www.bitview.net/embed.php?v={{ video.video_id }}&quot; width=&quot;448&quot; height=&quot;382&quot; allowfullscreen scrolling=&quot;off&quot; frameborder=&quot;0&quot;></iframe>" onclick="javascript:document.embedForm.embed_code.focus();document.embedForm.embed_code.select();" readonly="">
 					</form>
 				</div>
 			</div> 

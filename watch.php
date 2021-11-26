@@ -7,6 +7,14 @@ $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.autho
 
 if (!$videoData) error('404', __("The video you were looking for cannot be found."));
 
+// using comment.php on 2008 would require clunky javascript
+if ($frontend = "2008") {
+	if (isset($_POST['comment_submit'])) {
+		query("INSERT INTO comments (id, comment, author, date, deleted) VALUES (?,?,?,?,?)",
+		[$videoData['video_id'],$_POST['comment_text'],$userdata['id'],time(),0]);
+	}
+}
+
 $query = '';
 $count = 0;
 if ($videoData['tags']) {
