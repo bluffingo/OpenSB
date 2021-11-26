@@ -1,0 +1,329 @@
+{% extends "_layout-profile.twig" %}
+
+{% block content %}
+        <!--Begin Page Container Table-->
+<div class="profileTitleLinks">
+        <div id="profileSubNav">
+                <strong> Profile </strong>
+                        <span class="delimiter">|</span>
+                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=videos">Public Videos</a> (0)
+                        <span class="delimiter">|</span>
+                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=pvideos">Private Videos</a>  (0)
+                        <span class="delimiter">|</span>
+                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=favorites">Favorites</a>  (0)
+                        <span class="delimiter">|</span>
+                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=friends">Friends</a>  (0)
+                        <span class="delimiter">|</span>
+                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=comments">Comments</a>  (0)
+                        <span class="delimiter">|</span>
+                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=bulletins">Bulletins</a> (0)
+        </div>
+</div>    
+  
+
+<div class="channelContainer">
+<div class="channelLeftColumn">
+    <!--Begin Left Column-->        
+        <!--Begin Profile Box-->
+        <div class="headerBox"><div class="BoxesInnerOpacity">      <div class="headerTitleEdit">
+            <div class="headerTitleRight">
+                    <div>
+                                                    <div id="subscribeDiv" style="filter: grayscale(1);">
+                                <a href="javascript:void(0)" onclick="alert('Please log in to subscribe!')" class="action-button" title="subscribe to {{ userpagedata.name }}'s videos">
+                                    <span class="action-button-leftcap"></span>
+                                    <span class="action-button-text">Subscribe</span>
+                                    <span class="action-button-rightcap"></span>
+                                </a>
+                            </div> 
+                                            </div>
+            </div>
+            <div class="headerTitleLeft">
+                    <span>{{ userpagedata.title }}</span>
+            </div>
+        </div>
+</div><div class="headerBoxOpacity"></div></div>
+        <div id="pBox" class="highlightBoxes profileLeftCol">
+        <div class="BoxesInnerOpacity padLsm padTsm padBsm padRsm">
+            <div>
+                <div class="floatL">
+                    <div class="user-thumb-xlarge">
+                        <img src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
+                    </div>
+                            <center>
+                                                        <div class="marT3"><img src="/assets/2008/pixel.gif" alt="Member" width="90" height="18"></div>
+                                                        </center>
+                </div>
+                <div style="float:left;margin-left:5px;width:180px;">
+                    <div class="largeTitles"><b>{{ userpagedata.name }}</b></div>
+                    <div class="padT3">
+                                                <div class="padB3">Type: Member</div>
+                                                <div class="smallText">Joined: <b>{{ userpagedata.joined | date('F j, Y') }}</b></div>
+                                                <div class="smallText">Last Login: <b>{{ userpagedata.lastview | relative_time() }}</b></div>
+                                                <div class="smallText">Videos Watched: <b>0</b></div>
+                        <div class="smallText">Subscribers: <b>0</b></div>
+                        <div class="smallText">Channel Views: <b>0</b></div>
+                       
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+                                    <div class="padT5 profileAssets">
+                                                
+                
+                
+                
+                <!-- <span class="smallText">Country:</span> <b>United Sex of My Hamster</b>
+                <br> -->
+
+                
+                
+                
+            </div>
+            <!-- <div class="padT10">
+                <table cellspacing="0" cellpadding="0"><tbody><tr>
+                    <td width="20" valign="top"><img src="/web/20080314023940im_/http://s.ytimg.com/yt/assets/2008/icn_award_17x24-vfl10931.gif" border="0"></td>
+                    <td valign="top">
+                                
+        
+    <span id="BeginvidDeschonors">
+                <a href="/web/20080314023940/http://www.youtube.com/members?t=w&amp;p=1&amp;s=ms&amp;g=3">#16 - Most Subscribed (This Week) - Directors</a><br>
+            <a href="/web/20080314023940/http://www.youtube.com/members?t=t&amp;p=1&amp;s=mv&amp;g=0">#3 - Most Viewed (Today)</a><br>
+            <a href="/web/20080314023940/http://www.youtube.com/members?t=t&amp;p=1&amp;s=mv&amp;g=3">#2 - Most Viewed (Today) - Directors</a><br>
+
+    </span>
+
+            <span id="RemainvidDeschonors" style="display: none">           <a href="/web/20080314023940/http://www.youtube.com/members?t=w&amp;p=1&amp;s=ms&amp;g=3">#16 - Most Subscribed (This Week) - Directors</a><br>
+            <a href="/web/20080314023940/http://www.youtube.com/members?t=t&amp;p=1&amp;s=mv&amp;g=0">#3 - Most Viewed (Today)</a><br>
+            <a href="/web/20080314023940/http://www.youtube.com/members?t=t&amp;p=1&amp;s=mv&amp;g=3">#2 - Most Viewed (Today) - Directors</a><br>
+            <a href="/web/20080314023940/http://www.youtube.com/members?t=w&amp;p=1&amp;s=mv&amp;g=0">#6 - Most Viewed (This Week)</a><br>
+            <a href="/web/20080314023940/http://www.youtube.com/members?t=w&amp;p=1&amp;s=mv&amp;g=3">#4 - Most Viewed (This Week) - Directors</a><br>
+</span>
+            <span id="MorevidDeschonors" class="smallText">(<a href="#" class="eLink" onclick="showInline('RemainvidDeschonors'); hideInline('MorevidDeschonors'); hideInline('BeginvidDeschonors'); showInline('LessvidDeschonors'); return false;">more</a>)</span>
+            <span id="LessvidDeschonors" style="display: none" class="smallText">(<a href="#" class="eLink" onclick="hideInline('RemainvidDeschonors'); hideInline('LessvidDeschonors'); showInline('BeginvidDeschonors'); showInline('MorevidDeschonors'); return false;">less</a>)</span>
+
+
+                    </td>
+                </tr></tbody></table>
+            </div> !-->
+        </div>
+        <div class="highlightBoxesOpacity"></div>
+              <div class="flaggingText"><a href="/help.php">Report</a> profile image violation</div>
+    </div> <!-- end pBox-->
+
+        <div class="headerBox">     
+            <div class="BoxesInnerOpacity">
+            <div class="headerTitle">Connect with {{ userpagedata.name }}</div>            
+            </div>
+        <div class="headerBoxOpacity"></div>
+        </div>
+        <div class="basicBoxes profileLeftCol" style="margin-bottom:15px;">
+            <div class="BoxesInnerOpacity">
+            <table width="100%" cellspacing="0" cellpadding="3" border="0">
+            <tbody><tr>
+                <td width="110" valign="middle" align="right">
+                    <div class="user-thumb-partner">
+                        <img src="{{ profile_image(userpagedata.name) }}" border="0">  
+                    </div>
+                </td>
+                <td valign="top" align="left">
+                    <table class="actionsTable">
+                        <tbody><tr class="actionsTable">
+                            <td class="actionsTable">
+                                <div class="smallText">
+                                <a id="aProfileSendMsg" href="javascript:void(0)" onclick="alert('Please log in to send {{ userpagedata.name }} a message!')"><img src="/assets/2008/pixel.gif" id="profileSendMsg" class="icnProperties" alt="Send Message">Send Message</a>
+                                </div>
+                                <div class="smallText">
+                                    <a id="aProfileAddComment" href="javascript:void(0)" onclick="alert('Please log in to comment!')"><img src="/assets/2008/pixel.gif" id="profileAddComment" class="icnProperties" alt="Add Comment">Add Comment</a>
+                                </div>
+
+                                <div class="smallText">
+                                    <a id="aProfileFwdMember" href="#"><img src="/assets/2008/pixel.gif" id="profileFwdMember" class="icnProperties" alt="Share Channel">Share Channel</a>
+                                </div>
+                                <div class="smallText">
+                                </div>
+                                <div class="smallText">
+                                                                        <a id="aProfileAddFriend" href="javascript:void(0)" onclick="alert('Please log in to add {{ userpagedata.name }} to friends!')"><img src="/assets/2008/pixel.gif" id="profileAddFriend" class="icnProperties" alt="Add as Friend">Add as Friend</a>
+                                     
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="marB3 alignC"><a href="{{ page_url }}">{{ page_url }}</a></div>
+                </td>                                               
+            </tr>
+            </tbody></table>
+            </div>
+            <div class="basicBoxesOpacity"></div>
+        </div>
+
+
+
+        <div class="headerBox">
+            <div class="BoxesInnerOpacity">
+                    <div class="headerTitle">My Recent Ratings</div>
+            </div>
+            <div class="headerBoxOpacity"></div>
+        </div>
+        <div class="basicBoxes profileLeftCol" style="margin-bottom:15px;">
+        <div class="BoxesInnerOpacity" style="padding: 5px;">
+                        <div style="font-size:15px;color:#444;text-align:center;padding:22px 0 29px">No Recent Ratings found...</div>
+                        
+            <div class="basicBoxesOpacity"></div>
+        </div>
+        </div>
+
+
+                    <div class="headerBox"><div class="boxesInnerOpacity">
+            <div class="headerTitle"><span>Subscriptions (<a href="/profile.php?user={{ userpagedata.name }}&amp;page=subscriptions" class="headersSmall">more</a>)</span></div>                      
+</div><div class="headerBoxOpacity"></div></div>
+            <div id="channelsBox" class="basicBoxes profileLeftCol">
+                <div class="BoxesInnerOpacity">
+                                <div style="font-size:15px;color:#444;text-align:center;padding:22px 0 29px">No Subscriptions...</div>
+                        <div style="clear:both"></div>
+            </div>
+            <div class="basicBoxesOpacity"></div>
+            </div>
+
+
+            <div class="headerBox"><div class="boxesInnerOpacity">              
+            <div class="headerTitle">
+                    <span>Subscribers (<a href="/profile.php?user={{ userpagedata.name }}&amp;page=subscribers" class="headersSmall">0</a>)</span>
+            </div></div>
+<div class="headerBoxOpacity"></div></div>
+            <div id="channelsBox" class="basicBoxes profileLeftCol">
+                <div class="BoxesInnerOpacity">
+                                        <div style="font-size:15px;color:#444;text-align:center;padding:22px 0 29px">No Subscribers...</div>
+                                    <div style="clear:both"></div>
+                </div>
+                <div class="basicBoxesOpacity"></div>
+            </div>
+    
+        <!--Begin Bulletin Board Box-->
+            <div class="headerBox"><div class="boxesInnerOpacity">          <div class="headerTitle">
+                <span>Bulletins (<a href="/profile.php?user={{ userpagedata.name }}&amp;page=bulletins" class="headersSmall">0</a>)</span>
+                                            </div>                      
+</div><div class="headerBoxOpacity"></div></div>
+            <div id="bulletinBox" class="basicBoxes profileLeftCol">
+                <div class="BoxesInnerOpacity">
+                <div style="font-size:15px;color:#444;text-align:center;padding:22px 0 29px">No Bulletins...</div><table class="bulletinTable" width="300">
+                    <tbody>
+                                        
+                                    </tbody></table>
+                </div>
+                <div class="basicBoxesOpacity"></div>
+            </div>
+    <!--End Bulletin board Box-->
+    <!--Begin Comments Box-->
+<!--End Comments Box-->
+</div>
+<!--End Left Column-->
+    
+<!--Begin Right Column-->
+<div class="channelRightColumn">
+                
+        <!--Begin Videos Scroller Box-->
+            <div class="headerBox">
+            <div class="boxesInnerOpacity">         
+            <div class="headerTitle">
+                <span>Videos (<a href="/profile.php?user={{ userpagedata.name }}&amp;page=videos" class="headersSmall">0</a>)</span>
+            </div>  
+</div><div class="headerBoxOpacity"></div></div>
+            <div class="basicBoxes scrollersBox profileRightCol">
+                <div class="BoxesInnerOpacity">
+                    <div id="profileVideos">
+                        <div style="font-size:15px;color:#444;text-align:center;padding:22px 0 29px">No Videos...</div>
+                
+                    </div>
+                </div>
+                <div class="basicBoxesOpacity"></div>
+            </div>
+                
+                    <!-- Begin Video Log Box-->
+    <!--End Video Log Box-->
+                    
+
+    <!--Begin If No Favorites Empty Set Box-->
+    <!--End If No Favorites Empty Set Box-->
+
+
+      
+    <!--Begin Favorites Box-->
+            <div class="headerBox"><div class="boxesInnerOpacity">
+            <div class="headerTitle">
+                <div class="headerTitleRight">
+            </div>
+                <span>Favorites (<a href="/profile.php?user={{ userpagedata.name }}&amp;page=favorites" class="headersSmall">0</a>)</span>
+            </div>  
+</div><div class="headerBoxOpacity"></div></div>
+            <div class="basicBoxes scrollersBox profileRightCol">
+                <div class="BoxesInnerOpacity">
+                                    <div style="font-size:15px;color:#444;text-align:center;padding:22px 0 29px">No Favorite Videos...</div>
+                
+                </div>
+                <div class="basicBoxesOpacity"></div>
+
+            </div>
+    <!--End Favorites Box-->
+
+
+    <!--Begin Channels Box-->
+    <!--End Channels Box-->
+                    
+    <!--Begin If No Subscribers Empty Set Box-->
+    <!--End If No Subscribers Empty Set Box-->
+
+    <!--Begin Subscribers Box-->
+    <!--End Subscribers Box-->
+
+    <!--Begin If No Friends Empty Set Box-->
+    <!--End If No Friends Empty Set Box-->
+
+
+    <!--Begin Friends Box-->
+    <!--End Friends Box-->
+
+  
+<!--Begin Comments Box-->
+
+
+    <div class="headerBox"><div class="boxesInnerOpacity">  <div class="headerTitle">
+            <div class="headerTitleRight"><a href="/login.php" class="headers" rel="nofollow">Add Comment</a>
+            </div>
+            <span>Channel Comments (<a href="/profile.php?user={{ userpagedata.name }}&amp;page=comments" class="headersSmall">0</a>)</span>
+    </div>
+</div><div class="headerBoxOpacity"></div></div>
+    <div id="commentsBoxRight" class="basicBoxes profileRightCol">
+        <div class="BoxesInnerOpacity">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                                    <tr>
+                    <td colspan="3" align="center">
+                        <div style="padding: 10px 0px; text-align: center;">
+                            <span class="smallText">
+                                <a href="/login.php">Add Comment</a>
+                                    | <a href="/profile.php?user={{ userpagedata.name }}&amp;page=comments">See all comments</a>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        <div class="basicBoxesOpacity"></div>
+    </div>
+    <br>
+<!--End Comments Box-->
+</div>
+<div style="clear:both"></div>
+<!--End Right Column-->
+<!--End Page Container Table-->
+</div>
+
+
+
+        
+              <div class="flaggingText"><a href="/a/flag_user.php?user={{ userpagedata.name }}&amp;reason=1">Report</a> background graphic / <a href="/a/flag_user.php?user={{ userpagedata.name }}&amp;reason=0">Report</a> this user.</div>
+{% endblock %}
