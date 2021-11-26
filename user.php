@@ -8,6 +8,16 @@ if (isset($_GET['id'])) {
 	$userpagedata = fetch("SELECT * FROM users WHERE name = ?", [$_GET['name']]);
 }
 
+$customProfile = fetch("SELECT * FROM channel_settings WHERE user = ?", [$userpagedata['id']]);
+
+var_dump($customProfile);
+
+if ($customProfile == false) {
+	query("INSERT INTO `channel_settings` 
+	(`user`, `background`, `fontcolor`, `titlefont`, `link`, `headerfont`, `highlightheader`, `highlightinside`, `regularheader`, `regularinside`) 
+	VALUES (?, '#ffffff', '#222222', '#ffffff', '#0033CC', '#ffffff', '#3399cc', '#ecf4fb', '#3399cc', '#ffffff')",[$userpagedata['id']]);
+}
+
 if (!isset($userpagedata) || !$userpagedata) {
 	error('404', 'No user specified');
 }
@@ -98,14 +108,6 @@ $css = $scss->compile(
 		@include gradient-y-three-colors(lighten($color, 8%), $color, 60%, darken($color, 4%));
 	}'
 );
-
-$customProfile = fetch("SELECT * FROM channel_settings WHERE user = ?", [$userdata['id']]);
-
-var_dump($customProfile);
-
-//if (isset($userdata['id']) {
-//query("INSERT INTO channel_settings (user) values (?)",[$userdata['id']]);
-//}
 
 $twig = twigloader();
 echo $twig->render('user.twig', [

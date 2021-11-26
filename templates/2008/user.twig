@@ -32,7 +32,7 @@ tr.bulletinTableNBFull td {
   background-color: #ecf4fb !important;
 }
 .video-thumb-micro, .video-thumb-small, .video-thumb-medium, .video-thumb-large, .video-thumb-jumbo {
-  border: 3px double #3399cc !important;
+  border: 3px double {{ customProfile.regularheader }} !important;
   background-color: #ecf4fb !important;
 }
 .vimg90 {
@@ -143,17 +143,17 @@ tr.bulletinTable td.firstCol {
     border-right: 1px solid #3399cc !important;
 }
 .user-thumb-micro, .user-thumb-small, .user-thumb-medium, .user-thumb-large, .user-thumb-jumbo {
-    border: 3px double #3399cc !important;
+    border: 3px double {{ customProfile.regularheader }} !important;
     background-color: transparent;
 }
 .vimg, .vimg70 {
     border: 1px solid #3399cc !important;
 }
 .labels {
-    color: #222222 !important;
+    color: {{ customProfile.fontcolor }} !important;
 }
 tr.commentsTableFull td {
-    color: #222222 !important;
+    color: {{ customProfile.fontcolor }} !important;
 }
 .flaggingText {
     color: {{ customProfile.fontcolor }} !important;
@@ -459,6 +459,21 @@ tr.commentsTableFull td {
             <table width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                                     <tr>
+<tr class="commentsTableFull" id="cc_197212">
+        <td width="60" valign="top" align="left">
+            <div class="user-thumb-large">
+            <a href="/profile.php?user=Punchy207"><img src="https://media.discordapp.net/attachments/913859149295677472/913890211459649596/unknown.png"></a>
+            </div>
+        </td>
+        <td width="85%" valign="top" align="left">
+            <div class="smallText" style="font-weight: bold; padding-bottom: 12px;"><a href="/profile.php?user=Punchy207">Punchy207</a>
+<span class="labels">| Mayvember 32st 2069</span>                 <span>
+                    </span>
+            </div>
+
+                <span>I love children!</span>
+        </td>
+        </tr>
                     <td colspan="3" align="center">
                         <div style="padding: 10px 0px; text-align: center;">
                             <span class="smallText">

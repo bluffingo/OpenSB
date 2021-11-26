@@ -1,7 +1,7 @@
 <?php
 require('lib/common.php');
 
-echo 'TODO: channels template for prototype frontend';
+echo 'TODO: channels template for sbnext frontend';
 
 $offset = ((isset($_GET['page']) ? $_GET['page'] : 1) - 1) * 20;
 
