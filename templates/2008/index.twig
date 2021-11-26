@@ -7,62 +7,23 @@
         <div class="homepage-content-block" style="margin-left:18px; border:0px #CCC solid;">
         <div class="homepage-block-heading homepage-block-heading-gray">Recently Viewed</div>
         <div>
-                                    <div class="homepage-sponsored-video fav1 rec-view marB0" style="-webkit-animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;">
+		{% for video in recently_viewed %}
+		{% set counter = counter + 1 %}
+                                    <div class="homepage-sponsored-video fav{{ counter }} rec-view marB0" style="-webkit-animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;">
              <div class="videoIconWrapperOuter fav">
                 <div class="videoIconWrapperInner">
-                    <div class="vstill"><a href="/watch.php?v=jZ2RXLpplbN"><img src="/u/thmp/jZ2RXLpplbN.jpg" class="vimg120"></a></div>
+                    <div class="vstill"><a href="/watch.php?v={{ video.video_id }}"><img src="{{ video_thumbnail(video.video_id) }}" class="vimg120"></a></div>
                     </div> 
 
                 </div>
                 <div class="vtitle fav smallText">
-                    <a href="/watch.php?v=jZ2RXLpplbN" name="Sonic Adventure 2 Escape From The ">Sonic Adventure 2 Escape From The </a>
+                    <a href="/watch.php?v={{ video.video_id }}" name="{{ video.title }} ">{{ video.title }} </a>
                 </div>
                 <div class="vfacets fav" style="margin-bottom: 0px;">
-                <div class="dg">3 seconds ago</div>
+                <div class="dg">{{ video.most_recent_view | relative_time }}</div>
                 </div>
             </div>
-                                    <div class="homepage-sponsored-video fav2 rec-view marB0" style="-webkit-animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;">
-             <div class="videoIconWrapperOuter fav">
-                <div class="videoIconWrapperInner">
-                    <div class="vstill"><a href="/watch.php?v=h6aHhhYwfQM"><img src="/u/thmp/h6aHhhYwfQM.jpg" class="vimg120"></a></div>
-                    </div> 
-
-                </div>
-                <div class="vtitle fav smallText">
-                    <a href="/watch.php?v=h6aHhhYwfQM" name="MegaMan X4/SonAmy - Makenai ai ga ">MegaMan X4/SonAmy - Makenai ai ga </a>
-                </div>
-                <div class="vfacets fav" style="margin-bottom: 0px;">
-                <div class="dg">3 seconds ago</div>
-                </div>
-            </div>
-                                    <div class="homepage-sponsored-video fav3 rec-view marB0" style="-webkit-animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;">
-             <div class="videoIconWrapperOuter fav">
-                <div class="videoIconWrapperInner">
-                    <div class="vstill"><a href="/watch.php?v=Kl45oj6l"><img src="/u/thmp/Kl45oj6l.jpg" class="vimg120"></a></div>
-                    </div> 
-
-                </div>
-                <div class="vtitle fav smallText">
-                    <a href="/watch.php?v=Kl45oj6l" name="OLA SOY WAXI SOY GEY ME GUSTAN LOS">OLA SOY WAXI SOY GEY ME GUSTAN LOS</a>
-                </div>
-                <div class="vfacets fav" style="margin-bottom: 0px;">
-                <div class="dg">4 seconds ago</div>
-                </div>
-            </div>
-                                    <div class="homepage-sponsored-video fav4 rec-view marB0" style="-webkit-animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; animation: scale-up-recent 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;">
-             <div class="videoIconWrapperOuter fav">
-                <div class="videoIconWrapperInner">
-                    <div class="vstill"><a href="/watch.php?v=ceNlMJGWH2y"><img src="/u/thmp/ceNlMJGWH2y.jpg" class="vimg120"></a></div>
-                    </div> 
-
-                </div>
-                <div class="vtitle fav smallText">
-                    <a href="/watch.php?v=ceNlMJGWH2y" name="Loquendo la Everdrive 64.">Loquendo la Everdrive 64.</a>
-                </div>
-                <div class="vfacets fav" style="margin-bottom: 0px;">
-                <div class="dg">4 seconds ago</div>
-                </div>
-            </div>
+		{% endfor %}
                                 <div class="clearL" style="height: 1px;"></div>
         </div>
     </div>
