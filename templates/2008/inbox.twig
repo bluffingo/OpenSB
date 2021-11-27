@@ -61,7 +61,7 @@
                     <td style="width:25%">Date</td>
                 </tr>
 				{% for notif in notifs %}
-                                                                    <tr class="ms_sct" onclick="readMessage(55)" style="background:white!important;">
+                                                                    <tr class="ms_sct" onclick="readMessage({{ id }})" style="background:white!important;">
                     <td></td>
                     <td>
                         squareBracket
@@ -73,7 +73,7 @@
                         <span>December 08, 2017</span>
                     </td>
                 </tr>
-                <tr class="in_message  hddn" id="i_55" style="background:#F2F2F2!important;">
+                <tr class="in_message  hddn" id="i_{{ id }}" style="background:#F2F2F2!important;">
                                         <td></td>
                     <td colspan="1" valign="middle" align="center">
                         <a href="/profile.php?user=paris201"><img src="/u/av/paris201.jpg?15" class="avatar" alt="paris201" width="66" height="66"></a>				</td>

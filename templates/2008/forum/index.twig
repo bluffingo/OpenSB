@@ -1,0 +1,55 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Forum") }}{% endblock %}
+
+	{% block content %}
+{% set category = -1 %}
+{% for forum in forums %}
+	{% if can_view_forum(forum) %}
+
+	{% if forum.cat != category %}
+		{% if category != -1 %}
+			</table><br>
+		{% endif %}
+
+		{% set category = forum.cat %}
+		<table width="100%" height="28" cellspacing="0" cellpadding="0" border="0" >
+			<tr background="/assets/2008/LongGenericTab.jpg" height="28">
+				<td style="font-size: 13px; color: #6D6D6D; font-weight: bold; padding-right: 5px;">&nbsp;</td>
+				<td style="font-size: 13px; color: #6D6D6D; font-weight: bold; padding-right: 5px;">{{ categories[forum.cat] }}</td>
+				<td style="font-size: 13px; color: #6D6D6D; font-weight: bold; padding-right: 5px;" width="65">{{ __("Threads") }}</td>
+				<td style="font-size: 13px; color: #6D6D6D; font-weight: bold; padding-right: 5px;" width="50">{{ __("Posts") }}</td>
+				<td style="font-size: 13px; color: #6D6D6D; font-weight: bold; padding-right: 5px;" width="150">{{ __("Last post") }}</td>
+			</tr>
+	{% endif %}
+
+	<tr bgcolor="#EEEEEE">
+		<td style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; color: #666666; padding-left: 3px; padding-top:3px; padding-bottom:3px;">
+			{% if log and forum.lastdate > forum.rtime %}
+			<img src="/assets/on.png">
+			{% else %}
+			<img src="/assets/off.png">
+			{% endif %}
+		</td>
+		<td style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; color: #666666; padding-left: 3px; padding-top:3px; padding-bottom:3px;">
+			{% if forum.private %}({% endif %}<a href="forum.php?id={{ forum.id }}">{{ forum.title }}</a>{% if forum.private %}){% endif %}
+			<br><span>{{ forum.descr | raw }}</span>
+		</td>
+		<td style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; color: #666666; padding-left: 3px; padding-top:3px; padding-bottom:3px;">{{ forum.threads }}</td>
+		<td style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; color: #666666; padding-left: 3px; padding-top:3px; padding-bottom:3px;">{{ forum.posts }}</td>
+		<td style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; color: #666666; padding-left: 3px; padding-top:3px; padding-bottom:3px;">
+			{% if forum.posts > 0 and forum.lastdate > 0 %}
+				<nobr>{{ forum.lastdate | date(forum_dateformat) }}</nobr>
+				<br>
+				<span>{{ __("by") }} {{ userlink(forum, 'u') }} <a href="thread.php?pid={{ forum.lastid }}#{{ forum.lastid }}">&raquo;</a></span>
+			{% else %}
+				None
+			{% endif %}
+		</td>
+	</tr>
+
+	{% endif %}
+{% endfor %}
+</table>
+</table>
+	{% endblock %}

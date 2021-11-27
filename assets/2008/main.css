@@ -4616,3 +4616,32 @@ font-weight:bold;
 #homepage-iyt-promo img{
 vertical-align:middle;
 }
+.avatar {
+width: 99px;
+}
+.autowidth { width: auto !important; }
+.wbreak { word-break: break-word; }
+.fullwidth { width: 100% !important; }
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.video_menu {
+  float: left;
+  width: 175px;
+}
+.video_menu a {
+  border-bottom: 0 !important;
+  text-decoration: none;
+}
+.video_menu > a {
+  display: block;
+  padding: 4px;
+  font-weight: 700;
+  font-size: 13px;
+}
