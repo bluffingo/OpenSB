@@ -326,19 +326,38 @@ HAH! GOTTEM
             </div>
         </div></div>
 {% else %}
-  <div class="signInBoxBorder">
-    <div class="signInBoxContent">
-            <strong>Want to personalize this homepage?</strong><br>
-        <a href="/login.php"><strong>Login to squareBracket now!</strong></a>
-        <div class="homepage-border-dotted"></div>
-        <span class="smgrayText">
-        <a href="/signup.php">Don't have an account? Sign up!</a>
-        </span>
-        <a href="/about.php" rel="nofollow"><img src="/assets/2008/pixel.gif" class="alignMid gaiaHelpBtn" alt="" border="0"></a>
-    </div> 
-        </div>  
+<div class="homepage-content-block">
+			<div class="contentBox">
+				<div>
+					<div class="floatR"><span class="smallText"><b><a href="register.php">Sign Up</a> | <a href="https://www.youtube.com/watch?v=_m9Lu56Ss4Y">Help</a></b></span></div>
+					<div class="floatL">
+						<span class="headerTitle homepage-block-heading-gray"> Login </span>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<form method="post" name="loginForm" id="loginForm" action="/login.php">
+				<input type="hidden" name="action_login" value="1">
+				<table width="270">
+					<tbody><tr>
+						<td align="right"><label for="homeUsername"><span class="smallText"><b>Username:</b></span></label></td>
+						<td align="left"><input id="homeUsername" tabindex="101" class="smallText" type="text" size="16" name="username" value=""></td>
+					</tr>
+					<tr>
+						<td align="right"><label for="homePassword"><span class="smallText"><b>Password:</b></span></label></td>
+						<td align="left"><input id="homePassword" tabindex="102" class="smallText" type="password" size="16" name="password">
+					</td></tr>
+					<tr>
+						<td></td>
+						<td align="left">
+							<span><input type="submit" class="smallText" name="loginsubmit" value="Login"></span>	
+						</td>
+					</tr>
+				</tbody></table>
+				<div class="padT10 smallText">
+					<p class="marT0 marB0" align="center"><a>Forgot Username</a> | <a>Forgot Password</a></p>
+				</div></div></div>
 {% endif %}
-                <br>
         </div> <!-- end homepage-content-block -->
                 <div style="width:120;margin:0 auto;text-align:center">
             <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

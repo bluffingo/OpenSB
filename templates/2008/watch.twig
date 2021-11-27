@@ -362,7 +362,7 @@ function vidres_change(num) {
 		</tr>
 		<tr>
 			<td>Responses: <a class="hLink bold" href="" onmousedown="">0</a></td>
-			<td>Comments: <a href="" class="hLink bold">4</a></td>
+			<td>Comments: <a href="" class="hLink bold">{{ comCount }}</a></td>
 		</tr>
 	</tbody></table>
 			</div>
@@ -391,7 +391,7 @@ function vidres_change(num) {
                  </a>
              </div>
              			<div id="watch-channel-stats">
-				<span class="watch-channel-stat">From: </span> <a href="/profile.php?user=CFV">{{ video.u_name }}</a><br>
+				<span class="watch-channel-stat">From: </span> <a href="/user.php?name={{ video.u_name }}">{{ video.u_name }}</a><br>
 				<span class="watch-channel-stat">Joined:</span> {{ video.u_joined | relative_time() }}<br>
 				<span class="watch-channel-stat">Videos:</span> <span id="watch-channel-videos">56</span>
 			</div>
@@ -563,312 +563,29 @@ function vidres_change(num) {
 	</div>
  
 		<div id="watch-related-videos-panel" class="watch-wrapper expand-panel expanded">
-		<a onclick="showhide_related()" class="expand-header"><img src="img/arrow1.png" style="margin-right: 2px;margin-bottom: 1px;" alt="" id="arrow_related">                                        Related Videos
+		<a onclick="showhide_related()" class="expand-header"><img src="img/arrow1.png" style="margin-right: 2px;margin-bottom: 1px;" alt="" id="arrow_related">Related Videos
                                     </a>
 		<div class="watch-body expand-content" id="watch_related" style="display: block;">
 			<div id="watch-related-vids-body" class="watch-discoverbox-list-view">
 						<div class="watch-discoverbox" style="height:302px" onscroll="performDelayLoad('related')">
-						<div class="watch-discoverbox-entry">
+         {% for video in related_videos %}
+<div class="watch-discoverbox-entry">
 			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=Q15vqp_YQyd" rel="nofollow"><img title="gay people" src="/assets/2008/nothump.png" class="vimg90" alt="title"></a></div></div>
+					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v={{ data.video_id }}" rel="nofollow"><img title="{{ video.title }}" src="{{ video_thumbnail(video.video_id) }}" class="vimg90" alt="title"></a></div></div>
 			</div>
 			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=Q15vqp_YQyd">gay people</a></div>
+				<div class="vtitle"><a class="hLink" href="/watch.php?v={{ data.video_id }}">{{ video.title }}</a></div>
 				<div>
-					<span class="smallText">00:00</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=k19" class="hLink">k19</a></span>
+					<span class="smallText">{{ video_length(data) }}</span>
+					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user={{ video.u_name }}" class="hLink">{{ video.u_name }}</a></span>
 				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">28</span></div>
+				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">{{ video.views }}</span></div>
 
 			</div>
 		</div>
 		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=Jg0KS2TgW3b" rel="nofollow"><img title="Roblox News HD Edition (Jun 12, 2019)" src="/u/thmp/Jg0KS2TgW3b.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=Jg0KS2TgW3b">Roblox News HD Edition (Jun 12, 2019)</a></div>
-				<div>
-					<span class="smallText">06:22</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=NoMaxArchive" class="hLink">NoMaxArchive</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">4</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=tYKMm5PtQem" rel="nofollow"><img title="Funny compilation 2 (BY MALTESICH THIS TIME!!)" src="/u/thmp/tYKMm5PtQem.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=tYKMm5PtQem">Funny compilation 2 (BY MALTESICH THIS TIME!!)</a></div>
-				<div>
-					<span class="smallText">03:39</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=Maltesich" class="hLink">Maltesich</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">17</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=GcNnIx4i" rel="nofollow"><img title="fatass clones" src="/u/thmp/GcNnIx4i.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=GcNnIx4i">fatass clones</a></div>
-				<div>
-					<span class="smallText">00:08</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=georgertube" class="hLink">georgertube</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">25</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=OoFDYVeM" rel="nofollow"><img title="BVPMVBR - Seu Madruga Scan" src="/u/thmp/OoFDYVeM.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=OoFDYVeM">BVPMVBR - Seu Madruga Scan</a></div>
-				<div>
-					<span class="smallText">01:15</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=HadopProductions" class="hLink">HadopProductions</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">86</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=cmKAzblrq1V" rel="nofollow"><img title="BVPMV - Rock My Chavo" src="/u/thmp/cmKAzblrq1V.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=cmKAzblrq1V">BVPMV - Rock My Chavo</a></div>
-				<div>
-					<span class="smallText">03:08</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=HadopProductions" class="hLink">HadopProductions</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">780</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=Ow5Ltf9Endi" rel="nofollow"><img title="ytp mv- tru pimpin" src="/u/thmp/Ow5Ltf9Endi.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=Ow5Ltf9Endi">ytp mv- tru pimpin</a></div>
-				<div>
-					<span class="smallText">01:54</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=NoMaxArchive" class="hLink">NoMaxArchive</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">15</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=_X2ps_7ObLA" rel="nofollow"><img title="Cancelled ytpmv" src="/u/thmp/_X2ps_7ObLA.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=_X2ps_7ObLA">Cancelled ytpmv</a></div>
-				<div>
-					<span class="smallText">00:12</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=mtboss124" class="hLink">mtboss124</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">20</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=Jr7FAh5tAnJ" rel="nofollow"><img title="Real Ghosts Caught on Camera attacking people part 2" src="/u/thmp/Jr7FAh5tAnJ.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=Jr7FAh5tAnJ">Real Ghosts Caught on Camera attacking people part 2</a></div>
-				<div>
-					<span class="smallText">08:40</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=ReuploadsGallore666" class="hLink">ReuploadsGallore666</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">15</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=40PBtJgPSz7" rel="nofollow"><img title="Real Ghosts Caught on Camera attacking people part 1" src="/u/thmp/40PBtJgPSz7.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=40PBtJgPSz7">Real Ghosts Caught on Camera attacking people part 1</a></div>
-				<div>
-					<span class="smallText">09:56</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=ReuploadsGallore666" class="hLink">ReuploadsGallore666</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">15</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=eaRKVYWYQNN" rel="nofollow"><img title="IF YOU DON'T SUBSCRIBE I WILL DISLIKE YOUR CHANNEL USERVM AND COLLABVM SUBSCRIBE MY CHANNEL NOW!!!!!" src="/u/thmp/eaRKVYWYQNN.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=eaRKVYWYQNN">IF YOU DON'T SUBSCRIBE I WILL DISLIKE YOUR CHANNEL USERVM AND COLLABVM SUBSCRIBE MY CHANNEL NOW!!!!!</a></div>
-				<div>
-					<span class="smallText">02:05</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=Guest89741" class="hLink">Guest89741</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">24</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=00ovazzcJNX" rel="nofollow"><img title="The subway at Sofia, Bulgaria" src="/u/thmp/00ovazzcJNX.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=00ovazzcJNX">The subway at Sofia, Bulgaria</a></div>
-				<div>
-					<span class="smallText">00:14</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=vikimal19" class="hLink">vikimal19</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">27</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=QiG7PbD8RiA" rel="nofollow"><img title="YTPMV made in Sony Vegas 7 Test" src="/u/thmp/QiG7PbD8RiA.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=QiG7PbD8RiA">YTPMV made in Sony Vegas 7 Test</a></div>
-				<div>
-					<span class="smallText">00:11</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=georgertube" class="hLink">georgertube</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">51</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=rjMCd0kiyeb" rel="nofollow"><img title="SlipSnot - My Balls = Shit" src="/u/thmp/rjMCd0kiyeb.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=rjMCd0kiyeb">SlipSnot - My Balls = Shit</a></div>
-				<div>
-					<span class="smallText">01:34</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=k19" class="hLink">k19</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">38</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=KM05Z7iNKgu" rel="nofollow"><img title="people playground offical trailer" src="/u/thmp/KM05Z7iNKgu.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=KM05Z7iNKgu">people playground offical trailer</a></div>
-				<div>
-					<span class="smallText">01:16</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=yoaustft123" class="hLink">yoaustft123</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">6</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=YBDT3fE8nQO" rel="nofollow"><img title="Streets on People Playground" src="/u/thmp/YBDT3fE8nQO.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=YBDT3fE8nQO">Streets on People Playground</a></div>
-				<div>
-					<span class="smallText">01:18</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=yoaustft123" class="hLink">yoaustft123</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">4</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=kLrlr6nQPLj" rel="nofollow"><img title="Village People - In the Navy OFFICIAL Music Video 1978" src="/u/thmp/kLrlr6nQPLj.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=kLrlr6nQPLj">Village People - In the Navy OFFICIAL Music Video 1978</a></div>
-				<div>
-					<span class="smallText">04:01</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=TalalQ8" class="hLink">TalalQ8</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">12</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=1KJKoagCyBL" rel="nofollow"><img title="expingation (WIP YTPMV)" src="/u/thmp/1KJKoagCyBL.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=1KJKoagCyBL">expingation (WIP YTPMV)</a></div>
-				<div>
-					<span class="smallText">00:22</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=vlad1" class="hLink">vlad1</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">15</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=5Re1jZow7uC" rel="nofollow"><img title="Punked Nights of Nights (Leer Descripcion)" src="/u/thmp/5Re1jZow7uC.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=5Re1jZow7uC">Punked Nights of Nights (Leer Descripcion)</a></div>
-				<div>
-					<span class="smallText">00:51</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=BrodaCode" class="hLink">BrodaCode</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">32</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="watch-discoverbox-entry">
-			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=FLLDFS_bhIm" rel="nofollow"><img title="Dumb Ways To Die - People Playground version" src="/u/thmp/FLLDFS_bhIm.jpg" class="vimg90" alt="title"></a></div></div>
-			</div>
-			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v=FLLDFS_bhIm">Dumb Ways To Die - People Playground version</a></div>
-				<div>
-					<span class="smallText">02:56</span>
-					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user=coldoliver24" class="hLink">coldoliver24</a></span>
-				</div>
-				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">7</span></div>
-
-			</div>
-		</div>
-		<div class="watch-discoverbox-divider"></div>
-				<div class="clear alignC padT5 padB10 bold">
+         {% endfor %}
+<div class="clear alignC padT5 padB10 bold">
 			<a href="/results.php?search=gay+people%2C+ytpmv&amp;t=Search+Videos">See All Results</a>
 		</div>
 			</div>

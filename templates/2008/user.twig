@@ -1,184 +1,9 @@
 {% extends "_layout-profile.twig" %}
 
 {% block content %}
-<style>
-.headerBox {
-    border: 1px solid {{ customProfile.highlightheader }} !important;
-}
-a{text-decoration:none;}a:hover{text-decoration:underline;}
-h1, h2, h3, h4, h5, h6 {
-  color: #222222 !important;
-}
-tr.commentsTableNBFull td {
-  border-bottom: 1px solid #3399cc !important;
-}
-tr.bulletinTableFull td { 
-  border-bottom: 1px dashed #3399cc !important;
-  border-right: 1px solid #3399cc !important;
-}
-.headerTitleLeft, .headerTitle {
-  color: #ffffff !important;
-}
-tr.bulletinTableFull th {
-  border-bottom: 1px solid #3399cc !important;
-  border-right: 1px solid #3399cc !important;
-}
-tr.bulletinTableNBFull td {
-  background-color: #3399cc;
-  border-bottom: 1px solid #3399cc !important;
-  border-right: 1px solid #3399cc !important;
-}
-.bulletinTableFull {
-  background-color: #ecf4fb !important;
-}
-.video-thumb-micro, .video-thumb-small, .video-thumb-medium, .video-thumb-large, .video-thumb-jumbo {
-  border: 3px double {{ customProfile.regularheader }} !important;
-  background-color: #ecf4fb !important;
-}
-.vimg90 {
-  border: 1px solid #3399cc !important;
-}
-.imgBrdr {
-  border: 1px solid #3399cc !important;
-}
-.headerBoxOpacity[class] {
-    background-color: {{ customProfile.highlightheader }} !important;
-}
-.basicBoxesOpacity[class] {
-    background-color: {{ customProfile.highlightinside }} !important;
-}
-.headerRCBox .content  {
-  background: #3399cc  !important;
-}
-.headerRCBox .rch * {
-  background: #3399cc  !important;
-}
-.headerRCBox .rch1 {
-  border-right: 1px solid #3399cc !important;
-  border-left: 1px solid #3399cc !important;
-}
-.footerBox {
-  background-color: #3399cc !important;
-  border: 1px solid #3399cc !important;
-}
-.pagingDiv {
-  background: #3399cc;
-  color: #222222 !important;
-}
-.pagerCurrent {
-  color: #3399cc  !important;
-  border: 1px solid #3399cc !important;
-}
-.pagerNotCurrent {
-  background-color: #ffffff !important; 
-}
-.headerRCBox .rch2 {
-  border-right: 1px solid #3399cc !important;
-  border-left: 1px solid #3399cc !important;
-}
-.headerRCBox .rch3 {
-  border-right: 1px solid #3399cc !important;
-  border-left: 1px solid #3399cc !important;
-}
-.headerRCBox .rch4 {
-  border-right: 1px solid #3399cc !important;
-  border-left: 1px solid #3399cc !important;
-}
-.headerRCBox .rch5 {
-  border-right: 1px solid #3399cc !important;
-  border-left: 1px solid #3399cc !important;
-}
-a.masthead:visited {
-  color: #03C !important;
-}
-a.masthead:link {
-  color: #03C !important;
-}
-a.masthead:active {
-  color: #03C !important;
-}
-a.headerLink:visited {
-  color: #03C !important;
-}
-a.headerLink:link {
-  color: #03C !important;
-}
-a.headerLink:active {
-  color: #03C !important;
-}
-#profileSubNav {
-    color: {{ customProfile.fontcolor }} !important;
-}
-a:link, a:visited, a:active {
-    color: {{ customProfile.link }} !important;
-}
-body { 
-background-color: {{ customProfile.background }} !important;
-}
-#pBox {
-    margin-bottom: 15px;
-    border-bottom: 1px solid {{ customProfile.regularheader }} !important;
-}
-
-.highlightBoxesOpacity[class] {
-    background: {{ customProfile.highlightinside }} !important;
-}
-.highlightBoxes, .basicBoxes {
-    border: 1px solid {{ customProfile.regularheader }} !important;
-    color: {{ customProfile.fontcolor }};
-}
-.vfacets, .runtime {
-    color: #222222 !important;
-}
-.vfacets a:link, a:visited {
-    font-size: 11px;
-}
-#pbox {
-    border-bottom: 1px solid {{ customProfile.regularheader }} !important;
-}
-tr.commentsTableFull td, tr.bulletinTable td {
-    border-bottom: 1px dashed #3399cc !important;
-}
-tr.bulletinTable td.firstCol {
-    border-right: 1px solid #3399cc !important;
-}
-.user-thumb-micro, .user-thumb-small, .user-thumb-medium, .user-thumb-large, .user-thumb-jumbo {
-    border: 3px double {{ customProfile.regularheader }} !important;
-    background-color: transparent;
-}
-.vimg, .vimg70 {
-    border: 1px solid #3399cc !important;
-}
-.labels {
-    color: {{ customProfile.fontcolor }} !important;
-}
-tr.commentsTableFull td {
-    color: {{ customProfile.fontcolor }} !important;
-}
-.flaggingText {
-    color: {{ customProfile.fontcolor }} !important;
-}
-</style>
-        <!--Begin Page Container Table-->
-<div class="profileTitleLinks">
-        <div id="profileSubNav">
-                <strong> Profile </strong>
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=videos">Public Videos</a> (0)
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=pvideos">Private Videos</a>  (0)
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=favorites">Favorites</a>  (0)
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=friends">Friends</a>  (0)
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=comments">Comments</a>  (0)
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=bulletins">Bulletins</a> (0)
-        </div>
-</div>    
-  
-
+{% if message %}
+	<div class="confirmBox" style="background-color: #cfeeb2 !important">{{ message }}</div>
+{% endif %}
 <div class="channelContainer">
 <div class="channelLeftColumn">
     <!--Begin Left Column-->        
@@ -491,26 +316,28 @@ tr.commentsTableFull td {
             <table width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                                     <tr>
+{% for comment in comments %}
 <tr class="commentsTableFull" id="cc_197212">
         <td width="60" valign="top" align="left">
             <div class="user-thumb-large">
-            <a href="/profile.php?user=Punchy207"><img src="https://media.discordapp.net/attachments/913859149295677472/913890211459649596/unknown.png"></a>
+            <a href="/user.php?name={{ comment.u_name }}"><img src="{{ profile_image(comment.u_name) }}"></a>
             </div>
         </td>
         <td width="85%" valign="top" align="left">
-            <div class="smallText" style="font-weight: bold; padding-bottom: 12px;"><a href="/profile.php?user=Punchy207">Punchy207</a>
-<span class="labels">| Mayvember 32st 2069</span>                 <span>
+            <div class="smallText" style="font-weight: bold; padding-bottom: 12px;"><a href="/user.php?name={{ comment.u_name }}">{{ comment.u_name }}</a>
+<span class="labels">| {{ comment.date | date('F j, Y') }}</span>                 <span>
                     </span>
             </div>
 
-                <span>I love children!</span>
+                <span>{{ comment.comment | raw }}</span>
         </td>
         </tr>
+{% endfor %}
                     <td colspan="3" align="center">
                         <div style="padding: 10px 0px; text-align: center;">
                             <span class="smallText">
-                                <a href="/login.php">Add Comment</a>
-                                    | <a href="/profile.php?user={{ userpagedata.name }}&amp;page=comments">See all comments</a>
+                                <a href="/user.php?name={{ userpagedata.name }}&page=post_comment">Add Comment</a>
+                                    | <a href="/profile.php?name={{ userpagedata.name }}&amp;page=comments">See all comments</a>
                             </span>
                         </div>
                     </td>
