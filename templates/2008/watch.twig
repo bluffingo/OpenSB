@@ -297,14 +297,15 @@ function vidres_change(num) {
 		<div id="watch-comment-post-comment">
 			<!--<a href="#" class="eLink bold" onclick="" id="post_text_comment_link" rel="nofollow">Post a Text Comment</a>-->
 		</div>
-		<a href="#" onclick="" class="expand-header"><img src="/assets/2008/pixel.gif" alt="" class="arrow">Text Comments <span class="expand-header-stat">(4)</span></a>
+		<a href="#" onclick="" class="expand-header">
+		<img src="/assets/2008/pixel.gif" alt="" class="arrow">Text Comments <span class="expand-header-stat">({{ comCount }})</span></a>
 		<div class="clear"></div>
 		<div class="expand-content">
 			<div id="div_main_comment2"></div>
 				<div id="recent_comments">
 				{% for comment in comments %}
-											<div id="cid_60973" class="watch-comment-entry">
-		<div class="watch-comment-head">
+											<div id="cid_{{ comment.comment_id }}" class="watch-comment-entry">
+		<div class="watch-comment-head"{% if comment.u_name == video.u_name %}style="background-color: #fffcc2"{% endif %}>
 			<div class="watch-comment-info">
 				<a class="watch-comment-auth" href="/user.php?name={{ comment.u_name }}" rel="nofollow">{{ comment.u_name }}</a>
 				<span class="watch-comment-time"> ({{ comment.date | relative_time}}) </span>
@@ -324,66 +325,6 @@ function vidres_change(num) {
 			</div>
 	</div>
 	{% endfor %}
-			<div id="cid_60972" class="watch-comment-entry">
-		<div class="watch-comment-head" style="background-color: #fffcc2;">
-			<div class="watch-comment-info">
-				<a class="watch-comment-auth" href="/profile.php?user=CFV" rel="nofollow">CFV</a>
-				<span class="watch-comment-time"> (35 minutes ago) </span>
-								<a id="show_link_commentid" class="watch-comment-head-link" onclick="">Show</a>
-				<a id="hide_link_commentid" class="watch-comment-head-link" onclick="">Hide</a>
-			</div>	
-	<span id="comment_spam_bug_commentid" class="watch-comment-spam-bug">Marked as spam</span>
-	<div id="reply_comment_form_id_commentid" class="watch-comment-action">
-			<a onclick="document.getElementById('comment_text').value = '@CFV:';">Reply</a> 
-	</div>
-			<div class="clearL"></div>
-		</div>
-			<div id="comment_body_commentid">
-				<div class="watch-comment-body">
-					@SonicGamingTV2019: shitpost				</div>
-				<div id="div_comment_form_id_commentid"></div>
-			</div>
-	</div> 
-			<div id="cid_60971" class="watch-comment-entry">
-		<div class="watch-comment-head">
-			<div class="watch-comment-info">
-				<a class="watch-comment-auth" href="/profile.php?user=SonicGamingTV2019" rel="nofollow">SonicGamingTV2019</a>
-				<span class="watch-comment-time"> (47 minutes ago) </span>
-								<a id="show_link_commentid" class="watch-comment-head-link" onclick="">Show</a>
-				<a id="hide_link_commentid" class="watch-comment-head-link" onclick="">Hide</a>
-			</div>	
-	<span id="comment_spam_bug_commentid" class="watch-comment-spam-bug">Marked as spam</span>
-	<div id="reply_comment_form_id_commentid" class="watch-comment-action">
-			<a onclick="document.getElementById('comment_text').value = '@SonicGamingTV2019:';">Reply</a> 
-	</div>
-			<div class="clearL"></div>
-		</div>
-			<div id="comment_body_commentid">
-				<div class="watch-comment-body">
-					how did you make this				</div>
-				<div id="div_comment_form_id_commentid"></div>
-			</div>
-	</div> 
-			<div id="cid_60941" class="watch-comment-entry">
-		<div class="watch-comment-head" style="background-color: #fffcc2;">
-			<div class="watch-comment-info">
-				<a class="watch-comment-auth" href="/profile.php?user=CFV" rel="nofollow">CFV</a>
-				<span class="watch-comment-time"> (5 hours ago) </span>
-								<a id="show_link_commentid" class="watch-comment-head-link" onclick="">Show</a>
-				<a id="hide_link_commentid" class="watch-comment-head-link" onclick="">Hide</a>
-			</div>	
-	<span id="comment_spam_bug_commentid" class="watch-comment-spam-bug">Marked as spam</span>
-	<div id="reply_comment_form_id_commentid" class="watch-comment-action">
-			<a onclick="document.getElementById('comment_text').value = '@CFV:';">Reply</a> 
-	</div>
-			<div class="clearL"></div>
-		</div>
-			<div id="comment_body_commentid">
-				<div class="watch-comment-body">
-					@StephanieLane: fuck off you stupid cunt				</div>
-				<div id="div_comment_form_id_commentid"></div>
-			</div>
-	</div> 
             		<!-- <div class="watch-comment-pagination">
 <div class="floatR">
 

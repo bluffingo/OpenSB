@@ -17,7 +17,10 @@
                 <div class="user-info">
 	{% if log %}
 <div id="util-links" class="normal-utility-links">
-                        <span class="util-item first">Hi, <b><a href="/user.php?name={{ userdata.name }}" onclick="">{{ userdata.name }}</a></b>! <img src="/assets/2008/mail.gif" style="width:14px;height:10px;margin-left:4px;position:relative;top:1.5px"> (<a href="/my_messages.php">0</a>)</span>
+                        <span class="util-item first">Hi, <b><a href="/user.php?name={{ userdata.name }}" onclick="">{{ userdata.name }}</a></b>!</span>
+		
+
+		<span class="util-item"><span id="iconMail" class="noMail"></span>(<a href="/my_messages.php">0</a>)</span>
         <span class="util-item"><a href="/my_profile.php">Profile</a></span>
         <span class="util-item"><a href="/viewing_history.php">History</a></span>
         <span class="util-item"><a href="/help.php">Help</a></span>
@@ -41,7 +44,7 @@
             <div class="nav-item  " id="nav-item-videos">
                 <div class="nav-tab">
                     <span class="leftcap"></span>
-                    <a class="content" href="/videos.php">Videos</a>
+                    <a class="content" href="/browse.php">Videos</a>
                     <span class="rightcap"></span>
                 </div>
             </div>
@@ -65,7 +68,7 @@
         <div class="bar">
             <span class="leftcap"></span>
             <div class="search-bar">
-                <a href="/my_videos_upload.php" id="upload-button" class="action-button">
+                <a href="/upload.php" id="upload-button" class="action-button">
                     <span class="action-button-leftcap"></span>
                     <span class="action-button-text">Upload</span>
                     <span class="action-button-rightcap"></span>
@@ -121,7 +124,7 @@
 					<th class="separator" colspan="2">squareBracket</th>
 				</tr>
 				<tr>
-					<td><a href="/my_videos.php">Videos</a></td>
+					<td><a href="/my_browse.php">Videos</a></td>
 					<td><a href="/my_messages.php">Inbox</a></td>
 					<td class="separator"><a href="/help.php">Help Center</a></td>
 					<td><a href="https://twitter.com/squareBracket_">Our Twitter</a></td>

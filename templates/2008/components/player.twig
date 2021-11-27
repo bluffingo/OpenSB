@@ -1,9 +1,12 @@
          <div id="container">
             <!--- todo: redo "video processed" message to use _error.twig -gr 7/22/2021 --->
             {% if (video.flags b-and 2) %}
-            <div style="background-color: black; color: white; text-align: center; padding: 15rem">
-               {{ __("This video is being processed. Try again later.") }}
+<div style="width:480px;height:388px;background:black;position:relative">
+            <div style="width:480px;height:388px;opacity:0.15;background-image:url('/img/static.gif')"></div>
+            <div style="text-align:center;color:white;font-size:16px;position:absolute;width:480px;left:0;top:183.01886792453px;opacity: 1">
+                VIDEO IS CONVERTING!
             </div>
+        </div>
             {% else %}
             <video style="aspect-ratio: 4 / 3;width: -moz-available;" id="videoContainer" controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}">
 			<source src="./videos/{{ video.video_id }}.converted.mp4" type="video/mp4" />

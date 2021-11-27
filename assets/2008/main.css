@@ -585,7 +585,8 @@ a.title:hover {
  padding-left:6px;
  margin-left:6px;
  float:left;
- display:block
+ display:block;
+ /*! vertical-align: middle; */
 }
 #util-links .util-item.first {
  border-left:none
@@ -795,7 +796,11 @@ html>body #util-links.small-utility-links img {
 #iconMail {
  background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -488px -22px;
  width:16px;
- height:16px
+ height:16px;
+ display: inline-block;
+ vertical-align: middle;
+ margin-top: -5px;
+ margin-right: 3px;
 }
 #iconMail.noMail {
  background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -472px -19px

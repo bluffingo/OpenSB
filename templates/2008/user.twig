@@ -393,8 +393,40 @@ tr.commentsTableFull td {
             <div class="basicBoxes scrollersBox profileRightCol">
                 <div class="BoxesInnerOpacity">
                     <div id="profileVideos">
-                        <div style="font-size:15px;color:#444;text-align:center;padding:22px 0 29px">No Videos...</div>
-                
+					{% for latestVideo in latestVideos|batch(3) %}
+<table width="510" border="0" align="center">
+        <tbody>
+        <tr style="height:1px;">
+        <td width="170"></td><td width="170"></td><td width="170"></td>
+    </tr>
+    <tr>
+        </tr>
+            <tr>
+		{% for cell in latestVideo %}
+                        <td width="170" valign="top" align="center">
+        <div style="width:132px;margin-bottom:6px;">
+            <div class="vstill">
+                <a href="/watch.php?v={{ cell.video_id }}"><img src="{{ video_thumbnail(cell.video_id) }}" class="vimg" alt="{{ cell.title }}"></a>
+            </div>
+            <div style="text-align:left;">
+                <div class="vtitle">
+                    <a href="/watch.php?v={{ cell.video_id }}">{{ cell.title }}</a><br>
+                    <span class="runtime">{{ video_length(cell) }}</span>
+                </div>
+                <div class="vfacets">
+                    Added: {{ cell.time | relative_time }}<br>
+                        Views: {{ cell.views }}<br>
+                </div>
+            </div>
+        </div>
+    </td>
+{% endfor %}{% endfor %}
+        </tr>
+        <td colspan="3" align="right">
+            <b><a href="/profile.php?user=DreamIsland&amp;page=videos">See All 5 Videos</a></b>
+        </td>
+    </tr>
+</tbody></table>
                     </div>
                 </div>
                 <div class="basicBoxesOpacity"></div>
