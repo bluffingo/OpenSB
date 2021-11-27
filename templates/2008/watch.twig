@@ -571,12 +571,12 @@ function vidres_change(num) {
          {% for video in related_videos %}
 <div class="watch-discoverbox-entry">
 			<div class="watch-discoverbox-thumb">
-					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v={{ data.video_id }}" rel="nofollow"><img title="{{ video.title }}" src="{{ video_thumbnail(video.video_id) }}" class="vimg90" alt="title"></a></div></div>
+					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v={{ video.video_id }}" rel="nofollow"><img title="{{ video.title }}" src="{{ video_thumbnail(video.video_id) }}" class="vimg90" alt="title"></a></div></div>
 			</div>
 			<div class="watch-discoverbox-facets">
-				<div class="vtitle"><a class="hLink" href="/watch.php?v={{ data.video_id }}">{{ video.title }}</a></div>
+				<div class="vtitle"><a class="hLink" href="/watch.php?v={{ video.video_id }}">{{ video.title }}</a></div>
 				<div>
-					<span class="smallText">{{ video_length(data) }}</span>
+					<span class="smallText">{{ video_length(video) }}</span>
 					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user={{ video.u_name }}" class="hLink">{{ video.u_name }}</a></span>
 				</div>
 				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">{{ video.views }}</span></div>
