@@ -1,245 +1,658 @@
-<!DOCTYPE htmL PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/XxhtmL1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/Loose.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="BitView is the best place to share your videos with the world and your friends and family.">
+<meta name="description" content="Barack Obama">
 <meta name="keywords" content="video, clips, camera, recording, upload, share">
 
 <title>BitView - Davidbgc</title>
-<link rel="stylesheet" type="text/css" href="assets/2008/main_channel.css">
-<link rel="stylesheet" type="text/css" href="assets/2008/main_channel2.css">
+<link rel="stylesheet" type="text/css" href="assets/2008/main.css">
+<script type="text/javascript" src="assets/2008/js/base.js"></script>
+<style type="text/css">
+		
+		
+		
+		
+		.channelMastheadTable {
+			padding: 4px 0px 0px 0px;
+			background-color: #FFFFFF;
+			font-size: 11px;
+		}
+		#smallMastheadBottom {
+			display: block;
+		}
+		a.masthead:link, a.masthead:visited,
+		a.masthead:hover, a.masthead:active { 
+			color: #03C;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		
+		.profile-banner-box {
+			margin-bottom: 15px;
+		}
+		
+		.profileTitleLinks {
+			font-size: 13px;
+			margin-bottom: 15px;
+			text-align: center;
+		}
+		.profileTitleLinks .delimiter {
+			padding: 0px 6px;
+		}
+		
+		.highlightBox {
+			background: #FFC;
+			border: 1px solid #FC3;
+			padding: 9px;
+			margin-bottom: 15px;
+		}
+
+		#profile-main-content {
+			float: right;
+			width: 560px;
+		}
+		#profile-side-content {
+			float: left;
+			width: 300px
+		}
+
+		.profile-box {
+			margin-bottom: 15px;
+		}
+		.profile-box .box-head, .profile-box .box-foot {
+			padding: 2px 5px;
+			zoom: 1; /* gain "hasLayout" for IE/Win, enable filter opacity */
+		}
+		.profile-box .box-body {
+			padding: 5px;
+			zoom: 1; /* gain "hasLayout" for IE/Win, enable filter opacity */
+		}
+		.profile-box .box-head[class], .profile-box .box-body[class], .profile-box .box-foot[class] {
+			background: none;
+			position: relative;
+		}
+		.profile-box .box-fg[class] {
+			position: relative;
+			z-index: 1;
+		}
+		.profile-box .box-bg[class] {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		
+		.profile-box .box-head-action {
+			float: right;
+		}
+		.profile-box .headerTitle, .profile-box .headerTitleRight {
+			color: #fff; /* overrides base */
+		}
+		.profile-box .headerTitleEdit {
+			font-size: 14px;
+			font-weight: bold;
+		}
+		.profile-box .box-head a:link, .profile-box .box-head a:visited,
+		.profile-box .box-head a:hover, .profile-box .box-head a:active {
+			color: #fff;
+			font-weight: bold;
+		}
+		
+		.profile-box .box-foot .pagingDiv {
+			background: none;
+		}
+		
+		.largeTextArea {
+			width: 400px; height: 300px; 
+			font-size: 12px; 
+		}
+		
+		.headerTitleLeft {
+			vertical-align: center;
+			line-height: 28px;
+		}
+		.profileAssets {
+			line-height: 16px;
+		}
+		.sepBox {
+			padding-top: 15px; 
+			padding-bottom: 8px;
+			text-align: left;
+		}
+		.albumList {
+			display: inline; 
+			list-style-type: none;
+			font-size: 11px;
+		}
+		.albumNotEnd, .albumEnd {
+			padding: 3px;
+			margin-right: 5px;
+			float: left;
+			text-align: center;
+		}
+		.albumArt {
+			width: 40px;
+			height: 40px;
+			border: none;
+		}
+		
+		.actionsTable {
+			margin-top: 3px;
+		}
+		tr.actionsTable td {
+			padding-right: 0px;
+		}
+		
+		.contestsTableTop {
+			margin: 10px 0px;
+		}
+		
+		tr.showTable td {
+			padding: 8px 5px 3px 8px;
+		}
+		tr.showTableEnd td {
+			padding: 0px 5px 8px 8px;
+		}
+		
+		.bulletinTable {
+			text-align: center;
+		}
+		table.bulletinTable {
+			width: 100%;
+			border-collapse: collapse;
+		}
+		tr.bulletinTable th {
+			padding: 2px;
+		}
+		tr.bulletinTable td {
+			padding: 2px 5px 3px 5px;
+		}
+		tr.bulletinTable td img {
+			padding-right: 5px;
+		}
+		
+		.vlog-entry {
+			zoom: 1; /* gain "hasLayout" for IE/Win, fix peekaboo border bug */
+		}
+		.vlog-entry-video {
+			padding: 5px 0px 0px 5px;
+		}
+		.vlog-entry-info {
+			width: 253px;
+			height: 255px;
+			padding: 5px; /* also set on box-body */
+		}
+		.profile-vlogbox-full .vlog-entry-info {
+			width: 568px;
+		}
+		.profile-box .vlog-entry-info {
+			padding: 0px;
+		}
+		.profile-box .vlog-entry-info .box-fg {
+			padding: 5px 5px 5px 10px;
+		}
+		.vlog-entry-stats {
+			padding: 5px; /* also set on box-body */
+		}
+		.vlogBoxTable {
+			width: 100%;
+			border: none;
+			text-align: left;
+		}
+		tr.vlogBoxTable td {
+			border-bottom: none;
+			padding-top: 10px;
+		}
+		#postMainTitles {
+			font-size: 16px;
+			font-weight: bold;
+			padding-bottom: 10px;
+		}
+		#postSubTitles {
+			padding-bottom: 10px;
+		}
+		
+		.emptySetBox {
+			height: 123px;
+		}
+		.profile-box .emptySetBox {
+			padding: 0px; /* override standard box padding */
+		}
+		.emptySetBoxNoImg {
+			padding-bottom: 20px;
+		}
+		.emptySetTitle {
+			margin-left: 25px;
+			font-size: 20px;
+			font-weight:  bold;
+			padding-top: 15px;
+		}
+		.emptySetContent, .emptySetContentLg {
+			margin-left: 55px;
+			margin-top: 6px;
+		}
+		.emptySetContentLg {
+			margin-right: 55px;
+		}
+		.emptyImg {
+			float: right;
+			margin-left: 15px;
+		}
+		
+		.flaggingText {
+			padding: 10px 0px;
+			text-align: center;
+		}
+		
+		.largeTitles {
+			font-size: 14px;
+			font-weight: bold;
+		}
+		input.buttonsCustom {
+			color: #FFF;
+			font-size: 12px;
+			padding: 5px;
+		}
+		
+		table.bulletinTableFull {
+			width: 100%;
+		}
+		tr.bulletinTableFull th {
+			padding: 2px 0px 2px 5px;
+		}
+		tr.bulletinTableFull th.lastCol, tr.bulletinTableFull td.lastCol,
+		tr.bulletinTableNBFull td.lastCol {
+			width: 65%;
+			border-right: none;
+		}
+		tr.bulletinTableFull td, tr.bulletinTableNBFull td {
+			padding: 5px;
+		}
+		
+		table.showTableFull {
+			width: 100%;
+		}
+		tr.showTableFull th {
+			padding: 2px 0px 2px 5px;
+		}
+		tr.showTableFull td {
+			padding: 5px;
+		}
+		tr.showTableFullTop td {
+			padding: 5px;
+			border-bottom: none;
+		}
+		
+		table.commentsTableFull {
+			width: 100%;
+		}
+		tr.commentsTableFull th {
+			padding: 5px 2px;
+		}
+		tr.commentsTableFull td, tr.commentsTableNBFull td {
+			padding: 5px;
+		}
+		
+		
+		
+		
+		body {
+			background-color: {{ customProfile.background }};
+		}
+		a:link, a:visited, a:hover, a:active {
+			color: {{ customProfile.link }};
+		}
+		h1,h2,h3,h4,h5,h6 {
+			color: #000000;
+		}
+		
+		.profileTitleLinks {
+			font-family: arial,helvetica,sans-serif;
+			color: #000099;
+		}
+		
+		.highlightBox {
+			font-family: arial,helvetica,sans-serif;
+		}
+		
+		.profile-box {
+			border: 1px solid  {{ customProfile.regularheader }};
+			font-family: arial,helvetica,sans-serif;
+		}
+		.profile-box .box-head, .profile-box .box-foot {
+			background: {{ customProfile.highlightinside }};
+			color: #fff;
+			filter: Alpha(opacity=99);
+		}
+		.profile-box .box-body {
+			background: #FFFFFF;
+			color: #000000;
+			filter: Alpha(opacity=99);
+		}
+		.profile-box .box-bg[class] {
+			opacity: 0.99;
+		}
+		.profile-box .box-head .box-bg[class], .profile-box .box-foot .box-bg[class] {
+			background: {{ customProfile.regularheader }};
+		}
+		.profile-box .box-body .box-bg[class] {
+			background: {{ customProfile.highlightinside }};
+		}
+		
+		.profile-highlightbox .box-body {
+			background: {{ customProfile.highlightinside }};
+			color: {{ customProfile.fontcolor }};
+		}
+		.profile-highlightbox .box-body .box-bg[class] {
+			background: {{ customProfile.highlightinside }};
+		}
+		
+		.profile-vlogbox {
+			border-color: #ffffff;
+		}
+		.profile-vlogbox .box-head, .profile-vlogbox .box-foot {
+			background: #ffffff;
+		}
+		.profile-vlogbox .box-body {
+			background: #ffffff;
+			color: #000000;
+		}
+		.profile-vlogbox .box-head .box-bg[class], .profile-vlogbox .box-foot .box-bg[class] {
+			background: #ffffff;
+		}
+		.profile-vlogbox .box-body .box-bg[class] {
+			background: #ffffff;
+		}
+		
+		.label, .standardLabel, .normalLabel,
+		.smallLabel, .xsmallLabel, .largeLabel {
+			color: #000000;
+		}
+		.profile-label {
+			color: #000000;
+		}
+		
+		.pagingDiv {
+			background: #0000CC;
+			color: #000000;
+		}
+		.pagerCurrent {
+			background-color: #fff;
+			color: #000000;
+		}
+		.pagerNotCurrent {
+			background-color: #FFFFFF;
+		}
+		
+		.largeTextArea {
+			font-family: arial,helvetica,sans-serif; 
+		}
+		
+		tr.bulletinTable th {
+			border-bottom: 1px dashed {{customProfile.regularheader}};
+		}
+		tr.bulletinTable th.firstCol, tr.bulletinTable td.firstCol {
+			border-right: 1px solid {{customProfile.regularheader}};
+		}
+		tr.bulletinTable td {
+			border-top: 1px dashed {{customProfile.regularheader}};
+		}
+		
+		.vlog-entry-video {
+			background: #ffffff;
+		}
+		.postTitles {
+			color: #000000;
+		}
+		.postText {
+			color: #000000;
+		}
+		
+		.flaggingText {
+			color:  #000099;
+			font-family: arial,helvetica,sans-serif;
+		}
+		
+		input.buttonsCustom {
+			background-color: #0000CC;
+			font-family: arial,helvetica,sans-serif;
+		}
+		
+		.vimg, .vimgSm, .vimg130, .vimg120, .vimg110, .vimg100,
+		.vimg90, .vimg80, .vimg75, .vimg70, .vimg60, .vimg50 {
+			border-color: #0000CC;
+		}
+		
+		.video-thumb-micro, .video-thumb-small, .video-thumb-medium,
+		.video-thumb-normal, .video-thumb-big, .video-thumb-large, .video-thumb-jumbo,
+		.user-thumb-micro, .user-thumb-small, .user-thumb-medium,
+		.user-thumb-partner, .user-thumb-large, .user-thumb-xlarge, .user-thumb-jumbo {
+			border-color: {{ customProfile.highlightheader }};
+			background-color: {{ customProfile.highlightinside }};
+		}
+		
+		tr.bulletinTableFull th {
+			border-bottom: 1px solid {{customProfile.regularheader}};
+			border-right: 1px solid {{customProfile.regularheader}};
+		}
+		tr.bulletinTableFull td {
+			border-bottom: 1px dashed {{customProfile.regularheader}};
+			border-right: 1px solid {{customProfile.regularheader}};
+		}
+		tr.bulletinTableNBFull td {
+			border-right: 1px solid {{customProfile.regularheader}};
+		}
+		
+		tr.showTableFull th {
+			border-bottom: 1px solid {{customProfile.regularheader}};
+			border-right: 1px solid {{customProfile.regularheader}};
+		}
+		tr.showTableFull td {
+			border-bottom: 1px dashed {{customProfile.regularheader}};
+		}
+		
+		tr.commentsTableFull th {
+			border-bottom: 1px solid {{customProfile.regularheader}};
+		}
+		tr.commentsTableFull td {
+			border-bottom: 1px dashed {{customProfile.regularheader}};
+		}
+		
+		.headerRCBox {
+			font-family: arial,helvetica,sans-serif;
+			background: #0000CC;
+			padding: 6px 6px 2px 6px;
+			color: #fff;
+			font-weight: bold;
+		}
+		.headerBox {
+			background-color: #0000CC; 
+			border: 1px solid #0000CC;
+			color: #fff;
+			font-family: arial,helvetica,sans-serif;
+			padding: 3px 5px;
+			overflow: hidden;
+		}
+		
+		.vListBox, .vEntry, .vDetailEntry {
+			border-color: #0000CC;
+		}
+		.vListBox {
+			background: #FFFFFF;
+		}
+		.runtime, .title, .vtitle, .desc, .vdesc, .facets, .vfacets {
+			font-family: arial,helvetica,sans-serif;
+		}
+		.runtime, .facets, .vfacets {
+			color: #000000;
+		}
+		.title, .vtitle, .desc, .vdesc { 
+			color: #000000;
+		}
+		
+		
+	</style>
 </head>
-    <body>
-        <div class="wrapper">
-<div id="baseDiv">
-                  <table class="channelMastheadTable">
-            <tbody><tr>
-                <td width="104" valign="absmiddle">
-                    <a href="index.php"><img id="smallMastheadLogo" src="/assets/2008/logo_sm.gif"></a>
-                </td>            
-                <td valign="absmiddle" nowrap="">
-                    <div class="alignL padTlg padLsm">
-                        <a href="videos.php" class="masthead">Videos</a> | 
-                        <a href="channels.php" class="masthead">Channels</a> |
-                        <a href="groups.php" class="masthead">Groups</a> | 
-                        <a href="my_videos_upload.php" class="masthead">Upload</a>
-                    </div>
-                </td>
-    
-                <td class="alignR" valign="top">
-                
-    <div class="smallText">
-                    <b><a href="/signup.php" class="headerLink">Sign Up</a></b>
-            |
-            <a href="/my_profile.php" class="headerLink">Profile</a>
-            |
-            <a href="/viewing_history.php" onclick="" class="headerLink">History</a>
-            |
-            <a href="/help.php" class="headerLink">Help</a>
-            |
-            <a href="/login.php" class="headerLink">Log In</a>
-            </div>
-    <div class="searchDiv" style="margin-top:3px;">
-            <form name="searchForm" id="searchForm" method="get" action="/results.php">
-            <input tabindex="1" type="text" name="search" maxlength="128" id="searchField" class="searchField" value="">
-            <select name="t">
-                <option value="Search Videos">Videos</option>
-                <option value="Search Users">Members</option>
-                <option value="Search Groups">Groups</option>
-                <option value="Search Playlists">Playlists</option>
-            </select>
-            <input type="submit" value="Search">
-    </form>
-    </div>
+<body onload="performOnLoadFunctions();">
+	<div id="baseDiv">
+		<table class="channelMastheadTable">
+			<tbody><tr>
+				<td width="104" valign="absmiddle"><a href="/"><img id="smallMastheadLogo" src="/assets/2008/pixel.gif"></a></td>			
+				<td valign="absmiddle" nowrap="">
+					<div class="alignL padTlg padLsm">
+						<a href="/browse?s=mp" class="masthead">Videos</a> | 
+						<a href="/members" class="masthead">Channels</a> |
+						<a href="/community" class="masthead">Community</a> | 
+						<a href="/my_videos_upload" class="masthead">Upload</a>
+					</div>
+				</td>
+				<td width="100%" valign="top">
+					<div width="100%" class="alignR floatR">
 
-                    </td>                                           
-            </tr>
-        </tbody></table>
-        <div class="clear"></div>
-  <div><img id="smallMastheadBottom" src="/assets/2008/pixel.gif"></div>
-  <div></div>    
-        <br>
-<style>
-.headerBox {
-    border: 1px solid {{ customProfile.highlightheader }} !important;
-}
-a{text-decoration:none;}a:hover{text-decoration:underline;}
-h1, h2, h3, h4, h5, h6 {
-  color: #222222 !important;
-}
-tr.commentsTableNBFull td {
-  border-bottom: 1px solid #3399cc !important;
-}
-tr.bulletinTableFull td { 
-  border-bottom: 1px dashed #3399cc !important;
-  border-right: 1px solid #3399cc !important;
-}
-.headerTitleLeft, .headerTitle {
-  color: #ffffff !important;
-}
-tr.bulletinTableFull th {
-  border-bottom: 1px solid #3399cc !important;
-  border-right: 1px solid #3399cc !important;
-}
-tr.bulletinTableNBFull td {
-  background-color: #3399cc;
-  border-bottom: 1px solid #3399cc !important;
-  border-right: 1px solid #3399cc !important;
-}
-.bulletinTableFull {
-  background-color: #ecf4fb !important;
-}
-.video-thumb-micro, .video-thumb-small, .video-thumb-medium, .video-thumb-large, .video-thumb-jumbo {
-  border: 3px double {{ customProfile.regularheader }} !important;
-  background-color: #ecf4fb !important;
-}
-.vimg90 {
-  border: 1px solid #3399cc !important;
-}
-.imgBrdr {
-  border: 1px solid #3399cc !important;
-}
-.headerBoxOpacity[class] {
-    background-color: {{ customProfile.highlightheader }} !important;
-}
-.basicBoxesOpacity[class] {
-    background-color: {{ customProfile.highlightinside }} !important;
-}
-.headerRCBox .content  {
-  background: #3399cc  !important;
-}
-.headerRCBox .rch * {
-  background: #3399cc  !important;
-}
-.headerRCBox .rch1 {
-  border-right: 1px solid #3399cc !important;
-  border-left: 1px solid #3399cc !important;
-}
-.footerBox {
-  background-color: #3399cc !important;
-  border: 1px solid #3399cc !important;
-}
-.pagingDiv {
-  background: #3399cc;
-  color: #222222 !important;
-}
-.pagerCurrent {
-  color: #3399cc  !important;
-  border: 1px solid #3399cc !important;
-}
-.pagerNotCurrent {
-  background-color: #ffffff !important; 
-}
-.headerRCBox .rch2 {
-  border-right: 1px solid #3399cc !important;
-  border-left: 1px solid #3399cc !important;
-}
-.headerRCBox .rch3 {
-  border-right: 1px solid #3399cc !important;
-  border-left: 1px solid #3399cc !important;
-}
-.headerRCBox .rch4 {
-  border-right: 1px solid #3399cc !important;
-  border-left: 1px solid #3399cc !important;
-}
-.headerRCBox .rch5 {
-  border-right: 1px solid #3399cc !important;
-  border-left: 1px solid #3399cc !important;
-}
-a.masthead:visited {
-  color: #03C !important;
-}
-a.masthead:link {
-  color: #03C !important;
-}
-a.masthead:active {
-  color: #03C !important;
-}
-a.headerLink:visited {
-  color: #03C !important;
-}
-a.headerLink:link {
-  color: #03C !important;
-}
-a.headerLink:active {
-  color: #03C !important;
-}
-#profileSubNav {
-    color: {{ customProfile.fontcolor }} !important;
-}
-a:link, a:visited, a:active {
-    color: {{ customProfile.link }} !important;
-}
-body { 
-background-color: {{ customProfile.background }} !important;
-}
-#pBox {
-    margin-bottom: 15px;
-    border-bottom: 1px solid {{ customProfile.regularheader }} !important;
-}
+							<div id="localePickerBox">
+	<div id="flagDiv">
+			<div id="flagDivInner">
+			</div>
 
-.highlightBoxesOpacity[class] {
-    background: {{ customProfile.highlightinside }} !important;
-}
-.highlightBoxes, .basicBoxes {
-    border: 1px solid {{ customProfile.regularheader }} !important;
-    color: {{ customProfile.fontcolor }};
-}
-.vfacets, .runtime {
-    color: #222222 !important;
-}
-.vfacets a:link, a:visited {
-    font-size: 11px;
-}
-#pbox {
-    border-bottom: 1px solid {{ customProfile.regularheader }} !important;
-}
-tr.commentsTableFull td, tr.bulletinTable td {
-    border-bottom: 1px dashed #3399cc !important;
-}
-tr.bulletinTable td.firstCol {
-    border-right: 1px solid #3399cc !important;
-}
-.user-thumb-micro, .user-thumb-small, .user-thumb-medium, .user-thumb-large, .user-thumb-jumbo {
-    border: 3px double {{ customProfile.regularheader }} !important;
-    background-color: transparent;
-}
-.vimg, .vimg70 {
-    border: 1px solid #3399cc !important;
-}
-.labels {
-    color: {{ customProfile.fontcolor }} !important;
-}
-tr.commentsTableFull td {
-    color: {{ customProfile.fontcolor }} !important;
-}
-.flaggingText {
-    color: {{ customProfile.fontcolor }} !important;
-}
-</style>
-        <!--Begin Page Container Table-->
-<div class="profileTitleLinks">
-        <div id="profileSubNav">
-                <strong> Profile </strong>
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=videos">Public Videos</a> (0)
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=pvideos">Private Videos</a>  (0)
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=favorites">Favorites</a>  (0)
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=friends">Friends</a>  (0)
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=comments">Comments</a>  (0)
-                        <span class="delimiter">|</span>
-                <a href="/profile.php?user={{ userpagedata.name }}&amp;page=bulletins">Bulletins</a> (0)
-        </div>
-</div>    
-  
+		<div class="alignR smallText"><a href="#" onclick="closeLocalePicker(); return false;">Close</a></div>
+	</div>
+	</div>
 
+							
+
+
+
+
+	<div id="util-links" class="small-utility-links">
+
+		<span class="util-item first"><b><a href="/signup" onclick="_hbLink('SignUp','UtilityLinks');">Sign Up</a></b></span>
+		<span class="util-item"><a href="/watch_queue?all">QuickList</a></span>
+		<span class="util-item"><a href="http://help.youtube.com/support/youtube/bin/static.py?page=start.cs&amp;hl=en_US">Help</a></span>
+		<span class="util-item"><a href="/login">Log In</a></span>
+		<span class="util-item"><a href="#" class="localePickerLink eLink" onclick="loadFlagImgs();toggleDisplay('localePickerBox');return false;">Site:</a></span>
+		<span class="util-item first">&nbsp;<a href="#" class="localePickerLink" onclick="loadFlagImgs();toggleDisplay('localePickerBox');return false;"><img src="/assets/2008/pixel.gif" class="currentFlag  globalFlag" alt="Site:"></a></span>
+	</div>
+
+		<div class="clear searchDiv" style="margin-top:3px;">
+				<form autocomplete="off" name="searchForm" id="searchForm" method="get" action="/results">
+		<input tabindex="10000" type="text" onkeyup="goog.i18n.bidi.setDirAttribute(event,this)" name="search_query" maxlength="128" class="searchField" value="">
+		&nbsp;
+			<input type="submit" name="search" value="Search">
+	</form>
+
+		</div>
+
+					</div>
+				</td>
+			</tr>
+		</tbody></table>
+		<div>
+			<img id="smallMastheadBottom" src="/assets/2008/pixel.gif">
+		</div>
+	
+		<br>
+		<!--Begin Page Container Table-->
+			<div class="profile-banner-box">
+					<a rel="nofollow" href="http://www.buckhollywood.com/"><img src="/assets/2008/banner.png" width="875" height="75"></a>
+			</div>
+
+			
+
+
+		<div class="profileTitleLinks">
+			<div id="profileSubNav">
+
+
+				<a href="/profile_videos?user=WHATTHEBUCKSHOW">Videos</a>
+
+
+				<span class="delimiter">|</span>
+		<a href="/profile_favorites?user=WHATTHEBUCKSHOW">Favorites</a>
+
+
+				<span class="delimiter">|</span>
+		<a href="/profile_play_list?user=WHATTHEBUCKSHOW">Playlists</a>
+
+
+			<span class="delimiter">|</span>
+		<a href="/profile_groups?user=WHATTHEBUCKSHOW">Groups</a>
+
+
+				<span class="delimiter">|</span>
+		<a href="/profile_friends?user=WHATTHEBUCKSHOW">Friends</a>
+
+
+				<span class="delimiter">|</span>
+		<a href="/profile_subscribers?user=WHATTHEBUCKSHOW">Subscribers</a>
+
+
+				<span class="delimiter">|</span>
+		<a href="/profile_subscriptions?user=WHATTHEBUCKSHOW">Subscriptions</a>
+
+</div>
+
+		</div>
+		
+		
 {% block content %}
-{% endblock %}        
-    </div>
-        </div>
-        
-    
-</body></html>
+{% endblock %}
+
+
+<script type="text/javascript">
+pageTracker = _gat._getTracker("UA-3482161-1");
+pageTracker._initData();
+</script>
+
+<script type="text/javascript">
+var page = "" + "/Profiles" + "/" + "WHATTHEBUCKSHOW";
+pageTracker._trackPageview(page);
+</script>
+
+
+
+			<script src="/assets/2008/js/AJAX.js"></script>
+	<script>
+		function getSimpleCallback(xhr, callback, domEl) {
+			if(xhr.responseXML == null) {
+				callback("Error while processing your request.", domEl);
+				return;
+			}
+			var root_node = getRootNode(xhr);
+			var return_code = getNodeValue(root_node, 'return_code');
+
+			if(return_code == 0) {
+				var success_message = getNodeValue(root_node, 'success_message');
+				if (success_message != null) {
+					callback(success_message, domEl);
+				}
+			} else {
+				var error_msg = getNodeValue(root_node, 'error_message');
+				if (error_msg == null || error_msg.length == 0) {
+					error_msg = "An error occured while performing this operation.";
+				}
+				callback(error_msg, domEl)
+			}
+
+			redirect_val = getNodeValue(root_node, 'redirect_on_success');
+			if(redirect_val != null) {
+				window.location=redirect_val;
+			}
+		}
+		function getSimpleXR(url, callback, domEl) {
+			getUrl(url, true, execOnSuccess(getSimpleCallback, callback, domEl));
+		}
+		function showConfMsg(msg, domEl) {
+			if(domEl && domEl.parentNode) {
+				domEl.parentNode.style.backgroundColor = '#fff';
+				domEl.parentNode.innerHTML = msg;
+			}
+		}
+	</script>
+		
+		
+		
+	</div>
+	
+
+
+
+</body>

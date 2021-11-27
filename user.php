@@ -12,8 +12,6 @@ if (isset($_GET['id'])) {
 
 $customProfile = fetch("SELECT * FROM channel_settings WHERE user = ?", [$userpagedata['id']]);
 
-$page = isset($_GET['page']) ? $_GET['page'] : null;
-
 // var_dump($customProfile);
 
 if ($customProfile == false) {
@@ -24,16 +22,6 @@ if ($customProfile == false) {
 
 // using comment.php on 2008 would require clunky javascript
 if ($frontend = "2008") {
-	if ($page == "post_comment") {
-	$twig = twigloader();
-		echo $twig->render('writeProfileComment.twig', [
-			'id' => $userpagedata['id'],
-			'name' => $userpagedata['name'],
-			'userpagedata' => $userpagedata,
-			'customProfile' => $customProfile,
-		]);
-		die();
-	}
 	if (isset($_POST['post_comment'])) {
 		query("INSERT INTO channel_comments (id, comment, author, date, deleted) VALUES (?,?,?,?,?)",
 		[$userpagedata['id'],$_POST['comment'],$userdata['id'],time(),0]);
@@ -45,11 +33,11 @@ if (!isset($userpagedata) || !$userpagedata) {
 	error('404', 'No user specified');
 }
 
-$pagination = (isset($_GET['p']) && is_numeric($_GET['p']) && $_GET['p'] > 0 ? $_GET['p'] : 1);
+$page = (isset($_GET['p']) && is_numeric($_GET['p']) && $_GET['p'] > 0 ? $_GET['p'] : 1);
 $forceuser = isset($_GET['forceuser']);
 
-$limit = sprintf("LIMIT %s,%s", (($pagination - 1) * $lpp), $lpp);
-$latestVideoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, v.author, v.tags FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT 6", [$userpagedata['id']]);
+$limit = sprintf("LIMIT %s,%s", (($page - 1) * $lpp), $lpp);
+$latestVideoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, v.author, v.tags FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT 9", [$userpagedata['id']]);
 $count = result("SELECT COUNT(*) FROM videos l WHERE l.author = ?", [$userpagedata['id']]);
 
 $commentData = query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$userpagedata['id']]);
@@ -141,7 +129,7 @@ echo $twig->render('user.twig', [
 	'userpagedata' => $userpagedata,
 	'latestVideos' => $latestVideoData,
 	'forceuser' => $forceuser,
-	'page' => $pagination,
+	'page' => $page,
 	'level_count' => $count,
 	'notifs' => (isset($notifications) ? $notifications : []),
 	'markread' => (isset($_GET['markread']) ? true : false),

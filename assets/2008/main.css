@@ -1495,7 +1495,6 @@ height:10px;
 .user-thumb-micro img{
 height:10px;
 width:13px;
-margin-left:-1.5px;
 }
 .user-thumb-small{
 height:24px;
@@ -1504,7 +1503,6 @@ width:24px;
 .user-thumb-small img{
 height:24px;
 width:32px;
-margin-left:-4px;
 }
 .user-thumb-medium{
 height:46px;
@@ -1513,7 +1511,6 @@ width:46px;
 .user-thumb-medium img{
 height:46px;
 width:61px;
-margin-left:-8px;
 }
 .user-thumb-partner{
 height:55px;
@@ -1530,7 +1527,6 @@ width:60px;
 .user-thumb-large img{
 height:60px;
 width:80px;
-margin-left:-11px;
 }
 .user-thumb-xlarge{
 height:88px;
@@ -1539,7 +1535,6 @@ width:88px;
 .user-thumb-xlarge img{
 height:88px;
 width:118px;
-margin-left:-15px;
 }
 .user-thumb-jumbo{
 height:94px;
@@ -1548,7 +1543,6 @@ width:94px;
 .user-thumb-jumbo img{
 height:94px;
 width:125px;
-margin-left:-15.5px;
 }
 html > body .user-thumb-micro img,
 html > body .user-thumb-small img,
