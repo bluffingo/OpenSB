@@ -43,7 +43,7 @@ $count = result("SELECT COUNT(*) FROM videos l WHERE l.author = ?", [$userpageda
 $commentData = query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$userpagedata['id']]);
 
 // Personal user page stuff
-if (isset($userdata['id']) && $userdata['id'] == $userpagedata['id'] && !$forceuser) {
+/* if (isset($userdata['id']) && $userdata['id'] == $userpagedata['id'] && !$forceuser) {
 	if (isset($_GET['markread'])) {
 		query("DELETE FROM notifications WHERE recipient = ?", [$userdata['id']]);
 		$notificationCount = 0;
@@ -91,7 +91,7 @@ if (isset($userdata['id']) && $userdata['id'] == $userpagedata['id'] && !$forceu
 
 	//clearMentions('user', $userpagedata['id']);
 }
-
+ */
 $subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$userpagedata['id']])['COUNT(user)'];
 
 $scss = new Compiler();
