@@ -13,7 +13,7 @@
     <body> 
         <div id="baseDiv" class=" date-20080710">
         <div id="masthead">
-                <a href="/" class="logo"><img src="/assets/2008/logo_sm.gif" alt="squareBracket - Can't believe it's not PokTube" width="120" height="48" border="0"></a>
+                <a href="/" class="logo"><img border="0"></a>
                 <div class="user-info">
 	{% if log %}
 <div id="util-links" class="normal-utility-links">
@@ -73,32 +73,25 @@
                     <span class="action-button-text">Upload</span>
                     <span class="action-button-rightcap"></span>
                 </a>
-                <div id="search-form">
-                       <form name="searchForm" id="searchForm" method="GET" action="/results.php">
-
-            <input tabindex="1" type="text" name="search" maxlength="128" id="searchField" value="">
-            <select name="t">
-                <option value="Search Videos">Videos</option>
-                <option value="Search Users">Members</option>
-                <option value="Search Groups">Groups</option>
-                <option value="Search Playlists">Playlists</option>
-            </select>
-            <input type="submit" value="Search">
-        </form>
-                </div>
-            </div>
-            <span class="rightcap"></span>
-        </div>
-
-
+<div id="search-form">
+					<input id="search-term" name="search_query" type="text" tabindex="1" onkeyup="goog.i18n.bidi.setDirAttribute(event,this)" value="" maxlength="128" autocomplete="off">
+					<select class="search-type" name="search_type">
+						<option value="">Videos</option>
+						<option value="search_users">Channels</option>
+					</select>
+					<input id="search-button" type="submit" value="Search">
+				</div>
+<div class="search-settings-link">
+				<a href="#" class="eLink" onclick="return toggleAdvSearch('', '', '', '', '', '')">
+					advanced
+				</a></div></div>
+			<span class="rightcap"></span>
+		</div><div class="clear"></div></div>
+		
         <div id="search-advanced-form" class="hid">
             <div class="search-setting-inner alignC">Loading...</div>
         </div>
-
-        <div class="clear"></div>
-               
-
-    </div>
+	
 {% block content %}{% endblock %}
            <div id="footer">
 		<div class="search">
