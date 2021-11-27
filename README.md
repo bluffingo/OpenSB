@@ -1,4 +1,4 @@
-<h1 align="center">squareBracket Beta 2.0.5</h1>
+<h1 align="center">squareBracket Beta 2.0.6</h1>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/45898787/142709724-671da494-3498-4941-bf94-1aa0987fc2a5.png"><br>
