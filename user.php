@@ -21,7 +21,7 @@ if ($customProfile == false) {
 }
 
 // using comment.php on 2008 would require clunky javascript
-if ($frontend = "2008") {
+if ($frontend == "2008") {
 	if (isset($_POST['post_comment'])) {
 		query("INSERT INTO channel_comments (id, comment, author, date, deleted) VALUES (?,?,?,?,?)",
 		[$userpagedata['id'],$_POST['comment'],$userdata['id'],time(),0]);

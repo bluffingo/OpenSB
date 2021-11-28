@@ -14,7 +14,7 @@ if ( isset( $_GET['use_2013'] ) && !empty( $_GET['use_2013'] ) ) {
 }
 
 // using comment.php on 2008 would require clunky javascript
-if ($frontend = "2008") {
+if ($frontend == "2008") {
 	if (isset($_POST['comment_submit'])) {
 		query("INSERT INTO comments (id, comment, author, date, deleted) VALUES (?,?,?,?,?)",
 		[$videoData['video_id'],$_POST['comment_text'],$userdata['id'],time(),0]);
