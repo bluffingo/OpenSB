@@ -8,7 +8,7 @@
             </div>
         </div>
             {% else %}
-            <video style="aspect-ratio: 4 / 3;width: -moz-available;" id="videoContainer" controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}">
+            <video style="aspect-ratio: 4 / 3;width: 100%;" id="videoContainer" controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}">
 			<source src="./videos/{{ video.video_id }}.converted.mp4" type="video/mp4" />
 			<source src="./videos/{{ video.video_id }}.webm" type="video/webm" />
 			</video>
