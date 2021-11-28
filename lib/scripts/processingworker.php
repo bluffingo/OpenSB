@@ -27,9 +27,9 @@ try {
 	$ffmpeg = FFMpeg::create($config);
 	$ffprobe = FFProbe::create($config);
 	$video = $ffmpeg->open($target_file);
-	$duration = $ffprobe
-		->format($video)    // extracts file informations
-		->get('duration');  // returns the duration property
+	//$duration = $ffprobe
+	//	->format($video)    // extracts file informations
+	//	->get('duration');  // returns the duration property
 	//if (floor($duration) < 10) {
 	//	if (floor($duration) == 0) {
 	//		$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration'))))
