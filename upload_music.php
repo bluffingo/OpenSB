@@ -27,16 +27,6 @@ foreach(str_split($music_id) as $char){
 if (isset($_POST['upload']) and isset($userdata['name'])) {
 	$title = (isset($_POST['title']) ? $_POST['title'] : null);
 
-	// Prevent videos with duplicate metadata since they are probably accidentally uploaded.
-	if (result("SELECT COUNT(*) FROM music WHERE title = ?", [$title])) {
-		die(__("Your music is already uploading or has been uploaded."));
-	}
-
-	// Rate limit uploading to 2 minutes, both to prevent spam and to prevent double uploads.
-	if (result("SELECT COUNT(*) FROM music WHERE time > ? AND author = ?", [time() - 60*2, $userdata['id']])) {
-		die(__("Please wait 2 minutes before uploading again. If you've already uploaded a music, it is being processed."));
-	}
-
 	$name       = $_FILES['fileToUpload']['name'];
 	$temp_name  = $_FILES['fileToUpload']['tmp_name'];  // gets video info and thumbnail info
 	$ext  = pathinfo( $_FILES['fileToUpload']['name'], PATHINFO_EXTENSION );

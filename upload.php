@@ -24,7 +24,7 @@ foreach(str_split($video_id) as $char){
 	$new .= $char;
 }
 
-if (isset($_POST['upload']) and isset($userdata['name'])) {
+if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata['name'])) {
 	$title = (isset($_POST['title']) ? $_POST['title'] : null);
 	$description = (isset($_POST['desc']) ? $_POST['desc'] : null);
 

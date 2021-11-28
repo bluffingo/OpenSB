@@ -6,7 +6,7 @@ function categoryIDToName($id) {
 		return match ($id) {
 			0 => __('Miscellanous'),
 			1 => __('Entertainment'),
-			2 => __('Shitposting & Comedy'),
+			2 => __('Comedy & Humour'),
 			3 => __('Gaming'),
 			4 => __('News and Updates'),
 			5 => __('Life'),

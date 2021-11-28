@@ -1,11 +1,11 @@
-<h1 align="center">squareBracket Beta 2.0.4</h1>
+<h1 align="center">squareBracket Beta 2.0.6</h1>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45898787/141394589-9776ec34-8698-4812-bf07-0f45b89707f4.png"><br>
+<img src="https://user-images.githubusercontent.com/45898787/142709724-671da494-3498-4941-bf94-1aa0987fc2a5.png"><br>
 <img src="https://img.shields.io/discord/853036368712040498?style=flat">
 <img src="https://img.shields.io/github/v/release/chazizsquarebracket/squarebracket?include_prereleases&label=lastest%20released&style=flat">
 <img src="https://img.shields.io/github/release-date-pre/chazizsquarebracket/squarebracket?label=released&style=flat">
-<img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/beta-2.0.3.1?include_prereleases&style=flat">
+<img src="https://img.shields.io/github/commits-since/chazizsquarebracket/squarebracket/beta-2.0.4?include_prereleases&style=flat">
 <img src="https://img.shields.io/github/repo-size/chazizsquarebracket/squarebracket?style=flat">
 <a title="Crowdin" target="_blank" href="https://crowdin.com/project/squarebracket"><img src="https://badges.crowdin.net/squarebracket/localized.svg"></a>
 <br><br>
@@ -35,6 +35,12 @@
 1. If you want to be able to upload videos during development, make the `videos/` and `assets/thumb/` directory writable by your web server.
 
 ## Questions
+
+## Why is this named squareBracket?
+We get it from a file sharing service's scrapped rebrand, and it was the name of the first 
+squareBracket domain we've had (squareBracket.me in February-April 2021). Gamerappa did not 
+come up with the name "PokTube" (as it was someone else who cut ties with him quickly).
+so it wasn't publically used after February 2021.
 
 ### How do I translate squareBracket?
 squareBracket Translations: https://crowdin.com/project/squarebracket

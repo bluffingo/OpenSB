@@ -3,15 +3,19 @@
 {% block title %}Home{% endblock %}
 
 	{% block content %}
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
-
-		  <div class="jumbotron">
-		  <div class="row">
-		  <div class="col-md-3">
-        <img class="img-responsive img-rounded" src="../{{ profile_image(userdata.name) }}">
+         <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
+            <div class="grid">
+               <div class="col-md-12">
+                  <a class="button button-dark">My Channel</a>
+               </div>
+            </div>
+         </div>
+		  <div class="card card-body-fat">
+		  <div class="grid">
+		  <div class="col-md-2">
+        <img class="img-fluid img-rounded" src="../{{ profile_image(userdata.name) }}">
       </div>
-		  <div class="col-md-9">
+		  <div class="col-md-10">
         <h2>{{ userdata.title }}</h2>
         <p class="lead">
 		Username: {{ userdata.name }}
@@ -23,29 +27,5 @@
       </div>
 	  </div>
 	  </div>
-		  
-          <h2 class="sub-header">Videos</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Internal ID</th>
-                  <th>Title</th>
-                  <th>Views</th>
-                </tr>
-              </thead>
-              <tbody>
-			  {% for video in videos %}
-                <tr>
-                  <td>{{ video.id }}</td>
-                  <td>{{ video.title }}</td>
-                  <td>{{ video.views }}</td>
-                </tr>
-			   {% endfor %}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
 
 	{% endblock %}

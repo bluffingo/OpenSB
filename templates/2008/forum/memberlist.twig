@@ -1,0 +1,45 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Memberlist") }}{% endblock %}
+
+	{% block content %}
+<table class="c1">
+	<tr class="h"><td class="b h" colspan="2">{{ __("Memberlist") }}</td></tr>
+	<tr>
+		<td class="b n1" width="80">{{ __("Sort by:") }}</td>
+		<td class="b n2 center">
+			{{ mlink(__('Posts'), '', page, orderby) }}
+			&bull; {{ mlink(__('Username'), 'name', page, orderby) }}
+			&bull; {{ mlink(__('Registration date'), 'reg', page, orderby) }}
+			&bull; {{ mlink('[ &#x25BC; ]', sort, page, 'd') }}
+			&nbsp; {{ mlink('[ &#x25B2; ]', sort, page, 'a') }}
+		</td>
+	</tr>
+</table><br>
+<table class="c1">
+	<tr class="h">
+		<td class="b h" width="32">{{ __("ID") }}</td>
+		<td class="b h" width="62">{{ __("Picture") }}</td>
+		<td class="b h">{{ __("Name") }}</td>
+		<td class="b h" width="130">{{ __("Registered on") }}</td>
+		<td class="b h" width="50">{{ __("Posts") }}</td>
+	</tr>
+	{% set i = 1 %}
+	{% for user in users %}
+	<tr class="n{% if i % 2 %}1{% else %}2{% endif %}" style="height:69px">
+		<td class="b center">{{ user.id }}</td>
+		<td class="b center">
+			{% if user.avatar %}
+				<img src="/assets/profpic/{{ user.name }}" width="60" height="60">
+			{% endif %}
+		</td>
+		<td class="b">{{ userlink(user) }}</td>
+		<td class="b center">{{ user.joined | date(forum_dateformat) }}</td>
+		<td class="b center">{{ user.posts }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% if pagelist %}
+	<br>{{ pagelist | raw }}<br>
+{% endif %}
+	{% endblock %}

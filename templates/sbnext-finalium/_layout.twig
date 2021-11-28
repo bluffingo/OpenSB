@@ -13,7 +13,7 @@
 	<meta name="application-name" content="squareBracket">
 	<meta name="msapplication-TileColor" content="#2b5797">
 	<meta name="msapplication-config" content="/assets/icons/browserconfig.xml">
-	<meta name="theme-color" content="#dfecff">
+	<meta name="theme-color" content="#4723d9">
 	<link rel="stylesheet" href="/assets/css/style.css" type="text/css">
 	{% if theme == 'dark' %}
 		<link id="darkthm" rel="stylesheet" href="/assets/css/darkmode.css" type="text/css">
@@ -36,12 +36,13 @@
 			<div id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
 				{% if log %}
 				<div style="display: flex;justify-content: center;align-items: center;gap: 5px;">
-				{{ userdata.name }}
+				{{ userdata.title }}
                <div {% if notification_count > 0 %}class="bg-danger text-light"{% else %}class="bg-neutral{% endif %}" style="padding:6px 8px;display: inline-block;">{{ notification_count }}</div>
-				<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.name }}">
+				<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.title }}">
 				</div>
 				{% else %}
 				<a href="../login.php" class="button button-primary">{{ __("Sign in") }}</a>
+				<a href="../register.php" class="button button-neutral">{{ __("Register") }}</a>
 				{% endif %}
 			</div>
 			<div id="masthead-content">
@@ -64,12 +65,30 @@
 			<div class="col-md-8">
 			Todo: add something.
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-1">
 			<h4 style="margin:10px 0">squareBracket</h4>
 			<ul style="padding:0">
-			<li><a href="user.php?name={{ userdata.name }}">{{ userdata.name }}</a></li>
+			</ul>
+			</div>
+			<div class="col-md-1">
+			<h4 style="margin:10px 0">Account</h4>
+			<ul style="padding:0">
+			<li><a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a></li>
 			<li><a href="/studio/">{{ __("Studio") }}</a></li>
 			<li><a href="/settings.php">{{ __("Settings") }}</a></li>
+			</ul>
+			</div>
+			<div class="col-md-2">
+			<ul style="padding:0">
+			<div class="grid">
+			<div class="col-md-2">
+			<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
+			</div>
+			<div class="col-md-10">
+			<h4 style="margin:0">{{ userdata.name }}</h4>
+			</div>
+			</div>
+			<li><a href="logout.php">{{ __("Log out") }}</a></li>
 			</ul>
 			</div>
 		</div>
@@ -84,10 +103,10 @@
 							<a href="/" class="guide-item"><div class="thumb">{{ icon_alt('house-door', 16) }}</div><div>{{ __("Home") }}</div></a>
 						</li>
 						<li class="guide-channel">
-							<a href="browse.php" class="guide-item"><div class="thumb">{{ icon_alt('film', 16) }}</div><div>{{ __("Videos") }}</div></a>
+							<a href="/browse.php" class="guide-item"><div class="thumb">{{ icon_alt('film', 16) }}</div><div>{{ __("Videos") }}</div></a>
 						</li>
 						<li class="guide-channel">
-							<a href="music.php" class="guide-item"><div class="thumb">{{ icon_alt('music-note-beamed', 16) }}</div><div>{{ __("Music") }}</div></a>
+							<a href="/music.php" class="guide-item"><div class="thumb">{{ icon_alt('music-note-beamed', 16) }}</div><div>{{ __("Music") }}</div></a>
 						</li>
 						<li class="guide-channel">
 							<a href="/forum/" class="guide-item"><div class="thumb">{{ icon_alt('chat-left-text', 16) }}</div><div>{{ __("Forums") }}</div></a>

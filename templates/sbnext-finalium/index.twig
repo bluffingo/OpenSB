@@ -1,5 +1,13 @@
 {% extends "_layout.twig" %}
-
+{% block head %}
+<meta name="title" content="squareBracket">
+<meta name="description" content="Unbelivable, This is not PokTube.">
+<meta property="og:site_name" content="squareBracket"/>
+<meta property="og:title" content="squareBracket">
+<meta property="og:description" content="Unbelivable, This is not PokTube.">
+<meta property="og:image" content="{{ domain }}assets/logo_square_icon.png">
+<meta property="og:url" content="{{ page_url }}">
+{% endblock %}
 {% block title %}Main page{% endblock %}
 
 	{% block precontent %}
@@ -48,7 +56,9 @@
 	<div class="grid">
 			<div class="col-md-6">
 			<div class="card card-body">
-				Placeholder, should be featured video.
+				{% for video in featuredVideos %}
+				{{ video_box(video) }}
+				{% endfor %}
 			</div>
 			</div>
 			<div class="col-md-6">
@@ -59,12 +69,16 @@
 				</div>
 			</div>
 	</div>
-		<h3>{{ __("Recently uploaded to squareBracket") }}</h3>
-		{% for video in videos %}
-		{{ video_box(video) }}
-		{% else %}
-		<p>{{ __("No uploaded videos.") }}</p>
-		{% endfor %}
+		<div class="card">
+			<div class="card-body-fat">
+				<h3>{{ __("squareBracket Videos") }}</h3>
+				{% for video in videos %}
+				{{ small_video_box(video) }}
+				{% else %}
+				<p>{{ __("No uploaded videos.") }}</p>
+				{% endfor %}
+			</div>
+		</div>
 	</div>
 	<div class="col-md-4">
 		<h3>{{ __("What's new?") }}</h3>

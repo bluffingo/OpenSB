@@ -1,0 +1,1 @@
+{% if file_exists %}{% set imgSrcPath = '/assets/thumb/' ~ data ~ '.png' %}{% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}{% else %}{% set imgSrcPath = '/assets/2008/hqdefault.jpg' %}{% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}{% endif %}

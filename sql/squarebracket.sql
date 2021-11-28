@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2021 at 01:02 AM
+-- Generation Time: Nov 26, 2021 at 09:11 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `squarebracket`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `channel_settings`
+--
+
+CREATE TABLE `channel_settings` (
+  `user` int(11) NOT NULL,
+  `background` varchar(7) NOT NULL DEFAULT '#ffffff',
+  `fontcolor` varchar(7) NOT NULL DEFAULT '#ffffff',
+  `titlefont` varchar(7) NOT NULL DEFAULT '#ffffff',
+  `link` varchar(7) NOT NULL DEFAULT '#0033CC',
+  `headerfont` varchar(7) NOT NULL DEFAULT '#ffffff',
+  `highlightheader` varchar(7) NOT NULL DEFAULT '#3399cc',
+  `highlightinside` varchar(7) NOT NULL DEFAULT '#ecf4fb',
+  `regularheader` varchar(7) NOT NULL DEFAULT '#3399cc',
+  `regularinside` varchar(7) NOT NULL DEFAULT '#ffffff'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -117,7 +136,7 @@ CREATE TABLE `users` (
   `lastpost` int(11) NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `about` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
-  `customcolor` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#3e3ecf' COMMENT 'The color that the user has set for their profile',
+  `customcolor` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en-US' COMMENT 'Language (Defaults to English)',
   `avatar` tinyint(1) NOT NULL DEFAULT 0,
   `u_flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties',
@@ -142,6 +161,7 @@ CREATE TABLE `videos` (
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video description',
   `author` bigint(20) UNSIGNED NOT NULL COMMENT 'User ID of the video author',
   `time` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Unix timestamp for the time the video was uploaded',
+  `most_recent_view` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'anti-bot shit is useless for this tbh',
   `views` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Video views',
   `flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',
   `category_id` int(11) DEFAULT 0 COMMENT 'Category ID for the video',
@@ -153,8 +173,23 @@ CREATE TABLE `videos` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `views`
+--
+
+CREATE TABLE `views` (
+  `video_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `channel_settings`
+--
+ALTER TABLE `channel_settings`
+  ADD PRIMARY KEY (`user`);
 
 --
 -- Indexes for table `music`
@@ -207,7 +242,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `videos`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.';
-  
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,0 +1,135 @@
+.videoModifiers {
+    padding: 5px 0px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+.videoModifiers div.first {
+    border-left: 0px;
+    padding: 0px 10px 0px 2px;
+}
+.videoModifiers div.subcategory {
+    border-left: 1px solid #ccc;
+    padding: 0px 10px;
+    font-size: 11px;
+    display: inline;
+}
+.videoModifiers .selected {
+    font-weight: bold;
+}
+
+.hddn {
+    display: none !important;
+}
+/* BUTTONS */
+.action-button .end-cap {
+    float:left;
+}
+.img-action-button-cap-left {
+    background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -162px -37px;
+    height:25px;
+    width:5px;
+}
+.img-action-button-cap-right {
+    background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -167px -37px;
+    height:25px;
+    width:5px;
+}
+.action-button .content {
+    background: transparent url(/assets/2008/master-vfl42001.png) repeat-x scroll -310px -377px;
+    color: #0033CC;
+    float: left;
+    height: 20px;
+    padding: 5px 5px 0pt;
+}
+.action-button .content .title {
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* MESSAGES */
+
+.messages_reply_section {
+    margin-top: 38px;
+}
+.messages_actions {
+    padding: 5px 5px 5px 10px;
+    border-bottom: 1px solid #ccc;
+}
+#messages_in tr:first-of-type td {
+    padding: 2px !important;
+    left: 0 !important;
+    color:#000 !important
+}
+#messages_in td, #messages_in td a {
+    color: #4e4e4e;
+}
+#messages_in td {
+    position: relative;
+    left: -1px;
+    padding: 3px;
+}
+.messages_seperation td {
+    background: -moz-linear-gradient(top, #f7f7f7 0, #e0e0e0 100%) !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f7f7f7), color-stop(100%, #e0e0e0)) !important;
+    background: -webkit-linear-gradient(top, #f7f7f7 0, #e0e0e0 100%) !important;
+    background: -o-linear-gradient(top, #f7f7f7 0, #e0e0e0 100%) !important;
+    background: -ms-linear-gradient(top, #f7f7f7 0, #e0e0e0 100%) !important;
+    background: linear-gradient(to bottom, #f7f7f7 0, #e0e0e0 100%) !important;
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#e0e0e0', GradientType=0) !important;
+    font-size:12px !important
+}
+
+#messages_in .in_not a, .in_not span {
+    color: #000 !important;
+    font-weight:700 !important
+}
+.ms_sct {
+    height: 31px;
+    text-decoration: none;
+    cursor:pointer
+}
+.ms_sct:hover {
+    background-color: #f6f6f6 !important;
+}
+textarea {
+    overflow: hidden;
+}
+.in_message {
+    transition: background-color 50ms
+}
+.in_message td {
+    color: #000000 !important;
+}
+.ms_sct:hover + .in_message {
+    background-color: #f6f6f6 !important;
+    transition: background-color 50ms
+}
+.ms_sct > td:nth-of-type(3) > a {
+    text-decoration: none !important;
+}
+.in_message td:nth-of-type(2) {
+    cursor: auto !important;
+}
+.messages_bulk_actions .search_button, #inblk_form .search_button {
+    border-radius: 0;
+    padding: 3px 10px !important;
+}
+textarea {
+    border: 1px solid #d5d5d5;
+    padding: 3px 4px;
+    border-radius: 4px;
+    outline: 0;
+    font-family: Arial;
+    font-size: 13px;
+    width: 98.5%;
+    resize: vertical;
+    border-radius: 0;
+    width:95.5%;
+    min-height: 32px;
+}
+textarea:hover {
+    border: 1px solid #ababab;
+}
+textarea:focus {
+    border: 1px solid #9d9efd;
+}

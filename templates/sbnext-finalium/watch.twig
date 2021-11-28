@@ -2,15 +2,11 @@
 {% block head %}
 <meta name="title" content="{{ video.title }} - squareBracket">
 <meta name="description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-<meta property="og:site_name" content="SquareBracket"/>
+<meta property="og:site_name" content="squareBracket"/>
 <meta property="og:title" content="{{ video.title }} - squareBracket">
 <meta property="og:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
 <meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
 <meta property="og:url" content="{{ page_url }}">
-<meta property="twitter:title" content="{{ video.title }} - squareBracket">
-<meta property="twitter:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-<meta property="twitter:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
-<meta name="twitter:card" content="summary_large_image">
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script>
    video_id = '{{ video.video_id }}';
@@ -25,6 +21,23 @@
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
 <div class="watchNext">
+ {% if userdata.id == video.author %}
+	<div class="grid">
+		<div class="col-md-12">
+         <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
+            <div class="grid">
+               <div class="col-md-4">
+                  <a class="button button-dark">Edit</a>
+				  <a class="button button-danger">Delete</a>
+               </div>
+               <div class="col-md-8 right">
+                  <a class="button button-dark">Video Manager</a>
+               </div>
+            </div>
+         </div>
+	</div>
+	</div>
+	{% endif %}
    <div class="grid">
       <div class="col-md-8">
 	  {% if use2013 %}
@@ -44,29 +57,29 @@
 		 </div>
 		 {% endif %}
          <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
-		                   <h1>{{ video.title }}</h1>
-
+            <h1>{{ video.title }}</h1>
             <div class="grid">
-               <div class="col-md-6">                  <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
+               <div class="col-md-6">
+                  <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
                   <a href="user.php?name={{ video.u_name }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
                   <br>
-				  {% if userdata.id == video.author %}<a class="button button-secondary button-small">Channel settings</a>{% else %}
+                  {% if userdata.id == video.author %}<a class="button button-secondary button-small">Channel settings</a>{% else %}
                   <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
                   <div class="subscribe-count">{{ subCount }}</div>
-				  {% endif %}
+                  {% endif %}
                   <br>
                </div>
                <div class="col-md-6 right">
-                  <h1 class="viewcount">{{ video.views }}</h1>
+                  <h1 class="viewcount">{{ viewCount }}</h1>
                   <div class="likesaber">
                      <div class="like" style="width:{{ videoRatio}}%"></div>
                   </div>
                   <div class="below-likesaber">{{ icon("hand-thumbs-up-fill", 12) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 12) }} {{ total_dislikes }}  </div>
                </div>
             </div>
-			<div class="grid" style="margin-top:5px;">
-			<div class="col-md-4">
-			                  <div style="margin-top:-9px;">
+            <div class="grid" style="margin-top:5px;">
+               <div class="col-md-4">
+                  <div style="margin-top:-9px;">
                      <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="button button-secondary-invis">
                      {{ icon("hand-thumbs-up-fill", 20) }}
                      {{ __("Like") }}
@@ -75,29 +88,35 @@
                      {{ icon("hand-thumbs-down-fill", 20) }}
                      </button>
                   </div>
-			</div>
-			<div class="col-md-8 right">
-			      <div class="tab">
+               </div>
+               <div class="col-md-8 right">
+                  <div class="tab">
                      <button class="tablinks active" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
-					 <button class="tablinks" onclick="openTab(event, 'About')">Share</button>
-					 <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("bar-chart-fill", 12) }}</button>
-					 <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("flag-fill", 12) }}</button>
+                     <button class="tablinks" onclick="openTab(event, 'About')">Share</button>
+                     <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("bar-chart-fill", 12) }}</button>
+                     <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("flag-fill", 12) }}</button>
                   </div>
-			</div>
-			</div>
+               </div>
+            </div>
          </div>
-		 <div class="card card-body-fat">
+         <div class="card card-body-fat">
             <div id="About" class="tabcontent" style="display: block;">
                <p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
                <p>{{ video.description }}</p>
-			   <div class="description-extra">
-			   <ul>
-               <li><h4 class="title">{{ __("Category:") }}</h4> <div class="content">{{ video.category_id | category_id_to_name() }}</div></li>
-               <li><h4 class="title">{{ __("License:") }}</h4> <div class="content">{{ __("Standard squareBracket License") }}</div></li>
-			   </ul>
-			   </div>
+               <div class="description-extra">
+                  <ul>
+                     <li>
+                        <h4 class="title">{{ __("Category:") }}</h4>
+                        <div class="content">{{ video.category_id | category_id_to_name() }}</div>
+                     </li>
+                     <li>
+                        <h4 class="title">{{ __("License:") }}</h4>
+                        <div class="content">{{ __("Standard squareBracket License") }}</div>
+                     </li>
+                  </ul>
+               </div>
             </div>
-		</div>
+         </div>
          <div class="card">
             <div class="card-body-fat">
                <h3>Comments ({{ comCount }})</h3>
@@ -123,16 +142,16 @@
          </div>
       </div>
       <div class="col-md-4">
-               {% for related_video in related_videos %}
-               {{ small_video_box(related_video)}}
-               {% endfor %}
-               <div class="card">
-                  <div class="card-header" id="fromUser">
-                     <h5>{{ __("More videos from %s", [video.u_name]) }}</h5>
-                  </div>
-                  <div class="card-body collapsed" id="fromUserVideoList">
-                  </div>
-               </div>
+         {% for related_video in related_videos %}
+         {{ small_video_box(related_video)}}
+         {% endfor %}
+         <div class="card">
+            <div class="card-header" id="fromUser">
+               <h5>{{ __("More videos from %s", [video.u_name]) }}</h5>
+            </div>
+            <div class="card-body collapsed" id="fromUserVideoList">
+            </div>
+         </div>
       </div>
    </div>
 </div>
