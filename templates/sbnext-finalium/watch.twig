@@ -12,7 +12,11 @@
    video_id = '{{ video.video_id }}';
    user_id = '{{ video.author }}';
 </script>
-<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+	  {% if use2013 %}
+	  <link id="css-4047501374" class="www-embed-player" rel="stylesheet" href="/assets/css/player.css" type="text/css">
+	  {% else %}
+	  <link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+	  {% endif %}
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
@@ -36,9 +40,22 @@
 	{% endif %}
    <div class="grid">
       <div class="col-md-8">
-         {{ include('/components/player.twig') }}
-         {% if userdata.id == video.author %}
-         {% endif %}
+	  {% if use2013 %}
+	  {{ include('/components/player_2013.twig') }}
+	  {% else %}
+	  {{ include('/components/player.twig') }}
+	  {% endif %}
+		 {% if userdata.id == video.author %}
+		 <div class="bg-dark text-light card card-body" style="margin:0;border-bottom:none;border-color:black;">
+		 <div class="grid"><div class="col-md-4">
+			<a class="button button-dark-invis">{{ icon("pencil-fill", 16) }}</a>
+		</div><div class="col-md-8 right">
+		<a class="button button-dark">Analytics</a>
+		<a class="button button-dark">Video Manager</a>
+		</div>
+		</div>
+		 </div>
+		 {% endif %}
          <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
             <h1>{{ video.title }}</h1>
             <div class="grid">

@@ -3,7 +3,9 @@
 include('lib/common.php');
 
 use Intervention\Image\ImageManager;
-use Streaming\FFMpeg;
+use FFMpeg\FFMpeg;
+use FFMpeg\Format\Video\WebM;
+use FFMpeg\Format\Video\x264;
 use FFMpeg\FFProbe;
 use FFMpeg\Coordinate;
 use FFMpeg\Media;
@@ -24,33 +26,28 @@ $target_file = $argv[2];
 try {
 	$ffmpeg = FFMpeg::create($config);
 	$ffprobe = FFProbe::create($config);
-	$duration = $ffprobe
-           ->streams($target_file)
-           ->videos()                   
-           ->first()                  
-           ->get('duration');
 	$video = $ffmpeg->open($target_file);
-	$dash = $video->dash()
-		->setAdaption('id=0,streams=v id=1,streams=a') // Set the adaption.
-		->x264() // Format of the video. vp9 would have been a better idea if it weren't for slow-ass speeds and no way of changing speeds.
-		->autoGenerateRepresentations() // Auto generate representations
-		->save(); // It can be passed a path to the method or it can be null
-	$metadata = $dash->metadata();
-	if (floor($duration) < 10) {
-		if (floor($duration) == 0) {
-			$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration'))))
-				->save('assets/thumb/' . $new . '.png');
-		} else {
-			$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration')) - 1))
-				->save('assets/thumb/' . $new . '.png');
-		}
-	} else {
-		$video->frame(Coordinate\TimeCode::fromSeconds(10))
+	$duration = $ffprobe
+		->format($video)    // extracts file informations
+		->get('duration');  // returns the duration property
+	//if (floor($duration) < 10) {
+	//	if (floor($duration) == 0) {
+	//		$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration'))))
+	//			->save('assets/thumb/' . $new . '.png');
+	//	} else {
+	//		$video->frame(Coordinate\TimeCode::fromSeconds(floor($metadata->getFormat()->get('duration')) - 1))
+	//			->save('assets/thumb/' . $new . '.png');
+	//	}
+	//} else {
+		$video->frame(Coordinate\TimeCode::fromSeconds(1))
 			->save('assets/thumb/' . $new . '.png');
-	}
+	//}
 	$img = $manager->make('assets/thumb/' . $new . '.png');
 	$img->resize(640, 360);
 	$img->save('assets/thumb/' . $new . '.png');
+
+	$video->save(new x264(), 'videos/' . $new . '.converted.mp4');
+	$video->save(new webm(), 'videos/' . $new . '.webm');
 	unlink($target_file);
 
 	$videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);

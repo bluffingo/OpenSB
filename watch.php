@@ -7,6 +7,12 @@ $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.autho
 
 if (!$videoData) error('404', __("The video you were looking for cannot be found."));
 
+if ( isset( $_GET['use_2013'] ) && !empty( $_GET['use_2013'] ) ) {
+	$use2013 = true;
+} else {
+	$use2013 = false;
+}
+
 // using comment.php on 2008 would require clunky javascript
 if ($frontend = "2008") {
 	if (isset($_POST['comment_submit'])) {
@@ -77,5 +83,6 @@ echo $twig->render('watch.twig', [
 	'comCount' => $commentCount,
 	'viewCount' => $viewCount,
 	'videoRatio' => $allRatings,
+	'use2013' => $use2013,
 	'starRatio' => $allStars,
 ]);
