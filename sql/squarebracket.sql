@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2021 at 09:11 PM
+-- Generation Time: Nov 28, 2021 at 03:47 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -24,13 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `channel_comments`
+--
+
+CREATE TABLE `channel_comments` (
+  `comment_id` int(11) NOT NULL,
+  `id` text NOT NULL,
+  `comment` text NOT NULL,
+  `author` bigint(20) NOT NULL,
+  `date` bigint(20) NOT NULL,
+  `deleted` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `channel_settings`
 --
 
 CREATE TABLE `channel_settings` (
   `user` int(11) NOT NULL,
   `background` varchar(7) NOT NULL DEFAULT '#ffffff',
-  `fontcolor` varchar(7) NOT NULL DEFAULT '#ffffff',
+  `fontcolor` varchar(7) NOT NULL DEFAULT '#222222',
   `titlefont` varchar(7) NOT NULL DEFAULT '#ffffff',
   `link` varchar(7) NOT NULL DEFAULT '#0033CC',
   `headerfont` varchar(7) NOT NULL DEFAULT '#ffffff',
@@ -47,6 +62,7 @@ CREATE TABLE `channel_settings` (
 --
 
 CREATE TABLE `comments` (
+  `comment_id` int(11) NOT NULL,
   `id` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID to video or user.',
   `comment` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The comment itself, formatted in Markdown.',
   `author` bigint(20) NOT NULL COMMENT 'Numerical ID of comment author.',
@@ -80,7 +96,8 @@ CREATE TABLE `notifications` (
   `type` int(11) NOT NULL,
   `level` int(11) DEFAULT NULL,
   `recipient` int(11) NOT NULL,
-  `sender` int(11) NOT NULL
+  `sender` int(11) NOT NULL,
+  `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -186,10 +203,22 @@ CREATE TABLE `views` (
 --
 
 --
+-- Indexes for table `channel_comments`
+--
+ALTER TABLE `channel_comments`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
 -- Indexes for table `channel_settings`
 --
 ALTER TABLE `channel_settings`
   ADD PRIMARY KEY (`user`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comment_id`);
 
 --
 -- Indexes for table `music`
@@ -218,6 +247,18 @@ ALTER TABLE `videos`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `channel_comments`
+--
+ALTER TABLE `channel_comments`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `music`
