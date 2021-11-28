@@ -38,6 +38,7 @@ $forceuser = isset($_GET['forceuser']);
 
 $limit = sprintf("LIMIT %s,%s", (($page - 1) * $lpp), $lpp);
 $latestVideoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, v.author, v.tags FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT 9", [$userpagedata['id']]);
+$latestVideo  = fetch("SELECT $userfields v.*, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, v.author, v.tags FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC", [$userpagedata['id']]);
 $count = result("SELECT COUNT(*) FROM videos l WHERE l.author = ?", [$userpagedata['id']]);
 
 $commentData = query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$userpagedata['id']]);
@@ -128,6 +129,7 @@ echo $twig->render('user.twig', [
 	'name' => $userpagedata['name'],
 	'userpagedata' => $userpagedata,
 	'latestVideos' => $latestVideoData,
+	'video' => $latestVideo,
 	'forceuser' => $forceuser,
 	'page' => $page,
 	'level_count' => $count,
