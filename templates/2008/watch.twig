@@ -1,6 +1,9 @@
 {% extends "_layout.twig" %}
 {% block content %}
 <script type="text/javascript" src="./assets/2008/js/watch.js"></script>
+	  {% if oldPlayer == false %}
+	  <link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+	  {% endif %}
 <style>
 	.watch-player-div {
     margin: 0 auto;
@@ -135,7 +138,11 @@ function vidres_change(num) {
 </div>
 <!-- Left side of the watch page where the video player is !-->
 <div id="watch-this-vid">
-<embed src="barack-obama-updated.swf" width="480" height="413" flashvars="video_id={{ video.video_id }}&el=detailpage&ps=&asv=2"></embed>
+	  {% if oldPlayer %}
+	  <embed src="barack-obama-updated.swf" width="480" height="413" flashvars="video_id={{ video.video_id }}&el=detailpage&ps=&asv=2"></embed>
+	  {% else %}
+	  {{ include('/components/player.twig') }}
+	  {% endif %}
     	<div id="watch-ratings-views">
 	<!-- nwm jak zrobić ocenianie ja to pieprze !-->
 		<div id="watch-rating-div" class="ratingMultiline">
