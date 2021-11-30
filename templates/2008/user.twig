@@ -462,14 +462,14 @@
                      var subscribeaxc = '';
                      var isLoggedIn =  true ;
                   </script>
-                  <div id="subscribeDiv">
+                  <div id="subscribeDiv" {% if subscribed %}class="hid"{% endif %}>
                      <a class="action-button" onclick="subscribe(watchUsername, subscribeaxc, true); urchinTracker('/Events/SUB_click/Profile/{{ userpagedata.name }}'); return false;" title="subscribe to {{ userpagedata.name }}'s videos">
                      <span class="action-button-leftcap"></span>
                      <span class="action-button-text">Subscribe</span>
                      <span class="action-button-rightcap"></span>
                      </a>
                   </div>
-                  <div id="unsubscribeDiv" class="hid">
+                  <div id="unsubscribeDiv" {% if subscribed == false %}class="hid"{% endif %}>
                      <a class="action-button inactive" onclick="unsubscribe(watchUsername, subscribeaxc); return false;">
                      <span class="action-button-leftcap"></span>
                      <span class="action-button-text">Unsubscribe</span>

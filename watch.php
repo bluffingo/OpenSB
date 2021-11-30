@@ -46,12 +46,12 @@ $combinedRatings = $totalDislikes + $totalLikes;
 
 $allRatings = calculateRatio($totalDislikes, $totalLikes, $combinedRatings);
 
-if (isset($userdata)) {
-	$rating = result("SELECT rating FROM rating WHERE video=? AND user=?", [$videoData['id'], $userdata['id']]);
-	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $videoData['author']]);
-} else {
+if (!isset($userdata)) {
 	$rating = 2;
 	$subscribed = 0;
+} else {
+	$rating = result("SELECT rating FROM rating WHERE video=? AND user=?", [$videoData['id'], $userdata['id']]);
+	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $videoData['author']]);
 }
 if (fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$videoData['video_id'], crypt($ip, "salt, used to encrypt stuff is very important.")])['COUNT(video_id)'] < 1) {
 	query("INSERT INTO views (video_id, user) VALUES (?,?)",

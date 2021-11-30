@@ -123,6 +123,12 @@ $css = $scss->compile(
 	}'
 );
 
+if (isset($userdata)) {
+	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $userpagedata['id']]);
+} else {
+	$subscribed = 0;
+}
+
 $twig = twigloader();
 echo $twig->render('user.twig', [
 	'id' => $userpagedata['id'],
@@ -138,6 +144,7 @@ echo $twig->render('user.twig', [
 	'edited' => (isset($_GET['edited']) ? true : false),
 	'comments' => (isset($comments) ? $comments : null),
 	'subCount' => $subCount,
+	'subscribed' => $subscribed,
 	'customProfile' => $customProfile,
 	'comments' => $commentData,
 	'message' => $message
