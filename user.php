@@ -43,56 +43,6 @@ $count = result("SELECT COUNT(*) FROM videos l WHERE l.author = ?", [$userpageda
 
 $commentData = query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$userpagedata['id']]);
 
-// Personal user page stuff
-/* if (isset($userdata['id']) && $userdata['id'] == $userpagedata['id'] && !$forceuser) {
-	if (isset($_GET['markread'])) {
-		query("DELETE FROM notifications WHERE recipient = ?", [$userdata['id']]);
-		$notificationCount = 0;
-	}
-
-	$notifsdata = query("SELECT $userfields n.*, l.id l_id, l.title l_title FROM notifications n LEFT JOIN videos l ON n.level = l.id JOIN users u ON n.sender = u.id WHERE n.recipient = ?", [$userdata['id']]);
-
-	$notifications = [];
-	while ($notifdata = $notifsdata->fetch()) {
-		switch ($notifdata['type']) {
-			case 1:
-				$notifications[] = sprintf('%s commented on <a href="watch.php?id=%s">%s</a>.', userlink($notifdata, 'u_'), $notifdata['l_id'], $notifdata['l_title']);
-			break;
-			case 2:
-				$notifications[] = sprintf('%s commented on your <a href="user.php?id=%s&forceuser">user page</a>.', userlink($notifdata, 'u_'), $userdata['id']);
-			break;
-			case 3:
-				$notifications[] = sprintf('%s sent you a private message: <a href="forum/showprivate.php?id=%s">Read</a>', userlink($notifdata, 'u_'), $notifdata['level']);
-			break;
-			case 11:
-			case 12:
-			case 13:
-			case 14:
-			case 15:
-			case 16:
-				$notifications[] = sprintf(
-					'%s mentioned you in a %s comment: <a href="%s.php?id=%s">Read</a>',
-				userlink($notifdata, 'u_'), cmtNumToType($notifdata['type'] - 10), cmtNumToType($notifdata['type'] - 10), $notifdata['level']);
-			break;
-		}
-	}
-} else { // general profile details stuff
-	if ($userpagedata['about']) {
-		$markdown = new Parsedown();
-		$markdown->setSafeMode(true);
-		$userpagedata['about'] = $markdown->text($userpagedata['about']);
-	}
-
-	//not implemented
-	//$comments = query("SELECT $userfields c.* FROM comments c JOIN users u ON c.author = u.id WHERE c.type = 4 AND c.level = ? ORDER BY c.time DESC", [$userpagedata['id']]);
-
-	if (isset($userdata['id']) && $userpagedata['id'] == $userdata['id']) {
-		query("DELETE FROM notifications WHERE type = 2 AND recipient = ?", [$userdata['id']]);
-	}
-
-	//clearMentions('user', $userpagedata['id']);
-}
- */
 $subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$userpagedata['id']])['COUNT(user)'];
 
 $scss = new Compiler();
