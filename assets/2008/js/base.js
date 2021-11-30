@@ -1,4 +1,4 @@
-var cookie_domain='youtube.com';
+var cookie_domain='localhost';
 var cookie_prefix='';
 function _gel(id){
 return document.getElementById(id);
@@ -2083,7 +2083,7 @@ query+='&color1=0x'+hexColors[0]+'&color2=0x'+hexColors[1];
 var showBorder=yt.UserPrefs.getFlag(yt.UserPrefs.Flags.FLAG_EMBED_SHOW_BORDER);
 query+=showBorder?'&border=1':'';
 var height=(showBorder?349:344);
-var embedCode='<object width="425" height="'+height+'"><param name="movie" value="'+embedUrl+query+'"><\/param><embed src="'+embedUrl+query+'" type="application/x-shockwave-flash" width="425" height="'+height+'"><\/embed><\/object>';
+var embedCode='<object width="425" height="'+height+'"><param name="movie" value="'+embedUrl+query+'"><\/param><param name="wmode" value="transparent"><\/param><embed src="'+embedUrl+query+'" type="application/x-shockwave-flash" wmode="transparent" width="425" height="'+height+'"><\/embed><\/object>';
 document.embedForm.embed_code.value=embedCode;
 }
 function onUpdatePreviewImage(){
@@ -3239,7 +3239,7 @@ a=a[2].split('.').reverse();
 if(a.length<2)return false;
 var d0=a[0];
 var d1=a[1];
-if(d1=='youtube'&&d0=='com')return true;
+if(d1=='localhost')return true;
 if(d1=='google')return true;
 if(a.length<3)return false;
 if(a[2]=='google'&&((d1=='co'&&d0=='uk')||(d1=='com'&&d0=='au')))return true;

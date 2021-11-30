@@ -485,8 +485,25 @@ function vidres_change(num) {
 
 
 	</div> 
-
-
+	{% if userdata.id == video.author %}
+		<div id="watch-video-owner">
+			<div id="watch-video-owner-header">
+			Video Owner Options
+			</div>
+				<a href="/a/subscription_center.php?user=Gamerappa" class="edit-button">
+                 <span class="edit-button-leftcap"></span>
+                 <span class="edit-button-text">Edit Video</span>
+                 <span class="edit-button-rightcap" style="margin-right: 7px;"></span>
+                 </a>
+				<a href="/a/subscription_center.php?user=Gamerappa" class="edit-button">
+                 <span class="edit-button-leftcap"></span>
+                 <span class="edit-button-text">Insight</span>
+                 <span class="edit-button-rightcap"></span>
+                 </a>
+				 <br><br>
+		</div>
+	{% endif %}
+<br>
 
 	<div class="watch-wrapper">
 			<div id="more-from-panel" class="expand-panel expanded">
