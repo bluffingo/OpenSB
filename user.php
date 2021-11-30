@@ -44,6 +44,7 @@ $count = result("SELECT COUNT(*) FROM videos l WHERE l.author = ?", [$userpageda
 $commentData = query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$userpagedata['id']]);
 
 $subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$userpagedata['id']])['COUNT(user)'];
+$subscribers  = query("SELECT $userfields s.* FROM subscriptions s JOIN users u on user WHERE s.user = ?", [$userpagedata['id']]);
 
 $scss = new Compiler();
 $scss->setImportPaths($_SERVER['DOCUMENT_ROOT']);
@@ -97,5 +98,6 @@ echo $twig->render('user.twig', [
 	'subscribed' => $subscribed,
 	'customProfile' => $customProfile,
 	'comments' => $commentData,
-	'message' => $message
+	'message' => $message,
+	'subscribers' => $subscribers,
 ]);

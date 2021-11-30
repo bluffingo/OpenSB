@@ -65,86 +65,16 @@
    
    	function imagesInit_subscribers() {
    		imageBrowsers['subscribers'] = new ImageBrowser(4, 1, "subscribers");
-   			imageBrowsers['subscribers'].addImage(new ytImage("http://i.ytimg.com/vi/jNQXAC9IVRw/default.jpg",
-   			"/user.php?name=jawed",
-   			"PenisNigger",
-   			"/user.php?name=jawed",
+			{% for subs in subscribers %}
+   			imageBrowsers['subscribers'].addImage(new ytImage("{{ profile_image(subs.u_name) }}",
+   			"/user.php?name={{ subs.u_name }}",
+   			"{{ subs.u_name }}",
+   			"/user.php?name={{ subs.u_name }}",
    			"",
    			"",
    			"",
    			false) );
-   			imageBrowsers['subscribers'].addImage(new ytImage("/assets/2008/no_videos_140.png",
-   			"/user.php?name=xwaman516",
-   			"xwaman516",
-   			"/user.php?name=xwaman516",
-   			"",
-   			"",
-   			"",
-   			false) );
-   			imageBrowsers['subscribers'].addImage(new ytImage("http://i.ytimg.com/i/ticPw4FhbF7RtokiQI8zwg/1.jpg",
-   			"/user.php?name=exzombie",
-   			"exzombie",
-   			"/user.php?name=exzombie",
-   			"",
-   			"",
-   			"",
-   			false) );
-   			imageBrowsers['subscribers'].addImage(new ytImage("http://i.ytimg.com/vi/2_qRR3LJIsY/default.jpg",
-   			"/user.php?name=auntyadele",
-   			"auntyadele",
-   			"/user.php?name=auntyadele",
-   			"",
-   			"",
-   			"",
-   			false) );
-   			imageBrowsers['subscribers'].addImage(new ytImage("http://i.ytimg.com/vi/lQKP5kA1sxk/default.jpg",
-   			"/user.php?name=evilsaywhat",
-   			"evilsaywhat",
-   			"/user.php?name=evilsaywhat",
-   			"",
-   			"",
-   			"",
-   			false) );
-   			imageBrowsers['subscribers'].addImage(new ytImage("http://i.ytimg.com/i/5ek7VYYvmoQx_ZiJoR6ofQ/1.jpg",
-   			"/user.php?name=maryrose",
-   			"maryrose",
-   			"/user.php?name=maryrose",
-   			"",
-   			"",
-   			"",
-   			false) );
-   			imageBrowsers['subscribers'].addImage(new ytImage("http://i.ytimg.com/i/jziPrmNwxCI8yKBqXT1gNA/1.jpg",
-   			"/user.php?name=Fritz",
-   			"Fritz",
-   			"/user.php?name=Fritz",
-   			"",
-   			"",
-   			"",
-   			false) );
-   			imageBrowsers['subscribers'].addImage(new ytImage("/assets/2008/no_videos_140.png",
-   			"/user.php?name=biggiesized",
-   			"biggiesized",
-   			"/user.php?name=biggiesized",
-   			"",
-   			"",
-   			"",
-   			false) );
-   			imageBrowsers['subscribers'].addImage(new ytImage("http://i.ytimg.com/vi/sL3gdFUvPWA/default.jpg",
-   			"/user.php?name=dingguhlbary",
-   			"dingguhlbary",
-   			"/user.php?name=dingguhlbary",
-   			"",
-   			"",
-   			"",
-   			false) );
-   			imageBrowsers['subscribers'].addImage(new ytImage("http://i.ytimg.com/vi/a_RO5Aruezk/default.jpg",
-   			"/user.php?name=SlurpeeGirl",
-   			"SlurpeeGirl",
-   			"/user.php?name=SlurpeeGirl",
-   			"",
-   			"",
-   			"",
-   			false) );
+			{% endfor %}
    		imageBrowsers['subscribers'].initDisplay();
    		imageBrowsers['subscribers'].showImages();
    		images_loaded = true;
