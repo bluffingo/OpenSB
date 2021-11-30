@@ -4,6 +4,392 @@
 	  {% if oldPlayer == false %}
 	  <link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
 	  {% endif %}
+<script type="text/javascript">
+		initWatchQueue(true);
+		var MSG_Hide = 'Hide';
+		var MSG_Show = 'Show';
+		var MSG_Login = 'Please login to perform this operation.';
+		var MSG_Loading = 'Loading...';
+		var MSG_ShowingAll = 'Showing All Videos';
+		var MSG_LoginFavorites = 'You must be logged in to add this video to your favorites';
+		var MSG_LoginAddPlaylist = 'You must be logged in to add this video to a playlist.';
+		var MSG_LoginReportConcern = 'You must be logged in to report a concern.';
+		var MSG_FlagDefault = 'Select a Reason';
+
+		var swfUrl = '/swf/watch.swf';
+		var swfArgs = {"ad_module": true, "sourceid": "y", "video_id": "Kt4Go_TKdoE", "l": 231, "fmt_map": "6/720000/7/0/0", "sk": "xyE6xQusFGvEaTUvLUzLQOHzw25ta-xcC", "invideo": true, "t": "OEgsToPDskKvC5e3Fkx7HNtIXuaAo4BY", "hl": "en", "plid": "AARPbCrwIjYNVjV-AAAC4YT8YkA", "vq": null, "sdetail": "p%3A/", "tk": "JM2fJCYTpVRtXDyL4uNdJD_-FVdFFuftNVXkWLzB95_yuCdbaHfkHQ=="};
+
+		var additionalStatsHonorsUrl = '/watch_ajax?v=Kt4Go_TKdoE&action_get_honors=1&l=EN';
+		var watchMapUrl = '/watch_ajax?v=Kt4Go_TKdoE&action_get_map=1';
+		var fullscreenUrl = '/watch_fullscreen?fs=1&ad_module=True&sourceid=y&video_id=Kt4Go_TKdoE&l=231&fmt_map=6%2F720000%2F7%2F0%2F0&sk=xyE6xQusFGvEaTUvLUzLQOHzw25ta-xcC&invideo=True&t=OEgsToPDskKvC5e3Fkx7HNtIXuaAo4BY&hl=en&plid=AARPbCrwIjYNVjV-AAAC4YT8YkA&vq=None&sdetail=p%253A%2F&tk=JM2fJCYTpVRtXDyL4uNdJD_-FVdFFuftNVXkWLzB95_yuCdbaHfkHQ%3D%3D&title=YOUTUBE CELEBRITY OVERNIGHT!';
+		var watchGamUrl = null;
+		var watchDCUrl = null;
+		var watchTrackWithHitbox = false;
+		var watchIsPlayingAll = false;
+		var watchUsername = '{{ video.u_name }}';
+		var pageVideoId = '{{ video.id }}';
+		var relatedVideoGridUrl = '/related_ajax?video_id=Kt4Go_TKdoE&view_type=G&watch3=1&search=%20youtube%20celebrity%20overnight%20dj%20dub%20arsha%20asteraki%20music%20video%20hilarious%20funny%20crazy%20awesome%20yo';
+		var relatedVideoListUrl = '/related_ajax?video_id=Kt4Go_TKdoE&view_type=L&watch3=1&search=%20youtube%20celebrity%20overnight%20dj%20dub%20arsha%20asteraki%20music%20video%20hilarious%20funny%20crazy%20awesome%20yo';
+		var playnextFrom = '';
+		var playnextCount = '0';
+		var qlAutoscrollDestination = 0;
+		var watchSetWmode = false;
+		var embedUrl = 'https://web.archive.org/web/20080611231142/http://www.youtube.com/v/Kt4Go_TKdoE&hl=en';
+		var ytLocale = 'en_US';
+	
+		var ad_eurl = null;
+
+			onLoadFunctionList.push(checkVideoQualitySettings);
+		 
+		var axc = '';
+		var subscribeaxc = '';
+		
+			watchDCUrl = "https://web.archive.org/web/20080611231142/http://n4061ad.doubleclick.net/pfadx/com.ytpwatch.music/main_4437;sz=480x70;kl=N;!c=4437;kvid=Kt4Go_TKdoE;kpu=ArshaAsteraki;ko=y;kpid=4437;kga=-1;kr=F;u=Kt4Go_TKdoE|4437;kgg=-1;";
+
+
+					onLoadFunctionList.push(function() { imagesInit_video_responses();} );
+
+		function imagesInit_video_responses() {
+			imageBrowsers['video_responses'] = new ImageBrowser(4, 1, "video_responses");
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://s3.ytimg.com/vi/6PXC1KKGykA/default.jpg", 
+					"/watch?v=6PXC1KKGykA&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">01:29</span><br/>\n\t<a class=\"hLink\" href=\"/user/edgargomez16\">edgargom...</a>\n\t", 
+					"",
+					"",
+					false,
+					"6PXC1KKGykA") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://s1.ytimg.com/vi/tWnia1KsyMo/default.jpg", 
+					"/watch?v=tWnia1KsyMo&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">01:11</span><br/>\n\t<a class=\"hLink\" href=\"/user/philip10210\">philip10...</a>\n\t", 
+					"",
+					"",
+					false,
+					"tWnia1KsyMo") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/O9h7uG8OVOs/default.jpg", 
+					"/watch?v=O9h7uG8OVOs&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:56</span><br/>\n\t<a class=\"hLink\" href=\"/user/HaroldandBeth\">Haroldan...</a>\n\t", 
+					"",
+					"",
+					false,
+					"O9h7uG8OVOs") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/kJRXIEoi7DE/default.jpg", 
+					"/watch?v=kJRXIEoi7DE&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">04:26</span><br/>\n\t<a class=\"hLink\" href=\"/user/cirqueduprick\">cirquedu...</a>\n\t", 
+					"",
+					"",
+					false,
+					"kJRXIEoi7DE") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/HGfCSK2uEck/default.jpg", 
+					"/watch?v=HGfCSK2uEck&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">07:41</span><br/>\n\t<a class=\"hLink\" href=\"/user/xGlenreb\">xGlenreb</a>\n\t", 
+					"",
+					"",
+					false,
+					"HGfCSK2uEck") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/Ka3u1Y0iok8/default.jpg", 
+					"/watch?v=Ka3u1Y0iok8&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">01:53</span><br/>\n\t<a class=\"hLink\" href=\"/user/edgargomez16\">edgargom...</a>\n\t", 
+					"",
+					"",
+					false,
+					"Ka3u1Y0iok8") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/mlsJ4itTKVQ/default.jpg", 
+					"/watch?v=mlsJ4itTKVQ&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:14</span><br/>\n\t<a class=\"hLink\" href=\"/user/gh0st427\">gh0st427</a>\n\t", 
+					"",
+					"",
+					false,
+					"mlsJ4itTKVQ") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/XiYrN0GN3zo/default.jpg", 
+					"/watch?v=XiYrN0GN3zo&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">02:12</span><br/>\n\t<a class=\"hLink\" href=\"/user/dekatzz2\">dekatzz2</a>\n\t", 
+					"",
+					"",
+					false,
+					"XiYrN0GN3zo") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/YaGJE8YagjE/default.jpg", 
+					"/watch?v=YaGJE8YagjE&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:46</span><br/>\n\t<a class=\"hLink\" href=\"/user/TgirlQueensland\">TgirlQue...</a>\n\t", 
+					"",
+					"",
+					false,
+					"YaGJE8YagjE") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/ZCv22n9Addw/default.jpg", 
+					"/watch?v=ZCv22n9Addw&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:22</span><br/>\n\t<a class=\"hLink\" href=\"/user/hannahf109\">hannahf109</a>\n\t", 
+					"",
+					"",
+					false,
+					"ZCv22n9Addw") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/Fs04gGmGoSg/default.jpg", 
+					"/watch?v=Fs04gGmGoSg&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">03:43</span><br/>\n\t<a class=\"hLink\" href=\"/user/chilapa90\">chilapa90</a>\n\t", 
+					"",
+					"",
+					false,
+					"Fs04gGmGoSg") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/lP5C4O7e9iU/default.jpg", 
+					"/watch?v=lP5C4O7e9iU&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">04:22</span><br/>\n\t<a class=\"hLink\" href=\"/user/10EIGHTXRAY\">10EIGHTX...</a>\n\t", 
+					"",
+					"",
+					false,
+					"lP5C4O7e9iU") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/U0kEFBVDxHg/default.jpg", 
+					"/watch?v=U0kEFBVDxHg&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">03:47</span><br/>\n\t<a class=\"hLink\" href=\"/user/10EIGHTXRAY\">10EIGHTX...</a>\n\t", 
+					"",
+					"",
+					false,
+					"U0kEFBVDxHg") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/25aXYKVOC0U/default.jpg", 
+					"/watch?v=25aXYKVOC0U&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">02:27</span><br/>\n\t<a class=\"hLink\" href=\"/user/SydneyStyles\">SydneySt...</a>\n\t", 
+					"",
+					"",
+					false,
+					"25aXYKVOC0U") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/oP-8jnZdkWQ/default.jpg", 
+					"/watch?v=oP-8jnZdkWQ&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">02:18</span><br/>\n\t<a class=\"hLink\" href=\"/user/Archmetal06\">Archmeta...</a>\n\t", 
+					"",
+					"",
+					false,
+					"oP-8jnZdkWQ") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/otwfg71YeO0/default.jpg", 
+					"/watch?v=otwfg71YeO0&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">05:24</span><br/>\n\t<a class=\"hLink\" href=\"/user/jyotijwala\">jyotijwala</a>\n\t", 
+					"",
+					"",
+					false,
+					"otwfg71YeO0") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/IfJ11Vmwztg/default.jpg", 
+					"/watch?v=IfJ11Vmwztg&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">08:42</span><br/>\n\t<a class=\"hLink\" href=\"/user/micgamer15\">micgamer15</a>\n\t", 
+					"",
+					"",
+					false,
+					"IfJ11Vmwztg") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/8KkSqMnMhqU/default.jpg", 
+					"/watch?v=8KkSqMnMhqU&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">02:10</span><br/>\n\t<a class=\"hLink\" href=\"/user/DJPhoeniXen\">DJPhoeni...</a>\n\t", 
+					"",
+					"",
+					false,
+					"8KkSqMnMhqU") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/heEKqZNaBto/default.jpg", 
+					"/watch?v=heEKqZNaBto&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:40</span><br/>\n\t<a class=\"hLink\" href=\"/user/Archmetal06\">Archmeta...</a>\n\t", 
+					"",
+					"",
+					false,
+					"heEKqZNaBto") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/qeXL8IJymCs/default.jpg", 
+					"/watch?v=qeXL8IJymCs&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:51</span><br/>\n\t<a class=\"hLink\" href=\"/user/Archmetal06\">Archmeta...</a>\n\t", 
+					"",
+					"",
+					false,
+					"qeXL8IJymCs") );
+			imageBrowsers['video_responses'].initDisplay();
+			imageBrowsers['video_responses'].showImages();
+			images_loaded = true;
+		}
+
+
+			function showCommentReplyForm(form_id, reply_parent_id, is_main_comment_form) {
+		var msg = new Object();
+		msg["post"] = "Please login to post a comment.";
+		showCommentReplyForm_js(form_id, reply_parent_id, is_main_comment_form, msg);
+	}
+
+	function updateCharCount(charCount_id, label_id, textArea) {
+		var msg = new Object();
+		msg["exceeded"] = "Number of characters over the limit: ";
+		msg["remaining"] = "Remaining character count: "; 
+		updateCharCount_js(charCount_id, label_id, textArea, 500, msg)
+	}
+
+	function loginMsg(div_id, display_val) {
+		var msg = new Object();
+		msg["login"] = 'Please login';
+		loginMsg_js(div_id, display_val, msg);
+	}
+
+	function printCommentReplyForm(form_id, reply_parent_id, is_main_comment_form) {
+		var msg = new Object();
+		msg["post"] = "Post Comment";
+		msg["remaining"] = "Remaining character count: ";
+		msg["discard"] = "Discard"; 
+		printCommentReplyForm_js(form_id, reply_parent_id, is_main_comment_form, 'V', 'goog.i18n.bidi.setDirAttribute(event,this)', 'video_id', 'Kt4Go_TKdoE', '', 500, msg);
+	}
+
+	function postThreadedComment(comment_form_id) {
+		var msg = new Object();
+		msg["add"] = "Adding comment...";
+		postThreadedComment_js(comment_form_id, msg);
+	}
+
+	function commentApproved(xmlHttpRequest) {
+		alert("Comment approved.")
+	}
+
+	function ThreadedCommentHandler(comment_form, comment_form_id) {
+		var msg = new Object();
+		msg["empty"] = "You must enter a comment!";
+		msg["toolong"] = "Your comment must be shorter than 500 characters!";
+		return ThreadedCommentHandler_js(comment_form, comment_form_id, msg);
+	}
+
+	function commentResponse(xmlHttpRequest) {
+		var msg = new Object();
+		msg["ok"] = "Comment Posted!";
+		msg["pending"] = "Comment Pending Approval!";
+		msg["toolong"] = "The comment you have entered is too long. Limit is 500 characters. Please write a shorter comment and try again";
+		msg["tooshort"] = "The comment you have entered is too short. Please write a longer comment and try again";
+		msg["toosoon"] = "Commenting Limit Exceeded";
+		msg["email"] = "You must confirm your email address before you can submit comments.  Click OK to confirm your email address.";
+		msg["captchFail"] = "The response to the letters on the image was not correct, please try again.";
+		msg["default"] = "Post Comment"; 
+		commentResponse_js(xmlHttpRequest, msg);
+	}
+
+	function load_all_comments(video_id, is_watch2) {
+		var msg = new Object();
+		msg["remove"] = "Loading Comments...";
+		load_all_comments_js(video_id, is_watch2, msg);
+	}
+
+
+
+
+		onLoadFunctionList.push(applyUserPrefs);
+
+
+		var gCompanionAdUrl = 'https://web.archive.org/web/20080611231142/http://n4061ad.doubleclick.net/adi/com.ytpwatch.music/main_4437;sz=300x250;kl=N;!c=4437;kvid=Kt4Go_TKdoE;kpu=ArshaAsteraki;ko=y;kpid=4437;kga=-1;kr=F;u=Kt4Go_TKdoE|4437;kgg=-1;tile=1;dcopt=ist;';
+
+
+	</script>
 <style>
 	.watch-player-div {
     margin: 0 auto;
@@ -143,47 +529,46 @@ function vidres_change(num) {
 	  {% else %}
 	  {{ include('/components/player.twig') }}
 	  {% endif %}
-    	<div id="watch-ratings-views">
-	<!-- nwm jak zrobić ocenianie ja to pieprze !-->
-		<div id="watch-rating-div" class="ratingMultiline">
+<div id="watch-ratings-views">
+		<div id="watch-rating-div" class="ratingMultiline
+">
 			<div class="statLabel floatL">Rate:</div>
-<div id="ratingWrapper">
-	<div class="floatL">
-			<div id="rateStars">
-		                            	<nobr class="rating" data-default-rating="{{ starRatio }}" style="display: inline-block;"></nobr>
-                            	<link rel="stylesheet" href="/assets/2008/star/starrating.css">
-                            	<script src="/assets/2008/star/starrating.js"></script>
-                            	<script>
-            					var ratings = document.getElementsByClassName('rating');
+			
 
-            					for (var i = 0; i < ratings.length; i++) {
-                					var r = new StarRating(ratings[i]);
+		<script language="javascript">
 
-                				ratings[i].addEventListener('rate', function(e) {
-                   			 	rate_video(e.detail);
-               				 		});
-            					}
-        						</script>
 
-                            							</div>
-				<div id="ratingMessage"><div id="defaultRatingMessage" style="display: block;" class="wasblock"><span id="ratings_text" class="smallText">{{ total_rating }} ratings</span></div>
-				</div>
-		<!-- do glosowania !-->
-	</div>
-</div>
+		_gel('watch-rating-div').onmouseover = function() { hideDiv('defaultRatingMessage'); showDiv('hoverMessage'); };
+		_gel('watch-rating-div').onmouseout = function() { showDiv('defaultRatingMessage'); hideDiv('hoverMessage'); };
+ 	
+		</script>
+
+<div id="ratingWrapper"><div class="floatL">
+<div id="ratingStars" class="floatL">
+<img class="ratingL ratingL-4.0" alt="3.89842041312" src="/assets/2008/pixel.gif"></div>
+<div id="ratingMessage"><div id="defaultRatingMessage" style="display: block;" class="wasblock">
+<span class="smallText">4,115 ratings</span></div><div id="hoverMessage" style="width: 100%; display: none;" class="hid wasblock">
+<a href="#" onclick="return openLoginBoxFromRatings(event);">Login</a> to rate</div></div></div></div>
+
 		</div>
+
 		<div id="watch-views-div">
 			<div class="floatR">
 				<span class="statLabel">Views:</span>
-				<span id="watch-view-count">
-										{{ viewCount }}										</span>
+				<span id="watch-view-count">{{ viewCount }}</span>
 			</div>
+
+<!-- 			<div id="watch-video-quality-setting">
+				<a id="watch-low-quality-link" href="#" class="hLink" onclick="changeVideoQuality(yt.VideoQualityConstants.LOW); urchinTracker('/VideoWatch/QualityChangeToLow'); return false;">watch in standard quality</a>
+				<a id="watch-high-quality-link" href="#" class="hLink" onclick="changeVideoQuality(yt.VideoQualityConstants.HIGH); urchinTracker('/VideoWatch/QualityChangeToHigh'); return false;">watch in high quality</a>
+			</div> -->
+
+
 			<div class="clear"></div>
 		</div>
 
 		<div class="clear"></div>
 	</div>
-
 	<div id="watch-actions-area">
 		<table class="watch-tabs" cellspacing="0" cellpadding="0">
 			<tbody><tr>
@@ -389,21 +774,28 @@ function vidres_change(num) {
 			<div id="watch-channel-icon" class="user-thumb-medium">
 				<a href="/user.php?name={{ video.u_name }}" onmousedown=""><img src="{{ profile_image(video.u_name) }}" alt="Channel Icon"></a>
 			</div>
-			               <div id="unsubscribeDiv" class="watch-channel-subscribe">
-                 <a href="/a/subscription_center.php?user={{ video.u_name }}" class="action-button">
-                 <span class="action-button-leftcap"></span>
-                 <span class="action-button-text">Subscribe</span>
-                 <span class="action-button-rightcap"></span>
-                 </a>
-             </div>
-             			<div id="watch-channel-stats">
+<div id="subscribeDiv" class="watch-channel-subscribe {% if subscribed %}hid{% endif %}">
+				<a class="action-button" onclick="subscribe(watchUsername, subscribeaxc, true); return false;" title="subscribe to ArshaAsteraki's videos">
+					<span class="action-button-leftcap"></span>
+					<span class="action-button-text">Subscribe</span>
+					<span class="action-button-rightcap"></span>
+				</a>
+			</div>
+<div id="unsubscribeDiv" class="watch-channel-subscribe {% if subscribed == false %}hid{% endif %}">
+				<a class="action-button inactive" onclick="unsubscribe(watchUsername, subscribeaxc); return false;">
+					<span class="action-button-leftcap"></span>
+					<span class="action-button-text">Unsubscribe</span>
+					<span class="action-button-rightcap"></span>
+				</a>
+			</div>
+             <div id="watch-channel-stats">
 				<span class="watch-channel-stat">From: </span> <a href="/user.php?name={{ video.u_name }}">{{ video.u_name }}</a><br>
 				<span class="watch-channel-stat">Joined:</span> {{ video.u_joined | relative_time() }}<br>
 				<span class="watch-channel-stat">Videos:</span> <span id="watch-channel-videos">56</span>
 			</div>
 			<div class="clear"></div>
 		</div> 
-
+<div id="subscribeMessage">Please <a href="#" onclick="return openLoginBox(event);">login</a> to subscribe.</div>
 			<div id="watch-video-details" class="expand-panel">
 		<div id="watch-video-details-inner">
 			<div class="collapse-content" id="collapse-content">

@@ -7,6 +7,13 @@
 <title>squareBracket - Can't believe it's not PokTube</title>
 <link href="/assets/2008/main.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="assets/2008/js/base.js"></script>
+<script>
+{% if log %}
+var isLoggedIn = true;
+{% else %}
+var isLoggedIn = false;
+{% endif %}
+</script>
 <style>
 		body { word-break:break-word; }
 		</style>

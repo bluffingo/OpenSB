@@ -1614,7 +1614,7 @@ showDiv(show);
 }
 function processShareVideo(eVideoID,divID,component){
 shareVideo(eVideoID,divID,component);
-urchinTracker('/VideoWatch/ShareVideo');
+//urchinTracker('/VideoWatch/ShareVideo');
 showDiv('aggregationServicesDiv');
 toggleMoreShare('more-options','fewer-options');
 return false;
@@ -1662,12 +1662,12 @@ showAjaxDivLoggedIn(divID,'/watch_ajax?'+action,true);
 el.currBlog=opt_blogInfoID;
 }
 }
-urchinTracker('/VideoWatch/ShareVideo');
+//urchinTracker('/VideoWatch/ShareVideo');
 }
 if(isLoggedIn){
-urchinTracker('/VideoWatch/ActionTab/ShareVideo/Loggedin');
+//urchinTracker('/VideoWatch/ActionTab/ShareVideo/Loggedin');
 }else{
-urchinTracker('/VideoWatch/ActionTab/ShareVideo/Loggedout');
+//urchinTracker('/VideoWatch/ActionTab/ShareVideo/Loggedout');
 }
 }
 function closeAll(except){
@@ -1786,11 +1786,11 @@ watchSelectTab(_gel('watch-tab-share'));
 postAjaxForm('watch-add-faves-div',formName,
 new XMLResponseCallback(onSuccess,onFailure));
 _gel('watch-action-favorite-link').blur();
-urchinTracker('/VideoWatch/ActionTab/AddToFavs/Loggedin');
+//urchinTracker('/VideoWatch/ActionTab/AddToFavs/Loggedin');
 }
 else{
 showDiv('addToFavesLogin');
-urchinTracker('/VideoWatch/ActionTab/AddToFavs/Loggedout');
+//urchinTracker('/VideoWatch/ActionTab/AddToFavs/Loggedout');
 }
 }
 function removeFromFaves(formName,event){
@@ -1800,7 +1800,7 @@ showDiv('watch-add-faves-btn');
 hideDiv('watch-remove-faves-btn');
 postAjaxForm('watch-remove-faves-div',formName);
 _gel('watch-action-favorite-link').blur();
-urchinTracker('/VideoWatch/ActionTab/RemoveFromFavs/Loggedin');
+//urchinTracker('/VideoWatch/ActionTab/RemoveFromFavs/Loggedin');
 }
 var gWatchLoading='';
 function addToPlaylist(videoId,event){
@@ -1813,10 +1813,10 @@ _gel('addToPlaylistDiv').innerHTML=gWatchLoading;
 }
 showDiv('addToPlaylistDiv');
 showAjaxDivLoggedIn('addToPlaylistDiv','/watch_ajax?video_id='+videoId+'&action_get_playlists_component=1',true);
-urchinTracker('/VideoWatch/ActionTab/AddToPlaylists/Loggedin');
+//urchinTracker('/VideoWatch/ActionTab/AddToPlaylists/Loggedin');
 }else{
 showDiv('addToPlaylistLogin');
-urchinTracker('/VideoWatch/ActionTab/AddToPlaylists/Loggedout');
+//urchinTracker('/VideoWatch/ActionTab/AddToPlaylists/Loggedout');
 }
 }
 function submitToPlaylist(self){
@@ -1843,11 +1843,11 @@ if(_gel('inappropriateVidDiv').innerHTML.toLowerCase().indexOf('<div')!=-1){
 return;
 }
 showAjaxDivLoggedIn('inappropriateVidDiv','/watch_ajax?video_id='+videoId+'&action_get_flag_video_component=1',reportConcernCallback);
-urchinTracker('/VideoWatch/ActionTab/Flag/Loggedin');
+//urchinTracker('/VideoWatch/ActionTab/Flag/Loggedin');
 }
 else{
 showDiv('inappropriateMsgsLogin');
-urchinTracker('/VideoWatch/ActionTab/Flag/Loggedout');
+//urchinTracker('/VideoWatch/ActionTab/Flag/Loggedout');
 }
 }
 function reportConcernCallback(){
@@ -2016,7 +2016,7 @@ var subscribeTimer;
 function subscribe(username,token,show_recommendations){
 if(isLoggedIn){
 window.clearTimeout(subscribeTimer);
-postUrlXMLResponse('/ajax_subscriptions',
+postUrlXMLResponse('/subscribe.php',
 'subscribe_to_user='+username+'&session_token='+token+(show_recommendations?'&show_recommendations':''),
 function(result){
 var subscribeMsgNode=_gel('subscribeMessage');
@@ -2029,17 +2029,17 @@ if(!show_recommendations){
 subscribeTimer=window.setTimeout("hideDiv('subscribeMessage')",5000);
 }
 });
-urchinTracker('/VideoWatch/Subscription/'+username+'/Loggedin');
+//urchinTracker('/VideoWatch/Subscription/'+username+'/Loggedin');
 }else{
 var subscribeMsgNode=_gel('subscribeMessage');
 addClass(subscribeMsgNode,'errorBox');
 subscribeMsgNode.style.display='block';
-urchinTracker('/VideoWatch/Subscription/'+username+'/Loggedout');
+//urchinTracker('/VideoWatch/Subscription/'+username+'/Loggedout');
 }
 }
 function unsubscribe(username,token){
 window.clearTimeout(subscribeTimer);
-postUrlXMLResponse('/ajax_subscriptions','unsubscribe_from_user='+username+'&session_token='+token,
+postUrlXMLResponse('/subscribe.php','unsubscribe_from_user='+username+'&session_token='+token,
 function(result){
 var subscribeMsgNode=_gel('subscribeMessage');
 subscribeMsgNode.innerHTML=getNodeValue(getRootNode(result),'html_content');
@@ -2671,7 +2671,7 @@ function onQuickAddClick(imgClicked, encryptedId) {
 	}
 	
 	clickedQuickAdd(imgClicked, encryptedId, alreadyInList);
-	urchinTracker('/VideoWatch/QuickList+AddTo');
+	//urchinTracker('/VideoWatch/QuickList+AddTo');
 	// in case it's hidden
 showDiv('quicklistDiv');
 return false;
