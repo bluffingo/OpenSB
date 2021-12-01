@@ -540,16 +540,32 @@ function vidres_change(num) {
 
 		_gel('watch-rating-div').onmouseover = function() { hideDiv('defaultRatingMessage'); showDiv('hoverMessage'); };
 		_gel('watch-rating-div').onmouseout = function() { showDiv('defaultRatingMessage'); hideDiv('hoverMessage'); };
- 	
 		</script>
 
-<div id="ratingWrapper"><div class="floatL">
-<div id="ratingStars" class="floatL">
-<img class="ratingL ratingL-4.0" alt="3.89842041312" src="/assets/2008/pixel.gif"></div>
-<div id="ratingMessage"><div id="defaultRatingMessage" style="display: block;" class="wasblock">
-<span class="smallText">4,115 ratings</span></div><div id="hoverMessage" style="width: 100%; display: none;" class="hid wasblock">
-<a href="#" onclick="return openLoginBoxFromRatings(event);">Login</a> to rate</div></div></div></div>
+<div id="ratingWrapper">
+	<div class="floatL">
+			<div id="rateStars">
+		                            	<nobr class="rating" data-default-rating="{{ starRatio }}" style="display: inline-block;"></nobr>
+                            	<link rel="stylesheet" href="/assets/2008/star/starrating.css">
+                            	<script src="/assets/2008/star/starrating.js"></script>
+                            	<script>
+            					var ratings = document.getElementsByClassName('rating');
 
+            					for (var i = 0; i < ratings.length; i++) {
+                					var r = new StarRating(ratings[i]);
+
+                				ratings[i].addEventListener('rate', function(e) {
+                   			 	rate_video(e.detail);
+               				 		});
+            					}
+        						</script>
+
+                            							</div>
+				<div id="ratingMessage"><div id="defaultRatingMessage" style="display: block;" class="wasblock"><span id="ratings_text" class="smallText">{{ total_rating }} ratings</span></div>
+				</div>
+		<!-- do glosowania !-->
+	</div>
+</div>
 		</div>
 
 		<div id="watch-views-div">
@@ -702,7 +718,15 @@ function vidres_change(num) {
 				<span class="watch-comment-time"> ({{ comment.date | relative_time}}) </span>
 								<a id="show_link_commentid" class="watch-comment-head-link" onclick="">Show</a>
 				<a id="hide_link_commentid" class="watch-comment-head-link" onclick="">Hide</a>
-			</div>	
+			</div>
+<div id="comment_vote_{{ comment.comment_id }}" class="watch-comment-voting">
+	 
+		<span class="watch-comment-score watch-comment-gray"> 0</span>
+
+		<a><img src="https://web.archive.org/web/20080604001240im_/http://s.ytimg.com/yt/img/pixel-vfl73.gif" class="watch-comment-down" title="Poor comment" alt="Poor comment" onmouseover="loginMsg('{{ comment.comment_id }}', 1);" onmouseout="loginMsg('{{ comment.comment_id }}', 0);"></a>
+		<a><img src="https://web.archive.org/web/20080604001240im_/http://s.ytimg.com/yt/img/pixel-vfl73.gif" class="watch-comment-up" title="Good comment" alt="Good comment" onmousedown="voteComment('{{ comment.comment_id }}', '{{ comment.comment_id }}', 'test')" onmouseover="loginMsg('{{ comment.comment_id }}', 1);" onmouseout="loginMsg('{{ comment.comment_id }}', 0);"></a>
+		<span id="comment_msg_{{ comment.comment_id }}" class="watch-comment-msg"></span>
+	</div>			
 	<span id="comment_spam_bug_commentid" class="watch-comment-spam-bug">Marked as spam</span>
 	<div id="reply_comment_form_id_commentid" class="watch-comment-action">
 			<a onclick="document.getElementById('comment_text').value = '@{{ comment.u_name }}:';">Reply</a> 

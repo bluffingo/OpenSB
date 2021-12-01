@@ -1359,7 +1359,7 @@ _gel(header_div).className="watch-comment-head-hidden opacity80";
 _gel(comment_vote_div).className="watch-comment-voting-off";
 }
 function voteComment(comment_id,vid_id,comment_ref_id,increment){
-var url_string="/comment_voting?a="+increment+"&id="+comment_id+"&video_id="+vid_id+"&old_vote="+comment_ref_id;
+var url_string="/comment_voting.php?a="+increment+"&id="+comment_id+"&video_id="+vid_id+"&old_vote="+comment_ref_id;
 var vote_div_id="comment_vote_"+comment_id;
 var comment_body="comment_body_"+comment_id;
 var hide_link_id="hide_link_"+comment_id;
