@@ -31,14 +31,14 @@ $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.autho
 $fmt_stream_map = [
 	[
 	"itag" => "43",
-    "url" => './videos/' . $videoData['video_id'] . '.converted.mp4',
+    "url" => './videos/' . $_GET['video_id'] . '.converted.mp4',
     "sig" => "gordon.freeman.died.after.he.waited.for.subrocks.2012",
     "quality" => "hd720",
     "type" => "video/mp4; codecs='avc1.4d002a'"
 	],
 	[
 	"itag" => "43",
-    "url" => './videos/' . $videoData['video_id'] . '.webm',
+    "url" => './videos/' . $_GET['video_id'] . '.converted.mp4',
     "sig" => "21EDBD12A97AC6CFE5B49224A5AD622895FFADEB.913D0D8ADC3EB8203CA6E08F616AC4B63156EC64",
     "fallback_host" => "tc.v14.cache3.c.youtube.com",
     "quality" => "hd720",
@@ -98,7 +98,8 @@ $main_data = array(
     "ptk" => "youtube_none",
     "endscreen_module" => "http://s.ytimg.com/yts/swfbin/endscreen-vfl4_CAIR.swf",
     "fmt_list" => "45/1280x720/99/0/0,22/1280x720/9/0/115,44/854x480/99/0/0,35/854x480/9/0/115,43/640x360/99/0/0,34/640x360/9/0/115,18/640x360/9/0/115,5/320x240/7/0/0,36/320x240/99/0/0,17/176x144/99/0/0",
-    "timestamp" => "1361203689"
+    "timestamp" => "1361203689",
+	"src" => './videos/' . $videoData['video_id'] . '.converted.mp4',
 );
 
 $main_data = http_build_query($main_data);

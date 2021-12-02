@@ -12,9 +12,7 @@
    video_id = '{{ video.video_id }}';
    user_id = '{{ video.author }}';
 </script>
-	  {% if use2013 %}
-	  <link id="css-4047501374" class="www-embed-player" rel="stylesheet" href="/assets/css/player.css" type="text/css">
-	  {% else %}
+	  {% if oldPlayer == false %}
 	  <link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
 	  {% endif %}
 {% endblock %}
@@ -41,7 +39,7 @@
    <div class="grid">
       <div class="col-md-8">
 	  {% if oldPlayer %}
-	  {{ include('/components/player_2013.twig') }}
+	  {{ include('/components/player_2012.twig') }}
 	  {% else %}
 	  {{ include('/components/player.twig') }}
 	  {% endif %}
