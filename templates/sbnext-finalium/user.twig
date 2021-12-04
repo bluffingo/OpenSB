@@ -1,11 +1,11 @@
 {% extends "_layout.twig" %}
 {% block title %}{{ userpagedata.title }}{% endblock %}
 {% block head %}
-<meta name="title" content="{{ userpagedata.title }} - squareBracket">
+<meta name="title" content="{{ userpagedata.title }} - cheeseRox">
 <meta name="description" content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
 <meta name="theme-color" content="{{ userpagedata.customcolor }}">
-<meta property="og:site_name" content="squareBracket"/>
-<meta property="og:title" content="{{ userpagedata.title }} - squareBracket">
+<meta property="og:site_name" content="cheeseRox"/>
+<meta property="og:title" content="{{ userpagedata.title }} - cheeseRox">
 <meta property="og:description" content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
 <meta property="og:image" content="{{ domain }}/assets/profpic/{{ userpagedata.name }}.png">
 <meta property="og:url" content="{{ page_url }}">

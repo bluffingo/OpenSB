@@ -14,14 +14,6 @@
 		<td class="b">{{ userdata.name }}</td>
 	</tr>
 	<tr>
-		<td class="a">{{ __("Email address") }}</td>
-		{% if userdata.email == "poktube_migrated@squarebracket.me" %}
-			<td class="b">{{ __("Account migrated from PokTube") }}</td>
-		{% else %}
-			<td class="b">{{ userdata.email }}</td>
-		{% endif %}
-	</tr>
-	<tr>
 		<td class="a">{{ __("Change Password") }}</td>
 		<td class="b">
 			<input type="password" name="current_pass" size="30" maxlength="256" placeholder="{{ __("Current Password (For verification)") }}"><br>

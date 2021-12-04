@@ -5,13 +5,11 @@ $error = '';
 
 if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
 	$username = (isset($_POST['username']) ? $_POST['username'] : null);
-	$email = (isset($_POST['email']) ? $_POST['email'] : null);
 	$pass = (isset($_POST['pass1']) ? $_POST['pass1'] : null);
 	$pass2 = (isset($_POST['pass2']) ? $_POST['pass2'] : null);
 	$displayName = (isset($_POST['displayName']) ? $_POST['displayName'] : null);
 
 	if (!isset($username)) $error .= __("Blank username.");
-	if (!isset($email)) $error .= __("Blank email.");
 	if (!isset($pass) || strlen($pass) < 6) $error .= __("Password is too short.");
 	if (!isset($pass2) || $pass != $pass2) $error .= __("The passwords don't match.");
 	if (!isset($displayName)) $error .= __("Blank display name.");
