@@ -36,6 +36,13 @@
 
 ## Questions
 
+## Why is it closed source?
+Bhief.
+
+![image](https://user-images.githubusercontent.com/45898787/144720541-f5e3a389-b205-40ee-80cb-5f7d2e376fd5.png)
+
+We will make squareBracket open source ONLY when Bhief quits the OYC (Old YouTube Community).
+
 ## Why is this named squareBracket?
 We get it from a file sharing service's scrapped rebrand, and it was the name of the first 
 squareBracket domain we've had (squareBracket.me in February-April 2021). Gamerappa did not 
