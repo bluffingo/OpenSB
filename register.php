@@ -15,10 +15,10 @@ if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
 	if (!isset($displayName)) $error .= __("Blank display name.");
 	if (result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= __("Username has already been taken. "); //ashley2012 bypassed this -gr 7/26/2021
 	if (!preg_match('/[a-zA-Z0-9_]+$/', $username)) $error .= __("Username contains invalid characters (Only alphanumeric and underscore allowed)."); //ashley2012 bypassed this with the long-ass arabic character. -gr 7/26/2021
-	// hCaptcha verification
-	if ($hCaptchaSiteKey && $hCaptchaSecret) {
-		if (!hCaptcha($_POST['h-captcha-response'])) $error .= __("Incorrect CAPTCHA. Please try again.");
-	}
+	// hCaptcha verification (commenting this out due to the fact that site has no hcap)
+	// if ($hCaptchaSiteKey && $hCaptchaSecret) {
+	//	if (!hCaptcha($_POST['h-captcha-response'])) $error .= __("Incorrect CAPTCHA. Please try again.");
+	//}
 
 	if ($error == '') {
 		$token = bin2hex(random_bytes(32));
