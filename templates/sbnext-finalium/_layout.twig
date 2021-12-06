@@ -65,14 +65,17 @@
 				<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.title }}">
 				</div>
 				{% else %}
-				<a href="../login.php" class="button button-primary">{{ __("Sign in") }}</a>
-				<a href="../register.php" class="button button-neutral">{{ __("Register") }}</a>
+				<div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
+					<a href="../login.php">{{ __("Sign in") }}</a>
+					<a href="../register.php">{{ __("Register") }}</a>
+				</div>
 				{% endif %}
 			</div>
 			<div id="masthead-content">
-				<class id="masthead-upload-button-group">
-					<a href="/upload_start.php" class="button button-secondary">{{ __("Upload") }}</a>
-				</class>
+				<div id="masthead-upload-button-group" style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 5px;">
+					<a href="/browse.php">{{ __("Browse") }}</a>
+					<a href="/upload_start.php">{{ __("Upload") }}</a>
+				</div>
 				<form id="masthead-search" action="/results.php">
 					<button id="search-btn" class="button button-secondary">
 					<span>{{ icon('search', 14) }}</span>
@@ -119,37 +122,9 @@
 	</div>
 	{% endif %}
 	{% block precontent %}{% endblock %}
-	{% if theme != 'bluey' %}
-		<div class="container" style="min-height: 400px;">
-		<div class="grid">
-			<div class="col-md-2">
-				<div class="guide-channels-list">
-					<ul class="guide">
-						<li class="guide-channel">
-							<a href="/" class="guide-item"><div class="thumb">{{ icon_alt('house-door', 16) }}</div><div>{{ __("Home") }}</div></a>
-						</li>
-						<li class="guide-channel">
-							<a href="/browse.php" class="guide-item"><div class="thumb">{{ icon_alt('film', 16) }}</div><div>{{ __("Videos") }}</div></a>
-						</li>
-						<li class="guide-channel">
-							<a href="/music.php" class="guide-item"><div class="thumb">{{ icon_alt('music-note-beamed', 16) }}</div><div>{{ __("Music") }}</div></a>
-						</li>
-						<li class="guide-channel">
-							<a href="/forum/" class="guide-item"><div class="thumb">{{ icon_alt('chat-left-text', 16) }}</div><div>{{ __("Forums") }}</div></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-10">
-		{% endif %}
-				<div class="container" {% if theme != 'bluey' %}style="margin-left: 0; padding: 0 70px 0 0;"{% else %}style="max-width: 970px;"{% endif %}>
+				<div class="container" style="max-width: 970px;">
 					{% block content %}{% endblock %}
 					</div>
-					{% if theme != 'bluey' %}
-			</div>
-		</div>
-	</div>
-	{% endif %}
 	<footer class="container">
 		<div class="footer">
 			<h3>cheeseRox</h3>

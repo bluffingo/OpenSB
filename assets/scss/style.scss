@@ -16,7 +16,7 @@
 }
 
 body {
-  background: #fbfbfb;
+  background: #ebebeb;
   color: black;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 13px;
@@ -731,14 +731,25 @@ box-sizing: border-box;
 }
 
 #masthead-container {
-    background: #f1f1f1;
-    border-bottom: 1px solid #e8e8e8;
-    padding: 7px 0 8px;
+position: relative;
+z-index: 1;
+margin: 0;
+border-bottom: none;
 }
 
 #masthead {
-	margin-right: 45px !important;
-	margin-left: 45px !important;
+	width: 970px;
+	position: relative;
+	overflow: hidden;
+	margin: 7px auto;
+	height: 33px;
+	font-size: 13px;
+	
+	a {
+	padding: 6px 10px;
+	font-size: 13px;
+	color: #333;
+	}
 	
 	.button {
 		margin: 0;
@@ -746,10 +757,7 @@ box-sizing: border-box;
 	}
 	
 	#logo-container {
-		position: relative;
-		margin-left: 9px;
-		margin-right: 50px;
-		margin-top: 2px;
+		float: left;
 	}
 	
 	#logo {
@@ -801,11 +809,15 @@ box-sizing: border-box;
 
 #logo-container {
     float: left;
+	width: 30px;
+	height: 30px;
+	padding: 3px !important;
 }
 
 #masthead-content {
-	max-width: 640px;
-	overflow: hidden;
+padding-left: 15px;
+padding-right: 50px;
+overflow: hidden;
 }
 
 #masthead-content #masthead-upload-button-group, .masthead-user {
