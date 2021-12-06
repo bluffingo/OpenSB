@@ -15,8 +15,6 @@ if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
 	if (!isset($displayName)) $error .= __("Blank display name.");
 	if (result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= __("Username has already been taken. "); //ashley2012 bypassed this -gr 7/26/2021
 	if (!preg_match('/[a-zA-Z0-9_]+$/', $username)) $error .= __("Username contains invalid characters (Only alphanumeric and underscore allowed)."); //ashley2012 bypassed this with the long-ass arabic character. -gr 7/26/2021
-	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $error .= __("Email isn't valid."); //60% of squarebracket accounts (excluding poktube accs) have invalid emails. this isn't even fucking working. -gr 7/26/2021
-
 	// hCaptcha verification
 	if ($hCaptchaSiteKey && $hCaptchaSecret) {
 		if (!hCaptcha($_POST['h-captcha-response'])) $error .= __("Incorrect CAPTCHA. Please try again.");
