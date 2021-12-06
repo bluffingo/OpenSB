@@ -11,6 +11,10 @@
 {% block title %}Main page{% endblock %}
 
 	{% block precontent %}
+	{% if theme == 'bluey' %}
+	<div class="container" style="display: flex;align-items: center;flex-direction: column;">
+	{% endif %}
+<div class="indexNext">
 <div class="main-content">
 	<div class="container" style="max-width:1125px;">
 		{% if log %}
@@ -48,6 +52,9 @@
 		{% endif %}
 	</div>
 </div>
+	{% if theme == 'bluey' %}
+	</div>
+	{% endif %}
 	{% endblock %}
 
 	{% block content %}
@@ -84,6 +91,7 @@
 		<h3>{{ __("What's new?") }}</h3>
 		<p>{{ __("Welcome to the brand new cheeseRox! We've heard it, the old layout sucked, so we have redesigned cheeseRox to have a better user interface.") }}</p>
 	</div>
+</div>
 </div>
 <br><br>
 	{% endblock %}

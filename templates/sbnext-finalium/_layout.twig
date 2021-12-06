@@ -18,6 +18,9 @@
 	{% if theme == 'dark' %}
 		<link id="darkthm" rel="stylesheet" href="/assets/css/darkmode.css" type="text/css">
 	{% endif %}
+	{% if theme == 'bluey' %}
+		<link id="bluey" rel="stylesheet" href="/assets/css/bluey.css" type="text/css">
+	{% endif %}
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 	<script src="assets/common.js"></script>
@@ -30,6 +33,27 @@
 	</style>
 </head>
 <body>
+	{% if theme == 'bluey' %}
+	<div class="container" style="display: flex;align-items: center;flex-direction: column;">
+		<nav class="primary-menu" role="navigation">
+		<a class="logo" href="/"></a>
+		<div class="items">
+						<li>
+							<a href="/browse.php">{{ __("Videos") }}</a>
+						</li>
+						<li>
+							<a href="/music.php">{{ __("Music") }}</a>
+						</li>
+						<li>
+							<a href="/forum/">{{ __("Forums") }}</a>
+						</li>
+						<li>
+							<a href="/channels.php">{{ __("Users") }}</a>
+						</li>
+		</div>
+		</nav>
+	</div>
+	{% else %}
 	<div id="masthead-container">
 		<div id="masthead">
 			<a href="/" id="logo-container"><img id="logo" src="/assets/logo-masthead.png"></a>
@@ -93,8 +117,10 @@
 			</div>
 		</div>
 	</div>
+	{% endif %}
 	{% block precontent %}{% endblock %}
-	<div class="container" style="min-height: 400px;">
+	{% if not theme == 'bluey' %}
+		<div class="container" style="min-height: 400px;">
 		<div class="grid">
 			<div class="col-md-2">
 				<div class="guide-channels-list">
@@ -115,12 +141,15 @@
 				</div>
 			</div>
 			<div class="col-md-10">
-				<div class="container" style="margin-left: 0; padding: 0 70px 0 0;">
+		{% endif %}
+				<div class="container" {% if not theme == 'bluey' %}style="margin-left: 0; padding: 0 70px 0 0;"{% else %}style="max-width: 970px;"{% endif %}>
 					{% block content %}{% endblock %}
-				</div>
+					</div>
+					{% if not theme == 'bluey' %}
 			</div>
 		</div>
 	</div>
+	{% endif %}
 	<footer class="container">
 		<div class="footer">
 			<h3>cheeseRox</h3>
