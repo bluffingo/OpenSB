@@ -527,18 +527,14 @@ form.reglog {
 }
 
 .main-content {
-  background-color: #8a8a8a;
-  background-image: url("/assets/rain.jpg");
-  background-size: cover;
-  margin: 0;
-  padding: 0;
-  min-height: 225px;
-  color: white;
-  display: flex;
-display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) !important;
+ background-color:#8a8a8a;
+ background-image:url("/assets/rain.jpg");
+ background-size:cover;
+ margin:0;
+ color:#fff;
+ display:flex;
+ text-shadow:0 1px 6px rgba(0,0,0,.35) !important;
+ padding: 25px 0;
 
   .container {
     display: flex;
