@@ -50,6 +50,24 @@
 						<li>
 							<a href="/channels.php">{{ __("Users") }}</a>
 						</li>
+						{% if log %}
+						<li>
+							<a href="/user.php?name={{ userdata.name }}">{{ userdata.title }}</a>
+						</li>
+						<li>
+							<a href="/upload_start.php">{{ __("Upload") }}</a>
+						</li>
+						<li>
+							<a href="/logout.php">{{ __("Log out") }}</a>
+						</li>
+						{% else %}
+						<li>
+							<a href="../login.php">{{ __("Sign in") }}</a>
+						</li>
+						<li>
+							<a href="../register.php">{{ __("Register") }}</a>
+						</li>
+						{% endif %}
 		</div>
 		</nav>
 	</div>
