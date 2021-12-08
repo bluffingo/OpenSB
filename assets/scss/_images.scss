@@ -1,0 +1,26 @@
+// loosely based on bootstrap 5.1.3's img-fluid thingabit
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.rounded {
+	border-radius: 5%;
+}
+
+.img-pfp-profiles {
+	max-width: 100px;
+	height: 100px;
+	width: 100px;
+	top: 0;
+	left: 20px;
+	position: relative;
+	box-shadow: 0 1px 8px rgba(0,0,0,.4);
+}
+
+.img-center {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}

@@ -1,0 +1,45 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Send private message") }}{% endblock %}
+
+	{% block precontent %}
+{% if error %}
+	<div class="header_message">{{ error }}</div>
+{% endif %}
+	{% endblock %}
+
+	{% block content %}
+{{ render_page_bar(topbot) }}
+
+{% if action == __("Preview") %}
+	<br>
+	<table class="c1"><tr class="h"><td class="b h" colspan="2">{{ title }} {{ __("(Message preview)") }}</table>
+	{{ threadpost(post) }}
+{% endif %}
+
+<br>
+<form action="sendprivate.php" method="post">
+	<table class="c1">
+		<tr class="h"><td class="b h" colspan="2">{{ __("Send message") }}</td></tr>
+		<tr>
+			<td class="b n1 center" width="120">{{ __("Send to:") }}</td>
+			<td class="b n2"><input type="text" name="userto" size="30" maxlength="50" value="{{ userto }}"></td>
+		</tr><tr>
+			<td class="b n1 center">{{ __("Title:") }}</td>
+			<td class="b n2"><input type="text" name="title" size="75" maxlength="255" value="{{ title }}"></td>
+		</tr><tr>
+			<td class="b n1 center">{{ __("Message:") }}</td>
+			<td class="b n2"><textarea name="message" id="message" rows="15" cols="80">{{ quotetext }}</textarea></td>
+		</tr><tr>
+			<td class="b n1"></td>
+			<td class="b n1">
+				<input type="submit" class="button button-secondary button-small" name="action" value="{{ __("Submit") }}">
+				<input type="submit" class="button button-secondary button-small" name="action" value="{{ __("Preview") }}">
+			</td>
+		</tr>
+	</table>
+</form>
+<br>
+
+{{ render_page_bar(topbot) }}
+	{% endblock %}

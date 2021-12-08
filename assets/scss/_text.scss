@@ -1,0 +1,5 @@
+@each $state, $value in $theme-colors {
+  .text-#{$state} {
+	color: $value !important;
+  }
+}

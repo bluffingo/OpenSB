@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+$teal: #468aca;
+$red: #f86468;
+$white: #FCFCFC;
+$black: #000;
+$indigo: #4d27e6;
+$purple: #7942c1;
+$pink: #eb44b0;
+$orange: #ff9900;
+$yellow: #ffbf00;
+$cyan: #1778b8;
+$blue: #82c9ff;
+$green: #77e0c7;
+$poktube-blue: #3862e2;
+$aqua: #20c997;
+$gray-100: #F8F8F8;
+$gray-150: #F1F1F1;
+$gray-200: #EEEEEE;
+$gray-250: #E8E8E8;
+$gray-300: #E2E2E2;
+$gray-400: #D3D3D3;
+$gray-450: #CCCCCC;
+$gray-500: #B4B4B4;
+$gray-650: #999999;
+$gray-600: #858585;
+$gray-650: #666666;
+$gray-700: #4F4F4F;
+$gray-800: #393939;
+$gray-850: #333333;
+$gray-900: #242424;
+
+html {
+  text-rendering: optimizeLegibility;
+  }
+
+@font-face {
+  font-family: OneTrickPony;
+  src: url('../onetrickponyot/one_trick_pony_tt.ttf')
+}
+
+body {
+  color: #000;
+  background: #c2e3fe;
+  font:normal 100% 'Open Sans', sans-serif;
+  font-size: 13px
+}
+
+h1, h2, h3, h4, h5 {
+font-family: OneTrickPony;
+font-weight: 400;
+color: #5a5a87;
+}
+
+.vid-info {
+	.title {
+		font-size: 13px;
+		max-height: 2.4em;
+		line-height: 1.2;
+		display: block;
+		margin: 0 0 2px;
+		a, a:hover {
+			color: #5a5a87;
+		}
+	}
+	.stat {
+		color: #999;
+		font-size: 11px;
+		display: block;
+		line-height: 1.4em;
+		height: 1.4em;
+	}
+}
+
+.watchNext {
+	h1 {
+		font-size: 1.8135rem;
+		line-height: 1.11111em;
+		margin: 0;
+	}
+	.viewcount {
+		color: $gray-850;
+		font-weight: normal;
+		margin-bottom: 4px;
+		font-size: 1.75rem;
+		line-height: 1.21429em;
+	}
+	.below-likesaber {
+		margin-top: 16px;
+		color: $gray-600;
+	}
+}
+
+#About {
+	p {
+	line-height: 1.21429em;
+	margin-bottom: 0;
+	}
+}
+
+.primary-menu {
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 12px;
+  -webkit-box-shadow: 3px 3px 0 0 rgba(0,0,0,0.08),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 3px 3px 0 0 rgba(0,0,0,0.08),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+  display: -ms-flexbox;
+  display: flex;
+  height: 70px;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 auto;
+  min-width: 770px;
+  padding: 0 4.9375em;
+  position: relative;
+  z-index: 10;
+  margin: 25px 0;
+  width: auto;
+  max-width: unset;
+
+	.items {
+	  -ms-flex-align: center;
+	  align-items: center;
+	  display: -ms-flexbox;
+	  display: flex;
+	  -ms-flex-positive: 1;
+	  flex-grow: 1;
+	  -ms-flex-pack: center;
+	  justify-content: center;
+	    a:hover {
+  background-color: #5a5a87;
+  color: white;
+  }
+	}
+	
+  .logo {
+  background-image: url('/assets/logo-wordmark.png');
+  transform: perspective(1px) translateZ(0);
+  transition-duration: .5s;
+  background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 120px;
+	text-indent: -999999px;
+	width: 245px;
+  }
+  .logo:hover {
+  transform: scale(1.2);
+transition-timing-function: cubic-bezier(.47,2.02,.31,-.36);
+  }
+  li {
+  list-style: none;
+  }
+  
+  a {
+  font-size: 1.75rem;
+  font-family: OneTrickPony;
+  padding: .41667em .625em;
+  line-height: 1.20833em;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #5a5a87;
+  }
+}
+
+.indexNext {
+	.main-content {
+	  background: white;
+	  border-radius: 5px;
+	  padding: 3.25em 1.5em;
+	  max-width: 1125px;
+	  margin: 0 .9375em 3.75em;
+	  display: flex;
+	  align-items: center;
+	  flex-direction: column;
+	  justify-content: flex-start;
+	  text-shadow: none !important;
+	  color: black;
+	}
+}

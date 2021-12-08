@@ -1,0 +1,31 @@
+.card {
+  border: 1px solid $gray-300;
+  margin-bottom: 0.75em;
+  background-color: white;
+}
+
+.card-header {
+  padding: 0.5em;
+  border-bottom: 1px solid $gray-300;
+  background-color: $gray-100;
+}
+
+.card-header h5 {
+  margin: 0;
+}
+
+.card-body {
+  padding: 0.5em;
+}
+.card-body.collapsed {
+  padding: 0;
+}
+
+.card-body-fat {
+  padding: 1em;
+}
+.card h3 em {
+  padding: 0.25em;
+  background-color: #eddbff;
+  border-radius: 4px;
+}

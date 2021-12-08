@@ -1,0 +1,39 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("New Reply") }}{% endblock %}
+
+	{% block precontent %}
+{% if error %}
+	<div class="header_message">{{ error }}</div>
+{% endif %}
+	{% endblock %}
+
+	{% block content %}
+{{ render_page_bar(topbot) }}
+
+{% if action == __("Preview") %}
+	<br>
+	<table class="c1"><tr class="h"><td class="b h" colspan="2">{{ __("Post preview") }}</table>
+	{{ threadpost(post) }}
+{% endif %}
+
+<br>
+<form action="newreply.php" method="post">
+	<table class="c1">
+		<tr class="h"><td class="b h" colspan="2">{{ __("Reply") }}</td></tr>
+		<tr>
+			<td class="b n1 center" width="120">{{ __("Post:") }}</td>
+			<td class="b n2"><textarea name="message" id="message" rows="15" cols="80">{{ post.text }}</textarea></td>
+		</tr><tr>
+			<td class="b n1"></td>
+			<td class="b n1">
+				<input type="hidden" name="tid" value="{{ tid }}">
+				<input type="submit" name="action" value="{{ __("Submit") }}">
+				<input type="submit" name="action" value="{{ __("Preview") }}">
+			</td>
+		</tr>
+	</table>
+</form>
+<br>
+{{ render_page_bar(topbot) }}
+	{% endblock %}

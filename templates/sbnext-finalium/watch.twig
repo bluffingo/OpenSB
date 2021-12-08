@@ -1,9 +1,9 @@
 {% extends "_layout.twig" %}
 {% block head %}
-<meta name="title" content="{{ video.title }} - squareBracket">
+<meta name="title" content="{{ video.title }} - cheeseRox">
 <meta name="description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-<meta property="og:site_name" content="squareBracket"/>
-<meta property="og:title" content="{{ video.title }} - squareBracket">
+<meta property="og:site_name" content="cheeseRox"/>
+<meta property="og:title" content="{{ video.title }} - cheeseRox">
 <meta property="og:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
 <meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
 <meta property="og:url" content="{{ page_url }}">
@@ -12,7 +12,9 @@
    video_id = '{{ video.video_id }}';
    user_id = '{{ video.author }}';
 </script>
-<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+	  {% if oldPlayer == false %}
+	  <link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+	  {% endif %}
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
@@ -36,9 +38,12 @@
 	{% endif %}
    <div class="grid">
       <div class="col-md-8">
-         {{ include('/components/player.twig') }}
-         {% if userdata.id == video.author %}
-         {% endif %}
+	  {% if oldPlayer %}
+	  {{ include('/components/player_2012.twig') }}
+	  {% else %}
+	  {{ include('/components/player.twig') }}
+	  {% endif %}
+		 
          <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
             <h1>{{ video.title }}</h1>
             <div class="grid">
@@ -63,11 +68,13 @@
             <div class="grid" style="margin-top:5px;">
                <div class="col-md-4">
                   <div style="margin-top:-9px;">
-                     <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}" class="button button-secondary-invis">
+                     <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
+					 class="button {% if rating == 1 %}button-success{% else %}button-secondary-invis{% endif %}">
                      {{ icon("hand-thumbs-up-fill", 20) }}
                      {{ __("Like") }}
                      </button>
-                     <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" data-tooltip="Dislike" class="button button-secondary-invis">
+                     <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" 
+					 class="button {% if rating == 0 %}button-danger{% else %}button-secondary-invis{% endif %}">
                      {{ icon("hand-thumbs-down-fill", 20) }}
                      </button>
                   </div>
@@ -94,7 +101,7 @@
                      </li>
                      <li>
                         <h4 class="title">{{ __("License:") }}</h4>
-                        <div class="content">{{ __("Standard squareBracket License") }}</div>
+                        <div class="content">{{ __("Standard cheeseRox License") }}</div>
                      </li>
                   </ul>
                </div>

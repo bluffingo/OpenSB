@@ -1,0 +1,111 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+<div class="wrapper">            <link href="/assets/2008/messages.css" rel="stylesheet" type="text/css">
+<script>
+        function readMessage(id) {
+        var read = document.getElementById("i_"+id);
+        if (read.classList.contains("hddn")) {
+            read.classList.remove("hddn");
+            if (read.classList.contains("noread")) { //if table contains "noread" class, make a http request
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open("GET", "/a/read_message.php?id="+id, false);
+                xmlHttp.send(null);
+                read.classList.remove("noread");
+            }
+        } else {
+            read.classList.add("hddn");
+        }
+    }
+</script>
+<div id="header-wrapper">
+    <div id="header-left" style="width:auto!important;">
+    My Messages (8)
+    </div>
+    <div class="clearL"></div>
+</div>
+<div class="videoModifiers">
+        <div class="subcategory first"><a href="/my_profile.php">My Profile</a></div>
+        <div class="subcategory"><a href="/my_videos.php">My Videos</a></div>
+        <div class="subcategory"><a href="/my_favorites.php">My Favorites</a></div>
+        <div class="subcategory"><span class="selected">My Messages</span></div>
+        <div class="subcategory"><a href="/my_subscriptions.php">My Subscriptions</a></div>
+        <div class="subcategory"><a href="/my_playlists.php">My Playlists</a></div>
+        <div class="subcategory"><a href="/my_groups.php">My Groups</a></div>
+        <div class="clear"></div>
+</div><br>
+<div class="video_menu">
+        <a href="/my_messages.php" style="border-bottom: 1px dotted #aaa;background:linear-gradient(to bottom,#F5F2F2 0,#E3E3E3 41%,#D1D1D1 100%)">All Messages</a>
+    <a href="/my_messages.php?by_user=1">Sent Messages</a>
+    <a href="/my_messages.php?notification=1">Notifications</a>
+
+        <div class="action-button" style="margin-top:8px;position:relative;left:20px">
+        <a href="/send_message.php">
+                <div class="end-cap img-action-button-cap-left"></div>
+                <div class="content hand"><span class="title" id="button-signin-title">Send Message</span></div>
+                <div class="end-cap img-action-button-cap-right"></div>
+        </a>
+</div>
+</div>
+<div style="float:left;width:690px;-moz-box-sizing: border-box;-ms-box-sizing: border-box;-webkit-box-sizing: border-box;padding-right: 11px;padding-left: 11px;border-left: 1px solid #ccc;border: 1px solid #ccc;border-right:1px solid #ccc;border-top: 0;background: #e2e2e2;">
+    <div style="background:white;border-left:1px solid #e2e2e2;">
+        <div class="messages_actions">
+            <div>
+               Messages 1-8 of 8            </div>
+        </div>
+                    <table style="width:100%" id="messages_in" cellspacing="0" cellpadding="5px" border="0">
+                <tbody><tr class="messages_seperation">
+                    <td style="width:1%"></td>
+                    <td style="width:18%">From</td>
+                    <td width="63.3%">Subject</td>
+                    <td style="width:25%">Date</td>
+                </tr>
+				{% for notif in notifs %}
+                                                                    <tr class="ms_sct" onclick="readMessage({{ id }})" style="background:white!important;">
+                    <td></td>
+                    <td>
+                        squareBracket
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)" class="ms_sub">nice</a>
+                    </td>
+                    <td align="left">
+                        <span>December 08, 2017</span>
+                    </td>
+                </tr>
+                <tr class="in_message  hddn" id="i_{{ id }}" style="background:#F2F2F2!important;">
+                                        <td></td>
+                    <td colspan="1" valign="middle" align="center">
+                        <a href="/profile.php?user=paris201"><img src="/u/av/paris201.jpg?15" class="avatar" alt="paris201" width="66" height="66"></a>				</td>
+                    <td colspan="2" valign="top">{{ notif | raw }}<div class="messages_reply_section">
+
+                            <div class="irs_buttons">
+                                <div class="action-button">
+                                    <a href="/send_message.php?to=paris201">
+                                        <div class="end-cap img-action-button-cap-left"></div>
+                                        <div class="content hand"><span class="title" id="button-signin-title">Reply</span></div>
+                                        <div class="end-cap img-action-button-cap-right"></div>
+                                    </a>
+                                </div>
+
+                                <div class="action-button" style="position:relative;left:3px;">
+                                    <a href="/a/delete_pm_message.php?id=55">
+                                        <div class="end-cap img-action-button-cap-left"></div>
+                                        <div class="content hand"><span class="title" id="button-signin-title">Delete</span></div>
+                                        <div class="end-cap img-action-button-cap-right"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+				{% endfor %}
+                                    
+                </tbody></table>
+        
+                <div style="background:#e2e2e2;padding:5px;font-size:13px;word-spacing:4px;font-weight:bold">
+                        <span class="pagerCurrent">1</span>                    </div>
+            </div>
+</div>
+<div class="clear"></div>            </div>
+{% endblock %}

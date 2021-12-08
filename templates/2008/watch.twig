@@ -1,0 +1,1036 @@
+{% extends "_layout.twig" %}
+{% block content %}
+<script type="text/javascript" src="./assets/2008/js/watch.js"></script>
+	  {% if oldPlayer == false %}
+	  <link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+	  {% endif %}
+<script type="text/javascript">
+		initWatchQueue(true);
+		var MSG_Hide = 'Hide';
+		var MSG_Show = 'Show';
+		var MSG_Login = 'Please login to perform this operation.';
+		var MSG_Loading = 'Loading...';
+		var MSG_ShowingAll = 'Showing All Videos';
+		var MSG_LoginFavorites = 'You must be logged in to add this video to your favorites';
+		var MSG_LoginAddPlaylist = 'You must be logged in to add this video to a playlist.';
+		var MSG_LoginReportConcern = 'You must be logged in to report a concern.';
+		var MSG_FlagDefault = 'Select a Reason';
+
+		var swfUrl = '/swf/watch.swf';
+		var swfArgs = {"ad_module": true, "sourceid": "y", "video_id": "Kt4Go_TKdoE", "l": 231, "fmt_map": "6/720000/7/0/0", "sk": "xyE6xQusFGvEaTUvLUzLQOHzw25ta-xcC", "invideo": true, "t": "OEgsToPDskKvC5e3Fkx7HNtIXuaAo4BY", "hl": "en", "plid": "AARPbCrwIjYNVjV-AAAC4YT8YkA", "vq": null, "sdetail": "p%3A/", "tk": "JM2fJCYTpVRtXDyL4uNdJD_-FVdFFuftNVXkWLzB95_yuCdbaHfkHQ=="};
+
+		var additionalStatsHonorsUrl = '/watch_ajax?v=Kt4Go_TKdoE&action_get_honors=1&l=EN';
+		var watchMapUrl = '/watch_ajax?v=Kt4Go_TKdoE&action_get_map=1';
+		var fullscreenUrl = '/watch_fullscreen?fs=1&ad_module=True&sourceid=y&video_id=Kt4Go_TKdoE&l=231&fmt_map=6%2F720000%2F7%2F0%2F0&sk=xyE6xQusFGvEaTUvLUzLQOHzw25ta-xcC&invideo=True&t=OEgsToPDskKvC5e3Fkx7HNtIXuaAo4BY&hl=en&plid=AARPbCrwIjYNVjV-AAAC4YT8YkA&vq=None&sdetail=p%253A%2F&tk=JM2fJCYTpVRtXDyL4uNdJD_-FVdFFuftNVXkWLzB95_yuCdbaHfkHQ%3D%3D&title=YOUTUBE CELEBRITY OVERNIGHT!';
+		var watchGamUrl = null;
+		var watchDCUrl = null;
+		var watchTrackWithHitbox = false;
+		var watchIsPlayingAll = false;
+		var watchUsername = '{{ video.u_name }}';
+		var pageVideoId = '{{ video.id }}';
+		var relatedVideoGridUrl = '/related_ajax?video_id=Kt4Go_TKdoE&view_type=G&watch3=1&search=%20youtube%20celebrity%20overnight%20dj%20dub%20arsha%20asteraki%20music%20video%20hilarious%20funny%20crazy%20awesome%20yo';
+		var relatedVideoListUrl = '/related_ajax?video_id=Kt4Go_TKdoE&view_type=L&watch3=1&search=%20youtube%20celebrity%20overnight%20dj%20dub%20arsha%20asteraki%20music%20video%20hilarious%20funny%20crazy%20awesome%20yo';
+		var playnextFrom = '';
+		var playnextCount = '0';
+		var qlAutoscrollDestination = 0;
+		var watchSetWmode = false;
+		var embedUrl = 'https://web.archive.org/web/20080611231142/http://www.youtube.com/v/Kt4Go_TKdoE&hl=en';
+		var ytLocale = 'en_US';
+	
+		var ad_eurl = null;
+
+			onLoadFunctionList.push(checkVideoQualitySettings);
+		 
+		var axc = '';
+		var subscribeaxc = '';
+		
+			watchDCUrl = "https://web.archive.org/web/20080611231142/http://n4061ad.doubleclick.net/pfadx/com.ytpwatch.music/main_4437;sz=480x70;kl=N;!c=4437;kvid=Kt4Go_TKdoE;kpu=ArshaAsteraki;ko=y;kpid=4437;kga=-1;kr=F;u=Kt4Go_TKdoE|4437;kgg=-1;";
+
+
+					onLoadFunctionList.push(function() { imagesInit_video_responses();} );
+
+		function imagesInit_video_responses() {
+			imageBrowsers['video_responses'] = new ImageBrowser(4, 1, "video_responses");
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://s3.ytimg.com/vi/6PXC1KKGykA/default.jpg", 
+					"/watch?v=6PXC1KKGykA&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">01:29</span><br/>\n\t<a class=\"hLink\" href=\"/user/edgargomez16\">edgargom...</a>\n\t", 
+					"",
+					"",
+					false,
+					"6PXC1KKGykA") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://s1.ytimg.com/vi/tWnia1KsyMo/default.jpg", 
+					"/watch?v=tWnia1KsyMo&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">01:11</span><br/>\n\t<a class=\"hLink\" href=\"/user/philip10210\">philip10...</a>\n\t", 
+					"",
+					"",
+					false,
+					"tWnia1KsyMo") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/O9h7uG8OVOs/default.jpg", 
+					"/watch?v=O9h7uG8OVOs&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:56</span><br/>\n\t<a class=\"hLink\" href=\"/user/HaroldandBeth\">Haroldan...</a>\n\t", 
+					"",
+					"",
+					false,
+					"O9h7uG8OVOs") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/kJRXIEoi7DE/default.jpg", 
+					"/watch?v=kJRXIEoi7DE&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">04:26</span><br/>\n\t<a class=\"hLink\" href=\"/user/cirqueduprick\">cirquedu...</a>\n\t", 
+					"",
+					"",
+					false,
+					"kJRXIEoi7DE") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/HGfCSK2uEck/default.jpg", 
+					"/watch?v=HGfCSK2uEck&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">07:41</span><br/>\n\t<a class=\"hLink\" href=\"/user/xGlenreb\">xGlenreb</a>\n\t", 
+					"",
+					"",
+					false,
+					"HGfCSK2uEck") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/Ka3u1Y0iok8/default.jpg", 
+					"/watch?v=Ka3u1Y0iok8&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">01:53</span><br/>\n\t<a class=\"hLink\" href=\"/user/edgargomez16\">edgargom...</a>\n\t", 
+					"",
+					"",
+					false,
+					"Ka3u1Y0iok8") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/mlsJ4itTKVQ/default.jpg", 
+					"/watch?v=mlsJ4itTKVQ&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:14</span><br/>\n\t<a class=\"hLink\" href=\"/user/gh0st427\">gh0st427</a>\n\t", 
+					"",
+					"",
+					false,
+					"mlsJ4itTKVQ") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/XiYrN0GN3zo/default.jpg", 
+					"/watch?v=XiYrN0GN3zo&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">02:12</span><br/>\n\t<a class=\"hLink\" href=\"/user/dekatzz2\">dekatzz2</a>\n\t", 
+					"",
+					"",
+					false,
+					"XiYrN0GN3zo") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/YaGJE8YagjE/default.jpg", 
+					"/watch?v=YaGJE8YagjE&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:46</span><br/>\n\t<a class=\"hLink\" href=\"/user/TgirlQueensland\">TgirlQue...</a>\n\t", 
+					"",
+					"",
+					false,
+					"YaGJE8YagjE") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/ZCv22n9Addw/default.jpg", 
+					"/watch?v=ZCv22n9Addw&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:22</span><br/>\n\t<a class=\"hLink\" href=\"/user/hannahf109\">hannahf109</a>\n\t", 
+					"",
+					"",
+					false,
+					"ZCv22n9Addw") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/Fs04gGmGoSg/default.jpg", 
+					"/watch?v=Fs04gGmGoSg&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">03:43</span><br/>\n\t<a class=\"hLink\" href=\"/user/chilapa90\">chilapa90</a>\n\t", 
+					"",
+					"",
+					false,
+					"Fs04gGmGoSg") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/lP5C4O7e9iU/default.jpg", 
+					"/watch?v=lP5C4O7e9iU&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">04:22</span><br/>\n\t<a class=\"hLink\" href=\"/user/10EIGHTXRAY\">10EIGHTX...</a>\n\t", 
+					"",
+					"",
+					false,
+					"lP5C4O7e9iU") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/U0kEFBVDxHg/default.jpg", 
+					"/watch?v=U0kEFBVDxHg&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">03:47</span><br/>\n\t<a class=\"hLink\" href=\"/user/10EIGHTXRAY\">10EIGHTX...</a>\n\t", 
+					"",
+					"",
+					false,
+					"U0kEFBVDxHg") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/25aXYKVOC0U/default.jpg", 
+					"/watch?v=25aXYKVOC0U&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">02:27</span><br/>\n\t<a class=\"hLink\" href=\"/user/SydneyStyles\">SydneySt...</a>\n\t", 
+					"",
+					"",
+					false,
+					"25aXYKVOC0U") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/oP-8jnZdkWQ/default.jpg", 
+					"/watch?v=oP-8jnZdkWQ&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">02:18</span><br/>\n\t<a class=\"hLink\" href=\"/user/Archmetal06\">Archmeta...</a>\n\t", 
+					"",
+					"",
+					false,
+					"oP-8jnZdkWQ") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/otwfg71YeO0/default.jpg", 
+					"/watch?v=otwfg71YeO0&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">05:24</span><br/>\n\t<a class=\"hLink\" href=\"/user/jyotijwala\">jyotijwala</a>\n\t", 
+					"",
+					"",
+					false,
+					"otwfg71YeO0") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/IfJ11Vmwztg/default.jpg", 
+					"/watch?v=IfJ11Vmwztg&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">08:42</span><br/>\n\t<a class=\"hLink\" href=\"/user/micgamer15\">micgamer15</a>\n\t", 
+					"",
+					"",
+					false,
+					"IfJ11Vmwztg") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/8KkSqMnMhqU/default.jpg", 
+					"/watch?v=8KkSqMnMhqU&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">02:10</span><br/>\n\t<a class=\"hLink\" href=\"/user/DJPhoeniXen\">DJPhoeni...</a>\n\t", 
+					"",
+					"",
+					false,
+					"8KkSqMnMhqU") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/heEKqZNaBto/default.jpg", 
+					"/watch?v=heEKqZNaBto&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:40</span><br/>\n\t<a class=\"hLink\" href=\"/user/Archmetal06\">Archmeta...</a>\n\t", 
+					"",
+					"",
+					false,
+					"heEKqZNaBto") );
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20080611231142/http://i.ytimg.com/vi/qeXL8IJymCs/default.jpg", 
+					"/watch?v=qeXL8IJymCs&watch_response",
+					"\n\t<span class=\"watch-video-response-duration\">00:51</span><br/>\n\t<a class=\"hLink\" href=\"/user/Archmetal06\">Archmeta...</a>\n\t", 
+					"",
+					"",
+					false,
+					"qeXL8IJymCs") );
+			imageBrowsers['video_responses'].initDisplay();
+			imageBrowsers['video_responses'].showImages();
+			images_loaded = true;
+		}
+
+
+			function showCommentReplyForm(form_id, reply_parent_id, is_main_comment_form) {
+		var msg = new Object();
+		msg["post"] = "Please login to post a comment.";
+		showCommentReplyForm_js(form_id, reply_parent_id, is_main_comment_form, msg);
+	}
+
+	function updateCharCount(charCount_id, label_id, textArea) {
+		var msg = new Object();
+		msg["exceeded"] = "Number of characters over the limit: ";
+		msg["remaining"] = "Remaining character count: "; 
+		updateCharCount_js(charCount_id, label_id, textArea, 500, msg)
+	}
+
+	function loginMsg(div_id, display_val) {
+		var msg = new Object();
+		msg["login"] = 'Please login';
+		loginMsg_js(div_id, display_val, msg);
+	}
+
+	function printCommentReplyForm(form_id, reply_parent_id, is_main_comment_form) {
+		var msg = new Object();
+		msg["post"] = "Post Comment";
+		msg["remaining"] = "Remaining character count: ";
+		msg["discard"] = "Discard"; 
+		printCommentReplyForm_js(form_id, reply_parent_id, is_main_comment_form, 'V', 'goog.i18n.bidi.setDirAttribute(event,this)', 'video_id', 'Kt4Go_TKdoE', '', 500, msg);
+	}
+
+	function postThreadedComment(comment_form_id) {
+		var msg = new Object();
+		msg["add"] = "Adding comment...";
+		postThreadedComment_js(comment_form_id, msg);
+	}
+
+	function commentApproved(xmlHttpRequest) {
+		alert("Comment approved.")
+	}
+
+	function ThreadedCommentHandler(comment_form, comment_form_id) {
+		var msg = new Object();
+		msg["empty"] = "You must enter a comment!";
+		msg["toolong"] = "Your comment must be shorter than 500 characters!";
+		return ThreadedCommentHandler_js(comment_form, comment_form_id, msg);
+	}
+
+	function commentResponse(xmlHttpRequest) {
+		var msg = new Object();
+		msg["ok"] = "Comment Posted!";
+		msg["pending"] = "Comment Pending Approval!";
+		msg["toolong"] = "The comment you have entered is too long. Limit is 500 characters. Please write a shorter comment and try again";
+		msg["tooshort"] = "The comment you have entered is too short. Please write a longer comment and try again";
+		msg["toosoon"] = "Commenting Limit Exceeded";
+		msg["email"] = "You must confirm your email address before you can submit comments.  Click OK to confirm your email address.";
+		msg["captchFail"] = "The response to the letters on the image was not correct, please try again.";
+		msg["default"] = "Post Comment"; 
+		commentResponse_js(xmlHttpRequest, msg);
+	}
+
+	function load_all_comments(video_id, is_watch2) {
+		var msg = new Object();
+		msg["remove"] = "Loading Comments...";
+		load_all_comments_js(video_id, is_watch2, msg);
+	}
+
+
+
+
+		onLoadFunctionList.push(applyUserPrefs);
+
+
+		var gCompanionAdUrl = 'https://web.archive.org/web/20080611231142/http://n4061ad.doubleclick.net/adi/com.ytpwatch.music/main_4437;sz=300x250;kl=N;!c=4437;kvid=Kt4Go_TKdoE;kpu=ArshaAsteraki;ko=y;kpid=4437;kga=-1;kr=F;u=Kt4Go_TKdoE|4437;kgg=-1;tile=1;dcopt=ist;';
+
+
+	</script>
+<style>
+	.watch-player-div {
+    margin: 0 auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    outline: 0;
+}
+.share-panel-url {
+    color: #666;
+    font-size: 1.8em;
+    width: 98%;
+    text-align: center !important;
+    padding: 2px;
+}
+	.expand-header {
+		    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+	cursor: pointer;
+	}
+</style>
+<script>
+var isLoggedIn = true;
+function ShareLink() {
+  var copyLink = document.getElementById("share_url");
+  copyLink.select();
+  copyLink.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+} 
+
+
+function showhide_morefrom() {
+  var x = document.getElementById("watch-more-from");
+  var xs = document.getElementById("arrow_morefrom");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+	xs.setAttribute('src', 'img/arrow2.png');
+  } else {
+    x.style.display = "block";
+	xs.setAttribute('src', 'img/arrow1.png');
+  }
+}
+
+function showhide_related() {
+  var y = document.getElementById("watch_related");
+  var ys = document.getElementById("arrow_related");
+  if (y.style.display === "block") {
+    y.style.display = "none";
+	ys.setAttribute('src', 'img/arrow2.png');
+  } else {
+    y.style.display = "block";
+	ys.setAttribute('src', 'img/arrow1.png');
+  }
+}
+function show_ratingnli() {
+	var ratingmessage = document.getElementById("defaultRatingMessage");
+	var hoverMessage = document.getElementById("hoverMessage");
+    ratingmessage.style.display = "none";
+	hoverMessage.style.display = "block";
+  }
+function hide_ratingnli() {
+	var ratingmessage = document.getElementById("defaultRatingMessage");
+	var hoverMessage = document.getElementById("hoverMessage");
+    ratingmessage.style.display = "block";
+	hoverMessage.style.display = "none";
+  }
+                      function favorite_video(el) {
+                        if (el.innerHTML == "Add to Favorites") {
+                            el.innerHTML = "Remove from Favorites";
+                        } else {
+                            el.innerHTML = "Add to Favorites";
+                        }
+                    }
+                    function flag_video(el) {
+                        if (el.innerHTML == "Flag This Video") {
+                            el.innerHTML = "Remove Flag";
+                        } else {
+                            el.innerHTML = "Flag This Video";
+                        }
+                    }
+                    function flag_video2(el) {
+                        el.outerHTML = "";
+                    }
+                    function delete_comment(id) {
+                        document.getElementById("cid_"+id).outerHTML = "";
+                    }
+function rate_video(rating) {
+    window.open("/a/rate_video.php?stars="+rating+"&v={{ video.video_id }}");
+}	
+
+function exp_col_desc() {
+  var exp = document.getElementById("expand-content");
+  var coll = document.getElementById("collapse-content");
+  if (exp.style.display === "block") {
+    coll.style.display = "block";
+	exp.style.display = "none";
+  } else {
+   exp.style.display = "block";
+   coll.style.display = "none";
+  }
+}
+</script>
+
+<script>
+function vidres_change(num) {
+    if (num != 0 && num != 5 && document.getElementById("vidressl"+num)) {
+    document.getElementById("vidressl1").style.display = "none";
+        if (document.getElementById("vidressl2")) {
+                document.getElementById("vidressl2").style.display = "none";
+    }
+
+    if (document.getElementById("vidressl3")) {
+        document.getElementById("vidressl3").style.display = "none";
+    }
+    if (document.getElementById("vidressl4")) {
+        document.getElementById("vidressl4").style.display = "none";
+    }
+
+        document.getElementById("vidresarr").setAttribute("onClick","vidres_change("+(num - 1)+")");
+        document.getElementById("vidresarr2").setAttribute("onClick","vidres_change("+(num + 1)+")");
+        document.getElementById("vidressl"+num).style.display = "block";
+	}
+}
+</script>
+<div id="watch-vid-title">
+	<div>{{ video.title }}</div>
+</div>
+<!-- Left side of the watch page where the video player is !-->
+<div id="watch-this-vid">
+	  {% if oldPlayer %}
+	  <embed src="barack-obama-updated.swf" width="480" height="413" flashvars="video_id={{ video.video_id }}&el=detailpage&ps=&asv=2"></embed>
+	  {% else %}
+	  {{ include('/components/player.twig') }}
+	  {% endif %}
+<div id="watch-ratings-views">
+		<div id="watch-rating-div" class="ratingMultiline
+">
+			<div class="statLabel floatL">Rate:</div>
+			
+
+		<script language="javascript">
+
+
+		_gel('watch-rating-div').onmouseover = function() { hideDiv('defaultRatingMessage'); showDiv('hoverMessage'); };
+		_gel('watch-rating-div').onmouseout = function() { showDiv('defaultRatingMessage'); hideDiv('hoverMessage'); };
+		</script>
+
+<div id="ratingWrapper">
+	<div class="floatL">
+			<div id="rateStars">
+		                            	<nobr class="rating" data-default-rating="{{ starRatio }}" style="display: inline-block;"></nobr>
+                            	<link rel="stylesheet" href="/assets/2008/star/starrating.css">
+                            	<script src="/assets/2008/star/starrating.js"></script>
+                            	<script>
+            					var ratings = document.getElementsByClassName('rating');
+
+            					for (var i = 0; i < ratings.length; i++) {
+                					var r = new StarRating(ratings[i]);
+
+                				ratings[i].addEventListener('rate', function(e) {
+                   			 	rate_video(e.detail);
+               				 		});
+            					}
+        						</script>
+
+                            							</div>
+				<div id="ratingMessage"><div id="defaultRatingMessage" style="display: block;" class="wasblock"><span id="ratings_text" class="smallText">{{ total_rating }} ratings</span></div>
+				</div>
+		<!-- do glosowania !-->
+	</div>
+</div>
+		</div>
+
+		<div id="watch-views-div">
+			<div class="floatR">
+				<span class="statLabel">Views:</span>
+				<span id="watch-view-count">{{ viewCount }}</span>
+			</div>
+
+<!-- 			<div id="watch-video-quality-setting">
+				<a id="watch-low-quality-link" href="#" class="hLink" onclick="changeVideoQuality(yt.VideoQualityConstants.LOW); urchinTracker('/VideoWatch/QualityChangeToLow'); return false;">watch in standard quality</a>
+				<a id="watch-high-quality-link" href="#" class="hLink" onclick="changeVideoQuality(yt.VideoQualityConstants.HIGH); urchinTracker('/VideoWatch/QualityChangeToHigh'); return false;">watch in high quality</a>
+			</div> -->
+
+
+			<div class="clear"></div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+	<div id="watch-actions-area">
+		<table class="watch-tabs" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td id="watch-tab-share" onclick="watchSelectTab(this);" class="watch-tab-first watch-tab-sel">
+					<a id="watch-action-share-link" href="" class="watch-action-link" onclick="return false;">
+						<img id="watch-action-share" src="/assets/2008/pixel.gif" alt="Share">
+						<span class="watch-action-text">Share</span>
+					</a>
+				</td>
+                <!-- if (!hasClass(this, 'disabled')) { addToFaves('addToFavesForm',event); } -->
+				<td id="watch-tab-favorite" onclick="if (!hasClass(this, 'disabled')) { addToFaves('addToFavesForm',event); }">
+					<a id="watch-action-favorite-link" href="" class="watch-action-link" onclick="return false;">
+						<img id="watch-action-favorite" src="/assets/2008/pixel.gif" alt="Favorite">
+						<span class="watch-action-text">Favorite</span>
+					</a>
+				</td>
+				<td id="watch-tab-playlists" onclick="addToPlaylist('',event);">
+					<a id="watch-action-playlists-link" href="" class="watch-action-link" onclick="return false">
+						<img id="watch-action-playlists" src="/assets/2008/pixel.gif" alt="Add to Playlists">
+						<span class="watch-action-text">Playlists</span>
+					</a>
+				</td>
+				<td id="watch-tab-flag" onclick="if (!hasClass(this, 'disabled')) { reportConcern('',event); }" title="Report video as inappropriate">
+					<a id="watch-action-flag-link" href="" class="watch-action-link" onclick="return false">
+						<img id="watch-action-flag" src="/assets/2008/pixel.gif" alt="Report video as inappropriate">
+						<span class="watch-action-text">Flag</span>
+					</a>
+				</td>
+			</tr>
+		</tbody></table>
+		<div class="clear"></div>
+		<div class="watch-tab-contents">
+			<div id="watch-tab-share-body" class="watch-tab-body watch-tab-sel">
+				<div id="aggregationServicesDiv" style="text-align: left;">	
+										<div class="watch-recent-shares-div">
+			<div class="watch-recent-share">
+				<a href="https://www.reddit.com/submit?url=http://www.bitview.net/watch.php?v={{ video.video_id }}" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_reddit" alt="" width="16" height="16">
+					<span>Reddit</span></a>
+			</div>
+		</div>
+		<div class="watch-recent-shares-div">
+			<div class="watch-recent-share">
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.bitview.net/watch.php?v={{ video.video_id }}" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_facebook" alt="" width="16" height="16">
+					<span>Facebook</span></a>
+			</div>
+		</div>
+		<div class="watch-recent-shares-div">
+			<div class="watch-recent-share">
+				<a href="https://twitter.com/share?text=Check out my new BitView Video!&amp;url=http://www.bitview.net/watch.php?v={{ video.video_id }}&amp;hashtags=bitview" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_twitter" alt="" width="16" height="16">
+					<span>Twitter</span></a>
+			</div>
+		</div>
+				<div class="watch-recent-shares-div">
+			<div class="watch-recent-share">
+				<a href="https://bwitter.me/share?text=gay+people+on+game+boy+color+%7C+http%3A%2F%2Fwww.bitview.net%2Fwatch.php%3Fv%3D{{ video.video_id }}" target="_blank" onclick=""><img src="/assets/2008/pixel.gif" class="icn_share_promoted_bwitter" alt="" width="16" height="16">
+					<span>Bwitter</span></a>
+			</div>
+		</div>
+		
+	
+					<div class="clear"></div>
+				</div> 
+				<div id="shareVideoResult" class="watch-action-result">Thank you for sharing this video!</div>
+				
+			</div>
+			<div id="watch-tab-favorite-body" class="watch-tab-body">
+				<div id="watch-add-faves-div" class="watch-more-action"> 
+					<h3 style="text-align: center;"><a href="/a/favorite_video.php?v={{ video.video_id }}&amp;close=1" onclick="favorite_video(this)" target="_blank">Add to Favorites</a></h3>
+				</div>
+							</div>
+			<div id="watch-tab-playlists-body" class="watch-tab-body">
+				<div id="addToPlaylistDiv" class="watch-more-action">To add a new video to your playlist, go to the <a href="/my_playlists.php">"My Playlists"</a> page.</div>
+							</div>
+			<div id="watch-tab-flag-body" class="watch-tab-body">
+				<div id="inappropriateVidDiv" class="watch-more-action"><h3 style="text-align: center;"><a href="/a/flag_video.php?v={{ video.video_id }}" onclick="flag_video(this)" target="_blank">Flag This Video</a></h3>
+					<i style="text-align: center; font-size: 12px !important;">Before reporting: please make sure that video break any rule. Don't report just because you don't like that video, otherwise you'll be be hindering moderators' job.</i>
+					</div>
+
+
+							</div>
+		</div>
+	</div>
+	
+	<div id="watch-comments-stats">
+		<table class="watch-tabs" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td id="watch-tab-commentary" onclick="watchSelectTab(this); urchinTracker('/Events/VideoWatch/InfoTab/Commentary');" class="watch-tab-sel watch-tab-first">
+					<a href="#" onclick="return false">Commentary</a>
+				</td>
+				<td id="watch-tab-stats" onclick="watchSelectTab(this); watchExpandStatBody(); urchinTracker('/Events/VideoWatch/InfoTab/Stats');">
+					<a href="#" onclick="return false">Statistics &amp; Data</a>
+				</td>
+			</tr>
+		</tbody></table>
+		<div class="watch-tab-contents">
+			<div id="watch-tab-commentary-body" class="watch-tab-body watch-tab-sel">
+					<div id="watch-comments-summary">
+		 Video Responses:  <span id="watch-comments-numresponses">0</span>
+		 Text Comments:  <span>4</span>
+	</div>
+
+	<div class="expand-panel expanded small-expand-panel">
+			<div class="floatR">
+								<a class="hLink bold" href="javascript:void(0)" onclick="document.getElementById('res_add_video').style.display = 'inline-block';document.getElementById('video_res_submit').style.display = 'inline-block';this.style.display = 'none'" rel="nofollow">Post a Video Response</a>
+				<form action="/watch.php?v={{ video.video_id }}" method="post">
+					<input type="text" name="res_add_video" maxlength="100" id="res_add_video" placeholder="Video URL" style="display:none">
+					<input type="submit" id="video_res_submit" name="video_res_submit" value="Add Response" style="display:none">
+				</form>
+							</div>
+		<a href="#" onclick="" class="expand-header"><img src="/assets/2008/pixel.gif" alt="" class="arrow">Video Responses <span class="expand-header-stat">(0)</span></a>
+		<div id="watch-video-responses-children" class="expand-content">
+			<div class="clear"></div>	
+		</div>
+	</div>
+
+	<div class="expand-panel expanded small-expand-panel">
+		<div id="watch-comment-post-comment">
+			<!--<a href="#" class="eLink bold" onclick="" id="post_text_comment_link" rel="nofollow">Post a Text Comment</a>-->
+		</div>
+		<a href="#" onclick="" class="expand-header">
+		<img src="/assets/2008/pixel.gif" alt="" class="arrow">Text Comments <span class="expand-header-stat">({{ comCount }})</span></a>
+		<div class="clear"></div>
+		<div class="expand-content">
+			<div id="div_main_comment2"></div>
+				<div id="recent_comments">
+				{% for comment in comments %}
+											<div id="cid_{{ comment.comment_id }}" class="watch-comment-entry">
+		<div class="watch-comment-head"{% if comment.u_name == video.u_name %}style="background-color: #fffcc2"{% endif %}>
+			<div class="watch-comment-info">
+				<a class="watch-comment-auth" href="/user.php?name={{ comment.u_name }}" rel="nofollow">{{ comment.u_name }}</a>
+				<span class="watch-comment-time"> ({{ comment.date | relative_time}}) </span>
+								<a id="show_link_commentid" class="watch-comment-head-link" onclick="">Show</a>
+				<a id="hide_link_commentid" class="watch-comment-head-link" onclick="">Hide</a>
+			</div>
+<div id="comment_vote_{{ comment.comment_id }}" class="watch-comment-voting">
+	 
+		<span class="watch-comment-score watch-comment-gray"> 0</span>
+
+		<a><img src="https://web.archive.org/web/20080604001240im_/http://s.ytimg.com/yt/img/pixel-vfl73.gif" class="watch-comment-down" title="Poor comment" alt="Poor comment" onmouseover="loginMsg('{{ comment.comment_id }}', 1);" onmouseout="loginMsg('{{ comment.comment_id }}', 0);"></a>
+		<a><img src="https://web.archive.org/web/20080604001240im_/http://s.ytimg.com/yt/img/pixel-vfl73.gif" class="watch-comment-up" title="Good comment" alt="Good comment" onmousedown="voteComment('{{ comment.comment_id }}', '{{ comment.comment_id }}', 'test')" onmouseover="loginMsg('{{ comment.comment_id }}', 1);" onmouseout="loginMsg('{{ comment.comment_id }}', 0);"></a>
+		<span id="comment_msg_{{ comment.comment_id }}" class="watch-comment-msg"></span>
+	</div>			
+	<span id="comment_spam_bug_commentid" class="watch-comment-spam-bug">Marked as spam</span>
+	<div id="reply_comment_form_id_commentid" class="watch-comment-action">
+			<a onclick="document.getElementById('comment_text').value = '@{{ comment.u_name }}:';">Reply</a> 
+	</div>
+			<div class="clearL"></div>
+		</div>
+			<div id="comment_body_commentid">
+				<div class="watch-comment-body">
+					{{ comment.comment | raw }}				</div>
+				<div id="div_comment_form_id_commentid"></div>
+			</div>
+	</div>
+	{% endfor %}
+            		<!-- <div class="watch-comment-pagination">
+<div class="floatR">
+
+<span class="watch-comment-pnum"><a href="#" onclick="">Next</a></span>
+</div>
+
+<div class="floatL">
+	<span class="watch-comment-pnum">Pages:</span>
+			<span class="watch-comment-pnum">1</span>
+			<span class="watch-comment-pnum"><a href="#" onclick="">2</a></span>
+			<span class="watch-comment-pnum"><a href="#" onclick="">3</a></span>
+		&nbsp;...&nbsp;
+		
+</div>
+<div class="clear"></div>
+</div> !-->
+				</div> <!-- end recent_comments -->
+					<div id="watch-comment-view-all"><a href="watch.php?v={{ video.video_id }}&amp;c=all" class="hLink" onmousedown="" rel="nofollow">View  4 comments</a></div>				<div id="watch-comment-post">
+			            <form action="/watch.php?v={{ video.video_id }}" method="post" style="margin:0 0 1em 0">
+                <textarea cols="55" rows="3" id="comment_text" name="comment_text" maxlength="256"></textarea><br>
+                <input style="margin-top: 5px" type="submit" name="comment_submit" value="Add Comment">
+            </form>
+            				</div> <!-- end post a comment section -->
+
+				<div id="div_main_comment"></div>
+		</div> 
+	</div> 
+			</div>
+			<div id="watch-tab-stats-body" class="watch-tab-body">
+					<table id="watch-some-stats" cellspacing="0" cellpadding="0">
+		<tbody><tr>
+			<td>Added: <span class="watch-stat">November 25, 2021</span></td>
+			<td>Views: <span class="watch-stat">					13					</span></td>
+			<td>Ratings: <span class="watch-stat">2</span></td>
+		</tr>
+		<tr>
+			<td>Responses: <a class="hLink bold" href="" onmousedown="">0</a></td>
+			<td>Comments: <a href="" class="hLink bold">{{ comCount }}</a></td>
+		</tr>
+	</tbody></table>
+			</div>
+		</div>
+	</div>
+</div> <!-- koniec lewej strony !-->
+<!-- POCZĄTEK PRAWEJ STRONY !-->
+<div id="watch-other-vids">
+	<div id="watch-channel-brand-div">
+	</div>
+
+		<div id="watch-channel-brand-cap">
+			<a href="" onmousedown=""><img src="/assets/2008/no_videos_140.jpg" style="display: none;" width="360" height="55" border="0"></a>
+		</div>
+
+	<div id="watch-channel-vids-div" class="watch-wrapper">
+		<div id="watch-channel-vids-top">
+			<div id="watch-channel-icon" class="user-thumb-medium">
+				<a href="/user.php?name={{ video.u_name }}" onmousedown=""><img src="{{ profile_image(video.u_name) }}" alt="Channel Icon"></a>
+			</div>
+<div id="subscribeDiv" class="watch-channel-subscribe {% if subscribed %}hid{% endif %}">
+				<a class="action-button" onclick="subscribe(watchUsername, subscribeaxc, true); return false;" title="subscribe to ArshaAsteraki's videos">
+					<span class="action-button-leftcap"></span>
+					<span class="action-button-text">Subscribe</span>
+					<span class="action-button-rightcap"></span>
+				</a>
+			</div>
+<div id="unsubscribeDiv" class="watch-channel-subscribe {% if subscribed == false %}hid{% endif %}">
+				<a class="action-button inactive" onclick="unsubscribe(watchUsername, subscribeaxc); return false;">
+					<span class="action-button-leftcap"></span>
+					<span class="action-button-text">Unsubscribe</span>
+					<span class="action-button-rightcap"></span>
+				</a>
+			</div>
+             <div id="watch-channel-stats">
+				<span class="watch-channel-stat">From: </span> <a href="/user.php?name={{ video.u_name }}">{{ video.u_name }}</a><br>
+				<span class="watch-channel-stat">Joined:</span> {{ video.u_joined | relative_time() }}<br>
+				<span class="watch-channel-stat">Videos:</span> <span id="watch-channel-videos">56</span>
+			</div>
+			<div class="clear"></div>
+		</div> 
+<div id="subscribeMessage">Please <a href="#" onclick="return openLoginBox(event);">login</a> to subscribe.</div>
+			<div id="watch-video-details" class="expand-panel">
+		<div id="watch-video-details-inner">
+			<div class="collapse-content" id="collapse-content">
+				<div>
+					<span class="watch-channel-stat">Added:</span>
+					<span class="watch-video-added">{{ video.time | date('F j, Y, h:i A') }}</span>
+					<span class="smallText">(<a class="eLink" onclick="exp_col_desc()">More info</a>)</span>
+				</div>
+
+				<div class="watch-video-desc">
+				<span>                            <i>No Description...</i>
+                            </span>
+				</div>
+			</div>
+	
+			<div class="expand-content" id="expand-content">
+				<div>
+					<span class="watch-channel-stat">Added:</span>
+					<span class="watch-video-added">{{ video.time | date('F j, Y, h:i A') }}</span>
+					<span class="smallText">(<a class="eLink" onclick="exp_col_desc()">Less info</a>)</span>
+				</div>
+				
+				<div class="watch-video-desc">
+				<span style="word-wrap: break-word !important;">                            <i>No Description...</i>
+                            </span>
+                
+                                                                            
+				</div>
+
+				<div>
+					<span class="watch-channel-stat">Category:&nbsp;</span>
+					 <a href="/videos.php?category=9">{{ video.category_id | category_id_to_name() }}</a>
+				</div>
+								
+				<div id="watch-video-tags-div">
+					<div class="floatL">
+						<span class="watch-channel-stat">Tags:&nbsp;</span>
+					</div>
+					<div id="watch-video-tags" class="floatL">
+					{% for tag in video.tags|json_decode %}
+					<a href="/results.php?search=gay+people&amp;t=Search+Videos">{{ tag }}</a>
+					{% endfor %}
+					<a href="/results.php?search=gay+people&amp;t=Search+Videos">gay people</a>
+					<a href="/results.php?search=+ytpmv&amp;t=Search+Videos"> ytpmv</a></div>
+					<div class="clearL"></div>
+				</div>
+				<div id="watch-url-div">
+					<form action="" name="urlForm" id="urlForm">
+					<label for="watch-url-field">URL:</label>
+					<input name="video_link" id="watch-url-field" type="text" value="{{ page_url }}" onclick="javascript:document.urlForm.video_link.focus();document.urlForm.video_link.select();" readonly="">
+					</form>
+				</div>
+			</div> 
+
+
+			<div id="watch-embed-div">
+				<div>
+					<label for="embed_code">Embed:</label>&nbsp;
+				</div>
+				<div class="clearR"></div>
+				<div>
+					<form action="" name="embedForm" id="embedForm">
+						<input id="embed_code" name="embed_code" type="text" value="<iframe id=&quot;embedplayer&quot; src=&quot;http://www.bitview.net/embed.php?v={{ video.video_id }}&quot; width=&quot;448&quot; height=&quot;382&quot; allowfullscreen scrolling=&quot;off&quot; frameborder=&quot;0&quot;></iframe>" onclick="javascript:document.embedForm.embed_code.focus();document.embedForm.embed_code.select();" readonly="">
+					</form>
+				</div>
+			</div> 
+		</div> 
+
+		<div id="watch-attributions-div">
+	
+
+	
+		</div> 
+
+
+
+	</div> 
+
+
+
+	</div> 
+	{% if userdata.id == video.author %}
+		<div id="watch-video-owner">
+			<div id="watch-video-owner-header">
+			Video Owner Options
+			</div>
+				<a href="/a/subscription_center.php?user=Gamerappa" class="edit-button">
+                 <span class="edit-button-leftcap"></span>
+                 <span class="edit-button-text">Edit Video</span>
+                 <span class="edit-button-rightcap" style="margin-right: 7px;"></span>
+                 </a>
+				<a href="/a/subscription_center.php?user=Gamerappa" class="edit-button">
+                 <span class="edit-button-leftcap"></span>
+                 <span class="edit-button-text">Insight</span>
+                 <span class="edit-button-rightcap"></span>
+                 </a>
+				 <br><br>
+		</div>
+	{% endif %}
+<br>
+
+	<div class="watch-wrapper">
+			<div id="more-from-panel" class="expand-panel expanded">
+		<a class="expand-header" onclick="showhide_morefrom()"><img id="arrow_morefrom" style="margin-right: 2px;margin-bottom: 1px;" src="img/arrow1.png" alt="">More From: CFV</a>
+		<div id="watch-more-from" class="watch-body expand-content" style="display: block;">
+				
+	<div id="more_channel_videos" style="padding-left: 7px; padding-top: 7px; height:auto; overflow: auto;" onscroll="">
+					<div id="more_channel_videos" style="padding-left: 7px; padding-top: 7px; height:auto; overflow: auto;" onscroll="">
+
+			<div style="float:left;">
+					<div class="v90WideEntry"><div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=oNXwyxzlIpO" rel="nofollow"><img title="response2:  sugomadeeznuts" src="/u/thmp/oNXwyxzlIpO.jpg" class="vimg90" alt="response2:  sugomadeeznuts"></a><div class="addtoQL90"></div></div></div></div>
+			</div>
+			<div style="margin-left:100px; margin-right: 5px;">
+				<div class="vtitle"><a class="hLink" href="/watch.php?v=oNXwyxzlIpO">response2:  sugomadeeznuts</a></div>
+				<div>
+					<span class="smallText">00:28</span>
+					<span class="smallLabel">From:</span>	<span><a class="hLink" href="/profile.php?user=CFV">CFV</a></span>
+				</div>
+				<div><span class="smallLabel">Views:</span> <span class="smallText">15</span></div>
+
+			</div>
+			<div style="clear:both; margin-bottom:4px;"></div>
+	</div>
+			<div id="more_channel_videos" style="padding-left: 7px; padding-top: 7px; height:auto; overflow: auto;" onscroll="">
+
+			<div style="float:left;">
+					<div class="v90WideEntry"><div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=X6eixU6XKvU" rel="nofollow"><img title="dont say penis in this house" src="/u/thmp/X6eixU6XKvU.jpg" class="vimg90" alt="dont say penis in this house"></a><div class="addtoQL90"></div></div></div></div>
+			</div>
+			<div style="margin-left:100px; margin-right: 5px;">
+				<div class="vtitle"><a class="hLink" href="/watch.php?v=X6eixU6XKvU">dont say penis in this house</a></div>
+				<div>
+					<span class="smallText">00:11</span>
+					<span class="smallLabel">From:</span>	<span><a class="hLink" href="/profile.php?user=CFV">CFV</a></span>
+				</div>
+				<div><span class="smallLabel">Views:</span> <span class="smallText">20</span></div>
+
+			</div>
+			<div style="clear:both; margin-bottom:4px;"></div>
+	</div>
+			<div id="more_channel_videos" style="padding-left: 7px; padding-top: 7px; height:auto; overflow: auto;" onscroll="">
+
+			<div style="float:left;">
+					<div class="v90WideEntry"><div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=swJejrzZ4BO" rel="nofollow"><img title="the sudden rise of nostalgiatards" src="/u/thmp/swJejrzZ4BO.jpg" class="vimg90" alt="the sudden rise of nostalgiatards"></a><div class="addtoQL90"></div></div></div></div>
+			</div>
+			<div style="margin-left:100px; margin-right: 5px;">
+				<div class="vtitle"><a class="hLink" href="/watch.php?v=swJejrzZ4BO">the sudden rise of nostalgiatards</a></div>
+				<div>
+					<span class="smallText">00:50</span>
+					<span class="smallLabel">From:</span>	<span><a class="hLink" href="/profile.php?user=CFV">CFV</a></span>
+				</div>
+				<div><span class="smallLabel">Views:</span> <span class="smallText">89</span></div>
+
+			</div>
+			<div style="clear:both; margin-bottom:4px;"></div>
+	</div>
+			<div id="more_channel_videos" style="padding-left: 7px; padding-top: 7px; height:auto; overflow: auto;" onscroll="">
+
+			<div style="float:left;">
+					<div class="v90WideEntry"><div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v=2O1zQrFRlly" rel="nofollow"><img title="GTA 4 - Times Square in 2001 (PRE 9/11)" src="/u/thmp/2O1zQrFRlly.jpg" class="vimg90" alt="GTA 4 - Times Square in 2001 (PRE 9/11)"></a><div class="addtoQL90"></div></div></div></div>
+			</div>
+			<div style="margin-left:100px; margin-right: 5px;">
+				<div class="vtitle"><a class="hLink" href="/watch.php?v=2O1zQrFRlly">GTA 4 - Times Square in 2001 (PRE 9/11)</a></div>
+				<div>
+					<span class="smallText">03:39</span>
+					<span class="smallLabel">From:</span>	<span><a class="hLink" href="/profile.php?user=CFV">CFV</a></span>
+				</div>
+				<div><span class="smallLabel">Views:</span> <span class="smallText">31</span></div>
+
+			</div>
+			<div style="clear:both; margin-bottom:4px;"></div>
+	</div>
+				<div class="alignC padT5 padB10 bold">
+			<a href="profile.php?user=CFV&amp;page=videos">See all 56 videos</a>
+		</div>
+			</div>
+
+		</div>
+	</div>
+
+	</div>
+ 
+		<div id="watch-related-videos-panel" class="watch-wrapper expand-panel expanded">
+		<a onclick="showhide_related()" class="expand-header"><img src="img/arrow1.png" style="margin-right: 2px;margin-bottom: 1px;" alt="" id="arrow_related">Related Videos
+                                    </a>
+		<div class="watch-body expand-content" id="watch_related" style="display: block;">
+			<div id="watch-related-vids-body" class="watch-discoverbox-list-view">
+						<div class="watch-discoverbox" style="height:302px" onscroll="performDelayLoad('related')">
+         {% for video in related_videos %}
+<div class="watch-discoverbox-entry">
+			<div class="watch-discoverbox-thumb">
+					<div class="v90WrapperOuter"><div class="v90WrapperInner"><a href="/watch.php?v={{ video.video_id }}" rel="nofollow"><img title="{{ video.title }}" src="{{ video_thumbnail(video.video_id) }}" class="vimg90" alt="title"></a></div></div>
+			</div>
+			<div class="watch-discoverbox-facets">
+				<div class="vtitle"><a class="hLink" href="/watch.php?v={{ video.video_id }}">{{ video.title }}</a></div>
+				<div>
+					<span class="smallText">{{ video_length(video) }}</span>
+					<span class="watch-discoverbox-list-facet-alt smallLabel">From:</span>	<span class="watch-discoverbox-list-facet-alt watch-discoverbox-username"><a href="profile.php?user={{ video.u_name }}" class="hLink">{{ video.u_name }}</a></span>
+				</div>
+				<div class="watch-discoverbox-list-facet"><span class="smallLabel">Views:</span> <span class="smallText">{{ video.views }}</span></div>
+
+			</div>
+		</div>
+		<div class="watch-discoverbox-divider"></div>
+         {% endfor %}
+<div class="clear alignC padT5 padB10 bold">
+			<a href="/results.php?search=gay+people%2C+ytpmv&amp;t=Search+Videos">See All Results</a>
+		</div>
+			</div>
+			</div> 
+		</div>
+		<div class="clearL"></div>
+	</div>
+	</div> <!-- TU SIĘ KOŃCZY KURWA !-->
+	{% endblock %}

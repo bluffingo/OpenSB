@@ -1,0 +1,418 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+<div class="wrapper">
+{% if hcaptcha_sitekey %}
+	<script src='https://www.hCaptcha.com/1/api.js' async defer></script>
+{% endif %}
+<script>
+    function checkTerms() {
+        if (document.getElementById('terms').checked == true) {
+            document.getElementById('termsWarning').style.display = 'none';
+            document.getElementById('button-signin').style.display = 'block';
+            return true;
+        }
+        else {
+            document.getElementById('termsWarning').style.display = 'block';
+            document.getElementById('button-signin').style.display = 'none';
+            return false;
+        }
+    }
+    function updatePasswordStrength() {
+        var password = document.register.pass1.value;
+        var strength = 0;
+
+        // easy_guesses: strings that should not be used in password
+        var easy_guesses = new Array();
+        easy_guesses.push('password');
+        easy_guesses.push('bitview');
+        easy_guesses.push('vidlii');
+		easy_guesses.push('12345');
+		easy_guesses.push('squarebracket');
+		easy_guesses.push('poktube');
+		easy_guesses.push('finobe');
+		easy_guesses.push('subrocks');
+		easy_guesses.push('fulptube');
+		easy_guesses.push('konqi');
+
+        var email_words = document.register.email.value.match(/\w+/g); // contiguous words contained in email
+        if (email_words)
+            easy_guesses = easy_guesses.concat(email_words);
+        if (document.register.username.value)
+            easy_guesses.push(document.register.username.value);
+
+        locase_matches = password.match(/[a-z_]/g); // lowercase and '_' matches
+        digit_matches = password.match(/[0-9]/g);   // numeric matches
+        upcase_matches = password.match(/[A-Z]/g);  // uppercase matches
+        special_matches = password.match(/\W/g);    // special matches (not in a-z, A-Z, 0-9, _)
+
+        if (password.length>5) {
+            // for less than 5, leave strength at 0 since password too short
+
+            // 1 point for each character more than 5
+            strength += password.length - 5;
+
+            // 1 point for each upcase character mixed with lowercase
+            if (locase_matches && upcase_matches)
+                strength += upcase_matches.length;
+
+            // 1 point for each numeric character mixed with lowercase
+            if (locase_matches && digit_matches)
+                strength += digit_matches.length;
+
+            // 1 point for each special characters
+            if (special_matches)
+                strength += special_matches.length;
+
+            // 2 bonus points if mix of letters, numbers and special
+            if ((locase_matches || upcase_matches) && special_matches && digit_matches)
+                strength += 2;
+        }
+
+        // Reset strength to 0 if any easy guess in password (easy guess should be more than 3 chars)
+        for (var i=0; i < easy_guesses.length; ++i) {
+            if (easy_guesses[i].length>3 && (password.indexOf(easy_guesses[i])!=-1)) {
+                strength=0;
+                break;
+            }
+        }
+
+        var pstrength_elem = document.getElementById('password_strength');
+        var pstrength_text = document.getElementById('password_strength_text');
+        if (password.length==0) {
+            pstrength_elem.className = 'password_empty';
+            pstrength_text.innerHTML = 'None';
+        }
+        else if (strength<3) {
+            pstrength_elem.className = 'password_weak';
+            pstrength_text.innerHTML = 'Weak';
+        }
+        else if (strength<7) {
+            pstrength_elem.className = 'password_fair';
+            pstrength_text.innerHTML = 'Fair';
+        }
+        else if (strength<10) {
+            pstrength_elem.className = 'password_good';
+            pstrength_text.innerHTML = 'Good';
+        }
+        else {
+            pstrength_elem.className = 'password_strong';
+            pstrength_text.innerHTML = 'Strong';
+        }
+    }
+</script>
+<style type="text/css">
+
+    img {
+        border:medium none;
+    }
+    .hr {
+        height: 1px;
+        border-bottom: 1px dotted #999;
+        margin: 20px 0px;
+    }
+    .signup-main {
+        width: 875px;
+    }
+    .signup-title {
+        font-weight: bold;
+    }
+    #verificationImage { float: left; width: 200px; }
+
+    .action-button .end-cap {
+        float:left;
+    }
+    #signup-text {
+        margin-left:10px;
+        margin-right:30px;
+    }
+    .img-action-button-cap-left {
+        background:transparent url(/img/master-vfl42001.png) no-repeat scroll -162px -37px;
+        height:25px;
+        width:5px;
+    }
+    .img-action-button-cap-right {
+        background:transparent url(/img/master-vfl42001.png) no-repeat scroll -167px -37px;
+        height:25px;
+        width:5px;
+    }
+    img {
+        border:medium none;
+    }
+    .action-button .content {
+        background: transparent url(/img/master-vfl42001.png) repeat-x scroll -310px -377px;
+        color: #0033CC;
+        float: left;
+        height: 20px;
+        padding: 5px 5px 0pt;
+    }
+    .action-button .content .title {
+        font-size:13px;
+        font-weight:bold;
+    }
+    .signup-link a {
+        text-decoration: none;
+    }
+    .signup-link a:hover {
+        text-decoration: underline;
+    }
+
+    .signup-outer-frame {
+        border-color:#999999;
+        border-style:solid;
+        border-width:1px;
+        margin-bottom:5%;
+        margin-left:15%;
+        margin-right:15%;
+        margin-top:0%;
+        padding:5px;
+    }
+    .signup-inner-frame {
+        border-color:#CCCCCC;
+        border-style:solid;
+        border-width:1px;
+        background-color: #eeeeee;
+    }
+    #signup-youtube-logo {
+        padding-bottom:4px;
+        padding-top:4px;
+        width: 73px;
+        height: 29px;
+        vertical-align: middle;
+    }
+    #signup-gaia-logo {
+        height: 31px;
+        width: 80px;
+    }
+    .signup-table {
+        width: 100%;
+    }
+
+    #suInOrderToDiv {
+        background-color: #FFFFCC;
+        border: 1px solid #CCCC66;
+        margin: 6px 25%;
+        padding: 6px;
+        font-weight: bold;
+    }
+
+    .loginFormLabel {
+        text-align: right;
+        vertical-align: top;
+    }
+    .loginFormField {
+        width: 160px;
+    }
+    .alertBoxSm {
+        border: 2px solid #C00;
+        padding: 6px;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        text-align: left;
+        font-weight: bold;
+        font-size: 12px;
+        color: #000;
+    }
+
+    .loginField {
+        width: 130px;
+    }
+
+    /* password strength */
+    .password_empty {background-color: #e0e0e0; width:100%;}
+    .password_weak {background-color: red; width:25%;}
+    .password_fair {background-color: yellow; width:50%}
+    .password_good {background-color: #6699CC; width:75%;}
+    .password_strong {background-color: green; width:100%;}
+</style>
+
+{% if error %}
+<div class="confirmBox" style="background-color: #FFA3A3 !important">{{ error }}</div>
+{% endif %}
+<div id="sectionHeader" class="communityColor">
+    <div class="name" style="width:500px;" align="left">Create your squareBracket account</div>
+</div><br>
+<div class="signup-main">
+    <div id="pagination-top" style="padding: 25px 0pt 5px; text-align: right;"></div>
+    <table style="width:875px;" cellspacing="0" cellpadding="0">
+        <tbody><tr>
+            <td width="40%" valign="top">
+                <div id="suSigninDiv">
+                    <div id="signup-text">
+                                                <div class="signup-title">Join the largest worldwide video-sharing community!</div>
+
+                        <p>squareBracket is a way to get your videos to the people who matter to you. With squareBracket you can:</p>
+                        <ul>
+
+                            <li>Show off your favorite videos to the world</li>
+                            <li>Blog the videos you take with your digital camera or cell phone</li>
+                            <li>Securely and privately show videos to your friends and family around the world</li>
+                            <li>... and much, much more!</li>
+
+                        </ul>
+                    </div>
+                    <br>
+                    <div class="signup-outer-frame">
+                        <div class="signup-inner-frame">
+                            <table class="signup-table" cellspacing="0" cellpadding="4">
+                                <tbody><tr>
+                                    <td colspan="2" align="center">
+                                        <div align="center"><strong>Already have an account?</strong><br></div>
+                                        <div class="signup-link" align="center"> <a href="/login.php"><strong>Log in into your squareBracket Account</strong>! </a></div></td>
+                                </tr>
+                                </tbody></table>
+                        </div>
+                    </div>
+                </div>
+            </td>
+
+            <td valign="top">
+                <div id="suSignupDiv">
+                    <div class="signup-title" style="padding-bottom: 4px;">Create Your squareBracket Account</div>
+
+                    <div class="signup-outer-frame" style="margin-left:0%; margin-right:0%;">
+                        <div class="signup-inner-frame">
+                            <form onsubmit="return checkTerms();" action="/register.php" name="register" id="register" method="post">
+                                <table class="signup-table" cellspacing="0" cellpadding="4">
+                                    <tbody><tr>
+                                        <td width="25%">&nbsp;</td>
+                                        <td width="72%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="loginFormLabel">
+                                            <label for="signUpEmail">	<span class="nowrap">Email Address:</span>
+                                            </label></td>
+                                        <td class="formFieldSmall" width="100">
+                                            <input id="signUpEmail" type="text" size="40" maxlength="60" name="email" value="" onkeyup="updatePasswordStrength()">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="loginFormLabel"><label for="signUpPassword1">	<span class="nowrap">Password:</span>
+                                            </label></td>
+                                        <td class="formFieldSmall"><input id="signUpPassword1" type="password" size="40" maxlength="20" name="pass1" value="" onkeyup="updatePasswordStrength()"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="loginFormLabel">&nbsp;</td>
+                                        <td class="formFieldSmall"><div class="formFieldInfo" style="color:#0033CC;">Password strength: <span id="password_strength_text"></span></div><table id="password_strength" class="password_empty" style="height:2px;width:180px;" border="0"><tbody><tr><td></td></tr></tbody></table></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="loginFormLabel"><label for="signUpPassword2">	<span class="nowrap">Re-type Password:</span>
+                                            </label></td>
+                                        <td class="formFieldSmall"><input id="signUpPassword2" type="password" size="40" maxlength="20" name="pass2" value=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="25%">&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td class="loginFormLabel"><label for="username">	<span class="nowrap">Username:</span>
+                                            </label></td>
+                                        <td class="formFieldSmall">
+                                            <table cellspacing="0" cellpadding="2" border="0">
+                                                <tbody><tr>
+                                                    <td valign="top">
+                                                        <input type="text" size="40" maxlength="20" id="username" name="username" value="">
+                                                        <div id="check_username"></div>
+                                                        <div class="formFieldInfo">
+                                                            Your username can only contain letters A-Z or numbers 0-9.
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                </tbody></table>
+                                        </td>
+                                    </tr>
+									
+                                    <tr valign="top">
+                                        <td class="loginFormLabel"><label for="displayName">	<span class="nowrap">Display name:</span>
+                                            </label></td>
+                                        <td class="formFieldSmall">
+                                            <table cellspacing="0" cellpadding="2" border="0">
+                                                <tbody><tr>
+                                                    <td valign="top">
+                                                        <input type="text" size="40" maxlength="20" id="displayName" name="displayName" value="">
+                                                    </td>
+                                                </tr>
+
+                                                </tbody></table>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+									{% if hcaptcha_sitekey %}
+                                    <tr>
+                                        <td class="loginFormLabel">
+                                            <div id="verificationLabel" name="verificationLabel">
+                                                <label for="verificationResponse">Captcha:</label>
+                                            </div>
+                                        </td>
+											<div class="form-floating my-2">
+												<div class="h-captcha" data-sitekey="{{ hcaptcha_sitekey }}"></div>
+											</div>
+                                        <td>
+                                        </td>
+                                    </tr
+									{% endif %}
+
+                                    <tr>
+                                        <td class="loginFormLabel" valign="top"><div id="termsOfUseLabel" name="termsOfUseLabel">
+                                                <label for="termsOfUseResponse">
+                                                    Terms of Use,<br>Privacy Policy:
+                                                </label>
+                                            </div></td>
+                                        <td class="formFieldSmall">
+                                            <table cellspacing="0" cellpadding="0">
+                                                <tbody><tr>
+                                                    <td style="vertical-align: top; margin-right: 5px">
+                                                        <input type="checkbox" name="terms_agreed" id="terms" onclick="checkTerms();" style="margin-left: 0px; padding-left: 0px">
+                                                    </td>
+                                                    <td style="vertical-align: top; padding-top: 3px;">
+                                                        I agree to the <a href="/terms.php" target="_blank">Terms of Use</a> and <a href="/privacy.php" target="_blank">Privacy Policy</a>.
+                                                    </td>
+                                                </tr>
+                                                </tbody></table>
+                                            <p>Uploading materials that you do not own is a copyright violation and against the law. If you upload material you do not own, your account will be deleted.</p>
+
+                                            <div id="termsWarning" style="display: none;" class="errorBox">
+                                                Sorry, you need to agree to the Terms of Use and Privacy Policy to create an account.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <div class="action-button" style="margin: 0 0 0 px;" id="button-signin">
+
+
+                                                <a id="button-signin-link" href="#" onclick="checkTerms(); document.getElementById('register').submit();">
+                                                    <div class="end-cap img-action-button-cap-left"></div>
+                                                    <div class="content hand"><span class="title" id="button-signin-title">Create my account</span></div>
+                                                    <div class="end-cap img-action-button-cap-right"></div>
+                                                </a>
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    </tbody></table>
+                        </form></div>
+                        <input type="submit" style="display: none;"> <!-- for enter input -->
+                        
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clear"></div>
+            </div>
+{% endblock %}

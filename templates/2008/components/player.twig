@@ -1,0 +1,110 @@
+         <div id="container">
+            <!--- todo: redo "video processed" message to use _error.twig -gr 7/22/2021 --->
+            {% if (video.flags b-and 2) %}
+<div style="width:480px;height:388px;background:black;position:relative">
+            <div style="width:480px;height:388px;opacity:0.15;background-image:url('/img/static.gif')"></div>
+            <div style="text-align:center;color:white;font-size:16px;position:absolute;width:480px;left:0;top:183.01886792453px;opacity: 1">
+                VIDEO IS CONVERTING!
+            </div>
+        </div>
+            {% else %}
+            <video style="aspect-ratio: 4 / 3;width: 100%;" id="videoContainer" controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}">
+			<source src="./videos/{{ video.video_id }}.converted.mp4" type="video/mp4" />
+			<source src="./videos/{{ video.video_id }}.webm" type="video/webm" />
+			</video>
+            {% endif %}
+         </div>
+         <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+         <script src="https://unpkg.com/plyr@3.6.8/dist/plyr.min.js"></script>
+         <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
+         <!-- no, we're not using the fucking vidlii player. -->
+         <style>
+            .plyr--video {
+            --plyr-color-main: #1b8ade;
+            --plyr-font-family: arial, helvetica, sans-serif;
+            --plyr-control-spacing: 10px;
+            }
+            .plyr--video .plyr__controls {
+            padding: 1px 3px !important;
+            background: var(--plyr-video-controls-background,linear-gradient(#fff,#E6E6E6));
+			color: black;
+            }
+            .plyr__control svg {
+            fill: #444;
+            }
+            .plyr__control svg:hover {
+            fill: #CDCDCD;
+            }
+            .plyr--video .plyr__control.plyr__tab-focus, .plyr--video .plyr__control:hover, .plyr--video .plyr__control[aria-expanded="true"] {
+            background: #FFFFFF11;
+            color: var(--plyr-video-control-color-hover,#fff);
+            }
+            .plyr__control--overlaid {
+            background: #fff;
+            }
+			.plyr--full-ui input[type="range"]::-moz-range-progress {
+			  background: linear-gradient(#3cf,#00abff)
+			}
+			.plyr--video .plyr__progress__buffer {
+			  color: #8ab;
+			}
+			.plyr__tooltip {
+			background: var(--plyr-tooltip-background,hsla(0, 0%, 7.5%, 0.9));
+			color: var(--plyr-tooltip-color,#fff);
+			}
+			.plyr__tooltip::before {
+			border-top: var(--plyr-tooltip-arrow-size,4px) solid var(--plyr-tooltip-background,hsla(0, 0%, 7.5%, 0.9));
+			}
+			.plyr__menu__container {
+			background: var(--plyr-menu-background,hsla(0, 0%, 7.5%, 0.9));
+			}
+			.plyr__menu__container::after {
+			border-top: var(--plyr-menu-arrow-size,4px) solid hsla(0, 0%, 7.5%, 0.9);
+			}
+			.plyr__menu__container .plyr__control {
+			  color: var(--plyr-menu-color,#cbcbcb);
+			}
+         </style>
+         <script>
+            {% if not (video.flags b-and 2) %}
+            	//code taken from https://codepen.io/adis0308/pen/bGpQmwr
+            	const video = document.getElementById("videoContainer");
+            	document.addEventListener("DOMContentLoaded", function(){
+            	  const source = "{{ video.videofile }}";
+            	  const dash = dashjs.MediaPlayer().create();
+            	  var defaultOptions = {
+            		"ratio":"4:3",
+            	  };
+            
+            	  dash.initialize(video, source, false);
+            	  dash.updateSettings({
+            		streaming: {
+            		  abr: {
+            			autoSwitchBitrate: {audio: false, video: false}
+            		  },
+            		  fastSwitchEnabled: true,
+            		  lowLatencyEnabled: true
+            		}
+            	  });
+            	  dash.on("streamInitialized", function() {
+            		const availableQualities = dash.getBitrateInfoListFor("video").map((l) => l.height);
+            		defaultOptions.quality = {
+            		  default: availableQualities[0].height,
+            		  options: availableQualities,
+            		  forced: true,
+            		  onChange: function (newQuality) {
+            			dash.getBitrateInfoListFor("video").forEach((level, levelIndex) => {
+            			  if (level.height === newQuality) {
+            				dash.setQualityFor("video", level.qualityIndex);
+            			  }
+            			});
+            		  },
+            		};
+            		const player = new Plyr(video, defaultOptions);
+            		window.player = player;
+            		window.dash = dash;
+            	  });
+            	  dash.attachView(video);
+            	});
+            {% endif %}
+         </script>

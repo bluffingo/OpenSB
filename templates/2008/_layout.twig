@@ -1,0 +1,153 @@
+<!DOCTYPE htmL PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/XxhtmL1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="squareBracket is the best place to share your videos with the world and your friends and family.">
+<meta name="keywords" content="video, clips, camera, recording, upload, share">
+
+<title>squareBracket - Can't believe it's not PokTube</title>
+<link href="/assets/2008/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="assets/2008/js/base.js"></script>
+<script>
+{% if log %}
+var isLoggedIn = true;
+{% else %}
+var isLoggedIn = false;
+{% endif %}
+</script>
+<style>
+		body { word-break:break-word; }
+		</style>
+    </head>
+    <body> 
+        <div id="baseDiv" class=" date-20080710">
+        <div id="masthead">
+                <a href="/" class="logo"><img src="assets/2008/pixel.gif" border="0"></a>
+                <div class="user-info">
+	{% if log %}
+<div id="util-links" class="normal-utility-links">
+                        <span class="util-item first">Hi, <b><a href="/user.php?name={{ userdata.name }}" onclick="">{{ userdata.name }}</a></b>!</span>
+		
+
+		<span class="util-item"><span id="iconMail" class="noMail"></span>(<a href="/my_messages.php">0</a>)</span>
+        <span class="util-item"><a href="/my_profile.php">Account</a></span>
+        <span class="util-item"><a href="/viewing_history.php">History</a></span>
+        <span class="util-item"><a href="/help.php">Help</a></span>
+                <span class="util-item"><a href="/logout.php" class="loginBoxZ eLink" onclick="">Log Out</a></span>
+            </div>
+	{% else %}
+    <div id="util-links" class="normal-utility-links">
+                <span class="util-item first"><b><a href="/register.php" onclick="">Sign Up</a></b></span>
+        <span class="util-item"><a href="/viewing_history.php">Viewing History</a></span>
+        <span class="util-item"><a href="/help.php">Help</a></span>
+        <span class="util-item"><a href="/login.php" class="loginBoxZ eLink" onclick="">Log In</a></span>
+            </div>
+	{% endif %}
+        </div>
+        <div class="nav">
+            <div class="nav-item first" id="nav-item-home">
+                <span class="leftcap"></span>
+                <a class="content" href="/">Home</a>
+                <span class="rightcap"></span>
+            </div>
+            <div class="nav-item  " id="nav-item-videos">
+                <div class="nav-tab">
+                    <span class="leftcap"></span>
+                    <a class="content" href="/browse.php">Videos</a>
+                    <span class="rightcap"></span>
+                </div>
+            </div>
+            <div class="nav-item  " id="nav-item-channels">
+                <div class="nav-tab">
+                    <span class="leftcap"></span>
+                    <a class="content" href="/channels.php">Channels</a>
+                    <span class="rightcap"></span>
+                </div>
+            </div>
+            <div class="nav-item  " id="nav-item-community">
+                <div class="nav-tab">
+                    <span class="leftcap"></span>
+                    <a class="content" href="/forum/index.php">Community</a>
+                    <span class="rightcap"></span>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="bar">
+            <span class="leftcap"></span>
+            <div class="search-bar">
+                <a href="/upload.php" id="upload-button" class="action-button">
+                    <span class="action-button-leftcap"></span>
+                    <span class="action-button-text">Upload</span>
+                    <span class="action-button-rightcap"></span>
+                </a>
+<div id="search-form">
+					<input id="search-term" name="search_query" type="text" tabindex="1" onkeyup="goog.i18n.bidi.setDirAttribute(event,this)" value="" maxlength="128" autocomplete="off">
+					<select class="search-type" name="search_type">
+						<option value="">Videos</option>
+						<option value="search_users">Channels</option>
+					</select>
+					<input id="search-button" type="submit" value="Search">
+				</div>
+<div class="search-settings-link">
+				<a href="#" class="eLink" onclick="return toggleAdvSearch('', '', '', '', '', '')">
+					advanced
+				</a></div></div>
+			<span class="rightcap"></span>
+		</div><div class="clear"></div></div>
+		
+        <div id="search-advanced-form" class="hid">
+            <div class="search-setting-inner alignC">Loading...</div>
+        </div>
+	
+{% block content %}{% endblock %}
+           <div id="footer">
+		<div class="search">
+			<div class="promo">
+			</div>
+            <form name="searchForm" id="footer-search-form" method="GET" style="width: 73.5%;" action="/results.php">
+
+            <input tabindex="1" type="text" name="search" maxlength="128" id="searchField" value="">
+            <select name="t">
+                <option value="Search Videos">Videos</option>
+                <option value="Search Users">Members</option>
+                <option value="Search Groups">Groups</option>
+                <option value="Search Playlists">Playlists</option>
+            </select>
+            <input type="submit" value="Search">
+        </form>
+		</div>
+		<div class="links">
+			<table cellspacing="0" cellpadding="0">
+				<tbody><tr>
+					<th colspan="2">Your Account</th>
+					<th class="separator" colspan="2">Help &amp; Info</th>
+					<th class="separator" colspan="2">squareBracket</th>
+				</tr>
+				<tr>
+					<td><a href="/my_browse.php">Videos</a></td>
+					<td><a href="/my_messages.php">Inbox</a></td>
+					<td class="separator"><a href="/help.php">Help Center</a></td>
+					<td><a href="https://twitter.com/squareBracket_">Our Twitter</a></td>
+					<td class="separator"><a href="/about.php">About</a></td>
+					<td><a href="/whats_new.php">What's New</a></td>
+				</tr>
+				<tr>
+					<td><a href="/my_playlists.php">Playlists</a></td>
+					<td><a href="/my_profile.php">more...</a></td>
+					<td class="separator"><a href="https://discord.gg/8WUTqUg">Our Discord</a></td>
+					<td><a href="/guidelines.php">Community Guidelines</a></td>
+					<td class="separator"><a href="/terms.php">Terms of Use</a></td>
+					<td><a href="/privacy.php">Privacy Policy</a></td>
+				</tr>
+				
+
+			</tbody></table>
+		</div>
+	</div>
+
+	<div id="copyright">
+		By the squareBracket Contributors - 2020-{{ 'now' | date('Y') }}
+	</div>      
+</div>
+</body></html>

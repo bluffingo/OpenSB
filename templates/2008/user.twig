@@ -1,0 +1,1387 @@
+
+
+{% extends "_layout-profile.twig" %}
+{% block content %}
+<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+{% if message %}
+<div class="confirmBox" style="background-color: #cfeeb2 !important">{{ message }}</div>
+{% endif %}
+<script type="text/javascript">
+   function getFormVars(form)
+   {	var formVars = new Array();
+   	for (var i = 0; i < form.elements.length; i++)
+   	{
+   		var formElement = form.elements[i];
+   		formVars[formElement.name] = formElement.value;
+   	}
+   	return urlEncodeDict(formVars);
+   }
+   
+   
+   function redirectToUrl(req)
+   {
+   	window.location.href=self.new_redirect_url;
+   	return true;
+   }
+   function unblockUserLink(friend_id, url)
+   {
+   	if (!confirm("Are you sure you want to unblock this user?"))
+   		return false;
+   	self.new_redirect_url = url;
+   	data ="unblock_user=1&&friend_id=" + friend_id;
+   	postUrlXMLResponse("/link_servlet",data ,execOnSuccess(redirectToUrl));
+   	return true;
+   }
+   function blockUserLink(friend_id, url)
+   {
+   	if (!confirm("Are you sure you want to block this user?"))
+   		return true;
+   	self.new_redirect_url = url;
+   	data ="block_user=1&&friend_id=" + friend_id;
+   	postUrlXMLResponse("/link_servlet", data, redirectToUrl);
+   	return true;
+   }
+   function unblockUserLinkByUsername(friend_username)
+   {
+   	if (!confirm("Are you sure you want to unblock this user?"))
+   		return false;
+   	data ="unblock_user=0&&friend_username=" + friend_username;
+   	postUrlXMLResponse("/link_servlet", data);
+   	return false;
+   }
+   function blockUserLinkByUsername(friend_username)
+   {
+   	if (!confirm("Are you sure you want to block this user?"))
+   		return false;
+   	data ="block_user=1&&friend_username=" + friend_username;
+   	postUrlXMLResponse("/link_servlet", data);
+   	return false;
+   }
+   
+   
+   
+   
+   			onLoadFunctionList.push(function() { imagesInit_subscribers();} );
+   
+   	function imagesInit_subscribers() {
+   		imageBrowsers['subscribers'] = new ImageBrowser(4, 1, "subscribers");
+			{% for subs in subscribers %}
+   			imageBrowsers['subscribers'].addImage(new ytImage("{{ profile_image(subs.u_name) }}",
+   			"/user.php?name={{ subs.u_name }}",
+   			"{{ subs.u_name }}",
+   			"/user.php?name={{ subs.u_name }}",
+   			"",
+   			"",
+   			"",
+   			false) );
+			{% endfor %}
+   		imageBrowsers['subscribers'].initDisplay();
+   		imageBrowsers['subscribers'].showImages();
+   		images_loaded = true;
+   	}
+   
+   			onLoadFunctionList.push(function() { imagesInit_friends();} );
+   
+   	function imagesInit_friends() {
+   		imageBrowsers['friends'] = new ImageBrowser(4, 1, "friends");
+   			imageBrowsers['friends'].addImage(new ytImage("http://i.ytimg.com/vi/UX-SGrtL49A/default.jpg",
+   			"/user.php?name=xgobobeanx",
+   			"xgobobeanx",
+   			"/user.php?name=xgobobeanx",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['friends'].addImage(new ytImage("http://i.ytimg.com/vi/4PDv0fMyzYA/default.jpg",
+   			"/user.php?name=pzottolo",
+   			"pzottolo",
+   			"/user.php?name=pzottolo",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['friends'].addImage(new ytImage("http://i.ytimg.com/vi/5BG7kZ3uDJU/default.jpg",
+   			"/user.php?name=uberbellyCDN",
+   			"uberbellyCDN",
+   			"/user.php?name=uberbellyCDN",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['friends'].addImage(new ytImage("/assets/2008/no_videos_140.png",
+   			"/user.php?name=icefile",
+   			"icefile",
+   			"/user.php?name=icefile",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['friends'].addImage(new ytImage("/assets/2008/no_videos_140.png",
+   			"/user.php?name=Not2TypicalSFCA",
+   			"Not2TypicalSFCA",
+   			"/user.php?name=Not2TypicalSFCA",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['friends'].addImage(new ytImage("/assets/2008/no_videos_140.png",
+   			"/user.php?name=PussinBuutz",
+   			"PussinBuutz",
+   			"/user.php?name=PussinBuutz",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['friends'].addImage(new ytImage("http://i.ytimg.com/vi/HzWuRCyLfhM/default.jpg",
+   			"/user.php?name=ashesxxashes",
+   			"ashesxxashes",
+   			"/user.php?name=ashesxxashes",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['friends'].addImage(new ytImage("http://i.ytimg.com/vi/BTdkYAfVX1s/default.jpg",
+   			"/user.php?name=Queenquana3",
+   			"Queenquana3",
+   			"/user.php?name=Queenquana3",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['friends'].addImage(new ytImage("/assets/2008/no_videos_140.png",
+   			"/user.php?name=FunMalibuRyan",
+   			"FunMalibuRyan",
+   			"/user.php?name=FunMalibuRyan",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['friends'].addImage(new ytImage("http://i.ytimg.com/i/SvSA6oGgJVw14VN_FTe4KQ/1.jpg",
+   			"/user.php?name=RazeGeneration",
+   			"RazeGeneration",
+   			"/user.php?name=RazeGeneration",
+   			"",
+   			"",
+   			"",
+   			false) );
+   		imageBrowsers['friends'].initDisplay();
+   		imageBrowsers['friends'].showImages();
+   		images_loaded = true;
+   	}
+   
+   			onLoadFunctionList.push(function() { imagesInit_publishers();} );
+   
+   	function imagesInit_publishers() {
+   		imageBrowsers['publishers'] = new ImageBrowser(4, 1, "publishers");
+   			imageBrowsers['publishers'].addImage(new ytImage("http://i.ytimg.com/vi/g8xXfj0aX2A/default.jpg",
+   			"/user.php?name=spricket24",
+   			"spricket24",
+   			"/user.php?name=spricket24",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['publishers'].addImage(new ytImage("http://i.ytimg.com/vi/UX-SGrtL49A/default.jpg",
+   			"/user.php?name=xgobobeanx",
+   			"xgobobeanx",
+   			"/user.php?name=xgobobeanx",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['publishers'].addImage(new ytImage("http://i.ytimg.com/vi/4PDv0fMyzYA/default.jpg",
+   			"/user.php?name=pzottolo",
+   			"pzottolo",
+   			"/user.php?name=pzottolo",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['publishers'].addImage(new ytImage("http://i.ytimg.com/i/8IodFXtpUNpRj_FPnqzdJw/1.jpg",
+   			"/user.php?name=calinewsgirl",
+   			"calinewsgirl",
+   			"/user.php?name=calinewsgirl",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['publishers'].addImage(new ytImage("/assets/2008/no_videos_140.png",
+   			"/user.php?name=Not2TypicalSFCA",
+   			"Not2TypicalSFCA",
+   			"/user.php?name=Not2TypicalSFCA",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['publishers'].addImage(new ytImage("http://i.ytimg.com/vi/dN0F1LNUp_g/default.jpg",
+   			"/user.php?name=ourdailyripa",
+   			"ourdailyripa",
+   			"/user.php?name=ourdailyripa",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['publishers'].addImage(new ytImage("http://i.ytimg.com/vi/-8XHn74jy0E/default.jpg",
+   			"/user.php?name=JerzeyPrince20",
+   			"JerzeyPrince20",
+   			"/user.php?name=JerzeyPrince20",
+   			"",
+   			"",
+   			"",
+   			false) );
+   			imageBrowsers['publishers'].addImage(new ytImage("http://s1.ytimg.com/vi/P3QuKCmfiMA/default.jpg",
+   			"/user.php?name=katiesopinion",
+   			"katiesopinion",
+   			"/user.php?name=katiesopinion",
+   			"",
+   			"",
+   			"",
+   			false) );
+   		imageBrowsers['publishers'].initDisplay();
+   		imageBrowsers['publishers'].showImages();
+   		images_loaded = true;
+   	}
+   
+   function share_profile()
+   {
+   	var fs = window.open( "/share?u={{ userpagedata.name }}",
+   		"Share", "toolbar=no,width=546,height=485,status=no,resizable=yes,fullscreen=no,scrollbars=no");
+   	fs.focus();
+   }
+   function updateLinks(linkid)
+   {
+   	document.getElementById(linkid + 'Link').style.display = "none";
+   	document.getElementById(linkid + 'Span').style.display = "inline";
+   	if (linkid == "recent") {
+   		document.getElementById('viewedLink').style.display = "inline";
+   		document.getElementById('viewedSpan').style.display = "none";
+   		if (_gel('discussedLink')){
+   			document.getElementById('discussedLink').style.display = "inline";
+   			document.getElementById('discussedSpan').style.display = "none";
+   		}
+   		document.getElementById('searchResultsSpan').style.display = "none";
+   	}
+   	if (linkid == "viewed") {
+   		document.getElementById('recentLink').style.display = "inline";
+   		document.getElementById('recentSpan').style.display = "none";
+   		if (_gel('discussedLink')){
+   			document.getElementById('discussedLink').style.display = "inline";
+   			document.getElementById('discussedSpan').style.display = "none";
+   		}
+   		document.getElementById('searchResultsSpan').style.display = "none";
+   	}
+   	if (linkid == "discussed") {
+   		document.getElementById('recentLink').style.display = "inline";
+   		document.getElementById('recentSpan').style.display = "none";
+   		document.getElementById('viewedLink').style.display = "inline";
+   		document.getElementById('viewedSpan').style.display = "none";
+   		document.getElementById('searchResultsSpan').style.display = "none";
+   	}
+   			if (linkid == "267DD079CBBEB836") {
+   			}
+   }
+   
+   function updateVideoSortLater(linkId, videoDiv, loadingDiv) {
+   	return function(req) {updateVideoSort(req, linkId, videoDiv, loadingDiv)};
+   }
+   
+   function updateVideoSort(req, linkId, videoDiv, loadingDiv) {
+   	updateLinks(linkId);
+   	_gel(loadingDiv).style.display = 'none';
+   	_gel(videoDiv).style.display = '';
+   
+   	_gel(videoDiv).innerHTML = getNodeValue(req.responseXML, "html_content");
+   }
+   
+   function submitProfileVideoSort(sortType, linkId, videoDiv, loadingDiv, action) {
+   	_gel(loadingDiv).style.display = '';
+   	_gel(videoDiv).style.display = 'none';
+   
+   	var data = new Array();
+   
+   	var v = new Object;
+   	v.name = 'action_'+ action; 
+   	v.value = '1';
+   	data.push(v);
+   
+   	var v2 = new Object;
+   	v2.name = 'user';
+   	v2.value = '{{ userpagedata.name }}';
+   	data.push(v2)
+   
+   	var v3 = new Object;
+   	v3.name = 'p';
+   	v3.value = sortType;
+   	data.push(v3)
+   
+   	postUrl('/profile_ajax', urlEncodeDict(data), true, execOnSuccess(updateVideoSortLater(linkId, videoDiv, loadingDiv)));
+   }
+   
+   function updateSearchResultsLater(form, resultsDivName, loadingDiv) {
+   	return function(req) {updateSearchResults(req, form, resultsDivName, loadingDiv)};
+   }
+   
+   function updateSearchResults(req, form, resultsDivName, loadingDiv) {
+   	for (var i = 0; i < form.elements.length; i++) {
+   		form.elements[i].disabled = false;
+   	}
+   	if (resultsDivName == "profileVideos") {
+   		document.profileSearchForm.search_query.blur();
+   		document.profileSearchForm.search_query.focus();
+   	}else {
+   		document.uploadedprofileSearchForm.search_query.blur();
+   		document.uploadedprofileSearchForm.search_query.focus();
+   	}
+   	_gel(resultsDivName).innerHTML = getNodeValue(req.responseXML, "html_content");
+   	_gel('searchResultsSpan').style.display = "inline";
+   
+   	_gel('viewedLink').style.display = "inline";
+   	_gel('viewedSpan').style.display = "none";
+   	if (resultsDivName == "profileVideos") {
+   		_gel('discussedLink').style.display = "inline";
+   		_gel('discussedSpan').style.display = "none";
+   	}
+   	_gel('recentLink').style.display = "inline";
+   	_gel('recentSpan').style.display = "none";
+   	_gel(loadingDiv).style.display = 'none';
+   	_gel(resultsDivName).style.display = '';
+   }
+   
+   function submitProfileSearchRequest(formName, resultsDivName, loadingDiv) {
+   	_gel(loadingDiv).style.display = '';
+   	_gel(resultsDivName).style.display = 'none';
+   
+   	form = document.forms[formName];
+   	for (var i = 0; i < form.elements.length; i++) {
+   		form.elements[i].disabled = true;
+   	}
+   
+   	postFormXMLResponse(formName, updateSearchResultsLater(form, resultsDivName, loadingDiv));
+   }
+</script>
+<script>
+   function share(playlist_encrypted_id)
+   {
+   	var fs = window.open( "/share?p=" + playlist_encrypted_id,
+   					"Share", "toolbar=no,width=546,height=485,status=no,resizable=yes,fullscreen=no,scrollbars=no");
+   	fs.focus();
+   }
+</script>
+<script language="javascript" type="text/javascript">
+   function shareVideo(encrypted_video_id)
+   {
+   	window.open('/share?v=' + encrypted_video_id, 'Share', 'width=580,height=480,resizable=yes,scrollbars=yes,status=0');
+   	_hbLink('Share+Video','Watch');
+   }
+   
+   var pageVideoId = 'fo26xLTp5L0';
+   function shareVideoFromFlash() {
+   	shareVideo(pageVideoId);
+   }
+</script>
+<!-- Begin Channel Content -->
+<!-- Begin Side Column -->
+<div id="profile-side-content">
+   <div class="profile-box profile-highlightbox">
+      <div class="box-head">
+         <div class="box-fg">
+            <div class="headerTitleEdit">
+               <div class="headerTitleRight">
+                  <script type="text/javascript">
+                     var watchUsername = '{{ userpagedata.name }}';
+                     var subscribeaxc = '';
+                     var isLoggedIn =  true ;
+                  </script>
+                  <div id="subscribeDiv" {% if subscribed %}class="hid"{% endif %}>
+                     <a class="action-button" onclick="subscribe(watchUsername, subscribeaxc, true); urchinTracker('/Events/SUB_click/Profile/{{ userpagedata.name }}'); return false;" title="subscribe to {{ userpagedata.name }}'s videos">
+                     <span class="action-button-leftcap"></span>
+                     <span class="action-button-text">Subscribe</span>
+                     <span class="action-button-rightcap"></span>
+                     </a>
+                  </div>
+                  <div id="unsubscribeDiv" {% if subscribed == false %}class="hid"{% endif %}>
+                     <a class="action-button inactive" onclick="unsubscribe(watchUsername, subscribeaxc); return false;">
+                     <span class="action-button-leftcap"></span>
+                     <span class="action-button-text">Unsubscribe</span>
+                     <span class="action-button-rightcap"></span>
+                     </a>
+                  </div>
+               </div>
+               <div class="headerTitleLeft">
+                  <span>{{ userpagedata.title }}</span>
+               </div>
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+      <div class="box-body">
+         <div class="box-fg">
+            <div id="subscribeMessage">
+               Please login to perform this operation.
+            </div>
+            <div class="hid">
+               See related Channels
+            </div>
+            <div class="floatL">
+               <div class="user-thumb-xlarge">
+                  <img src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
+               </div>
+               <center>
+                  <div class="marT3"><img src="http://s.ytimg.com/yt/img/pic_badge_comedian_90x18-vfl10992.gif" alt="Comedian" width="90" height="18"></div>
+               </center>
+            </div>
+            <div style="float:left;margin-left:5px;width:180px;">
+               <div class="largeTitles"><strong>{{ userpagedata.name }}</strong></div>
+               <div class="padT3">
+                  <div class="padB3">Style: Celebrity Humor</div>
+                  <div class="smallText">Joined: <strong>May 01, 2007</strong></div>
+                  <div class="smallText">Last Login: <strong>18 minutes ago</strong></div>
+                  <div class="smallText">Videos Watched: <strong>29,340</strong></div>
+                  <div class="smallText">Subscribers: <strong>159,251</strong></div>
+                  <div class="smallText">Channel Views: <strong>3,170,440</strong></div>
+               </div>
+            </div>
+            <div style="clear:both"></div>
+            <div style="padding: 6px 0px 8px 0px;">
+               {{ userpagedata.about }}
+            </div>
+            <div class="padT5 profileAssets">
+               <img src="/img/flags/en_US_globe.gif" class="currentFlag" width="17">
+               <br>
+               <span class="smallText">Website:</span> <strong><a href="http://www.buckhollywood.com" name="&amp;lid=ProfileWebsiteLink&amp;lpos=Profile" rel="nofollow">http://www.buckhollywood.com</a></strong>
+               <br>
+            </div>
+            <!-- <div class="padT10">
+               <table cellspacing="0" cellpadding="0">
+                  <tbody>
+                     <tr>
+                        <td width="20" valign="top"><img src="http://s.ytimg.com/yt/img/icn_award_17x24-vfl10931.gif" border="0"></td>
+                        <td valign="top">
+                           <span id="BeginvidDeschonors">
+                           <a href="/members?t=a&amp;p=1&amp;s=ms&amp;g=0">#7 - Most Subscribed (All Time)</a><br>
+                           <a href="/members?t=a&amp;p=1&amp;s=ms&amp;g=2">#5 - Most Subscribed (All Time) - Comedians</a><br>
+                           <a href="/members?t=a&amp;p=1&amp;s=ms&amp;g=5">#6 - Most Subscribed (All Time) - Partners</a><br>
+                           </span>
+                           <span id="RemainvidDeschonors" style="display: none">			<a href="/members?t=a&amp;p=1&amp;s=ms&amp;g=0">#7 - Most Subscribed (All Time)</a><br>
+                           <a href="/members?t=a&amp;p=1&amp;s=ms&amp;g=2">#5 - Most Subscribed (All Time) - Comedians</a><br>
+                           <a href="/members?t=a&amp;p=1&amp;s=ms&amp;g=5">#6 - Most Subscribed (All Time) - Partners</a><br>
+                           <a href="/members?t=t&amp;p=1&amp;s=mv&amp;g=0">#19 - Most Viewed (Today)</a><br>
+                           <a href="/members?t=t&amp;p=1&amp;s=mv&amp;g=2">#1 - Most Viewed (Today) - Comedians</a><br>
+                           <a href="/members?t=t&amp;p=1&amp;s=mv&amp;g=5">#11 - Most Viewed (Today) - Partners</a><br>
+                           <a href="/members?t=w&amp;p=1&amp;s=mv&amp;g=0">#20 - Most Viewed (This Week)</a><br>
+                           <a href="/members?t=w&amp;p=1&amp;s=mv&amp;g=2">#2 - Most Viewed (This Week) - Comedians</a><br>
+                           <a href="/members?t=w&amp;p=1&amp;s=mv&amp;g=5">#14 - Most Viewed (This Week) - Partners</a><br>
+                           <a href="/members?t=m&amp;p=2&amp;s=mv&amp;g=0">#22 - Most Viewed (This Month)</a><br>
+                           <a href="/members?t=m&amp;p=1&amp;s=mv&amp;g=2">#2 - Most Viewed (This Month) - Comedians</a><br>
+                           <a href="/members?t=m&amp;p=1&amp;s=mv&amp;g=5">#16 - Most Viewed (This Month) - Partners</a><br>
+                           <a href="/members?t=a&amp;p=3&amp;s=mv&amp;g=0">#59 - Most Viewed (All Time)</a><br>
+                           <a href="/members?t=a&amp;p=1&amp;s=mv&amp;g=2">#4 - Most Viewed (All Time) - Comedians</a><br>
+                           <a href="/members?t=a&amp;p=3&amp;s=mv&amp;g=5">#48 - Most Viewed (All Time) - Partners</a><br>
+                           </span>
+                           <span id="MorevidDeschonors" class="smallText">(<a href="#" class="eLink" onclick="showDiv('RemainvidDeschonors'); hideDiv('MorevidDeschonors'); hideDiv('BeginvidDeschonors'); showDiv('LessvidDeschonors'); return false;">more</a>)</span>
+                           <span id="LessvidDeschonors" style="display: none" class="smallText">(<a href="#" class="eLink" onclick="hideDiv('RemainvidDeschonors'); hideDiv('LessvidDeschonors'); showDiv('BeginvidDeschonors'); showDiv('MorevidDeschonors'); return false;">less</a>)</span>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+ -->            <div class="flaggingText"><a href="/flag_user?username={{ userpagedata.name }}&amp;action=report_profile_image" onclick="javascript:getSimpleXR('/flag_user?username={{ userpagedata.name }}&amp;action=report_profile_image&amp;format=xml', showConfMsg, this);return false;">Report</a> profile image violation</div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+   </div>
+   <div class="profile-box">
+      <div class="box-head">
+         <div class="box-fg">
+            <div class="headerTitle">
+               Connect with {{ userpagedata.name }}
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+      <div class="box-body">
+         <div class="box-fg">
+            <table width="100%" cellspacing="0" cellpadding="3" border="0">
+               <tbody>
+                  <tr>
+                     <td width="110" valign="middle" align="right">
+                        <div class="user-thumb-partner">
+                           <img src="{{ profile_image(userpagedata.name) }}" border="0"> 	
+                        </div>
+                     </td>
+                     <td valign="top" align="left">
+                        <table class="actionsTable">
+                           <tbody>
+                              <tr class="actionsTable">
+                                 <td class="actionsTable">
+                                    <div class="smallText">
+                                       <a id="aProfileSendMsg" href="/outbox?to_user={{ userpagedata.name }}"><img src="/assets/2008/pixel.gif" id="profileSendMsg" class="icnProperties" alt="Send Message">Send Message</a>
+                                    </div>
+                                    <div class="smallText">
+                                       <a id="aProfileAddComment" href="/profile_comment_post.php?user={{ userpagedata.name }}"><img src="/assets/2008/pixel.gif" id="profileAddComment" class="icnProperties" alt="Add Comment">Add Comment</a>
+                                    </div>
+                                    <div class="smallText">
+                                       <a id="aProfileFwdMember" href="javascript:share_profile()"><img src="/assets/2008/pixel.gif" id="profileFwdMember" class="icnProperties" alt="Share Channel">Share Channel</a>
+                                    </div>
+                                    <div class="smallText">
+                                    </div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">
+                        <div class="marB3 alignC"><a href="http://www.youtube.com/whatthebuck">http://www.youtube.com/whatthebuck</a></div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+   </div>
+   <div class="profile-box">
+      <div class="box-head">
+         <div class="box-fg">
+            <div class="headerTitle">
+               <span>Bulletins (<a href="/bulletin_all.php?user={{ userpagedata.name }}" class="headersSmall">161,002</a>)</span>
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+      <div class="box-body">
+         <div class="box-fg">
+            <table class="bulletinTable">
+               <tbody>
+                  <tr class="bulletinTable">
+                     <th class="firstCol">
+                        From
+                     </th>
+                     <th>
+                        Bulletin
+                     </th>
+                  </tr>
+                  <tr class="bulletinTable">
+                     <td class="firstCol" width="35%">
+                        <a href="/user.php?name=PublicAnimalNumberO9" title="PublicAnimalNumberO9" rel="nofollow">PublicAni...</a>
+                        <div class="xsmallText">
+                           June 11, 2008
+                        </div>
+                     </td>
+                     <td align="left">
+                        <div>
+                           <a href="/bulletin_read?id=48xo49F88zY&amp;user={{ userpagedata.name }}" rel="nofollow">type name if you like johnny depp</a>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr class="bulletinTable">
+                     <td class="firstCol" width="35%">
+                        <a href="/user.php?name=jazzcrank" title="jazzcrank" rel="nofollow">jazzcrank</a>
+                        <div class="xsmallText">
+                           June 11, 2008
+                        </div>
+                     </td>
+                     <td align="left">
+                        <div class="floatL">
+                           <img src="http://s.ytimg.com/yt/img/tv_icon-vfl5118.gif">
+                        </div>
+                        <div>
+                           <a href="/bulletin_read?id=WwORqDX4-HM&amp;user={{ userpagedata.name }}" rel="nofollow">heartless</a>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr class="bulletinTable">
+                     <td class="firstCol" width="35%">
+                        <a href="/user.php?name=PublicAnimalNumberO9" title="PublicAnimalNumberO9" rel="nofollow">PublicAni...</a>
+                        <div class="xsmallText">
+                           June 11, 2008
+                        </div>
+                     </td>
+                     <td align="left">
+                        <div>
+                           <a href="/bulletin_read?id=hs2wv1oSa_8&amp;user={{ userpagedata.name }}" rel="nofollow">sad =(</a>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr class="bulletinTable">
+                     <td class="firstCol" width="35%">
+                        <a href="/user.php?name=JBxxfansxxtalk" title="JBxxfansxxtalk" rel="nofollow">JBxxfansx...</a>
+                        <div class="xsmallText">
+                           June 11, 2008
+                        </div>
+                     </td>
+                     <td align="left">
+                        <div>
+                           <a href="/bulletin_read?id=x-ws7v0oTHA&amp;user={{ userpagedata.name }}" rel="nofollow">ATTENTION--VERY IMPORTANT--THEK IDSUPSTAIRS</a>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr class="bulletinTable">
+                     <td class="firstCol" width="35%">
+                        <a href="/user.php?name=fletcherdilmore" title="fletcherdilmore" rel="nofollow">fletcherd...</a>
+                        <div class="xsmallText">
+                           June 11, 2008
+                        </div>
+                     </td>
+                     <td align="left">
+                        <div>
+                           <a href="/bulletin_read?id=JeoP-SbpSAI&amp;user={{ userpagedata.name }}" rel="nofollow">#99 most viewed today</a>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr class="bulletinTable">
+                     <td colspan="3" align="center">
+                        <span class="smallText"><a href="/bulletin_all.php?user={{ userpagedata.name }}">See all bulletins</a></span>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+   </div>
+</div>
+<!-- End Side Column -->
+<!-- Begin Main Column -->
+<div id="profile-main-content">
+   <div class="profileEmbedVideo">
+      <object width="425" height="344">
+         <param name="allowscriptaccess" value="always">
+         <param name="wmode" value="transparent">
+         <param name="bgcolor" value="#000000">
+         <param name="movie" value="/swf/watch.swf?video_id=fo26xLTp5L0&amp;t=OEgsToPDskJGu-wOE6fbIweGk-KFZh68&amp;l=238&amp;hl=en">
+         <param name="flashvars" value="&amp;rs=1&amp;sn=1">
+         <embed src="/swf/watch.swf?video_id=fo26xLTp5L0&amp;t=OEgsToPDskJGu-wOE6fbIweGk-KFZh68&amp;l=238&amp;hl=en" type="application/x-shockwave-flash" allowscriptaccess="always" wmode="transparent" flashvars="&amp;rs=1&amp;sn=1" bgcolor="#000000" width="425" height="344">
+      </object>
+      <center>
+	  <div id="watch-player-div" style="width: 428px;">
+	  {{ include('/components/player.twig') }}
+	  </div>
+         <div class="profile-box profileEmbedVideoInfo">
+            <div class="box-body">
+               <div class="box-fg">
+                  <table cellspacing="2" cellpadding="5" border="0">
+                     <tbody>
+                        <tr>
+                           <td width="424" valign="top">
+                              <div class="floatL">
+                                 <div class="vtitle">
+                                    <strong><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></strong>
+                                 </div>
+                                 <div class="vfacets">
+                                    From: <a href="/user.php?name={{ video.u_name }}" title="{{ video.u_name }}">{{ video.u_name }}</a>
+                                    <br>
+                                    Views: {{ video.views }}
+                                    <br>
+                                    Comments: <a href="watch.php?v={{ video.video_id }}">3,769</a>
+                                 </div>
+                              </div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div class="box-bg"></div>
+            </div>
+         </div>
+      </center>
+   </div>
+   <div class="profile-box profile-highlightbox">
+      <div class="box-head">
+         <div class="box-fg">
+            <div class="headerTitle">
+               This is a epic box
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+      <div class="box-body">
+         <div class="box-fg">
+            <div>
+               Dietz Nuts					
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+   </div>
+   <div class="profile-box">
+      <div class="box-head">
+         <div class="box-fg">
+            <div class="headerTitle">
+               <span>Playlists</span>
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+      <div class="box-body">
+         <div class="box-fg">
+            <div class="vDetailEntry" style="padding:5px;">
+               <table class="playlist" width="100%" cellspacing="0" cellpadding="2" border="0">
+                  <tbody>
+                     <tr valign="top">
+                        <td>
+                           <div style="margin-right: 10px;">
+                              <table cellspacing="0" cellpadding="0" border="0">
+                                 <tbody>
+                                    <tr>
+                                       <td rowspan="2">
+                                          <a href="/view_play_list?p=267DD079CBBEB836">
+                                             <div class="video-thumb-medium"><img src="http://i.ytimg.com/vi/ccIdVZXTv6E/default.jpg"></div>
+                                          </a>
+                                       </td>
+                                       <td style="background-image: url(/assets/2008/stack_t.gif);"><img src="/assets/2008/stack_tr-vfl27226.gif"></td>
+                                    </tr>
+                                    <tr>
+                                       <td style="background-image: url(/assets/2008/stack_b.gif); background-position: bottom left; vertical-align: bottom;" valign="bottom"><img src="/assets/2008/stack_br-vfl27226.gif"></td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </td>
+                        <td width="100%">
+                           <div class="title">
+                              <a href="/view_play_list?p=267DD079CBBEB836">Buck's Favorite Things!</a> <span dir="ltr" class="facets">25 Videos</span>
+                           </div>
+                           <div class="desc">If you want to know who I am- watch these!</div>
+                        </td>
+                        <td valign="middle" nowrap="" align="right">
+                           <div class="playlistLinks">
+                              <a href="/watch?v=ccIdVZXTv6E&amp;feature=PlayList&amp;p=267DD079CBBEB836&amp;index=0&amp;playnext=1">Play All</a>
+                              <a href="javascript:share('267DD079CBBEB836');">Share</a>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div style="padding: 5px; text-align: right;">
+               <a href="/profile_play_list.php?user={{ userpagedata.name }}">See all playlists</a>
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+   </div>
+   <div class="profile-box">
+      <div class="box-head">
+         <div class="box-fg">
+            <div class="headerTitle">
+               <div class="headerTitleRight">
+                  <form name="subscribeToUsernameBox" method="post" action="/subscription_center">
+                     <input type="hidden" name="add_user" value="{{ userpagedata.name }}">
+                     <a class="headers" href="javascript: urchinTracker('/Events/SUB_click/Profile_vidbox/{{ userpagedata.name }}'); document.subscribeToUsernameBox.submit();" title="Subscribe to {{ userpagedata.name }}'s videos">Subscribe to {{ userpagedata.name }}'s videos</a>
+                  </form>
+               </div>
+               <span>Videos (<a href="/profile_videos.php?user={{ userpagedata.name }}" class="headersSmall">197</a>)</span>
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+      <div class="box-body">
+         <div class="box-fg">
+            <div style="padding: 3px;">
+               <div class="alignC marL5 marT5 marB5 floatL">
+                  <span id="recentSpan">Videos</span>
+                  <a style="display: none;" id="recentLink" href="#" onclick="submitProfileVideoSort('r', 'recent', 'profileVideos', 'loadingDiv', 'videos'); return false;">Videos</a>
+                  | 
+                  <span style="display: none;" id="viewedSpan">Most Viewed</span>
+                  <a id="viewedLink" href="#" onclick="submitProfileVideoSort('v', 'viewed', 'profileVideos', 'loadingDiv', 'videos'); return false;">Most Viewed</a>
+                  | 
+                  <span style="display: none;" id="discussedSpan">Most Discussed</span>
+                  <a id="discussedLink" href="#" onclick="submitProfileVideoSort('d', 'discussed', 'profileVideos', 'loadingDiv', 'videos'); return false;">Most Discussed</a>
+                  <span style="display:none;" id="searchResultsSpan">
+                  | Search Result Videos
+                  </span>
+               </div>
+               <div class="floatR marR5 marT5">
+                  <form method="post" action="/profile_ajax" name="profileSearchForm" onsubmit="submitProfileSearchRequest('profileSearchForm', 'profileVideos', 'loadingDiv'); return false;"> 
+                     <input type="hidden" name="action_search" value="1"> 
+                     <input type="hidden" name="user" value="{{ userpagedata.name }}">
+                     <input type="text" onkeyup="goog.i18n.bidi.setDirAttribute(event,this)" name="search_query" maxlength="128" value="">
+                     <input type="submit" value="Search">
+                  </form>
+               </div>
+               <div class="clear"></div>
+            </div>
+            {% for latestVideo in latestVideos|batch(3) %}
+            <div id="profileVideos">
+               <table width="510" border="0" align="center">
+                  <tbody>
+                     <tr style="height:1px;">
+                        <td width="170"></td>
+                        <td width="170"></td>
+                        <td width="170"></td>
+                     </tr>
+                     <tr>
+                     </tr>
+                     <tr>
+                        {% for cell in latestVideo %}
+                        <td width="170" valign="top" align="center">
+                           <div style="width: 140px; margin-bottom: 6px;">
+                              <div class="video-thumb-big">
+                                 <a href="/watch.php?v={{ cell.video_id }}"><img src="{{ video_thumbnail(cell.video_id) }}" alt="Biggest Online Dance Battle In The History Of Mankind!"></a>
+                              </div>
+                              <div style="text-align:left;">
+                                 <div class="vtitle">
+                                    <a href="/watch.php?v={{ cell.video_id }}">{{ cell.title }}</a><br>
+                                    <span class="runtime">{{ video_length(cell) }}</span>
+                                 </div>
+                                 <div class="vfacets">
+                                    Added: {{ cell.time | relative_time }}<br>
+                                    Views: {{ cell.views }}<br>
+                                 </div>
+                              </div>
+                           </div>
+                        </td>
+                        {% endfor %}
+                     </tr>
+                     <tr>
+                        {% endfor %}
+                     <tr>
+                        <td colspan="3" align="right">
+                           <b><a href="/profile_videos.php?user={{ userpagedata.name }}&amp;p=r">See All 197 Videos</a></b>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div id="loadingDiv" class="marT18 alignC" style="display:none;height:500px;">
+               <br><br>
+               <img src="http://s.ytimg.com/yt/img/icn_loading_animated-vfl24663.gif">
+               <br><br>
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+   </div>
+   <div class="profile-box">
+      <div class="box-head">
+         <div class="box-fg">
+            <div class="headerTitle">
+               <div class="headerTitleRight">
+                  <form name="subscribeToFavorites" method="post" action="/subscription_center">
+                     <input type="hidden" name="add_user_favorites" value="{{ userpagedata.name }}">
+                     <a class="headers" href="javascript: document.subscribeToFavorites.submit(); urchinTracker('/Events/SUB_click/Profile_favbox/{{ userpagedata.name }}');">Subscribe To Favorites</a>
+                  </form>
+               </div>
+               <span>Favorites (<a href="/profile_favorites.php?user={{ userpagedata.name }}" class="headersSmall">387</a>)</span>
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+      <div class="box-body">
+         <div class="box-fg">
+            <table width="510" border="0" align="center">
+               <tbody>
+                  <tr style="height:1px;">
+                     <td width="170"></td>
+                     <td width="170"></td>
+                     <td width="170"></td>
+                  </tr>
+                  <tr>
+                  </tr>
+                  <tr>
+                     <td width="170" valign="top" align="center">
+                        <div style="width: 140px; margin-bottom: 6px;">
+                           <div class="video-thumb-big">
+                              <a href="/watch?v=3ZqDnUXtHVw"><img src="http://i.ytimg.com/vi/3ZqDnUXtHVw/default.jpg" alt="Pull Shapes (read description)"></a>
+                           </div>
+                           <div style="text-align:left;">
+                              <div class="vtitle">
+                                 <a href="/watch?v=3ZqDnUXtHVw">Pull Shapes (read description)</a><br>
+                                 <span class="runtime">03:01</span>
+                              </div>
+                              <div class="vfacets">
+                                 Added: 2 weeks ago<br>
+                                 From: <a href="/user.php?name=magicjack30" title="magicjack30">magicjack30</a><br>
+                                 Views: 1,019<br>
+                              </div>
+                           </div>
+                        </div>
+                     </td>
+                     <td width="170" valign="top" align="center">
+                        <div style="width: 140px; margin-bottom: 6px;">
+                           <div class="video-thumb-big">
+                              <a href="/watch?v=r36MOJBRiBA"><img src="http://i.ytimg.com/vi/r36MOJBRiBA/default.jpg" alt="MICHAEL BUCKLEY DANCE CRU PULL SHAPES!"></a>
+                           </div>
+                           <div style="text-align:left;">
+                              <div class="vtitle">
+                                 <a href="/watch?v=r36MOJBRiBA">MICHAEL BUCKLEY DANCE CRU PULL SHAPES!</a><br>
+                                 <span class="runtime">03:17</span>
+                              </div>
+                              <div class="vfacets">
+                                 Added: 1 week ago<br>
+                                 From: <a href="/user.php?name=sillychar93" title="sillychar93">sillychar93</a><br>
+                                 Views: 1,275<br>
+                              </div>
+                           </div>
+                        </div>
+                     </td>
+                     <td width="170" valign="top" align="center">
+                        <div style="width: 140px; margin-bottom: 6px;">
+                           <div class="video-thumb-big">
+                              <a href="/watch?v=LN9YuYwZLAM"><img src="http://i.ytimg.com/vi/LN9YuYwZLAM/default.jpg" alt="Pull Shapes- Dance"></a>
+                           </div>
+                           <div style="text-align:left;">
+                              <div class="vtitle">
+                                 <a href="/watch?v=LN9YuYwZLAM">Pull Shapes- Dance</a><br>
+                                 <span class="runtime">03:40</span>
+                              </div>
+                              <div class="vfacets">
+                                 Added: 1 month ago<br>
+                                 From: <a href="/user.php?name=KoolJeffrey" title="KoolJeffrey">KoolJeffrey</a><br>
+                                 Views: 3,178<br>
+                              </div>
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td width="170" valign="top" align="center">
+                        <div style="width: 140px; margin-bottom: 6px;">
+                           <div class="video-thumb-big">
+                              <a href="/watch?v=EPbnvIosvss"><img src="http://s2.ytimg.com/vi/EPbnvIosvss/default.jpg" alt="Pull Shapes for the {{ userpagedata.name }} - The Pipettes"></a>
+                           </div>
+                           <div style="text-align:left;">
+                              <div class="vtitle">
+                                 <a href="/watch?v=EPbnvIosvss">Pull Shapes for the [username] - The Pipettes</a><br>
+                                 <span class="runtime">02:58</span>
+                              </div>
+                              <div class="vfacets">
+                                 Added: 1 week ago<br>
+                                 From: <a href="/user.php?name=stephenstephensons" title="stephenstephensons">stephenst...</a><br>
+                                 Views: 1,186<br>
+                              </div>
+                           </div>
+                        </div>
+                     </td>
+                     <td width="170" valign="top" align="center">
+                        <div style="width: 140px; margin-bottom: 6px;">
+                           <div class="video-thumb-big">
+                              <a href="/watch?v=e4Ce4eyLNvs"><img src="http://i.ytimg.com/vi/e4Ce4eyLNvs/default.jpg" alt="PULL SHAPES - buckhollywood dance cru - Miley, watch out!!!"></a>
+                           </div>
+                           <div style="text-align:left;">
+                              <div class="vtitle">
+                                 <a href="/watch?v=e4Ce4eyLNvs">PULL SHAPES - buckhollywood dance cru - Miley, watch out!!!</a><br>
+                                 <span class="runtime">07:08</span>
+                              </div>
+                              <div class="vfacets">
+                                 Added: 1 week ago<br>
+                                 From: <a href="/user.php?name=cjrie" title="cjrie">cjrie</a><br>
+                                 Views: 938<br>
+                              </div>
+                           </div>
+                        </div>
+                     </td>
+                     <td width="170" valign="top" align="center">
+                        <div style="width: 140px; margin-bottom: 6px;">
+                           <div class="video-thumb-big">
+                              <a href="/watch?v=o0Iy3li7nhM"><img src="http://i.ytimg.com/vi/o0Iy3li7nhM/default.jpg" alt="Pull Shapes The Pipettes - Crazy Dance"></a>
+                           </div>
+                           <div style="text-align:left;">
+                              <div class="vtitle">
+                                 <a href="/watch?v=o0Iy3li7nhM">Pull Shapes The Pipettes - Crazy Dance</a><br>
+                                 <span class="runtime">01:00</span>
+                              </div>
+                              <div class="vfacets">
+                                 Added: 1 week ago<br>
+                                 From: <a href="/user.php?name=Ezmonator" title="Ezmonator">Ezmonator</a><br>
+                                 Views: 205<br>
+                              </div>
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td width="170" valign="top" align="center">
+                        <div style="width: 140px; margin-bottom: 6px;">
+                           <div class="video-thumb-big">
+                              <a href="/watch?v=mpRDqgWMzEQ"><img src="http://i.ytimg.com/vi/mpRDqgWMzEQ/default.jpg" alt="Happy Birthday Whatthebuck"></a>
+                           </div>
+                           <div style="text-align:left;">
+                              <div class="vtitle">
+                                 <a href="/watch?v=mpRDqgWMzEQ">Happy Birthday Whatthebuck</a><br>
+                                 <span class="runtime">06:50</span>
+                              </div>
+                              <div class="vfacets">
+                                 Added: 2 days ago<br>
+                                 From: <a href="/user.php?name=spricket24" title="spricket24">spricket24</a><br>
+                                 Views: 15,494<br>
+                              </div>
+                           </div>
+                        </div>
+                     </td>
+                     <td width="170" valign="top" align="center">
+                        <div style="width: 140px; margin-bottom: 6px;">
+                           <div class="video-thumb-big">
+                              <a href="/watch?v=rLXWipojJz4"><img src="http://i.ytimg.com/vi/rLXWipojJz4/default.jpg" alt="Pull Shapes-Whatthebuck Dance Cru"></a>
+                           </div>
+                           <div style="text-align:left;">
+                              <div class="vtitle">
+                                 <a href="/watch?v=rLXWipojJz4">Pull Shapes-Whattheb uck Dance Cru</a><br>
+                                 <span class="runtime">02:56</span>
+                              </div>
+                              <div class="vfacets">
+                                 Added: 1 week ago<br>
+                                 From: <a href="/user.php?name=candyshock134" title="candyshock134">candyshoc...</a><br>
+                                 Views: 846<br>
+                              </div>
+                           </div>
+                        </div>
+                     </td>
+                     <td width="170" valign="top" align="center">
+                        <div style="width: 140px; margin-bottom: 6px;">
+                           <div class="video-thumb-big">
+                              <a href="/watch?v=oGIPReKeZ9E"><img src="http://i.ytimg.com/vi/oGIPReKeZ9E/default.jpg" alt="Buckhollywood Dance Crew @ Streetrat Productions"></a>
+                           </div>
+                           <div style="text-align:left;">
+                              <div class="vtitle">
+                                 <a href="/watch?v=oGIPReKeZ9E">Buckhollywood Dance Crew @ Streetrat Productions</a><br>
+                                 <span class="runtime">01:05</span>
+                              </div>
+                              <div class="vfacets">
+                                 Added: 6 days ago<br>
+                                 From: <a href="/user.php?name=streetratpoon" title="streetratpoon">streetrat...</a><br>
+                                 Views: 3,510<br>
+                              </div>
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="3" align="right">
+                        <b><a href="/profile_favorites.php?user={{ userpagedata.name }}">See All 387 Favorites</a></b>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+   </div>
+   <div class="profile-box">
+      <div class="box-head">
+         <div class="box-fg">
+            <div class="headerTitle">
+               <span>Subscriptions (<a href="/profile_subscriptions.php?user={{ userpagedata.name }}" class="headersSmall">960</a>)</span>
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+      <div class="box-body">
+         <div class="box-fg">
+            <center>
+               <table height="121" cellspacing="0" cellpadding="0">
+                  <tbody>
+                     <tr>
+                        <td class="alignTop padTsm"><img src="/assets/2008/pixel.gif" class="btn_vscroll_lt_18x106 hand" onclick="fadeOldImage('publishers','4');shiftLeft('publishers')" id="vbrol"></td>
+                        <td class="alignTop" style="padding-top:4px">
+                           <table style="background-color: XXXXXX; " width="500" height="121" cellspacing="0" cellpadding="0">
+                              <tbody>
+                                 <tr>
+                                    <td style="border-bottom:none;" class="alignTop">
+                                       <div class="videobarthumbnail_block" id="div_publishers_0">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_publishers_0" href=""><img id="img_publishers_0" src="/assets/2008/pixel.gif" onload="opacity('img_publishers_0', 80, 100, 800);"></a></div>
+                                             <div id="title1_publishers_0" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_publishers_0" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_publishers_0_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_publishers_1">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_publishers_1" href=""><img id="img_publishers_1" src="/assets/2008/pixel.gif" onload="opacity('img_publishers_1', 80, 100, 800);"></a></div>
+                                             <div id="title1_publishers_1" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_publishers_1" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_publishers_1_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_publishers_2">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_publishers_2" href=""><img id="img_publishers_2" src="/assets/2008/pixel.gif" onload="opacity('img_publishers_2', 80, 100, 800);"></a></div>
+                                             <div id="title1_publishers_2" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_publishers_2" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_publishers_2_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_publishers_3">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_publishers_3" href=""><img id="img_publishers_3" src="/assets/2008/pixel.gif" onload="opacity('img_publishers_3', 80, 100, 800);"></a></div>
+                                             <div id="title1_publishers_3" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_publishers_3" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_publishers_3_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="alignTop padTsm"><img src="/assets/2008/pixel.gif" class="btn_vscroll_rt_18x106 hand" onclick="fadeOldImage('publishers','4');shiftRight('publishers');" id="vbror"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </center>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+   </div>
+   <div class="profile-box">
+      <div class="box-head">
+         <div class="box-fg">
+            <div class="headerTitle">
+               <span>Subscribers (<a href="/profile_subscribers.php?user={{ userpagedata.name }}" class="headersSmall">159251</a>)</span>
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+      <div class="box-body">
+         <div class="box-fg">
+            <center>
+               <table height="121" cellspacing="0" cellpadding="0">
+                  <tbody>
+                     <tr>
+                        <td class="alignTop padTsm"><img src="/assets/2008/pixel.gif" class="btn_vscroll_lt_18x106 hand" onclick="fadeOldImage('subscribers','4');shiftLeft('subscribers')" id="vbrol"></td>
+                        <td class="alignTop" style="padding-top:4px">
+                           <table style="background-color: XXXXXX; " width="500" height="121" cellspacing="0" cellpadding="0">
+                              <tbody>
+                                 <tr>
+                                    <td style="border-bottom:none;" class="alignTop">
+                                       <div class="videobarthumbnail_block" id="div_subscribers_0">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_subscribers_0" href=""><img id="img_subscribers_0" src="/assets/2008/pixel.gif" onload="opacity('img_subscribers_0', 80, 100, 800);"></a></div>
+                                             <div id="title1_subscribers_0" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_subscribers_0" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_subscribers_0_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_subscribers_1">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_subscribers_1" href=""><img id="img_subscribers_1" src="/assets/2008/pixel.gif" onload="opacity('img_subscribers_1', 80, 100, 800);"></a></div>
+                                             <div id="title1_subscribers_1" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_subscribers_1" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_subscribers_1_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_subscribers_2">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_subscribers_2" href=""><img id="img_subscribers_2" src="/assets/2008/pixel.gif" onload="opacity('img_subscribers_2', 80, 100, 800);"></a></div>
+                                             <div id="title1_subscribers_2" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_subscribers_2" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_subscribers_2_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_subscribers_3">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_subscribers_3" href=""><img id="img_subscribers_3" src="/assets/2008/pixel.gif" onload="opacity('img_subscribers_3', 80, 100, 800);"></a></div>
+                                             <div id="title1_subscribers_3" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_subscribers_3" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_subscribers_3_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="alignTop padTsm"><img src="/assets/2008/pixel.gif" class="btn_vscroll_rt_18x106 hand" onclick="fadeOldImage('subscribers','4');shiftRight('subscribers');" id="vbror"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </center>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+   </div>
+   <div class="profile-box">
+      <div class="box-head">
+         <div class="box-fg">
+            <div class="headerTitle">
+               <span>Friends (<a href="/profile_friends.php?user={{ userpagedata.name }}" class="headersSmall">11,050</a>)</span>
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+      <div class="box-body">
+         <div class="box-fg">
+            <center>
+               <table height="121" cellspacing="0" cellpadding="0">
+                  <tbody>
+                     <tr>
+                        <td class="alignTop padTsm"><img src="/assets/2008/pixel.gif" class="btn_vscroll_lt_18x106 hand" onclick="fadeOldImage('friends','4');shiftLeft('friends')" id="vbrol"></td>
+                        <td class="alignTop" style="padding-top:4px">
+                           <table style="background-color: XXXXXX; " width="500" height="121" cellspacing="0" cellpadding="0">
+                              <tbody>
+                                 <tr>
+                                    <td style="border-bottom:none;" class="alignTop">
+                                       <div class="videobarthumbnail_block" id="div_friends_0">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_friends_0" href=""><img id="img_friends_0" src="/assets/2008/pixel.gif" onload="opacity('img_friends_0', 80, 100, 800);"></a></div>
+                                             <div id="title1_friends_0" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_friends_0" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_friends_0_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_friends_1">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_friends_1" href=""><img id="img_friends_1" src="/assets/2008/pixel.gif" onload="opacity('img_friends_1', 80, 100, 800);"></a></div>
+                                             <div id="title1_friends_1" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_friends_1" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_friends_1_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_friends_2">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_friends_2" href=""><img id="img_friends_2" src="/assets/2008/pixel.gif" onload="opacity('img_friends_2', 80, 100, 800);"></a></div>
+                                             <div id="title1_friends_2" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_friends_2" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_friends_2_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_friends_3">
+                                          <center>
+                                             <div class="user-thumb-xlarge"><a id="href_friends_3" href=""><img id="img_friends_3" src="/assets/2008/pixel.gif" onload="opacity('img_friends_3', 80, 100, 800);"></a></div>
+                                             <div id="title1_friends_3" class="xsmallText grayText padB3">loading...</div>
+                                             <div id="title2_friends_3" class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                       <div class="videobarthumbnail_block" id="div_friends_3_alternate" style="display: none">
+                                          <center>
+                                             <div><img src="/assets/2008/pixel.gif" width="80" height="60"></div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                             <div class="xsmallText grayText padB3">&nbsp;</div>
+                                          </center>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="alignTop padTsm"><img src="/assets/2008/pixel.gif" class="btn_vscroll_rt_18x106 hand" onclick="fadeOldImage('friends','4');shiftRight('friends');" id="vbror"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </center>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+   </div>
+   <div class="profile-box">
+      <div class="box-head">
+         <div class="box-fg">
+            <div class="headerTitle">
+               <div class="headerTitleRight">
+                  <a href="/profile_comment_post.php?user={{ userpagedata.name }}" class="headers" rel="nofollow">Add Comment</a>
+               </div>
+               <span>Channel Comments (<a href="/profile_comment_all.php?user={{ userpagedata.name }}" class="headersSmall">17,209</a>)</span>
+            </div>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+      <div class="box-body">
+         <div class="box-fg">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+               <tbody>
+                  {% for comment in comments %}
+                  <tr class="commentsTableFull">
+                     <td width="60" valign="top" align="left">
+                        <div class="user-thumb-large">
+                           <a href="/user.php?name={{ comment.u_name }}" title="{{ comment.u_name }}"><img src="{{ profile_image(comment.u_name) }}"></a>
+                        </div>
+                     </td>
+                     <td width="85%" valign="top" align="left">
+                        <div class="smallText" style="font-weight: bold; padding-bottom: 12px;"><a href="/user.php?name={{ comment.u_name }}" title="{{ comment.u_name }}">{{ comment.u_name }}</a><span class="labels"> | {{ comment.time | date('F j, Y') }}</span>
+                           <span>
+                           </span>
+                        </div>
+                        <div>{{ comment.comment | raw }}</div>
+                     </td>
+                  </tr>
+                  {% endfor %}
+                  <tr>
+                     <td colspan="3" align="center">
+                        <div style="padding: 10px 0px; text-align: center;">
+                           <span class="smallText">
+                           <a href="/profile_comment_post.php?user={{ userpagedata.name }}" rel="nofollow">Add Comment</a>
+                           | <a href="/profile_comment_all.php?user={{ userpagedata.name }}">See all comments</a>
+                           </span>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div class="box-bg"></div>
+      </div>
+   </div>
+</div>
+<!-- End Main Column -->
+<div style="clear:both"></div>
+<!-- End Channel Content -->{% endblock %}

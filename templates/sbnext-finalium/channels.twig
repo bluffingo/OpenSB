@@ -1,0 +1,41 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+ <div class="grid">
+{% for user in users|batch(12) %}
+		{% for cell in user %}
+        <div class="col-md-1">
+            <div class="memberBoxList">
+                <div class="user-thumb-large">
+                    <a href="/user.php?name={{ cell.name }}"><img src="{{ profile_image(cell.name) }}" class="img-fluid rounded" alt="{{ cell.name }}"></a>
+                </div>
+            </div>
+            <div class="vldescbox">
+                <div class="vltitle">
+                                <h4 style="margin: 0;"><a href="/profile.php?user=A524">{{ cell.name }}</a></h4>
+
+                </div>
+            </div>
+            <div class="vlclearalt"></div>
+            <div class="vlclearalt"></div>
+            <div class="vlfacets">
+                <div class="memberBoxTypeContainer">
+                    <div class="memberStat"><span class="grayText">Type:</span> Member</div>
+                </div>
+                    <div class="memberStat"><span class="grayText">                         Videos:
+</span> 1</div>
+                    <div class="memberStat"><span class="grayText">                         Views:
+</span> 44</div>
+                    <div class="memberStat"><span class="grayText">                         Subscribers:
+</span> 0</div>
+            </div>
+            <div class="vlclear"></div>
+        </div> 
+		{% endfor %}
+{% endfor %}
+        
+
+        </div>
+    </div>
+	<div class="clear"></div>
+{% endblock %}

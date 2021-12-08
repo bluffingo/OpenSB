@@ -1,0 +1,16 @@
+@each $state, $value in $theme-colors {
+  .bg-#{$state} {
+    @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
+	background-color: lighten($value, 4.5%);
+  }
+}
+
+@each $state, $value in $theme-colors {
+  .text-#{$state} {
+    color: $value;
+  }
+}
+
+.text-body {
+	color: black;
+}

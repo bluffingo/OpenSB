@@ -1,0 +1,233 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+<div class="wrapper">            <style>
+    .hr {
+        height: 1px;
+        border-bottom: 1px dotted #999;
+        margin: 20px 0px;
+    }
+    .signup-main {
+        width: 875px;
+    }
+    .signup-title {
+        font-weight: bold;
+    }
+    #verificationImage {
+        float: left;
+        width: 200px;
+    }
+    .action-button .end-cap {
+        float:left;
+    }
+    #signup-text {
+        margin-left:10px;
+        margin-right:30px;
+    }
+    .img-action-button-cap-left {
+        background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -162px -37px;
+        height:25px;
+        width:5px;
+    }
+    .img-action-button-cap-right {
+        background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -167px -37px;
+        height:25px;
+        width:5px;
+    }
+    img {
+        border:medium none;
+    }
+    .action-button .content {
+        background: transparent url(/assets/2008/master-vfl42001.png) repeat-x scroll -310px -377px;
+        color: #0033CC;
+        float: left;
+        height: 20px;
+        padding: 5px 5px 0pt;
+    }
+    .action-button .content .title {
+        font-size:13px;
+        font-weight:bold;
+    }
+    .signup-link a {
+        text-decoration: none;
+    }
+    .signup-link a:hover {
+        text-decoration: underline;
+    }
+    .signup-outer-frame {
+        border-color:#999999;
+        border-style:solid;
+        border-width:1px;
+        margin-bottom:5%;
+        margin-left:15%;
+        margin-right:15%;
+        margin-top:0%;
+        padding:5px;
+    }
+    .signup-inner-frame {
+        border-color:#CCCCCC;
+        border-style:solid;
+        border-width:1px;
+        background-color: #eeeeee;
+    }
+    #signup-squareBracket-logo {
+        padding-bottom:4px;
+        padding-top:4px;
+        height: 29px;
+        vertical-align: middle;
+    }
+    #signup-gaia-logo {
+        height: 31px;
+        width: 80px;
+    }
+    .signup-table {
+        width: 100%;
+    }
+    #suInOrderToDiv {
+        background-color: #FFFFCC;
+        border: 1px solid #CCCC66;
+        margin: 6px 25%;
+        padding: 6px;
+        font-weight: bold;
+    }
+    .loginFormLabel {
+        text-align: right;
+        vertical-align: top;
+    }
+    .loginFormField {
+        width: 160px;
+    }
+    .alertBoxSm {
+        border: 2px solid #C00;
+        padding: 6px;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        text-align: left;
+        font-weight: bold;
+        font-size: 12px;
+        color: #000;
+    }
+    .loginField {
+        width: 130px;
+    }
+    /* password strength */
+    .password_empty {
+        background-color: #e0e0e0;
+        width:100%;
+    }
+    .password_weak {
+        background-color: red;
+        width:25%;
+    }
+    .password_fair {
+        background-color: yellow;
+        width:50%
+    }
+    .password_good {
+        background-color: #6699CC;
+        width:75%;
+    }
+    .password_strong {
+        background-color: green;
+        width:100%;
+    }
+    .invitation {
+        width: 500px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    #pagination-top {
+        padding: 25px 0pt 5px;
+        text-align: right;
+    }
+    #main-table {
+        width: 875px;
+    }
+    .blue-button {
+        margin: 0;
+    }
+</style>
+<div id="sectionHeader" class="communityColor">
+    <div class="name" style="width:500px;" align="left">Login to squareBracket</div>
+</div><br>
+<div class="signup-main">
+    <table id="main-table" cellspacing="0" cellpadding="0">
+        <tbody><tr>
+            <td width="50%" valign="top">
+                <div id="suSigninDiv">
+                    <div class="signup-title">Join the largest worldwide video-sharing community!</div>
+                    <p>squareBracket is a way to get your videos to the people who matter to you. With squareBracket you can:</p>
+                    <ul>
+
+                        <li>Show off your favorite videos to the world</li>
+                        <li>Blog the videos you take with your digital camera or cell phone</li>
+                        <li>Securely and privately show videos to your friends and family around the world</li>
+                        <li>... and much, much more!</li>
+
+                    </ul>
+                </div>
+            </td>
+            <td valign="top">
+
+                <div id="siSignupDiv" class="signup-outer-frame">
+                    <div class="signup-inner-frame">
+                        <form name="loginForm" id="loginForm" action="/login.php" method="post">
+
+                            <div style="margin-left:10px;margin-right:10px;">
+                                <table class="signup-table" cellspacing="0" cellpadding="4">
+                                    <tbody><tr>
+                                        <td colspan="2" align="center">
+                                            <img id="signup-squareBracket-logo" src="/assets/logo-wordmark.png">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="loginFormLabel">	<span class="nowrap">Username:</span>
+                                        </td>
+                                        <td><input type="text" size="20" maxlength="128" name="username"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="loginFormLabel">	<span class="nowrap">Password:</span>
+                                        </td>
+                                        <td><input type="password" size="20" maxlength="20" name="password" id="password"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="loginFormLabel">&nbsp;</td>
+                                        <td>
+                                            <div class="action-button" style="" id="button-signin">
+                                                <a id="button-signin-link" href="#" onclick="document.getElementById('loginForm').submit();">
+                                                    <div class="end-cap img-action-button-cap-left"></div>
+                                                    <div class="content hand"><span class="title" id="button-signin-title">Sign In</span></div>
+                                                    <div class="end-cap img-action-button-cap-right"></div>
+                                                </a>
+                                            </div>
+                                                                                        <input type="hidden" name="loginsubmit" value="Log In">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="signup-link smallText" align="center"> <a href="javascript:alert('You are fucked');">Forgot Password</a>&nbsp;|&nbsp;<a href="/help.php" rel="nofollow">Help</a></div></td>
+                                    </tr>
+                                    </tbody></table>
+                            </div>
+                            <input type="submit" style="display: none;"> <!-- for enter input -->
+                            </form>
+                    </div>
+                </div>
+                <div class="signup-outer-frame">
+                    <div class="signup-inner-frame">
+                        <table class="signup-table" cellspacing="0" cellpadding="4">
+                            <tbody><tr>
+                                <td colspan="2" align="center">
+                                    <div align="center"><strong>No account?</strong><br></div>
+                                    <div class="signup-link" align="center"> <a href="/signup.php"><strong>Sign up for a squareBracket Account</strong>! </a></div></td>
+                            </tr>
+                            </tbody></table>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+</div>
+<div class="clear"></div>
+            </div>
+{% endblock %}

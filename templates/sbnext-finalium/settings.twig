@@ -14,14 +14,6 @@
 		<td class="b">{{ userdata.name }}</td>
 	</tr>
 	<tr>
-		<td class="a">{{ __("Email address") }}</td>
-		{% if userdata.email == "poktube_migrated@squarebracket.me" %}
-			<td class="b">{{ __("Account migrated from PokTube") }}</td>
-		{% else %}
-			<td class="b">{{ userdata.email }}</td>
-		{% endif %}
-	</tr>
-	<tr>
 		<td class="a">{{ __("Change Password") }}</td>
 		<td class="b">
 			<input type="password" name="current_pass" size="30" maxlength="256" placeholder="{{ __("Current Password (For verification)") }}"><br>
@@ -70,6 +62,16 @@
 				{% for code,name in glob_languages %}
 					{% if name %}<option value="{{ code }}" {% if code==userdata.language %}selected{% endif %}>{{ name }}</option>{% endif %}
 				{% endfor %}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="a">{{ __("sbNext Theme") }}</td>
+		<td class="b">
+			<select class="form-select" name="theme">
+					<option value="default">Light</option>
+					<option value="dark">Dark</option>
+					<option value="bluey">Bluey</option>
 			</select>
 		</td>
 	</tr>

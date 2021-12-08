@@ -17,6 +17,8 @@ if (isset($_POST['magic'])) {
 	$currentPass    = (isset($_POST['current_pass']) ? $_POST['current_pass'] : null);
 	$pass           = (isset($_POST['pass']) ? $_POST['pass'] : null);
 	$pass2          = (isset($_POST['pass2']) ? $_POST['pass2'] : null);
+	
+	$theme          = isset($_POST['theme']) ? $_POST['theme'] : 'default';
 
 	if ($currentPass && $pass && $pass2) {
 		if (password_verify($currentPass, $userdata['password'])) {
@@ -67,6 +69,9 @@ if (isset($_POST['magic'])) {
 
 	query("UPDATE users SET title = ?, about = ?, customcolor = ?, language = ?, signature = ? WHERE id = ?",
 		[$title, $about, $customcolor, $language, $signature, $userdata['id']]);
+		
+	setcookie('theme', $theme, 2147483647);
+	
 
 	if (!$error) {
 		redirect(sprintf("user.php?name=%s&edited", $userdata['name']));

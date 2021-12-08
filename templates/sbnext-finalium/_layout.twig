@@ -2,21 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>{% block title %}{% endblock %} - squareBracket Next</title>
+	<title>{% block title %}{% endblock %} - cheeseRox Next</title>
 	{% block head %}{% endblock %}
 	<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
 	<link rel="manifest" href="/assets/icons/site.webmanifest">
 	<link rel="shortcut icon" href="/assets/icons/favicon.ico">
-	<meta name="apple-mobile-web-app-title" content="squareBracket">
-	<meta name="application-name" content="squareBracket">
+	<meta name="apple-mobile-web-app-title" content="cheeseRox">
+	<meta name="application-name" content="cheeseRox">
 	<meta name="msapplication-TileColor" content="#2b5797">
 	<meta name="msapplication-config" content="/assets/icons/browserconfig.xml">
 	<meta name="theme-color" content="#4723d9">
 	<link rel="stylesheet" href="/assets/css/style.css" type="text/css">
 	{% if theme == 'dark' %}
 		<link id="darkthm" rel="stylesheet" href="/assets/css/darkmode.css" type="text/css">
+	{% endif %}
+	{% if theme == 'bluey' %}
+		<link id="bluey" rel="stylesheet" href="/assets/css/bluey.css" type="text/css">
 	{% endif %}
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -30,6 +33,45 @@
 	</style>
 </head>
 <body>
+	{% if theme == 'bluey' %}
+	<div class="container" style="display: flex;align-items: center;flex-direction: column;">
+		<nav class="primary-menu" role="navigation">
+		<a class="logo" href="/"></a>
+		<div class="items">
+						<li>
+							<a href="/browse.php">{{ __("Videos") }}</a>
+						</li>
+						<li>
+							<a href="/music.php">{{ __("Music") }}</a>
+						</li>
+						<li>
+							<a href="/forum/">{{ __("Forums") }}</a>
+						</li>
+						<li>
+							<a href="/channels.php">{{ __("Users") }}</a>
+						</li>
+						{% if log %}
+						<li>
+							<a href="/user.php?name={{ userdata.name }}">{{ userdata.title }}</a>
+						</li>
+						<li>
+							<a href="/upload_start.php">{{ __("Upload") }}</a>
+						</li>
+						<li>
+							<a href="/logout.php">{{ __("Log out") }}</a>
+						</li>
+						{% else %}
+						<li>
+							<a href="../login.php">{{ __("Sign in") }}</a>
+						</li>
+						<li>
+							<a href="../register.php">{{ __("Register") }}</a>
+						</li>
+						{% endif %}
+		</div>
+		</nav>
+	</div>
+	{% else %}
 	<div id="masthead-container">
 		<div id="masthead">
 			<a href="/" id="logo-container"><img id="logo" src="/assets/logo-masthead.png"></a>
@@ -41,14 +83,17 @@
 				<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.title }}">
 				</div>
 				{% else %}
-				<a href="../login.php" class="button button-primary">{{ __("Sign in") }}</a>
-				<a href="../register.php" class="button button-neutral">{{ __("Register") }}</a>
+				<div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
+					<a href="../login.php">{{ __("Sign in") }}</a>
+					<a href="../register.php">{{ __("Register") }}</a>
+				</div>
 				{% endif %}
 			</div>
 			<div id="masthead-content">
-				<class id="masthead-upload-button-group">
-					<a href="/upload_start.php" class="button button-secondary">{{ __("Upload") }}</a>
-				</class>
+				<div id="masthead-upload-button-group" style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 5px;">
+					<a href="/browse.php">{{ __("Browse") }}</a>
+					<a href="/upload_start.php">{{ __("Upload") }}</a>
+				</div>
 				<form id="masthead-search" action="/results.php">
 					<button id="search-btn" class="button button-secondary">
 					<span>{{ icon('search', 14) }}</span>
@@ -66,7 +111,7 @@
 			Todo: add something.
 			</div>
 			<div class="col-md-1">
-			<h4 style="margin:10px 0">squareBracket</h4>
+			<h4 style="margin:10px 0">cheeseRox</h4>
 			<ul style="padding:0">
 			</ul>
 			</div>
@@ -93,39 +138,16 @@
 			</div>
 		</div>
 	</div>
+	{% endif %}
 	{% block precontent %}{% endblock %}
-	<div class="container">
-		<div class="grid">
-			<div class="col-md-2">
-				<div class="guide-channels-list">
-					<ul class="guide">
-						<li class="guide-channel">
-							<a href="/" class="guide-item"><div class="thumb">{{ icon_alt('house-door', 16) }}</div><div>{{ __("Home") }}</div></a>
-						</li>
-						<li class="guide-channel">
-							<a href="/browse.php" class="guide-item"><div class="thumb">{{ icon_alt('film', 16) }}</div><div>{{ __("Videos") }}</div></a>
-						</li>
-						<li class="guide-channel">
-							<a href="/music.php" class="guide-item"><div class="thumb">{{ icon_alt('music-note-beamed', 16) }}</div><div>{{ __("Music") }}</div></a>
-						</li>
-						<li class="guide-channel">
-							<a href="/forum/" class="guide-item"><div class="thumb">{{ icon_alt('chat-left-text', 16) }}</div><div>{{ __("Forums") }}</div></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-10">
-				<div class="container" style="margin-left: 0; padding: 0 70px 0 0;">
+				<div class="container" style="max-width: 970px;">
 					{% block content %}{% endblock %}
-				</div>
-			</div>
-		</div>
-	</div>
+					</div>
 	<footer class="container">
 		<div class="footer">
-			<h3>squareBracket Beta 2.0.4</h3>
-			<p><b>{{ __("By the squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
-			<h5>{{ __("Git Commit") }} <a href="https://github.com/gr-sb/squarebracket/commit/{{ git_commit(false) }}">{{ git_commit() }}</a><br></h5>
+			<h3>cheeseRox</h3>
+			<p><b>{{ __("By the cheeseRox contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
+			<h5>{{ __("Git Commit") }} {{ git_commit() }}<br></h5>
 			<a id="dark" href="#" {% if theme == 'dark' %}hidden{% endif %}>{{ __("Enable dark mode") }}</a><a id="light" href="#" {% if theme == 'default' %}hidden{% endif %}>{{ __("Disable dark mode") }}</a>
 		</div>
 	</footer>

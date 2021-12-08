@@ -1,0 +1,117 @@
+@function contrast-color($color, $dark, $light) {
+  @return if(lightness($color) < $threshold, $light, $dark)
+}
+
+.button {
+	border-radius: 3px;
+	color: white;
+	padding: 8px 13px;
+	margin: 2px 0;
+	display: inline-block;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);	cursor: pointer;
+	font-weight: bold;
+	font-size: 11px;
+
+	&:hover {
+		background-color: #dddddd;
+	}
+	&.sel {
+		background-color: #ccccff;
+
+		&:hover {
+			background-color: #bbbbee;
+		}
+	}
+}
+
+// uploader "file selection" button, implemented in the hackiest way possible. fucking christ.
+input[type=file]::file-selector-button, {
+	border-radius: 3px;
+	color: black;
+	padding: 4px 7px;
+	margin: 2px 0;
+	margin-right: 7px;
+	display: inline-block;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	cursor: pointer;
+	border: 1px solid darken($gray-500, 2.25%);
+	@include gradient-y($start-color: lighten($gray-400, 15%), $end-color: $gray-400);
+	font-family: arial, helvetica, sans-serif;
+
+	&:hover {
+		@include gradient-y($start-color: lighten($gray-400, 25%), $end-color: lighten($gray-400, 10%));
+	}
+	&.sel {
+		@include gradient-y($start-color: darken($gray-400, 7%), $end-color: darken($gray-400, 17%));
+	}
+}
+
+.button-large {
+    padding: 10px 14px;
+    border-radius: 5px;
+	font-size: 14px;
+}
+
+.button-small {
+    padding: 5px 13px;
+    border-radius: 2px;
+	height: 26px;
+}
+
+.button-group {
+    position: relative;
+    display: inline-flex;
+}
+
+.button-group > .button-group:not(:last-child) > .button, .button-group > .button:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.button-group > .button-group:not(:first-child) > .button, .button-group > .button:nth-child(n+3), .button-group > :not(.button-check) + .button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+@each $state, $value in $theme-colors {
+  .button-#{$state} {
+    border: 1px solid darken($value, 7.5%);
+	background-color: lighten($value, 1.5%);
+    @include gradient-y($start-color: lighten($value, 3.5%), $end-color: darken($value, 2.5%));
+	color: contrast-color($value, $dark, $light) !important;
+  }
+  
+  .button-#{$state}:hover {
+    @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
+	background-color: lighten($value, 3.5%);
+    border: 1px solid darken($value, 1%);
+	color: contrast-color($value, $dark, $light) !important;
+  }
+  
+  .button-#{$state}:active {
+    border: 1px solid darken($value, 10%);
+    @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
+	background-color: lighten($value, 10%);
+	color: contrast-color($value, $dark, $light) !important;
+  }
+  
+	.button-#{$state}-invis {
+		border: 1px solid #0000;
+		background: none;
+		box-shadow: none;
+		color: contrast-color($value, $dark, $light) !important;
+	}
+	
+  .button-#{$state}-invis:hover {
+    @include gradient-y($start-color: lighten($value, 5%), $end-color: darken($value, 3.5%));
+    border: 1px solid darken($value, 1%);
+	color: contrast-color($value, $dark, $light) !important;
+  }
+  
+  .button-#{$state}-invis:active {
+    border: 1px solid darken($value, 10%);
+    @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
+	color: contrast-color($value, $dark, $light) !important;
+  }
+}
