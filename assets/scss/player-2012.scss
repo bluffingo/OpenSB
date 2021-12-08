@@ -43,12 +43,12 @@
 .yt-uix-tooltip-tip-arrow {
  position:absolute;
  z-index:1000;
- bottom:0px;
- width:0px;
- height:0px;
+ bottom:0;
+ width:0;
+ height:0;
  vertical-align:top;
  border:1px solid transparent;
- border-width:5px 5px 0px 5px;
+ border-width:5px 5px 0;
  border-top-color:#000;
  border-top-color:rgba(0,0,0,0.85)
 }
@@ -70,9 +70,9 @@
  -moz-border-radius:5px;
  -webkit-border-radius:5px;
  border-radius:5px;
- -moz-box-shadow:0px 0px 3px #333;
- -webkit-box-shadow:0px 0px 3px #333;
- box-shadow:0px 0px 3px #333;
+ -moz-box-shadow:0 0 3px #333;
+ -webkit-box-shadow:0 0 3px #333;
+ box-shadow:0 0 3px #333;
  zoom:1
 }
 @-moz-document url-prefix() {
@@ -91,8 +91,8 @@
 }
 .yt-uix-tooltip-tip-reverse .yt-uix-tooltip-tip-arrow {
  bottom:auto;
- top:0px;
- border-width:0px 5px 5px 5px;
+ top:0;
+ border-width:0 5px 5px;
  border-color:#000;
  border-color:rgba(0,0,0,0.85);
  border-left-color:transparent;
@@ -231,9 +231,9 @@
  border-bottom-right-radius:0
 }
 .yt-uix-button-group-active .yt-uix-button-reverse.end {
- -moz-border-radius:0 0 3px 0;
- -webkit-border-radius:0 0 3px 0;
- border-radius:0 0 3px 0
+ -moz-border-radius:0 0 3px;
+ -webkit-border-radius:0 0 3px;
+ border-radius:0 0 3px
 }
 .yt-uix-button-group .end-edge {
  border-right-style:none
@@ -3989,7 +3989,7 @@ ul.yt-uix-button-menu {
  margin-left:15px
 }
 .share-panel.refresh .share-panel-main-buttons {
- padding:0 10px 20px 10px;
+ padding:0 10px 20px;
  border-left:1px solid #e8e8e8;
  border-right:1px solid #e8e8e8
 }
@@ -4087,7 +4087,7 @@ ul.yt-uix-button-menu {
  margin-left:5px
 }
 .share-panel.refresh .share-panel-main-buttons {
- padding:10px 10px 20px 0px;
+ padding:10px 10px 20px 0;
  border-left:none
 }
 .share-panel.refresh .share-panel-services {

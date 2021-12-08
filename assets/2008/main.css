@@ -6,15 +6,15 @@ code{font-family:Courier, "Courier New", monospace;font-size:12px;}
 img{border:none;}
 dt{font-weight:bold;padding-bottom:5px;}
 dd{padding-bottom:15px;}
-form{margin:0px;padding:0px;}
-h1,h2,h3,h4,h5,h6{font-weight:bold;color:#000;margin-top:5px;margin-bottom:3px;padding:0px;}
+form{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6{font-weight:bold;color:#000;margin-top:5px;margin-bottom:3px;padding:0;}
 h1{font-size:19px;}
 h2{font-size:16px;}
 h3{font-size:14px;}
 h4{font-size:12px;}
 h5{font-size:10px;}
 h6{font-size:10px;}
-hr{border:0px;margin-top:12px;border-top:1px dashed #999;height:1px;}
+hr{border:0;margin-top:12px;border-top:1px dashed #999;height:1px;}
 #baseDiv{
 position:relative;
 width:875px;
@@ -24,7 +24,7 @@ margin-right:auto;
 #mainContent{width:700px;margin-right:12px;}
 #sideContent{float:right;width:160px;padding-top:2px;}
 #baseContainer{
-padding:5px 25px 0 25px;
+padding:5px 25px 0;
 }
 .standardText{font-family:Arial, sans-serif;font-size:12px;font-weight:normal;color:#000000;}
 .normalText{font-size:12px;}
@@ -118,8 +118,8 @@ z-index:400;
 }
 .tooltip-box{
 background:transparent url(/assets/2008/tooltip-vfl41680.gif) no-repeat scroll 0 0;
-padding:10px 1px 0px 1px;
-margin-bottom:0px;
+padding:10px 1px 0;
+margin-bottom:0;
 text-align:center;
 font-size:11px;
 }
@@ -144,14 +144,14 @@ font-weight:bold;
 }
 .headerTitleRight{
 float:right;
-padding:1px 5px 0px 0px;
+padding:1px 5px 0 0;
 font-size:12px;
 font-weight:bold;
 color:#333;
 }
 .headerRCBox{
 background:#CCC;
-padding:6px 6px 2px 6px;
+padding:6px 6px 2px;
 }
 #sectionHeader{
 height:2.5em;
@@ -202,18 +202,18 @@ width:250px;
 .formFieldInfo{
 font-size:11px;
 color:#000;
-margin:3px 0px;
+margin:3px 0;
 }
 .yellowBox{
 background-color:#FFF8BE;
 }
 .purpleBlock{
 background:#EBEDF3 url(/assets/2008/pic_blue_top_300x400-vfl30243.gif) top left no-repeat;
-padding:8px 10px 0px 10px;
-margin-bottom:0px;
+padding:8px 10px 0;
+margin-bottom:0;
 }
 .purpleBlockBot{
-background:#EBEDF3 url(/assets/2008/pic_blue_top_300x400-vfl30243.gif) no-repeat scroll 0px -400px;
+background:#EBEDF3 url(/assets/2008/pic_blue_top_300x400-vfl30243.gif) no-repeat scroll 0 -400px;
 width:300px;
 height:13px;
 }
@@ -259,14 +259,14 @@ height:35px;
 #masthead .bar .leftcap{
 display:block;
 float:left;
-background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -132px 0px;
+background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -132px 0;
 width:5px;
 height:37px;
 }
 #masthead .bar .rightcap{
 display:block;
 float:left;
-background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -137px 0px;
+background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -137px 0;
 width:5px;
 height:37px;
 }
@@ -280,7 +280,7 @@ background:transparent url(/assets/2008/master-vfl42001.png) repeat-x scroll 0 -
 }
 #masthead #search-form{
 display:block;
-padding:7px 10px 0px 220px;
+padding:7px 10px 0 220px;
 float:left;
 height:30px;
 margin:0;
@@ -292,7 +292,7 @@ display:inline;
 #masthead #search-term, #footer-search-term{
 border:1px solid #999;
 display:inline;
-padding:2px 0 3px 0;
+padding:2px 0 3px;
 width:211px;
 margin-right:4px;
 vertical-align:top;
@@ -310,10 +310,10 @@ margin:1px 50px 6px 0;
 #masthead .logo img{
 width:132px;
 height:63px;
-background:white url(/assets/2008/master-vfl42001.png) no-repeat scroll 0px 0px;
+background:white url(/assets/2008/master-vfl42001.png) no-repeat scroll 0 0;
 }
 .date-20080422 #masthead .logo img{
-background:white url(/assets/2008/earthday-vfl37822.png) no-repeat scroll 0px 0px;
+background:white url(/assets/2008/earthday-vfl37822.png) no-repeat scroll 0 0;
 }
 #masthead .user-info{
 float:right;
@@ -324,7 +324,7 @@ text-align:right;
 float:left;
 width:693px;
 height:28px;
-padding:5px 0 0 0;
+padding:5px 0 0;
 margin:0;
 list-style-type:none;
 }
@@ -342,20 +342,20 @@ display:block;
 float:left;
 width:5px;
 height:28px;
-background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -152px 0px;
+background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -152px 0;
 }
 #masthead .nav-item.selected .leftcap{
-background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -142px 0px;
+background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -142px 0;
 }
 #masthead .nav-item .rightcap{
 display:block;
 float:left;
 width:5px;
 height:28px;
-background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -157px 0px;
+background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -157px 0;
 }
 #masthead .nav-item.selected .rightcap{
-background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -147px 0px;
+background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -147px 0;
 }
 #masthead .nav-item .content{
 width:114px;
@@ -363,7 +363,7 @@ height:22px;
 text-align:center;
 display:block;
 float:left;
-padding:6px 0 0 0;
+padding:6px 0 0;
 color:#039;
 font-family:Arial, sans-serif;
 font-weight:bold;
@@ -580,7 +580,7 @@ height:16px;
 #localePickerBox{
 top:33px;
 left:auto;
-right:0px;
+right:0;
 text-align:left;
 z-index:130;
 display:none;
@@ -646,61 +646,61 @@ width:17px;
 height:16px;
 }
 .flag_de_DE{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll 0px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll 0 0;
 }
 .flag_en_AU{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -17px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -17px 0;
 }
 .flag_en_CA{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -34px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -34px 0;
 }
 .flag_en_GB{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -51px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -51px 0;
 }
 .flag_en_IE{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -68px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -68px 0;
 }
 .flag_en_NZ{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -85px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -85px 0;
 }
 .flag_en_US{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -102px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -102px 0;
 }
 .flag_es_ES{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -119px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -119px 0;
 }
 .flag_es_MX{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -136px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -136px 0;
 }
 .flag_fr_FR{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -153px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -153px 0;
 }
 .flag_it_IT{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -170px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -170px 0;
 }
 .flag_ja_JP{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -187px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -187px 0;
 }
 .flag_nl_NL{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -204px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -204px 0;
 }
 .flag_pl_PL{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -221px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -221px 0;
 }
 .flag_pt_BR{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -238px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -238px 0;
 }
 .flag_ru_RU{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -255px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -255px 0;
 }
 .flag_zh_HK{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -272px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -272px 0;
 }
 .flag_zh_TW{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -289px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -289px 0;
 }
 .flag_ko_KR{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -306px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -306px 0;
 }
 #search-settings-form,
 #search-advanced-form{
@@ -769,7 +769,7 @@ width:300px;
 }
 #search-settings-clr{
 clear:both;
-height:0px;
+height:0;
 font-size:1px;
 }
 #search-advanced-form .search-advanced-header{
@@ -799,7 +799,7 @@ height:30px;
 }
 #search-advanced-form #search-advanced-submit{
 text-align:center;
-padding-left:0px;
+padding-left:0;
 }
 #search-advanced-form #search-advanced-categories{
 padding-left:5px;
@@ -809,7 +809,7 @@ padding-bottom:5px;
 #search-advanced-form #search-advanced-categories div{
 height:auto;
 padding-right:5px;
-padding-left:0px;
+padding-left:0;
 }
 #search-advanced-form #search-advanced-categories label{
 white-space:nowrap;
@@ -881,7 +881,7 @@ border-left:1px solid #ccc;
 padding-left:15px;
 }
 #footer .links .section h1{
-margin:0 0 4px 0;
+margin:0 0 4px;
 padding:0;
 }
 #footer .links .section ul{
@@ -919,7 +919,7 @@ background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -1
 height:17px;
 width:62px;
 float:left;
-background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -172px 0px;
+background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -172px 0;
 }
 #igoogle_footer_text{
 float:left;
@@ -1000,7 +1000,7 @@ font-weight:bold;
 margin-top:0;
 }
 #header-right{
-margin-top:0px;
+margin-top:0;
 width:170px;
 float:left;
 }
@@ -1029,7 +1029,7 @@ padding-top:6px;
 .fffBG{background:#FFF;}
 .blueBG{background:#DEF;}
 .greenBG{background:#DFC;}
-.marB0{margin-bottom:0px;}
+.marB0{margin-bottom:0;}
 .marB3{margin-bottom:3px;}
 .marB5, .marBsm{margin-bottom:5px;}
 .marB10, .marBmed{margin-bottom:10px;}
@@ -1046,7 +1046,7 @@ padding-top:6px;
 .marR6{margin-right:6px;}
 .marR10{margin-right:10px;}
 .marR15, .marRlg{margin-right:15px;}
-.marT0{margin-top:0px;}
+.marT0{margin-top:0;}
 .topMar2{margin-top:2px;}
 .marT3{margin-top:3px;}
 .marT4{margin-top:4px;}
@@ -1089,7 +1089,7 @@ border:1px solid #CCC;
 background:#EEE;
 }
 .vListBox{
-padding:0px 6px;
+padding:0 6px;
 border:1px solid #CCC;
 background:#EEE;
 }
@@ -1271,7 +1271,7 @@ font-size:12px;
 }
 .desc,
 .vdesc{
-margin:3px 0px;
+margin:3px 0;
 font-size:12px;
 }
 .facets,
@@ -1282,7 +1282,7 @@ line-height:13px;
 font-size:11px;
 }
 .vfacets{
-margin:3px 0px;
+margin:3px 0;
 }
 .vstill{
 margin-bottom:2px;
@@ -1295,8 +1295,8 @@ margin-left:35px;
 margin-bottom:3px;
 }
 .vTable{
-border-spacing:0px;
-padding:0px;
+border-spacing:0;
+padding:0;
 }
 .vTable td{
 vertical-align:top;
@@ -1319,20 +1319,20 @@ a.vtitlelink:hover{
 text-decoration:underline;
 }
 .vEntry{
-padding:10px 0px;
+padding:10px 0;
 border-bottom:1px dotted #999;
 }
 .vDetailEntry{
 clear:left;
-padding:8px 0px;
+padding:8px 0;
 border-top:1px dashed #999;
 }
 .vDetailEntry:first-child{
 border-top:0;
 }
 .vDetailEntry table{
-border-spacing:0px;
-padding:0px;
+border-spacing:0;
+padding:0;
 }
 .vDetailEntry td{
 vertical-align:top;
@@ -1348,8 +1348,8 @@ margin-left:35px;
 margin-bottom:3px;
 }
 .vDetailEntry .tagTable{
-border-spacing:0px;
-padding:0px;
+border-spacing:0;
+padding:0;
 margin-bottom:3px;
 }
 .vDetailEntry .tagTable td{
@@ -1579,7 +1579,7 @@ background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -5
 .addtoQL90{
 text-align:left;
 width:100%;
-margin-left:0px;
+margin-left:0;
 margin-top:-24px;
 padding:1px;
 }
@@ -1666,17 +1666,17 @@ text-align:center;
 background:#F90 url(/assets/2008/btn_gradient_orange_1x23-vfl29294.png) repeat-x 0 0;
 }
 .subButton b{
-background:#F90 url(/assets/2008/master-vfl42001.png) repeat-x 0px -249px;
+background:#F90 url(/assets/2008/master-vfl42001.png) repeat-x 0 -249px;
 text-decoration:none;
 }
 .editButton b{
-background:#F90 url(/assets/2008/master-vfl42001.png) repeat-x 0px -249px;
+background:#F90 url(/assets/2008/master-vfl42001.png) repeat-x 0 -249px;
 text-decoration:none;
 }
 .uploadButton,
 .optionButton{
 float:left;
-margin:6px 0px;
+margin:6px 0;
 white-space:nowrap;
 text-align:left;
 color:#666;
@@ -1740,7 +1740,7 @@ position:relative;
 margin:0 1px;
 border:solid #a1b5da;
 border-width:1px 0;
-padding:0px;
+padding:0;
 font-weight:bold;
 background:#999 url(/assets/2008/but-bck-vfl33160.png) repeat-x 0 0;
 }
@@ -1750,13 +1750,13 @@ border-color:#666;
 .button b b{
 background:none;
 margin:0 -1px;
-padding:0px;
+padding:0;
 border-width:0 1px;
 }
 .button b b b{
-margin:0px;
+margin:0;
 padding:.3em .5em .2em;
-border-width:0px;
+border-width:0;
 cursor:pointer;
 }
 .action-button,
@@ -1796,7 +1796,7 @@ color:#994800;
 text-decoration:none;
 background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll 0 -174px;
 height:19px;
-padding:6px 8px 0 8px;
+padding:6px 8px 0;
 }
 .add-button .add-button-text{
 color:#002f91;
@@ -1863,7 +1863,7 @@ border-left:1px solid #666;
 }
 #channelRecs{
 text-align:left;
-margin:5px 5px 0 5px;
+margin:5px 5px 0;
 border-top:1px solid #CCC;
 }
 #channelRecs h2{
@@ -2068,7 +2068,7 @@ clear:left;
 }
 .watch-discoverbox-list-view,
 .watch-discoverbox-grid-view{
-padding-top:0px;
+padding-top:0;
 }
 .watch-discoverbox-list-view .watch-discoverbox,
 .watch-discoverbox-grid-view .watch-discoverbox{
@@ -2121,7 +2121,7 @@ height:65px;
 }
 .browseGridView .vlfacets,
 .membersGridView .memberContainer{
-margin:3px 0px;
+margin:3px 0;
 font-size:11px;
 line-height:13px;
 }
@@ -2143,7 +2143,7 @@ margin-top:1px;
 }
 .browseGridView .video-thumb-duration-rating .runtime{
 float:left;
-margin-top:0px;
+margin-top:0;
 }
 .membersGridView .memberContainer{
 margin-bottom:15px;
@@ -2153,12 +2153,12 @@ padding-bottom:3px;
 font-weight:bold;
 }
 .membersListView .memberContainer{
-padding:14px 0px;
+padding:14px 0;
 border-bottom:1px dotted #bbb;
 }
 .membersListView.channelOnebox .memberContainer{
-padding:2px 0px;
-border-bottom:0px;
+padding:2px 0;
+border-bottom:0;
 }
 .browseGridView .vlfacets a{
 color:#333;
@@ -2174,11 +2174,11 @@ overflow:hidden;
 clear:left;
 }
 .browseListView .vlentry{
-margin-top:0px !important;
+margin-top:0 !important;
 padding-top:10px;
 }
 html > body .browseListView .vlentry{
-padding-top:0px;
+padding-top:0;
 margin-bottom:10px;
 }
 .browseListView .vlentry > .vlclearaltl{
@@ -2207,7 +2207,7 @@ margin-top:2px;
 #viewTypeContainer{
 font-size:12px;
 color:#666;
-padding:0px 10px;
+padding:0 10px;
 }
 #viewTypeContainer div{
 text-align:right;
@@ -2240,7 +2240,7 @@ font-style:italic;
 width:108px;
 }
 .arrowDown{
-background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -423px 0px;
+background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -423px 0;
 }
 .arrowRight{
 background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -423px -20px;
@@ -2303,7 +2303,7 @@ text-decoration:none;
 vertical-align:text-bottom;
 }
 .flag_en_IN{
-background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -323px 0px;
+background:transparent url(/assets/2008/flags/flags-vfl39131.gif) no-repeat scroll -323px 0;
 }
 .btn_vscroll_lt_18x106,
 .btn_vscroll_rt_18x106{
@@ -2311,16 +2311,16 @@ width:18px;
 height:106px;
 }
 .btn_vscroll_lt_18x106{
-background:transparent url(/assets/2008/btn_vscroll_18x106-vfl28566.gif) no-repeat scroll 0px 0px;
+background:transparent url(/assets/2008/btn_vscroll_18x106-vfl28566.gif) no-repeat scroll 0 0;
 }
 .btn_vscroll_lt_18x106:hover{
-background:transparent url(/assets/2008/btn_vscroll_18x106-vfl28566.gif) no-repeat scroll -18px 0px;
+background:transparent url(/assets/2008/btn_vscroll_18x106-vfl28566.gif) no-repeat scroll -18px 0;
 }
 .btn_vscroll_rt_18x106{
-background:transparent url(/assets/2008/btn_vscroll_18x106-vfl28566.gif) no-repeat scroll -36px 0px;
+background:transparent url(/assets/2008/btn_vscroll_18x106-vfl28566.gif) no-repeat scroll -36px 0;
 }
 .btn_vscroll_rt_18x106:hover{
-background:transparent url(/assets/2008/btn_vscroll_18x106-vfl28566.gif) no-repeat scroll -54px 0px;
+background:transparent url(/assets/2008/btn_vscroll_18x106-vfl28566.gif) no-repeat scroll -54px 0;
 }
 .LeftSingleArrow,
 .RightSingleArrow{
@@ -2359,28 +2359,28 @@ width:21px;
 height:121px;
 }
 .LeftTableArrow{
-background:transparent url(/assets/2008/TableArrow-vfl28566.gif) no-repeat scroll 0px 0px;
+background:transparent url(/assets/2008/TableArrow-vfl28566.gif) no-repeat scroll 0 0;
 }
 .LeftTableArrow:hover{
-background:transparent url(/assets/2008/TableArrow-vfl28566.gif) no-repeat scroll -21px 0px;
+background:transparent url(/assets/2008/TableArrow-vfl28566.gif) no-repeat scroll -21px 0;
 }
 .RightTableArrow{
-background:transparent url(/assets/2008/TableArrow-vfl28566.gif) no-repeat scroll -42px 0px;
+background:transparent url(/assets/2008/TableArrow-vfl28566.gif) no-repeat scroll -42px 0;
 }
 .RightTableArrow:hover{
-background:transparent url(/assets/2008/TableArrow-vfl28566.gif) no-repeat scroll -63px 0px;
+background:transparent url(/assets/2008/TableArrow-vfl28566.gif) no-repeat scroll -63px 0;
 }
 .LeftTableArrowWhite{
-background:transparent url(/assets/2008/TableArrowWhite-vfl28566.gif) no-repeat scroll 0px 0px;
+background:transparent url(/assets/2008/TableArrowWhite-vfl28566.gif) no-repeat scroll 0 0;
 }
 .LeftTableArrowWhite:hover{
-background:transparent url(/assets/2008/TableArrowWhite-vfl28566.gif) no-repeat scroll -21px 0px;
+background:transparent url(/assets/2008/TableArrowWhite-vfl28566.gif) no-repeat scroll -21px 0;
 }
 .RightTableArrowWhite{
-background:transparent url(/assets/2008/TableArrowWhite-vfl28566.gif) no-repeat scroll -42px 0px;
+background:transparent url(/assets/2008/TableArrowWhite-vfl28566.gif) no-repeat scroll -42px 0;
 }
 .RightTableArrowWhite:hover{
-background:transparent url(/assets/2008/TableArrowWhite-vfl28566.gif) no-repeat scroll -63px 0px;
+background:transparent url(/assets/2008/TableArrowWhite-vfl28566.gif) no-repeat scroll -63px 0;
 }
 .ratingVS-left{
 background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -99px -287px;
@@ -2444,9 +2444,9 @@ width:19px;
 height:20px;
 }
 img.rating{
-border:0px;
-padding:0px;
-margin:0px;
+border:0;
+padding:0;
+margin:0;
 }
 .icn_star_full_19x20{
 background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -196px -274px;
@@ -2477,12 +2477,12 @@ background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -5
 background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -579px -23px;
 }
 #smallMastheadBottom{
-background:transparent url(/assets/2008/profile-vfl30243.gif) no-repeat scroll 0px 0px;
+background:transparent url(/assets/2008/profile-vfl30243.gif) no-repeat scroll 0 0;
 width:875px;
 height:11px;
 }
 #smallMastheadLogo{
-background:transparent url(/assets/2008/profile-vfl30243.gif) no-repeat scroll 0px -11px;
+background:transparent url(/assets/2008/profile-vfl30243.gif) no-repeat scroll 0 -11px;
 width:104px;
 height:37px;
 border:0;
@@ -2534,7 +2534,7 @@ font-style:italic;
 }
 .icnProperties{
 vertical-align:middle;
-border:0px;
+border:0;
 margin-bottom:3px;
 width:24px;
 height:18px;
@@ -2565,7 +2565,7 @@ margin-bottom:2px;
 }
 .shv-box-title{
 border-top:1px solid rgb(204, 204, 204);
-margin:5px 10px 5px 10px;
+margin:5px 10px;
 clear:both;
 padding-top:10px;
 text-align:left;
@@ -2613,17 +2613,17 @@ height:40px;
 font-size:12px;
 }
 .shv-message-main{
-padding:0px 0px 0px 20px;
+padding:0 0 0 20px;
 }
 .shv-message-header{
-padding:4px 0px;
+padding:4px 0;
 clear:both;
 }
 .shv-message-header span{
 font-weight:bold;
 }
 .shv-message-btns{
-margin:10px 0px 5px -5px;
+margin:10px 0 5px -5px;
 margin-top:10px;
 clear:both
 }
@@ -2631,12 +2631,12 @@ clear:both
 float:left;
 }
 .shv-message-cancel{
-padding:3px 0px 0px 0px;
+padding:3px 0 0;
 float:left;
 }
 .shv-addressframe{
 margin-left:10px;
-padding:14px 0px 0px 0px;
+padding:14px 0 0;
 }
 .shv-address-book-container{
 margin-top:20px;
@@ -2660,23 +2660,23 @@ height:120px;
 background-color:white;
 border:1px solid #7f9db9;
 overflow:auto;
-padding:5px 0px 5px 0px;
+padding:5px 0;
 text-align:left;
 }
 .shv-address-book a{
 display:block;
 overflow:hidden;
-padding:2px 0px 2px 7px;
+padding:2px 0 2px 7px;
 font-size:12px;
 }
 .shv-address-book a:hover{
 background-color:#FFFFE0;
 }
 .shv-post-services{
-margin:15px 10px 0px 10px;
+margin:15px 10px 0;
 }
 .shv-post-service{
-margin:0px 5px 5px 0px;
+margin:0 5px 5px 0;
 float:left;
 width:140px;
 height:18px;
@@ -2696,76 +2696,76 @@ background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -4
 margin-bottom:2px;
 vertical-align:text-bottom;
 }
-.icn_share_blogger{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll 0px -16px;}
-.icn_share_promoted_blogger, a:hover .icn_share_blogger{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -0px 0px;}
+.icn_share_blogger{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll 0 -16px;}
+.icn_share_promoted_blogger, a:hover .icn_share_blogger{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -0 0;}
 .icn_share_cocolog{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -16px -16px;}
-.icn_share_promoted_cocolog, a:hover .icn_share_cocolog{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -16px 0px;}
+.icn_share_promoted_cocolog, a:hover .icn_share_cocolog{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -16px 0;}
 .icn_share_freewebs{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -32px -16px;}
-.icn_share_promoted_freewebs, a:hover .icn_share_freewebs{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -32px 0px;}
+.icn_share_promoted_freewebs, a:hover .icn_share_freewebs{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -32px 0;}
 .icn_share_friendster{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -48px -16px;}
-.icn_share_promoted_friendster, a:hover .icn_share_friendster{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -48px 0px;}
+.icn_share_promoted_friendster, a:hover .icn_share_friendster{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -48px 0;}
 .icn_share_jagem{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -64px -16px;}
-.icn_share_promoted_jagem, a:hover .icn_share_jagem{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -64px 0px;}
+.icn_share_promoted_jagem, a:hover .icn_share_jagem{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -64px 0;}
 .icn_share_livedoor{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -80px -16px;}
-.icn_share_promoted_livedoor, a:hover .icn_share_livedoor{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -80px 0px;}
+.icn_share_promoted_livedoor, a:hover .icn_share_livedoor{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -80px 0;}
 .icn_share_livejournal{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -96px -16px;}
-.icn_share_promoted_livejournal, a:hover .icn_share_livejournal{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -96px 0px;}
+.icn_share_promoted_livejournal, a:hover .icn_share_livejournal{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -96px 0;}
 .icn_share_piczo{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -112px -16px;}
-.icn_share_promoted_piczo, a:hover .icn_share_piczo{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -112px 0px;}
+.icn_share_promoted_piczo, a:hover .icn_share_piczo{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -112px 0;}
 .icn_share_seesaa{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -128px -16px;}
-.icn_share_promoted_seesaa, a:hover .icn_share_seesaa{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -128px 0px;}
+.icn_share_promoted_seesaa, a:hover .icn_share_seesaa{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -128px 0;}
 .icn_share_typepad{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -144px -16px;}
-.icn_share_promoted_typepad, a:hover .icn_share_typepad{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -144px 0px;}
+.icn_share_promoted_typepad, a:hover .icn_share_typepad{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -144px 0;}
 .icn_share_wordpress{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -160px -16px;}
-.icn_share_promoted_wordpress, a:hover .icn_share_wordpress{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -160px 0px;}
+.icn_share_promoted_wordpress, a:hover .icn_share_wordpress{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -160px 0;}
 .icn_share_yaplog{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -176px -16px;}
-.icn_share_promoted_yaplog, a:hover .icn_share_yaplog{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -176px 0px;}
+.icn_share_promoted_yaplog, a:hover .icn_share_yaplog{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -176px 0;}
 .icn_share_ameba{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -192px -16px;}
-.icn_share_promoted_ameba, a:hover .icn_share_ameba{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -192px 0px;}
+.icn_share_promoted_ameba, a:hover .icn_share_ameba{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -192px 0;}
 .icn_share_delicious{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -208px -16px;}
-.icn_share_promoted_delicious, a:hover .icn_share_delicious{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -208px 0px;}
+.icn_share_promoted_delicious, a:hover .icn_share_delicious{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -208px 0;}
 .icn_share_digg{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -224px -16px;}
 .icn_share_promoted_digg, a:hover .icn_share_digg{background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -297px -47px;}
 .icn_share_facebook{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -240px -16px;}
 .icn_share_promoted_facebook, a:hover .icn_share_facebook{background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -265px -47px;}
 .icn_share_furl{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -256px -16px;}
-.icn_share_promoted_furl, a:hover .icn_share_furl{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -256px 0px;}
+.icn_share_promoted_furl, a:hover .icn_share_furl{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -256px 0;}
 .icn_share_goo{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -272px -16px;}
-.icn_share_promoted_goo, a:hover .icn_share_goo{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -272px 0px;}
+.icn_share_promoted_goo, a:hover .icn_share_goo{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -272px 0;}
 .icn_share_hatena{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -288px -16px;}
-.icn_share_promoted_hatena, a:hover .icn_share_hatena{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -288px 0px;}
+.icn_share_promoted_hatena, a:hover .icn_share_hatena{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -288px 0;}
 .icn_share_mixi{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -304px -16px;}
-.icn_share_promoted_mixi, a:hover .icn_share_mixi{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -304px 0px;}
+.icn_share_promoted_mixi, a:hover .icn_share_mixi{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -304px 0;}
 .icn_share_myspace{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -320px -16px;}
 .icn_share_promoted_myspace, a:hover .icn_share_myspace{background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -281px -47px;}
 .icn_share_nujij{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -336px -16px;}
-.icn_share_promoted_nujij, a:hover .icn_share_nujij{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -336px 0px;}
+.icn_share_promoted_nujij, a:hover .icn_share_nujij{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -336px 0;}
 .icn_share_reddit{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -352px -16px;}
-.icn_share_promoted_reddit, a:hover .icn_share_reddit{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -352px 0px;}
+.icn_share_promoted_reddit, a:hover .icn_share_reddit{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -352px 0;}
 .icn_share_stumbleupon{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -368px -16px;}
-.icn_share_promoted_stumbleupon, a:hover .icn_share_stumbleupon{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -368px 0px;}
+.icn_share_promoted_stumbleupon, a:hover .icn_share_stumbleupon{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -368px 0;}
 .icn_share_yahoo{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -384px -16px;}
-.icn_share_promoted_yahoo, a:hover .icn_share_yahoo{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -384px 0px;}
+.icn_share_promoted_yahoo, a:hover .icn_share_yahoo{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -384px 0;}
 .icn_share_livespaces{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -400px -16px;}
-.icn_share_promoted_livespaces, a:hover .icn_share_livespaces{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -400px 0px;}
+.icn_share_promoted_livespaces, a:hover .icn_share_livespaces{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -400px 0;}
 .icn_share_mixx{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -416px -16px;}
-.icn_share_promoted_mixx, a:hover .icn_share_mixx{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -416px 0px;}
+.icn_share_promoted_mixx, a:hover .icn_share_mixx{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -416px 0;}
 .icn_share_hatena_bookmark{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -448px -16px;}
-.icn_share_promoted_hatena_bookmark, a:hover .icn_share_hatena_bookmark{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -448px 0px;}
+.icn_share_promoted_hatena_bookmark, a:hover .icn_share_hatena_bookmark{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -448px 0;}
 .icn_share_hyves{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -464px -16px;}
-.icn_share_promoted_hyves, a:hover .icn_share_hyves{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -464px 0px;}
+.icn_share_promoted_hyves, a:hover .icn_share_hyves{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -464px 0;}
 .icn_share_tuenti{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -480px -16px;}
-.icn_share_promoted_tuenti, a:hover .icn_share_tuenti{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -480px 0px;}
+.icn_share_promoted_tuenti, a:hover .icn_share_tuenti{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -480px 0;}
 .icn_share_yigg{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -496px -16px;}
-.icn_share_promoted_yigg, a:hover .icn_share_yigg{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -496px 0px;}
+.icn_share_promoted_yigg, a:hover .icn_share_yigg{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -496px 0;}
 .icn_share_meneame{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -512px -16px;}
-.icn_share_promoted_meneame, a:hover .icn_share_meneame{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -512px 0px;}
+.icn_share_promoted_meneame, a:hover .icn_share_meneame{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -512px 0;}
 .icn_share_wykop{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -528px -16px;}
-.icn_share_promoted_wykop, a:hover .icn_share_wykop{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -528px 0px;}
+.icn_share_promoted_wykop, a:hover .icn_share_wykop{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -528px 0;}
 .icn_share_skyblog{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -544px -16px;}
-.icn_share_promoted_skyblog, a:hover .icn_share_skyblog{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -544px 0px;}
+.icn_share_promoted_skyblog, a:hover .icn_share_skyblog{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -544px 0;}
 .icn_share_orkut{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -560px -16px;}
-.icn_share_promoted_orkut, a:hover .icn_share_orkut{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -560px 0px;}
+.icn_share_promoted_orkut, a:hover .icn_share_orkut{background:transparent url(/assets/2008/sharing_icons-vfl42031.gif) no-repeat scroll -560px 0;}
 #viewPublicChannel{
 clear:right;
 float:right;
@@ -2779,12 +2779,12 @@ width:150px;
 vertical-align:top;
 }
 #manageNav ul{
-margin:0px;
-padding:0px;
+margin:0;
+padding:0;
 }
 #manageNav li{
 list-style:none;
-margin:0px;
+margin:0;
 padding:5px;
 font-weight:bold;
 }
@@ -2808,7 +2808,7 @@ text-align:right;
 padding:4px;
 }
 #manageContent .empty{
-padding:24px 0px;
+padding:24px 0;
 text-align:center;
 }
 .commentsThumb{
@@ -2818,7 +2818,7 @@ margin-right:5px;
 .navItem,
 .navItemHighlight{
 list-style:none;
-margin:0px;
+margin:0;
 padding:6px;
 border-bottom:1px dashed #999;
 font-weight:bold;
@@ -2962,7 +2962,7 @@ font-weight:bold;
 #watch-vid-title{
 font-size:18px;
 font-weight:bold;
-margin:10px 0px 5px 0px;
+margin:10px 0 5px;
 }
 #watch-highlight-racy-box{
 padding:2px 5px;
@@ -2974,10 +2974,10 @@ font-size:11px;
 background:#FFC;
 border:1px solid #FC3;
 font-weight:bold;padding:5px;
-margin:5px 0px;
+margin:5px 0;
 }
 #watch-actions-area{
-margin:10px 0px;
+margin:10px 0;
 border:1px solid #ccc;
 text-align:center;
 }
@@ -3058,14 +3058,14 @@ background:#fff;
 #watch-action-favorite,
 #watch-action-playlists,
 #watch-action-flag{
-background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll 0px 0px;
+background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll 0 0;
 width:23px;
 height:20px;
 vertical-align:middle;
 margin-bottom:3px;
 }
 #watch-action-share{
-background-position:-326px 0px;
+background-position:-326px 0;
 }
 .watch-tab-sel #watch-action-share,
 #watch-tab-share:hover #watch-action-share,
@@ -3074,7 +3074,7 @@ background-position:-326px 0px;
 background-position:-326px -20px;
 }
 #watch-action-favorite{
-background-position:-267px 0px;
+background-position:-267px 0;
 }
 .watch-tab-sel #watch-action-favorite,
 #watch-tab-favorite:hover #watch-action-favorite,
@@ -3085,10 +3085,10 @@ background-position:-267px -20px;
 #watch-tab-favorite.disabled #watch-action-favorite,
 #watch-tab-favorite.disabled:hover #watch-action-favorite,
 #watch-tab-favorite.disabled #watch-action-favorite:hover{
-background-position:-267px 0px;
+background-position:-267px 0;
 }
 #watch-action-playlists{
-background-position:-295px 0px;
+background-position:-295px 0;
 }
 .watch-tab-sel #watch-action-playlists,
 #watch-tab-playlists:hover #watch-action-playlists,
@@ -3097,7 +3097,7 @@ background-position:-295px 0px;
 background-position:-295px -20px;
 }
 #watch-action-flag{
-background-position:-358px 0px;
+background-position:-358px 0;
 }
 .watch-tab-sel #watch-action-flag,
 #watch-tab-flag:hover #watch-action-flag,
@@ -3108,7 +3108,7 @@ background-position:-358px -19px;
 #watch-tab-flag.disabled #watch-action-flag,
 #watch-tab-flag.disabled:hover #watch-action-flag,
 #watch-tab-flag.disabled #watch-action-flag:hover{
-background-position:-358px 0px;
+background-position:-358px 0;
 }
 #watch-action-flag-link.disabled .watch-action-text{
 color:#ccc;
@@ -3145,7 +3145,7 @@ padding:5px;
 }
 #watch-audio-stats h4{
 font-size:16px;
-margin:0 0 5px 0;
+margin:0 0 5px;
 }
 #watch-audio-stats a{
 margin-left:15px;
@@ -3375,7 +3375,7 @@ color:#666;
 }
 .watch-active-sharing-user{
 float:left;
-padding:2px 10px 2px 0px;
+padding:2px 10px 2px 0;
 font-weight:bold;
 font-size:14px;
 }
@@ -3384,14 +3384,14 @@ float:left;
 width:100%;
 }
 .watch-sharetab-options{
-padding:10px 5px 0px 0px;
+padding:10px 5px 0 0;
 float:right;
 clear:right;
 text-align:right;
 background-color:rgb(255, 255, 255);
 }
 .watch-sharetab-options-txt{
-padding:0px 0px 10px 0;
+padding:0 0 10px;
 }
 .watch-sharetab-options-txt a{
 border-bottom:1px dotted rgb(204, 204, 204);
@@ -3402,7 +3402,7 @@ text-decoration:underline;
 }
 .watch-shareopts-sectitle{
 border-top:1px solid rgb(204, 204, 204);
-padding:10px 0px 5px 10px;
+padding:10px 0 5px 10px;
 font-weight:bold;
 }
 .watch-shareopts-logintxt{
@@ -3417,7 +3417,7 @@ font-size:11px;
 font-weight:bold;
 }
 .watch-shareopts-loginforgot{
-padding:10px 0px 5px 10px;
+padding:10px 0 5px 10px;
 font-size:11px;
 border-bottom:1px dotted #999;
 }
@@ -3439,8 +3439,8 @@ padding-top:5px;
 border-top:1px dashed #999;
 }
 #watch-share-video-div #aggregators{
-margin:15px 0px 0px 0px;
-padding:10px 0px;
+margin:15px 0 0;
+padding:10px 0;
 border-top:1px dashed #999;
 border-bottom:1px dashed #999;
 }
@@ -3462,10 +3462,10 @@ border-bottom:1px dotted rgb(204, 204, 204);
 #watch-share-video-div .sec-header{
 font-weight:bold;
 clear:both;
-padding:10px 0px 3px 0px;
+padding:10px 0 3px;
 }
 #watch-post-blog{
-padding:10px 0px;
+padding:10px 0;
 }
 #watch-post-blog td{
 vertical-align:top;
@@ -3474,37 +3474,37 @@ vertical-align:top;
 width:100px;
 color:#666;
 font-weight:bold;
-margin:3px 8px 8px 0px;
+margin:3px 8px 8px 0;
 }
 #watch-share-video-div .main{
-padding:0px 10px 10px 20px;
+padding:0 10px 10px 20px;
 width:460px;
 }
 #watch-post-blog .fieldDiv{
 width:305px;
-margin:0px 0px 4px 0px;
+margin:0 0 4px;
 }
 #watch-post-blog .field,
 #watch-post-blog .txtarea{
 width:367px;
 }
 #watch-post-blog .action-area{
-margin:10px 0px 10px -6px;
+margin:10px 0 10px -6px;
 }
 #watch-post-blog .setup{
-margin:10px 0px 5px 10px;
+margin:10px 0 5px 10px;
 }
 #watch-share-blog-quick{
 margin-bottom:10px;
 }
 #watch-share-blog-quick .main{
-padding:0px 10px 10px 20px;
+padding:0 10px 10px 20px;
 width:460px;
 }
 #watch-share-blog-quick .sec-header{
 font-weight:bold;
 clear:both;
-padding:10px 0px 3px 0px;
+padding:10px 0 3px;
 }
 .watch-recent-shares-div{
 margin:8px 10px 5px;
@@ -3512,7 +3512,7 @@ float:left;
 width:20%;
 }
 .watch-recent-share{
-margin:0px 0px 5px;
+margin:0 0 5px;
 white-space:nowrap;
 }
 .watch-recent-share a{
@@ -3559,8 +3559,8 @@ color:#000;
 width:210px;
 height:auto;
 border:1px solid #bbcccc;
-border-width:0 1px 0 1px;
-padding:4px 5px 4px 5px;
+border-width:0 1px;
+padding:4px 5px;
 line-height:1.2em;
 text-decoration:none;
 font-weight:normal;
@@ -3683,7 +3683,7 @@ border-left:3px solid #e6e6e6;
 .watch-comment-head,
 .watch-comment-head-hidden{
 background-color:white;
-padding:0 4px 4px 4px;
+padding:0 4px 4px;
 }
 .watch-comment-head-link{
 margin-left:8px;
@@ -3778,7 +3778,7 @@ margin-top:20px;
 background-color:#dedede;
 }
 .watch-comment-pnum{
-padding:0px 4px;
+padding:0 4px;
 }
 .watch-comment-char-count{
 border:0;
@@ -3797,7 +3797,7 @@ padding:5px;
 }
 #watch-comment-captcha{
 text-align:center;
-margin:0 auto 0 auto;
+margin:0 auto;
 width:400px;
 }
 #watch-comment-captcha .watch-captcha-input{
@@ -3822,7 +3822,7 @@ display:none;
 .watch-comment-spam-bug{
 font-weight:bold;
 text-align:left;
-margin-left:0px;
+margin-left:0;
 padding:1px 3px;
 border-top:1px dotted #c00;
 border-bottom:1px dotted #c00;
@@ -3838,7 +3838,7 @@ float:right;
 .watch-comment-up-hover{
 width:19px;
 height:19px;
-border:0px;
+border:0;
 vertical-align:bottom;
 }
 .watch-comment-down-hover:hover,
@@ -3848,7 +3848,7 @@ background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -3
 .watch-comment-down,
 .watch-comment-down-hover,
 .watch-comment-voting-off .watch-comment-down-hover{
-background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -385px 0px;
+background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -385px 0;
 }
 .watch-comment-up-hover:hover,
 .watch-comment-up-on{
@@ -3857,7 +3857,7 @@ background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -4
 .watch-comment-up,
 .watch-comment-up-hover,
 .watch-comment-voting-off .watch-comment-up-hover{
-background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -404px 0px;
+background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll -404px 0;
 }
 .opacity30,
 .watch-comment-up,
@@ -3884,7 +3884,7 @@ text-align:center;
 }
 #watch-channel-brand-div{
 padding:4px 14px;
-margin:0px 0px 5px 0px;
+margin:0 0 5px;
 background-color:#fff;
 border:1px solid #ccc;
 display:none;
@@ -3893,7 +3893,7 @@ display:none;
 padding:0 8px;
 }
 #watch-channel-icon{
-margin:8px 5px 0px 0px;
+margin:8px 5px 0 0;
 float:left;
 }
 #watch-channel-stats{
@@ -3959,7 +3959,7 @@ margin:5px 7px 5px 0;
 white-space:nowrap;
 }
 .watch-video-desc{
-padding:5px 0px;
+padding:5px 0;
 }
 #watch-video-tags-div{
 padding-top:5px;
@@ -4057,7 +4057,7 @@ height:80px;
 display:block;
 float:right;
 margin:4px;
-background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll 0px -23px;
+background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll 0 -23px;
 width:100px;
 height:86px;
 }
@@ -4077,7 +4077,7 @@ margin:2px;
 .watch-image-radio-link img{
 border:1px solid #fff;
 background-color:#fff;
-padding:0px;
+padding:0;
 margin:4px;
 }
 .watch-embed-select{
@@ -4085,31 +4085,31 @@ width:46px;
 height:23px;
 }
 .watch-embed-iceberg{
-background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll 0px 0px;
+background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll 0 0;
 }
 .watch-embed-blank{
-background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -46px 0px;
+background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -46px 0;
 }
 .watch-embed-acid{
-background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -92px 0px;
+background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -92px 0;
 }
 .watch-embed-storm{
-background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -138px 0px;
+background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -138px 0;
 }
 .watch-embed-green{
-background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -184px 0px;
+background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -184px 0;
 }
 .watch-embed-orange{
-background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -230px 0px;
+background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -230px 0;
 }
 .watch-embed-pink{
-background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -276px 0px;
+background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -276px 0;
 }
 .watch-embed-purple{
-background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -322px 0px;
+background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -322px 0;
 }
 .watch-embed-rubyred{
-background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -368px 0px;
+background:transparent url(/assets/2008/embed_selection-vfl29294.png) no-repeat scroll -368px 0;
 }
 .watch-section-body{
 border:1px solid #CCC;
@@ -4195,7 +4195,7 @@ font-size:12px;
 color:#666;
 float:left;
 text-align:center;
-margin-right:0px;
+margin-right:0;
 width:15px;
 padding-top:10px;
 text-align:right;
@@ -4304,7 +4304,7 @@ padding:0;
 font-weight:bold;
 float:left;
 font-size:16px;
-padding:9px 15px 0px 15px;
+padding:9px 15px 0;
 border-right:1px solid #ccc;
 height:28px;
 }
@@ -4322,7 +4322,7 @@ text-decoration:underline;
 #search-options-container .search-sort-title{
 color:#666;
 font-weight:normal;
-margin:0px 3px;
+margin:0 3px;
 }
 #search-options-container .search-sort{
 font-size:12px;
@@ -4360,7 +4360,7 @@ text-decoration:none;
 background:transparent url(/assets/2008/master-vfl42001.png) no-repeat scroll 0 -377px;
 }
 #search-options-container .dropdown-link a.text{
-padding:5px 10px 0px 10px;
+padding:5px 10px 0;
 }
 #search-options-container .dropdown-link a.arrow{
 border-left:none;
@@ -4440,10 +4440,10 @@ height:16px;
 }
 #search-channel-onebox{
 background-color:#e6eff6;
-padding:4px 8px 8px 8px;;
+padding:4px 8px 8px;
 overflow:auto;
 width:534px;
-margin:10px 0px;
+margin:10px 0;
 }
 #search-display-label{
 padding-bottom:10px;
@@ -4471,7 +4471,7 @@ float:right;
 width:300px;
 }
 .homepage-content-block{
-margin:5px 0px;
+margin:5px 0;
 }
 .homepage-side-block{
 margin-bottom:15px;
@@ -4489,7 +4489,7 @@ color:#4A4A4A;
 float:left;
 width:23%;
 text-align:center;
-padding:0px 3px;
+padding:0 3px;
 }
 #homepage-subscriptions-top,
 #homepage-subscriptions{
@@ -4498,13 +4498,13 @@ border-right:1px solid #E4E4E4;
 background:#EEE;
 }
 #homepage-subscriptions-top{
-padding:0px 8px 2px 0;
+padding:0 8px 2px 0;
 }
 #homepage-subscriptions{
 padding-left:8px;
 }
 .homepage-whatsnew-entry{
-padding:3px 0px;
+padding:3px 0;
 position:relative;
 }
 .homepage-whatsnew-image{
@@ -4518,13 +4518,13 @@ margin-left:36px;
 margin-bottom:12px;
 }
 #homepage-featured-heading{
-padding:10px 0px 0px 0px;
+padding:10px 0 0;
 margin-left:20px;
 border-bottom:1px solid #CCC;
 }
 #homepage-featured-tabs{
 margin-left:20px;
-padding:5px 5px;
+padding:5px;
 font-size:11px;
 text-align:right;
 border-bottom:1px solid #ccc;
@@ -4534,10 +4534,10 @@ text-decoration:none;
 display:block;
 float:right;
 border-left:1px solid #ccc;
-padding:0px 10px;
+padding:0 10px;
 }
 #homepage-featured-tabs a.first{
-border-left:0px;
+border-left:0;
 }
 #homepage-featured-tabs a:hover{
 text-decoration:underline;
@@ -4557,7 +4557,7 @@ margin-left:20px;
 width:30px;
 height:30px;
 float:left;
-margin:5px 6px 5px 0px;
+margin:5px 6px 5px 0;
 }
 #homepage-editor-img{
 overflow:hidden;
@@ -4596,11 +4596,11 @@ margin-top:5px;
 }
 .homepage-yellow-block{
 background:#FBF9E8 url(/assets/2008/pic_yellow_top_300x1000-vfl34178.gif) top left no-repeat;
-padding:10px 15px 0px 15px;
-margin-bottom:0px;
+padding:10px 15px 0;
+margin-bottom:0;
 }
 .homepage-yellow-block-bot{
-background:#FBF9E8 url(/assets/2008/pic_yellow_top_300x1000-vfl34178.gif) no-repeat scroll 0px -1000px;
+background:#FBF9E8 url(/assets/2008/pic_yellow_top_300x1000-vfl34178.gif) no-repeat scroll 0 -1000px;
 width:300px;
 height:13px;
 }
