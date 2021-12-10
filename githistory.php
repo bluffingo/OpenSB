@@ -37,6 +37,8 @@ foreach ($git_logs as $line)
 				$git_history[$last_hash]['author'] = "PF94";
 			} elseif ($author == "Blue2k") {
 				$git_history[$last_hash]['author'] = "blue2000k";
+			} elseif ($author == "John R") {
+				$git_history[$last_hash]['author'] = "jkrosado";
 			}
 			else {
             $git_history[$last_hash]['author'] = $author;
