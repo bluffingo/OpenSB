@@ -74,14 +74,22 @@ $css = $scss->compile(
 	}'
 );
 
-if (isset($userdata)) {
+if ( isset( $userdata ) && !empty( $userdata ) ) {
 	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $userpagedata['id']]);
 } else {
 	$subscribed = 0;
 }
 
+if ( isset( $_GET['channel_layout'] ) && !empty( $_GET['channel_layout'] ) ) {
+	if ($_GET['channel_layout'] == "2013") {
+		$twigFile = "user-2013.twig";
+	}
+} else {
+	$twigFile = "user-2012.twig";
+}
+
 $twig = twigloader();
-echo $twig->render('user.twig', [
+echo $twig->render($twigFile, [
 	'id' => $userpagedata['id'],
 	'name' => $userpagedata['name'],
 	'userpagedata' => $userpagedata,

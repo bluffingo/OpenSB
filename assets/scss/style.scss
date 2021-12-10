@@ -7,6 +7,10 @@
 @import "_clearfix";
 @import "_grid-breakpoints";
 
+.clearfix {
+@include clearfix;
+}
+
 *,
 *:before,
 *:after {
@@ -1008,6 +1012,8 @@ line-height: 17px;
 	position: absolute;
 }
 
+/// 2012 Channels \\\
+@import "_2012channels";
 /// Gradients \\\
 @import "_gradients";
 /// Backgrounds \\\
