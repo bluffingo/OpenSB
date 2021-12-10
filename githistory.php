@@ -5,7 +5,7 @@ require('lib/common.php');
 // Load Last 150 Git Logs
 $git_history = [];
 $git_logs = [];
-exec('git log --pretty=format:"commit %H %n Author: %cn %nDate: %aD %n %s %n" -n 150', $git_logs);
+exec('git log --pretty=format:"commit %H %n Author: %an %nDate: %aD %n %s %n" -n 150', $git_logs);
 
 // Parse Logs
 $last_hash = null;
