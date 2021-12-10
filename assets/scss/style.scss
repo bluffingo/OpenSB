@@ -762,23 +762,6 @@ border-bottom: none;
 		height: 30px;
 		border: 0;
 	}
-	
-	#masthead-search-terms {
-		border-radius: 0;
-		height: 29px;
-		overflow: hidden;
-		
-		input {
-		display: inline-block;
-		width: 100%;
-		padding: 2px 6px;
-		margin: 0;
-		font-size: 16px;
-		box-sizing: border-box;
-		height: 29px;
-		border-radius: 3px 0 0 3px;
-		}
-	}
 }
 
 #masthead-search {
@@ -799,6 +782,22 @@ border-bottom: none;
 		float: right;
 		span {
 			margin: 0 12px;
+		}
+	}
+	#masthead-search-terms {
+		border-radius: 0;
+		height: 29px;
+		overflow: hidden;
+		
+		input {
+		display: inline-block;
+		width: 100%;
+		padding: 2px 6px;
+		margin: 0;
+		font-size: 16px;
+		box-sizing: border-box;
+		height: 29px;
+		border-radius: 3px 0 0 3px;
 		}
 	}
 }

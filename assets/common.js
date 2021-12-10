@@ -224,3 +224,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	  document.getElementById(tab).style.display = "block";
 	  evt.currentTarget.className += " active";
 	}
+	
+function myFunction() {
+  var x = document.getElementById("billboard-search-box");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+} 

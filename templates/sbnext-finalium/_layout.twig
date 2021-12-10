@@ -34,7 +34,8 @@
 </head>
 <body>
 	{% if theme == 'bluey' %}
-	<div class="container" style="display: flex;align-items: center;flex-direction: column;">
+	<main class="site">
+	<div class="header-container">
 		<nav class="primary-menu" role="navigation">
 		<a class="logo" href="/"></a>
 		<div class="items">
@@ -68,8 +69,21 @@
 							<a href="../register.php">{{ __("Register") }}</a>
 						</li>
 						{% endif %}
+						<li class="btn__search" onclick="myFunction()">
+							<a>{{ __("Search") }}</a>
+						</li>
 		</div>
 		</nav>
+		<div id="billboard-search-box">
+		<form id="masthead-search" action="/results.php">
+					<button id="search-btn" class="button button-secondary">
+					<span>{{ icon('search', 14) }}</span>
+					</button>
+					<div id="masthead-search-terms">
+						<label><input type="text" name="query" placeholder="{{ __("Search...") }}"></label>
+					</div>
+		</form>
+		</div>
 	</div>
 	{% else %}
 	<div id="masthead-container">
@@ -99,7 +113,7 @@
 					<span>{{ icon('search', 14) }}</span>
 					</button>
 					<div id="masthead-search-terms">
-						<label><input type="text" placeholder="{{ __("Search...") }}"></label>
+						<label><input type="text" name="query" placeholder="{{ __("Search...") }}"></label>
 					</div>
 				</form>
 			</div>
@@ -143,12 +157,18 @@
 				<div class="container" style="max-width: 970px;">
 					{% block content %}{% endblock %}
 					</div>
+	{% if theme == 'bluey' %}
+	</main>
+	<footer class="footer">
+		<div class="footer_inner">
+	{% else %}
+	</div>
 	<footer class="container">
 		<div class="footer">
+	{% endif %}
 			<h3>cheeseRox</h3>
 			<p><b>{{ __("By the cheeseRox contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
 			<h5>{{ __("Git Commit") }} {{ git_commit() }}<br></h5>
-			<a id="dark" href="#" {% if theme == 'dark' %}hidden{% endif %}>{{ __("Enable dark mode") }}</a><a id="light" href="#" {% if theme == 'default' %}hidden{% endif %}>{{ __("Disable dark mode") }}</a>
 		</div>
 	</footer>
 {% block custom_footer %}
