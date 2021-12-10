@@ -1,0 +1,23 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Git commit log{% endblock %}
+
+{% block content %}
+<h1>Git commit log</h1>
+<p>Since we're currently closed source, this page is used as an alternative for the GitHub commit history page. 
+This currently displays the last 50 commits... and yes, this uses PokTube code.</p>
+{% for commit in git %}
+<div class="grid" style="gap:0px;margin-bottom: 17.5px;">
+	<div class="col-md-1">
+		<a href="https://github.com/blue2000k">
+			<img class="rounded img-fluid" src="https://avatars.githubusercontent.com/blue2000k">
+		</a>
+	</div>
+	<div class="col-md-11">
+		{{ commit.author }} &bull; {{ commit.date | relative_time}}
+		<br>
+		{{ commit.message }}
+	</div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -168,7 +168,7 @@
 	{% endif %}
 			<h3>cheeseRox</h3>
 			<p><b>{{ __("By the cheeseRox contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
-			<h5>{{ __("Git Commit") }} {{ git_commit() }}<br></h5>
+			<h5><a href="githistory.php">{{ __("Git Commit") }} {{ git_commit() }}</a><br></h5>
 		</div>
 	</footer>
 {% block custom_footer %}
