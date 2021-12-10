@@ -48,7 +48,7 @@ body {
   display: flex;
   ms-flex-direction: column;
   flex-direction: column;
-  padding-bottom: 0px;
+  padding-bottom: 0;
 }
 
 h1, h2, h3, h4, h5 {
@@ -197,7 +197,7 @@ transition-timing-function: cubic-bezier(.47,2.02,.31,-.36);
     overflow: visible;
     margin-bottom: 44px;
 	background: #ffffff;
-	box-shadow: 3px 3px 0px rgb(0 0 0 / 8%);
+	box-shadow: 3px 3px 0 rgb(0 0 0 / 8%);
 	border-radius: 12px;
 	z-index: 9;
 	width: 100%;
@@ -206,7 +206,7 @@ transition-timing-function: cubic-bezier(.47,2.02,.31,-.36);
 	#masthead-search {
 		position: relative;
 		width: 100%;
-		margin: 0 auto 0;
+		margin: 0 auto;
 		max-width: 773px;
 		#search-btn {
 		margin: auto;
