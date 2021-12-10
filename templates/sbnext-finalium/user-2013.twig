@@ -18,6 +18,7 @@
 	.channel-header-bg {
 	background: url('/assets/backgrounds/{{ userpagedata.name }}.png'), linear-gradient(#888, #444) !important;
 	background-position: center !important;
+	padding: 0 0 50px;
 	}
 </style>
 {% if userpagedata.id == id and not forceuser %}
@@ -46,8 +47,15 @@
 <div class="grid">
 	<div class="col-md-8">
 		<p>@{{ userpagedata.name }}
+				{# hack to prevent twig from outputing the number 1 #}
+				{% if totalSubscribers != 1 %}
+					{% set pluralSubscribers = __("s") %}
+				{% endif %}
+				{% if totalViews != 1 %}
+					{% set pluralViews = __("s") %}
+				{% endif %}
 			&bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
-			&bull; {{ __("%s view%s", [totalViews ?? __("Not implemented"), pluralViews]) }}
+			&bull; {{ __("%s view%s", [views ?? __("no"), pluralViews]) }}
 		</p>
 	</div>
 	<div class="col-md-4 right">

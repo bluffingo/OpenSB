@@ -45,6 +45,7 @@ $commentData = query("SELECT $userfields c.comment_id, c.id, c.comment, c.author
 
 $subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$userpagedata['id']])['COUNT(user)'];
 $subscribers  = query("SELECT $userfields s.* FROM subscriptions s JOIN users u on user WHERE s.user = ?", [$userpagedata['id']]);
+$totalViews = result("SELECT SUM(views) FROM videos WHERE author = ?", [$userpagedata['id']]);
 
 $scss = new Compiler();
 $scss->setImportPaths($_SERVER['DOCUMENT_ROOT']);
@@ -108,4 +109,5 @@ echo $twig->render($twigFile, [
 	'comments' => $commentData,
 	'message' => $message,
 	'subscribers' => $subscribers,
+	'views' => $totalViews,
 ]);
