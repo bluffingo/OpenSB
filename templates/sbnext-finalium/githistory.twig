@@ -9,8 +9,8 @@ This currently displays the last 50 commits... and yes, this uses PokTube code.<
 {% for commit in git %}
 <div class="grid" style="gap:0px;margin-bottom: 17.5px;">
 	<div class="col-md-1">
-		<a href="https://github.com/blue2000k">
-			<img class="rounded img-fluid" src="https://avatars.githubusercontent.com/blue2000k">
+		<a href="https://github.com/{{ commit.author }}">
+			<img class="rounded img-fluid" src="https://avatars.githubusercontent.com/{{ commit.author }}">
 		</a>
 	</div>
 	<div class="col-md-11">

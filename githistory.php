@@ -2,10 +2,10 @@
 // this code comes from gamerappa's poktube, -bluey december 10 2021
 require('lib/common.php');
 
-// Load Last 50 Git Logs
+// Load Last 150 Git Logs
 $git_history = [];
 $git_logs = [];
-exec("git log -n 50", $git_logs);
+exec('git log --pretty=format:"commit %H %n Author: %cn %nDate: %aD %n %s %n" -n 150', $git_logs);
 
 // Parse Logs
 $last_hash = null;
@@ -32,7 +32,15 @@ foreach ($git_logs as $line)
         else if (strpos($line, 'Author') !== false) {
             $author = explode(':', $line);
             $author = trim(end($author));
+			// shitty hack to make it so that the github username is being used.
+			if ($author == "Gamerappa") {
+				$git_history[$last_hash]['author'] = "PF94";
+			} elseif ($author == "Blue2k") {
+				$git_history[$last_hash]['author'] = "blue2000k";
+			}
+			else {
             $git_history[$last_hash]['author'] = $author;
+			}
         }
 
         // Date
@@ -48,7 +56,9 @@ foreach ($git_logs as $line)
         }
     }
 }
-
+// echo "<pre>";
+// print_r($git_history);
+// echo "</pre>";
 $twig = twigloader();
 echo $twig->render('githistory.twig', [
     'git' => $git_history,
