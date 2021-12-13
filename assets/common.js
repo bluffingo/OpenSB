@@ -90,14 +90,14 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			$.post("ajax_watch.php",
 			{
 				from: index,
-				limit: 6,
-				user: user_id
+				limit: 10,
 			},
 			function(data,status){
 				if (status == "success") {
-					index += 6;
+					index += 10;
 					$('#fromUserVideoList').append(data);
-					$("#fromUserVideoList").removeClass("collapsed")
+					$("#fromUserVideoList").removeClass("collapsed");
+					$("#fromUser").remove();
 				}
 			});
 		} else {
