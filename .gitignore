@@ -34,3 +34,7 @@ assets/_style_forums.css
 assets/darkmode.css
 assets/style.css
 .vscode/
+
+## poktube migration shit
+videos_/
+assets/thumb_/*
