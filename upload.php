@@ -9,10 +9,12 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
 	if ($isDebug) {
         $video_id = (isset($_POST['debugID']) ? $_POST['debugID'] : null);
         $new = (isset($_POST['debugID']) ? $_POST['debugID'] : null);
+		$uploader = (isset($_POST['uploaderID']) ? $_POST['uploaderID'] : null);
     }
     else
     {
         $video_id = substr(base64_encode(md5(bin2hex(random_bytes(6)))) , 0, 11); //you are never too sure how much randomness you need.
+		$uploader = $userdata['id'];
         $new = '';
         foreach (str_split($video_id) as $char)
         {
@@ -39,10 +41,10 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
     $description = (isset($_POST['desc']) ? $_POST['desc'] : null);
 
     // Prevent videos with duplicate metadata since they are probably accidentally uploaded.
-    if (result("SELECT COUNT(*) FROM videos WHERE title = ? AND description = ?", [$title, $description]))
-    {
-        die(__("Your video is already uploading or has been uploaded."));
-    }
+    // if (result("SELECT COUNT(*) FROM videos WHERE title = ? AND description = ?", [$title, $description]))
+    // {
+    //    die(__("Your video is already uploading or has been uploaded."));
+    // }
 
     // Rate limit uploading to 2 minutes, both to prevent spam and to prevent double uploads.
     if (result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60 * 2, $userdata['id']]) && !$isDebug)
@@ -56,7 +58,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
     $target_file = 'videos/' . $new . '.' . $ext;
     if (move_uploaded_file($temp_name, $target_file))
     {
-        query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $userdata['id'], time() , json_encode(explode(', ', $_POST['tags'])) , 'videos/' . $new . '.mpd', 0x2]);
+        query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $uploader, time() , json_encode(explode(', ', $_POST['tags'])) , 'videos/' . $new . '.mpd', 0x2]);
 
         if (substr(php_uname() , 0, 7) == "Windows")
         {
