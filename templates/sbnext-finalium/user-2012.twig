@@ -20,12 +20,12 @@
 	background-position: center !important;
 	}
 </style>
-{% if userpagedata.id == id and not forceuser %}
+{% if userpagedata.id == userdata.id and not forceuser %}
 <div class="bg-dark" style="padding:1px 15px;">
 <p>		   <a href="settings.php" style="color:white;">{{ __("Edit my settings") }}</a>
 	&bull; <a href="forum/private.php" style="color:white;">{{ __("View my private messages") }}</a>
 	&bull; <a href="user.php?id={{ id }}&forceuser" style="color:white;">{{ __("View user page as viewer") }}</a>
-	{% if userpagedata.powerlevel > 2 %}
+	{% if userdata.powerlevel > 2 %}
 	&bull; <a href="admin.php" style="color:white;">{{ __("Admin panel") }}</a></p>
 	{% endif %}
 </p>
