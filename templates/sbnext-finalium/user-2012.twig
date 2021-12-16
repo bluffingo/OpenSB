@@ -18,6 +18,7 @@
 	.channel-header-bg {
 	background: url('/assets/backgrounds/{{ userpagedata.name }}.png'), linear-gradient(#888, #444) !important;
 	background-position: center !important;
+	height: 225px;
 	}
 </style>
 {% if userpagedata.id == userdata.id and not forceuser %}
@@ -34,6 +35,8 @@
 	<input type="hidden" name="logout" value="yes">
 </form>
 {% endif %}
+<div class="channel-header-bg">
+</div>
 <div id="branded-page-header-container" class="ytg-wide banner-displayed-mode">
 								<div id="branded-page-header" class="ytg-wide">
 									<div id="channel-header-main">
