@@ -6,7 +6,7 @@
 <h4 class="bg-dark text-light card-body" style="margin-bottom:0;">{{ __("Upload") }}</h4>
 <div class="card card-body-fat">
 	<div class="grid">
-		<div class="feature col-md-6 center">
+		<div class="feature col-md-3 center">
 			<div class="feature-icon bg-primary">
 				{{ icon_alt('film', 32) }}
 			</div>
@@ -16,13 +16,33 @@
 				{{ icon('chevron-right', 16) }}
 			</a>
 		</div>
-		<div class="feature col-md-6 center">
-			<div class="feature-icon bg-carrot">
+		<div class="feature col-md-3 center">
+			<div class="feature-icon bg-danger">
 				{{ icon_alt('music-note-beamed', 32) }}
 			</div>
 			<h2 style="margin-top: 0;">{{ __("Music") }}</h2>
 			<a href="upload_music.php" class="icon-link">
 				{{ __("Upload music") }}
+				{{ icon('chevron-right', 16) }}
+			</a>
+		</div>
+		<div class="feature col-md-3 center">
+			<div class="feature-icon bg-success">
+				{{ icon_alt('image', 32) }}
+			</div>
+			<h2 style="margin-top: 0;">{{ __("Images/Artwork") }}</h2>
+			<a href="upload_image.php" class="icon-link">
+				{{ __("Upload image/artwork") }}
+				{{ icon('chevron-right', 16) }}
+			</a>
+		</div>
+		<div class="feature col-md-3 center">
+			<div class="feature-icon bg-carrot">
+				{{ icon_alt('text-left', 32) }}
+			</div>
+			<h2 style="margin-top: 0;">{{ __("Text/Story") }}</h2>
+			<a class="icon-link">
+				{{ __("Post text/story") }} (NOT IMPLEMENTED)
 				{{ icon('chevron-right', 16) }}
 			</a>
 		</div>
