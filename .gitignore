@@ -7,8 +7,9 @@ assets/thumb/*.png
 assets/backgrounds/
 *.mp4
 videos/
-music/*.mp3
-music/*.wav
+music/
+image/
+
 
 ## Composer
 vendor/
