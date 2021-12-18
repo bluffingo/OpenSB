@@ -23,11 +23,12 @@
                </div>
                {% else %}
                <h2>
-                  Sign in to customize your homepage
+                  Sign in to add channels to your homepage
                </h2>
                <div id="guide-builder-promo-buttons" class="signed-out">
-                  <button href="https://accounts.google.com/ServiceLogin?uilel=3&amp;service=youtube&amp;passive=true&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26nomobiletemp%3D1%26hl%3Den_US%26next%3D%252F%253Ffeature%253Dsignin&amp;hl=en_US&amp;ltmpl=sso" type="button" class=" yt-uix-button yt-uix-button-dark" onclick=";window.location.href=this.getAttribute('href');return false;" role="button"><span class="yt-uix-button-content">Sign In </span></button>
-                  <button href="/signup?next=%2Fchannels%3Ffeature%3Dsignup" type="button" class=" yt-uix-button yt-uix-button-primary" onclick=";window.location.href=this.getAttribute('href');return false;" role="button"><span class="yt-uix-button-content">Create Account </span></button>
+			   <a href="login.php">
+                  <button type="button" class=" yt-uix-button yt-uix-button-dark" role="button"><span class="yt-uix-button-content">Sign In </span></button>
+			    </a>
                </div>
             </div>
             {% endif %}
@@ -244,48 +245,56 @@
                   <div class="feed-page">
                      <ul>
                         {% for video in videos %}
-                        <li class="feed-item-container">
-                           <div class="feed-item upload">
-                              <div class="feed-item-content">
-                                 <h3 class="feed-item-title">
-                                    <span class="feed-item-author">    <a href="/web/20120118121554/http://www.youtube.com/user/RyanJamesYezak?feature=g-logo" class="yt-user-photo ">
-                                    <span class="video-thumb ux-thumb ux-thumb-profile-24"><span class="clip"><span class="clip-inner"><img src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}" data-thumb="https://web.archive.org/web/20120118121554/http://i3.ytimg.com/i/n26WjLOuTrZNEq7yN92_fg/1.jpg?v=a82222" data-group-key="thumb-group-8"><span class="vertical-align"></span></span></span></span>
-                                    </a>
-                                    </span>
-                                    <span class="feed-item-owner">    {{ userlink(video, 'u_') }}
-                                    </span>
-                                    uploaded
-                                    <span class="time-created">{{ video.time | relative_time }}</span>
-                                 </h3>
-                                 <div class="feed-item-visual">
-                                    <div class="feed-item-visual-thumb">
-                                       <a class="ux-thumb-wrap contains-addto" href="watch.php?v={{ video.video_id }}">
-                                       <span class="video-thumb ux-thumb ux-thumb-288 "><span class="clip"><span class="clip-inner"><img src="{{ video_thumbnail(video.video_id) }}" alt="Thumbnail
-                                          " data-thumb="{{ video_thumbnail(video.video_id) }}" data-group-key="thumb-group-8"><span class="vertical-align"></span></span></span></span>
-                                       <span class="video-time">{{ video.videolength|date('i:s', '+00:00 GMT')  }}</span>
-									   <button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" onclick=";return false;" data-button-menu-action="yt.www.lists.addto.toggleMenu" data-button-menu-id="shared-addto-menu" data-video-ids="u62OtM_vt5k" data-feature="thumbnail" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-addto" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""><span class="yt-uix-button-content"><span class="addto-label">Add to</span> </span><img class="yt-uix-button-arrow" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""></button>
-                                       </a>
-                                    </div>
-                                    <div class="feed-item-visual-content">
-                                       <div class="feed-item-visual-description">
-                                          <h4><a class="title" href="watch.php?v={{ video.video_id }}" dir="ltr">{{ video.title }}</a></h4>
-                                          <div class="description" dir="ltr">
-                                             {{ video.description|length > 100 ? video.description|slice(0, 100) ~ '...' : video.description }}
-                                          </div>
-                                       </div>
-										<p class="metadata">
-											{{ userlink(video, 'u_') }}
-											<span class="view-count">
-										{{ video.views }} views
-											</span>
-										  </p>
-                                       </p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        {% endfor %}
+<div class="feed-item-container first " data-channel-key="UCR2A9ZNliJfgC66IvIpe-Zw">
+        <div class="feed-author-bubble-container">
+            <a href="/user/{{ video.u_name }}" class="feed-author-bubble   ">  <span class="feed-item-author">
+            <span class="video-thumb ux-thumb yt-thumb-square-28 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}" data-thumb="{{ profile_image(video.u_name) }}" width="28" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span>
+            </span>
+            </a>  
+        </div>
+        <div class="feed-item-main">
+            <div class="feed-item-header">
+                <span class="feed-item-actions-line ">
+                <span class="feed-item-owner">    <a href="/user/{{ video.u_name }}" class="yt-uix-sessionlink yt-user-name " data-sessionlink="feature=g-logo-xit" dir="ltr">{{ video.u_name }}</a>
+                </span>
+                uploaded a video
+                <span class="feed-item-time">
+                {{ video.time | relative_time }}
+                </span>
+                </span>
+            </div>
+            <div class="feed-item-content-wrapper clearfix">
+                <div class="feed-item-thumb">
+                    <a class="ux-thumb-wrap contains-addto  yt-uix-contextlink yt-uix-sessionlink" data-sessionlink="ei=CNLr3rbS3rICFSwSIQodSW397Q%3D%3D&amp;context=G266dc06FOAAAAAAAAAA" href="/watch?v=wcxL3Ec12dd">
+                    <span class="video-thumb ux-thumb yt-thumb-default-185 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img src="{{ video_thumbnail(video.video_id) }}" alt="Thumbnail" data-thumb="{{ video_thumbnail(video.video_id) }}" width="185" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span>
+                    <span class="video-time">{{ video.videolength|date('i:s', '+00:00 GMT')  }}</span>
+                    <button onclick=";return false;" title="Watch Later" type="button" class="addto-button video-actions addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="rLHU-_OhT8g" role="button"><span class="yt-uix-button-content">  <img src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="Watch Later">
+                    </span><img class="yt-uix-button-arrow" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""></button>
+                    </a>
+                </div>
+                <div class="feed-item-content">
+                    <h4>
+                        <a class="feed-video-title title yt-uix-contextlink  yt-uix-sessionlink  secondary" href="/watch?v=wcxL3Ec12dd" data-sessionlink="ei=CNLr3rbS3rICFSwSIQodSW397Q%3D%3D&amp;feature=g-logo-xit&amp;context=G266dc06FOAAAAAAAAAA">
+                            {{ video.title }}
+                        </a>
+                    </h4>
+                    <div class="metadata">
+                        <a href="/user/{{ video.u_name }}" class="yt-user-photo ">
+                        <span class="video-thumb ux-thumb yt-thumb-square-18 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}" data-thumb="{{ profile_image(video.u_name) }}" width="18" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span>
+                        </a>
+                        <a href="/user/{{ video.u_name }}" class="yt-uix-sessionlink yt-user-name " data-sessionlink="ei=CNLr3rbS3rICFSwSIQodSW397Q%3D%3D&amp;feature=g-logo-xit" dir="ltr">{{ video.u_name }}</a>
+                        <span class="bull">•</span>
+                        <span class="view-count">
+                        {{ video.views }} views
+                        </span>
+                        <div class="description">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>                        {% endfor %}
                         <p class="metadata">
                      </ul>
                   </div>
