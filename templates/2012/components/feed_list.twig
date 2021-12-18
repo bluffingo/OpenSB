@@ -1,0 +1,42 @@
+{% for video in videos %}
+<li class="feed-item-container">
+   <div class="feed-item upload">
+      <div class="feed-item-content">
+         <h3 class="feed-item-title">
+            <span class="feed-item-author">    <a href="/web/20120118121554/http://www.youtube.com/user/RyanJamesYezak?feature=g-logo" class="yt-user-photo ">
+            <span class="video-thumb ux-thumb ux-thumb-profile-24"><span class="clip"><span class="clip-inner"><img src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}" data-thumb="{{ profile_image(video.u_name) }}" data-group-key="thumb-group-8"><span class="vertical-align"></span></span></span></span>
+            </a>
+            </span>
+            <span class="feed-item-owner">{{ userlink(video, 'u_') }}
+            </span>
+            uploaded
+            <span class="time-created">{{ video.time | relative_time }}</span>
+         </h3>
+         <div class="feed-item-visual">
+            <div class="feed-item-visual-thumb">
+               <a class="ux-thumb-wrap contains-addto" href="/web/20120118121554/http://www.youtube.com/watch?v=u62OtM_vt5k&amp;feature=g-logo&amp;context=G208d680FOAAAAAAAbAA">
+               <span class="video-thumb ux-thumb ux-thumb-288 "><span class="clip"><span class="clip-inner"><img src="{{ video_thumbnail(video.video_id) }}" alt="Thumbnail
+                  " data-thumb="{{ video_thumbnail(video.video_id) }}" data-group-key="thumb-group-8"><span class="vertical-align"></span></span></span></span>
+               <span class="video-time">6:52</span>
+               <button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" onclick=";return false;" data-button-menu-action="yt.www.lists.addto.toggleMenu" data-button-menu-id="shared-addto-menu" data-video-ids="u62OtM_vt5k" data-feature="thumbnail" role="button"><img class="yt-uix-button-icon yt-uix-button-icon-addto" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""><span class="yt-uix-button-content"><span class="addto-label">Add to</span> </span><img class="yt-uix-button-arrow" src="//web.archive.org/web/20120118121554im_/http://s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""></button>
+               </a>
+            </div>
+            <div class="feed-item-visual-content">
+               <div class="feed-item-visual-description">
+                  <h4><a class="title" href="/web/20120118121554/http://www.youtube.com/watch?v=u62OtM_vt5k&amp;feature=g-logo&amp;context=G208d680FOAAAAAAAbAA" dir="ltr">{{ video.title }}</a></h4>
+                  <div class="description" dir="ltr">
+                     {{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}
+                  </div>
+               </div>
+               <p class="metadata">
+                  {{ userlink(video, 'u_') }}
+                  <span class="view-count">
+                  {{ video.views }} views
+                  </span>
+               </p>
+            </div>
+         </div>
+      </div>
+   </div>
+</li>
+{% endfor %}
