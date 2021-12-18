@@ -2,7 +2,8 @@
 ini_set('display_errors', 'On');
 require('lib/common.php');
 
-
+$nonFunctionalShit = true;
+$pageVariable = "index";
 
 // currently selects all uploaded videos, should turn it into all featured only
 if ($frontend == "2012") {
