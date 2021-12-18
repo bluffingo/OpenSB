@@ -740,7 +740,6 @@ border-bottom: none;
 #masthead {
 	width: 970px;
 	position: relative;
-	overflow: hidden;
 	margin: 7px auto;
 	height: 33px;
 	font-size: 13px;
@@ -827,9 +826,6 @@ overflow: hidden;
 }
 
 #masthead-below {
-    background: #f1f1f1;
-    border-bottom: 1px solid #e8e8e8;
-    padding: 7px 15px 8px;
 	display: none;
 }
 
@@ -1010,6 +1006,18 @@ line-height: 17px;
 	right: 8px;
 	bottom: 5px;
 	position: absolute;
+}
+
+.usermenushit {
+  position: absolute;
+  top: 100%;
+  right: -10px;
+  max-height: 80vh;
+  z-index: 1000;
+  padding: 0.5em;
+  width: 320px;
+  overflow: hidden;
+  background: white;
 }
 
 /// 2012 Channels \\\

@@ -95,6 +95,14 @@
 				{{ userdata.title }}
                <div {% if notification_count > 0 %}class="bg-danger text-light"{% else %}class="bg-neutral{% endif %}" style="padding:6px 8px;display: inline-block;">{{ notification_count }}</div>
 				<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.title }}">
+				<div class="usermenushit" id="masthead-below">
+					<ul style="padding:0">
+					<li><a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a></li>
+					<li><a href="/studio/">{{ __("Studio") }}</a></li>
+					<li><a href="/settings.php">{{ __("Settings") }}</a></li>
+					<li><a href="logout.php">{{ __("Log out") }}</a></li>
+					</ul>
+				</div>
 				</div>
 				{% else %}
 				<div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
@@ -117,39 +125,6 @@
 						<label><input type="text" name="query" placeholder="{{ __("Search...") }}"></label>
 					</div>
 				</form>
-			</div>
-		</div>
-	</div>
-	<div id="masthead-below">
-		<div class="grid">
-			<div class="col-md-8">
-			Todo: add something.
-			</div>
-			<div class="col-md-1">
-			<h4 style="margin:10px 0">cheeseRox</h4>
-			<ul style="padding:0">
-			</ul>
-			</div>
-			<div class="col-md-1">
-			<h4 style="margin:10px 0">Account</h4>
-			<ul style="padding:0">
-			<li><a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a></li>
-			<li><a href="/studio/">{{ __("Studio") }}</a></li>
-			<li><a href="/settings.php">{{ __("Settings") }}</a></li>
-			</ul>
-			</div>
-			<div class="col-md-2">
-			<ul style="padding:0">
-			<div class="grid">
-			<div class="col-md-2">
-			<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
-			</div>
-			<div class="col-md-10">
-			<h4 style="margin:0">{{ userdata.name }}</h4>
-			</div>
-			</div>
-			<li><a href="logout.php">{{ __("Log out") }}</a></li>
-			</ul>
 			</div>
 		</div>
 	</div>
