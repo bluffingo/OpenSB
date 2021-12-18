@@ -23,9 +23,9 @@
 </style>
 {% if userpagedata.id == userdata.id and not forceuser %}
 <div class="bg-dark" style="padding:1px 15px;">
-<p>		   <a href="settings.php" style="color:white;">{{ __("Edit my settings") }}</a>
-	&bull; <a href="forum/private.php" style="color:white;">{{ __("View my private messages") }}</a>
-	&bull; <a href="user.php?id={{ id }}&forceuser" style="color:white;">{{ __("View user page as viewer") }}</a>
+<p>		   <a href="/settings.php" style="color:white;">{{ __("Edit my settings") }}</a>
+	&bull; <a href="/forum/private.php" style="color:white;">{{ __("View my private messages") }}</a>
+	&bull; <a href="/user.php?id={{ id }}&forceuser" style="color:white;">{{ __("View user page as viewer") }}</a>
 	{% if userdata.powerlevel > 2 %}
 	&bull; <a href="admin.php" style="color:white;">{{ __("Admin panel") }}</a></p>
 	{% endif %}
@@ -73,39 +73,26 @@
 										<!-- <div class="channel-horizontal-menu clearfix">
 											<ul>
 												<li class="selected">
-													<a href="/user/Gamerappa/featured" class="gh-tab-100">
+													<a href="/user/{{ userpagedata.name }}/featured" class="gh-tab-100">
 													Featured
 													</a>
 												</li>
 												<li>
-													<a href="/user/Gamerappa/feed" class="gh-tab-102">
+													<a href="/user/{{ userpagedata.name }}/feed" class="gh-tab-102">
 													Feed
 													</a>
 												</li>
 												<li>
-													<a href="/user/Gamerappa/discussion" class="gh-tab-101">
+													<a href="/user/{{ userpagedata.name }}/discussion" class="gh-tab-101">
 													Discussion
 													</a>
 												</li>
 												<li>
-													<a href="/user/Gamerappa/videos" class="gh-tab-101">
+													<a href="/user/{{ userpagedata.name }}/videos" class="gh-tab-101">
 													Videos
 													</a>
 												</li>
 											</ul>
-											<form id="channel-search" action="/user/Gamerappa/videos">
-												<input name="query" type="text" maxlength="100" class="search-field" placeholder="Search Channel" value="">
-												<button class="search-btn" type="submit">
-												<span class="search-btn-content">
-												Search
-												</span>
-												</button>
-												<a class="search-dismiss-btn" href="/user/Gamerappa/videos?view=0">
-												<span class="search-btn-content">
-												Clear
-												</span>
-												</a>
-											</form>
 										</div>
  -->									</div>
 								</div>
