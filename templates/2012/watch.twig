@@ -1,5 +1,8 @@
 {% extends "_layout.twig" %}
 {% block content %}
+		<script>
+			var yt = yt || {};yt.timing = yt.timing || {};yt.timing.tick = function(label, opt_time) {var timer = yt.timing['timer'] || {};if(opt_time) {timer[label] = opt_time;}else {timer[label] = new Date().getTime();}yt.timing['timer'] = timer;};yt.timing.info = function(label, value) {var info_args = yt.timing['info_args'] || {};info_args[label] = value;yt.timing['info_args'] = info_args;};yt.timing.info('e', "904821,919006,922401,920704,912806,913419,913546,913556,919349,919351,925109,919003,920201,912706");if (document.webkitVisibilityState == 'prerender') {document.addEventListener('webkitvisibilitychange', function() {yt.timing.tick('start');}, false);}yt.timing.tick('start');yt.timing.info('li','0');try {yt.timing['srt'] = window.gtbExternal && window.gtbExternal.pageT() ||window.external && window.external.pageT;} catch(e) {}if (window.chrome && window.chrome.csi) {yt.timing['srt'] = Math.floor(window.chrome.csi().pageT);}if (window.msPerformance && window.msPerformance.timing) {yt.timing['srt'] = window.msPerformance.timing.responseStart - window.msPerformance.timing.navigationStart;}    
+		</script>
 <div id="content">
    <div id="watch-container" itemscope="" itemtype="//schema.org/VideoObject">
       <!-- begin watch-headline-container -->
@@ -486,14 +489,7 @@
                </div>
                <div class="watch-sidebar-section">
                   <div id="watch-related-container" class="watch-sidebar-body">
-                     <ul id="watch-related" class="video-list">
-                        <div id="ppv-container" class="hid"></div>
-                        <li class="video-list-item"><a href="/watch?v=wcxL3Ec12dd" class="related-video yt-uix-contextlink  yt-uix-sessionlink" data-sessionlink="ved=CAIQzRooAA%3D%3D&amp;bluey2000k&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img src="/dynamic/thumbs/default.jpg" alt="LlGt5xwdZBH.mp4" onerror=";this.src='/dynamic/thumbs/default.jpg';" data-thumb="/dynamic/thumbs/wcxL3Ec12dd.png" width="120" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span><span class="video-time">0:00</span>
-                           <button onclick=";return false;" title="Watch Later" type="button" class="addto-button video-actions addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="gyAaIKF6tSQ" role="button"><span class="yt-uix-button-content">  <img src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt="Watch Later">
-                           </span><img class="yt-uix-button-arrow" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" alt=""></button>
-                           </span><span dir="ltr" class="title" title="LlGt5xwdZBH.mp4">LlGt5xwdZBH.mp4</span><span class="stat attribution">by <span class="yt-user-name " dir="ltr">bluey2000k</span></span><span class="stat view-count">2 views</span></a>
-                        </li>
-                     </ul>
+Fucking later
                      <ul id="watch-more-related" class="video-list hid">
                         <p class="yt-spinner">
                            <img src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="yt-spinner-img" alt="">
@@ -515,4 +511,218 @@
       <!-- end watch-main-container -->
    </div>
 </div>
+{% endblock %}
+{% block customjs %}
+<script>
+
+    yt.setConfig({
+      'VIDEO_ID': "{{ video.video_id }}"    });
+    yt.setAjaxToken('watch_actions_ajax', "");
+
+    if (window['gYouTubePlayerReady']) {
+      yt.registerGlobal('gYouTubePlayerReady');
+    }
+  
+  </script>
+		<script>
+
+yt = yt || {};
+yt.playerConfig = {
+    "assets": {
+        "html": "\/2012_player_template",
+        "css": "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/s.ytimg.com\/yt\/cssbin\/www-player-vflHCjuzK.css",
+        "js": "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/s.ytimg.com\/yt\/jsbin\/html5player-vflHShNvL.js"
+    },
+    "url": "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/s.ytimg.com\/yt\/swfbin\/watch_as3-vflyGdbv4.swf",
+    "min_version": "8.0.0",
+    "args": {
+        "ttsurl": "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/www.youtube.com\/api\/timedtext?sparams=asr_langs%2Ccaps%2Cv%2Cexpire\u0026key=yttt1\u0026asr_langs=en%2Cko%2Cja%2Ces\u0026signature=5608EE9CFFB0D149E333A33238B52B0901E3796B.E70A90CA2DFD6B5AE77512138CC07BBFB04EFBA3\u0026caps=asr\u0026expire=1346021725\u0026hl=en_US\u0026v=cM0EhWSRZk0",
+        "fexp": "916404,901802,925103,910207,914042,922401,920704,912806,911406,913558,913556,912706",
+        "ptk": "youtube_none",
+        "enablecsi": "1",
+        "allow_embed": 1,
+        "rvs": "view_count=112%2C769\u0026feature_type=fvwp\u0026author=TradeTheTrend\u0026title=iPhone+4+Unboxing+HD\u0026length_seconds=232\u0026featured=1\u0026id=f7fQlKejCic,view_count=8%2C935\u0026author=DizzyDougTV\u0026length_seconds=994\u0026id=5GluBqHbcHo\u0026title=iPhone+4+Launch,view_count=4%2C619\u0026author=networkworld\u0026length_seconds=137\u0026id=3KvK4UcAjss\u0026title=Apple+fanatics+ready+for+iPhone+4+launch,view_count=1%2C802\u0026author=ChrisMe33\u0026length_seconds=25\u0026id=vvVfKZKMlfc\u0026title=Launch+of+the+new+Apple+iPhone+4%2C+Carrousel+du+Louvre%2C+Paris.,view_count=7%2C882\u0026author=pbonnafy\u0026length_seconds=148\u0026id=wvETt2xDn74\u0026title=iPhone+4+launch+-+Apple+Store+Paris,view_count=5%2C824\u0026author=appgirltv\u0026length_seconds=125\u0026id=qa0zRIbA7EU\u0026title=iPhone+4+Launch+Day+Unboxing+In-Store+in+Tokyo+AppGirl.tv,view_count=1%2C417\u0026author=kingblana\u0026length_seconds=257\u0026id=0E4OO5WJQ2I\u0026title=iPhone+4+launch+in+Paris+on+Champs+Elysees+23%3A15+on+23.06.2010+by+KingBlana,view_count=268%2C028\u0026author=far1822\u0026length_seconds=264\u0026id=zvH-i7rKPJc\u0026title=iPhone+4+Antenna+Problem%2C+key+demonstration,view_count=152%2C021\u0026author=pgor192\u0026length_seconds=69\u0026id=44w-RYurbN4\u0026title=Channel+4+News+iPhone+interview++interrupted+by+Apple,view_count=15%2C580\u0026author=CameronInSoHo\u0026length_seconds=260\u0026id=0CDpeWWv2qs\u0026title=iPhone+4+Launch+-+Apple+Store+Soho+at+7am,view_count=37%2C014\u0026author=tuawvideo\u0026length_seconds=84\u0026id=O1Ru-Pksa8Q\u0026title=iPhone+4+Launch%3A+5th+Avenue+Store,view_count=6%2C106\u0026author=appgirltv\u0026length_seconds=184\u0026id=yeH5WgEN8GM\u0026title=iPhone+4+Launch+Day+Review+First+Look+In+Store+Tokyo+AppGirl.tv",
+        "vq": "auto",
+        "account_playback_token": "",
+        "autohide": "2",
+        "csi_page_type": "watch5",
+        "keywords": "Apple,Iphone4,Worst,Launch,Paris",
+        "cr": "US",
+        "cc3_module": "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/s.ytimg.com\/yt\/swfbin\/subtitles3_module-vflKsIGhv.swf",
+        "fmt_list": "43\/640x360\/99\/0\/0,34\/640x360\/9\/0\/115,18\/640x360\/9\/0\/115,5\/320x240\/7\/0\/0,36\/320x240\/99\/0\/0,17\/176x144\/99\/0\/0",
+        "title": "Paris iPhone 4 launch messed up",
+        "length_seconds": 115,
+        "feature": "popular",
+        "enablejsapi": 1,
+        "plid": "AATILTzD3ZRsTfXJ",
+        "cc_font": "Arial Unicode MS, arial, verdana, _sans",
+        "sdetail": "f:popular,",
+        "url_encoded_fmt_stream_map": "itag=43\u0026url=http%3A%2F%2Fo-o---preferred---nuq04s11---v20---lscache8.c.youtube.com%2Fvideoplayback%3Fupn%3D90kBQYRrwcE%26sparams%3Dcp%252Cgcr%252Cid%252Cip%252Cipbits%252Citag%252Cratebypass%252Csource%252Cupn%252Cexpire%26fexp%3D916404%252C901802%252C925103%252C910207%252C914042%252C922401%252C920704%252C912806%252C911406%252C913558%252C913556%252C912706%26ms%3Dau%26expire%3D1346016870%26itag%3D43%26ipbits%3D8%26gcr%3Dus%26sver%3D3%26ratebypass%3Dyes%26mt%3D1345996511%26ip%3D207.241.224.41%26mv%3Dm%26source%3Dyoutube%26key%3Dyt1%26cp%3DU0hTS1BMVF9MSkNOM19IRlhJOnhHSkM5enhPeHRj%26id%3D70cd04856491664d\u0026type=video%2Fwebm%3B+codecs%3D%22vp8.0%2C+vorbis%22\u0026fallback_host=tc.v20.cache8.c.youtube.com\u0026sig=113E1863ABC17E6524589999C4B62B5768E7622B.34CF75F28A71E0521C5628DA03986B2288479C7D\u0026quality=medium,itag=34\u0026url=http%3A%2F%2Fo-o---preferred---nuq04s11---v8---lscache7.c.youtube.com%2Fvideoplayback%3Fupn%3D90kBQYRrwcE%26sparams%3Dalgorithm%252Cburst%252Ccp%252Cfactor%252Cgcr%252Cid%252Cip%252Cipbits%252Citag%252Csource%252Cupn%252Cexpire%26fexp%3D916404%252C901802%252C925103%252C910207%252C914042%252C922401%252C920704%252C912806%252C911406%252C913558%252C913556%252C912706%26ms%3Dau%26algorithm%3Dthrottle-factor%26burst%3D40%26ip%3D207.241.224.41%26itag%3D34%26gcr%3Dus%26sver%3D3%26mt%3D1345996511%26mv%3Dm%26source%3Dyoutube%26key%3Dyt1%26ipbits%3D8%26factor%3D1.25%26cp%3DU0hTS1BMVF9MSkNOM19IRlhJOnhHSkM5enhPeHRj%26expire%3D1346016870%26id%3D70cd04856491664d\u0026type=video%2Fx-flv\u0026fallback_host=tc.v8.cache7.c.youtube.com\u0026sig=A4A9BE3AF45E851A57C367C954E61BFF8D276CE8.CF33E77E99B185030E5366823F463B2CFBC9A4E5\u0026quality=medium,itag=18\u0026url=http%3A%2F%2Fo-o---preferred---nuq04s11---v2---lscache2.c.youtube.com%2Fvideoplayback%3Fupn%3D90kBQYRrwcE%26sparams%3Dcp%252Cgcr%252Cid%252Cip%252Cipbits%252Citag%252Cratebypass%252Csource%252Cupn%252Cexpire%26fexp%3D916404%252C901802%252C925103%252C910207%252C914042%252C922401%252C920704%252C912806%252C911406%252C913558%252C913556%252C912706%26ms%3Dau%26expire%3D1346016870%26itag%3D18%26ipbits%3D8%26gcr%3Dus%26sver%3D3%26ratebypass%3Dyes%26mt%3D1345996511%26ip%3D207.241.224.41%26mv%3Dm%26source%3Dyoutube%26key%3Dyt1%26cp%3DU0hTS1BMVF9MSkNOM19IRlhJOnhHSkM5enhPeHRj%26id%3D70cd04856491664d\u0026type=video%2Fmp4%3B+codecs%3D%22avc1.42001E%2C+mp4a.40.2%22\u0026fallback_host=tc.v2.cache2.c.youtube.com\u0026sig=4182F382088AEF76D11E057880B1222720E55938.8D3FE3D693F947D143C43FB62A29B09E3D8ABF86\u0026quality=medium,itag=5\u0026url=http%3A%2F%2Fo-o---preferred---nuq04s11---v3---lscache5.c.youtube.com%2Fvideoplayback%3Fupn%3D90kBQYRrwcE%26sparams%3Dalgorithm%252Cburst%252Ccp%252Cfactor%252Cgcr%252Cid%252Cip%252Cipbits%252Citag%252Csource%252Cupn%252Cexpire%26fexp%3D916404%252C901802%252C925103%252C910207%252C914042%252C922401%252C920704%252C912806%252C911406%252C913558%252C913556%252C912706%26ms%3Dau%26algorithm%3Dthrottle-factor%26burst%3D40%26ip%3D207.241.224.41%26itag%3D5%26gcr%3Dus%26sver%3D3%26mt%3D1345996511%26mv%3Dm%26source%3Dyoutube%26key%3Dyt1%26ipbits%3D8%26factor%3D1.25%26cp%3DU0hTS1BMVF9MSkNOM19IRlhJOnhHSkM5enhPeHRj%26expire%3D1346016870%26id%3D70cd04856491664d\u0026type=video%2Fx-flv\u0026fallback_host=tc.v3.cache5.c.youtube.com\u0026sig=CD811BE879681AC214569028B27B533E824D0BF1.93B8C9B9EF90E832A452BA2124958E657FE5140B\u0026quality=small,itag=36\u0026url=http%3A%2F%2Fo-o---preferred---nuq04s11---v17---lscache5.c.youtube.com%2Fvideoplayback%3Fupn%3D90kBQYRrwcE%26sparams%3Dalgorithm%252Cburst%252Ccp%252Cfactor%252Cgcr%252Cid%252Cip%252Cipbits%252Citag%252Csource%252Cupn%252Cexpire%26fexp%3D916404%252C901802%252C925103%252C910207%252C914042%252C922401%252C920704%252C912806%252C911406%252C913558%252C913556%252C912706%26ms%3Dau%26algorithm%3Dthrottle-factor%26burst%3D40%26ip%3D207.241.224.41%26itag%3D36%26gcr%3Dus%26sver%3D3%26mt%3D1345996511%26mv%3Dm%26source%3Dyoutube%26key%3Dyt1%26ipbits%3D8%26factor%3D1.25%26cp%3DU0hTS1BMVF9MSkNOM19IRlhJOnhHSkM5enhPeHRj%26expire%3D1346016870%26id%3D70cd04856491664d\u0026type=video%2F3gpp%3B+codecs%3D%22mp4v.20.3%2C+mp4a.40.2%22\u0026fallback_host=tc.v17.cache5.c.youtube.com\u0026sig=533FEE4CE94990CEEB46B84B499538F1ABB4D314.5B723213F67F239AD21FBD99D5982C3B3BA58263\u0026quality=small,itag=17\u0026url=http%3A%2F%2Fo-o---preferred---nuq04s11---v10---lscache8.c.youtube.com%2Fvideoplayback%3Fupn%3D90kBQYRrwcE%26sparams%3Dalgorithm%252Cburst%252Ccp%252Cfactor%252Cgcr%252Cid%252Cip%252Cipbits%252Citag%252Csource%252Cupn%252Cexpire%26fexp%3D916404%252C901802%252C925103%252C910207%252C914042%252C922401%252C920704%252C912806%252C911406%252C913558%252C913556%252C912706%26ms%3Dau%26algorithm%3Dthrottle-factor%26burst%3D40%26ip%3D207.241.224.41%26itag%3D17%26gcr%3Dus%26sver%3D3%26mt%3D1345996511%26mv%3Dm%26source%3Dyoutube%26key%3Dyt1%26ipbits%3D8%26factor%3D1.25%26cp%3DU0hTS1BMVF9MSkNOM19IRlhJOnhHSkM5enhPeHRj%26expire%3D1346016870%26id%3D70cd04856491664d\u0026type=video%2F3gpp%3B+codecs%3D%22mp4v.20.3%2C+mp4a.40.2%22\u0026fallback_host=tc.v10.cache8.c.youtube.com\u0026sig=439BFCA6B66FD698C428B1CC54BC4A1DEC6DCCD0.01543E8023268AB4CA2AA546C1FFE1BF600A8B30\u0026quality=small",
+        "watermark": ",http:\/\/s.ytimg.com\/yt\/img\/watermark\/youtube_watermark-vflHX6b6E.png,http:\/\/s.ytimg.com\/yt\/img\/watermark\/youtube_hd_watermark-vflAzLcD6.png",
+        "timestamp": 1345996525,
+        "storyboard_spec": "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/i4.ytimg.com\/sb\/cM0EhWSRZk0\/storyboard3_L$L\/$N.jpg|48#27#100#10#10#0#default#wqKLtRK-XJ0Dsgo1m7vH17t7yZo|60#45#116#10#10#1000#M$M#LPf5G_E4a3Mnus4Re5UsqeIa1fM|120#90#116#5#5#1000#M$M#c6-glTLiSEzb76iQGRzoXg8gSWY",
+        "cc_asr": 1,
+        "showpopout": 1,
+        "hl": "en_US",
+        "tmi": "1",
+        "no_get_video_log": "1",
+        "cc_module": "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/s.ytimg.com\/yt\/swfbin\/subtitle_module-vflkI4hma.swf",
+        "endscreen_module": "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/s.ytimg.com\/yt\/swfbin\/endscreen-vfl8h9Ki9.swf",
+        "referrer": null,
+        "video_id": "{{ video.video_id }}",
+        "sendtmp": "1",
+        "sk": "X9xrgR3_pRpYBkAdhU04mnYhDg-hV1ZhC",
+        "pltype": "contentugc",
+        "t": "vjVQa1PpcFPix_3gUfQNXX2q2EHjogNs_PUocmBgdkE="
+    },
+    "url_v9as2": "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/s.ytimg.com\/yt\/swfbin\/cps-vflfl_I0w.swf",
+    "params": {
+        "allowscriptaccess": "always",
+        "allowfullscreen": "true",
+        "bgcolor": "#000000"
+    },
+    "attrs": {
+        "width": "640",
+        "id": "movie_player",
+        "height": "390"
+    },
+    "url_v8": "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/s.ytimg.com\/yt\/swfbin\/cps-vflfl_I0w.swf",
+    "html5": false
+};
+yt.setConfig({
+    'EMBED_HTML_TEMPLATE': "\u003ciframe width=\"__width__\" height=\"__height__\" src=\"__url__\" frameborder=\"0\" allowfullscreen\u003e\u003c\/iframe\u003e",
+    'EMBED_HTML_URL': "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/www.youtube.com\/embed\/__videoid__"
+});
+yt.setMsg('HTML5_DEFAULT_FALLBACK', "This video is currently unavailable.");
+yt.setMsg('FLASH_UPGRADE', "\u003cdiv class=\"yt-alert yt-alert-default yt-alert-error  yt-alert-player\"\u003e  \u003cdiv class=\"yt-alert-icon\"\u003e\n    \u003cimg s\u0072c=\"\/\/s.ytimg.com\/yt\/img\/pixel-vfl3z5WfW.gif\" class=\"icon master-sprite\" alt=\"Alert icon\"\u003e\n  \u003c\/div\u003e\n\u003cdiv class=\"yt-alert-buttons\"\u003e\u003c\/div\u003e\u003cdiv class=\"yt-alert-content\" role=\"alert\"\u003e    \u003cspan class=\"yt-alert-vertical-trick\"\u003e\u003c\/span\u003e\n    \u003cdiv class=\"yt-alert-message\"\u003e\n            You need to upgrade your Adobe Flash Player to watch this video. \u003cbr\u003e \u003ca href=\"http:\/\/get.adobe.com\/flashplayer\/\"\u003eDownload it from Adobe.\u003c\/a\u003e\n    \u003c\/div\u003e\n\u003c\/div\u003e\u003c\/div\u003e");
+yt.setMsg('HTML5_NO_AVAILABLE_FORMATS_FALLBACK', "Your browser does not currently recognize any of the video formats available.\u003cbr\u003e\u003ca href=\"\/html5\"\u003eClick here to visit our frequently asked questions about HTML5 video.\u003c\/a\u003e");
+yt.setMsg('FLASH_FALLBACK', "\u003cdiv class=\"yt-alert yt-alert-default yt-alert-error  yt-alert-player\"\u003e  \u003cdiv class=\"yt-alert-icon\"\u003e\n    \u003cimg s\u0072c=\"\/\/s.ytimg.com\/yt\/img\/pixel-vfl3z5WfW.gif\" class=\"icon master-sprite\" alt=\"Alert icon\"\u003e\n  \u003c\/div\u003e\n\u003cdiv class=\"yt-alert-buttons\"\u003e\u003c\/div\u003e\u003cdiv class=\"yt-alert-content\" role=\"alert\"\u003e    \u003cspan class=\"yt-alert-vertical-trick\"\u003e\u003c\/span\u003e\n    \u003cdiv class=\"yt-alert-message\"\u003e\n            The Adobe Flash Player is required for video playback.  \u003cbr\u003e \u003ca href=\"http:\/\/get.adobe.com\/flashplayer\/\"\u003eGet the latest Flash Player\u003c\/a\u003e\n    \u003c\/div\u003e\n\u003c\/div\u003e\u003c\/div\u003e");
+yt.setMsg('PLAYER_FALLBACK', "\u003cdiv class=\"yt-alert yt-alert-default yt-alert-error  yt-alert-player\"\u003e  \u003cdiv class=\"yt-alert-icon\"\u003e\n    \u003cimg s\u0072c=\"\/\/s.ytimg.com\/yt\/img\/pixel-vfl3z5WfW.gif\" class=\"icon master-sprite\" alt=\"Alert icon\"\u003e\n  \u003c\/div\u003e\n\u003cdiv class=\"yt-alert-buttons\"\u003e\u003c\/div\u003e\u003cdiv class=\"yt-alert-content\" role=\"alert\"\u003e    \u003cspan class=\"yt-alert-vertical-trick\"\u003e\u003c\/span\u003e\n    \u003cdiv class=\"yt-alert-message\"\u003e\n            The Adobe Flash Player or an HTML5 supported browser is required for video playback. \u003cbr\u003e \u003ca href=\"http:\/\/get.adobe.com\/flashplayer\/\"\u003eGet the latest Flash Player\u003c\/a\u003e \u003cbr\u003e \u003ca href=\"\/html5\"\u003eLearn more about upgrading to an HTML5 browser\u003c\/a\u003e\n    \u003c\/div\u003e\n\u003c\/div\u003e\u003c\/div\u003e");
+yt.setMsg('QUICKTIME_FALLBACK', "\u003cdiv class=\"yt-alert yt-alert-default yt-alert-error  yt-alert-player\"\u003e  \u003cdiv class=\"yt-alert-icon\"\u003e\n    \u003cimg s\u0072c=\"\/\/s.ytimg.com\/yt\/img\/pixel-vfl3z5WfW.gif\" class=\"icon master-sprite\" alt=\"Alert icon\"\u003e\n  \u003c\/div\u003e\n\u003cdiv class=\"yt-alert-buttons\"\u003e\u003c\/div\u003e\u003cdiv class=\"yt-alert-content\" role=\"alert\"\u003e    \u003cspan class=\"yt-alert-vertical-trick\"\u003e\u003c\/span\u003e\n    \u003cdiv class=\"yt-alert-message\"\u003e\n            The Adobe Flash Player or QuickTime is required for video playback. \u003cbr\u003e \u003ca href=\"http:\/\/get.adobe.com\/flashplayer\/\"\u003eGet the latest Flash Player\u003c\/a\u003e \u003cbr\u003e \u003ca href=\"http:\/\/www.apple.com\/quicktime\/download\/\"\u003eGet the latest version of QuickTime\u003c\/a\u003e\n    \u003c\/div\u003e\n\u003c\/div\u003e\u003c\/div\u003e");
+yt.setMsg('DEVICE_FALLBACK', "\u003cdiv class=\"yt-alert yt-alert-default yt-alert-error  yt-alert-player\"\u003e  \u003cdiv class=\"yt-alert-icon\"\u003e\n    \u003cimg s\u0072c=\"\/\/s.ytimg.com\/yt\/img\/pixel-vfl3z5WfW.gif\" class=\"icon master-sprite\" alt=\"Alert icon\"\u003e\n  \u003c\/div\u003e\n\u003cdiv class=\"yt-alert-buttons\"\u003e\u003c\/div\u003e\u003cdiv class=\"yt-alert-content\" role=\"alert\"\u003e    \u003cspan class=\"yt-alert-vertical-trick\"\u003e\u003c\/span\u003e\n    \u003cdiv class=\"yt-alert-message\"\u003e\n            Sorry, this video is not available on this device.\n    \u003c\/div\u003e\n\u003c\/div\u003e\u003c\/div\u003e");
+
+yt.setMsg('HTML5_SPEED_NORMAL', "Normal");
+yt.setMsg('HTML5_QUALITY_SETTING', "quality");
+yt.setMsg('HTML5_SPEED_SETTING', "speed");
+yt.setMsg('HTML5_VOLUME_SETTING', "volume");
+yt.setMsg('HTML5_VOLUME_MUTED', "muted");
+yt.setMsg('HTML5_VOLUME_MUTE', "mute");
+yt.setMsg('HTML5_VOLUME_UNMUTE', "unmute");
+yt.setMsg('HTML5_CONTROL_TOGGLE', "toggle");
+
+yt.setMsg('HTML5_SUBS_TRANSCRIBED', "transcribed");
+yt.setMsg('VISIT_ADVERTISERS_SITE', "Visit advertiser's site");
+yt.setMsg('FRESCA_STARTING_SOON_MESSAGE', "Starting soon...");
+yt.setMsg('FRESCA_COMPLETE_MESSAGE', "Thanks for watching!");
+yt.setMsg('FRESCA_STAND_BY_MESSAGE', "Please stand by.");
+
+
+(function() {
+    var forceUpdate = yt.www.watch.player.updateConfig(yt.playerConfig);
+    var youTubePlayer = yt.player.update('watch-player', yt.playerConfig,
+        forceUpdate, gYouTubePlayerReady);
+    yt.setConfig({
+        'PLAYER_REFERENCE': youTubePlayer
+    });
+})();
+  
+		</script>
+<script>
+    yt.setConfig({
+      'SUBSCRIBE_AXC': "",
+
+      'IS_OWNER_VIEWING': null,
+      'IS_WIDESCREEN': false,
+      'PREFER_LOW_QUALITY': false,
+      'WIDE_PLAYER_STYLES': ["watch-wide-mode"],
+      'COMMENT_SHARE_URL': "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/www.youtube.com\/comment?lc=_COMMENT_ID_",
+      'ALLOW_EMBED': true,
+      'ALLOW_RATINGS': true,
+
+      'LIST_AUTO_PLAY_ON': false,
+      'LIST_AUTO_PLAY_VALUE': 1,
+      'SHUFFLE_VALUE': 0,
+      'SHUFFLE_ENABLED': false,
+      'YPC_CAN_RATE_VIDEO': true,
+      'YPC_SHOW_VPPA_CONFIRM_RATING': false,
+
+        'TTS_URL': "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/www.youtube.com\/api\/timedtext?sparams=asr_langs%2Ccaps%2Cv%2Cexpire\u0026key=yttt1\u0026asr_langs=en%2Cko%2Cja%2Ces\u0026signature=5608EE9CFFB0D149E333A33238B52B0901E3796B.E70A90CA2DFD6B5AE77512138CC07BBFB04EFBA3\u0026caps=asr\u0026expire=1346021725\u0026hl=en_US\u0026v=cM0EhWSRZk0",
+
+
+
+
+
+
+      'PLAYBACK_ID': "AATILTzD3ZRsTfXJ",
+      'PLAY_ALL_MAX': 480    });
+
+    yt.setMsg({
+      'LOADING': "Loading...",
+      'WATCH_ERROR_MESSAGE': "This feature is not available right now. Please try again later."    });
+
+
+
+      yt.setMsg({
+    'UNBLOCK_USER': "Are you sure you want to unblock this user?",
+    'BLOCK_USER': "Are you sure you want to block this user?"
+  });
+  yt.setConfig('BLOCK_USER_AJAX_XSRF', '');
+
+
+      yt.setConfig({
+    'COMMENT_SHARE_URL': "https:\/\/web.archive.org\/web\/20120826155525\/http:\/\/www.youtube.com\/comment?lc=_COMMENT_ID_",
+    'COMMENTS_SIGNIN_URL': "https:\/\/web.archive.org\/web\/20120826155525\/https:\/\/accounts.google.com\/ServiceLogin?uilel=3\u0026service=youtube\u0026passive=true\u0026continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26feature%3Dcomments%26nomobiletemp%3D1%26hl%3Den_US%26next%3D%252Fwatch%253Fv%253DcM0EhWSRZk0%2526feature%253Dpopular\u0026hl=en_US\u0026ltmpl=sso",
+    'COMMENTS_THRESHHOLD': -5,
+    'COMMENTS_PAGE_SIZE': 10,
+    'COMMENTS_COUNT': 50,
+    'COMMENTS_YPC_CAN_POST_OR_REACT_TO_COMMENT': true,
+    'COMMENT_VOTE_XSRF' : '',
+    'COMMENT_ACTIONS_XSRF' : '',
+    'COMMENT_SOURCE': "w",
+    'ENABLE_LIVE_COMMENTS': false  });
+
+  yt.setAjaxToken('link_ajax', "");
+  yt.setAjaxToken('comment_servlet', "");
+  yt.setAjaxToken('comment_voting', "");
+
+  yt.setMsg({
+    'COMMENT_OK': "OK",
+    'COMMENT_BLOCKED': "You have been blocked by the owner of this video.",
+    'COMMENT_CAPTCHAFAIL': "The response to the letters on the image was not correct, please try again.",
+    'COMMENT_PENDING': "Comment Pending Approval!",
+    'COMMENT_ERROR_EMAIL': "Error, account unverified (see email)",
+    'COMMENT_ERROR': "Error, try again",
+    'COMMENT_OWNER_LINKING': "Comments can't contain links, please put the link in your video description and refer to it in the comment."
+  });
+
+    yt.pubsub.subscribe('init', yt.www.comments.init);
+
+
+
+      yt.setConfig('ENABLE_AUTO_LARGE', true);
+      yt.www.watch.watch5.updatePlayerSize();
+      yt.pubsub.subscribe('init', function() {
+        yt.events.listen(window, 'resize',
+            yt.www.watch.watch5.handleResize);
+      });
+
+    yt.pubsub.subscribe('init', yt.www.watch.activity.init);
+    yt.pubsub.subscribe('init', yt.www.watch.player.init);
+    yt.pubsub.subscribe('init', yt.www.watch.actions.init);
+    yt.pubsub.subscribe('init', yt.www.watch.shortcuts.init);
+
+
+    yt.pubsub.subscribe('init', function() {
+      var description = _gel('watch-description');
+      if (!_hasclass(description, 'yt-uix-expander-collapsed')) {
+        yt.www.watch.watch5.handleToggleDescription(description);
+      }
+    });
+
+
+
+
+
+
+  </script>
 {% endblock %}
