@@ -731,16 +731,22 @@ box-sizing: border-box;
 }
 
 #masthead-container {
-position: relative;
-z-index: 1;
-margin: 0;
-border-bottom: none;
+	z-index: 1;
+    margin: 0;
+    border-bottom: none;
+    background-color: #f7f7f7f0;
+    padding: 7px;
+    position: sticky;
+    display: block;
+    top: 0;
+    backdrop-filter: blur(4px);
+	border-bottom: 1px solid lightgrey;
 }
 
 #masthead {
 	width: 970px;
 	position: relative;
-	margin: 7px auto;
+	margin: auto;
 	height: 33px;
 	font-size: 13px;
 	
