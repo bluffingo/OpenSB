@@ -3,8 +3,8 @@ a:focus, h3:focus, span.yt-admin-h3:focus {
 }
 .groupnamecont {
     color: #333;
-    margin: 1px 0px 1px 0px;
-    padding: 4px 0px 4px;
+    margin: 1px 0;
+    padding: 4px 0;
     cursor: hand;
     cursor: pointer;
 }
@@ -19,7 +19,7 @@ a:focus, h3:focus, span.yt-admin-h3:focus {
 }
 .message_title {
     vertical-align: top;
-    padding: .7em 0 .4em 0;
+    padding: .7em 0 .4em;
 }
 .m_nohighlight {
     background-color: #fff;
@@ -28,15 +28,15 @@ a:focus, h3:focus, span.yt-admin-h3:focus {
     background-color: #f3f3f3;
 }
 .addressbook {
-    margin: 0px 5px 0px 8px;
+    margin: 0 5px 0 8px;
     text-decoration: none;
 }
 .groupname {
-    margin: 0px 5px 0px 8px;
+    margin: 0 5px 0 8px;
     position: relative;
 }
 .groupname-c {
-    margin: 0px 5px 0px 14px;
+    margin: 0 5px 0 14px;
     position: relative;
 }
 .groupnamecont.selected {
@@ -289,7 +289,7 @@ table.message-display {
     padding-top: .25em;
 }
 .message-to {
-    padding: 1em 0 .25em 0;
+    padding: 1em 0 .25em;
     clear: both;
 }
 .title_and_pagination td {
@@ -340,7 +340,7 @@ table.message-display {
     text-align: center;
 }
 .page-numbers, .page-previous, .page-next {
-    margin: 2px 5px 0px 5px;
+    margin: 2px 5px 0;
 }
 .page-numbers {
     font-weight: bold;
@@ -350,7 +350,7 @@ table.message-display {
     background-color: #ccc;
     border-style: solid;
     border-color: #999;
-    border-width: 0px 1px 1px 1px;
+    border-width: 0 1px 1px;
 }
 #compose-cell {
     padding: 0;
@@ -374,7 +374,7 @@ table.message-display {
 }
 .hook-arrow {
     float: left;
-    margin: 7px 5px 0px 12px;
+    margin: 7px 5px 0 12px;
 }
 #pagination {
     text-align: right;
@@ -431,7 +431,7 @@ table.message-display {
     font-size: 18px;
 }
 #friends-promo p {
-    padding: 5px 0 5px;
+    padding: 5px 0;
 }
 #friends-promo a {
     color: #000;
