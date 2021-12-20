@@ -1,4 +1,7 @@
 <?php
+
+$pageVariable = "watch";
+
 require('lib/common.php');
 $id = (isset($_GET['v']) ? $_GET['v'] : null);
 $ip = (isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']));
