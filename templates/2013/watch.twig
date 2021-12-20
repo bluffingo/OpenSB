@@ -3,7 +3,7 @@
 <div id="watch7-container" class="  transition-content  " itemscope="" itemid="" itemtype="http://schema.org/VideoObject">
 <link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
         <link itemprop="url" href="http://www.youtube.com/watch?v=D-sIkDWfccU">
-    <meta itemprop="name" content="Sonic Lost Worlds Debut Trailer">
+    <meta itemprop="name" content="{{ video.title }}">
     <meta itemprop="description" content="Sonic is back and discovering a lost world in this Wii U and 3DS exclusive. Check out first gameplay footage in this new trailer! Subscribe to IGN's channel ...">
     <meta itemprop="paid" content="False">
 
@@ -31,18 +31,22 @@
 
       <meta itemprop="isFamilyFriendly" content="True">
       <meta itemprop="regionsAllowed" content="AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW">
+
+
+      <div id="player" class="">
           <div id="playlist">
     
   </div>
   <script>if (window.ytcsi) {ytcsi.tick("bf");}</script>
+      <div id="player-api" class="player-width player-height off-screen-target">
+	  {{ include('/components/player.twig') }}
+	  </div>
 
-	<div id="player" class="" style="width:640px;height:360px;">
-	{{ include('/components/player.twig') }}
-	</div>
   <div id="player-branded-banner">
   </div>
 
       </div>
+
     <div id="watch7-main-container">
       <div id="watch7-main" class="clearfix">
         <div id="watch7-content" class="watch-content">
@@ -55,50 +59,50 @@
   
 
 
-  <span id="eow-title" class="watch-title  yt-uix-expander-head" dir="ltr" title="Sonic Lost Worlds Debut Trailer">
-    Sonic Lost Worlds Debut Trailer
+  <span id="eow-title" class="watch-title  yt-uix-expander-head" dir="ltr" title="{{ video.title }}">
+    {{ video.title }}
   </span>
 
     </h1>
   </div>
 
-    <div id="watch7-user-header"><a href="/user/IGNentertainment?feature=watch" class="yt-user-photo ">    <span class="video-thumb  yt-thumb yt-thumb-48">
+    <div id="watch7-user-header"><a href="/user/{{ video.u_name }}?feature=watch" class="yt-user-photo ">    <span class="video-thumb  yt-thumb yt-thumb-48">
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="IGN" src="https://lh4.googleusercontent.com/-CUStYqbZjKk/AAAAAAAAAAI/AAAAAAAAAAA/-WVBoj_7FTs/s48-c-k/photo.jpg" width="48">
+            <img alt="{{ video.u_name }}" src="{{ profile_image(video.u_name) }}" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
       </span>
     </span>
-</a><a href="/user/IGNentertainment?feature=watch" class="yt-uix-sessionlink yt-user-name " data-sessionlink="feature=watch&amp;ei=Eg6tUbe4D8OikwKw44CYBQ" dir="ltr">IGN</a>  <span class="yt-user-name-icon-verified">
+</a><a href="/user/{{ video.u_name }}?feature=watch" class="yt-uix-sessionlink yt-user-name " data-sessionlink="feature=watch&amp;ei=Eg6tUbe4D8OikwKw44CYBQ" dir="ltr">{{ video.u_name }}</a>  <span class="yt-user-name-icon-verified">
     <img src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" class="yt-uix-tooltip yt-channel-title-icon-verified" alt="" title="Verified name">
   </span>
-<span class="yt-user-separator">·</span><a class="yt-uix-sessionlink yt-user-videos" href="/user/IGNentertainment/videos" data-sessionlink="feature=watch&amp;ei=Eg6tUbe4D8OikwKw44CYBQ">84,874 videos</a><br><span id="watch7-subscription-container"><span class=" yt-uix-button-subscription-container"><button aria-busy="false" aria-live="polite" type="button" class="yt-uix-subscription-button yt-uix-button yt-uix-button-subscribe-branded" onclick=";return false;" aria-role="button" data-channel-external-id="UCKy1dAqELo0zrOtPkf0eTMw" data-href="https://accounts.google.com/ServiceLogin?passive=true&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26continue_action%3DQUFFLUhqbHdHRmFsM3RoTUNHSFJvUU5yZUpRQUlKemh1Z3xBQ3Jtc0ttSGhVMG5jVFdtX05sbndSdlNRUnlKVF9ieUxVSjN2TVczWDUyT2RzZ2p6WThsNGh2Wk5KVkdndjlEcWYwT3hEQUpXRG83dHBsX1ZidW1yRkNnVDJFQ0hMaTFTVmt3emlCU1d3NWg0RERHMnVrdnpvM1hMRmhWd0VBQTJHVll4cU9VSzZiTXpuLTQzUjRxZXE2cTFKUUpmNFRnNnl5cWRLRVRhZkFrUGJaLUlKal8ydF9mclJGTktLYlRkVHVJR3FlT284WGs%253D%26feature%3Dsubscribe%26hl%3Den_US%26next%3D%252Fchannel%252FUCKy1dAqELo0zrOtPkf0eTMw%26nomobiletemp%3D1&amp;uilel=3&amp;hl=en_US&amp;service=youtube" data-style-type="branded" data-sessionlink="feature=watch&amp;ei=Eg6tUbe4D8OikwKw44CYBQ" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-subscribe" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span><span class="yt-uix-button-content"><span class="subscribe-label" aria-label="Subscribe">Subscribe</span><span class="subscribed-label" aria-label="Unsubscribe">Subscribed</span><span class="unsubscribe-label" aria-label="Unsubscribe">Unsubscribe</span> </span></button><span class="yt-subscription-button-subscriber-count-branded-horizontal">2,918,698</span>  <span class="yt-subscription-button-disabled-mask" title=""></span>
+<span class="yt-user-separator">·</span><a class="yt-uix-sessionlink yt-user-videos" href="/user/{{ video.u_name }}/videos" data-sessionlink="feature=watch&amp;ei=Eg6tUbe4D8OikwKw44CYBQ">{{ allVideos }} videos</a><br><span id="watch7-subscription-container"><span class=" yt-uix-button-subscription-container"><button aria-busy="false" aria-live="polite" type="button" class="yt-uix-subscription-button yt-uix-button yt-uix-button-subscribe-branded" onclick=";return false;" aria-role="button" data-channel-external-id="UCKy1dAqELo0zrOtPkf0eTMw" data-href="https://accounts.google.com/ServiceLogin?passive=true&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26continue_action%3DQUFFLUhqbHdHRmFsM3RoTUNHSFJvUU5yZUpRQUlKemh1Z3xBQ3Jtc0ttSGhVMG5jVFdtX05sbndSdlNRUnlKVF9ieUxVSjN2TVczWDUyT2RzZ2p6WThsNGh2Wk5KVkdndjlEcWYwT3hEQUpXRG83dHBsX1ZidW1yRkNnVDJFQ0hMaTFTVmt3emlCU1d3NWg0RERHMnVrdnpvM1hMRmhWd0VBQTJHVll4cU9VSzZiTXpuLTQzUjRxZXE2cTFKUUpmNFRnNnl5cWRLRVRhZkFrUGJaLUlKal8ydF9mclJGTktLYlRkVHVJR3FlT284WGs%253D%26feature%3Dsubscribe%26hl%3Den_US%26next%3D%252Fchannel%252FUCKy1dAqELo0zrOtPkf0eTMw%26nomobiletemp%3D1&amp;uilel=3&amp;hl=en_US&amp;service=youtube" data-style-type="branded" data-sessionlink="feature=watch&amp;ei=Eg6tUbe4D8OikwKw44CYBQ" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-subscribe" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span><span class="yt-uix-button-content"><span class="subscribe-label" aria-label="Subscribe">Subscribe</span><span class="subscribed-label" aria-label="Unsubscribe">Subscribed</span><span class="unsubscribe-label" aria-label="Unsubscribe">Unsubscribe</span> </span></button><span class="yt-subscription-button-subscriber-count-branded-horizontal">{{ subCount }}</span>  <span class="yt-subscription-button-disabled-mask" title=""></span>
 </span></span><div id="watch7-views-info">      <span class="watch-view-count ">
-    1,416,942
+    {{ viewCount }}
   </span>
 
     <div class="video-extras-sparkbars">
-    <div class="video-extras-sparkbar-likes" style="width: 94.2028985507%"></div>
-    <div class="video-extras-sparkbar-dislikes" style="width: 5.79710144928%"></div>
+    <div class="video-extras-sparkbar-likes" style="width: {{ videoRatio }}%"></div>
+    <div class="video-extras-sparkbar-dislikes" style="width: {{ dislikeRatio }}%"></div>
   </div>
   <span class="video-extras-likes-dislikes">
       <img class="icon-watch-stats-like" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="Like">
-  <span class="likes-count">14,040</span>
+  <span class="likes-count">{{ total_likes }}</span>
  &nbsp;&nbsp;&nbsp;   <img class="icon-watch-stats-dislike" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="Dislike">
-  <span class="dislikes-count">864</span>
+  <span class="dislikes-count">{{ total_dislikes }}</span>
 
   </span>
 
 </div></div>
       <div id="watch7-action-buttons" class="clearfix">
     <div id="watch7-sentiment-actions">
-      <span id="watch-like-dislike-buttons" class="yt-uix-button-group " data-button-toggle-group="optional"><span class="yt-uix-clickcard"><button onclick=";return false;" type="button" title="" class="yt-uix-clickcard-target yt-uix-button yt-uix-button-text yt-uix-tooltip" id="watch-like" data-button-toggle="true" data-position="bottomright" data-orientation="vertical" data-unlike-tooltip="Unlike" data-like-tooltip="I like this" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-like" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span><span class="yt-uix-button-content">Like </span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+      <span id="watch-like-dislike-buttons" class="yt-uix-button-group " data-vote-state="2" data-button-toggle-group="optional"><span class="yt-uix-clickcard"><button onclick=";return false;" type="button" title="" class="yt-uix-clickcard-target yt-uix-button yt-uix-button-text yt-uix-tooltip" id="watch-like" data-button-toggle="true" data-position="bottomright" data-orientation="vertical" data-unlike-tooltip="Unlike" data-like-tooltip="I like this" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-like" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span><span class="yt-uix-button-content">Like </span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
-      Sign in with your Google Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to like <span class="yt-user-name " dir="ltr">IGN</span>'s video.
+      Sign in with your cheeseRox Account (or PokTube Account) to like <span class="yt-user-name " dir="ltr">IGN</span>'s video.
 
     </div>
     <ul class="watch7-hovercard-icon-strip clearfix">
@@ -123,9 +127,9 @@
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" type="button" title="I dislike this" class="yt-uix-clickcard-target yt-uix-button yt-uix-button-text yt-uix-tooltip yt-uix-button-empty" id="watch-dislike" data-button-toggle="true" data-position="bottomright" data-orientation="vertical" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-dislike" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="I dislike this" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
-      Sign in with your Google Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to dislike <span class="yt-user-name " dir="ltr">IGN</span>'s video.
+      Sign in with your cheeseRox Account (or PokTube Account) to dislike <span class="yt-user-name " dir="ltr">IGN</span>'s video.
 
     </div>
     <ul class="watch7-hovercard-icon-strip clearfix">
@@ -163,9 +167,9 @@
           <span class="yt-uix-clickcard">
     <button onclick=";return false;" title="" class="action-panel-trigger   yt-uix-clickcard-target yt-uix-button yt-uix-button-text yt-uix-tooltip" type="button" data-button-toggle="true" data-orientation="vertical" data-position="bottomleft" data-trigger-for="action-panel-none" data-upsell="playlist" role="button"><span class="yt-uix-button-content">Add to </span></button>
         <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
-      Sign in with your Google Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to add <span class="yt-user-name " dir="ltr">IGN</span>'s video to your playlist.
+      Sign in with your cheeseRox Account (or PokTube Account) to add <span class="yt-user-name " dir="ltr">IGN</span>'s video to your playlist.
 
     </div>
     <ul class="watch7-hovercard-icon-strip clearfix">
@@ -205,16 +209,16 @@
   </div>
 
       <div id="watch7-action-panels" class="yt-uix-button-panel">
-      <div id="action-panel-details" class="action-panel-content" data-panel-loaded="true">
+      <div id="action-panel-details" class="action-panel-content ">
     <div id="watch-description" class="yt-uix-expander yt-uix-expander-collapsed yt-uix-button-panel">
       <div id="watch-description-content">
         <div id="watch-description-clip">
           <p id="watch-uploader-info">
-            <strong>Published on <span id="eow-date" class="watch-video-date">May 28, 2013</span>
+            <strong>Published on <span id="eow-date" class="watch-video-date">{{ video.time | date('M j, Y') }}</span>
 </strong>
           </p>
           <div id="watch-description-text">
-            <p id="eow-description">Sonic is back and discovering a lost world in this Wii U and 3DS exclusive. Check out first gameplay footage in this new trailer!<br><br>Subscribe to IGN's channel for reviews, news, and all things gaming:<br><a href="http://www.youtube.com/subscription_center?add_user=ignentertainment" target="_blank" title="http://www.youtube.com/subscription_center?add_user=ignentertainment" rel="nofollow" dir="ltr" class="yt-uix-redirect-link">http://www.youtube.com/subscription_c...</a><br><br>Sonic Lost Worlds Debut Trailer</p>
+            <p id="eow-description">{{ video.description }}</p>
           </div>
             <div id="watch-description-extras">
     <ul class="watch-extras-section">
@@ -223,7 +227,7 @@
 Category
         </h4>
         <div class="content">
-              <p id="eow-category"><a href="/gaming">Gaming</a></p>
+              <p id="eow-category"><a href="/gaming">{{ video.category_id | category_id_to_name() }}</a></p>
 
         </div>
       </li>
@@ -233,7 +237,7 @@ Category
           <h4 class="title">License</h4>
           <div class="content">
               <p id="eow-reuse">
-Standard YouTube License
+Standard cheeseRox License
   </p>
 
           </div></li>
@@ -367,7 +371,7 @@ Loading...
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="ToonFaceable" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/i/UHH4wAMi9JI8QOJ0IByYEg/1.jpg" data-group-key="thumb-group-4" width="48">
+            <img alt="ToonFaceable" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/i/UHH4wAMi9JI8QOJ0IByYEg/1.jpg" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -391,7 +395,7 @@ Loading...
 
 
       <div class="comment-text" dir="ltr">
-          <p>Why do people keep saying that only some Sonic games are good, or you're stupid if you like some of them? People are allowed to have their own opinions! Don't judge a game just by the trailer! The Sonic franchise isn't going anywhere soon because no matter what the game is,﻿ someone's gonna like it and others need to respect that!</p>
+          <p>Why do people keep saying that only some Sonic games are good, or you're stupid if you like some of them? People are allowed to have their own opinions! Don't judge a game just by the trailer! The Sonic franchise isn't going anywhere soon because no matter what the game is,&#xFEFF; someone's gonna like it and others need to respect that!</p>
 <p>This is getting ridiculous. I'm giving this game a chance. Hopefully you guys will do the same.</p>
 
       </div>
@@ -405,7 +409,7 @@ Loading...
       </span>
 
     <span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="start comment-action-vote-up comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">ToonFaceable</span>'s comment.
 
@@ -432,7 +436,7 @@ Loading...
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">ToonFaceable</span>'s comment.
 
@@ -475,7 +479,7 @@ Loading...
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="Alexis Lopez." src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="https://gp4.googleusercontent.com/-RCT8E9TKIDw/AAAAAAAAAAI/AAAAAAAAAAA/65r6XvAe4Yk/s48-c-k/photo.jpg" data-group-key="thumb-group-5" width="48">
+            <img alt="Alexis Lopez." src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="https://gp4.googleusercontent.com/-RCT8E9TKIDw/AAAAAAAAAAI/AAAAAAAAAAA/65r6XvAe4Yk/s48-c-k/photo.jpg" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -499,7 +503,7 @@ Loading...
 
 
       <div class="comment-text" dir="ltr">
-          <p>He shows up to protect﻿ them and then runs away .-.</p>
+          <p>He shows up to protect&#xFEFF; them and then runs away .-.</p>
 
       </div>
       
@@ -509,7 +513,7 @@ Loading...
 
 
     <span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="start comment-action-vote-up comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">Alexis Lopez.</span>'s comment.
 
@@ -536,7 +540,7 @@ Loading...
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">Alexis Lopez.</span>'s comment.
 
@@ -607,7 +611,7 @@ Loading...
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="BroGamerReviews" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/i/gpE1Z_Dv2V7qURDu3I8KSw/1.jpg" data-group-key="thumb-group-6" width="48">
+            <img alt="BroGamerReviews" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/i/gpE1Z_Dv2V7qURDu3I8KSw/1.jpg" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -631,7 +635,7 @@ Loading...
 
 
       <div class="comment-text" dir="ltr">
-          <p>Looks more like Sonic﻿ Xtreme :)....</p>
+          <p>Looks more like Sonic&#xFEFF; Xtreme :)....</p>
 
       </div>
       
@@ -641,7 +645,7 @@ Loading...
 
 
     <span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="start comment-action-vote-up comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">BroGamerReviews</span>'s comment.
 
@@ -668,7 +672,7 @@ Loading...
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">BroGamerReviews</span>'s comment.
 
@@ -713,7 +717,7 @@ in reply to <a href="/user/RaulMontano1" class="yt-uix-sessionlink yt-user-name 
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="rialyn bergdulo" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="https://gp3.googleusercontent.com/-LOT8wHuNFSA/AAAAAAAAAAI/AAAAAAAAAAA/hexYAMV4U3E/s48-c-k/photo.jpg" data-group-key="thumb-group-7" width="48">
+            <img alt="rialyn bergdulo" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="https://gp3.googleusercontent.com/-LOT8wHuNFSA/AAAAAAAAAAI/AAAAAAAAAAA/hexYAMV4U3E/s48-c-k/photo.jpg" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -737,13 +741,13 @@ in reply to <a href="/user/RaulMontano1" class="yt-uix-sessionlink yt-user-name 
 
 
       <div class="comment-text" dir="ltr">
-          <p><wbr>­</p>
-<p>Have you consider working online﻿ it is one of the fastest growing industry today..working at the comfort</p>
+          <p><wbr>&shy;</p>
+<p>Have you consider working online&#xFEFF; it is one of the fastest growing industry today..working at the comfort</p>
 <p>of your home is really convenient specially for mom's or working student like me..I basically earn 70 dollars an hour</p>
 <p>just by entering data in certain site..read more and visit our site...U.S and U.K Residents are prioritized..</p>
 <p>yaz2.com</p>
 <p>COPY LINK TO YOUR BROWSER</p>
-<p><wbr>­</p>
+<p><wbr>&shy;</p>
 <p></p>
 
       </div>
@@ -754,7 +758,7 @@ in reply to <a href="/user/RaulMontano1" class="yt-uix-sessionlink yt-user-name 
 
 
     <span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="start comment-action-vote-up comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">rialyn bergdulo</span>'s comment.
 
@@ -781,7 +785,7 @@ in reply to <a href="/user/RaulMontano1" class="yt-uix-sessionlink yt-user-name 
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">rialyn bergdulo</span>'s comment.
 
@@ -824,7 +828,7 @@ in reply to <a href="/user/RaulMontano1" class="yt-uix-sessionlink yt-user-name 
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="NobodyXIV" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i3.ytimg.com/i/bFTFu5adYc09HHGSZCPwzQ/1.jpg" data-group-key="thumb-group-9" width="48">
+            <img alt="NobodyXIV" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i3.ytimg.com/i/bFTFu5adYc09HHGSZCPwzQ/1.jpg" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -848,7 +852,7 @@ in reply to <a href="/user/RaulMontano1" class="yt-uix-sessionlink yt-user-name 
 
 
       <div class="comment-text" dir="ltr">
-          <p>You're gonna be wanting lots of﻿ games to be on the DS and Wii in the future...</p>
+          <p>You're gonna be wanting lots of&#xFEFF; games to be on the DS and Wii in the future...</p>
 
       </div>
       
@@ -858,7 +862,7 @@ in reply to <a href="/user/RaulMontano1" class="yt-uix-sessionlink yt-user-name 
 
 
     <span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="start comment-action-vote-up comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">NobodyXIV</span>'s comment.
 
@@ -885,7 +889,7 @@ in reply to <a href="/user/RaulMontano1" class="yt-uix-sessionlink yt-user-name 
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">NobodyXIV</span>'s comment.
 
@@ -930,7 +934,7 @@ in reply to <a href="/user/bbsgames" class="yt-uix-sessionlink yt-user-name " da
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="bbsgames" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/i/9o8L2JHHUF0yANg5_HCZfQ/1.jpg" data-group-key="thumb-group-10" width="48">
+            <img alt="bbsgames" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/i/9o8L2JHHUF0yANg5_HCZfQ/1.jpg" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -954,7 +958,7 @@ in reply to <a href="/user/bbsgames" class="yt-uix-sessionlink yt-user-name " da
 
 
       <div class="comment-text" dir="ltr">
-          <p>It's a shame that these games are Wii U and 3DS exclusive, I probably would have gotten this for the Wii, DS or PS3. Oh well!﻿ Hope you guys give it a chance and enjoy it !</p>
+          <p>It's a shame that these games are Wii U and 3DS exclusive, I probably would have gotten this for the Wii, DS or PS3. Oh well!&#xFEFF; Hope you guys give it a chance and enjoy it !</p>
 
       </div>
       
@@ -964,7 +968,7 @@ in reply to <a href="/user/bbsgames" class="yt-uix-sessionlink yt-user-name " da
 
 
     <span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="start comment-action-vote-up comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">bbsgames</span>'s comment.
 
@@ -991,7 +995,7 @@ in reply to <a href="/user/bbsgames" class="yt-uix-sessionlink yt-user-name " da
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">bbsgames</span>'s comment.
 
@@ -1034,7 +1038,7 @@ in reply to <a href="/user/bbsgames" class="yt-uix-sessionlink yt-user-name " da
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="decimationclip" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/i/ydNhSJjs0TS7i7nEd4S8oQ/1.jpg" data-group-key="thumb-group-11" width="48">
+            <img alt="decimationclip" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/i/ydNhSJjs0TS7i7nEd4S8oQ/1.jpg" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1059,7 +1063,7 @@ in reply to <a href="/user/bbsgames" class="yt-uix-sessionlink yt-user-name " da
 
       <div class="comment-text" dir="ltr">
           <p>The music in Unleashed is a huge step from the Mediocre rock shit that Sega had began to put into the Sonic franchise.</p>
-<p>The game itself however wasn't executed well however. I disliked the werehog﻿ levels not because they were slow, rather I disliked it because I sincerely felt they could had been executed better. The Day levels, despite being moderately fun, were extremely linear, another issue I had with Generations and Colors.</p>
+<p>The game itself however wasn't executed well however. I disliked the werehog&#xFEFF; levels not because they were slow, rather I disliked it because I sincerely felt they could had been executed better. The Day levels, despite being moderately fun, were extremely linear, another issue I had with Generations and Colors.</p>
 
       </div>
       
@@ -1069,7 +1073,7 @@ in reply to <a href="/user/bbsgames" class="yt-uix-sessionlink yt-user-name " da
 
 
     <span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="start comment-action-vote-up comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">decimationclip</span>'s comment.
 
@@ -1096,7 +1100,7 @@ in reply to <a href="/user/bbsgames" class="yt-uix-sessionlink yt-user-name " da
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">decimationclip</span>'s comment.
 
@@ -1141,7 +1145,7 @@ in reply to <a href="/user/4eversupersonicgirl" class="yt-uix-sessionlink yt-use
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="SimplisticBrony" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i3.ytimg.com/i/RdMKZe0m65ZaL-tqg-lFQw/1.jpg" data-group-key="thumb-group-12" width="48">
+            <img alt="SimplisticBrony" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i3.ytimg.com/i/RdMKZe0m65ZaL-tqg-lFQw/1.jpg" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1165,7 +1169,7 @@ in reply to <a href="/user/4eversupersonicgirl" class="yt-uix-sessionlink yt-use
 
 
       <div class="comment-text" dir="ltr">
-          <p>I﻿ didn't address that one for that reason.</p>
+          <p>I&#xFEFF; didn't address that one for that reason.</p>
 
       </div>
       
@@ -1175,7 +1179,7 @@ in reply to <a href="/user/4eversupersonicgirl" class="yt-uix-sessionlink yt-use
 
 
     <span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="start comment-action-vote-up comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">SimplisticBrony</span>'s comment.
 
@@ -1202,7 +1206,7 @@ in reply to <a href="/user/4eversupersonicgirl" class="yt-uix-sessionlink yt-use
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">SimplisticBrony</span>'s comment.
 
@@ -1247,7 +1251,7 @@ in reply to <a href="/user/MariotheHedgehog1998" class="yt-uix-sessionlink yt-us
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="decimationclip" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/i/ydNhSJjs0TS7i7nEd4S8oQ/1.jpg" data-group-key="thumb-group-13" width="48">
+            <img alt="decimationclip" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/i/ydNhSJjs0TS7i7nEd4S8oQ/1.jpg" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1272,7 +1276,7 @@ in reply to <a href="/user/MariotheHedgehog1998" class="yt-uix-sessionlink yt-us
 
       <div class="comment-text" dir="ltr">
           <p>People say that some Sonic games are good because some Sonic games good..</p>
-<p>not all of them are fun or a blast to play. However, I always give a Sonic﻿ game a chance, here's to hoping this one is as good as the last 2 have been (not including the Sonic 4 eps)</p>
+<p>not all of them are fun or a blast to play. However, I always give a Sonic&#xFEFF; game a chance, here's to hoping this one is as good as the last 2 have been (not including the Sonic 4 eps)</p>
 
       </div>
       
@@ -1282,7 +1286,7 @@ in reply to <a href="/user/MariotheHedgehog1998" class="yt-uix-sessionlink yt-us
 
 
     <span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="start comment-action-vote-up comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">decimationclip</span>'s comment.
 
@@ -1309,7 +1313,7 @@ in reply to <a href="/user/MariotheHedgehog1998" class="yt-uix-sessionlink yt-us
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">decimationclip</span>'s comment.
 
@@ -1354,7 +1358,7 @@ in reply to <a href="/user/ToonFaceable" class="yt-uix-sessionlink yt-user-name 
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="Raul Montano" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="https://gp4.googleusercontent.com/-jBgSQLL1MLI/AAAAAAAAAAI/AAAAAAAAAAA/7rwJLxgxbZA/s48-c-k/photo.jpg" data-group-key="thumb-group-14" width="48">
+            <img alt="Raul Montano" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="https://gp4.googleusercontent.com/-jBgSQLL1MLI/AAAAAAAAAAI/AAAAAAAAAAA/7rwJLxgxbZA/s48-c-k/photo.jpg" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1378,7 +1382,7 @@ in reply to <a href="/user/ToonFaceable" class="yt-uix-sessionlink yt-user-name 
 
 
       <div class="comment-text" dir="ltr">
-          <p>Super Mario﻿ Galaxy much?</p>
+          <p>Super Mario&#xFEFF; Galaxy much?</p>
 
       </div>
       
@@ -1388,7 +1392,7 @@ in reply to <a href="/user/ToonFaceable" class="yt-uix-sessionlink yt-user-name 
 
 
     <span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="start comment-action-vote-up comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">Raul Montano</span>'s comment.
 
@@ -1415,7 +1419,7 @@ in reply to <a href="/user/ToonFaceable" class="yt-uix-sessionlink yt-user-name 
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">Raul Montano</span>'s comment.
 
@@ -1458,7 +1462,7 @@ in reply to <a href="/user/ToonFaceable" class="yt-uix-sessionlink yt-user-name 
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="jirachi1613" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/i/q58ed8RLvhO4tz3XguYQyA/1.jpg" data-group-key="thumb-group-15" width="48">
+            <img alt="jirachi1613" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/i/q58ed8RLvhO4tz3XguYQyA/1.jpg" width="48">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1482,7 +1486,7 @@ in reply to <a href="/user/ToonFaceable" class="yt-uix-sessionlink yt-user-name 
 
 
       <div class="comment-text" dir="ltr">
-          <p>Oh, like you're doing any better. You're basically trying﻿ to revive a dead argument by putting in your two cents, as if people really care. Although, the arguments are definitely deeper than just what you describe. Plus, people do have the right to argue if they want. With that said, it's fun to argue.</p>
+          <p>Oh, like you're doing any better. You're basically trying&#xFEFF; to revive a dead argument by putting in your two cents, as if people really care. Although, the arguments are definitely deeper than just what you describe. Plus, people do have the right to argue if they want. With that said, it's fun to argue.</p>
 
       </div>
       
@@ -1492,7 +1496,7 @@ in reply to <a href="/user/ToonFaceable" class="yt-uix-sessionlink yt-user-name 
 
 
     <span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="start comment-action-vote-up comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">jirachi1613</span>'s comment.
 
@@ -1519,7 +1523,7 @@ in reply to <a href="/user/ToonFaceable" class="yt-uix-sessionlink yt-user-name 
     </div>
   </div>
 </span><span class="yt-uix-clickcard"><button onclick=";return false;" title="" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-tooltip yt-uix-button-empty" type="button" data-action="" data-tooltip-show-delay="300" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>  <div class="watch7-hovercard yt-uix-clickcard-content">
-    <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+    <h3 class="watch7-hovercard-header">Sign in to cheeseRox</h3>
     <div class="watch7-hovercard-message">
       Sign in with your YouTube Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome) to rate <span class="yt-user-name " dir="ltr">jirachi1613</span>'s comment.
 
@@ -1600,7 +1604,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/vi/qu9Yt-OG-bY/default.jpg" data-group-key="thumb-group-16" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/vi/qu9Yt-OG-bY/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1621,7 +1625,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/vi/y66uuUbtvtU/default.jpg" data-group-key="thumb-group-17" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/vi/y66uuUbtvtU/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1642,7 +1646,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i3.ytimg.com/vi/6eukzxvQt40/default.jpg" data-group-key="thumb-group-17" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i3.ytimg.com/vi/6eukzxvQt40/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1663,7 +1667,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/vi/aZqmQT89kqU/default.jpg" data-group-key="thumb-group-17" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/vi/aZqmQT89kqU/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1684,7 +1688,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/gbHqxh2i2WU/default.jpg" data-group-key="thumb-group-18" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/gbHqxh2i2WU/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1705,7 +1709,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/gcJtnqFt7U0/default.jpg" data-group-key="thumb-group-18" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/gcJtnqFt7U0/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1726,7 +1730,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i1.ytimg.com/vi/PBNaoSvg7Xo/default.jpg" data-group-key="thumb-group-18" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i1.ytimg.com/vi/PBNaoSvg7Xo/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1747,7 +1751,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i3.ytimg.com/vi/VE65x31ik68/default.jpg" data-group-key="thumb-group-19" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i3.ytimg.com/vi/VE65x31ik68/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1768,7 +1772,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/wyy3B3YBzDo/default.jpg" data-group-key="thumb-group-19" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/wyy3B3YBzDo/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1789,7 +1793,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/3012FtPRAjw/default.jpg" data-group-key="thumb-group-19" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/3012FtPRAjw/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1810,7 +1814,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/_SxRCZS86nE/default.jpg" data-group-key="thumb-group-20" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/_SxRCZS86nE/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1831,7 +1835,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/3pfJzK1tdR0/default.jpg" data-group-key="thumb-group-20" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/3pfJzK1tdR0/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1852,7 +1856,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/3CV9je-2Bvk/default.jpg" data-group-key="thumb-group-20" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/3CV9je-2Bvk/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1873,7 +1877,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/3-WJEC3VfhE/default.jpg" data-group-key="thumb-group-21" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/3-WJEC3VfhE/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1894,7 +1898,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i1.ytimg.com/vi/Dk5IZlVfas4/default.jpg" data-group-key="thumb-group-21" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i1.ytimg.com/vi/Dk5IZlVfas4/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1915,7 +1919,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i1.ytimg.com/vi/LrqzbWsyuT8/default.jpg" data-group-key="thumb-group-21" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i1.ytimg.com/vi/LrqzbWsyuT8/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1936,7 +1940,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i3.ytimg.com/vi/NHKvXexeP6c/default.jpg" data-group-key="thumb-group-21" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i3.ytimg.com/vi/NHKvXexeP6c/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1957,7 +1961,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/CRsLUQRkY-M/default.jpg" data-group-key="thumb-group-22" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/CRsLUQRkY-M/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1978,7 +1982,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/cnk0vKtwJHs/default.jpg" data-group-key="thumb-group-22" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i4.ytimg.com/vi/cnk0vKtwJHs/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -1999,7 +2003,7 @@ Advertisement
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
           <span class="yt-thumb-clip-inner">
-            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/vi/aHsz1w6_9vc/default.jpg" data-group-key="thumb-group-22" width="120">
+            <img alt="" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" data-thumb="//i2.ytimg.com/vi/aHsz1w6_9vc/default.jpg" width="120">
             <span class="vertical-align"></span>
           </span>
         </span>
@@ -2030,7 +2034,7 @@ Loading more suggestions...
     </div>
 
       <div style="visibility: hidden; height: 0px; padding: 0px; overflow: hidden;">
-      <img src="//www.youtube-nocookie.com/gen_204?attributionpartner=IGN" width="1" height="1" border="0">
+      <img src="//www.youtube-nocookie.com/gen_204?attributionpartner=IGN" border="0" width="1" height="1">
   </div>
 
   </div>

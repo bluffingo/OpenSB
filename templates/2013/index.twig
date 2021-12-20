@@ -23,7 +23,7 @@
                                           </span>
                                           </span>
                                           <span class="video-time">{{ video_length(video) }}</span>
-                                          <button onclick=";return false;" class="addto-button video-actions spf-nolink addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" data-video-ids="{{ video.id }}" data-button-menu-id="shared-addto-watch-later-login" role="button"><span class="yt-uix-button-content">  <img src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="Watch Later">
+                                          <button onclick=";return false;" class="addto-button video-actions spf-nolink addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" data-video-ids="{{ video.video_id }}" data-button-menu-id="shared-addto-watch-later-login" role="button"><span class="yt-uix-button-content">  <img src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="Watch Later">
                                           </span><img class="yt-uix-button-arrow" src="//s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></button>
                                           </a>
                                           <a class="lohp-video-link max-line-2 yt-uix-sessionlink" data-sessionlink="feature=g-logo&amp;ei=HA2tUc6rNZqvhAGNvIGYDg&amp;ved=CBUQ0h4oAA" href="/watch?v=RYbe-35_BaA" title="{{ video.title }}">{{ video.title }}</a>
@@ -45,7 +45,7 @@
 									{% for video in videos_right %}
                                        <div class="lohp-medium-shelf context-data-item" data-context-item-type="video" data-context-item-user="{{ video.u_name }}" data-context-item-time="1:47" data-context-item-views="232,923 views" data-context-item-id="F-EXr7pYoYI" data-context-item-title="3 Board Games You've Been Playing All Wrong">
                                           <div class="lohp-media-object">
-                                             <a href="/watch?v={{ video.id }}" class="ux-thumb-wrap yt-uix-sessionlink yt-uix-contextlink contains-addto lohp-thumb-wrap" data-sessionlink="feature=g-logo&amp;ei=HA2tUc6rNZqvhAGNvIGYDg&amp;ved=CBYQ0h4oAQ">    <span class="video-thumb  yt-thumb yt-thumb-128">
+                                             <a href="/watch?v={{ video.video_id }}" class="ux-thumb-wrap yt-uix-sessionlink yt-uix-contextlink contains-addto lohp-thumb-wrap" data-sessionlink="feature=g-logo&amp;ei=HA2tUc6rNZqvhAGNvIGYDg&amp;ved=CBYQ0h4oAQ">    <span class="video-thumb  yt-thumb yt-thumb-128">
                                              <span class="yt-thumb-default">
                                              <span class="yt-thumb-clip">
                                              <span class="yt-thumb-clip-inner">
@@ -61,7 +61,7 @@
                                              </a>
                                           </div>
                                           <div class="lohp-media-object-content lohp-medium-shelf-content">
-                                             <a class="lohp-video-link max-line-2 yt-uix-sessionlink" data-sessionlink="feature=g-logo&amp;ei=HA2tUc6rNZqvhAGNvIGYDg&amp;ved=CBYQ0h4oAQ" href="/watch?v={{ video.id }}" title="{{ video.title }}">{{ video.title }}</a>
+                                             <a class="lohp-video-link max-line-2 yt-uix-sessionlink" data-sessionlink="feature=g-logo&amp;ei=HA2tUc6rNZqvhAGNvIGYDg&amp;ved=CBYQ0h4oAQ" href="/watch?v={{ video.video_id }}" title="{{ video.title }}">{{ video.title }}</a>
                                              <div class="lohp-video-metadata attached">
                                                 <span class="content-uploader">
                                                 <span class="username-prepend">by</span> <a href="/user/{{ video.u_name }}" class="yt-uix-sessionlink yt-user-name " data-sessionlink="ei=HA2tUc6rNZqvhAGNvIGYDg" dir="ltr">{{ video.u_name }}</a>

@@ -49,6 +49,10 @@ $combinedRatings = $totalDislikes + $totalLikes;
 
 $allRatings = calculateRatio($totalDislikes, $totalLikes, $combinedRatings);
 
+/* for 2013 */
+$dislikeBarShit = 100 - $allRatings;
+$allVideos = result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);
+
 if ( isset( $userdata ) && !empty( $_GET['oldPlayer'] ) ) {
 	$rating = result("SELECT rating FROM rating WHERE video=? AND user=?", [$videoData['id'], $userdata['id']]);
 	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $videoData['author']]);
@@ -68,7 +72,7 @@ $viewCount = fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$video
 query("UPDATE videos SET views = views + '1' WHERE video_id = ?", [$id]);
 
 /* for 2008 */
-$currentTime = time();
+$currentTime = time(); //the fuck is this??????????????????????????????????
 $allStars = $allRatings / 20;
 
 query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime,$id]); 
@@ -89,4 +93,6 @@ echo $twig->render('watch.twig', [
 	'videoRatio' => $allRatings,
 	'oldPlayer' => $oldPlayer,
 	'starRatio' => $allStars,
+	'dislikeRatio' => $dislikeBarShit,
+	'allVideos' => $allVideos,
 ]);
