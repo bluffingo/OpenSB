@@ -124,6 +124,7 @@
          <div class="card">
             <div class="card-body-fat">
                <h3>Comments ({{ comCount }})</h3>
+			   {% if log %}
                <div class="grid">
                   <div class="col-md-1">
                      <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
@@ -131,13 +132,14 @@
                   <div class="col-md-11">
                      <div>
                         <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
-                        placeholder="{% if log %}{{ __("Enter comment here.") }}{% else %}{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
+                        placeholder="{{ __("Enter comment here.") }}"></textarea>
                      </div>
                      <div class="right">
-                        <button id="{% if log %}post{% endif %}" class="button button-primary" style="margin-bottom:0;">{{ __("Comment") }}</button>
+                        <button id="post" class="button button-primary" style="margin-bottom:0;">{{ __("Comment") }}</button>
                      </div>
                   </div>
                </div>
+			   {% endif %}
                <div id="comment"></div>
                {% for comment in comments %}
                {{ comment(comment) }}
