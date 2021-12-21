@@ -7,13 +7,7 @@
 			</div>
 			<div class="col-md-8 vid-info">
 				<h3 class="title"><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
-				<class="grid">
-				<div class="col-md-2" style="padding:0;margin:0;width: auto;">
-				<img class="rounded" style="width:28px;" src="{{ profile_image(data.u_name) }}"  alt="{{ data.u_name }}">
-				</div>
-				<div class="col-md-10" style="padding-left:9px;padding-right:0;">
 				<span class="stat">by {{ userlink(data, 'u_') }}</span>
 				<span class="stat">{{ data.views }} {{ __("views") }}</span>
-				</div>
 			</div>
 		</div>
