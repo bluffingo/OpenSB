@@ -34,6 +34,7 @@ a:link,
 a:visited {
   color: $teal;
   text-decoration: none;
+  word-break: break-all;
 }
 
 a:hover {
@@ -1017,13 +1018,17 @@ line-height: 17px;
 .usermenushit {
   position: absolute;
   top: 100%;
-  right: -10px;
   max-height: 80vh;
   z-index: 1000;
-  padding: 0.5em;
-  width: 320px;
+  padding: 0.25em;
+  width: 160px;
   overflow: hidden;
-  background: white;
+  background: #ffffff;
+  ul {
+	  li {
+		padding: 4px 0;
+	  }
+  }
 }
 
 /// 2012 Channels \\\
