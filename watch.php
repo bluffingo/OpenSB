@@ -49,7 +49,7 @@ $combinedRatings = $totalDislikes + $totalLikes;
 
 $allRatings = calculateRatio($totalDislikes, $totalLikes, $combinedRatings);
 
-/* for 2013 */
+/* for 2015 */
 $dislikeBarShit = 100 - $allRatings;
 $allVideos = result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);
 
