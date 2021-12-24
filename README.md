@@ -30,13 +30,6 @@
 
 ## Questions
 
-## Why is it closed source?
-Bhief.
-
-![image](https://user-images.githubusercontent.com/45898787/144720541-f5e3a389-b205-40ee-80cb-5f7d2e376fd5.png)
-
-We will make cheeseRox open source ONLY when Bhief quits the OYC (Old YouTube Community).
-
 ### How do I translate cheeseRox?
 squareBracket Translations: https://crowdin.com/project/squarebracket
 
