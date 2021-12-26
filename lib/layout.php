@@ -14,6 +14,12 @@ use Twig\Extra\Markdown\MarkdownExtension;
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	global $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $languages, $frontend, $menuLinks, $notificationCount, $hCaptchaSiteKey, $nonFunctionalShit, $pageVariable;
 
+	if ($log) {
+	$totalSubscribers = result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
+	} else {
+	$totalSubscribers = 0;
+	}
+	
 	$doCache = ($tplNoCache ? false : $tplCache);
 	//ugly hack to prevent reading templates from the wrong place
 	chdir(__DIR__);
@@ -48,6 +54,8 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('notification_count', $notificationCount);
 	$twig->addGlobal('showGuideWhatever', $nonFunctionalShit);
 	$twig->addGlobal('page', $pageVariable);
+	$twig->addGlobal('totalSubscribers', $totalSubscribers);
+	
 
 	return $twig;
 }

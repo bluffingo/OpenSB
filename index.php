@@ -20,6 +20,7 @@ $featuredVideoData = query("SELECT $userfields v.video_id, v.title, v.descriptio
 } else {
 $featuredVideoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, v.videolength, v.tags, category_id, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() DESC LIMIT 1"); //i have no clue how should flags even work.
 }
+// moved total subscribers to layout.php for 2015 hitchhiker
 if ($log) {
 	$query = implode(', ', array_column(fetchArray(query("SELECT user FROM subscriptions WHERE id = ?", [$userdata['id']])), 'user'));
 	if($query != null) {
@@ -27,12 +28,10 @@ if ($log) {
 	} else {
 		$subscriptionVideos = null;
 	}
-	$totalSubscribers = result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
 	$totalViews = result("SELECT SUM(views) FROM videos WHERE author = ?", [$userdata['id']]);
 	$creationDate = result("SELECT joined FROM users WHERE id = ?", [$userdata['id']]);
 } else {
 	$subscriptionVideos = null;
-	$totalSubscribers = 0;
 	$totalViews = 0;
 	$creationDate = 0;
 }
@@ -44,7 +43,6 @@ echo $twig->render('index.twig', [
 	'recently_viewed' => $videoDataRecentlyViewed,
 	'subscriptionVideos' => $subscriptionVideos,
 	'featuredVideos' => $featuredVideoData,
-	'totalSubscribers' => $totalSubscribers,
 	'totalViews' => $totalViews,
 	'creationDate' => $creationDate
 ]);

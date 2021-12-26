@@ -3900,74 +3900,253 @@
       <script src="/assets/jsbin/www-en_US-vflqcFELj/base.js" name="www/base"></script>
       <script>spf.script.path({'www/': '/assets/jsbin/www-en_US-vflqcFELj/'});var ytdepmap = {"www/base": null, "www/common": "www/base", "www/ytstyles": "www/common", "www/ypc_core": "www/common", "www/ypc_bootstrap": "www/common", "www/watch": "www/common", "www/unlimited": "www/common", "www/subscriptionmanager": "www/common", "www/results_starwars": "www/common", "www/results_star_trek": "www/common", "www/results": "www/common", "www/results_harlemshake": "www/common", "www/promo_join_network": "www/common", "www/live_chat_moderation": "www/common", "www/live_chat": "www/common", "www/legomap": "www/common", "www/instant": "www/common", "www/innertube": "www/common", "www/historycontrols": "www/common", "www/feed": "www/common", "www/experiments": "www/common", "www/downloadreports": "www/common", "www/dashboard": "www/common", "www/channels_accountupload": "www/common", "www/angular_base": "www/common", "www/watch_videoshelf": "www/watch", "www/watch_transcript": "www/watch", "www/watch_speedyg": "www/watch", "www/watch_promos": "www/watch", "www/watch_live": "www/watch", "www/watch_editor": "www/watch", "www/watch_edit": "www/watch", "www/watch_autoplayrenderer": "www/watch", "www/videomanager": "www/angular_base", "www/live_dashboard": "www/angular_base", "www/live_broadcasts": "www/angular_base", "www/innertube_watchnext": "www/innertube", "www/channels": "www/angular_base", "www/vm_coverrevshare": "www/videomanager", "www/my_videos": "www/videomanager", "www/ct_advancedsearch": "www/videomanager", "www/channels_edit": "www/channels"};spf.script.declare(ytdepmap);</script><script>if (window.ytcsi) {window.ytcsi.tick("je", null, '');}</script>  
       <script>
-         (function() {
-         var delayedEmbed = yt.getConfig('DELAYED_EMBED', []);
-         var delayedSwfConfig = {"url":"\/\/s.ytimg.com\/yts\/swf\/masthead_child-vflRMMO6_.swf","args":{"enablejsapi":1},"url_v9as2":"","attrs":{"width":"1","id":"masthead_child","height":"1"},"params":{"allowfullscreen":"false","bgcolor":"#FFFFFF","allowscriptaccess":"always"},"html5":false,"min_version":"8.0.0"};
-         delayedSwfConfig.fallbackMessage = function(){};
-         delayedEmbed.push({
-         'container': "masthead_child_div",
-         'swf_config': delayedSwfConfig
-         });
-         yt.setConfig('DELAYED_EMBED', delayedEmbed);
-         })();
-         
-         
-         
-         
-         (function() {var c = document.getElementById('feed-pyv-container');if (c) {var h = "\u003cscript\u003ewindow.yt = window.yt || {};yt.www = yt.www || {};yt.www.feed = yt.www.feed || {};yt.www.feed.ui = yt.www.feed.ui || {};yt.www.feed.ui.ads = yt.www.feed.ui.ads || {};window.renderHomepagePyv = function(pyv) {writePyvAd();};\u003c\/script\u003e\u003cscript\u003evar renderPyvCallback = parent.yt.www.ads.pyv.pyvHomeAfcCallback;window.writePyvAd = function() {window['google_page_url'] = parent.document.location;window['google_language'] = \"fr\";window['google_loeid'] = \"__loeid__\";window['google_ad_client'] = \"__property_code__\";window['google_ad_channel'] = \"__channels__\";window['google_max_num_ads'] = 1;window['google_ad_output'] = 'js';window['google_ad_type'] = 'text';window['google_only_pyv_ads'] = true;window['google_ad_request_done'] = function(googleAds) {renderPyvCallback(googleAds);};document.write('\u003cscript s\u0072c=\"\/\/pagead2.googlesyndication.com\/pagead\/show_ads.js\"\u003e\u003c\\\/script\u003e');};var pyvCallback = window.renderHomepagePyv;pyvCallback();\u003c\/script\u003e";h = h.replace(/__property_code__/g, c.getAttribute('data-property-code') || '');h = h.replace(/__channels__/g, c.getAttribute('data-channels') || '');h = h.replace(/__loeid__/g, c.getAttribute('data-loeid') || '');yt.setConfig({'PYV_IFRAME_CONTENT': h,'PYV_IFRAME_ID': 'pyv-iframe'});}})();
-         yt.setConfig('JS_PAGE_MODULES', ['www/feed', 'www/ypc_bootstrap']);
-         
-         yt.setConfig('DISMISS_THROUGH_IT', true);
-         
-         yt.setConfig({
-           'GUIDE_SELECTED_ITEM': "0qDduQEREg9GRXdoYXRfdG9fd2F0Y2g%3D"
-         });
-         
-         yt.setConfig({
-         'GUIDED_HELP_LOCALE': "en_US",
-         'GUIDED_HELP_ENVIRONMENT': "prod"
-         });
-         
+(function() {
+    var delayedEmbed = yt.getConfig('DELAYED_EMBED', []);
+    var delayedSwfConfig = {
+        "url": "\/\/s.ytimg.com\/yts\/swf\/masthead_child-vflRMMO6_.swf",
+        "args": {
+            "enablejsapi": 1
+        },
+        "url_v9as2": "",
+        "attrs": {
+            "width": "1",
+            "id": "masthead_child",
+            "height": "1"
+        },
+        "params": {
+            "allowfullscreen": "false",
+            "bgcolor": "#FFFFFF",
+            "allowscriptaccess": "always"
+        },
+        "html5": false,
+        "min_version": "8.0.0"
+    };
+    delayedSwfConfig.fallbackMessage = function() {};
+    delayedEmbed.push({
+        'container': "masthead_child_div",
+        'swf_config': delayedSwfConfig
+    });
+    yt.setConfig('DELAYED_EMBED', delayedEmbed);
+})();
+
+
+
+
+(function() {
+    var c = document.getElementById('feed-pyv-container');
+    if (c) {
+        var h = "\u003cscript\u003ewindow.yt = window.yt || {};yt.www = yt.www || {};yt.www.feed = yt.www.feed || {};yt.www.feed.ui = yt.www.feed.ui || {};yt.www.feed.ui.ads = yt.www.feed.ui.ads || {};window.renderHomepagePyv = function(pyv) {writePyvAd();};\u003c\/script\u003e\u003cscript\u003evar renderPyvCallback = parent.yt.www.ads.pyv.pyvHomeAfcCallback;window.writePyvAd = function() {window['google_page_url'] = parent.document.location;window['google_language'] = \"fr\";window['google_loeid'] = \"__loeid__\";window['google_ad_client'] = \"__property_code__\";window['google_ad_channel'] = \"__channels__\";window['google_max_num_ads'] = 1;window['google_ad_output'] = 'js';window['google_ad_type'] = 'text';window['google_only_pyv_ads'] = true;window['google_ad_request_done'] = function(googleAds) {renderPyvCallback(googleAds);};document.write('\u003cscript s\u0072c=\"\/\/pagead2.googlesyndication.com\/pagead\/show_ads.js\"\u003e\u003c\\\/script\u003e');};var pyvCallback = window.renderHomepagePyv;pyvCallback();\u003c\/script\u003e";
+        h = h.replace(/__property_code__/g, c.getAttribute('data-property-code') || '');
+        h = h.replace(/__channels__/g, c.getAttribute('data-channels') || '');
+        h = h.replace(/__loeid__/g, c.getAttribute('data-loeid') || '');
+        yt.setConfig({
+            'PYV_IFRAME_CONTENT': h,
+            'PYV_IFRAME_ID': 'pyv-iframe'
+        });
+    }
+})();
+yt.setConfig('JS_PAGE_MODULES', ['www/feed', 'www/ypc_bootstrap']);
+
+yt.setConfig('DISMISS_THROUGH_IT', true);
+
+yt.setConfig({
+    'GUIDE_SELECTED_ITEM': "0qDduQEREg9GRXdoYXRfdG9fd2F0Y2g%3D"
+});
+
+yt.setConfig({
+    'GUIDED_HELP_LOCALE': "en_US",
+    'GUIDED_HELP_ENVIRONMENT': "prod"
+});
       </script>
-      <script>yt.setConfig({APIARY_HOST: "",INNERTUBE_API_VERSION: "v1",GAPI_HINT_PARAMS: "m;\/_\/scs\/abc-static\/_\/js\/k=gapi.gapi.en.6zwg_pEP_2A.O\/m=__features__\/am=AAQ\/rt=j\/d=1\/rs=AItRSTNy-00ELgURzlKy-V-78pEvv5BpHA",INNERTUBE_API_KEY: "AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8",INNERTUBE_CONTEXT_CLIENT_VERSION: "20150611",APIARY_HOST_FIRSTPARTY: "",'GAPI_HOST': "https:\/\/apis.google.com",'GAPI_LOCALE': "fr_CA",'INNERTUBE_CONTEXT_HL': "fr-CA",'INNERTUBE_CONTEXT_GL': "CA"});yt.setConfig({'EVENT_ID': "cbd9VfuuG5TR-AW99IKIDA",'PAGE_NAME': "index",'LOGGED_IN': true,'SESSION_INDEX': 0,'PARENT_TRACKING_PARAMS': "",'FORMATS_FILE_SIZE_JS': ["%s o","%s ko","%s Mo","%s Go","%s To"],'DELEGATED_SESSION_ID': "105643589805713020695",'ONE_PICK_URL': "",'UNIVERSAL_HOVERCARDS': true,'VISITOR_DATA': "CgtEZkRrVEhKNWtwSQ%3D%3D",'GOOGLEPLUS_HOST': "https:\/\/plus.google.com",'PAGEFRAME_JS': "\/\/s.ytimg.com\/yts\/jsbin\/www-pageframe-vfli7VvCh\/www-pageframe.js",'JS_COMMON_MODULE': "\/\/s.ytimg.com\/yts\/jsbin\/www-en_US-vflqcFELj\/common.js",'PAGE_FRAME_DELAYLOADED_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-pageframedelayloaded-vfltJItC2.css",'GUIDED_HELP_PARAMS': {"context":"yt_web_w2w"},'PREFETCH_CSS_RESOURCES' : ["\/\/s.ytimg.com\/yts\/cssbin\/www-player-vfllOtiYZ.css"],'PREFETCH_JS_RESOURCES': ["\/\/s.ytimg.com\/yts\/jsbin\/html5player-fr_CA-vflSQ6bPr\/html5player.js",''         ],'PREFETCH_LINKS': false,'PREFETCH_LINKS_MAX': 1,'PREFETCH_AUTOPLAY': false,'PREFETCH_AUTOPLAY_TIME': 0,'PREFETCH_AUTONAV': false,'PREBUFFER_MAX': 1,'PREBUFFER_LINKS': false,'PREBUFFER_AUTOPLAY': false,'PREBUFFER_AUTONAV': false,'WATCH_LATER_BUTTON': "\n\n  \u003cbutton class=\"yt-uix-button yt-uix-button-size-small yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button yt-uix-tooltip\" type=\"button\" onclick=\";return false;\" role=\"button\" title=\"À regarder plus tard\" data-video-ids=\"__VIDEO_ID__\"\u003e\u003c\/button\u003e\n",'WATCH_QUEUE_BUTTON': "  \u003cbutton class=\"yt-uix-button yt-uix-button-size-small yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup addto-button addto-queue-button video-actions spf-nolink hide-until-delayloaded addto-tv-queue-button yt-uix-tooltip\" type=\"button\" onclick=\";return false;\" title=\"File d\u0026#39;attente télé\" data-video-ids=\"__VIDEO_ID__\" data-style=\"tv-queue\"\u003e\u003c\/button\u003e\n",'SAFETY_MODE_PENDING': false,'I18N_PLURAL_RULES': function(n) { return ((0 <= n && n <= 2) && (n != 2)) ? 'one' : 'other'; },'LOCAL_DATE_TIME_CONFIG': {"formatWeekdayShortTime":"EE H:mm","weekdays":["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"],"weekendRange":[6,5],"months":["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],"amPms":null,"formatLongDateOnly":"d MMMM yyyy","shortWeekdays":["dim.","lun.","mar.","mer.","jeu.","ven.","sam."],"formatShortDate":"yyyy-MM-dd","formatLongDate":"d MMMM yyyy 'à 'H:mm","firstWeekCutoffDay":3,"formatShortTime":"H:mm","dateFormats":["d MMMM yyyy 'à 'H:mm","d MMMM yyyy","yyyy-MM-dd","yyyy-MM-dd"],"shortMonths":["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."],"firstDayOfWeek":0},'PAGE_CL': 95806097,'PAGE_BUILD_LABEL': "youtube_20150611_RC7",'VARIANTS_CHECKSUM': "61f3cb701ebf87c3b23a97e2e3ad19f3",'EXP_WEBFONT_ENABLED': true,'CLIENT_PROTOCOL': "h2",'CLIENT_TRANSPORT': "tcp",'MDX_ENABLE_CASTV2': true,'MDX_ENABLE_QUEUE': true,'SANDBAR_ENABLED': true,'SANDBAR_LOCALE': "fr-CA",'FEEDBACK_BUCKET_ID': "Home",'FEEDBACK_LOCALE_LANGUAGE': "fr-CA",'FEEDBACK_LOCALE_EXTRAS': {"is_partner":false,"logged_in":true,"guide_subs":"NA","experiments":"911507,912345,918119,925734,930822,936108,938302,9405143,9406993,9407447,9407484,9407778,9407827,9408057,9408059,9408142,9408395,9408420,9408607,9408710,9408712,9408796,9408815,9408934,940936,940938,9410775,9412893,9412896,9412929,9412937,9413171,9413328,9413334,9413378,9413485,9413503,9414633,9414722,9414754,9414756,9414799,9414862,9414875,9415018,9415049,9415118,9415304,9415363,9415401,9415435,9415496,9415538,9415715,9415783,9416082,9416095,9416126,9416233,9416239,9416291,942814,946811,952633","accept_language":"fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3","is_branded":false}});   yt.setConfig({
-         'GUIDED_HELP_LOCALE': "en_US",
-         'GUIDED_HELP_ENVIRONMENT': "prod"
-         });
-         yt.setConfig('SPF_SEARCH_BOX', true);yt.setMsg({'ADDTO_CREATE_NEW_PLAYLIST': "Créer une liste de lecture\n",'ADDTO_CREATE_PLAYLIST_DYNAMIC_TITLE': "  $dynamic_title_placeholder (créer une nouvelle)\n",'ADDTO_WATCH_LATER': "Watch Later",'ADDTO_WATCH_LATER_ADDED': "Ajoutée",'ADDTO_WATCH_LATER_ERROR': "Erreur",'ADDTO_WATCH_QUEUE': "Watch Queue",'ADDTO_WATCH_QUEUE_ADDED': "Ajoutée",'ADDTO_WATCH_QUEUE_ERROR': "Erreur",'ADDTO_TV_QUEUE': "TV Queue",'ADS_INSTREAM_FIRST_PLAY': "Une annonce vidéo est en cours de lecture.",'ADS_INSTREAM_SKIPPABLE': "L'annonce vidéo peut être ignorée.",'ADS_OVERLAY_IMPRESSION': "Annonce affichée.",'MASTHEAD_NOTIFICATIONS_LABEL': {"other": "#\u00a0notifications non lues.", "case1": "1 notification non lue.", "case0": "0 notification non lue.", "one": "#\u00a0notification non lue."},'MASTHEAD_NOTIFICATIONS_COUNT_99PLUS': "\u003e 99"});    yt.setConfig({
-         'XSRF_TOKEN': "QUFFLUhqbmtaeHZqbnl4SkRfSE5yZnVwTF85UWRfcU5jd3xBQ3Jtc0tsZUNjZUtwWHRWRFRXMU8xa1MwN2k1RkgxTUlDSTY3ZVlwSzVpQVRXalIzdXJlUHZHdHlPMDBhZk10YW5TX0NxTUVjdkRULTZXZVJFSG1jZHdFdGpsNmMzZHUzemszQzdDUDd3UFU5V2RCbDVQU0VSMVlpVkxtNC1iSjIzQUxzVTVFU2gxeHN5VUwzRmR2UUdrZ01ueUM1cDRSRWFlNkk0V3AzeUFDVTFqTUhSSDVLS28=",
-         'XSRF_REDIRECT_TOKEN': "1D6iuK6Tzb5yTSUTEbw326xHn0J8MTQzNDM4ODcyMkAxNDM0MzAyMzIy",
-         'XSRF_FIELD_NAME': "session_token"
-         });
-         
-         yt.setConfig('FEED_PRIVACY_CSS_URL', "\/\/s.ytimg.com\/yts\/cssbin\/www-feedprivacydialog-vfl0uADu6.css");
-         
-         yt.setConfig('FEED_PRIVACY_LIGHTBOX_ENABLED', true);
-         yt.setConfig({'SBOX_JS_URL': "\/\/s.ytimg.com\/yts\/jsbin\/www-searchbox-vfl1Fe-P5\/www-searchbox.js",'SBOX_SETTINGS': {"PQ":"","SESSION_INDEX":0,"REQUEST_LANGUAGE":"en","IS_FUSION":false,"EXPERIMENT_ID":-1,"REQUEST_DOMAIN":"ca","EXPERIMENT_STR":"","PSUGGEST_TOKEN":"XrnL8Efgt6BZf99R458gYg","HAS_ON_SCREEN_KEYBOARD":false},'SBOX_LABELS': {"SUGGESTION_DISMISS_LABEL":"Ignorer","SUGGESTION_DISMISSED_LABEL":"Suggestion ignorée"}});yt.setConfig({
-         'YPC_LOADER_JS': "\/\/s.ytimg.com\/yts\/jsbin\/www-ypc-vflQ_2uim\/www-ypc.js",
-         'YPC_LOADER_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-ypc-vflXCFUeG.css",
-         'YPC_SIGNIN_URL': "https:\/\/accounts.google.com\/ServiceLogin?passive=true\u0026uilel=3\u0026continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Fhl%3Dfr-CA%26authuser%3D0%26app%3Ddesktop%26action_handle_signin%3Dtrue%26next%3D%252F\u0026hl=fr-CA\u0026service=youtube\u0026authuser=0",
-         'DBLCLK_ADVERTISER_ID': "2542116",
-         'DBLCLK_YPC_ACTIVITY_GROUP': "youtu444",
-         'SUBSCRIPTION_URL': "\/subscription_ajax",
-         'YPC_SWITCH_URL': "\/signin?feature=purchases\u0026skip_identity_prompt=True\u0026authuser=0\u0026action_handle_signin=true\u0026next=%2F",
-         'YPC_GB_LANGUAGE': "en_US",
-         'YPC_GB_URL': "https:\/\/checkout.google.com\/inapp\/lib\/buy.js",
-         'YPC_TRANSACTION_URL': "\/transaction_handler",
-         'YPC_SUBSCRIPTION_URL': "\/ypc_subscription_ajax",
-         'YPC_POST_PURCHASE_URL': "\/ypc_post_purchase_ajax"
-         });
-         yt.setMsg({
-         'YPC_OFFER_OVERLAY': "    \u003cdiv id=\"ypc-offer-overlay\" class=\"yt-uix-overlay\"\u003e\n    \u003cspan class=\"yt-uix-overlay-target\"\u003e\u003c\/span\u003e\n        \u003cdiv class=\"yt-dialog hid \"\u003e\n    \u003cdiv class=\"yt-dialog-base\"\u003e\n      \u003cspan class=\"yt-dialog-align\"\u003e\u003c\/span\u003e\n      \u003cdiv class=\"yt-dialog-fg\" role=\"dialog\"\u003e\n        \u003cdiv class=\"yt-dialog-fg-content\"\u003e\n          \u003cdiv class=\"yt-dialog-loading\"\u003e\n              \u003cdiv class=\"yt-dialog-waiting-content\"\u003e\n      \u003cp class=\"yt-spinner \"\u003e\n        \u003cspan class=\"yt-spinner-img  yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\n    \u003cspan class=\"yt-spinner-message\"\u003e\nChargement…\n    \u003c\/span\u003e\n  \u003c\/p\u003e\n\n  \u003c\/div\u003e\n\n          \u003c\/div\u003e\n          \u003cdiv class=\"yt-dialog-content\"\u003e\n            \u003cdiv class= \"ypc-offer-overlay-container\"\u003e\u003ca href=\"#\" class=\"ypc-offer-overlay-close\"\u003e\u003c\/a\u003e\u003cdiv class=\"ypc-offer-overlay-content-wrapper clearfix\"\u003e\u003c\/div\u003e\u003cdiv class=\"ypc-offer-overlay-loading\"\u003e  \u003cspan class=\"yt-large-spinner-img yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\u003c\/div\u003e\u003cdiv class=\"ypc-offer-overlay-error\"\u003e\u003ch3\u003eErreur\u003c\/h3\u003e\u003cp class=\"ypc-offer-overlay-error-generic-content\"\u003eUne erreur s'est produite. Veuillez réessayer plus tard.\u003c\/p\u003e\u003cp class=\"ypc-offer-overlay-error-custom-content\"\u003e\u003c\/p\u003e\u003c\/div\u003e\u003cdiv class=\"ypc-offer-overlay-not-available-error\"\u003e\u003ch3 class=\"ypc-offer-overlay-not-available-title\"\u003eAchats non disponibles\u003c\/h3\u003e\u003cp class=\"ypc-offer-overlay-not-available-content\"\u003e\u003c\/p\u003e  \u003cdiv class=\"ypc-offer-overlay-not-available-action yt-uix-overlay-actions\"\u003e\n    \u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-default yt-uix-overlay-close\" type=\"button\" onclick=\";return false;\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eAnnuler\u003c\/span\u003e\u003c\/button\u003e\n    \u003ca href=\"\" class=\"yt-uix-button  ypc-offer-overlay-switch-accounts-button yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default\" data-sessionlink=\"ei=cbd9VfuuG5TR-AW99IKIDA\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eChanger de compte\u003c\/span\u003e\u003c\/a\u003e\n  \u003c\/div\u003e\n\u003c\/div\u003e\u003cdiv class=\"ypc-offer-overlay-tip-not-available-error\"\u003e\u003ch3 class=\"ypc-offer-overlay-not-available-title\"\u003eImpossible de donner des pourboires sur YouTube\u003c\/h3\u003e\u003cp class=\"ypc-offer-overlay-tip-not-available-content\"\u003e\u003c\/p\u003e  \u003cdiv class=\"ypc-offer-overlay-not-available-action yt-uix-overlay-actions\"\u003e\n    \u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-default yt-uix-overlay-close\" type=\"button\" onclick=\";return false;\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eAnnuler\u003c\/span\u003e\u003c\/button\u003e\n    \u003ca href=\"\" class=\"yt-uix-button  ypc-offer-overlay-switch-accounts-button yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default\" data-sessionlink=\"ei=cbd9VfuuG5TR-AW99IKIDA\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eChanger de compte\u003c\/span\u003e\u003c\/a\u003e\n  \u003c\/div\u003e\n\u003c\/div\u003e\u003cdiv class=\"ypc-offer-plus-page-not-available-error\"\u003e\u003ch3 class=\"ypc-offer-overlay-not-available-title\"\u003eAchats non disponibles\u003c\/h3\u003e\u003cp class=\"ypc-offer-plus-page-not-available-content\"\u003e\u003c\/p\u003e\u003cdiv class=\"ypc-offer-overlay-not-available-action yt-uix-overlay-actions\"\u003e\u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-primary yt-uix-overlay-close\" type=\"button\" onclick=\";return false;\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eFermer\u003c\/span\u003e\u003c\/button\u003e\u003c\/div\u003e\u003c\/div\u003e\u003c\/div\u003e\n          \u003c\/div\u003e\n          \u003cdiv class=\"yt-dialog-working\"\u003e\n              \u003cdiv class=\"yt-dialog-working-overlay\"\u003e\u003c\/div\u003e\n  \u003cdiv class=\"yt-dialog-working-bubble\"\u003e\n    \u003cdiv class=\"yt-dialog-waiting-content\"\u003e\n        \u003cp class=\"yt-spinner \"\u003e\n        \u003cspan class=\"yt-spinner-img  yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\n    \u003cspan class=\"yt-spinner-message\"\u003e\n        Traitement en cours...\n    \u003c\/span\u003e\n  \u003c\/p\u003e\n\n      \u003c\/div\u003e\n  \u003c\/div\u003e\n\n          \u003c\/div\u003e\n        \u003c\/div\u003e\n        \u003cdiv class=\"yt-dialog-focus-trap\" tabindex=\"0\"\u003e\u003c\/div\u003e\n      \u003c\/div\u003e\n    \u003c\/div\u003e\n  \u003c\/div\u003e\n\n\n  \u003c\/div\u003e\n\n",
-         'YPC_UNSUBSCRIBE_OVERLAY': "    \u003cdiv id=\"ypc-unsubscribe-overlay\" class=\"yt-uix-overlay\" data-disable-shortcuts=\"true\"\u003e\n    \u003cspan class=\"yt-uix-overlay-target\"\u003e\u003c\/span\u003e\n        \u003cdiv class=\"yt-dialog hid \"\u003e\n    \u003cdiv class=\"yt-dialog-base\"\u003e\n      \u003cspan class=\"yt-dialog-align\"\u003e\u003c\/span\u003e\n      \u003cdiv class=\"yt-dialog-fg\" role=\"dialog\"\u003e\n        \u003cdiv class=\"yt-dialog-fg-content\"\u003e\n          \u003cdiv class=\"yt-dialog-loading\"\u003e\n              \u003cdiv class=\"yt-dialog-waiting-content\"\u003e\n      \u003cp class=\"yt-spinner \"\u003e\n        \u003cspan class=\"yt-spinner-img  yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\n    \u003cspan class=\"yt-spinner-message\"\u003e\nChargement…\n    \u003c\/span\u003e\n  \u003c\/p\u003e\n\n  \u003c\/div\u003e\n\n          \u003c\/div\u003e\n          \u003cdiv class=\"yt-dialog-content\"\u003e\n              \u003cdiv class=\"ypc-unsubscribe-overlay\"\u003e\n      \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-confirm\"\u003e\nÊtes-vous sûr de vouloir annuler votre abonnement?\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-xauth\"\u003e\nImpossible de se désabonner\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-plus-page-error\"\u003e\nImpossible de se désabonner\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-loading\"\u003e\nChargement…\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-success unsubscribe-delayed\"\u003e\nAbonnement annulé\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-error\"\u003e\nUne erreur s'est produite lors de l'annulation de l'abonnement.\n  \u003c\/div\u003e\n\n    \u003cdiv class=\"ypc-unsubscribe-overlay-data\"\u003e\n        \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-confirm ypc-unsubscribe-overlay-confirm-content\"\u003e\n    \u003cdiv class=\"ypc-unsubscribe-overlay-content-message\"\u003e\n      Votre abonnement sera annulé lorsque vous vous désabonnerez. Aucune autre somme ne sera débitée de votre carte de crédit. Vous pourrez toujours accéder au contenu jusqu'à la fin du cycle de facturation.\n\n    \u003c\/div\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-xauth\"\u003e\n    \u003cp\u003e\nLe service Clé de musique YouTube est inclus gratuitement avec l'abonnement au service Accès illimité de Google Play Musique. Pour annuler, veuillez accéder à la page \u003ca href=\"https:\/\/play.google.com\/music\/listen#\/settings\" target=\"_blank\"\u003eParamètres\u003c\/a\u003e du service Accès illimité.\n    \u003c\/p\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-plus-page-error\"\u003e\n    \u003cp\u003e\nVous êtes actuellement connecté en tant que gestionnaire de la chaîne Parappafan94, mais vous devez en être le propriétaire pour annuler les abonnements de la chaîne sur YouTube.\n    \u003c\/p\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-loading\"\u003e\n      \u003cp class=\"yt-spinner \"\u003e\n        \u003cspan class=\"yt-spinner-img  yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\n    \u003cspan class=\"yt-spinner-message\"\u003e\n        Traitement de la demande d'annulation en cours...\n    \u003c\/span\u003e\n  \u003c\/p\u003e\n\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-success\"\u003e\n    \u003cp\u003e\nVous avez annulé les paiements futurs pour cet abonnement.\n    \u003c\/p\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-delayed\"\u003e\n    \u003cp\u003e\nVotre abonnement a été annulé. L'état affiché dans votre compte sera bientôt mis à jour.\n    \u003c\/p\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-error\"\u003e\n    \u003cp\u003eDésolé, une erreur s'est produite lors de la tentative d'annulation de votre abonnement. Veuillez réessayer plus tard.\u003c\/p\u003e\n  \u003c\/div\u003e\n\n          \u003cdiv class=\"ypc-unsubscribe-overlay-controls unsubscribe-confirm clearfix\"\u003e\n    \u003ca href=\"\/\/support.google.com\/youtube\/?p=unsubscribe_help\u0026amp;hl=fr-CA\" class=\"yt-uix-button  ypc-unsubscribe-help yt-uix-sessionlink yt-uix-button-default yt-uix-button-size-default\" data-sessionlink=\"ei=cbd9VfuuG5TR-AW99IKIDA\" target=\"_blank\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eAide\u003c\/span\u003e\u003c\/a\u003e\n\n    \u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-default yt-uix-overlay-close\" type=\"button\" onclick=\";return false;\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eConserver l'abonnement\u003c\/span\u003e\u003c\/button\u003e\n\n    \u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-primary ypc-unsubscribe-confirm\" type=\"button\" onclick=\";return false;\" data-url=\"\/transaction_handler\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eSe désabonner\u003c\/span\u003e\u003c\/button\u003e\n  \u003c\/div\u003e\n\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-controls unsubscribe-success unsubscribe-xauth unsubscribe-plus-page-error unsubscribe-delayed unsubscribe-error\"\u003e\n    \u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-primary yt-uix-overlay-close\" type=\"button\" onclick=\";return false;\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eFermer\u003c\/span\u003e\u003c\/button\u003e\n  \u003c\/div\u003e\n\n    \u003c\/div\u003e\n  \u003c\/div\u003e\n\n          \u003c\/div\u003e\n          \u003cdiv class=\"yt-dialog-working\"\u003e\n              \u003cdiv class=\"yt-dialog-working-overlay\"\u003e\u003c\/div\u003e\n  \u003cdiv class=\"yt-dialog-working-bubble\"\u003e\n    \u003cdiv class=\"yt-dialog-waiting-content\"\u003e\n        \u003cp class=\"yt-spinner \"\u003e\n        \u003cspan class=\"yt-spinner-img  yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\n    \u003cspan class=\"yt-spinner-message\"\u003e\n        Traitement en cours...\n    \u003c\/span\u003e\n  \u003c\/p\u003e\n\n      \u003c\/div\u003e\n  \u003c\/div\u003e\n\n          \u003c\/div\u003e\n        \u003c\/div\u003e\n        \u003cdiv class=\"yt-dialog-focus-trap\" tabindex=\"0\"\u003e\u003c\/div\u003e\n      \u003c\/div\u003e\n    \u003c\/div\u003e\n  \u003c\/div\u003e\n\n\n  \u003c\/div\u003e\n\n"
-         });
-         yt.setConfig('GOOGLE_HELP_CONTEXT', "homepage");
-         ytcsi.setSpan('st', 1007);yt.setConfig({'CSI_SERVICE_NAME': "youtube",'TIMING_ACTION': "gli",'TIMING_INFO': {"yt_li":1,"e":"936108,9406993,9408142,9408420,9408710,9413503,9414799,9414875,9415304,9415435,9415538,9416126,9416291","yt_ref":"","ei":"cbd9VfuuG5TR-AW99IKIDA","yt_lt":"cold","yt_spf":0,"yt_err":0}});  yt.setConfig({
-         'XSRF_TOKEN': "QUFFLUhqbmtaeHZqbnl4SkRfSE5yZnVwTF85UWRfcU5jd3xBQ3Jtc0tsZUNjZUtwWHRWRFRXMU8xa1MwN2k1RkgxTUlDSTY3ZVlwSzVpQVRXalIzdXJlUHZHdHlPMDBhZk10YW5TX0NxTUVjdkRULTZXZVJFSG1jZHdFdGpsNmMzZHUzemszQzdDUDd3UFU5V2RCbDVQU0VSMVlpVkxtNC1iSjIzQUxzVTVFU2gxeHN5VUwzRmR2UUdrZ01ueUM1cDRSRWFlNkk0V3AzeUFDVTFqTUhSSDVLS28=",
-         'XSRF_REDIRECT_TOKEN': "1D6iuK6Tzb5yTSUTEbw326xHn0J8MTQzNDM4ODcyMkAxNDM0MzAyMzIy",
-         'XSRF_FIELD_NAME': "session_token"
-         });
-         yt.setConfig('THUMB_DELAY_LOAD_BUFFER', 300);
-         if (window.ytcsi) {window.ytcsi.tick("jl", null, '');}
+      <script>yt.setConfig({
+    APIARY_HOST: "",
+    INNERTUBE_API_VERSION: "v1",
+    GAPI_HINT_PARAMS: "m;\/_\/scs\/abc-static\/_\/js\/k=gapi.gapi.en.6zwg_pEP_2A.O\/m=__features__\/am=AAQ\/rt=j\/d=1\/rs=AItRSTNy-00ELgURzlKy-V-78pEvv5BpHA",
+    INNERTUBE_API_KEY: "AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8",
+    INNERTUBE_CONTEXT_CLIENT_VERSION: "20150611",
+    APIARY_HOST_FIRSTPARTY: "",
+    'GAPI_HOST': "https:\/\/apis.google.com",
+    'GAPI_LOCALE': "fr_CA",
+    'INNERTUBE_CONTEXT_HL': "fr-CA",
+    'INNERTUBE_CONTEXT_GL': "CA"
+});
+yt.setConfig({
+    'EVENT_ID': "cbd9VfuuG5TR-AW99IKIDA",
+    'PAGE_NAME': "{{ page }}",
+	{% if log %}
+    'LOGGED_IN': true,
+	{% else %}
+	'LOGGED_IN': false,
+	{% endif %}
+    'SESSION_INDEX': 0,
+    'PARENT_TRACKING_PARAMS': "",
+    'FORMATS_FILE_SIZE_JS': ["%s B", "%s KB", "%s MB", "%s GB", "%s TB"],
+    'DELEGATED_SESSION_ID': "105643589805713020695",
+    'ONE_PICK_URL': "",
+    'UNIVERSAL_HOVERCARDS': true,
+    'VISITOR_DATA': "CgtEZkRrVEhKNWtwSQ%3D%3D",
+    'GOOGLEPLUS_HOST': "https:\/\/plus.google.com",
+    'PAGEFRAME_JS': "\/\/s.ytimg.com\/yts\/jsbin\/www-pageframe-vfli7VvCh\/www-pageframe.js",
+    'JS_COMMON_MODULE': "\/\/s.ytimg.com\/yts\/jsbin\/www-en_US-vflqcFELj\/common.js",
+    'PAGE_FRAME_DELAYLOADED_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-pageframedelayloaded-vfltJItC2.css",
+    'GUIDED_HELP_PARAMS': {
+        "context": "yt_web_w2w"
+    },
+    'GUIDE_DELAY_LOAD': true,
+    'GUIDE_DELAYLOADED_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-guide-vflt_pfdi.css",
+    'PREFETCH_CSS_RESOURCES': ["\/\/s.ytimg.com\/yts\/cssbin\/www-player-vfllOtiYZ.css"],
+    'PREFETCH_JS_RESOURCES': ["\/\/s.ytimg.com\/yts\/jsbin\/html5player-fr_CA-vflSQ6bPr\/html5player.js", ''],
+    'PREFETCH_LINKS': false,
+    'PREFETCH_LINKS_MAX': 1,
+    'PREFETCH_AUTOPLAY': false,
+    'PREFETCH_AUTOPLAY_TIME': 0,
+    'PREFETCH_AUTONAV': false,
+    'PREBUFFER_MAX': 1,
+    'PREBUFFER_LINKS': false,
+    'PREBUFFER_AUTOPLAY': false,
+    'PREBUFFER_AUTONAV': false,
+    'WATCH_LATER_BUTTON': "\n\n  \u003cbutton class=\"yt-uix-button yt-uix-button-size-small yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button yt-uix-tooltip\" type=\"button\" onclick=\";return false;\" role=\"button\" title=\"À regarder plus tard\" data-video-ids=\"__VIDEO_ID__\"\u003e\u003c\/button\u003e\n",
+    'WATCH_QUEUE_BUTTON': "  \u003cbutton class=\"yt-uix-button yt-uix-button-size-small yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup addto-button addto-queue-button video-actions spf-nolink hide-until-delayloaded addto-tv-queue-button yt-uix-tooltip\" type=\"button\" onclick=\";return false;\" title=\"File d\u0026#39;attente télé\" data-video-ids=\"__VIDEO_ID__\" data-style=\"tv-queue\"\u003e\u003c\/button\u003e\n",
+    'SAFETY_MODE_PENDING': false,
+    'I18N_PLURAL_RULES': function(n) {
+        return ((0 <= n && n <= 2) && (n != 2)) ? 'one' : 'other';
+    },
+    'LOCAL_DATE_TIME_CONFIG': {
+        "formatShortDate": "MMM d, yyyy",
+        "formatShortTime": "h:mm a",
+        "weekendRange": [6, 5],
+        "shortWeekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        "dateFormats": ["MMMM d, yyyy h:mm a", "MMMM d, yyyy", "MMM d, yyyy", "MMM d, yyyy"],
+        "shortMonths": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        "amPms": ["AM", "PM"],
+        "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "formatLongDateOnly": "MMMM d, yyyy",
+        "formatWeekdayShortTime": "EE h:mm a",
+        "formatLongDate": "MMMM d, yyyy h:mm a",
+        "firstWeekCutoffDay": 3,
+        "firstDayOfWeek": 0
+    },
+    'PAGE_CL': 95806097,
+    'PAGE_BUILD_LABEL': "youtube_20150611_RC7",
+    'VARIANTS_CHECKSUM': "61f3cb701ebf87c3b23a97e2e3ad19f3",
+    'EXP_WEBFONT_ENABLED': true,
+    'CLIENT_PROTOCOL': "h2",
+    'CLIENT_TRANSPORT': "tcp",
+    'MDX_ENABLE_CASTV2': true,
+    'MDX_ENABLE_QUEUE': true,
+    'SANDBAR_ENABLED': true,
+    'SANDBAR_LOCALE': "en-US",
+    'FEEDBACK_BUCKET_ID': "Home",
+    'FEEDBACK_LOCALE_LANGUAGE': "en",
+    'FEEDBACK_LOCALE_EXTRAS': {
+        "is_partner": false,
+		{% if log %}
+		"logged_in": true,
+		{% else %}
+		"logged_in": false,
+		{% endif %}
+        "guide_subs": "NA",
+        "experiments": "911507,912345,918119,925734,930822,936108,938302,9405143,9406993,9407447,9407484,9407778,9407827,9408057,9408059,9408142,9408395,9408420,9408607,9408710,9408712,9408796,9408815,9408934,940936,940938,9410775,9412893,9412896,9412929,9412937,9413171,9413328,9413334,9413378,9413485,9413503,9414633,9414722,9414754,9414756,9414799,9414862,9414875,9415018,9415049,9415118,9415304,9415363,9415401,9415435,9415496,9415538,9415715,9415783,9416082,9416095,9416126,9416233,9416239,9416291,942814,946811,952633",
+        "accept_language": "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3",
+        "is_branded": false
+    }
+});
+yt.setConfig({
+    'GUIDED_HELP_LOCALE': "en_US",
+    'GUIDED_HELP_ENVIRONMENT': "prod"
+});
+yt.setConfig('SPF_SEARCH_BOX', true);
+yt.setMsg({
+    'ADDTO_CREATE_NEW_PLAYLIST': "Créer une liste de lecture\n",
+    'ADDTO_CREATE_PLAYLIST_DYNAMIC_TITLE': "  $dynamic_title_placeholder (créer une nouvelle)\n",
+    'ADDTO_WATCH_LATER': "Watch Later",
+    'ADDTO_WATCH_LATER_ADDED': "Ajoutée",
+    'ADDTO_WATCH_LATER_ERROR': "Erreur",
+    'ADDTO_WATCH_QUEUE': "Watch Queue",
+    'ADDTO_WATCH_QUEUE_ADDED': "Ajoutée",
+    'ADDTO_WATCH_QUEUE_ERROR': "Erreur",
+    'ADDTO_TV_QUEUE': "TV Queue",
+    'ADS_INSTREAM_FIRST_PLAY': "Une annonce vidéo est en cours de lecture.",
+    'ADS_INSTREAM_SKIPPABLE': "L'annonce vidéo peut être ignorée.",
+    'ADS_OVERLAY_IMPRESSION': "Annonce affichée.",
+    'MASTHEAD_NOTIFICATIONS_LABEL': {
+        "other": "#\u00a0notifications non lues.",
+        "case1": "1 notification non lue.",
+        "case0": "0 notification non lue.",
+        "one": "#\u00a0notification non lue."
+    },
+    'MASTHEAD_NOTIFICATIONS_COUNT_99PLUS': "\u003e 99"
+});
+yt.setConfig({
+    'XSRF_TOKEN': "QUFFLUhqbmtaeHZqbnl4SkRfSE5yZnVwTF85UWRfcU5jd3xBQ3Jtc0tsZUNjZUtwWHRWRFRXMU8xa1MwN2k1RkgxTUlDSTY3ZVlwSzVpQVRXalIzdXJlUHZHdHlPMDBhZk10YW5TX0NxTUVjdkRULTZXZVJFSG1jZHdFdGpsNmMzZHUzemszQzdDUDd3UFU5V2RCbDVQU0VSMVlpVkxtNC1iSjIzQUxzVTVFU2gxeHN5VUwzRmR2UUdrZ01ueUM1cDRSRWFlNkk0V3AzeUFDVTFqTUhSSDVLS28=",
+    'XSRF_REDIRECT_TOKEN': "1D6iuK6Tzb5yTSUTEbw326xHn0J8MTQzNDM4ODcyMkAxNDM0MzAyMzIy",
+    'XSRF_FIELD_NAME': "session_token"
+});
+
+yt.setConfig('FEED_PRIVACY_CSS_URL', "\/\/s.ytimg.com\/yts\/cssbin\/www-feedprivacydialog-vfl0uADu6.css");
+
+yt.setConfig('FEED_PRIVACY_LIGHTBOX_ENABLED', true);
+yt.setConfig({
+    'SBOX_JS_URL': "\/\/s.ytimg.com\/yts\/jsbin\/www-searchbox-vfl1Fe-P5\/www-searchbox.js",
+    'SBOX_SETTINGS': {
+        "PQ": "",
+        "SESSION_INDEX": 0,
+        "REQUEST_LANGUAGE": "en",
+        "IS_FUSION": false,
+        "EXPERIMENT_ID": -1,
+        "REQUEST_DOMAIN": "ca",
+        "EXPERIMENT_STR": "",
+        "PSUGGEST_TOKEN": "XrnL8Efgt6BZf99R458gYg",
+        "HAS_ON_SCREEN_KEYBOARD": false
+    },
+    'SBOX_LABELS': {
+        "SUGGESTION_DISMISS_LABEL": "Ignorer",
+        "SUGGESTION_DISMISSED_LABEL": "Suggestion ignorée"
+    }
+});
+yt.setConfig({
+    'YPC_LOADER_JS': "\/\/s.ytimg.com\/yts\/jsbin\/www-ypc-vflQ_2uim\/www-ypc.js",
+    'YPC_LOADER_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-ypc-vflXCFUeG.css",
+    'YPC_SIGNIN_URL': "login.php",
+    'DBLCLK_ADVERTISER_ID': "2542116",
+    'DBLCLK_YPC_ACTIVITY_GROUP': "youtu444",
+    'SUBSCRIPTION_URL': "\/subscription_ajax",
+    'YPC_SWITCH_URL': "\/signin?feature=purchases\u0026skip_identity_prompt=True\u0026authuser=0\u0026action_handle_signin=true\u0026next=%2F",
+    'YPC_GB_LANGUAGE': "en_US",
+    'YPC_GB_URL': "https:\/\/checkout.google.com\/inapp\/lib\/buy.js",
+    'YPC_TRANSACTION_URL': "\/transaction_handler",
+    'YPC_SUBSCRIPTION_URL': "\/ypc_subscription_ajax",
+    'YPC_POST_PURCHASE_URL': "\/ypc_post_purchase_ajax"
+});
+yt.setMsg({
+    'YPC_OFFER_OVERLAY': "    \u003cdiv id=\"ypc-offer-overlay\" class=\"yt-uix-overlay\"\u003e\n    \u003cspan class=\"yt-uix-overlay-target\"\u003e\u003c\/span\u003e\n        \u003cdiv class=\"yt-dialog hid \"\u003e\n    \u003cdiv class=\"yt-dialog-base\"\u003e\n      \u003cspan class=\"yt-dialog-align\"\u003e\u003c\/span\u003e\n      \u003cdiv class=\"yt-dialog-fg\" role=\"dialog\"\u003e\n        \u003cdiv class=\"yt-dialog-fg-content\"\u003e\n          \u003cdiv class=\"yt-dialog-loading\"\u003e\n              \u003cdiv class=\"yt-dialog-waiting-content\"\u003e\n      \u003cp class=\"yt-spinner \"\u003e\n        \u003cspan class=\"yt-spinner-img  yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\n    \u003cspan class=\"yt-spinner-message\"\u003e\nChargement…\n    \u003c\/span\u003e\n  \u003c\/p\u003e\n\n  \u003c\/div\u003e\n\n          \u003c\/div\u003e\n          \u003cdiv class=\"yt-dialog-content\"\u003e\n            \u003cdiv class= \"ypc-offer-overlay-container\"\u003e\u003ca href=\"#\" class=\"ypc-offer-overlay-close\"\u003e\u003c\/a\u003e\u003cdiv class=\"ypc-offer-overlay-content-wrapper clearfix\"\u003e\u003c\/div\u003e\u003cdiv class=\"ypc-offer-overlay-loading\"\u003e  \u003cspan class=\"yt-large-spinner-img yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\u003c\/div\u003e\u003cdiv class=\"ypc-offer-overlay-error\"\u003e\u003ch3\u003eErreur\u003c\/h3\u003e\u003cp class=\"ypc-offer-overlay-error-generic-content\"\u003eUne erreur s'est produite. Veuillez réessayer plus tard.\u003c\/p\u003e\u003cp class=\"ypc-offer-overlay-error-custom-content\"\u003e\u003c\/p\u003e\u003c\/div\u003e\u003cdiv class=\"ypc-offer-overlay-not-available-error\"\u003e\u003ch3 class=\"ypc-offer-overlay-not-available-title\"\u003eAchats non disponibles\u003c\/h3\u003e\u003cp class=\"ypc-offer-overlay-not-available-content\"\u003e\u003c\/p\u003e  \u003cdiv class=\"ypc-offer-overlay-not-available-action yt-uix-overlay-actions\"\u003e\n    \u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-default yt-uix-overlay-close\" type=\"button\" onclick=\";return false;\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eAnnuler\u003c\/span\u003e\u003c\/button\u003e\n    \u003ca href=\"\" class=\"yt-uix-button  ypc-offer-overlay-switch-accounts-button yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default\" data-sessionlink=\"ei=cbd9VfuuG5TR-AW99IKIDA\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eChanger de compte\u003c\/span\u003e\u003c\/a\u003e\n  \u003c\/div\u003e\n\u003c\/div\u003e\u003cdiv class=\"ypc-offer-overlay-tip-not-available-error\"\u003e\u003ch3 class=\"ypc-offer-overlay-not-available-title\"\u003eImpossible de donner des pourboires sur YouTube\u003c\/h3\u003e\u003cp class=\"ypc-offer-overlay-tip-not-available-content\"\u003e\u003c\/p\u003e  \u003cdiv class=\"ypc-offer-overlay-not-available-action yt-uix-overlay-actions\"\u003e\n    \u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-default yt-uix-overlay-close\" type=\"button\" onclick=\";return false;\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eAnnuler\u003c\/span\u003e\u003c\/button\u003e\n    \u003ca href=\"\" class=\"yt-uix-button  ypc-offer-overlay-switch-accounts-button yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default\" data-sessionlink=\"ei=cbd9VfuuG5TR-AW99IKIDA\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eChanger de compte\u003c\/span\u003e\u003c\/a\u003e\n  \u003c\/div\u003e\n\u003c\/div\u003e\u003cdiv class=\"ypc-offer-plus-page-not-available-error\"\u003e\u003ch3 class=\"ypc-offer-overlay-not-available-title\"\u003eAchats non disponibles\u003c\/h3\u003e\u003cp class=\"ypc-offer-plus-page-not-available-content\"\u003e\u003c\/p\u003e\u003cdiv class=\"ypc-offer-overlay-not-available-action yt-uix-overlay-actions\"\u003e\u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-primary yt-uix-overlay-close\" type=\"button\" onclick=\";return false;\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eFermer\u003c\/span\u003e\u003c\/button\u003e\u003c\/div\u003e\u003c\/div\u003e\u003c\/div\u003e\n          \u003c\/div\u003e\n          \u003cdiv class=\"yt-dialog-working\"\u003e\n              \u003cdiv class=\"yt-dialog-working-overlay\"\u003e\u003c\/div\u003e\n  \u003cdiv class=\"yt-dialog-working-bubble\"\u003e\n    \u003cdiv class=\"yt-dialog-waiting-content\"\u003e\n        \u003cp class=\"yt-spinner \"\u003e\n        \u003cspan class=\"yt-spinner-img  yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\n    \u003cspan class=\"yt-spinner-message\"\u003e\n        Traitement en cours...\n    \u003c\/span\u003e\n  \u003c\/p\u003e\n\n      \u003c\/div\u003e\n  \u003c\/div\u003e\n\n          \u003c\/div\u003e\n        \u003c\/div\u003e\n        \u003cdiv class=\"yt-dialog-focus-trap\" tabindex=\"0\"\u003e\u003c\/div\u003e\n      \u003c\/div\u003e\n    \u003c\/div\u003e\n  \u003c\/div\u003e\n\n\n  \u003c\/div\u003e\n\n",
+    'YPC_UNSUBSCRIBE_OVERLAY': "    \u003cdiv id=\"ypc-unsubscribe-overlay\" class=\"yt-uix-overlay\" data-disable-shortcuts=\"true\"\u003e\n    \u003cspan class=\"yt-uix-overlay-target\"\u003e\u003c\/span\u003e\n        \u003cdiv class=\"yt-dialog hid \"\u003e\n    \u003cdiv class=\"yt-dialog-base\"\u003e\n      \u003cspan class=\"yt-dialog-align\"\u003e\u003c\/span\u003e\n      \u003cdiv class=\"yt-dialog-fg\" role=\"dialog\"\u003e\n        \u003cdiv class=\"yt-dialog-fg-content\"\u003e\n          \u003cdiv class=\"yt-dialog-loading\"\u003e\n              \u003cdiv class=\"yt-dialog-waiting-content\"\u003e\n      \u003cp class=\"yt-spinner \"\u003e\n        \u003cspan class=\"yt-spinner-img  yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\n    \u003cspan class=\"yt-spinner-message\"\u003e\nChargement…\n    \u003c\/span\u003e\n  \u003c\/p\u003e\n\n  \u003c\/div\u003e\n\n          \u003c\/div\u003e\n          \u003cdiv class=\"yt-dialog-content\"\u003e\n              \u003cdiv class=\"ypc-unsubscribe-overlay\"\u003e\n      \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-confirm\"\u003e\nÊtes-vous sûr de vouloir annuler votre abonnement?\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-xauth\"\u003e\nImpossible de se désabonner\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-plus-page-error\"\u003e\nImpossible de se désabonner\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-loading\"\u003e\nChargement…\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-success unsubscribe-delayed\"\u003e\nAbonnement annulé\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-title unsubscribe-error\"\u003e\nUne erreur s'est produite lors de l'annulation de l'abonnement.\n  \u003c\/div\u003e\n\n    \u003cdiv class=\"ypc-unsubscribe-overlay-data\"\u003e\n        \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-confirm ypc-unsubscribe-overlay-confirm-content\"\u003e\n    \u003cdiv class=\"ypc-unsubscribe-overlay-content-message\"\u003e\n      Votre abonnement sera annulé lorsque vous vous désabonnerez. Aucune autre somme ne sera débitée de votre carte de crédit. Vous pourrez toujours accéder au contenu jusqu'à la fin du cycle de facturation.\n\n    \u003c\/div\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-xauth\"\u003e\n    \u003cp\u003e\nLe service Clé de musique YouTube est inclus gratuitement avec l'abonnement au service Accès illimité de Google Play Musique. Pour annuler, veuillez accéder à la page \u003ca href=\"https:\/\/play.google.com\/music\/listen#\/settings\" target=\"_blank\"\u003eParamètres\u003c\/a\u003e du service Accès illimité.\n    \u003c\/p\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-plus-page-error\"\u003e\n    \u003cp\u003e\nVous êtes actuellement connecté en tant que gestionnaire de la chaîne Parappafan94, mais vous devez en être le propriétaire pour annuler les abonnements de la chaîne sur YouTube.\n    \u003c\/p\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-loading\"\u003e\n      \u003cp class=\"yt-spinner \"\u003e\n        \u003cspan class=\"yt-spinner-img  yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\n    \u003cspan class=\"yt-spinner-message\"\u003e\n        Traitement de la demande d'annulation en cours...\n    \u003c\/span\u003e\n  \u003c\/p\u003e\n\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-success\"\u003e\n    \u003cp\u003e\nVous avez annulé les paiements futurs pour cet abonnement.\n    \u003c\/p\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-delayed\"\u003e\n    \u003cp\u003e\nVotre abonnement a été annulé. L'état affiché dans votre compte sera bientôt mis à jour.\n    \u003c\/p\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-content unsubscribe-error\"\u003e\n    \u003cp\u003eDésolé, une erreur s'est produite lors de la tentative d'annulation de votre abonnement. Veuillez réessayer plus tard.\u003c\/p\u003e\n  \u003c\/div\u003e\n\n          \u003cdiv class=\"ypc-unsubscribe-overlay-controls unsubscribe-confirm clearfix\"\u003e\n    \u003ca href=\"\/\/support.google.com\/youtube\/?p=unsubscribe_help\u0026amp;hl=fr-CA\" class=\"yt-uix-button  ypc-unsubscribe-help yt-uix-sessionlink yt-uix-button-default yt-uix-button-size-default\" data-sessionlink=\"ei=cbd9VfuuG5TR-AW99IKIDA\" target=\"_blank\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eAide\u003c\/span\u003e\u003c\/a\u003e\n\n    \u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-default yt-uix-overlay-close\" type=\"button\" onclick=\";return false;\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eConserver l'abonnement\u003c\/span\u003e\u003c\/button\u003e\n\n    \u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-primary ypc-unsubscribe-confirm\" type=\"button\" onclick=\";return false;\" data-url=\"\/transaction_handler\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eSe désabonner\u003c\/span\u003e\u003c\/button\u003e\n  \u003c\/div\u003e\n\n\n  \u003cdiv class=\"ypc-unsubscribe-overlay-controls unsubscribe-success unsubscribe-xauth unsubscribe-plus-page-error unsubscribe-delayed unsubscribe-error\"\u003e\n    \u003cbutton class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-primary yt-uix-overlay-close\" type=\"button\" onclick=\";return false;\"\u003e\u003cspan class=\"yt-uix-button-content\"\u003eFermer\u003c\/span\u003e\u003c\/button\u003e\n  \u003c\/div\u003e\n\n    \u003c\/div\u003e\n  \u003c\/div\u003e\n\n          \u003c\/div\u003e\n          \u003cdiv class=\"yt-dialog-working\"\u003e\n              \u003cdiv class=\"yt-dialog-working-overlay\"\u003e\u003c\/div\u003e\n  \u003cdiv class=\"yt-dialog-working-bubble\"\u003e\n    \u003cdiv class=\"yt-dialog-waiting-content\"\u003e\n        \u003cp class=\"yt-spinner \"\u003e\n        \u003cspan class=\"yt-spinner-img  yt-sprite\" title=\"Icône de chargement\"\u003e\u003c\/span\u003e\n\n    \u003cspan class=\"yt-spinner-message\"\u003e\n        Traitement en cours...\n    \u003c\/span\u003e\n  \u003c\/p\u003e\n\n      \u003c\/div\u003e\n  \u003c\/div\u003e\n\n          \u003c\/div\u003e\n        \u003c\/div\u003e\n        \u003cdiv class=\"yt-dialog-focus-trap\" tabindex=\"0\"\u003e\u003c\/div\u003e\n      \u003c\/div\u003e\n    \u003c\/div\u003e\n  \u003c\/div\u003e\n\n\n  \u003c\/div\u003e\n\n"
+});
+yt.setConfig('GOOGLE_HELP_CONTEXT', "homepage");
+ytcsi.setSpan('st', 1007);
+yt.setConfig({
+    'CSI_SERVICE_NAME': "youtube",
+    'TIMING_ACTION': "gli",
+    'TIMING_INFO': {
+        "yt_li": 1,
+        "e": "936108,9406993,9408142,9408420,9408710,9413503,9414799,9414875,9415304,9415435,9415538,9416126,9416291",
+        "yt_ref": "",
+        "ei": "cbd9VfuuG5TR-AW99IKIDA",
+        "yt_lt": "cold",
+        "yt_spf": 0,
+        "yt_err": 0
+    }
+});
+yt.setConfig({
+    'XSRF_TOKEN': "QUFFLUhqbmtaeHZqbnl4SkRfSE5yZnVwTF85UWRfcU5jd3xBQ3Jtc0tsZUNjZUtwWHRWRFRXMU8xa1MwN2k1RkgxTUlDSTY3ZVlwSzVpQVRXalIzdXJlUHZHdHlPMDBhZk10YW5TX0NxTUVjdkRULTZXZVJFSG1jZHdFdGpsNmMzZHUzemszQzdDUDd3UFU5V2RCbDVQU0VSMVlpVkxtNC1iSjIzQUxzVTVFU2gxeHN5VUwzRmR2UUdrZ01ueUM1cDRSRWFlNkk0V3AzeUFDVTFqTUhSSDVLS28=",
+    'XSRF_REDIRECT_TOKEN': "1D6iuK6Tzb5yTSUTEbw326xHn0J8MTQzNDM4ODcyMkAxNDM0MzAyMzIy",
+    'XSRF_FIELD_NAME': "session_token"
+});
+yt.setConfig('THUMB_DELAY_LOAD_BUFFER', 300);
+if (window.ytcsi) {
+    window.ytcsi.tick("jl", null, '');
+}
       </script>
    </body>
 </html>
