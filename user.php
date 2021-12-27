@@ -75,7 +75,7 @@ $css = $scss->compile(
 	}'
 );
 
-if ( isset( $userdata ) && !empty( $userdata ) ) {
+if ( isset( $log ) && !empty( $log ) ) {
 	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $userpagedata['id']]);
 } else {
 	$subscribed = 0;
