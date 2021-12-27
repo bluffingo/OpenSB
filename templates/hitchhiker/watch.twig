@@ -7,6 +7,7 @@
 	  <script src="/assets/jsbin/html5player-fr_CA-vflSQ6bPr/html5player.js" type="text/javascript" name="html5player/html5player"></script>
 	  {% endblock %}
 {% block player %}
+{% if oldPlayer %}
 <div id="player" class="content-alignment watch-small">
     <div id="player-api" class="player-width player-height off-screen-target player-api"></div>
   </div>
@@ -184,10 +185,11 @@ ytplayer.load = function() {
     }
 }());
 </script>
+{% endif %}
 {% endblock %}
 {% block content %}
 <div id="placeholder-player">
-<div class="player-api player-width player-height"></div>
+<div class="player-api player-width player-height">{% if not oldPlayer %}{{ include('/components/player.twig') }}{% endif %}</div>
 </div>
   <div id="watch7-container" class="">
       <div id="watch7-main-container">

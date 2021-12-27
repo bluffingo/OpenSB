@@ -16,8 +16,10 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 
 	if ($log) {
 	$totalSubscribers = result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
+	$allUsers = query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 50");
 	} else {
 	$totalSubscribers = 0;
+	$allUsers = query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 10");
 	}
 	
 	$doCache = ($tplNoCache ? false : $tplCache);
@@ -55,6 +57,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('showGuideWhatever', $nonFunctionalShit);
 	$twig->addGlobal('page', $pageVariable);
 	$twig->addGlobal('totalSubscribers', $totalSubscribers);
+	$twig->addGlobal('allUsers', $allUsers);
 	
 
 	return $twig;
