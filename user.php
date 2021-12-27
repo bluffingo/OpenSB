@@ -6,11 +6,19 @@ $message = '';
 
 if (isset($_GET['id'])) {
 	$userpagedata = fetch("SELECT * FROM users WHERE id = ?", [$_GET['id']]);
+	if (!isset($userpagedata) || !$userpagedata) {
+		error('404', 'Invalid user');
+	}
+	$customProfile = fetch("SELECT * FROM channel_settings WHERE user = ?", [$userpagedata['id']]);
 } else if (isset($_GET['name'])) {
 	$userpagedata = fetch("SELECT * FROM users WHERE name = ?", [$_GET['name']]);
+	if (!isset($userpagedata) || !$userpagedata) {
+		error('404', 'Invalid user');
+	}
+	$customProfile = fetch("SELECT * FROM channel_settings WHERE user = ?", [$userpagedata['id']]);
+} else {
+    error('404', 'No user specified');
 }
-
-$customProfile = fetch("SELECT * FROM channel_settings WHERE user = ?", [$userpagedata['id']]);
 
 // var_dump($customProfile);
 
@@ -27,10 +35,6 @@ if ($frontend == "2008") {
 		[$userpagedata['id'],$_POST['comment'],$userdata['id'],time(),0]);
 		$message = "Channel comment has been submitted!";
 	}
-}
-
-if (!isset($userpagedata) || !$userpagedata) {
-	error('404', 'No user specified');
 }
 
 $page = (isset($_GET['p']) && is_numeric($_GET['p']) && $_GET['p'] > 0 ? $_GET['p'] : 1);
@@ -81,17 +85,8 @@ if ( isset( $log ) && !empty( $log ) ) {
 	$subscribed = 0;
 }
 
-if ($frontend == "sbnext-finalium") {
-	if ( isset( $_GET['channel_layout'] ) && !empty( $_GET['channel_layout'] ) ) {
-		if ($_GET['channel_layout'] == "2013") {
-			$twigFile = "user-2013.twig";
-		}
-	} else {
-		$twigFile = "user-2012.twig";
-	}
-}
 $twig = twigloader();
-echo $twig->render($twigFile, [
+echo $twig->render("user.twig", [
 	'id' => $userpagedata['id'],
 	'name' => $userpagedata['name'],
 	'userpagedata' => $userpagedata,
