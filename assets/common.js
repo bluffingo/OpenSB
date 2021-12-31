@@ -9,10 +9,10 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	}
 	$("#masthead-loggedin").click(function() {
 	  var x = document.getElementById("masthead-below");
-	  if (x.style.display === "none") {
-		x.style.display = "block";
-	  } else {
+	  if (x.style.display === "block") {
 		x.style.display = "none";
+	  } else {
+		x.style.display = "block";
 	  }
 	});
 	$(window).click(function() {

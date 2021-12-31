@@ -61,9 +61,9 @@ $breakpoints: (
     xl: 1000px
 );
 
-@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}") {
+@mixin make-grid-columns($i: 1, $list: ".col-md-#{$i}") {
   @for $i from (1 + 1) through $columns {
-    $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
+    $list: "#{$list}, .col-md-#{$i}";
   }
   #{$list} {
     position: relative;

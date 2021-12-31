@@ -16,15 +16,14 @@
 	{% endif %}
 <div class="indexNext">
 <div class="main-content" style="margin-top:-48px;padding: 75px 0px 25px;display: block;">
-	<div class="container" style="max-width: 970px;">
+	<div class="container" style="max-width: 1200px;">
 		{% if log %}
 		<div class="grid">
 			<div class="col-md-2">
 				<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
 			</div>
 			<div class="col-md-10">
-				<p class="text-start">
-				<h1 style="padding:0;margin:8px 0;">{{ __("Welcome,") }} {{ userdata.title }}</h1>
+				<h1 style="padding:0;margin:8px 0;font-weight:400;">{{ __("Welcome to cheeseRox,") }} {{ userdata.title }}</h1>
 				{# hack to prevent twig from outputing the number 1 #}
 				{% if totalSubscribers != 1 %}
 					{% set pluralSubscribers = __("s") %}
@@ -35,7 +34,7 @@
 				<h3 style="padding:0;margin:8px 0;">@{{ userdata.name }}</h3>
 				<p style="padding:0;margin:8px 0;">{{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
 					&bull; {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
-				<a class="button button-neutral button-large" href="../studio/">{{ __("Manage my content") }} {{ icon('caret-right-fill', 12) }}</a>
+				<a class="button button-neutral button-large" href="../studio/">{{ __("Manage") }} {{ icon('caret-right-fill', 12) }}</a>
 			</div>
 		</div>
 		{% else %}

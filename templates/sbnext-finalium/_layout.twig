@@ -77,7 +77,7 @@
 		<div id="billboard-search-box">
 		<form id="masthead-search" action="/results.php">
 					<button id="search-btn" class="button button-secondary">
-					<span>{{ icon('search', 14) }}</span>
+					<span>Search</span>
 					</button>
 					<div id="masthead-search-terms">
 						<label><input type="text" name="query" placeholder="{{ __("Search...") }}"></label>
@@ -91,10 +91,9 @@
 			<a href="/" id="logo-container"><img id="logo" src="/assets/logo-masthead.png"></a>
 			<div id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
 				{% if log %}
-				<div style="display: flex;justify-content: center;align-items: center;gap: 5px;">
+				<div style="margin-top: 8px;">
 				{{ userdata.title }}
-               <div {% if notification_count > 0 %}class="bg-danger text-light"{% else %}class="bg-neutral{% endif %}" style="padding:6px 8px;display: inline-block;">{{ notification_count }}</div>
-				<img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_image(userdata.name) }}"  alt="{{ userdata.title }}">
+               <!-- <div {% if notification_count > 0 %}class="bg-danger text-light"{% else %}class="bg-neutral{% endif %}" style="padding:6px 8px;display: inline-block;">{{ notification_count }}</div> -->
 				<div class="usermenushit" id="masthead-below">
 					<ul style="padding:0">
 					<li><a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a></li>
@@ -119,7 +118,7 @@
 				</div>
 				<form id="masthead-search" action="/results.php">
 					<button id="search-btn" class="button button-secondary">
-					<span>{{ icon('search', 14) }}</span>
+					<span>Search</span>
 					</button>
 					<div id="masthead-search-terms">
 						<label><input type="text" name="query" placeholder="{{ __("Search...") }}"></label>
@@ -130,7 +129,7 @@
 	</div>
 	{% endif %}
 	{% block precontent %}{% endblock %}
-				<div class="container" style="max-width: 970px;padding:0;">
+				<div class="container" style="max-width: 1200px;padding:0;">
 					{% block content %}{% endblock %}
 					</div>
 	{% if theme == 'bluey' %}

@@ -18,7 +18,7 @@ $success: $green;
 $info: $cyan;
 $warning: $yellow;
 $danger: $red;
-$gray-100: #F8F8F8;
+$gray-100: #F9F9F9;
 $gray-150: #F1F1F1;
 $gray-200: #EEEEEE;
 $gray-250: #E8E8E8;
@@ -82,3 +82,5 @@ $theme-colors: (
   "aqua": $aqua-color,
   "carrot": $orange-color,
 );
+
+$font: "Roboto","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;

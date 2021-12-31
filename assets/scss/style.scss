@@ -2,10 +2,21 @@
 @import "_normalize";
 /// Variables \\\
 @import "_variables";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 /* SB CSS STARTS HERE ======================================================== */
 
 @import "_clearfix";
 @import "_grid-breakpoints";
+
+h1, h2, h3 {
+	font-weight: 400;
+}
+
+h4, h5, h6 {
+	font-weight: 300;
+}
 
 .clearfix {
 @include clearfix;
@@ -20,14 +31,14 @@
 }
 
 body {
-  background: #ebebeb;
+  background: $gray-100;
   color: black;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: $font;
   font-size: 13px;
   margin: auto;
   width: 100%;
   padding-bottom: 30px;
-  min-width: 1000px;
+  min-width: 800px;
 }
 
 a:link,
@@ -532,12 +543,11 @@ form.reglog {
 }
 
 .main-content {
- background-color:#8a8a8a;
- background-image:url("/assets/rain.jpg");
+ background-color:#ff9900;
+ background: linear-gradient(to bottom, #ffc578 0%,#fb9d23 100%);
  background-size:cover;
  margin:0;
- color:#fff;
- display:flex;
+ color:white;
  padding: 25px 0;
 
   .container {
@@ -734,7 +744,7 @@ box-sizing: border-box;
 	z-index: 1;
     margin: 0;
     border-bottom: none;
-    background-color: #f7f7f7f0;
+    background-color: #fffffff0;
     padding: 7px;
     position: sticky;
     display: block;
@@ -744,7 +754,8 @@ box-sizing: border-box;
 }
 
 #masthead {
-	width: 970px;
+	width: 90%;
+	max-width: 1200px;
 	position: relative;
 	margin: auto;
 	height: 33px;
@@ -758,7 +769,7 @@ box-sizing: border-box;
 	
 	.button {
 		margin: 0;
-		padding: 0.65em 10px;
+		padding: 0.65em 0;
 	}
 	
 	#logo-container {
@@ -789,6 +800,7 @@ box-sizing: border-box;
 	#search-btn {
 		height: 29px;
 		float: right;
+		border-radius: 0 3px 3px 0;
 		span {
 			margin: 0 12px;
 		}
@@ -807,6 +819,8 @@ box-sizing: border-box;
 		box-sizing: border-box;
 		height: 29px;
 		border-radius: 3px 0 0 3px;
+		border: 1px solid #e5e5e5;
+		border-right: none;
 		}
 	}
 }
@@ -829,6 +843,7 @@ overflow: hidden;
 	margin-top: 3px;
 	margin-left: 25px;
 	position: relative;
+	cursor: pointer;
 }
 
 #masthead-below {
