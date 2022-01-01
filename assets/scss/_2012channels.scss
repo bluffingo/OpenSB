@@ -95,7 +95,8 @@
 }
 
 .ytg-wide {
-    width: 1200px;
+    max-width: 1200px;
+	min-width: 800px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;

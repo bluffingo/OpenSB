@@ -60,15 +60,15 @@
 <div class="grid">
 	<div class="col-md-8">
 	<div class="grid">
-			<div class="col-md-6">
-			<div class="card card-body">
-				{% for video in featuredVideos %}
-				{{ video_box(video) }}
-				{% endfor %}
+			<div class="col-md-8" style="padding:0">
+				<div>
+					{% for video in featuredVideos %}
+					{{ video_box(video) }}
+					{% endfor %}
+				</div>
 			</div>
-			</div>
-			<div class="col-md-6">
-				<div class="card card-body">
+			<div class="col-md-4" style="padding:0;">
+				<div class="card card-body" style="height:440px;border-left:none;">
 				{% for video in videos_right %}
 				{{ small_video_box(video) }}
 				{% endfor %}

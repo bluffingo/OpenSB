@@ -60,9 +60,8 @@ menu, ol, ul, il {
     list-style: none;
 }
 
-.top,
 .footer {
-  min-width: 984px;
+  min-width: 800px;
   background-color: $gray-150;
   border-bottom: 1px solid $gray-250;
   border-top: 1px solid $gray-250;
@@ -72,7 +71,7 @@ menu, ol, ul, il {
 }
 
 .top_forum {
-  min-width: 984px;
+  min-width: 800px;
   background-color: black;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
@@ -754,7 +753,7 @@ box-sizing: border-box;
 }
 
 #masthead {
-	width: 90%;
+	width: 100%;
 	max-width: 1200px;
 	position: relative;
 	margin: auto;
@@ -1038,6 +1037,7 @@ line-height: 17px;
   width: 160px;
   overflow: hidden;
   background: #ffffff;
+  right: 0px;
   ul {
 	  li {
 		padding: 4px 0;
