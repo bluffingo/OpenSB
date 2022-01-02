@@ -7,6 +7,8 @@
 	<div class="col-md-11">
 		{{ userlink(data, 'u_') }} &bull; {{ data.date | relative_time}}
 		<br>
-		{{ data.comment | raw }}
+		<div class="comment" style="width:100%">
+		{{ data.comment | markdown_to_html }}
+		</div>
 	</div>
 </div>

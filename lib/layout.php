@@ -31,7 +31,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	} else {
 		$loader = $customloader();
 	}
-
+	
 	if (!isset($customenv)) {
 		$twig = new \Twig\Environment($loader, [
 			'cache' => $doCache,
@@ -40,6 +40,15 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 		$twig = $customenv($loader, $doCache);
 	}
 
+	// why was this line of code not added
+	$twig->addRuntimeLoader(new class implements RuntimeLoaderInterface {
+		public function load($class) {
+			if (MarkdownRuntime::class === $class) {
+				return new MarkdownRuntime(new DefaultMarkdown());
+			}
+		}
+	});
+	
 	$twig->addExtension(new SBExtension());
 	$twig->addExtension(new MarkdownExtension());
 
