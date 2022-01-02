@@ -23,7 +23,7 @@ foreach (glob("lib/*.php") as $file) {
 
 // todo: make this load a html page
 if ($isMaintenance && !isCli()) {
-	die('<center><b>squareBracket is currently offline.</b></center>');
+	die('<center><b>cheeseRox is currently offline.</b></center>');
 }
 
 if(!isset($acmlm)) {
@@ -64,8 +64,6 @@ if (isset($_COOKIE['frontend'])) {
 if ($log) {
 	$userdata = fetch("SELECT * FROM users WHERE id = ?", [$id]);
 	$notificationCount = result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$userdata['id']]);
-
-	query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $id]);
 } else {
 	$userdata['powerlevel'] = 1;
 }

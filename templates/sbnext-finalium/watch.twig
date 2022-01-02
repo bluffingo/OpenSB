@@ -49,7 +49,7 @@
             <div class="grid">
                <div class="col-md-6">
                   <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
-                  <a href="user.php?name={{ video.u_name }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
+                  <a href="user.php?name={{ video.u_name }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a> • {{ allVideos }} videos
                   <br>
                   {% if userdata.id == video.author %}<a class="button button-secondary button-small">Channel settings</a>{% else %}
                   <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
@@ -83,7 +83,7 @@
                   <div class="tab">
                      <button class="tablinks active" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
                      <button class="tablinks" onclick="openTab(event, 'About')">Share</button>
-                     <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("bar-chart-fill", 12) }}</button>
+                     <button class="tablinks" onclick="openTab(event, 'Stats')">{{ icon("bar-chart-fill", 12) }}</button>
                      <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("flag-fill", 12) }}</button>
                   </div>
                </div>
@@ -107,6 +107,20 @@
 							 </li>
 						  </ul>
 					   </div>
+					</div>
+					<div id="Stats" class="tabcontent" style="display: none;">
+					   <h2>Stats</h2>
+					   <ul style="padding:0">
+						   <li>
+							Unfiltered views: {{ video.views }}
+						   </li>
+						   <li>
+							Like-to-dislike ratio: {{ videoRatio }}%
+						   </li>
+						   <li>
+						   Most recent view: {{ recentView | relative_time }}
+						   </li>
+					   </ul>
 					</div>
 				 </div>
 				 <div class="col-md-4">
