@@ -1,7 +1,7 @@
 <h1 align="center">cheeseRox Beta 2.0.8</h1>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45898787/142709724-671da494-3498-4941-bf94-1aa0987fc2a5.png">
+<img src="https://user-images.githubusercontent.com/88458384/147863551-8a7e0a82-a7d3-483a-9467-5045b4d53ce4.png">
 <br><br>
 <a href="https://www.youtube.com/channel/UCMnG3eA5QcSgIPsavuW4ubA">
 <img src="https://img.shields.io/youtube/channel/subscribers/UCMnG3eA5QcSgIPsavuW4ubA?style=social">
