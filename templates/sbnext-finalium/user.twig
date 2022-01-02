@@ -37,66 +37,26 @@
 {% endif %}
 <div class="channel-header-bg">
 </div>
-<div id="branded-page-header-container" class="ytg-wide banner-displayed-mode">
-								<div id="branded-page-header" class="ytg-wide">
-									<div id="channel-header-main">
-										<div class="upper-section clearfix">
-											<a href="/user.php?name={{ userpagedata.name }}">
-											<span class="profile-thumb">
-											<img class="img-fluid" src="{{ profile_image(userpagedata.name) }}" title="{{ userpagedata.name }}" alt="{{ userpagedata.name }}">
-											</span>
-											</a>
-											<div class="upper-left-section ">
-												<h1>{{ userpagedata.title }}</h1>
-											</div>
-											<div class="upper-left-section subbutton">
-												{% if userpagedata.id == userdata.id %}
-													<a class="button button-primary button-small" href="settings.php">{{ __("Edit profile") }}</a>
-												{% else %}
-													<button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
-												{% endif %}
-											</div>
-											<div class="upper-right-section">
-												<div class="header-stats">
-													<div class="stat-entry">
-														<span class="stat-value">{{ subCount }}</span>
-														<span class="stat-name">followers</span>
-													</div>
-													<div class="stat-entry">
-														<span class="stat-value">{{ views }}</span>
-														<span class="stat-name">video views</span>
-													</div>
-												</div>
-												<span class="valign-shim"></span>
-											</div>
-										</div>
-										<!-- <div class="channel-horizontal-menu clearfix">
-											<ul>
-												<li class="selected">
-													<a href="/user/{{ userpagedata.name }}/featured" class="gh-tab-100">
-													Featured
-													</a>
-												</li>
-												<li>
-													<a href="/user/{{ userpagedata.name }}/feed" class="gh-tab-102">
-													Feed
-													</a>
-												</li>
-												<li>
-													<a href="/user/{{ userpagedata.name }}/discussion" class="gh-tab-101">
-													Discussion
-													</a>
-												</li>
-												<li>
-													<a href="/user/{{ userpagedata.name }}/videos" class="gh-tab-101">
-													Videos
-													</a>
-												</li>
-											</ul>
-										</div>
- -->									</div>
-								</div>
-							</div>
+<div class="grid" style="background-color:{{ customProfile.highlightheader }};height: 100px;">
+	<div class="col-md-1" style="height:inherit;display: table;">
+		<div style="display: table-cell;vertical-align: middle;">
+			<img class="img-fluid rounded" src="{{ profile_image(userpagedata.name) }}" title="{{ userpagedata.name }}" alt="{{ userpagedata.name }}">
+		</div>
+	</div>
+	<div class="col-md-10" style="color:{{ customProfile.titlefont }};height:inherit;">
+		<h1>{{ userpagedata.title }}</h1>
+		<p>{{ subCount }} followers • {{ views }} video views</p>
+	</div>
+	<div class="col-md-1" style="height:inherit;display: table;">
+		<div style="display: table-cell;vertical-align: middle;text-align:center;">
+			{% if userpagedata.id == userdata.id %}
+				<a class="button button-primary button-small" href="settings.php">{{ __("Edit profile") }}</a>
+			{% else %}
+				<button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
+			{% endif %}
+		</div>
+	</div>
+</div>
 <div class="bg-neutral" style="padding: 1px 10px 10px;">
 			      <div class="tab">
                      <button class="tablinks active" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
