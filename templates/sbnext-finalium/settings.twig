@@ -37,10 +37,6 @@
 		<td class="b"><input type="text" name="title" size="45" maxlength="256" value="{{ userdata.title }}"></td>
 	</tr>
 	<tr>
-		<td class="a">{{ __("Username color") }}</td>
-		<td class="b"><input name="customcolor" data-jscolor="" value="{{ userdata.customcolor | default('523bb8') }}"></td>
-	</tr>
-	<tr>
 		<td class="a">
 			{{ __("Description") }}
 			<br><em>{{ __("Markdown allowed.") }}</em>
@@ -51,11 +47,46 @@
 		<td class="a">{{ __("Forum signature") }}</td>
 		<td class="b"><textarea name="signature" rows="5" cols="80" wrap="virtual">{{ userdata.signature }}</textarea></td>
 	</tr>
-</table>
-
-<h3>{{ __("sb2008 Profile") }}</h3>
-<table class="settings">
-Fucking later.
+	<tr>
+		<td class="a">{{ __("Username color") }}</td>
+		<td class="b"><input name="customcolor" data-jscolor="" value="{{ userdata.customcolor | default('523bb8') }}"></td>
+	</tr>
+	<tr>
+		<td class="a">{{ __("Background color") }}</td>
+		<td class="b"><input name="background" data-jscolor="" value="{{ colors.background | default('ffffff') }}"></td>
+	</tr>
+	<tr>
+		<td class="a">{{ __("Text color") }}</td>
+		<td class="b"><input name="font" data-jscolor="" value="{{ colors.fontcolor | default('ffffff') }}"></td>
+	</tr>
+	<tr>
+		<td class="a">{{ __("Title color") }}</td>
+		<td class="b"><input name="title_font" data-jscolor="" value="{{ colors.titlefont | default('ffffff') }}"></td>
+	</tr>
+	<tr>
+		<td class="a">{{ __("Link color") }}</td>
+		<td class="b"><input name="links" data-jscolor="" value="{{ colors.link | default('0033CC') }}"></td>
+	</tr>
+	<tr>
+		<td class="a">{{ __("Header text color") }}</td>
+		<td class="b"><input name="headerfont" data-jscolor="" value="{{ colors.headerfont | default('ffffff') }}"></td>
+	</tr>
+	<tr>
+		<td class="a">{{ __("Highlight header") }}</td>
+		<td class="b"><input name="highlight_header" data-jscolor="" value="{{ colors.highlightheader | default('3399cc') }}"></td>
+	</tr>
+	<tr>
+		<td class="a">{{ __("Highlight inside") }}</td>
+		<td class="b"><input name="highlight_inner" data-jscolor="" value="{{ colors.highlightinside | default('ecf4fb') }}"></td>
+	</tr>
+	<tr>
+		<td class="a">{{ __("Regular header") }}</td>
+		<td class="b"><input name="regular_header" data-jscolor="" value="{{ colors.regularheader | default('ffa540') }}"></td>
+	</tr>
+	<tr>
+		<td class="a">{{ __("Regular inside") }}</td>
+		<td class="b"><input name="regular_inner" data-jscolor="" value="{{ colors.regularinside | default('fd7939') }}"></td>
+	</tr>
 </table>
 
 <h3>{{ __("Options") }}</h3>
@@ -81,7 +112,7 @@ Fucking later.
 		</td>
 	</tr>
 </table>
-<input type="hidden" name="magic" value="FOR GOD SAKES OPEN THE SILO DOOR">
+<input type="hidden" name="magic" value="chilliheelerbodypillow">
 <div class="right">
 <input class="button button-primary" type="submit" name="action" value="{{ __("Save Changes") }}">
 </div>

@@ -6,9 +6,11 @@ if (!$log) redirect('login.php');
 
 $error = '';
 
+$customProfile = fetch("SELECT * FROM channel_settings WHERE user = ?", [$userdata['id']]);
+
 if (isset($_POST['magic'])) {
 	$title	= isset($_POST['title']) ? $_POST['title'] : null;
-	$customcolor			= isset($_POST['customcolor']) ? $_POST['customcolor'] : '#3e3ecf'; // setting color to "null" would fuck up the scss compiler(?) -gr 7/26/2021
+	$customcolor	= isset($_POST['customcolor']) ? $_POST['customcolor'] : '#3e3ecf'; // setting color to "null" would fuck up the scss compiler(?) -gr 7/26/2021
 	$about			= isset($_POST['about']) ? $_POST['about'] : null;
 	$signature		= isset($_POST['signature']) ? $_POST['signature'] : null;
 
@@ -19,6 +21,17 @@ if (isset($_POST['magic'])) {
 	$pass2          = (isset($_POST['pass2']) ? $_POST['pass2'] : null);
 	
 	$theme          = isset($_POST['theme']) ? $_POST['theme'] : 'default';
+	
+	// profile customization
+	$background = isset($_POST['background']) ? $_POST['background'] : '#ffffff';
+	$fontcolor = isset($_POST['font']) ? $_POST['font'] : '#ffffff';
+	$titlecolor = isset($_POST['title_font']) ? $_POST['title_font'] : '#ffffff';
+	$linkcolor = isset($_POST['links']) ? $_POST['links'] : '#0033CC';
+	$headercolor = isset($_POST['header_font']) ? $_POST['header_font'] : '#ffffff';
+	$highlightheader = isset($_POST['highlight_header']) ? $_POST['highlight_header'] : '#3399cc';
+	$highlightinside = isset($_POST['highlight_inner']) ? $_POST['highlight_inner'] : '#ecf4fb';
+	$regularheader = isset($_POST['normal_header']) ? $_POST['normal_header'] : '#ffa540';
+	$regularinside = isset($_POST['normal_inner']) ? $_POST['normal_inner'] : '#fd7939';
 
 	if ($currentPass && $pass && $pass2) {
 		if (password_verify($currentPass, $userdata['password'])) {
@@ -70,6 +83,9 @@ if (isset($_POST['magic'])) {
 	query("UPDATE users SET title = ?, about = ?, customcolor = ?, language = ?, signature = ? WHERE id = ?",
 		[$title, $about, $customcolor, $language, $signature, $userdata['id']]);
 		
+	query("UPDATE channel_settings SET background = ?, fontcolor = ?, titlefont = ?, link = ?, headerfont = ?, highlightheader = ?, highlightinside = ?, regularheader = ?, regularinside = ? WHERE user = ?",
+		[$background, $fontcolor, $titlecolor, $linkcolor, $headercolor, $highlightheader, $highlightinside, $regularheader, $regularinside, $userdata['id']]);
+	
 	setcookie('theme', $theme, 2147483647);
 	
 
@@ -80,5 +96,6 @@ if (isset($_POST['magic'])) {
 
 $twig = twigloader();
 echo $twig->render('settings.twig', [
-	'error' => isset($error) ? $error : null
+	'error' => isset($error) ? $error : null,
+	'colors' => $customProfile,
 ]);
