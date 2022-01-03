@@ -37,8 +37,7 @@ body {
   font-size: 13px;
   margin: auto;
   width: 100%;
-  padding-bottom: 30px;
-  min-width: 800px;
+  height: 100%;
 }
 
 a:link,
@@ -61,13 +60,15 @@ menu, ol, ul, il {
 }
 
 .footer {
-  min-width: 800px;
   background-color: $gray-150;
   border-bottom: 1px solid $gray-250;
   border-top: 1px solid $gray-250;
   margin-top: 0;
   overflow: hidden;
-  padding: 7px 8px;
+  padding: 15px 40px;
+  img {
+  width: 200px;
+  }
 }
 
 .top_forum {
@@ -96,10 +97,6 @@ menu, ol, ul, il {
 .top {
   height: 35px;
   border-top-width: 0;
-}
-
-.footer {
-  text-align: center;
 }
 
 .picon {

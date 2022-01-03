@@ -30,8 +30,8 @@ if (isset($_POST['magic'])) {
 	$headercolor = isset($_POST['header_font']) ? $_POST['header_font'] : '#ffffff';
 	$highlightheader = isset($_POST['highlight_header']) ? $_POST['highlight_header'] : '#3399cc';
 	$highlightinside = isset($_POST['highlight_inner']) ? $_POST['highlight_inner'] : '#ecf4fb';
-	$regularheader = isset($_POST['normal_header']) ? $_POST['normal_header'] : '#ffa540';
-	$regularinside = isset($_POST['normal_inner']) ? $_POST['normal_inner'] : '#fd7939';
+	$regularheader = isset($_POST['regular_header']) ? $_POST['regular_header'] : '#3399cc';
+	$regularinside = isset($_POST['regular_inner']) ? $_POST['regular_inner'] : '#ffffff';
 
 	if ($currentPass && $pass && $pass2) {
 		if (password_verify($currentPass, $userdata['password'])) {

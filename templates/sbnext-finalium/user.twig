@@ -20,21 +20,32 @@
 	background-position: center !important;
 	height: 225px;
 	}
+	body {
+	background-color: {{ customProfile.background }};
+	}
 </style>
-{% if userpagedata.id == userdata.id and not forceuser %}
 <div class="bg-dark" style="padding:1px 15px;">
+{% if userpagedata.id == userdata.id and not forceuser %}
 <p>		   <a href="/settings.php" style="color:white;">{{ __("Edit my settings") }}</a>
 	&bull; <a href="/forum/private.php" style="color:white;">{{ __("View my private messages") }}</a>
 	&bull; <a href="/user.php?id={{ id }}&forceuser" style="color:white;">{{ __("View user page as viewer") }}</a>
+</p>
+{% else %}
+<p>
+	<a href="forum/forum.php?user={{ id }}" style="color:white;">{{ __("View threads") }}</a>
+	&bull; <a href="forum/thread.php?user={{ id }}" style="color:white;">{{ __("Show posts") }}</a>
+	{% if log %}
+	{% if userdata.id != id %}
+	&bull; <a href="forum/sendprivate.php?uid={{ id }}" style="color:white;">{{ __("Send private message") }}</a>
+	{% endif %}
 	{% if userdata.powerlevel > 2 %}
-	&bull; <a href="admin.php" style="color:white;">{{ __("Admin panel") }}</a></p>
+	&bull; <a href="resetpassword.php?grf={{ id }}" style="color:white;">{{ __("Generate password reset for user") }}</a>
+	&bull; <a href="forum/editperms.php?uid={{ id }}" style="color:white;">{{ __("Edit forum permissions") }}</a>
+	{% endif %}
 	{% endif %}
 </p>
-</div>
-<form action="login.php" method="post" name="logout">
-	<input type="hidden" name="logout" value="yes">
-</form>
 {% endif %}
+</div>
 <div class="channel-header-bg">
 </div>
 <div class="grid" style="background-color:{{ customProfile.highlightheader }};height: 100px;">
@@ -57,63 +68,58 @@
 		</div>
 	</div>
 </div>
-<div class="bg-neutral" style="padding: 1px 10px 10px;">
-			      <div class="tab">
-                     <button class="tablinks active" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
-					 <button class="tablinks" onclick="openTab(event, 'Videos')">Videos</button>
-					 <button class="tablinks" onclick="openTab(event, 'Discussion')">Discussion</button>
-					 <button class="tablinks" onclick="openTab(event, 'About')">About</button>
-                  </div>
-<div id="Home" class="tabcontent" style="display: block;">
+<div class="grid" style="background-color:{{ customProfile.highlightinside }};border: 1px solid {{ customProfile.highlightheader }}">
+	<div class="screwPaddingLeft col-md-3">
+			<div class="card-profiles">
+				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
+					<div class="card-body">
+						{{ userpagedata.about | markdown }}
+					</div>
+				</div>
+			</div>
+			<div class="card-profiles">
+				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
+				About {{ userpagedata.name }}
+				</h3>
+				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
+					<div class="card-body">
+					<table style="width:100%">
+						<thead>
+						  <tr>
+							<td class="left">Last connected</td>
+							<td class="right">{{ userpagedata.lastview | relative_time }}</td>
+						  </tr>
+						  <tr>
+							<td class="left">Registered</td>
+							<td class="right">{{ userpagedata.joined | relative_time }}</td>
+						  </tr>
+						</thead>
+					</table>
+					</div>
+				</div>
+		</div>
+		
+	</div>
+	<div class="screwPaddingRight col-md-9" style="color:{{ customProfile.titlefont }};">
+			<div class="card-profiles">
+				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
+				Videos
+				</h2>
+				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
+					<div class="card-body">
+					{% for latestVideo in latestVideos %}
+					{{ small_video_box(latestVideo) }}
+					{% else %}
+					<p>{{ __("There are currently no videos uploaded by %s.", [userpagedata.title]) }}</p>
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
 {% if markread %}
 <div class="header_message">{{ __("Marked all notifications as read.") }}</div>
 {% elseif edited %}
 <div class="header_message">{{ __("Settings successfully saved!") }}</div>
 {% endif %}
-<h2></h2>
-<div class="user_about">
-	<h3>{{ __("About this user") }}</h3>
-	{{ userpagedata.about | markdown }}
-</div>
-<p class="clear_right">
-	<a href="forum/forum.php?user={{ id }}">{{ __("View threads") }}</a>
-	&bull; <a href="forum/thread.php?user={{ id }}">{{ __("Show posts") }}</a>
-	{% if log %}
-	{% if userdata.id != id %}
-	&bull; <a href="forum/sendprivate.php?uid={{ id }}">{{ __("Send private message") }}</a>
-	{% endif %}
-	{% if userdata.powerlevel > 2 %}
-	&bull; <a href="resetpassword.php?grf={{ id }}">{{ __("Generate password reset for user") }}</a>
-	&bull; <a href="forum/editperms.php?uid={{ id }}">{{ __("Edit forum permissions") }}</a>
-	{% endif %}
-	{% endif %}
-</p>
-</div>
-<div id="Videos" class="tabcontent">
-{% for latestVideo in latestVideos %}
-{{ small_video_box(latestVideo) }}
-{% else %}
-<p>{{ __("There are currently no videos uploaded by %s.", [userpagedata.title]) }}</p>
-{% endfor %}
-{% if userdata.id == id %}
-{% set forceuser = "&forceuser" %}
-{% else %}
-{% set forceuser = "" %}
-{% endif %}
-{% set le_url = 'user.php?id=' ~ id ~ '&page=%s' ~ forceuser %}
-{{ pagination(level_count, glob_lpp, le_url, page) }}
-</div>
-<div id="About" class="tabcontent">
-			<div class="card">
-				<div class="card-header">{{ __("General information") }}</div>
-				<div class="card-body">
-					<b>{{ __("Forum Threads") }}</b>: {{ userpagedata.threads }}
-					<span class="pad"><b>{{ __("Forum Posts") }}</b>: {{ userpagedata.posts }}</span>
-					<br><br>
-					<b>{{ __("Registered on") }}</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
-					<br><br>
-					<b>{{ __("Last view") }}</b>: {{ userpagedata.lastview | relative_time }}
-				</div>
-			</div>
-		</div>
 {% endblock %}

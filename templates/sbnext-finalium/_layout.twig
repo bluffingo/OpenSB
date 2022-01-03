@@ -138,11 +138,16 @@
 		<div class="footer_inner">
 	{% else %}
 	</div>
-	<footer class="container">
+	<footer>
 		<div class="footer">
 	{% endif %}
-			<h3>cheeseRox</h3>
-			<p><b>{{ __("By the cheeseRox contributors") }}</b> · 2020-{{ 'now' | date('Y') }} | <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} | <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}</p>
+			<img src="assets/logo-wordmark.png">
+			<p><b>{{ __("By the cheeseRox contributors") }}</b> · 2020-{{ 'now' | date('Y') }} 
+			| <b>{{ __("Users registered") }}</b>: {{ stats.usercount }} 
+			| <b>{{ __("Videos uploaded") }}</b>: {{ stats.videocount }}
+			| <b>{{ __("Music uploaded") }}</b>: {{ stats.musiccount }}
+			| <b>{{ __("Images uploaded") }}</b>: {{ stats.imagecount }}
+			</p>
 			<h5><a href="githistory.php">{{ __("Git Commit") }} {{ git_commit() }}</a><br></h5>
 		</div>
 	</footer>

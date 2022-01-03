@@ -18,11 +18,11 @@
 <div class="main-content" style="margin-top:-48px;padding: 75px 0px 25px;display: block;">
 	<div class="container" style="max-width: 1200px;">
 		{% if log %}
-		<div class="grid">
-			<div class="col-md-2">
+		<div class="grid" style="height:inherit;display: table;">
+			<div style="display: table-cell;vertical-align: middle;width:16%;padding-right:1em;">
 				<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
 			</div>
-			<div class="col-md-10">
+			<div style="display: table-cell;vertical-align: middle;">
 				<h1 style="padding:0;margin:8px 0;font-weight:400;">{{ __("Welcome to cheeseRox,") }} {{ userdata.title }}</h1>
 				{# hack to prevent twig from outputing the number 1 #}
 				{% if totalSubscribers != 1 %}
