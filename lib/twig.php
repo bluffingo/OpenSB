@@ -25,6 +25,26 @@ class SBExtension extends \Twig\Extension\AbstractExtension {
 			new \Twig\TwigFilter('relative_time', 'relativeTime'),
 			new \Twig\TwigFilter('category_id_to_name', 'categoryIDToName'),
 			new \Twig\TwigFilter('json_decode', 'jsonDecode'),
+			
+			// Markdown function for non-inline text, sanitized.
+			new \Twig\TwigFilter('markdown', function ($text) {
+				$markdown = new Parsedown();
+				$markdown->setSafeMode(true);
+				return $markdown->text($text);
+			}, ['is_safe' => ['html']]),
+			
+			// Markdown function for inline text, sanitized.
+			new \Twig\TwigFilter('markdown_inline', function ($text) {
+				$markdown = new Parsedown();
+				$markdown->setSafeMode(true);
+				return $markdown->line($text);
+			}, ['is_safe' => ['html']]),
+
+			// Markdown function for non-inline text. **NOT SANITIZED, DON'T LET IT EVER TOUCH USER INPUT**
+			new \Twig\TwigFilter('markdown_unsafe', function ($text) {
+				$markdown = new Parsedown();
+				return $markdown->text($text);
+			}, ['is_safe' => ['html']]),
 		];
 	}
 }
