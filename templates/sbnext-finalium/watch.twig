@@ -82,8 +82,7 @@
                <div class="col-md-8 right">
                   <div class="tab">
                      <button class="tablinks active" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
-                     <button class="tablinks" onclick="openTab(event, 'About')">Share</button>
-                     <button class="tablinks" onclick="openTab(event, 'Stats')">{{ icon("bar-chart-fill", 12) }}</button>
+                     <button class="tablinks" onclick="openTab(event, 'Flag')">{{ icon("bar-chart-fill", 12) }}</button>
                      <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("flag-fill", 12) }}</button>
                   </div>
                </div>
@@ -121,6 +120,10 @@
 						   Most recent view: {{ recentView | relative_time }}
 						   </li>
 					   </ul>
+					</div>
+					<div id="Flag" class="tabcontent" style="display: none;">
+					<h2>Flag this video</h2>
+					Uh yeah, that's gonna be done later.
 					</div>
 				 </div>
 <!-- 				 <div class="col-md-4">

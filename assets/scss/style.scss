@@ -541,16 +541,6 @@ form.reglog {
  color:white;
  padding: 25px 0;
 
-  .container {
-    display: flex;
-display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-    flex-direction: column;
-    align-self: center;
-    width: 100%;
-  }
-
   .card {
     color: black;
     text-shadow: none;
@@ -1088,6 +1078,20 @@ line-height: 17px;
 .partnership-intro {
 	font-size: 20px;
 	margin: 0;
+}
+
+.settings-tab {
+	font-weight: bold;
+	height: 20px;
+	padding: 5px 0 0 8px;
+	vertical-align: middle; 
+	a {
+		color: black;
+		text-decoration: none;
+	}
+}
+.settings-tab.current {
+	background: #ededed;
 }
 
 /// Gradients \\\

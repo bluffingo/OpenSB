@@ -1,0 +1,28 @@
+	<div id="masthead-container">
+		<div id="masthead">
+			<a href="/" id="logo-container"><img id="logo" src="/assets/logo-wordmark.png"></a>
+			<div id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="user-info">
+				{% if log %}
+					<a class="util-item first" href="/user.php?name={{ userdata.name }}">{{ userdata.title }}</a>
+					<a class="util-item" href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a>
+					<a class="util-item" href="/studio/">{{ __("Studio") }}</a>
+					<a class="util-item" href="/settings.php">{{ __("Settings") }}</a>
+					<a class="util-item" href="logout.php">{{ __("Log out") }}</a>
+				{% else %}
+				<div>
+					<a class="util-item first" href="../login.php">{{ __("Sign in") }}</a>
+					<a class="util-item" href="../register.php">{{ __("Register") }}</a>
+				</div>
+				{% endif %}
+			</div>
+			<div id="bar">
+			<a class="nav-item" href="/">Home</a>
+			<a class="nav-item" href="/browse.php">Videos</a>
+			<a class="nav-item" href="/channels.php">Channels</a>
+			<a class="nav-item" href="/forum/">Community</a>
+			<div id="masthead-bar-contents">
+			<a class="button button-primary" id="upload-button" href="/upload_start.php">Upload</a>
+			</div>
+			</div>
+		</div>
+	</div>

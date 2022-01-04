@@ -54,9 +54,7 @@
 	</div>
 	<div class="col-md-1" style="height:inherit;display: table;">
 		<div style="display: table-cell;vertical-align: middle;text-align:center;">
-			{% if userpagedata.id == userdata.id %}
-				<a class="button button-primary button-small" href="settings.php">{{ __("Edit profile") }}</a>
-			{% else %}
+			{% if userpagedata.id != userdata.id %}
 				<button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
 			{% endif %}
 		</div>
