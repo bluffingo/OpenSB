@@ -12,7 +12,7 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
-	global $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $languages, $frontend, $menuLinks, $notificationCount, $hCaptchaSiteKey, $nonFunctionalShit, $pageVariable;
+	global $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $menuLinks, $notificationCount, $hCaptchaSiteKey, $nonFunctionalShit, $pageVariable;
 
 	if ($log) {
 	$totalSubscribers = result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
@@ -56,6 +56,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('menu_links', $menuLinks);
 	$twig->addGlobal('userdata', $userdata);
 	$twig->addGlobal('theme', $theme);
+	$twig->addGlobal('pfpRoundness', $pfpRoundness);
 	$twig->addGlobal('glob_languages', $languages);
 	$twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 	$twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");

@@ -203,6 +203,16 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			});
 		}
 	});
+                    $(".btnAdd").click(function(){
+                        $.ajax({
+                            url: "customizer.php",
+                            success: function(returndata){
+                                     $('#myModal').html(returndata);
+									 $("#myModal").show();
+                            },
+                            dataType: "html"
+                        });
+                    });
 });
 	function openTab(evt, tab) {
 	  // Declare all variables

@@ -38,5 +38,6 @@ echo $twig->render('index.twig', [
 	'subscriptionVideos' => $subscriptionVideos,
 	'featuredVideos' => $featuredVideoData,
 	'totalViews' => $totalViews,
-	'creationDate' => $creationDate
+	'creationDate' => $creationDate,
+	'updated' => (isset($_GET['updated']) ? true : false),
 ]);

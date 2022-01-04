@@ -24,6 +24,11 @@
 	background-color: {{ customProfile.background }};
 	}
 </style>
+{% if markread %}
+<div class="header_message">{{ __("Marked all notifications as read.") }}</div>
+{% elseif edited %}
+<div class="header_message">{{ __("Settings successfully saved!") }}</div>
+{% endif %}
 <div class="bg-dark" style="padding:1px 15px;">
 {% if userpagedata.id == userdata.id and not forceuser %}
 <p>		   <a href="/settings.php" style="color:white;">{{ __("Edit my settings") }}</a>
@@ -71,18 +76,13 @@
 <div class="grid" style="background-color:{{ customProfile.highlightinside }};border: 1px solid {{ customProfile.highlightheader }}">
 	<div class="screwPaddingLeft col-md-3">
 			<div class="card-profiles">
-				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
-					<div class="card-body">
-						{{ userpagedata.about | markdown }}
-					</div>
-				</div>
-			</div>
-			<div class="card-profiles">
 				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
 				About {{ userpagedata.name }}
 				</h3>
 				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
 					<div class="card-body">
+					{{ userpagedata.about | markdown }}
+					<hr>
 					<table style="width:100%">
 						<thead>
 						  <tr>
@@ -117,9 +117,4 @@
 			</div>
 		</div>
 </div>
-{% if markread %}
-<div class="header_message">{{ __("Marked all notifications as read.") }}</div>
-{% elseif edited %}
-<div class="header_message">{{ __("Settings successfully saved!") }}</div>
-{% endif %}
 {% endblock %}

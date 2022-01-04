@@ -5,7 +5,13 @@
 {% block title %}{{ __("Settings") }}{% endblock %}
 
 	{% block content %}
-	<h1>Missing function! "Log out from all devices" was in the old Bootstrap 5 layout</h1>
+<div class="right">
+	<form action="settings.php" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="reset_token" id="floatingCurrentPass" value="resetToken">
+		<button class="button button-danger" type="submit" name="updatesettings" class="btn btn-primary">{{ __("Log out from all devices") }}</button>
+	</form>
+</div>
+
 <form action="settings.php" method="post">
 <h3>{{ __("Credentials") }}</h3>
 <table class="settings">
@@ -72,44 +78,20 @@
 		<td class="b"><input name="headerfont" data-jscolor="" value="{{ colors.headerfont | default('ffffff') }}"></td>
 	</tr>
 	<tr>
-		<td class="a">{{ __("Highlight header") }}</td>
+		<td class="a">{{ __("Outter header/border") }}</td>
 		<td class="b"><input name="highlight_header" data-jscolor="" value="{{ colors.highlightheader | default('3399cc') }}"></td>
 	</tr>
 	<tr>
-		<td class="a">{{ __("Highlight inside") }}</td>
+		<td class="a">{{ __("Outter background") }}</td>
 		<td class="b"><input name="highlight_inner" data-jscolor="" value="{{ colors.highlightinside | default('ecf4fb') }}"></td>
 	</tr>
 	<tr>
-		<td class="a">{{ __("Regular header") }}</td>
+		<td class="a">{{ __("Inner header/border") }}</td>
 		<td class="b"><input name="regular_header" data-jscolor="" value="{{ colors.regularheader | default('ffa540') }}"></td>
 	</tr>
 	<tr>
-		<td class="a">{{ __("Regular inside") }}</td>
+		<td class="a">{{ __("Inner background") }}</td>
 		<td class="b"><input name="regular_inner" data-jscolor="" value="{{ colors.regularinside | default('fd7939') }}"></td>
-	</tr>
-</table>
-
-<h3>{{ __("Options") }}</h3>
-<table class="settings">
-	<tr>
-		<td class="a">{{ __("Language") }}</td>
-		<td class="b">
-			<select class="form-select" name="language">
-				{% for code,name in glob_languages %}
-					{% if name %}<option value="{{ code }}" {% if code==userdata.language %}selected{% endif %}>{{ name }}</option>{% endif %}
-				{% endfor %}
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td class="a">{{ __("sbNext Theme") }}</td>
-		<td class="b">
-			<select class="form-select" name="theme">
-					<option value="default">Light</option>
-					<option value="dark">Dark</option>
-					<option value="bluey">Katt</option>
-			</select>
-		</td>
 	</tr>
 </table>
 <input type="hidden" name="magic" value="chilliheelerbodypillow">

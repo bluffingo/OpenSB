@@ -61,6 +61,14 @@ if (isset($_COOKIE['frontend'])) {
 	$frontend = (isset($useTemplate) ? $useTemplate : 'sbnext-finalium');
 }
 
+// Rounded pfp shit (suggested by sks2002)
+if (isset($_COOKIE['profilepicture'])) {
+	$pfpRoundness = $_COOKIE['profilepicture'];
+} else {
+	// No cookie, default to circle
+	$pfpRoundness = 'default';
+}
+
 if ($log) {
 	$userdata = fetch("SELECT * FROM users WHERE id = ?", [$id]);
 	$notificationCount = result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$userdata['id']]);
@@ -68,6 +76,6 @@ if ($log) {
 	$userdata['powerlevel'] = 1;
 }
 
-$lang = new Lang(sprintf("lib/lang/".(isset($userdata['language']) ? $userdata['language'] : 'en-US').".json"));
+$lang = new Lang(sprintf("lib/lang/".(isset($_COOKIE['language']) ? $_COOKIE['language'] : 'en-US').".json"));
 
 $userdata['timezone'] = 'America/New York';
