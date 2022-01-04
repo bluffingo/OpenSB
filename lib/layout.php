@@ -60,7 +60,6 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('glob_languages', $languages);
 	$twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 	$twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
-	$twig->addGlobal('stats', fetch("SELECT (SELECT COUNT(*) FROM users) usercount, (SELECT COUNT(*) FROM videos) videocount, (SELECT COUNT(*) FROM music) musiccount, (SELECT COUNT(*) FROM image) imagecount"));
 	$twig->addGlobal('hcaptcha_sitekey', $hCaptchaSiteKey);
 	$twig->addGlobal('glob_lpp', $lpp);
 	$twig->addGlobal('notification_count', $notificationCount);
@@ -119,6 +118,11 @@ function browseVideoBox($videodata) {
 function smallVideoBox($videodata) {
 	$twig = twigloader('components');
 	return $twig->render('smallvideobox.twig', ['data' => $videodata]);
+}
+
+function verticalVideoBox($videodata) {
+	$twig = twigloader('components');
+	return $twig->render('verticalvideobox.twig', ['data' => $videodata]);
 }
 
 function browseChannelBox($videodata) {

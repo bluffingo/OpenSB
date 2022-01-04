@@ -157,11 +157,6 @@ ul.menu {
   float: right;
 }
 
-.header_message {
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
-}
-
 div.level {
   display: inline-block;
   position: relative;
@@ -999,6 +994,13 @@ line-height: 17px;
 		line-height: 1.4em;
 		height: 1.4em;
 	}
+	.stat-larger {
+		color: #666;
+		font-size: 13px;
+		display: block;
+		line-height: 1.4em;
+		height: 1.4em;
+	}
 }
 
 .video-time {
@@ -1056,6 +1058,38 @@ line-height: 17px;
      display: none;
 }
 
+.user-action-container {
+	a {
+		text-decoration: none;
+	}
+}
+
+.user-action-container:hover {
+	background-color: #ffffff55;
+}
+
+.user-action {
+	padding: 10px;
+	font-size: 1.40em;
+}
+
+.statbox {
+	text-align: center;
+	font-size: 20px;
+	border: 1px solid $gray-200;
+	padding: 1em;
+	margin: 0.1em;
+	background-color: $gray-100;
+	.stat-title {
+		font-weight: bold;
+	}
+}
+
+.partnership-intro {
+	font-size: 20px;
+	margin: 0;
+}
+
 /// Gradients \\\
 @import "_gradients";
 /// Backgrounds \\\
@@ -1072,5 +1106,7 @@ line-height: 17px;
 @import "_buttons";
 /// Navs \\\
 @import "_navs";
+/// Alerts \\\
+@import "_header_message";
 /// Text \\\
 @import "_text";

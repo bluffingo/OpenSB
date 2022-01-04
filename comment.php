@@ -1,10 +1,22 @@
 <?php
 require('lib/common.php');
-
-if (!isset($_POST['vidid'])) {
-	die(__("No POST data."));
-} else if (!isset($_POST['vidid']) or $_POST['vidid'] == '') {
-	die(); //don't output anything if there is no data.
+if (isset($_POST['really']))
+{
+	switch ($_POST['type'])
+    {
+        case "video":
+            $type = 0;
+			$table = "comments";
+			$id = $_POST['vidid'];
+		break;
+        case "profile":
+            $type = 1;
+			$table = "channel_comments";
+			$id = $_POST['uid'];
+		break;
+	}
+} else {
+die(__("this is invalid"));
 }
 
 $comment = [
@@ -14,8 +26,15 @@ $comment = [
 	'date' => time()
 ];
 
+if ($type == 0) {
 query("INSERT INTO comments (id, comment, author, date, deleted) VALUES (?,?,?,?,?)",
-	[$_POST['vidid'],$_POST['comment'],$userdata['id'],time(),0]);
+	[$id,$_POST['comment'],$userdata['id'],time(),0]);
+} elseif ($type == 1) {
+query("INSERT INTO channel_comments (id, comment, author, date, deleted) VALUES (?,?,?,?,?)",
+[$id,$_POST['comment'],$userdata['id'],time(),0]);
+} else {
+die(__("this is still invalid"));
+}
 
 if ($frontend != "retro") {
 $twig = twigloader();

@@ -5,6 +5,7 @@ class SBExtension extends \Twig\Extension\AbstractExtension {
 		return [
 			new \Twig\TwigFunction('browse_video_box', 'browseVideoBox', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('small_video_box', 'smallVideoBox', ['is_safe' => ['html']]),
+			new \Twig\TwigFunction('vertical_video_box', 'verticalVideoBox', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('video_box', 'videoBox', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('video_thumbnail', 'videoThumbnail', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('video_length', 'videoLength', ['is_safe' => ['html']]),

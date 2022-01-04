@@ -11,7 +11,19 @@
 		<button class="button button-danger" type="submit" name="updatesettings" class="btn btn-primary">{{ __("Log out from all devices") }}</button>
 	</form>
 </div>
-
+<div class="grid">
+<div class="col-md-2">
+List of options, yeah, do that later.
+</div>
+<div class="col-md-10">
+<div class="grid">
+	<div class="col-md-1">
+		<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="pfp">
+	</div>
+	<div class="col-md-10">
+		<h1>{{ userdata.name }}</h1>
+	</div>
+</div>
 <form action="settings.php" method="post">
 <h3>{{ __("Credentials") }}</h3>
 <table class="settings">
@@ -34,7 +46,6 @@
 	<tr>
 		<td class="a">{{ __("Profile picture") }}</td>
 		<td class="b">
-			<img class="float-start rounded" src="{{ profile_image(userdata.name) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
 			<input class="form-control" type="file" name="profilePicture" id="profilePicture">
 		</td>
 	</tr>
@@ -97,5 +108,7 @@
 <input type="hidden" name="magic" value="chilliheelerbodypillow">
 <div class="right">
 <input class="button button-primary" type="submit" name="action" value="{{ __("Save Changes") }}">
+</div>
+</div>
 </div>
 	{% endblock %}

@@ -4,13 +4,13 @@
 
 	{% block content %}
 {% if error %}
-	<div class="alert alert-warning" role="alert">{{ error }}</div>
+	<div class="header_message header-danger" role="alert">{{ error }}</div>
 {% elseif resetted %}
-	<div class="alert alert-success" role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>
+	<div class="header_message header-success" role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>
 {% elseif new_pass %}
-	<div class="alert alert-success" role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>
+	<div class="header_message header-success" role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>
 {% elseif new_token %}
-	<div class="alert alert-success" role="alert">{{ __("You have been successfully logged out of all devices.") }}</div>
+	<div class="header_message header-success" role="alert">{{ __("You have been successfully logged out of all devices.") }}</div>
 {% endif %}
 
 <form method="post" name="loginForm" id="loginForm" action="login.php" class="form-signin">

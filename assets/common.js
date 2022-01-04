@@ -71,7 +71,30 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		$.post("comment.php",
 		{
 			comment: $.trim($('#commentContents').val()),
-			vidid: video_id
+			vidid: video_id,
+			really: "ofcourse",
+			type: "video"
+		},
+		function(data,status){
+			if (status == "success") {
+				console.log("Commented " + $('#commentContents').val());
+				$('#comment').prepend(data);
+				$("#commentContents").val('');
+				$("#post").addClass("disabled");
+				$("#commentPostingSpinner").addClass('d-none');
+				play("comment");
+			}
+		});
+	});	
+	$("#post-user").click(function(){
+		play("click");
+		$("#commentPostingSpinner").removeClass('d-none');
+		$.post("comment.php",
+		{
+			comment: $.trim($('#commentContents').val()),
+			uid: user_id,
+			really: "ofcourse",
+			type: "profile"
 		},
 		function(data,status){
 			if (status == "success") {
@@ -205,7 +228,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	});
                     $(".btnAdd").click(function(){
                         $.ajax({
-                            url: "customizer.php",
+                            url: "/customizer.php",
                             success: function(returndata){
                                      $('#myModal').html(returndata);
 									 $("#myModal").show();
