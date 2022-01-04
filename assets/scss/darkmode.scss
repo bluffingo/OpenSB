@@ -274,7 +274,15 @@ textarea, input[type=text], input[type=password] {
 	color: white;
 }
 
-//as long as we don't use color in the logo, we are fine.
-#masthead #logo-container {
-    filter: invert(1);
+#masthead-container {
+    background-color: #383838f0;
+	border-bottom: 1px solid #606060;
+}
+
+#masthead-search {
+	#masthead-search-terms {
+		input {
+		border-color: #606060;
+		}
+	}
 }

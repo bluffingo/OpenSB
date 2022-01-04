@@ -6,9 +6,12 @@
 				</a>
 			</div>
 			<div class="col-md-9 vid-info">
-				<h3 class="title"><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
+				<h2 class="title"><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h2>
 				<span class="stat-larger">by {{ userlink(data, 'u_') }}</span>
 				<span class="stat-larger">{{ data.views }} {{ __("views") }}</span>
 				<span class="stat-larger">{{ data.time | relative_time }}</span>
 			</div>
+			{% if page == "studioIndex" %}
+			<a class="button button-neutral" href="/studio/edit.php?v={{ data.video_id }}">Edit</a>
+			{% endif %}
 		</div>

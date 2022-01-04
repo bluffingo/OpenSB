@@ -25,11 +25,10 @@
          <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
             <div class="grid">
                <div class="col-md-4">
-                  <a class="button button-dark">Edit</a>
-				  <a class="button button-danger">Delete</a>
+                  <a class="button button-dark" href="/studio/edit.php?v={{video.video_id}}">Edit</a>
                </div>
                <div class="col-md-8 right">
-                  <a class="button button-dark">Video Manager</a>
+                  <a class="button button-dark" href="/studio/">Video Manager</a>
                </div>
             </div>
          </div>
@@ -82,8 +81,8 @@
                <div class="col-md-8 right">
                   <div class="tab">
                      <button class="tablinks active" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
-                     <button class="tablinks" onclick="openTab(event, 'Flag')">{{ icon("bar-chart-fill", 12) }}</button>
-                     <button class="tablinks" onclick="openTab(event, 'About')">{{ icon("flag-fill", 12) }}</button>
+                     <button class="tablinks" onclick="openTab(event, 'Stats')">{{ icon("bar-chart-fill", 12) }}</button>
+                     <button class="tablinks" onclick="openTab(event, 'Flag')">{{ icon("flag-fill", 12) }}</button>
                   </div>
                </div>
             </div>
