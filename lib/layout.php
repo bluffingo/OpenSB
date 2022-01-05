@@ -12,11 +12,11 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
-	global $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $menuLinks, $notificationCount, $hCaptchaSiteKey, $nonFunctionalShit, $pageVariable;
+	global $userfields, $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $menuLinks, $notificationCount, $hCaptchaSiteKey, $nonFunctionalShit, $pageVariable;
 
 	if ($log) {
 	$totalSubscribers = result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
-	$allUsers = query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 50");
+	$allUsers = query("SELECT $userfields s.* FROM subscriptions s JOIN users u on s.id WHERE u.id = ? AND s.id = ?", [$userdata['id'],$userdata['id']]); // this line of code is absoultely broken, fix this. genuinely fix this. don't nag ictyfag though.
 	} else {
 	$totalSubscribers = 0;
 	$allUsers = query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 10");

@@ -1,6 +1,7 @@
 	<div id="masthead-container">
 		<div id="masthead">
-			<a href="/" id="logo-container"><img id="logo" src="/assets/logo{% if theme == 'dark' %}-dark{% endif %}-masthead.png"></a>
+			<div class="button button-neutral-invis guide-button" id="guide-toggle">{{ icon("list", 20) }}</div>
+			<a href="/" id="logo-container"><img id="logo" src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png"></a>
 			<div id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
 				{% if log %}
 				<div style="margin-top: 8px;">

@@ -41,7 +41,7 @@
 			<img class="img-fluid rounded" src="{{ profile_image(userpagedata.name) }}" title="{{ userpagedata.name }}" alt="{{ userpagedata.name }}">
 		</div>
 	</div>
-	<div class="col-md-10" style="color:{{ customProfile.titlefont }};height:inherit;">
+	<div class="col-md-9" style="color:{{ customProfile.titlefont }};height:inherit;">
 		<h1>{{ userpagedata.title }}</h1>
 		{# hack to prevent twig from outputing the number 1 #}
 		{% if subCount != 1 %}
@@ -52,8 +52,8 @@
 		{% endif %}
 		<p>{{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}  • {{ __("%s view%s", [views ?? __("no"), pluralViews]) }}</p>
 	</div>
-	<div class="col-md-1" style="height:inherit;display: table;">
-		<div style="display: table-cell;vertical-align: middle;text-align:center;">
+	<div class="col-md-2 text-right" style="height:inherit;display: table;">
+		<div style="display: table-cell;vertical-align: middle;text-align:right;">
 			{% if userpagedata.id != userdata.id %}
 				<button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
 			{% endif %}

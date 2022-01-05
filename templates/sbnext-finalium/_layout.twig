@@ -46,6 +46,17 @@
 	</style>
 </head>
 <body>
+<div id="guide">
+<h2>Guide</h2>
+MYSQL IS A FUCKING RETARD AND WON'T LIST THE RIGHT NAME
+{% for user in allUsers %}
+<ul>
+	<li class="guide-channel">
+		<a href="/user.php?name={{ user.u_name }}" class="guide-item"><img class="thumb" src="{{ profile_image(user.u_name) }}">{{ user.u_name }}</a>
+	</li>
+</ul>
+{% endfor %}
+</div>
 {% if theme == 'bluey' %}
 	{% include "components/katt/_header.twig" %}
 {% elseif theme == 'nostalgia' %}

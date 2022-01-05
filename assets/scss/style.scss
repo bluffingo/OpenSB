@@ -757,9 +757,16 @@ box-sizing: border-box;
 	
 	#logo {
 		background-size: auto;
-		width: 30px;
 		height: 30px;
 		border: 0;
+	}
+	.guide-button {
+		margin-top: 2px;
+		width: 32px;
+		height: 32px;
+		float: left;
+		text-align: center;
+		vertical-align: middle;
 	}
 }
 
@@ -806,7 +813,6 @@ box-sizing: border-box;
 
 #logo-container {
     float: left;
-	width: 30px;
 	height: 30px;
 	padding: 3px !important;
 }
@@ -869,8 +875,21 @@ display: -webkit-box;
     color: #fff;
 }
 
-.guide {
-padding: 0;
+#guide {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 17.5em;
+    background: $gray-100;
+	padding: 1em;
+	z-index:9999999999;
+	display: none;
+	overflow-y: scroll;
+	ul {
+		padding: 0;
+		margin: 0;
+	}
 }
 
 /// "Likesaber" for watch page \\\

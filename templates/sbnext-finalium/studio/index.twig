@@ -3,30 +3,6 @@
 {% block title %}Home{% endblock %}
 
 	{% block content %}
-         <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
-            <div class="grid">
-               <div class="col-md-12">
-                  <a class="button button-dark">My Channel</a>
-               </div>
-            </div>
-         </div>
-		  <div class="card card-body-fat">
-		  <div class="grid">
-		  <div class="col-md-2">
-        <img class="img-fluid rounded" src="../{{ profile_image(userdata.name) }}">
-      </div>
-		  <div class="col-md-10">
-        <h2>{{ userdata.title }}</h2>
-        <p class="lead">
-		Username: {{ userdata.name }}
-		<br>
-		Followers: {{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
-		<br>
-		Views: {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}
-		</p>
-      </div>
-	  </div>
-	  </div>
 	  <div>
 	{% for video in videos %}
 		{{ vertical_video_box(video) }}

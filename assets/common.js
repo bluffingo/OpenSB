@@ -15,6 +15,14 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		x.style.display = "block";
 	  }
 	});
+	$("#guide-toggle").click(function() {
+	  var x = document.getElementById("guide");
+	  if (x.style.display === "block") {
+		x.style.display = "none";
+	  } else {
+		x.style.display = "block";
+	  }
+	});
 	$(window).click(function() {
 	  $("#mainMenu").removeClass("show");
 	  $("#themeSelection").removeClass("show");
