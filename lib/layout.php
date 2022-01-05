@@ -16,7 +16,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 
 	if ($log) {
 	$totalSubscribers = result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
-	$allUsers = query("SELECT $userfields s.* FROM subscriptions s JOIN users u on s.id WHERE u.id = ? AND s.id = ?", [$userdata['id'],$userdata['id']]); // this line of code is absoultely broken, fix this. genuinely fix this. don't nag ictyfag though.
+	$allUsers = query("SELECT $userfields s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]); // this line of code is absoultely broken, fix this. genuinely fix this. don't nag ictyfag though.
 	} else {
 	$totalSubscribers = 0;
 	$allUsers = query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 10");

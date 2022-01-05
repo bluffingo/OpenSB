@@ -1,7 +1,15 @@
 	<div id="masthead-container">
-		<div id="masthead">
-			<a href="/" id="logo-container"><img id="logo" src="/assets/logo-wordmark.png"></a>
-			<div id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="user-info">
+<table class="header1" width="100%" bgcolor="#0049C7" cellpadding="0" style="padding: 5px 0px 0px 0px;" cellspacing="0" border="0">
+	<tbody><tr valign="top">
+		<td width="130" rowspan="2" style="padding: 0px 5px 5px 5px;"><a href="index.php"><img id="logo" src="/assets/logo-wordmark-dark.png" alt="cheeseRox" border="0"></a></td>
+		<td valign="top">
+		<table align="right" width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tbody><tr valign="top">
+			<td align="left" class="poktube-slogan">Upload, tag and share your videos worldwide!</td>
+				<td align="right">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tbody><tr>
+						<td>			<div id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="user-info">
 				{% if log %}
 					<a class="util-item first" href="/user.php?name={{ userdata.name }}">{{ userdata.title }}</a>
 					<a class="util-item" href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a>
@@ -14,15 +22,46 @@
 					<a class="util-item" href="../register.php">{{ __("Register") }}</a>
 				</div>
 				{% endif %}
-			</div>
+			</div></td>
+				
+			</tr>
+		</td>
+		</tr>
+		</tbody></table>
+		</tbody></table>
+		</td>
+	</tr>
+
+		<tr>
+		<td width="100%">
+		
+				<!--&nbsp;//&nbsp; <a href="browse.php">Browse</a>-->
+		
+		<table cellpadding="2" cellspacing="0" border="0">
+			<tbody><tr>
+				<form method="GET" action="results.php"></form>
+				<td>
+					<input type="text" value="" name="search" size="30" maxlength="128" class="poktube-search">
+				</td>
+				<td>
+					<input class="poktube-button" type="submit" value="Search Videos">
+				</td>
+				
+			</tr>
+		</tbody></table>
+		
+		</td>
+	</tr>
+
+			
+</tbody></table>
 			<div id="bar">
 			<a class="nav-item" href="/">Home</a>
-			<a class="nav-item" href="/browse.php">Videos</a>
+			<a class="nav-item" href="/browse.php">Browse</a>
 			<a class="nav-item" href="/channels.php">Channels</a>
 			<a class="nav-item" href="/forum/">Community</a>
 			<div id="masthead-bar-contents">
 			<a class="button button-primary" id="upload-button" href="/upload_start.php">Upload</a>
-			</div>
 			</div>
 		</div>
 	</div>

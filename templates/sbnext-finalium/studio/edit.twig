@@ -3,6 +3,21 @@
 {% block title %}Edit video{% endblock %}
 
 	{% block content %}
+	<div class="grid">
+	<div class="col-md-2">
+	<img class="img-fluid " src="{{ video_thumbnail(video.video_id) }}">
+	<div class="settings-tab current">
+		<a href="/studio/edit.php?v={{ video.video_id }}">
+			Details
+		</a>
+	</div>
+	<div class="settings-tab">
+		<a href="/studio/comments.php?v={{ video.video_id }}">
+			Comments
+		</a>
+	</div>
+	</div>
+	<div class="col-md-10">
 	<form name="uploadForm" id="uploadForm" method="post" action="/studio/edit.php" enctype="multipart/form-data">
 	<input type="hidden" name="vid_id" value="{{ video.video_id }}">
 						<h2 style="margin-bottom: 0.5em;">{{ __("Video info") }}</h2>
@@ -21,4 +36,6 @@
 							<input class="button button-primary" type="submit" id="upload" name="upload" value="{{ __("Edit") }}">
 						</div>
 	</form>
+	</div>
+	</div>
 	{% endblock %}
