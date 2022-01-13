@@ -1,4 +1,4 @@
-<h1 align="center">cheeseRox Beta 2.0.8</h1>
+<h1 align="center">cheeseRox Beta 2.0.9</h1>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/88458384/147863551-8a7e0a82-a7d3-483a-9467-5045b4d53ce4.png">
