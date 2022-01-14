@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2021 at 03:47 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- Generation Time: Jan 14, 2022 at 09:58 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `squarebracket`
+-- Database: `squarebracket_production`
 --
 
 -- --------------------------------------------------------
@@ -73,6 +73,33 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `image`
+--
+
+CREATE TABLE `image` (
+  `id` int(11) NOT NULL,
+  `image_id` varchar(11) NOT NULL,
+  `title` text NOT NULL,
+  `description` text NOT NULL COMMENT 'Image description',
+  `author` int(11) NOT NULL,
+  `time` int(11) NOT NULL,
+  `file` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `image_views`
+--
+
+CREATE TABLE `image_views` (
+  `image_id` text NOT NULL,
+  `user` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `music`
 --
 
@@ -96,8 +123,7 @@ CREATE TABLE `notifications` (
   `type` int(11) NOT NULL,
   `level` int(11) DEFAULT NULL,
   `recipient` int(11) NOT NULL,
-  `sender` int(11) NOT NULL,
-  `message` text NOT NULL
+  `sender` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -107,10 +133,10 @@ CREATE TABLE `notifications` (
 --
 
 CREATE TABLE `passwordresets` (
-  `id` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID for password reset URL.',
-  `user` int(11) NOT NULL COMMENT 'The user that requested a password reset.',
-  `time` int(11) NOT NULL COMMENT 'The time when the password reset request was mades.',
-  `active` tinyint(4) NOT NULL DEFAULT 1 COMMENT 'Boolean to check if password reset URL is active.'
+  `id` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user` int(11) NOT NULL,
+  `time` int(11) NOT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -145,23 +171,21 @@ CREATE TABLE `subscriptions` (
 CREATE TABLE `users` (
   `id` bigint(20) NOT NULL COMMENT 'Incrementing ID for internal purposes.',
   `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Username, chosen by the user',
-  `email` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User Email.',
   `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Password, hashed in bcrypt.',
   `token` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User token for cookie authentication.',
   `joined` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'User''s join date',
   `lastview` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Timestamp of last view',
-  `lastpost` int(11) NOT NULL,
-  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lastpost` int(11) UNSIGNED NOT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Display Name',
   `about` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
   `customcolor` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en-US' COMMENT 'Language (Defaults to English)',
   `avatar` tinyint(1) NOT NULL DEFAULT 0,
   `u_flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties',
   `powerlevel` tinyint(4) UNSIGNED NOT NULL DEFAULT 1 COMMENT '0 - banned. 1 - normal user. 2 - moderator. 3 - administrator',
-  `group_id` int(11) NOT NULL DEFAULT 3 COMMENT 'Legacy Acmlmboard-related group ID field.',
+  `group_id` int(11) NOT NULL DEFAULT 3,
   `posts` int(11) NOT NULL,
   `threads` int(11) NOT NULL,
-  `blockland_id` int(11) NOT NULL COMMENT 'Blockland ID, intended for internal Vitre testing.',
   `signature` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -178,13 +202,13 @@ CREATE TABLE `videos` (
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video description',
   `author` bigint(20) UNSIGNED NOT NULL COMMENT 'User ID of the video author',
   `time` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Unix timestamp for the time the video was uploaded',
-  `most_recent_view` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'anti-bot shit is useless for this tbh',
+  `most_recent_view` bigint(20) UNSIGNED NOT NULL,
   `views` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Video views',
   `flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',
   `category_id` int(11) DEFAULT 0 COMMENT 'Category ID for the video',
-  `tags` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video tags, serialized in JSON',
   `videofile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Path to the video file(?)',
-  `videolength` bigint(20) UNSIGNED DEFAULT NULL COMMENT 'Length of the video in seconds'
+  `videolength` bigint(20) UNSIGNED DEFAULT NULL COMMENT 'Length of the video in seconds',
+  `tags` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video tags, serialized in JSON'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -219,6 +243,12 @@ ALTER TABLE `channel_settings`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
+
+--
+-- Indexes for table `image`
+--
+ALTER TABLE `image`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `music`
@@ -259,6 +289,12 @@ ALTER TABLE `channel_comments`
 --
 ALTER TABLE `comments`
   MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `image`
+--
+ALTER TABLE `image`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `music`

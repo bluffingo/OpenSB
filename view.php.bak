@@ -12,7 +12,7 @@ if (fetch("SELECT COUNT(image_id) FROM image_views WHERE image_id=? AND user=?",
 		[$lookData['image_id'],crypt($ip, "salt, used to encrypt stuff is very important.")]);
 }
 
-$viewCount = fetch("SELECT COUNT(image_id) FROM image_views WHERE image_id=?", [$lookData['image_id']])['COUNT(image_id)'];
+$viewCount = fetch("SELECT COUNT(image_id) FROM views WHERE image_id=?", [$lookData['image_id']])['COUNT(image_id)'];
 
 $twig = twigloader();
 echo $twig->render('view.twig', [
