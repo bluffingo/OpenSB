@@ -14,6 +14,7 @@
 	{% if theme == 'bluey' %}
 	<div class="container" style="display: flex;align-items: center;flex-direction: column;">
 	{% endif %}
+{% if theme != 'nostalgia' %}
 <div class="indexNext">
 <div class="main-content">
 	<div class="container page-container">
@@ -51,6 +52,7 @@
 		{% endif %}
 	</div>
 </div>
+{% endif %}
 	{% if theme == 'bluey' %}
 	</div>
 	{% endif %}
@@ -93,7 +95,7 @@
 	<div class="col-md-4">
 		<div class="whatsnew">
 			<h3>{{ __("What's new?") }}</h3>
-			<p>{{ __("Welcome to the brand new cheeseRox! We've heard it, the old layout sucked, so we have redesigned cheeseRox to have a better user interface.") }}</p>
+			<p>{{ __("This is the result of cheeseRox's growing pains. Fuck you.") }}</p>
 		</div>
 	</div>
 </div>

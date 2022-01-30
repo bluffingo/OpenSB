@@ -33,12 +33,12 @@ foreach ($git_logs as $line)
             $author = explode(':', $line);
             $author = trim(end($author));
 			// shitty hack to make it so that the github username is being used.
-			if ($author == "Gamerappa") {
+			if ($author == "Gamerappa" or $author == "Blue2k" or $author == "blue2000k" or $author == "bluey2000k") {
 				$git_history[$last_hash]['author'] = "PF94";
-			} elseif ($author == "Blue2k" or $author == "blue2000k") {
-				$git_history[$last_hash]['author'] = "bluey2000k";
 			} elseif ($author == "John R") {
-				$git_history[$last_hash]['author'] = "jkrosado";
+				$git_history[$last_hash]['author'] = "jkrosado"; // dumbass
+			} elseif ($author == "dependabot[bot]") {
+				$git_history[$last_hash]['author'] = "dependabot";
 			}
 			else {
             $git_history[$last_hash]['author'] = $author;

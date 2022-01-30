@@ -4,37 +4,28 @@ require ('lib/common.php');
 
 if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata['name']))
 {
-
     //TODO: make video IDs not use multiple underscores.
-	if ($isDebug) {
-        $video_id = (isset($_POST['debugID']) ? $_POST['debugID'] : null);
-        $new = (isset($_POST['debugID']) ? $_POST['debugID'] : null);
-		$uploader = (isset($_POST['uploaderID']) ? $_POST['uploaderID'] : null);
-    }
-    else
+    $video_id = substr(base64_encode(md5(bin2hex(random_bytes(6)))) , 0, 11); //you are never too sure how much randomness you need.
+	$uploader = $userdata['id'];
+    $new = '';
+    foreach (str_split($video_id) as $char)
     {
-        $video_id = substr(base64_encode(md5(bin2hex(random_bytes(6)))) , 0, 11); //you are never too sure how much randomness you need.
-		$uploader = $userdata['id'];
-        $new = '';
-        foreach (str_split($video_id) as $char)
+        switch (rand(0, 4))
         {
-            switch (rand(0, 4))
-            {
-                case rand(0, 1):
-                    $char = str_rot13($char);
-                break;
-                case rand(0, 2):
-                    $char = '_';
-                break;
-                case rand(0, 3):
-                    $char = mb_strtoupper($char);
-                break;
-                case rand(0, 4):
-                    $char = '-';
-                break;
-            }
-            $new .= $char;
+            case rand(0, 1):
+                $char = str_rot13($char);
+            break;
+            case rand(0, 2):
+                $char = '_';
+            break;
+            case rand(0, 3):
+               $char = mb_strtoupper($char);
+            break;
+            case rand(0, 4):
+               $char = '-';
+            break;
         }
+        $new .= $char;
     }
 
     $title = (isset($_POST['title']) ? $_POST['title'] : null);
@@ -74,11 +65,4 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
 }
 
 $twig = twigloader();
-if ($isDebug)
-{
-    echo $twig->render('upload-debug.twig');
-}
-else
-{
-    echo $twig->render('upload.twig');
-}
+echo $twig->render('upload.twig');

@@ -94,7 +94,8 @@ HTML;
 	$Posts = __("Posts");
 	$Since = __("Since");
 	$Lastpost = __("Last post");
-	$Lastview = __("Last view");
+	$Lastview = __("Last seen");
+	$WillThisWork = relativeTime($post['date']);
 	return <<<HTML
 <table class="c1 threadpost" id="{$post['id']}">
 	$postheaderrow
@@ -102,13 +103,13 @@ HTML;
 		<td class="b n1 topbar_1">$ulink</td>
 		<td class="b n1 topbar_2 fullwidth">
 			<table class="fullwidth">
-				<tr><td class="nb">$Postedon $pdate$threadlink $revisionstr</td><td class="nb right">$postlinks</td></tr>
+				<tr><td class="nb">$Postedon $pdate$threadlink $revisionstr</td><td class="nb right">$postlinks &bull; $WillThisWork</td></tr>
 			</table>
 		</td>
 	</tr><tr valign="top">
 		<td class="b n1 sidebar">
-			$utitle
 			$picture
+			<br>$utitle
 			<br>$Posts: {$post['uposts']}
 			<br>
 			<br>$Since: $ujoined
