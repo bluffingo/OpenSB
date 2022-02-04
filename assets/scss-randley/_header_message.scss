@@ -1,0 +1,13 @@
+.header_message {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+@each $state, $value in $theme-colors {
+	.header-#{$state} {
+    border: 1px solid darken($value, 3.5%);
+	background-color: lighten($value, 1.5%);
+    @include gradient-y($start-color: lighten($value, 1.5%), $end-color: darken($value, 1.5%));
+	color: contrast-color($value, $dark, $light) !important;
+	}
+}

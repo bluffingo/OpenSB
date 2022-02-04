@@ -8,3 +8,4 @@
 common_arguments="--style compressed --no-source-map --load-path ./ --watch"
 
 sass.bat ${common_arguments} assets/scss/:assets/css/
+sass.bat ${common_arguments} assets/scss-randley/:assets/css-randley/

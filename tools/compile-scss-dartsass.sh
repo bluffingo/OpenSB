@@ -5,3 +5,4 @@
 common_arguments="--style compressed --no-source-map --load-path ./ --watch"
 
 sass ${common_arguments} assets/scss/:assets/css/
+sass ${common_arguments} assets/scss-randley/:assets/css-randley/

@@ -21,6 +21,7 @@ bootstrap/css/bootstrap-theme.css
 assets/bs*.css
 assets/bs*.css.map
 assets/css/*.css
+assets/css-randley/*.css
 assets/dashboard.css
 assets/signin.css
 
