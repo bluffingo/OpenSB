@@ -540,8 +540,6 @@ form.reglog {
  margin:0;
  color:white;
  padding: 25px 0;
- margin-top: -48px;
- padding: 75px 0px 25px;
  display: block;
 }
 
@@ -719,120 +717,19 @@ box-sizing: border-box;
   background-size: cover;
 }
 
-#masthead-container {
-	z-index: 1;
-    margin: 0;
-    border-bottom: none;
-    background-color: #fffffff0;
-    padding: 7px;
-    position: sticky;
-    display: block;
-    top: 0;
-    backdrop-filter: blur(4px);
-	border-bottom: 1px solid lightgrey;
-}
-
-#masthead {
-	width: 100%;
-	max-width: 1200px;
-	position: relative;
-	margin: auto;
-	height: 33px;
-	font-size: 13px;
-	
-	a {
-	padding: 6px 10px;
-	font-size: 13px;
-	color: #333;
-	}
-	
-	.button {
-		margin: 0;
-		padding: 0.65em 0;
-	}
-	
-	#logo-container {
-		float: left;
-	}
-	
-	#logo {
-		background-size: auto;
-		height: 30px;
-		border: 0;
-	}
-	.guide-button {
-		margin-top: 2px;
-		width: 32px;
-		height: 32px;
-		float: left;
-		text-align: center;
-		vertical-align: middle;
-	}
-}
-
-#masthead-search {
-    position: relative;
-    padding: 0;
-    margin-top: 3px;
-    overflow: hidden;
-    *zoom: 1;
-		label {
-		height: 100%;
-		line-height: 30px;
-		padding: 0;
-		border: none;
-		overflow: hidden;
-	}
-	#search-btn {
-		height: 29px;
-		float: right;
-		border-radius: 0 3px 3px 0;
-		span {
-			margin: 0 12px;
+header#top {
+	background-color: $gray-200;
+	margin: 0 1em 0.5em;
+	menu {
+		padding: 6px 1rem;
+		margin-top: 0;
+		li {
+			display: inline;
+			a {
+				padding: 6px 10px;
+			}
 		}
 	}
-	#masthead-search-terms {
-		border-radius: 0;
-		height: 29px;
-		overflow: hidden;
-		
-		input {
-		display: inline-block;
-		width: 100%;
-		padding: 2px 6px;
-		margin: 0;
-		font-size: 16px;
-		box-sizing: border-box;
-		height: 29px;
-		border-radius: 3px 0 0 3px;
-		border: 1px solid #e5e5e5;
-		border-right: none;
-		}
-	}
-}
-
-#logo-container {
-    float: left;
-	height: 30px;
-	padding: 3px !important;
-}
-
-#masthead-content {
-padding-left: 15px;
-padding-right: 20px;
-overflow: hidden;
-}
-
-#masthead-content #masthead-upload-button-group, .masthead-user {
-	float: right;
-	margin-top: 3px;
-	margin-left: 25px;
-	position: relative;
-	cursor: pointer;
-}
-
-#masthead-below {
-	display: none;
 }
 
 .guide-channels-list {
@@ -878,7 +775,7 @@ display: -webkit-box;
 #guide {
     position: fixed;
     left: 0;
-    top: 47px;
+    top: 53px;
     bottom: 0;
     width: 17.5em;
     background: $gray-100;
@@ -1109,6 +1006,16 @@ line-height: 17px;
 }
 .settings-tab.current {
 	background: #ededed;
+}
+
+.sidebar {
+	h1 {
+		font-size: 1.16667em;
+		margin: 0;
+	}
+	ul, li {
+		list-style: none;
+	}
 }
 
 /// Gradients \\\
