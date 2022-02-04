@@ -1,10 +1,12 @@
-{% extends "_layout.twig" %}
+{% extends "_layout_index.twig" %}
 {% block content %}
-<h1>Welcome to the cheeseRox Randley (sic) layout.</h1>
-				<form id="masthead-search" action="/search.php">
-					<input type="text" name="query" placeholder="{{ __("Search...") }}">
-					<button id="search-btn" class="button button-secondary">
-					<span>Search</span>
-					</button>
-				</form>
+<div class="card-body-index">
+	<img src="/assets/logo-wordmark-dark.png" class="logo">
+	<form id="masthead-search" action="/search.php">
+		<input type="text" name="query" placeholder="{{ __("Search...") }}">
+		<button id="search-btn" class="button button-secondary">
+		<span>Search</span>
+		</button>
+	</form>
+</div>
 {% endblock %}

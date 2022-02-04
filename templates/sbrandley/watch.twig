@@ -1,0 +1,23 @@
+{% extends "_layout.twig" %}
+{% block head %}
+<meta name="title" content="{{ video.title }} - cheeseRox">
+<meta name="description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
+<meta property="og:site_name" content="cheeseRox"/>
+<meta property="og:title" content="{{ video.title }} - cheeseRox">
+<meta property="og:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
+<meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
+<meta property="og:url" content="{{ page_url }}">
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script>
+   video_id = '{{ video.video_id }}';
+   user_id = '{{ video.author }}';
+</script>
+<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+{% endblock %}
+{% block title %}{{ video.title }}{% endblock %}
+{% block sidebar %}
+<h1>These nuts are meat nuts!</h1>
+{% endblock %}
+{% block content %}
+{{ include('/components/player.twig') }}
+{% endblock %}
