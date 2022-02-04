@@ -1,0 +1,85 @@
+<link id="css-4047501374" class="www-embed-player" rel="stylesheet" href="/assets/css/player-2012.css" type="text/css">	  
+         <div id="container">
+            <!--- todo: redo "video processed" message to use _error.twig -gr 7/22/2021 --->
+            {% if (video.flags b-and 2) %}
+            <div style="background-color: black; color: white; text-align: center; padding: 15rem">
+               {{ __("This video is being processed. Try again later.") }}
+            </div>
+            {% else %}
+            				<div id="player" style="height:500px;"></div>  <script src="//web.archive.org/web/20120205045933js_/http://s.ytimg.com/yt/jsbin/www-embed_core_module-vflyEJLff.js"></script>
+							<script>
+    yt.setConfig({
+      'EMBED_BINARY_URL': '//web.archive.org/web/20120205045933/http://s.ytimg.com/yt/jsbin/www-embed_core_module-vflyEJLff.js',
+      'ORIGIN': "*",
+      'IS_OPERA_MINI': false
+    });
+    yt.setMsg({
+      'FLASH_UPGRADE': '<div  class=\"yt-alert yt-alert-error yt-alert-player yt-rounded \"><span class=\"yt-alert-icon\"><img src=\"\/\/s.ytimg.com\/yt\/img\/pixel-vfl3z5WfW.gif\" class=\"icon master-sprite\" alt=\"Alert icon\"><\/span><div  class=\"yt-alert-content\">        You need to upgrade your Adobe Flash Player to watch this video. <br> <a href=\"http:\/\/get.adobe.com\/flashplayer\/\">Download it from Adobe.<\/a>\n<\/div><\/div>'
+    });
+yt.setConfig({
+    'PLAYER_CONFIG': {
+        "assets": {
+            "html": "\/2012_player_template",
+            "css": "https:\/\/web.archive.org\/web\/20120205045933\/http:\/\/s.ytimg.com\/yt\/cssbin\/www-player-vflAajDXF.css",
+            "js": "https:\/\/web.archive.org\/web\/20120205045933\/http:\/\/s.ytimg.com\/yt\/jsbin\/html5player-vfl4vf-DJ.js"
+        },
+        "url": "https:\/\/web.archive.org\/web\/20120205045933\/http:\/\/s.ytimg.com\/yt\/swfbin\/watch_as3-vfl_PAXCt.swf",
+        "min_version": "8.0.0",
+        "args": {
+            "el": "embedded",
+            "fexp": "903708",
+            "is_html5_mobile_device": false,
+            "allow_embed": 1,
+            "allow_ratings": 1,
+            "hl": "en_US",
+            "use_tablet_controls": "0",
+            "eurl": "",
+            "iurl": "https:\/\/web.archive.org\/web\/20120205045933\/http:\/\/i3.ytimg.com\/vi\/jNQXAC9IVRw\/hqdefault.jpg",
+            "view_count": 7004255,
+            "title": "{{ video.title }}",
+            "avg_rating": 4.67264739884,
+            "video_id": "{{ video.video_id }}",
+            "length_seconds": {{ video.videolength }},
+            "sendtmp": "1",
+            "enablejsapi": "0",
+            "sk": "bUYKuHb_a3XLEsCzehYNR9bzLxLt6PLcC",
+            "use_native_controls": false,
+            "rel": "1",
+            "playlist_module": "https:\/\/web.archive.org\/web\/20120205045933\/http:\/\/s.ytimg.com\/yt\/swfbin\/playlist_module-vflxUZ43I.swf"
+        },
+        "url_v9as2": "https:\/\/web.archive.org\/web\/20120205045933\/http:\/\/s.ytimg.com\/yt\/swfbin\/cps-vflghfMOF.swf",
+        "params": {
+            "allowscriptaccess": "always",
+            "allowfullscreen": "true",
+            "bgcolor": "#000000"
+        },
+        "attrs": {
+            "width": "100%",
+            "id": "video-player",
+            "height": "100%"
+        },
+        "url_v8": "https:\/\/web.archive.org\/web\/20120205045933\/http:\/\/s.ytimg.com\/yt\/swfbin\/cps-vflghfMOF.swf",
+        "html5": false
+    },
+    'EMBED_HTML_TEMPLATE': "\u003ciframe width=\"__width__\" height=\"__height__\" src=\"__url__\" frameborder=\"0\" allowfullscreen\u003e\u003c\/iframe\u003e",
+    'EMBED_HTML_URL': "https:\/\/web.archive.org\/web\/20120205045933\/http:\/\/www.youtube.com\/embed\/__videoid__"
+});
+  yt.setMsg('HTML5_DEFAULT_FALLBACK', "Your browser does not currently recognize any of the video formats available.\u003cbr\u003e\u003ca href=\"\/html5\"\u003eClick here to visit our frequently asked questions about HTML5 video.\u003c\/a\u003e");
+  yt.setMsg('PLAYER_FALLBACK', "\u003cdiv  class=\"yt-alert yt-alert-error yt-alert-player yt-rounded \"\u003e\u003cspan class=\"yt-alert-icon\"\u003e\u003cimg s\u0072c=\"\/\/s.ytimg.com\/yt\/img\/pixel-vfl3z5WfW.gif\" class=\"icon master-sprite\" alt=\"Alert icon\"\u003e\u003c\/span\u003e\u003cdiv  class=\"yt-alert-content\"\u003e        The Adobe Flash Player or an HTML5 supported browser is required for video playback. \u003cbr\u003e \u003ca href=\"http:\/\/get.adobe.com\/flashplayer\/\"\u003eGet the latest Flash Player\u003c\/a\u003e \u003cbr\u003e \u003ca href=\"\/html5\"\u003eLearn more about upgrading to an HTML5 browser\u003c\/a\u003e\n\u003c\/div\u003e\u003c\/div\u003e");
+  yt.setMsg('QUICKTIME_FALLBACK', "\u003cdiv  class=\"yt-alert yt-alert-error yt-alert-player yt-rounded \"\u003e\u003cspan class=\"yt-alert-icon\"\u003e\u003cimg s\u0072c=\"\/\/s.ytimg.com\/yt\/img\/pixel-vfl3z5WfW.gif\" class=\"icon master-sprite\" alt=\"Alert icon\"\u003e\u003c\/span\u003e\u003cdiv  class=\"yt-alert-content\"\u003e        The Adobe Flash Player or QuickTime is required for video playback. \u003cbr\u003e \u003ca href=\"http:\/\/get.adobe.com\/flashplayer\/\"\u003eGet the latest Flash Player\u003c\/a\u003e \u003cbr\u003e \u003ca href=\"http:\/\/www.apple.com\/quicktime\/download\/\"\u003eGet the latest version of QuickTime\u003c\/a\u003e\n\u003c\/div\u003e\u003c\/div\u003e");
+  yt.setMsg('HTML5_QUALITY_SETTING', "quality");
+  yt.setMsg('HTML5_SPEED_SETTING', "speed");
+  yt.setMsg('HTML5_SPEED_NORMAL', "normal");
+  yt.setMsg('HTML5_VOLUME_SETTING', "volume");
+  yt.setMsg('HTML5_VOLUME_MUTED', "muted");
+  yt.setMsg('HTML5_VOLUME_MUTE', "mute");
+  yt.setMsg('HTML5_VOLUME_UNMUTE', "unmute");
+  yt.setMsg('HTML5_CONTROL_TOGGLE', "toggle");
+  yt.setMsg('HTML5_SUBS_TRANSCRIBED', "transcribed");
+
+
+      yt.embed.writeEmbed();
+  
+  </script>
+            {% endif %}
+</div>

@@ -1,0 +1,24 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Sign in") }}{% endblock %}
+
+	{% block content %}
+{% if error %}
+	<div class="header_message header-danger" role="alert">{{ error }}</div>
+{% elseif resetted %}
+	<div class="header_message header-success" role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>
+{% elseif new_pass %}
+	<div class="header_message header-success" role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>
+{% elseif new_token %}
+	<div class="header_message header-success" role="alert">{{ __("You have been successfully logged out of all devices.") }}</div>
+{% endif %}
+
+<form method="post" name="loginForm" id="loginForm" action="login.php" class="form-signin">
+	<h2 class="form-signin-heading">{{ __("Sign in") }}</h2>
+
+	<input type="text" name="username" class="input-block-level" placeholder="{{ __("Username") }}">
+	<input type="password" name="password" class="input-block-level" placeholder="{{ __("Password") }}">
+	<br>
+	<input class="button button-large button-primary" type="submit" value="{{ __("Sign in") }}" name="loginsubmit">
+</form>
+	{% endblock %}

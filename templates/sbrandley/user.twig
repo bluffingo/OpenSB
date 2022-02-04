@@ -1,0 +1,190 @@
+{% extends "_layout.twig" %}
+{% block title %}{{ userpagedata.title }}{% endblock %}
+{% block head %}
+<meta name="title" content="{{ userpagedata.title }} - cheeseRox">
+<meta name="description" content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
+<meta name="theme-color" content="{{ userpagedata.customcolor }}">
+<meta property="og:site_name" content="cheeseRox"/>
+<meta property="og:title" content="{{ userpagedata.title }} - cheeseRox">
+<meta property="og:description" content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
+<meta property="og:image" content="{{ domain }}/assets/profpic/{{ userpagedata.name }}.png">
+<meta property="og:url" content="{{ page_url }}">
+<script>
+	user_id = '{{ userpagedata.id }}';
+</script>
+<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+{% endblock %}
+{% block customcss %}
+	.channel-header-bg {
+		background: url('/assets/backgrounds/{{ userpagedata.name }}.png'), linear-gradient(#888, #444) !important;
+		background-position: center !important;
+		height: 225px;
+	}
+	body {
+		background-color: {{ customProfile.background }};
+	}
+	.user-action {
+		color: {{ customProfile.fontcolor }}
+	}
+{% endblock %}
+{% block content %}
+{% if markread %}
+<div class="header_message header-success>{{ __("Marked all notifications as read.") }}</div>
+{% elseif edited %}
+<div class="header_message header-success">{{ __("Settings successfully saved!") }}</div>
+{% endif %}
+<div class="channel-header-bg">
+</div>
+<div class="grid" style="background-color:{{ customProfile.highlightheader }};height: 100px;">
+	<div class="col-md-1" style="height:inherit;display: table;">
+		<div style="display: table-cell;vertical-align: middle;">
+			<img class="img-fluid rounded" src="{{ profile_image(userpagedata.name) }}" title="{{ userpagedata.name }}" alt="{{ userpagedata.name }}">
+		</div>
+	</div>
+	<div class="col-md-9" style="color:{{ customProfile.titlefont }};height:inherit;">
+		<h1>{{ userpagedata.title }}</h1>
+		{# hack to prevent twig from outputing the number 1 #}
+		{% if subCount != 1 %}
+			{% set pluralSubscribers = __("s") %}
+		{% endif %}
+		{% if views != 1 %}
+			{% set pluralViews = __("s") %}
+		{% endif %}
+		<p>{{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}  • {{ __("%s view%s", [views ?? __("no"), pluralViews]) }}</p>
+	</div>
+	<div class="col-md-2 text-right" style="height:inherit;display: table;">
+		<div style="display: table-cell;vertical-align: middle;text-align:right;">
+			{% if userpagedata.id != userdata.id %}
+				<button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
+			{% endif %}
+		</div>
+	</div>
+</div>
+<div class="grid" style="background-color:{{ customProfile.highlightinside }};border: 1px solid {{ customProfile.highlightheader }}">
+	<div class="screwPaddingLeft col-md-3" style="color:{{ customProfile.fontcolor }};">
+			<div class="card-profiles">
+				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
+				About {{ userpagedata.name }}
+				</h3>
+				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
+					<div class="card-body">
+					{{ userpagedata.about | markdown }}
+					<hr>
+					<table style="width:100%">
+						<thead>
+						  <tr>
+							<td class="left">Last connected</td>
+							<td class="right">{{ userpagedata.lastview | relative_time }}</td>
+						  </tr>
+						  <tr>
+							<td class="left">Registered</td>
+							<td class="right">{{ userpagedata.joined | relative_time }}</td>
+						  </tr>
+						</thead>
+					</table>
+					</div>
+				</div>
+				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
+				{% if userpagedata.id == userdata.id and not forceuser %}
+					<div class="user-action-container">
+						<a href="settings.php">
+							<div class="user-action">{{ icon("gear", 24) }} {{ __("Edit my settings") }}</div>
+						</a>
+					</div>
+					<div class="user-action-container">
+						<a href="/forum/private.php">
+							<div class="user-action">{{ icon("envelope", 24) }} {{ __("View my messages") }}</div>
+						</a>
+					</div>
+					<div class="user-action-container">
+						<a href="/user.php?id={{ id }}&forceuser">
+							<div class="user-action">{{ icon("person", 24) }} {{ __("View as viewer") }}</div>
+						</a>
+					</div>
+				{% else %}
+				{% if log %}
+					<div class="user-action-container">
+						<a href="forum/sendprivate.php?uid={{ id }}">
+							<div class="user-action">{{ icon("envelope", 24) }} {{ __("Send message") }}</div>
+						</a>
+					</div>
+					{% if userdata.powerlevel > 2 %}
+					<div class="user-action-container">
+						<a href="resetpassword.php?grf={{ id }}">
+							<div class="user-action">{{ icon("key", 24) }} {{ __("Generate password reset") }}</div>
+						</a>
+					</div>
+					<div class="user-action-container">
+						<a href="forum/editperms.php?uid={{ id }}">
+							<div class="user-action">{{ icon("question-circle", 24) }} {{ __("Edit forum permissions") }}</div>
+						</a>
+					</div>
+					{% endif %}
+				{% endif %}
+				{% endif %}
+				</div>
+		</div>
+		
+	</div>
+	<div class="screwPaddingRight col-md-9" style="color:{{ customProfile.fontcolor }};">
+			<div class="card-profiles">
+				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
+				{{ __("Featured") }}
+				</h3>
+				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
+					<div class="card-body">
+						<div class="col-md-6">
+						{{ include('/components/player.twig') }}
+						</div>
+						<div class="col-md-6">
+						<h2><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></h2>
+						<p style="margin:0;">From: <a href="/user.php?name={{ video.u_name }}" title="{{ video.u_name }}">{{ video.u_name }}</a></p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="card-profiles">
+				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
+				{{ __("Videos") }}
+				</h3>
+				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
+					<div class="card-body">
+					{% for latestVideo in latestVideos %}
+					{{ vertical_video_box(latestVideo) }}
+					{% else %}
+					<p>{{ __("There are currently no videos uploaded by %s.", [userpagedata.title]) }}</p>
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+			<div class="card-profiles">
+				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
+				{{ __("Comments") }}
+				</h3>
+				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
+			   {% if log %}
+               <div class="grid">
+                  <div class="col-md-1">
+                     <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
+                  </div>
+                  <div class="col-md-11">
+                     <div>
+                        <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
+                        placeholder="{{ __("Enter comment here.") }}"></textarea>
+                     </div>
+                     <div class="right">
+                        <button id="post-user" class="button button-primary" style="margin-bottom:0;">{{ __("Comment") }}</button>
+                     </div>
+                  </div>
+               </div>
+			   {% endif %}
+			   <div id="comment"></div>
+				   {% for comment in comments %}
+				   {{ comment(comment) }}
+				   {% endfor %}
+				</div>
+			</div>
+		</div>
+</div>
+{% endblock %}

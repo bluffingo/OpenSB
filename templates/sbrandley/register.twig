@@ -1,0 +1,31 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Register") }}{% endblock %}
+
+{% block content %}
+
+{% if error %}
+	<div class="alert alert-warning" role="alert">{{ error }}</div>
+{% endif %}
+<form method="post" name="loginForm" id="loginForm" action="register.php" class="form-signin">
+	<h2 class="form-signin-heading">{{ __("Register") }}</h2>
+
+	<input type="text" name="displayName" class="input-block-level" placeholder="{{ __("Display Name") }}">
+	<input type="text" name="username" class="input-block-level" placeholder="{{ __("Username") }}">
+
+	<input type="password" name="pass1" class="input-block-level" placeholder="{{ __("Password") }}">
+	<input type="password" name="pass2" class="input-block-level" placeholder="{{ __("Password (Again)") }}">
+
+	{% if hcaptcha_sitekey %}
+		<div class="form-floating my-2">
+			<div class="h-captcha" data-sitekey="{{ hcaptcha_sitekey }}"></div>
+		</div>
+	{% endif %}
+
+	<br>
+	<input class="button button-large button-primary" type="submit" value="{{ __("Register") }}" name="registersubmit">
+</form>
+{% if hcaptcha_sitekey %}
+	<script src='https://www.hCaptcha.com/1/api.js' async defer></script>
+{% endif %}
+{% endblock %}

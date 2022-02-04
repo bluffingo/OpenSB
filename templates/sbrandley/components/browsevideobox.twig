@@ -1,0 +1,21 @@
+<div class="card" style="margin-bottom:10px">
+	<div class="card-body text-center">
+		<div class="grid"><a href="watch.php?v={{ data.video_id }}">
+				<div class="col" style="margin-bottom:15px">
+					<div class="img-thumbnail">
+						<img class="img-fluid" src="{{ video_thumbnail(data.video_id) }}">
+					</div>
+				</div>
+			</a>
+			<div class="col">
+				<h4><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h4>
+				{# hack to prevent twig from outputing the number 1 #}
+				{% if data.views != 1 %}
+					{% set pluralViews = __("s") %}
+				{% endif %}
+				<p>{{ userlink(data, 'u_') }} &bull; {{ data.views }} {{ __("view%s", [pluralViews]) }} &bull;
+				{{ data.time | relative_time }}</p>
+			</div>
+		</div>
+	</div>
+</div>

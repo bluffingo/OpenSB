@@ -1,0 +1,47 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Upload") }}{% endblock %}
+
+	{% block content %}
+<h4 class="bg-dark text-light card-body" style="margin-bottom:0;">{{ __("Upload video") }}</h4>
+<div class="card card-body-fat">
+	<form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data">
+		<div class="grid">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-body-fat">
+						<h2 style="margin-bottom: 0.5em;">{{ __("Video info") }}</h2>
+						<p>{{ __("Enter the title and description of your video.") }}</p>
+						<h4 style="margin-bottom: 0.5em;">{{ __(" Title") }}</h4>
+						<input type="text" class="form-control form-long uploader-form" name="title">
+						<br>
+						<h4 style="margin-bottom: 0.5em;">{{ __(" Description") }}</h4>
+						<textarea class="form-control form-long uploader-form" name="desc" maxlength="2000" form="uploadForm"
+							style="overflow:hidden;resize:none" rows="3"></textarea>
+						<br>
+						<h4 style="margin-bottom: 0.5em;">{{ __(" Tags") }}</h4>
+						<input type="text" class="form-control form-long uploader-form" name="tags">
+						<h2 style="margin-bottom: 0.5em;">{{ __("Video file") }}</h2>
+						<p>{{ __("Select the video file you want to upload.") }}</p>
+						<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
+						<br>
+						<div class="right">
+							<input class="button button-primary" type="submit" id="upload" name="upload" value="{{ __("Upload") }}">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-header">
+						<h5>{{ __("Upload guidelines") }}</h5>
+					</div>
+					<div class="card-body">
+						<p>{{ __("Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.") }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+	{% endblock %}

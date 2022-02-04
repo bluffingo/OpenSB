@@ -1,0 +1,41 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Home{% endblock %}
+
+	{% block content %}
+<div class="row">
+	<div class="col-md-12">
+          <h2 class="sub-header">Videos</h2>
+            <table class="c1">
+              <thead>
+                <tr class="h">
+                  <th>Internal ID</th>
+				  <th>Thumbnail</th>
+                  <th>Title</th>
+                  <th>Views</th>
+				  <th>Uploader</th>
+				  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+			  {% for video in videos %}
+                <tr>
+                  <td class="b n1">{{ video.id }}</td>
+				  <td class="b n1 center"><img style="width:75px;" src="{{ video_thumbnail(video.video_id) }}"></td>
+                  <td class="b n2">{{ video.title }}</td>
+                  <td class="b n2">{{ video.views }}</td>
+				  <td class="b n2">{{ userlink(video, 'u_') }}</td>
+				  <td class="b n1 center">
+				  <a class="button button-neutral button-small">Feature</a>
+				  <a class="button button-neutral button-small">Unpublish</a>
+				  <a class="button button-neutral button-small">Comments</a>
+				  </td>
+                </tr>
+			   {% endfor %}
+              </tbody>
+            </table>
+        </div>
+      </div>
+	</div>
+
+	{% endblock %}

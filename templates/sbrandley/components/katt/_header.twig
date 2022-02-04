@@ -1,0 +1,51 @@
+	<main class="site">
+	<div class="header-container">
+		<nav class="primary-menu" role="navigation">
+		<a class="logo" href="/"></a>
+		<div class="items">
+						<li>
+							<a href="/browse.php">{{ __("Videos") }}</a>
+						</li>
+						<li>
+							<a href="/music.php">{{ __("Music") }}</a>
+						</li>
+						<li>
+							<a href="/forum/">{{ __("Forums") }}</a>
+						</li>
+						<li>
+							<a href="/channels.php">{{ __("Users") }}</a>
+						</li>
+						{% if log %}
+						<li>
+							<a href="/user.php?name={{ userdata.name }}">{{ userdata.title }}</a>
+						</li>
+						<li>
+							<a href="/upload_start.php">{{ __("Upload") }}</a>
+						</li>
+						<li>
+							<a href="/logout.php">{{ __("Log out") }}</a>
+						</li>
+						{% else %}
+						<li>
+							<a href="../login.php">{{ __("Sign in") }}</a>
+						</li>
+						<li>
+							<a href="../register.php">{{ __("Register") }}</a>
+						</li>
+						{% endif %}
+						<li class="btn__search" onclick="myFunction()">
+							<a>{{ __("Search") }}</a>
+						</li>
+		</div>
+		</nav>
+		<div id="billboard-search-box">
+		<form id="masthead-search" action="/search.php">
+					<button id="search-btn" class="button button-secondary">
+					<span>Search</span>
+					</button>
+					<div id="masthead-search-terms">
+						<label><input type="text" name="query" placeholder="{{ __("Search...") }}"></label>
+					</div>
+		</form>
+		</div>
+	</div>

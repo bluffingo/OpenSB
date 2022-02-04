@@ -1,0 +1,104 @@
+{% extends "_layout.twig" %}
+{% block head %}
+<meta name="title" content="cheeseRox">
+<meta name="description" content="Unbelivable, This is not PokTube.">
+<meta property="og:site_name" content="cheeseRox"/>
+<meta property="og:title" content="cheeseRox">
+<meta property="og:description" content="Unbelivable, This is not PokTube.">
+<meta property="og:image" content="{{ domain }}assets/logo_square_icon.png">
+<meta property="og:url" content="{{ page_url }}">
+{% endblock %}
+{% block title %}Main page{% endblock %}
+
+	{% block precontent %}
+	{% if theme == 'bluey' %}
+	<div class="container" style="display: flex;align-items: center;flex-direction: column;">
+	{% endif %}
+{% if theme != 'nostalgia' %}
+<div class="indexNext">
+<div class="main-content">
+	<div class="container page-container">
+		{% if log %}
+		<div class="grid" style="height:inherit;display: table;">
+			<div style="display: table-cell;vertical-align: middle;width:16%;padding-right:1em;">
+				<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
+			</div>
+			<div style="display: table-cell;vertical-align: middle;">
+				<h1 style="padding:0;margin:8px 0;font-weight:400;">{{ __("Welcome to cheeseRox,") }} {{ userdata.title }}</h1>
+				{# hack to prevent twig from outputing the number 1 #}
+				{% if totalSubscribers != 1 %}
+					{% set pluralSubscribers = __("s") %}
+				{% endif %}
+				{% if totalViews != 1 %}
+					{% set pluralViews = __("s") %}
+				{% endif %}
+				<h3 style="padding:0;margin:8px 0;">@{{ userdata.name }}</h3>
+				<p style="padding:0;margin:8px 0;">{{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
+					&bull; {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
+				<a class="button button-neutral button-large" href="../studio/">{{ __("Manage") }} {{ icon('caret-right-fill', 12) }}</a>
+			</div>
+		</div>
+		{% else %}
+		<div class="grid">
+			<div class="col-md-8">
+				<h1 style="padding:0;margin:8px 0;">{{ __("Welcome to cheeseRox") }}</h1>
+				<h3 style="padding:0;margin:0;">{{ __("Unbelivable, This is not PokTube.") }}</h3>
+			</div>
+			<div class="col-md-4">
+				<a class="button button-neutral button-large" href="register.php">{{ __("Get started") }} {{ icon('caret-right-fill', 16) }}</a><br><br>
+				<big>{{ __("Already have an account?") }} <a class="button button-neutral" href="login.php">{{ __("Sign in") }}</a></big>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% endif %}
+	{% if theme == 'bluey' %}
+	</div>
+	{% endif %}
+	{% endblock %}
+
+	{% block content %}
+	{% if updated %}
+		<div class="header_message header-success">{{ __("Settings successfully saved!") }}</div>
+		<br>
+	{% endif %}
+<div class="grid">
+	<div class="col-md-8">
+	<div class="grid">
+			<div class="col-md-8" style="padding:0">
+				<div>
+					{% for video in featuredVideos %}
+					{{ video_box(video) }}
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-md-4" style="padding:0;">
+				<div class="card card-body" style="height:440px;border-left:none;">
+				{% for video in videos_right %}
+				{{ small_video_box(video) }}
+				{% endfor %}
+				</div>
+			</div>
+	</div>
+		<div class="card">
+			<div class="card-body-fat">
+				<h3>{{ __("cheeseRox Videos") }}</h3>
+				{% for video in videos %}
+				{{ small_video_box(video) }}
+				{% else %}
+				<p>{{ __("No uploaded videos.") }}</p>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="whatsnew">
+			<h3>{{ __("What's new?") }}</h3>
+			<p>{{ __("This is the result of cheeseRox's growing pains. Fuck you.") }}</p>
+		</div>
+	</div>
+</div>
+</div>
+<br><br>
+	{% endblock %}

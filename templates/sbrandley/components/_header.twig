@@ -1,0 +1,42 @@
+	<div id="masthead-container">
+		<div id="masthead">
+			<div class="button button-neutral-invis guide-button" id="guide-toggle">{{ icon("list", 20) }}</div>
+			<a href="/" id="logo-container"><img id="logo" src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png"></a>
+			<div id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
+				{% if log %}
+				<div style="margin-top: 8px;">
+				{{ userdata.title }}
+               <!-- <div {% if notification_count > 0 %}class="bg-danger text-light"{% else %}class="bg-neutral{% endif %}" style="padding:6px 8px;display: inline-block;">{{ notification_count }}</div> -->
+				<div class="usermenushit" id="masthead-below">
+					<ul style="padding:0">
+					<li><a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a></li>
+					<li><a href="/studio/">{{ __("Studio") }}</a></li>
+					<li><a href="/settings.php">{{ __("Settings") }}</a></li>
+					<li><a href="logout.php">{{ __("Log out") }}</a></li>
+					</ul>
+				</div>
+				</div>
+				{% else %}
+				<div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
+					<a href="../login.php">{{ __("Sign in") }}</a>
+					<a href="../register.php">{{ __("Register") }}</a>
+				</div>
+				{% endif %}
+			</div>
+			<div id="masthead-content">
+				<div id="masthead-upload-button-group" style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 5px;">
+					<a href="/browse.php">{{ __("Browse") }}</a>
+					<a href="/upload_start.php">{{ __("Upload") }}</a>
+					<a href="/forum/">{{ __("Forums") }}</a>
+				</div>
+				<form id="masthead-search" action="/search.php">
+					<button id="search-btn" class="button button-secondary">
+					<span>Search</span>
+					</button>
+					<div id="masthead-search-terms">
+						<label><input type="text" name="query" placeholder="{{ __("Search...") }}"></label>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
