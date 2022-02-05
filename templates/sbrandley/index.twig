@@ -1,12 +1,28 @@
 {% extends "_layout_index.twig" %}
 {% block content %}
-<div class="card-body-index">
-	<img src="/assets/logo-wordmark-dark.png" class="logo">
-	<form id="masthead-search" action="/search.php">
-		<input type="text" name="query" placeholder="{{ __("Search...") }}">
-		<button id="search-btn" class="button button-secondary">
-		<span>Search</span>
-		</button>
-	</form>
-</div>
+	<div class="card-body-index">
+		<img src="/assets/logo-wordmark.png" class="logo">
+		<div class="links">
+		{% if log %}
+		Welcome, <a href="user.php?u={{ userdata.name }}" style="padding-left:0">{{ userdata.name }}</a>
+		{% else %}
+		<a href="login.php">Login</a>
+		<a href="register.php">Register</a>
+		{% endif %}
+		<a href="browse.php">Browse</a>
+		<a href="/forum/index.php">Forum</a>
+		</div>
+		<form id="masthead-search" action="/search.php">
+			<input type="text" name="query" placeholder="{{ __("Search...") }}">
+			<button id="search-btn" class="button button-secondary">
+			<span>Search</span>
+			</button>
+		</form>
+	</div>
+	<div class="card-body-index">
+	<h1>{{ stats.videocount + stats.imagecount }}</h1>
+	</div>
+	<div class="card-body-index">
+	<p>Serving {{ stats.videocount }} videos and {{ stats.imagecount }} images!</p>
+	</div>
 {% endblock %}

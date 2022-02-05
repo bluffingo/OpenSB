@@ -29,6 +29,9 @@ if ($log) {
 	$totalViews = 0;
 	$creationDate = 0;
 }
+
+$stats = fetch("SELECT (SELECT COUNT(*) FROM videos) videocount, (SELECT COUNT(*) FROM image) imagecount");
+
 $twig = twigloader();
 
 echo $twig->render('index.twig', [
@@ -40,4 +43,5 @@ echo $twig->render('index.twig', [
 	'totalViews' => $totalViews,
 	'creationDate' => $creationDate,
 	'updated' => (isset($_GET['updated']) ? true : false),
+	'stats' => $stats,
 ]);

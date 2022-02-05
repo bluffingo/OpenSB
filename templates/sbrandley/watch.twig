@@ -16,7 +16,15 @@
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block sidebar %}
-<h1>These nuts are meat nuts!</h1>
+<h1>Information</h1>
+<li>
+	<ul>
+		Title: {{ video.title }}
+	</ul>
+	<ul>
+		Uploader: {{ video.u_name }}
+	</ul>
+</li>
 {% endblock %}
 {% block content %}
 {{ include('/components/player.twig') }}
