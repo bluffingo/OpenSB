@@ -7,7 +7,7 @@
 	.header-#{$state} {
     border: 1px solid darken($value, 3.5%);
 	background-color: lighten($value, 1.5%);
-    @include gradient-y($start-color: lighten($value, 1.5%), $end-color: darken($value, 1.5%));
+    //@include gradient-y($start-color: lighten($value, 1.5%), $end-color: darken($value, 1.5%));
 	color: contrast-color($value, $dark, $light) !important;
 	}
 }

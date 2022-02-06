@@ -27,5 +27,14 @@
 </li>
 {% endblock %}
 {% block content %}
-{{ include('/components/player.twig') }}
+	{% if post.post_type == 1 or post.post_type == 0 %}
+		{{ include('/components/player.twig') }}
+	{% elseif post.post_type == 2 %}
+		<img src="{{ post.videofile }}" class="img-fluid">
+	{% endif %}
+	{# You cannot download MPEG-DASH videos, and trying to implement a converter
+	would be fucking clunky. -grkb February 6th 2022#}
+	{% if post.post_type != 1 %}
+	<a class="button button-primary" href="{{ post.videofile }}">Download</a>
+	{% endif %}
 {% endblock %}

@@ -14,6 +14,9 @@ if (!$postData) error('404', __("The post you were looking for cannot be found."
 
 $query = '';
 $count = 0;
+
+//FIXME: Why the fuck are the tags based with JSON?
+
 if ($postData['tags']) {
 	$count = count(json_decode($postData['tags']));
 	foreach(json_decode($postData['tags']) as $key=>$value) {

@@ -36,14 +36,14 @@ input[type=file]::file-selector-button, {
 	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 	cursor: pointer;
 	border: 1px solid darken($gray-400, 2.25%);
-	@include gradient-y($start-color: lighten($gray-200, 15%), $end-color: $gray-200);
+	//@include gradient-y($start-color: lighten($gray-200, 15%), $end-color: $gray-200);
 	font-family: $font;
 
 	&:hover {
-		@include gradient-y($start-color: lighten($gray-200, 25%), $end-color: lighten($gray-200, 10%));
+		//@include gradient-y($start-color: lighten($gray-200, 25%), $end-color: lighten($gray-200, 10%));
 	}
 	&.sel {
-		@include gradient-y($start-color: darken($gray-200, 7%), $end-color: darken($gray-200, 17%));
+		//@include gradient-y($start-color: darken($gray-200, 7%), $end-color: darken($gray-200, 17%));
 	}
 }
 
@@ -78,12 +78,12 @@ input[type=file]::file-selector-button, {
   .button-#{$state} {
     border: 1px solid darken($value, 7.5%);
 	background-color: lighten($value, 1.5%);
-    @include gradient-y($start-color: lighten($value, 3.5%), $end-color: darken($value, 2.5%));
+    //@include gradient-y($start-color: lighten($value, 3.5%), $end-color: darken($value, 2.5%));
 	color: contrast-color($value, $dark, $light) !important;
   }
   
   .button-#{$state}:hover {
-    @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
+    //@include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
 	background-color: lighten($value, 3.5%);
     border: 1px solid darken($value, 1%);
 	color: contrast-color($value, $dark, $light) !important;
@@ -91,7 +91,7 @@ input[type=file]::file-selector-button, {
   
   .button-#{$state}:active {
     border: 1px solid darken($value, 10%);
-    @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
+    //@include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
 	background-color: lighten($value, 10%);
 	color: contrast-color($value, $dark, $light) !important;
   }
@@ -104,14 +104,14 @@ input[type=file]::file-selector-button, {
 	}
 	
   .button-#{$state}-invis:hover {
-    @include gradient-y($start-color: lighten($value, 5%), $end-color: darken($value, 3.5%));
+    //@include gradient-y($start-color: lighten($value, 5%), $end-color: darken($value, 3.5%));
     border: 1px solid darken($value, 1%);
 	color: contrast-color($value, $dark, $light) !important;
   }
   
   .button-#{$state}-invis:active {
     border: 1px solid darken($value, 10%);
-    @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
+    //@include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
 	color: contrast-color($value, $dark, $light) !important;
   }
 }
