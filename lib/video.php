@@ -1,6 +1,7 @@
 <?php
-// Functions related to sbNext Video Stuff.
+// Functions related to posts.
 
+// DEPRECATED: This was part of the sbNext category system.
 function categoryIDToName($id) {
 	if (isset($id)) {
 		return match ($id) {
@@ -18,6 +19,8 @@ function categoryIDToName($id) {
 	}
 }
 
+
+// DEPRECATED: This was part of the sbNext category system.
 function type_to_cat($type) {
 	return match ($type) {
 		'misc'	=> 0,
@@ -28,6 +31,24 @@ function type_to_cat($type) {
 		'life'	=> 5,
 		'technology'	=> 6,
 		'backup'	=> 7,
+	};
+}
+
+function post_type_to_num($type) {
+	return match ($type) {
+		'video'	=> 0,
+		'video-dash'	=> 1,
+		'artwork'	=> 2,
+		'music'	=> 3
+	};
+}
+
+function post_num_to_type($type) {
+	return match ($type) {
+		0 =>	'video',
+		1 =>	'video-dash',
+		2 =>	'artwork',
+		3 =>	'music'
 	};
 }
 

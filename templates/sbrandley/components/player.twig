@@ -5,9 +5,9 @@
                {{ __("This video is being processed. Try again later.") }}
             </div>
             {% else %}
-            <video style="aspect-ratio: 16 / 9;width: 100%;background-color:black;" id="videoContainer" controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}">
-			<source src="./videos/{{ video.video_id }}.converted.mp4" type="video/mp4" />
-			<source src="./videos/{{ video.video_id }}.webm" type="video/webm" />
+            <video style="aspect-ratio: 16 / 9;width: 100%;background-color:black;" id="videoContainer" controls crossorigin playsinline poster="{{ post.thumbnail(video.video_id) }}">
+			<source src="./videos/{{ post.video_id }}.converted.mp4" type="video/mp4" />
+			<source src="./videos/{{ post.video_id }}.webm" type="video/webm" />
 			</video>
             {% endif %}
          </div>
@@ -71,7 +71,7 @@
             	//code taken from https://codepen.io/adis0308/pen/bGpQmwr
             	const video = document.getElementById("videoContainer");
             	document.addEventListener("DOMContentLoaded", function(){
-            	  const source = "{{ video.videofile }}";
+            	  const source = "{{ post.videofile }}";
             	  const dash = dashjs.MediaPlayer().create();
             	  var defaultOptions = {
             		"ratio":"16:9",

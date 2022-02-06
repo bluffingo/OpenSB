@@ -42,3 +42,4 @@ videos_/
 assets/thumb_/*
 mead/images/
 *.bak
+*.kate-swp

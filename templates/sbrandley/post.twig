@@ -1,0 +1,31 @@
+{% extends "_layout.twig" %}
+{% block head %}
+<meta name="title" content="{{ post.title }} - cheeseRox">
+<meta name="description" content="{{ post.description|length > 250 ? post.description|slice(0, 250) ~ '...' : post.description }}">
+<meta property="og:site_name" content="cheeseRox"/>
+<meta property="og:title" content="{{ post.title }} - cheeseRox">
+<meta property="og:description" content="{{ post.description|length > 250 ? post.description|slice(0, 250) ~ '...' : post.description }}">
+<meta property="og:image" content="{{ domain }}{{ post.thumbnail(post.post.id) }}">
+<meta property="og:url" content="{{ page_url }}">
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script>
+   post.id = '{{ post.post.id }}';
+   user_id = '{{ post.author }}';
+</script>
+<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
+{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block sidebar %}
+<h1>Information</h1>
+<li>
+	<ul>
+		Title: {{ post.title }}
+	</ul>
+	<ul>
+		Uploader: {{ post.u_name }}
+	</ul>
+</li>
+{% endblock %}
+{% block content %}
+{{ include('/components/player.twig') }}
+{% endblock %}
