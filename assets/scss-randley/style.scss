@@ -154,20 +154,17 @@ img.search {
 float: right;
 }
 
+// isn't e621's license compatible with ours? i think so.
+// https://github.com/zwagoth/e621ng/blob/e5609cdc37adc34c04f9769b263465cf1c1d42a2/app/javascript/src/styles/specific/posts.scss#L28
 div.level {
-display: inline-block;
-position: relative;
-list-style-type: none;
-overflow: hidden;
-width: 230px;
-height: 200px;
-background-color: #fff;
-padding: 2px;
-vertical-align: top;
-
-border: 1px solid gray;
-margin-left: 3px;
-margin-bottom: 10px;
+	box-sizing: border-box;
+	height: 154px;
+	width: 154px;
+	margin: 0 10px 10px 0;
+	overflow: hidden;
+	text-align: center;
+	display: inline-block;
+	position: relative;
 
 a.lvlbox_top {
 	color: black;
@@ -183,8 +180,10 @@ a.lvlbox_top {
 	}
 
 	img {
-	width: 230px;
-	height: 125px;
+		box-sizing: border-box;
+		margin: auto;
+		max-height: 10rem;
+		max-width: 10rem;
 	}
 }
 .user {
