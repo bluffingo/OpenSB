@@ -36,5 +36,7 @@
 	would be fucking clunky. -grkb February 6th 2022#}
 	{% if post.post_type != 1 %}
 	<a class="button button-primary" href="{{ post.videofile }}">Download</a>
+	{% else %}
+	<div class="header_message header-primary">You cannot download legacy MPEG-DASH videos due to limitations.</div>
 	{% endif %}
 {% endblock %}

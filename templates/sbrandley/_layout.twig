@@ -29,13 +29,14 @@
 	<footer>
 		<div class="footer">
 			<img src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
-			<p><b>cheeseRox Randley (sic) Layout · {{ __("By the cheeseRox contributors") }}</b> · 2020-{{ 'now' | date('Y') }}
+			<p><b>{{ __("By Chaz \"Gamerappa\" Péloquin and the cheeseRox contributors") }}</b> · 2020-{{ 'now' | date('Y') }}
 			</p>
 			<h5><a href="/githistory.php">{{ __("Git Commit") }} {{ git_commit() }}</a><br></h5>
+			<!--
 			<a class="button button-neutral button-small btnAdd" role="button">Options</a>
 			<div id="myModal" class="bg-light" style="padding:0.3em;">
 
-			</div>
+			</div> -->
 		</div>
 	</footer>
 {% block custom_footer %}
