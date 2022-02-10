@@ -3,6 +3,7 @@ require('lib/common.php');
 use ScssPhp\ScssPhp\Compiler;
 
 $message = '';
+$pageVariable = "profiles";
 
 if (isset($_GET['id'])) {
 	$userpagedata = fetch("SELECT * FROM users WHERE id = ?", [$_GET['id']]);

@@ -2,6 +2,7 @@
 <html lang="en">
 {% block head %}{% endblock %}
 {% include "_head.twig" %}
+<style>
 {% block customcss %}{% endblock %}
 {% if pfpRoundness == 'square' %}
 	.rounded {
@@ -12,6 +13,7 @@
 		border-radius: 10%;
 	}
 {% endif %}
+</style>
 <body>
 	{% include "components/_header.twig" %}
 	{% block precontent %}{% endblock %}
