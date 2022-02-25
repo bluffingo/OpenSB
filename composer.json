@@ -8,7 +8,7 @@
 		"scssphp/scssphp": "1.10.0",
 		"nopjmp/discord-webhooks": "dev-master",
 		"twbs/bootstrap-icons": "dev-main",
-		"php-ffmpeg/php-ffmpeg": "1.0.0",
+		"php-ffmpeg/php-ffmpeg": "1.0.1",
 		"suin/php-rss-writer": "dev-master"
 	},
 	"minimum-stability": "dev",
