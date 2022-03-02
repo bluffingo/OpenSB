@@ -1,4 +1,4 @@
-<h1 align="center">cheeseRox Beta 2.0.9</h1>
+<h1 align="center">cheeseRox Beta 3.00</h1>
 
 <p align="center">
 <br><br>
