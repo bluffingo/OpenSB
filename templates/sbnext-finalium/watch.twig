@@ -12,9 +12,7 @@
    video_id = '{{ video.video_id }}';
    user_id = '{{ video.author }}';
 </script>
-	  {% if oldPlayer == false %}
-	  <link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
-	  {% endif %}
+<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
@@ -37,11 +35,7 @@
 	{% endif %}
    <div class="grid">
       <div class="col-md-8">
-	  {% if oldPlayer %}
-	  {{ include('/components/player_2012.twig') }}
-	  {% else %}
 	  {{ include('/components/player.twig') }}
-	  {% endif %}
 		 
          <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
             <h1>{{ video.title }}</h1>

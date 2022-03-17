@@ -10,13 +10,6 @@ $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.autho
 
 if (!$videoData) error('404', __("The video you were looking for cannot be found."));
 
-
-if ( isset( $_GET['oldPlayer'] ) && !empty( $_GET['oldPlayer'] ) ) {
-	$oldPlayer = true;
-} else {
-	$oldPlayer = false;
-}
-
 $query = '';
 $count = 0;
 if ($videoData['tags']) {
@@ -43,7 +36,7 @@ $allRatings = calculateRatio($totalDislikes, $totalLikes, $combinedRatings);
 
 $allVideos = result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);
 
-if ( isset( $userdata ) && !empty( $_GET['oldPlayer'] ) ) {
+if ( isset( $userdata ) ) {
 	$rating = result("SELECT rating FROM rating WHERE video=? AND user=?", [$videoData['id'], $userdata['id']]);
 	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $videoData['author']]);
 } else {
@@ -81,7 +74,6 @@ echo $twig->render('watch.twig', [
 	'comCount' => $commentCount,
 	'viewCount' => $viewCount,
 	'videoRatio' => $allRatings,
-	'oldPlayer' => $oldPlayer,
 	'recentView' => $previousRecentView,
 	'allVideos' => $allVideos,
 ]);
