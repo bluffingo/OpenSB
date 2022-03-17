@@ -64,7 +64,7 @@
 	<div class="screwPaddingLeft col-md-3" style="color:{{ customProfile.fontcolor }};">
 			<div class="card-profiles">
 				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
-				About {{ userpagedata.name }}
+				{{ __("About") }} {{ userpagedata.name }}
 				</h3>
 				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
 					<div class="card-body">
@@ -73,11 +73,11 @@
 					<table style="width:100%">
 						<thead>
 						  <tr>
-							<td class="left">Last connected</td>
+							<td class="left">{{ __("Last visit") }}</td>
 							<td class="right">{{ userpagedata.lastview | relative_time }}</td>
 						  </tr>
 						  <tr>
-							<td class="left">Registered</td>
+							<td class="left">{{ __("Registered") }}</td>
 							<td class="right">{{ userpagedata.joined | relative_time }}</td>
 						  </tr>
 						</thead>

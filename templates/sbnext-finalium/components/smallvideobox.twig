@@ -7,7 +7,7 @@
 			</div>
 			<div class="col-md-8 vid-info">
 				<h3 class="title"><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
-				<span class="stat">by {{ userlink(data, 'u_') }}</span>
+				<span class="stat">{{ __("by") }} {{ userlink(data, 'u_') }}</span>
 				<span class="stat">{{ data.views }} {{ __("views") }}</span>
 			</div>
 		</div>

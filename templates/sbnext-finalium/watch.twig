@@ -74,7 +74,7 @@
                </div>
                <div class="col-md-8 right">
                   <div class="tab">
-                     <button class="tablinks active" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
+                     <button class="tablinks active" onclick="openTab(event, 'About')" id="defaultOpen">{{ __("About") }}</button>
                      <button class="tablinks" onclick="openTab(event, 'Stats')">{{ icon("bar-chart-fill", 12) }}</button>
                      <button class="tablinks" onclick="openTab(event, 'Flag')">{{ icon("flag-fill", 12) }}</button>
                   </div>
@@ -101,21 +101,21 @@
 					   </div>
 					</div>
 					<div id="Stats" class="tabcontent" style="display: none;">
-					   <h2>Stats</h2>
+					   <h2>{{ __("Stats") }}</h2>
 					   <ul style="padding:0">
 						   <li>
-							Unfiltered views: {{ video.views }}
+							{{ __("Unfiltered views:") }} {{ video.views }}
 						   </li>
 						   <li>
-							Like-to-dislike ratio: {{ videoRatio }}%
+							{{ __("Like-to-dislike ratio:") }} {{ videoRatio }}%
 						   </li>
 						   <li>
-						   Most recent view: {{ recentView | relative_time }}
+						   {{ __("Most recent view:") }} {{ recentView | relative_time }}
 						   </li>
 					   </ul>
 					</div>
 					<div id="Flag" class="tabcontent" style="display: none;">
-					<h2>Flag this video</h2>
+					<h2>{{ __("Flag this video") }}</h2>
 					Uh yeah, that's gonna be done later.
 					</div>
 				 </div>

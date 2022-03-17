@@ -1,13 +1,16 @@
 {
 	"\\RelativeTime\\Languages\\English": "\\RelativeTime\\Languages\\English",
 
-	"No POST data.": "No POST data.",
+	"this is invalid": "this is invalid",
+	"this is still invalid": "this is still invalid",
 
 	"The music you were looking for cannot be found.": "The music you were looking for cannot be found.",
 
 	"Please enter your username! ": "Please enter your username! ",
 	"Please enter your password! ": "Please enter your password! ",
 	"Incorrect username or password.": "Incorrect username or password.",
+
+	"No POST data.": "No POST data.",
 
 	"Blank username.": "Blank username.",
 	"Password is too short.": "Password is too short.",
@@ -188,7 +191,7 @@
 	"Posts": "Posts",
 	"Since": "Since",
 	"Last post": "Last post",
-	"Last view": "Last view",
+	"Last seen": "Last seen",
 
 	"Sign in": "Sign in",
 	"Upload": "Upload",
@@ -202,6 +205,8 @@
 	"Git Commit": "Git Commit",
 
 	"Access Denied": "Access Denied",
+
+	"This is not your video.": "This is not your video.",
 
 	"Latest videos": "Latest videos",
 	"(Page %s)": "(Page %s)",
@@ -217,25 +222,28 @@
 	"There are no videos of that category.": "There are no videos of that category.",
 	"You could create one!": "You could create one!",
 
-	"Welcome to cheeseRox,": "Welcome to cheeseRox,",
+	"Welcome to squareBracket,": "Welcome to squareBracket,",
 	"s": "s",
 	"%s follower%s": "%s follower%s",
 	"no": "no",
 	"%s view%s": "%s view%s",
 	"Manage": "Manage",
-	"Welcome to cheeseRox": "Welcome to cheeseRox",
+	"Welcome to squareBracket": "Welcome to squareBracket",
 	"Unbelivable, This is not PokTube.": "Unbelivable, This is not PokTube.",
 	"Get started": "Get started",
 	"Already have an account?": "Already have an account?",
-	"cheeseRox Videos": "cheeseRox Videos",
+	"Settings successfully saved!": "Settings successfully saved!",
+	"squareBracket Videos": "squareBracket Videos",
 	"No uploaded videos.": "No uploaded videos.",
 	"What's new?": "What's new?",
-	"Welcome to the brand new cheeseRox! We've heard it, the old layout sucked, so we have redesigned cheeseRox to have a better user interface.": "Welcome to the brand new cheeseRox! We've heard it, the old layout sucked, so we have redesigned cheeseRox to have a better user interface.",
+	"This is the result of squareBracket's growing pains. Fuck you.": "This is the result of squareBracket's growing pains. Fuck you.",
 
 	"Password successfully reset! Please login with your new password.": "Password successfully reset! Please login with your new password.",
 	"You have been successfully logged out of all devices.": "You have been successfully logged out of all devices.",
 	"Username": "Username",
 	"Password": "Password",
+
+	"Save Changes": "Save Changes",
 
 	"Register": "Register",
 	"Display Name": "Display Name",
@@ -247,9 +255,10 @@
 	"Repeat New Password:": "Repeat New Password:",
 
 	"There are no videos that match your query.": "There are no videos that match your query.",
-	"cheeseRox isn't that big, y'know.": "cheeseRox isn't that big, y'know.",
+	"squareBracket isn't that big, y'know.": "squareBracket isn't that big, y'know.",
 
 	"Settings": "Settings",
+	"Log out from all devices": "Log out from all devices",
 	"Credentials": "Credentials",
 	"Change Password": "Change Password",
 	"Current Password (For verification)": "Current Password (For verification)",
@@ -267,14 +276,10 @@
 	"Title color": "Title color",
 	"Link color": "Link color",
 	"Header text color": "Header text color",
-	"Highlight header": "Highlight header",
-	"Highlight inside": "Highlight inside",
-	"Regular header": "Regular header",
-	"Regular inside": "Regular inside",
-	"Options": "Options",
-	"Language": "Language",
-	"sbNext Theme": "sbNext Theme",
-	"Save Changes": "Save Changes",
+	"Outter header/border": "Outter header/border",
+	"Outter background": "Outter background",
+	"Inner header/border": "Inner header/border",
+	"Inner background": "Inner background",
 
 	"Upload video": "Upload video",
 	"Video info": "Video info",
@@ -282,8 +287,6 @@
 	" Title": " Title",
 	" Description": " Description",
 	" Tags": " Tags",
-	" Video ID": " Video ID",
-	" Uploader ID": " Uploader ID",
 	"Video file": "Video file",
 	"Select the video file you want to upload.": "Select the video file you want to upload.",
 	"Upload guidelines": "Upload guidelines",
@@ -304,45 +307,39 @@
 	"Video": "Video",
 	"Images/Artwork": "Images/Artwork",
 	"Upload image/artwork": "Upload image/artwork",
-	"Text/Story": "Text/Story",
-	"Post text/story": "Post text/story",
 
-	"Edit my settings": "Edit my settings",
-	"View my private messages": "View my private messages",
-	"View user page as viewer": "View user page as viewer",
-	"Admin panel": "Admin panel",
-	"Edit profile": "Edit profile",
 	"Marked all notifications as read.": "Marked all notifications as read.",
-	"Settings successfully saved!": "Settings successfully saved!",
-	"About this user": "About this user",
-	"View threads": "View threads",
-	"Show posts": "Show posts",
-	"Send private message": "Send private message",
-	"Generate password reset for user": "Generate password reset for user",
+	"About": "About",
+	"Last visit": "Last visit",
+	"Registered": "Registered",
+	"Edit my settings": "Edit my settings",
+	"View my messages": "View my messages",
+	"View as viewer": "View as viewer",
+	"Send message": "Send message",
+	"Generate password reset": "Generate password reset",
 	"Edit forum permissions": "Edit forum permissions",
+	"Featured": "Featured",
 	"There are currently no videos uploaded by %s.": "There are currently no videos uploaded by %s.",
-	"General information": "General information",
-	"Forum Threads": "Forum Threads",
-	"Forum Posts": "Forum Posts",
-	"Registered on": "Registered on",
+	"Comments": "Comments",
+	"Enter comment here.": "Enter comment here.",
+	"Comment": "Comment",
 
 	"Published on %s": "Published on %s",
 
 	"Like": "Like",
 	"License:": "License:",
-	"Standard cheeseRox License": "Standard cheeseRox License",
-	"Enter comment here.": "Enter comment here.",
-	"Comment": "Comment",
+	"Standard squareBracket License": "Standard squareBracket License",
+	"Stats": "Stats",
+	"Unfiltered views:": "Unfiltered views:",
+	"Like-to-dislike ratio:": "Like-to-dislike ratio:",
+	"Most recent view:": "Most recent view:",
+	"Flag this video": "Flag this video",
 	"More videos": "More videos",
 
 	"Sorry about that.": "Sorry about that.",
 
-	"Users": "Users",
-	"Log out": "Log out",
-	"Profile": "Profile",
-	"Studio": "Studio",
-	"Browse": "Browse",
-	"By the cheeseRox contributors": "By the cheeseRox contributors",
+	"Statistics": "Statistics",
+	"Running on commit: ": "Running on commit: ",
 
 	"view%s": "view%s",
 
@@ -350,8 +347,14 @@
 
 	"views": "views",
 
+	"Profile": "Profile",
+	"Studio": "Studio",
+	"Log out": "Log out",
+	"Browse": "Browse",
+
 	"Active users": "Active users",
 	"Active users during the last %s": "Active users during the last %s",
+	"Registered on": "Registered on",
 	"Total": "Total",
 	"There are no active users in the given timespan.": "There are no active users in the given timespan.",
 
@@ -379,14 +382,15 @@
 	"Sent on": "Sent on",
 	"There are no private messages.": "There are no private messages.",
 
+	"Send private message": "Send private message",
 	"(Message preview)": "(Message preview)",
-	"Send message": "Send message",
 	"Send to:": "Send to:",
 	"Message:": "Message:",
 
 	"Latest Posts": "Latest Posts",
 	"No posts were found.": "No posts were found.",
 	"Quick Reply": "Quick Reply",
-	"Reply:": "Reply:"
+	"Reply:": "Reply:",
 
+	"You do not have any uploaded videos!": "You do not have any uploaded videos!",
 }
