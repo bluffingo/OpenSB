@@ -87,7 +87,7 @@
 			<p><b>{{ __("By the cheeseRox contributors") }}</b> · 2020-{{ 'now' | date('Y') }} 
 			| <b><a href="/statistics.php">{{ __("Statistics") }}</a></b>
 			</p>
-			<h5><a href="/githistory.php">{{ __("Git Commit") }} {{ git_commit() }}</a><br></h5>
+			<h5>{{ __("Running on commit: ") }} {{ git_commit() }}<br></h5>
 			<a class="button button-neutral button-small btnAdd" role="button">Options</a>
 			<div id="myModal" class="bg-neutral" style="padding:0.3em;">
 
