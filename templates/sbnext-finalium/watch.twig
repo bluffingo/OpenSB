@@ -1,9 +1,9 @@
 {% extends "_layout.twig" %}
 {% block head %}
-<meta name="title" content="{{ video.title }} - cheeseRox">
+<meta name="title" content="{{ video.title }} - squareBracket">
 <meta name="description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-<meta property="og:site_name" content="cheeseRox"/>
-<meta property="og:title" content="{{ video.title }} - cheeseRox">
+<meta property="og:site_name" content="squareBracket"/>
+<meta property="og:title" content="{{ video.title }} - squareBracket">
 <meta property="og:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
 <meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
 <meta property="og:url" content="{{ page_url }}">
@@ -95,7 +95,7 @@
 							 </li>
 							 <li>
 								<h4 class="title">{{ __("License:") }}</h4>
-								<div class="content">{{ __("Standard cheeseRox License") }}</div>
+								<div class="content">{{ __("Standard squareBracket License") }}</div>
 							 </li>
 						  </ul>
 					   </div>

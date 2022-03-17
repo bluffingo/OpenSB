@@ -1,9 +1,9 @@
 {% extends "_layout.twig" %}
 {% block head %}
-<meta name="title" content="cheeseRox">
+<meta name="title" content="squareBracket">
 <meta name="description" content="Unbelivable, This is not PokTube.">
-<meta property="og:site_name" content="cheeseRox"/>
-<meta property="og:title" content="cheeseRox">
+<meta property="og:site_name" content="squareBracket"/>
+<meta property="og:title" content="squareBracket">
 <meta property="og:description" content="Unbelivable, This is not PokTube.">
 <meta property="og:image" content="{{ domain }}assets/logo_square_icon.png">
 <meta property="og:url" content="{{ page_url }}">
@@ -21,7 +21,7 @@
 				<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
 			</div>
 			<div style="display: table-cell;vertical-align: middle;">
-				<h1 style="padding:0;margin:8px 0;font-weight:400;">{{ __("Welcome to cheeseRox,") }} {{ userdata.title }}</h1>
+				<h1 style="padding:0;margin:8px 0;font-weight:400;">{{ __("Welcome to squareBracket,") }} {{ userdata.title }}</h1>
 				{# hack to prevent twig from outputing the number 1 #}
 				{% if totalSubscribers != 1 %}
 					{% set pluralSubscribers = __("s") %}
@@ -38,7 +38,7 @@
 		{% else %}
 		<div class="grid">
 			<div class="col-md-8">
-				<h1 style="padding:0;margin:8px 0;">{{ __("Welcome to cheeseRox") }}</h1>
+				<h1 style="padding:0;margin:8px 0;">{{ __("Welcome to squareBracket") }}</h1>
 				<h3 style="padding:0;margin:0;">{{ __("Unbelivable, This is not PokTube.") }}</h3>
 			</div>
 			<div class="col-md-4">
@@ -77,7 +77,7 @@
 	</div>
 		<div class="card">
 			<div class="card-body-fat">
-				<h3>{{ __("cheeseRox Videos") }}</h3>
+				<h3>{{ __("squareBracket Videos") }}</h3>
 				{% for video in videos %}
 				{{ small_video_box(video) }}
 				{% else %}
@@ -89,7 +89,7 @@
 	<div class="col-md-4">
 		<div class="whatsnew">
 			<h3>{{ __("What's new?") }}</h3>
-			<p>{{ __("This is the result of cheeseRox's growing pains. Fuck you.") }}</p>
+			<p>{{ __("This is the result of squareBracket's growing pains. Fuck you.") }}</p>
 		</div>
 	</div>
 </div>

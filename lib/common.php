@@ -23,7 +23,7 @@ foreach (glob("lib/*.php") as $file) {
 
 // todo: make this load a html page
 if ($isMaintenance && !isCli()) {
-	die('<center><b>cheeseRox is currently offline.</b></center>');
+	die('<center><b>squareBracket is currently offline.</b></center>');
 }
 
 if(!isset($acmlm)) {
