@@ -63,9 +63,7 @@
 {% endfor %}
 {% endif %}
 </div>
-{% if theme == 'bluey' %}
-	{% include "components/katt/_header.twig" %}
-{% elseif theme == 'nostalgia' %}
+{% if theme == 'nostalgia' %}
 	{% include "components/nostalgia/_header.twig" %}
 {% else %}
 	{% include "components/_header.twig" %}
@@ -74,21 +72,15 @@
 				<div class="container page-container">
 					{% block content %}{% endblock %}
 					</div>
-	{% if theme == 'bluey' %}
-	</main>
-	<footer class="footer">
-		<div class="footer_inner">
-	{% else %}
 	</div>
 	<footer>
 		<div class="footer">
-	{% endif %}
 			<img src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
 			<p><b>{{ __("By the squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} 
 			| <b><a href="/statistics.php">{{ __("Statistics") }}</a></b>
 			</p>
 			<h5>{{ __("Running on commit: ") }} {{ git_commit() }}<br></h5>
-			<a class="button button-neutral button-small btnAdd" role="button">Options</a>
+			<a class="button button-neutral button-small btnAdd" role="button">{{ __("Options") }}</a>
 			<div id="myModal" class="bg-neutral" style="padding:0.3em;">
 
 			</div>

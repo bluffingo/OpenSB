@@ -210,6 +210,8 @@
 
 	"Latest videos": "Latest videos",
 	"(Page %s)": "(Page %s)",
+	"Images": "Images",
+	"Text": "Text",
 	"All": "All",
 	"Miscellanous": "Miscellanous",
 	"Entertainment": "Entertainment",
@@ -243,6 +245,17 @@
 	"Username": "Username",
 	"Password": "Password",
 
+	"Options": "Options",
+	"User interface": "User interface",
+	"Theme": "Theme",
+	"Light": "Light",
+	"Dark": "Dark",
+	"Nostalgia": "Nostalgia",
+	"Language": "Language",
+	"Profile picture roundness": "Profile picture roundness",
+	"Square": "Square",
+	"Rounded": "Rounded",
+	"Circle": "Circle",
 	"Save Changes": "Save Changes",
 
 	"Register": "Register",
@@ -259,7 +272,9 @@
 
 	"Settings": "Settings",
 	"Log out from all devices": "Log out from all devices",
+	"Overview": "Overview",
 	"Credentials": "Credentials",
+	"Profile setup": "Profile setup",
 	"Change Password": "Change Password",
 	"Current Password (For verification)": "Current Password (For verification)",
 	"New Password": "New Password",
@@ -280,6 +295,10 @@
 	"Outter background": "Outter background",
 	"Inner header/border": "Inner header/border",
 	"Inner background": "Inner background",
+
+	"Statistics": "Statistics",
+	"About squareBracket": "About squareBracket",
+	"Users": "Users",
 
 	"Upload video": "Upload video",
 	"Video info": "Video info",
@@ -319,13 +338,16 @@
 	"Generate password reset": "Generate password reset",
 	"Edit forum permissions": "Edit forum permissions",
 	"Featured": "Featured",
+	"From:": "From:",
 	"There are currently no videos uploaded by %s.": "There are currently no videos uploaded by %s.",
 	"Comments": "Comments",
 	"Enter comment here.": "Enter comment here.",
 	"Comment": "Comment",
 
+	"Channel settings": "Channel settings",
 	"Published on %s": "Published on %s",
 
+	"Video Manager": "Video Manager",
 	"Like": "Like",
 	"License:": "License:",
 	"Standard squareBracket License": "Standard squareBracket License",
@@ -338,7 +360,6 @@
 
 	"Sorry about that.": "Sorry about that.",
 
-	"Statistics": "Statistics",
 	"Running on commit: ": "Running on commit: ",
 
 	"view%s": "view%s",
@@ -391,6 +412,9 @@
 	"No posts were found.": "No posts were found.",
 	"Quick Reply": "Quick Reply",
 	"Reply:": "Reply:",
+
+	"Edit video": "Edit video",
+	"Details": "Details",
 
 	"You do not have any uploaded videos!": "You do not have any uploaded videos!",
 }

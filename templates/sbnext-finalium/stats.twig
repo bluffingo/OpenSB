@@ -1,30 +1,30 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Statistics{% endblock %}
+{% block title %}{{ __("Statistics") }}{% endblock %}
 
 	{% block content %}
 	<div class="card">
 		<div class="card-body">
 		<div style="padding:5px;">
-		<h2>About squareBracket</h2>
-		<p>Yes, they were originally in the footer but I moved them here since checking the number of everything when
-		a user loads something on squareBracket is dumb.</p>
+		<h2>{{ __("About squareBracket") }}</h2>
+		<!--<p>Yes, they were originally in the footer but I moved them here since checking the number of everything when
+		a user loads something on squareBracket is dumb.</p>-->
 		</div>
 		<div class="grid">
 			<div class="col-md-3"><div class="statbox">
-			<div class="stat-title">Users</div>
+			<div class="stat-title">{{ __("Users") }}</div>
 			{{ stats.usercount }}
 			</div></div>
 			<div class="col-md-3"><div class="statbox">
-			<div class="stat-title">Videos</div>
+			<div class="stat-title">{{ __("Videos") }}</div>
 			{{ stats.videocount }}
 			</div></div>
 			<div class="col-md-3"><div class="statbox">
-			<div class="stat-title">Images</div>
+			<div class="stat-title">{{ __("Images") }}</div>
 			{{ stats.musiccount }}
 			</div></div>
 			<div class="col-md-3"><div class="statbox">
-			<div class="stat-title">Music</div>
+			<div class="stat-title">{{ __("Music") }}</div>
 			{{ stats.imagecount }}
 			</div></div>
 		</div>
