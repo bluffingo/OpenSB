@@ -3,11 +3,6 @@
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/88458384/147863551-8a7e0a82-a7d3-483a-9467-5045b4d53ce4.png">
-<br><br>
-<a href="https://www.youtube.com/channel/UCMnG3eA5QcSgIPsavuW4ubA">
-<img src="https://img.shields.io/youtube/channel/subscribers/UCMnG3eA5QcSgIPsavuW4ubA?style=social">
-</a>
-<br>
 </p>
 
 <!--<h3 align="center"><a href="https://squarebracket.veselcraft.ru/">cheeseRox's live website</a></h3>-->
