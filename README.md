@@ -2,7 +2,7 @@
 <p align="center">squareBracket edition (1.0.0)</p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/88458384/147863551-8a7e0a82-a7d3-483a-9467-5045b4d53ce4.png">
+<img src="https://user-images.githubusercontent.com/54495659/158865311-fdb2b3e7-107f-46c8-908b-72aa9098bdfb.png">
 </p>
 
 <!--<h3 align="center"><a href="https://squarebracket.veselcraft.ru/">cheeseRox's live website</a></h3>-->
