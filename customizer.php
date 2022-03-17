@@ -12,7 +12,7 @@ if (isset($_POST['othermagic'])) {
 	
 
 	//if (!$error) {
-		redirect(sprintf("index.php?updated=true", $userdata['name']));
+		redirect(sprintf("index.php?updated=true",  isset($userdata['name']) ? $userdata['name'] : null));
 	//}
 }
 

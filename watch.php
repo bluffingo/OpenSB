@@ -36,7 +36,7 @@ $allRatings = calculateRatio($totalDislikes, $totalLikes, $combinedRatings);
 
 $allVideos = result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);
 
-if ( isset( $userdata ) ) {
+if ( isset( $userdata['name'] ) ) {
 	$rating = result("SELECT rating FROM rating WHERE video=? AND user=?", [$videoData['id'], $userdata['id']]);
 	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $videoData['author']]);
 } else {
