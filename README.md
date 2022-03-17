@@ -8,6 +8,7 @@
 <br>
 </p>
 
+An unofficial maintained version of the codebase (done by former contributors) can be found at https://github.com/squareBracket-and-Finalium/squareBracket
 <!--<h3 align="center"><a href="https://squarebracket.veselcraft.ru/">cheeseRox's live website</a></h3>-->
 
 ## How to setup cheeseRox.
