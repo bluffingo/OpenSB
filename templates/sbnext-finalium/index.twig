@@ -11,9 +11,6 @@
 {% block title %}Main page{% endblock %}
 
 	{% block precontent %}
-	{% if theme == 'bluey' %}
-	<div class="container" style="display: flex;align-items: center;flex-direction: column;">
-	{% endif %}
 {% if theme != 'nostalgia' %}
 <div class="indexNext">
 <div class="main-content">
@@ -53,9 +50,6 @@
 	</div>
 </div>
 {% endif %}
-	{% if theme == 'bluey' %}
-	</div>
-	{% endif %}
 	{% endblock %}
 
 	{% block content %}

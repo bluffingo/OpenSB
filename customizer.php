@@ -11,9 +11,9 @@ if (isset($_POST['othermagic'])) {
 	setcookie('profilepicture', $profilepicture, 2147483647);
 	
 
-	if (!$error) {
+	//if (!$error) {
 		redirect(sprintf("index.php?updated=true", $userdata['name']));
-	}
+	//}
 }
 
 $twig = twigloader();
