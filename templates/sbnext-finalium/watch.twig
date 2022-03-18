@@ -134,7 +134,7 @@
             <div class="card-body-fat">
                <h3>Comments ({{ comCount }})</h3>
 			   {% if log %}
-               <div class="grid">
+               <div class="grid" id="commentField">
                   <div class="col-md-1">
                      <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
                   </div>
@@ -151,7 +151,7 @@
 			   {% endif %}
                <div id="comment"></div>
                {% for comment in comments %}
-               {{ comment(comment) }}
+					{{ comment(comment) }}
                {% endfor %}
             </div>
          </div>

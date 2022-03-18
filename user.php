@@ -36,7 +36,7 @@ $latestVideoData = query("SELECT $userfields v.video_id, v.title, v.description,
 $latestVideo  = fetch("SELECT $userfields v.*, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, v.author, v.tags FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC", [$userpagedata['id']]);
 $count = result("SELECT COUNT(*) FROM videos l WHERE l.author = ?", [$userpagedata['id']]);
 
-$commentData = query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$userpagedata['id']]);
+$commentData = query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM channel_comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$userpagedata['id']]);
 
 $subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$userpagedata['id']])['COUNT(user)'];
 $subscribers  = query("SELECT $userfields s.* FROM subscriptions s JOIN users u on user WHERE s.user = ?", [$userpagedata['id']]);

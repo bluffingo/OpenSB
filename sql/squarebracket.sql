@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2022 at 09:58 PM
+-- Generation Time: Mar 18, 2022 at 09:07 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `squarebracket_production`
+-- Database: `squarebracket`
 --
 
 -- --------------------------------------------------------
@@ -28,8 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `channel_comments` (
-  `comment_id` int(11) NOT NULL,
+  `comment_id` bigint(20) NOT NULL,
   `id` text NOT NULL,
+  `reply_to` bigint(20) NOT NULL,
   `comment` text NOT NULL,
   `author` bigint(20) NOT NULL,
   `date` bigint(20) NOT NULL,
@@ -62,8 +63,9 @@ CREATE TABLE `channel_settings` (
 --
 
 CREATE TABLE `comments` (
-  `comment_id` int(11) NOT NULL,
+  `comment_id` bigint(20) NOT NULL,
   `id` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID to video or user.',
+  `reply_to` bigint(20) NOT NULL COMMENT 'Comment that it replies to.',
   `comment` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The comment itself, formatted in Markdown.',
   `author` bigint(20) NOT NULL COMMENT 'Numerical ID of comment author.',
   `date` bigint(20) NOT NULL COMMENT 'UNIX timestamp when the comment was posted.',
@@ -133,7 +135,7 @@ CREATE TABLE `users` (
   `token` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User token for cookie authentication.',
   `joined` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'User''s join date',
   `lastview` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Timestamp of last view',
-  `lastpost` int(11) UNSIGNED NOT NULL,
+  `lastpost` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Display Name',
   `about` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
   `customcolor` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
@@ -142,8 +144,8 @@ CREATE TABLE `users` (
   `u_flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties',
   `powerlevel` tinyint(4) UNSIGNED NOT NULL DEFAULT 1 COMMENT '0 - banned. 1 - normal user. 2 - moderator. 3 - administrator',
   `group_id` int(11) NOT NULL DEFAULT 3,
-  `posts` int(11) NOT NULL,
-  `threads` int(11) NOT NULL,
+  `posts` int(11) NOT NULL DEFAULT 0,
+  `threads` int(11) NOT NULL DEFAULT 0,
   `signature` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -160,13 +162,14 @@ CREATE TABLE `videos` (
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video description',
   `author` bigint(20) UNSIGNED NOT NULL COMMENT 'User ID of the video author',
   `time` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Unix timestamp for the time the video was uploaded',
-  `most_recent_view` bigint(20) UNSIGNED NOT NULL,
+  `most_recent_view` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `views` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Video views',
   `flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',
   `category_id` int(11) DEFAULT 0 COMMENT 'Category ID for the video',
   `videofile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Path to the video file(?)',
   `videolength` bigint(20) UNSIGNED DEFAULT NULL COMMENT 'Length of the video in seconds',
-  `tags` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video tags, serialized in JSON'
+  `tags` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video tags, serialized in JSON',
+  `post_type` int(11) NOT NULL DEFAULT 0 COMMENT 'The type of the post, 0 is a video, 1 is a legacy video, 2 is art, and 3 is music.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -201,7 +204,7 @@ ALTER TABLE `channel_settings`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
-  
+
 --
 -- Indexes for table `notifications`
 --
@@ -228,25 +231,13 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT for table `channel_comments`
 --
 ALTER TABLE `channel_comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `image`
---
-ALTER TABLE `image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `music`
---
-ALTER TABLE `music`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `notifications`

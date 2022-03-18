@@ -3,10 +3,6 @@ $(document).ready(function(){
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 });
-	function play(sound) {
-		var audio = new Audio('/assets/sounds/'+sound+'.wav');
-		audio.play();
-	}
 	$("#masthead-loggedin").click(function() {
 	  var x = document.getElementById("masthead-below");
 	  if (x.style.display === "block") {
@@ -274,3 +270,60 @@ function myFunction() {
     x.style.display = "block";
   }
 } 
+
+function showReplies(id) {
+	$.post("get_replies.php",
+	{
+		comment_id: id
+	},
+	function(data,status){
+		if (status == "success") {
+			$('#' + id).append(data);
+		}
+	});
+}
+
+function reply(id) {
+	$("#commentField").clone().appendTo("#" + id);
+	$("#"+ id +" #commentField .col-md-11 .right #post").click(function(){
+		play("click");
+		$.post("comment.php",
+		{
+			comment: $.trim($('#' + id + ' #commentContents').val()),
+			reply_to: id,
+			really: "ofcourse",
+			type: "video"
+		},
+		function(data,status){
+			if (status == "success") {
+				console.log("Commented " + $('#' + id + ' #commentContents').val());
+				$("#" + id).append(data);
+				$("#"+ id +" #commentField").remove();
+				play("comment");
+			}
+		});
+	});	
+	$("#"+ id +" #commentField .col-md-11 .right #post-user").click(function(){
+		play("click");
+		$.post("comment.php",
+		{
+			comment: $.trim($('#' + id + ' #commentContents').val()),
+			reply_to: id,
+			really: "ofcourse",
+			type: "video"
+		},
+		function(data,status){
+			if (status == "success") {
+				console.log("Commented " + $('#' + id + ' #commentContents').val());
+				$("#" + id).append(data);
+				$("#"+ id +" #commentField").remove();
+				play("comment");
+			}
+		});
+	});	
+}
+
+function play(sound) {
+	var audio = new Audio('/assets/sounds/'+sound+'.wav');
+	audio.play();
+}

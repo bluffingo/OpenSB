@@ -4,11 +4,20 @@
 			<img class="rounded img-fluid" src="{{ profile_image(data.u_name) }}">
 		</a>
 	</div>
-	<div class="col-md-11">
+	<div class="col-md-11" id="{{ data.comment_id }}">
 		{{ userlink(data, 'u_') }} &bull; {{ data.date | relative_time}}
 		<br>
 		<div class="comment">
-		{{ data.comment | markdown }}
+			{{ data.comment | markdown }}
 		</div>
+		<br>
+		<p>
+			{% if data.replycount > 0 %}
+				<a onclick="showReplies({{ data.comment_id }})">Show replies</a> |
+			{% endif %}
+			{% if data.id|length > 0 %}
+				<a onclick="reply({{ data.comment_id }})">Reply</a>
+			{% endif %}
+		</p>
 	</div>
 </div>
