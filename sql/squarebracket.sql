@@ -73,48 +73,6 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `image`
---
-
-CREATE TABLE `image` (
-  `id` int(11) NOT NULL,
-  `image_id` varchar(11) NOT NULL,
-  `title` text NOT NULL,
-  `description` text NOT NULL COMMENT 'Image description',
-  `author` int(11) NOT NULL,
-  `time` int(11) NOT NULL,
-  `file` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `image_views`
---
-
-CREATE TABLE `image_views` (
-  `image_id` text NOT NULL,
-  `user` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `music`
---
-
-CREATE TABLE `music` (
-  `ID` int(11) NOT NULL,
-  `music_id` varchar(11) NOT NULL,
-  `title` text NOT NULL,
-  `author` int(11) NOT NULL,
-  `time` int(11) NOT NULL,
-  `file` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `notifications`
 --
 
@@ -243,19 +201,7 @@ ALTER TABLE `channel_settings`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
-
---
--- Indexes for table `image`
---
-ALTER TABLE `image`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `music`
---
-ALTER TABLE `music`
-  ADD PRIMARY KEY (`ID`);
-
+  
 --
 -- Indexes for table `notifications`
 --
