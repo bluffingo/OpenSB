@@ -28,15 +28,6 @@ if ($customProfile == false) {
 	VALUES (?, '#ffffff', '#222222', '#ffffff', '#0033CC', '#ffffff', '#3399cc', '#ecf4fb', '#3399cc', '#ffffff')",[$userpagedata['id']]);
 }
 
-// using comment.php on 2008 would require clunky javascript
-if ($frontend == "2008") {
-	if (isset($_POST['post_comment'])) {
-		query("INSERT INTO channel_comments (id, comment, author, date, deleted) VALUES (?,?,?,?,?)",
-		[$userpagedata['id'],$_POST['comment'],$userdata['id'],time(),0]);
-		$message = "Channel comment has been submitted!";
-	}
-}
-
 $page = (isset($_GET['p']) && is_numeric($_GET['p']) && $_GET['p'] > 0 ? $_GET['p'] : 1);
 $forceuser = isset($_GET['forceuser']);
 
@@ -83,6 +74,11 @@ if ( isset( $log ) && !empty( $log ) ) {
 	$subscribed = result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $userpagedata['id']]);
 } else {
 	$subscribed = 0;
+}
+
+//fixes depreciation warning
+if ($userpagedata['about'] == null) {
+	$userpagedata['about'] = '';
 }
 
 $twig = twigloader();
