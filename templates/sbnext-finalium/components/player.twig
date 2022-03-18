@@ -106,7 +106,20 @@
 					// This runs if the asynchronous load is successful.
 					console.log('The video has now been loaded!');
 				  } catch (error) {
-					onPlayerError(error);
+					//try using webm, if that fails use mp4
+					try {
+						await player.load('./videos/{{ video.video_id }}.webm');
+						// This runs if the asynchronous load is successful.
+						console.log('The video has now been loaded!');
+					} catch (error) {
+						try {
+							await player.load('./videos/{{ video.video_id }}.converted.mp4');
+							// This runs if the asynchronous load is successful.
+							console.log('The video has now been loaded!');
+						} catch (error) {
+							onPlayerError(error);
+						}
+					}
 				  }
 				}
 
