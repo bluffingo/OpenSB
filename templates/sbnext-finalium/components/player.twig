@@ -5,20 +5,25 @@
                {{ __("This video is being processed. Try again later.") }}
             </div>
             {% else %}
-            <video style="aspect-ratio: 16 / 9;width: 100%;background-color:black;" id="videoContainer" controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}">
-			<source src="./videos/{{ video.video_id }}.converted.mp4" type="video/mp4" />
-			<source src="./videos/{{ video.video_id }}.webm" type="video/webm" />
-			</video>
+			<div data-shaka-player-container style="aspect-ratio: 16 / 9;width: 100%;background-color:black;" data-shaka-player-cast-receiver-id="BBED8D28">
+				<video style="aspect-ratio: 16 / 9;width: 100%;background-color:black;" id="video" data-shaka-player crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}">
+				</video>
+			</div>
             {% endif %}
          </div>
-         <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
-         <script src="https://unpkg.com/plyr@3.6.8/dist/plyr.min.js"></script>
-         <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
+         <script src="https://cdn.jsdelivr.net/npm/shaka-player@3.1.6/dist/shaka-player.compiled.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/shaka-player@3.1.6/dist/shaka-player.ui.min.js"></script>
+		 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/shaka-player@3.1.6/dist/controls.css">
          <!-- indigo player (the player we used back in the milestone/alpha days) was starting to have a lot of techincal issues by the time of alpha 3.
             videos would randomly glitch on indigo and sometimes it wouldn't even load the goddamn video (not a ffmpeg issue this time).
             we at squarebracket have decided to use plyr instead of indigo. the aspect ratio is a bit wonky but that should be fixed soon
             -gamerappa, July 31st 2021 -->
          <style>
+			.shaka-language-button {
+				display: none !important;
+			}
+		 
+			//todo: port this
             .plyr--video {
             --plyr-color-main: #1b8ade;
             --plyr-font-family: arial, helvetica, sans-serif;
@@ -68,44 +73,60 @@
          </style>
          <script>
             {% if not (video.flags b-and 2) %}
-            	//code taken from https://codepen.io/adis0308/pen/bGpQmwr
-            	const video = document.getElementById("videoContainer");
-            	document.addEventListener("DOMContentLoaded", function(){
-            	  const source = "{{ video.videofile }}";
-            	  const dash = dashjs.MediaPlayer().create();
-            	  var defaultOptions = {
-            		"ratio":"16:9",
-            	  };
-            
-            	  dash.initialize(video, source, false);
-            	  dash.updateSettings({
-            		streaming: {
-            		  abr: {
-            			autoSwitchBitrate: {audio: false, video: false}
-            		  },
-            		  fastSwitchEnabled: true,
-            		  lowLatencyEnabled: true
-            		}
-            	  });
-            	  dash.on("streamInitialized", function() {
-            		const availableQualities = dash.getBitrateInfoListFor("video").map((l) => l.height);
-            		defaultOptions.quality = {
-            		  default: availableQualities[0].height,
-            		  options: availableQualities,
-            		  forced: true,
-            		  onChange: function (newQuality) {
-            			dash.getBitrateInfoListFor("video").forEach((level, levelIndex) => {
-            			  if (level.height === newQuality) {
-            				dash.setQualityFor("video", level.qualityIndex);
-            			  }
-            			});
-            		  },
-            		};
-            		const player = new Plyr(video, defaultOptions);
-            		window.player = player;
-            		window.dash = dash;
-            	  });
-            	  dash.attachView(video);
-            	});
+				const manifestUri =
+					'./videos/{{ video.video_id }}.mpd';
+
+				async function init() {
+				  // When using the UI, the player is made automatically by the UI object.
+				  const video = document.getElementById('video');
+				  const ui = video['ui'];
+				  const controls = ui.getControls();
+				  const player = controls.getPlayer();
+
+				  // Attach player and ui to the window to make it easy to access in the JS console.
+				  window.player = player;
+				  window.ui = ui;
+
+				  // Listen for error events.
+				  player.addEventListener('error', onPlayerErrorEvent);
+				  controls.addEventListener('error', onUIErrorEvent);
+
+				  // Try to load a manifest.
+				  // This is an asynchronous process.
+				  try {
+					await player.load(manifestUri);
+					// This runs if the asynchronous load is successful.
+					console.log('The video has now been loaded!');
+				  } catch (error) {
+					onPlayerError(error);
+				  }
+				}
+
+				function onPlayerErrorEvent(errorEvent) {
+				  // Extract the shaka.util.Error object from the event.
+				  onPlayerError(event.detail);
+				}
+
+				function onPlayerError(error) {
+				  // Handle player error
+				  console.error('Error code', error.code, 'object', error);
+				}
+
+				function onUIErrorEvent(errorEvent) {
+				  // Extract the shaka.util.Error object from the event.
+				  onPlayerError(event.detail);
+				}
+
+				function initFailed(errorEvent) {
+				  // Handle the failure to load; errorEvent.detail.reasonCode has a
+				  // shaka.ui.FailReasonCode describing why.
+				  console.error('Unable to load the UI library!');
+				}
+
+				// Listen to the custom shaka-ui-loaded event, to wait until the UI is loaded.
+				document.addEventListener('shaka-ui-loaded', init);
+				// Listen to the custom shaka-ui-load-failed event, in case Shaka Player fails
+				// to load (e.g. due to lack of browser support).
+				document.addEventListener('shaka-ui-load-failed', initFailed);
             {% endif %}
          </script>
