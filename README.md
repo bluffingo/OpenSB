@@ -4,7 +4,7 @@
 <img src="https://user-images.githubusercontent.com/54495659/158865311-fdb2b3e7-107f-46c8-908b-72aa9098bdfb.png">
 </p>
 
-<h3 align="center"><a href="https://https://sb.billyisreal.com//">squareBracket's live website</a></h3>
+<h3 align="center"><a href="https://https://sb.billyisreal.com/">squareBracket's live website</a></h3>
 
 ## How to setup squareBracket.
 1. Get a web server (Apache/NGINX) with PHP and MariaDB up and running, including Composer.
@@ -19,6 +19,7 @@
 1. Make the `videos/`, `templates/cache/` and `assets/thumb/` directories writable by your web server.
 
 ### Development specific
+
 1. Disable Twig's template caching by setting `$tplNoCache` to true.
 1. Enable debugging features by setting `$isDebug` to true.
 1. If you want to be able to upload videos during development, make the `videos/` and `assets/thumb/` directory writable by your web server.
