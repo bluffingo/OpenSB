@@ -4,7 +4,7 @@
 <img src="https://user-images.githubusercontent.com/54495659/158865311-fdb2b3e7-107f-46c8-908b-72aa9098bdfb.png">
 </p>
 
-<!--<h3 align="center"><a href="https://squarebracket.veselcraft.ru/">cheeseRox's live website</a></h3>-->
+<h3 align="center"><a href="https://https://sb.billyisreal.com//">squareBracket's live website</a></h3>
 
 ## How to setup squareBracket.
 1. Get a web server (Apache/NGINX) with PHP and MariaDB up and running, including Composer.
