@@ -12,7 +12,7 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
-	global $userfields, $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $menuLinks, $notificationCount, $hCaptchaSiteKey, $nonFunctionalShit, $pageVariable;
+	global $userfields, $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $menuLinks, $notificationCount, $hCaptchaSiteKey, $pageVariable, $versionNumber;
 
 	if ($log) {
 	$totalSubscribers = result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
@@ -63,10 +63,10 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('hcaptcha_sitekey', $hCaptchaSiteKey);
 	$twig->addGlobal('glob_lpp', $lpp);
 	$twig->addGlobal('notification_count', $notificationCount);
-	$twig->addGlobal('showGuideWhatever', $nonFunctionalShit);
 	$twig->addGlobal('page', $pageVariable);
 	$twig->addGlobal('totalSubscribers', $totalSubscribers);
 	$twig->addGlobal('allUsers', $allUsers);
+	$twig->addGlobal('version', $versionNumber);
 	
 
 	return $twig;

@@ -76,7 +76,7 @@
 	<footer>
 		<div class="footer">
 			<img src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
-			<p><b>{{ __("By the squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} 
+			<p>Version {{ version }} · <b>{{ __("By the squareBracket contributors") }}</b> · 2020-{{ 'now' | date('Y') }} 
 			| <b><a href="/statistics.php">{{ __("Statistics") }}</a></b>
 			</p>
 			<h5>{{ __("Running on commit: ") }} <a href="https://github.com/squareBracket-and-Finalium/squareBracket/commit/{{ git_commit() }}">{{ git_commit() }}</a><br></h5>
