@@ -284,7 +284,9 @@ function showReplies(id) {
 }
 
 function reply(id) {
-	$("#commentField").clone().appendTo("#" + id);
+	if(!$("#"+ id +" #commentField").length) {
+		$("#commentField").clone().appendTo("#" + id);
+	}
 	$("#"+ id +" #commentField .col-md-11 .right #post").click(function(){
 		play("click");
 		$.post("comment.php",
