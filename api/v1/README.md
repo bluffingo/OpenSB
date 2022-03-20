@@ -1,7 +1,5 @@
 # squareBracket API v1
 
-*Warning: The squareBracket API is currently in development and is therefor not stable.*
-
 The squareBracket API contains various entrypoints to fetch data intended to be used for applications interfacing with squareBracket. It is currently not intended to be used to edit data, and as such requires no authentication to use it.
 
 Input arguments are received as GET arguments (`foo.php?bar=baz` where `bar` is an argument for the `foo.php` entrypoint), and output data is sent as JSON encoded data. Input arguments are optional unless stated otherwise.
