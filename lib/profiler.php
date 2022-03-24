@@ -27,6 +27,6 @@ class Profiler {
 			'[debug]: logged in as %s (@%s) | user time used: %s | system time used: %s | current locale: %s | page rendered in %1.3f secs with %dKB used',
 		$displayname, $username, $res["ru_utime.tv_sec"], $res["ru_stime.tv_sec"], $language, $renderTime, $memoryUsage);
 
-		printf('<center>%s</center>', $debugData);
+		print('<div class="footer" style="position:fixed;bottom:0;width:100%"><center>'.$debugData.'</center></div>');
 	}
 }
