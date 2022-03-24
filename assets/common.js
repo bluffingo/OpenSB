@@ -1,3 +1,5 @@
+index = 0;
+
 $(document).ready(function(){
 	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -18,36 +20,6 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	  } else {
 		x.style.display = "block";
 	  }
-	});
-	$(window).click(function() {
-	  $("#mainMenu").removeClass("show");
-	  $("#themeSelection").removeClass("show");
-	});
-	$("#openSettings").click(function(event){
-		event.stopPropagation();
-		$("#mainMenu").addClass("show");
-	});
-	$("#back").click(function(event){
-		event.stopPropagation();
-		$("#themeSelection").removeClass("show");
-		$("#mainMenu").addClass("show");
-	});
-	$("#themeSelect").click(function(event){
-		event.stopPropagation();
-		$("#mainMenu").removeClass("show");
-		$("#themeSelection").addClass("show");
-	});
-	$("#light").click(function(){
-		$( "#darkthm" ).remove();
-		$("#light").attr("hidden", true);
-		$("#dark").attr("hidden", false);
-		Cookies.set("theme", "default", { expires: 1000 });
-	});	
-	$("#dark").click(function(){
-		$( "head" ).append( "<link id=\"darkthm\" rel=\"stylesheet\" href=\"/assets/css/darkmode.css\" type=\"text/css\">" );
-		$("#light").attr("hidden", false);
-		$("#dark").attr("hidden", true);
-		Cookies.set("theme", "dark", { expires: 1000 });
 	});
 	$("#action_unlogged").click(function(){
 		play("error");
@@ -111,27 +83,6 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			}
 		});
 	});	
-	$("#fromUser").click(function(){
-		index = 0;
-		if ($("#fromUserVideoList").attr("class") != "card-body") {
-			$.post("ajax_watch.php",
-			{
-				from: index,
-				limit: 10,
-			},
-			function(data,status){
-				if (status == "success") {
-					index += 10;
-					$('#fromUserVideoList').append(data);
-					$("#fromUserVideoList").removeClass("collapsed");
-					$("#fromUser").remove();
-				}
-			});
-		} else {
-			$("#fromUserVideoList").empty();
-			$("#fromUserVideoList").addClass("collapsed");
-		}
-	});
 	$("#subscribe").click(function(){
 		$.post("subscribe.php",
 		{
@@ -281,6 +232,27 @@ function showReplies(id) {
 			$('#' + id).append(data);
 		}
 	});
+}
+
+function showMoreVideos() {
+	if ($("#fromUserVideoList").attr("class") != "card-body") {
+		$.post("ajax_watch.php",
+		{
+			from: index,
+			limit: 10,
+		},
+		function(data,status){
+			if (status == "success") {
+				index += 10;
+				$('#fromUserVideoList').append(data);
+				$("#fromUserVideoList").removeClass("collapsed");
+				$("#fromUser").remove();
+			}
+		});
+	} else {
+		$("#fromUserVideoList").empty();
+		$("#fromUserVideoList").addClass("collapsed");
+	}
 }
 
 function reply(id) {
