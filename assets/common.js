@@ -181,16 +181,21 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			});
 		}
 	});
-                    $(".btnAdd").click(function(){
-                        $.ajax({
-                            url: "/customizer.php",
-                            success: function(returndata){
-                                     $('#myModal').html(returndata);
-									 $("#myModal").show();
-                            },
-                            dataType: "html"
-                        });
-                    });
+	$("#showSearch").click(function(){
+		$("#masthead-search").attr("style", "");
+		$("#showSearch").attr("style", "display:none");
+		$("#header-main").attr("style", "display:none");
+	});
+    $(".btnAdd").click(function(){
+		$.ajax({
+			url: "/customizer.php",
+			success: function(returndata){
+				$('#myModal').html(returndata);
+				$("#myModal").show();
+			},
+			dataType: "html"
+		});
+    });
 });
 	function openTab(evt, tab) {
 	  // Declare all variables

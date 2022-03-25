@@ -1,0 +1,45 @@
+	<div id="masthead-container">
+		<div id="masthead">
+			<div class="grid" style="gap:0px;margin-bottom: 17.5px;">
+				<div class="col-md-8">
+					<form id="masthead-search" style="display:none" action="/search.php">
+						<button id="search-btn" class="button button-secondary">
+							<span>{{ icon("search", 16) }}</span>
+						</button>
+						<div id="masthead-search-terms">
+							<label><input type="text" name="query" placeholder="{{ __("Search...") }}"></label>
+						</div>
+					</form>
+					<div id="header-main">
+						<div class="button button-neutral-invis guide-button" id="guide-toggle">{{ icon("list", 20) }}</div>
+						<a href="/" id="logo-container"><img id="logo" src="/assets/logo-wordmark-masthead{% if theme == 'dark' %}-dark{% endif %}.png"></a>
+					</div>
+				</div>
+				<div class="col-md-4" style="text-align: right;">
+					<button id="showSearch" onclick="showSearch()" class="button button-secondary-invis" style="margin-right: 0.5rem;">
+						<span>{{ icon("search", 20) }}</span>
+					</button>
+					<div style="margin:0;{% if log %}width:25%{% endif %}" id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
+						{% if log %}
+						<div style="margin-top: 4px;">
+						<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
+						<!-- <div {% if notification_count > 0 %}class="bg-danger text-light"{% else %}class="bg-neutral{% endif %}" style="padding:6px 8px;display: inline-block;">{{ notification_count }}</div> -->
+						<div class="usermenushit" id="masthead-below">
+							<ul style="padding:0">
+							<li><a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a></li>
+							<li><a href="/studio/">{{ __("Studio") }}</a></li>
+							<li><a href="/settings.php">{{ __("Settings") }}</a></li>
+							<li><a href="logout.php">{{ __("Log out") }}</a></li>
+							</ul>
+						</div>
+						</div>
+						{% else %}
+						<div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
+							<a href="../login.php">{{ __("Sign in") }}</a>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

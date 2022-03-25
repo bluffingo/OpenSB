@@ -13,6 +13,8 @@
  *	key				column key (must match the header column key)
  *	value			cell value
  */
+use Detection\MobileDetect;
+
 function renderTable($data, $headers) {
 	$zebra = 1;
 
@@ -177,16 +179,29 @@ function ifEmptyQuery($message, $colspan = 0, $table = false) {
 }
 
 function _twigloader($subfolder = '') {
-	global $dateformat, $frontend;
-	chdir('../');
-	$twig = twigloader($subfolder, function () use ($subfolder, $frontend) {
-		return new \Twig\Loader\FilesystemLoader('templates/' . $frontend . $subfolder);
-	}, function ($loader, $doCache) {
+	$detect = new Mobile_Detect;
 
-		return new \Twig\Environment($loader, [
-			'cache' => ($doCache ? "../".$doCache : $doCache),
-		]);
-	});
+	global $dateformat, $frontend, $mobileFrontend;
+	chdir('../');
+	if ($detect->isMobile()) {
+		$twig = twigloader($subfolder, function () use ($subfolder, $mobileFrontend) {
+			return new \Twig\Loader\FilesystemLoader('templates/' . $mobileFrontend . $subfolder);
+		}, function ($loader, $doCache) {
+
+			return new \Twig\Environment($loader, [
+				'cache' => ($doCache ? "../".$doCache : $doCache),
+			]);
+		});
+	} else {
+		$twig = twigloader($subfolder, function () use ($subfolder, $frontend) {
+			return new \Twig\Loader\FilesystemLoader('templates/' . $frontend . $subfolder);
+		}, function ($loader, $doCache) {
+
+			return new \Twig\Environment($loader, [
+				'cache' => ($doCache ? "../".$doCache : $doCache),
+			]);
+		});
+	}
 	
 	$twig->addExtension(new PrincipiaForumExtension());
 

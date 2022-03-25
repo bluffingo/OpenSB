@@ -1,0 +1,56 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Forum") }}{% endblock %}
+
+	{% block content %}
+{% set category = -1 %}
+
+{% for forum in forums %}
+	{% if can_view_forum(forum) %}
+
+	{% if forum.cat != category %}
+		{% if category != -1 %}
+			</table><br>
+		{% endif %}
+
+		{% set category = forum.cat %}
+
+		<table class="c1">
+			<tr class="h">
+				<td class="b h" style="width:30px">&nbsp;</td>
+				<td class="b h">{{ categories[forum.cat] }}</td>
+				<td class="b h" width="50">{{ __("Threads") }}</td>
+				<td class="b h" width="50">{{ __("Posts") }}</td>
+				<td class="b h" width="150">{{ __("Last post") }}</td>
+			</tr>
+	{% endif %}
+
+	<tr class="center">
+		<td class="b n1">
+			{% if log and forum.lastdate > forum.rtime %}
+			<img src="/assets/on.png">
+			{% else %}
+			<img src="/assets/off.png">
+			{% endif %}
+		</td>
+		<td class="b n2 left">
+			{% if forum.private %}({% endif %}<a href="forum.php?id={{ forum.id }}">{{ forum.title }}</a>{% if forum.private %}){% endif %}
+			<br><span>{{ forum.descr | raw }}</span>
+		</td>
+		<td class="b n1">{{ forum.threads }}</td>
+		<td class="b n1">{{ forum.posts }}</td>
+		<td class="b n2">
+			{% if forum.posts > 0 and forum.lastdate > 0 %}
+				<nobr>{{ forum.lastdate | date(forum_dateformat) }}</nobr>
+				<br>
+				<span>{{ __("by") }} {{ userlink(forum, 'u') }} <a href="thread.php?pid={{ forum.lastid }}#{{ forum.lastid }}">&raquo;</a></span>
+			{% else %}
+				None
+			{% endif %}
+		</td>
+	</tr>
+
+	{% endif %}
+{% endfor %}
+</table>
+	{% endblock %}

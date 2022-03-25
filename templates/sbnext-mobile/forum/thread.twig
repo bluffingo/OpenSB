@@ -1,0 +1,67 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+	{% block content %}
+{{ render_page_bar(topbot) }}
+
+{% if time %}
+	<table class="c1 autowidth">
+		<tr class="h"><td class="b">{{ __("Latest Posts") }}</td></tr>
+		<tr><td class="b n1 center">
+			<a href="forum.php?time={{ time }}">{{ __("By Threads") }}</a> | {{ __("By Posts") }}</a><br><br>
+			{{ timelinks('thread') }}
+		</td></tr>
+	</table><br>
+{% endif %}
+
+{{ modlinks | raw }}{{ pagelist | raw }}
+
+{% for post in posts %}
+	{% if can_view_forum({id: post.fid, private: post.fprivate}) %}
+		{% if uid or time %}
+			{% set pthread = {id: post.tid, title: post.ttitle} %}
+		{% endif %}
+
+		{#
+		if (!$pin || $post['id'] != $pin) {
+			$post['maxrevision'] = $post['revision']; // not pinned, hence the max. revision equals the revision we selected
+		} else {
+			$post['maxrevision'] = result("SELECT MAX(revision) FROM z_poststext WHERE id = ?", [$pin]);
+		}
+		#}
+
+		{% if thread.forum and can_edit_forum_posts(thread.forum) and pin and post.id == pin %}
+			{% set post = post|merge({'deleted': false}) %}
+		{% endif %}
+
+		<br>{{ threadpost(post, pthread) }}
+	{% endif %}
+{% else %}
+	{{ if_empty_query(__("No posts were found."), 0, true) }}
+{% endfor %}
+
+{{ pagelist | raw }}
+{% if not time %}<br>{% endif %}
+
+{% if thread.id and can_create_forum_post(faccess) and not thread.closed %}
+<form action="newreply.php" method="post">
+	<table class="c1">
+		<tr class="h"><td class="b h" colspan="2">{{ __("Quick Reply") }}</a></td>
+		<tr>
+			<td class="b n1 center" width="120">{{ __("Reply:") }}</td>
+			<td class="b n2"><textarea wrap="virtual" name="message" id="message" rows="8" cols="80"></textarea></td>
+		</tr><tr class="n1">
+			<td class="b"></td>
+			<td class="b">
+				<input type="hidden" name="tid" value="{{ tid }}">
+				<input type="submit" name="action" class="button button-secondary button-small" value="{{ __("Submit") }}">
+				<input type="submit" name="action" class="button button-secondary button-small"value="{{ __("Preview") }}">
+			</td>
+		</tr>
+	</table>
+</form><br>
+{% endif %}
+
+{{ render_page_bar(topbot) }}
+	{% endblock %}
