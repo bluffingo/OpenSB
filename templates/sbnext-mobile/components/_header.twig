@@ -19,7 +19,7 @@
 					<button id="showSearch" onclick="showSearch()" class="button button-secondary-invis" style="margin-right: 0.5rem;">
 						<span>{{ icon("search", 20) }}</span>
 					</button>
-					<div style="margin:0;{% if log %}width:25%{% endif %}" id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
+					<div style="margin:0;{% if log %}width:1.5rem{% endif %}" id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
 						{% if log %}
 						<div style="margin-top: 4px;">
 						<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
