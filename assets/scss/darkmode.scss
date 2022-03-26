@@ -226,36 +226,6 @@ div.level {
     color: #666;
 }
 
-/// _style_forums \\\
-
-table.c1 {
-	border: 1px solid $gray-800;
-
-	td.b {
-		border: 1px solid $gray-800;
-	}
-
-	tr.n1, td.n1 { background-color: #0a0a0a; }
-	tr.n2, td.n2 { background-color: #141414; }
-	tr.n3, td.n3 { background-color: #2b2b2b; }
-	tr.h { background-color: $blue; }
-}
-
-.threadpost {
-	.mainbar {
-		td, th, table {
-			border: 1px solid white;
-		}
-		.siggy {
-			border-top: 1px solid white;
-		}
-	}
-}
-
-.top_forum {
-	margin-top: -1px;
-}
-
 /// Generic form element overrides \\\
 
 textarea, input[type=text], input[type=password] {
