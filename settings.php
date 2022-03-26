@@ -13,7 +13,6 @@ if (isset($_POST['magic'])) {
 	$title	= isset($_POST['title']) ? $_POST['title'] : null;
 	$customcolor	= isset($_POST['customcolor']) ? $_POST['customcolor'] : '#3e3ecf'; // setting color to "null" would fuck up the scss compiler(?) -gr 7/26/2021
 	$about			= isset($_POST['about']) ? $_POST['about'] : null;
-	$signature		= isset($_POST['signature']) ? $_POST['signature'] : null;
 	$language		= isset($_POST['language']) ? $_POST['language'] : 'en-US';
 	
 	$resetToken		= isset($_POST['reset_token']) ? $_POST['reset_token'] : null;
@@ -87,8 +86,8 @@ if (isset($_POST['magic'])) {
 		}
 	}
 
-	query("UPDATE users SET title = ?, about = ?, customcolor = ?, signature = ? WHERE id = ?",
-		[$title, $about, $customcolor, $signature, $userdata['id']]);
+	query("UPDATE users SET title = ?, about = ?, customcolor = ? WHERE id = ?",
+		[$title, $about, $customcolor, $userdata['id']]);
 		
 	query("UPDATE channel_settings SET background = ?, fontcolor = ?, titlefont = ?, link = ?, headerfont = ?, highlightheader = ?, highlightinside = ?, regularheader = ?, regularinside = ? WHERE user = ?",
 		[$background, $fontcolor, $titlecolor, $linkcolor, $headercolor, $highlightheader, $highlightinside, $regularheader, $regularinside, $userdata['id']]);

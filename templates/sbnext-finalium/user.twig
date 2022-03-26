@@ -92,31 +92,16 @@
 						</a>
 					</div>
 					<div class="user-action-container">
-						<a href="/forum/private.php">
-							<div class="user-action">{{ icon("envelope", 24) }} {{ __("View my messages") }}</div>
-						</a>
-					</div>
-					<div class="user-action-container">
 						<a href="/user.php?id={{ id }}&forceuser">
 							<div class="user-action">{{ icon("person", 24) }} {{ __("View as viewer") }}</div>
 						</a>
 					</div>
 				{% else %}
 				{% if log %}
-					<div class="user-action-container">
-						<a href="forum/sendprivate.php?uid={{ id }}">
-							<div class="user-action">{{ icon("envelope", 24) }} {{ __("Send message") }}</div>
-						</a>
-					</div>
 					{% if userdata.powerlevel > 2 %}
 					<div class="user-action-container">
 						<a href="resetpassword.php?grf={{ id }}">
 							<div class="user-action">{{ icon("key", 24) }} {{ __("Generate password reset") }}</div>
-						</a>
-					</div>
-					<div class="user-action-container">
-						<a href="forum/editperms.php?uid={{ id }}">
-							<div class="user-action">{{ icon("question-circle", 24) }} {{ __("Edit forum permissions") }}</div>
 						</a>
 					</div>
 					{% endif %}
