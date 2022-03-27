@@ -71,6 +71,29 @@ menu, ol, ul, il {
   }
 }
 
+.top_forum {
+  min-width: 800px;
+  background-color: black;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  margin-top: 0;
+  overflow: hidden;
+  padding: 8px;
+  height: 16px !important;
+
+  ul.menu {
+    line-height: 16px;
+  }
+
+  ul.menu a {
+    color: white;
+  }
+
+  ul.menu a:hover {
+    background-color: #515151;
+  }
+}
+
 .top {
   height: 35px;
   border-top-width: 0;
@@ -758,6 +781,8 @@ line-height: 17px;
 @import "_gradients";
 /// Backgrounds \\\
 @import "_backgrounds";
+/// Forums \\\
+@import "_style_forums";
 /// Containers \\\
 @import "_containers";
 /// Images \\\
