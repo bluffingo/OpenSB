@@ -1,11 +1,29 @@
 <?php
 require('lib/common.php');
 
-// currently selects all uploaded videos, should turn it into all featured only
-$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author, v.id FROM videos v JOIN users u ON v.author = u.id ORDER BY v.time");
+if ($userdata['powerlevel'] < 3) error('403', "You shouldn't be here, get out!");
+
+//$memcachedStats = $cache->memcached->getStats();
+
+$latestRegisteredUsers = query("SELECT id, name, customcolor, joined FROM users ORDER BY joined DESC LIMIT 7");
+$latestSeenUsers = query("SELECT id, name, customcolor, lastview FROM users ORDER BY lastview DESC LIMIT 7");
+
+$thingsToCount = ['comments', 'channel_comments', 'users', 'videos', 'rating', 'subscriptions', 'views'];
+
+$query = "SELECT ";
+foreach ($thingsToCount as $thing) {
+	if ($query != "SELECT ") $query .= ", ";
+	$query .= sprintf("(SELECT COUNT(*) FROM %s) %s", $thing, $thing);
+}
+$count = fetch($query);
+
+$latestComments = query("SELECT $userfields c.* FROM comments c JOIN users u ON c.author = u.id ORDER BY c.date DESC LIMIT 7");
 
 $twig = twigloader();
-
 echo $twig->render('admin/index.twig', [
-	'videos' => $videoData
+	'latest_registered_users' => $latestRegisteredUsers,
+	'latest_seen_users' => $latestSeenUsers,
+	'things_to_count' => $thingsToCount,
+	'count' => $count,
+	'latest_comments' => $latestComments
 ]);
