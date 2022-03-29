@@ -1,0 +1,98 @@
+<table class="header1" width="960px" cellpadding="0" cellspacing="0" border="0">
+   <tbody>
+      <tr valign="top">
+         <td width="130" rowspan="1" style="padding: 0px 5px 5px 5px;"><a href="index.php"><img src="/assets/nostalgia/logo.png" alt="squareBracket" border="0"></a></td>
+         <td valign="top">
+            <table width="40%" align="left" cellpadding="2" cellspacing="0" border="0">
+               <tbody>
+                  <tr>
+                     <form method="GET" action="search.php">
+                     <td>
+                        <input class="search_input" type="text" value="" name="query" size="30" maxlength="128">
+                     </td>
+                     <td>
+                        <input class="button-poktube" type="submit" value="Search">
+                     </td>
+					 </form>
+                  </tr>
+               </tbody>
+            </table>
+            <table style="margin-top: 4px;" align="right" width="50%" cellpadding="0" cellspacing="0" border="0">
+               <tbody>
+                  <tr valign="top">
+                     <td align="right">
+                        <table cellspacing="0" cellpadding="2" border="0">
+                           <tbody>
+                              <tr>
+							  {% if log %}
+                                 <td>			<div id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
+				<div>
+				<b>{{ userdata.title }}</b>
+               <!-- <div {% if notification_count > 0 %}class="bg-danger text-light"{% else %}class="bg-neutral{% endif %}" style="padding:6px 8px;display: inline-block;">{{ notification_count }}</div> -->
+				<div class="usermenushit" id="masthead-below">
+					<ul style="padding:0">
+					<li><a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a></li>
+					<li><a href="/studio/">{{ __("Studio") }}</a></li>
+					<li><a href="/settings.php">{{ __("Settings") }}</a></li>
+					<li><a href="logout.php">{{ __("Log out") }}</a></li>
+					</ul>
+				</div>
+				</div>
+			</div></td>
+                                 <td style="padding: 0px 5px 0px 5px;">|</td>
+                                 <td><a href="upload.php">{{ __("Upload") }}</a></td>
+                                 <td style="padding: 0px 5px 0px 5px;">|</td>
+                                 <td><a href="logout.php">{{ __("Logout") }}</a></td>
+							  {% else %}
+                                 <td><a href="register.php"><strong>{{ __("Register") }}</strong></a></td>
+                                 <td style="padding: 0px 5px 0px 5px;">|</td>
+                                 <td><a href="login.php">{{ __("Sign In") }}</a></td>
+							  {% endif %}
+                              </tr>
+                           </tbody>
+                        </table>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <tr>
+      </tr>
+   </tbody>
+</table>
+<table class="header2" align="center" width="960px" bgcolor="#3C3C3C" cellpadding="0" cellspacing="0" border="0">
+   <tbody>
+      <tr>
+         <td><img src="img/pixel.gif" width="1" height="5"></td>
+      </tr>
+      <tr>
+         <td><img src="img/pixel.gif" width="5" height="1"></td>
+         <td width="100%">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+               <tbody>
+                  <tr>
+                     <td>
+                        <table cellpadding="2" cellspacing="0" border="0">
+                           <tbody>
+                              <tr>
+                                 <td>&nbsp;<a class="headertext" href="/index.php">{{ __("Home") }}</a></td>
+                                 <td>&nbsp;|&nbsp;</td>
+                                 <td><a class="headertext" href="/browse.php">{{ __("Videos") }}</a></td>
+                                 <td>&nbsp;|&nbsp;</td>
+                                 <td><a class="headertext" href="/channels.php">{{ __("Channels") }}</a></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+         <td><img src="img/pixel.gif" width="5" height="1"></td>
+      </tr>
+      <tr>
+         <td><img src="img/pixel.gif" width="1" height="5"></td>
+      </tr>
+   </tbody>
+</table>

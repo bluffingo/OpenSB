@@ -10,9 +10,11 @@ use Twig\Extra\Markdown\DefaultMarkdown;
 use Twig\Extra\Markdown\MarkdownRuntime;
 use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extra\Markdown\MarkdownExtension;
+use Detection\MobileDetect;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
-	global $userfields, $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $menuLinks, $notificationCount, $hCaptchaSiteKey, $pageVariable, $versionNumber;
+	global $userfields, $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $mobileFrontend, $menuLinks, $notificationCount, $hCaptchaSiteKey, $pageVariable, $versionNumber;
+	$detect = new Mobile_Detect;
 
 	if ($log) {
 	$totalSubscribers = result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
@@ -27,7 +29,11 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	chdir(__DIR__);
 	chdir('../');
 	if (!isset($customloader)) {
-		$loader = new \Twig\Loader\FilesystemLoader('templates/' . $frontend . '/' . $subfolder);
+		if ($detect->isMobile()) {
+			$loader = new \Twig\Loader\FilesystemLoader('templates/' . $mobileFrontend . '/' . $subfolder);
+		} else {
+			$loader = new \Twig\Loader\FilesystemLoader('templates/' . $frontend . '/' . $subfolder);
+		}
 	} else {
 		$loader = $customloader();
 	}

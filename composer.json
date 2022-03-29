@@ -9,7 +9,8 @@
 		"nopjmp/discord-webhooks": "dev-master",
 		"twbs/bootstrap-icons": "dev-main",
 		"aminyazdanpanah/php-ffmpeg-video-streaming": "dev-master",
-		"suin/php-rss-writer": "dev-master"
+		"suin/php-rss-writer": "dev-master",
+		"mobiledetect/mobiledetectlib": "dev-master"
 	},
 	"minimum-stability": "dev",
 	"config": {

@@ -57,10 +57,11 @@ if (isset($_COOKIE['theme'])) {
 }
 
 if (isset($_COOKIE['frontend'])) {
-	$frontend = $_COOKIE['frontend'];
+	$frontend = $_COOKIE['frontend']."-desktop";
+	$mobileFrontend = $_COOKIE['frontend']."-mobile";
 } else {
-	// todo: automatically switch to retro mode when "Mozilla/4.0" is detected in the user agent.
-	$frontend = (isset($useTemplate) ? $useTemplate : 'sbnext-finalium');
+	$frontend = (isset($useTemplate) ? $useTemplate."-desktop" : 'sbnext-desktop');
+	$mobileFrontend = (isset($useTemplate) ? $useTemplate."-mobile" : 'sbnext-mobile');
 }
 
 // Rounded pfp shit (suggested by sks2002)

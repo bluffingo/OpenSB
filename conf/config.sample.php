@@ -22,7 +22,7 @@ $isMaintenance = false;
 $lpp = 20; //Fuck.
 
 // TEMPLATE OPTIONS (redone 9/17/2021 by gr):
-$useTemplate = "sbnext-finalium"; // check the templates folder for available options
+$useTemplate = "sbnext"; // check the templates folder for available options
 
 // hCaptcha secret and sitekey,
 // if these are empty, hCaptcha is disabled.

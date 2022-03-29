@@ -1,0 +1,84 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{% endblock %}
+
+	{% block content %}
+<h2>Admin panel</h2>
+
+<h3>Memcached Statistics</h3>
+
+{% set cols = 6 %}
+
+<h3>User statistics</h3>
+
+<table class="fullwidth">
+	<tr>
+		<td class="nb" style="width:50%; vertical-align:top;">
+			<table class="c1">
+				<tr class="h"><td class="b" colspan="2">Latest registered users</td></tr>
+				{% for user in latest_registered_users %}
+					<tr>
+						<td class="b">{{ userlink(user) }}</td>
+						<td class="b">{{ user.joined | date() }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</td>
+		<td class="nb" style="width:50%; vertical-align:top;">
+			<table class="c1">
+				<tr class="h"><td class="b" colspan="2">Latest seen users</td></tr>
+				{% for user in latest_seen_users %}
+					<tr>
+						<td class="b">{{ userlink(user) }}</td>
+						<td class="b">{{ user.lastview | relative_time }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</td>
+	</tr>
+</table>
+
+<h3>Numberz</h3>
+
+<table class="c1">
+	<tr class="h">
+		{% for thing in things_to_count %}
+			<td class="b h" width=100>{{ thing | title }}</td>
+		{% endfor %}
+	</tr>
+	<tr>
+		{% for thing in things_to_count %}
+			<td class="b">{{ count[thing] }}</td>
+		{% endfor %}
+	</tr>
+</table>
+
+<h3>Latest comments</h3>
+<div class="comments">
+	{% for cmnt in latest_comments %}
+		<div class="comment-entry{% if cmnt.deleted %} deleted{% endif %}" id="comment-{{ cmnt.id }}">
+			<p>
+				{{ userlink(cmnt, 'u_') }}
+				commented on <a href="/{{ cmnt.type }}.php?id={{ cmnt.level }}">{{ cmnt.id }} {{ cmnt.level }}</a>:
+				<span class="date">{{ cmnt.date | relative_time }}</span>
+			</p>
+			<span class="comment-text">{{ cmnt.comment | markdown_inline | replace({'\n':'<br>'}) | raw }}</span>
+		</div>
+	{% endfor %}
+</div>
+
+<h3>various bells and whistles for super special people</h3>
+
+<h4>Admin pages</h4>
+<ul>
+<li><a href="/news.php?new">New news post</a></li>
+<li><a href="/viewlocked.php">View locked levels</a></li>
+</ul>
+
+{% if glob_forum %}
+<h4>Forum-specific admin pages</h4>
+<ul>
+<li><a href="/forum/manageforums.php">Manage forums</a></li>
+<li><a href="/forum/editgroups.php">Manage groups</a></li></ul>
+{% endif %}
+	{% endblock %}
