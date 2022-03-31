@@ -43,9 +43,9 @@ if ( isset( $userdata['name'] ) ) {
 	$rating = 2;
 	$subscribed = 0;
 }
-if (fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$videoData['video_id'], crypt($ip, "salt, used to encrypt stuff is very important.")])['COUNT(video_id)'] < 1) {
+if (fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$videoData['video_id'], crypt($ip, $ip)])['COUNT(video_id)'] < 1) {
 	query("INSERT INTO views (video_id, user) VALUES (?,?)",
-		[$videoData['video_id'],crypt($ip, "salt, used to encrypt stuff is very important.")]);
+		[$videoData['video_id'],crypt($ip, $ip)]);
 }
 
 $subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user=?", [$videoData['author']])['COUNT(user)'];
