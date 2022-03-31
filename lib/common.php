@@ -28,9 +28,7 @@ if ($isMaintenance && !isCli()) {
 	die('<center><b>squareBracket is currently offline.</b></center>');
 }
 
-if(!isset($acmlm)) {
 $userfields = userfields();
-}
 
 // Cookie auth
 if (isset($_COOKIE['SBTOKEN'])) {

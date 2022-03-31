@@ -9,21 +9,16 @@
  */
  
 function userlink($user, $pre = '') {
-	global $acmlm;
 
 	if ($user[$pre.'customcolor']) {
 		$user[$pre.'colorname'] = sprintf('<span style="color:%s">%s</span>', $user[$pre.'customcolor'], $user[$pre.'name']);
 	}
 
-	$htmlrelpathfuckery = (isset($acmlm) ? '../' : '');
 
 	return <<<HTML
-		<a class="user" href="{$htmlrelpathfuckery}user.php?name={$user[$pre.'name']}"><span class="t_user">{$user[$pre.'colorname']}</span></a>
+		<a class="user" href="/user.php?name={$user[$pre.'name']}"><span class="t_user">{$user[$pre.'colorname']}</span></a>
 HTML;
 }
-
-if (!isset($acmlm)) {
-
 /**
  * Get list of SQL SELECT fields for userlinks.
  *
@@ -38,6 +33,4 @@ function userfields() {
 	}
 
 	return $out;
-}
-
 }
