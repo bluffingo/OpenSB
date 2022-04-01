@@ -15,6 +15,17 @@ class profiler {
 		global $userdata;
 
 		if (isCli()) return;
+		$headers = headers_list();
+		
+		foreach($headers as $index => $value) {
+			list($key, $value) = explode(': ', $value);
+			
+			unset($headers[$index]);
+			
+			$headers[$key] = $value;
+		}
+		//check if we are outputing html. if not, simply abort.
+		if ($headers["Content-Type"] != "text/html") return;
 
 		$username = (isset($userdata['name']) ? $userdata['name'] : 'not logged in');
 		$displayname = (isset($userdata['title']) ? $userdata['title'] : '');
