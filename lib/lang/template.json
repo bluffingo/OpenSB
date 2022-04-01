@@ -161,7 +161,6 @@
 	"License:": "License:",
 	"Standard squareBracket License": "Standard squareBracket License",
 	"Stats": "Stats",
-	"Unfiltered views:": "Unfiltered views:",
 	"Like-to-dislike ratio:": "Like-to-dislike ratio:",
 	"Most recent view:": "Most recent view:",
 	"Flag this video": "Flag this video",
@@ -169,10 +168,14 @@
 
 	"Sorry about that.": "Sorry about that.",
 
+	"Guide": "Guide",
 	"By the squareBracket contributors": "By the squareBracket contributors",
 	"Running on commit: ": "Running on commit: ",
 
 	"view%s": "view%s",
+
+	"Show replies": "Show replies",
+	"Reply": "Reply",
 
 	"This video is being processed. Try again later.": "This video is being processed. Try again later.",
 
@@ -190,10 +193,16 @@
 	"Sign In": "Sign In",
 	"Home": "Home",
 	"Channels": "Channels",
-	"Forums": "Forums",
 
 	"Edit video": "Edit video",
 	"Details": "Details",
 
 	"You do not have any uploaded videos!": "You do not have any uploaded videos!",
+
+	"Latest Videos": "Latest Videos",
+
+	"Don't have an account?": "Don't have an account?",
+
+	"Unfiltered views:": "Unfiltered views:"
+
 }

@@ -13,10 +13,10 @@
 		<br>
 		<p>
 			{% if data.replycount > 0 %}
-				<a onclick="showReplies({{ data.comment_id }})">Show replies</a> |
+				<a onclick="showReplies({{ data.comment_id }})">{{ __("Show replies") }}</a> |
 			{% endif %}
 			{% if data.id|length > 0 %}
-				<a onclick="reply({{ data.comment_id }})">Reply</a>
+				<a onclick="reply({{ data.comment_id }})">{{ __("Reply") }}</a>
 			{% endif %}
 		</p>
 	</div>

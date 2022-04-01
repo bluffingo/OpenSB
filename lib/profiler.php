@@ -25,7 +25,9 @@ class profiler {
 			$headers[$key] = $value;
 		}
 		//check if we are outputing html. if not, simply abort.
-		if ($headers["Content-Type"] != "text/html") return;
+		if (isset($headers["Content-Type"])) {
+			if ($headers["Content-Type"] != "text/html") return;
+		}
 
 		$username = (isset($userdata['name']) ? $userdata['name'] : 'not logged in');
 		$displayname = (isset($userdata['title']) ? $userdata['title'] : '');
