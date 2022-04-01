@@ -13,7 +13,7 @@ use Twig\Extra\Markdown\MarkdownExtension;
 use Detection\MobileDetect;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
-	global $userfields, $lpp, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $mobileFrontend, $notificationCount, $pageVariable, $versionNumber;
+	global $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $mobileFrontend, $notificationCount, $pageVariable, $versionNumber;
 	$detect = new \Mobile_Detect;
 
 	if ($log) {
@@ -65,7 +65,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('glob_languages', $languages);
 	$twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 	$twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
-	$twig->addGlobal('glob_lpp', $lpp);
+	$twig->addGlobal('glob_lpp', $paginationLimit);
 	$twig->addGlobal('notification_count', $notificationCount);
 	$twig->addGlobal('page', $pageVariable);
 	$twig->addGlobal('totalSubscribers', $totalSubscribers);

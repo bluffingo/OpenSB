@@ -51,7 +51,8 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
     $target_file = 'videos/' . $new . '.' . $ext;
     if (move_uploaded_file($temp_name, $target_file))
     {
-        query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $uploader, time() , json_encode(explode(', ', $_POST['tags'])) , 'videos/' . $new . '.mpd', 0x2]);
+        query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags) VALUES (?,?,?,?,?,?,?,?)",
+            [$new, $title, $description, $uploader, time() , json_encode(explode(', ', $_POST['tags'])) , 'videos/' . $new . '.mpd', 0x2]);
 
         if (substr(php_uname() , 0, 7) == "Windows")
         {

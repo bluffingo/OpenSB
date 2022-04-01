@@ -10,11 +10,7 @@ $pageVariable = "index";
 $videoData = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() LIMIT 12");
 $videoDataRecentlyViewed = query("SELECT $userfields $videofields, category_id, v.most_recent_view FROM videos v JOIN users u ON v.author = u.id ORDER BY v.most_recent_view DESC LIMIT 4");
 $videoDataRight = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT 7");
-if ($frontend == "2012") {
-$featuredVideoData = query("SELECT $userfields $videofields, v.category_id, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() DESC LIMIT 5"); //i have no clue how should flags even work.
-} else {
 $featuredVideoData = query("SELECT $userfields $videofields, v.category_id, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() DESC LIMIT 1"); //i have no clue how should flags even work.
-}
 // moved total subscribers to layout.php for 2015 hitchhiker
 if ($log) {
 	$query = implode(', ', array_column(fetchArray(query("SELECT user FROM subscriptions WHERE id = ?", [$userdata['id']])), 'user'));

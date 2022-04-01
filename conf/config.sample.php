@@ -20,7 +20,7 @@ $domain = 'http://squarebracket.local';
 $isDebug = false; // DEV ONLY
 $isMaintenance = false;
 
-$lpp = 20; //Fuck.
+$paginationLimit = 20; //Pagination limit.
 
 // TEMPLATE OPTIONS (redone 9/17/2021 by gr):
 $useTemplate = "sbnext"; // check the templates folder for available options

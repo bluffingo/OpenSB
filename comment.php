@@ -31,18 +31,16 @@ $comment = [
 ];
 
 if ($type == 0) {
-query("INSERT INTO comments (id, reply_to, comment, author, date, deleted) VALUES (?,?,?,?,?,?)",
-	[$id,$reply_to,$_POST['comment'],$userdata['id'],time(),0]);
+    query("INSERT INTO comments (id, reply_to, comment, author, date, deleted) VALUES (?,?,?,?,?,?)",
+    	[$id,$reply_to,$_POST['comment'],$userdata['id'],time(),0]);
 } elseif ($type == 1) {
-query("INSERT INTO channel_comments (id, reply_to, comment, author, date, deleted) VALUES (?,?,?,?,?,?)",
-[$id,$reply_to,$_POST['comment'],$userdata['id'],time(),0]);
+    query("INSERT INTO channel_comments (id, reply_to, comment, author, date, deleted) VALUES (?,?,?,?,?,?)",
+       [$id,$reply_to,$_POST['comment'],$userdata['id'],time(),0]);
 } else {
-die(__("this is still invalid"));
+    die(__("this is still invalid"));
 }
 
-if ($frontend != "retro") {
 $twig = twigloader();
 echo $twig->render('components/comment.twig', [
 	'data' => $comment
 ]);
-}
