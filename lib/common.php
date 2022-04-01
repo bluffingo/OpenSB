@@ -1,4 +1,5 @@
 <?php
+namespace squareBracket;
 $versionNumber = "beta-2.1.0r1";
 
 ini_set('display_errors', 1);
@@ -29,6 +30,7 @@ if ($isMaintenance && !isCli()) {
 }
 
 $userfields = userfields();
+$videofields = videofields();
 
 // Cookie auth
 if (isset($_COOKIE['SBTOKEN'])) {

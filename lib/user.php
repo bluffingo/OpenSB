@@ -1,5 +1,5 @@
 <?php
-
+namespace squareBracket;
 /**
  * Return HTML code for an userlink.
  *

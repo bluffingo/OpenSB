@@ -1,4 +1,6 @@
 <?php
+namespace squareBracket;
+
 require('lib/common.php');
 
 $limit = 40;

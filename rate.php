@@ -1,4 +1,6 @@
 <?php
+namespace squareBracket;
+
 $rawOutputRequired = true;
 require('lib/common.php');
 

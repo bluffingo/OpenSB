@@ -1,4 +1,5 @@
 <?php
+namespace squareBracket;
 // Functions related to sbNext Video Stuff.
 
 function categoryIDToName($id) {
@@ -40,4 +41,21 @@ function calculateRatio($number, $percent, $total){
 	// It returns the Like-to-dislike ratio.
     return ($percent / $total) * $number * 100;
 	}
+}
+
+/**
+ * Get list of SQL SELECT fields for video data.
+ *
+ * @return string String to put inside a SQL statement.
+ */
+function videofields() {
+    $fields = ['video_id', 'title', 'description', 'time', "author", "videolength", "tags"];
+    
+    $out = '';
+    foreach ($fields as $field) {
+        $out .= sprintf('v.%s,', $field, $field);
+    }
+    
+    $out .= "(SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views";
+    return $out;
 }

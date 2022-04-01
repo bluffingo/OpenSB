@@ -1,6 +1,6 @@
 <?php
-
-class Lang {
+namespace squareBracket;
+class lang {
 	private $langData;
 	private $langFile;
 

@@ -1,4 +1,6 @@
 <?php
+namespace squareBracket;
+
 require('lib/common.php');
 //TODO: Add "successfully logged out" message when you log out. -gr 7/26/2021
 setcookie("SBTOKEN", "", time() - 3600);

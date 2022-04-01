@@ -1,6 +1,8 @@
 <?php
+namespace squareBracket;
+
 require('lib/common.php');
-use Intervention\Image\ImageManager;
+use \Intervention\Image\ImageManager;
 
 if (!$log) redirect('login.php');
 $pageVariable = "settings";

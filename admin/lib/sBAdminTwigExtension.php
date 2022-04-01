@@ -1,6 +1,6 @@
 <?php
-
-class SBStudioExtension extends \Twig\Extension\AbstractExtension {
+namespace squareBracket\Admin;
+class sBAdminTwigExtension extends \Twig\Extension\AbstractExtension {
 	public function getFunctions() {
 		return [
 			new \Twig\TwigFunction('small_video_box', '_smallVideoBox', ['is_safe' => ['html']]),

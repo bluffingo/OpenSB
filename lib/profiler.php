@@ -1,6 +1,6 @@
 <?php
-
-class Profiler {
+namespace squareBracket;
+class profiler {
 	private $starttime;
 
 	function __construct() {

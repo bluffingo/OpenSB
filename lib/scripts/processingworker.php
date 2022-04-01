@@ -1,13 +1,12 @@
 #!/usr/bin/php
 <?php
+namespace squareBracket;
 include('lib/common.php');
 
 use Intervention\Image\ImageManager;
 use Streaming\FFMpeg;
 use FFMpeg\FFProbe;
 use FFMpeg\Coordinate;
-use FFMpeg\Media;
-use FFMpeg\Filters;
 
 $manager = new ImageManager();
 

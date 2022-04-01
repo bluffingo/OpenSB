@@ -1,4 +1,5 @@
 <?php
+namespace squareBracket\API;
 chdir('../../');
 $rawOutputRequired = true;
 require('lib/common.php');

@@ -1,4 +1,6 @@
 <?php
+namespace squareBracket;
+
 require ('lib/common.php');
 
 if (isset($_POST['othermagic'])) {

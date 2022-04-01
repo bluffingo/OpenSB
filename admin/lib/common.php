@@ -1,4 +1,5 @@
 <?php
+namespace squareBracket\Admin;
 // Change directory to squareBracket and include core squareBracket code.
 chdir('../');
 require_once('conf/config.php'); // include squareBracket config
@@ -13,11 +14,11 @@ chdir('admin/');
 foreach (glob("lib/*.php") as $filename)
 	require_once($filename);
 
-$userfields = userfields();
+$userfields = \squareBracket\userfields();
 
 // Cookie auth
 if (isset($_COOKIE['SBTOKEN'])) {
-	$id = result("SELECT id FROM users WHERE token = ?", [$_COOKIE['SBTOKEN']]);
+    $id = \squareBracket\result("SELECT id FROM users WHERE token = ?", [$_COOKIE['SBTOKEN']]);
 
 	if ($id) {
 		// Valid cookie, logged in
@@ -32,7 +33,7 @@ if (isset($_COOKIE['SBTOKEN'])) {
 }
 
 if ($loggedIn) {
-	$currentUser = fetch("SELECT * FROM users WHERE id = ?", [$id]);
+    $currentUser = \squareBracket\fetch("SELECT * FROM users WHERE id = ?", [$id]);
 	//printf('debug: logged in as %s', $currentUser['username']);
 } else {
 	// put any default settings here as they get added

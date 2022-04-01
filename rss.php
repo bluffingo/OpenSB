@@ -1,9 +1,11 @@
 <?php
+namespace squareBracket;
+
 require('lib/common.php');
 
-use Suin\RSSWriter\Channel;
-use Suin\RSSWriter\Feed;
-use Suin\RSSWriter\Item;
+use \Suin\RSSWriter\Channel;
+use \Suin\RSSWriter\Feed;
+use \Suin\RSSWriter\Item;
 
 $feed = new Feed();
 

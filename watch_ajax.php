@@ -1,4 +1,6 @@
 <?php 
+namespace squareBracket;
+
 $rawOutputRequired = true;
 $videoID = $_GET['video_id'];
 foreach($_GET as $arg => $val) 
@@ -18,16 +20,16 @@ foreach($_GET as $arg => $val)
 require('lib/common.php');
 switch($type) {
 	case 0:
-		$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.videolength, v.tags, v.category_id, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT 10");
+		$videoData = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT 10");
 		break;
 	case 1: 
-		$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author, v.videolength FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? AND NOT v.flags = 0010 AND NOT v.flags = 0020 ORDER BY RAND() LIMIT 0", [$videoID]);
+		$videoData = query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? AND NOT v.flags = 0010 AND NOT v.flags = 0020 ORDER BY RAND() LIMIT 0", [$videoID]);
 		break;
 	case 2:
-		$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author, v.videolength FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? AND NOT v.flags = 0010 AND NOT v.flags = 0020 AND v.author = ? ORDER BY RAND() LIMIT 6", [$videoID, $videoInfo['author']]);
+		$videoData = query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? AND NOT v.flags = 0010 AND NOT v.flags = 0020 AND v.author = ? ORDER BY RAND() LIMIT 6", [$videoID, $videoInfo['author']]);
 		break;
 	default:
-		$videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.time, v.views, v.author, v.videolength FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? AND NOT v.flags = 0010 AND NOT v.flags = 0020 ORDER BY RAND() LIMIT 6", [$videoID]);
+		$videoData = query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? AND NOT v.flags = 0010 AND NOT v.flags = 0020 ORDER BY RAND() LIMIT 6", [$videoID]);
 		break;
 }
 header('Content-type: application/xml'); 

@@ -1,5 +1,5 @@
 <?php
-
+namespace squareBracket;
 /**
  * Returns true if it is executed from the command-line. (For command-line tools)
  */

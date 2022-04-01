@@ -1,4 +1,6 @@
 <?php
+namespace squareBracket;
+
 include('lib/common.php');
 
 $error = '';

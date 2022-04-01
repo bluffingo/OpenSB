@@ -41,3 +41,4 @@ videos_/
 assets/thumb_/*
 mead/images/
 *.bak
+/.metadata/

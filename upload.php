@@ -1,4 +1,6 @@
 <?php
+namespace squareBracket;
+
 //this uploads and converts the video, should switch to a better solution!
 require ('lib/common.php');
 

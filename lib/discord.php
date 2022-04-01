@@ -1,4 +1,5 @@
 <?php
+namespace squareBracket;
 // Functions related to Discord webhook stuff.
 
 use \DiscordWebhooks\Client;
@@ -38,5 +39,5 @@ function newVideoHook($video) {
 }
 
 function newUserHook($user) {
-	throw new Exception('Not implemented');
+	throw new \Exception('Not implemented');
 }

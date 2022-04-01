@@ -1,4 +1,5 @@
 <?php
+namespace squareBracket;
 require('conf/config.php');
 // Each corresponding language should have its local language name.
 $languages = [
