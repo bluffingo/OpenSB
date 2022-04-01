@@ -41,9 +41,9 @@
             <div class="grid">
                <div class="col-md-6">
                   <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
-                  <a href="user.php?name={{ video.u_name }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a> • {{ allVideos }} videos
+                  <a href="user.php?name={{ video.u_name }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a> • {{ allVideos }} {{ __("videos") }}
                   <br>
-                  {% if userdata.id == video.author %}<a class="button button-secondary button-small">Channel settings</a>{% else %}
+                  {% if userdata.id == video.author %}<a class="button button-secondary button-small">{{ __("Channel settings") }}</a>{% else %}
                   <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
                   <div class="subscribe-count">{{ subCount }}</div>
                   {% endif %}
