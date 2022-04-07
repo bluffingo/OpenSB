@@ -31,7 +31,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	chdir('../');
 	if (!isset($customloader)) {
 		if ($detect->isMobile()) {
-			$loader = new \Twig\Loader\FilesystemLoader(['templates/' . $mobileFrontend . '/' . $subfolder."", 'templates/' . $frontendCommon . '/' . $subfolder]);
+			$loader = new \Twig\Loader\FilesystemLoader(['templates/' . $mobileFrontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
 		} else {
 			$loader = new \Twig\Loader\FilesystemLoader(['templates/' . $frontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
 		}
