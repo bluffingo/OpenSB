@@ -13,15 +13,16 @@ use Twig\Extra\Markdown\MarkdownExtension;
 use Detection\MobileDetect;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
-	global $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $mobileFrontend, $notificationCount, $pageVariable, $versionNumber;
+	global $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $pageVariable, $versionNumber;
 	$detect = new \Mobile_Detect;
 
+	//tf does this do?
 	if ($log) {
-	$totalSubscribers = result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
-	$allUsers = query("SELECT $userfields s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]); // this line of code is absoultely broken, fix this. genuinely fix this. don't nag ictyfag though.
+		$totalSubscribers = result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
+		$allUsers = query("SELECT $userfields s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]);
 	} else {
-	$totalSubscribers = 0;
-	$allUsers = query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 10");
+		$totalSubscribers = 0;
+		$allUsers = query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 10");
 	}
 	
 	$doCache = ($tplNoCache ? false : $tplCache);
@@ -30,9 +31,9 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	chdir('../');
 	if (!isset($customloader)) {
 		if ($detect->isMobile()) {
-			$loader = new \Twig\Loader\FilesystemLoader('templates/' . $mobileFrontend . '/' . $subfolder);
+			$loader = new \Twig\Loader\FilesystemLoader(['templates/' . $mobileFrontend . '/' . $subfolder."", 'templates/' . $frontendCommon . '/' . $subfolder]);
 		} else {
-			$loader = new \Twig\Loader\FilesystemLoader('templates/' . $frontend . '/' . $subfolder);
+			$loader = new \Twig\Loader\FilesystemLoader(['templates/' . $frontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
 		}
 	} else {
 		$loader = $customloader();

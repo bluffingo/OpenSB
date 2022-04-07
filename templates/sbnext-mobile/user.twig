@@ -41,7 +41,7 @@
 			<img class="img-fluid rounded" src="{{ profile_image(userpagedata.name) }}" title="{{ userpagedata.name }}" alt="{{ userpagedata.name }}">
 		</div>
 	</div>
-	<div class="col-md-7" style="color:{{ customProfile.titlefont }};height:inherit;">
+	<div class="col-md-8" style="color:{{ customProfile.titlefont }};height:inherit;">
 		<h1>{{ userpagedata.title }}</h1>
 		{# hack to prevent twig from outputing the number 1 #}
 		{% if subCount != 1 %}
@@ -60,42 +60,68 @@
 		</div>
 	</div>
 </div>
-<div class="card center" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
-	{% if userpagedata.id == userdata.id and not forceuser %}
-		<div class="user-action-container">
-			<a href="settings.php">
-				<div class="user-action">{{ icon("gear", 24) }} {{ __("Edit my settings") }}</div>
-			</a>
-		</div>
-		<div class="user-action-container">
-			<a href="/user.php?id={{ id }}&forceuser">
-				<div class="user-action">{{ icon("person", 24) }} {{ __("View as viewer") }}</div>
-			</a>
-		</div>
-	{% else %}
-		{% if log %}
-			{% if userdata.powerlevel > 2 %}
-				<div class="user-action-container">
-					<a href="resetpassword.php?grf={{ id }}">
-						<div class="user-action">{{ icon("key", 24) }} {{ __("Generate password reset") }}</div>
-					</a>
-				</div>
-			{% endif %}
-		{% endif %}
-	{% endif %}
-</div>
 <div class="grid" style="background-color:{{ customProfile.highlightinside }};border: 1px solid {{ customProfile.highlightheader }}">
-	<div style="color:{{ customProfile.fontcolor }};">
+			<div class="card-profiles">
+				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
+				{{ __("About") }} {{ userpagedata.name }}
+				</h3>
+				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
+					<div class="card-body">
+					{{ userpagedata.about | markdown }}
+					<hr>
+					<table style="width:100%">
+						<thead>
+						  <tr>
+							<td class="left">{{ __("Last visit") }}</td>
+							<td class="right">{{ userpagedata.lastview | relative_time }}</td>
+						  </tr>
+						  <tr>
+							<td class="left">{{ __("Registered") }}</td>
+							<td class="right">{{ userpagedata.joined | relative_time }}</td>
+						  </tr>
+						</thead>
+					</table>
+					</div>
+				</div>
+				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
+				{% if userpagedata.id == userdata.id and not forceuser %}
+					<div class="user-action-container">
+						<a href="settings.php">
+							<div class="user-action">{{ icon("gear", 24) }} {{ __("Edit my settings") }}</div>
+						</a>
+					</div>
+					<div class="user-action-container">
+						<a href="/user.php?id={{ id }}&forceuser">
+							<div class="user-action">{{ icon("person", 24) }} {{ __("View as viewer") }}</div>
+						</a>
+					</div>
+				{% else %}
+				{% if log %}
+					{% if userdata.powerlevel > 2 %}
+					<div class="user-action-container">
+						<a href="resetpassword.php?grf={{ id }}">
+							<div class="user-action">{{ icon("key", 24) }} {{ __("Generate password reset") }}</div>
+						</a>
+					</div>
+					{% endif %}
+				{% endif %}
+				{% endif %}
+				</div>
+		</div>
 			<div class="card-profiles">
 				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
 				{{ __("Featured") }}
 				</h3>
 				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
 					<div class="card-body">
+						<div class="col-md-6">
 						{{ include('/components/player.twig') }}
+						</div>
+						<div class="col-md-6">
 						<h2><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></h2>
 						<p style="margin:0;">{{ __("From:") }} <a href="/user.php?name={{ video.u_name }}" title="{{ video.u_name }}">{{ video.u_name }}</a></p>
-						<div class="clearfix">
+						</div>
+						<div class="clearfix"></div>
 					</div>
 				</div>
 			</div>
@@ -140,6 +166,5 @@
 				   {% endfor %}
 				</div>
 			</div>
-		</div>
 </div>
 {% endblock %}

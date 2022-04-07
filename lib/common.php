@@ -58,9 +58,11 @@ if (isset($_COOKIE['theme'])) {
 
 if (isset($_COOKIE['frontend'])) {
 	$frontend = $_COOKIE['frontend']."-desktop";
+	$frontendCommon = $_COOKIE['frontend']."-common";
 	$mobileFrontend = $_COOKIE['frontend']."-mobile";
 } else {
 	$frontend = (isset($useTemplate) ? $useTemplate."-desktop" : 'sbnext-desktop');
+	$frontendCommon = (isset($useTemplate) ? $useTemplate."-common" : 'sbnext-common');
 	$mobileFrontend = (isset($useTemplate) ? $useTemplate."-mobile" : 'sbnext-mobile');
 }
 
