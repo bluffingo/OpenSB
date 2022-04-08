@@ -9,8 +9,8 @@ header('Content-Type: application/json');
 $limit = (isset($_GET['limit']) ? $_GET['limit'] : 10);
 $offset = (isset($_GET['offset']) ? $_GET['offset'] : 0);
 
-$videoDataCount = result("SELECT COUNT(1) FROM videos v JOIN users u ON v.author = u.id");
-$videoData = query("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT ? OFFSET ?", [$limit, $offset]);
+$videoDataCount = \squareBracket\result("SELECT COUNT(1) FROM videos v JOIN users u ON v.author = u.id");
+$videoData = \squareBracket\query("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT ? OFFSET ?", [$limit, $offset]);
 
 // TODO: comments? likes? sex?
 $apiOutput = [];

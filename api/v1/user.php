@@ -11,9 +11,9 @@ $username = (isset($_GET['name']) ? $_GET['name'] : null);
 $id = (isset($_GET['id']) ? $_GET['id'] : null);
 
 if (isset($_GET['id'])) {
-$userData = fetch("SELECT * FROM users WHERE id = ?", [$id]);
+$userData = \squareBracket\fetch("SELECT * FROM users WHERE id = ?", [$id]);
 } else {
-$userData = fetch("SELECT * FROM users WHERE name = ?", [$username]);
+$userData = \squareBracket\fetch("SELECT * FROM users WHERE name = ?", [$username]);
 }
 
 if (!$userData) {
@@ -34,7 +34,6 @@ $apiOutput = [
 	'profileColor' => $userData['customcolor'],
 	'info' => [ // supposed to be a "videoflags" object
 		'description' => $userData['about'],
-		'forumSignature' => $userData['signature'],
 	],
 ];
 

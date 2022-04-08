@@ -8,7 +8,7 @@ header('Content-Type: application/json');
 
 $id = (isset($_GET['id']) ? $_GET['id'] : null);
 
-$videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
+$videoData = \squareBracket\fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
 
 if (!$videoData) {
 	$apiOutput = [ 'error' => "No video specified or invalid video ID", 'code' => "52e44101" ];
