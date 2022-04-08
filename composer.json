@@ -5,8 +5,6 @@
 		"intervention/image": "^2.5",
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
-		"scssphp/scssphp": "1.10.2",
-		"nopjmp/discord-webhooks": "dev-master",
 		"twbs/bootstrap-icons": "dev-main",
 		"aminyazdanpanah/php-ffmpeg-video-streaming": "dev-master",
 		"suin/php-rss-writer": "dev-master",

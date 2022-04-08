@@ -12,7 +12,6 @@
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
 1. Import the database dump found in `sql/` into the database you want to use.
 1. Either run the `compile-scss-sassc` or `compile-scss-dartsass` script available in the tools directory to generate CSS. This will be a bit more complicated for Windows users.
-1. (Optional for Discord webhook functionality) Enable the cURL module in PHP.
 
 ### Production specific
 1. Instead of installing dependencies using `composer update` you do `composer update --no-dev`

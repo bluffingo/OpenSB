@@ -59,16 +59,3 @@ try {
 } catch (Exception $e) {
 	echo "Something went wrong!:". $e->getMessage();
 }
-
-// Discord webhook stuff
-if ($webhook) {
-	$webhookdata = [
-		'video_id' => $new,
-		'name' => $videoData['title'],
-		'description' => $videoData['description'],
-		'u_id' => $videoData['u_id'],
-		'u_name' => $videoData['u_username']
-	];
-
-	newVideoHook($webhookdata);
-}
