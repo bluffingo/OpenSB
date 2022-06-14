@@ -8,8 +8,7 @@ $pageVariable = "index";
 
 // currently selects all uploaded videos, should turn it into all featured only
 $videoData = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() LIMIT 12");
-$videoDataRecentlyViewed = query("SELECT $userfields $videofields, category_id, v.most_recent_view FROM videos v JOIN users u ON v.author = u.id ORDER BY v.most_recent_view DESC LIMIT 4");
-$videoDataRight = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT 7");
+$videoDataRight = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT 12");
 $featuredVideoData = query("SELECT $userfields $videofields, v.category_id, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() DESC LIMIT 1"); //i have no clue how should flags even work.
 // moved total subscribers to layout.php for 2015 hitchhiker
 if ($log) {
@@ -31,9 +30,7 @@ $twig = twigloader();
 echo $twig->render('index.twig', [
 	'videos' => $videoData,
 	'videos_right' => $videoDataRight,
-	'recently_viewed' => $videoDataRecentlyViewed,
 	'subscriptionVideos' => $subscriptionVideos,
-	'featuredVideos' => $featuredVideoData,
 	'totalViews' => $totalViews,
 	'creationDate' => $creationDate,
 	'updated' => (isset($_GET['updated']) ? true : false),

@@ -52,39 +52,32 @@
 		<div class="header_message header-success">{{ __("Settings successfully saved!") }}</div>
 		<br>
 	{% endif %}
-<div class="grid">
-	<div class="col-md-8">
+	<h1>Placeholder main page</h1>
+	<p>We're working on improving the user interface of squareBracket, we apologize for unpolished UI and broken promises from the past. -grkb</p>
 	<div class="grid">
-			<div class="col-md-8" style="padding:0">
-				<div>
-					{% for video in featuredVideos %}
-					{{ video_box(video) }}
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-body-fat">
+					<h3 style="margin-top:0">{{ __("Recommended randomly") }}</h3>
+					{% for video in videos %}
+					{{ small_video_box(video) }}
+					{% else %}
+					<p>{{ __("No uploaded videos.") }}</p>
 					{% endfor %}
 				</div>
 			</div>
-			<div class="col-md-4" style="padding:0;">
-				<div class="card card-body" style="height:440px;border-left:none;">
-				{% for video in videos_right %}
-				{{ small_video_box(video) }}
-				{% endfor %}
-				</div>
-			</div>
-	</div>
-		<div class="card">
-			<div class="card-body-fat">
-				<h3>{{ __("squareBracket Videos") }}</h3>
-				{% for video in videos %}
-				{{ small_video_box(video) }}
-				{% else %}
-				<p>{{ __("No uploaded videos.") }}</p>
-				{% endfor %}
-			</div>
 		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="whatsnew">
-			<h3>{{ __("What's new?") }}</h3>
-			<p>{{ __("This is the result of squareBracket's growing pains. Fuck you.") }}</p>
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-body-fat">
+					<h3 style="margin-top:0">{{ __("Recently uploaded to squareBracket") }}</h3>
+					{% for video in videos_right %}
+					{{ small_video_box(video) }}
+					{% else %}
+					<p>{{ __("No uploaded videos.") }}</p>
+					{% endfor %}
+					</div>
+			</div>
 		</div>
 	</div>
 </div>
