@@ -1,4 +1,5 @@
 index = 0;
+isAudio = false;
 
 $(document).ready(function(){
 	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -303,6 +304,8 @@ function reply(id) {
 }
 
 function play(sound) {
+	if (isAudio == true) {
 	var audio = new Audio('/assets/sounds/'+sound+'.wav');
 	audio.play();
+	}
 }
