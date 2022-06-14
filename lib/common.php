@@ -24,9 +24,21 @@ foreach (glob("lib/*.php") as $file) {
 	require_once($file);
 }
 
-// todo: make this load a html page
+if (isset($_COOKIE['frontend'])) {
+	$frontend = $_COOKIE['frontend']."-desktop";
+	$frontendCommon = $_COOKIE['frontend']."-common";
+	$mobileFrontend = $_COOKIE['frontend']."-mobile";
+} else {
+	$frontend = (isset($useTemplate) ? $useTemplate."-desktop" : 'sbnext-desktop');
+	$frontendCommon = (isset($useTemplate) ? $useTemplate."-common" : 'sbnext-common');
+	$mobileFrontend = (isset($useTemplate) ? $useTemplate."-mobile" : 'sbnext-mobile');
+}
+
+$lang = new Lang(sprintf("lib/lang/".(isset($_COOKIE['language']) ? $_COOKIE['language'] : 'en-US').".json"));
+
+// todo: make this load a twig template.
 if ($isMaintenance && !isCli()) {
-	die('<center><b>squareBracket is currently offline.</b></center>');
+	error(403, "This instance of squareBracket is currently offline.");
 }
 
 $userfields = userfields();
@@ -56,16 +68,6 @@ if (isset($_COOKIE['theme'])) {
 	$theme = 'default';
 }
 
-if (isset($_COOKIE['frontend'])) {
-	$frontend = $_COOKIE['frontend']."-desktop";
-	$frontendCommon = $_COOKIE['frontend']."-common";
-	$mobileFrontend = $_COOKIE['frontend']."-mobile";
-} else {
-	$frontend = (isset($useTemplate) ? $useTemplate."-desktop" : 'sbnext-desktop');
-	$frontendCommon = (isset($useTemplate) ? $useTemplate."-common" : 'sbnext-common');
-	$mobileFrontend = (isset($useTemplate) ? $useTemplate."-mobile" : 'sbnext-mobile');
-}
-
 // Rounded pfp shit (suggested by sks2002)
 if (isset($_COOKIE['profilepicture'])) {
 	$pfpRoundness = $_COOKIE['profilepicture'];
@@ -80,7 +82,5 @@ if ($log) {
 } else {
 	$userdata['powerlevel'] = 1;
 }
-
-$lang = new Lang(sprintf("lib/lang/".(isset($_COOKIE['language']) ? $_COOKIE['language'] : 'en-US').".json"));
 
 $userdata['timezone'] = 'America/New York';

@@ -81,10 +81,12 @@
 			| <b><a href="/statistics.php">{{ __("Statistics") }}</a></b>
 			</p>
 			<h5>{{ __("Running on commit: ") }} <a href="https://github.com/chazizgrkb/squarebracket/commit/{{ git_commit() }}">{{ git_commit() }}</a><br></h5>
+			{% if isMaintenance != true %}
 			<a class="button button-neutral button-small btnAdd" role="button">{{ __("Options") }}</a>
 			<div id="myModal" class="bg-neutral" style="padding:0.3em;">
 
 			</div>
+			{% endif %}
 		</div>
 	</footer>
 {% block custom_footer %}
