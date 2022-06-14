@@ -18,6 +18,12 @@
     }
 }
 
+// the login/register pages need to be centered at every resolution.
+.chaziz-container {
+	margin-right: auto;
+	margin-left: auto;
+}
+
 .page-container {
 	max-width: 1200px;
 	padding: 0;

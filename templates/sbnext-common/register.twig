@@ -1,4 +1,4 @@
-{% extends "_layout.twig" %}
+{% extends "_layout_chaziz.twig" %}
 
 {% block title %}{{ __("Register") }}{% endblock %}
 
@@ -7,6 +7,8 @@
 {% if error %}
 	<div class="alert alert-warning" role="alert">{{ error }}</div>
 {% endif %}
+<div class="grid chazizPage">
+<img class="chazizgrkb" src="/assets/chazizgrkb/logo_account.png">
 <form method="post" name="loginForm" id="loginForm" action="register.php" class="form-signin">
 	<h2 class="form-signin-heading">{{ __("Register") }}</h2>
 
@@ -25,6 +27,7 @@
 	<br>
 	<input class="button button-large button-primary" type="submit" value="{{ __("Register") }}" name="registersubmit">
 </form>
+</div>
 {% if hcaptcha_sitekey %}
 	<script src='https://www.hCaptcha.com/1/api.js' async defer></script>
 {% endif %}
