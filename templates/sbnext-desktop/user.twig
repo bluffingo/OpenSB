@@ -112,6 +112,7 @@
 		
 	</div>
 	<div class="screwPaddingRight col-md-9" style="color:{{ customProfile.fontcolor }};">
+			{% if video != false %}
 			<div class="card-profiles">
 				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
 				{{ __("Featured") }}
@@ -129,6 +130,7 @@
 					</div>
 				</div>
 			</div>
+			{% endif %}
 			<div class="card-profiles">
 				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
 				{{ __("Videos") }}

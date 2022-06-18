@@ -27,7 +27,7 @@ if ($customProfile == false) {
 	query("INSERT INTO `channel_settings` 
 	(`user`, `background`, `fontcolor`, `titlefont`, `link`, `headerfont`, `highlightheader`, `highlightinside`, `regularheader`, `regularinside`) 
 	VALUES (?, '#ffffff', '#222222', '#ffffff', '#0033CC', '#ffffff', '#3399cc', '#ecf4fb', '#3399cc', '#ffffff')",[$userpagedata['id']]);
-}
+} // we should probably write a script for this shit -grkb 6/18/2022
 
 $page = (isset($_GET['p']) && is_numeric($_GET['p']) && $_GET['p'] > 0 ? $_GET['p'] : 1);
 $forceuser = isset($_GET['forceuser']);
