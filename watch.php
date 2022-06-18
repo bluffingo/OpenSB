@@ -1,7 +1,6 @@
 <?php
 namespace squareBracket;
 
-
 $pageVariable = "watch";
 
 require('lib/common.php');
