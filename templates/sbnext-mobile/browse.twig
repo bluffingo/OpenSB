@@ -5,14 +5,13 @@
 	{% block content %}
 <h1>{{ title }}</h1>
 <div class="grid">
-	<!--<div class="col-md-4">
 		<div class="card card-body-fat sidebar-nav">
 			<ul class="nav nav-list">
 				<li class="nav-header">{{ __("Categories") }}</li>
 				<li {% if type=='all' %}class="active" {% endif %}><a href="browse.php?type=all">{{ __("All") }}</a></li>
 				<li {% if type=='misc' %}class="active" {% endif %}><a href="browse.php?type=misc">{{ __("Miscellanous") }}</a></li>
 				<li {% if type=='entertainment' %}class="active" {% endif %}><a href="browse.php?type=entertainment">{{ __("Entertainment") }}</a></li>
-				<li {% if type=='comedy' %}class="active" {% endif %}><a href="browse.php?type=comedy">{{ __("Shitposting & Comedy") }}</a></li>
+				<li {% if type=='comedy' %}class="active" {% endif %}><a href="browse.php?type=comedy">{{ __("Comedy & Humor") }}</a></li>
 				<li {% if type=='gaming' %}class="active" {% endif %}><a href="browse.php?type=gaming">{{ __("Gaming") }}</a></li>
 				<li {% if type=='news' %}class="active" {% endif %}><a href="browse.php?type=news">{{ __("News and Updates") }}</a></li>
 				<li {% if type=='life' %}class="active" {% endif %}><a href="browse.php?type=life">{{ __("Lifestyle") }}</a></li>
@@ -20,8 +19,6 @@
 				<li {% if type=='backup' %}class="active" {% endif %}><a href="browse.php?type=backup">{{ __("Archive Dump") }}</a></li>
 			</ul>
 		</div>
-	</div>-->
-	<!--<div class="col-md-8">-->
 		{% for level in levels %}
 			{{ small_video_box(level) }}
 		{% else %}
@@ -41,6 +38,5 @@
 		<div class="center">{{ pagination(level_count, glob_lpp, le_url, page) }}</div>
 
 		<br><br>
-	<!--</div>-->
 </div>
 	{% endblock %}
