@@ -59,7 +59,7 @@
 				 {{ __("Like") }}
 				 </button>
 				 <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" 
-				 class="button {% if rating == 0 %}button-danger{% else %}button-secondary-invis{% endif %}">
+				 class="button {% if rating is same as(0) %}button-danger{% else %}button-secondary-invis{% endif %}">
 				 {{ icon("hand-thumbs-down-fill", 20) }}
 				 </button>
 			  </div>
