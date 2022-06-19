@@ -36,7 +36,6 @@ if (isset($_COOKIE['frontend'])) {
 
 $lang = new Lang(sprintf("lib/lang/".(isset($_COOKIE['language']) ? $_COOKIE['language'] : 'en-US').".json"));
 
-// todo: make this load a twig template.
 if ($isMaintenance && !isCli()) {
 	error(403, "This instance of squareBracket is currently offline.");
 }

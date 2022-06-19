@@ -12,7 +12,7 @@ class profiler {
 	}
 
 	function getStats() {
-		global $userdata;
+		global $userdata, $isMaintenance;
 
 		if (isCli()) return;
 		$headers = headers_list();
@@ -36,9 +36,15 @@ class profiler {
 		$renderTime = microtime(true) - $this->starttime;
 		$res = getrusage();
 
-		$debugData = sprintf(
-			'[debug]: logged in as %s (@%s) | user time used: %s | system time used: %s | current locale: %s | page rendered in %1.3f secs with %dKB used',
-		$displayname, $username, $res["ru_utime.tv_sec"], $res["ru_stime.tv_sec"], $language, $renderTime, $memoryUsage);
+		if ($isMaintenance) {
+			$debugData = sprintf(
+				'[debug]: Offline instance | user time used: %s | system time used: %s | current locale: %s | page rendered in %1.3f secs with %dKB used',
+			$res["ru_utime.tv_sec"], $res["ru_stime.tv_sec"], $language, $renderTime, $memoryUsage);
+		} else {
+			$debugData = sprintf(
+				'[debug]: %s (display name: @%s) | user time used: %s | system time used: %s | current locale: %s | page rendered in %1.3f secs with %dKB used',
+			$username, $displayname, $res["ru_utime.tv_sec"], $res["ru_stime.tv_sec"], $language, $renderTime, $memoryUsage);
+		}
 
 		print('<div class="footer" style="position:fixed;bottom:0;width:100%"><center>'.$debugData.'</center></div>');
 	}
