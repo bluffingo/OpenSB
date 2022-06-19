@@ -32,6 +32,8 @@
 <div class="header_message header-success>{{ __("Marked all notifications as read.") }}</div>
 {% elseif edited %}
 <div class="header_message header-success">{{ __("Settings successfully saved!") }}</div>
+{% else %}
+<div class="header_message header-warning">This profile design will be discontinued soon.</div>
 {% endif %}
 <div class="channel-header-bg">
 </div>
@@ -68,8 +70,10 @@
 				</h3>
 				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
 					<div class="card-body">
+					{% if userpagedata.about %}
 					{{ userpagedata.about | markdown }}
 					<hr>
+					{% endif %}
 					<table style="width:100%">
 						<thead>
 						  <tr>
@@ -88,12 +92,12 @@
 				{% if userpagedata.id == userdata.id and not forceuser %}
 					<div class="user-action-container">
 						<a href="settings.php">
-							<div class="user-action">{{ icon("gear", 24) }} {{ __("Edit my settings") }}</div>
+							<div class="user-action">{{ icon("gear", 20) }} {{ __("Edit my settings") }}</div>
 						</a>
 					</div>
 					<div class="user-action-container">
 						<a href="/user.php?id={{ id }}&forceuser">
-							<div class="user-action">{{ icon("person", 24) }} {{ __("View as viewer") }}</div>
+							<div class="user-action">{{ icon("person", 20) }} {{ __("View as viewer") }}</div>
 						</a>
 					</div>
 				{% else %}
@@ -101,7 +105,7 @@
 					{% if userdata.powerlevel > 2 %}
 					<div class="user-action-container">
 						<a href="resetpassword.php?grf={{ id }}">
-							<div class="user-action">{{ icon("key", 24) }} {{ __("Generate password reset") }}</div>
+							<div class="user-action">{{ icon("key", 20) }} {{ __("Generate password reset") }}</div>
 						</a>
 					</div>
 					{% endif %}
@@ -115,7 +119,7 @@
 			{% if video != false %}
 			<div class="card-profiles">
 				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
-				{{ __("Featured") }}
+				{{ __("Most recent video") }}
 				</h3>
 				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
 					<div class="card-body">
@@ -133,7 +137,7 @@
 			{% endif %}
 			<div class="card-profiles">
 				<h3 style="text-align:center;color:{{ customProfile.titlefont }};background-color:{{customProfile.regularheader }};margin:0;padding:5px;">
-				{{ __("Videos") }}
+				{{ __("All videos by %s", [userpagedata.title]) }}
 				</h3>
 				<div class="card" style="border-color: {{customProfile.regularheader }};background-color:{{customProfile.regularinside }};">
 					<div class="card-body">
