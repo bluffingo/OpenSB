@@ -34,14 +34,16 @@
 	{% endif %}
    <div class="grid">
       <div class="col-md-8">
+	  <h1>{{ video.title }}</h1>
 	  {{ include('/components/player.twig') }}
 		 
          <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
-            <h1>{{ video.title }}</h1>
             <div class="grid">
-               <div class="col-md-6">
-                  <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
-                  <a href="user.php?name={{ video.u_name }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a> • {{ allVideos }} {{ __("videos") }}
+               <div class="col-md-8">
+                  <a href="user.php?name={{ video.u_name }}"><img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:60px;float: left;margin-right:8px;"></a>
+				  <span style="font-size:1.15em;"><a href="user.php?name={{ video.u_name }}">{{ video.u_name }}</a> • {{ allVideos }} {{ __("videos") }}</span>
+				  <br>
+				  <span>{{ __("Published on %s", [video.time | date('M j, Y')]) }} • {{ viewCount }} {{ __("views") }} • {{ total_likes }} likes • {{ total_dislikes }} dislikes</span>
                   <br>
                   {% if userdata.id == video.author %}<a class="button button-secondary button-small">{{ __("Channel settings") }}</a>{% else %}
                   <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
@@ -49,29 +51,22 @@
                   {% endif %}
                   <br>
                </div>
-               <div class="col-md-6 right">
-                  <h1 class="viewcount">{{ viewCount }}</h1>
-                  <div class="likesaber">
-                     <div class="like" style="width:{{ videoRatio}}%"></div>
-                  </div>
-                  <div class="below-likesaber">{{ icon("hand-thumbs-up-fill", 12) }} {{ total_likes }} {{ icon("hand-thumbs-down-fill", 12) }} {{ total_dislikes }}  </div>
-               </div>
+		   <div class="col-md-4 right">
+			  <div>
+				 <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
+				 class="button {% if rating == 1 %}button-success{% else %}button-secondary-invis{% endif %}">
+				 {{ icon("hand-thumbs-up-fill", 20) }}
+				 {{ __("Like") }}
+				 </button>
+				 <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" 
+				 class="button {% if rating == 0 %}button-danger{% else %}button-secondary-invis{% endif %}">
+				 {{ icon("hand-thumbs-down-fill", 20) }}
+				 </button>
+			  </div>
+		   </div>
             </div>
             <div class="grid" style="margin-top:5px;">
-               <div class="col-md-4">
-                  <div style="margin-top:-9px;">
-                     <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
-					 class="button {% if rating == 1 %}button-success{% else %}button-secondary-invis{% endif %}">
-                     {{ icon("hand-thumbs-up-fill", 20) }}
-                     {{ __("Like") }}
-                     </button>
-                     <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" 
-					 class="button {% if rating == 0 %}button-danger{% else %}button-secondary-invis{% endif %}">
-                     {{ icon("hand-thumbs-down-fill", 20) }}
-                     </button>
-                  </div>
-               </div>
-               <div class="col-md-8 right">
+               <div class="right">
                   <div class="tab">
                      <button class="tablinks active" onclick="openTab(event, 'About')" id="defaultOpen">{{ __("About") }}</button>
                      <button class="tablinks" onclick="openTab(event, 'Stats')">{{ icon("bar-chart-fill", 12) }}</button>
@@ -92,10 +87,6 @@
 								<h4 class="title">{{ __("Category:") }}</h4>
 								<div class="content">{{ video.category_id | category_id_to_name() }}</div>
 							 </li>
-							 <li>
-								<h4 class="title">{{ __("License:") }}</h4>
-								<div class="content">{{ __("Standard squareBracket License") }}</div>
-							 </li>
 						  </ul>
 					   </div>
 					</div>
@@ -115,16 +106,6 @@
 					Uh yeah, that's gonna be done later.
 					</div>
 				 </div>
-<!-- 				 <div class="col-md-4">
-					 <div class="col-md-4">
-						<img class="img-fluid" src="/assets/series_placeholder.png">
-					 </div>
-					 <div class="col-md-8">
-					 <b>Katt</b><br>
-					 Season 2<br>
-					 Episode 2b<br>
-					 </div>
-				 </div> -->
 			 </div>
 		 </div>
          <div class="card">
