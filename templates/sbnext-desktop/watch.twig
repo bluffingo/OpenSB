@@ -56,11 +56,12 @@
 				 <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
 				 class="button {% if rating == 1 %}button-success{% else %}button-secondary-invis{% endif %}">
 				 {{ icon("hand-thumbs-up-fill", 20) }}
-				 {{ __("Like") }}
+				 {{ total_likes }}
 				 </button>
 				 <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" 
 				 class="button {% if rating is same as(0) %}button-danger{% else %}button-secondary-invis{% endif %}">
 				 {{ icon("hand-thumbs-down-fill", 20) }}
+				 {{ total_dislikes }}
 				 </button>
 			  </div>
 		   </div>
