@@ -1,6 +1,7 @@
 <?php
 namespace squareBracket;
 $versionNumber = "beta-2.1.0r1";
+$gitBranch = "new-main";
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -34,14 +35,32 @@ if (isset($_COOKIE['frontend'])) {
 	$mobileFrontend = (isset($useTemplate) ? $useTemplate."-mobile" : 'sbnext-mobile');
 }
 
+
+/**
+ * Returns true if it is executed from a cattleDog script.
+ * cattleDog is an official collection of scripts designed 
+ * to migrate data onto a squareBracket instance. cattleDog
+ * scripts are out of scope for squareBracket, which is why
+ * they are not in the repository.
+ */
+function isCattleDog() {
+	global $_SESSION;
+	if (isCli()) {
+	return isset($_SESSION['isCattleDog']);
+	}
+}
+
+// cattleDog's verify.php fucks up if this isn't done.
+if (!isCattleDog()) {
 $lang = new Lang(sprintf("lib/lang/".(isset($_COOKIE['language']) ? $_COOKIE['language'] : 'en-US').".json"));
+
+$userfields = userfields();
+$videofields = videofields();
+}
 
 if ($isMaintenance && !isCli()) {
 	error(403, "This instance of squareBracket is currently offline.");
 }
-
-$userfields = userfields();
-$videofields = videofields();
 
 // Cookie auth
 if (isset($_COOKIE['SBTOKEN'])) {
