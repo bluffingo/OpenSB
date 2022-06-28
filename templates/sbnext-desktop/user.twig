@@ -24,13 +24,20 @@
 <div class="bg-light" style="padding: 15px 10px;">
 <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}<img class="sdsd" src="assets/icons/shield.svg" height="16" title="User is a moderator.">{% endif %}</h1>
 <div class="grid">
-	<div class="col-md-4">
+	<div class="col-md-8">
 		<p>@{{ userpagedata.name }}
-			&bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
-			&bull; {{ __("%s view%s", [totalViews ?? __("Not implemented"), pluralViews]) }}
+		{# hack to prevent twig from outputing the number 1 #}
+		{% if subCount != 1 %}
+			{% set pluralSubscribers = __("s") %}
+		{% endif %}
+		{% if views != 1 %}
+			{% set pluralViews = __("s") %}
+		{% endif %}
+			&bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }} 
+			&bull; {{ __("%s view%s", [views ?? __("no"), pluralViews]) }}
 		</p>
 	</div>
-	<div class="col-md-offset-12 col-md-4 right">
+	<div class="col-md-4 right">
 	{% if userpagedata.id == userdata.id %}
 		<a class="button button-primary" href="settings.php">{{ __("Edit profile") }}</a>
 	{% else %}
