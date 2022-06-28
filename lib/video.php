@@ -1,7 +1,7 @@
 <?php
 namespace squareBracket;
 // Functions related to sbNext Video Stuff.
-static function categoryIDToName($id)
+function categoryIDToName($id)
 {
     switch ($id)
     {
@@ -33,7 +33,7 @@ static function categoryIDToName($id)
     return $name;
 }
 
-static function type_to_cat($type)
+function type_to_cat($type)
 {
     switch ($type)
     {
