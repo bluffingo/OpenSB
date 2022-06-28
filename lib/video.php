@@ -2,7 +2,7 @@
 namespace squareBracket;
 // Functions related to sbNext Video Stuff.
 
-static function categoryIDToName(id): string
+static function categoryIDToName($id): string
     {
         switch ($id) {
             case 0:
