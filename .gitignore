@@ -42,3 +42,4 @@ assets/thumb_/*
 mead/images/
 *.bak
 /.metadata/
+debug.log
