@@ -24,17 +24,6 @@ if (isset($_POST['magic'])) {
 	$pass2          = (isset($_POST['pass2']) ? $_POST['pass2'] : null);
 	
 	$theme          = isset($_POST['theme']) ? $_POST['theme'] : 'default';
-	
-	// profile customization
-	$background = isset($_POST['background']) ? $_POST['background'] : '#ffffff';
-	$fontcolor = isset($_POST['font']) ? $_POST['font'] : '#ffffff';
-	$titlecolor = isset($_POST['title_font']) ? $_POST['title_font'] : '#ffffff';
-	$linkcolor = isset($_POST['links']) ? $_POST['links'] : '#0033CC';
-	$headercolor = isset($_POST['header_font']) ? $_POST['header_font'] : '#ffffff';
-	$highlightheader = isset($_POST['highlight_header']) ? $_POST['highlight_header'] : '#3399cc';
-	$highlightinside = isset($_POST['highlight_inner']) ? $_POST['highlight_inner'] : '#ecf4fb';
-	$regularheader = isset($_POST['regular_header']) ? $_POST['regular_header'] : '#3399cc';
-	$regularinside = isset($_POST['regular_inner']) ? $_POST['regular_inner'] : '#ffffff';
 
 	if ($currentPass && $pass && $pass2) {
 		if (password_verify($currentPass, $userdata['password'])) {
@@ -90,9 +79,6 @@ if (isset($_POST['magic'])) {
 
 	query("UPDATE users SET title = ?, about = ?, customcolor = ? WHERE id = ?",
 		[$title, $about, $customcolor, $userdata['id']]);
-		
-	query("UPDATE channel_settings SET background = ?, fontcolor = ?, titlefont = ?, link = ?, headerfont = ?, highlightheader = ?, highlightinside = ?, regularheader = ?, regularinside = ? WHERE user = ?",
-		[$background, $fontcolor, $titlecolor, $linkcolor, $headercolor, $highlightheader, $highlightinside, $regularheader, $regularinside, $userdata['id']]);
 	
 
 	if (!$error) {

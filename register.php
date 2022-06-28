@@ -55,5 +55,7 @@ if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
 // -Gamerappa, july 26th, 2021, 11:11PM EST.
 ///////////////////////////////////////////////////////////////////////////////////////////
 
+// oh shit that aged poorly, sbnext finalium is the only UI in squarebracket now. -grkb, June 28th, 2022.
+
 $twig = twigloader();
 echo $twig->render('register.twig', ['error' => $error]);
