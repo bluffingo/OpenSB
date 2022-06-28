@@ -25,6 +25,17 @@ foreach (glob("lib/*.php") as $file) {
 	require_once($file);
 }
 
+// user agent blocking shit
+if (!empty($blockedUA) && isset($_SERVER['HTTP_USER_AGENT'])) {
+	foreach ($blockedUA as $bl) {
+		if (str_contains($_SERVER['HTTP_USER_AGENT'], $bl)) {
+			http_response_code(403);
+			echo '403';
+			die();
+		}
+	}
+}
+
 if (isset($_COOKIE['frontend'])) {
 	$frontend = $_COOKIE['frontend']."-desktop";
 	$frontendCommon = $_COOKIE['frontend']."-common";
