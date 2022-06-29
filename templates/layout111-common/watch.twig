@@ -8,17 +8,31 @@
             <div class="image is-16by9 has-background-black">
                 {{ include('/components/player.twig') }}
             </div>
-            <div id="video-info">
+            <div id="video-info" class="mt-2">
                 <div class="columns" id="top-info">
                     <div class="column">
-                        <div class="columns is-mobile is-multiline is-gapless">
+                        <div class="columns is-mobile is-multiline is-gapless is-vcentered">
                             <div class="column is-1">
                                 <div id="video-pfp" class="image is-32x32">
                                     <img src="{{ profile_image(video.u_name) }}" class="is-rounded">
                                 </div>
                             </div>
+                            <div class="column is-narrow">
+                                <p class="ml-3 has-text-justified is-size-6">{{ userlink(video, 'u_') }}</p>
+                            </div>
                             <div class="column">
-                                <p style="margin-left:5px;">{{ userlink(video, 'u_') }}</p>
+                                <div class="field has-addons">
+                                    <div class="control">
+                                        <a href="/subscribe" class="button ml-2">
+                                            <p>Follow</p>
+                                        </a>
+                                    </div>
+                                    <div class="control">
+                                        <p class="button is-static">
+                                            {{ subCount }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -37,7 +51,7 @@
         </div>
         <div class="column">
             <div class="box content">
-                <h1 class="title is-4 is-medium" style="margin-bottom: 20px;">{{ video.title }}</h1>
+                <h1 class="title is-4 is-medium mb-4">{{ video.title }}</h1>
                 <p>{{ viewCount }} views • {{ __("Published on %s", [video.time | date('M j, Y')]) }}</p>
                 <p>{{ video.description }}</p>
             </div>
