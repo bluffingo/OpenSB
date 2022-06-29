@@ -1,0 +1,51 @@
+{% extends "_layout_account.twig" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<section class="hero is-primary is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+    <div class="columns is-centered">
+        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+            <h1 class="title is-2">Login</h1>
+            {% if error %}
+                <div class="notification is-danger">{{ error }}</div>
+            {% elseif resetted %}
+                <div class="notification is-info">Password successfully reset!</div>
+            {% elseif new_pass %}
+                <div class="notification is-info">Password successfully reset!"</div>
+            {% elseif new_token %}
+                <div class="notification is-info">Your account has been successfully logged out of all devices.</div>
+            {% else %}
+            <!-- this oddity in the code is because an error is supposed to be here. -grkb 6/29/2022 -->
+            {% endif %}
+        </div>
+    </div>
+      <div class="columns is-centered">
+        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+         <form method="post" name="loginForm" id="loginForm" action="login.php" class="box">
+            <div class="field">
+              <label for="" class="label">Username</label>
+              <div class="control">
+                <input type="text" name="username" placeholder="username" class="input" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="" class="label">Password</label>
+              <div class="control">
+                <input type="password" name="password" placeholder="*******" class="input" required>
+              </div>
+            </div>
+            <div class="field">
+              <button class="button is-success" type="submit" name="loginsubmit">
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

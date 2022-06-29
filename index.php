@@ -9,8 +9,7 @@ $pageVariable = "index";
 // currently selects all uploaded videos, should turn it into all featured only
 $videoData = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() LIMIT 12");
 $videoDataRight = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY v.time DESC LIMIT 12");
-$featuredVideoData = query("SELECT $userfields $videofields, v.category_id, v.author FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() DESC LIMIT 1"); //i have no clue how should flags even work.
-// moved total subscribers to layout.php for 2015 hitchhiker
+// moved total subscribers to layout.php
 if ($log) {
 	$query = implode(', ', array_column(fetchArray(query("SELECT user FROM subscriptions WHERE id = ?", [$userdata['id']])), 'user'));
 	if($query != null) {

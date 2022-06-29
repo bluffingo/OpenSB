@@ -33,12 +33,6 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
     $title = (isset($_POST['title']) ? $_POST['title'] : null);
     $description = (isset($_POST['desc']) ? $_POST['desc'] : null);
 
-    // Prevent videos with duplicate metadata since they are probably accidentally uploaded.
-    // if (result("SELECT COUNT(*) FROM videos WHERE title = ? AND description = ?", [$title, $description]))
-    // {
-    //    die(__("Your video is already uploading or has been uploaded."));
-    // }
-
     // Rate limit uploading to 2 minutes, both to prevent spam and to prevent double uploads.
     if (result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60 * 2, $userdata['id']]) && !$isDebug)
     {
