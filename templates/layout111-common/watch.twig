@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<div class="container">
+<div class="container my-2">
     <div class="columns">
         <div class="column is-8">
             <div class="image is-16by9 has-background-black">
@@ -47,6 +47,38 @@
                         </a>
                     </div>
                 </div>
+            </div>
+            <div id="comments" class="mt-5 box content">
+            <h1 class="title is-5">Comments ({{ comCount }})</h1>
+            {% for comment in comments %}
+            <article class="media">
+                <figure class="media-left px-0 ml-1 mr-3">
+                    <p class="image is-64x64">
+                    <img src="{{ profile_image(comment.u_name) }}">
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <div class="content">
+                    <p class="mb-0">
+                        <strong>{{ userlink(comment, 'u_') }}</strong> <small>{{ comment.date | relative_time }}</small>
+                    </p>
+                        {{ comment.comment | markdown }}
+                    </div>
+                    <nav class="level is-mobile">
+                    <div class="level-left">
+                        <a class="level-item">
+                        Reply
+                        </a>
+                        <a class="level-item">
+                        Like
+                        </a>
+                    </div>
+                    </nav>
+                </div>
+            </article>
+            {% else %}
+            There are no comments.
+            {% endfor %}
             </div>
         </div>
         <div class="column">
