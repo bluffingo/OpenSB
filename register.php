@@ -10,6 +10,7 @@ if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
 	$pass = (isset($_POST['pass1']) ? $_POST['pass1'] : null);
 	$pass2 = (isset($_POST['pass2']) ? $_POST['pass2'] : null);
 	$displayName = (isset($_POST['displayName']) ? $_POST['displayName'] : null);
+	$mail = (isset($_POST['email']) ? $_POST['email'] : null);
 
 	if (!isset($username)) $error .= __("Blank username.");
 	if (!isset($pass) || strlen($pass) < 6) $error .= __("Password is too short.");
@@ -17,21 +18,17 @@ if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
 	if (!isset($displayName)) $error .= __("Blank display name.");
 	if (result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= __("Username has already been taken. "); //ashley2012 bypassed this -gr 7/26/2021
 	if (!preg_match('/[a-zA-Z0-9_]+$/', $username)) $error .= __("Username contains invalid characters (Only alphanumeric and underscore allowed)."); //ashley2012 bypassed this with the long-ass arabic character. -gr 7/26/2021
-	// hCaptcha verification (commenting this out due to the fact that site has no hcap)
-	// if ($hCaptchaSiteKey && $hCaptchaSecret) {
-	//	if (!hCaptcha($_POST['h-captcha-response'])) $error .= __("Incorrect CAPTCHA. Please try again.");
-	//}
+	if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) $error .= "Email isn't valid. ";
+	if (result("SELECT COUNT(*) FROM users WHERE email = ?", [$mail])) $error .= "You've already registered an account using this email address. ";	
+	if (result("SELECT COUNT(*) FROM users WHERE ip = ?", [getUserIpAddr()]) > 10)
+		$error .= "Creating more than 10 accounts isn't allowed.";
 
 	if ($error == '') {
 		$token = bin2hex(random_bytes(32));
-			query("INSERT INTO users (name, password, token, joined, title) VALUES (?,?,?,?,?)",
-			[$username,password_hash($pass, PASSWORD_DEFAULT), $token, time(), $displayName]);
+			query("INSERT INTO users (name, password, token, joined, title, email) VALUES (?,?,?,?,?,?)",
+			[$username,password_hash($pass, PASSWORD_DEFAULT), $token, time(), $displayName, $mail]);
 			
 			$newUser = result("SELECT `id` from `users` where `name` = ?",[$username]);
-			
-			fetch("INSERT INTO `channel_settings` 
-			(`user`, `background`, `fontcolor`, `titlefont`, `link`, `headerfont`, `highlightheader`, `highlightinside`, `regularheader`, `regularinside`) 
-			VALUES (?, '#ffffff', '#222222', '#ffffff', '#0033CC', '#ffffff', '#3399cc', '#ecf4fb', '#3399cc', '#ffffff')",[$newUser]);
 
 		setcookie('SBTOKEN', $token, 2147483647);
 
@@ -56,6 +53,8 @@ if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
 // 
 // -Gamerappa, july 26th, 2021, 11:11PM EST.
 ///////////////////////////////////////////////////////////////////////////////////////////
+
+// oh shit that aged poorly, sbnext finalium is the only UI in squarebracket now. -grkb, June 28th, 2022.
 
 $twig = twigloader();
 echo $twig->render('register.twig', ['error' => $error]);

@@ -43,7 +43,7 @@
                   <a href="user.php?name={{ video.u_name }}"><img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:60px;float: left;margin-right:8px;"></a>
 				  <span style="font-size:1.15em;"><a href="user.php?name={{ video.u_name }}">{{ video.u_name }}</a> • {{ allVideos }} {{ __("videos") }}</span>
 				  <br>
-				  <span>{{ __("Published on %s", [video.time | date('M j, Y')]) }} • {{ viewCount }} {{ __("views") }} • {{ total_likes }} likes • {{ total_dislikes }} dislikes</span>
+				  <span>{{ __("Published on %s", [video.time | date('M j, Y')]) }} • {{ viewCount }} {{ __("views") }}</span>
                   <br>
                   {% if userdata.id == video.author %}<a class="button button-secondary button-small">{{ __("Channel settings") }}</a>{% else %}
                   <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
@@ -56,11 +56,12 @@
 				 <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
 				 class="button {% if rating == 1 %}button-success{% else %}button-secondary-invis{% endif %}">
 				 {{ icon("hand-thumbs-up-fill", 20) }}
-				 {{ __("Like") }}
+				 {{ total_likes }}
 				 </button>
 				 <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}" 
 				 class="button {% if rating is same as(0) %}button-danger{% else %}button-secondary-invis{% endif %}">
 				 {{ icon("hand-thumbs-down-fill", 20) }}
+				 {{ total_dislikes }}
 				 </button>
 			  </div>
 		   </div>

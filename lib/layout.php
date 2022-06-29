@@ -30,10 +30,14 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	chdir(__DIR__);
 	chdir('../');
 	if (!isset($customloader)) {
-		if ($detect->isMobile()) {
-			$loader = new \Twig\Loader\FilesystemLoader(['templates/' . $mobileFrontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
-		} else {
-			$loader = new \Twig\Loader\FilesystemLoader(['templates/' . $frontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
+		if ($frontend == "sbnext-desktop") { //finalium is not mobile first.
+			if ($detect->isMobile()) {
+				$loader = new \Twig\Loader\FilesystemLoader(['templates/' . $mobileFrontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
+			} else {
+				$loader = new \Twig\Loader\FilesystemLoader(['templates/' . $frontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
+			}
+		} else { //project111 uses mobile first css.
+			$loader = new \Twig\Loader\FilesystemLoader(['templates/' . $frontendCommon . '/' . $subfolder]);
 		}
 	} else {
 		$loader = $customloader();

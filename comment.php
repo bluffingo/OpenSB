@@ -10,13 +10,13 @@ if (isset($_POST['really']))
             $type = 0;
 			$table = "comments";
 			$id = (isset($_POST['vidid']) ? $_POST['vidid'] : "");
-			$reply_to = (isset($_POST['reply_to']) ? $_POST['reply_to'] : "");
+			$reply_to = (isset($_POST['reply_to']) ? $_POST['reply_to'] : "0");
 		break;
         case "profile":
             $type = 1;
 			$table = "channel_comments";
 			$id = (isset($_POST['uid']) ? $_POST['uid'] : "");
-			$reply_to = (isset($_POST['reply_to']) ? $_POST['reply_to'] : "");
+			$reply_to = (isset($_POST['reply_to']) ? $_POST['reply_to'] : "0");
 		break;
 	}
 } else {
