@@ -1,0 +1,34 @@
+{% extends "_layout.twig" %}
+
+
+{% block content %}
+<div class="container">
+    <div class="left-col" style="width:60%">
+        <div id="top-info" style="margin:10px 0px;display:flex;">
+            <div class="video-author" style="display:flex;align-items:center;">
+                <div id="video-pfp" class="image is-32x32" style="">
+                    <img src="{{ profile_image(video.u_name) }}" class="is-rounded">
+                </div>
+                <p style="margin-left:5px;">{{ userlink(video, 'u_') }} • {{ __("Published on %s", [video.time | date('M j, Y')]) }}</p>
+            </div>
+            <div id="video-ratings" style="margin-left: auto">
+                <a href="/likebuttonthing" class="button like-button">
+                    <i class="bi bi-hand-thumbs-up"></i>
+                    <p style="margin-left:5px">{{ total_likes }}</p>
+                </a>
+                <a href="/dislikebuttonthing" class="button dislike-button">
+                    <i class="bi bi-hand-thumbs-down"></i>
+                    <p style="margin-left:5px">{{ total_dislikes }}</p>
+                </a>
+            </div>
+        </div>
+        <div class="video" style="aspect-ratio:16 / 9; width:100%; background-color:black;">
+            {{ include('/components/player.twig') }}
+        </div>
+        <div id="video-info" style="display:flex; align-items: center;">
+            <h1 style="font-size: 25px;font-weight: bold;margin: 10px 0px;" id="video-title">{{ video.title }}</h1>
+            <p style="margin-left:auto;">{{ viewCount }} {{ __("views") }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

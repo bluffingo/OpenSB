@@ -1,12 +1,12 @@
-<h1 align="center">squareBracket Beta 2.1.0</h1>
+<h1 align="center">squareBracket Beta 3.0.0</h1>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/45898787/173667230-5cdb4b50-75ac-4bc6-ad61-873e4466f855.png">
 </p>
 
-<!--<h3 align="center"><a href="https://sb.billyisreal.com/">squareBracket's live website</a></h3>-->
+<h3 align="center"><a href="https://pok.byteemail.com/">squareBracket's live website</a></h3>
 
-## How to setup squareBracket.
+## How to setup an instance squareBracket.
 1. Get a web server (Apache/NGINX) with PHP and MariaDB up and running, including Composer.
 1. Run `composer update` from the terminal.
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.

@@ -1,6 +1,8 @@
 <?php
 namespace squareBracket;
-$versionNumber = "beta-2.1.0r1";
+$releaseNumber = "beta-3.0.0";
+$buildNumber = 1;
+$versionNumber = $releaseNumber . "-" . str_pad($buildNumber, 3, "0", STR_PAD_LEFT);
 $gitBranch = "new-main";
 
 ini_set('display_errors', 1);

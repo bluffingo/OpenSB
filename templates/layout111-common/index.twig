@@ -1,21 +1,44 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  </head>
-  <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Hello World
-      </h1>
+{% extends "_layout.twig" %}
+
+{% block precontent %}
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <p class="title">
+        Welcome to Project 111
+      </p>
       <p class="subtitle">
-        My first website with <strong>Bulma</strong>!
+        Welcome.
       </p>
     </div>
   </section>
-  </body>
-</html>
+{% endblock %}
+{% block content %}
+  <section class="section">
+    <div class="container">
+    {% for content in videos|batch(4) %}
+      <article class="columns">
+          {% for video in content %}
+          <a href="watch?v={{video.video_id }}">
+            <div class="column">
+              <figure class="image is-16by9">
+                <img src="{{ video_thumbnail(video.video_id) }}">
+              </figure>
+              <div class="columns is-mobile is-multiline is-gapless is-centered">
+                <div class="column">
+                  <div class="image is-32x32">
+                    <img src="{{ profile_image(video.u_name) }}" class="is-rounded">
+                  </div>
+                </div>
+                <div class="column">
+                  <p class="title is-6 is-spaced mt-1 mb-1">{{ video.title }}</p>
+                  <p class="subtitle is-6">{{ userlink(video, 'u_') }}</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </article>
+    {% endfor %}
+    </div>
+  </section>
+{% endblock %}
