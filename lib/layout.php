@@ -30,7 +30,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	chdir(__DIR__);
 	chdir('../');
 	if (!isset($customloader)) {
-		if ($frontend == "sbnext") { //finalium is not mobile first.
+		if ($frontend == "sbnext-desktop") { //finalium is not mobile first.
 			if ($detect->isMobile()) {
 				$loader = new \Twig\Loader\FilesystemLoader(['templates/' . $mobileFrontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
 			} else {
