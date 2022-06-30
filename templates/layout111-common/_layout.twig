@@ -62,24 +62,31 @@
 		  </div>
 		</div>
 			{% if log %}
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-			<p class="mr-3">{{ userdata.name }}</p>
-			<img src="{{ profile_image(userdata.name) }}" alt="{{ userdata.title }}" height="28">
-        </a>
-        <div class="navbar-dropdown is-right">
-          <a class="navbar-item">
-            Studio
-          </a>
-          <a class="navbar-item" href="/settings">
-            Settings
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item" href="/logout">
-            Logout
-          </a>
-        </div>
-      </div>
+	<div class="navbar-end">
+	<div class="navbar-item">
+		<a class="button is-primary" href="/upload">
+			Upload
+		</a>
+	</div>
+	<div class="navbar-item has-dropdown is-hoverable">
+	<a class="navbar-link">
+		<p class="mr-3">{{ userdata.name }}</p>
+		<img src="{{ profile_image(userdata.name) }}" alt="{{ userdata.title }}" height="28">
+	</a>
+	<div class="navbar-dropdown is-right">
+		<a class="navbar-item">
+		Studio
+		</a>
+		<a class="navbar-item" href="/settings">
+		Settings
+		</a>
+		<hr class="navbar-divider">
+		<a class="navbar-item" href="/logout">
+		Logout
+		</a>
+	</div>
+	</div>
+</div>
 			{% else %}
 		<div class="navbar-end">
 		  	<div class="navbar-item">

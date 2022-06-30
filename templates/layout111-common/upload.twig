@@ -1,0 +1,70 @@
+{% extends "_layout.twig" %}
+{% block precontent %}
+<section class="hero is-primary">
+<div class="hero-body">
+<h1 class="title is-2">Upload</h1>
+<p class="subtitle is-4">Upload. Placeholder.</p>
+</div>
+</section>
+{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data" class="box">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Title</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" name="title" id="title" placeholder="e.g. Hello, squareBracket!">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Description</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <textarea class="textarea" name="desc" maxlength="2000" rows="5" placeholder="e.g. This is my video!"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Tags</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" name="tags" placeholder="a, squarebracket, video, pretty, cool">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">File</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" onchange="$('#title').val($('#fileToUpload').val().split('\\').pop().split('/').pop())" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <input class="button is-primary" type="submit" id="upload" name="upload" value="Upload">
+        </form>
+    </div>
+</section>
+{% endblock %}
