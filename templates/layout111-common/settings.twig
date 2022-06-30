@@ -16,54 +16,93 @@
 {% block content %}
 <section class="section">
     <div class="container">
-		<form action="settings.php" method="post">
+<div class="columns">
+<div class="column is-narrow">
+<aside class="menu">
+  <p class="menu-label">
+    General
+  </p>
+  <ul class="menu-list">
+    <li><a>Dashboard</a></li>
+    <li><a>Customers</a></li>
+  </ul>
+  <p class="menu-label">
+    Administration
+  </p>
+  <ul class="menu-list">
+    <li><a>Team Settings</a></li>
+    <li>
+      <a class="is-active">Manage Your Team</a>
+      <ul>
+        <li><a>Members</a></li>
+        <li><a>Plugins</a></li>
+        <li><a>Add a member</a></li>
+      </ul>
+    </li>
+    <li><a>Invitations</a></li>
+    <li><a>Cloud Storage Environment Settings</a></li>
+    <li><a>Authentication</a></li>
+  </ul>
+  <p class="menu-label">
+    Transactions
+  </p>
+  <ul class="menu-list">
+    <li><a>Payments</a></li>
+    <li><a>Transfers</a></li>
+    <li><a>Balance</a></li>
+  </ul>
+</aside>
+</div>
+<div class="column">
+	<form action="settings.php" method="post">
 		<h3 class="subtitle is-3">Your account</h3>
-		<table class="table">
-			<tr>
-				<td>Username</td>
-				<td>{{ userdata.name }}</td>
-			</tr>
-			<tr>
-				<td>{{ __("Email") }}</td>
-				<td>{{ userdata.email }}</td>
-			</tr>
-			<tr>
-				<td>{{ __("Change Password") }}</td>
-				<td>
-					<input type="password" name="current_pass" size="30" maxlength="256" placeholder="{{ __("Current Password (For verification)") }}"><br>
-					<input type="password" name="pass" size="30" maxlength="256" placeholder="{{ __("New Password") }}"><br>
-					<input type="password" name="pass2" size="30" maxlength="256" placeholder="{{ __("Repeat new Password") }}">
-				</td>
-			</tr>
-		</table>
+			<table class="table">
+				<tr>
+					<td>Username</td>
+					<td>{{ userdata.name }}</td>
+				</tr>
+				<tr>
+					<td>{{ __("Email") }}</td>
+					<td>{{ userdata.email }}</td>
+				</tr>
+				<tr>
+					<td>{{ __("Change Password") }}</td>
+					<td>
+						<input type="password" name="current_pass" size="30" maxlength="256" placeholder="{{ __("Current Password (For verification)") }}"><br>
+						<input type="password" name="pass" size="30" maxlength="256" placeholder="{{ __("New Password") }}"><br>
+						<input type="password" name="pass2" size="30" maxlength="256" placeholder="{{ __("Repeat new Password") }}">
+					</td>
+				</tr>
+			</table>
 
-		<h3 class="subtitle is-3">Your profile</h3>
-		<table class="table">
-			<tr>
-				<td>{{ __("Profile picture") }}</td>
-				<td>
-					<input class="form-control" type="file" name="profilePicture" id="profilePicture">
-				</td>
-			</tr>
-			<tr>
-				<td>{{ __("Display name") }}</td>
-				<td><input type="text" name="title" size="45" maxlength="256" value="{{ userdata.title }}"></td>
-			</tr>
-			<tr>
-				<td>
-					{{ __("Description") }}
-					<br><em>{{ __("Markdown allowed.") }}</em>
-				</td>
-				<td><textarea name="about" rows="5" cols="80" wrap="virtual">{{ userdata.about }}</textarea></td>
-			</tr>
-			<tr>
-				<td>{{ __("Username color") }}</td>
-				<td><input name="customcolor" type="color" value="{{ userdata.customcolor | default('523bb8') }}"></td>
-			</tr>
-		</table>
-		<input type="hidden" name="magic" value="blueyheelerisgrkbinSPDreal">
-		<div class="right">
-		<input class="button button-primary" type="submit" name="action" value="{{ __("Save Changes") }}">
+			<h3 class="subtitle is-3">Your profile</h3>
+			<table class="table">
+				<tr>
+					<td>{{ __("Profile picture") }}</td>
+					<td>
+						<input class="form-control" type="file" name="profilePicture" id="profilePicture">
+					</td>
+				</tr>
+				<tr>
+					<td>{{ __("Display name") }}</td>
+					<td><input type="text" name="title" size="45" maxlength="256" value="{{ userdata.title }}"></td>
+				</tr>
+				<tr>
+					<td>
+						{{ __("Description") }}
+						<br><em>{{ __("Markdown allowed.") }}</em>
+					</td>
+					<td><textarea name="about" rows="5" cols="80" wrap="virtual">{{ userdata.about }}</textarea></td>
+				</tr>
+				<tr>
+					<td>{{ __("Username color") }}</td>
+					<td><input name="customcolor" type="color" value="{{ userdata.customcolor | default('523bb8') }}"></td>
+				</tr>
+			</table>
+			<input type="hidden" name="magic" value="blueyheelerisgrkbinSPDreal">
+			<div class="right">
+			<input class="button button-primary" type="submit" name="action" value="{{ __("Save Changes") }}">
+			</div>
 		</div>
 	</div>
 </section>
