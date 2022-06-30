@@ -96,7 +96,32 @@
                         </div>
                     </li>
                     <li>
-                        <h1>Videos Placeholder</h1>
+    <div class="container">
+    {% for latestVideo in latestVideos %}
+      <article class="columns is-multiline">
+          {% for latestVideo in latestVideos %}
+          <a href="watch?v={{latestVideo.video_id }}">
+            <div class="column is-one-quarter">
+              <figure class="image is-16by9">
+                <img src="{{ video_thumbnail(latestVideo.video_id) }}">
+              </figure>
+              <div class="columns is-mobile is-multiline is-gapless is-centered">
+                <div class="column">
+                  <div class="image is-32x32">
+                    <img src="{{ profile_image(latestVideo.u_name) }}" class="is-rounded">
+                  </div>
+                </div>
+                <div class="column">
+                  <p class="title is-6 is-spaced mt-1 mb-1">{{ latestVideo.title }}</p>
+                  <p class="subtitle is-6">{{ userlink(video, 'u_') }}</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </article>
+    {% endfor %}
+    </div>
                     </li>
                     <li>
                         <h1>Artwork Placeholder</h1>
