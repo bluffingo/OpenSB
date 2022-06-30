@@ -17,6 +17,25 @@ function redirect($url) {
 	die();
 }
 
+function delete_directory($dirname): bool
+{
+    if (is_dir($dirname))
+        $dir_handle = opendir($dirname);
+    if (!$dir_handle)
+        return false;
+    while ($file = readdir($dir_handle)) {
+        if ($file != "." && $file != "..") {
+            if (!is_dir($dirname . "/" . $file))
+                unlink($dirname . "/" . $file);
+            else
+                delete_directory($dirname . '/' . $file);
+        }
+    }
+    closedir($dir_handle);
+    rmdir($dirname);
+    return true;
+}
+
 /**
  * Get hash of latest git commit
  *

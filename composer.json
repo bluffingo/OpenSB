@@ -6,11 +6,11 @@
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
 		"twbs/bootstrap-icons": "dev-main",
-		"aminyazdanpanah/php-ffmpeg-video-streaming": "dev-master",
 		"suin/php-rss-writer": "dev-master",
 		"mobiledetect/mobiledetectlib": "dev-master",
 		"npm-asset/bulma": "^0.9.4",
 		"npm-asset/vizuaalog--bulmajs": "0.12.x-dev"
+		"php-ffmpeg/php-ffmpeg": "0.x"
 	},
 	"minimum-stability": "dev",
 	"config": {
