@@ -63,7 +63,7 @@ try {
 	$video->save($h264, 'videos/' . $new . '.converted.mp4');
 	debug_print_backtrace();
 	unlink($target_file);
-	delete_directory($preload_folder);
+	//delete_directory($preload_folder);
 	
 	$videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);
 
@@ -77,12 +77,5 @@ clearstatcache();
 
 if (0 == filesize("videos/" . $new . ".converted.mp4")) {
     unlink("videos/" . $new . ".converted.mp4");
-    delete_directory($preload_folder);
-    $failcount++;
-}
-
-if ($failcount == 1) {
-	unlink("videos/" . $new . ".converted.mp4");
-	delete_directory($preload_folder);
-	die("Fuck");
+    //delete_directory($preload_folder);
 }
