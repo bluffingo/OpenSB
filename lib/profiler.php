@@ -12,7 +12,7 @@ class profiler {
 	}
 
 	function getStats() {
-		global $userdata, $isMaintenance;
+		global $userdata, $isMaintenance, $frontendName;
 
 		if (isCli()) return;
 		$headers = headers_list();
@@ -46,6 +46,10 @@ class profiler {
 			$username, $displayname, $res["ru_utime.tv_sec"], $res["ru_stime.tv_sec"], $language, $renderTime, $memoryUsage);
 		}
 
-		print('<div class="footer" style="position:fixed;bottom:0;width:100%"><center>'.$debugData.'</center></div>');
+		if ($frontendName == "sbnext") {
+			print('<div class="footer" style="position:fixed;bottom:0;width:100%"><center>'.$debugData.'</center></div>');
+		} else {
+			print('<div style="position:fixed;bottom:0;width:100%"><center>'.$debugData.'</center></div>');
+		}
 	}
 }
