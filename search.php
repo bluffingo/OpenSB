@@ -7,6 +7,8 @@ $query = isset($_GET['tags']) ? $_GET['tags'] : null;
 
 if ($query == "oneoneone") {
 	setcookie('frontend', "layout111", 2147483647); // an easy way of letting people switch to 111
+} elseif ($query == "fuckgoback") {
+	setcookie('frontend', "sbnext", 2147483647); // an easy way of letting people switch back to finalium
 }
 
 // currently selects all uploaded videos
