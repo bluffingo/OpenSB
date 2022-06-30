@@ -5,10 +5,7 @@
 <div class="container my-2">
     <div class="columns">
         <div class="column is-8">
-            <div class="image is-16by9 has-background-black">
-                {{ include('/components/player.twig') }}
-            </div>
-            <div id="video-info" class="mt-2">
+            <div id="video-info">
                 <div class="columns" id="top-info">
                     <div class="column">
                         <div class="columns is-mobile is-multiline is-gapless is-vcentered">
@@ -47,6 +44,9 @@
                         </a>
                     </div>
                 </div>
+            <div class="image is-16by9 has-background-black">
+                {{ include('/components/player.twig') }}
+            </div>
             </div>
             <div id="comments" class="mt-5 box content">
             <h1 class="title is-5">Comments ({{ comCount }})</h1>

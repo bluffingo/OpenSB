@@ -1,0 +1,106 @@
+{% extends "_layout.twig" %}
+{% block precontent %}
+<style>
+.tabs-content li {
+    display: none;
+    list-style: none;
+}
+
+.tabs-content li.is-active {
+    display: block;
+}
+</style>
+<section class="hero is-primary">
+<div class="hero-body">
+    <div class="columns is-vcentered">
+        <div class="column is-narrow">
+            <div class="image is-128x128">
+                <img src="{{ profile_image(user.u_name) }}" class="is-rounded">
+            </div>
+        </div>
+        <div class="column">
+            <h1 class="title is-2">
+                {{ userpagedata.title }}
+            </h1>
+            <p class="subtitle is-4">
+                @{{ userpagedata.name }}
+            </p>
+        </div>
+		{% if subCount != 1 %}
+			{% set pluralSubscribers = __("s") %}
+		{% endif %}
+		{% if views != 1 %}
+			{% set pluralViews = __("s") %}
+		{% endif %}
+        <div class="column">
+            <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                <p class="heading">Views</p>
+                <p class="title">{{ views }} </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                <p class="heading">Followers</p>
+                <p class="title">{{ subCount }}</p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                <p class="heading">Videos</p>
+                <p class="title">{{ level_count }}</p>
+                </div>
+            </div>
+            </nav>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="tabs-wrapper">
+            <div class="tabs is-centered">
+            <ul>
+                <li><a>Overview</a></li>
+                <li><a>Videos</a></li>
+                <li><a>Artwork</a></li>
+            </ul>
+            </div>
+            <div class="tabs-content">
+                <ul>
+                    <li class="is-active">
+                        <div class="columns">
+                            <div class="column is-4">
+                                <div class="box content">
+                                    <h1 class="title is-5">About {{ userpagedata.title }}</h1>
+                                    {% if userpagedata.about %}
+                                    {{ userpagedata.about | markdown }}
+                                    {% else %}
+                                    This user has not set a description.
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="box content">
+                                    <h1 class="title is-5">Latest video</h1>
+                                    {{ include('/components/player.twig') }}
+                                    <h2 class="subtitle is-5"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h1>Videos Placeholder</h1>
+                    </li>
+                    <li>
+                        <h1>Artwork Placeholder</h1>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

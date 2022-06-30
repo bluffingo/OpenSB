@@ -9,7 +9,8 @@
 		"aminyazdanpanah/php-ffmpeg-video-streaming": "dev-master",
 		"suin/php-rss-writer": "dev-master",
 		"mobiledetect/mobiledetectlib": "dev-master",
-		"npm-asset/bulma": "^0.9.4"
+		"npm-asset/bulma": "^0.9.4",
+		"npm-asset/vizuaalog--bulmajs": "0.12.x-dev"
 	},
 	"minimum-stability": "dev",
 	"config": {

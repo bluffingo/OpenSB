@@ -64,7 +64,6 @@ echo $twig->render("user.twig", [
 	'forceuser' => $forceuser,
 	'page' => $page,
 	'level_count' => $count,
-	'notifs' => (isset($notifications) ? $notifications : []),
 	'markread' => (isset($_GET['markread']) ? true : false),
 	'edited' => (isset($_GET['edited']) ? true : false),
 	'comments' => (isset($comments) ? $comments : null),
