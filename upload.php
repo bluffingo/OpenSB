@@ -42,6 +42,9 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
     $name = $_FILES['fileToUpload']['name'];
     $temp_name = $_FILES['fileToUpload']['tmp_name']; // gets video info and thumbnail info
     $ext = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
+	if (strtolower($ext) == "mov") {
+		error('415', 'MOV files are not supported.');
+	}
     $target_file = 'videos/' . $new . '.' . $ext;
     if (move_uploaded_file($temp_name, $target_file))
     {

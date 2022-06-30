@@ -48,7 +48,7 @@ try {
 			->save('assets/thumb/' . $new . '.png');
 	}
 	$img = $manager->make('assets/thumb/' . $new . '.png');
-	$img->resize(640, 360);
+	$img->resize(512, 288);
 	$img->save('assets/thumb/' . $new . '.png');
 	unlink($target_file);
 
