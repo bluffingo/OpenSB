@@ -87,6 +87,32 @@
                 <p>{{ viewCount }} views • {{ __("Published on %s", [video.time | date('M j, Y')]) }}</p>
                 <p>{{ video.description }}</p>
             </div>
+            <div class="container">
+            {% for related_video in related_videos %}
+            <article class="columns is-multiline">
+                {% for related_video in related_videos %}
+                <a href="watch?v={{related_video.video_id }}">
+                    <div class="column is-full">
+                    <figure class="image is-16by9">
+                        <img src="{{ video_thumbnail(related_video.video_id) }}">
+                    </figure>
+                    <div class="columns is-mobile is-multiline is-gapless is-centered">
+                        <div class="column">
+                        <div class="image is-32x32">
+                            <img src="{{ profile_image(related_video.u_name) }}" class="is-rounded">
+                        </div>
+                        </div>
+                        <div class="column">
+                        <p class="title is-6 is-spaced mt-1 mb-1">{{ related_video.title }}</p>
+                        <p class="subtitle is-6">{{ userlink(related_video, 'u_') }}</p>
+                        </div>
+                    </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </article>
+            {% endfor %}
+            </div>
         </div>
     </div>
 </div>
