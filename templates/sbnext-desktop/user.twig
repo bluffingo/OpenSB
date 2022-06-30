@@ -96,7 +96,7 @@
 <h2></h2>
 <div class="user_about">
 	<h3>{{ __("About this user") }}</h3>
-	{{ userpagedata.about | raw }}
+	{{ userpagedata.about | markdown }}
 </div>
 <p class="clear_right">
 	<a href="forum/forum.php?user={{ id }}">{{ __("View threads") }}</a>
@@ -130,9 +130,6 @@
 			<div class="card">
 				<div class="card-header">{{ __("General information") }}</div>
 				<div class="card-body">
-					<b>{{ __("Forum Threads") }}</b>: {{ userpagedata.threads }}
-					<span class="pad"><b>{{ __("Forum Posts") }}</b>: {{ userpagedata.posts }}</span>
-					<br><br>
 					<b>{{ __("Registered on") }}</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
 					<br><br>
 					<b>{{ __("Last view") }}</b>: {{ userpagedata.lastview | relative_time }}

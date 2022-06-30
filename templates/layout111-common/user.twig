@@ -20,7 +20,10 @@
         </div>
         <div class="column">
             <h1 class="title is-2">
-                {{ userpagedata.title }}
+                {{ userpagedata.title }} 
+                {% if userpagedata.powerlevel == 2 %}<span class="tag is-primary is-light">Moderator</span>
+                {% elseif userpagedata.powerlevel == 3 %}<span class="tag is-primary is-danger is-light">Administrator</span>
+                {% endif %}
             </h1>
             <p class="subtitle is-4">
                 @{{ userpagedata.name }}
