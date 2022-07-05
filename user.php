@@ -33,7 +33,7 @@ $page = (isset($_GET['p']) && is_numeric($_GET['p']) && $_GET['p'] > 0 ? $_GET['
 $forceuser = isset($_GET['forceuser']);
 
 $limit = sprintf("LIMIT %s,%s", (($page - 1) * $paginationLimit), $paginationLimit);
-$latestVideoData = query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT ?", [$userpagedata['id'], $limit]);
+$latestVideoData = query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC LIMIT $limit", [$userpagedata['id']]);
 $latestVideo  = fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC", [$userpagedata['id']]);
 $count = result("SELECT COUNT(*) FROM videos l WHERE l.author = ?", [$userpagedata['id']]);
 
