@@ -1,44 +1,44 @@
 {% extends "_layout.twig" %}
 
 {% block precontent %}
-  <section class="hero is-primary">
-    <div class="hero-body">
-      <p class="title">
-        Welcome to Project 111{% if log %}, {{userdata.title}}{% endif %}
-      </p>
-      <p class="subtitle">
-        Welcome.
-      </p>
-    </div>
-  </section>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <p class="title">
+                Welcome to Project 111{% if log %}, {{ userdata.title }}{% endif %}
+            </p>
+            <p class="subtitle">
+                Welcome.
+            </p>
+        </div>
+    </section>
 {% endblock %}
 {% block content %}
-  <section class="section">
-    <div class="container">
-    {% for content in videos|batch(4) %}
-      <article class="columns">
-          {% for video in content %}
-          <a href="watch?v={{video.video_id }}">
-            <div class="column">
-              <figure class="image is-16by9">
-                <img src="{{ video_thumbnail(video.video_id) }}">
-              </figure>
-              <div class="columns is-mobile is-multiline is-gapless is-centered">
-                <div class="column">
-                  <div class="image is-32x32">
-                    <img src="{{ profile_image(video.u_name) }}" class="is-rounded">
-                  </div>
-                </div>
-                <div class="column">
-                  <p class="title is-6 is-spaced mt-1 mb-1">{{ video.title }}</p>
-                  <p class="subtitle is-6">{{ userlink(video, 'u_') }}</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        {% endfor %}
-      </article>
-    {% endfor %}
-    </div>
-  </section>
+    <section class="section">
+        <div class="container">
+            {% for content in videos|batch(4) %}
+                <article class="columns">
+                    {% for video in content %}
+                        <a href="watch?v={{ video.video_id }}">
+                            <div class="column">
+                                <figure class="image is-16by9">
+                                    <img src="{{ video_thumbnail(video.video_id) }}">
+                                </figure>
+                                <div class="columns is-mobile is-multiline is-gapless is-centered">
+                                    <div class="column">
+                                        <div class="image is-32x32">
+                                            <img src="{{ profile_image(video.u_name) }}" class="is-rounded">
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <p class="title is-6 is-spaced mt-1 mb-1">{{ video.title }}</p>
+                                        <p class="subtitle is-6">{{ userlink(video, 'u_') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </article>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}

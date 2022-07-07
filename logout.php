@@ -1,4 +1,5 @@
 <?php
+
 namespace squareBracket;
 
 require('lib/common.php');

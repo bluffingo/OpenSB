@@ -2,118 +2,120 @@
 
 
 {% block content %}
-<div class="container my-2">
-    <div class="columns">
-        <div class="column is-8">
-            <div id="video-info">
-                <div class="columns" id="top-info">
-                    <div class="column">
-                        <div class="columns is-mobile is-multiline is-gapless is-vcentered">
-                            <div class="column is-1">
-                                <div id="video-pfp" class="image is-32x32">
-                                    <img src="{{ profile_image(video.u_name) }}" class="is-rounded">
+    <div class="container my-2">
+        <div class="columns">
+            <div class="column is-8">
+                <div id="video-info">
+                    <div class="columns" id="top-info">
+                        <div class="column">
+                            <div class="columns is-mobile is-multiline is-gapless is-vcentered">
+                                <div class="column is-1">
+                                    <div id="video-pfp" class="image is-32x32">
+                                        <img src="{{ profile_image(video.u_name) }}" class="is-rounded">
+                                    </div>
+                                </div>
+                                <div class="column is-narrow">
+                                    <p class="ml-3 has-text-justified is-size-6">{{ userlink(video, 'u_') }}</p>
+                                </div>
+                                <div class="column">
+                                    <div class="field has-addons">
+                                        <div class="control">
+                                            <a href="/subscribe" class="button ml-2">
+                                                <p>Follow</p>
+                                            </a>
+                                        </div>
+                                        <div class="control">
+                                            <p class="button is-static">
+                                                {{ subCount }}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="column is-narrow">
-                                <p class="ml-3 has-text-justified is-size-6">{{ userlink(video, 'u_') }}</p>
-                            </div>
-                            <div class="column">
-                                <div class="field has-addons">
-                                    <div class="control">
-                                        <a href="/subscribe" class="button ml-2">
-                                            <p>Follow</p>
+                        </div>
+                        <div class="column has-text-right" id="video-ratings">
+                            <a href="/likebuttonthing" class="button like-button">
+                                <i class="bi bi-hand-thumbs-up"></i>
+                                <p style="margin-left:5px">{{ total_likes }}</p>
+                            </a>
+                            <a href="/dislikebuttonthing" class="button dislike-button">
+                                <i class="bi bi-hand-thumbs-down"></i>
+                                <p style="margin-left:5px">{{ total_dislikes }}</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="image is-16by9 has-background-black">
+                        {{ include('/components/player.twig') }}
+                    </div>
+                </div>
+                <div id="comments" class="mt-5 box content">
+                    <h1 class="title is-5">Comments ({{ comCount }})</h1>
+                    {% for comment in comments %}
+                        <article class="media">
+                            <figure class="media-left px-0 ml-1 mr-3">
+                                <p class="image is-64x64">
+                                    <img class="is-rounded" src="{{ profile_image(comment.u_name) }}">
+                                </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p class="mb-0">
+                                        <strong>{{ userlink(comment, 'u_') }}</strong>
+                                        <small>{{ comment.date | relative_time }}</small>
+                                    </p>
+                                    {{ comment.comment | markdown }}
+                                </div>
+                                <nav class="level is-mobile">
+                                    <div class="level-left">
+                                        <a class="level-item">
+                                            Reply
+                                        </a>
+                                        <a class="level-item">
+                                            Like
                                         </a>
                                     </div>
-                                    <div class="control">
-                                        <p class="button is-static">
-                                            {{ subCount }}
-                                        </p>
-                                    </div>
-                                </div>
+                                </nav>
                             </div>
-                        </div>
-                    </div>
-                    <div class="column has-text-right" id="video-ratings">
-                        <a href="/likebuttonthing" class="button like-button">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <p style="margin-left:5px">{{ total_likes }}</p>
-                        </a>
-                        <a href="/dislikebuttonthing" class="button dislike-button">
-                            <i class="bi bi-hand-thumbs-down"></i>
-                            <p style="margin-left:5px">{{ total_dislikes }}</p>
-                        </a>
-                    </div>
+                        </article>
+                    {% else %}
+                        There are no comments.
+                    {% endfor %}
                 </div>
-            <div class="image is-16by9 has-background-black">
-                {{ include('/components/player.twig') }}
             </div>
-            </div>
-            <div id="comments" class="mt-5 box content">
-            <h1 class="title is-5">Comments ({{ comCount }})</h1>
-            {% for comment in comments %}
-            <article class="media">
-                <figure class="media-left px-0 ml-1 mr-3">
-                    <p class="image is-64x64">
-                    <img class="is-rounded" src="{{ profile_image(comment.u_name) }}">
-                    </p>
-                </figure>
-                <div class="media-content">
-                    <div class="content">
-                    <p class="mb-0">
-                        <strong>{{ userlink(comment, 'u_') }}</strong> <small>{{ comment.date | relative_time }}</small>
-                    </p>
-                        {{ comment.comment | markdown }}
-                    </div>
-                    <nav class="level is-mobile">
-                    <div class="level-left">
-                        <a class="level-item">
-                        Reply
-                        </a>
-                        <a class="level-item">
-                        Like
-                        </a>
-                    </div>
-                    </nav>
+            <div class="column">
+                <div class="box content">
+                    <h1 class="title is-4 is-medium mb-4">{{ video.title }}</h1>
+                    <p>{{ viewCount }} views • {{ __("Published on %s", [video.time | date('M j, Y')]) }}</p>
+                    <p>{{ video.description }}</p>
                 </div>
-            </article>
-            {% else %}
-            There are no comments.
-            {% endfor %}
-            </div>
-        </div>
-        <div class="column">
-            <div class="box content">
-                <h1 class="title is-4 is-medium mb-4">{{ video.title }}</h1>
-                <p>{{ viewCount }} views • {{ __("Published on %s", [video.time | date('M j, Y')]) }}</p>
-                <p>{{ video.description }}</p>
-            </div>
-            <div class="container">
-            {% for related_video in related_videos %}
-            <article class="columns is-multiline">
-                {% for related_video in related_videos %}
-                <a href="watch?v={{related_video.video_id }}">
-                    <div class="column is-full">
-                    <figure class="image is-16by9">
-                        <img src="{{ video_thumbnail(related_video.video_id) }}">
-                    </figure>
-                    <div class="columns is-mobile is-multiline is-gapless is-centered">
-                        <div class="column">
-                        <div class="image is-32x32">
-                            <img src="{{ profile_image(related_video.u_name) }}" class="is-rounded">
-                        </div>
-                        </div>
-                        <div class="column">
-                        <p class="title is-6 is-spaced mt-1 mb-1">{{ related_video.title }}</p>
-                        <p class="subtitle is-6">{{ userlink(related_video, 'u_') }}</p>
-                        </div>
-                    </div>
-                    </div>
-                </a>
-                {% endfor %}
-            </article>
-            {% endfor %}
+                <div class="container">
+                    {% for related_video in related_videos %}
+                        <article class="columns is-multiline">
+                            {% for related_video in related_videos %}
+                                <a href="watch?v={{ related_video.video_id }}">
+                                    <div class="column is-full">
+                                        <figure class="image is-16by9">
+                                            <img src="{{ video_thumbnail(related_video.video_id) }}">
+                                        </figure>
+                                        <div class="columns is-mobile is-multiline is-gapless is-centered">
+                                            <div class="column">
+                                                <div class="image is-32x32">
+                                                    <img src="{{ profile_image(related_video.u_name) }}"
+                                                         class="is-rounded">
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <p class="title is-6 is-spaced mt-1 mb-1">{{ related_video.title }}</p>
+                                                <p class="subtitle is-6">{{ userlink(related_video, 'u_') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </article>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

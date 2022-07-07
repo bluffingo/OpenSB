@@ -1,34 +1,34 @@
 {% extends "_layout.twig" %}
 
 {% block precontent %}
-<section class="hero is-primary">
-<div class="hero-body">
-    <h1 class="title">
-        Statistics
-    </h1>
-    <p class="subtitle">
-        About this instance of squareBracket
-    </p>
-</div>
-</section>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <h1 class="title">
+                Statistics
+            </h1>
+            <p class="subtitle">
+                About this instance of squareBracket
+            </p>
+        </div>
+    </section>
 {% endblock %}
 {% block content %}
-<section class="section">
-    <div class="container">
-        <nav class="level">
-        <div class="level-item has-text-centered">
-            <div>
-            <p class="heading">Users registered</p>
-            <p class="title">{{ stats.usercount }}</p>
-            </div>
+    <section class="section">
+        <div class="container">
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Users registered</p>
+                        <p class="title">{{ stats.usercount }}</p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Content uploaded</p>
+                        <p class="title">{{ stats.videocount }}</p>
+                    </div>
+                </div>
+            </nav>
         </div>
-        <div class="level-item has-text-centered">
-            <div>
-            <p class="heading">Content uploaded</p>
-            <p class="title">{{ stats.videocount }}</p>
-            </div>
-        </div>
-        </nav>
-    </div>
-</section>
+    </section>
 {% endblock %}

@@ -1,20 +1,24 @@
 <?php
+
 namespace squareBracket;
 /**
  * Returns true if it is executed from the command-line. (For command-line tools)
  */
-function isCli() {
-	return php_sapi_name() == "cli";
+function isCli()
+{
+    return php_sapi_name() == "cli";
 }
 
-function accessDenied() {
-	http_response_code(403);
-	die(__("Access Denied"));
+function accessDenied()
+{
+    http_response_code(403);
+    die(__("Access Denied"));
 }
 
-function redirect($url) {
-	header(sprintf('Location: %s', $url));
-	die();
+function redirect($url)
+{
+    header(sprintf('Location: %s', $url));
+    die();
 }
 
 /**
@@ -23,13 +27,14 @@ function redirect($url) {
  * @param bool $trim Trim the hash to the first 7 characters
  * @return void
  */
-function gitCommit($trim = true) {
-	$commit = file_get_contents('.git/refs/heads/new-main'); //use new-main branch or else it's gonna check randley commits
+function gitCommit($trim = true)
+{
+    $commit = file_get_contents('.git/refs/heads/new-main'); //use new-main branch or else it's gonna check randley commits
 
-	if ($trim)
-		return substr($commit, 0, 7);
-	else
-		return rtrim($commit);
+    if ($trim)
+        return substr($commit, 0, 7);
+    else
+        return rtrim($commit);
 }
 
 /**

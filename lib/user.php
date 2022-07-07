@@ -1,4 +1,5 @@
 <?php
+
 namespace squareBracket;
 /**
  * Return HTML code for an userlink.
@@ -7,30 +8,33 @@ namespace squareBracket;
  * @param string $prefix $user key prefix.
  * @return string Userlink HTML code.
  */
- 
-function userlink($user, $pre = '') {
 
-	if ($user[$pre.'customcolor']) {
-		$user[$pre.'colorname'] = sprintf('<span style="color:%s">%s</span>', $user[$pre.'customcolor'], $user[$pre.'name']);
-	}
+function userlink($user, $pre = '')
+{
+
+    if ($user[$pre . 'customcolor']) {
+        $user[$pre . 'colorname'] = sprintf('<span style="color:%s">%s</span>', $user[$pre . 'customcolor'], $user[$pre . 'name']);
+    }
 
 
-	return <<<HTML
-		<a class="user" href="/user.php?name={$user[$pre.'name']}"><span class="t_user">{$user[$pre.'colorname']}</span></a>
+    return <<<HTML
+		<a class="user" href="/user.php?name={$user[$pre . 'name']}"><span class="t_user">{$user[$pre . 'colorname']}</span></a>
 HTML;
 }
+
 /**
  * Get list of SQL SELECT fields for userlinks.
  *
  * @return string String to put inside a SQL statement.
  */
-function userfields() {
-	$fields = ['id', 'name', 'customcolor', 'joined'];
+function userfields()
+{
+    $fields = ['id', 'name', 'customcolor', 'joined'];
 
-	$out = '';
-	foreach ($fields as $field) {
-		$out .= sprintf('u.%s u_%s,', $field, $field);
-	}
+    $out = '';
+    foreach ($fields as $field) {
+        $out .= sprintf('u.%s u_%s,', $field, $field);
+    }
 
-	return $out;
+    return $out;
 }

@@ -1,45 +1,50 @@
-	<div id="masthead-container">
-		<div id="masthead">
-			<div class="grid" style="gap:0px;margin-bottom: 17.5px;">
-				<div class="col-md-8">
-					<div id="header-main">
-						{% if isMaintenance != true %}
-						<div class="button button-neutral-invis masthead-button guide-button" id="guide-toggle">{{ icon("list", 20) }}</div>
-						{% endif %}
-						<a href="/" id="logo-container"><img id="logo" src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png"></a>
-						{% if isMaintenance != true %}
-						<form id="masthead-search" action="/search.php">
-							<input type="text" class="form-control form-long uploader-form" name="tags">
-						</form>
-						{% endif %}
-					</div>
-				</div>
-				<div class="col-md-4" style="text-align: right;">
-				{% if log %}
-				<a href="/upload.php"><div class="button button-neutral-invis masthead-button">{{ icon("upload", 20) }}</div></a>
-				{% endif %}
-					<div style="margin:0;{% if log %}width:1.75rem{% endif %}" id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
-					{% if isMaintenance != true %}
-						{% if log %}
-						<div style="margin-top: 4px;">
-						<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
-						<div class="usermenushit" id="masthead-below">
-							<ul style="padding:0">
-							<li><a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a></li>
-							<li><a href="/studio/">{{ __("Studio") }}</a></li>
-							<li><a href="/settings.php">{{ __("Settings") }}</a></li>
-							<li><a href="logout.php">{{ __("Log out") }}</a></li>
-							</ul>
-						</div>
-						</div>
-						{% else %}
-						<div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
-							<a href="../login.php">{{ __("Sign in") }}</a>
-						</div>
-						{% endif %}
-					{% endif %}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="masthead-container">
+    <div id="masthead">
+        <div class="grid" style="gap:0px;margin-bottom: 17.5px;">
+            <div class="col-md-8">
+                <div id="header-main">
+                    {% if isMaintenance != true %}
+                        <div class="button button-neutral-invis masthead-button guide-button"
+                             id="guide-toggle">{{ icon("list", 20) }}</div>
+                    {% endif %}
+                    <a href="/" id="logo-container"><img id="logo"
+                                                         src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png"></a>
+                    {% if isMaintenance != true %}
+                        <form id="masthead-search" action="/search.php">
+                            <input type="text" class="form-control form-long uploader-form" name="tags">
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4" style="text-align: right;">
+                {% if log %}
+                    <a href="/upload.php">
+                        <div class="button button-neutral-invis masthead-button">{{ icon("upload", 20) }}</div>
+                    </a>
+                {% endif %}
+                <div style="margin:0;{% if log %}width:1.75rem{% endif %}"
+                     id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
+                    {% if isMaintenance != true %}
+                        {% if log %}
+                            <div style="margin-top: 4px;">
+                                <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
+                                <div class="usermenushit" id="masthead-below">
+                                    <ul style="padding:0">
+                                        <li><a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a></li>
+                                        <li><a href="/studio/">{{ __("Studio") }}</a></li>
+                                        <li><a href="/settings.php">{{ __("Settings") }}</a></li>
+                                        <li><a href="logout.php">{{ __("Log out") }}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
+                                <a href="../login.php">{{ __("Sign in") }}</a>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

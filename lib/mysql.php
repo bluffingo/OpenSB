@@ -1,44 +1,53 @@
 <?php
+
 namespace squareBracket;
+use PDO;
+use PDOException;
+
 $options = [
-	\PDO::ATTR_ERRMODE				=> \PDO::ERRMODE_EXCEPTION,
-	\PDO::ATTR_DEFAULT_FETCH_MODE	=> \PDO::FETCH_ASSOC,
-	\PDO::ATTR_EMULATE_PREPARES		=> false,
-	\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET sql_mode="TRADITIONAL"'
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES => false,
+    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET sql_mode="TRADITIONAL"'
 ];
 try {
-	$sql = new \PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
-} catch (\PDOException $e) {
-	die('Cannot connect to database. :(');
+    $sql = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
+} catch (PDOException $e) {
+    die('Cannot connect to database. :(');
 }
 
-function query($query,$params = []) {
-	global $sql;
+function query($query, $params = [])
+{
+    global $sql;
 
-	$res = $sql->prepare($query);
-	$res->execute($params);
-	return $res;
+    $res = $sql->prepare($query);
+    $res->execute($params);
+    return $res;
 }
 
-function fetch($query,$params = []) {
-	$res = query($query,$params);
-	return $res->fetch();
+function fetch($query, $params = [])
+{
+    $res = query($query, $params);
+    return $res->fetch();
 }
 
-function result($query,$params = []) {
-	$res = query($query,$params);
-	return $res->fetchColumn();
+function result($query, $params = [])
+{
+    $res = query($query, $params);
+    return $res->fetchColumn();
 }
 
-function fetchArray($query) {
-	$out = [];
-	while ($record = $query->fetch()) {
-		$out[] = $record;
-	}
-	return $out;
+function fetchArray($query)
+{
+    $out = [];
+    while ($record = $query->fetch()) {
+        $out[] = $record;
+    }
+    return $out;
 }
 
-function insertId() {
-	global $sql;
-	return $sql->lastInsertId();
+function insertId()
+{
+    global $sql;
+    return $sql->lastInsertId();
 }
