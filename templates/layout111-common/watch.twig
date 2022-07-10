@@ -44,9 +44,15 @@
                             </a>
                         </div>
                     </div>
+                    {% if postType == "video" %}
                     <div class="image is-16by9 has-background-black">
                         {{ include('/components/player.twig') }}
                     </div>
+                    {% elseif postType == "artwork" %}
+                    <div class="image">
+                        <img src="{{ video.videofile }}">
+                    </div>
+                    {% endif %}
                 </div>
                 <div id="comments" class="mt-5 box content">
                     <h1 class="title is-5">Comments ({{ comCount }})</h1>

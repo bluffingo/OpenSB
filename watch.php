@@ -2,11 +2,15 @@
 
 namespace squareBracket;
 
+// fixme: change video-related variables to more generic variables
+
+use Exception;
+
 $pageVariable = "watch";
 
 require('lib/common.php');
-$id = (isset($_GET['v']) ? $_GET['v'] : null);
-$ip = (isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']));
+$id = ($_GET['v'] ?? null);
+$ip = ($_SERVER['HTTP_CLIENT_IP'] ?? ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']));
 
 $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
 
@@ -14,23 +18,10 @@ if (!$videoData) error('404', __("The video you were looking for cannot be found
 
 $query = '';
 $count = 0;
-if ($videoData['tags']) {
-    $count = count(json_decode($videoData['tags']));
-    foreach (json_decode($videoData['tags']) as $key => $value) {
-        if ($key >= 1) {
-            $query .= "OR";
-        }
-        $query .= " tags LIKE '%" . addslashes($value) . "%' ";
-    }
-}
 $commentData = query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$id]);
 
-if ($count == 0) {
-    $relatedVideosData = query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? ORDER BY RAND() LIMIT 6", [$id]);
-} else {
-    //does this even work?
-    $relatedVideosData = query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? ORDER BY $query DESC, RAND() LIMIT 6", [$id]); //unsafe code, do not deply to production.
-}
+$relatedVideosData = query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? ORDER BY RAND() LIMIT 6", [$id]);
+
 $totalLikes = result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$videoData['id']]);
 $totalDislikes = result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=0", [$videoData['id']]);
 $combinedRatings = $totalDislikes + $totalLikes;
@@ -55,6 +46,15 @@ $subCount = fetch("SELECT COUNT(user) FROM subscriptions WHERE user=?", [$videoD
 $commentCount = fetch("SELECT COUNT(id) FROM comments WHERE id=?", [$videoData['video_id']])['COUNT(id)']; //broken,, fix -gr 11/3/2021
 $viewCount = fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']])['COUNT(video_id)'];
 
+// scrapped randley layout had dumb code regarding if the video was "modern" (converted to mp4) or "legacy"
+// (converted to dash), so we need to do this. actually i could do this in twig but whatever. -grkb 7/10/2022
+if ($videoData['post_type'] == 0 or $videoData['post_type'] == 1) {
+    $postType = "video";
+} elseif ($videoData['post_type'] == 2) {
+    $postType = "artwork";
+} else {
+    throw new Exception("Post type is not supported.");
+}
 
 $previousRecentView = result("SELECT most_recent_view from videos WHERE video_id = ?", [$id]);
 $currentTime = time();
@@ -77,4 +77,5 @@ echo $twig->render('watch.twig', [
     'videoRatio' => $allRatings,
     'recentView' => $previousRecentView,
     'allVideos' => $allVideos,
+    'postType' => $postType,
 ]);

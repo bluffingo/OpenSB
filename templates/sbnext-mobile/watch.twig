@@ -19,7 +19,11 @@
 {% block content %}
     <div class="watchNext">
         <div class="grid">
-            {{ include('/components/player.twig') }}
+            {% if postType == "video" %}
+                {{ include('/components/player.twig') }}
+            {% elseif postType == "artwork" %}
+                <img class="img-fluid" src="{{ video.videofile }}">
+            {% endif %}
 
             <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
                 <h1>{{ video.title }}</h1>
@@ -49,7 +53,7 @@
                             {{ total_likes }}
                         </button>
                         <button style="width:49%" href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}"
-                                class="button {% if rating == 0 %}button-danger{% else %}button-secondary{% endif %}">
+                                class="button {% if rating is same as(0) %}button-danger{% else %}button-secondary{% endif %}">
                             {{ icon("hand-thumbs-down-fill", 20) }}
                             {{ total_dislikes }}
                         </button>
