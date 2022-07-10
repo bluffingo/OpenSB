@@ -26,8 +26,9 @@ assets/signin.css
 
 ## Admin features
 adminer-*.php
+/latest-*-*.php
 
-## misc shit
+## misc stuff
 downloads/
 wiki/
 *.sfk
@@ -35,8 +36,6 @@ assets/_style_forums.css
 assets/darkmode.css
 assets/style.css
 .vscode/
-
-## poktube migration shit
 videos_/
 assets/thumb_/*
 mead/images/
@@ -44,4 +43,3 @@ mead/images/
 /.metadata/
 debug.log
 assets/project111/css/style.css
-/latest-mysql-en.php

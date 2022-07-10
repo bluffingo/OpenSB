@@ -2,8 +2,8 @@
 {% block precontent %}
     <section class="hero is-primary">
         <div class="hero-body">
-            <h1 class="title is-2">Upload</h1>
-            <p class="subtitle is-4">Upload. Placeholder.</p>
+            <h1 class="title">Upload</h1>
+            <p class="subtitle">Upload. Placeholder.</p>
         </div>
     </section>
 {% endblock %}
@@ -66,6 +66,24 @@
                         </div>
                     </div>
                 </div>
+
+                {% if isDebug %}
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Debug</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="debugUploaderSkip" name="debugUploaderSkip">
+                                        Skip processing
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
 
                 <input class="button is-primary" type="submit" id="upload" name="upload" value="Upload">
             </form>

@@ -66,13 +66,17 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <a class="button is-primary" href="/upload">
-                    Upload
+                    <span class="icon-text">
+                      <span class="icon">
+                        <i class="bi bi-upload"></i>
+                      </span>
+                      <span>Upload</span>
+                    </span>
                 </a>
             </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    <p class="mr-3">{{ userdata.name }}</p>
-                    <img src="{{ profile_image(userdata.name) }}" alt="{{ userdata.title }}" height="28">
+            <div class="navbar-item has-dropdown is-right">
+                <a class="navbar-link is-arrowless">
+                    <img src="{{ profile_image(userdata.name) }}" alt="{{ userdata.title }}" class="image">
                 </a>
                 <div class="navbar-dropdown is-right">
                     <a class="navbar-item">

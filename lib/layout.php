@@ -20,7 +20,9 @@ use Detection\MobileDetect;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
-    global $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $pageVariable, $isMaintenance, $versionNumber;
+    global $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages,
+           $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $pageVariable, $isMaintenance,
+           $versionNumber, $isDebug;
     $detect = new Mobile_Detect;
 
     //tf does this do?
@@ -85,6 +87,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $twig->addGlobal('allUsers', $allUsers);
     $twig->addGlobal('version', $versionNumber);
     $twig->addGlobal('isMaintenance', $isMaintenance);
+    $twig->addGlobal('isDebug', $isDebug);
 
     return $twig;
 }
