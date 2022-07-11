@@ -56,6 +56,23 @@
                 </div>
                 <div id="comments" class="mt-5 box content">
                     <h1 class="title is-5">Comments ({{ comCount }})</h1>
+                    {% if log %}
+                        <article class="media">
+                            <figure class="media-left px-0 ml-1 mr-3">
+                                <p class="image is-64x64">
+                                    <img class="is-rounded" src="{{ profile_image(userdata.name) }}">
+                                </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="field">
+                                    <p class="control">
+                                        <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                                    </p>
+                                </div>
+                                <a class="button is-primary">Submit</a>
+                            </div>
+                        </article>
+                    {% endif %}
                     {% for comment in comments %}
                         <article class="media">
                             <figure class="media-left px-0 ml-1 mr-3">
@@ -83,8 +100,6 @@
                                 </nav>
                             </div>
                         </article>
-                    {% else %}
-                        There are no comments.
                     {% endfor %}
                 </div>
             </div>

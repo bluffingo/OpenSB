@@ -13,7 +13,7 @@
     <script src="/vendor/npm-asset/vizuaalog--bulmajs/dist/bulma.js"></script>
 </head>
 <body>
-<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+<nav class="navbar is-white" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
             <img src="/assets/project111/logo.png" height="28">
@@ -49,11 +49,11 @@
                     <a class="navbar-item">
                         About
                     </a>
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="https://github.com/chazizgrkb/squarebracket">
                         Repository
                     </a>
-                    <a class="navbar-item">
-                        Contact
+                    <a class="navbar-item" href="https://discord.gg/59GgNK5NFm">
+                        Discord
                     </a>
                     <hr class="navbar-divider">
                     <a class="navbar-item">
@@ -63,60 +63,62 @@
             </div>
         </div>
         {% if log %}
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <a class="button is-primary" href="/upload">
-                    <span class="icon-text">
-                      <span class="icon">
-                        <i class="bi bi-upload"></i>
-                      </span>
-                      <span>Upload</span>
-                    </span>
-                </a>
-            </div>
-            <div class="navbar-item has-dropdown is-right">
-                <a class="navbar-link is-arrowless">
-                    <img src="{{ profile_image(userdata.name) }}" alt="{{ userdata.title }}" class="image">
-                </a>
-                <div class="navbar-dropdown is-right">
-                    <a class="navbar-item">
-                        Studio
-                    </a>
-                    <a class="navbar-item" href="/settings">
-                        Settings
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" href="/logout">
-                        Logout
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <a class="button is-primary" href="/upload">
+                        <span class="icon-text">
+                          <span class="icon">
+                            <i class="bi bi-upload"></i>
+                          </span>
+                          <span>Upload</span>
+                        </span>
                     </a>
                 </div>
+                <div class="navbar-item has-dropdown is-right">
+                    <a class="navbar-link is-arrowless image">
+                        <img src="{{ profile_image(userdata.name) }}" alt="{{ userdata.title }}" class="is-rounded">
+                    </a>
+                    <div class="navbar-dropdown is-right">
+                        <a class="navbar-item">
+                            Studio
+                        </a>
+                        <a class="navbar-item" href="/settings">
+                            Settings
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="/logout">
+                            Logout
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
         {% else %}
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-primary">
-                        <strong>Register</strong>
-                    </a>
-                    <a class="button is-light" href="/login">
-                        Login
-                    </a>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Register</strong>
+                        </a>
+                        <a class="button is-light" href="/login">
+                            Login
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-            {% endif %}
-</nav>
+        {% endif %}</nav>
+</body>
 {% block precontent %}
 {% endblock %}
 {% block content %}
 {% endblock %}
 <footer class="footer">
-    <h1 class="title">Project 111</h1>
-    <p>squareBracket Version {{ version }} · Instance running on Git commit: <a
-                href="https://github.com/chazizgrkb/squarebracket/commit/{{ git_commit() }}">{{ git_commit() }}</a></p>
-    <p><b>By the squareBracket contributors</b> · 2020-{{ 'now' | date('Y') }} | <a
-                href="/statistics.php">Statistics</a></p>
+    <div class="content has-text-centered">
+        <h1 class="title">Project 111</h1>
+        <p>squareBracket Version {{ version }} · Instance running on Git commit:
+            <a href="https://github.com/chazizgrkb/squarebracket/commit/{{ git_commit() }}">{{ git_commit() }}</a></p>
+        <p><b>By the squareBracket contributors</b> · 2020-{{ 'now' | date('Y') }} |
+            <a href="/statistics.php">Statistics</a></p>
+    </div>
 </footer>
 </body>
 </html>

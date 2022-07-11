@@ -6,7 +6,7 @@ function categoryIDToName($id)
 {
     switch ($id) {
         case 0:
-            $name = __('Miscellanous');
+            $name = __('Miscellaneous');
             break;
         case 1:
             $name = __('Entertainment');

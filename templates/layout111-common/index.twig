@@ -7,7 +7,7 @@
                 Welcome to Project 111{% if log %}, {{ userdata.title }}{% endif %}
             </p>
             <p class="subtitle">
-                Welcome.
+                {% if log %}@{{ userdata.name }}{% else %}Welcome.{% endif %}
             </p>
         </div>
     </section>

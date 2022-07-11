@@ -2,8 +2,29 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&display=swap');
 
-$primary: #445cc7;
+$white: hsl(0, 0%, 100%);
+
+// body
+$background: $white;
 $family-sans-serif: "Inter", sans-serif;
+$gap: 24px;
+
+// radius
+$radius-small: 3px;
+$radius: 5px;
+$radius-large: 7px;
+
+// colors
+$orange: #eb7532;
+$yellow: #f7d038;
+$green: #a3e048;
+$turquoise: #49da9a;
+$cyan: #34bbe6;
+$blue: #4355db;
+$purple: #d23be7;
+$red: #e6261f;
+
+$primary: #4A58D9;
 
 /// Load Bulma \\\
 @import "vendor/npm-asset/bulma/bulma.sass";
