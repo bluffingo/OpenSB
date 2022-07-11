@@ -13,10 +13,10 @@
     <script src="/vendor/npm-asset/vizuaalog--bulmajs/dist/bulma.js"></script>
 </head>
 <body>
-<nav class="navbar is-white" role="navigation" aria-label="main navigation">
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
-            <img src="/assets/project111/logo.png" height="28">
+            <img src="/assets/project111/logo_light.png" height="28">
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -63,9 +63,9 @@
             </div>
         </div>
         {% if log %}
-            <div class="navbar-end">
+            <div class="navbar-end is-hidden-mobile">
                 <div class="navbar-item">
-                    <a class="button is-primary" href="/upload">
+                    <a class="button is-white" href="/upload">
                         <span class="icon-text">
                           <span class="icon">
                             <i class="bi bi-upload"></i>
@@ -91,6 +91,20 @@
                         </a>
                     </div>
                 </div>
+            </div>
+            <div class="navbar-end is-hidden-tablet">
+                <a class="navbar-item" href="/upload">
+                    Upload
+                </a>
+                <a class="navbar-item" href="/upload">
+                    Studio
+                </a>
+                <a class="navbar-item" href="/upload">
+                    Settings
+                </a>
+                <a class="navbar-item" href="/upload">
+                    Logout
+                </a>
             </div>
         {% else %}
             <div class="navbar-end">

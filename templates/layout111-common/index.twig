@@ -16,10 +16,10 @@
     <section class="section">
         <div class="container">
             {% for content in videos|batch(4) %}
-                <article class="columns">
+                <article class="columns is-centered">
                     {% for video in content %}
                         <a href="watch?v={{ video.video_id }}">
-                            <div class="column">
+                            <div class="column is-one-quarter">
                                 <figure class="image is-16by9">
                                     <img src="{{ video_thumbnail(video.video_id) }}">
                                 </figure>

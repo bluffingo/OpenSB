@@ -112,7 +112,6 @@
                 <div class="container">
                     {% for related_video in related_videos %}
                         <article class="columns is-multiline">
-                            {% for related_video in related_videos %}
                                 <a href="watch?v={{ related_video.video_id }}">
                                     <div class="column is-full">
                                         <figure class="image is-16by9">
@@ -132,7 +131,6 @@
                                         </div>
                                     </div>
                                 </a>
-                            {% endfor %}
                         </article>
                     {% endfor %}
                 </div>
