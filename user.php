@@ -36,7 +36,8 @@ $forceuser = isset($_GET['forceuser']);
 $limit = sprintf("LIMIT %s,%s", (($page - 1) * $paginationLimit), $paginationLimit);
 $latestVideoData = query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC $limit", [$userpagedata['id']]);
 $latestVideo = fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE v.author = ? ORDER BY v.id DESC", [$userpagedata['id']]);
-$count = result("SELECT COUNT(*) FROM videos l WHERE l.author = ?", [$userpagedata['id']]);
+$countVideos = result("SELECT COUNT(*) FROM videos l WHERE l.author = ? AND `post_type` = 0 OR `post_type` = 1 ", [$userpagedata['id']]);
+$countArt = result("SELECT COUNT(*) FROM videos l WHERE l.author = ? AND `post_type` = 2 ", [$userpagedata['id']]);
 
 $commentData = query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM channel_comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$userpagedata['id']]);
 
@@ -64,7 +65,8 @@ echo $twig->render("user.twig", [
     'video' => $latestVideo,
     'forceuser' => $forceuser,
     'page' => $page,
-    'level_count' => $count,
+    'level_count' => $countVideos,
+    'art_count' => $countArt,
     'markread' => isset($_GET['markread']),
     'edited' => isset($_GET['edited']),
     'comments' => ($comments ?? null),
