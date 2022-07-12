@@ -8,8 +8,9 @@ $nonFunctionalShit = true;
 $pageVariable = "index";
 
 // currently selects all uploaded videos, should turn it into all featured only
-$videoData = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() LIMIT 12");
-$videoDataRight = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY v.time DESC LIMIT 12");
+$videoData = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id WHERE `post_type` = 0 OR `post_type` = 1 ORDER BY RAND() LIMIT 12");
+$videoDataRight = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id WHERE `post_type` = 0 OR `post_type` = 1 ORDER BY v.time DESC LIMIT 12");
+$artData = query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id WHERE `post_type` = 2 ORDER BY RAND() LIMIT 12");
 // moved total subscribers to layout.php
 if ($log) {
     $query = implode(', ', array_column(fetchArray(query("SELECT user FROM subscriptions WHERE id = ?", [$userdata['id']])), 'user'));
@@ -30,6 +31,7 @@ $twig = twigloader();
 echo $twig->render('index.twig', [
     'videos' => $videoData,
     'videos_right' => $videoDataRight,
+    'artworks' => $artData,
     'subscriptionVideos' => $subscriptionVideos,
     'totalViews' => $totalViews,
     'creationDate' => $creationDate,
