@@ -4,7 +4,7 @@ namespace squareBracket;
 
 require('lib/common.php');
 
-$type = (isset($_GET['type']) ? $_GET['type'] : 'all');
+$type = ($_GET['type'] ?? 'all');
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
 $where = ($type != 'all' ? "WHERE v.category_id = " . type_to_cat($type) : '');
