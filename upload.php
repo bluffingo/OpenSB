@@ -42,7 +42,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
     $name = $_FILES['fileToUpload']['name'];
     $temp_name = $_FILES['fileToUpload']['tmp_name']; // gets video info and thumbnail info
     $ext = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
-    if($noProcess == "on" && $isDebug) {
+    if(isset($noProcess) && $isDebug) {
         $status = 0x0; // pretend that video has been successfully uploaded
         $target_file = 'videos/' . $new . '.converted.' . $ext;
     } else {
