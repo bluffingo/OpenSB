@@ -53,7 +53,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
         query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags) VALUES (?,?,?,?,?,?,?,?)",
             [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), 'videos/' . $new . '.mpd', $status]);
 
-        if(!$noProcess) {
+        if(!isset($noProcess)) {
             if (substr(php_uname(), 0, 7) == "Windows") {
                 pclose(popen(sprintf('start /B  php lib/scripts/processingworker.php "%s" "%s" > %s', $new, $target_file, 'videos/' . $new . '.log'), "r"));
             } else {
