@@ -44,4 +44,4 @@ function __($string, $placeholders = [])
     return $lang->translate($string, $placeholders);
 }
 
-require_once('lib/lang/language_names.php');
+require_once(dirname(__DIR__) . '/lang/language_names.php');

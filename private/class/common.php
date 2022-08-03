@@ -4,27 +4,27 @@ namespace squareBracket;
 $releaseNumber = "beta-3.0.0";
 $buildNumber = 1;
 $versionNumber = $releaseNumber . "-" . str_pad($buildNumber, 3, "0", STR_PAD_LEFT);
-$gitBranch = "new-main";
+$gitBranch = "code-rewrite";
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 header("Access-Control-Allow-Origin: *");
 
-if (!file_exists('conf/config.php')) {
+if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
     die('<center><b>A configuration file could not be found. Please read the installing instructions in the README file.</b></center>');
 }
 
-require('conf/config.php');
+require(dirname(__DIR__) . '/conf/config.php');
 
 if ($isDebug and !isset($rawOutputRequired)) {
     // load profiler first
-    require_once('lib/profiler.php');
+    require_once('profiler.php');
     $profiler = new Profiler();
 }
 
-require('vendor/autoload.php');
-foreach (glob("lib/*.php") as $file) {
+require('../vendor/autoload.php'); //dogshit
+foreach (glob(dirname(__DIR__) . "/class/*.php") as $file) {
     require_once($file);
 }
 
@@ -69,7 +69,7 @@ function isCattleDog()
 
 // cattleDog's verify.php fucks up if this isn't done.
 if (!isCattleDog()) {
-    $lang = new Lang(sprintf("lib/lang/" . (isset($_COOKIE['language']) ? $_COOKIE['language'] : 'en-US') . ".json"));
+    $lang = new Lang(sprintf(dirname(__DIR__) . "/lang/" . (isset($_COOKIE['language']) ? $_COOKIE['language'] : 'en-US') . ".json"));
 
     $userfields = userfields();
     $videofields = videofields();

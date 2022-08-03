@@ -2,7 +2,7 @@
 
 namespace squareBracket;
 ini_set('display_errors', 'On');
-require('lib/common.php');
+require dirname(__DIR__) . '/private/class/common.php';
 
 $nonFunctionalShit = true;
 $pageVariable = "index";

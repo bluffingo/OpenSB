@@ -1,14 +1,14 @@
 ## User-generated files
-conf/config.php
+private/conf/config.php
+private/templates/cache/
 templates/cache/
 cache/
-assets/profpic/
-assets/thumb/*.png
-assets/backgrounds/
+dynamic/pfp/
+dynamic/thumbnails/*.png
+dynamic/banners/
 *.mp4
-videos/
-music/
-image/
+dynamic/videos/
+dynamic/art/
 
 
 ## Composer

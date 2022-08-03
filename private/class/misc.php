@@ -29,7 +29,8 @@ function redirect($url)
  */
 function gitCommit($trim = true)
 {
-    $commit = file_get_contents('.git/refs/heads/new-main'); //use new-main branch or else it's gonna check randley commits
+	global $gitBranch;
+    $commit = file_get_contents('.git/refs/heads/' . $gitBranch . '/');
 
     if ($trim)
         return substr($commit, 0, 7);
