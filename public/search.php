@@ -2,7 +2,7 @@
 
 namespace squareBracket;
 
-require('lib/common.php');
+require dirname(__DIR__) . '/private/class/common.php';
 
 $query = isset($_GET['tags']) ? $_GET['tags'] : null;
 

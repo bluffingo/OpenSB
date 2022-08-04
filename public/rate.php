@@ -3,7 +3,7 @@
 namespace squareBracket;
 
 $rawOutputRequired = true;
-require('lib/common.php');
+require dirname(__DIR__) . '/private/class/common.php';
 
 if (!isset($_POST['vidid'])) {
     die(__("No POST data."));

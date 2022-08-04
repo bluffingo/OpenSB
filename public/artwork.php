@@ -2,7 +2,7 @@
 
 namespace squareBracket;
 
-require('lib/common.php');
+require dirname(__DIR__) . '/private/class/common.php';
 
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 $limit = sprintf("LIMIT %s,%s", (($page - 1) * $paginationLimit), $paginationLimit);

@@ -9,7 +9,7 @@ namespace squareBracket;
  * @return string Userlink HTML code.
  */
 
-function userlink($user, $pre = '')
+function userlink($user, $pre = ''): string
 {
 
     if ($user[$pre . 'customcolor']) {
@@ -27,7 +27,7 @@ HTML;
  *
  * @return string String to put inside a SQL statement.
  */
-function userfields()
+function userfields(): string
 {
     $fields = ['id', 'name', 'customcolor', 'joined'];
 

@@ -2,7 +2,7 @@
 
 namespace squareBracket;
 
-include('lib/common.php');
+require dirname(__DIR__) . '/private/class/common.php';
 
 $error = '';
 

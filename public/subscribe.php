@@ -3,7 +3,7 @@
 namespace squareBracket;
 
 $rawOutputRequired = true;
-require('lib/common.php');
+require dirname(__DIR__) . '/private/class/common.php';
 if (!isset($_POST['subscription']) or $_POST['subscription'] == '') {
     die(); //don't output anything if this sneaky bastard didn't put anything to the comment field
 }

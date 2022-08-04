@@ -6,9 +6,8 @@ namespace squareBracket;
 
 use Exception;
 
-$pageVariable = "watch";
+require dirname(__DIR__) . '/private/class/common.php';
 
-require('lib/common.php');
 $id = ($_GET['v'] ?? null);
 $ip = ($_SERVER['HTTP_CLIENT_IP'] ?? ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']));
 

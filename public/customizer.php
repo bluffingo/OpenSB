@@ -2,7 +2,7 @@
 
 namespace squareBracket;
 
-require('lib/common.php');
+require dirname(__DIR__) . '/private/class/common.php';
 
 if (isset($_POST['othermagic'])) {
     $language = isset($_POST['language']) ? $_POST['language'] : 'en-US';

@@ -2,7 +2,7 @@
 
 namespace squareBracket;
 
-require('lib/common.php');
+require dirname(__DIR__) . '/private/class/common.php';
 if (isset($_POST['limit'])) {
     $limit = (isset($_POST['limit']) ? $_POST['limit'] : 6);
     $offset = (isset($_POST['from']) ? $_POST['from'] : 0);
