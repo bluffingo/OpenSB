@@ -1,0 +1,21 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Sign in") }}{% endblock %}
+
+	{% block content %}
+	<center>
+		<h1>Login to squareBracket</h1>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+		
+		<form method="post" name="loginForm" id="loginForm" action="login.php" class="form-signin">
+			<label for="name">Username:</label><br>
+			<input type="text" id="name" name="username"><br>
+			<label for="pass">Password:</label><br>
+			<input type="password" id="pass" name="password"><br>
+			<input class="button button-large button-primary" type="submit" value="Sign in" name="loginsubmit">
+		</form>
+		<small>Note: Accounts registered on PokTube (January-April 2021) and pokTwo (March-May 2022) can be used.</small>
+	</center>
+    {% endblock %}

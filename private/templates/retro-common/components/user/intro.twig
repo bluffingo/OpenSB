@@ -1,0 +1,6 @@
+<h1>About {{ userpagedata.name }}</h1>
+	{% if userpagedata.about  %}
+	<p>{{ userpagedata.about }}</p>
+	{% else %}
+	<p>This user has not set their description.</p>
+{% endif %}

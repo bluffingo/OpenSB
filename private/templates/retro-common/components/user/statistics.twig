@@ -1,0 +1,15 @@
+<h2>Statistics</h2>
+<h3>User</h3>
+<ul>
+	<li>Registered: {{ userpagedata.joined | date('Y-m-d H:i:s') }}</li>
+	<li>Last logged in: {{ userpagedata.lastview | relative_time }}</li>
+</ul>
+<h3>Content</h3>
+<ul>
+	{% if views %}
+	<li>{{ views }} views</li>
+	{% endif %}
+	<li>{{ subCount }} followers</li>
+	<li>{{ level_count }} videos</li>
+	<li>{{ art_count }} artwork</li>
+</ul>

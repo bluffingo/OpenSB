@@ -1,0 +1,21 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+<center>
+	<table width="100%" cellspacing="10">
+	  <tr>
+		<td>{{ include('/components/user/intro.twig') }}</td>
+		<td><h1>Placeholder</h1></td>
+	  </tr>
+	  <tr>
+		<td>{{ include('/components/user/statistics.twig') }}</td>
+		<td>
+		<h2>Comments</h2>
+		{% for comment in comments %}
+			{{ comment(comment) }}
+		{% endfor %}
+		</td>
+	  </tr>
+	</table>
+</center>
+{% endblock %}

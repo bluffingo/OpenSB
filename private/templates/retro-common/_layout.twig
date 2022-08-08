@@ -15,7 +15,13 @@
 							<img src="/img/banner.gif">
 						</a>
 					</td>
-					<td align="right"> {% if log %} {{ userdata.title }} {% else %} <a href="login.php">Login</a> - <a href="register.php">Register</a> {% endif %} </td>
+					<td align="right">
+						{% if log %}
+						{{ userlink(userdata) }}
+						{% else %}
+						<a href="login.php">Login</a> - <a href="register.php">Register</a>
+						{% endif %}
+					</td>
 				</tr>
 			</tbody>
 		</table>
