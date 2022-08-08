@@ -9,8 +9,6 @@ DT, DD, ADDRESS, BLOCKQUOTE, PRE, BR, HR, FORM, DL {
 B, STRONG, I, EM, CITE, VAR, TT, CODE, KBD, SAMP,
 IMG, SPAN { display: inline }
 
-LI { display: list-item }
-
 B, STRONG { font-weight: bolder }  /* relative to the parent */
 I, CITE, EM, VAR, ADDRESS, BLOCKQUOTE { font-style: italic }
 PRE, TT, CODE, KBD, SAMP { font-family: monospace }
@@ -28,13 +26,5 @@ LI { margin-left: 3em }
 DT { margin-bottom: 0 }
 DD { margin-top: 0; margin-left: 3em }
 
-A:link { color: blue }          /* unvisited link */
-A:visited { color: red }        /* visited links */
+A:link, A:visited { color: green }          /* unvisited link */
 A:active { color: lime }        /* active links */
-
-/* setting the anchor border around IMG elements
-   requires contextual selectors */
-
-A:link IMG { border: 2px solid blue }
-A:visited IMG { border: 2px solid red }
-A:active IMG { border: 2px solid lime }

@@ -1,0 +1,10 @@
+{% extends "_layout.twig" %}
+{% block title %}Statistics{% endblock %}
+
+{% block content %}
+<h1>Statistics</h1>
+<ul>
+	<li>Users: {{ stats.usercount }}</li>
+	<li>Videos: {{ stats.videocount }}</li>
+</ul>
+{% endblock %}
