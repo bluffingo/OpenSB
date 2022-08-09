@@ -4,13 +4,21 @@
 <center>
 	<table width="100%" cellspacing="10">
 	  <tr>
-		<td>{{ include('/components/user/intro.twig') }}</td>
-		<td><h1>Placeholder</h1></td>
+		<td colspan="2">{{ include('/components/user/intro.twig') }}</td>
 	  </tr>
-	  <tr>
+	  <tr valign="top">
 		<td>{{ include('/components/user/statistics.twig') }}</td>
 		<td>
 		<h2>Comments</h2>
+		{% if log %}
+		<form action="/comment.php" method="post">
+			<input type="hidden" id="really" name="really" value="ofcourse"></input>
+			<input type="hidden" id="type" name="type" value="profile"></input>
+			<input type="hidden" id="uid" name="uid" value="{{ userpagedata.id }}"></input>
+			<textarea id="comment" name="comment" rows="8" cols="30"></textarea>
+			<input type="submit"></input>
+		</form>
+		{% endif %}
 		{% for comment in comments %}
 			{{ comment(comment) }}
 		{% endfor %}

@@ -19,7 +19,7 @@ if (isset($_POST['really'])) {
             break;
     }
 } else {
-    die(__("this is invalid"));
+    die(__("Missing important POST variable."));
 }
 
 $comment = [
@@ -36,10 +36,14 @@ if ($type == 0) {
     query("INSERT INTO channel_comments (id, reply_to, comment, author, date, deleted) VALUES (?,?,?,?,?,?)",
         [$id, $reply_to, $_POST['comment'], $userdata['id'], time(), 0]);
 } else {
-    die(__("this is still invalid"));
+    die(__("Missing important POST variable."));
 }
 
-$twig = twigloader();
-echo $twig->render('components/comment.twig', [
-    'data' => $comment
-]);
+if ($frontendName != "retro") {
+	$twig = twigloader();
+	echo $twig->render('components/comment.twig', [
+		'data' => $comment
+	]);
+} else {
+	die(__("Your comment has been submitted."));
+}
