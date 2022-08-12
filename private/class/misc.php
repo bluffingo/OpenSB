@@ -30,7 +30,7 @@ function redirect($url)
 function gitCommit($trim = true)
 {
 	global $gitBranch;
-    $commit = file_get_contents('.git/refs/heads/' . $gitBranch . '/');
+    $commit = file_get_contents(__DIR__ . '/../../.git/refs/heads/' . $gitBranch); // kind of bad but hey it works
 
     if ($trim)
         return substr($commit, 0, 7);
@@ -39,7 +39,7 @@ function gitCommit($trim = true)
 }
 
 /**
- * Get name of the platform that pokTwo is running on
+ * Get name of the platform that squareBracket is running on
  *
  * @return string Name of platform. It does NOT specify the Windows/macOS/Linux version.
  */
