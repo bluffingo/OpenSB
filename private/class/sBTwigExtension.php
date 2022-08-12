@@ -19,7 +19,7 @@ class sBTwigExtension extends AbstractExtension
             new TwigFunction('video_length', '\squareBracket\videoLength', ['is_safe' => ['html']]),
             new TwigFunction('profile_image', '\squareBracket\profileImage', ['is_safe' => ['html']]),
             new TwigFunction('channel_background', '\squareBracket\channelBackground', ['is_safe' => ['html']]),
-            new TwigFunction('userlink', '\squareBracket\userlink', ['is_safe' => ['html']]),
+            new TwigFunction('userlink', '\squareBracket\Users::userlink', ['is_safe' => ['html']]), // why does it work
             new TwigFunction('comment', '\squareBracket\comment', ['is_safe' => ['html']]),
             new TwigFunction('__', '\squareBracket\__', ['is_safe' => ['html']]), //localization
             new TwigFunction('browse_channel_box', '\squareBracket\browseChannelBox', ['is_safe' => ['html']]),
@@ -34,7 +34,7 @@ class sBTwigExtension extends AbstractExtension
     {
         return [
             new TwigFilter('relative_time', '\squareBracket\relativeTime'),
-            new TwigFilter('category_id_to_name', '\squareBracket\categoryIDToName'),
+            new TwigFilter('category_id_to_name', '\squareBracket\Videos::categoryIDToName'),
             new TwigFilter('json_decode', '\squareBracket\jsonDecode'),
 
             // Markdown function for non-inline text, sanitized.

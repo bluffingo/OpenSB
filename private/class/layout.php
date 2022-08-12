@@ -26,13 +26,13 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $detect = new Mobile_Detect;
 
     //tf does this do?
-    if ($log) {
-        $totalSubscribers = result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
-        $allUsers = query("SELECT $userfields s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]);
+    /* if ($log) {
+        $totalSubscribers = $sql->result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
+        $allUsers = $sql->query("SELECT $userfields s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]);
     } else {
         $totalSubscribers = 0;
-        $allUsers = query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 10");
-    }
+        $allUsers = $sql->query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 10");
+    } */
 
     $doCache = ($tplNoCache ? false : $tplCache);
     //ugly hack to prevent reading templates from the wrong place
@@ -81,8 +81,8 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $twig->addGlobal('glob_lpp', $paginationLimit);
     $twig->addGlobal('notification_count', $notificationCount);
     $twig->addGlobal('page', $pageVariable);
-    $twig->addGlobal('totalSubscribers', $totalSubscribers);
-    $twig->addGlobal('allUsers', $allUsers);
+    /* $twig->addGlobal('totalSubscribers', $totalSubscribers);
+    $twig->addGlobal('allUsers', $allUsers); */
     $twig->addGlobal('version', $versionNumber);
     $twig->addGlobal('isMaintenance', $isMaintenance);
     $twig->addGlobal('isDebug', $isDebug);
