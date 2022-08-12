@@ -1,11 +1,19 @@
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
 index = 0;
-sbnextSounds = false;
+sbnextSounds = getCookie("SBSOUNDS");
 
 $(document).ready(function(){
-	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-});
+	console.log("squareBracket Sounds: " + sbnextSounds);
 	$("#masthead-loggedin").click(function() {
 	  var x = document.getElementById("masthead-below");
 	  if (x.style.display === "block") {
@@ -103,7 +111,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 					play("subscribe");
 				} else {
 					play("error");
-					alert('unexpected output! report to https://github.com/squarebracket-gamerappa/squarebracket/issues');
+					alert('unexpected output! report to https://github.com/chazizgrkb/squarebracket/issues');
 				}
 			}
 		});
@@ -127,7 +135,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 					play("subscribe");
 				} else {
 					play("error");
-					alert('unexpected output! report to https://github.com/squarebracket-gamerappa/squarebracket/issues');
+					alert('unexpected output! report to https://github.com/chazizgrkb/squarebracket/issues');
 				}
 			}
 		});
@@ -151,7 +159,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 						$("#like").click();
 					} else {
 						play("error");
-						alert('unexpected output! report to https://github.com/squarebracket-gamerappa/squarebracket/issues');
+						alert('unexpected output! report to https://github.com/chazizgrkb/squarebracket/issues');
 					}
 				}
 			});
@@ -176,7 +184,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 						$("#dislike").click();
 					} else {
 						play("error");
-						alert('unexpected output! report to https://github.com/squarebracket-gamerappa/squarebracket/issues');
+						alert('unexpected output! report to https://github.com/chazizgrkb/squarebracket/issues');
 					}
 				}
 			});
@@ -304,7 +312,7 @@ function reply(id) {
 }
 
 function play(sound) {
-	if (sbnextSounds == true) {
+	if (JSON.parse(sbnextSounds) == true) {
 	var audio = new Audio('/assets/sounds/'+sound+'.wav');
 	audio.play();
 	}

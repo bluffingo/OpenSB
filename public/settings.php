@@ -11,7 +11,7 @@ $pageVariable = "settings";
 
 $error = '';
 
-$customProfile = fetch("SELECT * FROM channel_settings WHERE user = ?", [$userdata['id']]);
+$customProfile = $sql->fetch("SELECT * FROM channel_settings WHERE user = ?", [$userdata['id']]);
 
 if (isset($_POST['magic'])) {
     $title = isset($_POST['title']) ? $_POST['title'] : null;
@@ -26,11 +26,13 @@ if (isset($_POST['magic'])) {
     $pass2 = (isset($_POST['pass2']) ? $_POST['pass2'] : null);
 
     $theme = isset($_POST['theme']) ? $_POST['theme'] : 'default';
+	
+	$enableSounds = isset($_POST['enableSounds']) ? $_POST['enableSounds'] : false;
 
     if ($currentPass && $pass && $pass2) {
         if (password_verify($currentPass, $userdata['password'])) {
             if ($pass == $pass2) {
-                query("UPDATE users SET password = ?, token = ? WHERE id = ?",
+                $sql->query("UPDATE users SET password = ?, token = ? WHERE id = ?",
                     [password_hash($pass, PASSWORD_DEFAULT), bin2hex(random_bytes(32)), $userdata['id']]);
 
                 redirect('login.php?new_pass');
@@ -44,7 +46,7 @@ if (isset($_POST['magic'])) {
     if ($error) $error = "The following errors occured while changing your password: " . $error;
 
     if ($resetToken) {
-        query("UPDATE users SET token = ? WHERE id = ?", [bin2hex(random_bytes(32)), $currentUser['id']]);
+        $sql->query("UPDATE users SET token = ? WHERE id = ?", [bin2hex(random_bytes(32)), $currentUser['id']]);
         redirect('login.php?new_token');
     }
 
@@ -79,7 +81,9 @@ if (isset($_POST['magic'])) {
         }
     }
 
-    query("UPDATE users SET title = ?, about = ?, customcolor = ? WHERE id = ?",
+	setcookie('SBSOUNDS', $enableSounds, 2147483647);
+
+    $sql->query("UPDATE users SET title = ?, about = ?, customcolor = ? WHERE id = ?",
         [$title, $about, $customcolor, $userdata['id']]);
 
 

@@ -65,16 +65,16 @@ class Videos
 				$name = __('Gaming');
 				break;
 			case 4:
-				$name = __('News and Updates');
+				$name = __('News and Information');
 				break;
 			case 5:
-				$name = __('Life');
+				$name = __('Lifestyle');
 				break;
 			case 6:
 				$name = __('Science & Technology');
 				break;
 			case 7:
-				$name = __('Archive Dump');
+				$name = __('Archival');
 				break;
 		}
 	return $name;

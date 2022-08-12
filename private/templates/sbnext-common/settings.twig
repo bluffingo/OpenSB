@@ -34,7 +34,7 @@
         </tr>
     </table>
 
-    <h3>{{ __("Customize your profile") }}</h3>
+    <h3>{{ __("Profile") }}</h3>
     <table class="settings">
         <tr>
             <td class="a">{{ __("Profile picture") }}</td>
@@ -59,7 +59,19 @@
                                  value="{{ userdata.customcolor | default('523bb8') }}"></td>
         </tr>
     </table>
-    <input type="hidden" name="magic" value="chilliheelerbodypillow">
+	
+	<h3>{{ __("Miscellaneous") }}</h3>
+    <table class="settings">
+        <tr>
+            <td class="a">{{ __("Sounds") }}</td>
+            <td class="b">
+				<input type="checkbox" id="enableSounds" name="enableSounds" value="true">
+				<label for="enableSounds"> {{ __("Enable sounds") }}</label><br>
+            </td>
+        </tr>
+    </table>
+	
+    <input type="hidden" name="magic" value="squarebracket_settings_save">
     <div class="right">
         <input class="button button-primary" type="submit" name="action" value="{{ __("Save Changes") }}">
     </div>
