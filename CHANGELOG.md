@@ -4,9 +4,10 @@
 * Added two new layouts
 * Fixed username check regex from principia-web repository
 * Artwork system (incomplete!)
-* Codebase is split into "private" and "public".
-* Removed Beta 2 January 2022 profile customization.
-* Renamed ``isAudio`` variable to ``sbnextSounds`` on Finalium's javascript.
+* Codebase is split into "private" and "public"
+* Removed Beta 2 January 2022 profile customization
+* Added the ability to toggle sounds on Finalium
+* Fixed profile picture uploading 
 # squareBracket Beta 2 (October 2021 - June 2022)
 ## Beta 2.1 (June 2022)
 ### Beta 2.1.0 (June 28th 2022)
@@ -16,7 +17,7 @@ GRKB's note: I think this was branched off an earlier version of Beta 2.0 due to
 * Disable audio by default, can be enabled via ``isAudio`` variable.
 * Replace cheeseRox-era assets with squareBracket assets.
 * Replace Roboto font with Barlow font on Finalium
-* Remove bootleg Bluey theme
+* Remove bootleg bluey.tv replica theme
 * Remove ``$menuLinks`` and hCaptcha settings on config.php
 * Remove the forum
 * Remove early artwork/music system implementation.
@@ -53,5 +54,6 @@ TL:DR: SCSS vulnerability fix?
 TL:DR: Profiles were redone? I honestly don't know.
 ## Alpha 1 (May 8th 2021)
 * Basic functionality
+* New codebase for very major security reasons
 # PokTube (January 2021-April 2021)
-TL:DR: No, It has been dead for a long while.
+TL:DR: Différent codebase, SQL injections vulns everywhere.
