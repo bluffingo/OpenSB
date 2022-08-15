@@ -6,12 +6,12 @@
 
 	{% block content %}
 <!-- <div class="right">
-	<form action="settings.php" method="post" enctype="multipart/form-data">
+	<form action="settings.php" method="post">
 		<input type="hidden" name="reset_token" id="floatingCurrentPass" value="resetToken">
 		<button class="button button-danger" type="submit" name="updatesettings" class="btn btn-primary">{{ __("Log out from all devices") }}</button>
 	</form>
 </div> -->
-<form action="settings.php" method="post">
+<form action="settings.php" method="post" enctype="multipart/form-data">
     <h3>{{ __("Credentials") }}</h3>
     <table class="settings">
         <tr>
