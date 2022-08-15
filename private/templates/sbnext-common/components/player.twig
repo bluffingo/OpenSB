@@ -18,7 +18,7 @@
 <script>
     {% if not (video.flags b-and 2) %}
     const manifestUri =
-        './videos/{{ video.video_id }}.mpd';
+        './dynamic/videos/{{ video.video_id }}.mpd';
 
     async function init() {
         // When using the UI, the player is made automatically by the UI object.
@@ -52,12 +52,12 @@
         } catch (error) {
             //try using webm, if that fails use mp4
             try {
-                await player.load('./videos/{{ video.video_id }}.webm');
+                await player.load('./dynamic/videos/{{ video.video_id }}.webm');
                 // This runs if the asynchronous load is successful.
                 console.log('The video has now been loaded!');
             } catch (error) {
                 try {
-                    await player.load('./videos/{{ video.video_id }}.converted.mp4');
+                    await player.load('./dynamic/videos/{{ video.video_id }}.converted.mp4');
                     // This runs if the asynchronous load is successful.
                     console.log('The video has now been loaded!');
                 } catch (error) {

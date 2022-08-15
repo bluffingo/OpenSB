@@ -51,12 +51,12 @@ if (isset($_POST['magic'])) {
     }
 
     //  Code related to profile picture uploading
-    if (isset($_FILES['profilePicture'])) {
+    if (!empty($_FILES['profilePicture'])) {
         $manager = new ImageManager();
         $name = $_FILES['profilePicture']['name'];
         $temp_name = $_FILES['profilePicture']['tmp_name'];
         $ext = pathinfo($_FILES['profilePicture']['name'], PATHINFO_EXTENSION);
-        $target_file = 'assets/profpic/' . $userdata['name'] . '.png';
+        $target_file = '../dynamic/pfp/' . $userdata['name'] . '.png';
         if (move_uploaded_file($temp_name, $target_file)) {
             // Back in PokTube there was a debate over if we should make profiles pictures use 1:1.
             // The result was to not resize strech profile pictures. That was back when PokTube
@@ -71,10 +71,13 @@ if (isset($_POST['magic'])) {
             $img->resize(640, 640);
             $img->save($target_file, 0, 'png');
         }
+	}
+	
+	if (!empty($_FILES['profileBackground'])) {
         $backname = $_FILES['profileBackground']['name'];
         $backtemp_name = $_FILES['profileBackground']['tmp_name'];
         $backext = pathinfo($_FILES['profileBackground']['name'], PATHINFO_EXTENSION);
-        $backtarget_file = 'assets/backgrounds/' . $userdata['name'] . '.png';
+        $backtarget_file = '../dynamic/banners/' . $userdata['name'] . '.png';
         if (move_uploaded_file($backtemp_name, $backtarget_file)) {
             $img = $manager->make($backtarget_file);
             $img->save($backtarget_file, 0, 'png');

@@ -115,21 +115,21 @@ function comment($comment)
 
 function profileImage($username)
 {
-    $file_exists = file_exists('assets/profpic/' . $username . '.png');
+    $file_exists = file_exists('../dynamic/pfp/' . $username . '.png');
     $twig = twigloader('components');
     return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $file_exists]);
 }
 
 function channelBackground($username)
 {
-    $file_exists = file_exists('assets/backgrounds/' . $username . '.png');
+    $file_exists = file_exists('../dynamic/banners/' . $username . '.png');
     $twig = twigloader('components');
     return $twig->render('channelbackground.twig', ['data' => $username, 'file_exists' => $file_exists]);
 }
 
 function videoThumbnail($videodata)
 {
-    $file_exists = file_exists('assets/thumb/' . $videodata . '.png');
+    $file_exists = file_exists('../dynamic/thumbnails/' . $videodata . '.png');
     $twig = twigloader('components');
     return $twig->render('videothumbnail.twig', ['data' => $videodata, 'file_exists' => $file_exists]);
 }
