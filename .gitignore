@@ -26,6 +26,7 @@ public/assets/signin.css
 public/assets/_style_forums.css
 public/assets/darkmode.css
 public/assets/style.css
+public/assets/project111/css/style.css
 
 ## Admin features
 adminer-*.php
@@ -42,5 +43,4 @@ mead/images/
 *.bak
 /.metadata/
 debug.log
-assets/project111/css/style.css
 /artwork
