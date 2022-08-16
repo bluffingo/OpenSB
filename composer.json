@@ -5,8 +5,6 @@
 		"intervention/image": "^2.5",
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
-		"twbs/bootstrap-icons": "dev-main",
-		"suin/php-rss-writer": "dev-master",
 		"mobiledetect/mobiledetectlib": "dev-master",
 		"npm-asset/bulma": "^0.9.4",
 		"npm-asset/vizuaalog--bulmajs": "0.12.x-dev",

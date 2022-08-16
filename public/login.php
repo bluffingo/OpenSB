@@ -15,11 +15,11 @@ if (isset($_POST["loginsubmit"])) {
     if (!$password) $error = __("Please enter your password! ");
 
     if (empty($error)) {
-        $logindata = fetch("SELECT password,token FROM users WHERE name = ?", [$username]);
+        $logindata = $sql->fetch("SELECT password,token FROM users WHERE name = ?", [$username]);
         if ($logindata && password_verify($password, $logindata['password'])) {
             setcookie('SBTOKEN', $logindata['token'], 2147483647);
-            $nid = result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
-            query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $nid]);
+            $nid = $sql->result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
+            $sql->query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $nid]);
 
             redirect('./');
         } else {
