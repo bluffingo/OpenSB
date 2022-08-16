@@ -18,11 +18,14 @@ bootstrap/css/bootstrap.css
 bootstrap/css/bootstrap-theme.css
 
 ## pre-cached stylesheets
-assets/bs*.css
-assets/bs*.css.map
-assets/css/*.css
-assets/dashboard.css
-assets/signin.css
+public/assets/bs*.css
+public/assets/bs*.css.map
+public/assets/css/*.css
+public/assets/dashboard.css
+public/assets/signin.css
+public/assets/_style_forums.css
+public/assets/darkmode.css
+public/assets/style.css
 
 ## Admin features
 adminer-*.php
@@ -32,9 +35,6 @@ adminer-*.php
 downloads/
 wiki/
 *.sfk
-assets/_style_forums.css
-assets/darkmode.css
-assets/style.css
 .vscode/
 videos_/
 assets/thumb_/*
