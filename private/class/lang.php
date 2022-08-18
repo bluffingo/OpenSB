@@ -18,7 +18,7 @@ class lang
         $this->langFile = $langFile;
     }
 
-    function translate($string, $placeholders = [])
+    function translate($string, $placeholders = []): string
     {
         if ($this->langFile) {
             if (isset($this->langData[$string]) && $this->langData[$string]) {
@@ -30,7 +30,7 @@ class lang
             $translatedString = $string;
         }
 
-        if ($this->langFile == 'lib/lang/qps-plocm.json') {
+        if (str_contains($this->langFile, 'private/lang/qps-plocm.json')) {
             return Pseudolocale::pseudolocalize(vsprintf($translatedString, $placeholders));
         }
         return vsprintf($translatedString, $placeholders);

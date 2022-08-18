@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 header("Access-Control-Allow-Origin: *");
 
 if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
-	die('<center><b>A configuration file could not be found. Please read the installing instructions in the README file.</b></center>');
+	die('<b>A configuration file could not be found. Please read the installing instructions in the README file.</b>');
 }
 
 require(dirname(__DIR__) . '/conf/config.php');
@@ -73,7 +73,7 @@ function isCattleDog()
 
 // cattleDog's verify.php fucks up if this isn't done.
 if (!isCattleDog()) {
-	$lang = new Lang(sprintf(dirname(__DIR__) . "/lang/" . (isset($_COOKIE['language']) ? $_COOKIE['language'] : 'en-US') . ".json"));
+	$lang = new Lang(dirname(__DIR__) . "/lang/" . ($_COOKIE['language'] ?? 'en-US') . ".json");
 
 	$userfields = Users::userfields();
 	$videofields = Videos::videofields();
