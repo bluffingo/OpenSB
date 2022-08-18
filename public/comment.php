@@ -8,14 +8,14 @@ if (isset($_POST['really'])) {
         case "video":
             $type = 0;
             $table = "comments";
-            $id = (isset($_POST['vidid']) ? $_POST['vidid'] : "");
-            $reply_to = (isset($_POST['reply_to']) ? $_POST['reply_to'] : "0");
+            $id = ($_POST['vidid'] ?? "");
+            $reply_to = ($_POST['reply_to'] ?? "0");
             break;
         case "profile":
             $type = 1;
             $table = "channel_comments";
-            $id = (isset($_POST['uid']) ? $_POST['uid'] : "");
-            $reply_to = (isset($_POST['reply_to']) ? $_POST['reply_to'] : "0");
+            $id = ($_POST['uid'] ?? "");
+            $reply_to = ($_POST['reply_to'] ?? "0");
             break;
     }
 } else {
@@ -30,10 +30,10 @@ $comment = [
 ];
 
 if ($type == 0) {
-    query("INSERT INTO comments (id, reply_to, comment, author, date, deleted) VALUES (?,?,?,?,?,?)",
+    $sql->query("INSERT INTO comments (id, reply_to, comment, author, date, deleted) VALUES (?,?,?,?,?,?)",
         [$id, $reply_to, $_POST['comment'], $userdata['id'], time(), 0]);
 } elseif ($type == 1) {
-    query("INSERT INTO channel_comments (id, reply_to, comment, author, date, deleted) VALUES (?,?,?,?,?,?)",
+    $sql->query("INSERT INTO channel_comments (id, reply_to, comment, author, date, deleted) VALUES (?,?,?,?,?,?)",
         [$id, $reply_to, $_POST['comment'], $userdata['id'], time(), 0]);
 } else {
     die(__("Missing important POST variable."));
