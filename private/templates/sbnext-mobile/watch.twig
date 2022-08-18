@@ -50,12 +50,16 @@
                         <button style="width:49%" href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
                                 class="button {% if rating == 1 %}button-success{% else %}button-secondary{% endif %}">
                             {{ icon("hand-thumbs-up-fill", 20) }}
-                            {{ total_likes }}
+                            <span id="likes">{{ total_likes }}</span>
                         </button>
                         <button style="width:49%" href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}"
                                 class="button {% if rating is same as(0) %}button-danger{% else %}button-secondary{% endif %}">
                             {{ icon("hand-thumbs-down-fill", 20) }}
-                            {{ total_dislikes }}
+                            <span id="dislikes">{{ total_dislikes }}</span>
+                        </button>
+                        <button style="width:99%" href="#" id="{% if log %}favorite{% else %}action_unlogged{% endif %}"
+                                class="button {% if isFavorited %}button-warning{% else %}button-secondary{% endif %}">
+                            {{ icon("star-fill", 20) }} {{ __("Favorite") }}
                         </button>
                     </div>
                     <h3>{{ viewCount }} {{ __("views") }}</h3>
@@ -64,7 +68,6 @@
                                 id="defaultOpen">{{ __("About") }}</button>
                         <button class="tablinks"
                                 onclick="openTab(event, 'Stats')">{{ icon("bar-chart-fill", 12) }}</button>
-                        <button class="tablinks" onclick="openTab(event, 'Flag')">{{ icon("flag-fill", 12) }}</button>
                     </div>
                 </div>
             </div>
@@ -101,21 +104,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div id="Flag" class="tabcontent" style="display: none;">
-                            <h2>{{ __("Flag this video") }}</h2>
-                            Uh yeah, that's gonna be done later.
-                        </div>
                     </div>
-                    <!-- 				 <div class="col-md-4">
-                                         <div class="col-md-4">
-                                            <img class="img-fluid" src="/assets/series_placeholder.png">
-                                         </div>
-                                         <div class="col-md-8">
-                                         <b>Katt</b><br>
-                                         Season 2<br>
-                                         Episode 2b<br>
-                                         </div>
-                                     </div> -->
                 </div>
             </div>
             <div class="card">

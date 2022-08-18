@@ -153,7 +153,7 @@ $(document).ready(function(){
 						$("#like").attr("class", "button button-success");
 						$("#likes").text(parseInt($("#likes").text()) + 1)
 						$("#dislikes").text(parseInt($("#dislikes").text()) - 1)
-						$("#dislike").attr("class", "button button-secondary-invis");
+						$("#dislike").attr("class", "button button-secondary");
 						play("like");
 					} else if(data == 0) {
 						$("#like").click();
@@ -178,7 +178,7 @@ $(document).ready(function(){
 						$("#dislike").attr("class", "button button-danger");
 						$("#dislikes").text(parseInt($("#dislikes").text()) + 1)
 						$("#likes").text(parseInt($("#likes").text()) - 1)
-						$("#like").attr("class", "button button-secondary-invis");
+						$("#like").attr("class", "button button-secondary");
 						play("dislike");
 					} else if (data == 0) {
 						$("#dislike").click();
