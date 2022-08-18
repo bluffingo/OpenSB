@@ -27,6 +27,7 @@ public/assets/_style_forums.css
 public/assets/darkmode.css
 public/assets/style.css
 public/assets/project111/css/style.css
+*.css.map
 
 ## Admin features
 adminer-*.php
@@ -49,3 +50,6 @@ debug.log
 ## poktwo port made for testing, won't be publishing due to kids.
 private/templates/poktwo-2005-common
 public/img
+
+## bootstrap port made for testing, won't be publishing due to redudancy
+private/templates/bootstrap2021-common
