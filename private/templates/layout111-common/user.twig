@@ -37,12 +37,14 @@
                 {% endif %}
                 <div class="column">
                     <nav class="level">
+                        {% if views %}
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Views</p>
                                 <p class="title">{{ views }} </p>
                             </div>
                         </div>
+                        {% endif %}
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Followers</p>
@@ -57,7 +59,7 @@
                         </div>
                         <div class="level-item has-text-centered">
                             <div>
-                                <p class="heading">Artwork</p>
+                                <p class="heading">Images</p>
                                 <p class="title">{{ art_count }}</p>
                             </div>
                         </div>

@@ -32,6 +32,7 @@ You will have to modify the directories to match your instance's location.
     DocumentRoot "C:/xampp/squarebracket/public"
 
     Alias /dynamic "C:/xampp/squarebracket/dynamic"
+    Alias /bulmajs "C:/xampp/squarebracket/vendor/npm-asset/vizuaalog--bulmajs/dist/"
 
     <Directory "C:/xampp/squarebracket">
         Options Indexes FollowSymLinks MultiViews

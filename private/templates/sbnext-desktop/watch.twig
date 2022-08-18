@@ -74,6 +74,10 @@
                                     {{ icon("hand-thumbs-down-fill", 20) }}
                                     {{ total_dislikes }}
                                 </button>
+                                <button href="#" id="{% if log %}favorite{% else %}action_unlogged{% endif %}"
+                                        class="button {% if isFavorited %}button-warning{% else %}button-secondary-invis{% endif %}">
+                                    {{ icon("star", 20) }}
+                                </button>
                             </div>
                         </div>
                     </div>

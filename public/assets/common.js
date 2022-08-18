@@ -190,6 +190,28 @@ $(document).ready(function(){
 			});
 		}
 	});
+	$("#favorite").click(function(){
+		if($("#favorite").attr("class") != "button button-warning") {
+			$.post("favorite.php",
+				{
+					action: "favorite",
+					video_id: video_id
+				},
+				function(data,status){
+					if (status == "success") {
+						if (data == 1) {
+							$("#favorite").attr("class", "button button-warning");
+							play("favorite");
+						} else if (data == 0) {
+							$("#favorite").click();
+						} else {
+							play("error");
+							alert('unexpected output! report to https://github.com/chazizgrkb/squarebracket/issues');
+						}
+					}
+				});
+		}
+	});
 	$("#showSearch").click(function(){
 		$("#masthead-search").attr("style", "");
 		$("#showSearch").attr("style", "display:none");
