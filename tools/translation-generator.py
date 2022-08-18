@@ -15,10 +15,10 @@ for path in paths:
 	# Ignore composer dependency files
 	if platform.system() == "Windows":
 		if "vendor\\" in str(path): continue
-		if "templates\\cache\\" in str(path): continue
+		if "private/templates\\cache\\" in str(path): continue
 	else:
 		if "vendor/" in str(path): continue
-		if "templates/cache/" in str(path): continue
+		if "private/templates/cache/" in str(path): continue
 
 	with open(path, "r", encoding='Latin-1') as f:
 		file_matches = re.findall('__\("([^"]+)"', f.read())
@@ -35,7 +35,7 @@ for path in paths:
 			strings.append(match)
 			print(match)
 
-with open("lib/lang/template.json", "w") as f:
+with open("private/lang/template.json", "w") as f:
 	f.write("{\n")
 	i = 0
 	for string in strings:
