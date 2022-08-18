@@ -11,13 +11,11 @@ if (isset($_GET['id'])) {
     if (!isset($userpagedata) || !$userpagedata) {
         error('404', 'Invalid user');
     }
-    $customProfile = $sql->fetch("SELECT * FROM channel_settings WHERE user = ?", [$userpagedata['id']]);
 } else if (isset($_GET['name'])) {
     $userpagedata = $sql->fetch("SELECT * FROM users WHERE name = ?", [$_GET['name']]);
     if (!isset($userpagedata) || !$userpagedata) {
         error('404', 'Invalid user');
     }
-    $customProfile = $sql->fetch("SELECT * FROM channel_settings WHERE user = ?", [$userpagedata['id']]);
 } else {
     error('404', 'No user specified');
 }
@@ -64,7 +62,6 @@ echo $twig->render("user.twig", [
     'comments' => ($comments ?? null),
     'subCount' => $subCount,
     'subscribed' => $subscribed,
-    'customProfile' => $customProfile,
     'comments' => $commentData,
     'message' => $message,
     'subscribers' => $subscribers,

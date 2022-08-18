@@ -10,7 +10,7 @@ class Users
 	 * Return HTML code for an userlink.
 	 *
 	 * @param array $user User array containing user fields. Retrieve this from the database using userfields().
-	 * @param string $prefix $user key prefix.
+	 * @param string $pre $user key prefix.
 	 * @return string Userlink HTML code.
 	 */
 	static function userlink($user, $pre = ''): string

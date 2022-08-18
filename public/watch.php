@@ -11,7 +11,7 @@ require dirname(__DIR__) . '/private/class/common.php';
 $id = ($_GET['v'] ?? null);
 $ip = ($_SERVER['HTTP_CLIENT_IP'] ?? ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']));
 
-$videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
+$videoData = Videos::getVideoData($userfields, $id);
 
 if (!$videoData) error('404', __("The video you were looking for cannot be found."));
 
@@ -30,9 +30,15 @@ $allRatings = Videos::calculateRatio($totalDislikes, $totalLikes, $combinedRatin
 $allVideos = $sql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);
 
 if (isset($userdata['name'])) {
+    if ($sql->result("SELECT * from favorites WHERE video_id = ? AND user_id = ?", [$videoData['video_id'], $userdata['id']])) {
+        $isFavorited = true;
+    } else {
+        $isFavorited = false;
+    }
     $rating = $sql->result("SELECT rating FROM rating WHERE video=? AND user=?", [$videoData['id'], $userdata['id']]);
     $subscribed = $sql->result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $videoData['author']]);
 } else {
+    $isFavorited = false;
     $rating = 2;
     $subscribed = 0;
 }
@@ -77,4 +83,5 @@ echo $twig->render('watch.twig', [
     'recentView' => $previousRecentView,
     'allVideos' => $allVideos,
     'postType' => $postType,
+    'isFavorited' => $isFavorited,
 ]);

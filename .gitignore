@@ -44,3 +44,8 @@ mead/images/
 /.metadata/
 debug.log
 /artwork
+
+
+## poktwo port made for testing, won't be publishing due to kids.
+private/templates/poktwo-2005-common
+public/img
