@@ -1,6 +1,7 @@
 <?php
 
 namespace squareBracket;
+
 use Parsedown;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
@@ -10,6 +11,8 @@ class sBTwigExtension extends AbstractExtension
 {
     public function getFunctions()
     {
+        global $profiler;
+
         return [
             new TwigFunction('browse_video_box', '\squareBracket\browseVideoBox', ['is_safe' => ['html']]),
             new TwigFunction('small_video_box', '\squareBracket\smallVideoBox', ['is_safe' => ['html']]),
@@ -27,6 +30,10 @@ class sBTwigExtension extends AbstractExtension
             new TwigFunction('icon_alt', '\squareBracket\icon_alt', ['is_safe' => ['html']]), //intended for sbnext's upload_start -gr 10/8/2021
             new TwigFunction('pagination', '\squareBracket\pagination', ['is_safe' => ['html']]),
             new TwigFunction('git_commit', '\squareBracket\gitCommit'),
+            new TwigFunction('operating_system', '\squareBracket\getOS'),
+            new TwigFunction('profiler_stats', function () use ($profiler) {
+                $profiler->getStats();
+            })
         ];
     }
 

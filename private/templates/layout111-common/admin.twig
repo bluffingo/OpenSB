@@ -1,0 +1,95 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Admin panel{% endblock %}
+
+{% block precontent %}
+    <section class="hero is-small is-primary">
+        <div class="hero-body">
+            <h1 class="title">
+                Admin panel
+            </h1>
+            <p class="subtitle">
+                Currently running squareBracket version {{ version }} (commit {{ git_commit() }})
+                on {{ operating_system() }}.
+            </p>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <table class="table is-bordered is-striped is-fullwidth">
+                <tr class="h">
+                    <td class="b" colspan="2">Latest registered users</td>
+                </tr>
+                {% for user in latest_registered_users %}
+                    <tr>
+                        <td class="b"><a href="profile.php?user={{ user.name }}">{{ user.name }}</a></td>
+                        <td class="b">{{ user.joined | date() }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="column">
+            <table class="table is-bordered is-striped is-fullwidth">
+                <tr class="h">
+                    <td class="b" colspan="2">Latest seen users</td>
+                </tr>
+                {% for user in latest_seen_users %}
+                    <tr>
+                        <td class="b"><a href="profile.php?user={{ user.name }}">{{ user.name }}</a></td>
+                        <td class="b">{{ user.lastview | relative_time }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="column">
+            <table class="table is-bordered is-striped is-fullwidth">
+                <tr class="h">
+                    <td class="b" colspan="2">Latest uploaded videos</td>
+                </tr>
+                {% for video in videos %}
+                    <tr>
+                        <td class="b"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</td>
+                        <td class="b">{{ video.time | relative_time }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h3 class="title is-5">Numbers</h3>
+
+    <nav class="level">
+        {% for thing in things_to_count %}
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">{{ thing | title }}</p>
+                    <p class="title">{{ count[thing] }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </nav>
+</section>
+
+<section class="section">
+    <h3 class="title is-5">Comments</h3>
+    {% for comment in comments %}
+        <div>
+            {{ userlink(comment, 'u_') }} &bull; {{ comment.date | relative_time }}
+            <br>
+            <div class="comment">
+                {{ comment.comment | markdown }}
+            </div>
+            <br>
+            <p>
+                <a>{{ __("Delete") }}</a>
+            </p>
+        </div>
+    {% endfor %}
+</section>
+{% endblock %}
