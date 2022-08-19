@@ -1,6 +1,5 @@
 {% extends "_layout.twig" %}
 
-
 {% block content %}
     <div class="container my-4">
         <div class="columns">
@@ -20,9 +19,9 @@
                                 <div class="column">
                                     <div class="field has-addons">
                                         <div class="control">
-                                            <a href="/subscribe" class="button ml-2">
+                                            <button class="button ml-2 sb-unimplemented">
                                                 <p>Follow</p>
-                                            </a>
+                                            </button>
                                         </div>
                                         <div class="control">
                                             <p class="button is-static">
@@ -34,14 +33,14 @@
                             </div>
                         </div>
                         <div class="column has-text-right" id="video-ratings">
-                            <a href="/likebuttonthing" class="button like-button">
+                            <button class="button like-button sb-unimplemented">
                                 <i class="bi bi-hand-thumbs-up"></i>
                                 <p style="margin-left:5px">{{ total_likes }}</p>
-                            </a>
-                            <a href="/dislikebuttonthing" class="button dislike-button">
+                            </button>
+                            <button class="button dislike-button sb-unimplemented">
                                 <i class="bi bi-hand-thumbs-down"></i>
                                 <p style="margin-left:5px">{{ total_dislikes }}</p>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     {% if postType == "video" %}
@@ -69,7 +68,7 @@
                                         <textarea class="textarea" placeholder="Add a comment..."></textarea>
                                     </p>
                                 </div>
-                                <a class="button is-primary">Submit</a>
+                                <a class="button is-primary sb-unimplemented">Submit</a>
                             </div>
                         </article>
                     {% endif %}
@@ -90,10 +89,10 @@
                                 </div>
                                 <nav class="level is-mobile">
                                     <div class="level-left">
-                                        <a class="level-item">
+                                        <a class="level-item sb-unimplemented">
                                             Reply
                                         </a>
-                                        <a class="level-item">
+                                        <a class="level-item sb-unimplemented">
                                             Like
                                         </a>
                                     </div>
