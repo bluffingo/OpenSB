@@ -36,6 +36,7 @@
       <path value="$PROJECT_DIR$/vendor/evenement/evenement" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/neutron/temporary-filesystem" />
+      <path value="$PROJECT_DIR$/vendor/phlak/strgen" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3">

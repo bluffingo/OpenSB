@@ -56,11 +56,11 @@ try {
 
 	$frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount2 / $framerate));
 	$frame->filters()->custom('scale=512x288');
-	$frame->save('assets/thumb/' . $new . '.png');
+	$frame->save('dynamic/thumbnails/' . $new . '.png');
 
 	$video->filters()->resize(new Coordinate\Dimension(1280, 720), Filters\Video\ResizeFilter::RESIZEMODE_INSET, true)
 		->custom('format=yuv420p');
-	$video->save($h264, 'videos/' . $new . '.converted.mp4');
+	$video->save($h264, 'dynamic/videos/' . $new . '.converted.mp4');
 	debug_print_backtrace();
 	unlink($target_file);
 	//delete_directory($preload_folder);
@@ -70,12 +70,12 @@ try {
 	query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
 		[round($duration / $framerate), $videoData['flags'] ^ 0x2, $new]);
 } catch (Exception $e) {
-	echo "(p2 uploader port) Something went wrong!:". $e->getMessage();
+	echo "(p2 uploader port, sb rewrite) Something went wrong: ". $e->getMessage();
 }
 
 clearstatcache();
 
-if (0 == filesize("videos/" . $new . ".converted.mp4")) {
-    unlink("videos/" . $new . ".converted.mp4");
+if (0 == filesize("dynamic/videos/" . $new . ".converted.mp4")) {
+    unlink("dynamic/videos/" . $new . ".converted.mp4");
     //delete_directory($preload_folder);
 }
