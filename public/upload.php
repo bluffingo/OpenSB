@@ -5,28 +5,12 @@ namespace squareBracket;
 //this uploads and converts the video, should switch to a better solution!
 require dirname(__DIR__) . '/private/class/common.php';
 
+use PHLAK\StrGen;
+
 if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata['name'])) {
-    //TODO: make video IDs not use multiple underscores.
-    $video_id = substr(base64_encode(md5(bin2hex(random_bytes(6)))), 0, 11); //you are never too sure how much randomness you need.
+	$generator = new StrGen\Generator();
     $uploader = $userdata['id'];
-    $new = '';
-    foreach (str_split($video_id) as $char) {
-        switch (rand(0, 4)) {
-            case rand(0, 1):
-                $char = str_rot13($char);
-                break;
-            case rand(0, 2):
-                $char = '_';
-                break;
-            case rand(0, 3):
-                $char = mb_strtoupper($char);
-                break;
-            case rand(0, 4):
-                $char = '-';
-                break;
-        }
-        $new .= $char;
-    }
+    $new = $generator->alphaNumeric(11);
 
     $title = ($_POST['title'] ?? null);
     $description = ($_POST['desc'] ?? null);

@@ -3,7 +3,7 @@
 namespace squareBracket;
 use Arokettu\Pseudolocale\Pseudolocale;
 
-class lang
+class Lang
 {
     private $langData;
     private $langFile;

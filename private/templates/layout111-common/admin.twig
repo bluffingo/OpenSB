@@ -21,9 +21,7 @@
     <div class="columns">
         <div class="column">
             <table class="table is-bordered is-striped is-fullwidth">
-                <tr class="h">
-                    <td class="b" colspan="2">Latest registered users</td>
-                </tr>
+                <th>Latest registered users</th>
                 {% for user in latest_registered_users %}
                     <tr>
                         <td class="b"><a href="profile.php?user={{ user.name }}">{{ user.name }}</a></td>
