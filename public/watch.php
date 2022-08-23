@@ -27,6 +27,8 @@ $combinedRatings = $totalDislikes + $totalLikes;
 
 $allRatings = Videos::calculateRatio($totalDislikes, $totalLikes, $combinedRatings);
 
+$totalFavorites = $sql->result("SELECT COUNT(video_id) FROM favorites WHERE video_id=?", [$videoData['video_id']]);
+
 $allVideos = $sql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);
 
 if (isset($userdata['name'])) {
@@ -74,6 +76,7 @@ echo $twig->render('watch.twig', [
     'total_likes' => $totalLikes,
     'total_dislikes' => $totalDislikes,
     'total_rating' => $combinedRatings,
+    'total_favorites' => $totalFavorites,
     'rating' => $rating,
     'subscribed' => $subscribed,
     'subCount' => $subCount,

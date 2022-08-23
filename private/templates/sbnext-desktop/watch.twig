@@ -9,7 +9,6 @@
           content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
     <meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
     <meta property="og:url" content="{{ page_url }}">
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script>
         video_id = '{{ video.video_id }}';
         user_id = '{{ video.author }}';
@@ -18,20 +17,6 @@
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
     <div class="watchNext">
-        {% if userdata.id == video.author %}
-            <div class="grid">
-                <div class="col-md-12">
-                    <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
-                        <div class="grid">
-                            <div class="col-md-4">
-                                <a class="button button-dark"
-                                   href="/edit.php?v={{ video.video_id }}">{{ __("Edit") }}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
         <div class="grid">
             <div class="col-md-8">
                 <h1>{{ video.title }}</h1>
@@ -53,7 +38,7 @@
                             <span>{{ __("Published on %s", [video.time | date('M j, Y')]) }} • {{ viewCount }} {{ __("views") }}</span>
                             <br>
                             {% if userdata.id == video.author %}<a
-                                    class="button button-secondary button-small">{{ __("Channel settings") }}</a>{% else %}
+                                class="button button-secondary button-small" href="/edit.php?v={{ video.video_id }}">{{ __("Edit") }}</a>{% else %}
                                 <button id="subscribe-watch"
                                         class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small"
                                         type="button"
@@ -108,13 +93,16 @@
                                 </div>
                             </div>
                             <div id="Stats" class="tabcontent" style="display: none;">
-                                <h2>{{ __("Stats") }}</h2>
+                                <h2>{{ __("Statistics") }}</h2>
                                 <ul style="padding:0">
                                     <li>
-                                        {{ __("Like-to-dislike ratio:") }} {{ videoRatio }}%
+                                        {{ __("Rating ratio:") }} {{ videoRatio }}%
                                     </li>
                                     <li>
-                                        {{ __("Most recent view:") }} {{ recentView | relative_time }}
+                                        {{ __("Last viewed:") }} {{ recentView | relative_time }}
+                                    </li>
+                                    <li>
+                                        {{ __("Favorites:") }} {{ total_favorites }}
                                     </li>
                                 </ul>
                             </div>

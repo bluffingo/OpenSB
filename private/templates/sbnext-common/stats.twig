@@ -9,16 +9,22 @@
                     <h2>{{ __("About this instance of squareBracket") }}</h2>
                 </div>
                 <div class="grid">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="statbox">
-                            <div class="stat-title">{{ __("Users") }}</div>
+                            <div class="stat-title">{{ __("Registered users") }}</div>
                             {{ stats.usercount }}
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="statbox">
-                            <div class="stat-title">{{ __("Videos") }}</div>
+                            <div class="stat-title">{{ __("Posts") }}</div>
                             {{ stats.videocount }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="statbox">
+                            <div class="stat-title">{{ __("Views") }}</div>
+                            {{ stats.viewcount }}
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,6 @@
           content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
     <meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
     <meta property="og:url" content="{{ page_url }}">
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script>
         video_id = '{{ video.video_id }}';
         user_id = '{{ video.author }}';
@@ -35,7 +34,7 @@
                     • {{ allVideos }} {{ __("videos") }}
                     <br>
                     {% if userdata.id == video.author %}<a
-                            class="button button-secondary button-small">{{ __("Channel settings") }}</a>{% else %}
+                            class="button button-secondary button-small" href="/edit.php?v={{ video.video_id }}">{{ __("Edit") }}</a>{% else %}
                         <button id="subscribe-watch"
                                 class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small"
                                 type="button"
@@ -47,6 +46,8 @@
                 </div>
                 <div class="grid" style="margin-top:5px">
                     <div style="margin-top:-9px;text-align: center">
+                        {# js that uses action_unlogged will only work for the like button, i found out about this quirk
+                        while trying to do finalium's javascript, -grkb 8/23/2022 #}
                         <button style="width:49%" href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
                                 class="button {% if rating == 1 %}button-success{% else %}button-secondary{% endif %}">
                             {{ icon("hand-thumbs-up-fill", 20) }}
@@ -83,24 +84,20 @@
                                         <h4 class="title">{{ __("Category:") }}</h4>
                                         <div class="content">{{ video.category_id | category_id_to_name() }}</div>
                                     </li>
-                                    <li>
-                                        <h4 class="title">{{ __("License:") }}</h4>
-                                        <div class="content">{{ __("Standard squareBracket License") }}</div>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div id="Stats" class="tabcontent" style="display: none;">
-                            <h2>{{ __("Stats") }}</h2>
+                            <h2>{{ __("Statistics") }}</h2>
                             <ul style="padding:0">
                                 <li>
-                                    {{ __("Unfiltered views:") }} {{ video.views }}
+                                    {{ __("Rating ratio:") }} {{ videoRatio }}%
                                 </li>
                                 <li>
-                                    {{ __("Like-to-dislike ratio:") }} {{ videoRatio }}%
+                                    {{ __("Last viewed:") }} {{ recentView | relative_time }}
                                 </li>
                                 <li>
-                                    {{ __("Most recent view:") }} {{ recentView | relative_time }}
+                                    {{ __("Favorites:") }} {{ total_favorites }}
                                 </li>
                             </ul>
                         </div>

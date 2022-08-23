@@ -1,97 +1,44 @@
-<div id="container" style="margin:0;">
+<div id="container" style="background-color:black;color:white;width: 100%;margin: 0;">
     {% if (video.flags b-and 2) %}
-        <div style="background-color:black;color:white;aspect-ratio: 16 / 9;width: 100%;">
+        <div>
             This video should be processing. If you see this message for too long, then please contact an administrator.
         </div>
     {% else %}
-        <div data-shaka-player-container style="aspect-ratio: 16 / 9;width: 100%;background-color:black;"
-             data-shaka-player-cast-receiver-id="BBED8D28">
-            <video style="aspect-ratio: 16 / 9;width: 100%;background-color:black;" id="video" data-shaka-player
-                   crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}">
-            </video>
-        </div>
+        <!-- this is not the right location but i don't care -grkb 8/23/2022 -->
+        <script src="https://vjs.zencdn.net/7.20.2/video.min.js"></script>
+        <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet" />
+        <video
+                id="sb-video"
+                class="video-js"
+                controls
+                preload="auto"
+                poster="{{ video_thumbnail(video.video_id) }}"
+                data-setup="{}">
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank"
+                >supports HTML5 video</a
+                >
+            </p>
+        </video>
+        <script>
+            var player = videojs('sb-video', {
+                sourceOrder: true,
+                retryOnError: true,
+                aspectRatio: "16:9",
+                fluid: true,
+                autoplay: true,
+                preload: "auto"
+            });
+
+            player.src([{
+                src: '/dynamic/videos/{{ video.video_id }}.converted.mp4',
+                type: 'video/mp4'
+            }, {
+                src: '/dynamic/videos/{{ video.video_id }}.mpd',
+                type: 'application/dash+xml'
+            }]);
+        </script>
     {% endif %}
 </div>
-<script src="https://cdn.jsdelivr.net/npm/shaka-player@4.1.1/dist/shaka-player.compiled.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/shaka-player@4.1.1/dist/shaka-player.ui.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/shaka-player@4.1.1/dist/controls.css">
-<script>
-    {% if not (video.flags b-and 2) %}
-    const manifestUri =
-        './dynamic/videos/{{ video.video_id }}.mpd';
-
-    async function init() {
-        // When using the UI, the player is made automatically by the UI object.
-        const video = document.getElementById('video');
-        const ui = video['ui'];
-        const controls = ui.getControls();
-        const player = controls.getPlayer();
-
-        player.configure({
-            manifest: {
-                dash: {
-                    ignoreEmptyAdaptationSet: true
-                }
-            }
-        });
-
-        // Attach player and ui to the window to make it easy to access in the JS console.
-        window.player = player;
-        window.ui = ui;
-
-        // Listen for error events.
-        player.addEventListener('error', onPlayerErrorEvent);
-        controls.addEventListener('error', onUIErrorEvent);
-
-        // Try to load a manifest.
-        // This is an asynchronous process.
-        try {
-            await player.load(manifestUri);
-            // This runs if the asynchronous load is successful.
-            console.log('The video has now been loaded!');
-        } catch (error) {
-            //try using webm, if that fails use mp4
-            try {
-                await player.load('./dynamic/videos/{{ video.video_id }}.webm');
-                // This runs if the asynchronous load is successful.
-                console.log('The video has now been loaded!');
-            } catch (error) {
-                try {
-                    await player.load('./dynamic/videos/{{ video.video_id }}.converted.mp4');
-                    // This runs if the asynchronous load is successful.
-                    console.log('The video has now been loaded!');
-                } catch (error) {
-                    onPlayerError(error);
-                }
-            }
-        }
-    }
-
-    function onPlayerErrorEvent(errorEvent) {
-        // Extract the shaka.util.Error object from the event.
-        onPlayerError(event.detail);
-    }
-
-    function onPlayerError(error) {
-        // Handle player error
-        console.error('Error code', error.code, 'object', error);
-    }
-
-    function onUIErrorEvent(errorEvent) {
-        // Extract the shaka.util.Error object from the event.
-        onPlayerError(event.detail);
-    }
-
-    function initFailed(errorEvent) {
-        // Handle the failure to load; errorEvent.detail.reasonCode has a
-        // shaka.ui.FailReasonCode describing why.
-        console.error('Unable to load the UI library!');
-    }
-
-    // Listen to the custom shaka-ui-loaded event, to wait until the UI is loaded.
-    document.addEventListener('shaka-ui-loaded', init);
-    // Listen to the custom shaka-ui-load-failed event, in case Shaka Player fails
-    // to load (e.g. due to lack of browser support).
-    document.addEventListener('shaka-ui-load-failed', initFailed);
-    {% endif %}
-</script>
