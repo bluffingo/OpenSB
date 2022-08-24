@@ -3,6 +3,8 @@
 
 	"Access Denied": "Access Denied",
 
+	"Delete": "Delete",
+
 	"Settings": "Settings",
 	"Email": "Email",
 	"Change Password": "Change Password",
@@ -19,6 +21,14 @@
 	"s": "s",
 
 	"Published on %s": "Published on %s",
+
+	"Edit video": "Edit video",
+	"Post info": "Post info",
+	"Enter the updated title and description of your post.": "Enter the updated title and description of your post.",
+	" Title": " Title",
+	" Description": " Description",
+	" Tags": " Tags",
+	"Edit": "Edit",
 
 	"Sign in": "Sign in",
 	"Password successfully reset! Please login with your new password.": "Password successfully reset! Please login with your new password.",
@@ -58,8 +68,9 @@
 
 	"Statistics": "Statistics",
 	"About this instance of squareBracket": "About this instance of squareBracket",
-	"Users": "Users",
-	"Videos": "Videos",
+	"Registered users": "Registered users",
+	"Posts": "Posts",
+	"Views": "Views",
 
 	"Edit my settings": "Edit my settings",
 	"View user page as viewer": "View user page as viewer",
@@ -90,6 +101,10 @@
 
 	"Sorry about that.": "Sorry about that.",
 
+	"Guide": "Guide",
+	"By the squareBracket contributors": "By the squareBracket contributors",
+	"Running on commit: ": "Running on commit: ",
+
 	"view%s": "view%s",
 
 	"by": "by",
@@ -103,19 +118,8 @@
 	"Logout": "Logout",
 	"Sign In": "Sign In",
 	"Home": "Home",
+	"Videos": "Videos",
 	"Channels": "Channels",
-
-	"Edit video": "Edit video",
-	"Details": "Details",
-	"Comments": "Comments",
-	"Video info": "Video info",
-	"Enter the title and description of your video.": "Enter the title and description of your video.",
-	" Title": " Title",
-	" Description": " Description",
-	" Tags": " Tags",
-	"Edit": "Edit",
-
-	"You do not have any uploaded videos!": "You do not have any uploaded videos!",
 
 	"Latest videos": "Latest videos",
 	"(Page %s)": "(Page %s)",
@@ -142,24 +146,20 @@
 	"Recently uploaded to squareBracket": "Recently uploaded to squareBracket",
 
 	"Upload video": "Upload video",
+	"Video info": "Video info",
+	"Enter the title and description of your video.": "Enter the title and description of your video.",
 	"Video file": "Video file",
 	"Select the video file you want to upload.": "Select the video file you want to upload.",
 	"Upload guidelines": "Upload guidelines",
 	"Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.": "Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.",
 
-	"Video Manager": "Video Manager",
 	"videos": "videos",
-	"Channel settings": "Channel settings",
 	"About": "About",
 	"Category:": "Category:",
-	"Stats": "Stats",
-	"Like-to-dislike ratio:": "Like-to-dislike ratio:",
-	"Most recent view:": "Most recent view:",
-	"Flag this video": "Flag this video",
-
-	"Guide": "Guide",
-	"By the squareBracket contributors": "By the squareBracket contributors",
-	"Running on commit: ": "Running on commit: ",
+	"Rating ratio:": "Rating ratio:",
+	"Last viewed:": "Last viewed:",
+	"Favorites:": "Favorites:",
+	"Comments": "Comments",
 
 	"Show replies": "Show replies",
 	"Reply": "Reply",
@@ -167,16 +167,15 @@
 	"Latest Videos": "Latest Videos",
 	"squareBracket Videos": "squareBracket Videos",
 
-	"License:": "License:",
-	"Standard squareBracket License": "Standard squareBracket License",
-	"Unfiltered views:": "Unfiltered views:",
-
-	"Browse": "Browse",
+	"Favorite": "Favorite",
 
 	"Search...": "Search...",
 
 	"Missing important POST variable.": "Missing important POST variable.",
 	"Your comment has been submitted.": "Your comment has been submitted.",
+
+	"This is not your upload.": "This is not your upload.",
+	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
 
 	"Please enter your username! ": "Please enter your username! ",
 	"Please enter your password! ": "Please enter your password! ",
@@ -196,9 +195,6 @@
 	" The new passwords aren't identical.": " The new passwords aren't identical.",
 	"Your current password is incorrect.": "Your current password is incorrect.",
 
-	"Please wait 2 minutes before uploading again. If you've already uploaded a video, it is (probably) being processed.": "Please wait 2 minutes before uploading again. If you've already uploaded a video, it is (probably) being processed.",
+	"Please wait 2 minutes before uploading again. If you've already uploaded a video, it is (probably) being processed.": "Please wait 2 minutes before uploading again. If you've already uploaded a video, it is (probably) being processed."
 
-	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
-
-	"This is not your video.": "This is not your video.",
 }
