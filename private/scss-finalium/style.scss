@@ -179,10 +179,6 @@ menu, ol, ul, il {
   float: left;
 }
 
-.float-center {
-  float: center;
-}
-
 .float-right {
   float: right;
 }
@@ -194,9 +190,8 @@ menu, ol, ul, il {
 .main-content {
   background: rgb(62, 62, 62);
   background: linear-gradient(90deg, rgba(62, 62, 62, 1) 0%, rgba(107, 107, 107, 1) 35%, rgba(155, 155, 155, 1) 100%);
-  margin: 0;
   color: white;
-  margin-top: -48px;
+  margin: -48px 0 0;
   padding: 75px 0px 20px;
   display: inline-block;
   width: 100%;
@@ -307,9 +302,7 @@ input[type="color"]:focus,
 
   .chazizgrkb {
     width: 250px;
-    margin: 25px 0px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 25px auto;
     display: block;
   }
 }
@@ -571,7 +564,6 @@ input[type="color"]:focus,
 .guide-item {
   white-space: nowrap;
   line-height: 24px;
-  display: block;
   height: 26px;
   display: flex;
   display: -webkit-box;
@@ -590,8 +582,7 @@ input[type="color"]:focus,
 }
 
 .guide-item:hover {
-  background: #444;
-  background-image: none;
+  background: #444 none;
   color: #fff;
 }
 
@@ -738,30 +729,6 @@ input[type="color"]:focus,
     line-height: 1.4em;
     height: 1.4em;
   }
-}
-
-.video-time {
-  padding: 0 4px;
-  font-weight: bold;
-  font-size: 11px;
-  background-color: #000;
-  color: #fff !important;
-  height: 14px;
-  line-height: 14px;
-  opacity: 0.75;
-  filter: alpha(opacity=75);
-  display: -moz-inline-stack;
-  vertical-align: top;
-  zoom: 1;
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  right: 8px;
-  bottom: 5px;
-  position: absolute;
 }
 
 .usermenushit {

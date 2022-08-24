@@ -26,7 +26,7 @@
   }
 }
 
-// uploader "file selection" button, implemented in the hackiest way possible. fucking christ.
+// uploader "file selection" button, implemented in the hackiest way possible.
 input[type=file]::file-selector-button, {
   border-radius: 3px;
   color: black;
@@ -81,12 +81,12 @@ input[type=file]::file-selector-button, {
   .button-#{$state} {
     border: 1px solid darken($value, 7.5%);
     background-color: lighten($value, 1.5%);
-    @include gradient-y($start-color: lighten($value, 3.5%), $end-color: darken($value, 2.5%));
+    @include gradient-y($start-color: lighten($value, 4.5%), $end-color: darken($value, 1.5%));
     color: contrast-color($value, $dark, $light) !important;
   }
 
   .button-#{$state}:hover {
-    @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
+    @include gradient-y($start-color: lighten($value, 7.5%), $end-color: lighten($value, 1.5%));
     background-color: lighten($value, 3.5%);
     border: 1px solid darken($value, 1%);
     color: contrast-color($value, $dark, $light) !important;
