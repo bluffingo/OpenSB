@@ -44,13 +44,13 @@
                         </div>
                     </div>
                     {% if postType == "video" %}
-                    <div class="image is-16by9 has-background-black">
-                        {{ include('/components/player.twig') }}
-                    </div>
+                        <div class="image is-16by9 has-background-black">
+                            {{ include('/components/player.twig') }}
+                        </div>
                     {% elseif postType == "artwork" %}
-                    <div class="image">
-                        <img src="{{ video.videofile }}">
-                    </div>
+                        <div class="image">
+                            <img src="{{ video.videofile }}">
+                        </div>
                     {% endif %}
                 </div>
                 <div id="comments" class="mt-5 box content">
@@ -111,25 +111,25 @@
                 <div class="container">
                     {% for related_video in related_videos %}
                         <article class="columns is-multiline">
-                                <a href="watch?v={{ related_video.video_id }}">
-                                    <div class="column is-full">
-                                        <figure class="image is-16by9">
-                                            <img src="{{ video_thumbnail(related_video.video_id) }}">
-                                        </figure>
-                                        <div class="columns is-mobile is-multiline is-gapless is-centered">
-                                            <div class="column">
-                                                <div class="image is-32x32">
-                                                    <img src="{{ profile_image(related_video.u_name) }}"
-                                                         class="is-rounded">
-                                                </div>
-                                            </div>
-                                            <div class="column">
-                                                <p class="title is-6 is-spaced mt-1 mb-1">{{ related_video.title }}</p>
-                                                <p class="subtitle is-6">{{ userlink(related_video, 'u_') }}</p>
+                            <a href="watch?v={{ related_video.video_id }}">
+                                <div class="column is-full">
+                                    <figure class="image is-16by9">
+                                        <img src="{{ video_thumbnail(related_video.video_id) }}">
+                                    </figure>
+                                    <div class="columns is-mobile is-multiline is-gapless is-centered">
+                                        <div class="column">
+                                            <div class="image is-32x32">
+                                                <img src="{{ profile_image(related_video.u_name) }}"
+                                                     class="is-rounded">
                                             </div>
                                         </div>
+                                        <div class="column">
+                                            <p class="title is-6 is-spaced mt-1 mb-1">{{ related_video.title }}</p>
+                                            <p class="subtitle is-6">{{ userlink(related_video, 'u_') }}</p>
+                                        </div>
                                     </div>
-                                </a>
+                                </div>
+                            </a>
                         </article>
                     {% endfor %}
                 </div>

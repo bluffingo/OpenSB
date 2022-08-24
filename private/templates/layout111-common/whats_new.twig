@@ -3,13 +3,13 @@
 {% block title %}News{% endblock %}
 
 {% block content %}
-<section class="section">
-    <div class="container">
-        {% for news in news %}
-            <h1 class="title">{{ news.time | date("F jS Y") }}</h1>
-            <p>{{ news.text | markdown }}</p>
-            <br><br><br>
-        {% endfor %}
-    </div>
-</section>
+    <section class="section">
+        <div class="container">
+            {% for news in news %}
+                <h1 class="title">{{ news.time | date("F jS Y") }}</h1>
+                <p>{{ news.text | markdown }}</p>
+                <br><br><br>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}

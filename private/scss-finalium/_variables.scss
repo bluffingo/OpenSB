@@ -35,52 +35,52 @@ $gray-850: #333333;
 $gray-900: #242424;
 $light: #f8f9fa;
 $dark: #343a40;
-$indigo-color:	$indigo;
-$teal-color:	$teal;
-$orange-color:	$orange;
+$indigo-color: $indigo;
+$teal-color: $teal;
+$orange-color: $orange;
 $colors: (
-  "blue":       $blue,
-  "teal":       $teal,
-  "indigo":     $indigo,
-  "purple":     $purple,
-  "pink":       $pink,
-  "red":        $red,
-  "orange":     $orange,
-  "yellow":     $yellow,
-  "green":      $green,
-  "cyan":       $cyan,
-  "white":      $white,
-  "gray":       $gray-600,
-  "gray-dark":  $gray-800
+        "blue": $blue,
+        "teal": $teal,
+        "indigo": $indigo,
+        "purple": $purple,
+        "pink": $pink,
+        "red": $red,
+        "orange": $orange,
+        "yellow": $yellow,
+        "green": $green,
+        "cyan": $cyan,
+        "white": $white,
+        "gray": $gray-600,
+        "gray-dark": $gray-800
 );
 
-$primary:       $blue;
-$secondary:     $gray-100;
-$success:       $green;
-$info:          $cyan;
-$warning:       $yellow;
-$danger:        $red;
-$gray-dark: 	$gray-800;
-$neutral:         $gray-100;
-$indigo-color:	$indigo;
-$teal-color:	$teal;
-$aqua-color:	$aqua;
-$orange-color:	$orange;
+$primary: $blue;
+$secondary: $gray-100;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$gray-dark: $gray-800;
+$neutral: $gray-100;
+$indigo-color: $indigo;
+$teal-color: $teal;
+$aqua-color: $aqua;
+$orange-color: $orange;
 
 $theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "neutral":      $neutral,
-  "light":      $gray-100,
-  "dark":      $gray-dark,
-  "violet":     $indigo-color,
-  "blue-green": $teal-color,
-  "aqua": $aqua-color,
-  "carrot": $orange-color,
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "neutral": $neutral,
+        "light": $gray-100,
+        "dark": $gray-dark,
+        "violet": $indigo-color,
+        "blue-green": $teal-color,
+        "aqua": $aqua-color,
+        "carrot": $orange-color,
 );
 
-$font: "Barlow","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+$font: "Barlow", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;

@@ -145,27 +145,27 @@
             </div>
         </div>
     </div>
-	<div id="Discussion" class="tabcontent">
-		{% if log %}
-			<div class="grid" id="commentField">
-				<div class="col-md-1">
-					<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
-				</div>
-				<div class="col-md-11">
-					<div>
+    <div id="Discussion" class="tabcontent">
+        {% if log %}
+            <div class="grid" id="commentField">
+                <div class="col-md-1">
+                    <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
+                </div>
+                <div class="col-md-11">
+                    <div>
 				<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
-						  placeholder="{{ __("Enter comment here.") }}"></textarea>
-					</div>
-					<div class="right">
-						<button id="post-user" class="button button-primary"
-								style="margin-bottom:0;">{{ __("Comment") }}</button>
-					</div>
-				</div>
-			</div>
-		{% endif %}
-		<div id="comment"></div>
-		{% for comment in comments %}
-			{{ comment(comment) }}
-		{% endfor %}
-	</div>
+                          placeholder="{{ __("Enter comment here.") }}"></textarea>
+                    </div>
+                    <div class="right">
+                        <button id="post-user" class="button button-primary"
+                                style="margin-bottom:0;">{{ __("Comment") }}</button>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div id="comment"></div>
+        {% for comment in comments %}
+            {{ comment(comment) }}
+        {% endfor %}
+    </div>
 {% endblock %}

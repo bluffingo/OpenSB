@@ -4,13 +4,12 @@ info:
 
 # FOLDERS
 
-profpic: profile pictures, dynamic. uploadable by users
-backgrounds: channel backgrounds, dynamic, uploadable by partner-only users
-thumb: video thumbnails, dynamic, automatically generated, cannot be currently changed on the website (there was an instance of a squarebracket video having it's thumbnail changed, but that was done by using wget)
-sounds: sounds used on sbnext
-icons: used for favicons and mobile devices
+chazizgrkb: the finalium login screen, it originally had chaziz branding, hense the folder name.
 css: compiled finalium css
-scss: the source code to finalium, the scss code for sbnext.
+icons: used for favicons and mobile devices
+nostaglia: assets for the april 2021 theme for finalium
+project111: assets for 111
+icons: used for favicons and mobile devices
 
 
 # BRANDING

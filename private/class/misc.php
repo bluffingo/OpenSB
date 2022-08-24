@@ -29,7 +29,7 @@ function redirect($url)
  */
 function gitCommit($trim = true)
 {
-	global $gitBranch;
+    global $gitBranch;
     $commit = file_get_contents(__DIR__ . '/../../.git/refs/heads/' . $gitBranch); // kind of bad but hey it works
 
     if ($trim)

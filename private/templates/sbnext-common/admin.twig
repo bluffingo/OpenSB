@@ -4,7 +4,8 @@
 
 	{% block content %}
         <h1>Admin panel</h1>
-        <p>Currently running squareBracket version {{ version }} (commit {{ git_commit() }}) on {{ operating_system() }}.</p>
+        <p>Currently running squareBracket version {{ version }} (commit {{ git_commit() }}) on {{ operating_system() }}
+            .</p>
         <table style="width: 100%;">
             <tr>
                 <td class="nb" style="width:33%; vertical-align:top;">
@@ -48,7 +49,7 @@
                 </td>
             </tr>
         </table>
-		
+
         <h3>Numbers</h3>
 
         <table style="width: 100%;">
@@ -63,21 +64,21 @@
                 {% endfor %}
             </tr>
         </table>
-		
-		<h3>Comments</h3>
-		{% for comment in comments %}
-			<div class="grid" style="gap:0px;margin-bottom: 17.5px;">
-				<div class="col-md-12" id="{{ comment.comment_id }}">
-					{{ userlink(comment, 'u_') }} &bull; {{ comment.date | relative_time }}
-					<br>
-					<div class="comment">
-						{{ comment.comment | markdown }}
-					</div>
-					<br>
-					<p>
-						<a>{{ __("Delete") }}</a>
-					</p>
-				</div>
-			</div>
-		{% endfor %}
+
+        <h3>Comments</h3>
+        {% for comment in comments %}
+            <div class="grid" style="gap:0px;margin-bottom: 17.5px;">
+                <div class="col-md-12" id="{{ comment.comment_id }}">
+                    {{ userlink(comment, 'u_') }} &bull; {{ comment.date | relative_time }}
+                    <br>
+                    <div class="comment">
+                        {{ comment.comment | markdown }}
+                    </div>
+                    <br>
+                    <p>
+                        <a>{{ __("Delete") }}</a>
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
     {% endblock %}

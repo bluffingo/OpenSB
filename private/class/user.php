@@ -6,23 +6,23 @@ use DateTime;
 
 class Users
 {
-	/**
-	 * Return HTML code for an userlink.
-	 *
-	 * @param array $user User array containing user fields. Retrieve this from the database using userfields().
-	 * @param string $pre $user key prefix.
-	 * @return string Userlink HTML code.
-	 */
-	static function userlink($user, $pre = ''): string
-	{
-		if ($user[$pre . 'customcolor']) {
-			$user[$pre . 'colorname'] = sprintf('<span style="color:%s">%s</span>', $user[$pre . 'customcolor'], $user[$pre . 'name']);
-		}
-		return <<<HTML
+    /**
+     * Return HTML code for an userlink.
+     *
+     * @param array $user User array containing user fields. Retrieve this from the database using userfields().
+     * @param string $pre $user key prefix.
+     * @return string Userlink HTML code.
+     */
+    static function userlink($user, $pre = ''): string
+    {
+        if ($user[$pre . 'customcolor']) {
+            $user[$pre . 'colorname'] = sprintf('<span style="color:%s">%s</span>', $user[$pre . 'customcolor'], $user[$pre . 'name']);
+        }
+        return <<<HTML
 			<a class="user" href="/user.php?name={$user[$pre . 'name']}"><span class="t_user">{$user[$pre . 'colorname']}</span></a>
 	HTML;
-	}
-	
+    }
+
     /**
      * Get list of SQL SELECT fields for userlinks.
      *
@@ -97,32 +97,32 @@ class Users
 
         return $token;
     }
-	
-	/**
-	 * Returns the token of the current user, I think.
-	 */
-	static function getCurrentToken()
-	{
-		global $sql, $log, $userdata;
-		if ($log) {
-			$token = $userdata['token'];
-		} else {
-			$token = "fuckingtokenpieceofshit";
-		}
-		return $token;
-	}
-	
-	/**
-	 * Returns the user ID specified of the current token, I think.
-	 */
-	static function getUserIDFromToken($token)
-	{
-		global $sql, $log;
-		if ($log) {
-			$data = $sql->result("SELECT id FROM users WHERE token = ?", [$token]);
-		} else {
-			$data = "0";
-		}
-		return $data;
-	}
+
+    /**
+     * Returns the token of the current user, I think.
+     */
+    static function getCurrentToken()
+    {
+        global $sql, $log, $userdata;
+        if ($log) {
+            $token = $userdata['token'];
+        } else {
+            $token = "fuckingtokenpieceofshit";
+        }
+        return $token;
+    }
+
+    /**
+     * Returns the user ID specified of the current token, I think.
+     */
+    static function getUserIDFromToken($token)
+    {
+        global $sql, $log;
+        if ($log) {
+            $data = $sql->result("SELECT id FROM users WHERE token = ?", [$token]);
+        } else {
+            $data = "0";
+        }
+        return $data;
+    }
 }

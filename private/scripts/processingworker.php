@@ -21,56 +21,56 @@ $config = [
 $new = $argv[1];
 $target_file = $argv[2];
 try {
-	$ffmpeg = FFMpeg::create($config);
-	$ffprobe = FFProbe::create($config);
-	$h264 = new X264();
-	// $flv = new FLV();
+    $ffmpeg = FFMpeg::create($config);
+    $ffprobe = FFProbe::create($config);
+    $h264 = new X264();
+    // $flv = new FLV();
 
-	$h264->setAudioKiloBitrate(196)->setAdditionalParameters(array('-ar', '44100'));
+    $h264->setAudioKiloBitrate(196)->setAdditionalParameters(array('-ar', '44100'));
 
 
-	$video = $ffmpeg->open($target_file);
-			
-	//get frame count
-	$duration = $ffprobe
-		->streams($target_file)	// extracts file informations
-		->videos()              // filters video streams
-		->first()               // returns the first video stream			
-		->get('nb_frames');  	// returns the duration property
-			
-	//get fractional framerate
-	$fracFramerate = $ffprobe
-		->streams($target_file)	// extracts file informations
-		->videos()              // filters video streams
-		->first()               // returns the first video stream	
-		->get("avg_frame_rate");
-				
-	//get the actual framerate
-	$framerate = explode("/", $fracFramerate)[0] / explode("/", $fracFramerate)[1];
-            
-			
-	//this doesn't scale too well with short videos.
-	$seccount = round($duration / 4);
-	$seccount2 = $seccount * 1.5;
-	$seccount3 = $seccount2 + $seccount - 1;
+    $video = $ffmpeg->open($target_file);
 
-	$frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount2 / $framerate));
-	$frame->filters()->custom('scale=512x288');
-	$frame->save('dynamic/thumbnails/' . $new . '.png');
+    //get frame count
+    $duration = $ffprobe
+        ->streams($target_file)    // extracts file informations
+        ->videos()              // filters video streams
+        ->first()               // returns the first video stream
+        ->get('nb_frames');    // returns the duration property
 
-	$video->filters()->resize(new Coordinate\Dimension(1280, 720), Filters\Video\ResizeFilter::RESIZEMODE_INSET, true)
-		->custom('format=yuv420p');
-	$video->save($h264, 'dynamic/videos/' . $new . '.converted.mp4');
-	debug_print_backtrace();
-	unlink($target_file);
-	//delete_directory($preload_folder);
-	
-	$videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);
+    //get fractional framerate
+    $fracFramerate = $ffprobe
+        ->streams($target_file)    // extracts file informations
+        ->videos()              // filters video streams
+        ->first()               // returns the first video stream
+        ->get("avg_frame_rate");
 
-	query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
-		[round($duration / $framerate), $videoData['flags'] ^ 0x2, $new]);
+    //get the actual framerate
+    $framerate = explode("/", $fracFramerate)[0] / explode("/", $fracFramerate)[1];
+
+
+    //this doesn't scale too well with short videos.
+    $seccount = round($duration / 4);
+    $seccount2 = $seccount * 1.5;
+    $seccount3 = $seccount2 + $seccount - 1;
+
+    $frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount2 / $framerate));
+    $frame->filters()->custom('scale=512x288');
+    $frame->save('dynamic/thumbnails/' . $new . '.png');
+
+    $video->filters()->resize(new Coordinate\Dimension(1280, 720), Filters\Video\ResizeFilter::RESIZEMODE_INSET, true)
+        ->custom('format=yuv420p');
+    $video->save($h264, 'dynamic/videos/' . $new . '.converted.mp4');
+    debug_print_backtrace();
+    unlink($target_file);
+    //delete_directory($preload_folder);
+
+    $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);
+
+    query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
+        [round($duration / $framerate), $videoData['flags'] ^ 0x2, $new]);
 } catch (Exception $e) {
-	echo "(p2 uploader port, sb rewrite) Something went wrong: ". $e->getMessage();
+    echo "(p2 uploader port, sb rewrite) Something went wrong: " . $e->getMessage();
 }
 
 clearstatcache();

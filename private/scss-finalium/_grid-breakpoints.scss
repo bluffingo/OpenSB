@@ -2,11 +2,11 @@
 @use 'sass:meta';
 
 .screwPaddingRight {
-	padding-right: 0px !important;
+  padding-right: 0px !important;
 }
 
 .screwPaddingLeft {
-	padding-left: 0px !important;
+  padding-left: 0px !important;
 }
 
 // Small tablets and large smartphones (landscape view)
@@ -25,48 +25,47 @@ $screen-xl-min: 1200px;
 @function private-div($a, $b) {
   @if (meta.function-exists('div', 'math')) {
     @return math.div($a, $b);
-  }
-  @else {
+  } @else {
     @return $a / $b;
   }
 }
 
 // Small devices
 @mixin sm {
-   @media (min-width: #{$screen-sm-min}) {
-       @content;
-   }
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
 }
 
 // Medium devices
 @mixin md {
-   @media (min-width: #{$screen-md-min}) {
-       @content;
-   }
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
 }
 
 // Large devices
 @mixin lg {
-   @media (min-width: #{$screen-lg-min}) {
-       @content;
-   }
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
 }
 
 // Extra large devices
 @mixin xl {
-   @media (min-width: #{$screen-xl-min}) {
-       @content;
-   }
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
 }
 
 $columns: 12;
 $grid-columns: 12;
 $gap: 10px;
 $breakpoints: (
-    sm: 500px,
-    md: 700px,
-    lg: 800px,
-    xl: 1000px
+        sm: 500px,
+        md: 700px,
+        lg: 800px,
+        xl: 1000px
 );
 
 @mixin make-grid-columns($i: 1, $list: ".col-md-#{$i}") {
