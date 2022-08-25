@@ -15,12 +15,19 @@ class Users
      */
     static function userlink($user, $pre = ''): string
     {
-        if ($user[$pre . 'customcolor']) {
-            $user[$pre . 'colorname'] = sprintf('<span style="color:%s">%s</span>', $user[$pre . 'customcolor'], $user[$pre . 'name']);
-        }
-        return <<<HTML
+        if (self::getIsUserBannedFromName($user[$pre . 'name'])) {
+            $user[$pre . 'colorname'] = sprintf('<span style="color:gray">%s</span>', $user[$pre . 'name']);
+            return <<<HTML
+			<s class="user"><span class="t_user">{$user[$pre . 'colorname']}</span></s>
+	HTML;
+        } else {
+            if ($user[$pre . 'customcolor']) {
+                $user[$pre . 'colorname'] = sprintf('<span style="color:%s">%s</span>', $user[$pre . 'customcolor'], $user[$pre . 'name']);
+            }
+            return <<<HTML
 			<a class="user" href="/user.php?name={$user[$pre . 'name']}"><span class="t_user">{$user[$pre . 'colorname']}</span></a>
 	HTML;
+        }
     }
 
     /**
@@ -123,33 +130,5 @@ class Users
             [$name, password_hash($pass, PASSWORD_DEFAULT), $mail, $token, time(), time(), getUserIpAddr()]);
 
         return $token;
-    }
-
-    /**
-     * Returns the token of the current user, I think.
-     */
-    static function getCurrentToken()
-    {
-        global $sql, $log, $userdata;
-        if ($log) {
-            $token = $userdata['token'];
-        } else {
-            $token = "fuckingtokenpieceofshit";
-        }
-        return $token;
-    }
-
-    /**
-     * Returns the user ID specified of the current token, I think.
-     */
-    static function getUserIDFromToken($token)
-    {
-        global $sql, $log;
-        if ($log) {
-            $data = $sql->result("SELECT id FROM users WHERE token = ?", [$token]);
-        } else {
-            $data = "0";
-        }
-        return $data;
     }
 }
