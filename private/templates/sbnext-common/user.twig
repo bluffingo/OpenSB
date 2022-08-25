@@ -24,19 +24,21 @@
             margin-top: 0;
         }
     </style>
-    {% if userpagedata.id == userdata.id and not forceuser %}
-        <div class="bg-dark" style="padding:1px 15px;">
-            <p><a href="settings.php" style="color:white;">{{ __("Edit my settings") }}</a>
-                &bull; <a href="user.php?id={{ id }}&forceuser"
-                          style="color:white;">{{ __("View user page as viewer") }}</a>
-                {% if userpagedata.powerlevel > 2 %}
-                &bull; <a href="/admin/" style="color:white;">{{ __("Admin panel") }}</a></p>
-            {% endif %}
-            </p>
-        </div>
-        <form action="login.php" method="post" name="logout">
-            <input type="hidden" name="logout" value="yes">
-        </form>
+    {% if userbandata != true  %}
+        {% if userpagedata.id == userdata.id and not forceuser %}
+            <div class="bg-dark" style="padding:1px 15px;">
+                <p><a href="settings.php" style="color:white;">{{ __("Edit my settings") }}</a>
+                    &bull; <a href="user.php?id={{ id }}&forceuser"
+                              style="color:white;">{{ __("View user page as viewer") }}</a>
+                    {% if userpagedata.powerlevel > 2 %}
+                    &bull; <a href="/admin/" style="color:white;">{{ __("Admin panel") }}</a></p>
+                {% endif %}
+                </p>
+            </div>
+            <form action="login.php" method="post" name="logout">
+                <input type="hidden" name="logout" value="yes">
+            </form>
+        {% endif %}
     {% endif %}
     <div class="main-content channel-header-bg">
         <div class="grid">

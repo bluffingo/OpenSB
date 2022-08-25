@@ -3,6 +3,11 @@
 namespace squareBracket;
 
 require dirname(__DIR__) . '/private/class/common.php';
+
+if ($userbandata) {
+    error(403, __("Banned user, can't continue."));
+}
+
 if (isset($_POST['really'])) {
     switch ($_POST['type']) {
         case "video":

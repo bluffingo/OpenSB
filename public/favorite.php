@@ -4,6 +4,10 @@ namespace squareBracket;
 $rawOutputRequired = true;
 require dirname(__DIR__) . '/private/class/common.php';
 
+if ($userbandata) {
+    error(403, __("Banned user, can't continue."));
+}
+
 if (isset($_POST['video_id'])) {
     if (!$sql->result("SELECT * from favorites WHERE video_id = ? AND user_id = ?", [$_POST['video_id'], $userdata['id']])) {
         VideoFavorites::addFavorite($_POST['video_id'], $userdata['id']);

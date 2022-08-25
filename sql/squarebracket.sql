@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2022 at 06:41 PM
--- Server version: 10.4.22-MariaDB
+-- Generation Time: Aug 25, 2022 at 02:25 AM
+-- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -18,8 +18,33 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cheeserox-dev`
+-- Database: `cheeserox`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bans`
+--
+
+CREATE TABLE `bans` (
+  `autoint` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `reason` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `channels`
+--
+
+CREATE TABLE `channels` (
+  `id` bigint(30) UNSIGNED NOT NULL,
+  `channel_name` varchar(32) NOT NULL,
+  `lobby_type` enum('true','false') NOT NULL DEFAULT 'false',
+  `locked` enum('true','false') NOT NULL DEFAULT 'false'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -30,30 +55,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `channel_comments` (
   `comment_id` int(11) NOT NULL,
   `id` text NOT NULL,
-  `reply_to` bigint(20) NOT NULL,
+  `reply_to` bigint(20) NOT NULL DEFAULT 0,
   `comment` text NOT NULL,
   `author` bigint(20) NOT NULL,
   `date` bigint(20) NOT NULL,
   `deleted` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `channel_settings`
---
-
-CREATE TABLE `channel_settings` (
-  `user` int(11) NOT NULL,
-  `background` varchar(7) NOT NULL DEFAULT '#ffffff',
-  `fontcolor` varchar(7) NOT NULL DEFAULT '#222222',
-  `titlefont` varchar(7) NOT NULL DEFAULT '#ffffff',
-  `link` varchar(7) NOT NULL DEFAULT '#0033CC',
-  `headerfont` varchar(7) NOT NULL DEFAULT '#ffffff',
-  `highlightheader` varchar(7) NOT NULL DEFAULT '#3399cc',
-  `highlightinside` varchar(7) NOT NULL DEFAULT '#ecf4fb',
-  `regularheader` varchar(7) NOT NULL DEFAULT '#3399cc',
-  `regularinside` varchar(7) NOT NULL DEFAULT '#ffffff'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -65,12 +71,64 @@ CREATE TABLE `channel_settings` (
 CREATE TABLE `comments` (
   `comment_id` bigint(20) NOT NULL,
   `id` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID to video or user.',
-  `reply_to` bigint(20) NOT NULL,
+  `reply_to` bigint(20) NOT NULL DEFAULT 0,
   `comment` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The comment itself, formatted in Markdown.',
   `author` bigint(20) NOT NULL COMMENT 'Numerical ID of comment author.',
   `date` bigint(20) NOT NULL COMMENT 'UNIX timestamp when the comment was posted.',
   `deleted` tinyint(4) NOT NULL COMMENT 'States that the comment is deleted'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favorites`
+--
+
+CREATE TABLE `favorites` (
+  `user_id` int(11) NOT NULL,
+  `video_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ipbans`
+--
+
+CREATE TABLE `ipbans` (
+  `ip` varchar(45) NOT NULL DEFAULT '0.0.0.0',
+  `reason` varchar(255) NOT NULL DEFAULT '<em>No reason specified</em>'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `music`
+--
+
+CREATE TABLE `music` (
+  `ID` int(11) NOT NULL,
+  `music_id` varchar(11) NOT NULL,
+  `title` text NOT NULL,
+  `author` int(11) NOT NULL,
+  `time` int(11) NOT NULL,
+  `file` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `title` varchar(128) NOT NULL DEFAULT 'Lorem ipsum',
+  `text` text DEFAULT NULL,
+  `time` bigint(20) DEFAULT 0,
+  `redirect` varchar(256) DEFAULT NULL,
+  `author_userid` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -125,6 +183,29 @@ CREATE TABLE `subscriptions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tag_index`
+--
+
+CREATE TABLE `tag_index` (
+  `video_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tag_meta`
+--
+
+CREATE TABLE `tag_meta` (
+  `tag_id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `latestUse` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -145,10 +226,7 @@ CREATE TABLE `users` (
   `ip` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '999.999.999.999',
   `u_flags` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties',
   `powerlevel` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '0 - banned. 1 - normal user. 2 - moderator. 3 - administrator',
-  `group_id` int(11) NOT NULL DEFAULT 3,
-  `posts` int(11) NOT NULL DEFAULT 0,
-  `threads` int(11) NOT NULL DEFAULT 0,
-  `signature` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `group_id` int(11) NOT NULL DEFAULT 3
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -190,22 +268,35 @@ CREATE TABLE `views` (
 --
 
 --
+-- Indexes for table `bans`
+--
+ALTER TABLE `bans`
+  ADD PRIMARY KEY (`autoint`);
+
+--
+-- Indexes for table `channels`
+--
+ALTER TABLE `channels`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `channel_name_UNIQUE` (`channel_name`);
+
+--
 -- Indexes for table `channel_comments`
 --
 ALTER TABLE `channel_comments`
   ADD PRIMARY KEY (`comment_id`);
 
 --
--- Indexes for table `channel_settings`
---
-ALTER TABLE `channel_settings`
-  ADD PRIMARY KEY (`user`);
-
---
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
+
+--
+-- Indexes for table `music`
+--
+ALTER TABLE `music`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `notifications`
@@ -230,6 +321,18 @@ ALTER TABLE `videos`
 --
 
 --
+-- AUTO_INCREMENT for table `bans`
+--
+ALTER TABLE `bans`
+  MODIFY `autoint` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `channels`
+--
+ALTER TABLE `channels`
+  MODIFY `id` bigint(30) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `channel_comments`
 --
 ALTER TABLE `channel_comments`
@@ -240,6 +343,12 @@ ALTER TABLE `channel_comments`
 --
 ALTER TABLE `comments`
   MODIFY `comment_id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `music`
+--
+ALTER TABLE `music`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `notifications`

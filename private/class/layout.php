@@ -20,19 +20,18 @@ use Detection\MobileDetect;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
-    global $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness, $languages,
-           $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $pageVariable, $isMaintenance,
-           $versionNumber, $isDebug;
+    global $sql, $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness,
+           $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $pageVariable, $isMaintenance,
+           $versionNumber, $isDebug, $userbandata;
     $detect = new Mobile_Detect;
 
-    //tf does this do?
-    /* if ($log) {
+    if ($log) {
         $totalSubscribers = $sql->result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
         $allUsers = $sql->query("SELECT $userfields s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]);
     } else {
         $totalSubscribers = 0;
         $allUsers = $sql->query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 10");
-    } */
+    }
 
     $doCache = ($tplNoCache ? false : $tplCache);
     //ugly hack to prevent reading templates from the wrong place
@@ -81,11 +80,12 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $twig->addGlobal('glob_lpp', $paginationLimit);
     $twig->addGlobal('notification_count', $notificationCount);
     $twig->addGlobal('page', $pageVariable);
-    /* $twig->addGlobal('totalSubscribers', $totalSubscribers);
-    $twig->addGlobal('allUsers', $allUsers); */
+    $twig->addGlobal('totalSubscribers', $totalSubscribers);
+    $twig->addGlobal('allUsers', $allUsers);
     $twig->addGlobal('version', $versionNumber);
     $twig->addGlobal('isMaintenance', $isMaintenance);
     $twig->addGlobal('isDebug', $isDebug);
+    $twig->addGlobal('userbandata', $userbandata);
 
     if (isset($_SERVER["HTTP_HOST"])) { // Browser from 1995 (eg: Internet Explorer 1) make PHP throw out warnings due to them not having HTTP hosts feature.
         $twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
@@ -117,7 +117,7 @@ function profileImage($username)
 {
     $file_exists = file_exists('../dynamic/pfp/' . $username . '.png');
     $twig = twigloader('components');
-    return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $file_exists]);
+    return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $file_exists, 'isBanned' => Users::getIsUserBannedFromName($username)]);
 }
 
 function channelBackground($username)

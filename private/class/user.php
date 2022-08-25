@@ -79,6 +79,33 @@ class Users
     }
 
     /**
+     * Verifies if another user is banned via their ID
+     *
+     * @return bool
+     */
+    static function getIsUserBannedFromID($userID): bool
+    {
+        global $sql;
+        if ($sql->result("SELECT userid FROM bans WHERE userid=?", [$userID])) { // get uid from ban data
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Verifies if another user is banned via their name
+     *
+     * @return bool
+     */
+    static function getIsUserBannedFromName($userName): bool
+    {
+        global $sql;
+        $id = $sql->result("SELECT id FROM users WHERE name=?", [$userName]);
+        return self::getIsUserBannedFromID($id);
+    }
+
+    /**
      *
      * Registers an user.
      *

@@ -1,1 +1,16 @@
-{% if file_exists %}{% set imgSrcPath = '/dynamic/pfp/' ~ data ~ '.png' %}{% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}{% else %}{% set imgSrcPath = '/assets/profiledef.png' %}{% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}{% endif %}
+{% if isBanned == false %}
+    {% if file_exists  %}
+        {% set imgSrcPath = '/dynamic/pfp/' ~ data ~ '.png' %}
+        {% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}
+    {% else %}
+        {% set imgSrcPath = '/assets/profiledef.png' %}
+        {% autoescape %}
+            {{ imgSrcPath | raw }}
+        {% endautoescape %}
+    {% endif %}
+{% else %}
+    {% set imgSrcPath = '/assets/profiledel.png' %}
+    {% autoescape %}
+        {{ imgSrcPath | raw }}
+    {% endautoescape %}
+{% endif %}

@@ -62,6 +62,7 @@
 	"Log out from all devices": "Log out from all devices",
 	"Credentials": "Credentials",
 	"Profile": "Profile",
+	"Profile options are not available to banned users.": "Profile options are not available to banned users.",
 	"Miscellaneous": "Miscellaneous",
 	"Sounds": "Sounds",
 	"Enable sounds": "Enable sounds",
@@ -102,8 +103,11 @@
 	"Sorry about that.": "Sorry about that.",
 
 	"Guide": "Guide",
+	"Sorry %s, you are banned from squareBracket.": "Sorry %s, you are banned from squareBracket.",
+	"This ban is not set to expire.": "This ban is not set to expire.",
+	"Version": "Version",
 	"By the squareBracket contributors": "By the squareBracket contributors",
-	"Running on commit: ": "Running on commit: ",
+	"Running on Git commit: ": "Running on Git commit: ",
 
 	"view%s": "view%s",
 
@@ -171,6 +175,7 @@
 
 	"Search...": "Search...",
 
+	"Banned user, can't continue.": "Banned user, can't continue.",
 	"Missing important POST variable.": "Missing important POST variable.",
 	"Your comment has been submitted.": "Your comment has been submitted.",
 

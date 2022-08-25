@@ -81,6 +81,19 @@ if (!isCattleDog()) {
 
 if ($isMaintenance && !isCli()) {
     error(403, "This instance of squareBracket is currently offline.");
+} else {
+    $ipban = $sql->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [getUserIpAddr()]);
+    if ($ipban) {
+        // todo: replace "sorry about that" text on error template with ban reason so we can make a ip ban page consistent with finalium/111 -grkb 8/24/2022
+        http_response_code(403);
+
+        printf(
+            "<p>Your IP address has been banned.</p>" .
+            "<p><strong>Reason:</strong> %s</p>",
+            $ipban['reason']);
+
+        die();
+    }
 }
 
 // Cookie auth
@@ -118,6 +131,7 @@ if (isset($_COOKIE['profilepicture'])) {
 if ($log) {
     $userdata = $sql->fetch("SELECT * FROM users WHERE id = ?", [$id]);
     $notificationCount = $sql->result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$userdata['id']]);
+    $userbandata = $sql->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
 } else {
     $userdata['powerlevel'] = 1;
 }

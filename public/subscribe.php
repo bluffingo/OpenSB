@@ -4,6 +4,11 @@ namespace squareBracket;
 
 $rawOutputRequired = true;
 require dirname(__DIR__) . '/private/class/common.php';
+
+if ($userbandata) {
+    error(403, __("Banned user, can't continue."));
+}
+
 if (!isset($_POST['subscription']) or $_POST['subscription'] == '') {
     die(); //don't output anything if this sneaky bastard didn't put anything to the comment field
 }

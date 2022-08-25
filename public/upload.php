@@ -5,6 +5,10 @@ namespace squareBracket;
 //this uploads and converts the video, should switch to a better solution!
 require dirname(__DIR__) . '/private/class/common.php';
 
+if ($userbandata) {
+    error(403, __("Banned user, can't continue."));
+}
+
 use PHLAK\StrGen;
 
 if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata['name'])) {

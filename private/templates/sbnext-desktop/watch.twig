@@ -37,17 +37,20 @@
                             <br>
                             <span>{{ __("Published on %s", [video.time | date('M j, Y')]) }} • {{ viewCount }} {{ __("views") }}</span>
                             <br>
-                            {% if userdata.id == video.author %}<a
-                                class="button button-secondary button-small"
-                                href="/edit.php?v={{ video.video_id }}">{{ __("Edit") }}</a>{% else %}
-                                <button id="subscribe-watch"
-                                        class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small"
-                                        type="button"
-                                        {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
-                                <div class="subscribe-count">{{ subCount }}</div>
+                            {% if userbandata != true %}
+                                {% if userdata.id == video.author %}<a
+                                    class="button button-secondary button-small"
+                                    href="/edit.php?v={{ video.video_id }}">{{ __("Edit") }}</a>{% else %}
+                                    <button id="subscribe-watch"
+                                            class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small"
+                                            type="button"
+                                            {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
+                                    <div class="subscribe-count">{{ subCount }}</div>
+                                {% endif %}
                             {% endif %}
                             <br>
                         </div>
+                        {% if userbandata != true %}
                         <div class="col-md-4 right">
                             <div>
                                 <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
@@ -66,6 +69,7 @@
                                 </button>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                     <div class="grid" style="margin-top:5px;">
                         <div class="right">
@@ -113,7 +117,7 @@
                 <div class="card">
                     <div class="card-body-fat">
                         <h3>{{ __("Comments") }} ({{ comCount }})</h3>
-                        {% if log %}
+                        {% if log and userbandata != true %}
                             <div class="grid" id="commentField">
                                 <div class="col-md-1">
                                     <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">

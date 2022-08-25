@@ -45,6 +45,7 @@
                     <br>
                     <br>
                 </div>
+                {% if userbandata != true %}
                 <div class="grid" style="margin-top:5px">
                     <div style="margin-top:-9px;text-align: center">
                         {# js that uses action_unlogged will only work for the like button, i found out about this quirk
@@ -72,6 +73,7 @@
                                 onclick="openTab(event, 'Stats')">{{ icon("bar-chart-fill", 12) }}</button>
                     </div>
                 </div>
+                {% endif %}
             </div>
             <div class="card card-body-fat">
                 <div class="grid">
@@ -108,7 +110,7 @@
             <div class="card">
                 <div class="card-body-fat">
                     <h3>{{ __("Comments") }} ({{ comCount }})</h3>
-                    {% if log %}
+                    {% if log and userbandata != true %}
                         <div class="grid" id="commentField">
                             <div class="col-md-2">
                                 <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">

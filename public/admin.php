@@ -26,7 +26,7 @@ foreach ($comments as &$comment) {
 }
 
 //$thingsToCount = ['comments', 'users', 'videos', 'views', 'messages', 'favorites'];
-$thingsToCount = ['comments', 'users', 'videos', 'views', 'favorites'];
+$thingsToCount = ['comments', 'users', 'videos', 'views', 'favorites', 'bans'];
 
 $query = "SELECT ";
 foreach ($thingsToCount as $thing) {
