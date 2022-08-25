@@ -129,6 +129,21 @@
 </body>
 {% block precontent %}
 {% endblock %}
+{% if userbandata %}
+<section class="section">
+    <div class="container">
+        <article class="message is-danger">
+            <div class="message-header">
+                <p>{{ __("Sorry %s, you are banned from squareBracket.", [userdata.name]) }}</p>
+            </div>
+            <div class="message-body">
+                <p><strong>{{ userbandata.reason }}</strong><br/>
+                {{ __("This ban is not set to expire.") }}</p>
+            </div>
+        </article>
+    </div>
+</section>
+{% endif %}
 {% block content %}
 {% endblock %}
 <footer class="footer">
@@ -137,7 +152,7 @@
         <p>squareBracket Version {{ version }} · Instance running on Git commit:
             <a href="https://github.com/chazizgrkb/squarebracket/commit/{{ git_commit() }}">{{ git_commit() }}</a></p>
         <p><b>By the squareBracket contributors</b> · 2020-{{ 'now' | date('Y') }} |
-            <a href="/statistics.php">Statistics</a></p>
+            <a href="/statistics.php">Statistics</a> · <a href="/news.php">What's new</a></p>
     </div>
 </footer>
 </body>

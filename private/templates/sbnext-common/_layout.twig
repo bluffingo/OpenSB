@@ -95,7 +95,7 @@
     <div class="footer">
         <img src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
         <p>{{ __("Version") }} {{ version }} · <strong>{{ __("By the squareBracket contributors") }}</strong> · 2020-{{ 'now' | date('Y') }}
-            | <b><a href="/statistics.php">{{ __("Statistics") }}</a></b>
+            | <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
         </p>
         <h5>{{ __("Running on Git commit: ") }} <a
                     href="https://github.com/chazizgrkb/squarebracket/commit/{{ git_commit() }}">{{ git_commit() }}</a><br>

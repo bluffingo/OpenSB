@@ -11,8 +11,8 @@
 {% block title %}Home{% endblock %}
 
 	{% block precontent %}
-{% if theme != 'nostalgia' %}
 <div class="indexNext">
+{% if theme != 'nostalgia' %}
     <div class="main-content">
         <div class="container page-container">
             {% if log %}
@@ -29,8 +29,6 @@
                         <h3 style="padding:0;margin:8px 0;">@{{ userdata.name }}</h3>
                         <p style="padding:0;margin:8px 0;">{{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
                             &bull; {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
-                        <a class="button button-neutral button-large"
-                           href="../studio/">{{ __("Manage") }} {{ icon('caret-right-fill', 12) }}</a>
                     </div>
                 </div>
             {% else %}

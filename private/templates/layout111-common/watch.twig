@@ -109,28 +109,27 @@
                     <p>{{ video.description }}</p>
                 </div>
                 <div class="container">
-                    {% for related_video in related_videos %}
-                        <article class="columns is-multiline">
-                            <a href="watch?v={{ related_video.video_id }}">
-                                <div class="column is-full">
-                                    <figure class="image is-16by9">
-                                        <img src="{{ video_thumbnail(related_video.video_id) }}">
-                                    </figure>
-                                    <div class="columns is-mobile is-multiline is-gapless is-centered">
-                                        <div class="column">
-                                            <div class="image is-32x32">
-                                                <img src="{{ profile_image(related_video.u_name) }}"
-                                                     class="is-rounded">
-                                            </div>
-                                        </div>
-                                        <div class="column">
-                                            <p class="title is-6 is-spaced mt-1 mb-1">{{ related_video.title }}</p>
-                                            <p class="subtitle is-6">{{ userlink(related_video, 'u_') }}</p>
-                                        </div>
+                    {% for video in related_videos %}
+                        <div class="column is-multiline">
+                            <a href="watch?v={{ video.video_id }}">
+                                <figure class="image is-16by9">
+                                    <img src="{{ video_thumbnail(video.video_id) }}">
+                                </figure>
+                            </a>
+                            <div class="columns is-mobile is-multiline is-centered pt-1">
+                                <div class="column is-one-fifth pr-1">
+                                    <div class="image is-fluid">
+                                        <img src="{{ profile_image(video.u_name) }}" class="is-rounded">
                                     </div>
                                 </div>
-                            </a>
-                        </article>
+                                <div class="column">
+                                    <a href="watch?v={{ video.video_id }}">
+                                        <p class="title is-6 is-spaced mt-1 mb-1">{{ video.title }}</p>
+                                    </a>
+                                    <p class="subtitle is-6">{{ userlink(video, 'u_') }}</p>
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
                 </div>
             </div>

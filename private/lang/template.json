@@ -22,6 +22,9 @@
 
 	"Published on %s": "Published on %s",
 
+	"Sorry %s, you are banned from squareBracket.": "Sorry %s, you are banned from squareBracket.",
+	"This ban is not set to expire.": "This ban is not set to expire.",
+
 	"Edit video": "Edit video",
 	"Post info": "Post info",
 	"Enter the updated title and description of your post.": "Enter the updated title and description of your post.",
@@ -69,6 +72,7 @@
 
 	"Statistics": "Statistics",
 	"About this instance of squareBracket": "About this instance of squareBracket",
+	"View count may not be accurate due to deleted posts.": "View count may not be accurate due to deleted posts.",
 	"Registered users": "Registered users",
 	"Posts": "Posts",
 	"Views": "Views",
@@ -103,10 +107,9 @@
 	"Sorry about that.": "Sorry about that.",
 
 	"Guide": "Guide",
-	"Sorry %s, you are banned from squareBracket.": "Sorry %s, you are banned from squareBracket.",
-	"This ban is not set to expire.": "This ban is not set to expire.",
 	"Version": "Version",
 	"By the squareBracket contributors": "By the squareBracket contributors",
+	"What's new": "What's new",
 	"Running on Git commit: ": "Running on Git commit: ",
 
 	"view%s": "view%s",
@@ -141,7 +144,6 @@
 	"You could create one!": "You could create one!",
 
 	"Welcome to squareBracket": "Welcome to squareBracket",
-	"Manage": "Manage",
 	"Again.": "Again.",
 	"Get started": "Get started",
 	"Already have an account?": "Already have an account?",
