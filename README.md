@@ -1,7 +1,6 @@
 <h1 align="center">squareBracket Beta 3.0.0</h1>
-
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45898787/173667230-5cdb4b50-75ac-4bc6-ad61-873e4466f855.png">
+<img src="https://user-images.githubusercontent.com/45898787/186765639-085e4eac-6120-4469-b3bf-e2728d5c4e2f.png">
 </p>
 
 <h3 align="center"><a href="https://pok.byteemail.com/">squareBracket's live website</a></h3>
