@@ -23,7 +23,7 @@ if ($isDebug and !isset($rawOutputRequired)) {
     $profiler = new Profiler();
 }
 
-require('../vendor/autoload.php'); //dogshit
+require(dirname(__DIR__) . '/../vendor/autoload.php'); //dogshit
 
 foreach (glob(dirname(__DIR__) . "/class/*.php") as $file) {
     require_once($file);

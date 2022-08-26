@@ -10,7 +10,7 @@ use FFMpeg\FFProbe;
 use FFMpeg\Filters;
 use FFMpeg\Format\Video\x264;
 
-require('lib/common.php');
+require dirname(__DIR__) . '/class/common.php';
 $config = [
     'timeout' => 3600, // The timeout for the underlying process
     'ffmpeg.threads' => 12,   // The number of threads that FFmpeg should use
@@ -56,18 +56,18 @@ try {
 
     $frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount2 / $framerate));
     $frame->filters()->custom('scale=512x288');
-    $frame->save('dynamic/thumbnails/' . $new . '.png');
+    $frame->save(dirname(__DIR__) . '/../dynamic/thumbnails/' . $new . '.png');
 
     $video->filters()->resize(new Coordinate\Dimension(1280, 720), Filters\Video\ResizeFilter::RESIZEMODE_INSET, true)
         ->custom('format=yuv420p');
-    $video->save($h264, 'dynamic/videos/' . $new . '.converted.mp4');
+    $video->save($h264, dirname(__DIR__) . '/../dynamic/videos/' . $new . '.converted.mp4');
     debug_print_backtrace();
     unlink($target_file);
     //delete_directory($preload_folder);
 
-    $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);
+    $videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$new]);
 
-    query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
+    $sql->query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
         [round($duration / $framerate), $videoData['flags'] ^ 0x2, $new]);
 } catch (Exception $e) {
     echo "(p2 uploader port, sb rewrite) Something went wrong: " . $e->getMessage();
@@ -75,7 +75,7 @@ try {
 
 clearstatcache();
 
-if (0 == filesize("dynamic/videos/" . $new . ".converted.mp4")) {
-    unlink("dynamic/videos/" . $new . ".converted.mp4");
+if (0 == filesize(dirname(__DIR__) . "/../dynamic/videos/" . $new . ".converted.mp4")) {
+    unlink(dirname(__DIR__) . "/../dynamic/videos/" . $new . ".converted.mp4");
     //delete_directory($preload_folder);
 }

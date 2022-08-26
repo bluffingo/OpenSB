@@ -1,7 +1,7 @@
 <?php
 
 namespace squareBracket;
-class profiler
+class Profiler
 {
     private $starttime;
 
@@ -18,7 +18,7 @@ class profiler
     function getStats()
     {
         global $userdata, $isMaintenance, $frontendName;
-
+		
         if (isCli()) return;
         $headers = headers_list();
 

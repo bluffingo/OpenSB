@@ -5,6 +5,8 @@ namespace squareBracket;
 //this uploads and converts the video, should switch to a better solution!
 require dirname(__DIR__) . '/private/class/common.php';
 
+//die(dirname(__DIR__) . '\private\scripts\processingworker.php');
+
 if ($userbandata) {
     error(403, __("Banned user, can't continue."));
 }
@@ -43,9 +45,9 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
 
         if(!isset($noProcess)) {
             if (substr(php_uname(), 0, 7) == "Windows") {
-                pclose(popen(sprintf('start /B  php lib/scripts/processingworker.php "%s" "%s" > %s', $new, $target_file, 'videos/' . $new . '.log'), "r"));
+                pclose(popen(sprintf('start /B  php %s "%s" "%s" > %s', dirname(__DIR__) . '\private\scripts\processingworker.php', $new, $target_file, dirname(__DIR__) . '/dynamic/videos/' . $new . '.log'), "r"));
             } else {
-                system(sprintf('php lib/scripts/processingworker.php "%s" "%s" > %s 2>&1 &', $new, $target_file, 'videos/' . $new . '.log'));
+                system(sprintf('php $s "%s" "%s" > %s 2>&1 &', dirname(__DIR__) . '/private/scripts/processingworker.php', $new, $target_file, 'videos/' . $new . '.log'));
             }
         }
 
