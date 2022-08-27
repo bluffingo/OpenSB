@@ -52,7 +52,7 @@ class Profiler
         }
 
         if ($frontendName == "sbnext") {
-            print('<div class="footer" style="position:fixed;bottom:0;width:100%"><center>' . $debugData . '</center></div>');
+            print('<div class="profiler"><center>' . $debugData . '</center></div>');
         } else {
             print('<center>' . $debugData . '</center>');
         }
