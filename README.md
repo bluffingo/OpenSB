@@ -44,9 +44,6 @@ You will have to modify the directories to match your instance's location.
 
 ### How do I translate squareBracket?
 
-squareBracket Translations (MIGHT BE BROKEN): https://crowdin.com/project/squarebracket
+squareBracket Translations (Most likely broken): https://crowdin.com/project/squarebracket
 
 RelativeTime Repo (used for dates): https://github.com/mpratt/RelativeTime
-
-### Why ditch Bootstrap?
-We had problems with it, hense we're writing our own custom SCSS named Finalium for squareBracket's new layout, codenamed sbNext. However, Finalium uses parts of the Bootstrap 3 grid system for better compatibility.
