@@ -10,6 +10,7 @@
 * Fixed profile picture uploading 
 * Video favorites
 * User banning
+* Revamped the way languages were listed
 # squareBracket Beta 2 (October 2021 - June 2022)
 ## Beta 2.1 (June 2022)
 ### Beta 2.1.0 (June 28th 2022)

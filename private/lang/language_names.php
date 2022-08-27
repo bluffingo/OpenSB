@@ -2,10 +2,18 @@
 
 namespace squareBracket;
 
-// Each corresponding language should have its local language name.
-$languages = [
-    'en-US' => "English (United States)",
-];
+use WhiteCube\Lingua\Service as Lingua;
+
+$dir = new \DirectoryIterator('../private/lang/');
+foreach ($dir as $file) {
+    if ($file->getFilename() != "template.json" and $file->getFilename() != "qps-plocm.json") {
+        if ($file->getExtension() == "json") {
+            $language = Lingua::createFromW3C($file->getBasename('.json'));
+            $languages[$file->getBasename('.json')] = $language->toName();
+        }
+    }
+}
+
 if ($isDebug) {
     $languages['qps-plocm'] = "Pseudolocalization";
 }
