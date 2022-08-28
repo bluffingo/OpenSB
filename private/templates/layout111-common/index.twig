@@ -1,46 +1,18 @@
-{% extends "_layout.twig" %}
+{% extends "_layout_brisbane.twig" %}
 
-{% block precontent %}
-    <section class="hero is-small is-primary">
-        <div class="hero-body">
-            <p class="title">
-                Welcome to Project 111{% if log %}, {{ userdata.title }}{% endif %}
-            </p>
-            <p class="subtitle">
-                {% if log %}@{{ userdata.name }}{% else %}Welcome.{% endif %}
-            </p>
-        </div>
-    </section>
-{% endblock %}
 {% block content %}
-    <section class="section">
-        <div class="container">
-            {% for content in videos|batch(4) %}
-                <article class="columns is-centered">
-                    {% for video in content %}
-                        <div class="column is-one-quarter">
-                            <a href="watch?v={{ video.video_id }}">
-                                <figure class="image is-16by9">
-                                    <img src="{{ video_thumbnail(video.video_id) }}">
-                                </figure>
-                            </a>
-                            <div class="columns is-mobile is-multiline is-centered pt-1">
-                                <div class="column is-one-fifth pr-1">
-                                    <div class="image is-fluid">
-                                        <img src="{{ profile_image(video.u_name) }}" class="is-rounded">
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <a href="watch?v={{ video.video_id }}">
-                                        <p class="title is-6 is-spaced mt-1 mb-1">{{ video.title }}</p>
-                                    </a>
-                                    <p class="subtitle is-6">{{ userlink(video, 'u_') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </article>
-            {% endfor %}
-        </div>
-    </section>
+   <div class="hero-body is-align-items-baseline">
+      <div class="columns is-vcentered">
+         <div class="column is-3">
+            <img src="assets/logo-wordmark-dark.png">
+         </div>
+         <div class="column is-one-third">
+            <p class="control">
+            <form action="/search.php">
+               <input class="input is-rounded" name="tags" type="text" placeholder="Search">
+            </form>
+            </p>
+         </div>
+      </div>
+   </div>
 {% endblock %}
