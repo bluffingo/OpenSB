@@ -16,13 +16,17 @@
 <section class="hero hero-brisbane is-fullheight section">
     <div class="columns is-vcentered">
         <div class="column is-narrow">
-            <a href="index.php" class="has-text-white">Home</a>
+            <a href="/index.php" class="has-text-white">Home</a>
         </div>
         <div class="column is-narrow">
-            <a href="browse.php" class="has-text-white">Videos</a>
+            <a href="/browse.php" class="has-text-white">Videos</a>
         </div>
         <div class="column">
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="has-text-white is-pulled-right">@username</a>
+            {% if log %}
+                <a href="/user.php?name={{ userdata.name }}" class="has-text-white is-pulled-right">{{ userdata.name }}</a>
+            {% else %}
+                <a href="/login.php" class="has-text-white is-pulled-right">Login</a>
+            {% endif %}
         </div>
     </div>
 {% block content %}

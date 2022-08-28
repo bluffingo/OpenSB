@@ -27,11 +27,10 @@
 
 	"Edit video": "Edit video",
 	"Post info": "Post info",
-	"Enter the updated title and description of your post.": "Enter the updated title and description of your post.",
+	"Enter the updated title and description of your upload.": "Enter the updated title and description of your upload.",
 	" Title": " Title",
 	" Description": " Description",
-	" Tags": " Tags",
-	"Edit": "Edit",
+	"Save": "Save",
 
 	"Sign in": "Sign in",
 	"Password successfully reset! Please login with your new password.": "Password successfully reset! Please login with your new password.",
@@ -114,6 +113,9 @@
 
 	"view%s": "view%s",
 
+	"This video should be processing. If you see this message for too long, then please contact an administrator.": "This video should be processing. If you see this message for too long, then please contact an administrator.",
+	"To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.": "To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.",
+
 	"by": "by",
 	"views": "views",
 
@@ -154,12 +156,14 @@
 	"Upload video": "Upload video",
 	"Video info": "Video info",
 	"Enter the title and description of your video.": "Enter the title and description of your video.",
+	" Tags": " Tags",
 	"Video file": "Video file",
 	"Select the video file you want to upload.": "Select the video file you want to upload.",
 	"Upload guidelines": "Upload guidelines",
 	"Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.": "Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.",
 
 	"videos": "videos",
+	"Edit": "Edit",
 	"About": "About",
 	"Category:": "Category:",
 	"Rating ratio:": "Rating ratio:",
