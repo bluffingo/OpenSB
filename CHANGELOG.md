@@ -1,6 +1,6 @@
 # squareBracket Beta 3
 ## Beta 3.0
-### Beta 3.0.0-001 (WIP)
+### Beta 3.0.0-001
 * Added two new layouts
 * Fixed username check regex from principia-web repository
 * Artwork system (incomplete!)
