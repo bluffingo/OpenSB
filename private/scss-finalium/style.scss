@@ -60,7 +60,7 @@ p {
   line-height: 1.25em;
 }
 
-menu, ol, ul, il {
+menu, ol, ul, li {
   list-style: none;
 }
 
@@ -440,7 +440,6 @@ input[type="color"]:focus,
 #masthead-container {
   z-index: 47101;
   margin: 0;
-  border-bottom: none;
   background-color: #fffffff0;
   padding: 7px;
   position: sticky;

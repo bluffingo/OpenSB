@@ -23,7 +23,7 @@
                 {% if postType == "video" %}
                     {{ include('/components/player.twig') }}
                 {% elseif postType == "artwork" %}
-                    <img class="img-fluid" src="{{ video.videofile }}">
+                    <img class="img-fluid" src="{{ video.videofile }}" alt="{{ video.title }}">
                 {% endif %}
 
                 <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
@@ -31,7 +31,8 @@
                         <div class="col-md-8">
                             <a href="user.php?name={{ video.u_name }}"><img src="{{ profile_image(video.u_name) }}"
                                                                             class="rounded"
-                                                                            style="width:60px;float: left;margin-right:8px;"></a>
+                                                                            style="width:60px;float: left;margin-right:8px;"
+                                                                            alt="{{ video.u_name }}"></a>
                             <span style="font-size:1.15em;"><a
                                         href="user.php?name={{ video.u_name }}">{{ video.u_name }}</a> • {{ allVideos }} {{ __("videos") }}</span>
                             <br>
@@ -51,24 +52,24 @@
                             <br>
                         </div>
                         {% if userbandata != true %}
-                        <div class="col-md-4 right">
-                            <div>
-                                <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
-                                        class="button {% if rating == 1 %}button-success{% else %}button-secondary{% endif %}">
-                                    {{ icon("hand-thumbs-up-fill", 20) }}
-                                    <span id="likes">{{ total_likes }}</span>
-                                </button>
-                                <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}"
-                                        class="button {% if rating is same as(0) %}button-danger{% else %}button-secondary{% endif %}">
-                                    {{ icon("hand-thumbs-down-fill", 20) }}
-                                    <span id="dislikes">{{ total_dislikes }}</span>
-                                </button>
-                                <button href="#" id="{% if log %}favorite{% else %}action_unlogged{% endif %}"
-                                        class="button {% if isFavorited %}button-warning{% else %}button-secondary{% endif %}">
-                                    {{ icon("star-fill", 20) }}
-                                </button>
+                            <div class="col-md-4 right">
+                                <div>
+                                    <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
+                                            class="button {% if rating == 1 %}button-success{% else %}button-secondary{% endif %}">
+                                        {{ icon("hand-thumbs-up-fill", 20) }}
+                                        <span id="likes">{{ total_likes }}</span>
+                                    </button>
+                                    <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}"
+                                            class="button {% if rating is same as(0) %}button-danger{% else %}button-secondary{% endif %}">
+                                        {{ icon("hand-thumbs-down-fill", 20) }}
+                                        <span id="dislikes">{{ total_dislikes }}</span>
+                                    </button>
+                                    <button href="#" id="{% if log %}favorite{% else %}action_unlogged{% endif %}"
+                                            class="button {% if isFavorited %}button-warning{% else %}button-secondary{% endif %}">
+                                        {{ icon("star-fill", 20) }}
+                                    </button>
+                                </div>
                             </div>
-                        </div>
                         {% endif %}
                     </div>
                     <div class="grid" style="margin-top:5px;">
@@ -120,7 +121,7 @@
                         {% if log and userbandata != true %}
                             <div class="grid" id="commentField">
                                 <div class="col-md-1">
-                                    <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
+                                    <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
                                 </div>
                                 <div class="col-md-11">
                                     <div>

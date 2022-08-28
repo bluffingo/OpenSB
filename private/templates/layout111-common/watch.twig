@@ -10,7 +10,7 @@
                             <div class="columns is-mobile is-multiline is-gapless is-vcentered">
                                 <div class="column is-1">
                                     <div id="video-pfp" class="image is-32x32">
-                                        <img src="{{ profile_image(video.u_name) }}" class="is-rounded">
+                                        <img src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}" class="is-rounded">
                                     </div>
                                 </div>
                                 <div class="column is-narrow">
@@ -49,7 +49,7 @@
                         </div>
                     {% elseif postType == "artwork" %}
                         <div class="image">
-                            <img src="{{ video.videofile }}">
+                            <img src="{{ video.videofile }}" alt="{{ video.title }}">
                         </div>
                     {% endif %}
                 </div>
@@ -59,7 +59,7 @@
                         <article class="media">
                             <figure class="media-left px-0 ml-1 mr-3">
                                 <p class="image is-64x64">
-                                    <img class="is-rounded" src="{{ profile_image(userdata.name) }}">
+                                    <img class="is-rounded" alt="{{ userdata.name }}" src="{{ profile_image(userdata.name) }}">
                                 </p>
                             </figure>
                             <div class="media-content">
@@ -76,7 +76,7 @@
                         <article class="media">
                             <figure class="media-left px-0 ml-1 mr-3">
                                 <p class="image is-64x64">
-                                    <img class="is-rounded" src="{{ profile_image(comment.u_name) }}">
+                                    <img class="is-rounded" alt="{{ comment.u_name }}" src="{{ profile_image(comment.u_name) }}">
                                 </p>
                             </figure>
                             <div class="media-content">
@@ -119,7 +119,7 @@
                             <div class="columns is-mobile is-multiline is-centered pt-1">
                                 <div class="column is-one-fifth pr-1">
                                     <div class="image is-fluid">
-                                        <img src="{{ profile_image(video.u_name) }}" class="is-rounded">
+                                        <img src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}" class="is-rounded">
                                     </div>
                                 </div>
                                 <div class="column">

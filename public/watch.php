@@ -13,8 +13,6 @@ $ip = ($_SERVER['HTTP_CLIENT_IP'] ?? ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERV
 
 $videoData = Videos::getVideoData($userfields, $id);
 
-if (!$videoData) error('404', __("The video you were looking for cannot be found."));
-
 $query = '';
 $count = 0;
 $commentData = $sql->query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$id]);

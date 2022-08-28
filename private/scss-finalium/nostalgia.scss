@@ -1,8 +1,6 @@
 body {
-  font-size: 100%;
   font: 12px Arial, sans-serif;
-  background: #eaeaea;
-  background-image: url("/assets/nostalgia/noise.png");
+  background: #eaeaea url("/assets/nostalgia/noise.png");
 }
 
 a:link, a:visited, a:active {
@@ -51,8 +49,7 @@ a:link, a:visited, a:active {
 .button-poktube {
   padding: 3.6px 1em;
   border: 1px solid #ccc;
-  background: #f6f6f6;
-  background-image: linear-gradient(to bottom, #f6f6f6 0%, #e8e8e8 100%);
+  background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 0%, #e8e8e8 100%);
   margin-left: 0px;
   border-radius: 3px;
   font: 12px Arial, Helvetica, sans-serif;
@@ -63,8 +60,6 @@ a:link, a:visited, a:active {
   background-size: cover;
   margin: 0;
   color: black;
-  padding: 25px 0;
-  margin-top: 0;
   padding: 0;
   display: block;
 }

@@ -258,6 +258,7 @@ class Videos
     {
         global $sql;
         $videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
+        if (!$videoData) error('404', __("The video you were looking for cannot be found."));
         $videoData['views'] = $sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
         return $videoData;
     }

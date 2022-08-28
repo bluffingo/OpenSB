@@ -3,6 +3,8 @@
 
 	"Access Denied": "Access Denied",
 
+	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
+
 	"Delete": "Delete",
 
 	"Settings": "Settings",
@@ -103,8 +105,7 @@
 	"Enter comment here.": "Enter comment here.",
 	"Comment": "Comment",
 
-	"Sorry about that.": "Sorry about that.",
-
+	"en-US": "en-US",
 	"Guide": "Guide",
 	"Version": "Version",
 	"By the squareBracket contributors": "By the squareBracket contributors",
@@ -186,7 +187,6 @@
 	"Your comment has been submitted.": "Your comment has been submitted.",
 
 	"This is not your upload.": "This is not your upload.",
-	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
 
 	"Please enter your username! ": "Please enter your username! ",
 	"Please enter your password! ": "Please enter your password! ",
@@ -206,6 +206,5 @@
 	" The new passwords aren't identical.": " The new passwords aren't identical.",
 	"Your current password is incorrect.": "Your current password is incorrect.",
 
-	"Please wait 2 minutes before uploading again. If you've already uploaded a video, it is (probably) being processed.": "Please wait 2 minutes before uploading again. If you've already uploaded a video, it is (probably) being processed."
-
+	"Please wait 2 minutes before uploading again. If you've already uploaded a video, it is (probably) being processed.": "Please wait 2 minutes before uploading again. If you've already uploaded a video, it is (probably) being processed.",
 }
