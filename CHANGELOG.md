@@ -1,6 +1,6 @@
 # squareBracket Beta 3
 ## Beta 3.0
-### Beta 3.0.0-001
+### Beta 3.0.0-001 (August 27th 2022)
 * Fixed username check regex from principia-web repository
 * Artwork system (incomplete!)
 * Codebase is split into "private" and "public"
