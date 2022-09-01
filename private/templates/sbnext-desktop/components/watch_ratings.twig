@@ -1,0 +1,16 @@
+<div>
+    <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
+            class="button {% if rating == 1 %}button-success{% else %}button-secondary{% endif %}">
+        {{ icon("hand-thumbs-up-fill", 20) }}
+        <span id="likes">{{ total_likes }}</span>
+    </button>
+    <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}"
+            class="button {% if rating is same as(0) %}button-danger{% else %}button-secondary{% endif %}">
+        {{ icon("hand-thumbs-down-fill", 20) }}
+        <span id="dislikes">{{ total_dislikes }}</span>
+    </button>
+    <button href="#" id="{% if log %}favorite{% else %}action_unlogged{% endif %}"
+            class="button {% if isFavorited %}button-warning{% else %}button-secondary{% endif %}">
+        {{ icon("star-fill", 20) }}
+    </button>
+</div>

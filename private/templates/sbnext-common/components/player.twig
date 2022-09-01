@@ -15,7 +15,8 @@
                 controls
                 preload="auto"
                 poster="{{ video_thumbnail(video.video_id) }}"
-                data-setup="{}">
+                data-setup="{}"
+				src="/dynamic/videos/{{ video.video_id }}.converted.mp4">
             <p class="vjs-no-js">
                 {{ __("To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.") }}
             </p>

@@ -89,9 +89,6 @@
 	"Follow": "Follow",
 	"Marked all notifications as read.": "Marked all notifications as read.",
 	"Settings successfully saved!": "Settings successfully saved!",
-	"Notifications": "Notifications",
-	"No new notifications!": "No new notifications!",
-	"Mark all as read": "Mark all as read",
 	"About this user": "About this user",
 	"View threads": "View threads",
 	"Show posts": "Show posts",
@@ -121,6 +118,8 @@
 	"views": "views",
 
 	"More videos": "More videos",
+
+	"Edit": "Edit",
 
 	"Studio": "Studio",
 	"Log out": "Log out",
@@ -164,13 +163,14 @@
 	"Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.": "Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.",
 
 	"videos": "videos",
-	"Edit": "Edit",
 	"About": "About",
 	"Category:": "Category:",
 	"Rating ratio:": "Rating ratio:",
 	"Last viewed:": "Last viewed:",
 	"Favorites:": "Favorites:",
 	"Comments": "Comments",
+	"Comment on this video:": "Comment on this video:",
+	"About this video": "About this video",
 
 	"Show replies": "Show replies",
 	"Reply": "Reply",

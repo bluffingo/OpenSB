@@ -33,15 +33,7 @@
                                 style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
                     • {{ allVideos }} {{ __("videos") }}
                     <br>
-                    {% if userdata.id == video.author %}<a
-                        class="button button-secondary button-small"
-                        href="/edit.php?v={{ video.video_id }}">{{ __("Edit") }}</a>{% else %}
-                        <button id="subscribe-watch"
-                                class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small"
-                                type="button"
-                                {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
-                        <div class="subscribe-count">{{ subCount }}</div>
-                    {% endif %}
+                    {% include "components/watch_subscribe.twig" %}
                     <br>
                     <br>
                 </div>

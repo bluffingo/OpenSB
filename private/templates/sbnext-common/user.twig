@@ -90,20 +90,6 @@
         {% elseif edited %}
             <div class="header_message">{{ __("Settings successfully saved!") }}</div>
         {% endif %}
-        {% if userdata.id == id and not forceuser %}
-            <h3>{{ __("Notifications") }}</h3>
-            <ul>
-                {% for notif in notifs %}
-                    <li>{{ notif | raw }}</li>
-                {% else %}
-                    <li>{{ __("No new notifications!") }}</li>
-                {% endfor %}
-                {% if notifs %}
-                    <br>
-                    <li><a href="user.php?id={{ id }}&markread">{{ __("Mark all as read") }}</a></li>
-                {% endif %}
-            </ul>
-        {% endif %}
         <h2></h2>
         <div class="user_about">
             <h3>{{ __("About this user") }}</h3>
