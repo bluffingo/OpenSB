@@ -9,7 +9,7 @@ dynamic/banners/
 *.mp4
 dynamic/videos/
 dynamic/art/
-
+dynamic/art_thumbnails
 
 ## Composer
 vendor/
