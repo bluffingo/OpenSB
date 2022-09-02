@@ -802,28 +802,6 @@ input[type="color"]:focus,
   }
 }
 
-article.post {
-  display: inline-block;
-  text-align: center;
-
-  img {
-    height: 150px;
-    object-fit: cover;
-  }
-
-  .image {
-    width: 165px;
-  }
-
-  a {
-    color: black;
-  }
-
-  .info {
-    background: rgba(111, 111, 111, 0.58);
-  }
-}
-
 /// Gradients \\\
 @import "_gradients";
 /// Backgrounds \\\
@@ -834,6 +812,8 @@ article.post {
 @import "_containers";
 /// Images \\\
 @import "_images";
+/// Galleries \\\
+@import "_galleries";
 /// Cards \\\
 @import "_cards";
 /// Buttons \\\

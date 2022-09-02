@@ -69,8 +69,8 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
                 $constraint->upsize();
             });
             $img->save($target_file);
-            $img = $manager->make($target_file)->encode('jpg', 75);
-            $img->resize(200, null, function ($constraint) {
+            $img = $manager->make($target_file)->encode('jpg', 80);
+            $img->resize(400, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
