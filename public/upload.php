@@ -5,6 +5,9 @@ namespace squareBracket;
 //this uploads and converts the video, should switch to a better solution!
 require dirname(__DIR__) . '/private/class/common.php';
 
+$supportedVideoFormats = ["mp4", "mkv", "wmv", "flv", "avi", "mov", "3gp"];
+$supportedImageFormats = ["png", "jpg", "jpeg"];
+
 //die(dirname(__DIR__) . '\private\scripts\processingworker.php');
 
 if ($userbandata) {
@@ -12,6 +15,7 @@ if ($userbandata) {
 }
 
 use PHLAK\StrGen;
+use \Intervention\Image\ImageManager;
 
 if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata['name'])) {
 	$generator = new StrGen\Generator();
@@ -26,32 +30,49 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
 
     // Rate limit uploading to 2 minutes, both to prevent spam and to prevent double uploads.
     if ($sql->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60 * 2, $userdata['id']]) && !$isDebug) {
-        die(__("Please wait 2 minutes before uploading again. If you've already uploaded a video, it is (probably) being processed."));
+        die(__("Please wait 2 minutes before uploading again. If you've already uploaded, it is (probably) being processed."));
     }
 
     $name = $_FILES['fileToUpload']['name'];
-    $temp_name = $_FILES['fileToUpload']['tmp_name']; // gets video info and thumbnail info
+    $temp_name = $_FILES['fileToUpload']['tmp_name']; // gets upload info
     $ext = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
-    if(isset($noProcess) && $isDebug) {
-        $status = 0x0; // pretend that video has been successfully uploaded
-        $target_file = dirname(__DIR__) . '/dynamic/videos/' . $new . '.converted.' . $ext;
-    } else {
-        $status = 0x2;
-        $target_file = dirname(__DIR__) . '/dynamic/videos/' . $new . '.' . $ext;
-    }
-    if (move_uploaded_file($temp_name, $target_file)) {
-        $sql->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags) VALUES (?,?,?,?,?,?,?,?)",
-            [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), 'dynamic/videos/' . $new, $status]);
-
-        if(!isset($noProcess)) {
-            if (substr(php_uname(), 0, 7) == "Windows") {
-                pclose(popen(sprintf('start /B  php %s "%s" "%s" > %s', dirname(__DIR__) . '\private\scripts\processingworker.php', $new, $target_file, dirname(__DIR__) . '/dynamic/videos/' . $new . '.log'), "r"));
-            } else {
-                system(sprintf('php $s "%s" "%s" > %s 2>&1 &', dirname(__DIR__) . '/private/scripts/processingworker.php', $new, $target_file, 'videos/' . $new . '.log'));
-            }
+    if (in_array(strtolower($ext), $supportedVideoFormats, true)) {
+        if (isset($noProcess) && $isDebug) {
+            $status = 0x0; // pretend that video has been successfully uploaded
+            $target_file = dirname(__DIR__) . '/dynamic/videos/' . $new . '.converted.' . $ext;
+        } else {
+            $status = 0x2;
+            $target_file = dirname(__DIR__) . '/dynamic/videos/' . $new . '.' . $ext;
         }
+        if (move_uploaded_file($temp_name, $target_file)) {
+            $sql->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags) VALUES (?,?,?,?,?,?,?,?)",
+                [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), 'dynamic/videos/' . $new, $status]);
 
-        redirect('./watch.php?v=' . $new);
+            if (!isset($noProcess)) {
+                if (substr(php_uname(), 0, 7) == "Windows") {
+                    pclose(popen(sprintf('start /B  php %s "%s" "%s" > %s', dirname(__DIR__) . '\private\scripts\processingworker.php', $new, $target_file, dirname(__DIR__) . '/dynamic/videos/' . $new . '.log'), "r"));
+                } else {
+                    system(sprintf('php $s "%s" "%s" > %s 2>&1 &', dirname(__DIR__) . '/private/scripts/processingworker.php', $new, $target_file, 'videos/' . $new . '.log'));
+                }
+            }
+
+            redirect('./watch.php?v=' . $new);
+        }
+    } elseif (in_array(strtolower($ext), $supportedImageFormats, true)) {
+        $manager = new ImageManager();
+        $target_file = dirname(__DIR__) . '/dynamic/art/' . $new . '.png';
+        if (move_uploaded_file($temp_name, $target_file)) {
+            $img = $manager->make($target_file);
+            $img->resize(1200, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $status = 0x2;
+            $sql->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, post_type) VALUES (?,?,?,?,?,?,?,?,?)",
+                [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), '/dynamic/art/' . $new . '.png', $status, 2]);
+        }
+    } else {
+        error("415", "This file format is unsupported");
     }
 }
 

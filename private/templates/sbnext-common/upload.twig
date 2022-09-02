@@ -3,13 +3,13 @@
 {% block title %}{{ __("Upload") }}{% endblock %}
 
 	{% block content %}
-        <h4 class="bg-dark text-light card-body" style="margin-bottom:0;">{{ __("Upload video") }}</h4>
+        <h4 class="bg-dark text-light card-body" style="margin-bottom:0;">{{ __("Upload") }}</h4>
         <div class="card card-body-fat">
             <form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data">
                 <div class="card">
                     <div class="card-body-fat">
-                        <h2 style="margin-bottom: 0.5em;">{{ __("Video info") }}</h2>
-                        <p>{{ __("Enter the title and description of your video.") }}</p>
+                        <h2 style="margin-bottom: 0.5em;">{{ __("Upload info") }}</h2>
+                        <p>{{ __("Enter the title and description of your upload.") }}</p>
                         <h4 style="margin-bottom: 0.5em;">{{ __(" Title") }}</h4>
                         <input type="text" class="form-control form-long uploader-form" id="title" name="title">
                         <br>
@@ -20,8 +20,8 @@
                         <br>
                         <h4 style="margin-bottom: 0.5em;">{{ __(" Tags") }}</h4>
                         <input type="text" class="form-control form-long uploader-form" name="tags">
-                        <h2 style="margin-bottom: 0.5em;">{{ __("Video file") }}</h2>
-                        <p>{{ __("Select the video file you want to upload.") }}</p>
+                        <h2 style="margin-bottom: 0.5em;">{{ __("File") }}</h2>
+                        <p>{{ __("Select the file you want to upload. Major video and image file formats are supported.") }}</p>
                         <input class="form-control" type="file" name="fileToUpload" id="fileToUpload"
                                onchange="$('#title').val($('#fileToUpload').val().split('\\').pop().split('/').pop())"
                                required>
@@ -34,14 +34,6 @@
                             <input class="button button-primary" type="submit" id="upload" name="upload"
                                    value="{{ __("Upload") }}">
                         </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h5>{{ __("Upload guidelines") }}</h5>
-                    </div>
-                    <div class="card-body">
-                        <p>{{ __("Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.") }}</p>
                     </div>
                 </div>
             </form>

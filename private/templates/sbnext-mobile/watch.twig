@@ -31,7 +31,7 @@
                          style="width:48px;float: left;margin-right:8px;" alt="{{ video.u_name }}">
                     <a href="user.php?name={{ video.u_name }}"><b
                                 style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
-                    • {{ allVideos }} {{ __("videos") }}
+                    • {{ allVideos }} {{ __("uploads") }}
                     <br>
                     {% include "components/watch_subscribe.twig" %}
                     <br>
@@ -132,7 +132,7 @@
                     {% endfor %}
                     <div class="center">
                         <div class="button button-secondary" onclick="showMoreVideos()" id="fromUser">
-                            {{ __("More videos") }}
+                            {{ __("More uploads") }}
                         </div>
                     </div>
                     <div class="collapsed" id="fromUserVideoList">

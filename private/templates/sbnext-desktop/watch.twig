@@ -34,7 +34,7 @@
                                                                                 style="width:60px;float: left;margin-right:8px;"
                                                                                 alt="{{ video.u_name }}"></a>
                                 <span style="font-size:1.15em;"><a
-                                            href="user.php?name={{ video.u_name }}">{{ video.u_name }}</a> • {{ allVideos }} {{ __("videos") }}</span>
+                                            href="user.php?name={{ video.u_name }}">{{ video.u_name }}</a> • {{ allVideos }} {{ __("uploads") }}</span>
                                 <br>
                                 <span>{{ __("Published on %s", [video.time | date('M j, Y')]) }} • {{ viewCount }} {{ __("views") }}</span>
                                 <br>
@@ -118,14 +118,14 @@
             <div class="col-md-4">
                 {% if theme == 'nostalgia' %}
                     <div class="card">
-                        <div class="card-header">{{ __("About this video") }}</div>
+                        <div class="card-header">{{ __("About this upload") }}</div>
                         <div class="card-body">
                             <a href="user.php?name={{ video.u_name }}"><img src="{{ profile_image(video.u_name) }}"
                                                                             class="rounded"
                                                                             style="width:48px;float: left;margin-right:8px;"
                                                                             alt="{{ video.u_name }}"></a>
                             <p><strong>{{ __("Published on %s", [video.time | date('M j, Y')]) }}
-                                    <br>{{ __("by") }} {{ userlink(video, "u_") }}</strong> ({{ allVideos }} {{ __("videos") }})
+                                    <br>{{ __("by") }} {{ userlink(video, "u_") }}</strong> ({{ allVideos }} {{ __("uploads") }})
                             </p>
                             <p>
                                 {{ video.description }}
@@ -143,7 +143,7 @@
                         {% endfor %}
                         <div class="center">
                             <div class="button button-secondary" onclick="showMoreVideos()" id="fromUser">
-                                {{ __("More videos") }}
+                                {{ __("More uploads") }}
                             </div>
                         </div>
                         <div class="collapsed" id="fromUserVideoList">
