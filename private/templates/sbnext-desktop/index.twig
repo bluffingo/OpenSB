@@ -12,39 +12,39 @@
 
 	{% block precontent %}
 <div class="indexNext">
-{% if theme != 'nostalgia' %}
-    <div class="main-content">
-        <div class="container page-container">
-            {% if log %}
-                <div class="col-md-8">
-                    <h1>{{ __("Welcome to squareBracket") }}</h1>
-                    <h3>@{{ userdata.name }}</h3>
-                </div>
-                <div class="col-md-4 right stats">
-                    {# hack to prevent twig from outputing the number 1 #}
-                    {% if totalSubscribers != 1 %}
-                        {% set pluralSubscribers = __("s") %}
-                    {% endif %}
-                    {% if totalViews != 1 %}
-                        {% set pluralViews = __("s") %}
-                    {% endif %}
-                    <p>{{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
-                        <br>{{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
-                </div>
-            {% else %}
-                <div class="col-md-8">
-                    <h1>{{ __("Welcome to squareBracket") }}</h1>
-                    <h3 style="padding:0;margin:0;">{{ __("Again.") }}</h3>
-                </div>
-                <div class="col-md-4">
-                    <a class="button button-neutral button-large"
-                       href="register.php">{{ __("Get started") }} {{ icon('caret-right-fill', 16) }}</a><br><br>
-                    <big>{{ __("Already have an account?") }} <a class="button button-neutral"
-                                                                 href="login.php">{{ __("Sign in") }}</a></big>
-                </div>
-            {% endif %}
+    {% if theme != 'nostalgia' %}
+        <div class="main-content">
+            <div class="container page-container">
+                {% if log %}
+                    <div class="col-md-8">
+                        <h1>{{ __("Welcome to squareBracket") }}</h1>
+                        <h3>@{{ userdata.name }}</h3>
+                    </div>
+                    <div class="col-md-4 right stats">
+                        {# hack to prevent twig from outputing the number 1 #}
+                        {% if totalSubscribers != 1 %}
+                            {% set pluralSubscribers = __("s") %}
+                        {% endif %}
+                        {% if totalViews != 1 %}
+                            {% set pluralViews = __("s") %}
+                        {% endif %}
+                        <p>{{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
+                            <br>{{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
+                    </div>
+                {% else %}
+                    <div class="col-md-8">
+                        <h1>{{ __("Welcome to squareBracket") }}</h1>
+                        <h3 style="padding:0;margin:0;">{{ __("Again.") }}</h3>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="button button-neutral button-large"
+                           href="register.php">{{ __("Get started") }} {{ icon('caret-right-fill', 16) }}</a><br><br>
+                        <big>{{ __("Already have an account?") }} <a class="button button-neutral"
+                                                                     href="login.php">{{ __("Sign in") }}</a></big>
+                    </div>
+                {% endif %}
+            </div>
         </div>
-    </div>
     {% endif %}
     {% endblock %}
 
@@ -53,33 +53,27 @@
         <div class="header_message header-success">{{ __("Settings successfully saved!") }}</div>
         <br>
     {% endif %}
-    <div class="grid">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body-fat">
-                    <h3 style="margin-top:0">{{ __("Recommended randomly") }}</h3>
-                    {% for video in videos %}
-                        {{ small_video_box(video) }}
-                    {% else %}
-                        <p>{{ __("No uploaded videos.") }}</p>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body-fat">
-                    <h3 style="margin-top:0">{{ __("Recently uploaded to squareBracket") }}</h3>
-                    {% for video in videos_right %}
-                        {{ small_video_box(video) }}
-                    {% else %}
-                        <p>{{ __("No uploaded videos.") }}</p>
-                    {% endfor %}
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-body-fat">
+            <h3 style="margin-top:0">{{ __("Randomly selected uploads") }}</h3>
+            {% for video in videos %}
+                    <article class="post">
+                        <a href="watch?v={{ video.video_id }}">
+                            <div class="image">
+                                {% if video.post_type == 0 or video.post_type == 1  %}
+                                    <img class="img-fluid" src="{{ video_thumbnail(video.video_id) }}">
+                                {% elseif video.post_type == 2 %}
+                                    <img class="img-fluid" src="/dynamic/art_thumbnails/{{ video.video_id }}.jpg">
+                                {% endif  %}
+                            </div>
+                        <div class="info">{{ video.views }} {{ __("views") }}</div>
+                        </a>
+                    </article>
+            {% else %}
+                <p>{{ __("No uploads.") }}</p>
+            {% endfor %}
         </div>
     </div>
 </div>
-    </div>
 <br><br>
 {% endblock %}

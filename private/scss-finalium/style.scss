@@ -802,25 +802,26 @@ input[type="color"]:focus,
   }
 }
 
-.partnership-intro {
-  font-size: 20px;
-  margin: 0;
-}
+article.post {
+  display: inline-block;
+  text-align: center;
 
-.settings-tab {
-  font-weight: bold;
-  height: 20px;
-  padding: 5px 0 0 8px;
-  vertical-align: middle;
+  img {
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .image {
+    width: 165px;
+  }
 
   a {
     color: black;
-    text-decoration: none;
   }
-}
 
-.settings-tab.current {
-  background: #ededed;
+  .info {
+    background: rgba(111, 111, 111, 0.58);
+  }
 }
 
 /// Gradients \\\
