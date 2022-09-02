@@ -5,14 +5,15 @@ namespace squareBracket;
 require dirname(__DIR__) . '/private/class/common.php';
 
 if (isset($_POST['othermagic'])) {
-    $language = isset($_POST['language']) ? $_POST['language'] : 'en-US';
-    $theme = isset($_POST['theme']) ? $_POST['theme'] : 'default';
-    $profilepicture = isset($_POST['profilepicture']) ? $_POST['profilepicture'] : 'circle';
+    $language = $_POST['language'] ?? 'en-US';
+    $theme = $_POST['theme'] ?? 'default';
+    $profilepicture = $_POST['profilepicture'] ?? 'circle';
+    $enableSounds = $_POST['enableSounds'] ?? false;
 
     setcookie('language', $language, 2147483647);
     setcookie('theme', $theme, 2147483647);
     setcookie('profilepicture', $profilepicture, 2147483647);
-
+    setcookie('SBSOUNDS', $enableSounds, 2147483647);
 
     //if (!$error) {
     redirect(sprintf("index.php?updated=true", isset($userdata['name']) ? $userdata['name'] : null));

@@ -15,6 +15,8 @@
                         {% if code==userdata.language %}selected{% endif %}>{{ name }}</option>{% endif %}
         {% endfor %}
     </select>
+    <input type="checkbox" id="enableSounds" name="enableSounds" value="true">
+    <label for="enableSounds"> {{ __("Enable sounds") }}</label><br>
     <br>
     <h3>{{ __("Profile picture roundness") }}</h3>
     <input type="radio" id="square" name="profilepicture" value="square">

@@ -23,8 +23,6 @@ if (isset($_POST['magic'])) {
     $currentPass = ($_POST['current_pass'] ?? null);
     $pass = ($_POST['pass'] ?? null);
     $pass2 = ($_POST['pass2'] ?? null);
-	
-	$enableSounds = $_POST['enableSounds'] ?? false;
 
     if ($currentPass && $pass && $pass2) {
         if (password_verify($currentPass, $userdata['password'])) {
@@ -86,8 +84,6 @@ if (isset($_POST['magic'])) {
         $sql->query("UPDATE users SET title = ?, about = ?, customcolor = ? WHERE id = ?",
             [$title, $about, $customcolor, $userdata['id']]);
     }
-
-    setcookie('SBSOUNDS', $enableSounds, 2147483647);
 
     if (!$error) {
         redirect(sprintf("user.php?name=%s&edited", $userdata['name']));
