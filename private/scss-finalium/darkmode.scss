@@ -324,3 +324,11 @@ textarea, input[type=text], input[type=password] {
 #guide {
   background: #212121;
 }
+
+.usermenushit {
+	ul {
+		li:hover {
+			background-color: $primary;
+		}
+	}
+}
