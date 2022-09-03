@@ -3,6 +3,8 @@
 
 	"Access Denied": "Access Denied",
 
+	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
+
 	"Delete": "Delete",
 
 	"Settings": "Settings",
@@ -45,6 +47,7 @@
 	"Dark": "Dark",
 	"Nostalgia": "Nostalgia",
 	"Language": "Language",
+	"Enable sounds": "Enable sounds",
 	"Profile picture roundness": "Profile picture roundness",
 	"Square": "Square",
 	"Rounded": "Rounded",
@@ -56,8 +59,7 @@
 
 	"Reset Password": "Reset Password",
 	"Hello %s. Please choose a new secure password, and be sure to remember it!": "Hello %s. Please choose a new secure password, and be sure to remember it!",
-	"New Password:": "New Password:",
-	"Repeat New Password:": "Repeat New Password:",
+	"Repeat New Password": "Repeat New Password",
 
 	"There are no videos that match your query.": "There are no videos that match your query.",
 
@@ -66,8 +68,6 @@
 	"Profile": "Profile",
 	"Profile options are not available to banned users.": "Profile options are not available to banned users.",
 	"Miscellaneous": "Miscellaneous",
-	"Sounds": "Sounds",
-	"Enable sounds": "Enable sounds",
 
 	"Statistics": "Statistics",
 	"About this instance of squareBracket": "About this instance of squareBracket",
@@ -75,6 +75,13 @@
 	"Registered users": "Registered users",
 	"Posts": "Posts",
 	"Views": "Views",
+
+	"Upload": "Upload",
+	"Upload info": "Upload info",
+	"Enter the title and description of your upload.": "Enter the title and description of your upload.",
+	" Tags": " Tags",
+	"File": "File",
+	"Select the file you want to upload. Major video and image file formats are supported.": "Select the file you want to upload. Major video and image file formats are supported.",
 
 	"Edit my settings": "Edit my settings",
 	"View user page as viewer": "View user page as viewer",
@@ -87,9 +94,6 @@
 	"Follow": "Follow",
 	"Marked all notifications as read.": "Marked all notifications as read.",
 	"Settings successfully saved!": "Settings successfully saved!",
-	"Notifications": "Notifications",
-	"No new notifications!": "No new notifications!",
-	"Mark all as read": "Mark all as read",
 	"About this user": "About this user",
 	"View threads": "View threads",
 	"Show posts": "Show posts",
@@ -103,8 +107,7 @@
 	"Enter comment here.": "Enter comment here.",
 	"Comment": "Comment",
 
-	"Sorry about that.": "Sorry about that.",
-
+	"en-US": "en-US",
 	"Guide": "Guide",
 	"Version": "Version",
 	"By the squareBracket contributors": "By the squareBracket contributors",
@@ -113,17 +116,18 @@
 
 	"view%s": "view%s",
 
-	"This video should be processing. If you see this message for too long, then please contact an administrator.": "This video should be processing. If you see this message for too long, then please contact an administrator.",
-	"To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.": "To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.",
+	"This video should be processing.": "This video should be processing.",
+	"To view this video please enable JavaScript.": "To view this video please enable JavaScript.",
 
 	"by": "by",
 	"views": "views",
 
 	"More videos": "More videos",
 
+	"Edit": "Edit",
+
 	"Studio": "Studio",
 	"Log out": "Log out",
-	"Upload": "Upload",
 	"Logout": "Logout",
 	"Sign In": "Sign In",
 	"Home": "Home",
@@ -149,33 +153,26 @@
 	"Again.": "Again.",
 	"Get started": "Get started",
 	"Already have an account?": "Already have an account?",
-	"Recommended randomly": "Recommended randomly",
-	"No uploaded videos.": "No uploaded videos.",
-	"Recently uploaded to squareBracket": "Recently uploaded to squareBracket",
+	"Randomly selected uploads": "Randomly selected uploads",
+	"No uploads.": "No uploads.",
 
-	"Upload video": "Upload video",
-	"Video info": "Video info",
-	"Enter the title and description of your video.": "Enter the title and description of your video.",
-	" Tags": " Tags",
-	"Video file": "Video file",
-	"Select the video file you want to upload.": "Select the video file you want to upload.",
-	"Upload guidelines": "Upload guidelines",
-	"Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.": "Do not upload any TV shows, cartoons, music videos, music concerts, or commercials without permission unless they consist entirely of content that you've created yourself.",
-
-	"videos": "videos",
-	"Edit": "Edit",
+	"uploads": "uploads",
 	"About": "About",
-	"Category:": "Category:",
-	"Rating ratio:": "Rating ratio:",
-	"Last viewed:": "Last viewed:",
-	"Favorites:": "Favorites:",
+	"Category": "Category",
+	"Rating ratio": "Rating ratio",
+	"Last viewed": "Last viewed",
+	"Favorites": "Favorites",
 	"Comments": "Comments",
+	"Comment on this video": "Comment on this video",
+	"About this upload": "About this upload",
+	"More uploads": "More uploads",
 
 	"Show replies": "Show replies",
 	"Reply": "Reply",
 
 	"Latest Videos": "Latest Videos",
 	"squareBracket Videos": "squareBracket Videos",
+	"No uploaded videos.": "No uploaded videos.",
 
 	"Favorite": "Favorite",
 
@@ -186,7 +183,6 @@
 	"Your comment has been submitted.": "Your comment has been submitted.",
 
 	"This is not your upload.": "This is not your upload.",
-	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
 
 	"Please enter your username! ": "Please enter your username! ",
 	"Please enter your password! ": "Please enter your password! ",
@@ -206,6 +202,5 @@
 	" The new passwords aren't identical.": " The new passwords aren't identical.",
 	"Your current password is incorrect.": "Your current password is incorrect.",
 
-	"Please wait 2 minutes before uploading again. If you've already uploaded a video, it is (probably) being processed.": "Please wait 2 minutes before uploading again. If you've already uploaded a video, it is (probably) being processed."
-
+	"Please wait 2 minutes before uploading again.": "Please wait 2 minutes before uploading again."
 }
