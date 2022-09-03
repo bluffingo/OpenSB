@@ -69,7 +69,7 @@
                                     <div class="description-extra">
                                         <ul>
                                             <li>
-                                                <h4 class="title">{{ __("Category:") }}</h4>
+                                                <h4 class="title">{{ __("Category") }}":</h4>
                                                 <div class="content">{{ video.category_id | category_id_to_name() }}</div>
                                             </li>
                                         </ul>
@@ -79,13 +79,13 @@
                                     <h2>{{ __("Statistics") }}</h2>
                                     <ul style="padding:0">
                                         <li>
-                                            {{ __("Rating ratio:") }} {{ videoRatio }}%
+                                            {{ __("Rating ratio") }}: {{ videoRatio }}%
                                         </li>
                                         <li>
-                                            {{ __("Last viewed:") }} {{ recentView | relative_time }}
+                                            {{ __("Last viewed") }}: {{ recentView | relative_time }}
                                         </li>
                                         <li>
-                                            {{ __("Favorites:") }} {{ total_favorites }}
+                                            {{ __("Favorites") }}: {{ total_favorites }}
                                         </li>
                                     </ul>
                                 </div>
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                 {% else %}
-                    <h4 style="color: gray;font-weight:bold;">{{ __("Comment on this video:") }}</h4>
+                    <h4 style="color: gray;font-weight:bold;">{{ __("Comment on this video") }}:</h4>
                     {% if log and userbandata != true %}
                         {% include "components/comment_form.twig" %}
                     {% endif %}

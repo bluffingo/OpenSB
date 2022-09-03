@@ -59,8 +59,7 @@
 
 	"Reset Password": "Reset Password",
 	"Hello %s. Please choose a new secure password, and be sure to remember it!": "Hello %s. Please choose a new secure password, and be sure to remember it!",
-	"New Password:": "New Password:",
-	"Repeat New Password:": "Repeat New Password:",
+	"Repeat New Password": "Repeat New Password",
 
 	"There are no videos that match your query.": "There are no videos that match your query.",
 
@@ -159,12 +158,12 @@
 
 	"uploads": "uploads",
 	"About": "About",
-	"Category:": "Category:",
-	"Rating ratio:": "Rating ratio:",
-	"Last viewed:": "Last viewed:",
-	"Favorites:": "Favorites:",
+	"Category": "Category",
+	"Rating ratio": "Rating ratio",
+	"Last viewed": "Last viewed",
+	"Favorites": "Favorites",
 	"Comments": "Comments",
-	"Comment on this video:": "Comment on this video:",
+	"Comment on this video": "Comment on this video",
 	"About this upload": "About this upload",
 	"More uploads": "More uploads",
 
