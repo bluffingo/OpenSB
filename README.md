@@ -6,7 +6,7 @@
 <h3 align="center"><a href="https://pok.byteemail.com/">squareBracket's live website</a></h3>
 
 ## How to setup an instance squareBracket.
-1. Get an Apache (NGINX is untested) with PHP and MariaDB up and running, including Composer.
+1. Get an Apache (NGINX is untested) server with PHP and MariaDB up and running, including Composer.
 1. Setup some virtual host shit, look below.
 1. Run `composer update` from the terminal.
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
