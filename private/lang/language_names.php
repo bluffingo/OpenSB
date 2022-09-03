@@ -4,7 +4,9 @@ namespace squareBracket;
 
 use WhiteCube\Lingua\Service as Lingua;
 
-if (!isCattleDog()) {
+require_once(dirname(__DIR__) . "/class/misc.php");
+
+if (!isCli()) {
 	$dir = new \DirectoryIterator('../private/lang/');
 	foreach ($dir as $file) {
 		if ($file->getFilename() != "template.json" and $file->getFilename() != "qps-plocm.json") {

@@ -9,7 +9,9 @@ $gitBranch = "code-rewrite";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-header("Access-Control-Allow-Origin: *");
+if (!isCattleDog()) {
+	header("Access-Control-Allow-Origin: *");
+}
 
 if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
     die('<b>A configuration file could not be found. Please read the installing instructions in the README file.</b>');
@@ -66,9 +68,7 @@ if (isset($_COOKIE['frontend'])) {
 function isCattleDog()
 {
     global $_SESSION;
-    if (isCli()) {
-        return isset($_SESSION['isCattleDog']);
-    }
+    return isset($_SESSION['isCattleDog']);
 }
 
 // cattleDog's verify.php fucks up if this isn't done.
