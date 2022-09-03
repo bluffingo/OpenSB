@@ -1,7 +1,7 @@
 <div id="container" style="background-color:black;color:white;width: 100%;margin: 0;">
     {% if (video.flags b-and 2) %}
         <div>
-            {{ __("This video should be processing. If you see this message for too long, then please contact an administrator.") }}
+            {{ __("This video should be processing.") }}
         </div>
     {% else %}
         <!-- this is not the right location but i don't care -grkb 8/23/2022 -->
@@ -18,7 +18,7 @@
                 data-setup="{}"
 				src="/dynamic/videos/{{ video.video_id }}.converted.mp4">
             <p class="vjs-no-js">
-                {{ __("To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.") }}
+                {{ __("To view this video please enable JavaScript.") }}
             </p>
         </video>
         <script>

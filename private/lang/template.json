@@ -116,8 +116,8 @@
 
 	"view%s": "view%s",
 
-	"This video should be processing. If you see this message for too long, then please contact an administrator.": "This video should be processing. If you see this message for too long, then please contact an administrator.",
-	"To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.": "To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.",
+	"This video should be processing.": "This video should be processing.",
+	"To view this video please enable JavaScript.": "To view this video please enable JavaScript.",
 
 	"by": "by",
 	"views": "views",
