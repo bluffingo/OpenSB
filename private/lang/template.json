@@ -47,6 +47,7 @@
 	"Dark": "Dark",
 	"Nostalgia": "Nostalgia",
 	"Language": "Language",
+	"Enable sounds": "Enable sounds",
 	"Profile picture roundness": "Profile picture roundness",
 	"Square": "Square",
 	"Rounded": "Rounded",
@@ -68,8 +69,6 @@
 	"Profile": "Profile",
 	"Profile options are not available to banned users.": "Profile options are not available to banned users.",
 	"Miscellaneous": "Miscellaneous",
-	"Sounds": "Sounds",
-	"Enable sounds": "Enable sounds",
 
 	"Statistics": "Statistics",
 	"About this instance of squareBracket": "About this instance of squareBracket",
@@ -155,9 +154,8 @@
 	"Again.": "Again.",
 	"Get started": "Get started",
 	"Already have an account?": "Already have an account?",
-	"Recommended randomly": "Recommended randomly",
-	"No uploaded videos.": "No uploaded videos.",
-	"Recently uploaded to squareBracket": "Recently uploaded to squareBracket",
+	"Randomly selected uploads": "Randomly selected uploads",
+	"No uploads.": "No uploads.",
 
 	"uploads": "uploads",
 	"About": "About",
@@ -175,6 +173,7 @@
 
 	"Latest Videos": "Latest Videos",
 	"squareBracket Videos": "squareBracket Videos",
+	"No uploaded videos.": "No uploaded videos.",
 
 	"Favorite": "Favorite",
 
