@@ -79,7 +79,7 @@
     {% include "components/_header.twig" %}
 {% endif %}
 {% block precontent %}{% endblock %}
-<div class="container page-container">
+<div class="container">
     {% if userbandata %}
         <div class="header_message header-danger">
             <h1>{{ __("Sorry %s, you are banned from squareBracket.", [userdata.name]) }}</h1>

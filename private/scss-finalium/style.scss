@@ -206,7 +206,7 @@ menu, ol, ul, li {
   display: inline-block;
   width: 100%;
 
-  .page-container {
+  .container {
     h1, h2, h3, h4, h5, h6, p {
       padding: 0;
       margin: 8px 0;
@@ -451,7 +451,7 @@ input[type="color"]:focus,
 
 #masthead {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   position: relative;
   margin: auto;
   height: 33px;
