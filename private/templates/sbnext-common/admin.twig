@@ -1,17 +1,16 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Admin panel{% endblock %}
+{% block title %}{{ __("Admin panel") }}{% endblock %}
 
 	{% block content %}
         <h1>Admin panel</h1>
-        <p>Currently running squareBracket version {{ version }} (commit {{ git_commit() }}) on {{ operating_system() }}
-            .</p>
+        <p>{{ __("Currently running squareBracket version %s (commit %s) on %s.", [version, git_commit(), operating_system()]) }}</p>
         <table style="width: 100%;">
             <tr>
                 <td class="nb" style="width:33%; vertical-align:top;">
                     <table class="c1">
                         <tr class="h">
-                            <td class="b" colspan="2">Latest registered users</td>
+                            <td class="b" colspan="2">{{ __("Latest registered users") }}</td>
                         </tr>
                         {% for user in latest_registered_users %}
                             <tr>
@@ -24,7 +23,7 @@
                 <td class="nb" style="width:33%; vertical-align:top;">
                     <table class="c1">
                         <tr class="h">
-                            <td class="b" colspan="2">Latest seen users</td>
+                            <td class="b" colspan="2">{{ __("Latest seen users") }}</td>
                         </tr>
                         {% for user in latest_seen_users %}
                             <tr>
@@ -37,7 +36,7 @@
                 <td class="nb" style="width:33%; vertical-align:top;">
                     <table class="c1">
                         <tr class="h">
-                            <td class="b" colspan="2">Latest uploaded videos</td>
+                            <td class="b" colspan="2">{{ __("Latest uploads") }}</td>
                         </tr>
                         {% for video in videos %}
                             <tr>
@@ -50,7 +49,7 @@
             </tr>
         </table>
 
-        <h3>Numbers</h3>
+        <h3>{{ __("Numbers") }}</h3>
 
         <table style="width: 100%;">
             <tr class="h">
@@ -65,7 +64,7 @@
             </tr>
         </table>
 
-        <h3>Comments</h3>
+        <h3>{{ __("All comments") }}</h3>
         {% for comment in comments %}
             <div class="grid" style="gap:0px;margin-bottom: 17.5px;">
                 <div class="col-md-12" id="{{ comment.comment_id }}">

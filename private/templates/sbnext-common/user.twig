@@ -26,24 +26,18 @@
     </style>
     {% if userbandata != true  %}
         {% if userpagedata.id == userdata.id and not forceuser %}
-            <div class="bg-dark" style="padding:1px 15px;">
-                <p><a href="settings.php" style="color:white;">{{ __("Edit my settings") }}</a>
-                    &bull; <a href="user.php?id={{ id }}&forceuser"
-                              style="color:white;">{{ __("View user page as viewer") }}</a>
+            <div class="bg-neutral" style="padding:1px 15px;">
+                <p class="center"><a href="settings.php">{{ __("Edit my settings") }}</a>
+                    &bull; <a href="user.php?id={{ id }}&forceuser">{{ __("View user page as viewer") }}</a>
                     {% if userpagedata.powerlevel > 2 %}
-                    &bull; <a href="/admin/" style="color:white;">{{ __("Admin panel") }}</a></p>
+                    &bull; <a href="/admin/">{{ __("Admin panel") }}</a></p>
                 {% endif %}
                 </p>
             </div>
         {% endif %}
     {% endif %}
     <div class="main-content channel-header-bg">
-        <div class="grid">
-            <div class="col-md-4">
-                <img class="rounded img-pfp-profiles" src="{{ profile_image(userpagedata.name) }}"
-                     alt="{{ userpagedata.name }}">
-            </div>
-        </div>
+        <img class="rounded img-pfp-profiles" src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
     </div>
     <div class="bg-neutral" style="padding: 15px 10px;">
     <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}<img class="sdsd"
@@ -92,19 +86,6 @@
             <h3>{{ __("About this user") }}</h3>
             {{ userpagedata.about | markdown }}
         </div>
-        <p class="clear_right">
-            <a href="forum/forum.php?user={{ id }}">{{ __("View threads") }}</a>
-            &bull; <a href="forum/thread.php?user={{ id }}">{{ __("Show posts") }}</a>
-            {% if log %}
-                {% if userdata.id != id %}
-                    &bull; <a href="forum/sendprivate.php?uid={{ id }}">{{ __("Send private message") }}</a>
-                {% endif %}
-                {% if userdata.powerlevel > 2 %}
-                    &bull; <a href="resetpassword.php?grf={{ id }}">{{ __("Generate password reset for user") }}</a>
-                    &bull; <a href="forum/editperms.php?uid={{ id }}">{{ __("Edit forum permissions") }}</a>
-                {% endif %}
-            {% endif %}
-        </p>
     </div>
     <div id="Videos" class="tabcontent">
         {% for latestVideo in latestVideos %}

@@ -8,9 +8,9 @@ $nonFunctionalShit = true;
 $pageVariable = "index";
 
 // currently selects all uploaded videos, should turn it into all featured only
-$videoData = $sql->query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() LIMIT 12");
-$videoDataRight = $sql->query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id WHERE `post_type` = 0 OR `post_type` = 1 ORDER BY v.time DESC LIMIT 12");
-$artData = $sql->query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id WHERE `post_type` = 2 ORDER BY RAND() LIMIT 12");
+$videoData = $sql->query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() LIMIT 16");
+$videoDataRight = $sql->query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id WHERE `post_type` = 0 OR `post_type` = 1 ORDER BY v.time DESC LIMIT 16");
+$artData = $sql->query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id WHERE `post_type` = 2 ORDER BY RAND() LIMIT 16");
 // moved total subscribers to layout.php
 if ($log) {
     $query = implode(', ', array_column($sql->fetchArray($sql->query("SELECT user FROM subscriptions WHERE id = ?", [$userdata['id']])), 'user'));

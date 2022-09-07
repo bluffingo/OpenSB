@@ -52,6 +52,7 @@
 <div id="guide">
     <h3>{{ __("Guide") }}</h3>
     {% if log %}
+        <h4>{{ __("Following") }}</h4>
         {% for user in allUsers %}
             <ul>
                 <li class="guide-channel">
@@ -60,8 +61,11 @@
                     </a>
                 </li>
             </ul>
+        {% else %}
+        <p>{{ __("You do not follow any users!") }}</p>
         {% endfor %}
     {% else %}
+        <h3>{{ __("Last connected") }}</h3>
         {% for user in allUsers %}
             <ul>
                 <li class="guide-channel">
