@@ -34,7 +34,7 @@ You will have to modify the directories to match your instance's location.
     Alias /bulmajs "C:/xampp/squarebracket/vendor/npm-asset/vizuaalog--bulmajs/dist/"
 
     <Directory "C:/xampp/squarebracket">
-        Options Indexes FollowSymLinks MultiViews
+        Options Indexes FollowSymLinks
 	Require all granted
     </Directory>
 </VirtualHost>
