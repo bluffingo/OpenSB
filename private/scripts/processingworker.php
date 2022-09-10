@@ -8,7 +8,7 @@ use FFMpeg\Coordinate;
 use FFMpeg\FFMpeg;
 use FFMpeg\FFProbe;
 use FFMpeg\Filters;
-use FFMpeg\Format\Video\x264;
+use FFMpeg\Format\Video\X264;
 
 require dirname(__DIR__) . '/class/common.php';
 $config = [
