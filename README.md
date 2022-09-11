@@ -23,7 +23,7 @@
 1. Enable debugging features by setting `$isDebug` to true.
 1. If you want to be able to upload videos during development, make the `videos/` and `assets/thumb/` directory writable by your web server.
 
-### Virtual Host Example
+### Virtual Host example (Apache)
 You will have to modify the directories to match your instance's location.
 ```
 <VirtualHost *> 
@@ -42,8 +42,12 @@ You will have to modify the directories to match your instance's location.
 
 ## Questions
 
-### How do I translate squareBracket?
+### Where do I translate squareBracket?
 
-squareBracket Translations: https://crowdin.com/project/squarebracket
+squareBracket translstions: https://crowdin.com/project/squarebracket
 
-RelativeTime Repo (used for dates): https://github.com/mpratt/RelativeTime
+Relative time translations: https://github.com/mpratt/RelativeTime
+
+### Can I use NGINX?
+
+The production instance of squareBracket used NGINX until around late-2021. Due to squareBracket being developed by grkb/Gamerappa on XAMPP, NGINX has not been tested for the longest time. If you want to use NGINX for a squareBracket instance, do so at your own risk.
