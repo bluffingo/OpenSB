@@ -2,8 +2,10 @@
 ## Beta 3.0
 ### Beta 3.0.0-002 (????? 2022)
 * Finalized image uploading
-* Improvements to Finalium
+* Improvements to Finalium's SCSS
 * Fix bug with Python translation template generator
+* Redesigned Finalium main page
+* Fixed processing worker not launching on Unix-based systems
 ### Beta 3.0.0-001 (August 27th 2022)
 * Fixed username check regex from principia-web repository
 * Artwork system (incomplete!)
