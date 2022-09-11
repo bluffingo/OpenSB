@@ -44,7 +44,7 @@ You will have to modify the directories to match your instance's location.
 
 ### Where do I translate squareBracket?
 
-squareBracket translstions: https://crowdin.com/project/squarebracket
+squareBracket translations: https://crowdin.com/project/squarebracket
 
 Relative time translations: https://github.com/mpratt/RelativeTime
 
