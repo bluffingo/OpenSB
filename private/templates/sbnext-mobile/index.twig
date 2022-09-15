@@ -1,9 +1,9 @@
 {% extends "_layout.twig" %}
 {% block head %}
-    <meta name="title" content="squareBracket">
+    <meta name="title" content="Qobo">
     <meta name="description" content="Unbelivable, This is not PokTube.">
-    <meta property="og:site_name" content="squareBracket"/>
-    <meta property="og:title" content="squareBracket">
+    <meta property="og:site_name" content="Qobo"/>
+    <meta property="og:title" content="Qobo">
     <meta property="og:description" content="Again.">
     <meta property="og:image" content="{{ domain }}assets/logo_square_icon.png">
     <meta property="og:url" content="{{ page_url }}">
@@ -18,7 +18,7 @@
             {% if log %}
                 <div class="grid" style="height:inherit;display: table;">
                     <div style="display: table-cell;vertical-align: middle;width:90%;padding-right:1em;">
-                        <h1 style="padding:0;margin:8px 0;font-weight:400;">{{ __("Welcome to squareBracket") }}</h1>
+                        <h1 style="padding:0;margin:8px 0;font-weight:400;">{{ __("Welcome to Qobo") }}</h1>
                         {# hack to prevent twig from outputing the number 1 #}
                         {% if totalSubscribers != 1 %}
                             {% set pluralSubscribers = __("s") %}
@@ -34,7 +34,7 @@
             {% else %}
                 <div class="grid">
                     <div class="col-md-8">
-                        <h1 style="padding:0;margin:8px 0;">{{ __("Welcome to squareBracket") }}</h1>
+                        <h1 style="padding:0;margin:8px 0;">{{ __("Welcome to Qobo") }}</h1>
                         <h3 style="padding:0;margin:0;">{{ __("Again.") }}</h3>
                     </div>
                     <div class="col-md-4">
@@ -67,7 +67,7 @@
         </div>
         <div class="card">
             <div class="card-body-fat">
-                <h3 style="margin-top:0">{{ __("squareBracket Videos") }}</h3>
+                <h3 style="margin-top:0">{{ __("Qobo Videos") }}</h3>
                 {% for video in videos %}
                     {{ small_video_box(video) }}
                 {% else %}

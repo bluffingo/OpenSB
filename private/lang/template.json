@@ -115,8 +115,9 @@
 	"Following": "Following",
 	"You do not follow any users!": "You do not follow any users!",
 	"Last connected": "Last connected",
+	"Sorry %s, you are banned from Qobo.": "Sorry %s, you are banned from Qobo.",
 	"Version": "Version",
-	"By the squareBracket contributors": "By the squareBracket contributors",
+	"By the Qobo contributors": "By the Qobo contributors",
 	"What's new": "What's new",
 	"Running on Git commit: ": "Running on Git commit: ",
 
@@ -155,7 +156,7 @@
 	"There are no videos of that category.": "There are no videos of that category.",
 	"You could create one!": "You could create one!",
 
-	"Welcome to squareBracket": "Welcome to squareBracket",
+	"Welcome to Qobo": "Welcome to Qobo",
 	"Again.": "Again.",
 	"Get started": "Get started",
 	"Already have an account?": "Already have an account?",
@@ -177,7 +178,7 @@
 	"Reply": "Reply",
 
 	"Latest Videos": "Latest Videos",
-	"squareBracket Videos": "squareBracket Videos",
+	"Qobo Videos": "Qobo Videos",
 	"No uploaded videos.": "No uploaded videos.",
 
 	"Favorite": "Favorite",
