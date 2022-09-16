@@ -36,17 +36,18 @@
             </div>
         {% endif %}
     {% endif %}
-    <div class="main-content channel-header-bg">
-        <img class="rounded img-pfp-profiles" src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
-    </div>
+    <div class="main-content channel-header-bg"></div>
     <div class="bg-neutral" style="padding: 15px 10px;">
-    <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}<img class="sdsd"
-                                                                                           src="assets/icons/shield.svg"
-                                                                                           height="16"
-                                                                                           title="User is a moderator.">{% endif %}
-    </h1>
     <div class="grid">
-        <div class="col-md-8">
+        <div class="col-md-1">
+            <img class="rounded img-fluid" src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
+        </div>
+        <div class="col-md-13">
+            <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}<img class="sdsd"
+                                                                                                   src="assets/icons/shield.svg"
+                                                                                                   height="16"
+                                                                                                   title="User is a moderator.">{% endif %}
+            </h1>
             <p>@{{ userpagedata.name }}
                 {# hack to prevent twig from outputing the number 1 #}
                 {% if subCount != 1 %}
@@ -59,7 +60,7 @@
                 &bull; {{ __("%s view%s", [views ?? __("no"), pluralViews]) }}
             </p>
         </div>
-        <div class="col-md-4 right">
+        <div class="col-md-2 right">
             {% if userpagedata.id == userdata.id %}
                 <a class="button button-primary" href="settings.php">{{ __("Edit profile") }}</a>
             {% else %}
@@ -91,7 +92,7 @@
         {% for latestVideo in latestVideos %}
             {{ small_video_box(latestVideo) }}
         {% else %}
-            <p>{{ __("There are currently no videos uploaded by %s.", [userpagedata.title]) }}</p>
+            <p>{{ __("There are currently no uploads by %s.", [userpagedata.title]) }}</p>
         {% endfor %}
         {% if userdata.id == id %}
             {% set forceuser = "&forceuser" %}
@@ -133,5 +134,6 @@
         {% for comment in comments %}
             {{ comment(comment) }}
         {% endfor %}
+    </div>
     </div>
 {% endblock %}

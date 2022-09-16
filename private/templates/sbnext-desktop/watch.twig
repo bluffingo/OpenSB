@@ -18,7 +18,7 @@
 {% block content %}
     <div class="watchNext">
         <div class="grid">
-            <div class="col-md-8">
+            <div class="col-md-10">
 			{% if theme == 'nostalgia' %}
                 <h1>{{ video.title }}</h1>
 			{% endif %}
@@ -28,72 +28,47 @@
                     <img class="img-fluid" src="{{ video.videofile }}" alt="{{ video.title }}">
                 {% endif %}
                 {% if theme != 'nostalgia' %}
-                    <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
+                    <div class="card card-body-fat">
                         <div class="grid">
-                            <div class="col-md-8">
+                            <div class="col-md-10">
 								{% if theme != 'nostalgia' %}
 									<h1>{{ video.title }}</h1>
+                                    <p>{{ viewCount }} {{ __("views") }}</p>
 								{% endif %}
-                                <a href="user.php?name={{ video.u_name }}"><img src="{{ profile_image(video.u_name) }}"
-                                                                                class="rounded"
-                                                                                style="width:60px;float: left;margin-right:8px;"
-                                                                                alt="{{ video.u_name }}"></a>
-                                <span style="font-size:1.15em;"><a
-                                            href="user.php?name={{ video.u_name }}">{{ video.u_name }}</a> • {{ allVideos }} {{ __("uploads") }}</span>
-                                <br>
-                                <span>{{ __("Published on %s", [video.time | date('M j, Y')]) }} • {{ viewCount }} {{ __("views") }}</span>
-                                <br>
-                                {% if userbandata != true %}
-                                    {% include "components/watch_subscribe.twig" %}
-                                {% endif %}
-                                <br>
                             </div>
                             {% if userbandata != true %}
-                                <div class="col-md-4 right">
+                                <div class="col-md-6 right">
                                     {% include "components/watch_ratings.twig" %}
                                 </div>
                             {% endif %}
                         </div>
-                        <div class="grid" style="margin-top:5px;">
-                            <div class="right">
-                                <div class="tab">
-                                    <button class="tablinks active" onclick="openTab(event, 'About')"
-                                            id="defaultOpen">{{ __("About") }}</button>
-                                    <button class="tablinks"
-                                            onclick="openTab(event, 'Stats')">{{ icon("bar-chart-fill", 12) }}</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <div class="card card-body-fat">
+                    <div class="card card-body-fat" style="margin:0;border-bottom:none;">
+                        <a href="user.php?name={{ video.u_name }}"><img src="{{ profile_image(video.u_name) }}"
+                                                                        class="rounded"
+                                                                        style="width:60px;float: left;margin-right:8px;"
+                                                                        alt="{{ video.u_name }}"></a>
+                        <span style="font-size:1.15em;"><a
+                                    href="user.php?name={{ video.u_name }}">{{ video.u_name }}</a> • {{ allVideos }} {{ __("uploads") }}</span>
+                        <br>
+                        <span>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</span>
+                        <br>
+                        {% if userbandata != true %}
+                            {% include "components/watch_subscribe.twig" %}
+                        {% endif %}
+                        <br>
+                    </div>
+                    <div class="card card-body-fat" id="About">
                         <div class="grid">
-                            <div class="col-md-12">
-                                <div id="About" class="tabcontent" style="display: block;">
-                                    <p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
-                                    <p>{{ video.description }}</p>
-                                    <div class="description-extra">
-                                        <ul>
-                                            <li>
-                                                <h4 class="title">{{ __("Category") }}:</h4>
-                                                <div class="content">{{ video.category_id | category_id_to_name() }}</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div id="Stats" class="tabcontent" style="display: none;">
-                                    <h2>{{ __("Statistics") }}</h2>
-                                    <ul style="padding:0">
-                                        <li>
-                                            {{ __("Rating ratio") }}: {{ videoRatio }}%
-                                        </li>
-                                        <li>
-                                            {{ __("Last viewed") }}: {{ recentView | relative_time }}
-                                        </li>
-                                        <li>
-                                            {{ __("Favorites") }}: {{ total_favorites }}
-                                        </li>
-                                    </ul>
-                                </div>
+                            <p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
+                            <p>{{ video.description }}</p>
+                            <div class="description-extra">
+                                <ul>
+                                    <li>
+                                        <h4 class="title">{{ __("Category") }}:</h4>
+                                        <div class="content">{{ video.category_id | category_id_to_name() }}</div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -120,7 +95,7 @@
                     {% endfor %}
                 {% endif %}
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 {% if theme == 'nostalgia' %}
                     <div class="card">
                         <div class="card-header">{{ __("About this upload") }}</div>

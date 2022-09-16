@@ -1,7 +1,7 @@
 <div id="masthead-container">
     <div id="masthead">
         <div class="grid" style="gap:0px;margin-bottom: 17.5px;">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 {% if isMaintenance != true %}
                     <form id="masthead-search" style="display:none" action="/search.php">
                         <button id="search-btn" class="button button-secondary">
@@ -22,7 +22,7 @@
                 </div>
             </div>
             {% if isMaintenance != true %}
-                <div class="col-md-4" style="text-align: right;">
+                <div class="col-md-6" style="text-align: right;">
                     <button id="showSearch" onclick="showSearch()" class="button button-secondary-invis"
                             style="margin-right: 0.5rem;">
                         <span>{{ icon("search", 20) }}</span>

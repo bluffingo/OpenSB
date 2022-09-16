@@ -54,13 +54,13 @@
 {% else %}
 <div id="guide">
     <a href="index.php" class="button button-secondary-invis">
-        {{ icon("house-door", 20) }}
+        {{ icon("house-door-fill", 20) }}
     </a>
     <a href="/browse.php" class="button button-secondary-invis">
-        {{ icon("film", 20) }}
+        {{ icon("camera-video-fill", 20) }}
     </a>
     <a href="/browse.php" class="button button-secondary-invis">
-        {{ icon("images", 20) }}
+        {{ icon("image-fill", 20) }}
     </a>
 </div>
     {% include "components/_header.twig" %}
@@ -85,7 +85,7 @@
 				| <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
 			</p>
 			<h5>{{ __("Running on Git commit: ") }} <a
-						href="https://github.com/chazizgrkb/squarebracket/commit/{{ git_commit() }}">{{ git_commit() }}</a><br>
+						href="https://github.com/pf94/qobo/commit/{{ git_commit() }}">{{ git_commit() }}</a><br>
 			</h5>
 			{% if isMaintenance != true %}
 				<a class="button button-neutral button-small btnAdd" role="button">{{ __("Options") }}</a>
