@@ -3,6 +3,11 @@ body {
   background: #eaeaea url("/assets/nostalgia/noise.png");
 }
 
+.page {
+	width: 100%;
+	margin-left: none;
+}
+
 a:link, a:visited, a:active {
   color: #03c;
 }

@@ -5,6 +5,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+$sidebarlength: 50px;
+
 /* SB CSS STARTS HERE ======================================================== */
 
 html {
@@ -41,7 +43,6 @@ body {
   font-size: 13px;
   margin: auto;
   width: 100%;
-  height: 100%;
   font-weight: 500;
 }
 
@@ -73,7 +74,7 @@ menu, ol, ul, li {
   padding: 15px 40px;
 
   img {
-    width: 200px;
+    width: 125px;
   }
 }
 
@@ -421,7 +422,6 @@ input[type]:not([type=file]):not([type=submit]):focus {
 
 #masthead {
   width: 100%;
-  max-width: 1600px;
   position: relative;
   margin: auto;
   height: 33px;
@@ -570,17 +570,20 @@ input[type]:not([type=file]):not([type=submit]):focus {
   left: 0;
   top: 47px;
   bottom: 0;
-  width: 17.5em;
+  width: $sidebarlength;
   background: $gray-100;
-  padding: 1em;
-  z-index: 9999999999;
-  display: none;
-  overflow-y: scroll;
+  overflow: clip;
+  text-align: center;
 
   ul {
     padding: 0;
     margin: 0;
   }
+}
+
+.page {
+	width: calc(100% - $sidebarlength);
+	margin-left: auto;
 }
 
 /// "Likesaber" for watch page \\\

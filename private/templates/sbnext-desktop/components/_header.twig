@@ -1,12 +1,8 @@
 <div id="masthead-container">
     <div id="masthead">
-        <div class="grid" style="gap:0px;margin-bottom: 17.5px;">
+        <div class="grid" style="margin-bottom: 17.5px;">
             <div class="col-md-8">
                 <div id="header-main">
-                    {% if isMaintenance != true %}
-                        <div class="button button-neutral-invis masthead-button guide-button"
-                             id="guide-toggle">{{ icon("list", 20) }}</div>
-                    {% endif %}
                     <a href="/" id="logo-container"><img id="logo"
                                                          src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png"></a>
                     {% if isMaintenance != true %}

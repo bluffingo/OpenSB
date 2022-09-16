@@ -1,10 +1,10 @@
 {% extends "_layout.twig" %}
 {% block head %}
-    <meta name="title" content="{{ video.title }} - squareBracket">
+    <meta name="title" content="{{ video.title }} - Qobo">
     <meta name="description"
           content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-    <meta property="og:site_name" content="squareBracket"/>
-    <meta property="og:title" content="{{ video.title }} - squareBracket">
+    <meta property="og:site_name" content="Qobo"/>
+    <meta property="og:title" content="{{ video.title }} - Qobo">
     <meta property="og:description"
           content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
     <meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
@@ -19,7 +19,9 @@
     <div class="watchNext">
         <div class="grid">
             <div class="col-md-8">
+			{% if theme == 'nostalgia' %}
                 <h1>{{ video.title }}</h1>
+			{% endif %}
                 {% if postType == "video" %}
                     {{ include('/components/player.twig') }}
                 {% elseif postType == "artwork" %}
@@ -29,6 +31,9 @@
                     <div class="card card-body-fat" style="margin:0;border-bottom:none;padding-bottom:0;">
                         <div class="grid">
                             <div class="col-md-8">
+								{% if theme != 'nostalgia' %}
+									<h1>{{ video.title }}</h1>
+								{% endif %}
                                 <a href="user.php?name={{ video.u_name }}"><img src="{{ profile_image(video.u_name) }}"
                                                                                 class="rounded"
                                                                                 style="width:60px;float: left;margin-right:8px;"
@@ -69,7 +74,7 @@
                                     <div class="description-extra">
                                         <ul>
                                             <li>
-                                                <h4 class="title">{{ __("Category") }}":</h4>
+                                                <h4 class="title">{{ __("Category") }}:</h4>
                                                 <div class="content">{{ video.category_id | category_id_to_name() }}</div>
                                             </li>
                                         </ul>

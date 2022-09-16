@@ -46,7 +46,7 @@ input[type=file]::file-selector-button, {
   }
 
   &.sel {
-    @include gradient-y($start-color: darken($gray-200, 7%), $end-color: darken($gray-200, 17%));
+    @include gradient-y($start-color: darken($gray-200, 7%), $end-color: darken($gray-200, 15%));
   }
 }
 
@@ -94,7 +94,7 @@ input[type=file]::file-selector-button, {
 
   .button-#{$state}:active {
     border: 1px solid darken($value, 10%);
-    @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
+    @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 15%));
     background-color: lighten($value, 10%);
     color: contrast-color($value, $dark, $light) !important;
   }
@@ -114,7 +114,7 @@ input[type=file]::file-selector-button, {
 
   .button-#{$state}-invis:active {
     border: 1px solid darken($value, 10%);
-    @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 17%));
+    @include gradient-y($start-color: darken($value, 7%), $end-color: darken($value, 15%));
     color: contrast-color($value, $dark, $light) !important;
   }
 }
