@@ -782,6 +782,13 @@ input[type]:not([type=file]):not([type=submit]):focus {
   }
 }
 
+.small-stats {
+  div {
+    display: inline-block;
+    margin-right: 1em;
+  }
+}
+
 /// Gradients \\\
 @import "_gradients";
 /// Backgrounds \\\

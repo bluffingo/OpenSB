@@ -5,7 +5,7 @@
 	{% block content %}
         <form name="uploadForm" id="uploadForm" method="post" action="edit.php" enctype="multipart/form-data">
             <input type="hidden" name="vid_id" value="{{ video.video_id }}">
-            <h2 style="margin-bottom: 0.5em;">{{ __("Post info") }}</h2>
+            <h2 style="margin-bottom: 0.5em;">{{ __("Edit upload") }}</h2>
             <p>{{ __("Enter the updated title and description of your upload.") }}</p>
             <h4 style="margin-bottom: 0.5em;">{{ __(" Title") }}</h4>
             <input type="text" class="form-control form-long uploader-form" name="title"

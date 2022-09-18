@@ -33,7 +33,11 @@
                             <div class="col-md-10">
 								{% if theme != 'nostalgia' %}
 									<h1>{{ video.title }}</h1>
-                                    <p>{{ viewCount }} {{ __("views") }}</p>
+                                    <div class="small-stats">
+                                        <div>{{ icon("eye", 20) }} {{ viewCount }}</div>
+                                        <div>{{ icon("chat", 20) }} {{ comCount }}</div>
+                                        <div>{{ icon("star", 20) }} {{ total_favorites }}</div>
+                                    </div>
 								{% endif %}
                             </div>
                             {% if userbandata != true %}
