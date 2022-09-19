@@ -1,0 +1,69 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Upload") }}{% endblock %}
+
+	{% block content %}
+		<div id="mw-content-text">
+			<div id="uploadtext">
+				<p>Use the form below to upload files.</p>
+			</div>
+			<form action="upload.php" method="post" class="visualClear" enctype="multipart/form-data" id="uploadForm">
+				<fieldset>
+					<legend>Source file</legend>
+					<table id="mw-htmlform-source">
+						<tbody>
+							<tr class="mw-htmlform-field-UploadSourceField">
+								<td class="mw-label"><label for="wpSourceTypeFile">Source filename:</label></td>
+								<td class="mw-input"><input id="wpUploadFile" name="fileToUpload" size="60" type="file">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="htmlform-tip">Maximum file size: {{ limit }} (a file on your computer)</td>
+							</tr>
+						</tbody>
+					</table>
+				</fieldset>
+				<fieldset>
+					<legend>File description</legend>
+					<table id="mw-htmlform-description">
+						<tbody>
+							<tr class="mw-htmlform-field-HTMLTextField">
+								<td class="mw-label"><label for="wpTitle">Title:</label></td>
+								<td class="mw-input"><input id="wpTitle" name="title" size="60">
+								</td>
+							</tr>
+							<tr class="mw-htmlform-field-HTMLTextAreaField">
+								<td class="mw-label"><label for="wpUploadDescription">Description:</label></td>
+								<td class="mw-input"><textarea id="wpUploadDescription" name="desc" cols="80" rows="8"></textarea>
+								</td>
+							</tr>
+							<tr class="mw-htmlform-field-HTMLTextField">
+								<td class="mw-label"><label for="wpTags">Tags:</label></td>
+								<td class="mw-input"><input id="wpTags" name="tags" size="60">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</fieldset>
+				{% if isDebug %}
+				<fieldset>
+					<legend>Debug options</legend>
+					<table class="mw-htmlform-nolabel" id="mw-htmlform-options">
+						<tbody>
+							<tr class="mw-htmlform-field-HTMLCheckField">
+								<td class="mw-label"><label for="wpSkipProcessing">&nbsp;</label></td>
+								<td class="mw-input"><input name="debugUploaderSkip" type="checkbox" value="1" id="wpSkipProcessing">&nbsp;<label for="wpSkipProcessing">Skip processing</label>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</fieldset>
+				{% endif %}
+				<table>
+					<tbody>
+					</tbody>
+				</table>
+				<input type="submit" value="Upload file" name="upload" title="Start upload [alt-shift-s]" accesskey="s" class="mw-htmlform-submit">
+			</form>
+		</div>
+    {% endblock %}

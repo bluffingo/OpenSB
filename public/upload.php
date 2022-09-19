@@ -85,4 +85,6 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
 }
 
 $twig = twigloader();
-echo $twig->render('upload.twig');
+echo $twig->render('upload.twig', [
+	'limit' => (convertBytes(ini_get('upload_max_filesize'))),
+]);

@@ -201,3 +201,27 @@ function relativeTime($time)
 
     return $relativeTime->timeAgo($time);
 }
+
+function convertBytes($value, $decimals = 0) {
+    if (is_numeric($value)) {
+        return $value;
+    } else {
+        $value_length = strlen($value);
+        $qty = substr($value, 0, $value_length - 1);
+        $unit = strtolower(substr($value, $value_length - 1));
+        switch ($unit) {
+            case 'k':
+                $qty *= 1024;
+                break;
+            case 'm':
+                $qty *= 1048576;
+                break;
+            case 'g':
+                $qty *= 1073741824;
+                break;
+        }
+    }
+	$sz = 'BKMGTP';
+	$factor = floor((strlen($qty) - 1) / 3);
+	return sprintf("%.{$decimals}f", $qty / pow(1024, $factor)) . @$sz[$factor];
+}

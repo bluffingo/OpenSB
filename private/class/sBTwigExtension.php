@@ -31,6 +31,7 @@ class sBTwigExtension extends AbstractExtension
             new TwigFunction('pagination', '\squareBracket\pagination', ['is_safe' => ['html']]),
             new TwigFunction('git_commit', '\squareBracket\gitCommit'),
             new TwigFunction('operating_system', '\squareBracket\getOS'),
+			new TwigFunction('upload_limit', '\squareBracket\convertBytes'),
             new TwigFunction('profiler_stats', function () use ($profiler) {
                 $profiler->getStats();
             })
