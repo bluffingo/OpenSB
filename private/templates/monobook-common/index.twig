@@ -1,0 +1,57 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block content %}
+<table id="qb-banner">
+	<tbody>
+		<tr>
+			<td>
+				<div><center>Welcome to Qobo</center></div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table id="qb-main-box" width="100%" cellspacing="10">
+	<tbody>
+		<tr>
+			<td class="box">
+				<div class="title">
+					<h2>Uploads</h2>
+				</div>
+				<div class="content">
+					<ul>
+					{% for video in videos %}
+						<li style="-moz-float-edge: content-box;">
+							<table>
+								<tbody>
+									<tr>
+										<td>
+											<div>
+												<a href="/watch.php?v={{ video.video_id }}">
+													{% if video.post_type == 0 or video.post_type == 1 %}
+														{% set linkIcon = 'link-video' %}
+														<img width=100 src="{{ video_thumbnail(video.video_id) }}">
+													{% elseif video.post_type == 2 %}
+														{% set linkIcon = 'link-document' %}
+														<img width=100 src="/dynamic/art_thumbnails/{{ video.video_id }}.jpg">
+													{% endif %}
+												</a>
+											</div>
+										</td>
+										<td>
+											<a href="/watch.php?v={{ video.video_id }}" class="{{ linkIcon }}">{{ video.title }}</a>
+											<p>by {{ userlink(video, 'u_') }}</br><small>{{ video.views }} views - {{ video.time | relative_time }}</small></p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</li>
+					{% endfor %}
+					</ul>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{% endblock %}

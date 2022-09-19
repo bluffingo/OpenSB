@@ -1,0 +1,34 @@
+#qb-banner {
+	font-size: 20px;
+	padding: 20px;
+	border: 1px solid #BBB;
+	background-color: #EEE;
+	width: 100%;
+}
+
+#qb-main-box {
+	border: 0;
+	margin: 0;
+}
+
+#qb-main-box tbody .box {
+	border: 1px solid #AAA;
+	padding: 0;
+}
+
+#qb-main-box tbody .title {
+	background-color: red;
+	background-color: #eeeeee;
+	border-bottom: 1px solid #aaaaaa;
+}
+
+#qb-main-box tbody .title h2 {
+	padding: 0.2em;
+	margin: 0;
+	border: none;
+}
+
+#qb-main-box tbody .content {
+	background-color: #FFF;
+	padding: 0.2em 0.4em;
+}
