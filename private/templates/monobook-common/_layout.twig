@@ -17,6 +17,8 @@
 					<h1 id="firstHeading" class="firstHeading"><span dir="auto">{{ block('title') }}</span></h1>
 					<div id="bodyContent" class="mw-body">
 					{% block content %}{% endblock %}
+					<!-- end of the content -->
+					<div class="visualClear"></div>
 					</div>
 				</div>
 			</div>
@@ -33,7 +35,16 @@
 					<h5>Personal tools</h5>
 					<div class="pBody">
 						<ul>
-							<li id="pt-login"><a href="/index.php?title=Special:UserLogin&amp;returnto=Main+Page" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in / create account</a></li>
+						{% if log %}
+							<li id="pt-userpage"><a href="/user.php?name={{ userdata.name }}" title="Your user page [alt-shift-.]" accesskey=".">{{ userdata.name }}</a></li>
+							<li id="pt-mytalk"><a href="/index.php/User_talk:THIS_IS_DUMMY_USERNAME" class="new" title="Your talk page [alt-shift-n]" accesskey="n">Talk</a></li>
+							<li id="pt-preferences"><a href="/index.php/Special:Preferences" title="Your preferences">Preferences</a></li>
+							<li id="pt-watchlist"><a href="/index.php/Special:Watchlist" title="A list of pages you are monitoring for changes [alt-shift-l]" accesskey="l">Watchlist</a></li>
+							<li id="pt-mycontris"><a href="/index.php/Special:Contributions/THIS_IS_DUMMY_USERNAME" title="A list of your contributions [alt-shift-y]" accesskey="y">Contributions</a></li>
+							<li id="pt-logout"><a href="/logout.php" title="Log out">Log out</a></li>
+						{% else %}
+							<li id="pt-login"><a href="/login.php" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in / create account</a></li>
+						{% endif %}
 						</ul>
 					</div>
 				</div>

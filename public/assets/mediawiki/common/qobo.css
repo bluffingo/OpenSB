@@ -1,3 +1,7 @@
+/* Qobo specific code */
+
+
+/* main page */
 #qb-banner {
 	font-size: 20px;
 	padding: 20px;
@@ -12,14 +16,14 @@
 }
 
 #qb-main-box tbody .box {
-	border: 1px solid #AAA;
-	padding: 0;
+	border: 1px solid #cef2e0;
+	background-color: #f5fffa;
+	padding: 0.4em;
 }
 
 #qb-main-box tbody .title {
-	background-color: red;
-	background-color: #eeeeee;
-	border-bottom: 1px solid #aaaaaa;
+	background-color: #cef2e0;
+	border: 1px solid #a3bfb1;
 }
 
 #qb-main-box tbody .title h2 {
@@ -29,6 +33,38 @@
 }
 
 #qb-main-box tbody .content {
-	background-color: #FFF;
 	padding: 0.2em 0.4em;
+}
+
+/* user profile */
+
+.userbox {
+	float: right;
+	clear: right;
+	border: 1px solid #aaa;
+	background-color: #f9f9f9;
+	width: 256px;
+	font-size: 90%;
+	margin: 0.5em 0 0.5em 1em;
+	text-align: left;
+}
+
+.userbox h2 {
+	background-color: #f8eaba;
+	text-align: center;
+	font-size: 130%;
+	margin: 0px;
+	padding: 0;
+	border: none;
+}
+
+/* watch page */
+
+#watch {
+	width: 100%;
+}
+
+#watch td {
+	width: 50%;
+	vertical-align: top;
 }
