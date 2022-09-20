@@ -1,4 +1,5 @@
 <?php
+
 namespace squareBracket\API;
 chdir('../../');
 $rawOutputRequired = true;
@@ -15,24 +16,24 @@ $videoData = \squareBracket\query("SELECT $userfields v.* FROM videos v JOIN use
 // TODO: comments? likes? sex?
 $apiOutput = [];
 foreach ($videoData as $video) {
-	$apiOutput[] = 
-	[
-		'id'	=> $video['video_id'],
-		'title'	=> $video['title'],
-		'description' => $video['description'],
-		'time' => $video['time'],
-		'views' => $video['views'],
-		'videofile' => $video['videofile'],
-		'videolength' => $video['videolength'],
-		'flags' => [ // supposed to be a "videoflags" object
-			'processing' => $video['flags'] & 0x2,
-			'featured' => $video['flags'] & 0x2,
-		],
-		'tags' => $video['tags'],
-		'author' => [ // supposed to be an "user" object
-			'username' => $video['u_name']
-		]
-	];
+    $apiOutput[] =
+        [
+            'id' => $video['video_id'],
+            'title' => $video['title'],
+            'description' => $video['description'],
+            'time' => $video['time'],
+            'views' => $video['views'],
+            'videofile' => $video['videofile'],
+            'videolength' => $video['videolength'],
+            'flags' => [ // supposed to be a "videoflags" object
+                'processing' => $video['flags'] & 0x2,
+                'featured' => $video['flags'] & 0x2,
+            ],
+            'tags' => $video['tags'],
+            'author' => [ // supposed to be an "user" object
+                'username' => $video['u_name']
+            ]
+        ];
 }
 
 echo json_encode(array('videos' => $apiOutput, 'count' => $videoDataCount));

@@ -3,17 +3,17 @@
 {% block title %}{{ video.title }}{% endblock %}
 
 {% block content %}
-<table id="watch">
-	<tbody>
-		<tr>
-			<td>
-				<video src="/dynamic/videos/{{ video.video_id }}.converted.mp4" controls width="100%">
-			</td>
-			<td>
-				<h2>About this upload</h2>
-				<p>{{ video.description }}</p>
-			</td>
-		</tr>
-	</tbody>
-</table>
+    <table id="watch">
+        <tbody>
+        <tr>
+            <td>
+                <video src="/dynamic/videos/{{ video.video_id }}.converted.mp4" controls width="100%">
+            </td>
+            <td>
+                <h2>About this upload</h2>
+                <p>{{ video.description }}</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 {% endblock %}

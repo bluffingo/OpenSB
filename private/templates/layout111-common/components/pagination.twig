@@ -2,15 +2,15 @@
 {% if pages > 1 %}
     <nav class="pagination is-centered is-small">
         <ul class="pagination-list">
-        {% for page in 1..pages %}
-            <li>
-				{% if page != current %}
-                    <a class="pagination-link" href="{{ url | format(page) }}" aria-label="Goto page {{ page }}">{{ page }}</a>
-                {% else %}
-                    <a class="pagination-link is-current" aria-label="Page {{ page }}" aria-current="page">{{ page }}</a>
-                {% endif %}
-			</li>
-        {% endfor %}
+            {% for page in 1..pages %}
+                <li>
+                    {% if page != current %}
+                        <a class="pagination-link" href="{{ url | format(page) }}" aria-label="Goto page {{ page }}">{{ page }}</a>
+                    {% else %}
+                        <a class="pagination-link is-current" aria-label="Page {{ page }}" aria-current="page">{{ page }}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
         </ul>
     </nav>
 {% endif %}

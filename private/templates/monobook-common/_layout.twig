@@ -1,83 +1,83 @@
 <!DOCTYPE html>
 <html lang="{{ __("en-US") }}">
-	<head>
-		<meta charset="utf-8">
-		<title>{% block title %}{% endblock %} - Qobo</title>
-		{% block head %}{% endblock %}
-		<link rel="stylesheet" href="/assets/mediawiki/common/shared.css" type="text/css">
-		<link rel="stylesheet" href="/assets/mediawiki/common/commonElements.css" type="text/css">
-		<link rel="stylesheet" href="/assets/mediawiki/common/commonInterface.css" type="text/css">
-		<link rel="stylesheet" href="/assets/mediawiki/monobook/main.css" type="text/css">
-		<link rel="stylesheet" href="/assets/mediawiki/common/qobo.css" type="text/css">
-	</head>
-	<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject skin-monobook action-view">
-		<div id="globalWrapper">
-			<div id="column-content">
-				<div id="content">
-					<h1 id="firstHeading" class="firstHeading"><span dir="auto">{{ block('title') }}</span></h1>
-					<div id="bodyContent" class="mw-body">
-					{% block content %}{% endblock %}
-					<!-- end of the content -->
-					<div class="visualClear"></div>
-					</div>
-				</div>
-			</div>
-			<div id="column-one">
-				<div id="p-cactions" class="portlet">
-					<h5>Views</h5>
-					<div class="pBody">
-						<ul>
-							<li id="ca-nstab-special" class="selected"><a href="/index.php?title=Special:UserLogin&amp;returnto=Main+Page" context="subject" title="This is a special page, you cannot edit the page itself">Qobo page</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="portlet" id="p-personal">
-					<h5>Personal tools</h5>
-					<div class="pBody">
-						<ul>
-						{% if log %}
-							<li id="pt-userpage"><a href="/user.php?name={{ userdata.name }}" title="Your user page [alt-shift-.]" accesskey=".">{{ userdata.name }}</a></li>
-							<li id="pt-upload"><a href="/upload.php" title="Upload [alt-shift-u]" accesskey="u">Upload</a></li>
-							<li id="pt-logout"><a href="/logout.php" title="Log out">Log out</a></li>
-						{% else %}
-							<li id="pt-login"><a href="/login.php" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in / create account</a></li>
-						{% endif %}
-						</ul>
-					</div>
-				</div>
-				<div class="portlet" id="p-logo">
-					<a href="/index.php/Main_Page" style="background-image: url(/assets/mediawiki/common/images/qobo.png);" title="Visit the main page"></a>
-				</div>
-				<div class="generated-sidebar portlet" id="p-navigation">
-					<h5>Navigation</h5>
-					<div class="pBody">
-						<ul>
-							<li id="n-mainpage-description"><a href="/index.php" title="Visit the main page [alt-shift-z]" accesskey="z">Main page</a></li>
-							<li id="n-browse"><a href="/browse.php" title="Browse uploads in Qobo [alt-shift-b]" accesskey="b">Browse</a></li>
-						</ul>
-					</div>
-				</div>
-				<div id="p-search" class="portlet">
-					<h5><label for="searchInput">Search</label></h5>
-					<div id="searchBody" class="pBody">
-						<form action="/search.php" id="searchform">
-							<input type="search" name="tags" title="Search Qobo [alt-shift-f]" accesskey="f" id="searchInput">
-							<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton">
-						</form>
-					</div>
-				</div>
-			</div>
-			<!-- end of left -->
-			<div class="visualClear"></div>
-			<div id="footer">
-				<div id="f-poweredbyico">
-					<img src="/assets/mediawiki/common/images/qobo-88x31.png" alt="Powered by Qobo" width="88" height="31">
-				</div>
-				<ul id="f-list">
-					<li id="not-mediawiki">This is not a MediaWiki instance.</li>
-					<li id="statistics"><a href="/statistics.php" title="Statistics">Statistics</a></li>
-				</ul>
-			</div>
-		</div>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %} - Qobo</title>
+    {% block head %}{% endblock %}
+    <link rel="stylesheet" href="/assets/mediawiki/common/shared.css" type="text/css">
+    <link rel="stylesheet" href="/assets/mediawiki/common/commonElements.css" type="text/css">
+    <link rel="stylesheet" href="/assets/mediawiki/common/commonInterface.css" type="text/css">
+    <link rel="stylesheet" href="/assets/mediawiki/monobook/main.css" type="text/css">
+    <link rel="stylesheet" href="/assets/mediawiki/common/qobo.css" type="text/css">
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject skin-monobook action-view">
+<div id="globalWrapper">
+    <div id="column-content">
+        <div id="content">
+            <h1 id="firstHeading" class="firstHeading"><span dir="auto">{{ block('title') }}</span></h1>
+            <div id="bodyContent" class="mw-body">
+                {% block content %}{% endblock %}
+                <!-- end of the content -->
+                <div class="visualClear"></div>
+            </div>
+        </div>
+    </div>
+    <div id="column-one">
+        <div id="p-cactions" class="portlet">
+            <h5>Views</h5>
+            <div class="pBody">
+                <ul>
+                    <li id="ca-nstab-special" class="selected"><a href="/index.php?title=Special:UserLogin&amp;returnto=Main+Page" context="subject" title="This is a special page, you cannot edit the page itself">Qobo page</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="portlet" id="p-personal">
+            <h5>Personal tools</h5>
+            <div class="pBody">
+                <ul>
+                    {% if log %}
+                        <li id="pt-userpage"><a href="/user.php?name={{ userdata.name }}" title="Your user page [alt-shift-.]" accesskey=".">{{ userdata.name }}</a></li>
+                        <li id="pt-upload"><a href="/upload.php" title="Upload [alt-shift-u]" accesskey="u">Upload</a></li>
+                        <li id="pt-logout"><a href="/logout.php" title="Log out">Log out</a></li>
+                    {% else %}
+                        <li id="pt-login"><a href="/login.php" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in / create account</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="portlet" id="p-logo">
+            <a href="/index.php/Main_Page" style="background-image: url(/assets/mediawiki/common/images/qobo.png);" title="Visit the main page"></a>
+        </div>
+        <div class="generated-sidebar portlet" id="p-navigation">
+            <h5>Navigation</h5>
+            <div class="pBody">
+                <ul>
+                    <li id="n-mainpage-description"><a href="/index.php" title="Visit the main page [alt-shift-z]" accesskey="z">Main page</a></li>
+                    <li id="n-browse"><a href="/browse.php" title="Browse uploads in Qobo [alt-shift-b]" accesskey="b">Browse</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="p-search" class="portlet">
+            <h5><label for="searchInput">Search</label></h5>
+            <div id="searchBody" class="pBody">
+                <form action="/search.php" id="searchform">
+                    <input type="search" name="tags" title="Search Qobo [alt-shift-f]" accesskey="f" id="searchInput">
+                    <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end of left -->
+    <div class="visualClear"></div>
+    <div id="footer">
+        <div id="f-poweredbyico">
+            <img src="/assets/mediawiki/common/images/qobo-88x31.png" alt="Powered by Qobo" width="88" height="31">
+        </div>
+        <ul id="f-list">
+            <li id="not-mediawiki">This is not a MediaWiki instance.</li>
+            <li id="statistics"><a href="/statistics.php" title="Statistics">Statistics</a></li>
+        </ul>
+    </div>
+</div>
+</body>
 </html>

@@ -24,7 +24,7 @@
             margin-top: 0;
         }
     </style>
-    {% if userbandata != true  %}
+    {% if userbandata != true %}
         {% if userpagedata.id == userdata.id and not forceuser %}
             <div class="bg-neutral" style="padding:1px 15px;">
                 <p class="center"><a href="settings.php">{{ __("Edit my settings") }}</a>
@@ -38,102 +38,102 @@
     {% endif %}
     <div class="main-content channel-header-bg"></div>
     <div class="bg-neutral" style="padding: 15px 10px;">
-    <div class="grid">
-        <div class="col-md-1">
-            <img class="rounded img-fluid" src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
-        </div>
-        <div class="col-md-13">
-            <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}<img class="sdsd"
-                                                                                                   src="assets/icons/shield.svg"
-                                                                                                   height="16"
-                                                                                                   title="User is a moderator.">{% endif %}
-            </h1>
-            <p>@{{ userpagedata.name }}
-                {# hack to prevent twig from outputing the number 1 #}
-                {% if subCount != 1 %}
-                    {% set pluralSubscribers = __("s") %}
+        <div class="grid">
+            <div class="col-md-1">
+                <img class="rounded img-fluid" src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
+            </div>
+            <div class="col-md-13">
+                <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}<img class="sdsd"
+                                                                                                       src="assets/icons/shield.svg"
+                                                                                                       height="16"
+                                                                                                       title="User is a moderator.">{% endif %}
+                </h1>
+                <p>@{{ userpagedata.name }}
+                    {# hack to prevent twig from outputing the number 1 #}
+                    {% if subCount != 1 %}
+                        {% set pluralSubscribers = __("s") %}
+                    {% endif %}
+                    {% if views != 1 %}
+                        {% set pluralViews = __("s") %}
+                    {% endif %}
+                    &bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
+                    &bull; {{ __("%s view%s", [views ?? __("no"), pluralViews]) }}
+                </p>
+            </div>
+            <div class="col-md-2 right">
+                {% if userpagedata.id == userdata.id %}
+                    <a class="button button-primary" href="settings.php">{{ __("Edit profile") }}</a>
+                {% else %}
+                    <button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}"
+                            type="button"
+                            {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
                 {% endif %}
-                {% if views != 1 %}
-                    {% set pluralViews = __("s") %}
-                {% endif %}
-                &bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
-                &bull; {{ __("%s view%s", [views ?? __("no"), pluralViews]) }}
-            </p>
-        </div>
-        <div class="col-md-2 right">
-            {% if userpagedata.id == userdata.id %}
-                <a class="button button-primary" href="settings.php">{{ __("Edit profile") }}</a>
-            {% else %}
-                <button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}"
-                        type="button"
-                        {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
-            {% endif %}
-        </div>
-    </div>
-    <div class="tab">
-        <button class="tablinks active" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
-        <button class="tablinks" onclick="openTab(event, 'Videos')">Uploads</button>
-        <button class="tablinks" onclick="openTab(event, 'Discussion')">Discussion</button>
-        <button class="tablinks" onclick="openTab(event, 'About')">About</button>
-    </div>
-    <div id="Home" class="tabcontent" style="display: block;">
-        {% if markread %}
-            <div class="header_message">{{ __("Marked all notifications as read.") }}</div>
-        {% elseif edited %}
-            <div class="header_message">{{ __("Settings successfully saved!") }}</div>
-        {% endif %}
-        <h2></h2>
-        <div class="user_about">
-            <h3>{{ __("About this user") }}</h3>
-            {{ userpagedata.about | markdown }}
-        </div>
-    </div>
-    <div id="Videos" class="tabcontent">
-        {% for latestVideo in latestVideos %}
-            {{ small_video_box(latestVideo) }}
-        {% else %}
-            <p>{{ __("There are currently no uploads by %s.", [userpagedata.title]) }}</p>
-        {% endfor %}
-        {% if userdata.id == id %}
-            {% set forceuser = "&forceuser" %}
-        {% else %}
-            {% set forceuser = "" %}
-        {% endif %}
-        {% set le_url = 'user.php?id=' ~ id ~ '&page=%s' ~ forceuser %}
-        {{ pagination(level_count, glob_lpp, le_url, page) }}
-    </div>
-    <div id="About" class="tabcontent">
-        <div class="card">
-            <div class="card-header">{{ __("General information") }}</div>
-            <div class="card-body">
-                <b>{{ __("Registered on") }}</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
-                <br><br>
-                <b>{{ __("Last logged in") }}</b>: {{ userpagedata.lastview | relative_time }}
             </div>
         </div>
-    </div>
-    <div id="Discussion" class="tabcontent">
-        {% if log %}
-            <div class="grid" id="commentField">
-                <div class="col-md-1">
-                    <img class="rounded img-fluid" alt="{{ userdata.name }}" src="{{ profile_image(userdata.name) }}">
+        <div class="tab">
+            <button class="tablinks active" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
+            <button class="tablinks" onclick="openTab(event, 'Videos')">Uploads</button>
+            <button class="tablinks" onclick="openTab(event, 'Discussion')">Discussion</button>
+            <button class="tablinks" onclick="openTab(event, 'About')">About</button>
+        </div>
+        <div id="Home" class="tabcontent" style="display: block;">
+            {% if markread %}
+                <div class="header_message">{{ __("Marked all notifications as read.") }}</div>
+            {% elseif edited %}
+                <div class="header_message">{{ __("Settings successfully saved!") }}</div>
+            {% endif %}
+            <h2></h2>
+            <div class="user_about">
+                <h3>{{ __("About this user") }}</h3>
+                {{ userpagedata.about | markdown }}
+            </div>
+        </div>
+        <div id="Videos" class="tabcontent">
+            {% for latestVideo in latestVideos %}
+                {{ small_video_box(latestVideo) }}
+            {% else %}
+                <p>{{ __("There are currently no uploads by %s.", [userpagedata.title]) }}</p>
+            {% endfor %}
+            {% if userdata.id == id %}
+                {% set forceuser = "&forceuser" %}
+            {% else %}
+                {% set forceuser = "" %}
+            {% endif %}
+            {% set le_url = 'user.php?id=' ~ id ~ '&page=%s' ~ forceuser %}
+            {{ pagination(level_count, glob_lpp, le_url, page) }}
+        </div>
+        <div id="About" class="tabcontent">
+            <div class="card">
+                <div class="card-header">{{ __("General information") }}</div>
+                <div class="card-body">
+                    <b>{{ __("Registered on") }}</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
+                    <br><br>
+                    <b>{{ __("Last logged in") }}</b>: {{ userpagedata.lastview | relative_time }}
                 </div>
-                <div class="col-md-11">
-                    <div>
+            </div>
+        </div>
+        <div id="Discussion" class="tabcontent">
+            {% if log %}
+                <div class="grid" id="commentField">
+                    <div class="col-md-1">
+                        <img class="rounded img-fluid" alt="{{ userdata.name }}" src="{{ profile_image(userdata.name) }}">
+                    </div>
+                    <div class="col-md-11">
+                        <div>
 				<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
                           placeholder="{{ __("Enter comment here.") }}"></textarea>
-                    </div>
-                    <div class="right">
-                        <button id="post-user" class="button button-primary"
-                                style="margin-bottom:0;">{{ __("Comment") }}</button>
+                        </div>
+                        <div class="right">
+                            <button id="post-user" class="button button-primary"
+                                    style="margin-bottom:0;">{{ __("Comment") }}</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endif %}
-        <div id="comment"></div>
-        {% for comment in comments %}
-            {{ comment(comment) }}
-        {% endfor %}
-    </div>
+            {% endif %}
+            <div id="comment"></div>
+            {% for comment in comments %}
+                {{ comment(comment) }}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

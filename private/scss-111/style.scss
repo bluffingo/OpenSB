@@ -33,9 +33,9 @@ $backgrounds: (brisbane: '/assets/project111/brisbane.jpg');
 
 @each $key, $image in $backgrounds {
   .hero-#{$key} {
-		@extend .hero;
-		background-image: url($image);
-		background-size: cover;
-		background-position: center center;
-	}
+    @extend .hero;
+    background-image: url($image);
+    background-size: cover;
+    background-position: center center;
+  }
 }

@@ -45,10 +45,10 @@ if ($type == 0) {
 }
 
 if ($frontendName != "retro") {
-	$twig = twigloader();
-	echo $twig->render('components/comment.twig', [
-		'data' => $comment
-	]);
+    $twig = twigloader();
+    echo $twig->render('components/comment.twig', [
+        'data' => $comment
+    ]);
 } else {
-	die(__("Your comment has been submitted."));
+    die(__("Your comment has been submitted."));
 }

@@ -199,8 +199,8 @@ menu, ol, ul, li {
 }
 
 .main-content {
-  background: rgb(24,0,36);
-  background: linear-gradient(90deg, rgba(24,0,36,1) 0%, rgba(95,9,121,1) 35%, rgba(115,21,129,1) 100%); 
+  background: rgb(24, 0, 36);
+  background: linear-gradient(90deg, rgba(24, 0, 36, 1) 0%, rgba(95, 9, 121, 1) 35%, rgba(115, 21, 129, 1) 100%);
   color: white;
   margin: -48px 0 0;
   padding: 75px 0px 20px;
@@ -240,21 +240,21 @@ menu, ol, ul, li {
 
 textarea,
 input[type]:not([type=file]):not([type=submit]) {
-    border: 1px solid $gray-400;
-	border-radius: 4px;
-	box-shadow: 0 0 1px $gray-400;
-	-moz-box-shadow: 0 0 1px $gray-400;
-	-webkit-box-shadow: 0 0 1px $gray-400;
-	transition: border linear 0.3s, box-shadow linear 0.3s;
+  border: 1px solid $gray-400;
+  border-radius: 4px;
+  box-shadow: 0 0 1px $gray-400;
+  -moz-box-shadow: 0 0 1px $gray-400;
+  -webkit-box-shadow: 0 0 1px $gray-400;
+  transition: border linear 0.3s, box-shadow linear 0.3s;
 }
 
 textarea:focus,
 input[type]:not([type=file]):not([type=submit]):focus {
-    border-color: $primary;
-	box-shadow: 0 0 5px $primary;
-	-moz-box-shadow: 0 0 5px $primary;
-	-webkit-box-shadow: 0 0 5px $primary;
-	outline: 0;
+  border-color: $primary;
+  box-shadow: 0 0 5px $primary;
+  -moz-box-shadow: 0 0 5px $primary;
+  -webkit-box-shadow: 0 0 5px $primary;
+  outline: 0;
 }
 
 .chaziz-body {
@@ -287,15 +287,15 @@ input[type]:not([type=file]):not([type=submit]):focus {
 }
 
 .form-signin {
-	input[type="text"],
-	input[type="password"] {
-		font-size: 16px;
-		height: auto;
-		margin-bottom: 15px;
-		padding: 7px 9px;
-		width: 100%;
-		box-sizing: border-box;
-	}
+  input[type="text"],
+  input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 .form-long {
@@ -582,8 +582,8 @@ input[type]:not([type=file]):not([type=submit]):focus {
 }
 
 .page {
-	width: calc(100% - $sidebarlength);
-	margin-left: auto;
+  width: calc(100% - $sidebarlength);
+  margin-left: auto;
 }
 
 /// "Likesaber" for watch page \\\
@@ -727,15 +727,17 @@ input[type]:not([type=file]):not([type=submit]):focus {
   ul {
     li {
       padding: 6px 0;
-		a {
-			width: 100%;
-			display: block;
-			padding: 0 10px !important;
-		}
+
+      a {
+        width: 100%;
+        display: block;
+        padding: 0 10px !important;
+      }
     }
-	li:hover {
-	  background-color: lighten($primary, 45%);
-	}
+
+    li:hover {
+      background-color: lighten($primary, 45%);
+    }
   }
 }
 

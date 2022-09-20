@@ -130,19 +130,19 @@
 {% block precontent %}
 {% endblock %}
 {% if userbandata %}
-<section class="section">
-    <div class="container">
-        <article class="message is-danger">
-            <div class="message-header">
-                <p>{{ __("Sorry %s, you are banned from squareBracket.", [userdata.name]) }}</p>
-            </div>
-            <div class="message-body">
-                <p><strong>{{ userbandata.reason }}</strong><br/>
-                {{ __("This ban is not set to expire.") }}</p>
-            </div>
-        </article>
-    </div>
-</section>
+    <section class="section">
+        <div class="container">
+            <article class="message is-danger">
+                <div class="message-header">
+                    <p>{{ __("Sorry %s, you are banned from squareBracket.", [userdata.name]) }}</p>
+                </div>
+                <div class="message-body">
+                    <p><strong>{{ userbandata.reason }}</strong><br/>
+                        {{ __("This ban is not set to expire.") }}</p>
+                </div>
+            </article>
+        </div>
+    </section>
 {% endif %}
 {% block content %}
 {% endblock %}

@@ -1,5 +1,5 @@
 {% if isBanned == false %}
-    {% if file_exists  %}
+    {% if file_exists %}
         {% set imgSrcPath = '/dynamic/pfp/' ~ data ~ '.png' %}
         {% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}
     {% else %}

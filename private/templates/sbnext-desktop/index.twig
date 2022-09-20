@@ -57,9 +57,9 @@
         <div class="card-body-fat">
             <h3 style="margin-top:0">{{ __("Randomly selected uploads") }}</h3>
             <div class="gallery-image">
-            {% for video in videos %}
-                <a href="watch?v={{ video.video_id }}">
-                    <article class="img-box">
+                {% for video in videos %}
+                    <a href="watch?v={{ video.video_id }}">
+                        <article class="img-box">
                             {% if video.post_type == 0 or video.post_type == 1 %}
                                 <img src="{{ video_thumbnail(video.video_id) }}">
                             {% elseif video.post_type == 2 %}
@@ -72,11 +72,11 @@
                                     <strong>{{ video.title }}</strong>
                                 </div>
                             </div>
-                    </article>
-                </a>
-            {% else %}
-                <p>{{ __("No uploads.") }}</p>
-            {% endfor %}
+                        </article>
+                    </a>
+                {% else %}
+                    <p>{{ __("No uploads.") }}</p>
+                {% endfor %}
             </div>
         </div>
     </div>

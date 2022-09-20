@@ -5,14 +5,17 @@ The squareBracket API contains various entrypoints to fetch data intended to be 
 Input arguments are received as GET arguments (`foo.php?bar=baz` where `bar` is an argument for the `foo.php` entrypoint), and output data is sent as JSON encoded data. Input arguments are optional unless stated otherwise.
 
 ## /api/v1/video.php
+
 This entrypoint fetches all relevant data for the specified video.
 
 ### Input arguments
+
 | field | type    | description                  |
 | ----- | ------- | ---------------------------- |
 | id    | integer | Public Video ID *(required)* |
 
 ### Output data
+
 | field       | type              | description                                                     |
 | ----------- | ----------------- | --------------------------------------------------------------- |
 | id          | string            | Public Video ID                                                 |
@@ -27,6 +30,7 @@ This entrypoint fetches all relevant data for the specified video.
 | author      | user object       | Author of the video                                             |
 
 ### Example output
+
 ```json
 {
 	"id": "ABCdefGHI__",
@@ -48,18 +52,22 @@ This entrypoint fetches all relevant data for the specified video.
 ```
 
 ## /api/v1/get_videos.php
+
 This entrypoint fetches all recent videos and the data for the videos.
 
 ### Input arguments
+
 | field | type    | description                                    |
 | ----- | ------- | ---------------------------------------------- |
 | start | integer | Integer to start querying data from            |
 | limit | integer | Integer to limit the amount of videos to query |
 
 ### Output data
+
 todo: add table
 
 ### Example output
+
 ```json
 {
   "videos": [

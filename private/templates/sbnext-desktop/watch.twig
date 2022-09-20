@@ -19,9 +19,9 @@
     <div class="watchNext">
         <div class="grid">
             <div class="col-md-10">
-			{% if theme == 'nostalgia' %}
-                <h1>{{ video.title }}</h1>
-			{% endif %}
+                {% if theme == 'nostalgia' %}
+                    <h1>{{ video.title }}</h1>
+                {% endif %}
                 {% if postType == "video" %}
                     {{ include('/components/player.twig') }}
                 {% elseif postType == "artwork" %}
@@ -31,14 +31,14 @@
                     <div class="card card-body-fat">
                         <div class="grid">
                             <div class="col-md-10">
-								{% if theme != 'nostalgia' %}
-									<h1>{{ video.title }}</h1>
+                                {% if theme != 'nostalgia' %}
+                                    <h1>{{ video.title }}</h1>
                                     <div class="small-stats">
                                         <div>{{ icon("eye", 20) }} {{ viewCount }}</div>
                                         <div>{{ icon("chat", 20) }} {{ comCount }}</div>
                                         <div>{{ icon("star", 20) }} {{ total_favorites }}</div>
                                     </div>
-								{% endif %}
+                                {% endif %}
                             </div>
                             {% if userbandata != true %}
                                 <div class="col-md-6 right">

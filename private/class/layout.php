@@ -12,11 +12,10 @@ use Mobile_Detect;
 use RelativeTime\RelativeTime;
 use Twig\Environment;
 use Twig\Extra\Markdown\DefaultMarkdown;
+use Twig\Extra\Markdown\MarkdownExtension;
 use Twig\Extra\Markdown\MarkdownRuntime;
 use Twig\Loader\FilesystemLoader;
 use Twig\RuntimeLoader\RuntimeLoaderInterface;
-use Twig\Extra\Markdown\MarkdownExtension;
-use Detection\MobileDetect;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
@@ -202,7 +201,8 @@ function relativeTime($time)
     return $relativeTime->timeAgo($time);
 }
 
-function convertBytes($value, $decimals = 0) {
+function convertBytes($value, $decimals = 0)
+{
     if (is_numeric($value)) {
         return $value;
     } else {
@@ -221,7 +221,7 @@ function convertBytes($value, $decimals = 0) {
                 break;
         }
     }
-	$sz = 'BKMGTP';
-	$factor = floor((strlen($qty) - 1) / 3);
-	return sprintf("%.{$decimals}f", $qty / pow(1024, $factor)) . @$sz[$factor];
+    $sz = 'BKMGTP';
+    $factor = floor((strlen($qty) - 1) / 3);
+    return sprintf("%.{$decimals}f", $qty / pow(1024, $factor)) . @$sz[$factor];
 }

@@ -8,371 +8,443 @@
  * http://www.w3.org/TR/CSS21/sample.html to make sure the editsection links scale right
  */
 
-h1 { font-size: 2em; }
-h2 { font-size: 1.5em; }
-h3 { font-size: 1.17em; }
-h5 { font-size: .83em; }
-h6 { font-size: .75em; }
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.17em;
+}
+
+h5 {
+    font-size: .83em;
+}
+
+h6 {
+    font-size: .75em;
+}
+
 h1, h2, h3, h4, h5, h6 {
-	font-weight: bolder;
+    font-weight: bolder;
 }
 
 /* Now the custom parts */
 
 /* Make edit sections (which are inside h# tags) normal-sized */
 .editsection {
-	font-weight: normal;
+    font-weight: normal;
 }
-h1 .editsection { font-size: 50%; }
-h2 .editsection { font-size: 66.7%; }
-h3 .editsection { font-size: 85.5%; }
-h5 .editsection { font-size: 120%; }
-h6 .editsection { font-size: 133%; }
 
-#footer { clear: both }
+h1 .editsection {
+    font-size: 50%;
+}
+
+h2 .editsection {
+    font-size: 66.7%;
+}
+
+h3 .editsection {
+    font-size: 85.5%;
+}
+
+h5 .editsection {
+    font-size: 120%;
+}
+
+h6 .editsection {
+    font-size: 133%;
+}
+
+#footer {
+    clear: both
+}
+
 /* images */
 /* @noflip */
 div.floatright {
-	float: right;
-	clear: right;
-	margin: 0 0 1em 1em;
+    float: right;
+    clear: right;
+    margin: 0 0 1em 1em;
 }
 
 /* @noflip */
 div.floatright p {
-	font-style: italic;
+    font-style: italic;
 }
 
 /* @noflip */
 div.floatleft {
-	float: left;
-	clear: left;
-	margin: 0.3em 0.5em 0.5em 0;
+    float: left;
+    clear: left;
+    margin: 0.3em 0.5em 0.5em 0;
 }
 
 /* @noflip */
 div.floatleft p {
-	font-style: italic;
+    font-style: italic;
 }
 
 
 /* Print-specific things to hide */
 .printfooter {
-	display: none;
+    display: none;
 }
 
 /* table standards */
 table.rimage {
-	float: right;
-	margin-left: 1em;
-	margin-bottom: 1em;
-	text-align: center;
-	font-size: smaller;
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+    font-size: smaller;
 }
 
 /* thumbnails */
 div.thumb {
-	margin-bottom: .5em;
-	border-style: solid;
-	border-color: white;
-	width: auto;
+    margin-bottom: .5em;
+    border-style: solid;
+    border-color: white;
+    width: auto;
 }
+
 div.thumbinner {
-	border: 1px solid #ccc;
-	padding: 3px !important;
-	background-color: #f9f9f9;
-	font-size: 94%;
-	text-align: center;
-	overflow: hidden;
+    border: 1px solid #ccc;
+    padding: 3px !important;
+    background-color: #f9f9f9;
+    font-size: 94%;
+    text-align: center;
+    overflow: hidden;
 }
+
 html .thumbimage {
-	border: 1px solid #ccc;
+    border: 1px solid #ccc;
 }
+
 html .thumbcaption {
-	border: none;
-	text-align: left;
-	line-height: 1.4em;
-	padding: 3px !important;
-	font-size: 94%;
+    border: none;
+    text-align: left;
+    line-height: 1.4em;
+    padding: 3px !important;
+    font-size: 94%;
 }
+
 div.magnify {
-	float: right;
-	border: none !important;
-	background: none !important;
+    float: right;
+    border: none !important;
+    background: none !important;
 }
+
 div.magnify a,
 div.magnify img {
-	display: block;
-	border: none !important;
-	background: none !important;
+    display: block;
+    border: none !important;
+    background: none !important;
 }
+
 /* @noflip */
 div.tright {
-	clear: right;
-	float: right;
-	border-width: .5em 0 .8em 1.4em;
+    clear: right;
+    float: right;
+    border-width: .5em 0 .8em 1.4em;
 }
+
 /* @noflip */
 div.tleft {
-	float: left;
-	clear: left;
-	margin-right: .5em;
-	border-width: .5em 1.4em .8em 0;
+    float: left;
+    clear: left;
+    margin-right: .5em;
+    border-width: .5em 1.4em .8em 0;
 }
+
 img.thumbborder {
-	border: 1px solid #dddddd;
+    border: 1px solid #dddddd;
 }
 
 /* Page history styling */
 /* the auto-generated edit comments */
-.autocomment { color: #4b4b4b; }
+.autocomment {
+    color: #4b4b4b;
+}
 
-img { border: none; }
+img {
+    border: none;
+}
 
 #toc,
 .toc {
-	border: 1px solid #bba;
-	background-color: #f7f8ff;
-	padding: 5px;
-	font-size: 95%;
-	text-align: center;
+    border: 1px solid #bba;
+    background-color: #f7f8ff;
+    padding: 5px;
+    font-size: 95%;
+    text-align: center;
 }
+
 #toc h2,
 .toc h2 {
-	display: inline;
-	border: none;
-	padding: 0;
-	font-size: 100%;
-	font-weight: bold;
+    display: inline;
+    border: none;
+    padding: 0;
+    font-size: 100%;
+    font-weight: bold;
 }
+
 #toc ul,
 .toc ul {
-	list-style-type: none;
-	list-style-image: none;
-	padding: 0;
-	text-align: left;
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+    text-align: left;
 }
+
 #toc ul ul,
 .toc ul ul {
-	margin: 0 0 0 2em;
+    margin: 0 0 0 2em;
 }
+
 #toc .toctoggle,
 .toc .toctoggle {
-	font-size: 94%;
+    font-size: 94%;
 }
 
 .error {
-	color: red;
-	font-size: larger;
+    color: red;
+    font-size: larger;
 }
 
 /* preference page with js-genrated toc */
 #mw-pref-clear {
-	clear: both;
+    clear: both;
 }
+
 #preftoc {
-	float: left;
-	margin: 1em 1em 1em 1em;
-	width: 13em;
+    float: left;
+    margin: 1em 1em 1em 1em;
+    width: 13em;
 }
+
 #preftoc li {
-	border: 1px solid White;
+    border: 1px solid White;
 }
+
 #preftoc li.selected {
-	background-color:#f9f9f9;
-	border:1px dashed #aaaaaa;
+    background-color: #f9f9f9;
+    border: 1px dashed #aaaaaa;
 }
+
 #preftoc a,
 #preftoc a:active {
-	display: block;
-	color: #005189;
+    display: block;
+    color: #005189;
 }
+
 .mw-prefs-buttons {
-	clear: left;
-	float: left;
-	margin-top: 1em;
+    clear: left;
+    float: left;
+    margin-top: 1em;
 }
+
 div.htmlform-tip {
-	font-size: 94%;
-	margin-top: 0.4em;
-	color: #666;
+    font-size: 94%;
+    margin-top: 0.4em;
+    color: #666;
 }
+
 fieldset.prefsection {
-	margin-top: 1em;
+    margin-top: 1em;
 }
+
 fieldset.operaprefsection {
-	margin-left: 15em;
+    margin-left: 15em;
 }
 
 /* emulate center */
 .center {
-	width: 100%;
-	text-align: center;
+    width: 100%;
+    text-align: center;
 }
+
 *.center * {
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* small for tables and similar */
 .small {
-	font-size: 94%;
+    font-size: 94%;
 }
+
 table.small {
-	font-size: 100%;
+    font-size: 100%;
 }
 
 /* use this instead of #toc for page content */
 .toccolours {
-	border: 1px solid #aaaaaa;
-	background-color: #f9f9f9;
-	padding: 5px;
-	font-size: 95%;
+    border: 1px solid #aaaaaa;
+    background-color: #f9f9f9;
+    padding: 5px;
+    font-size: 95%;
 }
+
 #siteNotice {
-	border: 1px solid #aaaaaa;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
+    border: 1px solid #aaaaaa;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
+
 .redirectText {
-	font-size: 150%;
-	margin: 5px;
+    font-size: 150%;
+    margin: 5px;
 }
+
 .sharedUploadNotice {
-	font-style: italic;
+    font-style: italic;
 }
+
 span.unpatrolled {
-	font-weight: bold;
-	color: red;
+    font-weight: bold;
+    color: red;
 }
 
 span.updatedmarker {
-	color: black;
-	background-color: #00FF00;
+    color: black;
+    background-color: #00FF00;
 }
 
 div.gallerybox {
-	width: 150px;
+    width: 150px;
 }
 
 span.comment {
-	font-style: italic;
+    font-style: italic;
 }
 
 span.changedby {
-	font-size: 95%;
+    font-size: 95%;
 }
 
 .previewnote {
-	text-align: center;
-	color: #cc0000;
+    text-align: center;
+    color: #cc0000;
 }
+
 .editExternally {
-	border-style: solid;
-	border-width: 1px;
-	border-color: gray;
-	background: #ffffff;
-	padding: 3px;
-	margin-top: 0.5em;
-	float: left;
-	font-size: small;
-	text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    background: #ffffff;
+    padding: 3px;
+    margin-top: 0.5em;
+    float: left;
+    font-size: small;
+    text-align: center;
 }
+
 .editExternallyHelp {
-	font-style: italic;
-	color: gray;
+    font-style: italic;
+    color: gray;
 }
 
 li span.deleted {
-	text-decoration: line-through;
-	color: #888;
-	font-style: italic;
+    text-decoration: line-through;
+    color: #888;
+    font-style: italic;
 }
 
 /* Classes for EXIF data display */
 table.mw_metadata {
-	margin-left: 0.5em;
+    margin-left: 0.5em;
 }
 
 table.mw_metadata caption {
-	font-weight: bold;
+    font-weight: bold;
 }
+
 table.mw_metadata th {
-	font-weight: normal;
+    font-weight: normal;
 }
+
 table.mw_metadata td {
-	padding: 0.1em;
+    padding: 0.1em;
 }
 
 table.mw_metadata {
-	border: none;
-	border-collapse: collapse;
+    border: none;
+    border-collapse: collapse;
 }
+
 table.mw_metadata td,
 table.mw_metadata th {
-	border: 1px solid #aaaaaa;
-	padding-left: 4px;
-	padding-right: 4px;
+    border: 1px solid #aaaaaa;
+    padding-left: 4px;
+    padding-right: 4px;
 }
+
 table.mw_metadata th {
-	background-color: #f9f9f9;
+    background-color: #f9f9f9;
 }
+
 table.mw_metadata td {
-	background-color: #fcfcfc;
+    background-color: #fcfcfc;
 }
+
 table.mw_metadata td.spacer {
-	background: inherit;
-	border-top: none;
-	border-bottom: none;
+    background: inherit;
+    border-top: none;
+    border-bottom: none;
 }
+
 table.collapsed tr.collapsable {
-	display: none;
+    display: none;
 }
 
 .visualClear {
-	clear: both;
+    clear: both;
 }
 
 /* Allmessages table */
 #allmessagestable th {
-	background-color: #b2b2ff;
+    background-color: #b2b2ff;
 }
 
 #allmessagestable tr.orig {
-	background-color: #ffe2e2;
+    background-color: #ffe2e2;
 }
 
 #allmessagestable tr.new {
-	background-color: #e2ffe2;
+    background-color: #e2ffe2;
 }
 
 #allmessagestable tr.def {
-	background-color: #f0f0ff;
+    background-color: #f0f0ff;
 }
 
 #jump-to-nav {
-	display: none;
+    display: none;
 }
 
 div.multipageimagenavbox {
-	border: solid 1px silver;
-	padding: 4px;
-	margin: 1em;
-	background: #f0f0f0;
+    border: solid 1px silver;
+    padding: 4px;
+    margin: 1em;
+    background: #f0f0f0;
 }
 
 div.multipageimagenavbox div.thumb {
-	border: none;
-	margin-left: 2em;
-	margin-right: 2em;
+    border: none;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 div.multipageimagenavbox hr {
-	margin: 6px;
+    margin: 6px;
 }
 
 table.multipageimage td {
-	text-align: center;
+    text-align: center;
 }
 
 /*
@@ -384,67 +456,77 @@ table.multipageimage td {
   - restore line wrapping for the last two table cells (description and size)
 */
 .TablePager_nav a {
-	text-decoration: none;
+    text-decoration: none;
 }
+
 .TablePager {
-	border-collapse: collapse;
+    border-collapse: collapse;
 }
+
 .TablePager,
 .TablePager td,
 .TablePager th {
-	border: 0.15em solid #777777;
-	padding: 0 0.15em 0 0.15em;
+    border: 0.15em solid #777777;
+    padding: 0 0.15em 0 0.15em;
 }
+
 .TablePager th {
-	background-color: #eeeeff;
+    background-color: #eeeeff;
 }
+
 .TablePager td {
-	background-color: #ffffff;
+    background-color: #ffffff;
 }
+
 .TablePager tr:hover td {
-	background-color: #eeeeff;
+    background-color: #eeeeff;
 }
 
 .imagelist td,
 .imagelist th {
-	white-space: nowrap;
+    white-space: nowrap;
 }
+
 .imagelist .TablePager_col_links {
-	background-color: #eeeeff;
+    background-color: #eeeeff;
 }
+
 .imagelist .TablePager_col_img_description {
-	white-space: normal;
+    white-space: normal;
 }
+
 .imagelist th.TablePager_sort {
-	background-color: #ccccff;
+    background-color: #ccccff;
 }
 
 .templatesUsed {
-	margin-top: 1em;
+    margin-top: 1em;
 }
 
 .MediaTransformError {
-	border: thin solid #777;
-	background-color: #ccc;
-	padding: 0.1em;
+    border: thin solid #777;
+    background-color: #ccc;
+    padding: 0.1em;
 }
+
 .MediaTransformError td {
-	text-align: center;
-	vertical-align: middle;
-	font-size: 90%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 90%;
 }
 
 form#specialpages {
-	display: inline;
+    display: inline;
 }
 
 body {
-	direction: ltr;
-	unicode-bidi: embed;
-	background-color: #ffffec;
+    direction: ltr;
+    unicode-bidi: embed;
+    background-color: #ffffec;
 }
+
 body.ns-0 {
-	background-color: white;
+    background-color: white;
 }
 
 /** RTL specific CSS starts here **/
@@ -457,11 +539,12 @@ body.ns-0 {
  */
 /* @noflip */
 html > body.rtl div#article ul {
-	display: table;
+    display: table;
 }
+
 /* @noflip */
 html > body.rtl div#bodyContent ul#filetoc {
-	display: block;
+    display: block;
 }
 
 /* RTL specific CSS ends here **/

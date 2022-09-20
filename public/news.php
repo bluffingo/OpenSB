@@ -1,4 +1,5 @@
 <?php
+
 namespace squareBracket;
 
 require dirname(__DIR__) . '/private/class/common.php';

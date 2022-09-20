@@ -24,12 +24,12 @@
                            onchange="$('#title').val($('#fileToUpload').val().split('\\').pop().split('/').pop())"
                            required>
                     <br>
-					{% if isDebug %}
-                    <label class="checkbox">
-                        <input type="checkbox" id="debugUploaderSkip" name="debugUploaderSkip">
-                        Skip processing
-                    </label>
-					{% endif %}
+                    {% if isDebug %}
+                        <label class="checkbox">
+                            <input type="checkbox" id="debugUploaderSkip" name="debugUploaderSkip">
+                            Skip processing
+                        </label>
+                    {% endif %}
                     <div class="right">
                         <input class="button button-primary" type="submit" id="upload" name="upload"
                                value="{{ __("Upload") }}">

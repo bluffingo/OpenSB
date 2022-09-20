@@ -8,8 +8,8 @@
  * More info: http://grantovich.net/posts/2009/06/that-weird-ie8-textarea-bug/
  */
 #wpTextbox1 {
-	height: 390px;
-	width: 500px;
-	min-width: 100%;
-	max-width: 100%;
+    height: 390px;
+    width: 500px;
+    min-width: 100%;
+    max-width: 100%;
 }
