@@ -283,9 +283,10 @@ table.c1 {
 
 /// Generic form element overrides \\\
 
-textarea, input[type=text], input[type=password] {
+textarea,
+input[type]:not([type=file]):not([type=submit]) {
   background-color: #0f0f0f;
-  border: 2px solid #222;
+  border: 1px solid #222;
   color: white;
 }
 
