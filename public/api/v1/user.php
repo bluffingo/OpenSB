@@ -3,7 +3,7 @@
 namespace squareBracket\API;
 chdir('../../');
 $rawOutputRequired = true;
-require('lib/common.php');
+require dirname(__DIR__) . '/../../private/class/common.php';
 
 header('Content-Type: application/json');
 
@@ -12,9 +12,9 @@ $username = (isset($_GET['name']) ? $_GET['name'] : null);
 $id = (isset($_GET['id']) ? $_GET['id'] : null);
 
 if (isset($_GET['id'])) {
-    $userData = \squareBracket\fetch("SELECT * FROM users WHERE id = ?", [$id]);
+    $userData = $sql->fetch("SELECT * FROM users WHERE id = ?", [$id]);
 } else {
-    $userData = \squareBracket\fetch("SELECT * FROM users WHERE name = ?", [$username]);
+    $userData = $sql->fetch("SELECT * FROM users WHERE name = ?", [$username]);
 }
 
 if (!$userData) {
