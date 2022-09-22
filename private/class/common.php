@@ -80,7 +80,7 @@ if (!isCattleDog()) {
 }
 
 if ($isMaintenance && !isCli()) {
-    error(403, "This instance of squareBracket is currently offline.");
+    error(403, "This instance of Qobo is currently offline.");
 } else {
     $ipban = $sql->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [getUserIpAddr()]);
     if ($ipban) {
