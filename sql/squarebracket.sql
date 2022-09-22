@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2022 at 02:25 AM
+-- Generation Time: Sep 22, 2022 at 02:47 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -32,19 +32,6 @@ CREATE TABLE `bans` (
   `userid` int(11) NOT NULL,
   `reason` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `channels`
---
-
-CREATE TABLE `channels` (
-  `id` bigint(30) UNSIGNED NOT NULL,
-  `channel_name` varchar(32) NOT NULL,
-  `lobby_type` enum('true','false') NOT NULL DEFAULT 'false',
-  `locked` enum('true','false') NOT NULL DEFAULT 'false'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -172,6 +159,25 @@ CREATE TABLE `rating` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `revisions`
+--
+
+CREATE TABLE `revisions` (
+  `id` int(11) NOT NULL,
+  `page` text NOT NULL,
+  `revision` int(11) NOT NULL DEFAULT 1,
+  `size` int(11) NOT NULL DEFAULT 0,
+  `sizediff` int(11) NOT NULL DEFAULT 0,
+  `time` int(11) NOT NULL DEFAULT current_timestamp(),
+  `description` text NOT NULL DEFAULT 'No description',
+  `author` int(11) NOT NULL,
+  `comment_id` int(11) NOT NULL DEFAULT 0,
+  `type` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subscriptions`
 --
 
@@ -274,13 +280,6 @@ ALTER TABLE `bans`
   ADD PRIMARY KEY (`autoint`);
 
 --
--- Indexes for table `channels`
---
-ALTER TABLE `channels`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `channel_name_UNIQUE` (`channel_name`);
-
---
 -- Indexes for table `channel_comments`
 --
 ALTER TABLE `channel_comments`
@@ -302,6 +301,12 @@ ALTER TABLE `music`
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `revisions`
+--
+ALTER TABLE `revisions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -327,12 +332,6 @@ ALTER TABLE `bans`
   MODIFY `autoint` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `channels`
---
-ALTER TABLE `channels`
-  MODIFY `id` bigint(30) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `channel_comments`
 --
 ALTER TABLE `channel_comments`
@@ -354,6 +353,12 @@ ALTER TABLE `music`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `revisions`
+--
+ALTER TABLE `revisions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

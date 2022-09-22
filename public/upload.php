@@ -47,6 +47,8 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
         if (move_uploaded_file($temp_name, $target_file)) {
             $sql->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags) VALUES (?,?,?,?,?,?,?,?)",
                 [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), 'dynamic/videos/' . $new, $status]);
+            $sql->query("INSERT INTO revisions (page, revision, time, author, type) VALUES (?,?,?,?,?)",
+                [$new, 1, time(), $uploader, 1]);
 
             if (!isset($noProcess)) {
                 if (substr(php_uname(), 0, 7) == "Windows") {

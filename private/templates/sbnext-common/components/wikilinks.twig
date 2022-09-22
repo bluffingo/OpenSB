@@ -1,0 +1,14 @@
+{% macro wikilinks(page, type) %}
+	<div class="wikilinks" style="clear:both">
+		<a href="/wiki/">Main Page</a>
+		&bull; <a href="/wiki/recentchanges.php">Recent changes</a>
+
+		{% if type != "special" %}
+			<div class="float-right">
+				{% if type != "read" %}<a href="/wiki/{{ page }}">Read</a>{% else %}Read{% endif %}
+				&bull; {% if type != "edit" %}<a href="/wiki/edit.php?page={{ page }}" rel="nofollow">Edit</a>{% else %}Edit{% endif %}
+				&bull; {% if type != "viewhistory" %}<a href="/wiki/viewhistory.php?page={{ page }}" rel="nofollow">View history</a>{% else %}View history{% endif %}
+			</div>
+		{% endif %}
+	</div>
+{% endmacro %}

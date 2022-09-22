@@ -7,7 +7,11 @@
         <tbody>
         <tr>
             <td>
-                <video src="/dynamic/videos/{{ video.video_id }}.converted.mp4" controls width="100%">
+                {% if postType == "video" %}
+                    <video src="/dynamic/videos/{{ video.video_id }}.converted.mp4" controls width="100%"></video>
+                {% elseif postType == "artwork" %}
+                    <img class="img-fluid" src="{{ video.videofile }}" alt="{{ video.title }}">
+                {% endif %}
             </td>
             <td>
                 <h2>About this upload</h2>
