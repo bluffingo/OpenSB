@@ -52,8 +52,9 @@
             <h5>Navigation</h5>
             <div class="pBody">
                 <ul>
-                    <li id="n-mainpage-description"><a href="/index.php" title="Visit the main page [alt-shift-z]" accesskey="z">Main page</a></li>
-                    <li id="n-browse"><a href="/browse.php" title="Browse uploads in Qobo [alt-shift-b]" accesskey="b">Browse</a></li>
+				{% for link in navigationList %}
+                    <li id="n-{{ link.htmlid }}"><a href="{{ link.url }}" title="{{ link.hovertext }}" accesskey="{{ link.accesskey }}">{{ link.name }}</a></li>
+				{% endfor %}
                 </ul>
             </div>
         </div>

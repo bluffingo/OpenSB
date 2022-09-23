@@ -136,4 +136,34 @@ if ($log) {
     $userdata['powerlevel'] = 1;
 }
 
+function navigationList() {
+	$array = array(
+		"home" => array(
+			"name" => __("Home"),
+			"icon" => "house-door",
+			"url" => "/index.php",
+			"hover" => "Visit the main page [alt-shift-z]",
+			"accesskey" => "z",
+			"htmlid" => "mainpage-description",
+		),
+		"videos" => array(
+			"name" => __("Videos"),
+			"icon" => "camera-video",
+			"url" => "/browse.php",
+			"hover" => "Browse videos in Qobo [alt-shift-v]",
+			"accesskey" => "v",
+			"htmlid" => "videos-browse",
+		),
+		"images" => array(
+			"name" => __("Images"),
+			"icon" => "image",
+			"url" => "/browse.php",
+			"hover" => "Browse images in Qobo [alt-shift-i]",
+			"accesskey" => "i",
+			"htmlid" => "images-browse",
+		),
+	);
+	return $array;
+}
+
 $userdata['timezone'] = 'America/New York';

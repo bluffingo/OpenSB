@@ -82,11 +82,10 @@
                         <table cellpadding="2" cellspacing="0" border="0">
                             <tbody>
                             <tr>
-                                <td>&nbsp;<a class="headertext" href="/index.php">{{ __("Home") }}</a></td>
-                                <td>&nbsp;|&nbsp;</td>
-                                <td><a class="headertext" href="/browse.php">{{ __("Videos") }}</a></td>
-                                <td>&nbsp;|&nbsp;</td>
-                                <td><a class="headertext" href="/channels.php">{{ __("Channels") }}</a></td>
+								{% for link in navigationList %}
+									<td>&nbsp;<a class="headertext" href="{{ link.url }}">{{ link.name }}</a></td>
+									<td>&nbsp;|&nbsp;</td>
+								{% endfor %}
                             </tr>
                             </tbody>
                         </table>

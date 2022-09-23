@@ -52,15 +52,11 @@
     {% include "components/nostalgia/_header.twig" %}
 {% else %}
     <div id="guide">
-        <a href="index.php" class="button button-secondary-invis">
-            {{ icon("house-door-fill", 20) }}
+		{% for link in navigationList %}
+        <a href="{{ link.url }}" class="button button-secondary-invis">
+            {{ icon("#{ link.icon }-fill", 20) }}
         </a>
-        <a href="/browse.php" class="button button-secondary-invis">
-            {{ icon("camera-video-fill", 20) }}
-        </a>
-        <a href="/browse.php" class="button button-secondary-invis">
-            {{ icon("image-fill", 20) }}
-        </a>
+		{% endfor %}
     </div>
     {% include "components/_header.twig" %}
 {% endif %}

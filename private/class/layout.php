@@ -26,10 +26,8 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
 
     if ($log) {
         $totalSubscribers = $sql->result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
-        $allUsers = $sql->query("SELECT $userfields s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]);
     } else {
         $totalSubscribers = 0;
-        $allUsers = $sql->query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 10");
     }
 
     $doCache = ($tplNoCache ? false : $tplCache);
@@ -71,7 +69,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $twig->addExtension(new sBTwigExtension());
     $twig->addExtension(new MarkdownExtension());
 
-    $twig->addGlobal('log', $log); //for forums
+    $twig->addGlobal('log', $log);
     $twig->addGlobal('userdata', $userdata);
     $twig->addGlobal('theme', $theme);
     $twig->addGlobal('pfpRoundness', $pfpRoundness);
@@ -80,13 +78,13 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $twig->addGlobal('notification_count', $notificationCount);
     $twig->addGlobal('page', $pageVariable);
     $twig->addGlobal('totalSubscribers', $totalSubscribers);
-    $twig->addGlobal('allUsers', $allUsers);
     $twig->addGlobal('version', $versionNumber);
     $twig->addGlobal('isMaintenance', $isMaintenance);
     $twig->addGlobal('isDebug', $isDebug);
     $twig->addGlobal('userbandata', $userbandata);
+	$twig->addGlobal('navigationList', navigationList());
 
-    if (isset($_SERVER["HTTP_HOST"])) { // Browser from 1995 (eg: Internet Explorer 1) make PHP throw out warnings due to them not having HTTP hosts feature.
+    if (isset($_SERVER["HTTP_HOST"])) { // Browsers from 1995 (eg: Internet Explorer 1) make PHP throw out warnings due to them not having HTTP hosts feature.
         $twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         $twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
     }
