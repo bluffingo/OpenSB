@@ -67,9 +67,9 @@
                             {% endif %}
                             <div class="transparent-box">
                                 <div class="caption">
-                                    <img src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}">
-                                    <p>{{ __("by") }} {{ video.u_name }}</p>
-                                    <strong>{{ video.title }}</strong>
+                                    <img class="rounded" src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}">
+                                    <strong>{{ video.title }}</strong><br>
+									{{ __("by") }} {{ video.u_name }} - {{ video.views }} {{ __("views") }}
                                 </div>
                             </div>
                         </article>

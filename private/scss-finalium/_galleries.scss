@@ -6,8 +6,8 @@
   justify-content: center;
 
   img {
-    height: 250px;
-    width: 350px;
+    height: 187px;
+    width: 333px;
     transform: scale(1.0);
     transition: transform 0.4s ease;
     object-fit: cover;
@@ -17,8 +17,8 @@
 .img-box {
   box-sizing: content-box;
   margin: 10px;
-  height: 250px;
-  width: 350px;
+  height: 187px;
+  width: 333px;
   overflow: hidden;
   display: inline-block;
   color: white;
@@ -34,9 +34,9 @@
   position: absolute;
   bottom: 5px;
   left: 20px;
-  opacity: 0.0;
   width: 90%;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateY(-10px);
 
   img {
     width: 32px;
@@ -47,26 +47,13 @@
 }
 
 .transparent-box {
-  height: 250px;
-  width: 350px;
-  background-color: rgba(0, 0, 0, 0);
+  height: 187px;
+  width: 333px;
   position: absolute;
   top: 0;
   left: 0;
   transition: background-color 0.3s ease;
-}
-
-.img-box:hover img {
-  transform: scale(1.1);
-}
-
-.img-box:hover .transparent-box {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.img-box:hover .caption {
-  transform: translateY(-20px);
-  opacity: 1.0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 66%, rgba(0, 0, 0, 0.66));
 }
 
 .img-box:hover {
