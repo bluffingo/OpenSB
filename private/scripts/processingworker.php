@@ -26,7 +26,7 @@ try {
     $h264 = new X264();
     // $flv = new FLV();
 
-    $h264->setAudioKiloBitrate(196)->setAdditionalParameters(array('-ar', '44100'));
+    $h264->setAudioKiloBitrate(256)->setAdditionalParameters(array('-ar', '44100'));
 
 
     $video = $ffmpeg->open($target_file);
