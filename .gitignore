@@ -61,3 +61,6 @@ tools/gourcelog.txt
 .idea/dataSources.xml
 .DS_Store
 dynamic.7z
+
+# trinity kate editor
+*~

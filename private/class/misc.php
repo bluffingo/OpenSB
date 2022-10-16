@@ -45,7 +45,7 @@ function gitCommit($trim = true)
  */
 function getOS(): string
 {
-    return printf(php_uname('s'));
+    return php_uname('s');
 }
 
 /**
