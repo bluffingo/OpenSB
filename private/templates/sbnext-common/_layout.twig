@@ -56,9 +56,11 @@
         </a>
 		{% endfor %}
     </div>
-    {% include "components/_header.twig" %}
 {% endif %}
 <div class="page">
+    {% if theme != 'nostalgia' %}
+        {% include "components/_header.twig" %}
+    {% endif %}
     {% block precontent %}{% endblock %}
     <div class="container">
         {% if userbandata %}
