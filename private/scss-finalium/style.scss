@@ -571,9 +571,10 @@ input[type]:not([type=file]):not([type=submit]):focus {
   top: 0;
   bottom: 0;
   width: $sidebarlength;
-  background: $gray-100;
+  background: #fffffff0;
   overflow: clip;
   text-align: center;
+  border-right: 1px solid lightgrey;
 
   ul {
     padding: 0;
