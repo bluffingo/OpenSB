@@ -1,10 +1,10 @@
 {% extends "_layout.twig" %}
 {% block head %}
-    <meta name="title" content="{{ video.title }} - squareBracket">
+    <meta name="title" content="{{ video.title }} - Qobo">
     <meta name="description"
           content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-    <meta property="og:site_name" content="squareBracket"/>
-    <meta property="og:title" content="{{ video.title }} - squareBracket">
+    <meta property="og:site_name" content="Qobo"/>
+    <meta property="og:title" content="{{ video.title }} - Qobo">
     <meta property="og:description"
           content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
     <meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
@@ -31,7 +31,7 @@
                          style="width:48px;float: left;margin-right:8px;" alt="{{ video.u_name }}">
                     <a href="user.php?name={{ video.u_name }}"><b
                                 style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
-                    • {{ allVideos }} {{ __("uploads") }}
+                    • {{ __("%s followers", [subCount]) }}
                     <br>
                     {% include "components/watch_subscribe.twig" %}
                     <br>
@@ -132,7 +132,7 @@
                     {% endfor %}
                     <div class="center">
                         <div class="button button-secondary" onclick="showMoreVideos()" id="fromUser">
-                            {{ __("More uploads") }}
+                            {{ __("More") }}
                         </div>
                     </div>
                     <div class="collapsed" id="fromUserVideoList">

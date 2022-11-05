@@ -50,12 +50,10 @@
                     <div class="card card-body-fat" style="margin:0;border-bottom:none;">
                         <a href="user.php?name={{ video.u_name }}"><img src="{{ profile_image(video.u_name) }}"
                                                                         class="rounded"
-                                                                        style="width:60px;float: left;margin-right:8px;"
+                                                                        style="width:50px;float: left;margin-right:8px;"
                                                                         alt="{{ video.u_name }}"></a>
                         <span style="font-size:1.15em;"><a
-                                    href="user.php?name={{ video.u_name }}">{{ video.u_name }}</a> • {{ allVideos }} {{ __("uploads") }}</span>
-                        <br>
-                        <span>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</span>
+                                    href="user.php?name={{ video.u_name }}">{{ video.u_name }}</a> • {{ __("%s followers", [subCount]) }}</span>
                         <br>
                         {% if userbandata != true %}
                             {% include "components/watch_subscribe.twig" %}
@@ -127,7 +125,7 @@
                         {% endfor %}
                         <div class="center">
                             <div class="button button-secondary" onclick="showMoreVideos()" id="fromUser">
-                                {{ __("More uploads") }}
+                                {{ __("More") }}
                             </div>
                         </div>
                         <div class="collapsed" id="fromUserVideoList">

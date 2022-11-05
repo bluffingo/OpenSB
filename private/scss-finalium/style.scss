@@ -258,15 +258,15 @@ input[type]:not([type=file]):not([type=submit]):focus {
 }
 
 .chaziz-body {
-  background: url(/assets/chazizgrkb/background.png);
+  background: #2B3644 url(/assets/brisbane.jpg);
   background-size: cover;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .chazizPage {
   .form-signin {
-    max-width: 250px;
     padding: 19px 29px 29px;
     margin: 0 auto 20px;
     background-color: #fff;
@@ -277,12 +277,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  }
-
-  .chazizgrkb {
-    width: 250px;
-    margin: 25px auto;
-    display: block;
+	width: 300px;
   }
 }
 

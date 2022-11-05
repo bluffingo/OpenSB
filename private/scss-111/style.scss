@@ -29,7 +29,7 @@ $primary: #4A58D9;
 /// Load Bulma \\\
 @import "vendor/npm-asset/bulma/bulma.sass";
 
-$backgrounds: (brisbane: '/assets/project111/brisbane.jpg');
+$backgrounds: (brisbane: '/assets/brisbane.jpg');
 
 @each $key, $image in $backgrounds {
   .hero-#{$key} {
