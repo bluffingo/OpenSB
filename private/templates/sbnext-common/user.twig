@@ -18,7 +18,11 @@
 {% block content %}
     <style>
         .channel-header-bg {
+		{% if bannerExists %}
             background: url('/dynamic/banners/{{ userpagedata.name }}.png'), linear-gradient(#888, #444), center !important;
+		{% else %}
+			background: url('/assets/sbnext_channel_header_template.png'), linear-gradient(#888, #444), center !important;
+		{% endif %}
             height: 225px;
             padding: 0;
             margin-top: 0;
