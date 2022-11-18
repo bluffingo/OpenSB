@@ -157,7 +157,7 @@ function navigationList() {
 		"images" => array(
 			"name" => __("Images"),
 			"icon" => "image",
-			"url" => "/browse.php",
+			"url" => "/artwork.php",
 			"hovertext" => "Browse images in Qobo [alt-shift-i]",
 			"accesskey" => "i",
 			"htmlid" => "images-browse",

@@ -87,7 +87,9 @@
                         </div>
                     </div>
                 {% else %}
-                    <h4 style="color: gray;font-weight:bold;">{{ __("Comment on this video") }}:</h4>
+					<h4 style="color: gray;font-weight:bold;">{{ __("Rate this upload") }}:</h4>
+					{% include "components/watch_ratings.twig" %}
+                    <h4 style="color: gray;font-weight:bold;">{{ __("Comment on this upload") }}:</h4>
                     {% if log and userbandata != true %}
                         {% include "components/comment_form.twig" %}
                     {% endif %}
