@@ -1,10 +1,6 @@
 {
 	"\\RelativeTime\\Languages\\English": "\\RelativeTime\\Languages\\English",
 
-	"Home": "Home",
-	"Videos": "Videos",
-	"Images": "Images",
-
 	"Access Denied": "Access Denied",
 
 	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
@@ -28,15 +24,11 @@
 
 	"Published on %s": "Published on %s",
 
-	"Sorry %s, you are banned from Qobo.": "Sorry %s, you are banned from Qobo.",
+	"Sorry %s, you are banned from squareBracket.": "Sorry %s, you are banned from squareBracket.",
 	"This ban is not set to expire.": "This ban is not set to expire.",
 
-	"Upload": "Upload",
-
-	"en-US": "en-US",
-
 	"Admin panel": "Admin panel",
-	"Currently running Qobo version %s (commit %s) on %s.": "Currently running Qobo version %s (commit %s) on %s.",
+	"Currently running squareBracket version %s (commit %s) on %s.": "Currently running squareBracket version %s (commit %s) on %s.",
 	"Latest registered users": "Latest registered users",
 	"Latest seen users": "Latest seen users",
 	"Latest uploads": "Latest uploads",
@@ -44,19 +36,17 @@
 	"All comments": "All comments",
 
 	"Edit upload": "Edit upload",
+	"Post info": "Post info",
 	"Enter the updated title and description of your upload.": "Enter the updated title and description of your upload.",
 	" Title": " Title",
 	" Description": " Description",
 	"Save": "Save",
 
-	"Login": "Login",
+	"Sign in": "Sign in",
 	"Password successfully reset! Please login with your new password.": "Password successfully reset! Please login with your new password.",
 	"You have been successfully logged out of all devices.": "You have been successfully logged out of all devices.",
 	"Username": "Username",
 	"Password": "Password",
-	"Don't have an account?": "Don't have an account?",
-	"Register": "Register",
-	"If you have registered an account on PokTube or squareBracket, that account still exists on Qobo.": "If you have registered an account on PokTube or squareBracket, that account still exists on Qobo.",
 
 	"Options": "Options",
 	"User interface": "User interface",
@@ -71,6 +61,7 @@
 	"In-between": "In-between",
 	"Circle": "Circle",
 
+	"Register": "Register",
 	"Display Name": "Display Name",
 	"Password (Again)": "Password (Again)",
 
@@ -88,20 +79,18 @@
 	"Miscellaneous": "Miscellaneous",
 
 	"Statistics": "Statistics",
-	"About this instance of Qobo": "About this instance of Qobo",
-	"View count may not be accurate due to deleted uploads.": "View count may not be accurate due to deleted uploads.",
+	"About this instance of squareBracket": "About this instance of squareBracket",
+	"View count may not be accurate due to deleted posts.": "View count may not be accurate due to deleted posts.",
 	"Registered users": "Registered users",
-	"Uploads": "Uploads",
+	"Posts": "Posts",
 	"Views": "Views",
-	"Comments": "Comments",
-	"Graph": "Graph",
 
+	"Upload": "Upload",
 	"Upload info": "Upload info",
 	"Enter the title and description of your upload.": "Enter the title and description of your upload.",
 	" Tags": " Tags",
 	"File": "File",
 	"Select the file you want to upload. Major video and image file formats are supported.": "Select the file you want to upload. Major video and image file formats are supported.",
-	"Skip processing (MP4 ONLY, DEBUG)": "Skip processing (MP4 ONLY, DEBUG)",
 
 	"Edit my settings": "Edit my settings",
 	"View user page as viewer": "View user page as viewer",
@@ -114,15 +103,20 @@
 	"Marked all notifications as read.": "Marked all notifications as read.",
 	"Settings successfully saved!": "Settings successfully saved!",
 	"About this user": "About this user",
-	"There are currently no uploads by %s.": "There are currently no uploads by %s.",
+	"There are currently no videos uploaded by %s.": "There are currently no videos uploaded by %s.",
 	"General information": "General information",
 	"Registered on": "Registered on",
 	"Last logged in": "Last logged in",
 	"Enter comment here.": "Enter comment here.",
 	"Comment": "Comment",
 
+	"en-US": "en-US",
+	"Guide": "Guide",
+	"Following": "Following",
+	"You do not follow any users!": "You do not follow any users!",
+	"Last connected": "Last connected",
 	"Version": "Version",
-	"By the Qobo contributors": "By the Qobo contributors",
+	"By the squareBracket contributors": "By the squareBracket contributors",
 	"What's new": "What's new",
 	"Running on Git commit: ": "Running on Git commit: ",
 
@@ -139,7 +133,12 @@
 	"Edit": "Edit",
 
 	"Studio": "Studio",
+	"Log out": "Log out",
 	"Logout": "Logout",
+	"Sign In": "Sign In",
+	"Home": "Home",
+	"Videos": "Videos",
+	"Channels": "Channels",
 
 	"Latest videos": "Latest videos",
 	"(Page %s)": "(Page %s)",
@@ -156,32 +155,32 @@
 	"There are no videos of that category.": "There are no videos of that category.",
 	"You could create one!": "You could create one!",
 
-	"Welcome to Qobo": "Welcome to Qobo",
+	"Welcome to squareBracket": "Welcome to squareBracket",
+	"Again.": "Again.",
+	"Get started": "Get started",
+	"Already have an account?": "Already have an account?",
 	"Randomly selected uploads": "Randomly selected uploads",
 	"No uploads.": "No uploads.",
 
-	"%s followers": "%s followers",
-	"Category": "Category",
-	"Rate this upload": "Rate this upload",
-	"Comment on this upload": "Comment on this upload",
-	"About this upload": "About this upload",
 	"uploads": "uploads",
-	"More": "More",
+	"About": "About",
+	"Category": "Category",
+	"Rating ratio": "Rating ratio",
+	"Last viewed": "Last viewed",
+	"Favorites": "Favorites",
+	"Comments": "Comments",
+	"Comment on this video": "Comment on this video",
+	"About this upload": "About this upload",
+	"More uploads": "More uploads",
 
 	"Show replies": "Show replies",
 	"Reply": "Reply",
 
-	"Log out": "Log out",
-
 	"Latest Videos": "Latest Videos",
-	"Qobo Videos": "Qobo Videos",
+	"squareBracket Videos": "squareBracket Videos",
 	"No uploaded videos.": "No uploaded videos.",
 
 	"Favorite": "Favorite",
-	"About": "About",
-	"Rating ratio": "Rating ratio",
-	"Last viewed": "Last viewed",
-	"Favorites": "Favorites",
 
 	"Search...": "Search...",
 
