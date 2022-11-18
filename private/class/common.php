@@ -2,7 +2,7 @@
 
 namespace squareBracket;
 $releaseNumber = "beta-3.0.0";
-$buildNumber = 2;
+$buildNumber = 3;
 $versionNumber = $releaseNumber . "-" . str_pad($buildNumber, 3, "0", STR_PAD_LEFT);
 $gitBranch = "code-rewrite";
 

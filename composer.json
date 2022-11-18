@@ -6,8 +6,6 @@
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
 		"mobiledetect/mobiledetectlib": "dev-master",
-		"npm-asset/bulma": "^0.9.4",
-		"npm-asset/vizuaalog--bulmajs": "0.12.x-dev",
 		"php-ffmpeg/php-ffmpeg": "0.x-dev",
 		"phlak/strgen": "dev-master",
 		"whitecube/lingua": "dev-master"

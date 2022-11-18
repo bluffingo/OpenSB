@@ -31,7 +31,6 @@ You will have to modify the directories to match your instance's location.
     DocumentRoot "C:/xampp/qobo/public"
 
     Alias /dynamic "C:/xampp/qobo/dynamic"
-    Alias /bulmajs "C:/xampp/qobo/vendor/npm-asset/vizuaalog--bulmajs/dist/"
 
     <Directory "C:/xampp/qobo">
         Options Indexes FollowSymLinks
