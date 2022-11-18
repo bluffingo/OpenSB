@@ -1,6 +1,6 @@
 {% extends "_layout_chaziz.twig" %}
 
-{% block title %}{{ __("Sign in") }}{% endblock %}
+{% block title %}{{ __("Login") }}{% endblock %}
 
 	{% block content %}
         {% if error %}
@@ -18,16 +18,15 @@
 
         <div class="grid chazizPage">
             <form method="post" name="loginForm" id="loginForm" action="login.php" class="form-signin">
-                <h2 class="form-signin-heading">{{ __("Sign in") }}</h2>
+                <h2 class="form-signin-heading">{{ __("Login") }}</h2>
                 <input type="text" name="username" class="input-block-level" placeholder="{{ __("Username") }}">
                 <input type="password" name="password" class="input-block-level" placeholder="{{ __("Password") }}">
                 <br>
-                <input class="button button-large button-primary" type="submit" value="{{ __("Sign in") }}"
+                <input class="button button-large button-primary" type="submit" value="{{ __("Login") }}"
                        name="loginsubmit">
                 <br>
-                <a href="https://stocksnap.io/photo/rain-drops-YYLGRHEGST">Photo</a> by <a
-                        href="https://stocksnap.io/author/minan">Min An</a> on <a
-                        href="https://stocksnap.io">StockSnap</a>
+				<p>{{ __("Don't have an account?") }} <a href="./register.php">{{ __("Register") }}</a>
             </form>
+			<p class="text-light">{{ __("If you have registered an account on PokTube or squareBracket, that account still exists on Qobo.") }}</p>
         </div>
     {% endblock %}

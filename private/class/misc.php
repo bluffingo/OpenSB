@@ -45,7 +45,7 @@ function gitCommit($trim = true)
  */
 function getOS(): string
 {
-    return printf(php_uname('s'));
+    return php_uname('s');
 }
 
 /**
@@ -55,7 +55,7 @@ function getOS(): string
  */
 function getUserIpAddr()
 {
-	if (isCli()) return;
+    if (isCli()) return;
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         //ip from share internet
         $ip = $_SERVER['HTTP_CLIENT_IP'];

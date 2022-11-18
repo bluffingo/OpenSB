@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
     console.log("sb 111 js loaded");
 
     btns = document.getElementsByClassName("sb-unimplemented");
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             Bulma().alert({
                 type: 'info',
                 title: 'This feature is not implemented',
-                body: '111 is incomplete. For a complete experience of squareBracket, Finalium should be used for ' +
+                body: '111 is incomplete. For a complete Qobo experience, Finalium should be used for ' +
                     'the time being.',
                 confirm: 'OK',
             });

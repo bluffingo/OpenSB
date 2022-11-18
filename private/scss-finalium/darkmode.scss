@@ -283,9 +283,10 @@ table.c1 {
 
 /// Generic form element overrides \\\
 
-textarea, input[type=text], input[type=password] {
+textarea,
+input[type]:not([type=file]):not([type=submit]) {
   background-color: #0f0f0f;
-  border: 2px solid #222;
+  border: 1px solid #222;
   color: white;
 }
 
@@ -322,13 +323,14 @@ textarea, input[type=text], input[type=password] {
 }
 
 #guide {
-  background: #212121;
+  background-color: #383838f0;
+  border-right: 1px solid #606060;
 }
 
 .usermenushit {
-	ul {
-		li:hover {
-			background-color: $primary;
-		}
-	}
+  ul {
+    li:hover {
+      background-color: $primary;
+    }
+  }
 }

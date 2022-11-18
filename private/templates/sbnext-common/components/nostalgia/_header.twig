@@ -1,8 +1,8 @@
 <table class="header1" width="960px" cellpadding="0" cellspacing="0" border="0">
     <tbody>
     <tr valign="top">
-        <td width="130" rowspan="1" style="padding: 0px 5px 5px 5px;"><a href="index.php"><img
-                        src="/assets/nostalgia/logo.png" alt="squareBracket" border="0"></a></td>
+        <td width="100" rowspan="1" style="padding: 0px 5px 5px 5px;"><a href="index.php"><img
+                        src="/assets/nostalgia/logo.png" alt="Qobo" border="0"></a></td>
         <td valign="top">
             <table width="40%" align="left" cellpadding="2" cellspacing="0" border="0">
                 <tbody>
@@ -39,7 +39,7 @@
                                                         </li>
                                                         <li><a href="/studio/">{{ __("Studio") }}</a></li>
                                                         <li><a href="/settings.php">{{ __("Settings") }}</a></li>
-                                                        <li><a href="logout.php">{{ __("Log out") }}</a></li>
+                                                        <li><a href="logout.php">{{ __("Logout") }}</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -52,7 +52,7 @@
                                 {% else %}
                                     <td><a href="register.php"><strong>{{ __("Register") }}</strong></a></td>
                                     <td style="padding: 0px 5px 0px 5px;">|</td>
-                                    <td><a href="login.php">{{ __("Sign In") }}</a></td>
+                                    <td><a href="login.php">{{ __("Login") }}</a></td>
                                 {% endif %}
                             </tr>
                             </tbody>
@@ -82,11 +82,10 @@
                         <table cellpadding="2" cellspacing="0" border="0">
                             <tbody>
                             <tr>
-                                <td>&nbsp;<a class="headertext" href="/index.php">{{ __("Home") }}</a></td>
-                                <td>&nbsp;|&nbsp;</td>
-                                <td><a class="headertext" href="/browse.php">{{ __("Videos") }}</a></td>
-                                <td>&nbsp;|&nbsp;</td>
-                                <td><a class="headertext" href="/channels.php">{{ __("Channels") }}</a></td>
+								{% for link in navigationList %}
+									<td>&nbsp;<a class="headertext" href="{{ link.url }}">{{ link.name }}</a></td>
+									<td>&nbsp;|&nbsp;</td>
+								{% endfor %}
                             </tr>
                             </tbody>
                         </table>

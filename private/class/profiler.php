@@ -18,7 +18,7 @@ class Profiler
     function getStats()
     {
         global $userdata, $isMaintenance, $frontendName;
-		
+
         if (isCli()) return;
         $headers = headers_list();
 

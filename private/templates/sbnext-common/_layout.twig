@@ -2,19 +2,16 @@
 <html lang="{{ __("en-US") }}">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}{% endblock %} - squareBracket</title>
+    <title>{% block title %}{% endblock %} - Qobo</title>
     {% block head %}{% endblock %}
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
     <link rel="manifest" href="/assets/icons/site.webmanifest">
     <link rel="shortcut icon" href="/assets/icons/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
     <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#1b93ff">
-    <meta name="apple-mobile-web-app-title" content="squareBracket">
-    <meta name="application-name" content="squareBracket">
+    <meta name="apple-mobile-web-app-title" content="Qobo">
+    <meta name="application-name" content="Qobo">
     <meta name="msapplication-TileColor" content="#1d3fc4">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -26,9 +23,9 @@
         <link id="nostalgia" rel="stylesheet" href="/assets/css/nostalgia.css" type="text/css">
     {% endif %}
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="/assets/common.js"></script>
+	{% block script %}{% endblock %}
     <script>
         subscribe_string = '{{ __("Follow") }}';
         unsubscribe_string = '{{ __("Unfollow") }}';
@@ -49,70 +46,50 @@
     </style>
 </head>
 <body>
-<div id="guide">
-    <h3>{{ __("Guide") }}</h3>
-    {% if log %}
-        <h4>{{ __("Following") }}</h4>
-        {% for user in allUsers %}
-            <ul>
-                <li class="guide-channel">
-                    <a href="/user.php?name={{ user.u_name }}" class="guide-item"><img class="thumb"
-                                                                                       src="{{ profile_image(user.u_name) }}">{{ user.u_name }}
-                    </a>
-                </li>
-            </ul>
-        {% else %}
-        <p>{{ __("You do not follow any users!") }}</p>
-        {% endfor %}
-    {% else %}
-        <h3>{{ __("Last connected") }}</h3>
-        {% for user in allUsers %}
-            <ul>
-                <li class="guide-channel">
-                    <a href="/user.php?name={{ user.name }}" class="guide-item"><img class="thumb"
-                                                                                     src="{{ profile_image(user.name) }}">{{ user.name }}
-                    </a>
-                </li>
-            </ul>
-        {% endfor %}
-    {% endif %}
-</div>
 {% if theme == 'nostalgia' %}
     {% include "components/nostalgia/_header.twig" %}
 {% else %}
-    {% include "components/_header.twig" %}
+    <div id="guide">
+		{% for link in navigationList %}
+        <a href="{{ link.url }}" class="button button-secondary-invis">
+            {{ icon("#{ link.icon }-fill", 20) }}
+        </a>
+		{% endfor %}
+    </div>
 {% endif %}
-{% block precontent %}{% endblock %}
-<div class="container">
-    {% if userbandata %}
-        <div class="header_message header-danger">
-            <h1>{{ __("Sorry %s, you are banned from squareBracket.", [userdata.name]) }}</h1>
-            <strong>{{ userbandata.reason }}</strong>
-            <p>{{ __("This ban is not set to expire.") }}</p>
-            {# do we really need ban durations? #}
-        </div>
+<div class="page">
+    {% if theme != 'nostalgia' %}
+        {% include "components/_header.twig" %}
     {% endif %}
-    {% block content %}{% endblock %}
-</div>
-</div>
-<footer>
-    <div class="footer">
-        <img src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
-        <p>{{ __("Version") }} {{ version }} · <strong>{{ __("By the squareBracket contributors") }}</strong> · 2020-{{ 'now' | date('Y') }}
-            | <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
-        </p>
-        <h5>{{ __("Running on Git commit: ") }} <a
-                    href="https://github.com/chazizgrkb/squarebracket/commit/{{ git_commit() }}">{{ git_commit() }}</a><br>
-        </h5>
-        {% if isMaintenance != true %}
-            <a class="button button-neutral button-small btnAdd" role="button">{{ __("Options") }}</a>
-            <div id="myModal" class="bg-neutral" style="padding:0.3em;">
-
+    {% block precontent %}{% endblock %}
+    <div class="container">
+        {% if userbandata %}
+            <div class="header_message header-danger">
+                <h1>{{ __("Sorry %s, you are banned from Qobo.", [userdata.name]) }}</h1>
+                <strong>{{ userbandata.reason }}</strong>
+                <p>{{ __("This ban is not set to expire.") }}</p>
+                {# do we really need ban durations? #}
             </div>
         {% endif %}
+        {% block content %}{% endblock %}
     </div>
-</footer>
-{% block custom_footer %}
-{% endblock %}
+    <footer>
+        <div class="footer">
+            <img src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
+            <p>{{ __("Version") }} {{ version }} · <strong>{{ __("By the Qobo contributors") }}</strong> · 2020-{{ 'now' | date('Y') }}
+                | <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
+            </p>
+            <h5>{{ __("Running on Git commit: ") }} <a
+                        href="https://github.com/pf94/qobo/commit/{{ git_commit() }}">{{ git_commit() }}</a><br>
+            </h5>
+            {% if isMaintenance != true %}
+                <a class="button button-neutral button-small btnAdd" role="button">{{ __("Options") }}</a>
+                <div id="myModal" class="bg-neutral" style="padding:0.3em;">
+
+                </div>
+            {% endif %}
+        </div>
+    </footer>
+</div>
 </body>
 </html>

@@ -36,36 +36,36 @@
 
     <h3>{{ __("Profile") }}</h3>
     {% if userbandata != true %}
-    <table class="settings">
-        <tr>
-            <td class="a">{{ __("Profile picture") }}</td>
-            <td class="b">
-                <input class="form-control" type="file" name="profilePicture" id="profilePicture">
-            </td>
-        </tr>
-        <tr>
-            <td class="a">{{ __("Profile background") }}</td>
-            <td class="b">
-                <input class="form-control" type="file" name="profileBackground" id="profileBackground">
-            </td>
-        </tr>
-        <tr>
-            <td class="a">{{ __("Display name") }}</td>
-            <td class="b"><input type="text" name="title" size="45" maxlength="256" value="{{ userdata.title }}"></td>
-        </tr>
-        <tr>
-            <td class="a">
-                {{ __("Description") }}
-                <br><em>{{ __("Markdown allowed.") }}</em>
-            </td>
-            <td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual">{{ userdata.about }}</textarea></td>
-        </tr>
-        <tr>
-            <td class="a">{{ __("Username color") }}</td>
-            <td class="b"><input name="customcolor" data-jscolor=""
-                                 value="{{ userdata.customcolor | default('523bb8') }}"></td>
-        </tr>
-    </table>
+        <table class="settings">
+            <tr>
+                <td class="a">{{ __("Profile picture") }}</td>
+                <td class="b">
+                    <input class="form-control" type="file" name="profilePicture" id="profilePicture">
+                </td>
+            </tr>
+            <tr>
+                <td class="a">{{ __("Profile background") }}</td>
+                <td class="b">
+                    <input class="form-control" type="file" name="profileBackground" id="profileBackground">
+                </td>
+            </tr>
+            <tr>
+                <td class="a">{{ __("Display name") }}</td>
+                <td class="b"><input type="text" name="title" size="45" maxlength="256" value="{{ userdata.title }}"></td>
+            </tr>
+            <tr>
+                <td class="a">
+                    {{ __("Description") }}
+                    <br><em>{{ __("Markdown allowed.") }}</em>
+                </td>
+                <td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual">{{ userdata.about }}</textarea></td>
+            </tr>
+            <tr>
+                <td class="a">{{ __("Username color") }}</td>
+                <td class="b"><input name="customcolor" data-jscolor=""
+                                     value="{{ userdata.customcolor | default('523bb8') }}"></td>
+            </tr>
+        </table>
     {% else %}
         <p>{{ __("Profile options are not available to banned users.") }}</p>
     {% endif %}

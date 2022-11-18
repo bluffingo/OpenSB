@@ -9,12 +9,12 @@ $message = '';
 if (isset($_GET['id'])) {
     $userpagedata = $sql->fetch("SELECT * FROM users WHERE id = ?", [$_GET['id']]);
     if (!isset($userpagedata) || !$userpagedata) {
-        error('404', 'Invalid user');
+        error('404', 'The requested user is invalid');
     }
 } else if (isset($_GET['name'])) {
     $userpagedata = $sql->fetch("SELECT * FROM users WHERE name = ?", [$_GET['name']]);
     if (!isset($userpagedata) || !$userpagedata) {
-        error('404', 'Invalid user');
+        error('404', 'The requested user is invalid');
     }
 } else {
     error('404', 'No user specified');
@@ -34,6 +34,10 @@ $commentData = $sql->query("SELECT $userfields c.comment_id, c.id, c.comment, c.
 $subCount = $sql->fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$userpagedata['id']])['COUNT(user)'];
 $subscribers = $sql->query("SELECT $userfields s.* FROM subscriptions s JOIN users u on user WHERE s.user = ?", [$userpagedata['id']]);
 $totalViews = $sql->result("SELECT SUM(views) FROM videos WHERE author = ?", [$userpagedata['id']]);
+
+if (file_exists(dirname(__DIR__) . "/dynamic/banners/" . $userpagedata['name'] . ".png")) {
+    $bannerExists = true;
+}
 
 if (isset($log) && !empty($log)) {
     $subscribed = $sql->result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$userdata['id'], $userpagedata['id']]);
@@ -66,4 +70,5 @@ echo $twig->render("user.twig", [
     'message' => $message,
     'subscribers' => $subscribers,
     'views' => $totalViews,
+    'bannerExists' => ($bannerExists ?? false),
 ]);

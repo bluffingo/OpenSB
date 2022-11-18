@@ -10,7 +10,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 if (!isCattleDog()) {
-	header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Origin: *");
 }
 
 if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
@@ -80,7 +80,7 @@ if (!isCattleDog()) {
 }
 
 if ($isMaintenance && !isCli()) {
-    error(403, "This instance of squareBracket is currently offline.");
+    error(403, "This instance of Qobo is currently offline.");
 } else {
     $ipban = $sql->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [getUserIpAddr()]);
     if ($ipban) {
@@ -134,6 +134,36 @@ if ($log) {
     $userbandata = $sql->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
 } else {
     $userdata['powerlevel'] = 1;
+}
+
+function navigationList() {
+	$array = array(
+		"home" => array(
+			"name" => __("Home"),
+			"icon" => "house-door",
+			"url" => "/index.php",
+			"hovertext" => "Visit the main page [alt-shift-z]",
+			"accesskey" => "z",
+			"htmlid" => "mainpage-description",
+		),
+		"videos" => array(
+			"name" => __("Videos"),
+			"icon" => "camera-video",
+			"url" => "/browse.php",
+			"hovertext" => "Browse videos in Qobo [alt-shift-v]",
+			"accesskey" => "v",
+			"htmlid" => "videos-browse",
+		),
+		"images" => array(
+			"name" => __("Images"),
+			"icon" => "image",
+			"url" => "/browse.php",
+			"hovertext" => "Browse images in Qobo [alt-shift-i]",
+			"accesskey" => "i",
+			"htmlid" => "images-browse",
+		),
+	);
+	return $array;
 }
 
 $userdata['timezone'] = 'America/New York';

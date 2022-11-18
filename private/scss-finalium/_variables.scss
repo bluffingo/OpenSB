@@ -5,7 +5,7 @@ $white: #FCFCFC;
 $black: #000;
 $indigo: #4d27e6;
 $purple: #7942c1;
-$pink: #eb44b0;
+$pink: #ff23b1;
 $orange: #ff9900;
 $yellow: #f5cc14;
 $cyan: #1778b8;
@@ -53,7 +53,7 @@ $colors: (
         "gray-dark": $gray-800
 );
 
-$primary: $blue;
+$primary: $pink;
 $secondary: $gray-100;
 $success: $green;
 $info: $cyan;
@@ -82,4 +82,4 @@ $theme-colors: (
         "carrot": $orange-color,
 );
 
-$font: "Barlow", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font: "Inter", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;

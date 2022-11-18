@@ -1,4 +1,5 @@
 <?php
+
 namespace squareBracket;
 
 $rawOutputRequired = true;

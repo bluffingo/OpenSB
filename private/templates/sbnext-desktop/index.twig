@@ -1,9 +1,9 @@
 {% extends "_layout.twig" %}
 {% block head %}
-    <meta name="title" content="squareBracket">
+    <meta name="title" content="Qobo">
     <meta name="description" content="Unbelivable, This is not PokTube.">
-    <meta property="og:site_name" content="squareBracket"/>
-    <meta property="og:title" content="squareBracket">
+    <meta property="og:site_name" content="Qobo"/>
+    <meta property="og:title" content="Qobo">
     <meta property="og:description" content="Again.">
     <meta property="og:image" content="{{ domain }}assets/logo_square_icon.png">
     <meta property="og:url" content="{{ page_url }}">
@@ -16,11 +16,11 @@
         <div class="main-content">
             <div class="container">
                 {% if log %}
-                    <div class="col-md-8">
-                        <h1>{{ __("Welcome to squareBracket") }}</h1>
+                    <div class="col-md-10">
+                        <h1>{{ __("Welcome to Qobo") }}</h1>
                         <h3>@{{ userdata.name }}</h3>
                     </div>
-                    <div class="col-md-4 right stats">
+                    <div class="col-md-6 right stats">
                         {# hack to prevent twig from outputing the number 1 #}
                         {% if totalSubscribers != 1 %}
                             {% set pluralSubscribers = __("s") %}
@@ -32,16 +32,9 @@
                             <br>{{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
                     </div>
                 {% else %}
-                    <div class="col-md-8">
-                        <h1>{{ __("Welcome to squareBracket") }}</h1>
-                        <h3 style="padding:0;margin:0;">{{ __("Again.") }}</h3>
-                    </div>
-                    <div class="col-md-4">
-                        <a class="button button-neutral button-large"
-                           href="register.php">{{ __("Get started") }} {{ icon('caret-right-fill', 16) }}</a><br><br>
-                        <big>{{ __("Already have an account?") }} <a class="button button-neutral"
-                                                                     href="login.php">{{ __("Sign in") }}</a></big>
-                    </div>
+                    <h1>{{ __("Welcome to Qobo") }}</h1>
+                    <a class="button button-primary" href="login.php">{{ icon('box-arrow-in-right', 12) }} {{ __("Login") }}</a>
+                    <a class="button button-primary" href="register.php">{{ icon('pencil-square', 12) }} {{ __("Register") }}</a>
                 {% endif %}
             </div>
         </div>
@@ -57,9 +50,9 @@
         <div class="card-body-fat">
             <h3 style="margin-top:0">{{ __("Randomly selected uploads") }}</h3>
             <div class="gallery-image">
-            {% for video in videos %}
-                <a href="watch?v={{ video.video_id }}">
-                    <article class="img-box">
+                {% for video in videos %}
+                    <a href="watch?v={{ video.video_id }}">
+                        <article class="img-box">
                             {% if video.post_type == 0 or video.post_type == 1 %}
                                 <img src="{{ video_thumbnail(video.video_id) }}">
                             {% elseif video.post_type == 2 %}
@@ -67,16 +60,16 @@
                             {% endif %}
                             <div class="transparent-box">
                                 <div class="caption">
-                                    <img src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}">
-                                    <p>{{ __("by") }} {{ video.u_name }}</p>
-                                    <strong>{{ video.title }}</strong>
+                                    <img class="rounded" src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}">
+                                    <strong>{{ video.title }}</strong><br>
+									{{ __("by") }} {{ video.u_name }} - {{ video.views }} {{ __("views") }}
                                 </div>
                             </div>
-                    </article>
-                </a>
-            {% else %}
-                <p>{{ __("No uploads.") }}</p>
-            {% endfor %}
+                        </article>
+                    </a>
+                {% else %}
+                    <p>{{ __("No uploads.") }}</p>
+                {% endfor %}
             </div>
         </div>
     </div>

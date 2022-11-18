@@ -1,8 +1,5 @@
-# finalium
+# Finalium
 
-squareBracket SCSS, made because we had pain and suffering with Bootstrap 5
+This is the source code for Finalium. A Bootstrap-wannabe that is far from complete for general usage. Qobo-specific code is mixed in with code that could be useful for general use.
 
-We (or just Gamerappa) are trying to achieve compatibility with Bootstrap 3's syntax, so converting BS3 pages to
-Finalium should be easy in the future.
-
-Shit's incomplete as it is still made for squareBracket in mind.
+This is not ready for mobile use, which explains why there's two seperate versions of the Finalium sbNext frontend in the source code.

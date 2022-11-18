@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="grid">
-        {% for user in users|batch(12) %}
+        {% for user in users|batch(16) %}
             {% for cell in user %}
                 <div class="col-md-1">
                     <a href="/user.php?name={{ cell.name }}"><img src="{{ profile_image(cell.name) }}" alt="{{ cell.name }}" class="img-fluid rounded" alt="{{ cell.name }}"></a>

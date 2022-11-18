@@ -1,10 +1,10 @@
 {% extends "_layout.twig" %}
 {% block head %}
-    <meta name="title" content="{{ video.title }} - squareBracket">
+    <meta name="title" content="{{ video.title }} - Qobo">
     <meta name="description"
           content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-    <meta property="og:site_name" content="squareBracket"/>
-    <meta property="og:title" content="{{ video.title }} - squareBracket">
+    <meta property="og:site_name" content="Qobo"/>
+    <meta property="og:title" content="{{ video.title }} - Qobo">
     <meta property="og:description"
           content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
     <meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
@@ -31,7 +31,7 @@
                          style="width:48px;float: left;margin-right:8px;" alt="{{ video.u_name }}">
                     <a href="user.php?name={{ video.u_name }}"><b
                                 style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
-                    • {{ allVideos }} {{ __("uploads") }}
+                    • {{ __("%s followers", [subCount]) }}
                     <br>
                     {% include "components/watch_subscribe.twig" %}
                     <br>
@@ -69,7 +69,7 @@
             </div>
             <div class="card card-body-fat">
                 <div class="grid">
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <div id="About" class="tabcontent" style="display: block;">
                             <p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
                             <p>{{ video.description }}</p>
@@ -104,10 +104,10 @@
                     <h3>{{ __("Comments") }} ({{ comCount }})</h3>
                     {% if log and userbandata != true %}
                         <div class="grid" id="commentField">
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 <div>
                         <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
                                   placeholder="{{ __("Enter comment here.") }}"></textarea>
@@ -132,7 +132,7 @@
                     {% endfor %}
                     <div class="center">
                         <div class="button button-secondary" onclick="showMoreVideos()" id="fromUser">
-                            {{ __("More uploads") }}
+                            {{ __("More") }}
                         </div>
                     </div>
                     <div class="collapsed" id="fromUserVideoList">

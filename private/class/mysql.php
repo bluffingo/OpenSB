@@ -24,10 +24,10 @@ class MySQL
         }
     }
 
-    function fetch($query, $params = [])
+    function result($query, $params = [])
     {
         $res = $this->query($query, $params);
-        return $res->fetch();
+        return $res->fetchColumn();
     }
 
     function query($query, $params = [])
@@ -37,12 +37,6 @@ class MySQL
         return $res;
     }
 
-    function result($query, $params = [])
-    {
-        $res = $this->query($query, $params);
-        return $res->fetchColumn();
-    }
-
     function fetchArray($query): array
     {
         $out = [];
@@ -50,6 +44,12 @@ class MySQL
             $out[] = $record;
         }
         return $out;
+    }
+
+    function fetch($query, $params = [])
+    {
+        $res = $this->query($query, $params);
+        return $res->fetch();
     }
 
     function insertId()

@@ -10,6 +10,8 @@ if ($query == "oneoneone") {
     setcookie('frontend', "layout111", 2147483647); // an easy way of letting people switch to 111
 } elseif ($query == "fuckgoback") {
     setcookie('frontend', "sbnext", 2147483647); // an easy way of letting people switch back to finalium
+} elseif ($query == "wait_this_isnt_wikipedia") {
+    setcookie('frontend', "monobook", 2147483647); // an easy way of letting people switch to monobook
 }
 
 // currently selects all uploaded videos

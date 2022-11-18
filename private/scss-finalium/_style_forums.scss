@@ -11,7 +11,7 @@ table.c1 {
   }
 
   tr.h {
-    background: #6e94b7;
+    background: lighten($primary, 1.5%);
     color: #ffffff;
     font-weight: bold;
   }
