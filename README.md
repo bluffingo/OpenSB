@@ -1,6 +1,6 @@
 <h1 align="center">Qobo Beta 3.0.0</h1>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45898787/186765639-085e4eac-6120-4469-b3bf-e2728d5c4e2f.png">
+<img src="https://user-images.githubusercontent.com/45898787/202602835-5e178385-4fee-4b31-9c25-7337e242a748.png">
 </p>
 
 <h3 align="center"><a href="https://qobo.tv/">Qobo's live website</a></h3>
