@@ -28,7 +28,7 @@
 
 	"Published on %s": "Published on %s",
 
-	"Sorry %s, you are banned from squareBracket.": "Sorry %s, you are banned from squareBracket.",
+	"Sorry %s, you are banned from Qobo.": "Sorry %s, you are banned from Qobo.",
 	"This ban is not set to expire.": "This ban is not set to expire.",
 
 	"Upload": "Upload",
@@ -121,7 +121,6 @@
 	"Enter comment here.": "Enter comment here.",
 	"Comment": "Comment",
 
-	"Sorry %s, you are banned from Qobo.": "Sorry %s, you are banned from Qobo.",
 	"Version": "Version",
 	"By the Qobo contributors": "By the Qobo contributors",
 	"What's new": "What's new",
@@ -163,7 +162,8 @@
 
 	"%s followers": "%s followers",
 	"Category": "Category",
-	"Comment on this video": "Comment on this video",
+	"Rate this upload": "Rate this upload",
+	"Comment on this upload": "Comment on this upload",
 	"About this upload": "About this upload",
 	"uploads": "uploads",
 	"More": "More",
