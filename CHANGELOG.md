@@ -1,11 +1,12 @@
 # squareBracket Beta 3
 ## Beta 3.0
-### Beta 3.0.0-002 (????? 2022)
+### Beta 3.0.0-002 (November 17th 2022)
 * Finalized image uploading
 * Improvements to Finalium's SCSS
 * Fix bug with Python translation template generator
-* Redesigned Finalium main page
+* Tweaked Finalium design
 * Fixed processing worker not launching on Unix-based systems
+* More shit I guess?
 ### Beta 3.0.0-001 (August 27th 2022)
 * Fixed username check regex from principia-web repository
 * Artwork system (incomplete!)
