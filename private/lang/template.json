@@ -9,32 +9,6 @@
 
 	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
 
-	"Delete": "Delete",
-
-	"Settings": "Settings",
-	"Email": "Email",
-	"Change Password": "Change Password",
-	"Current Password (For verification)": "Current Password (For verification)",
-	"New Password": "New Password",
-	"Repeat new Password": "Repeat new Password",
-	"Profile picture": "Profile picture",
-	"Display name": "Display name",
-	"Description": "Description",
-	"Markdown allowed.": "Markdown allowed.",
-	"Username color": "Username color",
-	"Save Changes": "Save Changes",
-
-	"s": "s",
-
-	"Published on %s": "Published on %s",
-
-	"Sorry %s, you are banned from Qobo.": "Sorry %s, you are banned from Qobo.",
-	"This ban is not set to expire.": "This ban is not set to expire.",
-
-	"Upload": "Upload",
-
-	"en-US": "en-US",
-
 	"Admin panel": "Admin panel",
 	"Currently running Qobo version %s (commit %s) on %s.": "Currently running Qobo version %s (commit %s) on %s.",
 	"Latest registered users": "Latest registered users",
@@ -42,6 +16,7 @@
 	"Latest uploads": "Latest uploads",
 	"Numbers": "Numbers",
 	"All comments": "All comments",
+	"Delete": "Delete",
 
 	"Edit upload": "Edit upload",
 	"Enter the updated title and description of your upload.": "Enter the updated title and description of your upload.",
@@ -70,32 +45,44 @@
 	"Square": "Square",
 	"In-between": "In-between",
 	"Circle": "Circle",
+	"Save Changes": "Save Changes",
 
+	"Email": "Email",
 	"Display Name": "Display Name",
 	"Password (Again)": "Password (Again)",
 
 	"Reset Password": "Reset Password",
 	"Hello %s. Please choose a new secure password, and be sure to remember it!": "Hello %s. Please choose a new secure password, and be sure to remember it!",
+	"New Password": "New Password",
 	"Repeat New Password": "Repeat New Password",
 
 	"There are no videos that match your query.": "There are no videos that match your query.",
 
-	"Log out from all devices": "Log out from all devices",
+	"Settings": "Settings",
 	"Credentials": "Credentials",
+	"Email address": "Email address",
+	"Current Password (For verification)": "Current Password (For verification)",
+	"Repeat new Password": "Repeat new Password",
 	"Profile": "Profile",
+	"Profile picture": "Profile picture",
 	"Profile background": "Profile background",
+	"Display name": "Display name",
+	"Description": "Description",
+	"Markdown is allowed.": "Markdown is allowed.",
+	"Username color": "Username color",
 	"Profile options are not available to banned users.": "Profile options are not available to banned users.",
 	"Miscellaneous": "Miscellaneous",
 
 	"Statistics": "Statistics",
 	"About this instance of Qobo": "About this instance of Qobo",
-	"View count may not be accurate due to deleted uploads.": "View count may not be accurate due to deleted uploads.",
+	"Some statistics may not be accurate.": "Some statistics may not be accurate.",
 	"Registered users": "Registered users",
 	"Uploads": "Uploads",
 	"Views": "Views",
 	"Comments": "Comments",
 	"Graph": "Graph",
 
+	"Upload": "Upload",
 	"Upload info": "Upload info",
 	"Enter the title and description of your upload.": "Enter the title and description of your upload.",
 	" Tags": " Tags",
@@ -105,6 +92,7 @@
 
 	"Edit my settings": "Edit my settings",
 	"View user page as viewer": "View user page as viewer",
+	"s": "s",
 	"%s follower%s": "%s follower%s",
 	"no": "no",
 	"%s view%s": "%s view%s",
@@ -115,12 +103,14 @@
 	"Settings successfully saved!": "Settings successfully saved!",
 	"About this user": "About this user",
 	"There are currently no uploads by %s.": "There are currently no uploads by %s.",
-	"General information": "General information",
 	"Registered on": "Registered on",
 	"Last logged in": "Last logged in",
 	"Enter comment here.": "Enter comment here.",
 	"Comment": "Comment",
 
+	"en-US": "en-US",
+	"Sorry %s, you are banned from Qobo.": "Sorry %s, you are banned from Qobo.",
+	"This ban is not set to expire.": "This ban is not set to expire.",
 	"Version": "Version",
 	"By the Qobo contributors": "By the Qobo contributors",
 	"What's new": "What's new",
@@ -156,11 +146,15 @@
 	"There are no videos of that category.": "There are no videos of that category.",
 	"You could create one!": "You could create one!",
 
+	"Welcome to Qobo, %s": "Welcome to Qobo, %s",
 	"Welcome to Qobo": "Welcome to Qobo",
+	"Get started": "Get started",
+	"Options successfully saved!": "Options successfully saved!",
 	"Randomly selected uploads": "Randomly selected uploads",
 	"No uploads.": "No uploads.",
 
 	"%s followers": "%s followers",
+	"Published on %s": "Published on %s",
 	"Category": "Category",
 	"Rate this upload": "Rate this upload",
 	"Comment on this upload": "Comment on this upload",
