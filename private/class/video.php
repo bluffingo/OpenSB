@@ -226,22 +226,6 @@ class Videos
         return $video;
     }
 
-    /**
-     * Return the link to the FLV version of the video.
-     *
-     * @param string $videoID The ID of the currently watched video.
-     * @return string A link to the FLV version of the video, or if nothing is inputted, an error.
-     */
-    static function getFlashVideo($videoID): string
-    {
-        if (isset($videoID) ? $videoID : null) {
-            $file = "/media/" . $videoID . ".flv";
-            return $file;
-        } else {
-            die("getFlashVideo Error: videoID is missing!");
-        }
-    }
-
     static function addVideo($new, $title, $description, $id, string $upload_file): void
     {
         global $sql;

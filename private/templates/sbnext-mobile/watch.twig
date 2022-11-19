@@ -41,20 +41,20 @@
                     <div class="grid" style="margin-top:5px">
                         <div style="margin-top:-9px;text-align: center">
                             {# js that uses action_unlogged will only work for the like button, i found out about this quirk
-                        while trying to do finalium's javascript, -grkb 8/23/2022 #}
+                        while trying to do 111's javascript, -grkb 8/23/2022 #}
                             <button style="width:49%" href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
                                     class="button {% if rating == 1 %}button-success{% else %}button-secondary{% endif %}">
-                                {{ icon("hand-thumbs-up-fill", 20) }}
+                                {{ icon("thumb-up", 20) }}
                                 <span id="likes">{{ total_likes }}</span>
                             </button>
                             <button style="width:49%" href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}"
                                     class="button {% if rating is same as(0) %}button-danger{% else %}button-secondary{% endif %}">
-                                {{ icon("hand-thumbs-down-fill", 20) }}
+                                {{ icon("thumb-down", 20) }}
                                 <span id="dislikes">{{ total_dislikes }}</span>
                             </button>
                             <button style="width:99%" href="#" id="{% if log %}favorite{% else %}action_unlogged{% endif %}"
                                     class="button {% if isFavorited %}button-warning{% else %}button-secondary{% endif %}">
-                                {{ icon("star-fill", 20) }} {{ __("Favorite") }}
+                                {{ icon("star", 20) }} {{ __("Favorite") }}
                             </button>
                         </div>
                         <h3>{{ viewCount }} {{ __("views") }}</h3>

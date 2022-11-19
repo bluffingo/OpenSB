@@ -1,7 +1,7 @@
 {% extends "_layout.twig" %}
 {% block head %}
     <meta name="title" content="Qobo">
-    <meta name="description" content="Unbelivable, This is not PokTube.">
+    <meta name="description" content="Again.">
     <meta property="og:site_name" content="Qobo"/>
     <meta property="og:title" content="Qobo">
     <meta property="og:description" content="Again.">
@@ -14,13 +14,9 @@
 <div class="indexNext">
     {% if theme != 'nostalgia' %}
         <div class="main-content">
-            <div class="container">
+            <div class="container qobo-welcome">
                 {% if log %}
-                    <div class="col-md-10">
-                        <h1>{{ __("Welcome to Qobo") }}</h1>
-                        <h3>@{{ userdata.name }}</h3>
-                    </div>
-                    <div class="col-md-6 right stats">
+                        <h1>{{ __("Welcome to Qobo, %s", [ userdata.title ] ) }}</h1>
                         {# hack to prevent twig from outputing the number 1 #}
                         {% if totalSubscribers != 1 %}
                             {% set pluralSubscribers = __("s") %}
@@ -28,13 +24,11 @@
                         {% if totalViews != 1 %}
                             {% set pluralViews = __("s") %}
                         {% endif %}
-                        <p>{{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}
-                            <br>{{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
-                    </div>
+                        <p>{{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }} - {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }} (FIXME: inaccurate info)</p>
                 {% else %}
                     <h1>{{ __("Welcome to Qobo") }}</h1>
-                    <a class="button button-primary" href="login.php">{{ icon('box-arrow-in-right', 12) }} {{ __("Login") }}</a>
-                    <a class="button button-primary" href="register.php">{{ icon('pencil-square', 12) }} {{ __("Register") }}</a>
+                    <a class="button button-primary button-large" href="register.php">{{ __("Get started") }}</a>
+                    <a class="button button-secondary button-large" href="login.php">{{ __("Login") }}</a>
                 {% endif %}
             </div>
         </div>
@@ -43,7 +37,7 @@
 
     {% block content %}
     {% if updated %}
-        <div class="header_message header-success">{{ __("Settings successfully saved!") }}</div>
+        <div class="header_message header-primary">{{ __("Options successfully saved!") }}</div>
         <br>
     {% endif %}
     <div class="card">

@@ -14,7 +14,7 @@
     <meta name="application-name" content="Qobo">
     <meta name="msapplication-TileColor" content="#1d3fc4">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
     {% if theme == 'dark' %}
         <link id="darkthm" rel="stylesheet" href="/assets/css/darkmode.css" type="text/css">
@@ -52,7 +52,7 @@
     <div id="guide">
 		{% for link in navigationList %}
         <a href="{{ link.url }}" class="button button-secondary-invis">
-            {{ icon("#{ link.icon }-fill", 20) }}
+            {{ icon(link.icon, 24) }}
         </a>
 		{% endfor %}
     </div>
@@ -66,8 +66,7 @@
         {% if userbandata %}
             <div class="header_message header-danger">
                 <h1>{{ __("Sorry %s, you are banned from Qobo.", [userdata.name]) }}</h1>
-                <strong>{{ userbandata.reason }}</strong>
-                <p>{{ __("This ban is not set to expire.") }}</p>
+                <p><strong>{{ userbandata.reason }}</strong><br>{{ __("This ban is not set to expire.") }}</p>
                 {# do we really need ban durations? #}
             </div>
         {% endif %}
@@ -80,7 +79,7 @@
                 | <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
             </p>
             <h5>{{ __("Running on Git commit: ") }} <a
-                        href="https://github.com/pf94/qobo/commit/{{ git_commit() }}">{{ git_commit() }}</a><br>
+                        href="https://github.com/chazizgrkb/qobo/commit/{{ git_commit() }}">{{ git_commit() }}</a><br>
             </h5>
             {% if isMaintenance != true %}
                 <a class="button button-neutral button-small btnAdd" role="button">{{ __("Options") }}</a>

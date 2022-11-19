@@ -33,8 +33,8 @@
                     </div>
                 {% else %}
                     <h1>{{ __("Welcome to Qobo") }}</h1>
-                    <a class="button button-primary button-large" href="login.php">{{ icon('box-arrow-in-right', 12) }} {{ __("Login") }}</a>
-                    <a class="button button-primary button-large" href="register.php">{{ icon('pencil-square', 12) }} {{ __("Register") }}</a>
+                    <a class="button button-primary button-large" href="login.php">{{ __("Login") }}</a>
+                    <a class="button button-primary button-large" href="register.php">{{ __("Register") }}</a>
                 {% endif %}
             </div>
         </div>
@@ -43,7 +43,7 @@
 
     {% block content %}
     {% if updated %}
-        <div class="header_message header-success">{{ __("Settings successfully saved!") }}</div>
+        <div class="header_message header-primary">{{ __("Options successfully saved!") }}</div>
         <br>
     {% endif %}
     <div class="grid">

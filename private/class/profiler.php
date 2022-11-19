@@ -34,9 +34,9 @@ class Profiler
             if ($headers["Content-Type"] != "text/html") return;
         }
 
-        $username = (isset($userdata['name']) ? $userdata['name'] : 'not logged in');
-        $displayname = (isset($userdata['title']) ? $userdata['title'] : '');
-        $language = (isset($userdata['language']) ? $userdata['language'] : 'en_US');
+        $username = ($userdata['name'] ?? 'not logged in');
+        $displayname = ($userdata['title'] ?? '');
+        $language = ($userdata['language'] ?? 'en_US');
         $memoryUsage = memory_get_usage(false) / 1024;
         $renderTime = microtime(true) - $this->starttime;
         $res = getrusage();

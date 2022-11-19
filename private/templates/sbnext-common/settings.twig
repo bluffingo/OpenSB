@@ -1,16 +1,7 @@
 {% extends "_layout.twig" %}
-{% block head %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.6/jscolor.min.js"></script>
-{% endblock %}
 {% block title %}{{ __("Settings") }}{% endblock %}
 
 	{% block content %}
-<!-- <div class="right">
-	<form action="settings.php" method="post">
-		<input type="hidden" name="reset_token" id="floatingCurrentPass" value="resetToken">
-		<button class="button button-danger" type="submit" name="updatesettings" class="btn btn-primary">{{ __("Log out from all devices") }}</button>
-	</form>
-</div> -->
 <form action="settings.php" method="post" enctype="multipart/form-data">
     <h3>{{ __("Credentials") }}</h3>
     <table class="settings">
@@ -19,11 +10,11 @@
             <td class="b">{{ userdata.name }}</td>
         </tr>
         <tr>
-            <td class="a">{{ __("Email") }}</td>
+            <td class="a">{{ __("Email address") }}</td>
             <td class="b">{{ userdata.email }}</td>
         </tr>
         <tr>
-            <td class="a">{{ __("Change Password") }}</td>
+            <td class="a">{{ __("Password") }}</td>
             <td class="b">
                 <input type="password" name="current_pass" size="30" maxlength="256"
                        placeholder="{{ __("Current Password (For verification)") }}"><br>
@@ -56,13 +47,13 @@
             <tr>
                 <td class="a">
                     {{ __("Description") }}
-                    <br><em>{{ __("Markdown allowed.") }}</em>
+                    <br><em>{{ __("Markdown is allowed.") }}</em>
                 </td>
                 <td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual">{{ userdata.about }}</textarea></td>
             </tr>
             <tr>
                 <td class="a">{{ __("Username color") }}</td>
-                <td class="b"><input name="customcolor" data-jscolor=""
+                <td class="b"><input name="customcolor" type="color"
                                      value="{{ userdata.customcolor | default('523bb8') }}"></td>
             </tr>
         </table>
@@ -74,7 +65,7 @@
     <table class="settings">
     </table> -->
 
-    <input type="hidden" name="magic" value="squarebracket_settings_save">
+    <input type="hidden" name="magic" value="qobo_settings_save">
     <div class="right">
         <input class="button button-primary" type="submit" name="action" value="{{ __("Save Changes") }}">
     </div>

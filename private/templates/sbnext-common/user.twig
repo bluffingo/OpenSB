@@ -78,13 +78,13 @@
             <button class="tablinks active" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
             <button class="tablinks" onclick="openTab(event, 'Videos')">Uploads</button>
             <button class="tablinks" onclick="openTab(event, 'Discussion')">Discussion</button>
-            <button class="tablinks" onclick="openTab(event, 'About')">About</button>
+            <button class="tablinks" onclick="openTab(event, 'Statistics')">Statistics</button>
         </div>
         <div id="Home" class="tabcontent" style="display: block;">
             {% if markread %}
-                <div class="header_message">{{ __("Marked all notifications as read.") }}</div>
+                <div class="header_message header-primary">{{ __("Marked all notifications as read.") }}</div>
             {% elseif edited %}
-                <div class="header_message">{{ __("Settings successfully saved!") }}</div>
+                <div class="header_message header-primary">{{ __("Settings successfully saved!") }}</div>
             {% endif %}
             <h2></h2>
             <div class="user_about">
@@ -106,15 +106,9 @@
             {% set le_url = 'user.php?id=' ~ id ~ '&page=%s' ~ forceuser %}
             {{ pagination(level_count, glob_lpp, le_url, page) }}
         </div>
-        <div id="About" class="tabcontent">
-            <div class="card">
-                <div class="card-header">{{ __("General information") }}</div>
-                <div class="card-body">
-                    <b>{{ __("Registered on") }}</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
-                    <br><br>
-                    <b>{{ __("Last logged in") }}</b>: {{ userpagedata.lastview | relative_time }}
-                </div>
-            </div>
+        <div id="Statistics" class="tabcontent">
+            <p><b>{{ __("Registered on") }}</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}</p>
+            <p><b>{{ __("Last logged in") }}</b>: {{ userpagedata.lastview | relative_time }}</p>
         </div>
         <div id="Discussion" class="tabcontent">
             {% if log %}

@@ -1,5 +1,8 @@
-# squareBracket Beta 3
+# Qobo Beta 3
 ## Beta 3.0
+### Beta 3.0.0-003
+* Refinements to Finalium user interface.
+* Replaced Bootstrap icon set with... uh, I forgot.
 ### Beta 3.0.0-002 (November 17th 2022)
 * Finalized image uploading
 * Improvements to Finalium's SCSS

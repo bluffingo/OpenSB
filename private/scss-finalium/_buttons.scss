@@ -32,7 +32,7 @@ input[type=file]::file-selector-button, {
   margin: 2px 7px 6px 0px;
   display: inline-block;
   cursor: pointer;
-  border: 1px solid darken($gray-400, 2.25%);
+  border: 1px solid darken($gray-200, 5.25%);
   background-color: lighten($gray-200, 2.5%);
   @include gradient-y($start-color: lighten($gray-200, 2.5%), $end-color: lighten($gray-200, 1.5%));
   font-family: $font;

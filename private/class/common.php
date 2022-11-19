@@ -140,26 +140,20 @@ function navigationList() {
 	$array = array(
 		"home" => array(
 			"name" => __("Home"),
-			"icon" => "house-door",
+			"icon" => "home",
 			"url" => "/index.php",
-			"hovertext" => "Visit the main page [alt-shift-z]",
-			"accesskey" => "z",
 			"htmlid" => "mainpage-description",
 		),
 		"videos" => array(
 			"name" => __("Videos"),
-			"icon" => "camera-video",
+			"icon" => "video",
 			"url" => "/browse.php",
-			"hovertext" => "Browse videos in Qobo [alt-shift-v]",
-			"accesskey" => "v",
 			"htmlid" => "videos-browse",
 		),
 		"images" => array(
 			"name" => __("Images"),
-			"icon" => "image",
+			"icon" => "photo",
 			"url" => "/artwork.php",
-			"hovertext" => "Browse images in Qobo [alt-shift-i]",
-			"accesskey" => "i",
 			"htmlid" => "images-browse",
 		),
 	);

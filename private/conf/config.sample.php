@@ -22,4 +22,4 @@ $isMaintenance = false;
 $paginationLimit = 20; //Pagination limit.
 
 // TEMPLATE OPTIONS (redone 9/17/2021 by gr):
-$useTemplate = "sbnext"; // check the templates folder for available options
+$useTemplate = "sbnext"; // check the templates folder for available options, we recommend "sbnext" as others are experimental shit that always ends up getting cut.
