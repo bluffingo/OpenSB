@@ -1,6 +1,6 @@
 body {
   font: 12px Arial, sans-serif;
-  background: #eaeaea url("/assets/nostalgia/noise.png");
+  background: #fff;
 }
 
 .page {
@@ -14,29 +14,7 @@ a:link, a:visited, a:active {
 
 .container {
   width: 960px;
-  background-color: white;
-  margin-top: -2px;
-  padding: 15px 10px;
-}
-
-.header1 {
-  margin: 0px auto;
-  padding: 20px 0px 2px;
-}
-
-.header2 {
-  height: 35px;
-  line-height: 0;
-  background-image: url("/assets/nostalgia/subheader.gif");
-  border-radius: 10px 10px 0 0;
-  border-radius: 5px 5px 0 0;
-}
-
-#masthead-content #masthead-upload-button-group, .masthead-user {
-  float: none;
-  margin-top: 0;
-  margin-left: 0;
-  position: relative;
+  padding: 0 5px 25px 5px;
 }
 
 .headertext {
@@ -51,14 +29,28 @@ a:link, a:visited, a:active {
   box-sizing: border-box;
 }
 
+// buttons - should be rewritten to alter *all* buttons in the qobo site.
+
 .button-poktube {
-  padding: 3.6px 1em;
+  padding: 0.3em 0.7em;
   border: 1px solid #ccc;
-  background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 0%, #e8e8e8 100%);
+  background: #f6f6f6 linear-gradient(to bottom, #fff 0%, #efefef 100%);
   margin-left: 0px;
   border-radius: 3px;
   font: 12px Arial, Helvetica, sans-serif;
 }
+
+.button-poktube:hover, .button-poktube:focus {
+	border-color: #999;
+	box-shadow: 0 0 3px #999;
+}
+
+.button-poktube:active {
+	border-color: #999;
+	background: #ddd linear-gradient(to bottom, #ccc 0%, #fff 100%);
+}
+
+// buttons end
 
 .main-content {
   background: white;
@@ -87,4 +79,78 @@ a:link, a:visited, a:active {
   h1 {
     font-weight: bold;
   }
+}
+
+.masthead-container {
+	width: 960px;
+	margin: 0 auto .8333em;
+	border-bottom: 1px solid #f3f3f3;
+	.masthead {
+		margin: 0 auto;
+		padding: 0.7em 0 0.4em;
+		font-size: 1em;
+		.logo {
+			margin: 0 18px 0 0;
+			display: block;
+			float: left;
+		}
+		.masthead-search {
+			float: left;
+			white-space: nowrap;
+			padding-top: 4px;
+			.masthead-input {
+				width: 22em;
+				height: 2em;
+			}
+		}
+		.masthead-nav {
+			padding-left: 1em;
+			line-height: 3em;
+			float: left;
+		}
+		.masthead-utility {
+			line-height: 3em;
+			text-align: right;
+			a.start { border-left: none; }
+			a.end { padding-right: 0; }
+		}
+		.masthead-nav, .masthead-utility {
+			a {
+				padding: 0.1em 0.8em;
+				border-left: 1px solid #ccc;
+				white-space: nowrap;
+			}
+		}
+		.masthead-user {
+			float: none;
+			margin-top: 0;
+			margin-left: 0;
+			position: relative;
+			right: -4px;
+			border: 1px solid transparent;
+			background: none;
+			height: 2em;
+			.usermenushit {
+				border: 1px solid #999;
+				box-shadow: 0 0 3px #999;
+				ul {
+					margin: 0;
+					li {
+						a {
+							border-left: none;
+						}
+					}
+				}
+			}
+		}
+		.masthead-user:hover, .masthead-user:focus {
+			border-color: #999;
+			background: #f3f3f3 linear-gradient(to bottom, #fff 0%, #ebebeb 100%);
+			box-shadow: 0 0 3px #999;
+		}
+		.masthead-user:active {
+			border-color: #999;
+			background: #ddd linear-gradient(to bottom, #ccc 0%, #fff 100%);
+		}
+	}
 }
