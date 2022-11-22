@@ -65,6 +65,14 @@ menu, ol, ul, li {
   list-style: none;
 }
 
+blockquote {
+	color: #789922;
+	margin: 0;
+	p:before {
+		content: ">";
+	}
+}
+
 .footer {
   background-color: $gray-150;
   border-bottom: 1px solid $gray-250;
@@ -798,6 +806,13 @@ input[type]:not([type=file]):not([type=submit]):focus {
     display: inline-block;
     margin-right: 1em;
   }
+}
+
+.commentPost {
+	margin-bottom: 17.5px;
+	.time {
+		font-size: .9em;
+	}
 }
 
 /// Gradients \\\

@@ -74,9 +74,9 @@ body {
   margin-left: none;
 }
 
-a:link, a:visited, a:active {
+/* a:link, a:visited, a:active {
   color: #03c;
-}
+} */
 
 .container {
   width: 960px;
@@ -231,4 +231,12 @@ a:link, a:visited, a:active {
 			background: #ddd linear-gradient(to bottom, #ccc 0%, #fff 100%);
 		}
 	}
+}
+
+.sectionTitle {
+	border-bottom: 1px solid #ccc;
+	color: #666;
+	line-height: 2em;
+	margin-top: 0;
+	font-size: 1.05em;
 }
