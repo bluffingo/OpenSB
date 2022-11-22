@@ -25,7 +25,8 @@ if (isset($_POST['magic'])) {
     $pass2 = ($_POST['pass2'] ?? null);
 
     if ($currentPass && $pass && $pass2) {
-        if (password_verify($currentPass, $userdata['password'])) {
+		$password = $sql->fetch("SELECT password FROM users WHERE id = ?", [$userdata['id']])["password"];
+        if (password_verify($currentPass, $password)) {
             if ($pass == $pass2) {
                 $sql->query("UPDATE users SET password = ?, token = ? WHERE id = ?",
                     [password_hash($pass, PASSWORD_DEFAULT), bin2hex(random_bytes(32)), $userdata['id']]);

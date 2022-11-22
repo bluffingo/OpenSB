@@ -69,13 +69,27 @@
 			| <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
 		</p>
 		<h5>{{ __("Running on Git commit: ") }} <a
-					href="https://github.com/chazizgrkb/qobo/commit/{{ git_commit() }}">{{ git_commit() }}</a><br>
+					href="https://github.com/chazizgrkb/qobo/commit/{{ git_commit() }}">{{ git_commit() }}</a>
 		</h5>
+		{% if isDebug %}
+		<p>{{ __("User agent") }}: {{ user_agent }}</p>
+		<p>{{ __("Browser being used") }}: {% if browser_info.name is empty %}{{ __("Generic browser") }}{% else %}{{ browser_info.name }}{% endif %}</p>
+		{% endif %}
 		{% if isMaintenance != true %}
-			<a class="button button-neutral button-small btnAdd" role="button">{{ __("Options") }}</a>
-			<div id="myModal" class="bg-neutral" style="padding:0.3em;">
+			<a class="button button-neutral button-small options-button" role="button">{{ __("Options") }}</a>
+			{% if isDebug %}
+			<a class="button button-danger button-small debug-button" role="button">{{ __("Debug") }}</a>
+			{% endif %}
+			<div id="optionsModal" class="bg-neutral" style="padding:0.3em;">
 
 			</div>
+			{% if isDebug %}
+			<div id="debugModal" class="bg-neutral" style="padding:0.3em;">
+				<h3>Debug info</h3>
+				<div class="header_message header-danger">{{ __("It is risky to screenshot this due to security reasons, so please don't.") }}</div>
+				<p><pre>{{ dump() }}</pre></p>
+			</div>
+			{% endif %}
 		{% endif %}
 	</div>
 </footer>

@@ -16,12 +16,13 @@ use Twig\Extra\Markdown\MarkdownExtension;
 use Twig\Extra\Markdown\MarkdownRuntime;
 use Twig\Loader\FilesystemLoader;
 use Twig\RuntimeLoader\RuntimeLoaderInterface;
+use Twig\Extension\DebugExtension;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
     global $sql, $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness,
            $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $pageVariable, $isMaintenance,
-           $versionNumber, $isDebug, $userbandata;
+           $versionNumber, $isDebug, $userbandata, $browser;
     $detect = new Mobile_Detect;
 
     if ($log) {
@@ -51,9 +52,10 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     if (!isset($customenv)) {
         $twig = new Environment($loader, [
             'cache' => $doCache,
+			'debug' => $isDebug,
         ]);
     } else {
-        $twig = $customenv($loader, $doCache);
+        $twig = $customenv($loader, $doCache, $isDebug);
     }
 
     // why was this line of code not added
@@ -68,6 +70,9 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
 
     $twig->addExtension(new sBTwigExtension());
     $twig->addExtension(new MarkdownExtension());
+	if ($isDebug) { 
+		$twig->addExtension(new DebugExtension()); 
+	}
 
     $twig->addGlobal('log', $log);
     $twig->addGlobal('userdata', $userdata);
@@ -83,6 +88,8 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $twig->addGlobal('isDebug', $isDebug);
     $twig->addGlobal('userbandata', $userbandata);
 	$twig->addGlobal('navigationList', navigationList());
+	$twig->addGlobal('user_agent', $_SERVER['HTTP_USER_AGENT']);
+	$twig->addGlobal('browser_info', $browser);
 
     if (isset($_SERVER["HTTP_HOST"])) { // Browsers from 1995 (eg: Internet Explorer 1) make PHP throw out warnings due to them not having HTTP hosts feature.
         $twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
@@ -171,12 +178,6 @@ function icon($icon, $size)
 {
     $twig = twigloader('components');
     return $twig->render('icon.twig', ['icon' => $icon, 'size' => $size]);
-}
-
-function icon_alt($icon, $size)
-{
-    $twig = twigloader('components');
-    return $twig->render('icon_alt.twig', ['icon' => $icon, 'size' => $size]);
 }
 
 function pagination($levels, $lpp, $url, $current)

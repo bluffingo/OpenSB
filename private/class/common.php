@@ -9,9 +9,6 @@ $gitBranch = "code-rewrite";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-if (!isCattleDog()) {
-    header("Access-Control-Allow-Origin: *");
-}
 
 if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
     die('<b>A configuration file could not be found. Please read the installing instructions in the README file.</b>');
@@ -57,26 +54,13 @@ if (isset($_COOKIE['frontend'])) {
     $mobileFrontend = (isset($useTemplate) ? $useTemplate . "-mobile" : 'sbnext-mobile');
 }
 
-
-/**
- * Returns true if it is executed from a cattleDog script.
- * cattleDog is an official collection of scripts designed
- * to migrate data onto a squareBracket instance. cattleDog
- * scripts are out of scope for squareBracket, which is why
- * they are not in the repository.
- */
-function isCattleDog()
-{
-    global $_SESSION;
-    return isset($_SESSION['isCattleDog']);
-}
-
 // cattleDog's verify.php fucks up if this isn't done.
-if (!isCattleDog()) {
+if (!isset($_SESSION['isCattleDog'])) {
+	header("Access-Control-Allow-Origin: *");
     $lang = new Lang(dirname(__DIR__) . "/lang/" . ($_COOKIE['language'] ?? 'en-US') . ".json");
-
+	$accountfields = "id, name, email, customcolor, title, about, powerlevel, joined, lastview";
     $userfields = Users::userfields();
-    $videofields = Videos::videofields();
+    $videofields = "v.id, v.video_id, v.title, v.description, v.time, v.post_type, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, (SELECT COUNT(*) FROM comments WHERE id = v.video_id) AS comments, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, v.videolength, v.category_id, v.author";
 }
 
 if ($isMaintenance && !isCli()) {
@@ -120,6 +104,18 @@ if (isset($_COOKIE['theme'])) {
     $theme = 'default';
 }
 
+if (preg_match('~MSIE|Internet Explorer~i', $_SERVER['HTTP_USER_AGENT']) || preg_match('~Trident/7.0(.*)?; rv:11.0~',$_SERVER['HTTP_USER_AGENT'])) {
+	$browser['legacy_masthead_fix'] = true;
+	if (preg_match('/MSIE (.*?);/', $_SERVER['HTTP_USER_AGENT'])) {
+		$browser['name'] = "Internet Explorer Legacy"; // IE 10 and below
+		$browser['codename'] = "ie_old";
+	} else {
+	$browser['name'] = "Internet Explorer"; //IE 11
+	$browser['codename'] = "ie";
+	}
+}
+
+
 // Rounded pfp shit (suggested by sks2002)
 if (isset($_COOKIE['profilepicture'])) {
     $pfpRoundness = $_COOKIE['profilepicture'];
@@ -129,7 +125,7 @@ if (isset($_COOKIE['profilepicture'])) {
 }
 
 if ($log) {
-    $userdata = $sql->fetch("SELECT * FROM users WHERE id = ?", [$id]);
+    $userdata = $sql->fetch("SELECT $accountfields FROM users WHERE id = ?", [$id]);
     $notificationCount = $sql->result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$userdata['id']]);
     $userbandata = $sql->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
 } else {

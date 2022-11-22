@@ -217,15 +217,18 @@ $(document).ready(function () {
         $("#showSearch").attr("style", "display:none");
         $("#header-main").attr("style", "display:none");
     });
-    $(".btnAdd").click(function () {
+    $(".options-button").click(function () {
         $.ajax({
             url: "/customizer.php",
             success: function (returndata) {
-                $('#myModal').html(returndata);
-                $("#myModal").show();
+                $('#optionsModal').html(returndata);
+                $("#optionsModal").show();
             },
             dataType: "html"
         });
+    });
+    $(".debug-button").click(function () {
+		$("#debugModal").show();
     });
 });
 

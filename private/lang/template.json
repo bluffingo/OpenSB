@@ -115,8 +115,16 @@
 	"By the Qobo contributors": "By the Qobo contributors",
 	"What's new": "What's new",
 	"Running on Git commit: ": "Running on Git commit: ",
+	"User agent": "User agent",
+	"Browser being used": "Browser being used",
+	"Generic browser": "Generic browser",
+	"Debug": "Debug",
+	"It is risky to screenshot this due to security reasons, so please don't.": "It is risky to screenshot this due to security reasons, so please don't.",
 
 	"view%s": "view%s",
+
+	"Show replies": "Show replies",
+	"Reply": "Reply",
 
 	"This video should be processing.": "This video should be processing.",
 	"To view this video please enable JavaScript.": "To view this video please enable JavaScript.",
@@ -159,10 +167,8 @@
 	"%s followers": "%s followers",
 	"Published on %s": "Published on %s",
 	"Category": "Category",
+	"Suggestions": "Suggestions",
 	"More": "More",
-
-	"Show replies": "Show replies",
-	"Reply": "Reply",
 
 	"Log out": "Log out",
 

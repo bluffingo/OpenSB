@@ -75,20 +75,6 @@ class Users
     }
 
     /**
-     * Get the user's age.
-     *
-     * @return int
-     */
-    static function getAge($birthday): int // does not work on squarebracket
-    {
-        $date = new DateTime($birthday); // YYYY-MM-DD
-        $now = new DateTime();
-        $interval = $now->diff($date);
-        $age = $interval->y;
-        return $age;
-    }
-
-    /**
      * Get the amount of videos a user has uploaded. Probably index this shit in the future.
      *
      * @return int

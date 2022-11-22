@@ -7,12 +7,12 @@ require dirname(__DIR__) . '/private/class/common.php';
 $message = '';
 
 if (isset($_GET['id'])) {
-    $userpagedata = $sql->fetch("SELECT * FROM users WHERE id = ?", [$_GET['id']]);
+    $userpagedata = $sql->fetch("SELECT $accountfields FROM users WHERE id = ?", [$_GET['id']]);
     if (!isset($userpagedata) || !$userpagedata) {
         error('404', 'The requested user is invalid');
     }
 } else if (isset($_GET['name'])) {
-    $userpagedata = $sql->fetch("SELECT * FROM users WHERE name = ?", [$_GET['name']]);
+    $userpagedata = $sql->fetch("SELECT $accountfields FROM users WHERE name = ?", [$_GET['name']]);
     if (!isset($userpagedata) || !$userpagedata) {
         error('404', 'The requested user is invalid');
     }

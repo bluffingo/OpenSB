@@ -27,7 +27,6 @@ class sBTwigExtension extends AbstractExtension
             new TwigFunction('__', '\squareBracket\__', ['is_safe' => ['html']]), //localization
             new TwigFunction('browse_channel_box', '\squareBracket\browseChannelBox', ['is_safe' => ['html']]),
             new TwigFunction('icon', '\squareBracket\icon', ['is_safe' => ['html']]),
-            new TwigFunction('icon_alt', '\squareBracket\icon_alt', ['is_safe' => ['html']]), //intended for sbnext's upload_start -gr 10/8/2021
             new TwigFunction('pagination', '\squareBracket\pagination', ['is_safe' => ['html']]),
             new TwigFunction('git_commit', '\squareBracket\gitCommit'),
             new TwigFunction('operating_system', '\squareBracket\getOS'),
