@@ -128,8 +128,11 @@
 
 	"Edit": "Edit",
 
+	"Browse": "Browse",
 	"Studio": "Studio",
-	"Logout": "Logout",
+	"Sign Out": "Sign Out",
+	"Create Account": "Create Account",
+	"Sign In": "Sign In",
 
 	"Latest videos": "Latest videos",
 	"(Page %s)": "(Page %s)",
@@ -156,10 +159,6 @@
 	"%s followers": "%s followers",
 	"Published on %s": "Published on %s",
 	"Category": "Category",
-	"Rate this upload": "Rate this upload",
-	"Comment on this upload": "Comment on this upload",
-	"About this upload": "About this upload",
-	"uploads": "uploads",
 	"More": "More",
 
 	"Show replies": "Show replies",
