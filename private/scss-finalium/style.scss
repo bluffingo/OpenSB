@@ -1,3 +1,5 @@
+/// Functions \\\
+@import "_functions";
 /// Normalize \\\
 @import "_normalize";
 /// Variables \\\
@@ -498,6 +500,15 @@ input[type]:not([type=file]):not([type=submit]):focus {
       border-right: none;
     }
   }
+}
+
+.masthead-links-container {
+	float: left;
+	.masthead-links {
+		display: table-cell;
+		vertical-align: middle;
+		height: 30px;
+	}
 }
 
 #logo-container {

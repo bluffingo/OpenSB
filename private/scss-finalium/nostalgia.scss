@@ -1,3 +1,69 @@
+$threshold: 65%;
+
+@import "_functions";
+
+$teal: #468aca;
+$red: #ce1818;
+$white: #FCFCFC;
+$black: #111;
+$purple: #9c35ef;
+$pink: #ff23b1;
+$orange: #ff8800;
+$yellow: #ffd104;
+$cyan: #1778b8;
+$blue: #297fd6;
+$green: #74a60a;
+$aqua: #20c997;
+
+$gray-100: #F9F9F9;
+$gray-150: #F1F1F1;
+$gray-200: #EEEEEE;
+$gray-250: #E8E8E8;
+$gray-300: #E2E2E2;
+$gray-400: #D3D3D3;
+$gray-450: #CCCCCC;
+$gray-500: #B4B4B4;
+$gray-650: #999999;
+$gray-600: #858585;
+$gray-650: #666666;
+$gray-700: #4F4F4F;
+$gray-800: #393939;
+$gray-850: #333333;
+$gray-900: #242424;
+
+$light: #FFF;
+$dark: #000;
+
+$primary: $pink;
+$secondary: $light;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$gray-dark: $gray-800;
+$neutral: $gray-100;
+$teal-color: $teal;
+$aqua-color: $aqua;
+$orange-color: $orange;
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "neutral": $neutral,
+        "light": $light,
+        "dark": $gray-dark,
+        "blue-green": $teal-color,
+        "aqua": $aqua-color,
+        "carrot": $orange-color,
+);
+
+/// Gradients \\\
+@import "_gradients";
+
 body {
   font: 12px Arial, sans-serif;
   background: #fff;
@@ -29,25 +95,37 @@ a:link, a:visited, a:active {
   box-sizing: border-box;
 }
 
-// buttons - should be rewritten to alter *all* buttons in the qobo site.
+// buttons
 
-.button-poktube {
+.button {
   padding: 0.3em 0.7em;
   border: 1px solid #ccc;
-  background: #f6f6f6 linear-gradient(to bottom, #fff 0%, #efefef 100%);
   margin-left: 0px;
   border-radius: 3px;
   font: 12px Arial, Helvetica, sans-serif;
 }
 
-.button-poktube:hover, .button-poktube:focus {
-	border-color: #999;
-	box-shadow: 0 0 3px #999;
-}
+@each $state, $value in $theme-colors {
+  .button-#{$state} {
+	border: 1px solid darken($value, 20%);
+	background-color: $value;
+	@include gradient-y($start-color: $value, $end-color: darken($value, 3.5%));
+	color: contrast-color($value, $dark, $light) !important;
+  }
 
-.button-poktube:active {
-	border-color: #999;
-	background: #ddd linear-gradient(to bottom, #ccc 0%, #fff 100%);
+  .button-#{$state}:hover, .button-#{$state}:focus {
+	background-color: lighten($value, 1.5%);
+	@include gradient-y($start-color: $value, $end-color: darken($value, 3.5%));
+	border: 1px solid darken($value, 40%);
+	color: contrast-color($value, $dark, $light) !important;
+	box-shadow: 0 0 3px darken($value, 40%);
+  }
+
+  .button-#{$state}:active {
+	border: 1px solid darken($value, 40%);
+	background-color: lighten($value, 18.5%);
+	@include gradient-y($start-color: darken($value, 20%), $end-color: $value);
+  }
 }
 
 // buttons end

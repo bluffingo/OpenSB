@@ -1,5 +1,6 @@
 @import "_variables";
 @import "_gradients";
+@import "_functions";
 
 $blue: #284a9d;
 $green: #51ad18;
@@ -13,7 +14,6 @@ $theme-colors: (
         "warning": $warning,
         "danger": $danger,
         "neutral": $gray-900,
-        "violet": $indigo-color,
         "blue-green": $teal-color,
         "aqua": $aqua-color,
         "carrot": $orange-color,
