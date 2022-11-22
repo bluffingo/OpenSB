@@ -815,6 +815,13 @@ input[type]:not([type=file]):not([type=submit]):focus {
 	}
 }
 
+#player-container {
+	background-color: black;
+	color: white;
+	width: 100%;
+	margin: 0;
+}
+
 /// Gradients \\\
 @import "_gradients";
 /// Backgrounds \\\
