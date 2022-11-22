@@ -27,7 +27,6 @@
                 {% elseif postType == "artwork" %}
                     <img class="img-fluid" src="{{ video.videofile }}" alt="{{ video.title }}">
                 {% endif %}
-                {% if theme != 'nostalgia' %}
                     <div class="card card-body-fat">
                         <div class="grid">
                             <div class="col-md-10">
@@ -86,40 +85,8 @@
                             {% endfor %}
                         </div>
                     </div>
-                {% else %}
-					<h4 style="color: gray;font-weight:bold;">{{ __("Rate this upload") }}:</h4>
-					{% include "components/watch_ratings.twig" %}
-                    <h4 style="color: gray;font-weight:bold;">{{ __("Comment on this upload") }}:</h4>
-                    {% if log and userbandata != true %}
-                        {% include "components/comment_form.twig" %}
-                    {% endif %}
-                    <div id="comment"></div>
-                    {% for comment in comments %}
-                        {{ comment(comment) }}
-                    {% endfor %}
-                {% endif %}
             </div>
             <div class="col-md-6">
-                {% if theme == 'nostalgia' %}
-                    <div class="card">
-                        <div class="card-header">{{ __("About this upload") }}</div>
-                        <div class="card-body">
-                            <a href="user.php?name={{ video.u_name }}"><img src="{{ profile_image(video.u_name) }}"
-                                                                            class="rounded"
-                                                                            style="width:48px;float: left;margin-right:8px;"
-                                                                            alt="{{ video.u_name }}"></a>
-                            <p><strong>{{ __("Published on %s", [video.time | date('M j, Y')]) }}
-                                    <br>{{ __("by") }} {{ userlink(video, "u_") }}</strong> ({{ allVideos }} {{ __("uploads") }})
-                            </p>
-                            <p>
-                                {{ video.description }}
-                            </p>
-                            <p>
-                                {% include "components/watch_subscribe.twig" %}
-                            </p>
-                        </div>
-                    </div>
-                {% endif %}
                 <div class="card">
                     <div class="card-body">
                         {% for related_video in related_videos %}

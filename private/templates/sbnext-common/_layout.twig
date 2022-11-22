@@ -47,48 +47,37 @@
 </head>
 <body>
 {% if theme == 'nostalgia' %}
-    {% include "components/nostalgia/_header.twig" %}
+	{% include "components/nostalgia/_header.twig" %}
 {% else %}
-    <div id="guide">
-		{% for link in navigationList %}
-        <a href="{{ link.url }}" class="button button-secondary-invis">
-            {{ icon(link.icon, 24) }}
-        </a>
-		{% endfor %}
-    </div>
+	{% include "components/_header.twig" %}
 {% endif %}
-<div class="page">
-    {% if theme != 'nostalgia' %}
-        {% include "components/_header.twig" %}
-    {% endif %}
-    {% block precontent %}{% endblock %}
-    <div class="container">
-        {% if userbandata %}
-            <div class="header_message header-danger">
-                <h1>{{ __("Sorry %s, you are banned from Qobo.", [userdata.name]) }}</h1>
-                <p><strong>{{ userbandata.reason }}</strong><br>{{ __("This ban is not set to expire.") }}</p>
-                {# do we really need ban durations? #}
-            </div>
-        {% endif %}
-        {% block content %}{% endblock %}
-    </div>
-    <footer>
-        <div class="footer">
-            <img src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
-            <p>{{ __("Version") }} {{ version }} · <strong>{{ __("By the Qobo contributors") }}</strong> · 2020-{{ 'now' | date('Y') }}
-                | <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
-            </p>
-            <h5>{{ __("Running on Git commit: ") }} <a
-                        href="https://github.com/chazizgrkb/qobo/commit/{{ git_commit() }}">{{ git_commit() }}</a><br>
-            </h5>
-            {% if isMaintenance != true %}
-                <a class="button button-neutral button-small btnAdd" role="button">{{ __("Options") }}</a>
-                <div id="myModal" class="bg-neutral" style="padding:0.3em;">
-
-                </div>
-            {% endif %}
-        </div>
-    </footer>
+{% block precontent %}{% endblock %}
+<div class="container">
+	{% if userbandata %}
+		<div class="header_message header-danger">
+			<h1>{{ __("Sorry %s, you are banned from Qobo.", [userdata.name]) }}</h1>
+			<p><strong>{{ userbandata.reason }}</strong><br>{{ __("This ban is not set to expire.") }}</p>
+			{# do we really need ban durations? #}
+		</div>
+	{% endif %}
+	{% block content %}{% endblock %}
 </div>
+<footer>
+	<div class="footer">
+		<img src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
+		<p>{{ __("Version") }} {{ version }} · <strong>{{ __("By the Qobo contributors") }}</strong> · 2020-{{ 'now' | date('Y') }}
+			| <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
+		</p>
+		<h5>{{ __("Running on Git commit: ") }} <a
+					href="https://github.com/chazizgrkb/qobo/commit/{{ git_commit() }}">{{ git_commit() }}</a><br>
+		</h5>
+		{% if isMaintenance != true %}
+			<a class="button button-neutral button-small btnAdd" role="button">{{ __("Options") }}</a>
+			<div id="myModal" class="bg-neutral" style="padding:0.3em;">
+
+			</div>
+		{% endif %}
+	</div>
+</footer>
 </body>
 </html>

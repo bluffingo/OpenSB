@@ -6,6 +6,13 @@
                     <a href="/" id="logo-container"><img id="logo"
                                                          src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png"></a>
                     {% if isMaintenance != true %}
+					<div class="masthead-links-container">
+						<div class="masthead-links">
+							{% for link in navigationList %}
+								<a href="{{ link.url }}">{{ link.name }}</a>
+							{% endfor %}
+						</div>
+					</div>
                         <form id="masthead-search" action="/search.php">
                             <input type="text" class="form-control form-long uploader-form" name="tags">
                         </form>
