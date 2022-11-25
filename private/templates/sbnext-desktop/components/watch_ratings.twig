@@ -1,16 +1,16 @@
 <div>
     <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
-            class="button {% if rating == 1 %}button-success{% else %}button-secondary{% endif %}">
+            class="button {% if rating == 1 %}button-success{% else %}button-secondary{% endif %} tooltip" title="{{ __("Like") }}">
         {{ icon("thumb-up", 20) }}
         <span id="likes">{{ total_likes }}</span>
     </button>
     <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}"
-            class="button {% if rating is same as(0) %}button-danger{% else %}button-secondary{% endif %}">
+            class="button {% if rating is same as(0) %}button-danger{% else %}button-secondary{% endif %} tooltip" title="{{ __("Dislike") }}">
         {{ icon("thumb-down", 20) }}
         <span id="dislikes">{{ total_dislikes }}</span>
     </button>
     <button href="#" id="{% if log %}favorite{% else %}action_unlogged{% endif %}"
-            class="button {% if isFavorited %}button-warning{% else %}button-secondary{% endif %}">
+            class="button {% if isFavorited %}button-warning{% else %}button-secondary{% endif %} tooltip" title="{{ __("Favorite") }}">
         {{ icon("star", 20) }}
     </button>
 </div>

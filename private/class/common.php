@@ -106,6 +106,7 @@ if (isset($_COOKIE['theme'])) {
 
 if (preg_match('~MSIE|Internet Explorer~i', $_SERVER['HTTP_USER_AGENT']) || preg_match('~Trident/7.0(.*)?; rv:11.0~',$_SERVER['HTTP_USER_AGENT'])) {
 	$browser['legacy_masthead_fix'] = true;
+	$browser['legacy_disable_graph'] = true;
 	if (preg_match('/MSIE (.*?);/', $_SERVER['HTTP_USER_AGENT'])) {
 		$browser['name'] = "Internet Explorer Legacy"; // IE 10 and below
 		$browser['codename'] = "ie_old";

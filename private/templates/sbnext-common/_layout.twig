@@ -24,6 +24,8 @@
     {% endif %}
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.css" rel="stylesheet">
     <script src="/assets/common.js"></script>
 	{% block script %}{% endblock %}
     <script>
@@ -78,7 +80,7 @@
 		{% if isMaintenance != true %}
 			<a class="button button-neutral button-small options-button" role="button">{{ __("Options") }}</a>
 			{% if isDebug %}
-			<a class="button button-danger button-small debug-button" role="button">{{ __("Debug") }}</a>
+			<a class="button button-danger button-small debug-button tooltip" title="Spicy shit!" role="button">{{ __("Debug") }}</a>
 			{% endif %}
 			<div id="optionsModal" class="bg-neutral" style="padding:0.3em;">
 

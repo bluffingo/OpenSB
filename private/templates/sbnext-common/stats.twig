@@ -39,12 +39,15 @@
                     </div>
                 </div>
 
+				{% if browser_info.legacy_disable_graph == false %}
                 <h2>{{ __("Graph") }}</h2>
                 <canvas id="myChart"></canvas>
+				{% endif %}
 
             </div>
         </div>
-
+		
+		{% if browser_info.legacy_disable_graph == false %}
         <script>
             const ctx = document.getElementById('myChart').getContext('2d');
             const myChart = new Chart(ctx, {
@@ -102,4 +105,5 @@
                 }
             });
         </script>
+		{% endif %}
     {% endblock %}
