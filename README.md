@@ -1,11 +1,11 @@
-<h1 align="center">Qobo Beta 3.0.0</h1>
+<h1 align="center">"SB" Beta 3.0.0</h1>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/45898787/202602835-5e178385-4fee-4b31-9c25-7337e242a748.png">
 </p>
 
 <h3 align="center"><a href="https://qobo.tv/">Qobo's live website</a></h3>
 
-## How to setup an instance Qobo.
+## How to setup a SB instance.
 1. Get an Apache (NGINX is untested) server with PHP and MariaDB up and running, including Composer.
 1. Setup some virtual host shit, look below.
 1. Run `composer update` from the terminal.
