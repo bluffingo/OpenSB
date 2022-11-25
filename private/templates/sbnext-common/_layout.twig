@@ -2,7 +2,7 @@
 <html lang="{{ __("en-US") }}">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}{% endblock %} - Qobo</title>
+    <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
     {% block head %}{% endblock %}
     <link rel="manifest" href="/assets/icons/site.webmanifest">
     <link rel="shortcut icon" href="/assets/icons/favicon.ico">
@@ -10,8 +10,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
     <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#1b93ff">
-    <meta name="apple-mobile-web-app-title" content="Qobo">
-    <meta name="application-name" content="Qobo">
+    <meta name="apple-mobile-web-app-title" content="{{ website_branding.name }}">
+    <meta name="application-name" content="{{ website_branding.name }}">
     <meta name="msapplication-TileColor" content="#1d3fc4">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
@@ -57,7 +57,7 @@
 <div class="container">
 	{% if userbandata %}
 		<div class="header_message header-danger">
-			<h1>{{ __("Sorry %s, you are banned from Qobo.", [userdata.name]) }}</h1>
+			<h1>{{ __("Sorry %s, you are banned from %s.", [userdata.name, website_branding.name]) }}</h1>
 			<p><strong>{{ userbandata.reason }}</strong><br>{{ __("This ban is not set to expire.") }}</p>
 			{# do we really need ban durations? #}
 		</div>
@@ -67,11 +67,11 @@
 <footer>
 	<div class="footer">
 		<img src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
-		<p>{{ __("Version") }} {{ version }} · <strong>{{ __("By the Qobo contributors") }}</strong> · 2020-{{ 'now' | date('Y') }}
+		<p>{{ __("Version") }} {{ version }} · <strong>{{ __("By the openSB contributors") }}</strong> · 2020-{{ 'now' | date('Y') }}
 			| <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
 		</p>
 		<h5>{{ __("Running on Git commit: ") }} <a
-					href="https://github.com/chazizgrkb/qobo/commit/{{ git_commit() }}">{{ git_commit() }}</a>
+					href="https://github.com/chazizgrkb/sb/commit/{{ git_commit() }}">{{ git_commit() }}</a>
 		</h5>
 		{% if isDebug %}
 		<p>{{ __("User agent") }}: {{ user_agent }}</p>

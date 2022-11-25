@@ -1,9 +1,9 @@
 {% extends "_layout.twig" %}
 {% block head %}
-    <meta name="title" content="Qobo">
+    <meta name="title" content="{{ website_branding.name }}">
     <meta name="description" content="Unbelivable, This is not PokTube.">
-    <meta property="og:site_name" content="Qobo"/>
-    <meta property="og:title" content="Qobo">
+    <meta property="og:site_name" content="{{ website_branding.name }}"/>
+    <meta property="og:title" content="{{ website_branding.name }}">
     <meta property="og:description" content="Again.">
     <meta property="og:image" content="{{ domain }}assets/logo_square_icon.png">
     <meta property="og:url" content="{{ page_url }}">
@@ -14,11 +14,11 @@
 <div class="indexNext">
     {% if theme != 'nostalgia' %}
         <div class="main-content">
-            <div class="container page-container">
+            <div class="container sb-welcome">
                 {% if log %}
-                    <div class="grid" style="height:inherit;display: table;">
-                        <div style="display: table-cell;vertical-align: middle;width:90%;padding-right:1em;">
-                            <h1 style="padding:0;margin:8px 0;font-weight:400;">{{ __("Welcome to Qobo") }}</h1>
+                    <div class="grid">
+                        <div>
+                            <h1 style="padding:0;margin:8px 0;font-weight:400;">{{ __("Welcome to %s", [  website_branding.name  ]) }}</h1>
                             {# hack to prevent twig from outputing the number 1 #}
                             {% if totalSubscribers != 1 %}
                                 {% set pluralSubscribers = __("s") %}
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 {% else %}
-                    <h1>{{ __("Welcome to Qobo") }}</h1>
+                    <h1>{{ __("Welcome to %s", [  website_branding.name  ]) }}</h1>
                     <a class="button button-primary button-large" href="login.php">{{ __("Login") }}</a>
                     <a class="button button-primary button-large" href="register.php">{{ __("Register") }}</a>
                 {% endif %}

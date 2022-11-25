@@ -1,9 +1,9 @@
 {% extends "_layout.twig" %}
 {% block head %}
-    <meta name="title" content="Qobo">
+    <meta name="title" content="{{ website_branding.name }}">
     <meta name="description" content="Again.">
-    <meta property="og:site_name" content="Qobo"/>
-    <meta property="og:title" content="Qobo">
+    <meta property="og:site_name" content="{{ website_branding.name }}"/>
+    <meta property="og:title" content="{{ website_branding.name }}">
     <meta property="og:description" content="Again.">
     <meta property="og:image" content="{{ domain }}assets/logo_square_icon.png">
     <meta property="og:url" content="{{ page_url }}">
@@ -14,9 +14,9 @@
 <div class="indexNext">
     {% if theme != 'nostalgia' %}
         <div class="main-content">
-            <div class="container qobo-welcome">
+            <div class="container sb-welcome">
                 {% if log %}
-                        <h1>{{ __("Welcome to Qobo, %s", [ userdata.title ] ) }}</h1>
+                        <h1>{{ __("Welcome to %s, %s", [ website_branding.name, userdata.title ] ) }}</h1>
                         {# hack to prevent twig from outputing the number 1 #}
                         {% if totalSubscribers != 1 %}
                             {% set pluralSubscribers = __("s") %}
@@ -26,7 +26,7 @@
                         {% endif %}
                         <p>{{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }} - {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }} (FIXME: inaccurate info)</p>
                 {% else %}
-                    <h1>{{ __("Welcome to Qobo") }}</h1>
+                    <h1>{{ __("Welcome to %s", [ website_branding.name ]) }}</h1>
                     <a class="button button-primary button-large" href="register.php">{{ __("Get started") }}</a>
                     <a class="button button-secondary button-large" href="login.php">{{ __("Login") }}</a>
                 {% endif %}

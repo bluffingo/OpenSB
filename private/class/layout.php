@@ -22,7 +22,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
     global $sql, $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness,
            $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $pageVariable, $isMaintenance,
-           $versionNumber, $isDebug, $userbandata, $browser;
+           $versionNumber, $isDebug, $userbandata, $browser, $branding;
     $detect = new Mobile_Detect;
 
     if ($log) {
@@ -90,6 +90,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
 	$twig->addGlobal('navigationList', navigationList());
 	$twig->addGlobal('user_agent', $_SERVER['HTTP_USER_AGENT']);
 	$twig->addGlobal('browser_info', $browser);
+	$twig->addGlobal('website_branding', $branding);
 
     if (isset($_SERVER["HTTP_HOST"])) { // Browsers from 1995 (eg: Internet Explorer 1) make PHP throw out warnings due to them not having HTTP hosts feature.
         $twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");

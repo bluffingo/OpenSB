@@ -1,6 +1,6 @@
-# Qobo Usage Compatibility
+# openSB Usage Compatibility
 
-We recommend following these system and software requirements for a smooth experience on using Qobo.
+We recommend following these system and software requirements for a smooth experience on using openSB.
 
 ## Bare minimum
 

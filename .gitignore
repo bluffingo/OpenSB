@@ -64,3 +64,7 @@ dynamic.7z
 
 # trinity kate editor
 *~
+
+# official prod instances
+public/assets/cr_branding
+public/assets/qb_branding

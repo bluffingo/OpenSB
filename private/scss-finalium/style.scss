@@ -48,7 +48,7 @@ body {
 
 a:link,
 a:visited {
-  color: $pink;
+  color: $primary;
   text-decoration: none;
   word-break: break-all;
 }
@@ -215,7 +215,7 @@ blockquote {
   display: inline-block;
   width: 100%;
 
-  .qobo-welcome {
+  .sb-welcome {
     text-align: center;
   }
 
@@ -270,7 +270,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
 }
 
 .chaziz-body {
-  background: #2B3644 url(/assets/brisbane.jpg);
+  background: #2B3644 url(/assets/login_bg.jpg);
   background-size: cover;
   display: flex;
   align-items: center;
