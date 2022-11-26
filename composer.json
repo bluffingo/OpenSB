@@ -7,7 +7,6 @@
 		"erusev/parsedown": "dev-master",
 		"mobiledetect/mobiledetectlib": "dev-master",
 		"php-ffmpeg/php-ffmpeg": "0.x-dev",
-		"phlak/strgen": "dev-master",
 		"whitecube/lingua": "dev-master"
 	},
 	"minimum-stability": "dev",

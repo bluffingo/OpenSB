@@ -14,13 +14,15 @@ if ($userbandata) {
     error(403, __("Banned user, can't continue."));
 }
 
-use PHLAK\StrGen;
 use \Intervention\Image\ImageManager;
 
+function randstr($len, $charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-") {
+    return substr(str_shuffle($charset),0,$len);
+}
+
 if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata['name'])) {
-    $generator = new StrGen\Generator();
     $uploader = $userdata['id'];
-    $new = $generator->alphaNumeric(11);
+    $new = randstr(11);
 
     $title = ($_POST['title'] ?? null);
     $description = ($_POST['desc'] ?? null);
