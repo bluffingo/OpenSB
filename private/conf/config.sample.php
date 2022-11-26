@@ -27,4 +27,6 @@ $useTemplate = "sbnext"; // check the templates folder for available options, we
 // Branding
 $branding = [
 	"name" => "an openSB Instance",
+	"assets_location" => "/assets/placeholder",
+	"css_override" => false, // change to location of custom finalium overrides.
 ];

@@ -4,24 +4,23 @@
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
     {% block head %}{% endblock %}
-    <link rel="manifest" href="/assets/icons/site.webmanifest">
-    <link rel="shortcut icon" href="/assets/icons/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#1b93ff">
+    <link rel="manifest" href="{{ website_branding.assets_location }}/icons/site.webmanifest">
+    <link rel="shortcut icon" href="{{ website_branding.assets_location }}/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ website_branding.assets_location }}/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ website_branding.assets_location }}/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ website_branding.assets_location }}/icons/favicon-16x16.png">
     <meta name="apple-mobile-web-app-title" content="{{ website_branding.name }}">
     <meta name="application-name" content="{{ website_branding.name }}">
-    <meta name="msapplication-TileColor" content="#1d3fc4">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
     {% if theme == 'dark' %}
         <link id="darkthm" rel="stylesheet" href="/assets/css/darkmode.css" type="text/css">
-    {% endif %}
-    {% if theme == 'nostalgia' %}
+    {% elseif theme == 'nostalgia' %}
         <link id="nostalgia" rel="stylesheet" href="/assets/css/nostalgia.css" type="text/css">
-    {% endif %}
+    {% elseif website_branding.css_override != false %}
+		<link rel="stylesheet" href="{{ website_branding.css_override }}" type="text/css">
+	{% endif %}
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.js"></script>
@@ -66,7 +65,7 @@
 </div>
 <footer>
 	<div class="footer">
-		<img src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
+		<img src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
 		<p>{{ __("Version") }} {{ version }} · <strong>{{ __("By the openSB contributors") }}</strong> · 2020-{{ 'now' | date('Y') }}
 			| <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
 		</p>

@@ -3,13 +3,13 @@
         {% set imgSrcPath = '/dynamic/pfp/' ~ data ~ '.png' %}
         {% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}
     {% else %}
-        {% set imgSrcPath = '/assets/profiledef.png' %}
+        {% set imgSrcPath = website_branding.assets_location ~ '/profiledef.png' %}
         {% autoescape %}
             {{ imgSrcPath | raw }}
         {% endautoescape %}
     {% endif %}
 {% else %}
-    {% set imgSrcPath = '/assets/profiledel.png' %}
+    {% set imgSrcPath = website_branding.assets_location ~ '/profiledel.png' %}
     {% autoescape %}
         {{ imgSrcPath | raw }}
     {% endautoescape %}

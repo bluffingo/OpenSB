@@ -1,12 +1,12 @@
 {% extends "_layout.twig" %}
 {% block title %}{{ userpagedata.title }}{% endblock %}
 {% block head %}
-    <meta name="title" content="{{ userpagedata.title }} - Qobo">
+    <meta name="title" content="{{ userpagedata.title }} - {{ website_branding.name }}">
     <meta name="description"
           content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
     <meta name="theme-color" content="{{ userpagedata.customcolor }}">
-    <meta property="og:site_name" content="Qobo"/>
-    <meta property="og:title" content="{{ userpagedata.title }} - Qobo">
+    <meta property="og:site_name" content="{{ website_branding.name }}"/>
+    <meta property="og:title" content="{{ userpagedata.title }} - {{ website_branding.name }}">
     <meta property="og:description"
           content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
     <meta property="og:image" content="{{ domain }}/assets/profpic/{{ userpagedata.name }}.png">
@@ -21,7 +21,7 @@
 		{% if bannerExists %}
             background: url('/dynamic/banners/{{ userpagedata.name }}.png'), linear-gradient(#888, #444), center !important;
 		{% else %}
-			background: url('/assets/sbnext_channel_header_template.png'), linear-gradient(#888, #444), center !important;
+			background: url('{{ website_branding.assets_location }}/sbnext_channel_header_template.png'), linear-gradient(#888, #444), center !important;
 		{% endif %}
             height: 225px;
             padding: 0;
@@ -47,10 +47,7 @@
                 <img class="rounded img-fluid" src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
             </div>
             <div class="col-md-13">
-                <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}<img class="sdsd"
-                                                                                                       src="assets/icons/shield.svg"
-                                                                                                       height="16"
-                                                                                                       title="User is a moderator.">{% endif %}
+                <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}{{ icon("shield", 20) }}{% endif %}
                 </h1>
                 <p>@{{ userpagedata.name }}
                     {# hack to prevent twig from outputing the number 1 #}

@@ -64,7 +64,7 @@ if (!isset($_SESSION['isCattleDog'])) {
 }
 
 if ($isMaintenance && !isCli()) {
-    error(403, "This SB instance is currently offline.");
+    error(403, "This openSB instance is currently offline.");
 } else {
     $ipban = $sql->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [getUserIpAddr()]);
     if ($ipban) {

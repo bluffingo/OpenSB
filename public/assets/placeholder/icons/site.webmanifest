@@ -1,6 +1,6 @@
 {
-    "name": "Qobo",
-    "short_name": "Qobo",
+    "name": "openSB",
+    "short_name": "openSB",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#1d3fc4",
+    "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "display": "standalone"
 }

@@ -207,8 +207,10 @@ blockquote {
 }
 
 .main-content {
-  background: rgb(24, 0, 36);
-  background: linear-gradient(90deg, rgba(24, 0, 36, 1) 0%, rgba(100, 9, 121, 1) 35%, rgba(200, 21, 200, 1) 100%);
+  background: rgb(0,26,36);
+  background: linear-gradient(90deg, rgba(0,26,36,1) 0%, rgba(9,79,121,1) 35%, rgba(21,105,129,1) 100%);
+  // background: rgb(24, 0, 36);
+  // background: linear-gradient(90deg, rgba(24, 0, 36, 1) 0%, rgba(100, 9, 121, 1) 35%, rgba(200, 21, 200, 1) 100%);
   color: white;
   margin: -48px 0 0;
   padding: 75px 0px 20px;
@@ -270,7 +272,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
 }
 
 .chaziz-body {
-  background: #2B3644 url(/assets/login_bg.jpg);
+  background: #2B3644 url(/assets/placeholder/login_bg.jpg);
   background-size: cover;
   display: flex;
   align-items: center;

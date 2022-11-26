@@ -1,17 +1,12 @@
-squareBracket assets
+openSB assets
 
 info:
 
 # FOLDERS
 
-chazizgrkb: the finalium login screen, it originally had chaziz branding, hense the folder name.
 css: compiled finalium css
-icons: used for favicons and mobile devices
-nostaglia: assets for the april 2021 theme for finalium
-project111: assets for 111
-icons: used for favicons and mobile devices
+placeholder: generic default assets
+	- icons: generic default browser-specific assets
+sounds: sounds, cc0.
 
-
-# BRANDING
-
-the logo is made on adobe xd(?) by john.
+big-ass reorgnaization occured in 11/25/2022 amid the Qobo/cheeseRox split of the official SB instance.

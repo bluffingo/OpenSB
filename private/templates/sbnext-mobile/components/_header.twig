@@ -18,7 +18,7 @@
                              id="guide-toggle">{{ icon("list", 20) }}</div>
                     {% endif %}
                     <a href="/" id="logo-container"><img id="logo"
-                                                         src="/assets/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png"></a>
+                                                         src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png"></a>
                 </div>
             </div>
             {% if isMaintenance != true %}
