@@ -1,6 +1,6 @@
 <?php
 
-namespace squareBracket;
+namespace openSB;
 /**
  * Returns true if it is executed from the command-line. (For command-line tools)
  */

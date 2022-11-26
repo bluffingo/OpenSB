@@ -1,6 +1,6 @@
 <?php
 
-namespace squareBracket;
+namespace openSB;
 
 use WhiteCube\Lingua\Service as Lingua;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace squareBracket\API;
+namespace openSB\API;
 chdir('../../');
 $rawOutputRequired = true;
 require dirname(__DIR__) . '/../../private/class/common.php';

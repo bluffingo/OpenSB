@@ -1,6 +1,6 @@
 <?php
 
-namespace squareBracket;
+namespace openSB;
 /**
  * Twig loader, initializes Twig with standard configurations and extensions.
  *

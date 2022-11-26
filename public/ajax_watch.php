@@ -1,6 +1,6 @@
 <?php
 
-namespace squareBracket;
+namespace openSB;
 
 require dirname(__DIR__) . '/private/class/common.php';
 if (isset($_POST['limit'])) {

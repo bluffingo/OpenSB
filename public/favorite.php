@@ -1,6 +1,6 @@
 <?php
 
-namespace squareBracket;
+namespace openSB;
 
 $rawOutputRequired = true;
 require dirname(__DIR__) . '/private/class/common.php';

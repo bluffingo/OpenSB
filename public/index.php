@@ -1,6 +1,6 @@
 <?php
 
-namespace squareBracket;
+namespace openSB;
 ini_set('display_errors', 'On');
 require dirname(__DIR__) . '/private/class/common.php';
 

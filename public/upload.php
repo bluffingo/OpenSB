@@ -1,6 +1,6 @@
 <?php
 
-namespace squareBracket;
+namespace openSB;
 
 //this uploads and converts the video, should switch to a better solution!
 require dirname(__DIR__) . '/private/class/common.php';

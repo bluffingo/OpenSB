@@ -1,6 +1,6 @@
 <?php
 
-namespace squareBracket;
+namespace openSB;
 class VideoComments extends Videos
 {
     static function addComment($videoID, $comment, $id)

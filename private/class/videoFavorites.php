@@ -1,7 +1,7 @@
 <?php
 
 
-namespace squareBracket;
+namespace openSB;
 class VideoFavorites extends Videos
 {
 

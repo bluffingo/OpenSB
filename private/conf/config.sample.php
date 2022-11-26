@@ -1,6 +1,6 @@
 <?php
 
-namespace squareBracket;
+namespace openSB;
 //SQL DB
 $host = '127.0.0.1';
 $db = 'squarebracket';

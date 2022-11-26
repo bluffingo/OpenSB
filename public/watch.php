@@ -1,6 +1,6 @@
 <?php
 
-namespace squareBracket;
+namespace openSB;
 
 // fixme: change video-related variables to more generic variables
 

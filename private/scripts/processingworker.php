@@ -2,7 +2,7 @@
 <?php
 //namespace pokTwo;
 // I AM ABOUT TO GO FUCKING INSANE -grkb june 28th 2022
-namespace squareBracket;
+namespace openSB;
 
 use FFMpeg\Coordinate;
 use FFMpeg\FFMpeg;
