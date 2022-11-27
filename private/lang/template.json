@@ -31,7 +31,6 @@
 	"Password": "Password",
 	"Don't have an account?": "Don't have an account?",
 	"Register": "Register",
-	"If you have registered an account on PokTube or squareBracket, that account still exists on Qobo.": "If you have registered an account on PokTube or squareBracket, that account still exists on Qobo.",
 
 	"Options": "Options",
 	"User interface": "User interface",
@@ -74,7 +73,7 @@
 	"Miscellaneous": "Miscellaneous",
 
 	"Statistics": "Statistics",
-	"About this instance of Qobo": "About this instance of Qobo",
+	"About %s": "About %s",
 	"Some statistics may not be accurate.": "Some statistics may not be accurate.",
 	"Registered users": "Registered users",
 	"Uploads": "Uploads",
@@ -109,14 +108,22 @@
 	"Comment": "Comment",
 
 	"en-US": "en-US",
-	"Sorry %s, you are banned from Qobo.": "Sorry %s, you are banned from Qobo.",
+	"Sorry %s, you are banned from %s.": "Sorry %s, you are banned from %s.",
 	"This ban is not set to expire.": "This ban is not set to expire.",
 	"Version": "Version",
-	"By the Qobo contributors": "By the Qobo contributors",
+	"By the openSB contributors": "By the openSB contributors",
 	"What's new": "What's new",
 	"Running on Git commit: ": "Running on Git commit: ",
+	"User agent": "User agent",
+	"Browser being used": "Browser being used",
+	"Generic browser": "Generic browser",
+	"Debug": "Debug",
+	"It is risky to screenshot this due to security reasons, so please don't.": "It is risky to screenshot this due to security reasons, so please don't.",
 
 	"view%s": "view%s",
+
+	"Show replies": "Show replies",
+	"Reply": "Reply",
 
 	"This video should be processing.": "This video should be processing.",
 	"To view this video please enable JavaScript.": "To view this video please enable JavaScript.",
@@ -149,8 +156,8 @@
 	"There are no videos of that category.": "There are no videos of that category.",
 	"You could create one!": "You could create one!",
 
-	"Welcome to Qobo, %s": "Welcome to Qobo, %s",
-	"Welcome to Qobo": "Welcome to Qobo",
+	"Welcome to %s, %s": "Welcome to %s, %s",
+	"Welcome to %s": "Welcome to %s",
 	"Get started": "Get started",
 	"Options successfully saved!": "Options successfully saved!",
 	"Randomly selected uploads": "Randomly selected uploads",
@@ -159,10 +166,12 @@
 	"%s followers": "%s followers",
 	"Published on %s": "Published on %s",
 	"Category": "Category",
+	"Suggestions": "Suggestions",
 	"More": "More",
 
-	"Show replies": "Show replies",
-	"Reply": "Reply",
+	"Like": "Like",
+	"Dislike": "Dislike",
+	"Favorite": "Favorite",
 
 	"Log out": "Log out",
 
@@ -170,7 +179,6 @@
 	"Qobo Videos": "Qobo Videos",
 	"No uploaded videos.": "No uploaded videos.",
 
-	"Favorite": "Favorite",
 	"About": "About",
 	"Rating ratio": "Rating ratio",
 	"Last viewed": "Last viewed",
