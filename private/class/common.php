@@ -52,14 +52,13 @@ if (isset($_COOKIE['frontend'])) {
 
 // cattleDog's verify.php fucks up if this isn't done.
 if (!isset($_SESSION['isCattleDog'])) {
-	header("Access-Control-Allow-Origin: *");
     $lang = new Lang(dirname(__DIR__) . "/lang/" . ($_COOKIE['language'] ?? 'en-US') . ".json");
 	$accountfields = "id, name, email, customcolor, title, about, powerlevel, joined, lastview";
     $userfields = Users::userfields();
     $videofields = "v.id, v.video_id, v.title, v.description, v.time, v.post_type, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, (SELECT COUNT(*) FROM comments WHERE id = v.video_id) AS comments, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, v.videolength, v.category_id, v.author";
 }
 
-if (preg_match('~MSIE|Internet Explorer~i', $_SERVER['HTTP_USER_AGENT'])) {
+if (preg_match('~MSIE|Internet Explorer~i', $_SERVER['HTTP_USER_AGENT']) || preg_match('~Trident/7.0(x*)?; rv:11.0~',$_SERVER['HTTP_USER_AGENT'])) {
 	$browser['legacy_masthead_fix'] = true;
 	$browser['legacy_disable_graph'] = true;
 	if (preg_match('/MSIE (.*?);/', $_SERVER['HTTP_USER_AGENT'])) {
