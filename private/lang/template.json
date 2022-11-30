@@ -11,6 +11,7 @@
 
 	"Admin panel": "Admin panel",
 	"Currently running Qobo version %s (commit %s) on %s.": "Currently running Qobo version %s (commit %s) on %s.",
+	"The latest": "The latest",
 	"Latest registered users": "Latest registered users",
 	"Latest seen users": "Latest seen users",
 	"Latest uploads": "Latest uploads",
@@ -55,7 +56,7 @@
 	"New Password": "New Password",
 	"Repeat New Password": "Repeat New Password",
 
-	"There are no videos that match your query.": "There are no videos that match your query.",
+	"There are no uploads that match your query.": "There are no uploads that match your query.",
 
 	"Settings": "Settings",
 	"Credentials": "Credentials",
