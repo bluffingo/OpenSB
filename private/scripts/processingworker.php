@@ -69,8 +69,8 @@ try {
 
     $sql->query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
         [round($duration / $framerate), $videoData['flags'] ^ 0x2, $new]);
-} catch (Exception $e) {
-    echo "(p2 uploader port, sb rewrite) Something went wrong: " . $e->getMessage();
+} catch (\Exception $e) {
+    echo "openSB Video Processing Worker - Something went wrong: " . $e->getMessage();
 }
 
 clearstatcache();

@@ -30,7 +30,7 @@
                          id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
                         {% if log %}
                             <div style="margin-top: 4px;">
-                                <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
+                                <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }} alt="{{ userdata.name }}">
                                 <!-- <div {% if notification_count > 0 %}class="bg-danger text-light"{% else %}class="bg-neutral{% endif %}" style="padding:6px 8px;display: inline-block;">{{ notification_count }}</div> -->
                                 <div class="usermenushit" id="masthead-below">
                                     <ul style="padding:0">

@@ -6,6 +6,10 @@
 	<table class="settings">
 		<caption><h3>{{ __("Credentials") }}</h3></caption>
 		<tr>
+			<th>{{ __("Setting name") }}</th>
+			<th>{{ __("Setting") }}</th>
+		</tr>
+		<tr>
 			<td class="a">{{ __("Username") }}</td>
 			<td class="b">{{ userdata.name }}</td>
 		</tr>
@@ -28,6 +32,10 @@
 	{% if userbandata != true %}
 		<table class="settings">
 			<caption><h3>{{ __("Profile") }}</h3></caption>
+			<tr>
+				<th>{{ __("Setting name") }}</th>
+				<th>{{ __("Setting") }}</th>
+			</tr>
 			<tr>
 				<td class="a">{{ __("Profile picture") }}</td>
 				<td class="b">
