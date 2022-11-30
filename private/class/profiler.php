@@ -5,17 +5,17 @@ class Profiler
 {
     private $starttime;
 
-    function __construct()
+    public function __construct()
     {
         $this->starttime = microtime(true);
     }
 
-    function __destruct()
+    public function __destruct()
     {
         $this->getStats();
     }
 
-    function getStats()
+    public function getStats()
     {
         global $userdata, $isMaintenance, $frontendName;
 
@@ -52,7 +52,7 @@ class Profiler
         }
 
         if ($frontendName == "sbnext") {
-            print('<div class="profiler"><center>' . $debugData . '</center></div>');
+            print('<div class="profiler">' . $debugData . '</div>');
         } else {
             print('<center>' . $debugData . '</center>');
         }

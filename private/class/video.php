@@ -3,53 +3,8 @@
 namespace openSB;
 class Videos
 {
-    // this is like that so that it stays readable in the code and doesn't introduce a fucking huge horizontal scrollbar on GitHub. -grkb 3/31/2022
-    //why the hell is it using tutorial names?
-    public static $recommendedfields = "
-		jaccard.video_id,
-		jaccard.flags,
-		jaccard.intersect,
-		jaccard.union,
-		jaccard.intersect / jaccard.union AS 'jaccard index'
-	FROM
-		(
-		SELECT
-			c2.video_id AS video_id,
-			c2.flags AS flags,
-			COUNT(ct2.tag_id) AS 'intersect',
-			(
-			SELECT
-				COUNT(DISTINCT ct3.tag_id)
-			FROM
-				tag_index ct3
-			WHERE
-				ct3.video_id IN(c1.id, c2.id)
-		) AS 'union'
-	FROM
-		videos AS c1
-	INNER JOIN videos AS c2
-	ON
-		c1.id != c2.id
-	LEFT JOIN tag_index AS ct1
-	ON
-		ct1.video_id = c1.id
-	LEFT JOIN tag_index AS ct2
-	ON
-		ct2.video_id = c2.id AND ct1.tag_id = ct2.tag_id
-	WHERE
-		c1.id = ?
-	GROUP BY
-		c1.id,
-		c2.id
-	) AS jaccard
-	WHERE
-		jaccard.flags != 0x2
-	ORDER BY
-		jaccard.intersect / jaccard.union
-	DESC";
-
     // Functions related to sbNext Video Stuff.
-    static function categoryIDToName($id)
+    public static function categoryIDToName($id)
     {
         switch ($id) {
             case 0:
@@ -80,7 +35,7 @@ class Videos
         return $name;
     }
 
-    static function type_to_cat($type)
+    public static function type_to_cat($type)
     {
         switch ($type) {
             case 'misc':
@@ -112,7 +67,7 @@ class Videos
     }
 
     // This is for the like-to-dislike ratio lightsaber. -Gamerappa, November 2nd 2021
-    static function calculateRatio($number, $percent, $total)
+    public static function calculateRatio($number, $percent, $total)
     {
         // If there's no ratio or dislikes, it returns 100.
         if ($total == 0 or $number == 0) {
@@ -132,7 +87,7 @@ class Videos
      * @param string $whereEquals Precise the value of the column.
      * @return array A video list, ordered by what $orderBy specified.
      */
-    static function getVideos($orderBy, $limit, $whereSomething = null, $whereEquals = null): array
+    public static function getVideos($orderBy, $limit, $whereSomething = null, $whereEquals = null): array
     {
         global $userfields, $videofields, $sql;
         if (isset($whereSomething)) {
@@ -147,34 +102,12 @@ class Videos
     }
 
     /**
-     * Return a list of videos that are simillar to the video the user is watching.
-     *
-     * @param string $videoID The ID of the currently watched video.
-     * @return array A video list, ordered by "relevancy".
-     */
-
-    static function getRecommended($videoID): array
-    {
-        global $userfields, $videofields, $recommendedfields, $sql;
-        $recommendfields = self::$recommendedfields;
-        $intID = self::getVideoIntID($videoID);
-        $recommendedList = $sql->fetchArray($sql->query("SELECT $recommendfields LIMIT 20", [$intID]));
-        $videoList = array();
-        foreach ($recommendedList as $row) {
-            //$videoData = fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$row['video_id']]);
-            $videoData = self::fetchVideos("v.video_id", $row['video_id']);
-            array_push($videoList, $videoData);
-        }
-        return $videoList;
-    }
-
-    /**
      * Return the interger ID of a video.
      *
      * @param string $video The randomized video ID.
      * @return int the ID of a video.
      */
-    static function getVideoIntID($video): int
+    public static function getVideoIntID($video): int
     {
         global $sql;
         return $sql->result("SELECT id FROM videos WHERE video_id = ?", [$video]);
@@ -187,7 +120,7 @@ class Videos
      * @param string $whereEquals Precise the value of the column.
      * @return array A video list, ordered by what $orderBy specified.
      */
-    static function fetchVideos($whereSomething, $whereEquals, $orderBy = null, $limit = null)
+    public static function fetchVideos($whereSomething, $whereEquals, $orderBy = null, $limit = null)
     {
         global $userfields, $videofields, $sql;
         if (isset($orderBy, $limit)) {
@@ -208,55 +141,36 @@ class Videos
      * @param string $video The randomized video ID.
      * @return string the ID of a video.
      */
-    static function getVideoRanID($video): string
+    public static function getVideoRanID($video): string
     {
         global $sql;
         return $sql->result("SELECT video_id FROM videos WHERE id = ?", [$video]);
     }
 
-    static function getLatestVideo($userID)
+    public static function getLatestVideo($userID)
     {
         $video = Videos::fetchVideos("author", $userID, "v.id DESC", 1);
         return $video;
     }
 
-    static function addVideo($new, $title, $description, $id, string $upload_file): void
+    public static function addVideo($new, $title, $description, $id, string $upload_file): void
     {
         global $sql;
         $sql->query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, flags) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $id, time(), time(), $upload_file, 0x2]);
     }
 
-    static function bumpVideo(int $currentTime, $id): void
+    public static function bumpVideo(int $currentTime, $id): void
     {
         global $sql;
         $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
     }
 
-    static function getVideoData($userfields, $id)
+    public static function getVideoData($userfields, $id)
     {
         global $sql;
         $videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
         if (!$videoData) error('404', __("The video you were looking for cannot be found."));
         $videoData['views'] = $sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
         return $videoData;
-    }
-
-    static function getFavoritedVideosFromUser(string $limit, $id): array
-    {
-        global $sql, $userfields, $videofields;
-        $videoData = $sql->query("
-SELECT $userfields $videofields FROM videos v 
-	JOIN users u ON v.author = u.id 
-	JOIN favorites f ON (f.video_id = v.video_id) 
-	WHERE 
-		f.user_id = ?
-	AND 
-		flags != 0x2
-ORDER BY v.time DESC $limit", [$id]);
-        $videos = $sql->fetchArray($videoData);
-        foreach ($videos as &$video) {
-            $video['tags'] = VideoTags::getVideoTags($video['id']);
-        }
-        return $videos;
     }
 }

@@ -9,7 +9,7 @@ class MySQL
 {
     private $sql;
 
-    function __construct($host, $user, $pass, $db)
+    public function __construct($host, $user, $pass, $db)
     {
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -24,20 +24,20 @@ class MySQL
         }
     }
 
-    function result($query, $params = [])
+    public function result($query, $params = [])
     {
         $res = $this->query($query, $params);
         return $res->fetchColumn();
     }
 
-    function query($query, $params = [])
+    public function query($query, $params = [])
     {
         $res = $this->sql->prepare($query);
         $res->execute($params);
         return $res;
     }
 
-    function fetchArray($query): array
+    public function fetchArray($query): array
     {
         $out = [];
         while ($record = $query->fetch()) {
@@ -46,13 +46,13 @@ class MySQL
         return $out;
     }
 
-    function fetch($query, $params = [])
+    public function fetch($query, $params = [])
     {
         $res = $this->query($query, $params);
         return $res->fetch();
     }
 
-    function insertId()
+    public function insertId()
     {
         return $this->sql->lastInsertId();
     }
