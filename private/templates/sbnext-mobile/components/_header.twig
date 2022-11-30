@@ -17,8 +17,7 @@
                         <div class="button button-neutral-invis guide-button"
                              id="guide-toggle">{{ icon("list", 20) }}</div>
                     {% endif %}
-                    <a href="/" id="logo-container"><img id="logo"
-                                                         src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png"></a>
+                    <a href="/" id="logo-container"><img id="logo" src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}"></a>
                 </div>
             </div>
             {% if isMaintenance != true %}
