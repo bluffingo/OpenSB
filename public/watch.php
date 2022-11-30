@@ -6,7 +6,7 @@ namespace openSB;
 
 use Exception;
 
-require dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/private/class/common.php';
 
 $id = ($_GET['v'] ?? null);
 $ip = ($_SERVER['HTTP_CLIENT_IP'] ?? ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']));

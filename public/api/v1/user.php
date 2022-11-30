@@ -3,7 +3,7 @@
 namespace openSB\API;
 chdir('../../');
 $rawOutputRequired = true;
-require dirname(__DIR__) . '/../../private/class/common.php';
+require_once dirname(__DIR__) . '/../../private/class/common.php';
 
 header('Content-Type: application/json');
 

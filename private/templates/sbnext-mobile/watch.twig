@@ -29,8 +29,8 @@
                 <div class="grid">
                     <img src="{{ profile_image(video.u_name) }}" class="rounded"
                          style="width:48px;float: left;margin-right:8px;" alt="{{ video.u_name }}">
-                    <a href="user.php?name={{ video.u_name }}"><b
-                                style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a>
+                    <a href="user.php?name={{ video.u_name }}"><strong
+                                style="height: 20px;display: inline-block;">{{ video.u_name }}</strong></a>
                     • {{ __("%s followers", [subCount]) }}
                     <br>
                     {% include "components/watch_subscribe.twig" %}
@@ -71,7 +71,7 @@
                 <div class="grid">
                     <div class="col-md-10">
                         <div id="About" class="tabcontent" style="display: block;">
-                            <p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
+                            <p><strong>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</strong></p>
                             <p>{{ video.description }}</p>
                             <div class="description-extra">
                                 <ul>

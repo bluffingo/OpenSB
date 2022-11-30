@@ -1,8 +1,8 @@
 <?php
 
-namespace squareBracket;
+namespace openSB;
 
-require dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/private/class/common.php';
 
 $videoData = $sql->fetchArray($sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY v.time ASC"));
 

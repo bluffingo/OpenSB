@@ -10,7 +10,7 @@ if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
     die('<b>A configuration file could not be found. Please read the installing instructions in the README file.</b>');
 }
 
-require(dirname(__DIR__) . '/conf/config.php');
+require_once(dirname(__DIR__) . '/conf/config.php');
 
 if ($isDebug and !isset($rawOutputRequired)) {
     // load profiler first
@@ -18,7 +18,7 @@ if ($isDebug and !isset($rawOutputRequired)) {
     $profiler = new Profiler();
 }
 
-require(dirname(__DIR__) . '/../vendor/autoload.php'); //dogshit
+require_once(dirname(__DIR__) . '/../vendor/autoload.php'); //dogshit
 
 foreach (glob(dirname(__DIR__) . "/class/*.php") as $file) {
     require_once($file);

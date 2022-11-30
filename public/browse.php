@@ -2,7 +2,7 @@
 
 namespace openSB;
 
-require dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/private/class/common.php';
 
 $type = ($_GET['type'] ?? 'all');
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);

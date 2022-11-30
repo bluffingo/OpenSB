@@ -2,7 +2,7 @@
 
 namespace openSB;
 
-require dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/private/class/common.php';
 
 $revisions = $sql->fetchArray($sql->query("SELECT $userfields r.page, r.revision, r.size, r.sizediff, r.time, r.description, r.type, r.comment_id FROM revisions r JOIN users u ON r.author = u.id ORDER BY r.time DESC, r.id DESC LIMIT 50"));
 $revisionListActual = array();

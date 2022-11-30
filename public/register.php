@@ -2,7 +2,7 @@
 
 namespace openSB;
 
-require dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/private/class/common.php';
 
 $error = '';
 

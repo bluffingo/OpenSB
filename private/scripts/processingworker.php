@@ -10,7 +10,7 @@ use FFMpeg\FFProbe;
 use FFMpeg\Filters;
 use FFMpeg\Format\Video\X264;
 
-require dirname(__DIR__) . '/class/common.php';
+require_once dirname(__DIR__) . '/class/common.php';
 $config = [
     'timeout' => 3600, // The timeout for the underlying process
     'ffmpeg.threads' => 12,   // The number of threads that FFmpeg should use
