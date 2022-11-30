@@ -25,7 +25,7 @@
 1. Enable debugging features by setting `$isDebug` to true.
 1. If you want to be able to upload during development, make the `dynamic/` directory and the directories inside it writable by your web server.
 
-### Virtual Host example (Apache)
+### Virtual host example
 You will have to modify the directories to match your instance's location.
 ```
 <VirtualHost *> 
@@ -37,6 +37,7 @@ You will have to modify the directories to match your instance's location.
     <Directory "C:/xampp/openSB">
         Options Indexes FollowSymLinks
 	Require all granted
+	AllowOverride All
     </Directory>
 </VirtualHost>
 ```
@@ -51,4 +52,8 @@ Relative time translations: https://github.com/mpratt/RelativeTime
 
 ### Can I use NGINX?
 
-Qobo, openSB's official instance, originally used NGINX until around late-2021. Due to Qobo being developed by grkb/Gamerappa/Chaziz on XAMPP, NGINX has not been tested for a while. If you want to use NGINX for an openSB instance, do so at your own risk.
+Qobo, openSB's official instance, originally used NGINX until around late-2021. Due to Qobo being developed by grkb/Gamerappa/Chaziz (she goes by many usernames) on XAMPP, NGINX has not been tested for a while. If you want to use NGINX for an openSB instance, do so at your own risk.
+
+### Why do I get 404 errors when I click on thumbnails?
+
+Assuming you use Apache and have the rewrite module installed, this is because AllowOverride is turned off. See the virtual host example above for a quick fix.
