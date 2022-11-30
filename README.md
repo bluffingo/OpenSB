@@ -3,25 +3,27 @@
 <img src="https://user-images.githubusercontent.com/45898787/202602835-5e178385-4fee-4b31-9c25-7337e242a748.png">
 </p>
 
-<h3 align="center"><a href="https://qobo.tv/">Qobo's live website</a></h3>
+<h3 align="center"><a href="https://qobo.tv/">Qobo, the official openSB instance.</a></h3>
 
 ## How to setup an openSB instance.
-1. Get an Apache (NGINX is untested) server with PHP and MariaDB up and running, including Composer.
+1. Get an Apache server with PHP and MariaDB up and running, including Composer. Please note that NGINX is currently unsupported.
 1. Setup a virtual host. Look below the steps for an example.
 1. Run `composer update` from the terminal.
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
-1. Import the database dump found in `sql/` into the database you want to use.
-1. Either run the `compile-scss-sassc` or `compile-scss-dartsass` script available in the tools directory to generate CSS. This will be a bit more complicated for Windows users.
+1. Import the database template found in `sql/` into the database you want to use.
+1. Run the `compile-scss-dartsass` script available in the tools directory to generate CSS. This will be a bit more complicated for Windows users.
 
 ### Production specific
+
 1. Instead of installing dependencies using `composer update` you do `composer update --no-dev`
-1. Make the `videos/`, `templates/cache/` and `assets/thumb/` directories writable by your web server.
+1. Make the `dynamic/` and `templates/cache/` directories writable by your web server.
+1. Modify `$branding` to replace openSB branding with your custom branding. Check the `public/assets/placeholder` directory for reference.
 
 ### Development specific
 
 1. Disable Twig's template caching by setting `$tplNoCache` to true.
 1. Enable debugging features by setting `$isDebug` to true.
-1. If you want to be able to upload videos during development, make the `videos/` and `assets/thumb/` directory writable by your web server.
+1. If you want to be able to upload during development, make the `dynamic/` directory and the directories inside it writable by your web server.
 
 ### Virtual Host example (Apache)
 You will have to modify the directories to match your instance's location.
@@ -49,4 +51,4 @@ Relative time translations: https://github.com/mpratt/RelativeTime
 
 ### Can I use NGINX?
 
-Qobo, openSB's official instance, originally used NGINX until around late-2021. Due to Qobo being developed by grkb/Gamerappa on XAMPP, NGINX has not been tested for the longest time. If you want to use NGINX for a Qobo instance, do so at your own risk.
+Qobo, openSB's official instance, originally used NGINX until around late-2021. Due to Qobo being developed by grkb/Gamerappa/Chaziz on XAMPP, NGINX has not been tested for a while. If you want to use NGINX for an openSB instance, do so at your own risk.
