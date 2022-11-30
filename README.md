@@ -6,7 +6,7 @@
 <h3 align="center"><a href="https://qobo.tv/">Qobo, the official openSB instance.</a></h3>
 
 ## How to setup an openSB instance.
-1. Get an Apache server with PHP and MariaDB up and running, including Composer. Please note that NGINX is currently unsupported.
+1. Get an Apache server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. Please note that NGINX is currently unsupported.
 1. Setup a virtual host. Look below the steps for an example.
 1. Run `composer update` from the terminal.
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
