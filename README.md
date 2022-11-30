@@ -7,7 +7,7 @@
 
 ## How to setup an openSB instance.
 1. Get an Apache (NGINX is untested) server with PHP and MariaDB up and running, including Composer.
-1. Setup some virtual host shit, look below.
+1. Setup a virtual host. Look below the steps for an example.
 1. Run `composer update` from the terminal.
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
 1. Import the database dump found in `sql/` into the database you want to use.
@@ -32,7 +32,7 @@ You will have to modify the directories to match your instance's location.
 
     Alias /dynamic "C:/xampp/openSB/dynamic"
 
-    <Directory "C:/xampp/qobo">
+    <Directory "C:/xampp/openSB">
         Options Indexes FollowSymLinks
 	Require all granted
     </Directory>
