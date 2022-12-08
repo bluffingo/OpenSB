@@ -16,12 +16,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
-    {% if theme == 'dark' %}
-        <link id="darkthm" rel="stylesheet" href="/assets/css/darkmode.css" type="text/css">
-    {% endif %}
-    {% if theme == 'nostalgia' %}
-        <link id="nostalgia" rel="stylesheet" href="/assets/css/nostalgia.css" type="text/css">
-    {% endif %}
+    <link rel="stylesheet" href="{{ website_branding.css_override }}" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="/assets/common.js"></script>
