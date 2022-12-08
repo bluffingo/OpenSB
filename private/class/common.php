@@ -6,15 +6,11 @@ $buildNumber = 3;
 $versionNumber = $releaseNumber . "-" . str_pad($buildNumber, 3, "0", STR_PAD_LEFT);
 $gitBranch = "code-rewrite";
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
     die('<b>A configuration file could not be found. Please read the installing instructions in the README file.</b>');
 }
 
-require(dirname(__DIR__) . '/conf/config.php');
+require_once(dirname(__DIR__) . '/conf/config.php');
 
 if ($isDebug and !isset($rawOutputRequired)) {
     // load profiler first
@@ -22,7 +18,7 @@ if ($isDebug and !isset($rawOutputRequired)) {
     $profiler = new Profiler();
 }
 
-require(dirname(__DIR__) . '/../vendor/autoload.php'); //dogshit
+require_once(dirname(__DIR__) . '/../vendor/autoload.php'); //dogshit
 
 foreach (glob(dirname(__DIR__) . "/class/*.php") as $file) {
     require_once($file);
@@ -56,14 +52,13 @@ if (isset($_COOKIE['frontend'])) {
 
 // cattleDog's verify.php fucks up if this isn't done.
 if (!isset($_SESSION['isCattleDog'])) {
-	header("Access-Control-Allow-Origin: *");
     $lang = new Lang(dirname(__DIR__) . "/lang/" . ($_COOKIE['language'] ?? 'en-US') . ".json");
 	$accountfields = "id, name, email, customcolor, title, about, powerlevel, joined, lastview";
     $userfields = Users::userfields();
     $videofields = "v.id, v.video_id, v.title, v.description, v.time, v.post_type, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, (SELECT COUNT(*) FROM comments WHERE id = v.video_id) AS comments, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, v.videolength, v.category_id, v.author";
 }
 
-if (preg_match('~MSIE|Internet Explorer~i', $_SERVER['HTTP_USER_AGENT']) || preg_match('~Trident/7.0(.*)?; rv:11.0~',$_SERVER['HTTP_USER_AGENT'])) {
+if (preg_match('~MSIE|Internet Explorer~i', $_SERVER['HTTP_USER_AGENT']) || preg_match('~Trident/7.0(/x*/)?; rv:11.0~',$_SERVER['HTTP_USER_AGENT'])) {
 	$browser['legacy_masthead_fix'] = true;
 	$browser['legacy_disable_graph'] = true;
 	$browser['legacy_disable_videojs'] = true;

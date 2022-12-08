@@ -8,7 +8,7 @@ namespace openSB;
  * @return Environment Twig object.
  */
 
-use Mobile_Detect;
+use MobileDetect;
 use RelativeTime\RelativeTime;
 use Twig\Environment;
 use Twig\Extra\Markdown\DefaultMarkdown;
@@ -17,13 +17,14 @@ use Twig\Extra\Markdown\MarkdownRuntime;
 use Twig\Loader\FilesystemLoader;
 use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extension\DebugExtension;
+use Twig\TwigFunction;
 
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
     global $sql, $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness,
            $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $pageVariable, $isMaintenance,
            $versionNumber, $isDebug, $userbandata, $browser, $branding;
-    $detect = new Mobile_Detect;
+    $detect = new \Detection\MobileDetect;
 
     if ($log) {
         $totalSubscribers = $sql->result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
@@ -72,6 +73,10 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $twig->addExtension(new MarkdownExtension());
 	if ($isDebug) { 
 		$twig->addExtension(new DebugExtension()); 
+	} else {
+		$twig->addFunction(new TwigFunction('dump', function() {
+			return null;
+		}));
 	}
 
     $twig->addGlobal('log', $log);

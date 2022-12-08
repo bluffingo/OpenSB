@@ -3,7 +3,7 @@
 namespace openSB;
 
 $rawOutputRequired = true;
-require dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/private/class/common.php';
 
 if (!isset($_POST['vidid'])) {
     die(__("No POST data."));

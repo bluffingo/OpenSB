@@ -13,7 +13,7 @@ class Users
      * @param string $pre $user key prefix.
      * @return string Userlink HTML code.
      */
-    static function userlink($user, $pre = ''): string
+    public static function userlink($user, $pre = ''): string
     {
         if (self::getIsUserBannedFromName($user[$pre . 'name'])) {
             $user[$pre . 'colorname'] = sprintf('<span style="color:gray">%s</span>', $user[$pre . 'name']);
@@ -35,7 +35,7 @@ class Users
      *
      * @return bool
      */
-    static function getIsUserBannedFromName($userName): bool
+    public static function getIsUserBannedFromName($userName): bool
     {
         global $sql;
         $id = $sql->result("SELECT id FROM users WHERE name=?", [$userName]);
@@ -47,7 +47,7 @@ class Users
      *
      * @return bool
      */
-    static function getIsUserBannedFromID($userID): bool
+    public static function getIsUserBannedFromID($userID): bool
     {
         global $sql;
         if ($sql->result("SELECT userid FROM bans WHERE userid=?", [$userID])) { // get uid from ban data
@@ -62,7 +62,7 @@ class Users
      *
      * @return string String to put inside a SQL statement.
      */
-    static function userfields(): string
+    public static function userfields(): string
     {
         $fields = ['id', 'name', 'customcolor'];
 
@@ -79,7 +79,7 @@ class Users
      *
      * @return int
      */
-    static function getUserVideoCount($userID): int
+    public static function getUserVideoCount($userID): int
     {
         global $sql;
         $count = $sql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$userID]);
@@ -91,7 +91,7 @@ class Users
      *
      * @return int
      */
-    static function getUserFavoriteCount($userID): int
+    public static function getUserFavoriteCount($userID): int
     {
         global $sql;
         $count = $sql->result("SELECT COUNT(user_id) FROM favorites WHERE user_id=?", [$userID]);
@@ -108,7 +108,7 @@ class Users
      * @return string
      * @throws \Exception
      */
-    static function register($name, $pass, $mail): string
+    public static function register($name, $pass, $mail): string
     {
         global $sql;
         $token = bin2hex(random_bytes(20));

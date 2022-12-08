@@ -1,8 +1,7 @@
 <?php
 
 namespace openSB;
-ini_set('display_errors', 'On');
-require dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/private/class/common.php';
 
 $nonFunctionalShit = true;
 $pageVariable = "index";

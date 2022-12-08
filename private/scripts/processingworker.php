@@ -10,7 +10,7 @@ use FFMpeg\FFProbe;
 use FFMpeg\Filters;
 use FFMpeg\Format\Video\X264;
 
-require dirname(__DIR__) . '/class/common.php';
+require_once dirname(__DIR__) . '/class/common.php';
 $config = [
     'timeout' => 3600, // The timeout for the underlying process
     'ffmpeg.threads' => 12,   // The number of threads that FFmpeg should use
@@ -69,8 +69,8 @@ try {
 
     $sql->query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
         [round($duration / $framerate), $videoData['flags'] ^ 0x2, $new]);
-} catch (Exception $e) {
-    echo "(p2 uploader port, sb rewrite) Something went wrong: " . $e->getMessage();
+} catch (\Exception $e) {
+    echo "openSB Video Processing Worker - Something went wrong: " . $e->getMessage();
 }
 
 clearstatcache();

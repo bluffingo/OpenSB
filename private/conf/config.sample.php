@@ -15,7 +15,7 @@ $ffprobePath = '';
 $tplCache = 'templates/cache';
 $tplNoCache = false; // **DO NOT SET AS TRUE IN PROD - DEV ONLY**
 
-$domain = 'http://squarebracket.local';
+$domain = 'https://squarebracket.local';
 $isDebug = false; // DEV ONLY
 $isMaintenance = false;
 

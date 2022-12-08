@@ -3,7 +3,7 @@
 namespace openSB;
 class GraphData
 {
-    static function getVideoGraph(): array
+    public static function getVideoGraph(): array
     {
         global $sql;
         $sql->query("SET @runningTotal = 0;");
@@ -23,7 +23,7 @@ ORDER BY time;");
         return $videos;
     }
 
-    static function getUserGraph(): array
+    public static function getUserGraph(): array
     {
         global $sql;
         $sql->query("SET @runningTotal = 0;");

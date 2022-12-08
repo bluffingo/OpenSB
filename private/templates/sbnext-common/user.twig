@@ -104,8 +104,8 @@
             {{ pagination(level_count, glob_lpp, le_url, page) }}
         </div>
         <div id="Statistics" class="tabcontent">
-            <p><b>{{ __("Registered on") }}</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}</p>
-            <p><b>{{ __("Last logged in") }}</b>: {{ userpagedata.lastview | relative_time }}</p>
+            <p><strong>{{ __("Registered on") }}</strong>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}</p>
+            <p><strong>{{ __("Last logged in") }}</strong>: {{ userpagedata.lastview | relative_time }}</p>
         </div>
         <div id="Discussion" class="tabcontent">
             {% if log %}

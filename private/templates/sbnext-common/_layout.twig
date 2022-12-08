@@ -65,7 +65,7 @@
 </div>
 <footer>
 	<div class="footer">
-		<img src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png">
+		<img src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}">
 		<p>{{ __("Version") }} {{ version }} · <strong>{{ __("By the openSB contributors") }}</strong> · 2020-{{ 'now' | date('Y') }}
 			| <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
 		</p>

@@ -9,7 +9,7 @@ class Lang
     private $langData;
     private $langFile;
 
-    function __construct($langFile = '')
+    public function __construct($langFile = '')
     {
         if ($langFile) {
             $contents = file_get_contents($langFile);
@@ -19,7 +19,7 @@ class Lang
         $this->langFile = $langFile;
     }
 
-    function translate($string, $placeholders = []): string
+    public function translate($string, $placeholders = []): string
     {
         if ($this->langFile) {
             if (isset($this->langData[$string]) && $this->langData[$string]) {

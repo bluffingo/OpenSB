@@ -1,7 +1,7 @@
 <div class="grid" style="margin-bottom: 5px;display:block;">
     <div class="col-md-3">
         <a href="watch.php?v={{ data.video_id }}">
-            <img class="img-fluid " src="{{ video_thumbnail(data.video_id) }}">
+            <img class="img-fluid " src="{{ video_thumbnail(data.video_id) }}" alt="{{ data.title }}">
             <span class="video-time">{{ video_length(data) }}</span>
         </a>
     </div>

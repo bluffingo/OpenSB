@@ -3,7 +3,7 @@
         <div class="grid">
             <div class="col-md-16">
                 <a href="watch.php?v={{ data.video_id }}">
-                    <img class="img-fluid" src="{{ video_thumbnail(data.video_id) }}">
+                    <img class="img-fluid" src="{{ video_thumbnail(data.video_id) }}" alt="{{ data.title }}">
                     <span class="video-time">{{ video_length(data) }}</span>
                 </a>
             </div>
@@ -11,7 +11,7 @@
                 <h1 style="max-height: 2.2em;height:2.2em;overflow: hidden;display: block;"><a
                             href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h1>
                 <div class="col-md-1" style="padding-left:0;">
-                    <img class="rounded img-fluid" src="{{ profile_image(data.u_name) }}" alt="{{ data.u_name }}">
+                    <img class="rounded img-fluid" src="{{ profile_image(data.u_name) }}" alt="{{ data.u_name }}" alt="{{ data.u_name }}">
                 </div>
                 <div class="col-md-11">
                     <h3 style="line-height:1;margin:0;">{{ userlink(data, 'u_') }}</h3>

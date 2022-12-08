@@ -3,8 +3,7 @@
         <div class="grid" style="margin-bottom: 17.5px;">
             <div class="col-md-10">
                 <div id="header-main">
-                    <a href="/" id="logo-container"><img id="logo"
-                                                         src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png"></a>
+                    <a href="/" id="logo-container"><img id="logo" src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}"></a>
                     {% if isMaintenance != true %}
 					<div class="masthead-links-container">
 						<div class="masthead-links">
@@ -30,7 +29,7 @@
                     {% if isMaintenance != true %}
                         {% if log %}
                             <div style="margin-top: 4px;">
-                                <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}">
+                                <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
                                 <div class="usermenushit" id="masthead-below">
                                     <ul style="padding:0">
                                         <li><a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a></li>
