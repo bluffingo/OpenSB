@@ -66,6 +66,7 @@ if (!isset($_SESSION['isCattleDog'])) {
 if (preg_match('~MSIE|Internet Explorer~i', $_SERVER['HTTP_USER_AGENT']) || preg_match('~Trident/7.0(.*)?; rv:11.0~',$_SERVER['HTTP_USER_AGENT'])) {
 	$browser['legacy_masthead_fix'] = true;
 	$browser['legacy_disable_graph'] = true;
+	$browser['legacy_disable_videojs'] = true;
 	if (preg_match('/MSIE (.*?);/', $_SERVER['HTTP_USER_AGENT'])) {
 		$browser['name'] = "Internet Explorer Legacy"; // IE 10 and below
 		$browser['codename'] = "ie_old";
@@ -73,6 +74,24 @@ if (preg_match('~MSIE|Internet Explorer~i', $_SERVER['HTTP_USER_AGENT']) || preg
 	$browser['name'] = "Internet Explorer"; //IE 11
 	$browser['codename'] = "ie";
 	}
+} elseif (preg_match('~Goanna~', $_SERVER['HTTP_USER_AGENT'])) {
+	$browser['name'] = "Pale Moon/K-Meleon (or derivatives)"; // Pale Moon or K-Meleon (which uses an old build of Goanna but whatever)
+	$browser['codename'] = "palemoon";
+} elseif (preg_match('~Firefox~', $_SERVER['HTTP_USER_AGENT'])) {
+	$browser['name'] = "Firefox (or deriatives)"; // Firefox
+	$browser['codename'] = "firefox";
+} elseif (preg_match('~Chrome~', $_SERVER['HTTP_USER_AGENT'])) {
+	$browser['name'] = "Chromium (or deriatives)"; // Chrome
+	$browser['codename'] = "chromium";
+} elseif (preg_match('~AppleWebKit~', $_SERVER['HTTP_USER_AGENT'])) {
+	$browser['name'] = "Safari"; // Safari
+	$browser['codename'] = "webkit";
+} elseif (preg_match('~Presto~', $_SERVER['HTTP_USER_AGENT'])) {
+	$browser['name'] = "Legacy Opera"; // Safari
+	$browser['codename'] = "legacy-opera";
+	$browser['legacy_masthead_fix'] = true;
+	$browser['legacy_disable_graph'] = true;
+	$browser['legacy_disable_videojs'] = true;
 }
 
 if ($isMaintenance && !isCli()) {
