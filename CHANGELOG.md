@@ -1,9 +1,10 @@
 # openSB Beta 3
 ## Beta 3.0
 ### Beta 3.0.0-003
+* Branding settings, ***long*** overdue.
 * Refinements to Finalium user interface.
 * Replaced Bootstrap icon set with... uh, I forgot.
-* Dropped PHP 7.3 support due to Mobile Detection library.
+* Dropped PHP 7.3 support due to Mobile Detection library, due to the way our composer.json file is made, old versions of openSB may no longer work as intended.
 ### Beta 3.0.0-002 (November 17th 2022)
 * Finalized image uploading
 * Improvements to Finalium's SCSS
