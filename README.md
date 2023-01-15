@@ -3,8 +3,6 @@
 <img src="https://user-images.githubusercontent.com/45898787/202602835-5e178385-4fee-4b31-9c25-7337e242a748.png">
 </p>
 
-<h3 align="center"><a href="https://qobo.tv/">Qobo, the official openSB instance.</a></h3>
-
 ## How to setup an openSB instance.
 1. Get an Apache server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. Please note that NGINX is currently unsupported.
 1. Setup a virtual host. Look below the steps for an example.
