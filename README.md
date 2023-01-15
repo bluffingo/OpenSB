@@ -4,6 +4,9 @@
 </p>
 
 ## How to setup an openSB instance.
+
+It should be noted that this codebase is a bit clunky and has not aged that well. Do not expect everything to work, especially uploading.
+
 1. Get an Apache server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. Please note that NGINX is currently unsupported.
 1. Setup a virtual host. Look below the steps for an example.
 1. Run `composer update` from the terminal.
