@@ -82,7 +82,7 @@ if (preg_match('~MSIE|Internet Explorer~i', $_SERVER['HTTP_USER_AGENT']) || preg
 	$browser['name'] = "Safari"; // Safari
 	$browser['codename'] = "webkit";
 } elseif (preg_match('~Presto~', $_SERVER['HTTP_USER_AGENT'])) {
-	$browser['name'] = "Legacy Opera"; // Safari
+	$browser['name'] = "Legacy Opera"; // Presto-era Opera
 	$browser['codename'] = "legacy-opera";
 	$browser['legacy_masthead_fix'] = true;
 	$browser['legacy_disable_graph'] = true;
