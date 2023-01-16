@@ -45,15 +45,11 @@ You will have to modify the directories to match your instance's location.
 
 ## Questions
 
-### Where do I translate openSB?
+### Where can I translate openSB?
 
 openSB translations: https://crowdin.com/project/squarebracket
 
 Relative time translations: https://github.com/mpratt/RelativeTime
-
-### Can I use NGINX?
-
-Qobo, openSB's official instance, originally used NGINX until around late-2021. Due to Qobo being developed by grkb/Gamerappa/Chaziz (she goes by many usernames) on XAMPP, NGINX has not been tested for a while. If you want to use NGINX for an openSB instance, do so at your own risk.
 
 ### Why do I get 404 errors when I click on thumbnails?
 
