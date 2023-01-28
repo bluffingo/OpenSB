@@ -1,2 +1,0 @@
-{% if file_exists %}{% set imgSrcPath = '/dynamic/thumbnails/' ~ data ~ '.png' %}{% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}{% else %}{% set imgSrcPath = website_branding.assets_location ~ '/placeholder
-.png' %}{% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}{% endif %}

@@ -36,11 +36,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     chdir(__DIR__);
     chdir('../');
     if (!isset($customloader)) {
-        if ($frontend == "sbnext-desktop") { //finalium is not mobile first.
-            $loader = new FilesystemLoader(['templates/' . $frontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
-        } else { //i don't know
-            $loader = new FilesystemLoader(['templates/' . $frontendCommon . '/' . $subfolder]);
-        }
+        $loader = new FilesystemLoader(['templates/' . $frontendCommon . '/' . $subfolder]);
     } else {
         $loader = $customloader();
     }
