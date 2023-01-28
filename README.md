@@ -1,7 +1,4 @@
 <h1 align="center">openSB Beta 3.0.0</h1>
-<p align="center">
-<img src="https://user-images.githubusercontent.com/45898787/202602835-5e178385-4fee-4b31-9c25-7337e242a748.png">
-</p>
 
 ## How to setup an openSB instance.
 
