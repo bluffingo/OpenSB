@@ -22,9 +22,8 @@ use Twig\TwigFunction;
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
     global $sql, $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness,
-           $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $pageVariable, $isMaintenance,
+           $languages, $frontend, $frontendCommon, $notificationCount, $pageVariable, $isMaintenance,
            $versionNumber, $isDebug, $userbandata, $browser, $branding;
-    $detect = new \Detection\MobileDetect;
 
     if ($log) {
         $totalSubscribers = $sql->result("SELECT SUM(user) FROM subscriptions WHERE user = ?", [$userdata['id']]);
@@ -38,11 +37,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     chdir('../');
     if (!isset($customloader)) {
         if ($frontend == "sbnext-desktop") { //finalium is not mobile first.
-            if ($detect->isMobile()) {
-                $loader = new FilesystemLoader(['templates/' . $mobileFrontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
-            } else {
-                $loader = new FilesystemLoader(['templates/' . $frontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
-            }
+            $loader = new FilesystemLoader(['templates/' . $frontend . '/' . $subfolder, 'templates/' . $frontendCommon . '/' . $subfolder]);
         } else { //i don't know
             $loader = new FilesystemLoader(['templates/' . $frontendCommon . '/' . $subfolder]);
         }

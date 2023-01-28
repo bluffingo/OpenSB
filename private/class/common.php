@@ -42,12 +42,10 @@ if (isset($_COOKIE['frontend'])) {
     $frontendName = $_COOKIE['frontend'];
     $frontend = $_COOKIE['frontend'] . "-desktop";
     $frontendCommon = $_COOKIE['frontend'] . "-common";
-    $mobileFrontend = $_COOKIE['frontend'] . "-mobile";
 } else {
     $frontendName = (isset($useTemplate) ? $useTemplate : 'sbnext');
     $frontend = (isset($useTemplate) ? $useTemplate . "-desktop" : 'sbnext-desktop');
     $frontendCommon = (isset($useTemplate) ? $useTemplate . "-common" : 'sbnext-common');
-    $mobileFrontend = (isset($useTemplate) ? $useTemplate . "-mobile" : 'sbnext-mobile');
 }
 
 // cattleDog's verify.php fucks up if this isn't done.
