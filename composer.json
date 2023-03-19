@@ -5,7 +5,7 @@
 		"intervention/image": "^2.5",
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
-		"mobiledetect/mobiledetectlib": "dev-master",
+		"mobiledetect/mobiledetectlib": "3.74",
 		"php-ffmpeg/php-ffmpeg": "0.x-dev",
 		"whitecube/lingua": "dev-master"
 	},
