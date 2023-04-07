@@ -18,10 +18,6 @@ class BunnyStorage implements Storage
         $this->bunnyClient = new BunnyClient(
             client: new \Symfony\Component\HttpClient\Psr18Client(),
         );
-        $this->streamApi = new StreamAPI(
-            apiKey: $bunnySettings["streamApi"],
-            client: $this->bunnyClient
-        );
         $this->edgeStorageApi = new EdgeStorageAPI(
             apiKey: $bunnySettings["storageApi"],
             region: Region::UK, //FIXME: don't hardcode this. -grkb 4/7/2023
@@ -33,15 +29,21 @@ class BunnyStorage implements Storage
     }
 
     public function processVideo($new, $target_file) {
-        global $sql;
+        global $sql, $bunnySettings;
 
-        $newVideo = $this->streamApi->createVideo(
+        // this fucking shit won't work if i put this on __construct(). -grkb 4/7/2023
+        $streamApi = new StreamAPI(
+            apiKey: $bunnySettings["streamApi"],
+            client: $this->bunnyClient,
+        );
+
+        $newVideo = $streamApi->createVideo(
             libraryId: $this->streamLibrary,
             body: [
                 'title' => 'Qobo: ' . $new,
             ],
         );
-        $this->streamApi->uploadVideo(
+        $streamApi->uploadVideo(
             libraryId: $this->streamLibrary,
             videoId: $newVideo->getContents()["guid"],
             localFilePath: $target_file,
