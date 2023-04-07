@@ -10,6 +10,10 @@ use FFMpeg\FFProbe;
 use FFMpeg\Filters;
 use FFMpeg\Format\Video\X264;
 
+if ($isQoboTV) {
+    die();
+}
+
 require_once dirname(__DIR__) . '/class/common.php';
 $config = [
     'timeout' => 3600, // The timeout for the underlying process
@@ -26,11 +30,7 @@ try {
     $h264 = new X264();
     // $flv = new FLV();
 
-    if ($isQoboTV) {
-        $h264->setAudioKiloBitrate(128)->setAdditionalParameters(array('-ar', '44100'));
-    } else {
-        $h264->setAudioKiloBitrate(256)->setAdditionalParameters(array('-ar', '44100'));
-    }
+    $h264->setAudioKiloBitrate(256)->setAdditionalParameters(array('-ar', '44100'));
 
     $video = $ffmpeg->open($target_file);
 
@@ -60,14 +60,9 @@ try {
     $frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount2 / $framerate));
     $frame->filters()->custom('scale=512x288');
     $frame->save(dirname(__DIR__) . '/../dynamic/thumbnails/' . $new . '.png');
-
-    if ($isQoboTV) {
-        $video->filters()->resize(new Coordinate\Dimension(854, 480), Filters\Video\ResizeFilter::RESIZEMODE_INSET, true)
-        ->custom('format=yuv420p');
-    } else {
     $video->filters()->resize(new Coordinate\Dimension(1280, 720), Filters\Video\ResizeFilter::RESIZEMODE_INSET, true)
         ->custom('format=yuv420p');
-    }
+
     $video->save($h264, dirname(__DIR__) . '/../dynamic/videos/' . $new . '.converted.mp4');
     debug_print_backtrace();
     unlink($target_file);

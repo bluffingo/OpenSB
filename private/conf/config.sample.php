@@ -31,11 +31,14 @@ $branding = [
 	"css_override" => false, // change to location of custom finalium overrides.
 ];
 
-$isQoboTV = false; // if enabled, storage is switched to use bunnycdn.
+$isQoboTV = false; // if enabled, storage is switched to use bunnycdn. this is for a constraint regarding qobo.
 
 // only used if $isQoboTV is true
 $bunnySettings = [
-	"streamApi" => "bunnycdn-stream-api-key-here",
+	"streamApi" => "stream api key",
 	"streamLibrary" => 12345,
-	"cdnHostname" => "[cdn_hostname].b-cdn.net",
+	"streamHostname" => "[stream hostname].b-cdn.net",
+	"storageApi" => "storage api key",
+	"storageZone" => "storage zone name",
+	"pullZone" => "[pull zone].b-cdn.net",
 ];

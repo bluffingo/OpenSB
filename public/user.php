@@ -35,7 +35,7 @@ $subCount = $sql->fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", 
 $subscribers = $sql->query("SELECT $userfields s.* FROM subscriptions s JOIN users u on user WHERE s.user = ?", [$userpagedata['id']]);
 $totalViews = $sql->result("SELECT SUM(views) FROM videos WHERE author = ?", [$userpagedata['id']]);
 
-if (file_exists(dirname(__DIR__) . "/dynamic/banners/" . $userpagedata['name'] . ".png")) {
+if ($storage->fileExists('../dynamic/banners/' . $userpagedata["name"] . '.png')) {
     $bannerExists = true;
 }
 

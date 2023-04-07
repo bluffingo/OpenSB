@@ -2,8 +2,7 @@
 	"\\RelativeTime\\Languages\\English": "\\RelativeTime\\Languages\\English",
 
 	"Home": "Home",
-	"Videos": "Videos",
-	"Images": "Images",
+	"Browse": "Browse",
 
 	"Access Denied": "Access Denied",
 
@@ -63,11 +62,11 @@
 	"Setting name": "Setting name",
 	"Setting": "Setting",
 	"Email address": "Email address",
-	"Current Password (For verification)": "Current Password (For verification)",
-	"Repeat new Password": "Repeat new Password",
+	"Current password": "Current password",
+	"New password": "New password",
+	"Repeat new password": "Repeat new password",
 	"Profile": "Profile",
 	"Profile picture": "Profile picture",
-	"Profile background": "Profile background",
 	"Display name": "Display name",
 	"Description": "Description",
 	"Markdown is allowed.": "Markdown is allowed.",
@@ -138,7 +137,6 @@
 
 	"Edit": "Edit",
 
-	"Browse": "Browse",
 	"Studio": "Studio",
 	"Sign Out": "Sign Out",
 	"Create Account": "Create Account",

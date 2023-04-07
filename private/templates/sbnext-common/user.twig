@@ -9,25 +9,13 @@
     <meta property="og:title" content="{{ userpagedata.title }} - {{ website_branding.name }}">
     <meta property="og:description"
           content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
-    <meta property="og:image" content="{{ domain }}/assets/profpic/{{ userpagedata.name }}.png">
+    <meta property="og:image" content="{{ profile_image(userdata.name) }}">
     <meta property="og:url" content="{{ page_url }}">
     <script>
         user_id = '{{ userpagedata.id }}';
     </script>
 {% endblock %}
 {% block content %}
-    <style>
-        .channel-header-bg {
-		{% if bannerExists %}
-            background: url('/dynamic/banners/{{ userpagedata.name }}.png'), linear-gradient(#888, #444), center !important;
-		{% else %}
-			background: url('{{ website_branding.assets_location }}/sbnext_channel_header_template.png'), linear-gradient(#888, #444), center !important;
-		{% endif %}
-            height: 225px;
-            padding: 0;
-            margin-top: 0;
-        }
-    </style>
     {% if userbandata != true %}
         {% if userpagedata.id == userdata.id and not forceuser %}
             <div class="bg-neutral" style="padding:1px 15px;">
@@ -40,7 +28,6 @@
             </div>
         {% endif %}
     {% endif %}
-    <div class="main-content channel-header-bg"></div>
     <div class="bg-neutral" style="padding: 15px 10px;">
         <div class="grid">
             <div class="col-md-1">

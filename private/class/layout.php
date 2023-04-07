@@ -126,21 +126,22 @@ function comment($comment)
 
 function profileImage($username)
 {
-    $file_exists = file_exists('../dynamic/pfp/' . $username . '.png');
-    $twig = twigloader('components');
-    return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $file_exists, 'isBanned' => Users::getIsUserBannedFromName($username)]);
-}
+    global $isQoboTV, $bunnySettings, $storage;
+    $location = '/dynamic/pfp/' . $username . '.png';
 
-function channelBackground($username)
-{
-    $file_exists = file_exists('../dynamic/banners/' . $username . '.png');
+    $file_exists = $storage->fileExists('..' . $location);
+    if ($isQoboTV) {
+        $data = "https://" . $bunnySettings["pullZone"] . $location;
+    } else {
+        $data = $username;
+    }
     $twig = twigloader('components');
-    return $twig->render('channelbackground.twig', ['data' => $username, 'file_exists' => $file_exists]);
+    return $twig->render('profileimage.twig', ['data' => $data, 'file_exists' => $file_exists, 'isBanned' => Users::getIsUserBannedFromName($username)]);
 }
 
 function videoThumbnail($videodata)
 {
-    global $isQoboTV, $bunnySettings, $storage;
+    global $isQoboTV, $storage;
     if ($isQoboTV) {
         $data = $storage->getVideoThumbnail($videodata);
         $file_exists = true;

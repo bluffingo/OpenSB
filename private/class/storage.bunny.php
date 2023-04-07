@@ -2,8 +2,13 @@
 
 namespace openSB;
 
-use ToshY\BunnyNet\StreamAPI;
+use \Intervention\Image\ImageManager;
+
 use ToshY\BunnyNet\Client\BunnyClient;
+use ToshY\BunnyNet\EdgeStorageAPI;
+use ToshY\BunnyNet\Enum\Region;
+use ToshY\BunnyNet\Exception\BunnyClientResponseException;
+use ToshY\BunnyNet\StreamAPI;
 
 class BunnyStorage implements Storage
 {
@@ -17,8 +22,14 @@ class BunnyStorage implements Storage
             apiKey: $bunnySettings["streamApi"],
             client: $this->bunnyClient
         );
+        $this->edgeStorageApi = new EdgeStorageAPI(
+            apiKey: $bunnySettings["storageApi"],
+            region: Region::UK, //FIXME: don't hardcode this. -grkb 4/7/2023
+            client: $this->bunnyClient,
+        );
         $this->streamLibrary = $bunnySettings["streamLibrary"];
-        $this->hostName = $bunnySettings["cdnHostname"];
+        $this->streamHostname = $bunnySettings["streamHostname"];
+        $this->storageZone = $bunnySettings["storageZone"];
     }
 
     public function processVideo($new, $target_file) {
@@ -45,6 +56,32 @@ class BunnyStorage implements Storage
         global $sql;
 
         $guid = $sql->fetch("SELECT videofile from videos where video_id = ?", [$id]);
-        return "https://" . $this->hostName . "/" . $guid["videofile"] . "/thumbnail.jpg";
+        return "https://" . $this->streamHostname . "/" . $guid["videofile"] . "/thumbnail.jpg";
+    }
+
+    public function fileExists($file) {
+        try {
+            $file = $this->edgeStorageApi->downloadFile(
+                storageZoneName: $this->storageZone,
+                fileName: $file,
+            );
+        } catch (BunnyClientResponseException $e) {
+            return false;
+        }
+        return true;
+    }
+    public function uploadImage($temp_name, $target_file, $format, $resize = false, $width = 0, $height = 0) {
+        $manager = new ImageManager();
+        $img = $manager->make($temp_name);
+        if ($resize) {
+            $img->resize($width, $height);
+        }
+        $img->save($temp_name, 0, $format);
+        $this->edgeStorageApi->uploadFile(
+            storageZoneName: $this->storageZone,
+            fileName: $target_file,
+            localFilePath: $temp_name,
+        );
+        unlink($temp_name);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace openSB;
 
+use \Intervention\Image\ImageManager;
+
 class LocalStorage implements Storage
 {
     public function __construct() { 
@@ -18,5 +20,20 @@ class LocalStorage implements Storage
 
     public function getVideoThumbnail($id) {
         return file_exists('../dynamic/thumbnails/' . $id . '.png');
+    }
+
+    public function fileExists($file) {
+        return file_exists($file);
+    }
+
+    public function uploadImage($temp_name, $target_file, $format, $resize = false, $width = 0, $height = 0) {
+        $manager = new ImageManager();
+        if (move_uploaded_file($temp_name, $target_file)) {
+            $img = $manager->make($target_file);
+            if ($resize) {
+                $img->resize($width, $height);
+            }
+            $img->save($target_file, 0, $format);
+        }
     }
 }

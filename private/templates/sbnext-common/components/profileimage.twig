@@ -1,7 +1,11 @@
 {% if isBanned == false %}
     {% if file_exists %}
-        {% set imgSrcPath = '/dynamic/pfp/' ~ data ~ '.png' %}
-        {% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}
+        {% if bunnyEnabled %}
+            {% autoescape %}{{ data | raw }}{% endautoescape %}
+        {% else %}
+            {% set imgSrcPath = '/dynamic/pfp/' ~ data ~ '.png' %}
+            {% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}
+        {% endif %}
     {% else %}
         {% set imgSrcPath = website_branding.assets_location ~ '/profiledef.png' %}
         {% autoescape %}

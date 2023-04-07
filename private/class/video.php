@@ -172,7 +172,7 @@ class Videos
         if (!$videoData) error('404', __("The video you were looking for cannot be found."));
         $videoData['views'] = $sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
         if ($isQoboTV) {
-            $videoData['playlist'] = "https://" . $bunnySettings["cdnHostname"] . "/" . $videoData["videofile"] . "/playlist.m3u8";
+            $videoData['playlist'] = "https://" . $bunnySettings["streamHostname"] . "/" . $videoData["videofile"] . "/playlist.m3u8";
         }
         return $videoData;
     }
