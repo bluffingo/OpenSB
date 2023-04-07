@@ -4,7 +4,7 @@
 
 	{% block content %}
 		<h1>Admin panel</h1>
-		<p>{{ __("Currently running Qobo version %s (commit %s) on %s.", [version, git_commit(), operating_system()]) }}</p>
+		<p>{{ __("Currently running openSB Build %s (commit %s) on %s.", [version, git_commit(), operating_system()]) }}</p>
 		<table style="width: 100%;">
 			<caption>{{ __("The latest") }}</caption>
 			<tr>
@@ -13,9 +13,9 @@
 			<tr>
 				<td class="nb" style="width:33%; vertical-align:top;">
 					<table class="c1">
-						<caption>{{ __("Latest registered users") }}</caption>
+						<caption>{{ __("Last registered") }}</caption>
 						<tr class="h">
-							<th class="b" colspan="2">{{ __("Latest registered users") }}</td>
+							<th class="b" colspan="2">{{ __("Last registered") }}</td>
 						</tr>
 						{% for user in latest_registered_users %}
 							<tr>
@@ -27,9 +27,9 @@
 				</td>
 				<td class="nb" style="width:33%; vertical-align:top;">
 					<table class="c1">
-						<caption>{{ __("Latest seen users") }}</caption>
+						<caption>{{ __("Last signed in") }}</caption>
 						<tr class="h">
-							<th class="b" colspan="2">{{ __("Latest seen users") }}</td>
+							<th class="b" colspan="2">{{ __("Last signed in") }}</td>
 						</tr>
 						{% for user in latest_seen_users %}
 							<tr>
