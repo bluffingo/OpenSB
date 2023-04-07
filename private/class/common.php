@@ -156,17 +156,11 @@ function navigationList() {
 			"url" => "/index.php",
 			"htmlid" => "mainpage-description",
 		),
-		"videos" => array(
-			"name" => __("Videos"),
+		"browse" => array(
+			"name" => __("Browse"),
 			"icon" => "video",
 			"url" => "/browse.php",
-			"htmlid" => "videos-browse",
-		),
-		"images" => array(
-			"name" => __("Images"),
-			"icon" => "photo",
-			"url" => "/artwork.php",
-			"htmlid" => "images-browse",
+			"htmlid" => "browse",
 		),
 	);
 	return $array;
