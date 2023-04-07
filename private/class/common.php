@@ -2,6 +2,7 @@
 
 namespace openSB;
 
+// we need this at the top, or else version numbers won't work.
 require_once(dirname(__DIR__) . "/class/version.php");
 
 $gitBranch = trim(shell_exec("git rev-parse --abbrev-ref HEAD"));
@@ -21,12 +22,23 @@ if ($isDebug and !isset($rawOutputRequired)) {
 
 require_once(dirname(__DIR__) . '/../vendor/autoload.php'); //dogshit
 
+// load interfaces first
+foreach (glob(dirname(__DIR__) . "/interface/*.php") as $file) {
+    require_once($file);
+}
+
+// and then the classes
 foreach (glob(dirname(__DIR__) . "/class/*.php") as $file) {
     require_once($file);
 }
 
 // Holy shit! Classes!
 $sql = new MySQL($host, $user, $pass, $db);
+if ($isQoboTV) {
+    $storage = new BunnyStorage;
+} else {
+    $storage = new LocalStorage;
+}
 
 // user agent blocking shit
 if (!empty($blockedUA) && isset($_SERVER['HTTP_USER_AGENT'])) {

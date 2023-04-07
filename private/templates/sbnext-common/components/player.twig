@@ -6,8 +6,8 @@
     {% else %}
         <!-- this is not the right location but i don't care -grkb 8/23/2022 -->
 		{% if browser_info.legacy_disable_videojs != true %}
-		<script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
-		<link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+		<script src="https://vjs.zencdn.net/8.0.4/video.min.js"></script>
+		<link href="https://vjs.zencdn.net/8.0.4/video-js.css" rel="stylesheet" />
 		{% endif %}
         <video
                 id="sb-video"
@@ -32,6 +32,12 @@
                 preload: "auto"
             });
 
+            {% if bunnyEnabled %}
+            player.src([{
+                src: '{{ video.playlist }}',
+                type: 'application/x-mpegURL'
+            }]);
+            {% else %}
             player.src([{
                 src: '/dynamic/videos/{{ video.video_id }}.converted.mp4',
                 type: 'video/mp4'
@@ -39,6 +45,7 @@
                 src: '/dynamic/videos/{{ video.video_id }}.mpd',
                 type: 'application/dash+xml'
             }]);
+            {% endif %}
         </script>
 		{% endif %}
     {% endif %}

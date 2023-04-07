@@ -7,7 +7,9 @@
 		"erusev/parsedown": "dev-master",
 		"mobiledetect/mobiledetectlib": "3.74",
 		"php-ffmpeg/php-ffmpeg": "0.x-dev",
-		"whitecube/lingua": "dev-master"
+		"whitecube/lingua": "dev-master",
+		"toshy/bunnynet-php": "^3.0",
+		"symfony/http-client": "6.3.x-dev"
 	},
 	"minimum-stability": "dev",
 	"config": {

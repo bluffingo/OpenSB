@@ -23,7 +23,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
     global $sql, $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness,
            $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $pageVariable, $isMaintenance,
-           $versionNumber, $isDebug, $userbandata, $browser, $branding;
+           $versionNumber, $isDebug, $userbandata, $browser, $branding, $isQoboTV;
     $detect = new \Detection\MobileDetect;
 
     if ($log) {
@@ -96,6 +96,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
 	$twig->addGlobal('user_agent', $_SERVER['HTTP_USER_AGENT']);
 	$twig->addGlobal('browser_info', $browser);
 	$twig->addGlobal('website_branding', $branding);
+    $twig->addGlobal('bunnyEnabled', $isQoboTV);
 
     if (isset($_SERVER["HTTP_HOST"])) { // Browsers from 1995 (eg: Internet Explorer 1) make PHP throw out warnings due to them not having HTTP hosts feature.
         $twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
@@ -139,9 +140,16 @@ function channelBackground($username)
 
 function videoThumbnail($videodata)
 {
-    $file_exists = file_exists('../dynamic/thumbnails/' . $videodata . '.png');
+    global $isQoboTV, $bunnySettings, $storage;
+    if ($isQoboTV) {
+        $data = $storage->getVideoThumbnail($videodata);
+        $file_exists = true;
+    } else {
+        $data = $videodata;
+        $file_exists = $storage->getVideoThumbnail($data);
+    }
     $twig = twigloader('components');
-    return $twig->render('videothumbnail.twig', ['data' => $videodata, 'file_exists' => $file_exists]);
+    return $twig->render('videothumbnail.twig', ['data' => $data, 'file_exists' => $file_exists]);
 }
 
 function videoLength($videodata)

@@ -31,4 +31,11 @@ $branding = [
 	"css_override" => false, // change to location of custom finalium overrides.
 ];
 
-$isQoboTV = false; // this lowers the video quality to what is on production, blame the bunnycdn php library not fucking working. -grkb 4/6/2023
+$isQoboTV = false; // if enabled, storage is switched to use bunnycdn.
+
+// only used if $isQoboTV is true
+$bunnySettings = [
+	"streamApi" => "bunnycdn-stream-api-key-here",
+	"streamLibrary" => 12345,
+	"cdnHostname" => "[cdn_hostname].b-cdn.net",
+];

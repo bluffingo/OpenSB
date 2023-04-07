@@ -53,11 +53,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
                 [$new, 1, time(), $uploader, 1]);
 
             if (!isset($noProcess)) {
-                if (substr(php_uname(), 0, 7) == "Windows") {
-                    pclose(popen(sprintf('start /B  php %s "%s" "%s" > %s', dirname(__DIR__) . '\private\scripts\processingworker.php', $new, $target_file, dirname(__DIR__) . '/dynamic/videos/' . $new . '.log'), "r"));
-                } else {
-                    system(sprintf('php %s "%s" "%s" > %s 2>&1 &', dirname(__DIR__) . '/private/scripts/processingworker.php', $new, $target_file, dirname(__DIR__) . '/dynamic/videos/' . $new . '.log'));
-                }
+                $storage->processVideo($new, $target_file);
             }
 
             redirect('./watch.php?v=' . $new);
