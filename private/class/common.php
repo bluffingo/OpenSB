@@ -4,6 +4,9 @@ namespace openSB;
 
 require_once(dirname(__DIR__) . "/class/version.php");
 
+$gitBranch = trim(shell_exec("git rev-parse --abbrev-ref HEAD"));
+$versionNumber = $buildNumber . "-" . $gitBranch;
+
 if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
     die('<b>A configuration file could not be found. Please read the installing instructions in the README file.</b>');
 }
