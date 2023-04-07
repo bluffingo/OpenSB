@@ -1,4 +1,4 @@
-<h1 align="center">openSB Beta 3.0.0</h1>
+<h1 align="center">openSB</h1>
 
 ## How to setup an openSB instance.
 
