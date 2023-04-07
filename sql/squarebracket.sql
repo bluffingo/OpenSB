@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2022 at 02:47 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Apr 08, 2023 at 01:28 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cheeserox`
+-- Database: `opensb`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +31,7 @@ CREATE TABLE `bans` (
   `autoint` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `reason` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -47,7 +47,7 @@ CREATE TABLE `channel_comments` (
   `author` bigint(20) NOT NULL,
   `date` bigint(20) NOT NULL,
   `deleted` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -57,9 +57,9 @@ CREATE TABLE `channel_comments` (
 
 CREATE TABLE `comments` (
   `comment_id` bigint(20) NOT NULL,
-  `id` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID to video or user.',
+  `id` text NOT NULL COMMENT 'ID to video or user.',
   `reply_to` bigint(20) NOT NULL DEFAULT 0,
-  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The comment itself, formatted in Markdown.',
+  `comment` text NOT NULL COMMENT 'The comment itself, formatted in Markdown.',
   `author` bigint(20) NOT NULL COMMENT 'Numerical ID of comment author.',
   `date` bigint(20) NOT NULL COMMENT 'UNIX timestamp when the comment was posted.',
   `deleted` tinyint(4) NOT NULL COMMENT 'States that the comment is deleted'
@@ -74,7 +74,7 @@ CREATE TABLE `comments` (
 CREATE TABLE `favorites` (
   `user_id` int(11) NOT NULL,
   `video_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE `favorites` (
 CREATE TABLE `ipbans` (
   `ip` varchar(45) NOT NULL DEFAULT '0.0.0.0',
   `reason` varchar(255) NOT NULL DEFAULT '<em>No reason specified</em>'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -100,7 +100,7 @@ CREATE TABLE `music` (
   `author` int(11) NOT NULL,
   `time` int(11) NOT NULL,
   `file` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -115,7 +115,7 @@ CREATE TABLE `news` (
   `time` bigint(20) DEFAULT 0,
   `redirect` varchar(256) DEFAULT NULL,
   `author_userid` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -129,7 +129,7 @@ CREATE TABLE `notifications` (
   `level` int(11) DEFAULT NULL,
   `recipient` int(11) NOT NULL,
   `sender` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -138,7 +138,7 @@ CREATE TABLE `notifications` (
 --
 
 CREATE TABLE `passwordresets` (
-  `id` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(64) NOT NULL,
   `user` int(11) NOT NULL,
   `time` int(11) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT 1
@@ -173,7 +173,7 @@ CREATE TABLE `revisions` (
   `author` int(11) NOT NULL,
   `comment_id` int(11) NOT NULL DEFAULT 0,
   `type` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -195,7 +195,7 @@ CREATE TABLE `subscriptions` (
 CREATE TABLE `tag_index` (
   `video_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -207,7 +207,7 @@ CREATE TABLE `tag_meta` (
   `tag_id` int(11) NOT NULL,
   `name` text NOT NULL,
   `latestUse` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -217,19 +217,19 @@ CREATE TABLE `tag_meta` (
 
 CREATE TABLE `users` (
   `id` bigint(20) NOT NULL COMMENT 'Incrementing ID for internal purposes.',
-  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Username, chosen by the user',
-  `email` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Password, hashed in bcrypt.',
-  `token` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User token for cookie authentication.',
+  `name` varchar(128) NOT NULL COMMENT 'Username, chosen by the user',
+  `email` varchar(128) NOT NULL,
+  `password` varchar(128) NOT NULL COMMENT 'Password, hashed in bcrypt.',
+  `token` varchar(128) NOT NULL COMMENT 'User token for cookie authentication.',
   `joined` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'User''s join date',
   `lastview` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Timestamp of last view',
   `lastpost` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `title` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Display Name',
-  `about` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User''s description',
-  `customcolor` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
-  `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en-US' COMMENT 'Language (Defaults to English)',
+  `title` text NOT NULL COMMENT 'Display Name',
+  `about` text DEFAULT NULL COMMENT 'User''s description',
+  `customcolor` varchar(7) DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
+  `language` varchar(10) NOT NULL DEFAULT 'en-US' COMMENT 'Language (Defaults to English)',
   `avatar` tinyint(1) NOT NULL DEFAULT 0,
-  `ip` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '999.999.999.999',
+  `ip` varchar(32) NOT NULL DEFAULT '999.999.999.999',
   `u_flags` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties',
   `powerlevel` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '0 - banned. 1 - normal user. 2 - moderator. 3 - administrator',
   `group_id` int(11) NOT NULL DEFAULT 3
@@ -243,18 +243,18 @@ CREATE TABLE `users` (
 
 CREATE TABLE `videos` (
   `id` bigint(20) UNSIGNED NOT NULL COMMENT 'Incrementing ID for internal purposes.',
-  `video_id` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Random alphanumeric video ID which will be visible.',
-  `title` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Video title',
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video description',
+  `video_id` varchar(11) NOT NULL COMMENT 'Random alphanumeric video ID which will be visible.',
+  `title` varchar(128) NOT NULL COMMENT 'Video title',
+  `description` text DEFAULT NULL COMMENT 'Video description',
   `author` bigint(20) UNSIGNED NOT NULL COMMENT 'User ID of the video author',
   `time` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Unix timestamp for the time the video was uploaded',
   `most_recent_view` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `views` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Video views',
   `flags` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',
   `category_id` int(11) DEFAULT 0 COMMENT 'Category ID for the video',
-  `videofile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Path to the video file(?)',
+  `videofile` text DEFAULT NULL COMMENT 'Path to the video file(?)',
   `videolength` bigint(20) UNSIGNED DEFAULT NULL COMMENT 'Length of the video in seconds',
-  `tags` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video tags, serialized in JSON',
+  `tags` text DEFAULT NULL COMMENT 'Video tags, serialized in JSON',
   `post_type` int(11) NOT NULL DEFAULT 0 COMMENT 'The type of the post, 0 is a video, 1 is a legacy video, 2 is art, and 3 is music.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -265,8 +265,8 @@ CREATE TABLE `videos` (
 --
 
 CREATE TABLE `views` (
-  `video_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `video_id` text NOT NULL,
+  `user` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
