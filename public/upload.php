@@ -30,9 +30,9 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
         $noProcess = ($_POST['debugUploaderSkip'] ?? null);
     }
 
-    // Rate limit uploading to 2 minutes, both to prevent spam and to prevent double uploads.
-    if ($sql->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60 * 2, $userdata['id']]) && !$isDebug) {
-        die(__("Please wait 2 minutes before uploading again."));
+    // Rate limit uploading to a minute, both to prevent spam and to prevent double uploads.
+    if ($sql->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60 , $userdata['id']]) && !$isDebug) {
+        die(__("Please wait a minute before uploading again."));
     }
 
     $name = $_FILES['fileToUpload']['name'];

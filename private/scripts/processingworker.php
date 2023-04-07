@@ -26,8 +26,11 @@ try {
     $h264 = new X264();
     // $flv = new FLV();
 
-    $h264->setAudioKiloBitrate(256)->setAdditionalParameters(array('-ar', '44100'));
-
+    if ($isQoboTV) {
+        $h264->setAudioKiloBitrate(128)->setAdditionalParameters(array('-ar', '44100'));
+    } else {
+        $h264->setAudioKiloBitrate(256)->setAdditionalParameters(array('-ar', '44100'));
+    }
 
     $video = $ffmpeg->open($target_file);
 
@@ -58,8 +61,13 @@ try {
     $frame->filters()->custom('scale=512x288');
     $frame->save(dirname(__DIR__) . '/../dynamic/thumbnails/' . $new . '.png');
 
+    if ($isQoboTV) {
+        $video->filters()->resize(new Coordinate\Dimension(854, 480), Filters\Video\ResizeFilter::RESIZEMODE_INSET, true)
+        ->custom('format=yuv420p');
+    } else {
     $video->filters()->resize(new Coordinate\Dimension(1280, 720), Filters\Video\ResizeFilter::RESIZEMODE_INSET, true)
         ->custom('format=yuv420p');
+    }
     $video->save($h264, dirname(__DIR__) . '/../dynamic/videos/' . $new . '.converted.mp4');
     debug_print_backtrace();
     unlink($target_file);
