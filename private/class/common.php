@@ -1,10 +1,8 @@
 <?php
 
 namespace openSB;
-$releaseNumber = "beta-3.0.0";
-$buildNumber = 3;
-$versionNumber = $releaseNumber . "-" . str_pad($buildNumber, 3, "0", STR_PAD_LEFT);
-$gitBranch = "main";
+
+require_once(dirname(__DIR__) . "/class/version.php");
 
 if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
     die('<b>A configuration file could not be found. Please read the installing instructions in the README file.</b>');
