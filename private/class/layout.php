@@ -8,7 +8,6 @@ namespace openSB;
  * @return Environment Twig object.
  */
 
-use MobileDetect;
 use RelativeTime\RelativeTime;
 use Twig\Environment;
 use Twig\Extra\Markdown\DefaultMarkdown;
@@ -148,6 +147,20 @@ function videoThumbnail($videodata)
     } else {
         $data = $videodata;
         $file_exists = $storage->getVideoThumbnail($data);
+    }
+    $twig = twigloader('components');
+    return $twig->render('videothumbnail.twig', ['data' => $data, 'file_exists' => $file_exists]);
+}
+
+function imageThumbnail($videodata)
+{
+    global $isQoboTV, $storage;
+    if ($isQoboTV) {
+        $data = $storage->getImageThumbnail($videodata);
+        $file_exists = true;
+    } else {
+        $data = $videodata;
+        $file_exists = $storage->getImageThumbnail($data);
     }
     $twig = twigloader('components');
     return $twig->render('videothumbnail.twig', ['data' => $data, 'file_exists' => $file_exists]);

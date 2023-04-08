@@ -33,7 +33,8 @@ class sBTwigExtension extends AbstractExtension
             new TwigFunction('upload_limit', '\openSB\convertBytes'),
             new TwigFunction('profiler_stats', function () use ($profiler) {
                 $profiler->getStats();
-            })
+            }),
+            new TwigFunction('art_thumbnail', '\openSB\imageThumbnail', ['is_safe' => ['html']]),
         ];
     }
 

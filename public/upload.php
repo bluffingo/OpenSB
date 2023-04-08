@@ -57,23 +57,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
             redirect('./watch.php?v=' . $new);
         }
     } elseif (in_array(strtolower($ext), $supportedImageFormats, true)) {
-        $manager = new ImageManager();
-        $target_file = dirname(__DIR__) . '/dynamic/art/' . $new . '.png';
-        $target_thumbnail = dirname(__DIR__) . '/dynamic/art_thumbnails/' . $new . '.jpg';
-        if (move_uploaded_file($temp_name, $target_file)) {
-            $img = $manager->make($target_file);
-            $img->resize(1200, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-            $img->save($target_file);
-            $img = $manager->make($target_file)->encode('jpg', 80);
-            $img->resize(400, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-            $img->save($target_thumbnail);
-        }
+        $storage->processImage($temp_name, $new);
         $status = 0x2;
         $sql->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, post_type) VALUES (?,?,?,?,?,?,?,?,?)",
             [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), '/dynamic/art/' . $new . '.png', $status, 2]);

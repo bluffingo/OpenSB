@@ -172,7 +172,13 @@ class Videos
         if (!$videoData) error('404', __("The video you were looking for cannot be found."));
         $videoData['views'] = $sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
         if ($isQoboTV) {
-            $videoData['playlist'] = "https://" . $bunnySettings["streamHostname"] . "/" . $videoData["videofile"] . "/playlist.m3u8";
+            if ($videoData['post_type'] == 0) {
+                // videofile on videos using bunnycdn are the guid, don't ask me why. -grkb 4/8/2023
+                $videoData['bunny_url'] = "https://" . $bunnySettings["streamHostname"] . "/" . $videoData["videofile"] . "/playlist.m3u8";
+            } elseif ($videoData['post_type'] == 2) {
+                // https://qobo-grkb.b-cdn.net/dynamic/art/f_eKEJNj4bm.png
+                $videoData['bunny_url'] = "https://" . $bunnySettings["pullZone"] . $videoData["videofile"];
+            }
         }
         return $videoData;
     }

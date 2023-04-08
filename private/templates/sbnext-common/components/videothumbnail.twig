@@ -1,6 +1,11 @@
 {% if bunnyEnabled %}
-{% autoescape %}{{ data | raw }}{% endautoescape %}
+    {% autoescape %}{{ data | raw }}{% endautoescape %}
 {% else %}
-{% if file_exists %}{% set imgSrcPath = '/dynamic/thumbnails/' ~ data ~ '.png' %}{% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}{% else %}{% set imgSrcPath = website_branding.assets_location ~ '/placeholder
-.png' %}{% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}{% endif %}
+    {% if file_exists %}
+        {% set imgSrcPath = '/dynamic/thumbnails/' ~ data ~ '.png' %}
+        {% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}
+    {% else %}
+        {% set imgSrcPath = website_branding.assets_location ~ '/placeholder.png' %}
+        {% autoescape %}{{ imgSrcPath | raw }}{% endautoescape %}
+    {% endif %}
 {% endif %}

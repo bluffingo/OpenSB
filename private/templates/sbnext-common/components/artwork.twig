@@ -1,0 +1,5 @@
+{% if bunnyEnabled %}
+<img class="img-fluid" src="{{ video.bunny_url }}" alt="{{ video.title }}">
+{% else %}
+<img class="img-fluid" src="{{ video.videofile }}" alt="{{ video.title }}">
+{% endif %}

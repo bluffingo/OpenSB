@@ -26,6 +26,7 @@ class BunnyStorage implements Storage
         $this->streamLibrary = $bunnySettings["streamLibrary"];
         $this->streamHostname = $bunnySettings["streamHostname"];
         $this->storageZone = $bunnySettings["storageZone"];
+        $this->pullZone = $bunnySettings["pullZone"];
     }
 
     public function processVideo($new, $target_file) {
@@ -61,6 +62,10 @@ class BunnyStorage implements Storage
         return "https://" . $this->streamHostname . "/" . $guid["videofile"] . "/thumbnail.jpg";
     }
 
+    public function getImageThumbnail($id) {
+        return "https://" . $this->pullZone . "/dynamic/art_thumbnails/" . $id  . ".jpg";
+    }
+
     public function fileExists($file) {
         try {
             $file = $this->edgeStorageApi->downloadFile(
@@ -85,5 +90,37 @@ class BunnyStorage implements Storage
             localFilePath: $temp_name,
         );
         unlink($temp_name);
+    }
+
+    public function processImage($temp_name, $new) {
+        $manager = new ImageManager();
+        $target_file = '/dynamic/art/' . $new . '.png';
+        $target_thumbnail = '/dynamic/art_thumbnails/' . $new . '.jpg';
+        
+        $img = $manager->make($temp_name);
+        $img->resize(2048, null, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        });
+        $img->save(dirname(__DIR__) . '/..' . $target_file);
+        $this->edgeStorageApi->uploadFile(
+            storageZoneName: $this->storageZone,
+            fileName: $target_file,
+            localFilePath: dirname(__DIR__) . '/..' . $target_file,
+        );
+        unlink(dirname(__DIR__) . '/..' . $target_file);
+
+        $img = $manager->make($temp_name)->encode('jpg', 80);
+        $img->resize(500, null, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        });
+        $img->save(dirname(__DIR__) . '/..' . $target_thumbnail);
+        $this->edgeStorageApi->uploadFile(
+            storageZoneName: $this->storageZone,
+            fileName: $target_thumbnail,
+            localFilePath: dirname(__DIR__) . '/..' . $target_thumbnail,
+        );
+        unlink(dirname(__DIR__) . '/..' . $target_thumbnail);
     }
 }

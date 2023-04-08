@@ -22,6 +22,10 @@ class LocalStorage implements Storage
         return file_exists('../dynamic/thumbnails/' . $id . '.png');
     }
 
+    public function getImageThumbnail($id) {
+        return file_exists('../dynamic/art_thumbnails/' . $id . '.jpeg');
+    }
+
     public function fileExists($file) {
         return file_exists($file);
     }
@@ -34,6 +38,26 @@ class LocalStorage implements Storage
                 $img->resize($width, $height);
             }
             $img->save($target_file, 0, $format);
+        }
+    }
+
+    public function processImage($temp_name, $new) {
+        $manager = new ImageManager();
+        $target_file = dirname(__DIR__) . '/../dynamic/art/' . $new . '.png';
+        $target_thumbnail = dirname(__DIR__) . '/../dynamic/art_thumbnails/' . $new . '.jpg';
+        if (move_uploaded_file($temp_name, $target_file)) {
+            $img = $manager->make($target_file);
+            $img->resize(1200, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $img->save($target_file);
+            $img = $manager->make($target_file)->encode('jpg', 80);
+            $img->resize(400, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $img->save($target_thumbnail);
         }
     }
 }

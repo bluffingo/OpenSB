@@ -23,7 +23,7 @@
                 {% if postType == "video" %}
                     {{ include('/components/player.twig') }}
                 {% elseif postType == "artwork" %}
-                    <img class="img-fluid" src="{{ video.videofile }}" alt="{{ video.title }}">
+                    {{ include('/components/artwork.twig') }}
                 {% endif %}
                     <div class="card card-body-fat">
                         <div class="grid">
@@ -57,7 +57,7 @@
                     <div class="card card-body-fat" id="About">
                         <div class="grid">
                             <p><strong>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</strong></p>
-                            <p>{{ video.description }}</p>
+                            <p>{{ video.description | markdown }}</p>
                             <div class="description-extra">
                                 <ul>
                                     <li>

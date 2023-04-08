@@ -43,28 +43,11 @@
     <div class="card">
         <div class="card-body-fat">
             <h3 style="margin-top:0">{{ __("Randomly selected uploads") }}</h3>
-            <div class="gallery-image">
-                {% for video in videos %}
-                    <a href="watch?v={{ video.video_id }}">
-                        <article class="img-box">
-                            {% if video.post_type == 0 or video.post_type == 1 %}
-                                <img src="{{ video_thumbnail(video.video_id) }}" alt="{{ video.title }}">
-                            {% elseif video.post_type == 2 %}
-                                <img src="/dynamic/art_thumbnails/{{ video.video_id }}.jpg" alt="{{ video.title }}">
-                            {% endif %}
-                            <div class="transparent-box">
-                                <div class="caption">
-                                    <img class="rounded" src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}">
-                                    <strong>{{ video.title }}</strong><br>
-									{{ __("by") }} {{ video.u_name }} - {{ video.views }} {{ __("views") }}
-                                </div>
-                            </div>
-                        </article>
-                    </a>
-                {% else %}
-                    <p>{{ __("No uploads.") }}</p>
-                {% endfor %}
-            </div>
+            {% for video in videos %}
+                {{ small_video_box(video) }}
+            {% else %}
+                <p>{{ __("No uploads.") }}</p>
+            {% endfor %}
         </div>
     </div>
 </div>

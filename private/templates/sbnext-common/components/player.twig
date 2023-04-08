@@ -34,7 +34,7 @@
 
             {% if bunnyEnabled %}
             player.src([{
-                src: '{{ video.playlist }}',
+                src: '{{ video.bunny_url }}',
                 type: 'application/x-mpegURL'
             }]);
             {% else %}
