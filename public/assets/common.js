@@ -342,7 +342,7 @@ function reply(id) {
 
 function play(sound) {
     if (JSON.parse(sbnextSounds) == true) {
-        var audio = new Audio('/assets/sounds/' + sound + '.wav');
+        var audio = new Audio('/assets/sounds/' + sound + '.ogg');
         audio.play();
     }
 }
