@@ -61,7 +61,9 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
         $status = 0x2;
         $sql->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, post_type) VALUES (?,?,?,?,?,?,?,?,?)",
             [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), '/dynamic/art/' . $new . '.png', $status, 2]);
-    } else {
+    
+            redirect('./watch.php?v=' . $new);
+        } else {
         error("415", "This file format is unsupported");
     }
 }
