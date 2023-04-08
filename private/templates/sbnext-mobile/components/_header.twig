@@ -13,19 +13,17 @@
                     </form>
                 {% endif %}
                 <div id="header-main">
-                    {% if isMaintenance != true %}
-                        <div class="button button-neutral-invis guide-button"
-                             id="guide-toggle">{{ icon("list", 20) }}</div>
-                    {% endif %}
                     <a href="/" id="logo-container"><img id="logo" src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}"></a>
                 </div>
             </div>
             {% if isMaintenance != true %}
                 <div class="col-md-6" style="text-align: right;">
-                    <button id="showSearch" onclick="showSearch()" class="button button-secondary-invis"
-                            style="margin-right: 0.5rem;">
+                    <button id="showSearch" onclick="showSearch()" class="button button-secondary-invis">
                         <span>{{ icon("search", 20) }}</span>
                     </button>
+                    <a class="button button-secondary-invis" style="margin-right: 0.5rem;" href="/upload">
+                        <span>{{ icon("upload", 20) }}</span>
+                    </a>
                     <div style="margin:0;{% if log %}width:1.5rem{% endif %}"
                          id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
                         {% if log %}
