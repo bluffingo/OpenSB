@@ -17,7 +17,7 @@ FROM
     FROM_UNIXTIME(time) AS time,
     COUNT(*) AS num_interactions
 FROM videos AS e
-GROUP BY DATE(FROM_UNIXTIME(e.time))) totals
+GROUP BY HOUR(FROM_UNIXTIME(e.time))) totals
 ORDER BY time;");
         $videos = $sql->fetchArray($videoData);
         return $videos;
@@ -37,7 +37,7 @@ FROM
     FROM_UNIXTIME(joined) AS joined,
     COUNT(*) AS num_interactions
 FROM users AS e
-GROUP BY DATE(FROM_UNIXTIME(e.joined))) totals
+GROUP BY HOUR(FROM_UNIXTIME(e.joined))) totals
 ORDER BY joined;");
         $users = $sql->fetchArray($userData);
         return $users;
