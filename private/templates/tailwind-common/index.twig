@@ -1,5 +1,21 @@
 {% extends "_layout.twig" %}
 
 {% block content %}
-Fuck
+    {% for video in videos %}
+        <div class="flex justify-start gap-3 my-2">
+            <div class="shrink-0">
+            {% if video.post_type == 0 %}
+                <img class="thumbnail" src="{{ video_thumbnail(video.video_id) }}" alt="{{ video.title }}">
+            {% elseif video.post_type == 2 %}
+                <img class="thumbnail" src="{{ art_thumbnail(video.video_id) }}" alt="{{ video.title }}">
+            {% endif %}
+            </div>
+            <div>
+                <a href="watch?v={{ video.video_id }}" class="text-lg font-semibold">
+                    {{ video.title }}
+                </a>
+                <p class="text-gray-400 text-sm">{{ video.u_name }}</p>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
