@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind forms;
+
+@layer components {
+  .button-primary {
+    @apply font-semibold bg-pink-500 hover:bg-pink-700 px-4 py-1.5 text-sm text-white rounded;
+  }
+
+  .input-text {
+    @apply placeholder:text-slate-400 p-1 bg-white border border-slate-300 rounded-md focus:border-pink-300 outline-none focus:ring-1 focus:ring-pink-300;
+  }
+
+  .menu-item {
+    @apply text-gray-900 hover:bg-pink-100 px-2 py-1 m-1;
+  }
+
+  .thumbnail {
+    @apply h-48 rounded-lg aspect-video;
+  }
+}

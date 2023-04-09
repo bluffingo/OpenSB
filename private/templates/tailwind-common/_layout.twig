@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ website_branding.name }}</title>
+        <meta name="description" content="{{ website_branding.name }}, on Tailwind!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/assets/tailwind.css" type="text/css">
+    </head>
+    <header>
+        <nav class="w-full bg-gray-50 border-b border-solid border-gray-200 p-3 z-50 backdrop-blur-sm flex gap-5">
+            <div class="flex items-center gap-5">
+                <a href="/">
+                    <img src="{{ website_branding.assets_location }}/logo-wordmark.png" class="flex flex-none items-center w-24" alt="{{ website_branding.name }}"></img>
+                </a>
+                {% for link in navigationList %}
+                    <a href="{{ link.url }}">{{ link.name }}</a>
+                {% endfor %}
+                </div>
+                <div class="flex flex-auto">
+                    <input type="text" class="input-text" placeholder="Search"></input>
+                </div>
+                <div class="flex items-center">
+                    Account thing
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container mx-auto mt-2">
+    {% block content %}{% endblock %}
+    </main>
+    <footer class="text-center text-slate-500">
+        <p>{{ __("© openSB contributors") }}</strong> · 2021-{{ 'now' | date('Y') }} · {{ __("Build") }} {{ version }}</p>
+        <p>{{ __("Running on Git commit: ") }} <a href="https://github.com/qobotv/opensb/commit/{{ git_commit() }}">{{ git_commit() }}</a></p>
+    </footer>
+</html>

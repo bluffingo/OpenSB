@@ -68,3 +68,7 @@ dynamic.7z
 # official prod instances
 public/assets/cr_branding
 public/assets/qb_branding
+
+# tailwind shit
+node_modules
+public/assets/tailwind.css
