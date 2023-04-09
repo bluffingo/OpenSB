@@ -113,7 +113,7 @@
 	"Sorry %s, you are banned from %s.": "Sorry %s, you are banned from %s.",
 	"This ban is not set to expire.": "This ban is not set to expire.",
 	"Build": "Build",
-	"By the openSB contributors": "By the openSB contributors",
+	"© openSB contributors": "© openSB contributors",
 	"What's new": "What's new",
 	"Running on Git commit: ": "Running on Git commit: ",
 	"User agent": "User agent",
