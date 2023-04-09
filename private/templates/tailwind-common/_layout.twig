@@ -5,6 +5,7 @@
         <meta name="description" content="{{ website_branding.name }}, on Tailwind!" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
         <link rel="stylesheet" href="/assets/tailwind.css" type="text/css">
     </head>
     <header>
@@ -21,7 +22,14 @@
                     <input type="text" class="input-text" placeholder="Search"></input>
                 </div>
                 <div class="flex items-center">
-                    Account thing
+                {% if log %}
+                    <div class="flex items-center gap-2">
+                        <a class="button-primary" href="/upload">Upload</a>
+                        <a href="/user?name={{ userdata.name }}">
+                            <img src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}" class="w-8 rounded-full">
+                        </a>
+                    </div>
+                {% endif %}
                 </div>
             </div>
         </nav>

@@ -1,0 +1,59 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Upload") }}{% endblock %}
+
+	{% block content %}
+        <form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data">
+            <div class="space-y-12">
+                <div class="border-b border-gray-900/10 pb-12">
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">{{ __("Upload info") }}</h2>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">{{ __("Enter the title and description of your upload.") }}</p>
+                    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                        <div class="col-span-full">
+                            <label for="title" class="form-title">{{ __("Title") }}</label>
+                            <div class="mt-2">
+                                <div class="form-input-text-outside">
+                                    <input type="text" class="form-input-text" id="title" name="title">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label for="desc" class="form-title">{{ __("Description") }}</label>
+                            <div class="mt-2">
+                                <textarea class="form-input-textarea" name="desc" maxlength="2000"
+                                        form="uploadForm"
+                                        style="overflow:hidden;resize:none" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label for="tags" class="form-title">{{ __("Tags") }}</label>
+                            <div class="mt-2">
+                                <div class="form-input-text-outside">
+                                    <input type="text" class="form-input-text" id="tags" name="tags">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label for="fileToUpload" class="block text-sm font-medium leading-6 text-gray-900">{{ __("File") }}</label>
+                            <div class="mt-2">
+                                <input class="form-upload" type="file" name="fileToUpload" id="fileToUpload" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    {% if isDebug %}
+                        <input type="checkbox" class="checkbox" id="debugUploaderSkip" name="debugUploaderSkip">
+                        <span class="ml-1">{{ __("Skip processing (Debug, MP4 only)") }}</span>
+                    {% endif %}
+                    <div class="text-right">
+                        <input class="button-primary" type="submit" id="upload" name="upload"
+                               value="{{ __("Upload") }}">
+                    </div>
+                </div>
+            </div>
+        </form>
+    {% endblock %}
