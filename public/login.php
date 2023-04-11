@@ -19,7 +19,7 @@ if (isset($_POST["loginsubmit"])) {
         if ($logindata && password_verify($password, $logindata['password'])) {
             setcookie('SBTOKEN', $logindata['token'], 2147483647);
             $nid = $sql->result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
-            $sql->query("UPDATE users SET lastview = ? WHERE id = ?", [time(), $nid]);
+            $sql->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), getUserIpAddr(), $logindata['id']]);
 
             redirect('./');
         } else {
