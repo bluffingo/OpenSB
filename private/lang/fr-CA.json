@@ -98,7 +98,7 @@
 	"Sorry %s, you are banned from %s.": "Désolé %s, vous avez été banni de %s.",
 	"This ban is not set to expire.": "Ce ban n'est pas configuré pour expirer.",
 	"Build": "Version",
-	"By the openSB contributors": "Par les contributeurs de openSB",
+	"© openSB contributors": "© contributeurs openSB",
 	"What's new": "Quoi de neuf",
 	"Running on Git commit: ": "En cours d'exécution sur commit Git : ",
 	"User agent": "Agent utilisateur",
