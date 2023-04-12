@@ -57,7 +57,7 @@
 	{% if userbandata %}
 		<div class="header_message header-danger">
 			<h1>{{ __("Sorry %s, you are banned from %s.", [userdata.name, website_branding.name]) }}</h1>
-			<p><strong>{{ userbandata.reason }}</strong><br>{{ __("This ban is not set to expire.") }}</p>
+			<p><strong>{{ userbandata.reason | markdown }}</strong><br>{{ __("This ban is not set to expire.") }}</p>
 			{# do we really need ban durations? #}
 		</div>
 	{% endif %}
