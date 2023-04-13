@@ -33,7 +33,7 @@
             <div class="col-md-1">
                 <img class="rounded img-fluid" src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
             </div>
-            <div class="col-md-15">
+            <div class="col-md-13">
                 <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}{{ icon("shield", 20) }}{% endif %}
                 </h1>
                 <p>@{{ userpagedata.name }}
@@ -49,9 +49,7 @@
                 </p>
             </div>
             <div class="col-md-2 right">
-                {% if userpagedata.id == userdata.id %}
-                    <a class="button button-primary" href="settings.php">{{ __("Edit profile") }}</a>
-                {% else %}
+                {% if userpagedata.id != userdata.id %}
                     <button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}"
                             type="button"
                             {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
