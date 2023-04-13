@@ -6,8 +6,8 @@
         <form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data">
             <div class="space-y-12">
                 <div class="border border-gray-200 p-6 rounded">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">{{ __("Upload info") }}</h2>
-                    <p class="mt-1 text-sm leading-6 text-gray-600">{{ __("Enter the title and description of your upload.") }}</p>
+                    <h2 class="text-base font-semibold text-xl leading-7 text-gray-900">{{ __("Upload a post") }}</h2>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">{{ __("Enter the required information and select the file for your post.") }}</p>
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="col-span-full">
                             <label for="title" class="form-title">{{ __("Title") }}</label>
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="col-span-full">
-                            <label for="tags" class="form-title">{{ __("Tags") }}</label>
+                            <label for="tags" class="form-title">{{ __("Tags (optional)") }}</label>
                             <div class="mt-2">
                                 <div class="form-input-text-outside">
                                     <input type="text" class="form-input-text" id="tags" name="tags">
@@ -37,8 +37,9 @@
                         </div>
 
                         <div class="col-span-full">
-                            <label for="fileToUpload" class="block text-sm font-medium leading-6 text-gray-900">{{ __("File") }}</label>
                             <div class="mt-2">
+                                <h3 class="text-base font-semibold text-lg leading-7 text-gray-900">{{ __("Select file") }}</h3>
+                                <p class="my-1 text-sm text-gray-600">{{ __("Most popular video and image formats should be supported.") }}</p>
                                 <input class="form-upload" type="file" name="fileToUpload" id="fileToUpload" required>
                             </div>
                         </div>

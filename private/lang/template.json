@@ -18,6 +18,11 @@
 	"All comments": "All comments",
 	"Delete": "Delete",
 
+	"Latest videos": "Latest videos",
+	"(Page %s)": "(Page %s)",
+	"There are no videos of that category.": "There are no videos of that category.",
+	"You could create one!": "You could create one!",
+
 	"Edit upload": "Edit upload",
 	"Enter the updated title and description of your upload.": "Enter the updated title and description of your upload.",
 	" Title": " Title",
@@ -84,12 +89,13 @@
 	"Graph": "Graph",
 
 	"Upload": "Upload",
-	"Upload info": "Upload info",
-	"Enter the title and description of your upload.": "Enter the title and description of your upload.",
-	" Tags": " Tags",
-	"File": "File",
-	"Select the file you want to upload. Major video and image file formats are supported.": "Select the file you want to upload. Major video and image file formats are supported.",
-	"Skip processing (MP4 ONLY, DEBUG)": "Skip processing (MP4 ONLY, DEBUG)",
+	"Upload a post": "Upload a post",
+	"Enter the required information and select the file for your post.": "Enter the required information and select the file for your post.",
+	"Title": "Title",
+	"Tags (optional)": "Tags (optional)",
+	"Select file": "Select file",
+	"Most popular video and image formats should be supported.": "Most popular video and image formats should be supported.",
+	"Skip processing (Debug, MP4 only)": "Skip processing (Debug, MP4 only)",
 
 	"Edit my settings": "Edit my settings",
 	"View user page as viewer": "View user page as viewer",
@@ -142,21 +148,6 @@
 	"Create Account": "Create Account",
 	"Sign In": "Sign In",
 
-	"Latest videos": "Latest videos",
-	"(Page %s)": "(Page %s)",
-	"Categories": "Categories",
-	"All": "All",
-	"Miscellanous": "Miscellanous",
-	"Entertainment": "Entertainment",
-	"Comedy & Humor": "Comedy & Humor",
-	"Gaming": "Gaming",
-	"News and Updates": "News and Updates",
-	"Lifestyle": "Lifestyle",
-	"Science and Technology": "Science and Technology",
-	"Archive Dump": "Archive Dump",
-	"There are no videos of that category.": "There are no videos of that category.",
-	"You could create one!": "You could create one!",
-
 	"Welcome to %s, %s": "Welcome to %s, %s",
 	"Welcome to %s": "Welcome to %s",
 	"Get started": "Get started",
@@ -186,6 +177,12 @@
 	"Favorites": "Favorites",
 
 	"Search...": "Search...",
+
+	"Sign in to your account": "Sign in to your account",
+	"Sign in": "Sign in",
+
+	"%s views": "%s views",
+	"Uploaded on %s": "Uploaded on %s",
 
 	"Banned user, can't continue.": "Banned user, can't continue.",
 	"Missing important POST variable.": "Missing important POST variable.",
