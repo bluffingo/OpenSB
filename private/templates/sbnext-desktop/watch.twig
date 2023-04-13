@@ -17,7 +17,6 @@
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
     <div class="watchNext">
-		<h1>{{ video.title }}</h1>
         <div class="grid">
             <div class="col-md-10">
                 {% if postType == "video" %}
@@ -25,47 +24,39 @@
                 {% elseif postType == "artwork" %}
                     {{ include('/components/artwork.twig') }}
                 {% endif %}
-                    <div class="card card-body-fat">
-                        <div class="grid">
-                            <div class="col-md-10">
-								<div class="small-stats">
-									<div>{{ icon("eye", 20) }} {{ viewCount }}</div>
-									<div>{{ icon("message", 20) }} {{ comCount }}</div>
-									<div>{{ icon("star", 20) }} {{ total_favorites }}</div>
-								</div>
-                            </div>
+                    <div class="card card-body-fat" style="margin:0;border-bottom:none;">
+                        <h1 style="margin-top:0;">{{ video.title }}</h1>
+                        <div class="small-stats">
+                            <div>{{ __("%s views", [viewCount]) }}</div>
+                            <div>{{ __("%s favorites", [total_favorites]) }}</div>
+                        </div>
+                    </div>
+                    <div class="card card-body-fat" style="margin:0;border-bottom:none;">
+                    <div class="grid">
+                        <div class="col-md-10">
+                            <a href="user.php?name={{ video.u_name }}"><img src="{{ profile_image(video.u_name) }}"
+                                                                            class="rounded"
+                                                                            style="width:50px;float: left;margin-right:8px;"
+                                                                            alt="{{ video.u_name }}"></a>
+                            <span style="font-size:1.15em;"><a
+                                        href="user.php?name={{ video.u_name }}" style="color:{{ video.u_customcolor }}">{{ video.u_name }}</a> {% if video.u_powerlevel > 1 %}{{ icon("shield", 16) }}{% endif %} • {{ __("%s followers", [subCount]) }}</span>
+                            <br>
+                            {% if userbandata != true %}
+                                {% include "components/watch_subscribe.twig" %}
+                            {% endif %}
+                            <br>
+                        </div>
                             {% if userbandata != true %}
                                 <div class="col-md-6 right">
                                     {% include "components/watch_ratings.twig" %}
                                 </div>
                             {% endif %}
-                        </div>
                     </div>
-                    <div class="card card-body-fat" style="margin:0;border-bottom:none;">
-                        <a href="user.php?name={{ video.u_name }}"><img src="{{ profile_image(video.u_name) }}"
-                                                                        class="rounded"
-                                                                        style="width:50px;float: left;margin-right:8px;"
-                                                                        alt="{{ video.u_name }}"></a>
-                        <span style="font-size:1.15em;"><a
-                                    href="user.php?name={{ video.u_name }}">{{ video.u_name }}</a> • {{ __("%s followers", [subCount]) }}</span>
-                        <br>
-                        {% if userbandata != true %}
-                            {% include "components/watch_subscribe.twig" %}
-                        {% endif %}
-                        <br>
                     </div>
                     <div class="card card-body-fat" id="About">
                         <div class="grid">
-                            <p><strong>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</strong></p>
+                            <p><strong>{{ __("Published on %s", [video.time | date('F j, Y')]) }}</strong></p>
                             <p>{{ video.description | markdown }}</p>
-                            <div class="description-extra">
-                                <ul>
-                                    <li>
-                                        <h4 class="title">{{ __("Category") }}:</h4>
-                                        <div class="content">{{ video.category_id | category_id_to_name() }}</div>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <div class="card">
@@ -82,7 +73,6 @@
                     </div>
             </div>
             <div class="col-md-6">
-				<h3 class="sectionTitle">{{ __("Suggestions") }}</h3>
                 <div class="card">
                     <div class="card-body">
                         {% for related_video in related_videos %}

@@ -67,7 +67,7 @@
 	<div class="footer">
 		<img src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}">
 		<p>{{ __("Build") }} {{ version }} · <strong>{{ __("© openSB contributors") }}</strong> · 2021-{{ 'now' | date('Y') }}
-			| <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong> · <strong><a href="/news.php">{{ __("What's new") }}</a></strong>
+			| <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong>
 		</p>
 		<h5>{{ __("Running on Git commit: ") }} <a
 					href="https://github.com/qobotv/opensb/commit/{{ git_commit() }}">{{ git_commit() }}</a>

@@ -8,6 +8,12 @@ if ($userbandata) {
     error(403, __("Banned user, can't continue."));
 }
 
+// simple shit fix for shitty finalium bug that dates from 2021 -grkb 4/12/2023
+if ($_POST["comment"] == "")
+{
+    die();
+}
+
 if (isset($_POST['really'])) {
     switch ($_POST['type']) {
         case "video":

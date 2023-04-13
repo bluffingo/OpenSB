@@ -1,0 +1,56 @@
+{% extends "_layout.twig" %}
+{% block head %}
+    <meta name="title" content="{{ website_branding.name }}">
+    <meta property="og:site_name" content="{{ website_branding.name }}"/>
+    <meta property="og:title" content="{{ website_branding.name }}">
+    <meta property="og:image" content="{{ domain }}assets/logo_square_icon.png">
+    <meta property="og:url" content="{{ page_url }}">
+{% endblock %}
+{% block title %}Home{% endblock %}
+
+	{% block precontent %}
+<div class="indexNext">
+    {% if theme != 'nostalgia' %}
+        <div class="main-content">
+            <div class="container sb-welcome">
+                {% if log %}
+                        <h1>{{ __("Welcome to %s, %s", [ website_branding.name, userdata.title ] ) }}</h1>
+                        {# hack to prevent twig from outputing the number 1 #}
+                        {% if totalSubscribers != 1 %}
+                            {% set pluralSubscribers = __("s") %}
+                        {% endif %}
+                        {% if totalViews != 1 %}
+                            {% set pluralViews = __("s") %}
+                        {% endif %}
+                        <p>{{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }} - {{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }} (FIXME: inaccurate info)</p>
+                {% else %}
+                    <h1>{{ __("Welcome to %s", [ website_branding.name ]) }}</h1>
+                    <a class="button button-primary button-large" href="register.php">{{ __("Get started") }}</a>
+                    <a class="button button-secondary button-large" href="login.php">{{ __("Login") }}</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    {% endblock %}
+
+    {% block content %}
+    {% if updated %}
+        <div class="header_message header-primary">{{ __("Options successfully saved!") }}</div>
+        <br>
+    {% endif %}
+    <div class="card">
+        <div class="card-body-fat">
+            {% if videos %}
+            <a class="button button-secondary float-right" href="browse.php">{{ __("Browse more") }}</a>
+            {% endif %}
+            <h3 style="margin-top:0">{{ __("Randomly selected posts") }}</h3>
+            {% for video in videos %}
+                {{ small_video_box(video) }}
+            {% else %}
+                <p>{{ __("This instance does not currently have any uploaded posts.") }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock %}

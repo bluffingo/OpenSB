@@ -64,7 +64,7 @@ class Users
      */
     public static function userfields(): string
     {
-        $fields = ['id', 'name', 'customcolor'];
+        $fields = ['id', 'name', 'customcolor', 'powerlevel'];
 
         $out = '';
         foreach ($fields as $field) {

@@ -1,0 +1,115 @@
+{% extends "_layout.twig" %}
+{% block title %}{{ userpagedata.title }}{% endblock %}
+{% block head %}
+    <meta name="title" content="{{ userpagedata.title }} - {{ website_branding.name }}">
+    <meta name="description"
+          content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
+    <meta name="theme-color" content="{{ userpagedata.customcolor }}">
+    <meta property="og:site_name" content="{{ website_branding.name }}"/>
+    <meta property="og:title" content="{{ userpagedata.title }} - {{ website_branding.name }}">
+    <meta property="og:description"
+          content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
+    <meta property="og:image" content="{{ profile_image(userdata.name) }}">
+    <meta property="og:url" content="{{ page_url }}">
+    <script>
+        user_id = '{{ userpagedata.id }}';
+    </script>
+{% endblock %}
+{% block content %}
+    {% if userbandata != true %}
+        {% if userpagedata.id == userdata.id and not forceuser %}
+            <div class="bg-neutral" style="padding:1px 15px;">
+                <p class="center"><a href="settings.php">{{ __("Edit my settings") }}</a>
+                    &bull; <a href="user.php?id={{ id }}&forceuser">{{ __("View user page as viewer") }}</a>
+                    {% if userpagedata.powerlevel > 2 %}
+                    &bull; <a href="/admin">{{ __("Admin panel") }}</a></p>
+                {% endif %}
+                </p>
+            </div>
+        {% endif %}
+    {% endif %}
+    <div class="bg-neutral" style="padding: 15px 10px;">
+        <div class="grid">
+            <div class="col-md-1">
+                <img class="rounded img-fluid" src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
+            </div>
+            <div class="col-md-15">
+                <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}{{ icon("shield", 20) }}{% endif %}
+                </h1>
+                <p>@{{ userpagedata.name }}
+                    {# hack to prevent twig from outputing the number 1 #}
+                    {% if subCount != 1 %}
+                        {% set pluralSubscribers = __("s") %}
+                    {% endif %}
+                    {% if views != 1 %}
+                        {% set pluralViews = __("s") %}
+                    {% endif %}
+                    &bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
+                    &bull; {{ __("%s view%s", [views ?? __("no"), pluralViews]) }}
+                </p>
+            </div>
+            <div class="col-md-2 right">
+                {% if userpagedata.id == userdata.id %}
+                    <a class="button button-primary" href="settings.php">{{ __("Edit profile") }}</a>
+                {% else %}
+                    <button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}"
+                            type="button"
+                            {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
+                {% endif %}
+            </div>
+        </div>
+        <div class="grid">
+        <div class="col-md-4">
+            {% if markread %}
+                <div class="header_message header-primary">{{ __("Marked all notifications as read.") }}</div>
+            {% elseif edited %}
+                <div class="header_message header-primary">{{ __("Settings successfully saved!") }}</div>
+            {% endif %}
+            <h2></h2>
+            <div class="user_about">
+                <h3>{{ __("About %s", [ userpagedata.title ]) }}</h3>
+                {{ userpagedata.about | markdown }}
+                <p><strong>{{ __("Registered on") }}</strong>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}</p>
+                <p><strong>{{ __("Last logged in") }}</strong>: {{ userpagedata.lastview | relative_time }}</p>
+            </div>
+        </div>
+        <div class="col-md-12">
+            {% for latestVideo in latestVideos %}
+                {{ small_video_box(latestVideo) }}
+            {% else %}
+                <p>{{ __("There are currently no posts by %s.", [userpagedata.title]) }}</p>
+            {% endfor %}
+            {% if userdata.id == id %}
+                {% set forceuser = "&forceuser" %}
+            {% else %}
+                {% set forceuser = "" %}
+            {% endif %}
+            {% set le_url = 'user.php?id=' ~ id ~ '&page=%s' ~ forceuser %}
+            {{ pagination(level_count, glob_lpp, le_url, page) }}
+            <div class="card card-body-fat">
+            {% if log %}
+                <div class="grid" id="commentField">
+                    <div class="col-md-1">
+                        <img class="rounded img-fluid" alt="{{ userdata.name }}" src="{{ profile_image(userdata.name) }}">
+                    </div>
+                    <div class="col-md-15">
+                        <div>
+				<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
+                          placeholder="{{ __("Enter comment here.") }}"></textarea>
+                        </div>
+                        <div class="right">
+                            <button id="post-user" class="button button-primary"
+                                    style="margin-bottom:0;">{{ __("Comment") }}</button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <div id="comment"></div>
+            {% for comment in comments %}
+                {{ comment(comment) }}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

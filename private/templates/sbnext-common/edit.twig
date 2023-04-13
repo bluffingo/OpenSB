@@ -4,22 +4,26 @@
 
 	{% block content %}
         <form name="uploadForm" id="uploadForm" method="post" action="edit.php" enctype="multipart/form-data">
-            <input type="hidden" name="vid_id" value="{{ video.video_id }}">
-            <h2 style="margin-bottom: 0.5em;">{{ __("Edit upload") }}</h2>
-            <p>{{ __("Enter the updated title and description of your upload.") }}</p>
-            <h4 style="margin-bottom: 0.5em;">{{ __(" Title") }}</h4>
-            <input type="text" class="form-control form-long uploader-form" name="title"
-                   value="{{ video.title }}">
-            <br>
-            <h4 style="margin-bottom: 0.5em;">{{ __(" Description") }}</h4>
-            <textarea class="form-control form-long uploader-form" name="desc" maxlength="2000"
-                      form="uploadForm"
-                      style="overflow:hidden;resize:none" rows="3">{{ video.description }}</textarea>
-            <br>
-            <br>
-            <div class="right">
-                <input class="button button-primary" type="submit" id="upload" name="upload"
-                       value="{{ __("Save") }}">
+            <div class="card">
+                <div class="card-body-fat">
+                    <input type="hidden" name="vid_id" value="{{ video.video_id }}">
+                    <h2 style="margin-bottom: 0.5em;">{{ __("Edit your post") }}</h2>
+                    <p>{{ __("Enter the new information for your post.") }}</p>
+                    <h4 style="margin-bottom: 0.5em;">{{ __("Title") }}</h4>
+                    <input type="text" class="form-control form-long uploader-form" name="title"
+                        value="{{ video.title }}">
+                    <br>
+                    <h4 style="margin-bottom: 0.5em;">{{ __("Description") }}</h4>
+                    <textarea class="form-control form-long uploader-form" name="desc" maxlength="2000"
+                            form="uploadForm"
+                            style="overflow:hidden;resize:none" rows="3">{{ video.description }}</textarea>
+                    <br>
+                    <br>
+                    <div class="right">
+                        <input class="button button-primary" type="submit" id="upload" name="upload"
+                            value="{{ __("Save") }}">
+                    </div>
+                </div>
             </div>
         </form>
     {% endblock %}
