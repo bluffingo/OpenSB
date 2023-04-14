@@ -113,12 +113,11 @@
 	"Unfollow": "Unfollow",
 	"Sorry %s, you are banned from %s.": "Sorry %s, you are banned from %s.",
 	"This ban is not set to expire.": "This ban is not set to expire.",
-	"Build": "Build",
 	"© openSB contributors": "© openSB contributors",
-	"Running on Git commit: ": "Running on Git commit: ",
+	"Running Build %s on Git Commit %s.": "Running Build %s on Git Commit %s.",
 	"User agent": "User agent",
 	"Browser being used": "Browser being used",
-	"Generic browser": "Generic browser",
+	"Unknown browser": "Unknown browser",
 	"Debug": "Debug",
 	"It is risky to screenshot this due to security reasons, so please don't.": "It is risky to screenshot this due to security reasons, so please don't.",
 
@@ -146,7 +145,6 @@
 
 	"Edit my settings": "Edit my settings",
 	"View user page as viewer": "View user page as viewer",
-	"Edit profile": "Edit profile",
 	"Marked all notifications as read.": "Marked all notifications as read.",
 	"Settings successfully saved!": "Settings successfully saved!",
 	"Registered on": "Registered on",
@@ -163,8 +161,10 @@
 	"Dislike": "Dislike",
 	"Favorite": "Favorite",
 
+	"Search...": "Search...",
 	"Log out": "Log out",
 
+	"Edit profile": "Edit profile",
 	"About this user": "About this user",
 	"There are currently no uploads by %s.": "There are currently no uploads by %s.",
 
@@ -174,12 +174,13 @@
 	"Last viewed": "Last viewed",
 	"Favorites": "Favorites",
 
-	"Search...": "Search...",
-
 	"Sign in to your account": "Sign in to your account",
 	"Sign in": "Sign in",
 
 	"Uploaded on %s": "Uploaded on %s",
+
+	"Build": "Build",
+	"Running on Git commit: ": "Running on Git commit: ",
 
 	"Banned user, can't continue.": "Banned user, can't continue.",
 	"Missing important POST variable.": "Missing important POST variable.",
