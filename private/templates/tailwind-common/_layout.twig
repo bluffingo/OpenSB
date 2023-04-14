@@ -22,7 +22,7 @@
                     <div class="flex flex-auto">
                         <input type="text" class="input-text" placeholder="Search"></input>
                     </div>
-                    <div class="flex items-center">
+                    <div class="flex items-center gap-1">
                     {% if log %}
                         <div class="flex items-center gap-2">
                             <a class="button-primary" href="/upload">Upload</a>
@@ -33,6 +33,9 @@
                     {% else %}
                         <div class="flex items-center gap-2">
                             <a class="button-primary" href="/login">Login</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a class="button-primary" href="/register">Register</a>
                         </div>
                     {% endif %}
                     </div>

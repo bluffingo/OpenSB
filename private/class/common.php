@@ -22,6 +22,8 @@ if ($isDebug and !isset($rawOutputRequired)) {
 
 require_once(dirname(__DIR__) . '/../vendor/autoload.php'); //dogshit
 
+// aaaa psr-4 autoload!!! - rgb
+
 // load interfaces first
 foreach (glob(dirname(__DIR__) . "/interface/*.php") as $file) {
     require_once($file);

@@ -72,3 +72,6 @@ public/assets/qb_branding
 # tailwind shit
 node_modules
 public/assets/tailwind.css
+
+# mariadb stuff from docker
+mariadb-data
