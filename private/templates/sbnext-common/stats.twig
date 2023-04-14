@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="statbox">
-                            <div class="stat-title">{{ __("Uploads") }}</div>
+                            <div class="stat-title">{{ __("Posts") }}</div>
                             {{ stats.videocount }}
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                 type: 'line',
                 data: {
                     datasets: [{
-                        label: 'Uploads',
+                        label: 'Posts',
                         data: [
                             {% for graph in video_graph_data %}
                             {

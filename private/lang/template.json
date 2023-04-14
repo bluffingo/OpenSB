@@ -13,12 +13,11 @@
 	"The latest": "The latest",
 	"Last registered": "Last registered",
 	"Last signed in": "Last signed in",
-	"Latest uploads": "Latest uploads",
+	"Latest posts": "Latest posts",
 	"Numbers": "Numbers",
 	"All comments": "All comments",
 	"Delete": "Delete",
 
-	"Latest videos": "Latest videos",
 	"(Page %s)": "(Page %s)",
 	"There are no videos of that category.": "There are no videos of that category.",
 	"You could create one!": "You could create one!",
@@ -73,7 +72,7 @@
 	"New Password": "New Password",
 	"Repeat New Password": "Repeat New Password",
 
-	"There are no uploads that match your query.": "There are no uploads that match your query.",
+	"There are no posts that match your query.": "There are no posts that match your query.",
 
 	"Settings": "Settings",
 	"Credentials": "Credentials",
@@ -95,7 +94,7 @@
 	"About %s": "About %s",
 	"Some statistics may not be accurate.": "Some statistics may not be accurate.",
 	"Registered users": "Registered users",
-	"Uploads": "Uploads",
+	"Posts": "Posts",
 	"Views": "Views",
 	"Comments": "Comments",
 	"Graph": "Graph",
@@ -166,7 +165,6 @@
 
 	"Edit profile": "Edit profile",
 	"About this user": "About this user",
-	"There are currently no uploads by %s.": "There are currently no uploads by %s.",
 
 	"About": "About",
 	"Category": "Category",
