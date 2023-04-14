@@ -206,11 +206,11 @@ blockquote {
   clear: right;
 }
 
+// opensb stuff
+
 .main-content {
   background: rgb(0,26,36);
   background: linear-gradient(90deg, rgba(0,26,36,1) 0%, rgba(9,79,121,1) 35%, rgba(21,105,129,1) 100%);
-  // background: rgb(24, 0, 36);
-  // background: linear-gradient(90deg, rgba(24, 0, 36, 1) 0%, rgba(100, 9, 121, 1) 35%, rgba(200, 21, 200, 1) 100%);
   color: white;
   margin: -48px 0 0;
   padding: 75px 0px 20px;
@@ -238,37 +238,16 @@ blockquote {
   }
 }
 
-.badge {
-  display: inline-block;
-  padding: 5px;
-  font-size: 11.844px;
-  font-weight: bold;
-  line-height: 14px;
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  white-space: nowrap;
-  vertical-align: baseline;
-  background-color: #999999;
-  border-radius: 3px;
-}
-
 textarea,
 input[type]:not([type=file]):not([type=submit]) {
   border: 1px solid $gray-400;
   border-radius: 4px;
-  box-shadow: 0 0 1px $gray-400;
-  -moz-box-shadow: 0 0 1px $gray-400;
-  -webkit-box-shadow: 0 0 1px $gray-400;
-  transition: border linear 0.3s, box-shadow linear 0.3s;
 }
 
 textarea:focus,
 input[type]:not([type=file]):not([type=submit]):focus {
   border-color: $primary;
-  box-shadow: 0 0 5px $primary;
-  -moz-box-shadow: 0 0 5px $primary;
-  -webkit-box-shadow: 0 0 5px $primary;
-  outline: 0;
+  outline: none;
 }
 
 .chaziz-body {
@@ -315,7 +294,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
 .uploader-form {
   margin-bottom: 0.5em;
   font-size: 1.05em;
-  padding: 0.25em;
+  padding: 0.33em;
 }
 
 .search-form {
@@ -360,7 +339,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
 }
 
 #masthead-container {
-  z-index: 47101;
+  z-index: 10;
   margin: 0;
   background-color: #fffffff0;
   padding: 7px;
@@ -414,7 +393,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
 
 #masthead-search {
   overflow: hidden;
-  padding: 5px 4px;
+  padding: 3px;
 
   label {
     height: 100%;
@@ -425,7 +404,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
   }
 
   #search-btn {
-    height: 29px;
+    height: 31px;
     float: right;
     border-radius: 0 3px 3px 0;
 
@@ -436,7 +415,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
 
   #masthead-search-terms {
     border-radius: 0;
-    height: 29px;
+    height: 31px;
     overflow: hidden;
 
     input {
@@ -446,7 +425,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
       margin: 0;
       font-size: 16px;
       box-sizing: border-box;
-      height: 29px;
+      height: 31px;
       border-radius: 3px 0 0 3px;
       border: 1px solid #e5e5e5;
       border-right: none;
@@ -459,87 +438,22 @@ input[type]:not([type=file]):not([type=submit]):focus {
 	.masthead-links {
 		display: table-cell;
 		vertical-align: middle;
-		height: 30px;
+		height: 33px;
 	}
 }
 
 #logo-container {
   float: left;
-  height: 30px;
+  height: 33px;
   padding: 3px !important;
 }
 
-#masthead-content {
-  padding-left: 15px;
-  padding-right: 20px;
-  overflow: hidden;
-}
-
-#masthead-content #masthead-upload-button-group, .masthead-user {
+.masthead-user {
   float: right;
-  margin-top: 3px;
-  margin-left: 25px;
-  position: relative;
-  cursor: pointer;
 }
 
 #masthead-below {
   display: none;
-}
-
-.guide-channels-list {
-  clear: both;
-  max-height: 247px;
-  padding: 0 0 3px;
-  overflow: hidden;
-
-  .guide-channel {
-    position: relative;
-    height: 26px;
-    line-height: 26px;
-  }
-}
-
-.guide-item {
-  white-space: nowrap;
-  line-height: 24px;
-  height: 26px;
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  justify-content: flex-start;
-  align-items: center;
-
-  .thumb {
-    margin-right: 5px;
-    margin-left: 4px;
-    width: 18px;
-    height: 18px;
-    vertical-align: middle;
-  }
-}
-
-.guide-item:hover {
-  background: #444 none;
-  color: #fff;
-}
-
-#guide {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: $sidebarlength;
-  background: #fffffff0;
-  overflow: clip;
-  text-align: center;
-  border-right: 1px solid lightgrey;
-
-  ul {
-    padding: 0;
-    margin: 0;
-  }
 }
 
 .page {
@@ -641,7 +555,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
 
 .vid-info {
   .title {
-    font-size: 13px;
+    font-size: 14px;
     max-height: 2.4em;
     line-height: 1.2;
     display: block;
@@ -658,7 +572,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
   }
 
   .stat {
-    color: #999;
+    color: #666;
     font-size: 11px;
     display: block;
     line-height: 1.4em;
@@ -776,8 +690,6 @@ input[type]:not([type=file]):not([type=submit]):focus {
 @import "_containers";
 /// Images \\\
 @import "_images";
-/// Galleries \\\
-@import "_galleries";
 /// Cards \\\
 @import "_cards";
 /// Buttons \\\

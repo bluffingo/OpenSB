@@ -22,7 +22,7 @@
 		<link rel="stylesheet" href="{{ website_branding.css_override }}" type="text/css">
 	{% endif %}
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.css" rel="stylesheet">
     <script src="/assets/common.js"></script>
@@ -66,15 +66,13 @@
 <footer>
 	<div class="footer">
 		<img src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}">
-		<p>{{ __("Build") }} {{ version }} · <strong>{{ __("© openSB contributors") }}</strong> · 2021-{{ 'now' | date('Y') }}
+		<p><strong>{{ __("© openSB contributors") }}</strong> · 2021-{{ 'now' | date('Y') }}
 			| <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong>
 		</p>
-		<h5>{{ __("Running on Git commit: ") }} <a
-					href="https://github.com/qobotv/opensb/commit/{{ git_commit() }}">{{ git_commit() }}</a>
-		</h5>
+		<p>{{ __("Running Build %s on Git Commit %s.", [version, git_commit()]) }}</p>
 		{% if isDebug %}
 		<p>{{ __("User agent") }}: {{ user_agent }}</p>
-		<p>{{ __("Browser being used") }}: {% if browser_info.name is empty %}{{ __("Generic browser") }}{% else %}{{ browser_info.name }}{% endif %}</p>
+		<p>{{ __("Browser being used") }}: {% if browser_info.name is empty %}{{ __("Unknown browser") }}{% else %}{{ browser_info.name }}{% endif %}</p>
 		{% endif %}
 		{% if isMaintenance != true %}
 			<a class="button button-neutral button-small options-button" role="button">{{ __("Options") }}</a>

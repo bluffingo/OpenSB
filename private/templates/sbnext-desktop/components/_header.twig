@@ -5,15 +5,20 @@
                 <div id="header-main">
                     <a href="/" id="logo-container"><img id="logo" src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}"></a>
                     {% if isMaintenance != true %}
-					<div class="masthead-links-container">
-						<div class="masthead-links">
-							{% for link in navigationList %}
-								<a href="{{ link.url }}">{{ link.name }}</a>
-							{% endfor %}
-						</div>
-					</div>
+                        <div class="masthead-links-container">
+                            <div class="masthead-links">
+                                {% for link in navigationList %}
+                                    <a href="{{ link.url }}">{{ link.name }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
                         <form id="masthead-search" action="/search.php">
-                            <input type="text" class="form-control form-long uploader-form" name="tags">
+                            <button id="search-btn" class="button button-secondary">
+                                <span>{{ icon("search", 16) }}</span>
+                            </button>
+                            <div id="masthead-search-terms">
+                                <label><input type="text" name="tags" placeholder="{{ __("Search...") }}"></label>
+                            </div>
                         </form>
                     {% endif %}
                 </div>
@@ -21,7 +26,7 @@
             <div class="col-md-6" style="text-align: right;">
                 {% if log %}
                     <a href="/upload.php">
-                        <div class="button button-neutral-invis masthead-button">{{ icon("upload", 20) }}</div>
+                        <div class="button button-neutral-invis masthead-button tooltip" title="{{ __("Upload") }}">{{ icon("upload", 20) }}</div>
                     </a>
                 {% endif %}
                 <div style="margin:0;{% if log %}width:1.75rem{% endif %}"

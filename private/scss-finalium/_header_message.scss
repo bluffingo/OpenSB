@@ -1,6 +1,7 @@
 .header_message {
   border-bottom: 1px solid #ccc;
   padding: 10px;
+  border-radius: 3px;
 }
 
 @each $state, $value in $theme-colors {

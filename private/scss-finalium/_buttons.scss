@@ -1,7 +1,7 @@
-$button-padding: 6px 10px;
+$button-padding: 6px 11px;
 
 .button {
-  border-radius: 3px;
+  border-radius: 5px;
   color: white;
   padding: $button-padding;
   margin: 2px 0;
@@ -22,7 +22,7 @@ $button-padding: 6px 10px;
 }
 
 // uploader "file selection" button, implemented in the hackiest way possible.
-input[type=file]::file-selector-button, {
+input[type=file]::file-selector-button {
   color: black;
   padding: $button-padding;
   margin: 2px 7px 6px 0px;
@@ -42,10 +42,11 @@ input[type=file]::file-selector-button, {
 	background-color: darken($gray-200, 10.5%);
 	@include gradient-y($start-color: lighten($gray-200, 10.5%), $end-color: lighten($gray-200, 5.5%));
   }
+  border-radius: 5px;
 }
 
 .button-large {
-  border-radius: 5px;
+  border-radius: 7px;
   padding: 8px 12px;
   font-size: 17px;
 }
@@ -61,7 +62,7 @@ input[type=file]::file-selector-button, {
   .button-#{$state} {
 	border: 1px solid darken($value, 7.5%);
 	background-color: lighten($value, 2.5%);
-	@include gradient-y($start-color: lighten($value, 2.5%), $end-color: lighten($value, 1.5%));
+	@include gradient-y($start-color: lighten($value, 2.5%), $end-color: $value);
 	color: contrast-color($value, $dark, $light) !important;
   }
 
