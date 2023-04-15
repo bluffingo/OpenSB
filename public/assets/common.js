@@ -55,6 +55,13 @@ $(document).ready(function () {
     });
     $("#post").click(function () {
         play("click");
+        $("#commentPostingSpinner").removeClass('d-none');
+
+        if (!$('#commentContents').val()) {
+            play("error");
+            return alert('you must put something to comment!');
+        }
+
         $.post("comment.php",
             {
                 comment: $.trim($('#commentContents').val()),
@@ -68,12 +75,14 @@ $(document).ready(function () {
                     $('#comment').prepend(data);
                     $("#commentContents").val('');
                     $("#post").addClass("disabled");
+                    $("#commentPostingSpinner").addClass('d-none');
                     play("comment");
                 }
             });
     });
     $("#post-user").click(function () {
         play("click");
+        $("#commentPostingSpinner").removeClass('d-none');
         $.post("comment.php",
             {
                 comment: $.trim($('#commentContents').val()),
@@ -87,6 +96,7 @@ $(document).ready(function () {
                     $('#comment').prepend(data);
                     $("#commentContents").val('');
                     $("#post").addClass("disabled");
+                    $("#commentPostingSpinner").addClass('d-none');
                     play("comment");
                 }
             });
