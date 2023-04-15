@@ -55,7 +55,7 @@ function getOS(): string
  */
 function getUserIpAddr()
 {
-    if (isCli()) return;
+    if (isCli()) return Null;
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         //ip from share internet
         $ip = $_SERVER['HTTP_CLIENT_IP'];
