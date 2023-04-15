@@ -7,7 +7,7 @@ services:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./:/var/www/html
     ports:
-      - 8080:80
+      - "8080:80"
   php:
     restart: always
     volumes:
@@ -18,7 +18,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - 6060:8080 
+      - "6060:8080"
   mariadb:
     image: mariadb 
     restart: always
@@ -28,7 +28,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root 
       - MYSQL_PASSWORD=example
     ports:
-      - 4000:3306
+      - "4000:3306"
     volumes:
       - ./mariadb-data:/var/lib/mysql
   composer:
