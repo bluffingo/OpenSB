@@ -59,7 +59,7 @@ if (isset($_COOKIE['frontend'])) {
     $frontendCommon = $_COOKIE['frontend'] . "-common";
     $mobileFrontend = $_COOKIE['frontend'] . "-mobile";
 } else {
-    $frontendName = (isset($useTemplate) ? $useTemplate : 'sbnext');
+    $frontendName = ($useTemplate ?? 'sbnext');
     $frontend = (isset($useTemplate) ? $useTemplate . "-desktop" : 'sbnext-desktop');
     $frontendCommon = (isset($useTemplate) ? $useTemplate . "-common" : 'sbnext-common');
     $mobileFrontend = (isset($useTemplate) ? $useTemplate . "-mobile" : 'sbnext-mobile');
