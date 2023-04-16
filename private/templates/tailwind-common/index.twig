@@ -1,12 +1,12 @@
 {% extends "_layout.twig" %}
 
 {% block content %}
-    <div class="border-2 border-slate-200 bg-gray-50 shadow-sm p-4 mb-2">
+    <div class="border border-gray-200 bg-gray-50 p-4 mb-2 rounded">
         <div class="flex flex-col gap-1">
-            <span class="mb-2">Randomly selected posts</span>
-            <div class="grid grid-cols-4 gap-2">
+            <span class="mb-2">{{ __("Randomly selected submissions") }}</span>
+            <div class="grid grid-cols-2 gap-2">
                 {% for video in videos %}
-                    <div class="flex gap-2 flex-col">
+                    <div class="flex gap-2">
                         <div class="shrink-0">
                             <a href="watch?v={{ video.video_id }}">
                             {% if video.post_type == 0 %}
@@ -21,9 +21,9 @@
                                 {{ video.title }}
                             </a>
                             <p class="text-gray-400 text-sm">
-                                <a class="no-underline hover:underline hover:text-sky-700">{{ video.u_name }}</a>
+                                <a class="no-underline hover:underline hover:text-pink-700">{{ video.u_name }}</a>
                             </p>
-                            <p class="text-gray-400 text-sm">{{ video.views }} views &bull; X months ago</p>
+                            <p class="text-gray-400 text-sm">{{ video.views }} views &bull; {{ video.time | relative_time }}</p>
                         </div>
                     </div>
                 {% endfor %}
