@@ -6,25 +6,30 @@
 
 	"Access Denied": "Access Denied",
 
-	"The video you were looking for cannot be found.": "The video you were looking for cannot be found.",
+	"This submission cannot be found.": "This submission cannot be found.",
 
 	"Admin panel": "Admin panel",
-	"Currently running openSB Build %s (commit %s) on %s.": "Currently running openSB Build %s (commit %s) on %s.",
-	"The latest": "The latest",
+	"Currently running openSB build %s (commit %s) on %s.": "Currently running openSB build %s (commit %s) on %s.",
+	"What's going on?": "What's going on?",
 	"Last registered": "Last registered",
 	"Last signed in": "Last signed in",
-	"Latest posts": "Latest posts",
-	"Numbers": "Numbers",
+	"Latest submissions": "Latest submissions",
+	"More detailed statistics": "More detailed statistics",
 	"All comments": "All comments",
 	"Delete": "Delete",
 
 	"(Page %s)": "(Page %s)",
-	"There are no videos of that category.": "There are no videos of that category.",
-	"You could create one!": "You could create one!",
+	"Sort": "Sort",
+	"Most recent": "Most recent",
+	"Most popular": "Most popular",
+	"Most discussed": "Most discussed",
+	"Most favorited": "Most favorited",
+	"Random": "Random",
+	"There are no submissions.": "There are no submissions.",
 
 	"Edit upload": "Edit upload",
-	"Edit your post": "Edit your post",
-	"Enter the new information for your post.": "Enter the new information for your post.",
+	"Edit your submission": "Edit your submission",
+	"Enter the new information for your submission.": "Enter the new information for your submission.",
 	"Title": "Title",
 	"Description": "Description",
 	"Save": "Save",
@@ -39,8 +44,8 @@
 	"Login": "Login",
 	"Options successfully saved!": "Options successfully saved!",
 	"Browse more": "Browse more",
-	"Randomly selected posts": "Randomly selected posts",
-	"This instance does not currently have any uploaded posts.": "This instance does not currently have any uploaded posts.",
+	"Randomly selected submissions": "Randomly selected submissions",
+	"This instance currently lacks submissions.": "This instance currently lacks submissions.",
 
 	"Password successfully reset! Please login with your new password.": "Password successfully reset! Please login with your new password.",
 	"You have been successfully logged out of all devices.": "You have been successfully logged out of all devices.",
@@ -72,7 +77,7 @@
 	"New Password": "New Password",
 	"Repeat New Password": "Repeat New Password",
 
-	"There are no posts that match your query.": "There are no posts that match your query.",
+	"There are no submissions that match your query.": "There are no submissions that match your query.",
 
 	"Settings": "Settings",
 	"Credentials": "Credentials",
@@ -94,14 +99,14 @@
 	"About %s": "About %s",
 	"Some statistics may not be accurate.": "Some statistics may not be accurate.",
 	"Registered users": "Registered users",
-	"Posts": "Posts",
+	"Submissions": "Submissions",
 	"Views": "Views",
 	"Comments": "Comments",
 	"Graph": "Graph",
 
 	"Upload": "Upload",
-	"Upload a post": "Upload a post",
-	"Enter the required information and select the file for your post.": "Enter the required information and select the file for your post.",
+	"Upload a submission": "Upload a submission",
+	"Enter the required information and select the file for your submission.": "Enter the required information and select the file for your submission.",
 	"Tags (optional)": "Tags (optional)",
 	"Select file": "Select file",
 	"Most popular video and image formats should be supported.": "Most popular video and image formats should be supported.",
@@ -113,7 +118,7 @@
 	"Sorry %s, you are banned from %s.": "Sorry %s, you are banned from %s.",
 	"This ban is not set to expire.": "This ban is not set to expire.",
 	"© openSB contributors": "© openSB contributors",
-	"Running Build %s on Git Commit %s.": "Running Build %s on Git Commit %s.",
+	"Running build %s (Git commit %s)": "Running build %s (Git commit %s)",
 	"User agent": "User agent",
 	"Browser being used": "Browser being used",
 	"Unknown browser": "Unknown browser",
@@ -136,11 +141,10 @@
 
 	"More": "More",
 
-	"Edit post's information": "Edit post's information",
+	"Modify submission": "Modify submission",
 
-	"Sign Out": "Sign Out",
-	"Create Account": "Create Account",
-	"Sign In": "Sign In",
+	"My profile": "My profile",
+	"Log out": "Log out",
 
 	"Edit my settings": "Edit my settings",
 	"View user page as viewer": "View user page as viewer",
@@ -161,10 +165,10 @@
 	"Favorite": "Favorite",
 
 	"Search...": "Search...",
-	"Log out": "Log out",
 
 	"Edit profile": "Edit profile",
 	"About this user": "About this user",
+	"There are currently no submissions by %s.": "There are currently no submissions by %s.",
 
 	"About": "About",
 	"Category": "Category",
@@ -184,7 +188,7 @@
 	"Missing important POST variable.": "Missing important POST variable.",
 	"Your comment has been submitted.": "Your comment has been submitted.",
 
-	"This is not your upload.": "This is not your upload.",
+	"This is not your submission.": "This is not your submission.",
 
 	"Please enter your username! ": "Please enter your username! ",
 	"Please enter your password! ": "Please enter your password! ",

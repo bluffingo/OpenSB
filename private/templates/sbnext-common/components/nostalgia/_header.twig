@@ -16,16 +16,17 @@
 				<span>{{ userdata.title }}{{ icon("caret-down", 16) }}</span>
 				<div class="usermenushit" id="masthead-below">
 					<ul style="padding:0">
-						<li>
-							<a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a>
-						</li>
+						<li><a href="user.php?name={{ userdata.name }}">{{ __("My profile") }}</a></li>
 						<li><a href="/settings.php">{{ __("Settings") }}</a></li>
+						{% if userdata.powerlevel > 2 %}
+						<li><a href="/admin">{{ __("Admin panel") }}</a></li>
+						{% endif %}
 					</ul>
 				</div>
 			</button>
-			<a href="logout.php" class="end">{{ __("Sign Out") }}</a>
+			<a href="logout.php" class="end">{{ __("Log out") }}</a>
 			{% else %}
-			<a href="register.php" class="start">{{ __("Create Account") }}</a><a href="login.php" class="end">{{ __("Sign In") }}</a>
+			<a href="register.php" class="start">{{ __("Register") }}</a><a href="login.php" class="end">{{ __("Login") }}</a>
 			{% endif %}
 		</div>
 	</div>

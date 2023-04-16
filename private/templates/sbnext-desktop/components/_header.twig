@@ -37,8 +37,11 @@
                                 <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
                                 <div class="usermenushit" id="masthead-below">
                                     <ul style="padding:0">
-                                        <li><a href="user.php?name={{ userdata.name }}">{{ __("Profile") }}</a></li>
+                                        <li><a href="user.php?name={{ userdata.name }}">{{ __("My profile") }}</a></li>
                                         <li><a href="/settings.php">{{ __("Settings") }}</a></li>
+                                        {% if userdata.powerlevel > 2 %}
+                                        <li><a href="/admin">{{ __("Admin panel") }}</a></li>
+                                        {% endif %}
                                         <li><a href="logout.php">{{ __("Log out") }}</a></li>
                                     </ul>
                                 </div>

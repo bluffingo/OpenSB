@@ -60,7 +60,7 @@
         </div>
         <div class="tab">
             <button class="tablinks active" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
-            <button class="tablinks" onclick="openTab(event, 'Videos')">Posts</button>
+            <button class="tablinks" onclick="openTab(event, 'Videos')">Submissions</button>
             <button class="tablinks" onclick="openTab(event, 'Discussion')">Discussion</button>
             <button class="tablinks" onclick="openTab(event, 'Statistics')">Statistics</button>
         </div>
@@ -80,7 +80,7 @@
             {% for latestVideo in latestVideos %}
                 {{ small_video_box(latestVideo) }}
             {% else %}
-                <p>{{ __("There are currently no posts by %s.", [userpagedata.title]) }}</p>
+                <p>{{ __("There are currently no submissions by %s.", [userpagedata.title]) }}</p>
             {% endfor %}
             {% if userdata.id == id %}
                 {% set forceuser = "&forceuser" %}

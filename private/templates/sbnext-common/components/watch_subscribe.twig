@@ -1,6 +1,6 @@
 {% if userdata.id == video.author %}<a
     class="button button-secondary button-small"
-    href="/edit.php?v={{ video.video_id }}">{{ __("Edit post's information") }}</a>
+    href="/edit.php?v={{ video.video_id }}">{{ __("Modify submission") }}</a>
 {% else %}
     <button id="subscribe-watch"
             class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small"

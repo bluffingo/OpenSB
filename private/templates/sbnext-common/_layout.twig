@@ -69,7 +69,7 @@
 		<p><strong>{{ __("© openSB contributors") }}</strong> · 2021-{{ 'now' | date('Y') }}
 			| <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong>
 		</p>
-		<p>{{ __("Running Build %s on Git Commit %s.", [version, git_commit()]) }}</p>
+		<h5>{{ __("Running build %s (Git commit %s)", [version, git_commit()]) }}</h5>
 		{% if isDebug %}
 		<p>{{ __("User agent") }}: {{ user_agent }}</p>
 		<p>{{ __("Browser being used") }}: {% if browser_info.name is empty %}{{ __("Unknown browser") }}{% else %}{{ browser_info.name }}{% endif %}</p>

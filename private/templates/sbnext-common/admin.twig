@@ -3,13 +3,10 @@
 {% block title %}{{ __("Admin panel") }}{% endblock %}
 
 	{% block content %}
-		<h1>Admin panel</h1>
-		<p>{{ __("Currently running openSB Build %s (commit %s) on %s.", [version, git_commit(), operating_system()]) }}</p>
+		<h1>{{ __("Admin panel") }}</h1>
+		<p>{{ __("Currently running openSB build %s (commit %s) on %s.", [version, git_commit(), operating_system()]) }}</p>
 		<table style="width: 100%;">
-			<caption>{{ __("The latest") }}</caption>
-			<tr>
-				<th colspan="3">Trying to make Sonarcloud happy, disregard.</th>
-			</tr>
+			<caption>{{ __("What's going on?") }}</caption>
 			<tr>
 				<td class="nb" style="width:33%; vertical-align:top;">
 					<table class="c1">
@@ -19,7 +16,7 @@
 						</tr>
 						{% for user in latest_registered_users %}
 							<tr>
-								<td class="b"><a href="profile.php?user={{ user.name }}">{{ user.name }}</a></td>
+								<td class="b"><a href="user.php?name={{ user.name }}">{{ user.name }}</a></td>
 								<td class="b">{{ user.joined | date() }}</td>
 							</tr>
 						{% endfor %}
@@ -33,7 +30,7 @@
 						</tr>
 						{% for user in latest_seen_users %}
 							<tr>
-								<td class="b"><a href="profile.php?user={{ user.name }}">{{ user.name }}</a></td>
+								<td class="b"><a href="user.php?name={{ user.name }}">{{ user.name }}</a></td>
 								<td class="b">{{ user.lastview | relative_time }}</td>
 							</tr>
 						{% endfor %}
@@ -41,9 +38,9 @@
 				</td>
 				<td class="nb" style="width:33%; vertical-align:top;">
 					<table class="c1">
-						<caption>{{ __("Latest posts") }}</caption>
+						<caption>{{ __("Latest submissions") }}</caption>
 						<tr class="h">
-							<th class="b" colspan="2">{{ __("Latest posts") }}</td>
+							<th class="b" colspan="2">{{ __("Latest submissions") }}</td>
 						</tr>
 						{% for video in videos %}
 							<tr>
@@ -57,7 +54,7 @@
 		</table>
 
 		<table style="width: 100%;">
-			<caption>{{ __("Numbers") }}</caption>
+			<caption>{{ __("More detailed statistics") }}</caption>
 			<tr class="h">
 				{% for thing in things_to_count %}
 					<th class="b h" width=100>{{ thing | title }}</td>
@@ -72,7 +69,7 @@
 
 		<h3>{{ __("All comments") }}</h3>
 		{% for comment in comments %}
-			<div class="grid" style="gap:0px;margin-bottom: 17.5px;">
+			<div class="grid">
 				<div class="col-md-12" id="{{ comment.comment_id }}">
 					{{ userlink(comment, 'u_') }} &bull; {{ comment.date | relative_time }}
 					<br>

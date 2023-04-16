@@ -4,13 +4,38 @@ namespace openSB;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-$type = ($_GET['type'] ?? 'all');
+function get_the_sort_type_shit($type)
+{
+    switch ($type) {
+        case 'recent':
+            $order = "v.time";
+            break;
+        case 'popular':
+            $order = "views";
+            break;
+        case 'discussed':
+            $order = "comments";
+            break;
+        case 'favorited':
+            $order = "favorites";
+            break;
+        case 'random':
+            $order = "RAND()";
+            break;
+        default:
+            $order = "v.time";
+            break;
+    }
+    return $order;
+}
+
+$type = ($_GET['type'] ?? 'recent');
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
-$where = ($type != 'all' ? "WHERE v.category_id = " . Videos::type_to_cat($type) : '');
+$order_by = get_the_sort_type_shit($type);
 $limit = sprintf("LIMIT %s,%s", (($page - 1) * $paginationLimit), $paginationLimit);
-$videoData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id $where ORDER BY v.time DESC $limit");
-$count = $sql->result("SELECT COUNT(*) FROM videos v $where");
+$videoData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY $order_by DESC $limit");
+$count = $sql->result("SELECT COUNT(*) FROM videos");
 
 $twig = twigloader();
 echo $twig->render('browse.twig', [
