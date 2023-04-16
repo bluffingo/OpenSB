@@ -42,3 +42,5 @@ $bunnySettings = [
 	"storageZone" => "storage zone name",
 	"pullZone" => "[pull zone].b-cdn.net",
 ];
+
+$outputJson = false;

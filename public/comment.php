@@ -50,11 +50,7 @@ if ($type == 0) {
     die(__("Missing important POST variable."));
 }
 
-if ($frontendName != "retro") {
-    $twig = twigloader();
-    echo $twig->render('components/comment.twig', [
-        'data' => $comment
-    ]);
-} else {
-    die(__("Your comment has been submitted."));
-}
+$twig = twigloader();
+echo $twig->render('components/comment.twig', [
+    'data' => $comment
+]);
