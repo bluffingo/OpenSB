@@ -104,10 +104,7 @@
                     <h3>{{ __("Comments") }} ({{ comCount }})</h3>
                     {% if log and userbandata != true %}
                         <div class="grid" id="commentField">
-                            <div class="col-md-4">
-                                <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
-                            </div>
-                            <div class="col-md-12">
+                            <div class="col-md-16">
                                 <div>
                         <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:vertical" rows="3"
                                   placeholder="{{ __("Enter comment here.") }}"></textarea>

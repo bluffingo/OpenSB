@@ -17,7 +17,7 @@ html {
 @import "_grid-breakpoints";
 
 h1, h2, h3 {
-  font-weight: 500;
+  font-weight: 450;
 }
 
 h4, h5, h6 {
@@ -94,6 +94,7 @@ blockquote {
   bottom: 0;
   width: 100%;
   padding: 5px;
+  text-align: center;
 }
 
 .top_forum {
@@ -648,14 +649,14 @@ input[type]:not([type=file]):not([type=submit]):focus {
 
 .statbox {
   text-align: center;
-  font-size: 20px;
-  border: 1px solid $gray-200;
-  padding: 1em;
-  margin: 0.1em;
+  font-size: 3em;
+  border: 1px solid $gray-150;
+  padding: 0.5em;
   background-color: $gray-100;
 
   .stat-title {
-    font-weight: bold;
+    font-size: 0.5em;
+    font-weight: semibold;
   }
 }
 
