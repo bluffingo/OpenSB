@@ -53,7 +53,7 @@ if ($sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?",
 }
 
 $subCount = $sql->fetch("SELECT COUNT(user) FROM subscriptions WHERE user=?", [$videoData['author']])['COUNT(user)'];
-$commentCount = $sql->fetch("SELECT COUNT(id) FROM comments WHERE id=?", [$videoData['video_id']])['COUNT(id)']; //broken,, fix -gr 11/3/2021
+$commentCount = $sql->fetch("SELECT COUNT(id) FROM comments WHERE id=?", [$videoData['video_id']])['COUNT(id)'];
 $viewCount = $sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']])['COUNT(video_id)'];
 
 // scrapped randley layout had dumb code regarding if the video was "modern" (converted to mp4) or "legacy"
