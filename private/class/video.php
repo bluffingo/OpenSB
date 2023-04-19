@@ -165,21 +165,32 @@ class Videos
         $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
     }
 
+    public static function getVideoFile($videoData)
+    {
+        global $isQoboTV, $bunnySettings;
+        if ($isQoboTV) {
+            if ($videoData['post_type'] == 0) {
+                // videofile on videos using bunnycdn are the guid, don't ask me why. -grkb 4/8/2023
+                $bunny_url = "https://" . $bunnySettings["streamHostname"] . "/" . $videoData["videofile"] . "/playlist.m3u8";
+            } elseif ($videoData['post_type'] == 2) {
+                // https://qobo-grkb.b-cdn.net/dynamic/art/f_eKEJNj4bm.png
+                $bunny_url = "https://" . $bunnySettings["pullZone"] . $videoData["videofile"];
+            }
+            return $bunny_url;
+        } else {
+            return $videoData['videofile'];
+        }
+    }
+
     public static function getVideoData($userfields, $id)
     {
         global $sql, $isQoboTV, $bunnySettings;
         $videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
-        if (!$videoData) error('404', __("This submission cannot be found."));
-        $videoData['views'] = $sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
-        if ($isQoboTV) {
-            if ($videoData['post_type'] == 0) {
-                // videofile on videos using bunnycdn are the guid, don't ask me why. -grkb 4/8/2023
-                $videoData['bunny_url'] = "https://" . $bunnySettings["streamHostname"] . "/" . $videoData["videofile"] . "/playlist.m3u8";
-            } elseif ($videoData['post_type'] == 2) {
-                // https://qobo-grkb.b-cdn.net/dynamic/art/f_eKEJNj4bm.png
-                $videoData['bunny_url'] = "https://" . $bunnySettings["pullZone"] . $videoData["videofile"];
-            }
+        if (!$videoData) {
+            return false;
         }
+        $videoData['views'] = $sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
+        $videoData['file'] = Videos::getVideoFile($videoData);
         return $videoData;
     }
 }

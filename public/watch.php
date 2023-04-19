@@ -13,12 +13,17 @@ $ip = ($_SERVER['HTTP_CLIENT_IP'] ?? ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERV
 
 $videoData = Videos::getVideoData($userfields, $id);
 
+if(!$videoData) {
+    error('404', __("This submission cannot be found."));
+}
+
 $query = '';
 $count = 0;
 $commentData = $sql->query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$id]);
 
 $relatedVideosData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE NOT v.video_id = ? ORDER BY RAND() LIMIT 6", [$id]);
 
+// move this to getVideoData
 $totalLikes = $sql->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$videoData['id']]);
 $totalDislikes = $sql->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=0", [$videoData['id']]);
 $combinedRatings = $totalDislikes + $totalLikes;
@@ -58,7 +63,7 @@ if ($videoData['post_type'] == 0 or $videoData['post_type'] == 1) {
 } elseif ($videoData['post_type'] == 2) {
     $postType = "artwork";
 } else {
-    throw new Exception("Post type is not supported.");
+    $postType = "unknown";
 }
 
 $previousRecentView = $sql->result("SELECT most_recent_view from videos WHERE video_id = ?", [$id]);
