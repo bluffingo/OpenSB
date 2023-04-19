@@ -11,16 +11,16 @@ $id = (isset($_GET['id']) ? $_GET['id'] : null);
 
 $submission = \openSB\Videos::getVideoData($userfields, $id);
 
-// move this to getVideoData
-$totalLikes = $sql->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$submission['id']]);
-$totalDislikes = $sql->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=0", [$submission['id']]);
-
 if(!$submission) {
     $apiOutput = ['error' => "Submission unavailable"];
 
     echo json_encode($apiOutput);
     die();
 }
+
+// move this to getVideoData
+$totalLikes = $sql->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$submission['id']]);
+$totalDislikes = $sql->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=0", [$submission['id']]);
 
 // TODO: comments? likes?
 $apiOutput = [
