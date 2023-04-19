@@ -155,14 +155,17 @@
 	"There are currently no posts by %s.": "There are currently no posts by %s.",
 	"Enter comment here.": "Enter comment here.",
 
-	"%s views": "%s views",
-	"%s favorites": "%s favorites",
-	"%s followers": "%s followers",
-	"Published on %s": "Published on %s",
-
+	"Edit submission": "Edit submission",
 	"Like": "Like",
 	"Dislike": "Dislike",
 	"Favorite": "Favorite",
+	"About": "About",
+	"Published on %s": "Published on %s",
+	"Total favorites": "Total favorites",
+	"Like/Dislike ratio": "Like/Dislike ratio",
+	"Last seen": "Last seen",
+	"Flag submission": "Flag submission",
+	"This isn't currently implemented.": "This isn't currently implemented.",
 
 	"Search...": "Search...",
 
@@ -170,7 +173,7 @@
 	"About this user": "About this user",
 	"There are currently no submissions by %s.": "There are currently no submissions by %s.",
 
-	"About": "About",
+	"%s followers": "%s followers",
 	"Category": "Category",
 	"Rating ratio": "Rating ratio",
 	"Last viewed": "Last viewed",
@@ -179,6 +182,7 @@
 	"Sign in to your account": "Sign in to your account",
 	"Sign in": "Sign in",
 
+	"%s views": "%s views",
 	"Uploaded on %s": "Uploaded on %s",
 
 	"Build": "Build",
@@ -186,7 +190,6 @@
 
 	"Banned user, can't continue.": "Banned user, can't continue.",
 	"Missing important POST variable.": "Missing important POST variable.",
-	"Your comment has been submitted.": "Your comment has been submitted.",
 
 	"This is not your submission.": "This is not your submission.",
 
