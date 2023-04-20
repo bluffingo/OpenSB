@@ -48,6 +48,9 @@ if (isset($_POST['magic'])) {
 
     // banned users shouldn't be able to change their profile
     if (!$userbandata) {
+		if (strlen($title) > 50) {
+			$error .= __("Your display name is too long.");
+		}
         if (!empty($_FILES['profilePicture']['name'])) {
             $name = $_FILES['profilePicture']['name'];
             $temp_name = $_FILES['profilePicture']['tmp_name'];
@@ -56,8 +59,10 @@ if (isset($_POST['magic'])) {
             $storage->uploadImage($temp_name, $target_file, 'png', true, 600, 600);
         }
 
-        $sql->query("UPDATE users SET title = ?, about = ?, customcolor = ? WHERE id = ?",
-            [$title, $about, $customcolor, $userdata['id']]);
+		if (!$error) {
+				$sql->query("UPDATE users SET title = ?, about = ?, customcolor = ? WHERE id = ?",
+					[$title, $about, $customcolor, $userdata['id']]);
+		}
     }
 
     if (!$error) {
