@@ -14,7 +14,7 @@
         <div class="main-content">
             <div class="container sb-welcome">
                 {% if log %}
-                        <h1>{{ __("Welcome to %s, %s", [ website_branding.name, userdata.title ] ) }}</h1>
+                        <h1>{{ __("Welcome to %s, %s", [ website_branding.name, userdata.title | escape('js') ])}}</h1>
                         {# hack to prevent twig from outputing the number 1 #}
                         {% if totalSubscribers != 1 %}
                             {% set pluralSubscribers = __("s") %}

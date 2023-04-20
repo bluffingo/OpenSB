@@ -48,7 +48,7 @@ class Profiler
         } else {
             $debugData = sprintf(
                 '[debug]: %s (display name: @%s) | user time used: %s | system time used: %s | current locale: %s | page rendered in %1.3f secs with %dKB used',
-                $username, $displayname, $res["ru_utime.tv_sec"], $res["ru_stime.tv_sec"], $language, $renderTime, $memoryUsage);
+                $username, htmlspecialchars($displayname), $res["ru_utime.tv_sec"], $res["ru_stime.tv_sec"], $language, $renderTime, $memoryUsage);
         }
 
         if ($frontendName == "sbnext") {

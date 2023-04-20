@@ -80,13 +80,12 @@
 			<a class="button button-danger button-small debug-button tooltip" title="Spicy shit!" role="button">{{ __("Debug") }}</a>
 			{% endif %}
 			<div id="optionsModal" class="bg-neutral" style="padding:0.3em;">
-
 			</div>
 			{% if isDebug %}
 			<div id="debugModal" class="bg-neutral" style="padding:0.3em;">
 				<h3>Debug info</h3>
 				<div class="header_message header-danger">{{ __("It is risky to screenshot this due to security reasons, so please don't.") }}</div>
-				<p><pre>{{ dump() }}</pre></p>
+				<p><pre>{{ dump() | escape('js') }}</pre></p>
 			</div>
 			{% endif %}
 		{% endif %}

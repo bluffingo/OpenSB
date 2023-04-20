@@ -13,7 +13,7 @@ $error = '';
 
 if (isset($_POST['magic'])) {
     if (!$userbandata) {
-        $title = $_POST['title'] ?? null;
+        $title = htmlspecialchars($_POST['title']) ?? null;
         $customcolor = $_POST['customcolor'] ?? '#3e3ecf';
         $about = $_POST['about'] ?? null;
     }

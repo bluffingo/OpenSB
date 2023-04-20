@@ -1,12 +1,12 @@
 {% extends "_layout.twig" %}
-{% block title %}{{ userpagedata.title }}{% endblock %}
+{% block title %}{{ userpagedatatitle | escape('js') }}{% endblock %}
 {% block head %}
-    <meta name="title" content="{{ userpagedata.title }} - {{ website_branding.name }}">
+    <meta name="title" content="{{ userpagedatatitle | escape('js') }} - {{ website_branding.name }}">
     <meta name="description"
           content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
     <meta name="theme-color" content="{{ userpagedata.customcolor }}">
     <meta property="og:site_name" content="{{ website_branding.name }}"/>
-    <meta property="og:title" content="{{ userpagedata.title }} - {{ website_branding.name }}">
+    <meta property="og:title" content="{{ userpagedatatitle | escape('js') }} - {{ website_branding.name }}">
     <meta property="og:description"
           content="{{ userpagedata.about|length > 250 ? userpagedata.about|slice(0, 250) ~ '...' : userpagedata.about }}">
     <meta property="og:image" content="{{ profile_image(userdata.name) }}">
@@ -34,7 +34,7 @@
                 <img class="rounded img-fluid" src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
             </div>
             <div class="col-md-13">
-                <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}{{ icon("shield", 20) }}{% endif %}
+                <h1 style="margin: 0">{{ userpagedatatitle | escape('js') }}{% if userpagedata.powerlevel > 1 %}{{ icon("shield", 20) }}{% endif %}
                 </h1>
                 <p>@{{ userpagedata.name }}
                     {# hack to prevent twig from outputing the number 1 #}
@@ -80,7 +80,7 @@
             {% for latestVideo in latestVideos %}
                 {{ small_video_box(latestVideo) }}
             {% else %}
-                <p>{{ __("There are currently no submissions by %s.", [userpagedata.title]) }}</p>
+                <p>{{ __("There are currently no submissions by %s.", [userpagedata.title | escape('js') ]) }}</p>
             {% endfor %}
             {% if userdata.id == id %}
                 {% set forceuser = "&forceuser" %}

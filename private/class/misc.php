@@ -49,7 +49,7 @@ function getOS(): string
 }
 
 /**
- * Get the IP address of the user. Scandal incoming!
+ * Get IP.
  *
  * @return mixed
  */
@@ -57,12 +57,5 @@ function getUserIpAddr()
 {
     if (isCli()) return Null;
     $ip = $_SERVER['REMOTE_ADDR'];
-    if (filter_var($ip, FILTER_VALIDATE_IP,
-        FILTER_FLAG_IPV4 |
-        FILTER_FLAG_IPV6 |
-        FILTER_FLAG_NO_PRIV_RANGE |
-        FILTER_FLAG_NO_RES_RANGE) === false) {
-        die("Bullshit IP.");
-    }
     return $ip;
 }
