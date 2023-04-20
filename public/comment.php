@@ -14,6 +14,11 @@ if ($_POST["comment"] == "")
     die();
 }
 
+// Fuck -grkb 4/19/2023
+if (strlen($_POST["comment"]) > 1000) {
+	die("Too long.");
+}
+
 if (isset($_POST['really'])) {
     switch ($_POST['type']) {
         case "video":
