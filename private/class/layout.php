@@ -21,7 +21,7 @@ use Twig\TwigFunction;
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
     global $sql, $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness,
-           $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $pageVariable, $isMaintenance,
+           $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $isMaintenance,
            $versionNumber, $isDebug, $userbandata, $browser, $branding, $isQoboTV;
     $detect = new \Detection\MobileDetect;
 
@@ -85,7 +85,6 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $twig->addGlobal('glob_languages', $languages);
     $twig->addGlobal('glob_lpp', $paginationLimit);
     $twig->addGlobal('notification_count', $notificationCount);
-    $twig->addGlobal('page', $pageVariable);
     $twig->addGlobal('totalSubscribers', $totalSubscribers);
     $twig->addGlobal('version', $versionNumber);
     $twig->addGlobal('isMaintenance', $isMaintenance);
@@ -97,10 +96,8 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
 	$twig->addGlobal('website_branding', $branding);
     $twig->addGlobal('bunnyEnabled', $isQoboTV);
 
-    if (isset($_SERVER["HTTP_HOST"])) { // Browsers from 1995 (eg: Internet Explorer 1) make PHP throw out warnings due to them not having HTTP hosts feature.
-        $twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
-        $twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
-    }
+    $twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+    $twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
 
     return $twig;
 }

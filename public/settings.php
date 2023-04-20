@@ -4,10 +4,7 @@ namespace openSB;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-use \Intervention\Image\ImageManager;
-
 if (!$log) redirect('login.php');
-$pageVariable = "settings";
 
 $error = '';
 

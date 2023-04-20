@@ -5,15 +5,19 @@
 	{% block content %}
         {% if error %}
             <div class="header_message header-danger" role="alert">{{ error }}</div>
+			<br>
         {% elseif resetted %}
             <div class="header_message header-success"
                  role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>
+			<br>
         {% elseif new_pass %}
             <div class="header_message header-success"
                  role="alert">{{ __("Password successfully reset! Please login with your new password.") }}</div>
+			<br>
         {% elseif new_token %}
             <div class="header_message header-success"
                  role="alert">{{ __("You have been successfully logged out of all devices.") }}</div>
+			<br>
         {% endif %}
 
         <div class="grid chazizPage">

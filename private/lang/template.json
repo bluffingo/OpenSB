@@ -6,8 +6,6 @@
 
 	"Access Denied": "Access Denied",
 
-	"This submission cannot be found.": "This submission cannot be found.",
-
 	"Admin panel": "Admin panel",
 	"Currently running openSB build %s (commit %s) on %s.": "Currently running openSB build %s (commit %s) on %s.",
 	"What's going on?": "What's going on?",
@@ -69,8 +67,7 @@
 	"Save Changes": "Save Changes",
 
 	"Email": "Email",
-	"Display Name": "Display Name",
-	"Password (Again)": "Password (Again)",
+	"Confirm Password": "Confirm Password",
 
 	"Reset Password": "Reset Password",
 	"Hello %s. Please choose a new secure password, and be sure to remember it!": "Hello %s. Please choose a new secure password, and be sure to remember it!",
@@ -80,19 +77,19 @@
 	"There are no submissions that match your query.": "There are no submissions that match your query.",
 
 	"Settings": "Settings",
-	"Credentials": "Credentials",
+	"Your account": "Your account",
 	"Setting name": "Setting name",
 	"Setting": "Setting",
 	"Email address": "Email address",
 	"Current password": "Current password",
 	"New password": "New password",
-	"Repeat new password": "Repeat new password",
-	"Profile": "Profile",
+	"Confirm new password": "Confirm new password",
+	"Your profile": "Your profile",
 	"Profile picture": "Profile picture",
 	"Display name": "Display name",
 	"Markdown is allowed.": "Markdown is allowed.",
 	"Username color": "Username color",
-	"Profile options are not available to banned users.": "Profile options are not available to banned users.",
+	"Profile options are not available to users who are currently banned.": "Profile options are not available to users who are currently banned.",
 	"Miscellaneous": "Miscellaneous",
 
 	"Statistics": "Statistics",
@@ -179,6 +176,8 @@
 	"Last viewed": "Last viewed",
 	"Favorites": "Favorites",
 
+	"Profile": "Profile",
+
 	"Sign in to your account": "Sign in to your account",
 	"Sign in": "Sign in",
 
@@ -192,6 +191,7 @@
 	"Missing important POST variable.": "Missing important POST variable.",
 
 	"This is not your submission.": "This is not your submission.",
+	"This submission cannot be found.": "This submission cannot be found.",
 
 	"Please enter your username! ": "Please enter your username! ",
 	"Please enter your password! ": "Please enter your password! ",
@@ -200,16 +200,17 @@
 	"No POST data.": "No POST data.",
 
 	"Blank username.": "Blank username.",
-	"Password is too short.": "Password is too short.",
-	"The passwords don't match.": "The passwords don't match.",
-	"Blank display name.": "Blank display name.",
+	"Password is too short. ": "Password is too short. ",
+	"The passwords don't match. ": "The passwords don't match. ",
 	"Username has already been taken. ": "Username has already been taken. ",
-	"Username contains invalid characters (Only alphanumeric and underscore allowed).": "Username contains invalid characters (Only alphanumeric and underscore allowed).",
+	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "Username contains invalid characters (Only alphanumeric and underscore allowed). ",
 
 	"No reset data.": "No reset data.",
 
 	" The new passwords aren't identical.": " The new passwords aren't identical.",
 	"Your current password is incorrect.": "Your current password is incorrect.",
+	"Your display name is too long.": "Your display name is too long.",
 
-	"Please wait a minute before uploading again.": "Please wait a minute before uploading again."
+	"Please wait a minute before uploading again.": "Please wait a minute before uploading again.",
+
 }

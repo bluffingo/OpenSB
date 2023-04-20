@@ -2,9 +2,12 @@
 {% block title %}{{ __("Settings") }}{% endblock %}
 
 	{% block content %}
+    {% if error %}
+        <div class="header_message header-danger" role="alert">{{ error }}</div>
+    {% endif %}
 <form action="settings.php" method="post" enctype="multipart/form-data">
 	<table class="settings">
-		<caption><h3>{{ __("Credentials") }}</h3></caption>
+		<caption><h3>{{ __("Your account") }}</h3></caption>
 		<tr>
 			<th>{{ __("Setting name") }}</th>
 			<th>{{ __("Setting") }}</th>
@@ -24,14 +27,14 @@
 					   placeholder="{{ __("Current password") }}"><br>
 				<input type="password" name="pass" size="30" maxlength="256" placeholder="{{ __("New password") }}"><br>
 				<input type="password" name="pass2" size="30" maxlength="256"
-					   placeholder="{{ __("Repeat new password") }}">
+					   placeholder="{{ __("Confirm new password") }}">
 			</td>
 		</tr>
 	</table>
 
 	{% if userbandata != true %}
 		<table class="settings">
-			<caption><h3>{{ __("Profile") }}</h3></caption>
+			<caption><h3>{{ __("Your profile") }}</h3></caption>
 			<tr>
 				<th>{{ __("Setting name") }}</th>
 				<th>{{ __("Setting") }}</th>
@@ -44,7 +47,7 @@
 			</tr>
 			<tr>
 				<td class="a">{{ __("Display name") }}</td>
-				<td class="b"><input type="text" name="title" size="45" maxlength="256" value="{{ userdata.title }}"></td>
+				<td class="b"><input type="text" name="title" size="45" maxlength="50" value="{{ userdata.title }}"></td>
 			</tr>
 			<tr>
 				<td class="a">
@@ -60,7 +63,7 @@
 			</tr>
 		</table>
 	{% else %}
-		<p>{{ __("Profile options are not available to banned users.") }}</p>
+		<p>{{ __("Profile options are not available to users who are currently banned.") }}</p>
 	{% endif %}
 
 	<!-- <h3>{{ __("Miscellaneous") }}</h3>

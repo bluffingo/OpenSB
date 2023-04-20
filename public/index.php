@@ -3,9 +3,6 @@
 namespace openSB;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-$nonFunctionalShit = true;
-$pageVariable = "index";
-
 // currently selects all uploaded videos, should turn it into all featured only
 $videoData = $sql->query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() LIMIT 16");
 // moved total subscribers to layout.php
