@@ -48,7 +48,7 @@ if (isset($_POST['magic'])) {
 
     // banned users shouldn't be able to change their profile
     if (!$userbandata) {
-        if (!empty($_FILES['profilePicture'])) {
+        if (!empty($_FILES['profilePicture']['name'])) {
             $name = $_FILES['profilePicture']['name'];
             $temp_name = $_FILES['profilePicture']['tmp_name'];
             $ext = pathinfo($_FILES['profilePicture']['name'], PATHINFO_EXTENSION);
