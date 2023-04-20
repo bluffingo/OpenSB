@@ -53,6 +53,7 @@ class BunnyStorage implements Storage
             ],
         );
         $sql->query("UPDATE videos SET videofile = ?, videolength = ?, flags = ? WHERE video_id = ?", [$newVideo->getContents()["guid"], 0, 0, $new]);
+        unlink($target_file);
     }
 
     public function getVideoThumbnail($id) {
