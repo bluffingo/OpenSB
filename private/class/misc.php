@@ -56,16 +56,13 @@ function getOS(): string
 function getUserIpAddr()
 {
     if (isCli()) return Null;
-    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-        //ip from share internet
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
-        $ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
-    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        //ip pass from proxy
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    } else {
-        $ip = $_SERVER['REMOTE_ADDR'];
+    $ip = $_SERVER['REMOTE_ADDR'];
+    if (filter_var($ip, FILTER_VALIDATE_IP,
+        FILTER_FLAG_IPV4 |
+        FILTER_FLAG_IPV6 |
+        FILTER_FLAG_NO_PRIV_RANGE |
+        FILTER_FLAG_NO_RES_RANGE) === false) {
+        die("Bullshit IP.");
     }
     return $ip;
 }

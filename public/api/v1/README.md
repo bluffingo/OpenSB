@@ -1,4 +1,5 @@
 # squareBracket API v1
+**This is being superseded by API v2. API v1 is still based with old mid-2021 squareBracket logic in mind.**
 
 The squareBracket API contains various entrypoints to fetch data intended to be used for applications interfacing with squareBracket. It is currently not intended to be used to edit data, and as such requires no authentication to use it.
 
