@@ -25,7 +25,7 @@ if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
     if ($error == '') {
         $token = bin2hex(random_bytes(32));
         $sql->query("INSERT INTO users (name, password, token, joined, title, email) VALUES (?,?,?,?,?,?)",
-            [$username, password_hash($pass, PASSWORD_DEFAULT), $token, time(), $username, $mail]);
+            [$username, password_hash($pass, PASSWORD_DEFAULT), $token, time(), $username, mailHash($mail)]);
 
         $newUser = $sql->result("SELECT `id` from `users` where `name` = ?", [$username]);
 

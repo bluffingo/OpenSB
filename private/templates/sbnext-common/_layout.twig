@@ -67,7 +67,8 @@
 	<div class="footer">
 		<img src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}">
 		<p><strong>{{ __("© openSB contributors") }}</strong> · 2021-{{ 'now' | date('Y') }}
-			| <strong><a href="/statistics.php">{{ __("Statistics") }}</a></strong>
+			| <strong><a href="/statistics">{{ __("Statistics") }}</a></strong>
+			| <strong><a href="/privacy">{{ __("Privacy Policy") }}</a></strong>
 		</p>
 		<h5>{{ __("Running build %s (Git commit %s)", [version, git_commit()]) }}</h5>
 		{% if isDebug %}

@@ -9,16 +9,17 @@
 	<table class="settings">
 		<caption><h3>{{ __("Your account") }}</h3></caption>
 		<tr>
-			<th>{{ __("Setting name") }}</th>
-			<th>{{ __("Setting") }}</th>
+			<th>{{ __("Option") }}</th>
+			<th>{{ __("Value") }}</th>
 		</tr>
 		<tr>
 			<td class="a">{{ __("Username") }}</td>
 			<td class="b">{{ userdata.name }}</td>
 		</tr>
 		<tr>
-			<td class="a">{{ __("Email address") }}</td>
-			<td class="b">{{ userdata.email }}</td>
+		<td class="a">{{ __("Email address") }}
+			<abbr title="Emails are stored hashed and cannot be retrieved outside of providing the email during password resets.">(?)</abbr></td>
+			<td class="b"></td>
 		</tr>
 		<tr>
 			<td class="a">{{ __("Password") }}</td>
@@ -30,14 +31,18 @@
 					   placeholder="{{ __("Confirm new password") }}">
 			</td>
 		</tr>
+		<tr>
+			<td class="a"></td>
+			<td class="b"><a href="/userexport">{{ __("Export your user data") }}</a></td>
+		</tr>
 	</table>
 
 	{% if userbandata != true %}
 		<table class="settings">
 			<caption><h3>{{ __("Your profile") }}</h3></caption>
 			<tr>
-				<th>{{ __("Setting name") }}</th>
-				<th>{{ __("Setting") }}</th>
+				<th>{{ __("Option") }}</th>
+				<th>{{ __("Value") }}</th>
 			</tr>
 			<tr>
 				<td class="a">{{ __("Profile picture") }}</td>
