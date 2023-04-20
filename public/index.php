@@ -13,19 +13,21 @@ if ($log) {
     } else {
         $subscriptionVideos = null;
     }
-    $totalViews = $sql->result("SELECT SUM(views) FROM videos WHERE author = ?", [$userdata['id']]);
+    $totalViews = $sql->result("SELECT SUM(views) FROM videos WHERE author = ?", [$userdata['id']]); // broken since 2021 (or 2022?) given how views are stored differently. -grkb 4/20/23
     $creationDate = $sql->result("SELECT joined FROM users WHERE id = ?", [$userdata['id']]);
+	$totalSubmissions = $sql->result("SELECT COUNT(*) FROM videos WHERE author = ?", [$userdata['id']]);
 } else {
     $subscriptionVideos = null;
     $totalViews = 0;
     $creationDate = 0;
+	$totalSubmissions = 0;
 }
 $twig = twigloader();
 
 echo $twig->render('index.twig', [
     'videos' => $videoData,
     'subscriptionVideos' => $subscriptionVideos,
-    'totalViews' => $totalViews,
+    'totalSubmissions' => $totalSubmissions,
     'creationDate' => $creationDate,
     'updated' => (isset($_GET['updated']) ? true : false),
 ]);

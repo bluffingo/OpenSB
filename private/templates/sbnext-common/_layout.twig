@@ -73,12 +73,12 @@
 		<h5>{{ __("Running build %s (Git commit %s)", [version, git_commit()]) }}</h5>
 		{% if isDebug %}
 		<p>{{ __("User agent") }}: {{ user_agent }}</p>
-		<p>{{ __("Browser being used") }}: {% if browser_info.name is empty %}{{ __("Unknown browser") }}{% else %}{{ browser_info.name }}{% endif %}</p>
+		<p>{{ __("Current browser") }}: {% if browser_info.name is empty %}{{ __("Unknown browser") }}{% else %}{{ browser_info.name }}{% endif %}</p>
 		{% endif %}
 		{% if isMaintenance != true %}
 			<a class="button button-neutral button-small options-button" role="button">{{ __("Options") }}</a>
 			{% if isDebug %}
-			<a class="button button-danger button-small debug-button tooltip" title="Spicy shit!" role="button">{{ __("Debug") }}</a>
+			<a class="button button-danger button-small debug-button tooltip" title="Spicy!" role="button">{{ __("Debug") }}</a>
 			{% endif %}
 			<div id="optionsModal" class="bg-neutral" style="padding:0.3em;">
 			</div>
