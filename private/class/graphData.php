@@ -23,6 +23,26 @@ ORDER BY time;");
         return $videos;
     }
 
+    public static function getCommentGraph(): array
+    {
+        global $sql;
+        $sql->query("SET @runningTotal = 0;");
+        $videoData = $sql->query("
+SELECT 
+    date,
+    num_interactions,
+    @runningTotal := @runningTotal + totals.num_interactions AS runningTotal
+FROM
+(SELECT 
+    FROM_UNIXTIME(date) AS date,
+    COUNT(*) AS num_interactions
+FROM comments AS e
+GROUP BY DATE(FROM_UNIXTIME(e.date))) totals
+ORDER BY date;");
+        $videos = $sql->fetchArray($videoData);
+        return $videos;
+    }
+
     public static function getUserGraph(): array
     {
         global $sql;

@@ -8,10 +8,12 @@ $stats = $sql->fetch("SELECT (SELECT COUNT(*) FROM users) usercount, (SELECT COU
 
 $vidGraph = GraphData::getVideoGraph();
 $userGraph = GraphData::getUserGraph();
+$commentGraph = GraphData::getCommentGraph();
 
 $twig = twigloader();
 echo $twig->render('stats.twig', [
     'stats' => $stats,
     'video_graph_data' => $vidGraph,
     'user_graph_data' => $userGraph,
+    'comment_graph_data' => $commentGraph,
 ]);
