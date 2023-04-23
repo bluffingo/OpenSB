@@ -34,19 +34,5 @@ a:visited {
 	background: #2B3644 url(/assets/qb_branding/login_bg.jpg);
 }
 
-/// Gradients \\\
-@import "_gradients";
-/// Backgrounds \\\
-@import "_backgrounds";
-/// Forums \\\
-@import "_style_forums";
-/// Images \\\
-@import "_images";
-/// Cards \\\
-@import "_cards";
-/// Buttons \\\
-@import "_buttons";
-/// Alerts \\\
-@import "_header_message";
-/// Text \\\
-@import "_text";
+/// Imports \\\
+@import "_imports";

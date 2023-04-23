@@ -8,68 +8,34 @@
 {% endblock %}
 {% block title %}Home{% endblock %}
 
-	{% block precontent %}
-<div class="indexNext">
-    {% if theme != 'nostalgia' %}
-        <div class="main-content">
-            <div class="container sb-welcome">
-                {% if log %}
-                <div class="grid">
-                    <div class="col-md-2">
-						<img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
-                    </div>
-                    <div class="col-md-14">
-                        <h1>{{ userdata.title }}</h1>
-                        {# hack to prevent twig from outputing the number 1 #}
-                        {% if totalSubscribers != 1 %}
-                            {% set pluralSubscribers = __("s") %}
-                        {% endif %}
-                        {% if totalSubmissions != 1 %}
-                            {% set pluralSubmissions = __("s") %}
-                        {% endif %}
-                        <p>@{{userdata.name}} · {{ __("%s follower%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }} · {{ __("%s submission%s", [totalSubmissions ?? __("no"), pluralSubmissions]) }}</p>
-                    </div>
-                </div>
-                {% else %}
-                    <h1>{{ __("Welcome to %s", [ website_branding.name ]) }}</h1>
-                    <a class="button button-primary button-large" href="register.php">{{ __("Get started") }}</a>
-                    <a class="button button-secondary button-large" href="login.php">{{ __("Login") }}</a>
-                {% endif %}
-            </div>
-        </div>
-    {% endif %}
-    {% endblock %}
-
     {% block content %}
-    {% if updated %}
-        <div class="header_message header-primary">{{ __("Options successfully saved!") }}</div>
-        <br>
-    {% endif %}
-    <div class="card">
-        <div class="card-body-fat">
-            {% if videos %}
-            <a class="button button-secondary float-right" href="browse.php">{{ __("Browse more") }}</a>
-            {% endif %}
-			{% if log %}
-			<h3 style="margin-top:0">{{ __("Your follow's submissions") }}</h3>
-			{% else %}
-            <h3 style="margin-top:0">{{ __("Randomly selected submissions") }}</h3>
-			{% endif %}
-			{% if log %}
-				{% for video in subscriptionVideos %}
-					{{ small_video_box(video) }}
+		{% if updated %}
+			<div class="header_message header-primary">{{ __("Options successfully saved!") }}</div>
+			<br>
+		{% endif %}
+		<div class="card">
+			<div class="card-body-fat">
+				{% if videos %}
+				<a class="button button-secondary float-right" href="browse.php">{{ __("Browse more") }}</a>
+				{% endif %}
+				{% if log %}
+				<h3 style="margin-top:0">{{ __("Your follow's submissions") }}</h3>
 				{% else %}
-					<p>{{ __("Either you're not following anyone, or none of your follows have submissions.") }}</p>
-				{% endfor %}
-			{% else %}
-				{% for video in videos %}
-					{{ small_video_box(video) }}
+				<h3 style="margin-top:0">{{ __("Randomly selected submissions") }}</h3>
+				{% endif %}
+				{% if log %}
+					{% for video in subscriptionVideos %}
+						{{ small_video_box(video) }}
+					{% else %}
+						<p>{{ __("Either you're not following anyone, or none of your follows have submissions.") }}</p>
+					{% endfor %}
 				{% else %}
-					<p>{{ __("This instance currently lacks submissions.") }}</p>
-				{% endfor %}
-			{% endif %}
-        </div>
-    </div>
-</div>
-<br><br>
+					{% for video in videos %}
+						{{ small_video_box(video) }}
+					{% else %}
+						<p>{{ __("This instance currently lacks submissions.") }}</p>
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
 {% endblock %}

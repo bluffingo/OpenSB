@@ -12,6 +12,5 @@
 }
 
 .page-container {
-  max-width: 1200px;
-  padding: 0;
+  min-height: calc(100vh - 255px - 48px);
 }

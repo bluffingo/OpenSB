@@ -79,22 +79,22 @@ blockquote {
   border-top: 1px solid $gray-250;
   margin-top: 0;
   overflow: hidden;
-  padding: 15px 40px;
+  padding: 2em 3em;
+  height: 255px;
 
   img {
-    width: 125px;
+    width: 135px;
   }
 }
 
 .profiler {
-  background-color: $gray-100;
-  border-bottom: 1px solid $gray-200;
-  border-top: 1px solid $gray-200;
+  background-color: rgba($gray-100,0.5);
   position: fixed;
   bottom: 0;
   width: 100%;
   padding: 5px;
   text-align: center;
+  backdrop-filter: blur(50px);
 }
 
 .top_forum {
@@ -498,41 +498,6 @@ input[type]:not([type=file]):not([type=submit]):focus {
   display: inline-block;
 }
 
-.tab {
-  overflow: hidden;
-  margin-top: 4px;
-  /* Style the buttons that are used to open the tab content */
-  button {
-    background-color: #0000; // BUG: IE USES SOME WEIRD BEIGE COLOR ON CLASSIC THEME
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 9px 13px;
-    transition: 0.3s;
-    border-bottom: 3px solid #FFF0;
-    font-weight: bold;
-    color: #3336;
-    font-size: 11px;
-  }
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  border-bottom-color: $gray-600;
-  color: #333;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  border-bottom-color: $primary;
-  color: #333;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-}
-
 #About {
   line-height: 17px;
 
@@ -693,25 +658,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
 	margin: 0;
 }
 
-/// Gradients \\\
-@import "_gradients";
-/// Backgrounds \\\
-@import "_backgrounds";
-/// Forums \\\
-@import "_style_forums";
-/// Containers \\\
-@import "_containers";
-/// Images \\\
-@import "_images";
-/// Cards \\\
-@import "_cards";
-/// Buttons \\\
-@import "_buttons";
-/// Navs \\\
-@import "_navs";
-/// Alerts \\\
-@import "_header_message";
-/// Text \\\
-@import "_text";
+/// Imports \\\
+@import "_imports";
 /// Browser-specific fixes \\\
 @import "_browser_shenanigans";
