@@ -10,15 +10,15 @@
     transition: 0.3s;
     border-bottom: 3px solid #FFF0;
     font-weight: bold;
-    color: #3336;
+    color: $gray-300;
     font-size: 11px;
 	&:hover {
 		border-bottom-color: $gray-600;
-		color: #333;
+		color: $gray-500;
 	}
 	&.active {
 		border-bottom-color: $primary;
-		color: #333;
+		color: $gray-800;
 	}
   }
 }

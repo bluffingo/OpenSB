@@ -5,9 +5,8 @@
 	{% block content %}
         <h1>{{ title }}</h1>
         <div class="grid">
-            <div class="card sidebar-nav">
-                <ul class="nav nav-list">
-                    <li class="nav-header">{{ __("Sort") }}</li>
+            <div class="card">
+                <ul class="nav">
                     <li {% if type=='recent' %}class="active" {% endif %}><a
                                 href="browse.php?type=recent">{{ __("Most recent") }}</a></li>
                     <li {% if type=='popular' %}class="active" {% endif %}><a

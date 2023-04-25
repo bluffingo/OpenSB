@@ -1,3 +1,6 @@
+/// Site Basics \\\
+@import "_site_basics";
+
 /// Gradients \\\
 @import "_gradients";
 /// Backgrounds \\\
@@ -12,8 +15,9 @@
 @import "_cards";
 /// Buttons \\\
 @import "_buttons";
-/// Navs \\\
-@import "_navs";
+
+// Navs have been removed 4/25/2023 -grkb
+
 /// Alerts \\\
 @import "_header_message";
 /// Text \\\

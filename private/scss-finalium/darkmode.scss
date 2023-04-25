@@ -1,336 +1,69 @@
 @import "_variables";
-@import "_gradients";
-@import "_functions";
 
-$blue: #284a9d;
-$green: #51ad18;
-$red: #ad1818;
+$teal: #468aca;
+$red: #ce1818;
+$white: #FCFCFC;
+$black: #111;
+$purple: #9c35ef;
+$pink: #ff23b1;
+$orange: #ff8800;
+$yellow: #ffd104;
+$cyan: #1778b8;
+$blue: #297fd6;
+$green: #74a60a;
+$aqua: #20c997;
+
+$primary: $blue;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+
+$form-input: #000;
+
+$gray-100: #121212;
+$gray-200: #282828;
+$gray-300: #3f3f3f;
+$gray-400: #575757;
+$gray-500: #717171;
+$gray-600: #8b8b8b;
+$gray-700: #999999;
+$gray-800: #aaaaaa;
+$gray-900: #cccccc;
+
+$light: $gray-100;
+
+$teal-color: $teal;
+$orange-color: $orange;
+
+$primary: $blue;
+$secondary: $gray-100;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$gray-dark: $gray-800;
+$neutral: $gray-100;
+$teal-color: $teal;
+$aqua-color: $aqua;
+$orange-color: $orange;
+
+$text-color: #FFF;
 
 $theme-colors: (
         "primary": $primary,
-        "secondary": $gray-800,
+        "secondary": $secondary,
         "success": $success,
         "info": $info,
         "warning": $warning,
         "danger": $danger,
-        "neutral": $gray-900,
+        "neutral": $neutral,
+        "light": $gray-100,
+        "dark": $gray-dark,
         "blue-green": $teal-color,
         "aqua": $aqua-color,
         "carrot": $orange-color,
 );
 
-@import "_buttons";
-@import "_backgrounds";
-
-
-body {
-  background-color: #0F0F0F;
-  color: white;
-}
-
-#masthead a {
-  color: white;
-}
-
-.card {
-  border: 1px solid #2e2e2e;
-  background-color: #131313;
-}
-
-.card-header {
-  border-bottom: 1px solid #2e2e2e;
-  background-color: #080808;
-}
-
-.well {
-  background-color: #0b0b0b;
-  border: 1px solid #2d2d2d;
-}
-
-.nav > li > a:hover, .nav > li > a:focus {
-  background-color: #222;
-}
-
-.subscribe-count {
-  border: 1px solid #444;
-  color: #aaa;
-}
-
-.main-content {
-  .card {
-    color: white;
-  }
-}
-
-.form-signin {
-  background-color: #000;
-  border: 1px solid #2a2a2a;
-}
-
-#masthead-below {
-  background: #1f1f1f;
-  border-bottom: 1px solid #282828;
-}
-
-a {
-  color: #ffff00;
-}
-
-.top, .footer, .profiler {
-  background-color: #111;
-  border-bottom: 1px solid #333;
-  border-top: 1px solid #333;
-}
-
-ul.menu {
-  a {
-    color: #ddd;
-
-    &:hover {
-      background-color: #000;
-    }
-  }
-}
-
-.header_message {
-  border-bottom: 1px solid #333;
-}
-
-div.level {
-  background-color: #000;
-
-  a.lvlbox_top {
-    color: white;
-  }
-}
-
-.comments {
-  .comment-entry {
-    border-bottom: 1px solid #333;
-
-    &:nth-child(odd) {
-      background-color: #0a0a0a;
-    }
-
-    &:nth-child(even) {
-      background-color: #171717;
-    }
-
-    &.deleted {
-      background-color: #861c1c;
-
-      &:after {
-        color: #eee;
-      }
-    }
-  }
-}
-
-.latest-buttons a {
-  border: 2px outset white;
-  color: white;
-
-  &:hover {
-    border: 2px inset white;
-    background-color: #222;
-  }
-
-  &.sel {
-    background-color: #003333;
-
-    &:hover {
-      border: 2px inset white;
-      background-color: #114444;
-    }
-  }
-}
-
-.t_user {
-  color: #9898ff;
-}
-
-.lvl-box {
-  .info {
-    background-color: #050505;
-
-    .play {
-      background-color: #608060;
-      color: #eee;
-
-      &:hover {
-        box-shadow: 0 0px 4px #fff;
-      }
-    }
-
-    .play-edit {
-      background-color: #636383;
-    }
-  }
-}
-
-.lvl-data {
-  background-color: #000;
-}
-
-.dl {
-  td {
-    border: 1px solid white;
-  }
-}
-
-.settings {
-  .a, .b {
-    border-bottom: 1px solid #333;
-  }
-
-  tr {
-    &:nth-child(odd) {
-      background-color: #0a0a0a;
-    }
-
-    &:nth-child(even) {
-      background-color: #171717;
-    }
-  }
-}
-
-.cummunity-levelz {
-  li {
-    span {
-      background-color: #222;
-    }
-
-    a {
-      background-color: #608060;
-      color: #eee;
-
-      &:hover {
-        box-shadow: 0 0px 4px #fff;
-      }
-    }
-  }
-}
-
-.user_stats {
-  border: 1px solid white;
-
-  .row {
-    border-top: 1px solid white;
-  }
-}
-
-.tab button:hover {
-  color: #fff;
-}
-
-.tab button {
-  color: #fff8;
-}
-
-.tab button.active {
-  color: #888;
-}
-
-#About .description-extra .title {
-  color: #666;
-}
-
-.watchNext .viewcount {
-  color: #666;
-}
-
-/// _style_forums \\\
-
-table.c1 {
-  border: 1px solid $gray-800;
-
-  td.b {
-    border: 1px solid $gray-800;
-  }
-
-  tr.n1, td.n1 {
-    background-color: #0a0a0a;
-  }
-
-  tr.n2, td.n2 {
-    background-color: #141414;
-  }
-
-  tr.n3, td.n3 {
-    background-color: #2b2b2b;
-  }
-
-  tr.h {
-    background-color: $blue;
-  }
-}
-
-.threadpost {
-  .mainbar {
-    td, th, table {
-      border: 1px solid white;
-    }
-
-    .siggy {
-      border-top: 1px solid white;
-    }
-  }
-}
-
-.top_forum {
-  margin-top: -1px;
-}
-
-/// Generic form element overrides \\\
-
-textarea,
-input[type]:not([type=file]):not([type=submit]) {
-  background-color: #0f0f0f;
-  border: 1px solid #222;
-  color: white;
-}
-
-/// Invert icons \\\
-
-.search, .sdsd {
-  filter: invert(1);
-}
-
-.vid-info .title a {
-  color: white;
-}
-
-#masthead-container {
-  background-color: #383838f0;
-  border-bottom: 1px solid #606060;
-}
-
-#masthead-search {
-  #masthead-search-terms {
-    input {
-      border-color: #606060;
-    }
-  }
-}
-
-.statbox {
-  text-align: center;
-  font-size: 20px;
-  border: 1px solid #333;
-  padding: 1em;
-  margin: .1em;
-  background-color: #212121;
-}
-
-#guide {
-  background-color: #383838f0;
-  border-right: 1px solid #606060;
-}
-
-.usermenushit {
-  ul {
-    li:hover {
-      background-color: $primary;
-    }
-  }
-}
+/// Imports \\\
+@import "_imports";

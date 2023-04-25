@@ -1,6 +1,7 @@
 $threshold: 65%;
 
 @import "_functions";
+@import "_variables";
 
 $teal: #468aca;
 $red: #ce1818;
@@ -14,22 +15,6 @@ $cyan: #1778b8;
 $blue: #297fd6;
 $green: #74a60a;
 $aqua: #20c997;
-
-$gray-100: #F9F9F9;
-$gray-150: #F1F1F1;
-$gray-200: #EEEEEE;
-$gray-250: #E8E8E8;
-$gray-300: #E2E2E2;
-$gray-400: #D3D3D3;
-$gray-450: #CCCCCC;
-$gray-500: #B4B4B4;
-$gray-650: #999999;
-$gray-600: #858585;
-$gray-650: #666666;
-$gray-700: #4F4F4F;
-$gray-800: #393939;
-$gray-850: #333333;
-$gray-900: #242424;
 
 $light: #FFF;
 $dark: #000;

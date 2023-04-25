@@ -13,9 +13,9 @@
 {% block content %}
 <div class="watchNext">
  {% if userdata.id == video.author %}
-   <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
+   <div class="bg-neutral text-light card card-body">
       <div class="grid">
-         <a class="button button-dark" href="/edit.php?v={{video.video_id}}">{{ __("Edit submission") }}</a>
+         <a class="button button-neutral" href="/edit.php?v={{video.video_id}}">{{ __("Edit submission") }}</a>
       </div>
    </div>
 	{% endif %}
