@@ -318,3 +318,16 @@ input[type]:not([type=file]):not([type=submit]):focus {
     color: $gray-600;
   }
 }
+
+.statbox {
+  text-align: center;
+  font-size: 3em;
+  border: 1px solid $gray-200;
+  padding: 0.5em;
+  background-color: $gray-100;
+
+  .stat-title {
+    font-size: 0.5em;
+    font-weight: semibold;
+  }
+}
