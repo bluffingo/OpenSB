@@ -35,25 +35,5 @@ if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
     }
 }
 
-/////////////////////////////////////////////////////////////////////////////////// ARCHIVE
-// DEV ONLY - display names aren't currently fully implemented!!!!!!!!!!
-// ok yes i know this would break sbnext (though i deleted gordon.php since
-// it could have been used to bypass hcaptcha registeration and was a placeholder) 
-// but the only person who remotely even gives a shit about sbnext is icanttellyou 
-// but he's only using it as an excuse of not having finalium become the default theme 
-// for squarebracket. this excuse is invalid as he makes excuses for not working on sbnext.
-//
-// sbnext is NOT the future of squarebracket, the only thing implemented is a main page and 
-// (SUPER IMCOMPLETE) watch page with super garbage css. that's somehow worse than the
-// fucking css used on subrocks (bhief why are you using a homestuck stan to fix your
-// shitty css INSTEAD OF STEALING GOOGLE'S OLD-ASS CSS FOR YOUR REVIVAL). if there's
-// no progress on sbnext by beta 2 (or beta 1 refresh if we're doing the milestone 2/alpha 3 
-// cycle bullshit) then i will scrub sbnext off the squarebracket codebase. i am not sorry.
-// 
-// -Gamerappa, july 26th, 2021, 11:11PM EST.
-///////////////////////////////////////////////////////////////////////////////////////////
-
-// oh shit that aged poorly, sbnext finalium is the only UI in squarebracket now. -grkb, June 28th, 2022.
-
 $twig = twigloader();
 echo $twig->render('register.twig', ['error' => $error]);

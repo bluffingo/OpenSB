@@ -3,6 +3,7 @@
 namespace openSB;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
+use SpfPhp\SpfPhp;
 
 function get_the_sort_type_shit($type)
 {
@@ -38,9 +39,14 @@ $videoData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN use
 $count = $sql->result("SELECT COUNT(*) FROM videos");
 
 $twig = twigloader();
+
+SpfPhp::beginCapture();
+
 echo $twig->render('browse.twig', [
     'type' => $type,
     'levels' => $sql->fetchArray($videoData),
     'page' => $page,
     'level_count' => $count
 ]);
+
+SpfPhp::autoRender();

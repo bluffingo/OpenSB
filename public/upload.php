@@ -5,6 +5,8 @@ namespace openSB;
 //this uploads and converts the video, should switch to a better solution!
 require_once dirname(__DIR__) . '/private/class/common.php';
 
+use SpfPhp\SpfPhp;
+
 $supportedVideoFormats = ["mp4", "mkv", "wmv", "flv", "avi", "mov", "3gp"];
 $supportedImageFormats = ["png", "jpg", "jpeg"];
 
@@ -68,7 +70,11 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
     }
 }
 
+SpfPhp::beginCapture();
+
 $twig = twigloader();
 echo $twig->render('upload.twig', [
     'limit' => (convertBytes(ini_get('upload_max_filesize'))),
 ]);
+
+SpfPhp::autoRender();

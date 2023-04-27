@@ -1,8 +1,9 @@
 <?php
 
 namespace openSB;
-
 require_once dirname(__DIR__) . '/private/class/common.php';
+
+use SpfPhp\SpfPhp;
 
 if (!$log) redirect('login.php');
 
@@ -67,7 +68,11 @@ if (isset($_POST['magic'])) {
     }
 }
 
+SpfPhp::beginCapture();
+
 $twig = twigloader();
 echo $twig->render('settings.twig', [
     'error' => isset($error) ? $error : null,
 ]);
+
+SpfPhp::autoRender();

@@ -331,3 +331,15 @@ input[type]:not([type=file]):not([type=submit]):focus {
     font-weight: semibold;
   }
 }
+
+#progress
+{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: -6px;
+    width: 0%;
+    height: 2px;
+    background: $primary;
+    transition: width 650ms ease-out;
+}

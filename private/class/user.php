@@ -25,7 +25,7 @@ class Users
                 $user[$pre . 'colorname'] = sprintf('<span style="color:%s">%s</span>', $user[$pre . 'customcolor'], $user[$pre . 'name']);
             }
             return <<<HTML
-			<a class="user" href="/user.php?name={$user[$pre . 'name']}"><span class="t_user">{$user[$pre . 'colorname']}</span></a>
+			<a class="user spf-link" href="/user.php?name={$user[$pre . 'name']}"><span class="t_user">{$user[$pre . 'colorname']}</span></a>
 	HTML;
         }
     }
