@@ -11,6 +11,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ website_branding.assets_location }}/icons/favicon-16x16.png">
     <meta name="apple-mobile-web-app-title" content="{{ website_branding.name }}">
     <meta name="application-name" content="{{ website_branding.name }}">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
     {% if theme == 'dark' %}
@@ -22,36 +23,9 @@
 	{% endif %}
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.css" rel="stylesheet">
     <script src="/assets/common.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/spf/2.4.0/spf.js" type="text/javascript"></script>
-	<script>
-		spf.init();
-	</script>
-	<script>
-		document.addEventListener("spfrequest", function() {
-			var progress = document.createElement("DIV");
-			progress.id = "progress";
-			document.body.insertAdjacentElement("beforeend", progress);
-
-			setTimeout(function() {
-				progress.style.width = "80%";
-			}, 12);
-
-			document.addEventListener("spfdone", function onSpfdone() {
-				document.removeEventListener("spfdone", onSpfdone);
-
-				progress.style.transitionDuration = "210ms";
-
-				setTimeout(function() {
-					progress.style.width = "100%";
-
-					setTimeout(function() {
-						progress.remove();
-					}, 200);
-				}, 12);
-			});
-		});
-	</script>
 	{% block script %}{% endblock %}
     <script>
         subscribe_string = '{{ __("Follow") }}';
@@ -79,7 +53,7 @@
 	{% include "components/_header.twig" %}
 {% endif %}
 {% block precontent %}{% endblock %}
-<div class="container page-container" id="content" x-spfphp-capture>
+<div class="container page-container">
 	{% if userbandata %}
 		<div class="header_message header-danger">
 			<h1>{{ __("Sorry %s, you are banned from %s.", [userdata.name, website_branding.name]) }}</h1>
@@ -93,8 +67,8 @@
 	<div class="footer">
 		<img src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}">
 		<p><strong>{{ __("© openSB contributors") }}</strong> · 2021-{{ 'now' | date('Y') }}
-			| <strong><a href="/statistics" class="spf-link">{{ __("Statistics") }}</a></strong>
-			| <strong><a href="/privacy" class="spf-link">{{ __("Privacy Policy") }}</a></strong>
+			| <strong><a href="/statistics">{{ __("Statistics") }}</a></strong>
+			| <strong><a href="/privacy">{{ __("Privacy Policy") }}</a></strong>
 		</p>
 		<h5>{{ __("Running build %s (Git commit %s)", [version, git_commit()]) }}</h5>
 		{% if isDebug %}

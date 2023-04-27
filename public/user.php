@@ -1,9 +1,8 @@
 <?php
 
 namespace openSB;
-require_once dirname(__DIR__) . '/private/class/common.php';
 
-use SpfPhp\SpfPhp;
+require_once dirname(__DIR__) . '/private/class/common.php';
 
 $message = '';
 
@@ -51,8 +50,6 @@ if ($userpagedata['about'] == null) {
     $userpagedata['about'] = '';
 }
 
-SpfPhp::beginCapture();
-
 $twig = twigloader();
 echo $twig->render("user.twig", [
     'id' => $userpagedata['id'],
@@ -75,5 +72,3 @@ echo $twig->render("user.twig", [
     'views' => $totalViews,
     'bannerExists' => ($bannerExists ?? false),
 ]);
-
-SpfPhp::autoRender();

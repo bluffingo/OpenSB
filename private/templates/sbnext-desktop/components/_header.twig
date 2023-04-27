@@ -3,12 +3,12 @@
         <div class="grid" style="margin-bottom: 17.5px;">
             <div class="col-md-10">
                 <div id="header-main">
-                    <a href="/" id="logo-container" class="spf-link"><img id="logo" src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}"></a>
+                    <a href="/" id="logo-container"><img id="logo" src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}"></a>
                     {% if isMaintenance != true %}
                         <div class="masthead-links-container">
                             <div class="masthead-links">
                                 {% for link in navigationList %}
-                                    <a href="{{ link.url }}" class="spf-link">{{ link.name }}</a>
+                                    <a href="{{ link.url }}">{{ link.name }}</a>
                                 {% endfor %}
                             </div>
                         </div>
@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-6" style="text-align: right;">
                 {% if log %}
-                    <a href="/upload.php" class="spf-link">
+                    <a href="/upload.php">
                         <div class="button button-neutral-invis masthead-button tooltip" title="{{ __("Upload") }}">{{ icon("upload", 20) }}</div>
                     </a>
                 {% endif %}
@@ -37,10 +37,10 @@
                                 <img class="rounded img-fluid" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
                                 <div class="usermenushit" id="masthead-below">
                                     <ul style="padding:0">
-                                        <li><a href="user.php?name={{ userdata.name }}" class="spf-link">{{ __("My profile") }}</a></li>
-                                        <li><a href="/settings.php" class="spf-link">{{ __("Settings") }}</a></li>
+                                        <li><a href="user.php?name={{ userdata.name }}">{{ __("My profile") }}</a></li>
+                                        <li><a href="/settings.php">{{ __("Settings") }}</a></li>
                                         {% if userdata.powerlevel > 2 %}
-                                        <li><a href="/admin" class="spf-link">{{ __("Admin panel") }}</a></li>
+                                        <li><a href="/admin">{{ __("Admin panel") }}</a></li>
                                         {% endif %}
                                         <li><a href="logout.php">{{ __("Log out") }}</a></li>
                                     </ul>

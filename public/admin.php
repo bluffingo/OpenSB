@@ -1,8 +1,8 @@
 <?php
 
 namespace openSB;
+
 require_once dirname(__DIR__) . '/private/class/common.php';
-use SpfPhp\SpfPhp;
 
 if ($userdata['powerlevel'] < 3) error('403', "You shouldn't be here, get out!");
 
@@ -35,8 +35,6 @@ foreach ($thingsToCount as $thing) {
 }
 $count = $sql->fetch($query);
 
-SpfPhp::beginCapture();
-
 $twig = twigloader();
 echo $twig->render('admin.twig', [
     'latest_registered_users' => $latestRegisteredUsers,
@@ -46,5 +44,3 @@ echo $twig->render('admin.twig', [
     'videos' => $videoData,
     'comments' => $comments
 ]);
-
-SpfPhp::autoRender();
