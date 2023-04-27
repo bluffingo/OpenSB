@@ -1,5 +1,7 @@
+@import "_functions";
 @import "_variables";
 
+$threshold: 50%;
 $teal: #468aca;
 $red: #ce1818;
 $white: #FCFCFC;
@@ -32,7 +34,6 @@ $gray-800: #aaaaaa;
 $gray-900: #cccccc;
 
 $card-bg: $gray-100;
-$light: $gray-100;
 
 $teal-color: $teal;
 $orange-color: $orange;
@@ -61,9 +62,6 @@ $theme-colors: (
         "neutral": $neutral,
         "light": $gray-100,
         "dark": $gray-dark,
-        "blue-green": $teal-color,
-        "aqua": $aqua-color,
-        "carrot": $orange-color,
 );
 
 /// Imports \\\
