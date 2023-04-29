@@ -3,8 +3,6 @@
 namespace openSB;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-use SpfPhp\SpfPhp;
-
 // currently selects all uploaded videos, should turn it into all featured only
 $videoData = $sql->query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() LIMIT 16");
 // moved total subscribers to layout.php
@@ -24,10 +22,7 @@ if ($log) {
     $creationDate = 0;
 	$totalSubmissions = 0;
 }
-
 $twig = twigloader();
-
-SpfPhp::beginCapture();
 
 echo $twig->render('index.twig', [
     'videos' => $videoData,
@@ -36,5 +31,3 @@ echo $twig->render('index.twig', [
     'creationDate' => $creationDate,
     'updated' => (isset($_GET['updated']) ? true : false),
 ]);
-
-SpfPhp::autoRender();

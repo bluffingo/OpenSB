@@ -14,6 +14,9 @@ sbnextSounds = getCookie("SBSOUNDS");
 
 $(document).ready(function () {
     console.log("squareBracket Sounds: " + sbnextSounds);
+	var jboxCrap = new jBox('Tooltip', {
+	  attach: '.tooltip'
+	});
     $("#masthead-loggedin").click(function () {
         var x = document.getElementById("masthead-below");
         if (x.style.display === "block") {

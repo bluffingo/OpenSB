@@ -9,8 +9,7 @@
 		"php-ffmpeg/php-ffmpeg": "1.1.0",
 		"whitecube/lingua": "dev-master",
 		"toshy/bunnynet-php": "^3.0",
-		"symfony/http-client": "6.3.x-dev",
-		"rehike/spfphp": "dev-main"
+		"symfony/http-client": "6.3.x-dev"
 	},
 	"minimum-stability": "dev",
 	"config": {

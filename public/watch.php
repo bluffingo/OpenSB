@@ -4,7 +4,7 @@ namespace openSB;
 
 // fixme: change video-related variables to more generic variables
 
-use SpfPhp\SpfPhp;
+use Exception;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
@@ -71,8 +71,6 @@ $currentTime = time();
 
 $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
 
-SpfPhp::beginCapture(); // Start SpfPhp
-
 $twig = twigloader();
 echo $twig->render('watch.twig', [
     'video' => $videoData,
@@ -93,5 +91,3 @@ echo $twig->render('watch.twig', [
     'postType' => $postType,
     'isFavorited' => $isFavorited,
 ]);
-
-SpfPhp::autoRender();

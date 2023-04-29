@@ -1,9 +1,8 @@
 <?php
 
 namespace openSB;
-require_once dirname(__DIR__) . '/private/class/common.php';
 
-use SpfPhp\SpfPhp;
+require_once dirname(__DIR__) . '/private/class/common.php';
 
 if ($userbandata) {
     error(403, __("Banned user, can't continue."));
@@ -35,11 +34,6 @@ if ($videoData['author'] != $userdata['id']) {
 }
 
 $twig = twigloader();
-
-SpfPhp::beginCapture();
-
 echo $twig->render('edit.twig', [
     'video' => $videoData,
 ]);
-
-SpfPhp::autoRender();
