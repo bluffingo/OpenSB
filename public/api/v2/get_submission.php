@@ -31,6 +31,7 @@ $apiOutput = [
     'views' => $submission['views'],
     'file' => $submission['videofile'],
     'tags' => $submission['tags'],
+    'type' => $submission['post_type'],
     'author' => [
         'id' => $submission['u_id'],
         'name' => $submission['u_name'],
