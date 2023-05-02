@@ -17,7 +17,6 @@
 	"Delete": "Delete",
 
 	"(Page %s)": "(Page %s)",
-	"Sort": "Sort",
 	"Most recent": "Most recent",
 	"Most popular": "Most popular",
 	"Most discussed": "Most discussed",
@@ -32,13 +31,6 @@
 	"Description": "Description",
 	"Save": "Save",
 
-	"s": "s",
-	"%s follower%s": "%s follower%s",
-	"no": "no",
-	"%s submission%s": "%s submission%s",
-	"Welcome to %s": "Welcome to %s",
-	"Get started": "Get started",
-	"Login": "Login",
 	"Options successfully saved!": "Options successfully saved!",
 	"Browse more": "Browse more",
 	"Your follow's submissions": "Your follow's submissions",
@@ -46,6 +38,7 @@
 	"Either you're not following anyone, or none of your follows have submissions.": "Either you're not following anyone, or none of your follows have submissions.",
 	"This instance currently lacks submissions.": "This instance currently lacks submissions.",
 
+	"Login": "Login",
 	"Password successfully reset! Please login with your new password.": "Password successfully reset! Please login with your new password.",
 	"You have been successfully logged out of all devices.": "You have been successfully logged out of all devices.",
 	"Username": "Username",
@@ -127,6 +120,7 @@
 	"Debug": "Debug",
 	"It is risky to screenshot this due to security reasons, so please don't.": "It is risky to screenshot this due to security reasons, so please don't.",
 
+	"s": "s",
 	"view%s": "view%s",
 
 	"Show replies": "Show replies",
@@ -150,6 +144,8 @@
 
 	"Edit my settings": "Edit my settings",
 	"View user page as viewer": "View user page as viewer",
+	"%s follower%s": "%s follower%s",
+	"no": "no",
 	"%s view%s": "%s view%s",
 	"Marked all notifications as read.": "Marked all notifications as read.",
 	"Settings successfully saved!": "Settings successfully saved!",
