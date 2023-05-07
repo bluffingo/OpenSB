@@ -6,6 +6,8 @@
 
 	"Access Denied": "Access Denied",
 
+	"This submission cannot be found.": "This submission cannot be found.",
+
 	"Admin panel": "Admin panel",
 	"Currently running openSB build %s (commit %s) on %s.": "Currently running openSB build %s (commit %s) on %s.",
 	"What's going on?": "What's going on?",
@@ -17,6 +19,7 @@
 	"Delete": "Delete",
 
 	"(Page %s)": "(Page %s)",
+	"Sort": "Sort",
 	"Most recent": "Most recent",
 	"Most popular": "Most popular",
 	"Most discussed": "Most discussed",
@@ -31,14 +34,19 @@
 	"Description": "Description",
 	"Save": "Save",
 
+	"Welcome to %s, %s": "Welcome to %s, %s",
+	"s": "s",
+	"%s follower%s": "%s follower%s",
+	"no": "no",
+	"%s view%s": "%s view%s",
+	"Welcome to %s": "Welcome to %s",
+	"Get started": "Get started",
+	"Login": "Login",
 	"Options successfully saved!": "Options successfully saved!",
 	"Browse more": "Browse more",
-	"Your follow's submissions": "Your follow's submissions",
 	"Randomly selected submissions": "Randomly selected submissions",
-	"Either you're not following anyone, or none of your follows have submissions.": "Either you're not following anyone, or none of your follows have submissions.",
 	"This instance currently lacks submissions.": "This instance currently lacks submissions.",
 
-	"Login": "Login",
 	"Password successfully reset! Please login with your new password.": "Password successfully reset! Please login with your new password.",
 	"You have been successfully logged out of all devices.": "You have been successfully logged out of all devices.",
 	"Username": "Username",
@@ -61,7 +69,8 @@
 	"Save Changes": "Save Changes",
 
 	"Email": "Email",
-	"Confirm Password": "Confirm Password",
+	"Display Name": "Display Name",
+	"Password (Again)": "Password (Again)",
 
 	"Reset Password": "Reset Password",
 	"Hello %s. Please choose a new secure password, and be sure to remember it!": "Hello %s. Please choose a new secure password, and be sure to remember it!",
@@ -71,20 +80,19 @@
 	"There are no submissions that match your query.": "There are no submissions that match your query.",
 
 	"Settings": "Settings",
-	"Your account": "Your account",
-	"Option": "Option",
-	"Value": "Value",
+	"Credentials": "Credentials",
+	"Setting name": "Setting name",
+	"Setting": "Setting",
 	"Email address": "Email address",
 	"Current password": "Current password",
 	"New password": "New password",
-	"Confirm new password": "Confirm new password",
-	"Export your user data": "Export your user data",
-	"Your profile": "Your profile",
+	"Repeat new password": "Repeat new password",
+	"Profile": "Profile",
 	"Profile picture": "Profile picture",
 	"Display name": "Display name",
 	"Markdown is allowed.": "Markdown is allowed.",
 	"Username color": "Username color",
-	"Profile options are not available to users who are currently banned.": "Profile options are not available to users who are currently banned.",
+	"Profile options are not available to banned users.": "Profile options are not available to banned users.",
 	"Miscellaneous": "Miscellaneous",
 
 	"Statistics": "Statistics",
@@ -104,23 +112,19 @@
 	"Most popular video and image formats should be supported.": "Most popular video and image formats should be supported.",
 	"Skip processing (Debug, MP4 only)": "Skip processing (Debug, MP4 only)",
 
-	"User data export": "User data export",
-
 	"en-US": "en-US",
 	"Follow": "Follow",
 	"Unfollow": "Unfollow",
 	"Sorry %s, you are banned from %s.": "Sorry %s, you are banned from %s.",
 	"This ban is not set to expire.": "This ban is not set to expire.",
 	"© openSB contributors": "© openSB contributors",
-	"Privacy Policy": "Privacy Policy",
 	"Running build %s (Git commit %s)": "Running build %s (Git commit %s)",
 	"User agent": "User agent",
-	"Current browser": "Current browser",
+	"Browser being used": "Browser being used",
 	"Unknown browser": "Unknown browser",
 	"Debug": "Debug",
 	"It is risky to screenshot this due to security reasons, so please don't.": "It is risky to screenshot this due to security reasons, so please don't.",
 
-	"s": "s",
 	"view%s": "view%s",
 
 	"Show replies": "Show replies",
@@ -144,9 +148,6 @@
 
 	"Edit my settings": "Edit my settings",
 	"View user page as viewer": "View user page as viewer",
-	"%s follower%s": "%s follower%s",
-	"no": "no",
-	"%s view%s": "%s view%s",
 	"Marked all notifications as read.": "Marked all notifications as read.",
 	"Settings successfully saved!": "Settings successfully saved!",
 	"Registered on": "Registered on",
@@ -178,8 +179,6 @@
 	"Last viewed": "Last viewed",
 	"Favorites": "Favorites",
 
-	"Profile": "Profile",
-
 	"Sign in to your account": "Sign in to your account",
 	"Sign in": "Sign in",
 
@@ -193,7 +192,6 @@
 	"Missing important POST variable.": "Missing important POST variable.",
 
 	"This is not your submission.": "This is not your submission.",
-	"This submission cannot be found.": "This submission cannot be found.",
 
 	"Please enter your username! ": "Please enter your username! ",
 	"Please enter your password! ": "Please enter your password! ",
@@ -202,17 +200,16 @@
 	"No POST data.": "No POST data.",
 
 	"Blank username.": "Blank username.",
-	"Password is too short. ": "Password is too short. ",
-	"The passwords don't match. ": "The passwords don't match. ",
+	"Password is too short.": "Password is too short.",
+	"The passwords don't match.": "The passwords don't match.",
+	"Blank display name.": "Blank display name.",
 	"Username has already been taken. ": "Username has already been taken. ",
-	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "Username contains invalid characters (Only alphanumeric and underscore allowed). ",
+	"Username contains invalid characters (Only alphanumeric and underscore allowed).": "Username contains invalid characters (Only alphanumeric and underscore allowed).",
 
 	"No reset data.": "No reset data.",
 
 	" The new passwords aren't identical.": " The new passwords aren't identical.",
 	"Your current password is incorrect.": "Your current password is incorrect.",
-	"Your display name is too long.": "Your display name is too long.",
 
-	"Please wait a minute before uploading again.": "Please wait a minute before uploading again.",
-
+	"Please wait a minute before uploading again.": "Please wait a minute before uploading again."
 }
