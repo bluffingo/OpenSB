@@ -1,3 +1,5 @@
+# MOVED TO GITLAB - https://gitlab.com/qobo/opensb
+
 <h1 align="center">openSB</h1>
 
 ## How to setup an openSB instance.
