@@ -44,7 +44,7 @@ You will have to modify the directories to match your instance's location.
 
 ### Where can I translate openSB?
 
-openSB translations: https://crowdin.com/project/squarebracket
+openSB translations: https://crowdin.com/project/opensb
 
 Relative time translations: https://github.com/mpratt/RelativeTime
 
