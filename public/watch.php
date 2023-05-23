@@ -6,18 +6,19 @@ use \Betty\BettyException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-$bettySubmission = new \Betty\Submission($betty);
+require_once dirname(__DIR__) . '/betty/class/pages/Submission.php';
 
 $id = ($_GET['v'] ?? null);
 $ip = getUserIpAddr();
 
 try {
-    $data = $bettySubmission->getSubmission($id);
+    $submission = new \Betty\Pages\Submission($betty, $id);
+    $data = $submission->getSubmission();
 } catch (BettyException $e) {
-    error('404', $e);
+    error($e->getCode(), $e->getMessage());
 }
 
-/*https://gitlab.com/qobo/opensb/-/tree/main/public
+/*
 $query = '';
 $count = 0;
 $commentData = $sql->query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$id]);

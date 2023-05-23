@@ -7,8 +7,6 @@ use Betty\BettyException;
 // we need this at the top, or else version numbers won't work.
 require_once(dirname(__DIR__) . "/class/version.php");
 
-$versionNumber = $buildNumber . "-" . "betty-dev";
-
 if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
     die('<b>A configuration file could not be found. Please read the installing instructions in the README file.</b>');
 }
@@ -81,14 +79,7 @@ if ($isMaintenance && !isCli()) {
 } else {
     $ipban = $sql->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [getUserIpAddr()]);
     if ($ipban) {
-        // todo: replace "sorry about that" text on error template with ban reason so we can make a ip ban page consistent with finalium/111 -grkb 8/24/2022
-        http_response_code(403);
-
-        printf(
-            "<p>Your IP address has been banned.</p>" .
-            "<p><strong>Reason:</strong> %s</p>",
-            $ipban['reason']);
-
+        error(403, "IP banned - " . ($ipban['reason'] ?? "No reason."));
         die();
     }
 }

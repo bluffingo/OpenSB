@@ -4,18 +4,21 @@ namespace Betty;
 
 class User
 {
+    private \Betty\Database $database;
+    private $data;
     private $user;
 
-    public function __construct()
+    public function __construct(\Betty\Database $database, $id)
     {
+        $this->database = $database;
+        $this->data = $this->database->fetch("SELECT u.* FROM users u WHERE u.id = ?", [$id]);
     }
 
-    public function getUserFromID($user_id)
+    public function getUserArray()
     {
-        $this->user = [
-            "username" => "BettyUsername",
-            "displayname" => "Betty Display Name",
+        return [
+            "username" => $this->data["name"],
+            "displayname" => $this->data["title"],
         ];
-        return $this->user;
     }
 }
