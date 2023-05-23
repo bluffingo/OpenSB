@@ -4,42 +4,47 @@ namespace Betty;
 
 use Betty\User;
 use Betty\BettyException;
-
-enum SubmissionType : int
-{
-    case Video = 1;
-    case Image = 2;
-}
+use Betty\Database;
 
 class Submission
 {
+    private \Betty\Database $database;
     private $submission;
 
-    public function __construct()
+    public function __construct(\Betty\Betty $betty)
     {
+        $this->database = $betty->getBettyDatabase();
     }
 
-    public function getSubmission()
+    public function getSubmission($id)
     {
+        // User class
         $user = new User;
-        $author = 1;
-        $submission = [
-            "title" => "Submission title placeholder",
-            "description" => "Generic desc",
-            "published" => 1,
-            "type" => SubmissionType::Video,
-            "file" => "/file.png",
+
+        // Get the submission data
+        $data = $this->database->fetch("SELECT v.* FROM videos v JOIN users u WHERE v.video_id = ?", [$id]);
+        
+        // If the submission doesn't exist.
+        if (!$data) {
+            throw new BettyException('Submission does not exist.');
+        }
+
+        // Set the submission data, might be crappy.
+        $this->submission = [
+            "id" => $id,
+            "title" => $data["title"],
+            "description" => $data["description"],
+            "published" => $data["time"],
+            "type" => $data["post_type"],
+            "file" => $data["videofile"],
             "author" => [
-                "id" => $author,
-                "info" => $user->getUserFromID($author),
+                "id" => $data["author"],
+                "info" => $user->getUserFromID($data["author"]),
             ],
             "interactions" => null,
         ];
-        if (!$submission) {
-            throw new BettyException('Submission does not exist');
-        } else {
-            $this->submission = $submission;
-        }
+
+        // Return the data for openSB to fuck around with.
         return $this->submission;
     }
 }

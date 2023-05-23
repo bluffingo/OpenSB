@@ -14,9 +14,9 @@
                 class="video-js"
                 controls
                 preload="auto"
-                poster="{{ video_thumbnail(video.video_id) }}"
+                poster="{{ video_thumbnail(submission.id) }}"
 				type="video/mp4"
-                src="/dynamic/videos/{{ video.video_id }}.converted.mp4">
+                src="/dynamic/videos/{{ submission.id }}.converted.mp4">
             <p class="vjs-no-js">
                 {{ __("To view this video please enable JavaScript.") }}
             </p>
@@ -34,16 +34,13 @@
 
             {% if bunnyEnabled %}
             player.src([{
-                src: '{{ video.file }}',
+                src: '{{ submission.file }}',
                 type: 'application/x-mpegURL'
             }]);
             {% else %}
             player.src([{
-                src: '/dynamic/videos/{{ video.video_id }}.converted.mp4',
+                src: '/dynamic/videos/{{ submission.id }}.converted.mp4',
                 type: 'video/mp4'
-            }, {
-                src: '/dynamic/videos/{{ video.video_id }}.mpd',
-                type: 'application/dash+xml'
             }]);
             {% endif %}
         </script>

@@ -22,7 +22,7 @@ class Database
         try {
             $this->sql = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
         } catch (PDOException $e) {
-            die("[Betty] Error - Can't connect to database. Please try again later.");
+            throw new BettyException('The database is not available. [' . $e . ']');
         }
     }
 

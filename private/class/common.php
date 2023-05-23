@@ -2,6 +2,8 @@
 
 namespace openSB;
 
+use Betty\BettyException;
+
 // we need this at the top, or else version numbers won't work.
 require_once(dirname(__DIR__) . "/class/version.php");
 
@@ -35,8 +37,7 @@ foreach (glob(dirname(__DIR__) . "/class/*.php") as $file) {
     require_once($file);
 }
 
-// Holy shit! Classes!
-$sql = new \Betty\Database($host, $user, $pass, $db);
+$sql = $betty->getBettyDatabase();
 
 if ($isQoboTV) {
     $storage = new BunnyStorage;
