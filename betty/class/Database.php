@@ -1,11 +1,13 @@
 <?php
 
-namespace openSB;
+namespace Betty;
+
+// For now, this is just the openSB MySQL class.
 
 use PDO;
 use PDOException;
 
-class MySQL
+class Database
 {
     private $sql;
 
@@ -20,7 +22,7 @@ class MySQL
         try {
             $this->sql = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
         } catch (PDOException $e) {
-            die("Error - Can't connect to database. Please try again later.");
+            die("[Betty] Error - Can't connect to database. Please try again later.");
         }
     }
 

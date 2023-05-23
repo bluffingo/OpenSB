@@ -3,69 +3,6 @@
 namespace openSB;
 class Videos
 {
-    // Functions related to sbNext Video Stuff.
-    public static function categoryIDToName($id)
-    {
-        switch ($id) {
-            case 0:
-                $name = __('Miscellaneous');
-                break;
-            case 1:
-                $name = __('Entertainment');
-                break;
-            case 2:
-                $name = __('Comedy & Humor');
-                break;
-            case 3:
-                $name = __('Gaming');
-                break;
-            case 4:
-                $name = __('News and Information');
-                break;
-            case 5:
-                $name = __('Lifestyle');
-                break;
-            case 6:
-                $name = __('Science & Technology');
-                break;
-            case 7:
-                $name = __('Archival');
-                break;
-        }
-        return $name;
-    }
-
-    public static function type_to_cat($type)
-    {
-        switch ($type) {
-            case 'misc':
-                $cat = 0;
-                break;
-            case 'entertainment':
-                $cat = 1;
-                break;
-            case 'comedy':
-                $cat = 2;
-                break;
-            case 'gaming':
-                $cat = 3;
-                break;
-            case 'news':
-                $cat = 4;
-                break;
-            case 'life':
-                $cat = 5;
-                break;
-            case 'technology':
-                $cat = 6;
-                break;
-            case 'backup':
-                $cat = 7;
-                break;
-        }
-        return $cat;
-    }
-
     // This is for the like-to-dislike ratio lightsaber. -Gamerappa, November 2nd 2021
     public static function calculateRatio($number, $percent, $total)
     {

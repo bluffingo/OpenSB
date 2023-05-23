@@ -5,8 +5,7 @@ namespace openSB;
 // we need this at the top, or else version numbers won't work.
 require_once(dirname(__DIR__) . "/class/version.php");
 
-$gitBranch = trim(shell_exec("git rev-parse --abbrev-ref HEAD"));
-$versionNumber = $buildNumber . "-" . $gitBranch;
+$versionNumber = $buildNumber . "-" . "betty-dev";
 
 if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
     die('<b>A configuration file could not be found. Please read the installing instructions in the README file.</b>');
@@ -24,18 +23,21 @@ require_once(dirname(__DIR__) . '/../vendor/autoload.php'); //dogshit
 
 // aaaa psr-4 autoload!!! - rgb
 
-// load interfaces first
+// load the betty stuff first
+require_once(dirname(__DIR__) . "/../betty/common.php");
+
+// and then the opensb stuff
 foreach (glob(dirname(__DIR__) . "/interface/*.php") as $file) {
     require_once($file);
 }
 
-// and then the classes
 foreach (glob(dirname(__DIR__) . "/class/*.php") as $file) {
     require_once($file);
 }
 
 // Holy shit! Classes!
-$sql = new MySQL($host, $user, $pass, $db);
+$sql = new \Betty\Database($host, $user, $pass, $db);
+
 if ($isQoboTV) {
     $storage = new BunnyStorage;
 } else {
@@ -71,37 +73,6 @@ if (!isset($_SESSION['isCattleDog'])) {
 	$accountfields = "id, name, email, customcolor, title, about, powerlevel, joined, lastview";
     $userfields = Users::userfields();
     $videofields = "v.id, v.video_id, v.title, v.description, v.time, v.post_type, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, (SELECT COUNT(*) FROM comments WHERE id = v.video_id) AS comments, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, v.videolength, v.category_id, v.author";
-}
-
-if (preg_match('~MSIE|Internet Explorer~i', $_SERVER['HTTP_USER_AGENT']) || preg_match('~Trident/7.0(/x*/)?; rv:11.0~',$_SERVER['HTTP_USER_AGENT'])) {
-	$browser['legacy_masthead_fix'] = true;
-	$browser['legacy_disable_graph'] = true;
-	$browser['legacy_disable_videojs'] = true;
-	if (preg_match('/MSIE (.*?);/', $_SERVER['HTTP_USER_AGENT'])) {
-		$browser['name'] = "Internet Explorer Legacy"; // IE 10 and below
-		$browser['codename'] = "ie_old";
-	} else {
-	$browser['name'] = "Internet Explorer"; //IE 11
-	$browser['codename'] = "ie";
-	}
-} elseif (preg_match('~Goanna~', $_SERVER['HTTP_USER_AGENT'])) {
-	$browser['name'] = "Pale Moon/K-Meleon (or derivatives)"; // Pale Moon or K-Meleon (which uses an old build of Goanna but whatever)
-	$browser['codename'] = "palemoon";
-} elseif (preg_match('~Firefox~', $_SERVER['HTTP_USER_AGENT'])) {
-	$browser['name'] = "Firefox (or deriatives)"; // Firefox
-	$browser['codename'] = "firefox";
-} elseif (preg_match('~Chrome~', $_SERVER['HTTP_USER_AGENT'])) {
-	$browser['name'] = "Chromium (or deriatives)"; // Chrome
-	$browser['codename'] = "chromium";
-} elseif (preg_match('~AppleWebKit~', $_SERVER['HTTP_USER_AGENT'])) {
-	$browser['name'] = "Safari"; // Safari
-	$browser['codename'] = "webkit";
-} elseif (preg_match('~Presto~', $_SERVER['HTTP_USER_AGENT'])) {
-	$browser['name'] = "Legacy Opera"; // Presto-era Opera
-	$browser['codename'] = "legacy-opera";
-	$browser['legacy_masthead_fix'] = true;
-	$browser['legacy_disable_graph'] = true;
-	$browser['legacy_disable_videojs'] = true;
 }
 
 if ($isMaintenance && !isCli()) {
