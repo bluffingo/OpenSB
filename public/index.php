@@ -1,10 +1,20 @@
 <?php
 
 namespace openSB;
+
+use \Betty\BettyException;
+
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-// currently selects all uploaded videos, should turn it into all featured only
-$videoData = $sql->query("SELECT $userfields $videofields, v.category_id FROM videos v JOIN users u ON v.author = u.id ORDER BY RAND() LIMIT 16");
+require_once dirname(__DIR__) . '/betty/class/pages/Index.php';
+
+try {
+    $index = new \Betty\Pages\Index($betty);
+    $data = $index->getIndexData();
+} catch (BettyException $e) {
+    error($e->getCode(), $e->getMessage());
+}
+
 // moved total subscribers to layout.php
 if ($log) {
     $query = implode(', ', array_column($sql->fetchArray($sql->query("SELECT user FROM subscriptions WHERE id = ?", [$userdata['id']])), 'user'));
@@ -13,21 +23,13 @@ if ($log) {
     } else {
         $subscriptionVideos = null;
     }
-    $totalViews = $sql->result("SELECT SUM(views) FROM videos WHERE author = ?", [$userdata['id']]); // broken since 2021 (or 2022?) given how views are stored differently. -grkb 4/20/23
-    $creationDate = $sql->result("SELECT joined FROM users WHERE id = ?", [$userdata['id']]);
-	$totalSubmissions = $sql->result("SELECT COUNT(*) FROM videos WHERE author = ?", [$userdata['id']]);
 } else {
     $subscriptionVideos = null;
-    $totalViews = 0;
-    $creationDate = 0;
-	$totalSubmissions = 0;
 }
 $twig = twigloader();
 
 echo $twig->render('index.twig', [
-    'videos' => $videoData,
+    'videos' => $data,
     'subscriptionVideos' => $subscriptionVideos,
-    'totalSubmissions' => $totalSubmissions,
-    'creationDate' => $creationDate,
     'updated' => (isset($_GET['updated']) ? true : false),
 ]);

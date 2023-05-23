@@ -8,7 +8,6 @@ foreach (glob(dirname(__DIR__) . "/betty/class/*.php") as $file) {
     require_once($file);
 }
 
-
 // This lets us use the Database class within other Betty classes.
 class Betty {
     private \Betty\Database $database;
