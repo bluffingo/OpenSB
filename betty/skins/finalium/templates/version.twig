@@ -11,5 +11,14 @@
             </tr>
         {% endfor %}
         </table>
+        <h1>Skins</h1>
+        <table class="settings">
+            {% for skin in skins %}
+                <tr>
+                    <td class="a">{{ skin.metadata.name }}<br><small>by {{ skin.metadata.author }}</small></td>
+                    <td class="b">{{ skin.metadata.description }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}

@@ -22,6 +22,12 @@ $version_stats = array(
 
 $twig = new \Betty\Templating($betty, $bettyTemplate);
 
+$skins = [];
+foreach($twig->getAllSkins() as $skin) {
+    $skins[] = $twig->getSkinMetadata($skin);
+}
+
 echo $twig->render('version.twig', [
     'version_stats' => $version_stats,
+    'skins' => $skins,
 ]);

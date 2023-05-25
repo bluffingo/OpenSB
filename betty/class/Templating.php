@@ -21,8 +21,26 @@ class Templating
     {
         chdir(__DIR__ . '/..');
         $this->skin = $requested_skin;
-        $this->loader = new FilesystemLoader('skins/' . $this->skin);
+        $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
         $this->twig = new Environment($this->loader);
+    }
+
+    public function getAllSkins(): array
+    {
+        return [
+            "finalium" => "skins/finalium/"
+        ];
+    }
+
+    public function getSkinMetadata($skin): ?array
+    {
+        if (file_exists($skin . "/skin.json")) {
+            $metadata = file_get_contents($skin . "/skin.json");
+        } else {
+            trigger_error(sprintf("The metadata for Betty skin %s is missing", $skin), E_USER_WARNING);
+            return null;
+        }
+        return json_decode($metadata, true);
     }
 
     /**

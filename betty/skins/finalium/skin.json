@@ -1,0 +1,8 @@
+{
+  "metadata":
+  {
+    "name": "Finalium, Betty rewrite",
+    "author": "Chaziz",
+    "description": "A rewrite of openSB's Finalium (formerly sbNext) frontend meant for Betty."
+  }
+}
