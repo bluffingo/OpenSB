@@ -1,0 +1,15 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+    <div>
+        <h1>Version</h1>
+        <table class="settings">
+        {% for thing in version_stats %}
+            <tr>
+                <td class="a">{{ thing.title }}</td>
+                <td class="b">{{ thing.info }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}
