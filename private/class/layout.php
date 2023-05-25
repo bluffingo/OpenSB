@@ -1,12 +1,6 @@
 <?php
 
 namespace openSB;
-/**
- * Twig loader, initializes Twig with standard configurations and extensions.
- *
- * @param string $subfolder Subdirectory to use in the templates/ directory.
- * @return Environment Twig object.
- */
 
 use RelativeTime\RelativeTime;
 use Twig\Environment;
@@ -18,11 +12,20 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extension\DebugExtension;
 use Twig\TwigFunction;
 
+/**
+ * Twig loader, initializes Twig with standard configurations and extensions.
+ *
+ * @deprecated Beta 4.0: Betty contains a rewritten version.
+ *
+ * @param string $subfolder Subdirectory to use in the templates/ directory.
+ * @return Environment Twig object.
+ */
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
+    trigger_error('Method ' . __METHOD__ . ' is deprecated', E_USER_DEPRECATED);
     global $sql, $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness,
            $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $isMaintenance,
-           $versionNumber, $isDebug, $userbandata, $browser, $branding, $isQoboTV;
+           $versionNumber, $isDebug, $userbandata, $browser, $branding, $isQoboTV, $betty_version;
     $detect = new \Detection\MobileDetect;
 
     if ($log) {
@@ -91,10 +94,9 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $twig->addGlobal('isDebug', $isDebug);
     $twig->addGlobal('userbandata', $userbandata);
 	$twig->addGlobal('navigationList', navigationList());
-	$twig->addGlobal('user_agent', $_SERVER['HTTP_USER_AGENT']);
-	$twig->addGlobal('browser_info', $browser);
 	$twig->addGlobal('website_branding', $branding);
     $twig->addGlobal('bunnyEnabled', $isQoboTV);
+    $twig->addGlobal('bettyVersion', $betty_version);
 
     $twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
     $twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");

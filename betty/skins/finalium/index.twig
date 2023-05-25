@@ -1,0 +1,15 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+    <div>
+        {% for submission in videos %}
+            <div>
+                <a href="/watch.php?v={{ submission.id }}">
+                    <h2>{{ submission.title }}</h2>
+                </a>
+                <p>By {{ submission.author.id }}</p>
+                <p>{{ submission.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

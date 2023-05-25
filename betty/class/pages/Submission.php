@@ -34,7 +34,7 @@ class Submission
             "description" => $this->data["description"],
             "published" => $this->data["time"],
             "type" => $this->data["post_type"],
-            "file" => $this->data["videofile"],
+            "file" => $this->data["videofile"], //FIXME: Port openSB\Videos::getVideoFile()
             "author" => [
                 "id" => $this->data["author"],
                 "info" => $this->author->getUserArray(),

@@ -1,0 +1,14 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ submission.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ submission.title }}</h1>
+    {% if submission.type == 0 %}
+        <p>Video placeholder</p>
+    {% elseif submission.type == 2 %}
+        <p>Artwork placeholder</p>
+    {% endif %}
+    <p>{{ submission.description }}</p>
+    <p>By {{ submission.author.info.username }}, {{ submission.published }}</p>
+{% endblock %}

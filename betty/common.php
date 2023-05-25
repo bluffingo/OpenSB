@@ -2,7 +2,7 @@
 
 namespace Betty;
 
-$bettyversion = "prototype";
+$betty_version = "milestone-1";
 
 foreach (glob(dirname(__DIR__) . "/betty/class/*.php") as $file) {
     require_once($file);

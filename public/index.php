@@ -2,7 +2,10 @@
 
 namespace openSB;
 
+global $betty, $bettyTemplate;
+
 use \Betty\BettyException;
+use \Betty\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
@@ -26,7 +29,7 @@ if ($log) {
 } else {
     $subscriptionVideos = null;
 }
-$twig = twigloader();
+$twig = new \Betty\Templating($betty, $bettyTemplate);
 
 echo $twig->render('index.twig', [
     'videos' => $data,

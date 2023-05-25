@@ -2,6 +2,8 @@
 
 namespace openSB;
 
+global $bettyTemplate;
+
 use \Betty\BettyException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
@@ -74,7 +76,8 @@ $currentTime = time();
 $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
 */
 
-$twig = twigloader();
+$twig = new \Betty\Templating($betty, $bettyTemplate);
+
 echo $twig->render('watch.twig', [
     'submission' => $data,
 ]);
