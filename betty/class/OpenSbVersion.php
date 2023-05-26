@@ -4,6 +4,8 @@ namespace Betty;
 
 /**
  * Takes care of openSB versioning stuff for Betty.
+ *
+ * @since 0.1.0
  */
 class OpenSbVersion
 {
@@ -13,6 +15,8 @@ class OpenSbVersion
     /**
      * @param $version string The openSB version number.
      * @param $git_branch string The current git branch.
+     *
+     * @since 0.1.0
      */
     public function __construct(string $version, string $git_branch)
     {
@@ -23,6 +27,8 @@ class OpenSbVersion
     /**
      * Return the openSB version number.
      *
+     * @since 0.1.0
+     *
      * @return string
      */
     public function getVersion(): string
@@ -32,6 +38,8 @@ class OpenSbVersion
 
     /**
      * Return the current git branch.
+     *
+     * @since 0.1.0
      *
      * @return string
      */

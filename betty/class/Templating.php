@@ -17,10 +17,13 @@ class Templating
 
     public function __construct(\Betty\Betty $betty, $requested_skin)
     {
+        global $googleTag;
         chdir(__DIR__ . '/..');
         $this->skin = $requested_skin;
         $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
         $this->twig = new Environment($this->loader);
+
+        $this->twig->addGlobal('google_tag', $googleTag);
     }
 
     /**

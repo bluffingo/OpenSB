@@ -2,7 +2,11 @@
 
 namespace openSB;
 
+global $googleTag, $googleAPI;
+
 use Betty\BettyException;
+use Br33f\Ga4\MeasurementProtocol\Dto\Request\BaseRequest;
+use Br33f\Ga4\MeasurementProtocol\Service;
 
 // we need this at the top, or else version numbers won't work.
 require_once(dirname(__DIR__) . "/class/version.php");
@@ -137,3 +141,13 @@ function navigationList() {
 }
 
 $userdata['timezone'] = 'America/New York';
+
+if ($googleAPI) {
+// FIXME: MOVE THIS TO BETTY
+    $ga = new Service($googleAPI);
+    $ga->setMeasurementId($googleTag);
+
+// Create base request
+    $baseRequest = new BaseRequest();
+    $baseRequest->setClientId($_COOKIE['_ga']);
+}

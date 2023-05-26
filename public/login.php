@@ -2,6 +2,8 @@
 
 namespace openSB;
 
+use Br33f\Ga4\MeasurementProtocol\Dto\Event\BaseEvent;
+
 require_once dirname(__DIR__) . '/private/class/common.php';
 
 $error = '';
@@ -21,6 +23,13 @@ if (isset($_POST["loginsubmit"])) {
             $nid = $sql->result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
             $sql->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), getUserIpAddr(), $nid]);
 
+            if ($googleAPI) {
+                $loginEventData = new BaseEvent("login");
+                $loginEventData->setMethod('OpenSB');
+                $baseRequest->addEvent($loginEventData);
+                $ga->send($baseRequest);
+            }
+
             redirect('./');
         } else {
             $error = __("Incorrect username or password.");
@@ -32,7 +41,7 @@ $twig = twigloader();
 
 echo $twig->render('login.twig', [
     'error' => $error,
-    'resetted' => isset($_GET['resetted']) ? true : false,
-    'new_pass' => isset($_GET['new_pass']) ? true : false,
-    'new_token' => isset($_GET['new_token']) ? true : false,
+    'resetted' => isset($_GET['resetted']),
+    'new_pass' => isset($_GET['new_pass']),
+    'new_token' => isset($_GET['new_token']),
 ]);
