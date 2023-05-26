@@ -17,6 +17,9 @@ class Submission
     private $data;
     private $author;
 
+    /**
+     * @throws BettyException
+     */
     public function __construct(\Betty\Betty $betty, $id)
     {
         $this->database = $betty->getBettyDatabase();

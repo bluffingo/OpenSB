@@ -4,6 +4,7 @@
 
 {% block content %}
     <h1>{{ submission.title }}</h1>
+    {{ submission_view(submission) }}
     {% if submission.type == 0 %}
         <p>Video placeholder</p>
     {% elseif submission.type == 2 %}

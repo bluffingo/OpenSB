@@ -17,7 +17,7 @@ class Profiler
 
     public function getStats()
     {
-        global $userdata, $isMaintenance, $frontendName;
+        global $userdata, $isMaintenance, $frontendName, $bettyTemplate;
 
         if (isCli()) return;
         $headers = headers_list();
@@ -51,7 +51,7 @@ class Profiler
                 $username, htmlspecialchars($displayname), $res["ru_utime.tv_sec"], $res["ru_stime.tv_sec"], $language, $renderTime, $memoryUsage);
         }
 
-        if ($frontendName == "sbnext") {
+        if ($frontendName == "sbnext" & $bettyTemplate == "finalium") {
             print('<div class="footer-sticky">' . $debugData . '</div>');
         } else {
             print('<center>' . $debugData . '</center>');

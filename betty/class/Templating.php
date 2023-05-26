@@ -3,7 +3,9 @@
 namespace Betty;
 
 use Twig\Environment;
+use Twig\Extension\AbstractExtension;
 use Twig\Loader\FilesystemLoader;
+use Twig\TwigFunction;
 
 /**
  * A rewrite of openSB's /private/layout.php.
@@ -21,13 +23,16 @@ class Templating
         chdir(__DIR__ . '/..');
         $this->skin = $requested_skin;
         $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
+        $this->loader->addPath('skins/common/');
         $this->twig = new Environment($this->loader);
+
+        $this->twig->addExtension(new BettyTwigExtension());
 
         $this->twig->addGlobal('google_tag', $googleTag);
     }
 
     /**
-     * Get all the available skins. Currently hardcoded to only Finalium.
+     * Get all the available skins. Currently, hardcoded to only Finalium.
      *
      * @since 0.1.0
      *
@@ -36,7 +41,7 @@ class Templating
     public function getAllSkins(): array
     {
         return [
-            "finalium" => "skins/finalium/"
+            "finalium" => "skins/finalium/",
         ];
     }
 
@@ -74,5 +79,30 @@ class Templating
     public function render($template, $data): string
     {
         return $this->twig->render($template, $data);
+    }
+}
+
+class BettyTwigExtension extends AbstractExtension
+{
+    public function getFunctions(): array
+    {
+        return [
+            new TwigFunction('submission_view', [$this, 'SubmissionView']),
+        ];
+    }
+
+    public function SubmissionView($submission_data)
+    {
+        global $twig;
+        if (!$submission_data) { throw new BettyException('Submission is null', 500); };
+        if ($submission_data["type"] == 0)
+        {
+            echo $twig->render("player.twig", ['submission' => $submission_data]);
+        }
+
+        if ($submission_data["type"] == 2)
+        {
+            echo $twig->render("image.twig", ['submission' => $submission_data]);
+        }
     }
 }
