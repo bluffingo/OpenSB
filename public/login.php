@@ -2,7 +2,7 @@
 
 namespace openSB;
 
-use Br33f\Ga4\MeasurementProtocol\Dto\Event\BaseEvent;
+use Br33f\Ga4\MeasurementProtocol\Dto\Event\LoginEvent;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
@@ -24,7 +24,7 @@ if (isset($_POST["loginsubmit"])) {
             $sql->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), getUserIpAddr(), $nid]);
 
             if ($googleAPI) {
-                $loginEventData = new BaseEvent("login");
+                $loginEventData = new LoginEvent();
                 $loginEventData->setMethod('OpenSB');
                 $baseRequest->addEvent($loginEventData);
                 $ga->send($baseRequest);
