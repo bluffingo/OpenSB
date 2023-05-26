@@ -1,4 +1,4 @@
-<h1 align="center">openSB: Powered by the Betty "framework"</h1>
+# openSB/Betty
 
 ## How to setup an openSB instance.
 

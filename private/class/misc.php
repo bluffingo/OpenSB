@@ -9,12 +9,6 @@ function isCli()
     return php_sapi_name() == "cli";
 }
 
-function accessDenied()
-{
-    http_response_code(403);
-    die(__("Access Denied"));
-}
-
 function redirect($url)
 {
     header(sprintf('Location: %s', $url));

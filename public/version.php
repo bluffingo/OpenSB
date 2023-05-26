@@ -2,24 +2,12 @@
 
 namespace openSB;
 
-global $versionNumber, $betty, $betty_version, $bettyTemplate;
+global $betty, $bettyTemplate, $opensb_version;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-$version_stats = array(
-    'phpVersion' => array(
-        'title' => "PHP version",
-        'info' => phpversion(),
-    ),
-    'sbVersion' => array(
-        'title' => "openSB version",
-        'info' => $versionNumber,
-    ),
-    'bettyVersion' => array(
-        'title' => "Betty version",
-        'info' => $betty_version,
-    ),
-);
+require_once dirname(__DIR__) . '/betty/class/pages/Version.php';
 
+$page = new \Betty\Pages\Version($betty, $opensb_version);
 $twig = new \Betty\Templating($betty, $bettyTemplate);
 
 $skins = [];
@@ -28,6 +16,6 @@ foreach($twig->getAllSkins() as $skin) {
 }
 
 echo $twig->render('version.twig', [
-    'version_stats' => $version_stats,
+    'version_stats' => $page->getVersionData(),
     'skins' => $skins,
 ]);

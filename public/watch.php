@@ -17,7 +17,7 @@ try {
     $submission = new \Betty\Pages\Submission($betty, $id);
     $data = $submission->getSubmission();
 } catch (BettyException $e) {
-    error($e->getCode(), $e->getMessage());
+    $e->page();
 }
 
 /*

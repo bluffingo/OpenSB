@@ -17,7 +17,7 @@ class Index
         $this->data = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v ORDER BY RAND() LIMIT 16"));
     }
 
-    public function getIndexData()
+    public function getData()
     {
         $indexData = [];
         foreach ($this->data as $submission) {
