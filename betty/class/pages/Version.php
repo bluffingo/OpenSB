@@ -6,6 +6,11 @@ use Betty\User;
 use Betty\BettyException;
 use Betty\Database;
 
+/**
+ * Backend code for the MediaWiki-styled version page.
+ *
+ * @since 0.1.0
+ */
 class Version
 {
     private $betty;
@@ -16,7 +21,14 @@ class Version
         $this->opensb_version = $opensb_version;
     }
 
-    public function getVersionData()
+    /**
+     * Returns an array containing the versions for the openSB frontend.
+     *
+     * @since 0.1.0
+     *
+     * @return array
+     */
+    public function getVersionData(): array
     {
         return array(
             'phpVersion' => array(

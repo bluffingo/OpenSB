@@ -7,16 +7,14 @@ use Twig\Loader\FilesystemLoader;
 
 /**
  * A rewrite of openSB's /private/layout.php.
+ *
+ * @since 0.1.0
  */
 class Templating
 {
     private $skin;
     private FilesystemLoader $loader;
 
-    /**
-     * @param Betty $betty
-     * @param $requested_skin
-     */
     public function __construct(\Betty\Betty $betty, $requested_skin)
     {
         chdir(__DIR__ . '/..');
@@ -25,6 +23,13 @@ class Templating
         $this->twig = new Environment($this->loader);
     }
 
+    /**
+     * Get all the available skins. Currently hardcoded to only Finalium.
+     *
+     * @since 0.1.0
+     *
+     * @return string[]
+     */
     public function getAllSkins(): array
     {
         return [
@@ -32,6 +37,14 @@ class Templating
         ];
     }
 
+    /**
+     * Get the skin's JSON metadata.
+     *
+     * @since 0.1.0
+     *
+     * @param $skin
+     * @return array|null
+     */
     public function getSkinMetadata($skin): ?array
     {
         if (file_exists($skin . "/skin.json")) {
@@ -45,6 +58,8 @@ class Templating
 
     /**
      * This function exists to keep compatibility with openSB pages based on twigloader.
+     *
+     * @since 0.1.0
      *
      * @param $template
      * @param $data

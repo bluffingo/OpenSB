@@ -6,6 +6,11 @@ use Betty\User;
 use Betty\BettyException;
 use Betty\Database;
 
+/**
+ * Backend code for the submission view (watch) page.
+ *
+ * @since 0.1.0
+ */
 class Submission
 {
     private \Betty\Database $database;
@@ -25,9 +30,15 @@ class Submission
         }
     }
 
-    public function getSubmission()
+    /**
+     * Returns an array containing the submission for the openSB frontend.
+     *
+     * @since 0.1.0
+     *
+     * @return array
+     */
+    public function getSubmission(): array
     {
-        // Return the data for openSB to fuck around with.
         return [
             "id" => $this->data["video_id"],
             "title" => $this->data["title"],

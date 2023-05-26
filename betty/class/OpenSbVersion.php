@@ -7,21 +7,35 @@ namespace Betty;
  */
 class OpenSbVersion
 {
-    private $version;
-    private $git_branch;
+    private string $version;
+    private string $git_branch;
 
-    public function __construct($version, $git_branch)
+    /**
+     * @param $version string The openSB version number.
+     * @param $git_branch string The current git branch.
+     */
+    public function __construct(string $version, string $git_branch)
     {
         $this->version = $version;
         $this->git_branch = $git_branch;
     }
 
-    public function getVersion()
+    /**
+     * Return the openSB version number.
+     *
+     * @return string
+     */
+    public function getVersion(): string
     {
         return $this->version;
     }
 
-    public function getGitBranch()
+    /**
+     * Return the current git branch.
+     *
+     * @return string
+     */
+    public function getGitBranch(): string
     {
         return $this->git_branch;
     }

@@ -9,10 +9,13 @@ foreach (glob(dirname(__DIR__) . "/betty/class/*.php") as $file) {
 
 /**
  * This lets us use the Database class within other Betty classes.
+ *
+ * @since 0.1.0
+ *
  */
 class Betty {
     private \Betty\Database $database;
-    public $version = "0.1.0";
+    public string $version = "0.1.0";
 
     public function __construct($host, $user, $pass, $db) {
         try {
@@ -22,11 +25,26 @@ class Betty {
         }
     }
 
+    /**
+     * Returns the database for other Betty classes to use.
+     *
+     * @since 0.1.0
+     *
+     * @return Database
+     */
     public function getBettyDatabase(): \Betty\Database {
         return $this->database;
     }
 
-    public function getBettyVersion() {
+    /**
+     * Returns Betty's version number.
+     *
+     * @since 0.1.0
+     *
+     * @return string
+     */
+    public function getBettyVersion(): string
+    {
         return $this->version;
     }
 }

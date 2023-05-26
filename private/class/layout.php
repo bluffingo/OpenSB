@@ -22,10 +22,9 @@ use Twig\TwigFunction;
  */
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
-    trigger_error('Method ' . __METHOD__ . ' is deprecated', E_USER_DEPRECATED);
     global $sql, $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness,
            $languages, $frontend, $frontendCommon, $mobileFrontend, $notificationCount, $isMaintenance,
-           $versionNumber, $isDebug, $userbandata, $browser, $branding, $isQoboTV, $betty_version;
+           $versionNumber, $isDebug, $userbandata, $browser, $branding, $isQoboTV;
     $detect = new \Detection\MobileDetect;
 
     if ($log) {
@@ -96,7 +95,6 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
 	$twig->addGlobal('navigationList', navigationList());
 	$twig->addGlobal('website_branding', $branding);
     $twig->addGlobal('bunnyEnabled', $isQoboTV);
-    $twig->addGlobal('bettyVersion', $betty_version);
 
     $twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
     $twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");

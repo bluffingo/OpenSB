@@ -2,11 +2,14 @@
 
 namespace Betty;
 
-// For now, this is just the openSB MySQL class.
-
 use PDO;
 use PDOException;
 
+/**
+ * PDO interface(?).
+ *
+ * @since openSB Pre-Alpha 1
+ */
 class Database
 {
     private $sql;

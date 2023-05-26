@@ -14,7 +14,7 @@ class User
         $this->data = $this->database->fetch("SELECT u.* FROM users u WHERE u.id = ?", [$id]);
     }
 
-    public function getUserArray()
+    public function getUserArray(): array
     {
         return [
             "username" => $this->data["name"],
