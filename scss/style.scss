@@ -1,9 +1,9 @@
 /// Functions \\\
-@import "_functions";
+@import "functions";
 /// Normalize \\\
-@import "_normalize";
+@import "normalize";
 /// Variables \\\
-@import "_variables";
+@import "variables";
 
 @import url('https://rsms.me/inter/inter.css');
 
@@ -13,8 +13,8 @@ html {
   height: 100%;
 }
 
-@import "_clearfix";
-@import "_grid-breakpoints";
+@import "clearfix";
+@import "grid-breakpoints";
 
 h1, h2, h3 {
   font-weight: 450;
@@ -266,6 +266,6 @@ ul.nav {
 }
 
 /// Imports \\\
-@import "_imports";
+@import "imports";
 /// Browser-specific fixes \\\
-@import "_browser_shenanigans";
+@import "browser_shenanigans";
