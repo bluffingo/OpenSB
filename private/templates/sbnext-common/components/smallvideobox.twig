@@ -8,8 +8,8 @@
         {% endif %}
         </a>
     </div>
-    <div class="col-md-12 col-xs-6" style="padding-left: 0;">
-        <h4 style="margin-top: 0;"><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h4>
+    <div class="col-md-12 col-xs-10" style="padding-left: 0;">
+        <h4 style="margin-top: 0;overflow:hidden;white-space:nowrap;text-overflow: ellipsis;"><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h4>
         <span class="stat">{{ __("by") }} {{ userlink(data, 'u_') }} {% if data.u_powerlevel > 1 %}{{ icon("shield", 14) }}{% endif %} &bull; {{ data.views }} {{ __("views") }}</span>
         <!-- <span class="stat">{{ video_length(data) }}</span> -->
     </div>

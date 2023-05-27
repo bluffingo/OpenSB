@@ -20,7 +20,7 @@
          {% endif %}
          <div class="panel panel-default">
             <div class="panel-body">
-               <h3 style="margin-top: 0;">{{ video.title }}</h3>
+               <h3 style="margin-top: 0;word-break: break-all;">{{ video.title }}</h3>
                <p>{{ __("%s views", [viewCount]) }}</p>
                <div class="row">
                   <div class="col-md-8 col-xs-8">
@@ -53,10 +53,10 @@
             </div>
          </div>
          <div class="panel panel-default">
-            <div class="panel-body">
+            <div class="panel-body" style="word-break: break-all;">
                <p><b>{{ __("Submitted %s on %s", [video.time | relative_time, video.time | date('F j, Y')]) }}</b></p>
                {% if video.description|trim is not empty %}
-               <p>{{ video.description | markdown }}</p>
+               {{ video.description | markdown }}
                {% else %}
                   <em class="text-muted">{{ __("This submission has no description.") }}</em>
                {% endif %}
