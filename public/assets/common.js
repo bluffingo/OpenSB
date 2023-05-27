@@ -1,38 +1,9 @@
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
 index = 0;
-sbnextSounds = getCookie("SBSOUNDS");
 
 $(document).ready(function () {
-    console.log("squareBracket Sounds: " + sbnextSounds);
-    $("#masthead-loggedin").click(function () {
-        var x = document.getElementById("masthead-below");
-        if (x.style.display === "block") {
-            x.style.display = "none";
-        } else {
-            x.style.display = "block";
-        }
-    });
-    $("#guide-toggle").click(function () {
-        var x = document.getElementById("guide");
-        if (x.style.display === "block") {
-            x.style.display = "none";
-        } else {
-            x.style.display = "block";
-        }
-    });
+    console.log("Sorry, We removed the sounds. -Chaziz 5/27/2023");
     $("#action_unlogged").click(function () {
-        play("error");
-        alert('you must be logged in.');
+        alert('You must be logged in.');
     });
     contents = $.trim($("#commentContents").val());
     if (contents === null || contents == "" && $("#post").attr("class") != "button button-primary disabled") {
@@ -51,11 +22,9 @@ $(document).ready(function () {
         }
     });
     $("#post").click(function () {
-        play("click");
         $("#commentPostingSpinner").removeClass('d-none');
 
         if (!$('#commentContents').val()) {
-            play("error");
             return alert('you must put something to comment!');
         }
 
@@ -73,12 +42,10 @@ $(document).ready(function () {
                     $("#commentContents").val('');
                     $("#post").addClass("disabled");
                     $("#commentPostingSpinner").addClass('d-none');
-                    play("comment");
                 }
             });
     });
     $("#post-user").click(function () {
-        play("click");
         $("#commentPostingSpinner").removeClass('d-none');
         $.post("comment.php",
             {
@@ -94,7 +61,6 @@ $(document).ready(function () {
                     $("#commentContents").val('');
                     $("#post").addClass("disabled");
                     $("#commentPostingSpinner").addClass('d-none');
-                    play("comment");
                 }
             });
     });
@@ -109,14 +75,11 @@ $(document).ready(function () {
                         $("#subscribe").text(subscribe_string);
                         $("#subscribe").attr("class", "button button-primary");
                         console.log("Unsubscribed " + user_id);
-                        play("click");
                     } else if (data == unsubscribe_string) {
                         $("#subscribe").text(unsubscribe_string);
                         $("#subscribe").attr("class", "button button-secondary");
                         console.log("Subscribed " + user_id);
-                        play("subscribe");
                     } else {
-                        play("error");
                         alert('unexpected output! report to https://gitlab.com/qobo/opensb/-/issues');
                     }
                 }
@@ -132,15 +95,12 @@ $(document).ready(function () {
                     if (data == subscribe_string) {
                         $("#subscribe-watch").text(subscribe_string);
                         $("#subscribe-watch").attr("class", "btn btn-primary btn-sm");
-                        console.log("Unsubscribed " + user_id);
-                        play("click");
+                        console.log("Unfollowed " + user_id);
                     } else if (data == unsubscribe_string) {
                         $("#subscribe-watch").text(unsubscribe_string);
                         $("#subscribe-watch").attr("class", "btn btn-default btn-sm");
-                        console.log("Subscribed " + user_id);
-                        play("subscribe");
+                        console.log("Followed " + user_id);
                     } else {
-                        play("error");
                         alert('unexpected output! report to https://gitlab.com/qobo/opensb/-/issues');
                     }
                 }
@@ -160,11 +120,9 @@ $(document).ready(function () {
                             $("#likes").text(parseInt($("#likes").text()) + 1)
                             $("#dislikes").text(parseInt($("#dislikes").text()) - 1)
                             $("#dislike").attr("class", "btn btn-default");
-                            play("like");
                         } else if (data == 0) {
                             $("#like").click();
                         } else {
-                            play("error");
                             alert('unexpected output! report to https://gitlab.com/qobo/opensb/-/issues');
                         }
                     }
@@ -185,11 +143,9 @@ $(document).ready(function () {
                             $("#dislikes").text(parseInt($("#dislikes").text()) + 1)
                             $("#likes").text(parseInt($("#likes").text()) - 1)
                             $("#like").attr("class", "btn btn-default");
-                            play("dislike");
                         } else if (data == 0) {
                             $("#dislike").click();
                         } else {
-                            play("error");
                             alert('unexpected output! report to https://gitlab.com/qobo/opensb/-/issues');
                         }
                     }
@@ -207,11 +163,9 @@ $(document).ready(function () {
                     if (status == "success") {
                         if (data == 1) {
                             $("#favorite").attr("class", "btn btn-warning");
-                            play("favorite");
                         } else if (data == 0) {
                             $("#favorite").click();
                         } else {
-                            play("error");
                             alert('unexpected output! report to https://gitlab.com/qobo/opensb/-/issues');
                         }
                     }
@@ -237,36 +191,6 @@ $(document).ready(function () {
 		$("#debugModal").show();
     });
 });
-
-function openTab(evt, tab) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(tab).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-function myFunction() {
-    var x = document.getElementById("billboard-search-box");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
-    }
-}
 
 function showReplies(id) {
     $.post("get_replies.php",
@@ -305,8 +229,7 @@ function reply(id) {
     if (!$("#" + id + " #commentField").length) {
         $("#commentField").clone().appendTo("#" + id);
     }
-    $("#" + id + " #commentField .col-md-11 .right #post").click(function () {
-        play("click");
+    $("#" + id + " #commentField .col-md-16 .text-right #post").click(function () {
         $.post("comment.php",
             {
                 comment: $.trim($('#' + id + ' #commentContents').val()),
@@ -319,12 +242,10 @@ function reply(id) {
                     console.log("Commented " + $('#' + id + ' #commentContents').val());
                     $("#" + id).append(data);
                     $("#" + id + " #commentField").remove();
-                    play("comment");
                 }
             });
     });
-    $("#" + id + " #commentField .col-md-11 .right #post-user").click(function () {
-        play("click");
+    $("#" + id + " #commentField .col-md-16 .text-right #post-user").click(function () {
         $.post("comment.php",
             {
                 comment: $.trim($('#' + id + ' #commentContents').val()),
@@ -337,15 +258,7 @@ function reply(id) {
                     console.log("Commented " + $('#' + id + ' #commentContents').val());
                     $("#" + id).append(data);
                     $("#" + id + " #commentField").remove();
-                    play("comment");
                 }
             });
     });
-}
-
-function play(sound) {
-    if (JSON.parse(sbnextSounds) == true) {
-        var audio = new Audio('/assets/sounds/' + sound + '.ogg');
-        audio.play();
-    }
 }

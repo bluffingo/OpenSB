@@ -35,11 +35,8 @@
                         {% endif %}
                         &bull; {{ __("%s follower%s", [subCount ?? __("no"), pluralSubscribers]) }}
                     </p>
-                    <p>{{ userpagedata.about | markdown }}</p>
-                </div>
-                <div class="col-md-2 right">
                     {% if userpagedata.id != userdata.id %}
-                        <button id="subscribe" class="btn btn-{% if subscribed %}secondary{% else %}primary{% endif %}"
+                        <button id="subscribe" class="btn btn-{% if subscribed %}default{% else %}primary{% endif %}"
                                 type="button"
                                 {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
                     {% endif %}
@@ -81,6 +78,7 @@
                     <h2></h2>
                     <div class="user_about">
                         <h3>{{ __("About %s", [ userpagedata.title ]) }}</h3>
+                        <p>{{ userpagedata.about | markdown }}</p>
                         <p><strong>{{ __("Registered on") }}</strong>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}</p>
                         <p><strong>{{ __("Last logged in") }}</strong>: {{ userpagedata.lastview | relative_time }}</p>
                     </div>

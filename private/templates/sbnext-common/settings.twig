@@ -6,7 +6,7 @@
         <div class="alert alert-danger" role="alert">{{ error }}</div>
     {% endif %}
 <form action="settings.php" method="post" enctype="multipart/form-data">
-	<table class="table table-bordered">
+	<table class="table table-bordered table-striped">
 		<caption><h3>{{ __("Your account") }}</h3></caption>
 		<tr>
 			<th>{{ __("Option") }}</th>
@@ -24,10 +24,10 @@
 		<tr>
 			<td class="a">{{ __("Password") }}</td>
 			<td class="b">
-				<input type="password" name="current_pass" size="30" maxlength="256"
+				<input class="form-control" type="password" name="current_pass" size="30" maxlength="256"
 					   placeholder="{{ __("Current password") }}"><br>
-				<input type="password" name="pass" size="30" maxlength="256" placeholder="{{ __("New password") }}"><br>
-				<input type="password" name="pass2" size="30" maxlength="256"
+				<input class="form-control" type="password" name="pass" size="30" maxlength="256" placeholder="{{ __("New password") }}"><br>
+				<input class="form-control" type="password" name="pass2" size="30" maxlength="256"
 					   placeholder="{{ __("Confirm new password") }}">
 			</td>
 		</tr>
@@ -38,7 +38,7 @@
 	</table>
 
 	{% if userbandata != true %}
-		<table class="table table-bordered">
+		<table class="table table-bordered table-striped">
 			<caption><h3>{{ __("Your profile") }}</h3></caption>
 			<tr>
 				<th>{{ __("Option") }}</th>
@@ -47,19 +47,19 @@
 			<tr>
 				<td class="a">{{ __("Profile picture") }}</td>
 				<td class="b">
-					<input class="form-control" type="file" name="profilePicture" id="profilePicture">
+					<input type="file" name="profilePicture" id="profilePicture">
 				</td>
 			</tr>
 			<tr>
 				<td class="a">{{ __("Display name") }}</td>
-				<td class="b"><input type="text" name="title" size="45" maxlength="50" value="{{ userdata.title }}"></td>
+				<td class="b"><input class="form-control" type="text" name="title" size="45" maxlength="50" value="{{ userdata.title }}"></td>
 			</tr>
 			<tr>
 				<td class="a">
 					{{ __("Description") }}
 					<br><em>{{ __("Markdown is allowed.") }}</em>
 				</td>
-				<td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual">{{ userdata.about }}</textarea></td>
+				<td class="b"><textarea class="form-control" name="about" rows="5" cols="80" wrap="virtual">{{ userdata.about }}</textarea></td>
 			</tr>
 			<tr>
 				<td class="a">{{ __("Username color") }}</td>
