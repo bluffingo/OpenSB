@@ -163,21 +163,14 @@ if ($log) {
 }
 
 function navigationList() {
-	$array = array(
-		"home" => array(
-			"name" => __("Home"),
-			"icon" => "home",
-			"url" => "/index.php",
-			"htmlid" => "mainpage-description",
-		),
-		"browse" => array(
+	return [
+		"browse" => [
 			"name" => __("Browse"),
 			"icon" => "video",
 			"url" => "/browse.php",
 			"htmlid" => "browse",
-		),
-	);
-	return $array;
+		],
+	];
 }
 
 $userdata['timezone'] = 'America/New York';

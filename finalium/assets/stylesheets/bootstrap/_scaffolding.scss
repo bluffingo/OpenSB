@@ -30,6 +30,12 @@ body {
   line-height: $line-height-base;
   color: $text-color;
   background-color: $body-bg;
+  &.with-fixed-top-navbar {
+    padding-top: 70px;
+  }
+  &.with-fixed-bottom-navbar {
+    padding-bottom: 70px;
+  }
 }
 
 // Reset fonts for relevant elements

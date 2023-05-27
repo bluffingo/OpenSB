@@ -117,7 +117,7 @@ $(document).ready(function () {
                         play("subscribe");
                     } else {
                         play("error");
-                        alert('unexpected output! report to https://github.com/qobotv/opensb/issues');
+                        alert('unexpected output! report to https://gitlab.com/qobo/opensb/-/issues');
                     }
                 }
             });
@@ -131,17 +131,17 @@ $(document).ready(function () {
                 if (status == "success") {
                     if (data == subscribe_string) {
                         $("#subscribe-watch").text(subscribe_string);
-                        $("#subscribe-watch").attr("class", "button button-primary button-small");
+                        $("#subscribe-watch").attr("class", "btn btn-primary btn-sm");
                         console.log("Unsubscribed " + user_id);
                         play("click");
                     } else if (data == unsubscribe_string) {
                         $("#subscribe-watch").text(unsubscribe_string);
-                        $("#subscribe-watch").attr("class", "button button-secondary button-small");
+                        $("#subscribe-watch").attr("class", "btn btn-default btn-sm");
                         console.log("Subscribed " + user_id);
                         play("subscribe");
                     } else {
                         play("error");
-                        alert('unexpected output! report to https://github.com/qobotv/opensb/issues');
+                        alert('unexpected output! report to https://gitlab.com/qobo/opensb/-/issues');
                     }
                 }
             });
@@ -156,16 +156,16 @@ $(document).ready(function () {
                 function (data, status) {
                     if (status == "success") {
                         if (data == 1) {
-                            $("#like").attr("class", "button button-success");
+                            $("#like").attr("class", "btn btn-success");
                             $("#likes").text(parseInt($("#likes").text()) + 1)
                             $("#dislikes").text(parseInt($("#dislikes").text()) - 1)
-                            $("#dislike").attr("class", "button button-secondary");
+                            $("#dislike").attr("class", "btn btn-default");
                             play("like");
                         } else if (data == 0) {
                             $("#like").click();
                         } else {
                             play("error");
-                            alert('unexpected output! report to https://github.com/qobotv/opensb/issues');
+                            alert('unexpected output! report to https://gitlab.com/qobo/opensb/-/issues');
                         }
                     }
                 });
@@ -181,23 +181,23 @@ $(document).ready(function () {
                 function (data, status) {
                     if (status == "success") {
                         if (data == 1) {
-                            $("#dislike").attr("class", "button button-danger");
+                            $("#dislike").attr("class", "btn btn-danger");
                             $("#dislikes").text(parseInt($("#dislikes").text()) + 1)
                             $("#likes").text(parseInt($("#likes").text()) - 1)
-                            $("#like").attr("class", "button button-secondary");
+                            $("#like").attr("class", "btn btn-default");
                             play("dislike");
                         } else if (data == 0) {
                             $("#dislike").click();
                         } else {
                             play("error");
-                            alert('unexpected output! report to https://github.com/qobotv/opensb/issues');
+                            alert('unexpected output! report to https://gitlab.com/qobo/opensb/-/issues');
                         }
                     }
                 });
         }
     });
     $("#favorite").click(function () {
-        if ($("#favorite").attr("class") != "button button-warning") {
+        if ($("#favorite").attr("class") != "btn btn-warning") {
             $.post("favorite.php",
                 {
                     action: "favorite",
@@ -206,13 +206,13 @@ $(document).ready(function () {
                 function (data, status) {
                     if (status == "success") {
                         if (data == 1) {
-                            $("#favorite").attr("class", "button button-warning");
+                            $("#favorite").attr("class", "btn btn-warning");
                             play("favorite");
                         } else if (data == 0) {
                             $("#favorite").click();
                         } else {
                             play("error");
-                            alert('unexpected output! report to https://github.com/qobotv/opensb/issues');
+                            alert('unexpected output! report to https://gitlab.com/qobo/opensb/-/issues');
                         }
                     }
                 });

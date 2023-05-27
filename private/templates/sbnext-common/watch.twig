@@ -11,118 +11,88 @@
 {% endblock %}
 {% block title %}{{ video.title }}{% endblock %}
 {% block content %}
-   <div class="watchNext">
-      <div class="row">
-         <div class="col-md-10">
-            {% if postType == "video" %}
-               {{ include('/components/player.twig') }}
-            {% elseif postType == "artwork" %}
-               {{ include('/components/artwork.twig') }}
-            {% endif %}
-            <div class="panel panel-default">
-               <div class="panel-body">
+   <div class="row">
+      <div class="col-md-10">
+         {% if postType == "video" %}
+            {{ include('/components/player.twig') }}
+         {% elseif postType == "artwork" %}
+            {{ include('/components/artwork.twig') }}
+         {% endif %}
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <div class="page-header">
                   <h1>{{ video.title }}</h1>
-                  <div class="row">
-                     <div class="col-md-8">
-                        <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
-                        <a href="user.php?name={{ video.u_name }}" style="color:{{ video.u_customcolor }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a> • {{ subCount }} followers
-                        <br>
-                        {% if userdata.id == video.author %}<a class="btn btn-default btn-sm" href="/edit.php?v={{video.video_id}}">{{ __("Edit submission") }}</a>{% else %}
-                           <button id="subscribe-watch" class="btn btn-{% if subscribed %}secondary{% else %}primary{% endif %} btn-sm" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
-                        {% endif %}
-                        <br>
-                     </div>
-                     <div class="col-md-8 text-right">
-                        <h1 class="viewcount">{{ viewCount }}</h1>
-                        <div class="below-likesaber">{{ icon("thumb-up", 12) }} {{ total_likes }} {{ icon("thumb-down", 12) }} {{ total_dislikes }}  </div>
-                     </div>
-                  </div>
-                  <div class="row" style="margin-top:5px;">
-                     <div class="col-md-12">
-                        <div style="margin-top:-9px;">
-                           <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
-                                   class="btn {% if rating == 1 %}btn-success{% else %}btn-default{% endif %}">
-                              {{ icon("thumb-up", 20) }}
-                              {{ __("Like") }}
-                           </button>
-                           <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}"
-                                   class="btn {% if rating is same as(0) %}btn-danger{% else %}btn-default{% endif %}" title="{{ __("Dislike") }}">
-                              {{ icon("thumb-down", 20) }}
-                           </button>
-                           <button href="#" id="{% if log %}favorite{% else %}action_unlogged{% endif %}"
-                                   class="btn {% if isFavorited %}btn-warning{% else %}btn-default{% endif %}" title="{{ __("Favorite") }}">
-                              {{ icon("star", 20) }}
-                           </button>
-                        </div>
-                     </div>
-                  </div>
                </div>
-            </div>
-            <div class="panel panel-default">
-               <div class="panel-body">
-                  <ul class="nav nav-tabs">
-                     <li role="presentation"><a href="#">{{ __("About") }}</a></li>
-                     <li role="presentation"><a href="#">{{ __("Statistics") }}</a></li>
-                     <li role="presentation"><a href="#">{{ __("Flag") }}</a></li>
-                  </ul>
-                  <div id="About" class="tabcontent" style="display: block;">
-                     <p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
-                     <p>{{ video.description | markdown }}</p>
+               <div class="row">
+                  <div class="col-md-8">
+                     <img src="{{ profile_image(video.u_name) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
+                     <a href="user.php?name={{ video.u_name }}" style="color:{{ video.u_customcolor }}"><b style="height: 20px;display: inline-block;">{{ video.u_name }}</b></a> • {{ subCount }} followers
+                     <br>
+                     {% if userdata.id == video.author %}<a class="btn btn-default btn-sm" href="/edit.php?v={{video.video_id}}">{{ __("Edit submission") }}</a>{% else %}
+                        <button id="subscribe-watch" class="btn btn-{% if subscribed %}secondary{% else %}primary{% endif %} btn-sm" type="button" {% if not log or userdata.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
+                     {% endif %}
+                     <br>
                   </div>
-                  <div id="Stats" class="tabcontent" style="display: none;">
-                     <h2>Stats</h2>
-                     <ul style="padding:0">
-                        <li>
-                           {{ __("Total favorites") }}: {{ total_favorites }}
-                        </li>
-                        <li>
-                           {{ __("Like/Dislike ratio") }}: {{ videoRatio }}%
-                        </li>
-                        <li>
-                           {{ __("Last seen") }}: {{ recentView | relative_time }}
-                        </li>
-                     </ul>
-                  </div>
-                  <div id="Flag" class="tabcontent" style="display: none;">
-                     <h2>{{ __("Flag submission") }}</h2>
-                     {{ __("This isn't currently implemented.") }}
-                  </div>
-               </div>
-            </div>
-            <div class="panel panel-default">
-               <div class="panel-body">
-                  <h3>{{ __("Comments") }} ({{ comCount }})</h3>
-                  {% if log %}
-                     <div>
-                        <div>
-                     <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
-                               placeholder="{{ __("Enter comment here.") }}"></textarea>
-                        </div>
-                        <div class="text-right">
-                           <button id="post" class="btn btn-primary" style="margin-bottom:0;">{{ __("Comment") }}</button>
-                        </div>
+                  <div class="col-md-8 text-right">
+                     <div style="margin-top:-9px;">
+                        <button href="#" id="{% if log %}like{% else %}action_unlogged{% endif %}"
+                                class="btn {% if rating == 1 %}btn-success{% else %}btn-default{% endif %}">
+                           {{ icon("thumb-up", 20) }}
+                           {{ __("Like") }}
+                        </button>
+                        <button href="#" id="{% if log %}dislike{% else %}action_unlogged{% endif %}"
+                                class="btn {% if rating is same as(0) %}btn-danger{% else %}btn-default{% endif %}" title="{{ __("Dislike") }}">
+                           {{ icon("thumb-down", 20) }}
+                        </button>
+                        <button href="#" id="{% if log %}favorite{% else %}action_unlogged{% endif %}"
+                                class="btn {% if isFavorited %}btn-warning{% else %}btn-default{% endif %}" title="{{ __("Favorite") }}">
+                           {{ icon("star", 20) }}
+                        </button>
                      </div>
-                  {% endif %}
-                  <div id="comment"></div>
-                  {% for comment in comments %}
-                     {{ comment(comment) }}
-                  {% endfor %}
+                  </div>
                </div>
             </div>
          </div>
-         <div class="col-md-6">
-            <div class="panel panel-default">
-               <div class="panel-body">
-                  {% for related_video in related_videos %}
-                     {{ small_video_box(related_video)}}
-                  {% endfor %}
-                  <div class="center">
-                     <div class="btn btn-default" onclick="showMoreVideos()" id="fromUser">
-                        {{ __("More") }}
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <p><b>{{ __("%s views", [viewCount]) }}</b></p>
+               <p><b>{{ __("Published on %s", [video.time | date('M j, Y')]) }}</b></p>
+               <p>{{ video.description | markdown }}</p>
+            </div>
+         </div>
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <h3>{{ __("Comments") }} ({{ comCount }})</h3>
+               {% if log %}
+                  <div>
+                     <div>
+                     <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
+                               placeholder="{{ __("Enter comment here.") }}"></textarea>
+                     </div>
+                     <div class="text-right">
+                        <button id="post" class="btn btn-primary" style="margin-bottom:0;">{{ __("Comment") }}</button>
                      </div>
                   </div>
-                  <div class="collapsed" id="fromUserVideoList">
+               {% endif %}
+               <div id="comment"></div>
+               {% for comment in comments %}
+                  {{ comment(comment) }}
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+      <div class="col-md-6">
+         <div class="panel panel-default">
+            <div class="panel-body">
+               {% for related_video in related_videos %}
+                  {{ small_video_box(related_video)}}
+               {% endfor %}
+               <div class="text-center">
+                  <div class="btn btn-default" onclick="showMoreVideos()" id="fromUser">
+                     {{ __("More") }}
                   </div>
+               </div>
+               <div class="collapsed" id="fromUserVideoList">
                </div>
             </div>
          </div>
