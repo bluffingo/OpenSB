@@ -1,12 +1,6 @@
 <h1>{{ __("Options") }}</h1>
 <form action="customizer.php" method="post">
     <h2>{{ __("User interface") }}</h2>
-    <label for="theme">{{ __("Theme") }}</label>
-    <select class="form-select" name="theme">
-        <option value="default">{{ __("Light") }}</option>
-        <option value="dark">{{ __("Dark") }}</option>
-        <option value="nostalgia">{{ __("Nostalgia") }}</option>
-    </select>
     <label for="language">{{ __("Language") }}</label>
     <select class="form-select" name="language">
         {% for code,name in glob_languages %}
@@ -17,16 +11,8 @@
     </select>
     <input type="checkbox" id="enableSounds" name="enableSounds" value="true">
     <label for="enableSounds"> {{ __("Enable sounds") }}</label><br>
-    <br>
-    <h3>{{ __("Profile picture roundness") }}</h3>
-    <input type="radio" id="square" name="profilepicture" value="square">
-    <label for="square">{{ __("Square") }}</label>
-    <input type="radio" id="rounded" name="profilepicture" value="rounded">
-    <label for="rounded">{{ __("In-between") }}</label>
-    <input type="radio" id="circle" name="profilepicture" value="default">
-    <label for="circle">{{ __("Circle") }}</label>
     <input type="hidden" name="othermagic" value="the-previous-string-was-unfunny">
-    <div class="right">
-        <input class="button button-primary" type="submit" name="action" value="{{ __("Save Changes") }}">
+    <div class="text-right">
+        <input class="btn btn-primary" type="submit" name="action" value="{{ __("Save Changes") }}">
     </div>
 </form>

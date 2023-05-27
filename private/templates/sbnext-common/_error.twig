@@ -3,15 +3,17 @@
 {% block title %}{{ err_message }}{% endblock %}
 
 	{% block content %}
-	<div class="card card-body-fat">
-		<div class="grid">
-			<div class="col-md-8">
-				<h1>{{ err_code }}</h1>
-				<p>{{ err_message }}</p>
-			</div>
-			<div class="col-md-8 right">
-				<img src="{{ website_branding.assets_location }}/logo.png" alt="{{ website_branding.name }}" style="max-width:150px;">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-8">
+						<h1>{{ err_code }}</h1>
+						<p>{{ err_message }}</p>
+					</div>
+					<div class="col-md-8 text-right">
+						<img src="{{ website_branding.assets_location }}/logo.png" alt="{{ website_branding.name }}" style="max-width:150px;">
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-    {% endblock %}
+	{% endblock %}

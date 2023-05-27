@@ -1,0 +1,60 @@
+<div id="masthead-container" {% if browser_info.legacy_masthead_fix == true %}class="position-relative-fix"{% endif %}>
+    <div id="masthead">
+        <div class="row" style="margin-bottom: 17.5px;">
+            <div class="col-md-10">
+                <div id="alert-main">
+                    <a href="/" id="logo-container"><img id="logo" src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}"></a>
+                    {% if isMaintenance != true %}
+                        <div class="masthead-links-container">
+                            <div class="masthead-links">
+                                {% for link in navigationList %}
+                                    <a href="{{ link.url }}">{{ link.name }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <form id="masthead-search" action="/search.php">
+                            <button id="search-btn" class="btn btn-default">
+                                <span>{{ icon("search", 16) }}</span>
+                            </button>
+                            <div id="masthead-search-terms">
+                                <label><input type="text" name="tags" placeholder="{{ __("Search...") }}"></label>
+                            </div>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6" style="text-align: right;">
+                {% if log %}
+                    <a href="/upload.php">
+                        <div class="btn btn-default-invis masthead-button tooltip" title="{{ __("Upload") }}">{{ icon("upload", 20) }}</div>
+                    </a>
+                {% endif %}
+                <div style="margin:0;{% if log %}width:1.75rem{% endif %}"
+                     id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
+                    {% if isMaintenance != true %}
+                        {% if log %}
+                            <div style="margin-top: 4px;">
+                                <img class="rounded img-responsive" src="{{ profile_image(userdata.name) }}" alt="{{ userdata.name }}">
+                                <div class="usermenushit" id="masthead-below">
+                                    <ul style="padding:0">
+                                        <li><a href="user.php?name={{ userdata.name }}">{{ __("My profile") }}</a></li>
+                                        <li><a href="/settings.php">{{ __("Settings") }}</a></li>
+                                        {% if userdata.powerlevel > 2 %}
+                                        <li><a href="/admin">{{ __("Admin panel") }}</a></li>
+                                        {% endif %}
+                                        <li><a href="logout.php">{{ __("Log out") }}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
+                                <a href="../login.php">{{ __("Login") }}</a>
+								<a href="../register.php">{{ __("Register") }}</a>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

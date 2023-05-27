@@ -1,10 +1,10 @@
-<div class="grid" style="margin-bottom: 5px;display:block;">
-    <div class="col-md-4 ">
+<div class="row">
+    <div class="col-md-4">
         <a href="watch.php?v={{ data.video_id }}">
         {% if data.post_type == 0 %}
-            <img class="img-fluid" src="{{ video_thumbnail(data.video_id) }}" alt="{{ data.title }}">
+            <img class="img-responsive" src="{{ video_thumbnail(data.video_id) }}" alt="{{ data.title }}">
         {% elseif data.post_type == 2 %}
-            <img class="img-fluid" src="{{ art_thumbnail(data.video_id) }}" alt="{{ data.title }}">
+            <img class="img-responsive" src="{{ art_thumbnail(data.video_id) }}" alt="{{ data.title }}">
         {% endif %}
         </a>
     </div>

@@ -4,8 +4,8 @@
 
 	{% block content %}
         <h1>{{ title }}</h1>
-        <div class="grid">
-            <div class="card">
+        <div class="row">
+            <div class="panel panel-default">
                 <ul class="nav">
                     <li {% if type=='recent' %}class="active" {% endif %}><a
                                 href="browse.php?type=recent">{{ __("Most recent") }}</a></li>
@@ -22,7 +22,7 @@
             {% for level in levels %}
                 {{ small_video_box(level) }}
             {% else %}
-                <div class="header_message header-danger" role="alert">{{ __("There are no submissions.") }}</div>
+                <div class="alert alert-danger" role="alert">{{ __("There are no submissions.") }}</div>
             {% endfor %}
 
             {% if type == 'all' %}

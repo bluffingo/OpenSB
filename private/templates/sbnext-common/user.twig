@@ -29,9 +29,9 @@
         {% endif %}
     {% endif %}
     <div class="bg-neutral" style="padding: 15px 10px;">
-        <div class="grid">
+        <div class="row">
             <div class="col-md-1">
-                <img class="rounded img-fluid" src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
+                <img class="rounded img-responsive" src="{{ profile_image(userpagedata.name) }}" alt="{{ userpagedata.name }}">
             </div>
             <div class="col-md-13">
                 <h1 style="margin: 0">{{ userpagedata.title }}{% if userpagedata.powerlevel > 1 %}{{ icon("shield", 20) }}{% endif %}
@@ -50,18 +50,18 @@
             </div>
             <div class="col-md-2 right">
                 {% if userpagedata.id != userdata.id %}
-                    <button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}"
+                    <button id="subscribe" class="btn btn-{% if subscribed %}secondary{% else %}primary{% endif %}"
                             type="button"
                             {% if not log %}disabled{% endif %}>{% if subscribed %}{{ __("Unfollow") }}{% else %}{{ __("Follow") }}{% endif %}</button>
                 {% endif %}
             </div>
         </div>
-        <div class="grid">
+        <div class="row">
         <div class="col-md-4">
             {% if markread %}
-                <div class="header_message header-primary">{{ __("Marked all notifications as read.") }}</div>
+                <div class="alert alert-success">{{ __("Marked all notifications as read.") }}</div>
             {% elseif edited %}
-                <div class="header_message header-primary">{{ __("Settings successfully saved!") }}</div>
+                <div class="alert alert-success">{{ __("Settings successfully saved!") }}</div>
             {% endif %}
             <h2></h2>
             <div class="user_about">
@@ -84,19 +84,19 @@
             {% endif %}
             {% set le_url = 'user.php?id=' ~ id ~ '&page=%s' ~ forceuser %}
             {{ pagination(level_count, glob_lpp, le_url, page) }}
-            <div class="card card-body-fat">
+            <div class="panel  panel-body">
             {% if log %}
-                <div class="grid" id="commentField">
+                <div class="row" id="commentField">
                     <div class="col-md-1">
-                        <img class="rounded img-fluid" alt="{{ userdata.name }}" src="{{ profile_image(userdata.name) }}">
+                        <img class="rounded img-responsive" alt="{{ userdata.name }}" src="{{ profile_image(userdata.name) }}">
                     </div>
                     <div class="col-md-15">
                         <div>
 				<textarea class="form-control" id="commentContents" style="overflow:hidden;resize:vertical" rows="3"
                           placeholder="{{ __("Enter comment here.") }}"></textarea>
                         </div>
-                        <div class="right">
-                            <button id="post-user" class="button button-primary"
+                        <div class="text-right">
+                            <button id="post-user" class="btn btn-primary"
                                     style="margin-bottom:0;">{{ __("Comment") }}</button>
                         </div>
                     </div>

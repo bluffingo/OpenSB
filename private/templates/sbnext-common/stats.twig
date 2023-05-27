@@ -6,33 +6,33 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>{% endblock %}
 
 	{% block content %}
-        <div class="card">
-            <div class="card-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
                 <div style="padding:5px;">
                     <h1>{{ __("About %s", [ website_branding.name ]) }}</h1>
                     <p>{{ __("Some statistics may not be accurate.") }}</p>
                 </div>
-                <div class="grid">
+                <div class="row">
                     <div class="col-md-4">
-                        <div class="statbox">
+                        <div class="panel panel-default">
                             <div class="stat-title">{{ __("Registered users") }}</div>
                             {{ stats.usercount }}
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="statbox">
+                        <div class="panel panel-default">
                             <div class="stat-title">{{ __("Submissions") }}</div>
                             {{ stats.videocount }}
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="statbox">
+                        <div class="panel panel-default">
                             <div class="stat-title">{{ __("Views") }}</div>
                             {{ stats.viewcount }}
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="statbox">
+                        <div class="panel panel-default">
                             <div class="stat-title">{{ __("Comments") }}</div>
                             {{ stats.commentcount }}
                         </div>

@@ -13,47 +13,25 @@
     <meta name="application-name" content="{{ website_branding.name }}">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
-    {% if theme == 'dark' %}
-        <link id="darkthm" rel="stylesheet" href="/assets/css/darkmode.css" type="text/css">
-    {% elseif theme == 'nostalgia' %}
-        <link id="nostalgia" rel="stylesheet" href="/assets/css/nostalgia.css" type="text/css">
-    {% elseif website_branding.css_override != false %}
-		<link rel="stylesheet" href="{{ website_branding.css_override }}" type="text/css">
-	{% endif %}
+    <link rel="stylesheet" href="/assets/css/finalium.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/assets/common.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% block script %}{% endblock %}
     <script>
         subscribe_string = '{{ __("Follow") }}';
         unsubscribe_string = '{{ __("Unfollow") }}';
     </script>
-    <style>
-        {% if pfpRoundness == 'square' %}
-        .rounded {
-            border-radius: 0;
-        }
-
-        {% elseif pfpRoundness == 'rounded' %}
-        .rounded {
-            border-radius: 10%;
-        }
-
-        {% endif %}
         {% block customcss %}{% endblock %}
     </style>
 </head>
 <body>
-{% if theme == 'nostalgia' %}
-	{% include "components/nostalgia/_header.twig" %}
-{% else %}
-	{% include "components/_header.twig" %}
-{% endif %}
+{% include "components/_header_bs3.twig" %}
 {% block precontent %}{% endblock %}
 <div class="container page-container">
 	{% if userbandata %}
-		<div class="header_message header-danger">
+		<div class="alert alert-danger">
 			<h1>{{ __("Sorry %s, you are banned from %s.", [userdata.name, website_branding.name]) }}</h1>
 			<p><strong>{{ userbandata.reason | markdown }}</strong><br>{{ __("This ban is not set to expire.") }}</p>
 			{# do we really need ban durations? #}
@@ -74,16 +52,16 @@
 		<p>{{ __("Current browser") }}: {% if browser_info.name is empty %}{{ __("Unknown browser") }}{% else %}{{ browser_info.name }}{% endif %}</p>
 		{% endif %}
 		{% if isMaintenance != true %}
-			<a class="button button-neutral button-small options-button" role="button">{{ __("Options") }}</a>
+			<a class="btn btn-default btn-sm options-button" role="button">{{ __("Options") }}</a>
 			{% if isDebug %}
-			<a class="button button-danger button-small debug-button tooltip" title="Spicy!" role="button">{{ __("Debug") }}</a>
+			<a class="btn btn-danger btn-sm debug-button tooltip" title="Spicy!" role="button">{{ __("Debug") }}</a>
 			{% endif %}
 			<div id="optionsModal" class="bg-neutral" style="padding:0.3em;">
 			</div>
 			{% if isDebug %}
 			<div id="debugModal" class="bg-neutral" style="padding:0.3em;">
 				<h3>Debug info</h3>
-				<div class="header_message header-danger">{{ __("It is risky to screenshot this due to security reasons, so please don't.") }}</div>
+				<div class="alert alert-danger">{{ __("It is risky to screenshot this due to security reasons, so please don't.") }}</div>
 				<p><pre>{{ dump() }}</pre></p>
 			</div>
 			{% endif %}
