@@ -51,7 +51,7 @@ class Profiler
                 $username, htmlspecialchars($displayname), $res["ru_utime.tv_sec"], $res["ru_stime.tv_sec"], $language, $renderTime, $memoryUsage);
         }
 
-        if ($frontendName == "sbnext" & $bettyTemplate == "finalium") {
+        if ($frontendName == "sbnext" && $bettyTemplate == "finalium") {
             print('<div class="footer-sticky">' . $debugData . '</div>');
         } else {
             print('<center>' . $debugData . '</center>');
