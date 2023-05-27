@@ -1,0 +1,18 @@
+//
+// Footer
+// --------------------------------------------------
+
+.footer {
+  background-color: $footer-bg;
+  border-top: 1px solid $footer-border;
+  padding: $footer-padding;
+  .logo {
+    height: 4em;
+    margin-bottom: 1em;
+  }
+}
+
+// placeholder for finalium js
+#debugModal {
+  display: none;
+}

@@ -873,3 +873,11 @@ $dl-horizontal-offset:        $component-offset-horizontal !default;
 $dl-horizontal-breakpoint:    $grid-float-breakpoint !default;
 //** Horizontal line color.
 $hr-border:                   $gray-lighter !default;
+
+//== Footer
+//
+//##
+
+$footer-bg:                   #f6f6f6 !default;
+$footer-border:               #ddd !default;
+$footer-padding:              1em !default;
