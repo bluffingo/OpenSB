@@ -7,4 +7,4 @@
 # Load path is assuming you're running this script from the root of the sB site directory
 common_arguments="--style compressed --no-source-map --load-path ./ --watch"
 
-sass.bat ${common_arguments} private/scss-finalium/:public/assets/css/
+sass.bat ${common_arguments} finalium/assets/stylesheets/:public/assets/css/

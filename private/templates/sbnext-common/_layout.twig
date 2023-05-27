@@ -1,59 +1,39 @@
 <!DOCTYPE html>
 <html lang="{{ __("en-US") }}">
 <head>
-    <meta charset="utf-8">
-    <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
-    {% block head %}{% endblock %}
-    <link rel="manifest" href="{{ website_branding.assets_location }}/icons/site.webmanifest">
-    <link rel="shortcut icon" href="{{ website_branding.assets_location }}/icons/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ website_branding.assets_location }}/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ website_branding.assets_location }}/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ website_branding.assets_location }}/icons/favicon-16x16.png">
-    <meta name="apple-mobile-web-app-title" content="{{ website_branding.name }}">
-    <meta name="application-name" content="{{ website_branding.name }}">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
-    {% if theme == 'dark' %}
-        <link id="darkthm" rel="stylesheet" href="/assets/css/darkmode.css" type="text/css">
-    {% elseif theme == 'nostalgia' %}
-        <link id="nostalgia" rel="stylesheet" href="/assets/css/nostalgia.css" type="text/css">
-    {% elseif website_branding.css_override != false %}
-		<link rel="stylesheet" href="{{ website_branding.css_override }}" type="text/css">
-	{% endif %}
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/assets/common.js"></script>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
+	{% block head %}{% endblock %}
+	<link rel="manifest" href="{{ website_branding.assets_location }}/icons/site.webmanifest">
+	<link rel="shortcut icon" href="{{ website_branding.assets_location }}/icons/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ website_branding.assets_location }}/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ website_branding.assets_location }}/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ website_branding.assets_location }}/icons/favicon-16x16.png">
+	<meta name="apple-mobile-web-app-title" content="{{ website_branding.name }}">
+	<meta name="application-name" content="{{ website_branding.name }}">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+	<link rel="preconnect" href="https://rsms.me/">
+	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+	<link rel="stylesheet" href="/assets/css/finalium.css" type="text/css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+	<script src="/assets/common.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% block script %}{% endblock %}
-    <script>
-        subscribe_string = '{{ __("Follow") }}';
-        unsubscribe_string = '{{ __("Unfollow") }}';
-    </script>
-    <style>
-        {% if pfpRoundness == 'square' %}
-        .rounded {
-            border-radius: 0;
-        }
-
-        {% elseif pfpRoundness == 'rounded' %}
-        .rounded {
-            border-radius: 10%;
-        }
-
-        {% endif %}
-        {% block customcss %}{% endblock %}
-    </style>
+	<script>
+		subscribe_string = '{{ __("Follow") }}';
+		unsubscribe_string = '{{ __("Unfollow") }}';
+	</script>
+	{% block customcss %}{% endblock %}
+	</style>
 </head>
-<body>
-{% if theme == 'nostalgia' %}
-	{% include "components/nostalgia/_header.twig" %}
-{% else %}
-	{% include "components/_header.twig" %}
-{% endif %}
+<body class="with-fixed-top-navbar">
+{% include "components/_header_bs3.twig" %}
 {% block precontent %}{% endblock %}
 <div class="container page-container">
 	{% if userbandata %}
-		<div class="header_message header-danger">
+		<div class="alert alert-danger">
 			<h1>{{ __("Sorry %s, you are banned from %s.", [userdata.name, website_branding.name]) }}</h1>
 			<p><strong>{{ userbandata.reason | markdown }}</strong><br>{{ __("This ban is not set to expire.") }}</p>
 			{# do we really need ban durations? #}
@@ -63,31 +43,33 @@
 </div>
 <footer>
 	<div class="footer">
-		<img src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}">
-		<p><strong>{{ __("© openSB contributors") }}</strong> · 2021-{{ 'now' | date('Y') }}
-			| <strong><a href="/statistics">{{ __("Statistics") }}</a></strong>
-			| <strong><a href="/privacy">{{ __("Privacy Policy") }}</a></strong>
-		</p>
-		<h5>{{ __("Running build %s (Git commit %s)", [version, git_commit()]) }}</h5>
-		{% if isDebug %}
-		<p>{{ __("User agent") }}: {{ user_agent }}</p>
-		<p>{{ __("Current browser") }}: {% if browser_info.name is empty %}{{ __("Unknown browser") }}{% else %}{{ browser_info.name }}{% endif %}</p>
-		{% endif %}
-		{% if isMaintenance != true %}
-			<a class="button button-neutral button-small options-button" role="button">{{ __("Options") }}</a>
+		<div class="container">
+			<img src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}" class="logo">
+			<p><strong>{{ __("© openSB contributors") }}</strong> · 2021-{{ 'now' | date('Y') }}
+				| <strong><a href="/statistics">{{ __("Statistics") }}</a></strong>
+				| <strong><a href="/privacy">{{ __("Privacy Policy") }}</a></strong>
+			</p>
+			<h5>{{ __("Running build %s (Git commit %s)", [version, git_commit()]) }}</h5>
 			{% if isDebug %}
-			<a class="button button-danger button-small debug-button tooltip" title="Spicy!" role="button">{{ __("Debug") }}</a>
+				<p>{{ __("User agent") }}: {{ user_agent }}</p>
+				<p>{{ __("Current browser") }}: {% if browser_info.name is empty %}{{ __("Unknown browser") }}{% else %}{{ browser_info.name }}{% endif %}</p>
 			{% endif %}
-			<div id="optionsModal" class="bg-neutral" style="padding:0.3em;">
-			</div>
-			{% if isDebug %}
-			<div id="debugModal" class="bg-neutral" style="padding:0.3em;">
-				<h3>Debug info</h3>
-				<div class="header_message header-danger">{{ __("It is risky to screenshot this due to security reasons, so please don't.") }}</div>
-				<p><pre>{{ dump() }}</pre></p>
-			</div>
+			{% if isMaintenance != true %}
+				<a class="btn btn-default btn-sm options-button" role="button">{{ __("Options") }}</a>
+				{% if isDebug %}
+					<a class="btn btn-danger btn-sm debug-button" title="Spicy!" role="button">{{ __("Debug") }}</a>
+				{% endif %}
+				<div id="optionsModal" class="bg-neutral" style="padding:0.3em;">
+				</div>
+				{% if isDebug %}
+					<div id="debugModal" class="bg-neutral" style="padding:0.3em;">
+						<h3>Debug info</h3>
+						<div class="alert alert-danger">{{ __("It is risky to screenshot this due to security reasons, so please don't.") }}</div>
+						<p><pre>{{ dump() }}</pre></p>
+					</div>
+				{% endif %}
 			{% endif %}
-		{% endif %}
+		</div>
 	</div>
 </footer>
 </body>

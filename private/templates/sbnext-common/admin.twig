@@ -69,7 +69,7 @@
 
 		<h3>{{ __("All comments") }}</h3>
 		{% for comment in comments %}
-			<div class="grid">
+			<div class="row">
 				<div class="col-md-12" id="{{ comment.comment_id }}">
 					{{ userlink(comment, 'u_') }} &bull; {{ comment.date | relative_time }}
 					<br>

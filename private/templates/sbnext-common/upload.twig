@@ -4,8 +4,8 @@
 
 	{% block content %}
         <form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data">
-            <div class="card">
-                <div class="card-body-fat">
+            <div class="panel panel-default">
+                <div class="panel-body">
                     <h2 style="margin-bottom: 0.5em;">{{ __("Upload a submission") }}</h2>
                     <p>{{ __("Enter the required information and select the file for your submission.") }}</p>
                     <h4 style="margin-bottom: 0.5em;">{{ __("Title") }}</h4>
@@ -30,8 +30,8 @@
                             {{ __("Skip processing (Debug, MP4 only)") }}
                         </label>
                     {% endif %}
-                    <div class="right">
-                        <input class="button button-primary" type="submit" id="upload" name="upload"
+                    <div class="text-right">
+                        <input class="btn btn-primary" type="submit" id="upload" name="upload"
                                value="{{ __("Upload") }}">
                     </div>
                 </div>

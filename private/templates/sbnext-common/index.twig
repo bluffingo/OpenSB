@@ -10,13 +10,13 @@
 
     {% block content %}
 		{% if updated %}
-			<div class="header_message header-primary">{{ __("Options successfully saved!") }}</div>
+			<div class="alert alert-success">{{ __("Options successfully saved!") }}</div>
 			<br>
 		{% endif %}
-		<div class="card">
-			<div class="card-body-fat">
+		<div class="panel panel-default">
+			<div class="panel-body">
 				{% if videos %}
-				<a class="button button-secondary float-right" href="browse.php">{{ __("Browse more") }}</a>
+				<a class="btn btn-default pull-right" href="browse.php">{{ __("Browse more") }}</a>
 				{% endif %}
 				{% if log %}
 				<h3 style="margin-top:0">{{ __("Your follow's submissions") }}</h3>

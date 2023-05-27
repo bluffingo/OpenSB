@@ -1,25 +1,27 @@
-{% extends "_layout_chaziz.twig" %}
+{% extends "_layout.twig" %}
 
 {% block title %}{{ __("Register") }}{% endblock %}
 
 {% block content %}
 
     {% if error %}
-        <div class="header_message header-danger" role="alert">{{ error }}</div>
-		<br>
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        <br>
     {% endif %}
-    <div class="grid chazizPage">
-        <form method="post" name="loginForm" id="loginForm" action="register.php" class="form-signin">
-            <h2 class="form-signin-heading">{{ __("Register") }}</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form method="post" name="loginForm" id="loginForm" action="register.php" class="form-signin">
+                <h2 class="form-signin-heading">{{ __("Register") }}</h2>
 
-            <input type="text" name="email" class="input-block-level" placeholder="{{ __("Email") }}">
-            <input type="text" name="username" class="input-block-level" placeholder="{{ __("Username") }}">
+                <input type="text" name="email" class="form-control" placeholder="{{ __("Email") }}">
+                <input type="text" name="username" class="form-control" placeholder="{{ __("Username") }}">
 
-            <input type="password" name="pass1" class="input-block-level" placeholder="{{ __("Password") }}">
-            <input type="password" name="pass2" class="input-block-level" placeholder="{{ __("Confirm Password") }}">
+                <input type="password" name="pass1" class="form-control" placeholder="{{ __("Password") }}">
+                <input type="password" name="pass2" class="form-control" placeholder="{{ __("Confirm Password") }}">
 
-            <input class="button button-large button-primary" type="submit" value="{{ __("Register") }}"
-                   name="registersubmit">
-        </form>
+                <input class="btn btn-lg btn-primary" type="submit" value="{{ __("Register") }}"
+                       name="registersubmit">
+            </form>
+        </div>
     </div>
 {% endblock %}
