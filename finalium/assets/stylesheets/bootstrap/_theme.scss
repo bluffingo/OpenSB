@@ -88,16 +88,16 @@
 }
 
 // Apply the mixin to the buttons
+@each $color, $value in $colors {
+  .btn-#{$color} {
+    @include btn-styles($value);
+  }
+}
+
 .btn-default {
-  @include btn-styles($btn-default-bg);
   text-shadow: 0 1px 0 #fff;
   border-color: #ccc;
 }
-.btn-primary { @include btn-styles($btn-primary-bg); }
-.btn-success { @include btn-styles($btn-success-bg); }
-.btn-info    { @include btn-styles($btn-info-bg); }
-.btn-warning { @include btn-styles($btn-warning-bg); }
-.btn-danger  { @include btn-styles($btn-danger-bg); }
 
 
 //
@@ -205,11 +205,11 @@
   border-color: darken($color, 15%);
 }
 
-// Apply the mixin to the alerts
-.alert-success    { @include alert-styles($alert-success-bg); }
-.alert-info       { @include alert-styles($alert-info-bg); }
-.alert-warning    { @include alert-styles($alert-warning-bg); }
-.alert-danger     { @include alert-styles($alert-danger-bg); }
+@each $color, $value in $colors {
+  .alert-#{$color} {
+    @include alert-styles(lighten($value, 33%));
+  }
+}
 
 
 //
@@ -226,12 +226,12 @@
   @include gradient-vertical($start-color: $color, $end-color: darken($color, 10%));
 }
 
-// Apply the mixin to the progress bars
-.progress-bar            { @include progress-bar-styles($progress-bar-bg); }
-.progress-bar-success    { @include progress-bar-styles($progress-bar-success-bg); }
-.progress-bar-info       { @include progress-bar-styles($progress-bar-info-bg); }
-.progress-bar-warning    { @include progress-bar-styles($progress-bar-warning-bg); }
-.progress-bar-danger     { @include progress-bar-styles($progress-bar-danger-bg); }
+
+@each $color, $value in $colors {
+  .progress-bar-#{$color} {
+    @include progress-bar-styles($value);
+  }
+}
 
 // Reset the striped class because our mixins don't do multiple gradients and
 // the above custom styles override the new `.progress-bar-striped` in v3.2.0.
