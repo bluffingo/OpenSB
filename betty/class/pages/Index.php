@@ -33,6 +33,7 @@ class Index
     {
         $indexData = [];
         foreach ($this->data as $submission) {
+            $userData = new User($this->database, $submission["author"]);
             $indexData[] =
                 [
                     "id" => $submission["video_id"],
@@ -42,6 +43,7 @@ class Index
                     "type" => $submission["post_type"],
                     "author" => [
                         "id" => $submission["author"],
+                        "info" => $userData->getUserArray(),
                     ],
                 ];
             }

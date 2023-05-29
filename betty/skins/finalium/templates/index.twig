@@ -12,7 +12,7 @@
                 <a href="/watch.php?v={{ submission.id }}">
                     <h2>{{ submission.title }}</h2>
                 </a>
-                <p>By {{ submission.author.id }}</p>
+                <p>By {{ submission.author.info.username }}</p>
                 <p>{{ submission.description }}</p>
             </div>
         {% endfor %}
