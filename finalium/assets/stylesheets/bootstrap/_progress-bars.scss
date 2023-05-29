@@ -70,18 +70,8 @@
 // Variations
 // -------------------------
 
-.progress-bar-success {
-  @include progress-bar-variant($progress-bar-success-bg);
-}
-
-.progress-bar-info {
-  @include progress-bar-variant($progress-bar-info-bg);
-}
-
-.progress-bar-warning {
-  @include progress-bar-variant($progress-bar-warning-bg);
-}
-
-.progress-bar-danger {
-  @include progress-bar-variant($progress-bar-danger-bg);
+@each $color, $value in $colors {
+  .progress-bar-#{$color} {
+    @include progress-bar-variant($value);
+  }
 }

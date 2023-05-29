@@ -65,6 +65,13 @@ a.btn {
 // Alternate buttons
 // --------------------------------------------------
 
+@each $color, $value in $colors {
+  .btn-#{$color} {
+    @include button-variant(#fff, $value, darken($value, 5%));
+  }
+}
+
+/*
 .btn-default {
   @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
 }
@@ -87,6 +94,7 @@ a.btn {
 .btn-danger {
   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
+ */
 
 
 // Link buttons
