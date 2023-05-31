@@ -169,6 +169,6 @@
 	"Password is too short. ": "Password is too short. ",
 	"The passwords don't match. ": "The passwords don't match. ",
 	"Username has already been taken. ": "Username has already been taken. ",
-	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "Username contains invalid characters (Only alphanumeric and underscore allowed). ",
+	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "Username contains invalid characters (Only alphanumeric and underscore allowed). "
 
 }
