@@ -59,12 +59,11 @@
 				{% if isDebug %}
 					<a class="btn btn-danger btn-sm debug-button" title="Spicy!" role="button">{{ __("Debug") }}</a>
 				{% endif %}
-				<div id="optionsModal" class="bg-neutral" style="padding:0.3em;">
+				<div id="optionsModal" style="padding:0.3em;">
 				</div>
 				{% if isDebug %}
-					<div id="debugModal" class="bg-neutral" style="padding:0.3em;">
-						<h3>Debug info</h3>
-						<div class="alert alert-danger">{{ __("It is risky to screenshot this due to security reasons, so please don't.") }}</div>
+					<div id="debugModal" style="padding:0.3em;">
+						<h3>{{ __("Debugging info") }}</h3>
 						<p><pre>{{ dump() }}</pre></p>
 					</div>
 				{% endif %}

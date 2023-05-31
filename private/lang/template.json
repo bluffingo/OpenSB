@@ -1,26 +1,9 @@
 {
 	"\\RelativeTime\\Languages\\English": "\\RelativeTime\\Languages\\English",
 
-	"Home": "Home",
 	"Browse": "Browse",
 
 	"Access Denied": "Access Denied",
-
-	"en-US": "en-US",
-	"Follow": "Follow",
-	"Unfollow": "Unfollow",
-	"Sorry %s, you are banned from %s.": "Sorry %s, you are banned from %s.",
-	"This ban is not set to expire.": "This ban is not set to expire.",
-	"Â© openSB contributors": "Â© openSB contributors",
-	"Statistics": "Statistics",
-	"Privacy Policy": "Privacy Policy",
-	"Running build %s (Git commit %s)": "Running build %s (Git commit %s)",
-	"User agent": "User agent",
-	"Current browser": "Current browser",
-	"Unknown browser": "Unknown browser",
-	"Options": "Options",
-	"Debug": "Debug",
-	"It is risky to screenshot this due to security reasons, so please don't.": "It is risky to screenshot this due to security reasons, so please don't.",
 
 	"Admin panel": "Admin panel",
 	"Currently running openSB build %s (commit %s) on %s.": "Currently running openSB build %s (commit %s) on %s.",
@@ -49,9 +32,9 @@
 
 	"Options successfully saved!": "Options successfully saved!",
 	"Browse more": "Browse more",
-	"Your follow's submissions": "Your follow's submissions",
+	"Submissions from users you follow": "Submissions from users you follow",
 	"Randomly selected submissions": "Randomly selected submissions",
-	"Either you're not following anyone, or none of your follows have submissions.": "Either you're not following anyone, or none of your follows have submissions.",
+	"Either you're not following anyone, or none of the people you follow have made any submissions.": "Either you're not following anyone, or none of the people you follow have made any submissions.",
 	"This instance currently lacks submissions.": "This instance currently lacks submissions.",
 
 	"Login": "Login",
@@ -62,26 +45,12 @@
 	"Don't have an account?": "Don't have an account?",
 	"Register": "Register",
 
-	"User interface": "User interface",
-	"Theme": "Theme",
-	"Light": "Light",
-	"Dark": "Dark",
-	"Nostalgia": "Nostalgia",
+	"Options": "Options",
 	"Language": "Language",
-	"Enable sounds": "Enable sounds",
-	"Profile picture roundness": "Profile picture roundness",
-	"Square": "Square",
-	"In-between": "In-between",
-	"Circle": "Circle",
 	"Save Changes": "Save Changes",
 
 	"Email": "Email",
 	"Confirm Password": "Confirm Password",
-
-	"Reset Password": "Reset Password",
-	"Hello %s. Please choose a new secure password, and be sure to remember it!": "Hello %s. Please choose a new secure password, and be sure to remember it!",
-	"New Password": "New Password",
-	"Repeat New Password": "Repeat New Password",
 
 	"There are no submissions that match your query.": "There are no submissions that match your query.",
 
@@ -102,8 +71,9 @@
 	"Profile options are not available to users who are currently banned.": "Profile options are not available to users who are currently banned.",
 	"Miscellaneous": "Miscellaneous",
 
+	"Statistics": "Statistics",
 	"About %s": "About %s",
-	"Some statistics may not be accurate.": "Some statistics may not be accurate.",
+	"Please note that some statistics may not be accurate due to deleted submissions or leftover data in the database.": "Please note that some statistics may not be accurate due to deleted submissions or leftover data in the database.",
 	"Registered users": "Registered users",
 	"Submissions": "Submissions",
 	"Views": "Views",
@@ -112,107 +82,93 @@
 
 	"Upload": "Upload",
 	"Upload a submission": "Upload a submission",
-	"Enter the required information and select the file for your submission.": "Enter the required information and select the file for your submission.",
+	"Enter the necessary information and select a file for your submission.": "Enter the necessary information and select a file for your submission.",
 	"Tags (optional)": "Tags (optional)",
 	"Select file": "Select file",
-	"Most popular video and image formats should be supported.": "Most popular video and image formats should be supported.",
+	"Most common video and image formats are supported.": "Most common video and image formats are supported.",
 	"Skip processing (Debug, MP4 only)": "Skip processing (Debug, MP4 only)",
+
+	"Settings successfully saved!": "Settings successfully saved!",
+	"s": "s",
+	"%s follower%s": "%s follower%s",
+	"no": "no",
+	"Unfollow": "Unfollow",
+	"Follow": "Follow",
+	"Edit my settings": "Edit my settings",
+	"View user page as viewer": "View user page as viewer",
+	"There are currently no posts by %s.": "There are currently no posts by %s.",
+	"Registered on": "Registered on",
+	"Last logged in": "Last logged in",
+	"Enter comment here.": "Enter comment here.",
+	"Comment": "Comment",
 
 	"User data export": "User data export",
 
-	"s": "s",
+	"%s views": "%s views",
+	"Edit submission": "Edit submission",
+	"Like": "Like",
+	"Dislike": "Dislike",
+	"Favorite": "Favorite",
+	"Submitted %s on %s": "Submitted %s on %s",
+	"This submission has no description.": "This submission has no description.",
+	"More": "More",
+
+	"en-US": "en-US",
+	"Sorry %s, you are banned from %s.": "Sorry %s, you are banned from %s.",
+	"This ban is not set to expire.": "This ban is not set to expire.",
+	"Â© openSB contributors": "Â© openSB contributors",
+	"Privacy Policy": "Privacy Policy",
+	"Running build %s (Git commit %s)": "Running build %s (Git commit %s)",
+	"User agent": "User agent",
+	"Current browser": "Current browser",
+	"Unknown browser": "Unknown browser",
+	"Debug": "Debug",
+	"Debugging info": "Debugging info",
+
+	"Search...": "Search...",
+	"My profile": "My profile",
+	"Log out": "Log out",
+
+	"Toggle navigation": "Toggle navigation",
+	"Profile": "Profile",
+
 	"view%s": "view%s",
 
 	"Show replies": "Show replies",
 	"Reply": "Reply",
 
 	"Write your comment here.": "Write your comment here.",
-	"Comment": "Comment",
-
-	"This video should be processing.": "This video should be processing.",
-	"To view this video please enable JavaScript.": "To view this video please enable JavaScript.",
 
 	"by": "by",
 	"views": "views",
 
-	"More": "More",
-
 	"Modify submission": "Modify submission",
 
-	"My profile": "My profile",
-	"Log out": "Log out",
+	"This video should be processing.": "This video should be processing.",
+	"To view this video please enable JavaScript.": "To view this video please enable JavaScript.",
 
-	"Edit my settings": "Edit my settings",
-	"View user page as viewer": "View user page as viewer",
-	"%s follower%s": "%s follower%s",
-	"no": "no",
-	"%s view%s": "%s view%s",
-	"Marked all notifications as read.": "Marked all notifications as read.",
-	"Settings successfully saved!": "Settings successfully saved!",
-	"Registered on": "Registered on",
-	"Last logged in": "Last logged in",
-	"There are currently no posts by %s.": "There are currently no posts by %s.",
-	"Enter comment here.": "Enter comment here.",
-
-	"Edit submission": "Edit submission",
-	"Like": "Like",
-	"Dislike": "Dislike",
-	"Favorite": "Favorite",
-	"About": "About",
-	"Published on %s": "Published on %s",
-	"Total favorites": "Total favorites",
-	"Like/Dislike ratio": "Like/Dislike ratio",
-	"Last seen": "Last seen",
-	"Flag submission": "Flag submission",
-	"This isn't currently implemented.": "This isn't currently implemented.",
-
-	"Search...": "Search...",
-
-	"Edit profile": "Edit profile",
-	"About this user": "About this user",
-	"There are currently no submissions by %s.": "There are currently no submissions by %s.",
-
-	"%s followers": "%s followers",
-	"Category": "Category",
-	"Rating ratio": "Rating ratio",
-	"Last viewed": "Last viewed",
-	"Favorites": "Favorites",
-
-	"Profile": "Profile",
-
-	"Build": "Build",
-	"Running on Git commit: ": "Running on Git commit: ",
-
-	"Sign in to your account": "Sign in to your account",
-	"Sign in": "Sign in",
-
-	"%s views": "%s views",
-	"Uploaded on %s": "Uploaded on %s",
-
-	"Banned user, can't continue.": "Banned user, can't continue.",
+	"You are currently banned and cannot proceed with this action.": "You are currently banned and cannot proceed with this action.",
 	"Missing important POST variable.": "Missing important POST variable.",
 
-	"This is not your submission.": "This is not your submission.",
+	"You cannot modify someone else's submission.": "You cannot modify someone else's submission.",
 	"This submission cannot be found.": "This submission cannot be found.",
+
+	"No POST data.": "No POST data.",
+
+	" The new passwords aren't identical.": " The new passwords aren't identical.",
+	"Your current password is incorrect.": "Your current password is incorrect.",
+	"Your display name is too long.": "Your display name is too long.",
+
+	"Please wait three minutes before uploading again.": "Please wait three minutes before uploading again.",
 
 	"Please enter your username! ": "Please enter your username! ",
 	"Please enter your password! ": "Please enter your password! ",
 	"Incorrect username or password.": "Incorrect username or password.",
-
-	"No POST data.": "No POST data.",
 
 	"Blank username.": "Blank username.",
 	"Password is too short. ": "Password is too short. ",
 	"The passwords don't match. ": "The passwords don't match. ",
 	"Username has already been taken. ": "Username has already been taken. ",
 	"Username contains invalid characters (Only alphanumeric and underscore allowed). ": "Username contains invalid characters (Only alphanumeric and underscore allowed). ",
-
-	"No reset data.": "No reset data.",
-
-	" The new passwords aren't identical.": " The new passwords aren't identical.",
-	"Your current password is incorrect.": "Your current password is incorrect.",
-	"Your display name is too long.": "Your display name is too long.",
-
-	"Please wait a minute before uploading again.": "Please wait a minute before uploading again.",
 
 }

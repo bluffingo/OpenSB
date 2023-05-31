@@ -6,7 +6,7 @@ $rawOutputRequired = true;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
 if ($userbandata) {
-    error(403, __("Banned user, can't continue."));
+    error(403, __("You are currently banned and cannot proceed with this action."));
 }
 
 if (isset($_POST['video_id'])) {

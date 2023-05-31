@@ -5,14 +5,14 @@ namespace openSB;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
 if ($userbandata) {
-    error(403, __("Banned user, can't continue."));
+    error(403, __("You are currently banned and cannot proceed with this action."));
 }
 
 if (isset($_POST['upload'])) {
     $id = $_POST['vid_id'];
     $videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
     if ($videoData['author'] != $userdata['id']) {
-        error('403', __("This is not your submission."));
+        error('403', __("You cannot modify someone else's submission."));
     } else {
         $title = $_POST['title'] ?? null;
         $desc = $_POST['desc'] ?? null;
@@ -30,7 +30,7 @@ $videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v
 if (!$videoData) error('404', __("This submission cannot be found."));
 
 if ($videoData['author'] != $userdata['id']) {
-    error('403', __("This is not your submission."));
+    error('403', __("You cannot modify someone else's submission."));
 }
 
 $twig = twigloader();

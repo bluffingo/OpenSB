@@ -11,7 +11,7 @@ $supportedImageFormats = ["png", "jpg", "jpeg"];
 //die(dirname(__DIR__) . '/private/scripts/processingworker.php');
 
 if ($userbandata) {
-    error(403, __("Banned user, can't continue."));
+    error(403, __("You are currently banned and cannot proceed with this action."));
 }
 
 use \Intervention\Image\ImageManager;
@@ -31,8 +31,8 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
     }
 
     // Rate limit uploading to a minute, both to prevent spam and to prevent double uploads.
-    if ($sql->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 60 , $userdata['id']]) && !$isDebug) {
-        die(__("Please wait a minute before uploading again."));
+    if ($sql->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 180 , $userdata['id']]) && !$isDebug) {
+        die(__("Please wait three minutes before uploading again."));
     }
 
     $name = $_FILES['fileToUpload']['name'];

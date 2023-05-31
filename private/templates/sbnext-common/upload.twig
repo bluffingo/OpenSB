@@ -7,22 +7,20 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h2 style="margin-bottom: 0.5em;">{{ __("Upload a submission") }}</h2>
-                    <p>{{ __("Enter the required information and select the file for your submission.") }}</p>
+                    <p>{{ __("Enter the necessary information and select a file for your submission.") }}</p>
                     <h4 style="margin-bottom: 0.5em;">{{ __("Title") }}</h4>
-                    <input type="text" class="form-control form-long uploader-form" id="title" name="title">
+                    <input type="text" class="form-control form-long uploader-form" id="title" name="title" required>
                     <br>
                     <h4 style="margin-bottom: 0.5em;">{{ __("Description") }}</h4>
                     <textarea class="form-control form-long uploader-form" name="desc" maxlength="2000"
                               form="uploadForm"
-                              style="overflow:hidden;resize:vertical" rows="3"></textarea>
+                              style="overflow:hidden;resize:vertical" rows="3" required></textarea>
                     <br>
                     <h4 style="margin-bottom: 0.5em;">{{ __("Tags (optional)") }}</h4>
                     <input type="text" class="form-control form-long uploader-form" name="tags">
                     <h2 style="margin-bottom: 0.5em;">{{ __("Select file") }}</h2>
-                    <p>{{ __("Most popular video and image formats should be supported.") }}</p>
-                    <input class="form-control" type="file" name="fileToUpload" id="fileToUpload"
-                           onchange="$('#title').val($('#fileToUpload').val().split('\\').pop().split('/').pop())"
-                           required>
+                    <p>{{ __("Most common video and image formats are supported.") }}</p>
+                    <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
                     <br>
                     {% if isDebug %}
                         <label class="checkbox">
