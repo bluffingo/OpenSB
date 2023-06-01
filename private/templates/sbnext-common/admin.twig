@@ -5,52 +5,50 @@
 	{% block content %}
 		<h1>{{ __("Admin panel") }}</h1>
 		<p>{{ __("Currently running openSB build %s (commit %s) on %s.", [version, git_commit(), operating_system()]) }}</p>
-		<table style="width: 100%;">
-			<caption>{{ __("What's going on?") }}</caption>
-			<tr>
-				<td class="nb" style="width:33%; vertical-align:top;">
-					<table class="c1">
-						<caption>{{ __("Last registered") }}</caption>
-						<tr class="h">
-							<th class="b" colspan="2">{{ __("Last registered") }}</td>
-						</tr>
-						{% for user in latest_registered_users %}
-							<tr>
-								<td class="b"><a href="user.php?name={{ user.name }}">{{ user.name }}</a></td>
-								<td class="b">{{ user.joined | date() }}</td>
-							</tr>
-						{% endfor %}
-					</table>
-				</td>
-				<td class="nb" style="width:33%; vertical-align:top;">
-					<table class="c1">
-						<caption>{{ __("Last signed in") }}</caption>
-						<tr class="h">
-							<th class="b" colspan="2">{{ __("Last signed in") }}</td>
-						</tr>
-						{% for user in latest_seen_users %}
-							<tr>
-								<td class="b"><a href="user.php?name={{ user.name }}">{{ user.name }}</a></td>
-								<td class="b">{{ user.lastview | relative_time }}</td>
-							</tr>
-						{% endfor %}
-					</table>
-				</td>
-				<td class="nb" style="width:33%; vertical-align:top;">
-					<table class="c1">
-						<caption>{{ __("Latest submissions") }}</caption>
-						<tr class="h">
-							<th class="b" colspan="2">{{ __("Latest submissions") }}</td>
-						</tr>
-						{% for video in videos %}
-							<tr>
-								<td class="b"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</td>
-								<td class="b">{{ video.time | relative_time }}</td>
-							</tr>
-						{% endfor %}
-					</table>
-				</td>
+
+		<table class="table table-bordered table-striped">
+			<caption>{{ __("Last registered") }}</caption>
+			<tr class="h">
+				<th class="b">{{ __("Username") }}</th>
+				<th class="b">{{ __("Date") }}</th>
+				<th class="b">{{ __("Relative time") }}</th>
 			</tr>
+			{% for user in latest_registered_users %}
+				<tr>
+					<td class="b"><a href="user.php?name={{ user.name }}">{{ user.name }}</a></td>
+					<td class="b">{{ user.joined | date() }}</td>
+					<td class="b">{{ user.joined | relative_time }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+
+		<table class="table table-bordered table-striped">
+			<caption>{{ __("Last signed in") }}</caption>
+			<tr class="h">
+				<th class="b">{{ __("Username") }}</th>
+				<th class="b">{{ __("Date") }}</th>
+				<th class="b">{{ __("Relative time") }}</th>
+			</tr>
+			{% for user in latest_seen_users %}
+				<tr>
+					<td class="b"><a href="user.php?name={{ user.name }}">{{ user.name }}</a></td>
+					<td class="b">{{ user.lastview | date() }}</td>
+					<td class="b">{{ user.lastview | relative_time }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+
+		<table class="table table-bordered table-striped">
+			<caption>{{ __("Latest submissions") }}</caption>
+			<tr class="h">
+				<th class="b" colspan="2">{{ __("Latest submissions") }}</th>
+			</tr>
+			{% for video in videos %}
+				<tr>
+					<td class="b"><a href="watch.php?v={{ video.video_id }}" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">{{ video.title }}</td>
+					<td class="b">{{ video.time | relative_time }}</td>
+				</tr>
+			{% endfor %}
 		</table>
 
 		<table style="width: 100%;">
