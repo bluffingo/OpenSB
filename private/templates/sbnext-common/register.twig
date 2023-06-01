@@ -11,13 +11,26 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <form method="post" name="loginForm" id="loginForm" action="register.php" class="form-signin">
-                <h2 class="form-signin-heading">{{ __("Register") }}</h2>
+                <div class="form-group">
+                    <label for="email">{{ __("Email address") }}</label>
+                    <input type="email" name="email" class="form-control" placeholder="{{ __("Email") }}">
+                </div>
 
-                <input type="text" name="email" class="form-control" placeholder="{{ __("Email") }}">
-                <input type="text" name="username" class="form-control" placeholder="{{ __("Username") }}">
+                <div class="form-group">
+                    <label for="email">{{ __("Username") }}</label>
+                    <input type="text" name="username" class="form-control" placeholder="{{ __("Username") }}">
+                </div>
 
-                <input type="password" name="pass1" class="form-control" placeholder="{{ __("Password") }}">
-                <input type="password" name="pass2" class="form-control" placeholder="{{ __("Confirm Password") }}">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" name="email" class="form-control" placeholder="{{ __("Email") }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="pass1">{{ __("Credentials") }}</label>
+                    <input type="password" name="pass1" class="form-control" placeholder="{{ __("Password") }}">
+                    <input type="password" name="pass2" class="form-control" placeholder="{{ __("Confirm Password") }}">
+                </div>
 
                 <input class="btn btn-lg btn-primary" type="submit" value="{{ __("Register") }}"
                        name="registersubmit">
