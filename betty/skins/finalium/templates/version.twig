@@ -4,8 +4,8 @@
 
 {% block content %}
     <div>
-        <h1>Version</h1>
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
+            <caption>Version</caption>
         {% for thing in version_stats %}
             <tr>
                 <td class="a">{{ thing.title }}</td>
@@ -13,8 +13,8 @@
             </tr>
         {% endfor %}
         </table>
-        <h1>Skins</h1>
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
+            <caption>Skins</caption>
             {% for skin in skins %}
                 <tr>
                     <td class="a">{{ skin.metadata.name }}<br><small>by {{ skin.metadata.author }}</small></td>
