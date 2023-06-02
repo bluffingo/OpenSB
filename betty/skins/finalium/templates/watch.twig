@@ -3,6 +3,10 @@
 {% set title = submission.title %}
 
 {% block content %}
+    <script>
+        submission_id = '{{ submission.id }}';
+        user_id = '{{ submission.author.id }}';
+    </script>
     <div class="row">
         <div class="col-md-10">
             {{ submission_view(submission) }}
@@ -18,17 +22,17 @@
                             </button>
                         </div>
                         <div class="col-md-8 col-xs-8 text-right">
-                            <button class="btn btn-default">
+                            <button class="btn btn-default" id="submission-like">
                                 Like
-                                <span class="label label-default">0</span>
+                                <span class="label label-default" id="submission-likes">0</span>
                             </button>
-                            <button class="btn btn-default">
+                            <button class="btn btn-default" id="submission-dislike">
                                 Dislike
-                                <span class="label label-default">0</span>
+                                <span class="label label-default" id="submission-dislikes">0</span>
                             </button>
-                            <button class="btn btn-default">
+                            <button class="btn btn-default" id="submission-favorite">
                                 Favorite
-                                <span class="label label-default">0</span>
+                                <span class="label label-default" id="submission-favorites">0</span>
                             </button>
                         </div>
                     </div>
