@@ -32,6 +32,9 @@
 {% include "components/_header_bs3.twig" %}
 {% block precontent %}{% endblock %}
 <div class="container page-container">
+	<div class="alert alert-info">
+		This page has not been migrated to use Betty. Stuff may not fully function.
+	</div>
 	{% if userbandata %}
 		<div class="alert alert-danger">
 			<h1>{{ __("Sorry %s, you are banned from %s.", [userdata.name, website_branding.name]) }}</h1>

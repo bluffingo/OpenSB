@@ -1,0 +1,26 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Version" %}
+
+{% block content %}
+    <div>
+        <table class="table table-striped table-bordered">
+            <caption>Version</caption>
+        {% for thing in version_stats %}
+            <tr>
+                <td class="a">{{ thing.title }}</td>
+                <td class="b">{{ thing.info }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        <table class="table table-striped table-bordered">
+            <caption>Skins</caption>
+            {% for skin in skins %}
+                <tr>
+                    <td class="a">{{ skin.metadata.name }}<br><small>by {{ skin.metadata.author }}</small></td>
+                    <td class="b">{{ skin.metadata.description }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,6 +1,5 @@
 <?php
 
-namespace openSB;
 //SQL DB
 $host = '127.0.0.1';
 $db = 'squarebracket';
@@ -21,8 +20,9 @@ $isMaintenance = false;
 
 $paginationLimit = 20; //Pagination limit.
 
-// TEMPLATE OPTIONS (redone 9/17/2021 by gr):
-$useTemplate = "sbnext"; // check the templates folder for available options, we recommend "sbnext" as others are experimental shit that always ends up getting cut.
+// TEMPLATE OPTIONS
+$useTemplate = "sbnext"; // Template used by pages yet to be migrated onto Betty.
+$bettyTemplate = "finalium"; // Template used by pages based on Betty.
 
 // Branding
 $branding = [

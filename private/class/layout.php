@@ -1,12 +1,6 @@
 <?php
 
 namespace openSB;
-/**
- * Twig loader, initializes Twig with standard configurations and extensions.
- *
- * @param string $subfolder Subdirectory to use in the templates/ directory.
- * @return Environment Twig object.
- */
 
 use RelativeTime\RelativeTime;
 use Twig\Environment;
@@ -18,6 +12,14 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Extension\DebugExtension;
 use Twig\TwigFunction;
 
+/**
+ * Twig loader, initializes Twig with standard configurations and extensions.
+ *
+ * @deprecated Beta 4.0: Betty contains a rewritten version.
+ *
+ * @param string $subfolder Subdirectory to use in the templates/ directory.
+ * @return Environment Twig object.
+ */
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
     global $sql, $userfields, $paginationLimit, $tplCache, $tplNoCache, $log, $userdata, $theme, $pfpRoundness,
@@ -91,8 +93,6 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $twig->addGlobal('isDebug', $isDebug);
     $twig->addGlobal('userbandata', $userbandata);
 	$twig->addGlobal('navigationList', navigationList());
-	$twig->addGlobal('user_agent', $_SERVER['HTTP_USER_AGENT']);
-	$twig->addGlobal('browser_info', $browser);
 	$twig->addGlobal('website_branding', $branding);
     $twig->addGlobal('bunnyEnabled', $isQoboTV);
 
@@ -109,6 +109,7 @@ function jsonDecode($str)
 
 function error($errorCode, $message)
 {
+    http_response_code($errorCode);
     $twig = twigloader();
     echo $twig->render('_error.twig', ['err_message' => $message, 'err_code' => $errorCode]);
     die();

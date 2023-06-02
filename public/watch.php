@@ -2,21 +2,25 @@
 
 namespace openSB;
 
-// fixme: change video-related variables to more generic variables
+global $bettyTemplate;
 
-use Exception;
+use \Betty\BettyException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
+require_once dirname(__DIR__) . '/betty/class/pages/Submission.php';
+
 $id = ($_GET['v'] ?? null);
-$ip = ($_SERVER['HTTP_CLIENT_IP'] ?? ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']));
+$ip = getUserIpAddr();
 
-$videoData = Videos::getVideoData($userfields, $id);
-
-if(!$videoData) {
-    error('404', __("This submission cannot be found."));
+try {
+    $submission = new \Betty\Pages\Submission($betty, $id);
+    $data = $submission->getSubmission();
+} catch (BettyException $e) {
+    $e->page();
 }
 
+/*
 $query = '';
 $count = 0;
 $commentData = $sql->query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$id]);
@@ -70,24 +74,10 @@ $previousRecentView = $sql->result("SELECT most_recent_view from videos WHERE vi
 $currentTime = time();
 
 $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
+*/
 
-$twig = twigloader();
+$twig = new \Betty\Templating($betty, $bettyTemplate);
+
 echo $twig->render('watch.twig', [
-    'video' => $videoData,
-    'related_videos' => $relatedVideosData,
-    'comments' => $commentData,
-    'total_likes' => $totalLikes,
-    'total_dislikes' => $totalDislikes,
-    'total_rating' => $combinedRatings,
-    'total_favorites' => $totalFavorites,
-    'rating' => $rating,
-    'subscribed' => $subscribed,
-    'subCount' => $subCount,
-    'comCount' => $commentCount,
-    'viewCount' => $viewCount,
-    'videoRatio' => $allRatings,
-    'recentView' => $previousRecentView,
-    'allVideos' => $allVideos,
-    'postType' => $postType,
-    'isFavorited' => $isFavorited,
+    'submission' => $data,
 ]);

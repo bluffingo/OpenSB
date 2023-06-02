@@ -1,0 +1,20 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Home page" %}
+
+{% block content %}
+    <div>
+        {% if updated %}
+            <div class="header_message header-primary">Options changed!</div>
+        {% endif %}
+        {% for submission in submissions %}
+            <div>
+                <a href="/watch.php?v={{ submission.id }}">
+                    <h2>{{ submission.title }}</h2>
+                </a>
+                <p>By {{ submission.author.info.username }}</p>
+                <p>{{ submission.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

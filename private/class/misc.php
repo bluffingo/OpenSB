@@ -9,12 +9,6 @@ function isCli()
     return php_sapi_name() == "cli";
 }
 
-function accessDenied()
-{
-    http_response_code(403);
-    die(__("Access Denied"));
-}
-
 function redirect($url)
 {
     header(sprintf('Location: %s', $url));
@@ -30,7 +24,7 @@ function redirect($url)
 function gitCommit($trim = true)
 {
     global $gitBranch;
-    $commit = file_get_contents(__DIR__ . '/../../.git/refs/heads/' . $gitBranch); // kind of bad but hey it works
+    $commit = file_get_contents(__DIR__ . '/../../.git/' . $gitBranch); // kind of bad but hey it (barely) works
 
     if ($trim)
         return substr($commit, 0, 7);

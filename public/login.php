@@ -2,13 +2,15 @@
 
 namespace openSB;
 
+use Br33f\Ga4\MeasurementProtocol\Dto\Event\LoginEvent;
+
 require_once dirname(__DIR__) . '/private/class/common.php';
 
 $error = '';
 
 if (isset($_POST["loginsubmit"])) {
-    $username = (isset($_POST['username']) ? $_POST['username'] : null);
-    $password = (isset($_POST['password']) ? $_POST['password'] : null);
+    $username = ($_POST['username'] ?? null);
+    $password = ($_POST['password'] ?? null);
 
     // Check to see if the user actually has entered anything.
     if (!$username) $error = __("Please enter your username! ");
@@ -21,6 +23,13 @@ if (isset($_POST["loginsubmit"])) {
             $nid = $sql->result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
             $sql->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), getUserIpAddr(), $nid]);
 
+            if ($googleAPI) {
+                $loginEventData = new LoginEvent();
+                $loginEventData->setMethod('BettySB');
+                $baseRequest->addEvent($loginEventData);
+                $ga->send($baseRequest);
+            }
+
             redirect('./');
         } else {
             $error = __("Incorrect username or password.");
@@ -32,7 +41,7 @@ $twig = twigloader();
 
 echo $twig->render('login.twig', [
     'error' => $error,
-    'resetted' => isset($_GET['resetted']) ? true : false,
-    'new_pass' => isset($_GET['new_pass']) ? true : false,
-    'new_token' => isset($_GET['new_token']) ? true : false,
+    'resetted' => isset($_GET['resetted']),
+    'new_pass' => isset($_GET['new_pass']),
+    'new_token' => isset($_GET['new_token']),
 ]);
