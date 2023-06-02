@@ -19,7 +19,7 @@ class Templating
 
     public function __construct(\Betty\Betty $betty, $requested_skin)
     {
-        global $googleTag;
+        global $googleTag, $isQoboTV;
         chdir(__DIR__ . '/..');
         $this->skin = $requested_skin;
         $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
@@ -29,6 +29,7 @@ class Templating
         $this->twig->addExtension(new BettyTwigExtension());
 
         $this->twig->addGlobal('google_tag', $googleTag);
+        $this->twig->addGlobal('is_qobo', $isQoboTV);
     }
 
     /**

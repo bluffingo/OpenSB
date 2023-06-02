@@ -143,11 +143,13 @@ function navigationList() {
 $userdata['timezone'] = 'America/New York';
 
 if ($googleAPI) {
+    $session = $_COOKIE['_ga'] ?? $_COOKIE['_gid'] ?? $_COOKIE['SBTOKEN']; // THIS IS STUPID SHIT AND WILL BREAK
+
 // FIXME: MOVE THIS TO BETTY
     $ga = new Service($googleAPI);
     $ga->setMeasurementId($googleTag);
 
 // Create base request
     $baseRequest = new BaseRequest();
-    $baseRequest->setClientId($_COOKIE['_ga']);
+    $baseRequest->setClientId($session ?? null);
 }

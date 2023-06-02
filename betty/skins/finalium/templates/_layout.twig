@@ -27,6 +27,11 @@
     <h1>bettySB</h1>
 </header>
 <div class="container">
+    {% if is_qobo %}
+        <div class="alert alert-info">
+            bettySB is currently configured to be in Qobo mode.
+        </div>
+    {% endif %}
     {% block content %}{% endblock %}
 </div>
 <footer class="footer">
