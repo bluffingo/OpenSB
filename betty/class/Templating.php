@@ -2,9 +2,11 @@
 
 namespace Betty;
 
+use RelativeTime\RelativeTime;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\Loader\FilesystemLoader;
+use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 /**
@@ -92,6 +94,32 @@ class BettyTwigExtension extends AbstractExtension
         return [
             new TwigFunction('submission_view', [$this, 'SubmissionView']),
         ];
+    }
+
+    public function getFilters()
+    {
+        return [
+            new TwigFilter('relative_time',  [$this, 'relativeTime']),
+        ];
+    }
+
+    /**
+     * Relative time function.
+     *
+     * @since openSB Pre-Alpha 1?
+     */
+    function relativeTime($time): string
+    {
+        $config = [
+            'language' => '\RelativeTime\Languages\English',
+            'separator' => ', ',
+            'suffix' => true,
+            'truncate' => 1,
+        ];
+
+        $relativeTime = new RelativeTime($config);
+
+        return $relativeTime->timeAgo($time);
     }
 
     public function SubmissionView($submission_data)

@@ -11,5 +11,5 @@
         <p>Artwork placeholder</p>
     {% endif %}
     <p>{{ submission.description }}</p>
-    <p>By {{ submission.author.info.username }}, {{ submission.published }}</p>
+    <p>By {{ submission.author.info.username }}, {{ submission.published | relative_time }}</p>
 {% endblock %}
