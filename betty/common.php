@@ -51,3 +51,4 @@ class Betty {
 
 $betty = new \Betty\Betty($host, $user, $pass, $db);
 $opensb_version = new \Betty\OpenSbVersion($buildNumber, $gitBranch);
+$auth = new \Betty\Authentication($betty->getBettyDatabase(), $_COOKIE['SBTOKEN']);

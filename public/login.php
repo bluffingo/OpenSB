@@ -9,8 +9,8 @@ require_once dirname(__DIR__) . '/private/class/common.php';
 $error = '';
 
 if (isset($_POST["loginsubmit"])) {
-    $username = (isset($_POST['username']) ? $_POST['username'] : null);
-    $password = (isset($_POST['password']) ? $_POST['password'] : null);
+    $username = ($_POST['username'] ?? null);
+    $password = ($_POST['password'] ?? null);
 
     // Check to see if the user actually has entered anything.
     if (!$username) $error = __("Please enter your username! ");
@@ -25,7 +25,7 @@ if (isset($_POST["loginsubmit"])) {
 
             if ($googleAPI) {
                 $loginEventData = new LoginEvent();
-                $loginEventData->setMethod('OpenSB');
+                $loginEventData->setMethod('BettySB');
                 $baseRequest->addEvent($loginEventData);
                 $ga->send($baseRequest);
             }
