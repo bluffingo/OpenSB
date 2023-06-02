@@ -1,0 +1,11 @@
+{
+  "name": "finalium",
+  "version": "2.0.0-alpha1",
+  "description": "A fork of Bootstrap 3.4.1",
+  "main": "index.js",
+  "author": "The BettySB Contributors",
+  "license": "MIT",
+  "scripts": {
+    "test": "test"
+  }
+}

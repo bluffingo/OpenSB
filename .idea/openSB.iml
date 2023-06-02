@@ -51,7 +51,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="video" level="application" />
-    <orderEntry type="library" name="video-js" level="application" />
   </component>
 </module>
