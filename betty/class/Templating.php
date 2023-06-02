@@ -19,7 +19,7 @@ class Templating
 
     public function __construct(\Betty\Betty $betty, $requested_skin)
     {
-        global $googleTag, $isQoboTV;
+        global $googleTag, $isQoboTV, $auth;
         chdir(__DIR__ . '/..');
         $this->skin = $requested_skin;
         $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
@@ -30,6 +30,8 @@ class Templating
 
         $this->twig->addGlobal('google_tag', $googleTag);
         $this->twig->addGlobal('is_qobo', $isQoboTV);
+        $this->twig->addGlobal('is_user_logged_in', $auth->isUserLoggedIn());
+        $this->twig->addGlobal('user_data', $auth->getUserData());
     }
 
     /**

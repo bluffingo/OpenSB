@@ -12,13 +12,16 @@ class Authentication
     private \Betty\Database $database;
     private bool $is_logged_in;
     private int $user_id;
+    private array $user_data;
 
     public function __construct(\Betty\Database $database, $token)
     {
+        $accountfields = "id, name, email, customcolor, title, about, powerlevel, joined, lastview";
         $this->database = $database;
         if (isset($token)) {
             if($this->user_id = $this->database->result("SELECT id FROM users WHERE token = ?", [$token])) {
                 $this->is_logged_in = true;
+                $this->user_data = $this->database->fetch("SELECT $accountfields FROM users WHERE id = ?", [$this->user_id]);
             } else {
                 $this->is_logged_in = false;
             }
@@ -32,8 +35,12 @@ class Authentication
         return $this->is_logged_in;
     }
 
-    public function getUserID(): bool
+    public function getUserData(): ?array
     {
-        return $this->user_id ?? 0;
+        if ($this->is_logged_in) {
+            return $this->user_data;
+        } else {
+            return null;
+        }
     }
 }

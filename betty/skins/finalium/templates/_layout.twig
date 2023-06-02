@@ -22,10 +22,8 @@
         </script>
     {% endif %}
 </head>
-<body>
-<header id="masthead-container">
-    <h1>bettySB</h1>
-</header>
+<body class="with-fixed-top-navbar">
+{% include "components/header.twig" %}
 <div class="container">
     {% if is_qobo %}
         <div class="alert alert-info">
@@ -35,7 +33,7 @@
     {% block content %}{% endblock %}
 </div>
 <footer class="footer">
-    <p>By the openSB/Betty contributors.</p>
+    <p>By the bettySB contributors.</p>
 </footer>
 </body>
 </html>
