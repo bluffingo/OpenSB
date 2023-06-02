@@ -46,20 +46,19 @@
 
 // Mixin for generating new styles
 @mixin btn-styles($btn-color: #555) {
-  @include gradient-vertical($start-color: $btn-color, $end-color: darken($btn-color, 12%));
+  @include gradient-vertical($start-color: $btn-color, $end-color: darken($btn-color, 5%));
   @include reset-filter; // Disable gradients for IE9 because filter bleeds through rounded corners; see https://github.com/twbs/bootstrap/issues/10620
   background-repeat: repeat-x;
   border-color: darken($btn-color, 14%);
 
   &:hover,
   &:focus  {
-    background-color: darken($btn-color, 12%);
-    background-position: 0 -15px;
+    @include gradient-vertical($start-color: darken($btn-color, 5%), $end-color: darken($btn-color, 15%));
   }
 
   &:active,
   &.active {
-    background-color: darken($btn-color, 12%);
+    background-color: darken($btn-color, 5%);
     border-color: darken($btn-color, 14%);
   }
 
