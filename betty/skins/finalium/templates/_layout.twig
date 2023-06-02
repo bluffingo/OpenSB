@@ -33,7 +33,13 @@
     {% block content %}{% endblock %}
 </div>
 <footer class="footer">
-    <p>By the bettySB contributors.</p>
+    <div class="container">
+        <img src="/assets/bettysb_logo.png" class="logo">
+        <p>© 2021-{{ 'now' | date('Y') }} BettySB contributors.</p>
+        <button class="btn btn-default btn-sm" id="footer-button">Options</button>
+        <div id="optionsModal">
+        </div>
+    </div>
 </footer>
 </body>
 </html>

@@ -16,8 +16,14 @@ foreach (glob(dirname(__DIR__) . "/betty/class/*.php") as $file) {
 class Betty {
     private \Betty\Database $database;
     public string $version = "0.1.0";
+    public array $options;
 
     public function __construct($host, $user, $pass, $db) {
+        if (isset($_COOKIE["SBOPTIONS"])) {
+            $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
+        } else {
+            $this->options = [];
+        }
         try {
             $this->database = new \Betty\Database($host, $user, $pass, $db);
         } catch (BettyException $e) {
@@ -46,6 +52,18 @@ class Betty {
     public function getBettyVersion(): string
     {
         return $this->version;
+    }
+
+    /**
+     * Returns the user's local settings.
+     *
+     * @since 0.1.0
+     *
+     * @return array
+     */
+    public function getLocalOptions(): array
+    {
+        return $this->options;
     }
 }
 

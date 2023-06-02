@@ -76,7 +76,7 @@ $currentTime = time();
 $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
 */
 
-$twig = new \Betty\Templating($betty, $bettyTemplate);
+$twig = new \Betty\Templating($betty);
 
 echo $twig->render('watch.twig', [
     'submission' => $data,

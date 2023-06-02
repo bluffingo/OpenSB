@@ -2,23 +2,33 @@
 
 namespace openSB;
 
+global $betty, $bettyTemplate;
+
+use \Betty\Templating;
+
 require_once dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/betty/class/pages/FooterOptions.php';
 
-if (isset($_POST['othermagic'])) {
-    $language = $_POST['language'] ?? 'en-US';
-    $theme = $_POST['theme'] ?? 'default';
-    $profilepicture = $_POST['profilepicture'] ?? 'circle';
-    $enableSounds = $_POST['enableSounds'] ?? false;
+if (isset($_POST['action'])) {
+    $optionsArray = [
+        'updated' => time(),
+        'skin' => $_POST['skin'] ?? 'finalium',
+    ];
 
-    setcookie('language', $language, 2147483647);
-    setcookie('theme', $theme, 2147483647);
-    setcookie('profilepicture', $profilepicture, 2147483647);
-    setcookie('SBSOUNDS', $enableSounds, 2147483647);
+    setcookie('SBOPTIONS', base64_encode(json_encode($optionsArray)), 2147483647);
 
     //if (!$error) {
-    redirect(sprintf("index.php?updated=true", isset($userdata['name']) ? $userdata['name'] : null));
+    redirect("index.php?updated=true");
     //}
 }
 
-$twig = twigloader();
-echo $twig->render('modal.twig');
+$twig = new Templating($betty, $bettyTemplate);
+
+$skins = [];
+foreach($twig->getAllSkins() as $skin) {
+    $skins[] = $twig->getSkinMetadata($skin);
+}
+
+echo $twig->render('footer_options.twig', [
+    'skins' => $skins,
+]);

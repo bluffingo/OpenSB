@@ -8,7 +8,7 @@ require_once dirname(__DIR__) . '/private/class/common.php';
 require_once dirname(__DIR__) . '/betty/class/pages/Version.php';
 
 $page = new \Betty\Pages\Version($betty, $opensb_version);
-$twig = new \Betty\Templating($betty, $bettyTemplate);
+$twig = new \Betty\Templating($betty);
 
 $skins = [];
 foreach($twig->getAllSkins() as $skin) {

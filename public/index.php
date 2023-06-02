@@ -18,7 +18,7 @@ try {
     $e->page();
 }
 
-$twig = new Templating($betty, $bettyTemplate);
+$twig = new Templating($betty);
 
 echo $twig->render('index.twig', [
     'submissions' => $submissions,

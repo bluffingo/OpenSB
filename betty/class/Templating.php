@@ -19,11 +19,11 @@ class Templating
     private $skin;
     private FilesystemLoader $loader;
 
-    public function __construct(\Betty\Betty $betty, $requested_skin)
+    public function __construct(\Betty\Betty $betty)
     {
-        global $googleTag, $isQoboTV, $auth;
+        global $googleTag, $isQoboTV, $auth, $bettyTemplate;
         chdir(__DIR__ . '/..');
-        $this->skin = $requested_skin;
+        $this->skin = $betty->getLocalOptions()["skin"] ?? $bettyTemplate;
         $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
         $this->loader->addPath('skins/common/');
         $this->twig = new Environment($this->loader);
@@ -72,16 +72,16 @@ class Templating
     /**
      * This function exists to keep compatibility with openSB pages based on twigloader.
      *
-     * @since 0.1.0
-     *
      * @param $template
-     * @param $data
+     * @param array $data
      * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
+     * @since 0.1.0
+     *
      */
-    public function render($template, $data): string
+    public function render($template, array $data = []): string
     {
         return $this->twig->render($template, $data);
     }

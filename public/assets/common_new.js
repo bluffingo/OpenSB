@@ -14,4 +14,14 @@ $(document).ready(function () {
             }
         });
     })
+    $('#footer-button').on('click', function () {
+        $.ajax({
+            url: "/customizer.php",
+            success: function (returndata) {
+                $('#optionsModal').html(returndata);
+                $("#optionsModal").show();
+            },
+            dataType: "html"
+        });
+    })
 });

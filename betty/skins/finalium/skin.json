@@ -1,6 +1,7 @@
 {
   "metadata":
   {
+    "id": "finalium",
     "name": "Finalium for Betty",
     "author": "Chaziz",
     "description": "A port of openSB's Finalium frontend for Betty."
