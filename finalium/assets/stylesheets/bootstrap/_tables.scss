@@ -5,6 +5,8 @@
 
 table {
   background-color: $table-bg;
+  border-collapse: collapse;
+  border-spacing: 0;
 
   // Table cell sizing
   //
