@@ -5,7 +5,7 @@ $(document).ready(function () {
         $.post("/api/finalium/submission_interaction.php",
             {
                 action: "favorite",
-                video_id: submission_id
+                submission: submission_id
             },
         function (data, status) {
             if (status === "success") {

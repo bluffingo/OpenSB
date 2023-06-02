@@ -7,13 +7,17 @@ $rawOutputRequired = true;
 require_once dirname(__DIR__) . '/../../private/class/common.php';
 header('Content-Type: application/json');
 
+$apiOutput = [
+    "error" => "Invalid request."
+];
+
 if ($userbandata) { // TODO: This should be dealt by Betty, and not openSB.
     $apiOutput = [
         "error" => "User is banned!!!"
     ];
 }
 
-if (isset($_POST['video_id'])) {
+if (isset($_POST['submission'])) {
     if (isset($_POST['action'])) {
         switch ($_POST['action']) {
             case 'favorite':
