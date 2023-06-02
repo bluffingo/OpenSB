@@ -3,13 +3,47 @@
 {% set title = submission.title %}
 
 {% block content %}
-    <h1>{{ submission.title }}</h1>
-    {{ submission_view(submission) }}
-    {% if submission.type == 0 %}
-        <p>Video placeholder</p>
-    {% elseif submission.type == 2 %}
-        <p>Artwork placeholder</p>
-    {% endif %}
-    <p>{{ submission.description }}</p>
-    <p>By {{ submission.author.info.username }}, {{ submission.published | relative_time }}</p>
+    <div class="row">
+        <div class="col-md-10">
+            {{ submission_view(submission) }}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 style="margin-top: 0;word-break: break-all;">{{ submission.title }}</h3>
+                    <div class="row">
+                        <div class="col-md-8 col-xs-8">
+                            By {{ submission.author.info.username }}
+                            <button class="btn btn-default">
+                                Follow
+                                <span class="label label-default">0</span>
+                            </button>
+                        </div>
+                        <div class="col-md-8 col-xs-8 text-right">
+                            <button class="btn btn-default">
+                                Like
+                                <span class="label label-default">0</span>
+                            </button>
+                            <button class="btn btn-default">
+                                Dislike
+                                <span class="label label-default">0</span>
+                            </button>
+                            <button class="btn btn-default">
+                                Favorite
+                                <span class="label label-default">0</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body" style="word-break: break-all;">
+                    <p>Submitted {{ submission.published | relative_time }} on {{ submission.published | date('F j, Y') }}</p>
+                    {% if submission.description | trim is not empty %}
+                    <p>{{ submission.description }}</p>
+                    {% else %}
+                        <em class="text-muted">This submission has no description.</em>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
