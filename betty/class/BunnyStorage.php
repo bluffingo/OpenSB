@@ -1,9 +1,8 @@
 <?php
 
-namespace openSB;
+namespace Betty;
 
-use \Intervention\Image\ImageManager;
-
+use Intervention\Image\ImageManager;
 use ToshY\BunnyNet\Client\BunnyClient;
 use ToshY\BunnyNet\EdgeStorageAPI;
 use ToshY\BunnyNet\Enum\Region;

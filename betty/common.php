@@ -3,6 +3,10 @@
 namespace Betty;
 
 global $host, $user, $pass, $db, $buildNumber, $gitBranch;
+foreach (glob(dirname(__DIR__) . "/betty/interfaces/*.php") as $file) {
+    require_once($file);
+}
+
 foreach (glob(dirname(__DIR__) . "/betty/class/*.php") as $file) {
     require_once($file);
 }
@@ -70,3 +74,9 @@ class Betty {
 $betty = new \Betty\Betty($host, $user, $pass, $db);
 $opensb_version = new \Betty\OpenSbVersion($buildNumber, $gitBranch);
 $auth = new \Betty\Authentication($betty->getBettyDatabase(), $_COOKIE['SBTOKEN'] ?? null);
+
+if ($isQoboTV) {
+    $storage = new \Betty\BunnyStorage;
+} else {
+    $storage = new \Betty\LocalStorage;
+}

@@ -1,8 +1,8 @@
 <?php
 
-namespace openSB;
+namespace Betty;
 
-use \Intervention\Image\ImageManager;
+use Intervention\Image\ImageManager;
 
 class LocalStorage implements Storage
 {
@@ -11,7 +11,7 @@ class LocalStorage implements Storage
     }
 
     public function processVideo($new, $target_file) {
-        if (substr(php_uname(), 0, 7) == "Windows") {
+        if (str_starts_with(php_uname(), "Windows")) {
             pclose(popen(sprintf('start /B  php %s "%s" "%s" > %s', dirname(__DIR__) . '\scripts\processingworker.php', $new, $target_file, dirname(__DIR__) . '/../dynamic/videos/' . $new . '.log'), "r"));
         } else {
             system(sprintf('php %s "%s" "%s" > %s 2>&1 &', dirname(__DIR__) . '/scripts/processingworker.php', $new, $target_file, dirname(__DIR__) . '/../dynamic/videos/' . $new . '.log'));

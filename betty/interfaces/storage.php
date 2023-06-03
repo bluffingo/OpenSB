@@ -1,6 +1,6 @@
 <?php
 
-namespace openSB;
+namespace Betty;
 
 interface Storage
 {

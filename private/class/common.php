@@ -4,7 +4,8 @@ namespace openSB;
 
 global $googleTag, $googleAPI;
 
-use Betty\BettyException;
+use Betty\BunnyStorage;
+use Betty\LocalStorage;
 use Br33f\Ga4\MeasurementProtocol\Dto\Request\BaseRequest;
 use Br33f\Ga4\MeasurementProtocol\Service;
 
@@ -31,21 +32,11 @@ require_once(dirname(__DIR__) . '/../vendor/autoload.php'); //dogshit
 require_once(dirname(__DIR__) . "/../betty/common.php");
 
 // and then the opensb stuff
-foreach (glob(dirname(__DIR__) . "/interface/*.php") as $file) {
-    require_once($file);
-}
-
 foreach (glob(dirname(__DIR__) . "/class/*.php") as $file) {
     require_once($file);
 }
 
 $sql = $betty->getBettyDatabase();
-
-if ($isQoboTV) {
-    $storage = new BunnyStorage;
-} else {
-    $storage = new LocalStorage;
-}
 
 // user agent blocking shit
 if (!empty($blockedUA) && isset($_SERVER['HTTP_USER_AGENT'])) {
