@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../dist/css/finalium.css">
+</head>
+<body>
+<div class="container">
+    <!-- A modal dialog containing a form -->
+    <dialog id="favDialog" class="dialog">
+        <form>
+            <p>
+                <label>Favorite animal:
+                    <select>
+                        <option value="default">Choose…</option>
+                        <option>Brine shrimp</option>
+                        <option>Red panda</option>
+                        <option>Spider monkey</option>
+                    </select>
+                </label>
+            </p>
+            <div>
+                <button value="cancel" class="btn btn-default" formmethod="dialog">Cancel</button>
+                <button id="confirmBtn" class="btn btn-success" value="default">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+    <dialog id="testDialog" class="dialog">
+        <form>
+            <p>
+                <h1>Test!!!</h1>
+            </p>
+            <div>
+                <button value="cancel" formmethod="dialog">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+    <p>
+        <button id="showDialog" class="btn btn-default" data-fl-toggle="dialog" data-fl-target="#favDialog">Show the dialog</button>
+        <button id="showDialog2" class="btn btn-default" data-fl-toggle="dialog" data-fl-target="#testDialog">Show another dialog</button>
+    </p>
+    <output></output>
+</div>
+
+<script src="../dist/js/finalium.js"></script>
+</body>
+</html>

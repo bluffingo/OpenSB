@@ -6,6 +6,12 @@
   "author": "The BettySB Contributors",
   "license": "MIT",
   "scripts": {
-    "test": "test"
+    "js": "rollup --config build/rollup.config.js --sourcemap",
+    "css": "sass --style expanded --source-map --embed-sources --no-error-css assets/stylesheets/:dist/css/"
+  },
+  "dependencies": {
+    "@rollup/plugin-babel": "^6.0.3",
+    "rollup": "^3.23.0",
+    "sass": "^1.62.1"
   }
 }

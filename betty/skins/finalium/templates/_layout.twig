@@ -23,6 +23,12 @@
     {% endif %}
 </head>
 <body class="with-fixed-top-navbar">
+<dialog open>
+    <p>Nigga what?</p>
+    <form method="dialog">
+        <button>OK</button>
+    </form>
+</dialog>
 {% include "components/header.twig" %}
 <div class="container">
     {% if is_qobo %}
@@ -37,6 +43,7 @@
         <img src="/assets/bettysb_logo.png" class="logo">
         <p>© 2021-{{ 'now' | date('Y') }} BettySB contributors.</p>
         <button class="btn btn-default btn-sm" id="footer-button">Options</button>
+        <button class="btn btn-primary btn-sm" id="footer-button-beta">Suggestions</button>
         <div id="optionsModal">
         </div>
     </div>

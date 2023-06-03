@@ -1,0 +1,15 @@
+//
+// Dialogs (WIP)
+// --------------------------------------------------
+
+dialog {
+  z-index: $zindex-modal;
+  background-color: $modal-content-bg;
+  border: 1px solid $modal-content-border-color;
+  border-radius: $border-radius-large;
+  @include box-shadow(0 3px 9px rgba(0, 0, 0, .5));
+}
+
+dialog::backdrop {
+  background-color: $modal-backdrop-bg;
+}
