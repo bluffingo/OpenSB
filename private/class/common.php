@@ -131,10 +131,14 @@ function navigationList() {
 	];
 }
 
+function randstr($len, $charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-") {
+    return substr(str_shuffle($charset),0,$len);
+}
+
 $userdata['timezone'] = 'America/New York';
 
 if ($googleAPI) {
-    $session = $_COOKIE['_ga'] ?? $_COOKIE['_gid'] ?? $_COOKIE['SBTOKEN']; // THIS IS STUPID SHIT AND WILL BREAK
+    $session = $_COOKIE['_ga'] ?? $_COOKIE['_gid'] ?? $_COOKIE['SBTOKEN'] ?? randstr(32); // THIS IS STUPID SHIT AND WILL BREAK
 
 // FIXME: MOVE THIS TO BETTY
     $ga = new Service($googleAPI);
@@ -142,5 +146,5 @@ if ($googleAPI) {
 
 // Create base request
     $baseRequest = new BaseRequest();
-    $baseRequest->setClientId($session ?? null);
+    $baseRequest->setClientId($session);
 }

@@ -31,11 +31,12 @@ You will have to modify the directories to match your instance's location.
     DocumentRoot "C:/xampp/openSB/public"
 
     Alias /dynamic "C:/xampp/openSB/dynamic"
+    Alias /finalium "C:/xampp/openSB/finalium/dist"
 
     <Directory "C:/xampp/openSB">
         Options Indexes FollowSymLinks
-	Require all granted
-	AllowOverride All
+        Require all granted
+        AllowOverride All
     </Directory>
 </VirtualHost>
 ```

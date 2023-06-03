@@ -16,10 +16,6 @@ if ($userbandata) {
 
 use \Intervention\Image\ImageManager;
 
-function randstr($len, $charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-") {
-    return substr(str_shuffle($charset),0,$len);
-}
-
 if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata['name'])) {
     $uploader = $userdata['id'];
     $new = randstr(11);

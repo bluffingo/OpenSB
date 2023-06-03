@@ -38,10 +38,13 @@
                     </ul>
                 </li>
                 {% else %}
-                    <li><a href="/login.php">Login</a></li>
+                    <li><a data-fl-toggle="dialog" data-fl-target="#login-dialog">Login</a></li>
                     <li><a href="/register.php">Register</a></li>
                 {% endif %}
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+{% if is_user_logged_in == false %}
+{% include "components/dialog_login.twig" %}
+{% endif %}
