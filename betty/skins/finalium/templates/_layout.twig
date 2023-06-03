@@ -35,10 +35,15 @@
     <div class="container">
         <img src="/assets/bettysb_logo.png" class="logo">
         <p>© 2021-{{ 'now' | date('Y') }} BettySB contributors.</p>
-        <button class="btn btn-default btn-sm" id="footer-button">Options</button>
-        <button class="btn btn-primary btn-sm" id="footer-button-beta">Suggestions</button>
-        <div id="optionsModal">
-        </div>
+        {% if is_debug %}
+            <p><code>{{ profiler_stats() }}</code></p>
+        {% endif %}
+        <button class="btn btn-default btn-sm" data-fl-toggle="dialog" data-fl-target="#options-dialog">Options</button>
+        {% if is_debug %}
+            <button class="btn btn-danger btn-sm" data-fl-toggle="dialog" data-fl-target="#debug-dialog">Debug</button>
+            {% include "components/dialog_debug.twig" %}
+        {% endif %}
+        {% include "components/dialog_options.twig" %}
     </div>
 </footer>
 </body>

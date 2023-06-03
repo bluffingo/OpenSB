@@ -2,11 +2,9 @@
 
 namespace Betty;
 
-use RelativeTime\RelativeTime;
 use Twig\Environment;
-use Twig\Extension\AbstractExtension;
+use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
-use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 /**
@@ -21,19 +19,29 @@ class Templating
 
     public function __construct(\Betty\Betty $betty)
     {
-        global $googleTag, $isQoboTV, $auth, $bettyTemplate;
+        global $googleTag, $isQoboTV, $auth, $bettyTemplate, $isDebug;
         chdir(__DIR__ . '/..');
         $this->skin = $betty->getLocalOptions()["skin"] ?? $bettyTemplate;
         $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
         $this->loader->addPath('skins/common/');
-        $this->twig = new Environment($this->loader);
+        $this->twig = new Environment($this->loader, ['debug' => $isDebug]);
 
         $this->twig->addExtension(new BettyTwigExtension());
 
+        if ($isDebug) {
+            $this->twig->addExtension(new DebugExtension());
+        } else {
+            $this->twig->addFunction(new TwigFunction('dump', function() {
+                return "This instance is not in debug mode.";
+            }));
+        }
+
         $this->twig->addGlobal('google_tag', $googleTag);
         $this->twig->addGlobal('is_qobo', $isQoboTV);
+        $this->twig->addGlobal('is_debug', $isDebug);
         $this->twig->addGlobal('is_user_logged_in', $auth->isUserLoggedIn());
         $this->twig->addGlobal('user_data', $auth->getUserData());
+        $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
     }
 
     /**
@@ -69,6 +77,15 @@ class Templating
         return json_decode($metadata, true);
     }
 
+    public function getAllSkinsMetadata(): array
+    {
+        $skins = [];
+        foreach($this->getAllSkins() as $skin) {
+            $skins[] = $this->getSkinMetadata($skin);
+        }
+        return $skins;
+    }
+
     /**
      * This function exists to keep compatibility with openSB pages based on twigloader.
      *
@@ -87,84 +104,3 @@ class Templating
     }
 }
 
-class BettyTwigExtension extends AbstractExtension
-{
-    public function getFunctions(): array
-    {
-        return [
-            new TwigFunction('submission_view', [$this, 'SubmissionView']),
-            new TwigFunction('thumbnail', [$this, 'Thumbnail']),
-            new TwigFunction('user_link', [$this, 'UserLink'], ['is_safe' => ['html']]),
-        ];
-    }
-
-    public function getFilters()
-    {
-        return [
-            new TwigFilter('relative_time',  [$this, 'relativeTime']),
-        ];
-    }
-
-    /**
-     * Relative time function.
-     *
-     * @since openSB Pre-Alpha 1?
-     */
-    function relativeTime($time): string
-    {
-        $config = [
-            'language' => '\RelativeTime\Languages\English',
-            'separator' => ', ',
-            'suffix' => true,
-            'truncate' => 1,
-        ];
-
-        $relativeTime = new RelativeTime($config);
-
-        return $relativeTime->timeAgo($time);
-    }
-
-    public function SubmissionView($submission_data)
-    {
-        global $twig;
-        if (!$submission_data) { throw new BettyException('Submission is null', 500); };
-        if ($submission_data["type"] == 0)
-        {
-            echo $twig->render("player.twig", ['submission' => $submission_data]);
-        }
-
-        if ($submission_data["type"] == 2)
-        {
-            echo $twig->render("image.twig", ['submission' => $submission_data]);
-        }
-    }
-
-    public function Thumbnail($id, $type)
-    {
-        global $isQoboTV, $storage;
-        if ($type == 0)
-        {
-            if ($isQoboTV) {
-                $data = $storage->getVideoThumbnail($id);
-            } else {
-                $data = "/assets/placeholder/placeholder.png";
-            }
-        }
-        if ($type == 2)
-        {
-            if ($isQoboTV) {
-                $data = $storage->getImageThumbnail($id);
-            } else {
-                $data = "/assets/placeholder/placeholder.png";
-            }
-        }
-        return $data;
-    }
-
-    public function UserLink($user)
-    {
-        return <<<HTML
-<a style="color: {$user["info"]["color"]}" href="user.php?name={$user["info"]["username"]}">{$user["info"]["username"]}</a>
-HTML;
-    }
-}

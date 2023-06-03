@@ -24,11 +24,6 @@ if (isset($_POST['action'])) {
 
 $twig = new Templating($betty, $bettyTemplate);
 
-$skins = [];
-foreach($twig->getAllSkins() as $skin) {
-    $skins[] = $twig->getSkinMetadata($skin);
-}
-
 echo $twig->render('footer_options.twig', [
-    'skins' => $skins,
+    'skins' => $twig->getAllSkinsMetadata(),
 ]);

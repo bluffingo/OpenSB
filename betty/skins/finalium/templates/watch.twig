@@ -15,10 +15,11 @@
                     <h3 style="margin-top: 0;word-break: break-all;">{{ submission.title }}</h3>
                     <div class="row">
                         <div class="col-md-8 col-xs-8">
-                            By {{ user_link(submission.author) }}
+                            <img class="img-rounded" style="width: 32px;" src="{{ profile_picture(comment.author.info.username) }}">
+                            {{ user_link(submission.author) }}
                             <button class="btn btn-default" id="submission-follow">
                                 Follow
-                                <span class="label label-default" id="submission-followers">0</span>
+                                <span class="label label-default" id="submission-followers">{{ submission.author.info.followers }}</span>
                             </button>
                         </div>
                         <div class="col-md-8 col-xs-8 text-right">
@@ -46,6 +47,28 @@
                     {% else %}
                         <em class="text-muted">This submission has no description.</em>
                     {% endif %}
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body" style="word-break: break-all;">
+                    <h4>Comments</h4>
+                    {% for comment in submission.comments %}
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="/user.php?name={{ comment.author.info.username }}">
+                                <img class="media-object media-profile-picture img-rounded" src="{{ profile_picture(comment.author.info.username) }}">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ user_link(comment.author) }} <small>{{ comment.posted | relative_time }}</small></h4>
+                            {% if comment.post | trim is not empty %}
+                                <p>{{ comment.post | markdown }}</p>
+                            {% else %}
+                                <em class="text-muted">This comment is empty, due to a now-patched exploit.</em>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

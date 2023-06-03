@@ -2,8 +2,8 @@
   "metadata":
   {
     "id": "finalium",
-    "name": "Finalium for Betty",
+    "name": "Finalium",
     "author": "Chaziz",
-    "description": "A port of openSB's Finalium frontend for Betty."
+    "description": "A frontend built on a modernized fork of Bootstrap 3."
   }
 }

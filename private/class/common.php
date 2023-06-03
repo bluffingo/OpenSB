@@ -18,12 +18,6 @@ if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
 
 require_once(dirname(__DIR__) . '/conf/config.php');
 
-if ($isDebug and !isset($rawOutputRequired)) {
-    // load profiler first
-    require_once('profiler.php');
-    $profiler = new Profiler();
-}
-
 require_once(dirname(__DIR__) . '/../vendor/autoload.php'); //dogshit
 
 // aaaa psr-4 autoload!!! - rgb

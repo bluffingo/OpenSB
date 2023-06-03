@@ -24,6 +24,10 @@
   &.img-thumbnail {
     max-width: none;
   }
+
+  &.media-profile-picture {
+    max-width: 48px;
+  }
 }
 
 .media-right,

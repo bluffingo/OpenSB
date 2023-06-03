@@ -4,6 +4,8 @@ namespace Betty\Pages;
 
 use Betty\User;
 use Betty\BettyException;
+use Betty\CommentLocation;
+use Betty\Comments;
 use Betty\Database;
 
 /**
@@ -15,6 +17,7 @@ class Submission
 {
     private \Betty\Database $database;
     private $data;
+    private $comments;
     private $likes;
     private $dislikes;
     private $favorites;
@@ -30,6 +33,7 @@ class Submission
         if (!$this->data) {
             throw new BettyException('Submission does not exist.', 404);
         }
+        $this->comments = new Comments($this->database, CommentLocation::Submission, $id);
         $this->author = new User($this->database, $this->data["author"]);
         if (!$this->author) {
             throw new BettyException('Submission author does not exist.', 500);
@@ -86,7 +90,8 @@ class Submission
                 "likes" => $this->likes,
                 "dislikes" => $this->dislikes,
                 "favorites" => $this->favorites,
-            ]
+            ],
+            "comments" => $this->comments->getComments(),
         ];
     }
 }

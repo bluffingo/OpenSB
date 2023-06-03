@@ -11,8 +11,6 @@ class sBTwigExtension extends AbstractExtension
 {
     public function getFunctions()
     {
-        global $profiler;
-
         return [
             new TwigFunction('browse_video_box', '\openSB\browseVideoBox', ['is_safe' => ['html']]),
             new TwigFunction('small_video_box', '\openSB\smallVideoBox', ['is_safe' => ['html']]),
@@ -31,8 +29,8 @@ class sBTwigExtension extends AbstractExtension
             new TwigFunction('git_commit', '\openSB\gitCommit'),
             new TwigFunction('operating_system', '\openSB\getOS'),
             new TwigFunction('upload_limit', '\openSB\convertBytes'),
-            new TwigFunction('profiler_stats', function () use ($profiler) {
-                $profiler->getStats();
+            new TwigFunction('profiler_stats', function () {
+                trigger_error('The profiler is now only available within Betty.', E_USER_DEPRECATED);
             }),
             new TwigFunction('art_thumbnail', '\openSB\imageThumbnail', ['is_safe' => ['html']]),
         ];
