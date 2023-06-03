@@ -41,6 +41,7 @@ class Templating
         $this->twig->addGlobal('is_debug', $isDebug);
         $this->twig->addGlobal('is_user_logged_in', $auth->isUserLoggedIn());
         $this->twig->addGlobal('user_data', $auth->getUserData());
+        $this->twig->addGlobal('user_ban_data', $auth->getUserBanData());
         $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
     }
 

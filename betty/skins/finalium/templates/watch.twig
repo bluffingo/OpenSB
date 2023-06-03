@@ -43,7 +43,7 @@
                 <div class="panel-body" style="word-break: break-all;">
                     <p>Submitted {{ submission.published | relative_time }} on {{ submission.published | date('F j, Y') }}</p>
                     {% if submission.description | trim is not empty %}
-                    <p>{{ submission.description }}</p>
+                    {{ submission.description | markdown }}
                     {% else %}
                         <em class="text-muted">This submission has no description.</em>
                     {% endif %}

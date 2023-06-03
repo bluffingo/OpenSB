@@ -24,9 +24,10 @@
 <body class="with-fixed-top-navbar">
 {% include "components/header.twig" %}
 <div class="container">
-    {% if is_qobo %}
-        <div class="alert alert-info">
-            bettySB is currently configured to be in Qobo mode.
+    {% if user_ban_data %}
+        <div class="alert alert-danger">
+            <p><strong>This account is banned for the following reason:</strong></p>
+            {{ user_ban_data.reason | markdown }}
         </div>
     {% endif %}
     {% block content %}{% endblock %}
@@ -36,6 +37,9 @@
         <img src="/assets/bettysb_logo.png" class="logo">
         <p>© 2021-{{ 'now' | date('Y') }} BettySB contributors.</p>
         {% if is_debug %}
+            {% if is_qobo %}
+                <p>BettySB is currently configured to be in Qobo mode.</p>
+            {% endif %}
             <p><code>{{ profiler_stats() }}</code></p>
         {% endif %}
         <button class="btn btn-default btn-sm" data-fl-toggle="dialog" data-fl-target="#options-dialog">Options</button>

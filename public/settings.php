@@ -2,18 +2,21 @@
 
 namespace openSB;
 
+use Betty\Templating;
+
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-if (!$log) redirect('login.php');
+if (!$auth->isUserLoggedIn()) redirect('login.php');
+//if ($auth->getUserBanData()) die("Banned user.");
 
 $error = '';
 
-if (isset($_POST['magic'])) {
-    if (!$userbandata) {
-        $title = htmlspecialchars($_POST['title']) ?? null;
-        $customcolor = $_POST['customcolor'] ?? '#3e3ecf';
-        $about = $_POST['about'] ?? null;
-    }
+if (isset($_POST['save'])) {
+    if ($auth->getUserBanData()) die("Banned user.");
+
+    $title = htmlspecialchars($_POST['title']) ?? null;
+    $customcolor = $_POST['customcolor'] ?? '#3e3ecf';
+    $about = $_POST['about'] ?? null;
 
     $resetToken = $_POST['reset_token'] ?? null;
 
@@ -67,7 +70,8 @@ if (isset($_POST['magic'])) {
     }
 }
 
-$twig = twigloader();
+$twig = new Templating($betty);
+
 echo $twig->render('settings.twig', [
-    'error' => isset($error) ? $error : null,
+    'error' => $error ?? null,
 ]);

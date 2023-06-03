@@ -111,6 +111,8 @@ class BettyTwigExtension extends AbstractExtension
         global $isQoboTV, $bunnySettings, $storage;
         $location = '/dynamic/pfp/' . $username . '.png';
 
+        /* FIXME: PFPs for accounts like Chaziz and Qobo on Qobo.TV end up using the default profile picture
+        / instead of the CDN-hosted profile picture. This does not occur within OpenSB-based pages. -Chaziz 6/3/2023 */
         if($storage->fileExists('..' . $location)) {
             if ($isQoboTV) {
                 $data = "https://" . $bunnySettings["pullZone"] . $location;
@@ -123,7 +125,7 @@ class BettyTwigExtension extends AbstractExtension
         return $data;
     }
 
-    public function UserLink($user)
+    public function UserLink($user): string
     {
         return <<<HTML
 <a style="color: {$user["info"]["color"]}" href="user.php?name={$user["info"]["username"]}">{$user["info"]["username"]}</a>

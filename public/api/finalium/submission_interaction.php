@@ -11,7 +11,7 @@ $apiOutput = [
     "error" => "Invalid request."
 ];
 
-if ($userbandata) { // TODO: This should be dealt by Betty, and not openSB.
+if ($auth->getUserBanData()) {
     $apiOutput = [
         "error" => "User is banned!!!"
     ];

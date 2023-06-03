@@ -13,6 +13,7 @@ class Authentication
     private bool $is_logged_in;
     private int $user_id;
     private array $user_data;
+    private $user_ban_data;
 
     public function __construct(\Betty\Database $database, $token)
     {
@@ -22,6 +23,7 @@ class Authentication
             if($this->user_id = $this->database->result("SELECT id FROM users WHERE token = ?", [$token])) {
                 $this->is_logged_in = true;
                 $this->user_data = $this->database->fetch("SELECT $accountfields FROM users WHERE id = ?", [$this->user_id]);
+                $this->user_ban_data = $this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->user_id]);
             } else {
                 $this->is_logged_in = false;
             }
@@ -42,5 +44,10 @@ class Authentication
         } else {
             return null;
         }
+    }
+
+    public function getUserBanData()
+    {
+        return $this->user_ban_data;
     }
 }
