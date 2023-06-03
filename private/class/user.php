@@ -12,6 +12,7 @@ class Users
      * @param array $user User array containing user fields. Retrieve this from the database using userfields().
      * @param string $pre $user key prefix.
      * @return string Userlink HTML code.
+     * @deprecated Betty 0.1.0: Betty contains a rewritten version.
      */
     public static function userlink($user, $pre = ''): string
     {

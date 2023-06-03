@@ -15,7 +15,7 @@ use Twig\TwigFunction;
 /**
  * Twig loader, initializes Twig with standard configurations and extensions.
  *
- * @deprecated Beta 4.0: Betty contains a rewritten version.
+ * @deprecated Betty 0.1.0: Betty contains a rewritten version.
  *
  * @param string $subfolder Subdirectory to use in the templates/ directory.
  * @return Environment Twig object.

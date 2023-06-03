@@ -19,6 +19,7 @@ class User
         return [
             "username" => $this->data["name"],
             "displayname" => $this->data["title"],
+            "color" => $this->data["customcolor"],
         ];
     }
 }

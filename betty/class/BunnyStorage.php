@@ -19,8 +19,8 @@ class BunnyStorage implements Storage
         );
         $this->edgeStorageApi = new EdgeStorageAPI(
             apiKey: $bunnySettings["storageApi"],
-            region: Region::UK, //FIXME: don't hardcode this. -grkb 4/7/2023
-            client: $this->bunnyClient,
+            client: $this->bunnyClient, //FIXME: don't hardcode this. -grkb 4/7/2023
+            region: Region::UK,
         );
         $this->streamLibrary = $bunnySettings["streamLibrary"];
         $this->streamHostname = $bunnySettings["streamHostname"];

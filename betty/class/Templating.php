@@ -93,6 +93,8 @@ class BettyTwigExtension extends AbstractExtension
     {
         return [
             new TwigFunction('submission_view', [$this, 'SubmissionView']),
+            new TwigFunction('thumbnail', [$this, 'Thumbnail']),
+            new TwigFunction('user_link', [$this, 'UserLink'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -135,5 +137,34 @@ class BettyTwigExtension extends AbstractExtension
         {
             echo $twig->render("image.twig", ['submission' => $submission_data]);
         }
+    }
+
+    public function Thumbnail($id, $type)
+    {
+        global $isQoboTV, $storage;
+        if ($type == 0)
+        {
+            if ($isQoboTV) {
+                $data = $storage->getVideoThumbnail($id);
+            } else {
+                $data = "/assets/placeholder/placeholder.png";
+            }
+        }
+        if ($type == 2)
+        {
+            if ($isQoboTV) {
+                $data = $storage->getImageThumbnail($id);
+            } else {
+                $data = "/assets/placeholder/placeholder.png";
+            }
+        }
+        return $data;
+    }
+
+    public function UserLink($user)
+    {
+        return <<<HTML
+<a style="color: {$user["info"]["color"]}" href="user.php?name={$user["info"]["username"]}">{$user["info"]["username"]}</a>
+HTML;
     }
 }

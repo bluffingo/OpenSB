@@ -24,15 +24,15 @@
                         <div class="col-md-8 col-xs-8 text-right">
                             <button class="btn btn-default" id="submission-like">
                                 Like
-                                <span class="label label-default" id="submission-likes">0</span>
+                                <span class="label label-default" id="submission-likes">{{ submission.interactions.likes }}</span>
                             </button>
                             <button class="btn btn-default" id="submission-dislike">
                                 Dislike
-                                <span class="label label-default" id="submission-dislikes">0</span>
+                                <span class="label label-default" id="submission-dislikes">{{ submission.interactions.dislikes }}</span>
                             </button>
                             <button class="btn btn-default" id="submission-favorite">
                                 Favorite
-                                <span class="label label-default" id="submission-favorites">0</span>
+                                <span class="label label-default" id="submission-favorites">{{ submission.interactions.favorites }}</span>
                             </button>
                         </div>
                     </div>

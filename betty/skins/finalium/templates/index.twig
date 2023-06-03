@@ -7,14 +7,26 @@
         {% if updated %}
             <div class="alert alert-success">Options changed!</div>
         {% endif %}
-        {% for submission in submissions %}
-            <div>
-                <a href="/watch.php?v={{ submission.id }}">
-                    <h2>{{ submission.title }}</h2>
-                </a>
-                <p>By {{ submission.author.info.username }}</p>
-                <p>{{ submission.description }}</p>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a class="btn btn-default pull-right" href="browse.php">Browse more</a>
+                <h3 style="margin-top:0">Submissions</h3>
+                {% for submission in submissions %}
+                    <div class="row">
+                        <div class="col-md-4 col-xs-6">
+                            <a href="watch.php?v={{ submission.id }}" class="thumbnail">
+                                <img src="{{ thumbnail(submission.id, submission.type) }}" alt="{{ submission.title }}">
+                            </a>
+                        </div>
+                        <div class="col-md-12 col-xs-10" style="padding-left: 0;">
+                            <a href="/watch.php?v={{ submission.id }}">
+                                <h4 style="margin-top: 0;overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">{{ submission.title }}</h4>
+                            </a>
+                            <p>By {{ user_link(submission.author) }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
     </div>
 {% endblock %}

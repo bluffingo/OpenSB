@@ -27,7 +27,7 @@
         preload: "auto"
     });
 
-    {% if bunnyEnabled %}
+    {% if is_qobo %}
     player.src([{
         src: '{{ submission.file }}',
         type: 'application/x-mpegURL'
