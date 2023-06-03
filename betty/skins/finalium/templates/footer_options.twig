@@ -3,8 +3,9 @@
         <div class="panel-body">
             <h1>Options</h1>
             <div class="alert alert-info">
-                Support for localization may not return in BettySB.
+                Localization functionality has been removed.
             </div>
+            <label for="skin">Skin</label>
             <select class="form-select" name="skin">
                 {% for skin in skins %}
                     <option value="{{ skin.metadata.id }}">{{ skin.metadata.name }}</option>

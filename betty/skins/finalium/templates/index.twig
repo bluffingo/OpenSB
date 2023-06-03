@@ -20,9 +20,13 @@
                         </div>
                         <div class="col-md-12 col-xs-10" style="padding-left: 0;">
                             <a href="/watch.php?v={{ submission.id }}">
+                                {% if submission.title | trim is not empty %}
                                 <h4 style="margin-top: 0;overflow:hidden;white-space:nowrap;text-overflow: ellipsis;">{{ submission.title }}</h4>
+                                {% else %}
+                                    <em class="text-muted">No title</em>
+                                {% endif %}
                             </a>
-                            <p>By {{ user_link(submission.author) }}</p>
+                            <p>By {{ user_link(submission.author) }}, {{ submission.published | relative_time }}</p>
                         </div>
                     </div>
                 {% endfor %}

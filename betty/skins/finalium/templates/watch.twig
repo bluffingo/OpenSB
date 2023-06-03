@@ -15,7 +15,7 @@
                     <h3 style="margin-top: 0;word-break: break-all;">{{ submission.title }}</h3>
                     <div class="row">
                         <div class="col-md-8 col-xs-8">
-                            By {{ submission.author.info.username }}
+                            By {{ user_link(submission.author) }}
                             <button class="btn btn-default" id="submission-follow">
                                 Follow
                                 <span class="label label-default" id="submission-followers">0</span>
