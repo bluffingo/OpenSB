@@ -14,12 +14,14 @@ use Betty\Database;
 class Index
 {
     private \Betty\Database $database;
-    private $data;
+    private array $submissions;
+    private array $posts;
 
     public function __construct(\Betty\Betty $betty)
     {
         $this->database = $betty->getBettyDatabase();
-        $this->data = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v ORDER BY RAND() LIMIT 16"));
+        $this->submissions = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v ORDER BY RAND() LIMIT 16"));
+        $this->posts = $this->database->fetchArray($this->database->query("SELECT * FROM posts LIMIT 16"));
     }
 
     /**
@@ -31,10 +33,10 @@ class Index
      */
     public function getData(): array
     {
-        $indexData = [];
-        foreach ($this->data as $submission) {
+        $submissionsData = [];
+        foreach ($this->submissions as $submission) {
             $userData = new User($this->database, $submission["author"]);
-            $indexData[] =
+            $submissionsData[] =
                 [
                     "id" => $submission["video_id"],
                     "title" => $submission["title"],
@@ -47,6 +49,23 @@ class Index
                     ],
                 ];
             }
-        return $indexData;
+
+        $postsData = [];
+        foreach ($this->posts as $post) {
+            $userData = new User($this->database, $post["author"]);
+            $postsData[] =
+                [
+                    "post" => $post["post"],
+                    "posted" => $post["date"],
+                    "author" => [
+                        "id" => $post["author"],
+                        "info" => $userData->getUserArray(),
+                    ],
+                ];
+        }
+        return [
+            "submissions" => $submissionsData,
+            "posts" => $postsData,
+        ];
     }
 }

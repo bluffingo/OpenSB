@@ -13,7 +13,7 @@ require_once dirname(__DIR__) . '/betty/class/pages/Index.php';
 
 try {
     $index = new \Betty\Pages\Index($betty);
-    $submissions = $index->getData();
+    $data = $index->getData();
 } catch (BettyException $e) {
     $e->page();
 }
@@ -21,6 +21,6 @@ try {
 $twig = new Templating($betty);
 
 echo $twig->render('index.twig', [
-    'submissions' => $submissions,
+    'data' => $data,
     'updated' => isset($_GET['updated']),
 ]);
