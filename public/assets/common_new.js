@@ -1,27 +1,26 @@
-// REWRITE THIS WITH VANILLA JS -chaziz 6/2/2023
-$(document).ready(function () {
-    $('#submission-favorite').on('click', function () {
-        console.log("Favoriting submission");
-        $.post("/api/finalium/submission_interaction.php",
-            {
-                action: "favorite",
-                submission: submission_id
-            },
-        function (data, status) {
-            if (status === "success") {
-                console.log(data.number);
-                $("#submission-favorites").text(data.number);
-            }
-        });
-    })
-    $('#footer-button').on('click', function () {
-        $.ajax({
-            url: "/customizer.php",
-            success: function (returndata) {
-                $('#optionsModal').html(returndata);
-                $("#optionsModal").show();
-            },
-            dataType: "html"
-        });
-    })
+document.addEventListener("DOMContentLoaded", () => {
+    function error(error) {
+        console.error("BettySB Finalium Frontend Error: " + error);
+    }
+
+    let favorite_button = (document.getElementById('submission-favorite'));
+
+    if (favorite_button) {
+        let favorite_count = (document.getElementById('submission-favorites'));
+        favorite_button.onclick = function () {
+            fetch("/api/finalium/submission_interaction.php", {
+                method: "POST",
+                body: JSON.stringify({
+                    action: "favorite",
+                    submission: submission_id,
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+                .then((response) => response.json())
+                .then((json) => { if(json["error"]) { error(json["error"])} else { favorite_count.textContent = json["number"]}});
+
+        }
+    }
 });
