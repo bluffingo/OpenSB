@@ -8,7 +8,7 @@ use \Betty\BettyException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/betty/class/pages/Submission.php';
+require_once dirname(__DIR__) . '/betty/class/Pages/Submission.php';
 
 $id = ($_GET['v'] ?? null);
 $ip = getUserIpAddr();

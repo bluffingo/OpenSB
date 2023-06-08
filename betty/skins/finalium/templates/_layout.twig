@@ -22,6 +22,12 @@
 <body class="with-fixed-top-navbar">
 {% include "components/header.twig" %}
 <div class="container">
+    {% if session.notif_message %}
+        <div class="alert alert-{{ session.notif_color }}">
+            {{ session.notif_message }}
+        </div>
+        {{ remove_notification() }}
+    {% endif %}
     {% if user_ban_data %}
         <div class="alert alert-danger">
             <p><strong>This account is banned for the following reason:</strong></p>

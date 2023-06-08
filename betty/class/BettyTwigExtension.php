@@ -22,6 +22,7 @@ class BettyTwigExtension extends AbstractExtension
             new TwigFunction('profiler_stats', function () use ($profiler) {
                 $profiler->getStats();
             }),
+            new TwigFunction('remove_notification', [$this, 'RemoveNotification']),
         ];
     }
 
@@ -111,8 +112,6 @@ class BettyTwigExtension extends AbstractExtension
         global $isQoboTV, $bunnySettings, $storage;
         $location = '/dynamic/pfp/' . $username . '.png';
 
-        /* FIXME: PFPs for accounts like Chaziz and Qobo on Qobo.TV end up using the default profile picture
-        / instead of the CDN-hosted profile picture. This does not occur within OpenSB-based pages. -Chaziz 6/3/2023 */
         if($storage->fileExists('..' . $location)) {
             if ($isQoboTV) {
                 $data = "https://" . $bunnySettings["pullZone"] . $location;
@@ -130,5 +129,11 @@ class BettyTwigExtension extends AbstractExtension
         return <<<HTML
 <a style="color: {$user["info"]["color"]}" href="user.php?name={$user["info"]["username"]}">{$user["info"]["username"]}</a>
 HTML;
+    }
+
+    public function RemoveNotification()
+    {
+        unset($_SESSION["notif_message"]);
+        unset($_SESSION["notif_color"]);
     }
 }

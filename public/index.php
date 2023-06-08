@@ -9,7 +9,7 @@ use \Betty\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/betty/class/pages/Index.php';
+require_once dirname(__DIR__) . '/betty/class/Pages/Index.php';
 
 try {
     $index = new \Betty\Pages\Index($betty);

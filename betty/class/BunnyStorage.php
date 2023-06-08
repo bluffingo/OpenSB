@@ -123,13 +123,4 @@ class BunnyStorage implements Storage
         );
         unlink(dirname(__DIR__) . '/..' . $target_thumbnail);
     }
-
-    // DO NOT USE THIS OUTSIDE OF CATTLEDOG SCRIPTS
-    public function cdUpload($local_file_path, $file_path) {
-        $this->edgeStorageApi->uploadFile(
-            storageZoneName: $this->storageZone,
-            fileName: $local_file_path,
-            localFilePath: $file_path,
-        );
-    }
 }

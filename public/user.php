@@ -4,20 +4,24 @@ namespace openSB;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
+if (strtolower($_GET['name']) == "chaziz") {
+    $betty->Notification("Chaziz is working hard, so piss off and let her work!", "/");
+}
+
 $message = '';
 
 if (isset($_GET['id'])) {
     $userpagedata = $sql->fetch("SELECT $accountfields FROM users WHERE id = ?", [$_GET['id']]);
     if (!isset($userpagedata) || !$userpagedata) {
-        error('404', 'The requested user is invalid');
+        $betty->Notification("The requested user is invalid.", "/");
     }
 } else if (isset($_GET['name'])) {
     $userpagedata = $sql->fetch("SELECT $accountfields FROM users WHERE name = ?", [$_GET['name']]);
     if (!isset($userpagedata) || !$userpagedata) {
-        error('404', 'The requested user is invalid');
+        $betty->Notification("The requested user is invalid.", "/");
     }
 } else {
-    error('404', 'No user specified');
+    $betty->Notification("No user has been specified.", "/");
 }
 
 $page = (isset($_GET['p']) && is_numeric($_GET['p']) && $_GET['p'] > 0 ? $_GET['p'] : 1);

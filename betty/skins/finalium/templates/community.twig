@@ -1,0 +1,57 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Community" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-10">
+
+            {% if data.random_submission %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Randomly selected submission</h3>
+                </div>
+                <div class="panel-body">
+                    {{ submission_view(data.random_submission) }}
+                </div>
+                <div class="panel-footer">
+                    {{ data.random_submission.title }}
+                    <br>
+                    <small>By {{ data.random_submission.author.info.username }}, {{ data.random_submission.published | relative_time }}</small>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Suggestions</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="media-list">
+                    {% for suggestion in data.suggestions %}
+                        <li class="media">
+                            <div class="media-left">
+                                <a href="/user.php?name={{ suggestion.author.info.username }}">
+                                    <img class="media-object media-profile-picture img-rounded" src="{{ profile_picture(suggestion.author.info.username) }}">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{ suggestion.title }}</h4>
+                                {% if suggestion.description | trim is not empty %}
+                                    <p>{{ suggestion.description | markdown }}</p>
+                                {% else %}
+                                    <em class="text-muted">This suggestion is empty.</em>
+                                {% endif %}
+                                <div class="media-bottom">By {{ user_link(suggestion.author) }}, <small>{{ suggestion.posted | relative_time }}</small></div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+{% endblock %}

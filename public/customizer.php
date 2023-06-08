@@ -7,7 +7,8 @@ global $betty, $bettyTemplate;
 use \Betty\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
-require_once dirname(__DIR__) . '/betty/class/pages/FooterOptions.php';
+
+require_once dirname(__DIR__) . '/betty/class/Pages/FooterOptions.php';
 
 if (isset($_POST['action'])) {
     $optionsArray = [
@@ -24,6 +25,4 @@ if (isset($_POST['action'])) {
 
 $twig = new Templating($betty, $bettyTemplate);
 
-echo $twig->render('footer_options.twig', [
-    'skins' => $twig->getAllSkinsMetadata(),
-]);
+echo $twig->render('footer_options.twig');

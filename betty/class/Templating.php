@@ -43,6 +43,7 @@ class Templating
         $this->twig->addGlobal('user_data', $auth->getUserData());
         $this->twig->addGlobal('user_ban_data', $auth->getUserBanData());
         $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
+        $this->twig->addGlobal('session', $_SESSION);
     }
 
     /**
