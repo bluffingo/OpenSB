@@ -4,9 +4,6 @@
 
 {% block content %}
     <div>
-        {% if updated %}
-            <div class="alert alert-success">Options changed!</div>
-        {% endif %}
         <div class="row">
             <div class="col-md-10">
                 <div class="panel panel-default">
@@ -43,7 +40,7 @@
                         {% if is_user_logged_in %}
                             <div class="media">
                                 <div class="media-left">
-                                    <a href="/user.php?name={{ user_data }}">
+                                    <a href="/user.php?name={{ user_data.name }}">
                                         <img class="media-object media-profile-picture img-rounded" src="{{ profile_picture(user_data.name) }}">
                                     </a>
                                 </div>

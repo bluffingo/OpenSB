@@ -22,5 +22,4 @@ $twig = new Templating($betty);
 
 echo $twig->render('index.twig', [
     'data' => $data,
-    'updated' => isset($_GET['updated']),
 ]);

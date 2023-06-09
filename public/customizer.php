@@ -19,7 +19,7 @@ if (isset($_POST['action'])) {
     setcookie('SBOPTIONS', base64_encode(json_encode($optionsArray)), 2147483647);
 
     //if (!$error) {
-    redirect("index.php?updated=true");
+    $betty->Notification("Options changed!", "/", "success");
     //}
 }
 
