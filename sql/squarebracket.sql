@@ -161,6 +161,17 @@ CREATE TABLE `tag_meta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
+DROP TABLE IF EXISTS `takedowns`;
+CREATE TABLE `takedowns` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `submission` text NOT NULL,
+  `time` int(11) NOT NULL,
+  `reason` text NOT NULL,
+  `sender` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.',
@@ -211,4 +222,4 @@ CREATE TABLE `views` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- 2023-06-08 01:14:37
+-- 2023-06-09 20:57:52

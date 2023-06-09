@@ -30,9 +30,17 @@ class Submission
     public function __construct(\Betty\Betty $betty, $id)
     {
         $this->database = $betty->getBettyDatabase();
+
+        // check if the submission has been taken down.
+        $takedown = $this->database->fetch("SELECT * FROM takedowns t WHERE t.submission = ?", [$id]);
+        if ($takedown) {
+            // don't load if it has been taken down.
+            $betty->Notification("This submission has been taken down. (" . $takedown["reason"] . ")", "/");
+        }
+
         $this->data = $this->database->fetch("SELECT v.* FROM videos v WHERE v.video_id = ?", [$id]);
         if (!$this->data) {
-            $betty->Notification("This submission does not exist, or is no longer available.", "/");
+            $betty->Notification("This submission does not exist.", "/");
         }
         $this->comments = new Comments($this->database, CommentLocation::Submission, $id);
         $this->author = new User($this->database, $this->data["author"]);

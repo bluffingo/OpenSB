@@ -20,7 +20,7 @@ class Index
     public function __construct(\Betty\Betty $betty)
     {
         $this->database = $betty->getBettyDatabase();
-        $this->submissions = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v ORDER BY RAND() LIMIT 16"));
+        $this->submissions = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) ORDER BY RAND() LIMIT 16"));
         $this->posts = $this->database->fetchArray($this->database->query("SELECT * FROM posts LIMIT 16"));
     }
 
