@@ -2,7 +2,7 @@
 
 namespace openSB;
 
-global $bettyTemplate;
+global $betty;
 
 use \Betty\BettyException;
 

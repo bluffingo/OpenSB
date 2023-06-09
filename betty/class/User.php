@@ -22,6 +22,8 @@ class User
             "displayname" => $this->data["title"],
             "color" => $this->data["customcolor"],
             "followers" => $this->followers,
+            "joined" => $this->data["joined"],
+            "connected" => $this->data["lastview"],
         ];
     }
 }
