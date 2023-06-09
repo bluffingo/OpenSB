@@ -31,20 +31,24 @@ class Community
      */
     public function getData(): array
     {
-        $randomSubmissionAuthor = new User($this->database, $this->random_submission["author"]);
+        if ($this->random_submission) {
+            $randomSubmissionAuthor = new User($this->database, $this->random_submission["author"]);
 
-        $randomSubmissionData = [
-            "id" => $this->random_submission["video_id"],
-            "title" => $this->random_submission["title"],
-            "description" => $this->random_submission["description"],
-            "published" => $this->random_submission["time"],
-            "type" => $this->random_submission["post_type"],
-            "file" => MiscFunctions::getSubmissionFile($this->random_submission),
-            "author" => [
-                "id" => $this->random_submission["author"],
-                "info" => $randomSubmissionAuthor->getUserArray(),
-            ],
-        ];
+            $randomSubmissionData = [
+                "id" => $this->random_submission["video_id"],
+                "title" => $this->random_submission["title"],
+                "description" => $this->random_submission["description"],
+                "published" => $this->random_submission["time"],
+                "type" => $this->random_submission["post_type"],
+                "file" => MiscFunctions::getSubmissionFile($this->random_submission),
+                "author" => [
+                    "id" => $this->random_submission["author"],
+                    "info" => $randomSubmissionAuthor->getUserArray(),
+                ],
+            ];
+        } else {
+            $randomSubmissionData = null;
+        }
 
         $suggestionsData = [];
         foreach ($this->suggestions as $suggestion) {

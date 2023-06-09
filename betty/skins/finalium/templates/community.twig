@@ -20,6 +20,15 @@
                     <small>By {{ data.random_submission.author.info.username }}, {{ data.random_submission.published | relative_time }}</small>
                 </div>
             </div>
+            {% else %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Randomly selected submission</h3>
+                    </div>
+                    <div class="panel-body">
+                        This instance currently has no submissions.
+                    </div>
+                </div>
             {% endif %}
 
             <div class="panel panel-default">
@@ -32,7 +41,7 @@
                         <li class="media">
                             <div class="media-left">
                                 <a href="/user.php?name={{ suggestion.author.info.username }}">
-                                    <img class="media-object media-profile-picture img-rounded" src="{{ profile_picture(suggestion.author.info.username) }}">
+                                    <img class="media-object media-profile-picture img-rounded" src="{{ profile_picture(suggestion.author.info.username) }}" alt="{{ suggestion.author.info.username }}">
                                 </a>
                             </div>
                             <div class="media-body">

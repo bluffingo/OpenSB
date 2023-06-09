@@ -17,6 +17,7 @@ dynamic/art_thumbnails
 
 ## Composer
 vendor/
+composer.phar
 composer.lock
 bootstrap/css/bootstrap.css
 bootstrap/css/bootstrap-theme.css
