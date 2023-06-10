@@ -3,8 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>{{ title }} - {{ website_branding.name }}</title>
-
-    {% block head %}{% endblock %}
     
     <link rel="manifest" href="{{ website_branding.assets_location }}/icons/site.webmanifest">
     <link rel="shortcut icon" href="{{ website_branding.assets_location }}/icons/favicon.ico">
@@ -14,6 +12,16 @@
     <meta name="apple-mobile-web-app-title" content="{{ website_branding.name }}">
     <meta name="application-name" content="{{ website_branding.name }}">
     <meta name="theme-color" content="#ffffff">
+
+    {% block head %}
+        <meta name="description" content="BettySB instance, placeholder.">
+        <meta property="og:title" content="{{ website_branding.name }}" />
+        <meta property="og:type" content="Multimedia sharing site" />
+        <meta property="og:url" content="{{ domain }}" />
+        <meta property="og:image" content="{{ website_branding.assets_location }}/logo.png" />
+        <meta property="og:description" content="BettySB instance, placeholder." />
+        <meta name="theme-color" content="#FF0000">
+    {% endblock %}
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <link rel="preconnect" href="https://rsms.me/">

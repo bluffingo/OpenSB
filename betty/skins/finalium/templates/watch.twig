@@ -2,6 +2,16 @@
 
 {% set title = submission.title %}
 
+{% block head %}
+    <meta name="description" content="{{ submission.description|length > 500 ? submission.description|slice(0, 500) ~ '...' : submission.description }}">
+    <meta property="og:title" content="{{ submission.title }}" />
+    <meta property="og:type" content="Video" />
+    <meta property="og:url" content="{{ domain }}" />
+    <meta property="og:image" content="{{ thumbnail(submission.id, submission.type) }}" />
+    <meta property="og:description" content="{{ submission.description|length > 500 ? submission.description|slice(0, 500) ~ '...' : submission.description }}" />
+    <meta name="theme-color" content="#FF0000">
+{% endblock %}
+
 {% block scripts %}
     <script src="/assets/rater.js"></script>
     <script>
@@ -66,7 +76,7 @@
                     </button>
                     <p>Submitted {{ submission.published | relative_time }} on {{ submission.published | date('F j, Y') }}</p>
                     {% if submission.description | trim is not empty %}
-                    {{ submission.description | markdown }}
+                        {{ submission.description | markdown }}
                     {% else %}
                         <em class="text-muted">This submission has no description.</em>
                     {% endif %}
@@ -76,21 +86,21 @@
                 <div class="panel-body" style="word-break: break-all;">
                     <h4>Comments</h4>
                     {% for comment in submission.comments %}
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="/user.php?name={{ comment.author.info.username }}">
-                                <img class="media-object media-profile-picture img-rounded" src="{{ profile_picture(comment.author.info.username) }}">
-                            </a>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="/user.php?name={{ comment.author.info.username }}">
+                                    <img class="media-object media-profile-picture img-rounded" src="{{ profile_picture(comment.author.info.username) }}">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{ user_link(comment.author) }} <small>{{ comment.posted | relative_time }}</small></h4>
+                                {% if comment.post | trim is not empty %}
+                                    <p>{{ comment.post | markdown }}</p>
+                                {% else %}
+                                    <em class="text-muted">This comment is empty, due to a now-patched exploit.</em>
+                                {% endif %}
+                            </div>
                         </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{ user_link(comment.author) }} <small>{{ comment.posted | relative_time }}</small></h4>
-                            {% if comment.post | trim is not empty %}
-                                <p>{{ comment.post | markdown }}</p>
-                            {% else %}
-                                <em class="text-muted">This comment is empty, due to a now-patched exploit.</em>
-                            {% endif %}
-                        </div>
-                    </div>
                     {% endfor %}
                 </div>
             </div>
