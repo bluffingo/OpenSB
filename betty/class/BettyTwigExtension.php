@@ -23,6 +23,7 @@ class BettyTwigExtension extends AbstractExtension
                 $profiler->getStats();
             }),
             new TwigFunction('remove_notification', [$this, 'RemoveNotification']),
+            new TwigFunction('show_ratings', [$this, 'ShowRatings']),
         ];
     }
 
@@ -43,6 +44,23 @@ class BettyTwigExtension extends AbstractExtension
                 $markdown = new Parsedown();
                 $markdown->setSafeMode(true);
                 return $markdown->line($text);
+            }, ['is_safe' => ['html']]),
+
+            // Markdown function for any posts.
+            new TwigFilter('markdown_user_written', function ($text) {
+                $markdown = new Parsedown();
+                $markdown->setSafeMode(true);
+
+                $parsed_text = $markdown->line($text);
+
+                // Mentions
+                $parsed_text = preg_replace('/(?<!\S)@([0-9a-zA-Z]+)/', '<a href="/user?name=$1">@$1</a>', $parsed_text);
+
+                // Hashtags
+                $parsed_text = preg_replace('/(?<!\S)#([0-9a-zA-Z]+)/', '<a href="/search?tags=$1">#$1</a>', $parsed_text);
+
+                return $parsed_text;
+
             }, ['is_safe' => ['html']]),
 
             // Markdown function for non-inline text. **NOT SANITIZED, DON'T LET IT EVER TOUCH USER INPUT**
@@ -135,5 +153,37 @@ HTML;
     {
         unset($_SESSION["notif_message"]);
         unset($_SESSION["notif_color"]);
+    }
+
+    public function ShowRatings($ratings): void
+    {
+        $full = "/assets/stars_placeholder/star_gold.png";
+        $half = "/assets/stars_placeholder/star_gold_half_grey.png";
+        $empty = "/assets/stars_placeholder/star_grey.png";
+
+        $full_stars = substr($ratings["average"], 0, 1);
+        $half_stars = substr($ratings["average"], 2, 1);
+
+        $number = 0;
+
+        for ($x = 0; $x < $full_stars; $x++) {
+            $number++;
+            echo "<img src='$full'/>";
+        }
+
+        if ($half_stars) {
+            $number++;
+            if ($full_stars != 4) {
+                echo "<img src='$half'/>";
+            } else {
+                echo "<img src='$full'/>";
+            }
+        }
+
+        while($number != 5) {
+            $number++;
+            echo "<img src='$empty'/>";
+        }
+
     }
 }

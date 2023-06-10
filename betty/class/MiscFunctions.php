@@ -35,4 +35,34 @@ class MiscFunctions
         }
         return $submission['videofile'];
     }
+
+    /**
+     * Calculate the submission's ratings.
+     *
+     * @since openSB Beta 3.0
+     */
+    public static function calculateRatings($ratings): array
+    {
+        $total_ratings = ($ratings["1"] +
+            $ratings["2"] +
+            $ratings["3"] +
+            $ratings["4"] +
+            $ratings["5"]);
+
+        if($total_ratings == 0) {
+            $average_ratings = 0;
+        } else {
+            $average_ratings = ($ratings["1"] +
+                    $ratings["2"] * 2 +
+                    $ratings["3"] * 3 +
+                    $ratings["4"] * 4 +
+                    $ratings["5"] * 5) / $total_ratings;
+        }
+
+        return [
+            "stars" => $ratings,
+            "total" => $total_ratings,
+            "average" => $average_ratings,
+        ];
+    }
 }

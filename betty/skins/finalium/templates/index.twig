@@ -26,6 +26,9 @@
                                         {% endif %}
                                     </a>
                                     <p>By {{ user_link(submission.author) }}, {{ submission.published | relative_time }}</p>
+                                    <div>
+                                        {{ show_ratings(submission.interactions.ratings) }}
+                                    </div>
                                 </div>
                             </div>
                         {% endfor %}
@@ -62,7 +65,7 @@
                                 <div class="media-body">
                                     <h4 class="media-heading">{{ user_link(post.author) }} <small>{{ post.posted | relative_time }}</small></h4>
                                     {% if post.post | trim is not empty %}
-                                        <p>{{ post.post | markdown }}</p>
+                                        <p>{{ post.post | markdown_user_written }}</p>
                                     {% else %}
                                         <em class="text-muted">This post is empty.</em>
                                     {% endif %}

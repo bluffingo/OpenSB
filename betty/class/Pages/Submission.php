@@ -69,28 +69,6 @@ class Submission
      */
     public function getSubmission(): array
     {
-        $total_ratings = ($this->ratings["1"] +
-            $this->ratings["2"] +
-            $this->ratings["3"] +
-            $this->ratings["4"] +
-            $this->ratings["5"]);
-
-        if($total_ratings == 0) {
-            $average_ratings = 0;
-        } else {
-            $average_ratings = ($this->ratings["1"] +
-                    $this->ratings["2"] * 2 +
-                    $this->ratings["3"] * 3 +
-                    $this->ratings["4"] * 4 +
-                    $this->ratings["5"] * 5) / $total_ratings;
-        }
-
-        $ratings = [
-            "stars" => $this->ratings,
-            "total" => $total_ratings,
-            "average" => $average_ratings,
-        ];
-
         return [
             "int_id" => $this->data["id"],
             "id" => $this->data["video_id"],
@@ -104,7 +82,7 @@ class Submission
                 "info" => $this->author->getUserArray(),
             ],
             "interactions" => [
-                "ratings" => $ratings,
+                "ratings" => MiscFunctions::calculateRatings($this->ratings),
                 "favorites" => $this->favorites,
             ],
             "comments" => $this->comments->getComments(),

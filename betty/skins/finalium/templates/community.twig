@@ -76,7 +76,7 @@
                                 <div class="media-body">
                                     <h4 class="media-heading">{{ user_link(comment.author) }} <small>{{ comment.posted | relative_time }}</small></h4>
                                     {% if comment.post | trim is not empty %}
-                                        <p>{{ comment.post | markdown }}</p>
+                                        <p>{{ comment.post | markdown_user_written }}</p>
                                     {% else %}
                                         <em class="text-muted">This comment is empty, due to a now-patched exploit.</em>
                                     {% endif %}

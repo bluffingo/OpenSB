@@ -2,6 +2,7 @@
 
 namespace Betty\Pages;
 
+use Betty\MiscFunctions;
 use Betty\User;
 use Betty\BettyException;
 use Betty\Database;
@@ -35,6 +36,15 @@ class Index
     {
         $submissionsData = [];
         foreach ($this->submissions as $submission) {
+
+            $ratingData = [
+                "1" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$submission["id"]]),
+                "2" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$submission["id"]]),
+                "3" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=3", [$submission["id"]]),
+                "4" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=4", [$submission["id"]]),
+                "5" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$submission["id"]]),
+            ];
+
             $userData = new User($this->database, $submission["author"]);
             $submissionsData[] =
                 [
@@ -46,6 +56,9 @@ class Index
                     "author" => [
                         "id" => $submission["author"],
                         "info" => $userData->getUserArray(),
+                    ],
+                    "interactions" => [
+                        "ratings" => MiscFunctions::calculateRatings($ratingData),
                     ],
                 ];
             }
