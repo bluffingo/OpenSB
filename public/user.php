@@ -4,10 +4,6 @@ namespace openSB;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-if (strtolower($_GET['name']) == "chaziz") {
-    $betty->Notification("Chaziz is working hard, so piss off and let her work!", "/");
-}
-
 $message = '';
 
 if (isset($_GET['id'])) {

@@ -26,9 +26,8 @@ $bettyTemplate = "finalium"; // Template used by pages based on Betty.
 
 // Branding
 $branding = [
-	"name" => "an openSB Instance",
+    "name" => "a BettySB Instance",
 	"assets_location" => "/assets/placeholder",
-	"css_override" => false, // change to location of custom finalium overrides.
 ];
 
 $isQoboTV = false; // if enabled, storage is switched to use bunnycdn. this is for a constraint regarding qobo.

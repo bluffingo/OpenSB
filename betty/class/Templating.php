@@ -19,7 +19,7 @@ class Templating
 
     public function __construct(\Betty\Betty $betty)
     {
-        global $googleTag, $isQoboTV, $auth, $bettyTemplate, $isDebug;
+        global $googleTag, $isQoboTV, $auth, $bettyTemplate, $isDebug, $branding;
         chdir(__DIR__ . '/..');
         $this->skin = $betty->getLocalOptions()["skin"] ?? $bettyTemplate;
         $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
@@ -44,6 +44,7 @@ class Templating
         $this->twig->addGlobal('user_ban_data', $auth->getUserBanData());
         $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
         $this->twig->addGlobal('session', $_SESSION);
+        $this->twig->addGlobal('website_branding', $branding);
     }
 
     /**
