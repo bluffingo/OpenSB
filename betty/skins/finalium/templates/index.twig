@@ -38,7 +38,7 @@
                         <h3 style="margin-top:0">Posts</h3>
                         <ul class="media-list">
                         {% if is_user_logged_in %}
-                            <div class="media">
+                            <li class="media">
                                 <div class="media-left">
                                     <a href="/user.php?name={{ user_data.name }}">
                                         <img class="media-object media-profile-picture img-rounded" src="{{ profile_picture(user_data.name) }}">
@@ -50,10 +50,10 @@
                                 <div class="media-right">
                                     <button class="btn btn-primary">Post</button>
                                 </div>
-                            </div>
+                            </li>
                         {% endif %}
                         {% for post in data.posts %}
-                            <div class="media">
+                            <li class="media">
                                 <div class="media-left">
                                     <a href="/user.php?name={{ post.author.info.username }}">
                                         <img class="media-object media-profile-picture img-rounded" src="{{ profile_picture(post.author.info.username) }}">
@@ -67,7 +67,7 @@
                                         <em class="text-muted">This post is empty.</em>
                                     {% endif %}
                                 </div>
-                            </div>
+                            </li>
                         {% endfor %}
                         </ul>
                     </div>

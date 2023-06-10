@@ -60,7 +60,35 @@
             </div>
         </div>
         <div class="col-md-6">
-
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Recent comments</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="media-list">
+                        {% for comment in data.comments %}
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="/user.php?name={{ comment.author.info.username }}">
+                                        <img class="media-object media-profile-picture img-rounded" src="{{ profile_picture(comment.author.info.username) }}">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{ user_link(comment.author) }} <small>{{ comment.posted | relative_time }}</small></h4>
+                                    {% if comment.post | trim is not empty %}
+                                        <p>{{ comment.post | markdown }}</p>
+                                    {% else %}
+                                        <em class="text-muted">This comment is empty, due to a now-patched exploit.</em>
+                                    {% endif %}
+                                    <div class="media-bottom">
+                                        <em class="text-muted">{{ comment.submission_data.title }}</em>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

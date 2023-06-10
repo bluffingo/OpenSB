@@ -50,8 +50,6 @@ class Submission
             $betty->Notification("This submission's author is banned.", "/");
         }
 
-
-
         $this->ratings = [
             "1" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$this->data["id"]]),
             "2" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$this->data["id"]]),

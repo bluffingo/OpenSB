@@ -2,6 +2,8 @@
 
 namespace Betty\Pages;
 
+use Betty\CommentLocation;
+use Betty\Comments;
 use Betty\MiscFunctions;
 use Betty\User;
 
@@ -20,6 +22,7 @@ class Community
         $this->database = $betty->getBettyDatabase();
         $this->suggestions = $this->database->fetchArray($this->database->query("SELECT * FROM suggestions ORDER BY RAND() LIMIT 5"));
         $this->random_submission = $this->database->fetch("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) ORDER BY RAND() LIMIT 1");
+        $this->comments = new Comments($this->database, CommentLocation::CommunityPage);
     }
 
     /**
@@ -69,6 +72,7 @@ class Community
         return [
             "random_submission" => $randomSubmissionData,
             "suggestions" => $suggestionsData,
+            "comments" => $this->comments->getComments(),
         ];
     }
 }
