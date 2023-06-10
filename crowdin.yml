@@ -1,3 +1,0 @@
-files:
-  - source: /private/lang/template.json
-    translation: /private/lang/%locale%.json

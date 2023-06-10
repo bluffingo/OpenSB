@@ -3,6 +3,9 @@
 namespace Betty;
 
 global $host, $user, $pass, $db, $buildNumber, $gitBranch;
+
+use GUMP;
+
 foreach (glob(dirname(__DIR__) . "/betty/interfaces/*.php") as $file) {
     require_once($file);
 }
@@ -90,6 +93,7 @@ $betty = new \Betty\Betty($host, $user, $pass, $db);
 $opensb_version = new \Betty\OpenSbVersion($buildNumber, $gitBranch);
 $auth = new \Betty\Authentication($betty->getBettyDatabase(), $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new \Betty\Profiler();
+$gump = new GUMP('en');
 
 if ($isQoboTV) {
     $storage = new \Betty\BunnyStorage;

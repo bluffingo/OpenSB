@@ -4,9 +4,12 @@
 
 {% block content %}
 
-    {% if error %}
-        <div class="alert alert-danger" role="alert">{{ error }}</div>
-        <br>
+    {% if errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for error in errors %}
+                {{ error }}.
+            {% endfor %}
+        </div>
     {% endif %}
     <div class="panel panel-default">
         <div class="panel-body">

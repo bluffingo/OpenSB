@@ -131,7 +131,7 @@ function randstr($len, $charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHI
 $userdata['timezone'] = 'America/New York';
 
 if ($googleAPI) {
-    $session = $_COOKIE['_ga'] ?? $_COOKIE['_gid'] ?? $_COOKIE['SBTOKEN'] ?? randstr(32); // THIS IS STUPID SHIT AND WILL BREAK
+    $session = $_COOKIE['_ga'] ?? $_COOKIE['_gid'] ?? randstr(32); // THIS IS STUPID SHIT AND WILL BREAK
 
 // FIXME: MOVE THIS TO BETTY
     $ga = new Service($googleAPI);
