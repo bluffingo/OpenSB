@@ -11,18 +11,31 @@
             rating:{{ submission.interactions.ratings.average }},
             element:document.querySelector("#rater"),
             rateCallback:function rateCallback(rating, done) {
+                fetch("/api/finalium/submission_interaction.php", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        action: "rate",
+                        number: rating,
+                        submission: submission_int_id,
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                }).then((response) => response.json()).then((json) => { if(json["error"]) { error(json["error"])}})
                 this.setRating(rating);
                 done();
             }
         });
     </script>
+
+    <script>
+        submission_id = '{{ submission.id }}';
+        submission_int_id = '{{ submission.int_id }}';
+        user_id = '{{ submission.author.id }}';
+    </script>
 {% endblock %}
 
 {% block content %}
-    <script>
-        submission_id = '{{ submission.id }}';
-        user_id = '{{ submission.author.id }}';
-    </script>
     <div class="row">
         <div class="col-md-10">
             {{ submission_view(submission) }}

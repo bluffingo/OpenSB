@@ -46,9 +46,12 @@ class Submission
         }
         $this->comments = new Comments($this->database, CommentLocation::Submission, $id);
         $this->author = new User($this->database, $this->data["author"]);
-        if (!$this->author) {
-            throw new BettyException('Submission author does not exist.', 500);
+        if ($this->author->isUserBanned()) {
+            $betty->Notification("This submission's author is banned.", "/");
         }
+
+
+
         $this->ratings = [
             "1" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$this->data["id"]]),
             "2" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$this->data["id"]]),
@@ -91,6 +94,7 @@ class Submission
         ];
 
         return [
+            "int_id" => $this->data["id"],
             "id" => $this->data["video_id"],
             "title" => $this->data["title"],
             "description" => $this->data["description"],

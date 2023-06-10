@@ -1,7 +1,8 @@
+function error(error) {
+    console.error("BettySB Finalium Frontend Error: " + error);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    function error(error) {
-        console.error("BettySB Finalium Frontend Error: " + error);
-    }
 
     let favorite_button = (document.getElementById('submission-favorite'));
 

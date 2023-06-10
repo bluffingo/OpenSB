@@ -37,6 +37,15 @@ class Authentication
         return $this->is_logged_in;
     }
 
+    public function getUserID(): ?int
+    {
+        if ($this->is_logged_in) {
+            return $this->user_id;
+        } else {
+            return null;
+        }
+    }
+
     public function getUserData(): ?array
     {
         if ($this->is_logged_in) {
