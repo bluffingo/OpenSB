@@ -69,7 +69,11 @@ class Submission
      */
     public function getSubmission(): array
     {
+        global $auth;
+        if ($auth->getUserID() == $this->data["author"]) { $owner = true; } else { $owner = false; }
+
         return [
+            "is_owner" => $owner,
             "int_id" => $this->data["id"],
             "id" => $this->data["video_id"],
             "title" => $this->data["title"],

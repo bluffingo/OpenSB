@@ -2,38 +2,24 @@
 
 namespace openSB;
 
+global $betty;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-if ($userbandata) {
-    error(403, __("You are currently banned and cannot proceed with this action."));
-}
+require_once dirname(__DIR__) . '/betty/class/Pages/SubmissionEdit.php';
 
 if (isset($_POST['upload'])) {
-    $id = $_POST['vid_id'];
-    $videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
-    if ($videoData['author'] != $userdata['id']) {
-        error('403', __("You cannot modify someone else's submission."));
-    } else {
-        $title = $_POST['title'] ?? null;
-        $desc = $_POST['desc'] ?? null;
-
-        $sql->query("UPDATE videos SET title = ?, description = ? WHERE video_id = ?",
-            [$title, $desc, $id]);
-        die("Your submission's information has been modified.");
-    }
+    $id = ($_POST['vid_id'] ?? null);
+} else {
+    $id = ($_GET['v'] ?? null);
 }
 
-$id = ($_GET['v'] ?? null);
+$page = new \Betty\Pages\SubmissionEdit($betty, $id);
 
-$videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
-
-if (!$videoData) error('404', __("This submission cannot be found."));
-
-if ($videoData['author'] != $userdata['id']) {
-    error('403', __("You cannot modify someone else's submission."));
+if (isset($_POST['upload'])) {
+    $page->post($_POST);
 }
 
-$twig = twigloader();
+$twig = new \Betty\Templating($betty);
 echo $twig->render('edit.twig', [
-    'video' => $videoData,
+    'data' => $page->getData(),
 ]);

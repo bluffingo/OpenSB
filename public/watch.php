@@ -14,8 +14,8 @@ $id = ($_GET['v'] ?? null);
 $ip = getUserIpAddr();
 
 try {
-    $submission = new \Betty\Pages\Submission($betty, $id);
-    $data = $submission->getSubmission();
+    $page = new \Betty\Pages\Submission($betty, $id);
+    $data = $page->getSubmission();
 } catch (BettyException $e) {
     $e->page();
 }

@@ -69,10 +69,15 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-body" style="word-break: break-all;">
-                    <button class="btn btn-default pull-right" id="submission-favorite">
-                        Favorite
-                        <span class="label label-default" id="submission-favorites">{{ submission.interactions.favorites }}</span>
-                    </button>
+                    <div class="pull-right">
+                        <button class="btn btn-default" id="submission-favorite">
+                            Favorite
+                            <span class="label label-default" id="submission-favorites">{{ submission.interactions.favorites }}</span>
+                        </button>
+                        {% if submission.is_owner %}
+                            <a class="btn btn-primary" href="/edit?v={{ submission.id }}">Edit</a>
+                        {% endif %}
+                    </div>
                     <p>Submitted {{ submission.published | relative_time }} on {{ submission.published | date('F j, Y') }}</p>
                     {% if submission.description | trim is not empty %}
                         {{ submission.description | markdown_user_written }}
