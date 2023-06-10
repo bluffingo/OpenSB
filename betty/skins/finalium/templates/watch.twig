@@ -9,7 +9,6 @@
     <meta property="og:url" content="{{ domain }}" />
     <meta property="og:image" content="{{ thumbnail(submission.id, submission.type) }}" />
     <meta property="og:description" content="{{ submission.description|length > 500 ? submission.description|slice(0, 500) ~ '...' : submission.description }}" />
-    <meta name="theme-color" content="#FF0000">
 {% endblock %}
 
 {% block scripts %}
