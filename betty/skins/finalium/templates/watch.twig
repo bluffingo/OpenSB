@@ -2,6 +2,22 @@
 
 {% set title = submission.title %}
 
+{% block scripts %}
+    <script src="/assets/rater.js"></script>
+    <script>
+        var starRating = raterJs( {
+            max:5,
+            starSize:20,
+            rating:{{ submission.interactions.ratings.average }},
+            element:document.querySelector("#rater"),
+            rateCallback:function rateCallback(rating, done) {
+                this.setRating(rating);
+                done();
+            }
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
     <script>
         submission_id = '{{ submission.id }}';
@@ -13,6 +29,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3 style="margin-top: 0;word-break: break-all;">{{ submission.title }}</h3>
+                    <em class="text-muted">Interactions currently aren't implemented.</em>
                     <div class="row">
                         <div class="col-md-8 col-xs-8">
                             <img class="img-rounded" style="width: 32px;" src="{{ profile_picture(submission.author.info.username) }}">
@@ -23,24 +40,17 @@
                             </button>
                         </div>
                         <div class="col-md-8 col-xs-8 text-right">
-                            <button class="btn btn-default" id="submission-like">
-                                Like
-                                <span class="label label-default" id="submission-likes">{{ submission.interactions.likes }}</span>
-                            </button>
-                            <button class="btn btn-default" id="submission-dislike">
-                                Dislike
-                                <span class="label label-default" id="submission-dislikes">{{ submission.interactions.dislikes }}</span>
-                            </button>
-                            <button class="btn btn-default" id="submission-favorite">
-                                Favorite
-                                <span class="label label-default" id="submission-favorites">{{ submission.interactions.favorites }}</span>
-                            </button>
+                            <div id="rater"></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-body" style="word-break: break-all;">
+                    <button class="btn btn-default pull-right" id="submission-favorite">
+                        Favorite
+                        <span class="label label-default" id="submission-favorites">{{ submission.interactions.favorites }}</span>
+                    </button>
                     <p>Submitted {{ submission.published | relative_time }} on {{ submission.published | date('F j, Y') }}</p>
                     {% if submission.description | trim is not empty %}
                     {{ submission.description | markdown }}

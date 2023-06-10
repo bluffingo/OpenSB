@@ -8,6 +8,7 @@ use Betty\BettyException;
 use Betty\CommentLocation;
 use Betty\Comments;
 use Betty\Database;
+use Betty\SubmissionData;
 
 /**
  * Backend code for the submission view (watch) page.
@@ -17,10 +18,10 @@ use Betty\Database;
 class Submission
 {
     private \Betty\Database $database;
+    private \Betty\SubmissionData $submission;
     private $data;
     private $comments;
-    private $likes;
-    private $dislikes;
+    private $ratings;
     private $favorites;
     private $author;
 
@@ -30,15 +31,16 @@ class Submission
     public function __construct(\Betty\Betty $betty, $id)
     {
         $this->database = $betty->getBettyDatabase();
+        $this->submission = new \Betty\SubmissionData($this->database, $id);
 
         // check if the submission has been taken down.
-        $takedown = $this->database->fetch("SELECT * FROM takedowns t WHERE t.submission = ?", [$id]);
+        $takedown = $this->submission->getTakedown();
         if ($takedown) {
             // don't load if it has been taken down.
             $betty->Notification("This submission has been taken down. (" . $takedown["reason"] . ")", "/");
         }
 
-        $this->data = $this->database->fetch("SELECT v.* FROM videos v WHERE v.video_id = ?", [$id]);
+        $this->data = $this->submission->getData();
         if (!$this->data) {
             $betty->Notification("This submission does not exist.", "/");
         }
@@ -47,8 +49,13 @@ class Submission
         if (!$this->author) {
             throw new BettyException('Submission author does not exist.', 500);
         }
-        $this->likes = $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$id]);
-        $this->dislikes = $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=0", [$id]);
+        $this->ratings = [
+            "1" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$this->data["id"]]),
+            "2" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$this->data["id"]]),
+            "3" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=3", [$this->data["id"]]),
+            "4" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=4", [$this->data["id"]]),
+            "5" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$this->data["id"]]),
+        ];
         $this->favorites = $this->database->result("SELECT COUNT(video_id) FROM favorites WHERE video_id=?", [$id]);
     }
 
@@ -61,6 +68,28 @@ class Submission
      */
     public function getSubmission(): array
     {
+        $total_ratings = ($this->ratings["1"] +
+            $this->ratings["2"] +
+            $this->ratings["3"] +
+            $this->ratings["4"] +
+            $this->ratings["5"]);
+
+        if($total_ratings == 0) {
+            $average_ratings = 0;
+        } else {
+            $average_ratings = ($this->ratings["1"] +
+                    $this->ratings["2"] * 2 +
+                    $this->ratings["3"] * 3 +
+                    $this->ratings["4"] * 4 +
+                    $this->ratings["5"] * 5) / $total_ratings;
+        }
+
+        $ratings = [
+            "stars" => $this->ratings,
+            "total" => $total_ratings,
+            "average" => $average_ratings,
+        ];
+
         return [
             "id" => $this->data["video_id"],
             "title" => $this->data["title"],
@@ -73,8 +102,7 @@ class Submission
                 "info" => $this->author->getUserArray(),
             ],
             "interactions" => [
-                "likes" => $this->likes,
-                "dislikes" => $this->dislikes,
+                "ratings" => $ratings,
                 "favorites" => $this->favorites,
             ],
             "comments" => $this->comments->getComments(),
