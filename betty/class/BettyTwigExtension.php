@@ -48,16 +48,18 @@ class BettyTwigExtension extends AbstractExtension
 
             // Markdown function for any posts.
             new TwigFilter('markdown_user_written', function ($text) {
-                $markdown = new Parsedown();
+                $markdown = new ParsedownExtension();
                 $markdown->setSafeMode(true);
+                $markdown->setUrlsLinked(true);
 
-                $parsed_text = $markdown->line($text);
-
-                // Mentions
-                $parsed_text = preg_replace('/(?<!\S)@([0-9a-zA-Z]+)/', '<a href="/user?name=$1">@$1</a>', $parsed_text);
+                $parsed_text = $markdown->text($text);
 
                 // Hashtags
-                $parsed_text = preg_replace('/(?<!\S)#([0-9a-zA-Z]+)/', '<a href="/search?tags=$1">#$1</a>', $parsed_text);
+                $parsed_text = preg_replace('/(?<!=|\b|&)#([a-z0-9_]+)/i', '<a href="/search?tags=$1">#$1</a>', $parsed_text);
+
+                // Mentions
+                $parsed_text = preg_replace('/(?<!=|\b|&)@([a-z0-9_]+)/i', '<a href="/user?name=$1">@$1</a>', $parsed_text);
+
 
                 return $parsed_text;
 
