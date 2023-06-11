@@ -2,8 +2,24 @@
 
 namespace openSB;
 
+global $betty;
+
+use Betty\BettyException;
+
 require_once dirname(__DIR__) . '/private/class/common.php';
 
+require_once dirname(__DIR__) . '/betty/class/Pages/Profile.php';
+
+$id = ($_GET['name'] ?? null);
+
+try {
+    $page = new \Betty\Pages\Profile($betty, $id);
+    $data = $page->getData();
+} catch (BettyException $e) {
+    $e->page();
+}
+
+/*
 $message = '';
 
 if (isset($_GET['id'])) {
@@ -71,4 +87,11 @@ echo $twig->render("user.twig", [
     'subscribers' => $subscribers,
     'views' => $totalViews,
     'bannerExists' => ($bannerExists ?? false),
+]);
+    */
+
+$twig = new \Betty\Templating($betty);
+
+echo $twig->render('profile.twig', [
+    'data' => $data,
 ]);
