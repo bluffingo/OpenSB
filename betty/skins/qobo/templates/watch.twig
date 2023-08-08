@@ -1,0 +1,55 @@
+{% extends "_layout.twig" %}
+
+{% set title = submission.title %}
+
+{% block scripts %}
+    <script src="/assets/rater.js"></script>
+    <script>
+        var starRating = raterJs( {
+            max:5,
+            starSize:20,
+            rating:{{ submission.interactions.ratings.average }},
+            element:document.querySelector("#rater"),
+            rateCallback:function rateCallback(rating, done) {
+                fetch("/api/finalium/submission_interaction.php", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        action: "rate",
+                        number: rating,
+                        submission: submission_int_id,
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                }).then((response) => response.json()).then((json) => { if(json["error"]) { error(json["error"])}})
+                this.setRating(rating);
+                done();
+            }
+        });
+    </script>
+
+    <script>
+        submission_id = '{{ submission.id }}';
+        submission_int_id = '{{ submission.int_id }}';
+        user_id = '{{ submission.author.id }}';
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    <div id="page-left" style="width: 680px;">
+        <h1>{{ submission.title }}</h1>
+        {{ submission_view(submission) }}
+        <div>
+            {% if submission.description | trim is not empty %}
+                {{ submission.description | markdown_user_written }}
+            {% else %}
+                <p>This submission has no description.</p>
+            {% endif %}
+            <small>Submitted on {{ submission.published | date('F j, Y') }} by {{ user_link(submission.author) }}</small>
+        </div>
+        <div>
+            <div id="rater"></div>
+        </div>
+    </div>
+{% endblock %}

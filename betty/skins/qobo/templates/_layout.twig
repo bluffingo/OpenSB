@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>{{ title }} - Qobo Beta</title>
+    <link rel="stylesheet" href="theme/common.css">
+    <link rel="stylesheet" href="theme/famfamfam-silk.min.css">
+    <link rel="stylesheet" href="theme/silk-companion.min.css">
+    <meta name="theme-color" content="#ff9800">
+</head>
+<body>
+<div class="page">
+    <div class="header-user">
+        <div class="header-user-links">
+            {% if is_user_logged_in %}
+                <a class="menulink" href="/user.php?name={{ user_data.name }}">{{ user_data.name }}</a> -
+                <a class="menulink" href="/settings.php">Settings</a> -
+                {% if user_data.powerlevel > 2 %}
+                    <a class="menulink" href="/admin.php">Admin panel</a> -
+                {% endif %}
+                <a class="menulink" href="logout.php">Log out</a>
+            {% else %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="header">
+        <div class="header-logo">
+            <a href="/index.php"><img alt="Qobo Beta" src="/img/qobo.gif"></a>
+        </div>
+        <div class="header-links">
+            <a class="menulink" href="/browse.php">Browse</a> -
+            <a class="menulink" href="/users.php">Users</a> -
+            <a class="menulink" href="/community.php">Community</a>
+        </div>
+    </div>
+    <form action="login.php" method="post" name="logout">
+        <input type="hidden" name="action" value="logout">
+    </form>
+    <div class="page-contents">
+        {% block content %}{% endblock %}
+        <div class="footer">
+            <p>© 2021-{{ 'now' | date('Y') }} BettySB contributors.</p>
+        </div>
+    </div>
+</div>
+{% block scripts %}{% endblock %}
+</body>
+</html>

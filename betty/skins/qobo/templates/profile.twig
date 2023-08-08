@@ -1,0 +1,33 @@
+{% extends "_layout.twig" %}
+
+{% set title = user.username %}
+
+{% block content %}
+    <div id="page-left" style="width: 180px;">
+        <div class="profile-box" style="background: {{ data.color }}">
+            <div class="profile-box-username">{{ data.username }}</div>
+            <img src="{{ profile_picture(data.username) }}" width="125">
+        </div>
+    </div>
+    <div id="page-right" style="width: 730px;">
+        <ul>
+            <li>Username: {{ data.username }}</li>
+            <li>
+                Description:
+                {% if data.about %}
+                    {{ data.about }}
+                {% else %}
+                    <em class="text-muted">This user has no description.</em>
+                {% endif %}
+            </li>
+        </ul>
+        <ul>
+            <li>
+                Joined: {{ data.joined | relative_time }}
+            </li>
+            <li>
+                Last seen: {{ data.connected | relative_time }}
+            </li>
+        </ul>
+    </div>
+{% endblock %}

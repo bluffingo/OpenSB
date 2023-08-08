@@ -1,0 +1,72 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Index" %}
+
+{% block content %}
+    <div id="page-left" style="width: 680px;">
+        <div class="content-box">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tbody>
+                <tr>
+                    <td width="33%">
+                        <h1>Watch</h1>
+                        Instantly find and watch hundreds of submissions.
+                    </td>
+                    <td width="33%">
+                        <h1>Submit</h1>
+                        Quickly submit and tag videos and images.
+                    </td>
+                    <td width="34%">
+                        <h1>Share</h1>
+                        Easily share your submissions with anyone.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-header">Randomized list of submissions</div>
+        <div class="content-box">
+            {% for submission in data.submissions %}
+                <div class="content-entry">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr valign="top">
+                            <td>
+                                <a href="/watch.php?v={{ submission.id }}">
+                                    <img src="{{ thumbnail(submission.id, submission.type) }}" width="120"
+                                         alt="{{ submission.title }}" class="content-image">
+                                </a>
+                            </td>
+                            <td>
+                                <div class="content-title">
+                                    <a href="/watch.php?v={{ submission.id }}">
+                                        {{ submission.title }}
+                                    </a>
+                                </div>
+                                <div class="content-description">
+                                    By {{ user_link(submission.author) }}
+                                    <br>
+                                    {% if submission.description|trim is not empty %}
+                                        <span>{{ submission.description }}</span>
+                                    {% else %}
+                                        <span class="fade">No description.</span>
+                                    {% endif %}
+                                </div>
+                                <div class="content-ratings">
+                                    {{ show_ratings(submission.interactions.ratings) }}
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="page-right" style="width: 260px;">
+        <div class="content-header">What's new?</div>
+        <div class="content-box">
+            Just another redesign of Qobo. This time, we've also started over with the codebase, again.
+        </div>
+    </div>
+{% endblock %}

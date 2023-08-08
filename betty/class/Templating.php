@@ -61,6 +61,7 @@ class Templating
     {
         return [
             "finalium" => "skins/finalium/",
+            "qobo" => "skins/qobo/",
         ];
     }
 
