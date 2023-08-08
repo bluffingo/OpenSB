@@ -1,0 +1,24 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Users" %}
+
+	{% block content %}
+		<table class="c1">
+			<tr class="h">
+				<th style="width:50px">ID</th>
+				<th>Username</th>
+				<th style="width:180px">Registered on</th>
+				<th style="width:80px">Submissions</th>
+				<th style="width:80px">Followers</th>
+			</tr>
+			{% for user in users %}
+				<tr>
+					<td>{{ user.id }}</td>
+					<td>{{ user_link(user) }}</td>
+					<td class="center">{{ user.info.joined | date('Y-m-d H:i') }}</td>
+					<td class="center">{{ user.submissions }}</td>
+					<td class="center">{{ user.info.followers }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% endblock %}
