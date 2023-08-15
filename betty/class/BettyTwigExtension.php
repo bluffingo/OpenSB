@@ -24,6 +24,7 @@ class BettyTwigExtension extends AbstractExtension
             }),
             new TwigFunction('remove_notification', [$this, 'RemoveNotification']),
             new TwigFunction('show_ratings', [$this, 'ShowRatings']),
+            new TwigFunction('notification_icon', [$this, 'NotificationIcon']),
         ];
     }
 
@@ -159,9 +160,9 @@ HTML;
 
     public function ShowRatings($ratings): void
     {
-        $full = "/assets/stars_placeholder/star_gold.png";
-        $half = "/assets/stars_placeholder/star_gold_half_grey.png";
-        $empty = "/assets/stars_placeholder/star_grey.png";
+        $full = "silk-companion star_gold";
+        $half = "silk-companion star_gold_half_grey";
+        $empty = "silk-companion star_grey";
 
         $full_stars = substr($ratings["average"], 0, 1);
         $half_stars = substr($ratings["average"], 2, 1);
@@ -170,22 +171,31 @@ HTML;
 
         for ($x = 0; $x < $full_stars; $x++) {
             $number++;
-            echo "<img src='$full'/>";
+            echo "<span class='$full'></span>";
         }
 
         if ($half_stars) {
             $number++;
             if ($full_stars != 4) {
-                echo "<img src='$half'/>";
+                echo "<span class='$half'></span>";
             } else {
-                echo "<img src='$full'/>";
+                echo "<span class='$full'></span>";
             }
         }
 
         while($number != 5) {
             $number++;
-            echo "<img src='$empty'/>";
+            echo "<span class='$empty'></span>";
         }
 
+    }
+
+    public function NotificationIcon($type)
+    {
+        $icon = "famfamfam-silk information";
+
+        if ($type == "danger") { $icon = "famfamfam-silk exclamation"; }
+
+        return $icon;
     }
 }

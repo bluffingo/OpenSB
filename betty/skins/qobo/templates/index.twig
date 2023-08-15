@@ -25,7 +25,12 @@
             </table>
         </div>
 
-        <div class="content-header">Randomized list of submissions</div>
+        <div class="content-header">
+            <span>Randomized list of submissions</span>
+            <div class="content-header-right">
+                <a href="browse.php">Browse more submissions</a>
+            </div>
+        </div>
         <div class="content-box">
             {% for submission in data.submissions %}
                 <div class="content-entry">

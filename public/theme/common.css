@@ -129,6 +129,13 @@ div.content-header
 	font-weight: bold;
 }
 
+div.content-header-right
+{
+	float: right;
+	padding: 2px 5px 0px 0px;
+	font-size: 12px;
+}
+
 div.content-box
 {
 	border: 1px solid #ffbf58;
@@ -209,4 +216,14 @@ div.profile-box-username {
 ul {
 	padding: 0;
 	margin: 0;
+}
+
+div.banner {
+	padding: 8px 5px;
+	margin-bottom: 5px;
+}
+
+div.banner-danger {
+	background: red;
+	color: white;
 }
