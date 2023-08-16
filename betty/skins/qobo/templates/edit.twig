@@ -1,0 +1,27 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Modify submission" %}
+
+	{% block content %}
+        <div class="content-header">
+            <span>Modify submission ({{ data.id }})</span>
+        </div>
+        <div class="content-box">
+        <form name="uploadForm" id="uploadForm" method="post" action="edit.php" enctype="multipart/form-data">
+                <input type="hidden" name="vid_id" value="{{ data.id }}">
+                <div>
+                    <input type="text" class="form-submit" name="title"
+                           value="{{ data.title }}">
+                </div>
+                <div>
+                    <textarea class="form-submit" name="desc" maxlength="2000"
+                              form="uploadForm"
+                              style="overflow:hidden;resize:vertical" rows="3">{{ data.description }}</textarea>
+                </div>
+                <div>
+                    <input type="submit" id="upload" name="upload"
+                           value="Save changes">
+                </div>
+        </form>
+        </div>
+    {% endblock %}

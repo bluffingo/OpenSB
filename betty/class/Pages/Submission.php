@@ -24,6 +24,7 @@ class Submission
     private $ratings;
     private $favorites;
     private $author;
+    private $views;
 
     /**
      * @throws BettyException
@@ -58,6 +59,8 @@ class Submission
             "5" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$this->data["id"]]),
         ];
         $this->favorites = $this->database->result("SELECT COUNT(video_id) FROM favorites WHERE video_id=?", [$id]);
+
+        $this->views = $this->database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$this->data["video_id"]])['COUNT(video_id)'];
     }
 
     /**
@@ -86,6 +89,7 @@ class Submission
                 "info" => $this->author->getUserArray(),
             ],
             "interactions" => [
+                "views" => $this->views,
                 "ratings" => MiscFunctions::calculateRatings($this->ratings),
                 "favorites" => $this->favorites,
             ],

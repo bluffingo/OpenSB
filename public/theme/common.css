@@ -19,6 +19,7 @@ a
 {
 	text-decoration: none;
 	font-weight: bold;
+	color: #864e14;
 }
 
 table.c1
@@ -172,7 +173,7 @@ div.content-description
 	margin-bottom: 10px;
 }
 
-div.content-ratings span
+div.icons span
 {
 	display: inline-block;
 }
@@ -226,4 +227,77 @@ div.banner {
 div.banner-danger {
 	background: red;
 	color: white;
+}
+
+div.banner-success {
+	background: forestgreen;
+	color: white;
+}
+
+div.comment {
+	background: white;
+	margin-bottom: 5px;
+}
+
+div.comment-header {
+	background: #ffcd63;
+	padding: 5px;
+}
+
+div.comment-body {
+	padding: 5px;
+}
+
+div.comment-body p {
+	margin: 0;
+}
+
+img.img-responsive {
+	width: 100%;
+}
+
+div.label {
+	font-weight: bold;
+	color: #666;
+}
+
+div.submission-stats-box {
+	margin: 6px 0;
+	height: 50px;
+}
+
+#submission-stats-actions {
+	width: 100px;
+	float: left;
+}
+
+div.clear {
+	clear: both;
+}
+
+div.submission-stats-row {
+	margin-bottom: 4px;
+}
+
+span.elink {
+	text-decoration: none;
+	border-bottom: 1px dotted #864e14;
+}
+
+#submission-stats-stats {
+	float: right;
+	text-align: right;
+}
+
+#submission-stats-views {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.form-submit {
+	width: 925px;
+}
+
+#uploadForm {
+	text-align: center;
 }

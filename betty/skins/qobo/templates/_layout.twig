@@ -20,6 +20,7 @@
                 {% if user_data.powerlevel > 2 %}
                     <a class="menulink" href="/admin.php">Admin panel</a> -
                 {% endif %}
+                <a class="menulink" href="/upload.php">Submit</a> -
                 <a class="menulink" href="logout.php">Log out</a>
             {% else %}
                 <a class="menulink" href="/login.php">Login</a> -
@@ -41,6 +42,12 @@
         <input type="hidden" name="action" value="logout">
     </form>
     <div class="page-contents">
+        {% if user_ban_data %}
+            <div class="banner banner-danger">
+                <p>This account is banned for the following reason:</p>
+                {{ user_ban_data.reason | markdown }}
+            </div>
+        {% endif %}
         {% if session.notif_message %}
             <div class="banner banner-{{ session.notif_color }}">
                 <span class="{{ notification_icon(session.notif_color) }}" style="display: inline-block;"></span>
