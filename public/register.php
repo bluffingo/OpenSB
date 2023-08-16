@@ -54,13 +54,6 @@ if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
         $sql->query("INSERT INTO users (name, password, token, joined, title, email) VALUES (?,?,?,?,?,?)",
             [$username, password_hash($pass, PASSWORD_DEFAULT), $token, time(), $username, mailHash($mail)]);
 
-        if ($googleAPI) {
-            $loginEventData = new SignUpEvent();
-            $loginEventData->setMethod('OpenSB');
-            $baseRequest->addEvent($loginEventData);
-            $ga->send($baseRequest);
-        }
-
         setcookie('SBTOKEN', $token, 2147483647);
 
         redirect('./');

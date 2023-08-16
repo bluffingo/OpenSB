@@ -10,7 +10,6 @@
 		"whitecube/lingua": "dev-master",
 		"toshy/bunnynet-php": "^3.0",
 		"symfony/http-client": "6.3.x-dev",
-		"br33f/php-ga4-mp": "dev-master",
 		"wixel/gump": "dev-master"
 	},
 	"minimum-stability": "dev",
