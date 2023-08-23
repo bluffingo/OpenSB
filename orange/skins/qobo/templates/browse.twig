@@ -1,0 +1,14 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Index" %}
+
+{% block content %}
+    <div class="content-header">
+        <span>Submissions ({{ data.count }})</span>
+    </div>
+    <div class="content-box">
+        {% for submission in data.submissions %}
+            {{ include('/components/_index_submission.twig') }}
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -77,4 +77,38 @@ class MiscFunctions
         header(sprintf('Location: %s', $url));
         die();
     }
+
+    public static function makeSubmissionArray($database, $submissions): array
+    {
+        $submissionsData = [];
+        foreach ($submissions as $submission) {
+
+            $ratingData = [
+                "1" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$submission["id"]]),
+                "2" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$submission["id"]]),
+                "3" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=3", [$submission["id"]]),
+                "4" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=4", [$submission["id"]]),
+                "5" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$submission["id"]]),
+            ];
+
+            $userData = new User($database, $submission["author"]);
+            $submissionsData[] =
+                [
+                    "id" => $submission["video_id"],
+                    "title" => $submission["title"],
+                    "description" => $submission["description"],
+                    "published" => $submission["time"],
+                    "type" => $submission["post_type"],
+                    "author" => [
+                        "id" => $submission["author"],
+                        "info" => $userData->getUserArray(),
+                    ],
+                    "interactions" => [
+                        "ratings" => MiscFunctions::calculateRatings($ratingData),
+                    ],
+                ];
+        }
+
+        return $submissionsData;
+    }
 }

@@ -2,45 +2,27 @@
 
 namespace openSB;
 
+global $betty;
+
+use Orange\BettyException;
+use Orange\Templating;
+
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-function get_the_sort_type_shit($type)
-{
-    switch ($type) {
-        case 'recent':
-            $order = "v.time";
-            break;
-        case 'popular':
-            $order = "views";
-            break;
-        case 'discussed':
-            $order = "comments";
-            break;
-        case 'favorited':
-            $order = "favorites";
-            break;
-        case 'random':
-            $order = "RAND()";
-            break;
-        default:
-            $order = "v.time";
-            break;
-    }
-    return $order;
-}
+require_once dirname(__DIR__) . '/orange/classes/Pages/SubmissionBrowse.php';
 
 $type = ($_GET['type'] ?? 'recent');
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
-$order_by = get_the_sort_type_shit($type);
-$limit = sprintf("LIMIT %s,%s", (($page - 1) * $paginationLimit), $paginationLimit);
-$videoData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY $order_by DESC $limit");
-$count = $sql->result("SELECT COUNT(*) FROM videos");
+try {
+    $page = new \Orange\Pages\SubmissionBrowse($betty, $type, $page);
+    $data = $page->getData();
+} catch (BettyException $e) {
+    $e->page();
+}
 
-$twig = twigloader();
+$twig = new Templating($betty);
+
 echo $twig->render('browse.twig', [
-    'type' => $type,
-    'levels' => $sql->fetchArray($videoData),
-    'page' => $page,
-    'level_count' => $count
+    'data' => $data
 ]);

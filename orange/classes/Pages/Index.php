@@ -17,7 +17,6 @@ class Index
     private \Orange\Database $database;
     private array $submissions;
     private array $submissions_recent;
-    private array $posts;
 
     public function __construct(\Orange\Orange $betty)
     {
@@ -36,42 +35,8 @@ class Index
     public function getData(): array
     {
         return [
-            "submissions" => $this->makeSubmissionArray($this->submissions),
-            "submissions_new" => $this->makeSubmissionArray($this->submissions_recent),
+            "submissions" => MiscFunctions::makeSubmissionArray($this->database, $this->submissions),
+            "submissions_new" => MiscFunctions::makeSubmissionArray($this->database, $this->submissions_recent),
         ];
-    }
-
-    private function makeSubmissionArray($submissions): array
-    {
-        $submissionsData = [];
-        foreach ($submissions as $submission) {
-
-            $ratingData = [
-                "1" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$submission["id"]]),
-                "2" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$submission["id"]]),
-                "3" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=3", [$submission["id"]]),
-                "4" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=4", [$submission["id"]]),
-                "5" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$submission["id"]]),
-            ];
-
-            $userData = new User($this->database, $submission["author"]);
-            $submissionsData[] =
-                [
-                    "id" => $submission["video_id"],
-                    "title" => $submission["title"],
-                    "description" => $submission["description"],
-                    "published" => $submission["time"],
-                    "type" => $submission["post_type"],
-                    "author" => [
-                        "id" => $submission["author"],
-                        "info" => $userData->getUserArray(),
-                    ],
-                    "interactions" => [
-                        "ratings" => MiscFunctions::calculateRatings($ratingData),
-                    ],
-                ];
-        }
-
-        return $submissionsData;
     }
 }
