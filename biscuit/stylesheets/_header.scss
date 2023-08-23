@@ -33,21 +33,28 @@ td.h
 div.header-user
 {
   width: 100%;
-  text-align: right;
   background-color: black;
   color: white;
   padding: 3px 0;
   background-image: url(/img/header_top.gif);
 }
 
+div.header-user-notifications
+{
+  padding-left: 15px;
+  float: left;
+}
+
 div.header-user-links
 {
   padding-right: 15px;
+  float: right;
 }
 
 a.menulink
 {
   color: white;
+  margin: 0 4px;
 }
 
 div.header

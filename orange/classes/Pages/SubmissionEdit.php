@@ -29,6 +29,11 @@ class SubmissionEdit
         $this->submission = new \Orange\SubmissionData($this->database, $id);
         $this->data = $this->submission->getData();
 
+        if (!$auth->isUserLoggedIn())
+        {
+            $betty->Notification("Please login to continue.", "/login.php");
+        }
+
         if ($auth->getUserBanData() || $this->submission->getTakedown()) {
             $betty->Notification("You cannot proceed with this action.", "/");
         }
@@ -36,7 +41,6 @@ class SubmissionEdit
         if ($auth->getUserID() != $this->data["author"]) {
             $betty->Notification("This is not your video.", "/");
         }
-
     }
 
     /**

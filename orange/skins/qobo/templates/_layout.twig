@@ -13,20 +13,26 @@
 <body>
 <div class="page">
     <div class="header-user">
+        {% if is_user_logged_in %}
+        <div class="header-user-notifications">
+            <a class="menulink" href="/notices.php">{{ user_notice_data }} notices</a>
+        </div>
+        {% endif %}
         <div class="header-user-links">
             {% if is_user_logged_in %}
-                <a class="menulink" href="/user.php?name={{ user_data.name }}">{{ user_data.name }}</a> -
-                <a class="menulink" href="/settings.php">Settings</a> -
+                <a class="menulink" href="/user.php?name={{ user_data.name }}">{{ user_data.name }}</a>
+                <a class="menulink" href="/settings.php">Settings</a>
                 {% if user_data.powerlevel > 2 %}
-                    <a class="menulink" href="/admin.php">Admin panel</a> -
+                    <a class="menulink" href="/admin.php">Admin panel</a>
                 {% endif %}
-                <a class="menulink" href="/upload.php">Submit</a> -
+                <a class="menulink" href="/upload.php">Submit</a>
                 <a class="menulink" href="logout.php">Log out</a>
             {% else %}
-                <a class="menulink" href="/login.php">Login</a> -
+                <a class="menulink" href="/login.php">Login</a>
                 <a class="menulink" href="/register.php">Register</a>
             {% endif %}
         </div>
+        <div class="clear"></div>
     </div>
     <div class="header">
         <div class="header-logo">

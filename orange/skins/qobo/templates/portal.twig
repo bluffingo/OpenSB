@@ -1,0 +1,34 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Notices" %}
+
+{% block content %}
+    <div class="content-header">
+        <span>Notices</span>
+        <div class="content-header-right">
+            <a href="portal.php?action=clear_all">Clear all</a>
+        </div>
+    </div>
+    <div class="content-box">
+        {% for notice in data %}
+            <div class="content-entry">
+                <div class="content-notice">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr valign="top">
+                            <td>
+                                <img src="{{ profile_picture(notice.sender.info.username) }}" class="pfp">
+                            </td>
+                            <td>
+                                {{ notice.intro }} {{ user_link(notice.sender) }}
+                                {{ notice.detail | markdown_user_written }}
+                                <small>
+                                    {{ notice.time | relative_time }} on Qobo, could be anywhere.
+                                </small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

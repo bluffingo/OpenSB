@@ -19,7 +19,7 @@ class Templating
 
     public function __construct(\Orange\Orange $betty)
     {
-        global $googleTag, $isQoboTV, $auth, $bettyTemplate, $isDebug, $branding;
+        global $isQoboTV, $auth, $bettyTemplate, $isDebug, $branding;
         chdir(__DIR__ . '/..');
         $this->skin = $betty->getLocalOptions()["skin"] ?? $bettyTemplate;
         $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
@@ -36,12 +36,12 @@ class Templating
             }));
         }
 
-        $this->twig->addGlobal('google_tag', $googleTag);
         $this->twig->addGlobal('is_qobo', $isQoboTV);
         $this->twig->addGlobal('is_debug', $isDebug);
         $this->twig->addGlobal('is_user_logged_in', $auth->isUserLoggedIn());
         $this->twig->addGlobal('user_data', $auth->getUserData());
         $this->twig->addGlobal('user_ban_data', $auth->getUserBanData());
+        $this->twig->addGlobal('user_notice_data', $auth->getUserNoticesCount());
         $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('website_branding', $branding);
