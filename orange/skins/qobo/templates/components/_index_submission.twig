@@ -1,0 +1,31 @@
+<div class="content-entry">
+    <table cellpadding="0" cellspacing="0">
+        <tr valign="top">
+            <td>
+                <a href="/watch.php?v={{ submission.id }}">
+                    <img src="{{ thumbnail(submission.id, submission.type) }}" width="120"
+                         alt="{{ submission.title }}" class="content-image">
+                </a>
+            </td>
+            <td>
+                <div class="content-title">
+                    <a href="/watch.php?v={{ submission.id }}">
+                        {{ submission.title }}
+                    </a>
+                </div>
+                <div class="content-description">
+                    By {{ user_link(submission.author) }}, {{ submission.published | relative_time }}
+                    <br>
+                    {% if submission.description|trim is not empty %}
+                        <span>{{ submission.description }}</span>
+                    {% else %}
+                        <span class="fade">No description.</span>
+                    {% endif %}
+                </div>
+                <div class="icons">
+                    {{ show_ratings(submission.interactions.ratings) }}
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

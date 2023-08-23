@@ -7,21 +7,48 @@
             <span>Modify submission ({{ data.id }})</span>
         </div>
         <div class="content-box">
-        <form name="uploadForm" id="uploadForm" method="post" action="edit.php" enctype="multipart/form-data">
+            <form name="uploadForm" id="uploadForm" method="post" action="edit.php" enctype="multipart/form-data">
+                <img src="{{ thumbnail(data.id, data.type) }}" width="300"
+                     alt="{{ data.title }}" class="form-image">
                 <input type="hidden" name="vid_id" value="{{ data.id }}">
-                <div>
+
+                <div class="form-input">
+                    Title:
                     <input type="text" class="form-submit" name="title"
                            value="{{ data.title }}">
                 </div>
-                <div>
+
+                <div class="form-input">
+                    Description:
                     <textarea class="form-submit" name="desc" maxlength="2000"
                               form="uploadForm"
                               style="overflow:hidden;resize:vertical" rows="3">{{ data.description }}</textarea>
                 </div>
-                <div>
+
+                <div class="form-input">
+                    Visibility:
+                    <select name="cars" id="cars">
+                        <option value="public">Public</option>
+                        <option value="scraps">Public (scraps)</option>
+                        <option value="unlisted">Unlisted</option>
+                        <option value="private">Private</option>
+                    </select>
+                </div>
+
+                <div class="form-input">
+                    <input type="checkbox" id="block_guests" name="block_guests" value="yes">
+                    <label for="vehicle1"> Block guests from viewing this submission</label><br>
+                </div>
+
+                <div class="form-input">
+                    <input type="checkbox" id="block_guests" name="block_guests" value="yes">
+                    <label for="vehicle1"> Block users from commenting in this submission</label><br>
+                </div>
+
+                <div class="form-button-container">
                     <input type="submit" id="upload" name="upload" class="form-button-submit"
                            value="Save changes">
                 </div>
-        </form>
+            </form>
         </div>
     {% endblock %}

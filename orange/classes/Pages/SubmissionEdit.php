@@ -65,6 +65,6 @@ class SubmissionEdit
 
         $this->database->query("UPDATE videos SET title = ?, description = ? WHERE video_id = ?",
             [$title, $desc, $this->id]);
-        $this->betty->Notification("Your submission's information has been modified.", "/watch?v=" . $this->id, "success");
+        $this->betty->Notification("Your submission's details has been modified.", "/watch?v=" . $this->id, "success");
     }
 }

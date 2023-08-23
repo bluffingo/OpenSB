@@ -16,13 +16,14 @@ class Index
 {
     private \Orange\Database $database;
     private array $submissions;
+    private array $submissions_recent;
     private array $posts;
 
     public function __construct(\Orange\Orange $betty)
     {
         $this->database = $betty->getBettyDatabase();
         $this->submissions = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) ORDER BY RAND() LIMIT 16"));
-        $this->posts = $this->database->fetchArray($this->database->query("SELECT * FROM posts LIMIT 16"));
+        $this->submissions_recent = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) ORDER BY v.time DESC LIMIT 16"));
     }
 
     /**
@@ -34,8 +35,16 @@ class Index
      */
     public function getData(): array
     {
+        return [
+            "submissions" => $this->makeSubmissionArray($this->submissions),
+            "submissions_new" => $this->makeSubmissionArray($this->submissions_recent),
+        ];
+    }
+
+    private function makeSubmissionArray($submissions): array
+    {
         $submissionsData = [];
-        foreach ($this->submissions as $submission) {
+        foreach ($submissions as $submission) {
 
             $ratingData = [
                 "1" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$submission["id"]]),
@@ -61,24 +70,8 @@ class Index
                         "ratings" => MiscFunctions::calculateRatings($ratingData),
                     ],
                 ];
-            }
-
-        $postsData = [];
-        foreach ($this->posts as $post) {
-            $userData = new User($this->database, $post["author"]);
-            $postsData[] =
-                [
-                    "post" => $post["post"],
-                    "posted" => $post["date"],
-                    "author" => [
-                        "id" => $post["author"],
-                        "info" => $userData->getUserArray(),
-                    ],
-                ];
         }
-        return [
-            "submissions" => $submissionsData,
-            "posts" => $postsData,
-        ];
+
+        return $submissionsData;
     }
 }

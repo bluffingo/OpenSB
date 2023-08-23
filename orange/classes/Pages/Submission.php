@@ -25,12 +25,15 @@ class Submission
     private $favorites;
     private $author;
     private $views;
+    private $bools;
 
     /**
      * @throws BettyException
      */
     public function __construct(\Orange\Orange $betty, $id)
     {
+        global $auth; // honestly i feel like the whole "getBettyDatabase" shit is so redudant -chaziz 8/23/2023
+
         $this->database = $betty->getBettyDatabase();
         $this->submission = new \Orange\SubmissionData($this->database, $id);
 
@@ -61,6 +64,13 @@ class Submission
         $this->favorites = $this->database->result("SELECT COUNT(video_id) FROM favorites WHERE video_id=?", [$id]);
 
         $this->views = $this->database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$this->data["video_id"]])['COUNT(video_id)'];
+
+        $this->bools = $this->submission->bitmaskToArray();
+
+        if ($this->bools["block_guests"] && !$auth->isUserLoggedIn())
+        {
+            $betty->Notification("This submission's author has blocked guest access.", "/login.php");
+        }
     }
 
     /**
@@ -94,6 +104,7 @@ class Submission
                 "favorites" => $this->favorites,
             ],
             "comments" => $this->comments->getComments(),
+            "bools" => $this->bools,
         ];
     }
 }

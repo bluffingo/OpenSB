@@ -1,13 +1,24 @@
+.form-input {
+  margin-bottom: 5px;
+}
+
 .form-submit {
-  width: 900px;
-  margin: 5px;
+  width: 928px;
 }
 
-.form-button-submit {
-  background: #fff3db;
-  padding: 3px 7px;
+.form-button-container {
+  text-align: right;
+
+  .form-button-submit {
+    background: #ffe3ae;
+    border: 1px solid #d7944c;
+    padding: 3px 9px;
+    text-align: center;
+  }
 }
 
-#uploadForm, #loginForm {
-  text-align: center;
+.form-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

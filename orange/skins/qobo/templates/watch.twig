@@ -37,62 +37,62 @@
 
 
 {% block content %}
-    <div id="page-left" style="width: 600px;">
-        <h1>{{ submission.title }}</h1>
-        {% if submission.is_owner %}
+    <h1>{{ submission.title }}</h1>
+    {% if submission.is_owner %}
+        <div class="content-box">
             <a href="/edit?v={{ submission.id }}">Edit</a>
+        </div>
+    {% endif %}
+    {{ submission_view(submission) }}
+    <div>
+        {% if submission.description | trim is not empty %}
+            {{ submission.description | markdown_user_written }}
+        {% else %}
+            <p>This submission has no description.</p>
         {% endif %}
-        {{ submission_view(submission) }}
-        <div>
-            {% if submission.description | trim is not empty %}
-                {{ submission.description | markdown_user_written }}
-            {% else %}
-                <p>This submission has no description.</p>
-            {% endif %}
-            <small>Submitted on {{ submission.published | date('F j, Y') }} by {{ user_link(submission.author) }}</small>
-        </div>
-        <div class="content-box submission-stats-box">
-            <div id="submission-stats-actions">
-                <div class="submission-stats-row icons">
-                    <span class="silk-companion star_gold"></span><a><span class="elink">Favorite</span></a>
-                </div>
-                <div class="submission-stats-row icons">
-                    <span class="silk-companion star_gold"></span><a><span class="elink">Flag</span></a>
-                </div>
+        <small>Submitted on {{ submission.published | date('F j, Y') }} by {{ user_link(submission.author) }}</small>
+    </div>
+    <div class="content-box submission-stats-box">
+        <div id="submission-stats-actions">
+            <div class="submission-stats-row icons">
+                <span class="silk-companion star_gold"></span><a><span class="elink">Favorite</span></a>
             </div>
-            <div id="submission-stats-stats">
-                <div class="submission-stats-row">
-                    <div id="submission-stats-views">{{ submission.interactions.views }} views</div>
-                    <div id="rater"></div>
-                </div>
-                <div class="submission-stats-row">
-                    <div>
-                        <small>
-                            {{ submission.interactions.ratings.total }} ratings
-                        </small>
-                    </div>
+            <div class="submission-stats-row icons">
+                <span class="silk-companion star_gold"></span><a><span class="elink">Flag</span></a>
+            </div>
+        </div>
+        <div id="submission-stats-stats">
+            <div class="submission-stats-row">
+                <div id="submission-stats-views">{{ submission.interactions.views }} views</div>
+                <div id="rater"></div>
+            </div>
+            <div class="submission-stats-row">
+                <div>
+                    <small>
+                        {{ submission.interactions.ratings.total }} ratings
+                    </small>
                 </div>
             </div>
         </div>
-        <div class="clear"></div>
-        <div id="comments">
-            <h2>Recent Comments</h2>
-            {% for comment in submission.comments %}
-                <div class="comment" id="comment-{{ comment.id }}">
-                    <div class="comment-header">
-                        <strong>{{ user_link(comment.author) }}</strong> <small title="{{ comment.posted | date('F j, Y') }}">{{ comment.posted | relative_time }}</small>
-                    </div>
-                    <div class="comment-body">
-                        {% if comment.post | trim is not empty %}
-                            {{ comment.post | markdown_user_written }}
-                        {% else %}
-                            <small>Null comment</small>
-                        {% endif %}
-                    </div>
+    </div>
+    <div class="clear"></div>
+    <div id="comments">
+        <h2>Recent Comments</h2>
+        {% for comment in submission.comments %}
+            <div class="comment" id="comment-{{ comment.id }}">
+                <div class="comment-header">
+                    <strong>{{ user_link(comment.author) }}</strong> <small title="{{ comment.posted | date('F j, Y') }}">{{ comment.posted | relative_time }}</small>
                 </div>
-            {% else %}
-                No comments!
-            {% endfor %}
-        </div>
+                <div class="comment-body">
+                    {% if comment.post | trim is not empty %}
+                        {{ comment.post | markdown_user_written }}
+                    {% else %}
+                        <small>Null comment</small>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            No comments!
+        {% endfor %}
     </div>
 {% endblock %}
