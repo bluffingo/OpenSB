@@ -13,7 +13,19 @@
     background: #ffe3ae;
     border: 1px solid #d7944c;
     padding: 3px 9px;
+    border-radius: 2px;
     text-align: center;
+
+    &:hover {
+      background: #ffe9c3;
+      border: 1px solid #dca874;
+    }
+
+    &:active {
+      background: #d7944c;
+      border: 1px solid #c98642;
+      color: white;
+    }
   }
 }
 

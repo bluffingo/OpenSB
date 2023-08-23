@@ -1,0 +1,56 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Settings" %}
+
+	{% block content %}
+        <div class="banner banner-danger">Temporary design.</div>
+        {% if error %}
+            <div class="banner banner-danger">{{ error }}</div>
+        {% endif %}
+        <div class="content-box">
+        <form action="settings.php" method="post" enctype="multipart/form-data">
+
+            <div class="text-title">
+                Security
+            </div>
+            <div class="form-input">
+            <input class="form-submit" type="password" name="current_pass" size="30" maxlength="256"
+                   placeholder="Current password"><br>
+            </div>
+
+            <div class="form-input">
+            <input class="form-submit" type="password" name="pass" size="30" maxlength="256" placeholder="New password"><br>
+            </div>
+
+            <div class="form-input">
+            <input class="form-submit" type="password" name="pass2" size="30" maxlength="256"
+                   placeholder="Confirm new password">
+            </div>
+
+
+            <div class="text-title">
+                Profile
+            </div>
+            <div class="form-input">
+            <input type="file" name="profilePicture" id="profilePicture">
+            </div>
+
+            <div class="form-input">
+            <input class="form-submit" type="text" name="title" size="45" maxlength="50" value="{{ user_data.title }}">
+            </div>
+
+            <div class="form-input">
+            <textarea class="form-submit" name="about" rows="5" cols="80" wrap="virtual">{{ user_data.about }}</textarea>
+            </div>
+
+            <div class="form-input">
+            <input name="customcolor" type="color" value="{{ user_data.customcolor | default('523bb8') }}">
+            </div>
+
+            <div class="form-button-container">
+                <input type="submit" id="upload" name="save" class="form-button-submit"
+                       value="Save changes">
+            </div>
+        </form>
+        </div>
+    {% endblock %}

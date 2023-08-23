@@ -41,7 +41,7 @@ class Profile
         return [
             "username" => $this->data["name"],
             "displayname" => $this->data["title"],
-            "about" => ($userpagedata['about'] ?? false),
+            "about" => ($this->data['about'] ?? false),
             "color" => $this->data["customcolor"],
             "joined" => $this->data["joined"],
             "connected" => $this->data["lastview"],

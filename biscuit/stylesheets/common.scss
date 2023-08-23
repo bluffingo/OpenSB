@@ -86,6 +86,23 @@ div.icons span
 	display: inline-block;
 }
 
+textarea,
+input[type]:not([type=file]):not([type=submit]) {
+	border: 1px solid #8d8d8d;
+	background: white;
+	color: black;
+	box-shadow: 0 0 1px #bebebe;
+	transition: border linear 0.3s, box-shadow linear 0.3s;
+	border-radius: 2px;
+}
+
+textarea:focus,
+input[type]:not([type=file]):not([type=submit]):focus {
+	border-color: #fd8f08;
+	outline: none;
+	box-shadow: 0 0 1px #fd8f08;
+}
+
 @import 'header';
 @import 'footer';
 @import 'page';
