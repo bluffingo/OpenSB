@@ -1,0 +1,58 @@
+td.header-links
+{
+  width: 100%;
+  text-align: right;
+  padding-right: 12px;
+  background-color: #FF9008;
+  color: white;
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+
+div.header-links
+{
+  text-align: right;
+  padding-right: 12px;
+  color: white;
+  font-family: verdana, arial, helvetica, sans-serif;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+div.header-logo
+{
+  width: 177px;
+  display:table-cell;
+  vertical-align:middle;
+}
+
+td.h
+{
+  padding: 5px;
+}
+
+div.header-user
+{
+  width: 100%;
+  text-align: right;
+  background-color: black;
+  color: white;
+  padding: 3px 0;
+  background-image: url(/img/header_top.gif);
+}
+
+div.header-user-links
+{
+  padding-right: 15px;
+}
+
+a.menulink
+{
+  color: white;
+}
+
+div.header
+{
+  background-color: #FF9008;
+  display: table;
+  width: 100%;
+}

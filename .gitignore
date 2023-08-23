@@ -71,3 +71,4 @@ public/assets/tailwind.css
 
 # mariadb stuff from docker
 mariadb-data
+/public/img/css/common.css

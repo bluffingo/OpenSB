@@ -1,0 +1,47 @@
+div.content-header
+{
+    background: #ffbf58;
+    padding: 6px;
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+div.content-header-right
+{
+    float: right;
+    padding: 2px 5px 0px 0px;
+    font-size: 12px;
+}
+
+div.content-box
+{
+    border: 1px solid #ffbf58;
+    background: #ffffff;
+    padding: 6px;
+    margin-bottom: 7px;
+    overflow: hidden;
+}
+
+div.content-entry
+{
+    clear: both;
+    padding: 6px 2px;
+    border-bottom: 1px solid #d5d5d5;
+}
+
+img.content-image
+{
+    margin-right: 8px;
+}
+
+div.content-title
+{
+    font-size: 13px;
+}
+
+div.content-description
+{
+    font-size: 11px;
+    margin-bottom: 10px;
+}

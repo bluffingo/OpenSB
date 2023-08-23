@@ -6,4 +6,4 @@ common_arguments="--style compressed --no-source-map --load-path ./ --watch"
 
 # did git forget to pull this to prod??
 
-sass ${common_arguments} finalium/assets/stylesheets/:public/assets/css/
+sass ${common_arguments} biscuit/stylesheets/:public/img/css/
