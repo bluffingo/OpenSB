@@ -4,8 +4,8 @@ namespace openSB;
 
 global $googleTag, $googleAPI;
 
-use Betty\BunnyStorage;
-use Betty\LocalStorage;
+use Orange\BunnyStorage;
+use Orange\LocalStorage;
 use Br33f\Ga4\MeasurementProtocol\Dto\Request\BaseRequest;
 use Br33f\Ga4\MeasurementProtocol\Service;
 
@@ -22,8 +22,8 @@ require_once(dirname(__DIR__) . '/../vendor/autoload.php'); //dogshit
 
 // aaaa psr-4 autoload!!! - rgb
 
-// load the betty stuff first
-require_once(dirname(__DIR__) . "/../betty/common.php");
+// load the orange stuff first
+require_once(dirname(__DIR__) . "/../orange/common.php");
 
 // and then the opensb stuff
 foreach (glob(dirname(__DIR__) . "/class/*.php") as $file) {

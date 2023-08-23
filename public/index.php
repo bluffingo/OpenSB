@@ -4,15 +4,15 @@ namespace openSB;
 
 global $betty, $bettyTemplate;
 
-use \Betty\BettyException;
-use \Betty\Templating;
+use \Orange\BettyException;
+use \Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/betty/class/Pages/Index.php';
+require_once dirname(__DIR__) . '/orange/classes/Pages/Index.php';
 
 try {
-    $index = new \Betty\Pages\Index($betty);
+    $index = new \Orange\Pages\Index($betty);
     $data = $index->getData();
 } catch (BettyException $e) {
     $e->page();

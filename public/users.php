@@ -4,15 +4,15 @@ namespace openSB;
 
 global $betty;
 
-use \Betty\BettyException;
+use \Orange\BettyException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/betty/class/Pages/Users.php';
+require_once dirname(__DIR__) . '/orange/classes/Pages/Users.php';
 
-$page = new \Betty\Pages\Users($betty);
+$page = new \Orange\Pages\Users($betty);
 $data = $page->getData();
-$twig = new \Betty\Templating($betty);
+$twig = new \Orange\Templating($betty);
 
 echo $twig->render('users.twig', [
 	'users' => $data,

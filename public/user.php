@@ -4,16 +4,16 @@ namespace openSB;
 
 global $betty;
 
-use Betty\BettyException;
+use Orange\BettyException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/betty/class/Pages/Profile.php';
+require_once dirname(__DIR__) . '/orange/classes/Pages/Profile.php';
 
 $id = ($_GET['name'] ?? null);
 
 try {
-    $page = new \Betty\Pages\Profile($betty, $id);
+    $page = new \Orange\Pages\Profile($betty, $id);
     $data = $page->getData();
 } catch (BettyException $e) {
     $e->page();
@@ -25,15 +25,15 @@ $message = '';
 if (isset($_GET['id'])) {
     $userpagedata = $sql->fetch("SELECT $accountfields FROM users WHERE id = ?", [$_GET['id']]);
     if (!isset($userpagedata) || !$userpagedata) {
-        $betty->Notification("The requested user is invalid.", "/");
+        $orange->Notification("The requested user is invalid.", "/");
     }
 } else if (isset($_GET['name'])) {
     $userpagedata = $sql->fetch("SELECT $accountfields FROM users WHERE name = ?", [$_GET['name']]);
     if (!isset($userpagedata) || !$userpagedata) {
-        $betty->Notification("The requested user is invalid.", "/");
+        $orange->Notification("The requested user is invalid.", "/");
     }
 } else {
-    $betty->Notification("No user has been specified.", "/");
+    $orange->Notification("No user has been specified.", "/");
 }
 
 $page = (isset($_GET['p']) && is_numeric($_GET['p']) && $_GET['p'] > 0 ? $_GET['p'] : 1);
@@ -90,7 +90,7 @@ echo $twig->render("user.twig", [
 ]);
     */
 
-$twig = new \Betty\Templating($betty);
+$twig = new \Orange\Templating($betty);
 
 echo $twig->render('profile.twig', [
     'data' => $data,

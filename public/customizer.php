@@ -4,11 +4,11 @@ namespace openSB;
 
 global $betty, $bettyTemplate;
 
-use \Betty\Templating;
+use \Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/betty/class/Pages/FooterOptions.php';
+require_once dirname(__DIR__) . '/orange/classes/Pages/FooterOptions.php';
 
 if (isset($_POST['action'])) {
     $optionsArray = [

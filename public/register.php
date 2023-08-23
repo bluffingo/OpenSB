@@ -16,7 +16,7 @@ if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
 
     if (!str_contains($ipcheck, "<appears>yes</appears>")) {
         error(403, "Your IP looks suspicious.");
-        //$betty->Notification("Your IP looks suspicious.", "/register.php");
+        //$orange->Notification("Your IP looks suspicious.", "/register.php");
         //exit();
     }
 

@@ -2,7 +2,7 @@
 
 namespace openSB;
 
-use Betty\Templating;
+use Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 

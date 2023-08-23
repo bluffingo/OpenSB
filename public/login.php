@@ -5,11 +5,11 @@ namespace openSB;
 global $betty;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/betty/class/Pages/AccountLogin.php';
+require_once dirname(__DIR__) . '/orange/classes/Pages/AccountLogin.php';
 
 $error = '';
 
-$page = new \Betty\Pages\AccountLogin($betty);
+$page = new \Orange\Pages\AccountLogin($betty);
 
 if (isset($_POST["loginsubmit"])) {
     $page->postData($_POST);
@@ -41,7 +41,7 @@ if (isset($_POST["loginsubmit"])) {
     }
 }
 
-$twig = new \Betty\Templating($betty);
+$twig = new \Orange\Templating($betty);
 
 echo $twig->render('login.twig', [
     'error' => $error,

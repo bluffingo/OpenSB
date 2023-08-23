@@ -4,17 +4,17 @@ namespace openSB;
 
 global $betty;
 
-use \Betty\BettyException;
+use \Orange\BettyException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/betty/class/Pages/Submission.php';
+require_once dirname(__DIR__) . '/orange/classes/Pages/Submission.php';
 
 $id = ($_GET['v'] ?? null);
 $ip = getUserIpAddr();
 
 try {
-    $page = new \Betty\Pages\Submission($betty, $id);
+    $page = new \Orange\Pages\Submission($betty, $id);
     $data = $page->getSubmission();
 } catch (BettyException $e) {
     $e->page();
@@ -76,7 +76,7 @@ $currentTime = time();
 $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
 */
 
-$twig = new \Betty\Templating($betty);
+$twig = new \Orange\Templating($betty);
 
 echo $twig->render('watch.twig', [
     'submission' => $data,
