@@ -3,31 +3,53 @@
 {% set title = data.username %}
 
 {% block content %}
-    <div id="page-left" style="width: 180px;">
-        <div class="profile-box" style="background: {{ data.color }}">
-            <div class="profile-box-username">{{ data.username }}</div>
-            <img src="{{ profile_picture(data.username) }}" width="125">
+    <div>
+        <div class="profile-box">
+            <div class="profile-box-pfp">
+                <img src="{{ profile_picture(data.username) }}" class="pfp">
+            </div>
+            <div class="profile-box-username">
+                {{ data.username }}
+            </div>
+            <div class="profile-box-links">
+                <a href="user.php?name={{ data.username }}&page=submissions" class="link">
+                    <span class="elink">
+                        Submissions
+                    </span>
+                </a>
+                <a href="user.php?name={{ data.username }}&page=submissions" class="link">
+                    <span class="elink">
+                        Scraps
+                    </span>
+                </a>
+                <a href="user.php?name={{ data.username }}&page=submissions" class="link">
+                    <span class="elink">
+                        Journals
+                    </span>
+                </a>
+            </div>
+            <div class="clear"></div>
         </div>
     </div>
-    <div id="page-right" style="width: 730px;">
-        <ul>
-            <li>Username: {{ data.username }}</li>
-            <li>
-                Description:
-                {% if data.about %}
-                    {{ data.about }}
-                {% else %}
-                    <em class="text-muted">This user has no description.</em>
-                {% endif %}
-            </li>
-        </ul>
-        <ul>
-            <li>
-                Joined: {{ data.joined | relative_time }}
-            </li>
-            <li>
-                Last seen: {{ data.connected | relative_time }}
-            </li>
-        </ul>
+    <div class="content-header profile-stats">
+        <span class="stat">
+        Joined: {{ data.joined | relative_time }}
+        </span>
+        <span class="stat">
+            Last seen: {{ data.connected | relative_time }}
+        </span>
+    </div>
+    <div class="content-box">
+        <div id="page-left" style="width: 460px;">
+            <div class="profile-title">Profile</div>
+            {% if data.about %}
+                {{ data.about }}
+            {% else %}
+                <em class="text-muted">This user has no description.</em>
+            {% endif %}
+        </div>
+        <div id="page-right" style="width: 460px;">
+
+        </div>
     </div>
 {% endblock %}
