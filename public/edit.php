@@ -16,7 +16,7 @@ if (isset($_POST['upload'])) {
 $page = new \Betty\Pages\SubmissionEdit($betty, $id);
 
 if (isset($_POST['upload'])) {
-    $page->post($_POST);
+    $page->postData($_POST);
 }
 
 $twig = new \Betty\Templating($betty);

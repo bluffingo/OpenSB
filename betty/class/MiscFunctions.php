@@ -65,4 +65,16 @@ class MiscFunctions
             "average" => $average_ratings,
         ];
     }
+
+    public static function get_ip_address()
+    {
+        if (php_sapi_name() == "cli") return Null;
+        return $_SERVER['REMOTE_ADDR'];
+    }
+
+    public static function redirect($url)
+    {
+        header(sprintf('Location: %s', $url));
+        die();
+    }
 }

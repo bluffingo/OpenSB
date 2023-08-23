@@ -143,6 +143,7 @@ div.content-box
 	background: #ffffff;
 	padding: 6px;
 	margin-bottom: 7px;
+	overflow: hidden;
 }
 
 div.content-entry
@@ -295,9 +296,15 @@ span.elink {
 }
 
 .form-submit {
-	width: 925px;
+	width: 900px;
+	margin: 5px;
 }
 
-#uploadForm {
+.form-button-submit {
+	background: #fff3db;
+	padding: 3px 7px;
+}
+
+#uploadForm, #loginForm {
 	text-align: center;
 }

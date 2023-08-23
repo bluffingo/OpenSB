@@ -58,7 +58,7 @@ class SubmissionEdit
         ];
     }
 
-    public function post($data)
+    public function postData($data)
     {
         $title = $data['title'] ?? null;
         $desc = $data['desc'] ?? null;

@@ -2,13 +2,17 @@
 
 namespace openSB;
 
-use Br33f\Ga4\MeasurementProtocol\Dto\Event\LoginEvent;
-
+global $betty;
 require_once dirname(__DIR__) . '/private/class/common.php';
+
+require_once dirname(__DIR__) . '/betty/class/Pages/AccountLogin.php';
 
 $error = '';
 
+$page = new \Betty\Pages\AccountLogin($betty);
+
 if (isset($_POST["loginsubmit"])) {
+    $page->postData($_POST);
     $username = ($_POST['username'] ?? null);
     $password = ($_POST['password'] ?? null);
 
@@ -37,7 +41,7 @@ if (isset($_POST["loginsubmit"])) {
     }
 }
 
-$twig = twigloader();
+$twig = new \Betty\Templating($betty);
 
 echo $twig->render('login.twig', [
     'error' => $error,
