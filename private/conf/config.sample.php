@@ -42,4 +42,4 @@ $bunnySettings = [
 	"pullZone" => "[pull zone].b-cdn.net",
 ];
 
-$outputJson = false;
+$disableUploading = false;

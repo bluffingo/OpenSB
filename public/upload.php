@@ -3,6 +3,7 @@
 namespace openSB;
 
 //this uploads and converts the video, should switch to a better solution!
+global $betty;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
 $supportedVideoFormats = ["mp4", "mkv", "wmv", "flv", "avi", "mov", "3gp"];
@@ -13,6 +14,11 @@ $supportedImageFormats = ["png", "jpg", "jpeg"];
 if ($userbandata) {
     error(403, __("You are currently banned and cannot proceed with this action."));
 }
+
+if ($disableUploading) {
+    $betty->Notification("Uploading is disabled.", "/");
+}
+
 
 use \Intervention\Image\ImageManager;
 
