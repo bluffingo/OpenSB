@@ -19,7 +19,7 @@ foreach (glob(dirname(__DIR__) . "/orange/classes/*.php") as $file) {
  */
 class Orange {
     private \Orange\Database $database;
-    public string $version = "0.1.0";
+    public string $version = "Beta 3.1";
     public array $options;
 
     public function __construct($host, $user, $pass, $db) {
@@ -90,7 +90,6 @@ class Orange {
 }
 
 $betty = new \Orange\Orange($host, $user, $pass, $db);
-$opensb_version = new \Orange\OpenSbVersion($buildNumber, $gitBranch);
 $auth = new \Orange\Authentication($betty->getBettyDatabase(), $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new \Orange\Profiler();
 $gump = new GUMP('en');

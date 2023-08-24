@@ -1,9 +1,9 @@
 .form-input {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .form-submit {
-  width: 928px;
+  width: 350px;
 }
 
 .form-button-container {
@@ -33,4 +33,10 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+label {
+  display: block;
+  color: #4f4033;
+  margin-bottom: 4px;
 }

@@ -37,40 +37,50 @@
 
 
 {% block content %}
-    <h1>{{ submission.title }}</h1>
+    <div class="profile-box centered">
+        <h1>{{ submission.title }}</h1>
+    </div>
     {% if submission.is_owner %}
-        <div class="content-box">
+        <div class="content-box watch-edit">
             <a href="/edit?v={{ submission.id }}">Edit</a>
+            <a href="/feature?v={{ submission.id }}">Feature submission</a>
         </div>
     {% endif %}
     {{ submission_view(submission) }}
-    <div>
-        {% if submission.description | trim is not empty %}
-            {{ submission.description | markdown_user_written }}
-        {% else %}
-            <p>This submission has no description.</p>
-        {% endif %}
+    <div class="content-box dark">
         <small>Submitted on {{ submission.published | date('F j, Y') }} by {{ user_link(submission.author) }}</small>
     </div>
-    <div class="content-box submission-stats-box">
-        <div id="submission-stats-actions">
-            <div class="submission-stats-row icons">
-                <span class="silk-companion star_gold"></span><a><span class="elink">Favorite</span></a>
-            </div>
-            <div class="submission-stats-row icons">
-                <span class="silk-companion star_gold"></span><a><span class="elink">Flag</span></a>
-            </div>
+    <div class="content-box">
+        <div class="content-text">
+            {% if submission.description | trim is not empty %}
+                {{ submission.description | markdown_user_written }}
+            {% else %}
+                <p>This submission has no description.</p>
+            {% endif %}
         </div>
-        <div id="submission-stats-stats">
-            <div class="submission-stats-row">
-                <div id="submission-stats-views">{{ submission.interactions.views }} views</div>
-                <div id="rater"></div>
+
+        <hr>
+
+        <div class="submission-stats-box">
+            <div id="submission-stats-actions">
+                <div class="submission-stats-row icons">
+                    <span class="silk-companion star_gold"></span><a><span class="elink">Favorite</span></a>
+                </div>
+                <div class="submission-stats-row icons">
+                    <span class="silk-companion star_gold"></span><a><span class="elink">Flag</span></a>
+                </div>
             </div>
-            <div class="submission-stats-row">
-                <div>
-                    <small>
-                        {{ submission.interactions.ratings.total }} ratings
-                    </small>
+            <div id="submission-stats-stats">
+                <div class="submission-stats-row">
+                    <div id="submission-stats-views">{{ submission.interactions.views }} views</div>
+                    <div id="rater"></div>
+                </div>
+                <div class="submission-stats-row">
+                    <div>
+                        <small>
+                            {{ submission.interactions.ratings.total }} ratings
+                        </small>
+                    </div>
                 </div>
             </div>
         </div>

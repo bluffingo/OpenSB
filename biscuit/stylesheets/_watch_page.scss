@@ -21,3 +21,11 @@ div.submission-stats-box {
 div.submission-stats-row {
   margin-bottom: 4px;
 }
+
+.content-box {
+  &.watch-edit {
+    a {
+      margin-right: 7px;
+    }
+  }
+}

@@ -31,7 +31,15 @@ class SubmissionData
     public function __construct(\Orange\Database $database, $id)
     {
         $this->database = $database;
-        $this->data = $this->database->fetch("SELECT v.* FROM videos v WHERE v.video_id = ?", [$id]);
+
+        // if we get the internal id instead of the string id, we correct $id after fetching the submission otherwise
+        // stuff won't work.
+        if (is_int($id)) {
+            $this->data = $this->database->fetch("SELECT v.* FROM videos v WHERE v.id = ?", [$id]);
+            $id = $this->data["video_id"];
+        } else {
+            $this->data = $this->database->fetch("SELECT v.* FROM videos v WHERE v.video_id = ?", [$id]);
+        }
         $this->takedown = $this->database->fetch("SELECT * FROM takedowns t WHERE t.submission = ?", [$id]);
     }
 

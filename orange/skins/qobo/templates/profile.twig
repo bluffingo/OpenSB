@@ -41,15 +41,26 @@
     </div>
     <div class="content-box">
         <div id="page-left" style="width: 460px;">
+            {% if data.featured_submission %}
+                <div class="text-title">Featured submission</div>
+                <div class="profile-featured-submission">
+                    <a href="/watch.php?v={{ data.featured_submission.id }}">
+                        <img src="{{ thumbnail(data.featured_submission.id, data.featured_submission.type) }}"
+                             alt="{{ data.featured_submission.title }}">
+                    </a>
+                    <div class="profile-featured-submission-title">
+                        <a href="/watch.php?v={{ data.featured_submission.id }}">{{ data.featured_submission.title }}</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div id="page-right" style="width: 460px;">
             <div class="text-title">Profile</div>
             {% if data.about %}
                 {{ data.about }}
             {% else %}
                 <em class="text-muted">This user has no description.</em>
             {% endif %}
-        </div>
-        <div id="page-right" style="width: 460px;">
-
         </div>
     </div>
 {% endblock %}

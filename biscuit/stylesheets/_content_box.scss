@@ -29,13 +29,44 @@ div.content-box
     border: 1px solid #ffbf58;
     background: #ffffff;
     padding: 6px;
-    margin-bottom: 7px;
+    //margin-bottom: 7px;
     overflow: hidden;
 
+    &.centered {
+        text-align: center
+    }
+
+    &.dark {
+        background: #ffbf58;
+    }
+
+    .content-text {
+        width: 680px;
+        margin: 0 auto;
+        word-wrap: break-word;
+    }
+
+    hr {
+        border: 0;
+        border-bottom: 1px solid #aba196;
+        height: 0;
+        margin: 25px 0;
+    }
+
     .text-title {
-        color: #864e14;
+        color: #a6621b;
         font-size: 16pt;
         margin-bottom: 5px;
+
+        &.tabled {
+            display: table;
+
+            span {
+                padding-left: 4px;
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
     }
 }
 

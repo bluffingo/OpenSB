@@ -35,7 +35,7 @@ class AccountLogin
 
                 MiscFunctions::redirect('./');
             } else {
-                $error = __("Incorrect username or password.");
+                $error = "Incorrect username or password.";
             }
         }
     }

@@ -5,9 +5,7 @@
 	{% block content %}
         {% if error %}
             <div class="banner banner-danger">{{ error }}</div>
-            <br>
         {% endif %}
-
         <div class="content-header">
             <span>Login to Qobo</span>
         </div>
@@ -15,10 +13,12 @@
             <div class="panel-body">
                 <form method="post" name="loginForm" id="loginForm" action="login.php" class="form-signin">
                     <div>
+                        <label for="username">Username:</label>
                         <input type="text" name="username" class="form-submit" placeholder="Username">
                     </div>
 
                     <div>
+                        <label for="password">Username:</label>
                         <input type="password" name="password" class="form-submit" placeholder="Password">
                     </div>
 

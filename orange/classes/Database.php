@@ -14,6 +14,9 @@ class Database
 {
     private $sql;
 
+    /**
+     * @throws BettyException
+     */
     public function __construct($host, $user, $pass, $db)
     {
         $options = [
@@ -60,5 +63,10 @@ class Database
     public function insertId()
     {
         return $this->sql->lastInsertId();
+    }
+
+    public function getVersion()
+    {
+        return $this->sql->getAttribute(PDO::ATTR_SERVER_VERSION);
     }
 }

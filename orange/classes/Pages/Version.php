@@ -14,11 +14,11 @@ use Orange\Database;
 class Version
 {
     private $betty;
-    private $opensb_version;
-    public function __construct(\Orange\Orange $betty, \Orange\OpenSbVersion $opensb_version)
+    private $database;
+    public function __construct(\Orange\Orange $betty)
     {
         $this->betty = $betty;
-        $this->opensb_version = $opensb_version;
+        $this->database = $betty->getBettyDatabase();
     }
 
     /**
@@ -35,12 +35,12 @@ class Version
                 'title' => "PHP version",
                 'info' => phpversion(),
             ),
-            'sbVersion' => array(
-                'title' => "openSB version",
-                'info' => sprintf("%s on branch %s", $this->opensb_version->getVersion(), $this->opensb_version->getGitBranch()),
+            'dbVersion' => array(
+                'title' => "Database version",
+                'info' => $this->database->getVersion(),
             ),
             'bettyVersion' => array(
-                'title' => "Orange version",
+                'title' => "squareOrange version",
                 'info' => $this->betty->getBettyVersion(),
             ),
         );

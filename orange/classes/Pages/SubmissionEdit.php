@@ -39,7 +39,7 @@ class SubmissionEdit
         }
 
         if ($auth->getUserID() != $this->data["author"]) {
-            $betty->Notification("This is not your video.", "/");
+            $betty->Notification("This is not your submission.", "/");
         }
     }
 

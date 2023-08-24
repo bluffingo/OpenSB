@@ -1,16 +1,26 @@
-$pfp-width: 95px;
+$pfp-width-profiles: 95px;
+$pfp-width-watch: 35px;
 
 div.profile-box {
   padding: 10px;
   background-color: #ffaa1d;
 
+  &.centered {
+    text-align: center
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 14px;
+  }
+
   .profile-box-pfp {
-    width: $pfp-width;
+    width: $pfp-width-profiles;
     float: left;
     padding-right: 10px;
 
     .pfp {
-      width: $pfp-width;
+      width: $pfp-width-profiles;
     }
   }
 
@@ -27,5 +37,21 @@ div.profile-box {
     .link {
       padding-right: 7px;
     }
+  }
+}
+
+.profile-featured-submission {
+  text-align: center;
+
+  .profile-featured-submission-title {
+    margin-top: 6px;
+    a {
+      font-weight: normal;
+    }
+  }
+
+  /* will this fuck up with wide thumbnails? */
+  img {
+    height: 200px;
   }
 }

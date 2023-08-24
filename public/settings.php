@@ -6,7 +6,12 @@ use Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-if (!$auth->isUserLoggedIn()) redirect('login.php');
+// TODO: should be ported properly
+
+if (!$auth->isUserLoggedIn())
+{
+    $betty->Notification("Please login to continue.", "/login.php");
+}
 //if ($auth->getUserBanData()) die("Banned user.");
 
 $error = '';

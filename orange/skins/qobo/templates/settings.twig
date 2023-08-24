@@ -1,49 +1,63 @@
 {% extends "_layout.twig" %}
 
-{% set title = "Settings" %}
+{% set title = "Account settings" %}
 
 	{% block content %}
-        <div class="banner banner-danger">Temporary design.</div>
         {% if error %}
             <div class="banner banner-danger">{{ error }}</div>
         {% endif %}
+        <div class="profile-box">
+            <h1>Account settings</h1>
+        </div>
         <div class="content-box">
         <form action="settings.php" method="post" enctype="multipart/form-data">
 
-            <div class="text-title">
-                Security
+            <div class="text-title tabled">
+                <img src="/img/tango/lock.png">
+                <span>Security</span>
             </div>
+
             <div class="form-input">
+                <label for="current_pass">Current password:</label>
             <input class="form-submit" type="password" name="current_pass" size="30" maxlength="256"
                    placeholder="Current password"><br>
             </div>
 
             <div class="form-input">
+                <label for="pass">New password:</label>
             <input class="form-submit" type="password" name="pass" size="30" maxlength="256" placeholder="New password"><br>
             </div>
 
             <div class="form-input">
+                <label for="pass2">Confirm new password:</label>
             <input class="form-submit" type="password" name="pass2" size="30" maxlength="256"
                    placeholder="Confirm new password">
             </div>
 
+            <hr>
 
-            <div class="text-title">
-                Profile
-            </div>
-            <div class="form-input">
-            <input type="file" name="profilePicture" id="profilePicture">
+            <div class="text-title tabled">
+                <img src="/img/tango/person.png">
+                <span>Profile</span>
             </div>
 
             <div class="form-input">
+                <label for="profilePicture">Profile picture:</label>
+                <input type="file" name="profilePicture" id="profilePicture">
+            </div>
+
+            <div class="form-input">
+                <label for="title">Profile name:</label>
             <input class="form-submit" type="text" name="title" size="45" maxlength="50" value="{{ user_data.title }}">
             </div>
 
             <div class="form-input">
+                <label for="about">Profile description:</label>
             <textarea class="form-submit" name="about" rows="5" cols="80" wrap="virtual">{{ user_data.about }}</textarea>
             </div>
 
             <div class="form-input">
+                <label for="customcolor">Username color (deprecated?):</label>
             <input name="customcolor" type="color" value="{{ user_data.customcolor | default('523bb8') }}">
             </div>
 
