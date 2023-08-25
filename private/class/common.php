@@ -113,19 +113,16 @@ if ($log) {
     $userdata['powerlevel'] = 1;
 }
 
-function navigationList() {
-	return [
-		"browse" => [
-			"name" => __("Browse"),
-			"icon" => "video",
-			"url" => "/browse.php",
-			"htmlid" => "browse",
-		],
-	];
-}
-
-function randstr($len, $charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-") {
-    return substr(str_shuffle($charset),0,$len);
+function navigationList()
+{
+    return [
+        "browse" => [
+            "name" => __("Browse"),
+            "icon" => "video",
+            "url" => "/browse.php",
+            "htmlid" => "browse",
+        ],
+    ];
 }
 
 $userdata['timezone'] = 'America/New York';

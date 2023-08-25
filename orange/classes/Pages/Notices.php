@@ -9,7 +9,7 @@ use Orange\Database;
 use Orange\NoticeType;
 
 /**
- * Backend code for the index page.
+ * Backend code for the notices page.
  *
  * @since 0.1.0
  */

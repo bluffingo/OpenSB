@@ -87,6 +87,11 @@ class Orange {
             die();
         }
     }
+
+    public function randomString($length)
+    {
+        return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"),0,$length);
+    }
 }
 
 $betty = new \Orange\Orange($host, $user, $pass, $db);

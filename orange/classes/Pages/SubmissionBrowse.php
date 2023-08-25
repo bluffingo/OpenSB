@@ -8,7 +8,7 @@ use Orange\BettyException;
 use Orange\Database;
 
 /**
- * Backend code for the index page.
+ * Backend code for the submission browsing page.
  *
  * @since 0.1.0
  */

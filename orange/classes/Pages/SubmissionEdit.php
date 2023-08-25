@@ -19,6 +19,9 @@ class SubmissionEdit
 {
     private \Orange\Database $database;
     private \Orange\SubmissionData $submission;
+    private mixed $id;
+    private \Orange\Orange $betty;
+    private mixed $data;
 
     public function __construct(\Orange\Orange $betty, $id)
     {
