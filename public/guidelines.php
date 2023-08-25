@@ -8,6 +8,6 @@ require_once dirname(__DIR__) . '/private/class/common.php';
 $twig = new \Orange\Templating($betty);
 
 echo $twig->render('_markdown.twig', [
-	'pagetitle' => 'Privacy Policy',
-	'file' => 'privacy_policy.md'
+	'pagetitle' => 'Guidelines',
+	'file' => 'guidelines.md'
 ]);

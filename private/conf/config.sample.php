@@ -43,3 +43,5 @@ $bunnySettings = [
 ];
 
 $disableUploading = false;
+
+$googleAdsClient = false;

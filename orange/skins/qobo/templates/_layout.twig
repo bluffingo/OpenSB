@@ -3,12 +3,17 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} - Qobo</title>
     <link rel="stylesheet" href="img/css/common.css">
     <link rel="stylesheet" href="theme/famfamfam-silk.min.css">
     <link rel="stylesheet" href="theme/silk-companion.min.css">
     <meta name="theme-color" content="#ff9800">
+
+    {% if ad_client %}
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-{{ ad_client }}"
+            crossorigin="anonymous"></script>
+    {% endif %}
 </head>
 <body>
 <div class="page">

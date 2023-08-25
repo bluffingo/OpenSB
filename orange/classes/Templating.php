@@ -19,7 +19,7 @@ class Templating
 
     public function __construct(\Orange\Orange $betty)
     {
-        global $isQoboTV, $auth, $bettyTemplate, $isDebug, $branding;
+        global $isQoboTV, $auth, $bettyTemplate, $isDebug, $branding, $googleAdsClient;
         chdir(__DIR__ . '/..');
         $this->skin = $betty->getLocalOptions()["skin"] ?? $bettyTemplate;
         $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
@@ -45,6 +45,7 @@ class Templating
         $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('website_branding', $branding);
+        $this->twig->addGlobal('ad_client', $googleAdsClient);
 
         $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         $this->twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");

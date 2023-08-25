@@ -105,6 +105,7 @@ class Submission
             ],
             "comments" => $this->comments->getComments(),
             "bools" => $this->bools,
+            "rating" => $this->data["rating"],
         ];
     }
 }
