@@ -14,6 +14,21 @@
 
             <div class="text-title tabled">
                 <img src="/img/tango/lock.png">
+                <span>Ratings</span>
+            </div>
+
+            <p>Choose the option you are the most comfortable with. Higher rating submissions may not be appropriate.</p>
+
+            <select class="form-submit" name="rating" id="rating">
+                <option value="general" {% if user_data.comfortable_rating == "general" %}selected{% endif %}>General</option>
+                <option value="questionable" {% if user_data.comfortable_rating == "questionable" %}selected{% endif %}>Questionable</option>
+                <option value="mature" {% if user_data.comfortable_rating == "mature" %}selected{% endif %}>Mature</option>
+            </select>
+
+            <hr>
+
+            <div class="text-title tabled">
+                <img src="/img/tango/lock.png">
                 <span>Security</span>
             </div>
 

@@ -17,6 +17,8 @@ if (!$auth->isUserLoggedIn())
 $error = '';
 
 if (isset($_POST['save'])) {
+    global $storage, $sql, $userbandata;
+
     if ($auth->getUserBanData()) die("Banned user.");
 
     $title = htmlspecialchars($_POST['title']) ?? null;
@@ -28,6 +30,8 @@ if (isset($_POST['save'])) {
     $currentPass = ($_POST['current_pass'] ?? null);
     $pass = ($_POST['pass'] ?? null);
     $pass2 = ($_POST['pass2'] ?? null);
+
+    $rating = $_POST['rating'] ?? "general";
 
     if ($currentPass && $pass && $pass2) {
 		$password = $sql->fetch("SELECT password FROM users WHERE id = ?", [$userdata['id']])["password"];
@@ -65,8 +69,8 @@ if (isset($_POST['save'])) {
         }
 
 		if (!$error) {
-				$sql->query("UPDATE users SET title = ?, about = ?, customcolor = ? WHERE id = ?",
-					[$title, $about, $customcolor, $userdata['id']]);
+				$sql->query("UPDATE users SET title = ?, about = ?, customcolor = ?, comfortable_rating = ? WHERE id = ?",
+					[$title, $about, $customcolor, $rating, $userdata['id']]);
 		}
     }
 

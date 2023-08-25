@@ -99,6 +99,7 @@ class MiscFunctions
                     "description" => $submission["description"],
                     "published" => $submission["time"],
                     "type" => $submission["post_type"],
+                    "content_rating" => $submission["rating"],
                     "author" => [
                         "id" => $submission["author"],
                         "info" => $userData->getUserArray(),
@@ -110,5 +111,23 @@ class MiscFunctions
         }
 
         return $submissionsData;
+    }
+
+    public static function whereRatings() {
+        global $auth;
+
+        if ($auth->isUserLoggedIn()) {
+            $rating = $auth->getUserData()["comfortable_rating"];
+
+            $return_value = match ($rating) {
+                'general' => 'v.rating = "general"',
+                'questionable' => 'v.rating = "general" or v.rating = "questionable"',
+                'mature' => 'v.rating = "general" or v.rating = "questionable" or v.rating = "mature"',
+            };
+        } else {
+            $return_value = 'v.rating = "general"';
+        }
+
+        return $return_value;
     }
 }

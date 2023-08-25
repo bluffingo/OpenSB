@@ -22,11 +22,14 @@ class SubmissionBrowse
 
     public function __construct(\Orange\Orange $betty, $type, $page)
     {
+        global $auth;
         $this->order = $this->getOrderFromType($type);
         $this->limit = sprintf("LIMIT %s,%s", (($page - 1) * 20), 20);
 
+        $whereRatings = MiscFunctions::whereRatings();
+
         $this->database = $betty->getBettyDatabase();
-        $this->submissions = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) ORDER BY $this->order DESC $this->limit"));
+        $this->submissions = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings ORDER BY $this->order DESC $this->limit"));
         $this->submission_count = $this->database->result("SELECT COUNT(*) FROM videos");
     }
 

@@ -82,8 +82,8 @@ class SubmissionUpload
                 $target_file = dirname(__DIR__) . '/../../dynamic/videos/' . $new . '.' . $ext;
             }
             if (move_uploaded_file($temp_name, $target_file)) {
-                $this->database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags) VALUES (?,?,?,?,?,?,?,?)",
-                    [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $post_data['tags'])), 'dynamic/videos/' . $new, $status]);
+                $this->database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, rating) VALUES (?,?,?,?,?,?,?,?,?)",
+                    [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $post_data['tags'])), 'dynamic/videos/' . $new, $status, $post_data["rating"]]);
 
                 if (!isset($noProcess)) {
                     $storage->processVideo($new, $target_file);
@@ -94,8 +94,8 @@ class SubmissionUpload
         } elseif (in_array(strtolower($ext), $this->supportedImageFormats, true)) {
             $storage->processImage($temp_name, $new);
             $status = 0x0;
-            $this->database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, post_type) VALUES (?,?,?,?,?,?,?,?,?)",
-                [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $post_data['tags'])), '/dynamic/art/' . $new . '.png', $status, 2]);
+            $this->database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, post_type, rating) VALUES (?,?,?,?,?,?,?,?,?,?)",
+                [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $post_data['tags'])), '/dynamic/art/' . $new . '.png', $status, 2, $post_data["rating"]]);
 
             $this->orange->Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
         } else {

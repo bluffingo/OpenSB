@@ -5,6 +5,8 @@ namespace openSB;
 //this uploads and converts the video, should switch to a better solution!
 global $betty;
 
+use Orange\Templating;
+
 require_once dirname(__DIR__) . '/private/class/common.php';
 
 require_once dirname(__DIR__) . '/orange/classes/Pages/SubmissionUpload.php';
@@ -15,7 +17,8 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
     $page->postData($_POST, $_FILES);
 }
 
-$twig = twigloader();
+$twig = new Templating($betty);
+
 echo $twig->render('upload.twig', [
     'limit' => (convertBytes(ini_get('upload_max_filesize'))),
 ]);
