@@ -1,0 +1,100 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Admin dashboard" %}
+
+	{% block content %}
+		<div class="profile-box">
+			<h1>Admin dashboard</h1>
+		</div>
+		<div class="content-box">
+			<canvas id="myChart"></canvas>
+		</div>
+		<div class="content-header">
+			<span>Stats</span>
+		</div>
+		<div class="content-box">
+			<ul>
+				<li>Uname: {{ data.system.uname }}</li>
+				{% for key, number in data.numbers %}
+					<li>{{ key }}: {{ number }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endblock %}
+
+{% block scripts %}
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+	<script>
+		const ctx = document.getElementById('myChart');
+
+		new Chart(ctx, {
+			type: 'line',
+			data: {
+				datasets: [
+					{
+						label: 'Submissions',
+						data: [
+							{% for graph in data.graph_data.submissions %}
+							{
+								x: "{{ graph.time }}",
+								y: {{ graph.runningTotal }},
+							},
+							{% endfor %}
+						],
+						borderWidth: 1
+					},
+					{
+						label: 'Users',
+						data: [
+							{% for graph in data.graph_data.users %}
+							{
+								x: "{{ graph.joined }}",
+								y: {{ graph.runningTotal }},
+							},
+							{% endfor %}
+						],
+						borderWidth: 1
+					},
+					{
+						label: 'Comments',
+						data: [
+							{% for graph in data.graph_data.comments %}
+							{
+								x: "{{ graph.date }}",
+								y: {{ graph.runningTotal }},
+							},
+							{% endfor %}
+						],
+						borderWidth: 1
+					},
+					{
+						label: 'Shouts',
+						data: [
+							{% for graph in data.graph_data.shouts %}
+							{
+								x: "{{ graph.date }}",
+								y: {{ graph.runningTotal }},
+							},
+							{% endfor %}
+						],
+						borderWidth: 1
+					},
+				]
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true
+					},
+					x: {
+						type: 'time',
+						min: '2021-01-30 00:00:00',
+					}
+
+				}
+			}
+		});
+	</script>
+{% endblock %}

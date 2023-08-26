@@ -70,4 +70,13 @@ class Authentication
     {
         return $this->user_ban_data;
     }
+
+    public function isUserAdmin()
+    {
+        if ($this->is_logged_in) {
+            return ($this->user_data['powerlevel'] > 3);
+        } else {
+            return false;
+        }
+    }
 }
