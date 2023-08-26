@@ -1,17 +1,51 @@
-div.comment {
+.comment {
   background: white;
-  margin-bottom: 5px;
+  padding-bottom: 5px;
+
+  img.pfp {
+    width: 100px;
+    float: left;
+  }
+
+  .comment-details {
+    float: left;
+    padding: 5px;
+    width: 130px;
+  }
+
+  .comment-body {
+    width: 696px;
+    float: left;
+
+    .comment-contents {
+      padding: 10px;
+      background: #fcfcfc;
+      border: 1px solid #eee;
+
+      p {
+        margin: 0;
+      }
+
+      blockquote {
+        color: #789922;
+        margin: 0;
+        p:before {
+          content: ">";
+        }
+      }
+    }
+  }
 }
 
-div.comment-header {
-  background: #ffcd63;
-  padding: 5px;
-}
+#replies {
+  .comment {
+    img.pfp {
+      width: 75px;
+    }
 
-div.comment-body {
-  padding: 5px;
-}
-
-div.comment-body p {
-  margin: 0;
+    .comment-body {
+      width: 675px;
+      padding-left: 46px;
+    }
+  }
 }

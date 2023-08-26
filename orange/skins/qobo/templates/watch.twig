@@ -89,23 +89,40 @@
         </div>
     </div>
     <div class="clear"></div>
+    <br>
     <div id="comments">
-        <h2>Recent Comments</h2>
-        {% for comment in submission.comments %}
-            <div class="comment" id="comment-{{ comment.id }}">
-                <div class="comment-header">
-                    <strong>{{ user_link(comment.author) }}</strong> <small title="{{ comment.posted | date('F j, Y') }}">{{ comment.posted | relative_time }}</small>
+        <div class="content-header">
+            <span>Comments</span>
+        </div>
+        <div class="content-box">
+            {% for comment in submission.comments %}
+                {{ include('/components/_comment.twig') }}
+                <div id="replies">
+                    {% for comment in comment.replies %}
+                        {{ include('/components/_comment.twig') }}
+                    {% endfor %}
                 </div>
-                <div class="comment-body">
-                    {% if comment.post | trim is not empty %}
-                        {{ comment.post | markdown_user_written }}
-                    {% else %}
-                        <small>Null comment</small>
-                    {% endif %}
+            {% endfor %}
+            <div class="new-comment">
+                <div class="text-title">
+                    <span>New comment (todo: this should use javascript)</span>
                 </div>
+                <form name="commentForm" id="commentForm" method="post" action="/comment.php" enctype="multipart/form-data">
+                    <input type="hidden" name="vidid" value="{{ submission.id }}">
+                    <input type="hidden" name="really" value="why_do_we_need_this">
+                    <input type="hidden" name="type" value="video">
+                    <input type="hidden" name="reply_to" value="0">
+                    <div class="form-input">
+                <textarea class="form-submit-wide" name="comment" maxlength="1000"
+                          form="commentForm"
+                          style="overflow:hidden;resize:vertical" rows="4"></textarea>
+                    </div>
+                    <div class="form-button-container">
+                        <input type="submit" id="upload" name="upload" class="form-button-submit"
+                               value="Add comment">
+                    </div>
+                </form>
             </div>
-        {% else %}
-            No comments!
-        {% endfor %}
+        </div>
     </div>
 {% endblock %}

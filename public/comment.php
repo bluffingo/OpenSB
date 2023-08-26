@@ -2,6 +2,7 @@
 
 namespace openSB;
 
+global $betty, $bettyTemplate, $sql, $userdata, $userbandata;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
 if ($userbandata) {
@@ -28,6 +29,7 @@ if (isset($_POST['really'])) {
             $reply_to = ($_POST['reply_to'] ?? "0");
             break;
         case "profile":
+            die("Commenting on profiles is no longer supported and will only be brought back once the code for commenting has been rewritten to use Orange.");
             $type = 1;
             $table = "channel_comments";
             $id = ($_POST['uid'] ?? "");
@@ -36,6 +38,11 @@ if (isset($_POST['really'])) {
     }
 } else {
     die(__("Missing important POST variable."));
+}
+
+if ($sql->result("SELECT COUNT(*) FROM comments WHERE date > ? AND author = ?", [time() - 60, $userdata["id"]]))
+{
+    $betty->Notification("Please wait a minute before commenting again.", "/watch.php?v=" . $id);
 }
 
 $comment = [
@@ -55,7 +62,12 @@ if ($type == 0) {
     die(__("Missing important POST variable."));
 }
 
-$twig = twigloader();
-echo $twig->render('components/comment.twig', [
-    'data' => $comment
-]);
+// this page hasen't been migrated over to orange.
+if ($bettyTemplate != "qobo") {
+    $twig = twigloader();
+    echo $twig->render('components/comment.twig', [
+        'data' => $comment
+    ]);
+} else {
+    $betty->Notification("Your comment has been successfully posted.", "/watch.php?v=" . $id, "success");
+}

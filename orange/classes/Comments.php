@@ -19,18 +19,14 @@ class Comments
         $this->id = $id;
     }
 
-    public function getComments() {
+    // probably stupid and should be part of getComments. -chaziz 8/26/2023
+    public function getReplies($comment_id) {
+        $database_data = null;
 
         // Submission page, get the submission's comments.
         if ($this->type == CommentLocation::Submission)
         {
-            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c WHERE c.id = ? ORDER BY c.date DESC", [$this->id]));
-        }
-
-        // Community page, get the most recent submission comments.
-        if ($this->type == CommentLocation::CommunityPage)
-        {
-            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c ORDER BY c.date DESC LIMIT 16"));
+            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM comments c WHERE c.reply_to = ? ORDER BY c.date DESC", [$comment_id]));
         }
 
         $data = [];
@@ -46,11 +42,34 @@ class Comments
                     "info" => $author->getUserArray(),
                 ],
             ];
+        }
+        return $data;
+    }
 
-            if ($this->type == CommentLocation::CommunityPage)
-            {
-                $data[$comment["comment_id"]]["submission_data"] = $this->database->fetch("SELECT title FROM videos WHERE video_id = ?", [$comment["id"]]);
-            }
+    public function getComments() {
+
+        $database_data = null;
+
+        // Submission page, get the submission's comments.
+        if ($this->type == CommentLocation::Submission)
+        {
+            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c WHERE c.id = ? ORDER BY c.date DESC", [$this->id]));
+        }
+
+        $data = [];
+        foreach ($database_data as $comment) {
+            $author = new User($this->database, $comment["author"]);
+            $data[$comment["comment_id"]] = [
+                "id" => $comment["comment_id"],
+                "posted_id" => $comment["id"],
+                "post" => $comment["comment"],
+                "posted" => $comment["date"],
+                "author" => [
+                    "id" => $comment["author"],
+                    "info" => $author->getUserArray(),
+                ],
+                "replies" => $this->getReplies($comment["comment_id"]),
+            ];
         }
         return $data;
     }
