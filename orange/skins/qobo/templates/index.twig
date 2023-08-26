@@ -3,31 +3,26 @@
 {% set title = "Index" %}
 
 {% block content %}
-    <div id="page-left" style="width: 473px;">
-        <div class="content-header">
-            <span>Randomized list of submissions</span>
-            <div class="content-header-right">
-                <a href="browse.php">Browse</a>
-            </div>
-        </div>
-        <div class="content-box">
-            {% for submission in data.submissions %}
-                {{ include('/components/_index_submission.twig') }}
-            {% endfor %}
+    <div class="content-header">
+        <span>Recent submissions</span>
+        <div class="content-header-right">
+            <a href="browse.php">Browse</a>
         </div>
     </div>
-
-    <div id="page-right" style="width: 473px;">
-        <div class="content-header">
-            <span>Recent submissions</span>
-            <div class="content-header-right">
-                <a href="browse.php">Browse</a>
-            </div>
+    <div class="content-box">
+        {% for submission in data.submissions_new %}
+            {{ include('/components/_index_submission_2.twig') }}
+        {% endfor %}
+    </div>
+    <div class="content-header">
+        <span>Randomized list of submissions</span>
+        <div class="content-header-right">
+            <a href="browse.php">Browse</a>
         </div>
-        <div class="content-box">
-            {% for submission in data.submissions_new %}
-                {{ include('/components/_index_submission.twig') }}
-            {% endfor %}
-        </div>
+    </div>
+    <div class="content-box">
+        {% for submission in data.submissions %}
+            {{ include('/components/_index_submission_2.twig') }}
+        {% endfor %}
     </div>
 {% endblock %}
