@@ -25,6 +25,7 @@ class BettyTwigExtension extends AbstractExtension
             new TwigFunction('remove_notification', [$this, 'RemoveNotification']),
             new TwigFunction('show_ratings', [$this, 'ShowRatings']),
             new TwigFunction('notification_icon', [$this, 'NotificationIcon']),
+            new TwigFunction('pagination', [$this, 'Pagination'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -197,5 +198,11 @@ HTML;
         if ($type == "danger") { $icon = "famfamfam-silk exclamation"; }
 
         return $icon;
+    }
+
+    public function Pagination($levels, $lpp, $url, $current)
+    {
+        global $twig;
+        return $twig->render('pagination.twig', ['levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current]);
     }
 }

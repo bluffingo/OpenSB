@@ -11,4 +11,11 @@
             {{ include('/components/_index_submission.twig') }}
         {% endfor %}
     </div>
+    {% if data.type == 'all' %}
+        {% set le_url = 'browse.php?page=%s' %}
+    {% else %}
+        {% set le_url = 'browse.php?type=' ~ type ~ '&page=%s' %}
+    {% endif %}
+
+    {{ pagination(data.count, 20, le_url, page) }}
 {% endblock %}
