@@ -11,11 +11,9 @@ This site consists mainly of user generated content, and whenever you e.g. uploa
 
 
 ## User information
-When you register an account, you provide an username, email and password. The username is visible and should not be your real name, but a pseudonym you are comfortable with others seeing.
+When you register an account, you provide a username, email and password. The username is visible and should not be your real name, but a pseudonym you are comfortable with others seeing.
 
 The password you register with is one-way hashed with bcrypt and the hash is only visible to the server admin, who cannot convert this back into the original password.
-
-The email you register with is likewise one-way hashed, with salted SHA256. It cannot be retrieved unless you yourself confirm it afterward, in the case of password resets by email (NYI) or for confirming at a later date that you are the account holder.
 
 Whenever you are logged in, your latest IP address is stored in the database (independent of access logs). This is only visible to the server administrator and is kept strictly private unless abuse occurs.
 
