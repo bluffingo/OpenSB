@@ -2,16 +2,29 @@
 
 namespace openSB;
 
+global $betty;
+
+use Orange\BettyException;
+use Orange\Templating;
+
 require_once dirname(__DIR__) . '/private/class/common.php';
 
+require_once dirname(__DIR__) . '/orange/classes/Pages/SubmissionSearch.php';
+
 $query = $_GET['tags'] ?? null;
+$type = ($_GET['type'] ?? 'recent');
+$page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
-// currently selects all uploaded videos
-$videoData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE v.tags LIKE CONCAT('%', ?, '%') OR v.title LIKE CONCAT('%', ?, '%') OR v.description LIKE CONCAT('%', ?, '%') ORDER BY v.id DESC", [$query, $query, $query]);
+try {
+    $page = new \Orange\Pages\SubmissionSearch($betty, $type, $page_number, $query);
+    $data = $page->getData();
+} catch (BettyException $e) {
+    $e->page();
+}
 
-$twig = twigloader();
+$twig = new Templating($betty);
 
-echo $twig->render('search.twig', [
-    'videos' => $videoData,
-    'query' => $query
+echo $twig->render('browse.twig', [
+    'data' => $data,
+    'page' => $page_number,
 ]);
