@@ -31,7 +31,7 @@ class SubmissionSearch
         $this->database = $betty->getBettyDatabase();
         $this->submissions = $this->database->fetchArray(
             $this->database->query(
-                "SELECT v.* FROM videos v WHERE v.tags LIKE CONCAT('%', ?, '%') OR v.title LIKE CONCAT('%', ?, '%') OR v.description LIKE CONCAT('%', ?, '%') AND v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings ORDER BY $this->order DESC $this->limit
+                "SELECT v.* FROM videos v WHERE (v.tags LIKE CONCAT('%', ?, '%') OR v.title LIKE CONCAT('%', ?, '%') OR v.description LIKE CONCAT('%', ?, '%')) AND $whereRatings AND v.video_id NOT IN (SELECT submission FROM takedowns) ORDER BY $this->order DESC $this->limit
                 ", [$query, $query, $query]));
     }
 

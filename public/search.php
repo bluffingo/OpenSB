@@ -11,7 +11,7 @@ require_once dirname(__DIR__) . '/private/class/common.php';
 
 require_once dirname(__DIR__) . '/orange/classes/Pages/SubmissionSearch.php';
 
-$query = $_GET['tags'] ?? null;
+$query = $_GET['query'] ?? null;
 $type = ($_GET['type'] ?? 'recent');
 $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
