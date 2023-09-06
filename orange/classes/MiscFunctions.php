@@ -133,7 +133,7 @@ class MiscFunctions
                 'mature' => 'v.rating IN ("general","questionable","mature")',
             };
         } else {
-            $return_value = '"v.rating" IN ("general")';
+            $return_value = 'v.rating IN ("general")';
         }
 
         return $return_value;
