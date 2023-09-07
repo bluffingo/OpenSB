@@ -63,4 +63,17 @@
             {% endif %}
         </div>
     </div>
+    {% if data.submissions %}
+    <div class="content-header">
+        <span>{{ data.username }}'s recent submissions</span>
+        <div class="content-header-right">
+            <a href="browse.php">Browse</a>
+        </div>
+    </div>
+    <div class="content-box">
+        {% for submission in data.submissions %}
+            {{ include('/components/_index_submission_2.twig') }}
+        {% endfor %}
+    </div>
+    {% endif %}
 {% endblock %}

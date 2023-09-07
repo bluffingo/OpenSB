@@ -19,11 +19,29 @@ class Profile
     private \Orange\Database $database;
     private $data;
     private $is_own_profile;
+    private array $user_submissions;
+
     public function __construct(\Orange\Orange $betty, $username)
     {
         global $auth;
+
+        $whereRatings = MiscFunctions::whereRatings();
+
         $this->database = $betty->getBettyDatabase();
         $this->data = $this->database->fetch("SELECT u.* FROM users u WHERE u.name = ?", [$username]);
+        $this->user_submissions =
+            $this->database->fetchArray(
+                $this->database->query("SELECT v.* FROM videos v WHERE v.video_id 
+                                   NOT IN (SELECT submission FROM takedowns) 
+                           AND v.author = ?
+                           AND $whereRatings 
+                         ORDER BY v.time 
+                         DESC LIMIT 12", [$this->data["id"]]));
+
+        if (!$this->data)
+        {
+            $betty->Notification("This user does not exist.", "/");
+        }
 
         if ($this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->data["id"]]))
         {
@@ -47,6 +65,7 @@ class Profile
             "connected" => $this->data["lastview"],
             "is_current" => $this->is_own_profile,
             "featured_submission" => $this->getSubmissionFromFeaturedID(),
+            "submissions" => MiscFunctions::makeSubmissionArray($this->database, $this->user_submissions),
         ];
     }
 
