@@ -3,6 +3,15 @@
 {% set title = "Home" %}
 
 {% block content %}
+    <div class="jumbotron">
+        {% if is_user_logged_in %}
+            <h1>Welcome to Qobo, {{ user_data.name }}.</h1>
+            <div>Statistics (placeholder)</div>
+        {% else %}
+            <h1>Welcome to Qobo.</h1>
+            <div>Introduction text (placeholder)</div>
+        {% endif %}
+    </div>
     <div class="content-header">
         <span>Recent submissions</span>
         <div class="content-header-right">

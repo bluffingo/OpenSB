@@ -2,7 +2,7 @@
 
 namespace Orange;
 
-global $host, $user, $pass, $db, $buildNumber, $gitBranch;
+global $host, $user, $pass, $db, $isQoboTV;
 
 use GUMP;
 
@@ -30,6 +30,12 @@ class Orange {
         } else {
             $this->options = [];
         }
+
+        // should not be enabled on qobo.tv
+        if ($_SERVER['HTTP_HOST'] == "localhost" || $_SERVER['HTTP_HOST'] == "127.0.0.1") {
+            $this->options["development"] = true;
+        }
+
         try {
             $this->database = new \Orange\Database($host, $user, $pass, $db);
         } catch (BettyException $e) {

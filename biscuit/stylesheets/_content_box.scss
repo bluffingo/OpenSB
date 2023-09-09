@@ -50,6 +50,30 @@ div.content-header-right
         float: left;
         padding: 0 15px;
         text-align: center;
+
+        // make "By [uploader]" (index) and "[submission title]" (profile) text smaller
+        .content-author {
+            font-size: 10px;
+            font-weight: normal;
+
+            width: 125px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: inline-block;
+            white-space: nowrap;
+
+            // make links thinner
+            a {
+                font-weight: normal;
+
+                // bring back bold weight for userlinks
+                &.userlink {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        // Thumbnails as seen in the browse and profile pages.
         .content-image-container {
             display: table;
             text-align: center;

@@ -40,7 +40,7 @@ class Version
                 'info' => $this->database->getVersion(),
             ),
             'bettyVersion' => array(
-                'title' => "squareOrange version",
+                'title' => "openSB version",
                 'info' => $this->betty->getBettyVersion(),
             ),
         );

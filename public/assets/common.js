@@ -1,5 +1,7 @@
 index = 0;
 
+// fun fact: this file dates from back in 2021 when our frontend was done in bootstrap 5. -chaziz 9/9/2023
+
 $(document).ready(function () {
     console.log("Sorry, We removed the sounds. -Chaziz 5/27/2023");
     $("#action_unlogged").click(function () {
@@ -31,7 +33,7 @@ $(document).ready(function () {
         $.post("comment.php",
             {
                 comment: $.trim($('#commentContents').val()),
-                vidid: video_id,
+                vidid: submission_id,
                 really: "ofcourse",
                 type: "video"
             },
