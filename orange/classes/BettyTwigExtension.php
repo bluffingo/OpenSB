@@ -149,7 +149,7 @@ class BettyTwigExtension extends AbstractExtension
     public function UserLink($user): string
     {
         return <<<HTML
-<a style="color: {$user["info"]["color"]}" class="userlink" href="user.php?name={$user["info"]["username"]}">{$user["info"]["username"]}</a>
+<a class="userlink" href="user.php?name={$user["info"]["username"]}">{$user["info"]["username"]}</a>
 HTML;
     }
 
