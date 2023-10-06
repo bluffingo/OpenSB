@@ -1,3 +1,5 @@
+##TODO: CLEAN THIS
+
 ## User-generated files
 private/conf/config.php
 private/templates/cache/
@@ -50,9 +52,6 @@ mead/images/
 /.metadata/
 debug.log
 /artwork
-
-## bootstrap port made for testing, won't be publishing due to redudancy
-private/templates/bootstrap2021-common
 tools/gourcelog.txt
 .idea/dataSources.xml
 .DS_Store
@@ -72,3 +71,6 @@ public/assets/tailwind.css
 # mariadb stuff from docker
 mariadb-data
 /public/img/css/common.css
+
+# google moment
+ads.txt
