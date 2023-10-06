@@ -71,11 +71,6 @@
             <textarea class="form-submit" name="about" rows="5" cols="80" wrap="virtual">{{ user_data.about }}</textarea>
             </div>
 
-            <div class="form-input">
-                <label for="customcolor">Username color (deprecated?):</label>
-            <input name="customcolor" type="color" value="{{ user_data.customcolor | default('523bb8') }}">
-            </div>
-
             <div class="form-button-container">
                 <input type="submit" id="upload" name="save" class="form-button-submit"
                        value="Save changes">

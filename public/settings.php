@@ -22,7 +22,6 @@ if (isset($_POST['save'])) {
     if ($auth->getUserBanData()) die("Banned user.");
 
     $title = htmlspecialchars($_POST['title']) ?? null;
-    $customcolor = $_POST['customcolor'] ?? '#3e3ecf';
     $about = $_POST['about'] ?? null;
 
     $resetToken = $_POST['reset_token'] ?? null;
@@ -69,8 +68,8 @@ if (isset($_POST['save'])) {
         }
 
 		if (!$error) {
-				$sql->query("UPDATE users SET title = ?, about = ?, customcolor = ?, comfortable_rating = ? WHERE id = ?",
-					[$title, $about, $customcolor, $rating, $userdata['id']]);
+				$sql->query("UPDATE users SET title = ?, about = ?, comfortable_rating = ? WHERE id = ?",
+					[$title, $about, $rating, $userdata['id']]);
 		}
     }
 

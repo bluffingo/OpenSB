@@ -63,7 +63,6 @@ class Templating
     public function getAllSkins(): array
     {
         return [
-            "finalium" => "skins/finalium/",
             "qobo" => "skins/qobo/",
         ];
     }
