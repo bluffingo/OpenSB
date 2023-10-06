@@ -26,6 +26,10 @@ if (strlen($_POST["comment"]) > 1000) {
 	die("Too long.");
 }
 
+if ($sql->result("SELECT COUNT(*) FROM comments WHERE date > ? AND author = ?", [time() - 60, $userdata["id"]])) {
+    die();
+}
+
 if (isset($_POST['really'])) {
     switch ($_POST['type']) {
         case "video":
