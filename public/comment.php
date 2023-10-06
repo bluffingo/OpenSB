@@ -46,30 +46,17 @@ if (isset($_POST['really'])) {
     die(__("Missing important POST variable."));
 }
 
-if ($betty->getLocalOptions()["development"] ?? false) {
-    $author = new User($betty->getBettyDatabase(), $auth->getUserID());
-    $comment = [
-        "id" => 123456789,
-        "posted_id" => 987654321,
-        "post" => $_POST['comment'],
-        "posted" => time(),
-        "author" => [
-            "id" => $auth->getUserID(),
-            "info" => $author->getUserArray(),
-        ],
-    ];
-} else {
-    if ($sql->result("SELECT COUNT(*) FROM comments WHERE date > ? AND author = ?", [time() - 60, $userdata["id"]])) {
-        $betty->Notification("Please wait a minute before commenting again.", "/watch.php?v=" . $id);
-    }
-
-    $comment = [
-        'u_name' => $userdata['name'],
-        'u_customcolor' => $userdata['customcolor'],
-        'comment' => $_POST['comment'],
-        'date' => time()
-    ];
-}
+$author = new User($betty->getBettyDatabase(), $auth->getUserID());
+$comment = [
+    "id" => 123456789,
+    "posted_id" => 987654321,
+    "post" => $_POST['comment'],
+    "posted" => time(),
+    "author" => [
+        "id" => $auth->getUserID(),
+        "info" => $author->getUserArray(),
+    ],
+];
 
 if ($type == 0) {
     $sql->query("INSERT INTO comments (id, reply_to, comment, author, date, deleted) VALUES (?,?,?,?,?,?)",
@@ -81,20 +68,7 @@ if ($type == 0) {
     die(__("Missing important POST variable."));
 }
 
-if ($betty->getLocalOptions()["development"] ?? false) {
-    // new implementation that's still a placeholder
-    $twig = new Templating($betty);
-    echo $twig->render('components/_comment.twig', [
-        'comment' => $comment
-    ]);
-} else {
-    // use old placeholder implementation
-    if ($bettyTemplate != "qobo") {
-        $twig = twigloader();
-        echo $twig->render('components/comment.twig', [
-            'data' => $comment
-        ]);
-    } else {
-        $betty->Notification("Your comment has been successfully posted.", "/watch.php?v=" . $id, "success");
-    }
-}
+$twig = new Templating($betty);
+echo $twig->render('components/_comment.twig', [
+    'comment' => $comment
+]);
