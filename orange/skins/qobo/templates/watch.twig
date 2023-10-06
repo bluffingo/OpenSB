@@ -105,37 +105,15 @@
                 </div>
             {% endfor %}
             {% if is_user_logged_in %}
-                {% if show_work_in_progress_stuff %}
-                    <div class="new-comment" id="commentField">
-                        <div class="text-title">
-                            <span>New comment (Jquery implementation)</span>
-                        </div>
-                        <textarea class="form-submit-wide" id="commentContents" name="comment" maxlength="1000"
-                                  style="overflow:hidden;resize:vertical" rows="4"></textarea>
-                        <input type="submit" id="post" name="post" class="form-button-submit"
-                               value="Add comment">
+                <div class="new-comment" id="commentField">
+                    <div class="text-title">
+                        <span>New comment</span>
                     </div>
-                {% else %}
-                    <div class="new-comment">
-                        <div class="text-title">
-                            <span>New comment (Placeholder implementation)</span>
-                        </div>
-                        <form name="commentForm" id="commentForm" method="post" action="/comment.php" enctype="multipart/form-data">
-                            <input type="hidden" name="vidid" value="{{ submission.id }}">
-                            <input type="hidden" name="really" value="why_do_we_need_this">
-                            <input type="hidden" name="type" value="video">
-                            <input type="hidden" name="reply_to" value="0">
-                            <div class="form-input">
-                <textarea class="form-submit-wide" name="comment" maxlength="1000"
-                          form="commentForm"
-                          style="overflow:hidden;resize:vertical" rows="4"></textarea>
-                            </div>
-                            <div class="form-button-container">
-                                <input type="submit" id="upload" name="upload" class="form-button-submit"
-                                       value="Add comment">
-                            </div>
-                        </form>
-                    </div>
+                    <textarea class="form-submit-wide" id="commentContents" name="comment" maxlength="1000"
+                              style="overflow:hidden;resize:vertical" rows="4"></textarea>
+                    <input type="submit" id="post" name="post" class="form-button-submit"
+                           value="Add comment">
+                </div>
                 {% endif %}
             {% endif %}
         </div>

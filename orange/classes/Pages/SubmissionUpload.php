@@ -83,7 +83,7 @@ class SubmissionUpload
             }
             if (move_uploaded_file($temp_name, $target_file)) {
                 $this->database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, rating) VALUES (?,?,?,?,?,?,?,?,?)",
-                    [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $post_data['tags'])), 'dynamic/videos/' . $new, $status, $post_data["rating"]]);
+                    [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $post_data['tags'])), 'dynamic/videos/' . $new, $status, ($post_data["rating"] ?? "general")]);
 
                 if (!isset($noProcess)) {
                     $storage->processVideo($new, $target_file);
