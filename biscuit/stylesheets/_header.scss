@@ -15,7 +15,11 @@ div.header-logo
 
 form.header-search
 {
+  display: none;
   width: 250px;
+  @include responsive('medium') {
+    display: block;
+  }
 
   #header-search-input {
     width: 250px - 75px;
@@ -41,6 +45,7 @@ div.header-user
   .page {
     justify-content: space-between;
     flex-wrap: wrap;
+    width: 100%;
   }
 
   display: flex;
@@ -71,6 +76,7 @@ div.header
   .page {
     justify-content: space-between;
     flex-wrap: wrap;
+    width: 100%;
   }
 
   width: 100%;

@@ -1,8 +1,16 @@
 div.page {
-  width: 1000px;
   display: flex;
   align-items: center;
   margin: auto;
+  @include responsive('small') {
+    max-width: 450px;
+  }
+  @include responsive('medium') {
+    max-width: 700px;
+  }
+  @include responsive('large') {
+    max-width: 1000px;
+  }
 }
 
 div.page-contents

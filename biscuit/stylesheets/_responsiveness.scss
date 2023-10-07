@@ -1,0 +1,10 @@
+@function min-width-for($size) {
+  $width: map-get($breakpoints, $size);
+  @return '(min-width: #{$width})';
+}
+
+@mixin responsive($size) {
+  @media #{min-width-for($size)} {
+    @content;
+  }
+}

@@ -3,34 +3,26 @@
 {% set title = "Home" %}
 
 {% block content %}
-    <div class="jumbotron">
-        {% if is_user_logged_in %}
-            <h1>Welcome to Qobo, {{ user_data.name }}.</h1>
-        {% else %}
-            <h1>Welcome to Qobo.</h1>
-            <div>Here, you will find a mix of videos and images.</div>
-        {% endif %}
-    </div>
-    <div class="content-header">
-        <span>Recent submissions</span>
-        <div class="content-header-right">
-            <a href="browse.php">Browse</a>
+    <div class="section">
+        <div class="section-title">
+        <h1>Recent Submissions</h1>
+        <a href="browse.php">More</a>
+        </div>
+        <div class="content-box">
+            {% for submission in data.submissions_new %}
+                {{ include('/components/_index_submission_2.twig') }}
+            {% endfor %}
         </div>
     </div>
-    <div class="content-box">
-        {% for submission in data.submissions_new %}
-            {{ include('/components/_index_submission_2.twig') }}
-        {% endfor %}
-    </div>
-    <div class="content-header">
-        <span>Randomized list of submissions</span>
-        <div class="content-header-right">
-            <a href="browse.php">Browse</a>
+    <div class="section">
+        <div class="section-title">
+            <h1>Random Submissions</h1>
+            <a href="browse.php">More</a>
         </div>
-    </div>
-    <div class="content-box">
-        {% for submission in data.submissions %}
-            {{ include('/components/_index_submission_2.twig') }}
-        {% endfor %}
+        <div class="content-box">
+            {% for submission in data.submissions %}
+                {{ include('/components/_index_submission_2.twig') }}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

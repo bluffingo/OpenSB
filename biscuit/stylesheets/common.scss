@@ -1,3 +1,7 @@
+@import 'variables';
+
+@import 'responsiveness';
+
 :root { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
 	:root { font-family: 'Inter var', sans-serif; }
@@ -16,6 +20,17 @@ body
 	font-size: small;
 	padding: 0px;
 	margin: 0px;
+	/*
+	@include responsive('small') {
+		background-color: yellow;
+	}
+	@include responsive('medium') {
+		background-color: orange;
+	}
+	@include responsive('large') {
+		background-color: red;
+	}
+	*/
 }
 
 td, th
@@ -48,16 +63,16 @@ img
 
 h1 {
 	margin-top: 0px;
-	font-size: 18px;
+	font-size: 24px;
 }
 
-h2 { font-size: 16px; }
+h2 { font-size: 20px; }
 
-h3 { font-size: 14px; }
+h3 { font-size: 16px; }
 
-h4 { font-size: 12px; }
+h4 { font-size: 14px; }
 
-h5 { font-size: 10px; }
+h5 { font-size: 12px; }
 
 h6 { font-size: 10px; }
 
@@ -118,6 +133,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
 @import 'content_box';
 @import 'banner';
 @import 'comments';
+@import 'sections';
 
 @import 'watch_page';
 @import 'profile_page';
