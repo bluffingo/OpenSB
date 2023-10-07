@@ -1,7 +1,0 @@
-{% extends "_layout.twig" %}
-
-{% set title = pagetitle %}
-
-	{% block content %}
-{{ source('markdown/' ~ file) | markdown_unsafe }}
-	{% endblock %}
