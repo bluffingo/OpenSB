@@ -95,7 +95,7 @@ class SubmissionUpload
             $storage->processImage($temp_name, $new);
             $status = 0x0;
             $this->database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, post_type, rating) VALUES (?,?,?,?,?,?,?,?,?,?)",
-                [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $post_data['tags'])), '/dynamic/art/' . $new . '.png', $status, 2, $post_data["rating"]]);
+                [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $post_data['tags'])), '/dynamic/art/' . $new . '.png', $status, 2, ($post_data["rating"] ?? "general")]);
 
             $this->orange->Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
         } else {
