@@ -1,9 +1,19 @@
+:root { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+	:root { font-family: 'Inter var', sans-serif; }
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 body
 {
-	background: #333 url('/img/by_billygoat.jpg') center center / 100% fixed no-repeat;
+	background: #fff;
 	color: #000000;
 	font-size: small;
-	font-family: tahoma, arial, helvetica, sans-serif;
 	padding: 0px;
 	margin: 0px;
 }
@@ -11,15 +21,13 @@ body
 td, th
 {
 	font-size: small;
-	font-family: tahoma, arial, helvetica, sans-serif;
 	padding: 0;
 }
 
 a
 {
 	text-decoration: none;
-	font-weight: bold;
-	color: #864e14;
+	color: #FF8515;
 }
 
 table.c1

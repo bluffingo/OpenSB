@@ -5,28 +5,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} - Qobo</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="img/css/common.css">
     <link rel="stylesheet" href="theme/famfamfam-silk.min.css">
     <link rel="stylesheet" href="theme/silk-companion.min.css">
     <meta name="theme-color" content="#ff9800">
 
     {% if ad_client %}
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-{{ ad_client }}"
-            crossorigin="anonymous"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-{{ ad_client }}"
+                crossorigin="anonymous"></script>
     {% endif %}
 </head>
 <body>
-<div class="page">
-    <div class="header">
+<div class="header">
+    <div class="page">
         <div class="header-logo">
-            <a href="/index.php"><img alt="Qobo" src="/img/qobo.png"></a>
+            <a href="/index.php"><img alt="Qobo" class="logo" src="/img/logo.svg"></a>
         </div>
         <form class="header-search" action="/search.php">
             <input id="header-search-input" type="text" name="query" placeholder="Search...">
             <div class="form-button-container">
-            <button id="header-search-button" class="form-button-submit">
-                <span>Search</span>
-            </button>
+                <button id="header-search-button" class="form-button-submit">
+                    <span>Search</span>
+                </button>
             </div>
         </form>
         <div class="header-links">
@@ -34,7 +36,9 @@
             <a class="menulink" href="/users.php">Members</a>
         </div>
     </div>
-    <div class="header-user">
+</div>
+<div class="header-user">
+    <div class="page">
         {% if is_user_logged_in %}
             <div class="header-user-notifications">
                 <a class="menulink" href="/notices.php">{{ user_notice_data }} notices</a>
@@ -42,7 +46,7 @@
         {% endif %}
         <div class="header-user-links">
             {% if is_user_logged_in %}
-                <a class="menulink" href="/user.php?name={{ user_data.name }}">{{ user_data.name }}</a>
+                <a class="menulink userlink" href="/user.php?name={{ user_data.name }}">{{ user_data.name }}</a>
                 <a class="menulink" href="/settings.php">Settings</a>
                 {% if user_data.powerlevel > 2 %}
                     <a class="menulink" href="/admin.php">Admin panel</a>
@@ -54,11 +58,13 @@
                 <a class="menulink" href="/register.php">Register</a>
             {% endif %}
         </div>
-        <div class="clear"></div>
     </div>
-    <form action="login.php" method="post" name="logout">
-        <input type="hidden" name="action" value="logout">
-    </form>
+    <div class="clear"></div>
+</div>
+<form action="login.php" method="post" name="logout">
+    <input type="hidden" name="action" value="logout">
+</form>
+<div class="page">
     <div class="page-contents">
         {% if user_ban_data %}
             <div class="banner banner-danger">
@@ -76,7 +82,7 @@
         {% block content %}{% endblock %}
         <div class="footer">
             <a href="/version.php">Powered by openSB {{ squarebracket_version }}.</a>
-            <p>© 2021-{{ 'now' | date('Y') }} openSB contributors. Background by <a href="https://www.billyisreal.com/home">Billyisreal.com</a></p>
+            <p>© 2021-{{ 'now' | date('Y') }} openSB contributors.</p>
             <a href="/privacy.php">
                 Privacy policy
             </a>

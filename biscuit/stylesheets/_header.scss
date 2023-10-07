@@ -1,24 +1,20 @@
 div.header-links
 {
   text-align: right;
-  padding-right: 12px;
-  color: white;
-  font-family: verdana, arial, helvetica, sans-serif;
-  display: table-cell;
-  vertical-align: middle;
+  font-size: 20px;
+  margin-left: auto;
 }
 
 div.header-logo
 {
-  width: 177px;
-  display:table-cell;
-  vertical-align:middle;
+  img.logo {
+    width: 40px;
+  }
+  margin-right: 20px;
 }
 
 form.header-search
 {
-  display:table-cell;
-  vertical-align:middle;
   width: 250px;
 
   #header-search-input {
@@ -39,38 +35,50 @@ td.h
 div.header-user
 {
   width: 100%;
-  background-color: #150906;
-  color: white;
-  padding: 5px 0;
-  border-radius: 5px 5px 0 0
+  background-color: #F4F4F4;
+  height: 30px;
+
+  .page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  display: flex;
 }
 
 div.header-user-notifications
 {
-  padding-left: 15px;
-  float: left;
+  margin-right: auto;
 }
 
 div.header-user-links
 {
-  padding-right: 15px;
-  float: right;
+  margin-left: auto;
 }
 
 a.menulink
 {
-  color: white;
+  color: black;
   margin: 0 4px;
-}
-
-div.header-links
-{
-  font-size: 20px;
+  font-weight: 500;
+  &.userlink {
+    font-weight: 600;
+  }
 }
 
 div.header
 {
-  display: table;
+  .page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
   width: 100%;
-  padding-bottom: 5px;
+  background: linear-gradient(180deg, #FFB648 0%, #FFA51E 100%);
+  height: 62px;
+  display: flex;
 }
