@@ -2,6 +2,24 @@
 
 {% set title = "Home" %}
 
+{% block scripts %}
+    <!-- it feels so stupid to do this -bluffingo 10/7/2023 -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function() {
+            var elms = document.getElementsByClassName( 'splide' );
+
+            for ( var i = 0; i < elms.length; i++ ) {
+                new Splide( elms[ i ], {
+                    perPage: 6,
+                    rewind : true,
+                } ).mount();
+            }
+        } );
+    </script>
+{% endblock %}
+
 {% block content %}
     <div class="section">
         <div class="section-title">
@@ -9,9 +27,15 @@
         <a href="browse.php">More</a>
         </div>
         <div class="content-box">
-            {% for submission in data.submissions_new %}
-                {{ include('/components/_index_submission_2.twig') }}
-            {% endfor %}
+            <section class="splide" id="splide1" aria-labelledby="carousel-heading">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for submission in data.submissions_new %}
+                            {{ include('/components/_index_submission_3.twig') }}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
         </div>
     </div>
     <div class="section">
@@ -20,9 +44,15 @@
             <a href="browse.php">More</a>
         </div>
         <div class="content-box">
-            {% for submission in data.submissions %}
-                {{ include('/components/_index_submission_2.twig') }}
-            {% endfor %}
+            <section class="splide" id="splide2" aria-labelledby="carousel-heading">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for submission in data.submissions %}
+                            {{ include('/components/_index_submission_3.twig') }}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
         </div>
     </div>
 {% endblock %}
