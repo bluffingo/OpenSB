@@ -3,7 +3,7 @@
 namespace Orange\Pages;
 
 use Orange\MiscFunctions;
-use Orange\BettyException;
+use Orange\OrangeException;
 use Orange\CommentLocation;
 use Orange\Comments;
 use Orange\Database;

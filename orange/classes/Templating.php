@@ -26,7 +26,7 @@ class Templating
         $this->loader->addPath('skins/common/');
         $this->twig = new Environment($this->loader, ['debug' => $isDebug]);
 
-        $this->twig->addExtension(new BettyTwigExtension());
+        $this->twig->addExtension(new OrangeTwigExtension());
 
         if ($isDebug) {
             $this->twig->addExtension(new DebugExtension());

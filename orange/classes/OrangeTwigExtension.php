@@ -8,7 +8,7 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-class BettyTwigExtension extends AbstractExtension
+class OrangeTwigExtension extends AbstractExtension
 {
     public function getFunctions(): array
     {
@@ -98,7 +98,7 @@ class BettyTwigExtension extends AbstractExtension
     {
         global $twig;
         if (!$submission_data) {
-            throw new BettyException('Submission is null', 500);
+            throw new OrangeException('Submission is null', 500);
         };
         if ($submission_data["type"] == 0) {
             echo $twig->render("player.twig", ['submission' => $submission_data]);

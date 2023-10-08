@@ -4,7 +4,7 @@ namespace Orange\Pages;
 
 use Orange\MiscFunctions;
 use Orange\User;
-use Orange\BettyException;
+use Orange\OrangeException;
 use Orange\Database;
 use Orange\NoticeType;
 

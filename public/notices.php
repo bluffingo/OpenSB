@@ -4,7 +4,7 @@ namespace openSB;
 
 global $betty, $bettyTemplate;
 
-use \Orange\BettyException;
+use \Orange\OrangeException;
 use \Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
@@ -14,7 +14,7 @@ require_once dirname(__DIR__) . '/orange/classes/Pages/Notices.php';
 try {
     $page = new \Orange\Pages\Notices($betty);
     $data = $page->getData();
-} catch (BettyException $e) {
+} catch (OrangeException $e) {
     $e->page();
 }
 

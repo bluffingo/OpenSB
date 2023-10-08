@@ -38,7 +38,7 @@ class Orange {
 
         try {
             $this->database = new \Orange\Database($host, $user, $pass, $db);
-        } catch (BettyException $e) {
+        } catch (OrangeException $e) {
             $e->page();
         }
     }

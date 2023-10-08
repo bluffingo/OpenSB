@@ -4,7 +4,7 @@ namespace openSB;
 
 global $betty;
 
-use Orange\BettyException;
+use Orange\OrangeException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
@@ -15,7 +15,7 @@ $id = ($_GET['name'] ?? null);
 try {
     $page = new \Orange\Pages\Profile($betty, $id);
     $data = $page->getData();
-} catch (BettyException $e) {
+} catch (OrangeException $e) {
     $e->page();
 }
 

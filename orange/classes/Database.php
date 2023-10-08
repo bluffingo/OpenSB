@@ -15,7 +15,7 @@ class Database
     private $sql;
 
     /**
-     * @throws BettyException
+     * @throws OrangeException
      */
     public function __construct($host, $user, $pass, $db)
     {
@@ -28,7 +28,7 @@ class Database
         try {
             $this->sql = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
         } catch (PDOException $e) {
-            throw new BettyException('The database is not available. [' . $e . ']');
+            throw new OrangeException('The database is not available. [' . $e . ']');
         }
     }
 

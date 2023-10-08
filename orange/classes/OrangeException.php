@@ -10,7 +10,7 @@ use ReturnTypeWillChange;
  *
  * @since 0.1.0
  */
-class BettyException extends \Exception
+class OrangeException extends \Exception
 {
     public function __construct($message, $code = 500, Throwable $previous = null) {
         parent::__construct($message, $code, $previous);
@@ -32,8 +32,8 @@ class BettyException extends \Exception
         $errorMsg = sprintf('<b>%s</b> (line %s in %s)', $this->getMessage(), $this->getLine(), $this->getFile());
 
         http_response_code(500);
-        echo "<body bgcolor='purple' text='white'>";
-        echo "<h1>Betty Exception</h1>";
+        echo "<body bgcolor='black' text='orange'>";
+        echo "<h1>Orange Exception</h1>";
         echo "<p>" . $errorMsg . "</p>";
         echo "</body>";
         die();

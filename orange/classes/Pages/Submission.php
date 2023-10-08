@@ -4,7 +4,7 @@ namespace Orange\Pages;
 
 use Orange\MiscFunctions;
 use Orange\User;
-use Orange\BettyException;
+use Orange\OrangeException;
 use Orange\CommentLocation;
 use Orange\Comments;
 use Orange\Database;
@@ -28,7 +28,7 @@ class Submission
     private $bools;
 
     /**
-     * @throws BettyException
+     * @throws OrangeException
      */
     public function __construct(\Orange\Orange $betty, $id)
     {

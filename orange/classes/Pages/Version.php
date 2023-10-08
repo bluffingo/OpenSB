@@ -3,7 +3,7 @@
 namespace Orange\Pages;
 
 use Orange\User;
-use Orange\BettyException;
+use Orange\OrangeException;
 use Orange\Database;
 
 /**

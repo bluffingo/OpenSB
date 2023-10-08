@@ -4,7 +4,7 @@ namespace openSB;
 
 global $betty;
 
-use \Orange\BettyException;
+use \Orange\OrangeException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
@@ -16,7 +16,7 @@ $ip = getUserIpAddr();
 try {
     $page = new \Orange\Pages\Submission($betty, $id);
     $data = $page->getSubmission();
-} catch (BettyException $e) {
+} catch (OrangeException $e) {
     $e->page();
 }
 

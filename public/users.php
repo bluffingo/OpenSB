@@ -4,7 +4,7 @@ namespace openSB;
 
 global $betty;
 
-use \Orange\BettyException;
+use \Orange\OrangeException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 

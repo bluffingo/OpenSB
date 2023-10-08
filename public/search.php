@@ -4,7 +4,7 @@ namespace openSB;
 
 global $betty;
 
-use Orange\BettyException;
+use Orange\OrangeException;
 use Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
@@ -18,7 +18,7 @@ $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page
 try {
     $page = new \Orange\Pages\SubmissionSearch($betty, $type, $page_number, $query);
     $data = $page->getData();
-} catch (BettyException $e) {
+} catch (OrangeException $e) {
     $e->page();
 }
 
