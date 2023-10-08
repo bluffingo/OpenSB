@@ -1,8 +1,6 @@
-# BettySB
+# OpenSB
 
-## How to setup a BettySB instance.
-
-BettySB is incomplete, it is recommended to use OpenSB, which is available on the ``opensb-legacy`` branch.
+## How to setup an OpenSB instance.
 
 1. Get an Apache server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. NGINX should work, but we use Apache on Qobo production.
 1. Setup a virtual host. Look below the steps for an example.
