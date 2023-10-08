@@ -62,15 +62,15 @@ if (!isset($_SESSION['isCattleDog'])) {
     $videofields = "v.id, v.video_id, v.title, v.description, v.time, v.post_type, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, (SELECT COUNT(*) FROM comments WHERE id = v.video_id) AS comments, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, v.videolength, v.category_id, v.author";
 }
 
-if ($isMaintenance && !isCli()) {
-    error(403, "This openSB instance is currently offline.");
-} else {
+//if ($isMaintenance && !isCli()) {
+//    error(403, "This openSB instance is currently offline.");
+//} else {
     $ipban = $sql->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [getUserIpAddr()]);
     if ($ipban) {
         error(403, "IP banned - " . ($ipban['reason'] ?? "No reason."));
         die();
     }
-}
+//}
 
 // Cookie auth
 if (isset($_COOKIE['SBTOKEN'])) {

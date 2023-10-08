@@ -2,7 +2,7 @@
 
 namespace Orange;
 
-global $host, $user, $pass, $db, $isQoboTV;
+global $host, $user, $pass, $db, $isQoboTV, $isMaintenance;
 
 use GUMP;
 
@@ -104,6 +104,25 @@ $betty = new \Orange\Orange($host, $user, $pass, $db);
 $auth = new \Orange\Authentication($betty->getBettyDatabase(), $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new \Orange\Profiler();
 $gump = new GUMP('en');
+
+if ( $ipban = $betty->getBettyDatabase()->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [MiscFunctions::get_ip_address()])) {
+    $twig = new \Orange\Templating($betty);
+    echo $twig->render("error.twig", [
+        "error_title" => "IP Banned",
+        "error_reason" => "You are IP banned from the site.",
+        // legacy opensb would show the reason, but i think these ip ban reasons should be kept internal.
+    ]);
+    die();
+}
+
+if ($isMaintenance) {
+    $twig = new \Orange\Templating($betty);
+    echo $twig->render("error.twig", [
+        "error_title" => "Offline",
+        "error_reason" => "This site is currently offline."
+    ]);
+    die();
+}
 
 if ($isQoboTV) {
     $storage = new \Orange\BunnyStorage;

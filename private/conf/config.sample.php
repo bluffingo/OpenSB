@@ -22,7 +22,7 @@ $paginationLimit = 20; //Pagination limit.
 
 // TEMPLATE OPTIONS
 $useTemplate = "sbnext"; // Template used by pages yet to be migrated onto Betty.
-$bettyTemplate = "finalium"; // Template used by pages based on Betty.
+$bettyTemplate = "qobo"; // Template used by pages based on Betty.
 
 // Branding
 $branding = [

@@ -2,8 +2,8 @@
 
 {% set title = pagetitle %}
 
-	{% block content %}
-		<div class="content-box">
-			{{ source('markdown/' ~ file) | markdown_unsafe }}
-		</div>
-	{% endblock %}
+{% block content %}
+	<div class="content-box">
+		{{ source('markdown/' ~ file) | markdown_unsafe }}
+	</div>
+{% endblock %}

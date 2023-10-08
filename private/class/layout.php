@@ -110,9 +110,7 @@ function jsonDecode($str)
 function error($errorCode, $message)
 {
     http_response_code($errorCode);
-    $twig = twigloader();
-    echo $twig->render('_error.twig', ['err_message' => $message, 'err_code' => $errorCode]);
-    die();
+    trigger_error('Method ' . __METHOD__ . ' is deprecated', E_USER_DEPRECATED);
 }
 
 function comment($comment)

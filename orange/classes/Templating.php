@@ -16,6 +16,7 @@ class Templating
 {
     private $skin;
     private FilesystemLoader $loader;
+    private Environment $twig;
 
     public function __construct(\Orange\Orange $betty)
     {
