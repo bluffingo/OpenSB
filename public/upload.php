@@ -19,6 +19,4 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata
 
 $twig = new Templating($betty);
 
-echo $twig->render('upload.twig', [
-    'limit' => (convertBytes(ini_get('upload_max_filesize'))),
-]);
+echo $twig->render('upload.twig');
