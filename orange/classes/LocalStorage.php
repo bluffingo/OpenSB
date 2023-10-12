@@ -19,11 +19,15 @@ class LocalStorage implements Storage
     }
 
     public function getVideoThumbnail($id) {
-        return file_exists('../dynamic/thumbnails/' . $id . '.png');
+        if  (file_exists('../dynamic/thumbnails/' . $id . '.png')) {
+            return '../dynamic/thumbnails/' . $id . '.png';
+        }
     }
 
     public function getImageThumbnail($id) {
-        return file_exists('../dynamic/art_thumbnails/' . $id . '.jpeg');
+        if  (file_exists('../dynamic/art_thumbnails/' . $id . '.jpg')) {
+            return '../dynamic/art_thumbnails/' . $id . '.jpg';
+        }
     }
 
     public function fileExists($file) {

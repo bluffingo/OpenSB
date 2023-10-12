@@ -113,18 +113,10 @@ class OrangeTwigExtension extends AbstractExtension
     {
         global $isQoboTV, $storage;
         if ($type == 0) {
-            if ($isQoboTV) {
-                $data = $storage->getVideoThumbnail($id);
-            } else {
-                $data = "/assets/placeholder/placeholder.png";
-            }
+            $data = $storage->getVideoThumbnail($id);
         }
         if ($type == 2) {
-            if ($isQoboTV) {
-                $data = $storage->getImageThumbnail($id);
-            } else {
-                $data = "/assets/placeholder/placeholder.png";
-            }
+            $data = $storage->getImageThumbnail($id);
         }
         return $data;
     }

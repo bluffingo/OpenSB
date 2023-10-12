@@ -11,7 +11,6 @@ require_once dirname(__DIR__) . '/private/class/common.php';
 require_once dirname(__DIR__) . '/orange/classes/Pages/Submission.php';
 
 $id = ($_GET['v'] ?? null);
-$ip = getUserIpAddr();
 
 try {
     $page = new \Orange\Pages\Submission($betty, $id);
