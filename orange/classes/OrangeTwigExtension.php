@@ -130,7 +130,7 @@ class OrangeTwigExtension extends AbstractExtension
             if ($isQoboTV) {
                 $data = "https://" . $bunnySettings["pullZone"] . $location;
             } else {
-                $data = $username;
+                $data = $location;
             }
         } else {
             $data = "/assets/placeholder/profiledef.png";
