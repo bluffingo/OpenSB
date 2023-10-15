@@ -105,13 +105,13 @@
                 </div>
             {% endfor %}
             {% if is_user_logged_in %}
-                <div class="new-comment" id="commentField">
+                <div class="new-comment" id="comment_field">
                     <div class="text-title">
                         <span>New comment</span>
                     </div>
-                    <textarea class="form-submit-wide" id="commentContents" name="comment" maxlength="1000"
+                    <textarea class="form-submit-wide" id="comment_contents" name="comment" maxlength="1000"
                               style="overflow:hidden;resize:vertical" rows="4"></textarea>
-                    <input type="submit" id="post" name="post" class="form-button-submit"
+                    <input type="submit" id="comment_button" name="post" class="form-button-submit"
                            value="Add comment">
                 </div>
             {% endif %}

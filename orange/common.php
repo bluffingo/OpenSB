@@ -19,7 +19,7 @@ foreach (glob(dirname(__DIR__) . "/orange/classes/*.php") as $file) {
  */
 class Orange {
     private \Orange\Database $database;
-    public string $version = "Gamma 1.0";
+    public string $version = "Orange 1.0";
     public array $options;
 
     public function __construct($host, $user, $pass, $db) {
