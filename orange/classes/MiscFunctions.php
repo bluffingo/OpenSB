@@ -113,6 +113,27 @@ class MiscFunctions
         return $submissionsData;
     }
 
+    public static function makeJournalArray($database, $journals): array
+    {
+        $journalsData = [];
+        foreach ($journals as $journal) {
+            $userData = new User($database, $journal["author"]);
+            $journalsData[] =
+                [
+                    "id" => $journal["id"],
+                    "title" => $journal["title"],
+                    "contents" => $journal["post"],
+                    "published" => $journal["date"],
+                    "author" => [
+                        "id" => $journal["author"],
+                        "info" => $userData->getUserArray(),
+                    ],
+                ];
+        }
+
+        return $journalsData;
+    }
+
     public static function whereRatings() {
         global $auth;
 

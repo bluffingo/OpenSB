@@ -4,6 +4,7 @@ namespace Orange;
 
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
+use Twig\Extra\String\StringExtension;
 use Twig\Loader\FilesystemLoader;
 use Twig\TwigFunction;
 
@@ -28,6 +29,7 @@ class Templating
         $this->twig = new Environment($this->loader, ['debug' => $isDebug]);
 
         $this->twig->addExtension(new OrangeTwigExtension());
+        $this->twig->addExtension(new StringExtension());
 
         if ($isDebug) {
             $this->twig->addExtension(new DebugExtension());

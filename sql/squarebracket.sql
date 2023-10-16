@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2023 at 04:13 AM
+-- Generation Time: Oct 16, 2023 at 11:54 PM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- PHP Version: 8.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `qobo_dev`
+-- Database: `opensb`
 --
 
 -- --------------------------------------------------------
@@ -96,6 +96,7 @@ CREATE TABLE `favorites` (
 --
 
 CREATE TABLE `ipbans` (
+  `autoint` int(11) NOT NULL,
   `ip` varchar(45) NOT NULL DEFAULT '0.0.0.0',
   `reason` varchar(255) NOT NULL DEFAULT '<em>No reason specified</em>'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -103,17 +104,16 @@ CREATE TABLE `ipbans` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `music`
+-- Table structure for table `journals`
 --
 
-CREATE TABLE `music` (
-  `ID` int(11) NOT NULL,
-  `music_id` varchar(11) NOT NULL,
-  `title` text NOT NULL,
+CREATE TABLE `journals` (
+  `id` int(11) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `post` text NOT NULL,
   `author` int(11) NOT NULL,
-  `time` int(11) NOT NULL,
-  `file` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -157,19 +157,6 @@ CREATE TABLE `passwordresets` (
   `user` int(11) NOT NULL,
   `time` int(11) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `posts`
---
-
-CREATE TABLE `posts` (
-  `id` int(11) NOT NULL,
-  `post` text NOT NULL,
-  `author` int(11) NOT NULL,
-  `date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -338,21 +325,21 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
 
 --
--- Indexes for table `music`
+-- Indexes for table `ipbans`
 --
-ALTER TABLE `music`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `ipbans`
+  ADD PRIMARY KEY (`autoint`);
+
+--
+-- Indexes for table `journals`
+--
+ALTER TABLE `journals`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `posts`
---
-ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -408,21 +395,21 @@ ALTER TABLE `comments`
   MODIFY `comment_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `music`
+-- AUTO_INCREMENT for table `ipbans`
 --
-ALTER TABLE `music`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `ipbans`
+  MODIFY `autoint` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `journals`
+--
+ALTER TABLE `journals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `posts`
---
-ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

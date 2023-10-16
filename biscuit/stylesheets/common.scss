@@ -20,17 +20,6 @@ body
 	font-size: small;
 	padding: 0px;
 	margin: 0px;
-	/*
-	@include responsive('small') {
-		background-color: yellow;
-	}
-	@include responsive('medium') {
-		background-color: orange;
-	}
-	@include responsive('large') {
-		background-color: red;
-	}
-	*/
 }
 
 td, th

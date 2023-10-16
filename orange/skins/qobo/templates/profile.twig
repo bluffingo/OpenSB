@@ -55,7 +55,35 @@
             {% endif %}
         </div>
         <div id="page-right" style="width: 460px;">
-            <div class="text-title">Profile</div>
+            {% if data.journals %}
+            <div class="text-title">Journals</div>
+                {% for journal in data.journals %}
+                    <div>
+                        <a>{{ journal.title|u.truncate(100, '...') }}</a>
+                        <p>{{ journal.contents|u.truncate(250, '...') }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    {% if data.submissions %}
+        <div class="section">
+            <div class="section-title">
+                <h1>{{ data.username }}'s recent submissions</h1>
+                <a href="browse.php">Browse</a>
+            </div>
+            <div class="content-box">
+                {% for submission in data.submissions %}
+                    {{ include('/components/_profile_submission.twig') }}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    <div class="section">
+        <div class="section-title">
+            <h1>Profile</h1>
+        </div>
+        <div class="content-box">
             {% if data.about %}
                 {{ data.about }}
             {% else %}
@@ -63,17 +91,4 @@
             {% endif %}
         </div>
     </div>
-    {% if data.submissions %}
-    <div class="content-header">
-        <span>{{ data.username }}'s recent submissions</span>
-        <div class="content-header-right">
-            <a href="browse.php">Browse</a>
-        </div>
-    </div>
-    <div class="content-box">
-        {% for submission in data.submissions %}
-            {{ include('/components/_profile_submission.twig') }}
-        {% endfor %}
-    </div>
-    {% endif %}
 {% endblock %}

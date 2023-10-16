@@ -20,6 +20,7 @@ class Profile
     private $data;
     private $is_own_profile;
     private array $user_submissions;
+    private array $user_journals;
 
     public function __construct(\Orange\Orange $betty, $username)
     {
@@ -29,6 +30,12 @@ class Profile
 
         $this->database = $betty->getBettyDatabase();
         $this->data = $this->database->fetch("SELECT u.* FROM users u WHERE u.name = ?", [$username]);
+
+        if (!$this->data)
+        {
+            $betty->Notification("This user does not exist.", "/");
+        }
+
         $this->user_submissions =
             $this->database->fetchArray(
                 $this->database->query("SELECT v.* FROM videos v WHERE v.video_id 
@@ -38,10 +45,12 @@ class Profile
                          ORDER BY v.time 
                          DESC LIMIT 12", [$this->data["id"]]));
 
-        if (!$this->data)
-        {
-            $betty->Notification("This user does not exist.", "/");
-        }
+        $this->user_journals =
+            $this->database->fetchArray(
+                $this->database->query("SELECT j.* FROM journals j WHERE
+                         j.author = ? 
+                         ORDER BY j.date 
+                         DESC LIMIT 12", [$this->data["id"]]));
 
         if ($this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->data["id"]]))
         {
@@ -66,6 +75,7 @@ class Profile
             "is_current" => $this->is_own_profile,
             "featured_submission" => $this->getSubmissionFromFeaturedID(),
             "submissions" => MiscFunctions::makeSubmissionArray($this->database, $this->user_submissions),
+            "journals" => MiscFunctions::makeJournalArray($this->database, $this->user_journals),
         ];
     }
 
@@ -75,8 +85,14 @@ class Profile
 
         // featured_submission, replaces the unused "lastpost" column in the users table.
 
-        // if user hasen't specified anything, don't bother.
-        if ($this->data["featured_submission"] == 0) { return false; }
+        // if user hasn't specified anything, then use latest submission, if that doesn't exist, do not bother.
+        if ($this->data["featured_submission"] == 0) {
+            $this->data["featured_submission"] = $this->database->fetch(
+                "SELECT video_id FROM videos v WHERE v.author = ? ORDER BY v.time DESC", [$this->data["id"]])["video_id"];
+            if ($this->data["featured_submission"] == 0) {
+                return false;
+            }
+        }
 
         $submission = new SubmissionData($this->database, $this->data["featured_submission"]);
         $data = $submission->getData();

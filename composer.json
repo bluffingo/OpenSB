@@ -10,7 +10,8 @@
 		"toshy/bunnynet-php": "^3.0",
 		"symfony/http-client": "6.3.x-dev",
 		"wixel/gump": "dev-master",
-		"ext-pdo": "*"
+		"ext-pdo": "*",
+		"twig/string-extra": "3.x-dev"
 	},
 	"minimum-stability": "dev",
 	"config": {
