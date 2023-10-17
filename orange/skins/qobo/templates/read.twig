@@ -1,0 +1,11 @@
+{% extends "_layout.twig" %}
+
+{% set title = data.title %}
+
+{% block content %}
+	<div class="content-box">
+		<h1>{{ data.title }}</h1>
+		<p>By {{ user_link(data.author) }}, {{ data.published | relative_time }}</p>
+		<p>{{ data.contents | markdown_user_written }}</p>
+	</div>
+{% endblock %}

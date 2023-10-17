@@ -59,8 +59,16 @@
             <div class="text-title">Journals</div>
                 {% for journal in data.journals %}
                     <div>
-                        <a>{{ journal.title|u.truncate(100, '...') }}</a>
-                        <p>{{ journal.contents|u.truncate(250, '...') }}</p>
+                        <div class="journal-entry">
+                            <div class="journal-title">
+                                <a href="read.php?j={{ journal.id }}">
+                                {{ journal.title|u.truncate(100, '...') }}
+                                </a>
+                            </div>
+                            <div class="journal-contents">
+                                {{ journal.contents|u.truncate(250, '...') }}
+                            </div>
+                        </div>
                     </div>
                 {% endfor %}
             {% endif %}

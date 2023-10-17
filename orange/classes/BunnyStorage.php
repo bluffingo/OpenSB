@@ -59,6 +59,9 @@ class BunnyStorage implements Storage
         global $sql;
 
         $guid = $sql->fetch("SELECT videofile from videos where video_id = ?", [$id]);
+        if (!issset($guid)) {
+            return false;
+        }
         return "https://" . $this->streamHostname . "/" . $guid["videofile"] . "/thumbnail.jpg";
     }
 

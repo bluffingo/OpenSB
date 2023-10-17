@@ -4,8 +4,7 @@
 
 	{% block content %}
         <div class="profile-box">
-            <h1>Upload your submission</h1>
-            <p style="margin: 0;">Please only upload works made by you, or for you. Make sure you have read the <a href="/guidelines.php">guidelines</a> first.</p>
+            <h1>Write a new journal entry</h1>
         </div>
         <div class="content-box">
         <form name="uploadForm" id="uploadForm" method="post" action="write.php" enctype="multipart/form-data">
@@ -17,10 +16,10 @@
                     </div>
 
                     <div class="form-input">
-                        <label for="desc">Description:</label>
-                        <textarea class="form-submit" name="desc" maxlength="2000"
+                        <label for="desc">Content:</label>
+                        <textarea class="form-submit" name="desc" maxlength="65535"
                               form="uploadForm"
-                              style="overflow:hidden;resize:vertical" rows="3" required></textarea>
+                              style="overflow:hidden;resize:vertical" rows="10" required></textarea>
                     </div>
 
                     <div class="form-button-container">

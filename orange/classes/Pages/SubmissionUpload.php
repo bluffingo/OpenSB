@@ -11,7 +11,7 @@ use Orange\Database;
 use Orange\SubmissionData;
 
 /**
- * Backend code for the submission modification page.
+ * Backend code for the submission uploading page.
  *
  * @since 0.1.0
  */

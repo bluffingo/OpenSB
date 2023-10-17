@@ -23,8 +23,8 @@
 {% block content %}
     <div class="section">
         <div class="section-title">
-        <h1>Recent Submissions</h1>
-        <a href="browse.php">More</a>
+            <h1>Recent Submissions</h1>
+            <a href="browse.php">More</a>
         </div>
         <div class="content-box">
             <section class="splide" id="splide1" aria-labelledby="carousel-heading">
@@ -55,4 +55,28 @@
             </section>
         </div>
     </div>
+    {% if data.news_recent %}
+        <div class="section">
+            <div class="section-title">
+                <h1>Site news</h1>
+            </div>
+            <div class="content-box">
+                {% for news in data.news_recent %}
+                    <div class="journal-entry">
+                        <div class="journal-title">
+                            <a href="read.php?j={{ news.id }}">
+                                {{ news.title|u.truncate(100, '...') }}
+                            </a>
+                        </div>
+                        <div class="journal-info">
+                            {{ news.date | relative_time }}
+                        </div>
+                        <div class="journal-contents">
+                        {{ news.post|u.truncate(250, '...') }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

@@ -11,7 +11,7 @@ use Orange\Database;
 use Orange\SubmissionData;
 
 /**
- * Backend code for the submission modification page.
+ * Backend code for the journal writing page.
  *
  * @since 0.1.0
  */
@@ -48,9 +48,8 @@ class JournalWrite
             $betty->Notification("The ability to write journals has been disabled.", "/");
         }
 
-        // Rate limit uploading to a minute, both to prevent spam and to prevent double uploads.
         if ($this->database->result("SELECT COUNT(*) FROM journals WHERE date > ? AND author = ?", [time() - 180 , $auth->getUserID()]) && !$isDebug) {
-            $this->orange->Notification("Please wait three minutes before uploading a journal again.", "/");
+            $this->orange->Notification("Please wait three minutes before posting a journal again.", "/");
         }
     }
 
@@ -66,6 +65,6 @@ class JournalWrite
         $this->database->query("INSERT INTO journals (title, post, author, date) VALUES (?,?,?,?)",
             [$title, $description, $uploader, time()]);
 
-            $this->orange->Notification("Your journal has been uploaded.", "./user.php?name=" . $auth->getUserData()["name"], "success");
+            $this->orange->Notification("Your journal has been posted.", "./user.php?name=" . $auth->getUserData()["name"], "success");
     }
 }
