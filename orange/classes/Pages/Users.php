@@ -14,6 +14,7 @@ use Orange\Database;
 class Users
 {
     private \Orange\Database $database;
+    private array $data;
 
     public function __construct(\Orange\Orange $betty)
     {

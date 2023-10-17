@@ -58,7 +58,7 @@
 						borderWidth: 1
 					},
 					{
-						label: 'Comments',
+						label: 'Submission Comments',
 						data: [
 							{% for graph in data.graph_data.comments %}
 							{
@@ -70,9 +70,21 @@
 						borderWidth: 1
 					},
 					{
-						label: 'Shouts',
+						label: 'Profile Comments',
 						data: [
 							{% for graph in data.graph_data.shouts %}
+							{
+								x: "{{ graph.date }}",
+								y: {{ graph.runningTotal }},
+							},
+							{% endfor %}
+						],
+						borderWidth: 1
+					},
+					{
+						label: 'Journals',
+						data: [
+							{% for graph in data.graph_data.journals %}
 							{
 								x: "{{ graph.date }}",
 								y: {{ graph.runningTotal }},
@@ -88,11 +100,16 @@
 					y: {
 						beginAtZero: true
 					},
+					{% if is_qobo %}
 					x: {
 						type: 'time',
 						min: '2021-01-30 00:00:00',
 					}
-
+					{% else %}
+					x: {
+						type: 'time',
+					}
+					{% endif %}
 				}
 			}
 		});

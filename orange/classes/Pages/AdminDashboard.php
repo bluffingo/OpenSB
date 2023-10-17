@@ -26,7 +26,7 @@ class AdminDashboard
             $betty->Notification("You do not have permission to access this page", "/");
         }
 
-        $thingsToCount = ['comments', 'channel_comments', 'users', 'videos', 'views', 'favorites', 'bans'];
+        $thingsToCount = ['comments', 'channel_comments', 'users', 'videos', 'views', 'favorites', 'bans', 'journals'];
         $query = "SELECT ";
         foreach ($thingsToCount as $thing) {
             if ($query != "SELECT ") $query .= ", ";
@@ -43,6 +43,7 @@ class AdminDashboard
                 "submissions" => $this->getVideoGraph(),
                 "comments" => $this->getCommentGraph(),
                 "shouts" => $this->getShoutsGraph(),
+                "journals" => $this->getJournalGraph(),
             ],
         ];
     }
@@ -126,6 +127,25 @@ GROUP BY DATE(FROM_UNIXTIME(e.joined))) totals
 ORDER BY joined;");
         $users = $this->database->fetchArray($userData);
         return $users;
+    }
+
+    private function getJournalGraph(): array
+    {
+        $this->database->query("SET @runningTotal = 0;");
+        $videoData = $this->database->query("
+SELECT 
+    date,
+    num_interactions,
+    @runningTotal := @runningTotal + totals.num_interactions AS runningTotal
+FROM
+(SELECT 
+    FROM_UNIXTIME(date) AS date,
+    COUNT(*) AS num_interactions
+FROM journals AS e
+GROUP BY DATE(FROM_UNIXTIME(e.date))) totals
+ORDER BY date;");
+        $videos = $this->database->fetchArray($videoData);
+        return $videos;
     }
 
 }
