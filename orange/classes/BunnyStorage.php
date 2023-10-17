@@ -11,7 +11,7 @@ use ToshY\BunnyNet\StreamAPI;
 
 class BunnyStorage implements Storage
 {
-    public function __construct() { 
+    public function __construct(Orange $orange) {
         global $bunnySettings;
 
         $this->bunnyClient = new BunnyClient(
@@ -19,17 +19,18 @@ class BunnyStorage implements Storage
         );
         $this->edgeStorageApi = new EdgeStorageAPI(
             apiKey: $bunnySettings["storageApi"],
-            client: $this->bunnyClient, //FIXME: don't hardcode this. -grkb 4/7/2023
-            region: Region::UK,
+            client: $this->bunnyClient,
+            region: Region::UK, //FIXME: don't hardcode this. -grkb 4/7/2023
         );
         $this->streamLibrary = $bunnySettings["streamLibrary"];
         $this->streamHostname = $bunnySettings["streamHostname"];
         $this->storageZone = $bunnySettings["storageZone"];
         $this->pullZone = $bunnySettings["pullZone"];
+        $this->database = $orange->getBettyDatabase();
     }
 
     public function processVideo($new, $target_file) {
-        global $sql, $bunnySettings;
+        global $bunnySettings;
 
         // this fucking shit won't work if i put this on __construct(). -grkb 4/7/2023
         $streamApi = new StreamAPI(
@@ -51,17 +52,12 @@ class BunnyStorage implements Storage
                 'enabledResolutions' => '240p,360p,480p,720p',
             ],
         );
-        $sql->query("UPDATE videos SET videofile = ?, videolength = ?, flags = ? WHERE video_id = ?", [$newVideo->getContents()["guid"], 0, 0, $new]);
+        $this->database->query("UPDATE videos SET videofile = ?, videolength = ?, flags = ? WHERE video_id = ?", [$newVideo->getContents()["guid"], 0, 0, $new]);
         unlink($target_file);
     }
 
     public function getVideoThumbnail($id) {
-        global $sql;
-
-        $guid = $sql->fetch("SELECT videofile from videos where video_id = ?", [$id]);
-        if (!issset($guid)) {
-            return false;
-        }
+        $guid = $this->database->fetch("SELECT videofile from videos where video_id = ?", [$id]);
         return "https://" . $this->streamHostname . "/" . $guid["videofile"] . "/thumbnail.jpg";
     }
 

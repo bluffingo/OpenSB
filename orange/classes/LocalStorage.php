@@ -6,7 +6,7 @@ use Intervention\Image\ImageManager;
 
 class LocalStorage implements Storage
 {
-    public function __construct() { 
+    public function __construct(Orange $orange) {
         // implement this later, -grkb 4/7/2023
     }
 

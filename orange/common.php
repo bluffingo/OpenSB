@@ -100,10 +100,20 @@ class Orange {
     }
 }
 
+
 $betty = new \Orange\Orange($host, $user, $pass, $db);
 $auth = new \Orange\Authentication($betty->getBettyDatabase(), $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new \Orange\Profiler();
 $gump = new GUMP('en');
+
+if ($isMaintenance) {
+    $twig = new \Orange\Templating($betty);
+    echo $twig->render("error.twig", [
+        "error_title" => "Offline",
+        "error_reason" => "This site is currently offline."
+    ]);
+    die();
+}
 
 if ( $ipban = $betty->getBettyDatabase()->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [MiscFunctions::get_ip_address()])) {
     $twig = new \Orange\Templating($betty);
@@ -115,17 +125,8 @@ if ( $ipban = $betty->getBettyDatabase()->fetch("SELECT * FROM ipbans WHERE ? LI
     die();
 }
 
-if ($isMaintenance) {
-    $twig = new \Orange\Templating($betty);
-    echo $twig->render("error.twig", [
-        "error_title" => "Offline",
-        "error_reason" => "This site is currently offline."
-    ]);
-    die();
-}
-
 if ($isQoboTV) {
-    $storage = new \Orange\BunnyStorage;
+    $storage = new \Orange\BunnyStorage($betty);
 } else {
-    $storage = new \Orange\LocalStorage;
+    $storage = new \Orange\LocalStorage($betty);
 }

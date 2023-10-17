@@ -4,7 +4,7 @@ namespace Orange;
 
 interface Storage
 {
-    public function __construct();
+    public function __construct(Orange $orange);
     // Process a video post.
     public function processVideo($new, $target_file);
     // Get video post's thumbnail.
