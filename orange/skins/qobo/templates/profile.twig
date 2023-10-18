@@ -2,6 +2,13 @@
 
 {% set title = data.username %}
 
+{% block scripts %}
+<script>
+    comment_type = 'profile';
+    comment_id = '{{ data.id }}'
+</script>
+{% endblock %}
+
 {% block content %}
     <div>
         <div class="profile-box">
@@ -11,6 +18,10 @@
             <div class="profile-box-username">
                 {{ data.username }}
             </div>
+            <div class="profile-box-displayname">
+                {{ data.displayname }}
+            </div>
+            {% if show_work_in_progress_stuff %}
             <div class="profile-box-links">
                 <a href="user.php?name={{ data.username }}&page=submissions" class="link">
                     <span class="elink">
@@ -28,6 +39,7 @@
                     </span>
                 </a>
             </div>
+            {% endif %}
             <div class="clear"></div>
         </div>
     </div>
@@ -97,6 +109,25 @@
             {% else %}
                 <em class="text-muted">This user has no description.</em>
             {% endif %}
+        </div>
+    </div>
+    <div id="comments">
+        <div class="content-header">
+            <span>Comments</span>
+        </div>
+        <div class="content-box">
+            {% if is_user_logged_in %}
+                {{ include('/components/_comment_input.twig') }}
+            {% endif %}
+            <div id="comment"></div>
+            {% for comment in data.comments %}
+                {{ include('/components/_comment.twig') }}
+                <div id="replies">
+                    {% for comment in comment.replies %}
+                        {{ include('/components/_comment.twig') }}
+                    {% endfor %}
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

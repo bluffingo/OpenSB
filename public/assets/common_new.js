@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
             fetch("/api/finalium/commenting.php", {
                 method: "POST",
                 body: JSON.stringify({
-                    type: "submission",
-                    submission: submission_id,
+                    type: comment_type,
+                    id: comment_id,
                     comment: comment_contents.value,
                 }),
                 headers: {

@@ -21,6 +21,7 @@ class Profile
     private $is_own_profile;
     private array $user_submissions;
     private array $user_journals;
+    private Comments $comments;
 
     public function __construct(\Orange\Orange $betty, $username)
     {
@@ -61,11 +62,14 @@ class Profile
         {
             $this->is_own_profile = true;
         }
+
+        $this->comments = new Comments($this->database, CommentLocation::Profile, $this->data["id"]);
     }
 
     public function getData(): array
     {
         return [
+            "id" => $this->data["id"],
             "username" => $this->data["name"],
             "displayname" => $this->data["title"],
             "about" => ($this->data['about'] ?? false),
@@ -76,6 +80,7 @@ class Profile
             "featured_submission" => $this->getSubmissionFromFeaturedID(),
             "submissions" => MiscFunctions::makeSubmissionArray($this->database, $this->user_submissions),
             "journals" => MiscFunctions::makeJournalArray($this->database, $this->user_journals),
+            "comments" => $this->comments->getComments(),
         ];
     }
 

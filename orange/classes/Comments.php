@@ -29,6 +29,12 @@ class Comments
             $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM comments c WHERE c.reply_to = ? ORDER BY c.date DESC", [$comment_id]));
         }
 
+        // Profile page, get the profile's shouts.
+        if ($this->type == CommentLocation::Profile)
+        {
+            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c WHERE c.reply_to = ? ORDER BY c.date DESC", [$comment_id]));
+        }
+
         $data = [];
         foreach ($database_data as $comment) {
             $author = new User($this->database, $comment["author"]);
@@ -54,6 +60,12 @@ class Comments
         if ($this->type == CommentLocation::Submission)
         {
             $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c WHERE c.id = ? ORDER BY c.date DESC", [$this->id]));
+        }
+
+        // Profile page, get the profile's shouts.
+        if ($this->type == CommentLocation::Profile)
+        {
+            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM channel_comments WHERE reply_to = c.comment_id) AS replycount FROM channel_comments c WHERE c.id = ? ORDER BY c.date DESC", [$this->id]));
         }
 
         $data = [];

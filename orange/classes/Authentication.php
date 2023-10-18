@@ -18,7 +18,7 @@ class Authentication
 
     public function __construct(\Orange\Database $database, $token)
     {
-        $accountfields = "id, name, email, customcolor, title, about, powerlevel, joined, lastview, comfortable_rating";
+        $accountfields = "id, name, email, title, about, powerlevel, joined, lastview, comfortable_rating";
         $this->database = $database;
         if (isset($token)) {
             if($this->user_id = $this->database->result("SELECT id FROM users WHERE token = ?", [$token])) {

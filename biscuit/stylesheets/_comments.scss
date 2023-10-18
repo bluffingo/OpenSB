@@ -11,6 +11,15 @@
     float: left;
     padding: 5px;
     width: 130px;
+
+    .comment-username {
+      font-weight: bold;
+    }
+
+    .comment-displayname {
+      font-size: 11px;
+      color: gray;
+    }
   }
 
   .comment-body {
@@ -48,4 +57,8 @@
       padding-left: 46px;
     }
   }
+}
+
+.new-comment {
+  margin-bottom: 5px;
 }

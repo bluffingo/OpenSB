@@ -32,6 +32,8 @@
         submission_id = '{{ submission.id }}';
         submission_int_id = '{{ submission.int_id }}';
         user_id = '{{ submission.author.id }}';
+        comment_type = 'submission';
+        comment_id = '{{ submission.id }}';
     </script>
 {% endblock %}
 
@@ -95,6 +97,9 @@
             <span>Comments</span>
         </div>
         <div class="content-box">
+            {% if is_user_logged_in %}
+                {{ include('/components/_comment_input.twig') }}
+            {% endif %}
             <div id="comment"></div>
             {% for comment in submission.comments %}
                 {{ include('/components/_comment.twig') }}
@@ -104,17 +109,6 @@
                     {% endfor %}
                 </div>
             {% endfor %}
-            {% if is_user_logged_in %}
-                <div class="new-comment" id="comment_field">
-                    <div class="text-title">
-                        <span>New comment</span>
-                    </div>
-                    <textarea class="form-submit-wide" id="comment_contents" name="comment" maxlength="1000"
-                              style="overflow:hidden;resize:vertical" rows="4"></textarea>
-                    <input type="submit" id="comment_button" name="post" class="form-button-submit"
-                           value="Add comment">
-                </div>
-            {% endif %}
         </div>
     </div>
 {% endblock %}

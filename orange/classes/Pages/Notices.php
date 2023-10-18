@@ -28,6 +28,11 @@ class Notices
             $betty->Notification("Please login to continue.", "/login.php");
         }
 
+        if (!($betty->getLocalOptions()["development"] ?? false))
+        {
+            $betty->Notification("This page is unfinished for production.", "/");
+        }
+
         $this->database = $betty->getBettyDatabase();
         $this->data = $this->database->fetchArray($this->database->query("SELECT * FROM notifications WHERE recipient = ?", [$auth->getUserID()]));
     }
