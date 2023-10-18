@@ -87,8 +87,12 @@ class Profile
 
         // if user hasn't specified anything, then use latest submission, if that doesn't exist, do not bother.
         if ($this->data["featured_submission"] == 0) {
-            $this->data["featured_submission"] = $this->database->fetch(
-                "SELECT video_id FROM videos v WHERE v.author = ? ORDER BY v.time DESC", [$this->data["id"]])["video_id"];
+            $featured_id = $this->database->fetch(
+                "SELECT video_id FROM videos v WHERE v.author = ? ORDER BY v.time DESC", [$this->data["id"]]);
+            if(!isset($featured_id["video_id"])) {
+                return false;
+            }
+            $this->data["featured_submission"] = $featured_id["video_id"];
             if ($this->data["featured_submission"] == 0) {
                 return false;
             }
