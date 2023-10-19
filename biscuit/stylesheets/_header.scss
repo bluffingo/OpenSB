@@ -23,7 +23,7 @@ form.header-search
 
   #header-search-input {
     width: 250px - 75px;
-    padding: 3px;
+    padding: 6px;
   }
 
   .form-button-container {
@@ -39,7 +39,7 @@ td.h
 div.header-user
 {
   width: 100%;
-  background-color: #F4F4F4;
+  background-color: lighten($secondary, 5%);
   height: 30px;
 
   .page {
@@ -80,7 +80,7 @@ div.header
   }
 
   width: 100%;
-  background: linear-gradient(180deg, #FFB648 0%, #FFA51E 100%);
+  @include gradient-y($start-color: lighten($secondary, 5%), $end-color: darken($secondary, 2%));
   height: 62px;
   display: flex;
 }

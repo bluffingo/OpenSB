@@ -3,10 +3,10 @@
 {% set title = data.username %}
 
 {% block scripts %}
-<script>
-    comment_type = 'profile';
-    comment_id = '{{ data.id }}'
-</script>
+    <script>
+        comment_type = 'profile';
+        comment_id = '{{ data.id }}'
+    </script>
 {% endblock %}
 
 {% block content %}
@@ -15,32 +15,33 @@
             <div class="profile-box-pfp">
                 <img src="{{ profile_picture(data.username) }}" class="pfp" alt="{{ data.username }}">
             </div>
-            <div class="profile-box-username">
-                {{ data.username }}
-            </div>
-            <div class="profile-box-displayname">
-                {{ data.displayname }}
-            </div>
-            {% if show_work_in_progress_stuff %}
-            <div class="profile-box-links">
-                <a href="user.php?name={{ data.username }}&page=submissions" class="link">
+            <div class="profile-box-info">
+                <div class="profile-box-username">
+                    {{ data.username }}
+                </div>
+                <div class="profile-box-displayname">
+                    {{ data.displayname }}
+                </div>
+                {% if show_work_in_progress_stuff %}
+                <div class="profile-box-links">
+                    <a href="user.php?name={{ data.username }}&page=submissions" class="link">
                     <span class="elink">
                         Submissions
                     </span>
-                </a>
-                <a href="user.php?name={{ data.username }}&page=submissions" class="link">
+                    </a>
+                    <a href="user.php?name={{ data.username }}&page=submissions" class="link">
                     <span class="elink">
                         Scraps
                     </span>
-                </a>
-                <a href="user.php?name={{ data.username }}&page=submissions" class="link">
+                    </a>
+                    <a href="user.php?name={{ data.username }}&page=submissions" class="link">
                     <span class="elink">
                         Journals
                     </span>
-                </a>
+                    </a>
+                </div>
             </div>
             {% endif %}
-            <div class="clear"></div>
         </div>
     </div>
     <div class="content-header profile-stats">
@@ -68,13 +69,13 @@
         </div>
         <div id="page-right" style="width: 460px;">
             {% if data.journals %}
-            <div class="text-title">Journals</div>
+                <div class="text-title">Journals</div>
                 {% for journal in data.journals %}
                     <div>
                         <div class="journal-entry">
                             <div class="journal-title">
                                 <a href="read.php?j={{ journal.id }}">
-                                {{ journal.title|u.truncate(100, '...') }}
+                                    {{ journal.title|u.truncate(100, '...') }}
                                 </a>
                             </div>
                             <div class="journal-contents">
@@ -94,7 +95,7 @@
             </div>
             <div class="content-box">
                 {% for submission in data.submissions %}
-                    {{ include('/components/_profile_submission.twig') }}
+                    {{ include('/components/_index_submission.twig') }}
                 {% endfor %}
             </div>
         </div>

@@ -67,6 +67,25 @@ class OrangeTwigExtension extends AbstractExtension
 
             }, ['is_safe' => ['html']]),
 
+            // Markdown function for any journals.
+            new TwigFilter('markdown_user_journal', function ($text) {
+                $markdown = new Parsedown();
+                $markdown->setSafeMode(true);
+                $markdown->setUrlsLinked(true);
+
+                $parsed_text = $markdown->text($text);
+
+                // Hashtags
+                $parsed_text = preg_replace('/(?<!=|\b|&)#([a-z0-9_]+)/i', '<a href="/search?tags=$1">#$1</a>', $parsed_text);
+
+                // Mentions
+                $parsed_text = preg_replace('/(?<!=|\b|&)@([a-z0-9_]+)/i', '<a href="/user?name=$1">@$1</a>', $parsed_text);
+
+
+                return $parsed_text;
+
+            }, ['is_safe' => ['html']]),
+
             // Markdown function for non-inline text. **NOT SANITIZED, DON'T LET IT EVER TOUCH USER INPUT**
             new TwigFilter('markdown_unsafe', function ($text) {
                 $markdown = new Parsedown();

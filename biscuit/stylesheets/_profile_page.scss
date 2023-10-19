@@ -2,8 +2,9 @@ $pfp-width-profiles: 95px;
 $pfp-width-watch: 35px;
 
 div.profile-box {
+  display: flex;
   padding: 10px;
-  background-color: #ffaa1d;
+  background-color: $content-box-border-color;
 
   &.centered {
     text-align: center
@@ -16,7 +17,6 @@ div.profile-box {
 
   .profile-box-pfp {
     width: $pfp-width-profiles;
-    float: left;
     margin-right: 10px;
 
     .pfp {
@@ -24,18 +24,22 @@ div.profile-box {
     }
   }
 
-  .profile-box-username {
-    font-size: 15pt;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #000000;
-  }
+  .profile-box-info {
+    .profile-box-username {
+      font-size: 15pt;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #000000;
+    }
 
-  .profile-box-links {
-    font-size: 12pt;
+    .profile-box-links {
+      font-size: 12pt;
 
-    .link {
-      padding-right: 7px;
+      .link {
+        margin-right: 7px;
+        text-decoration: none;
+        border-bottom: 1px dotted #864e14;
+      }
     }
   }
 }

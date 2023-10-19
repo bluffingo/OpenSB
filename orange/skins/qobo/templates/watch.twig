@@ -48,7 +48,9 @@
             <a href="/feature?v={{ submission.id }}">Feature on profile</a>
         </div>
     {% endif %}
-    {{ submission_view(submission) }}
+    <div class="submission">
+        {{ submission_view(submission) }}
+    </div>
     <div class="content-box dark">
         <small>Submitted on {{ submission.published | date('F j, Y') }} by {{ user_link(submission.author) }}</small>
     </div>

@@ -13,7 +13,12 @@
             for ( var i = 0; i < elms.length; i++ ) {
                 new Splide( elms[ i ], {
                     perPage: 6,
-                    rewind : true,
+                    rewind: true,
+                    pagination: false,
+                    breakpoints: {
+                        1023 : { perPage: 3 },
+                        767 : { perPage: 2 },
+                    },
                 } ).mount();
             }
         } );

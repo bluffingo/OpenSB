@@ -15,7 +15,15 @@ div.page {
 
 div.page-contents
 {
-  width: 1000px;
+  @include responsive('small') {
+    width: 450px;
+  }
+  @include responsive('medium') {
+    width: 700px;
+  }
+  @include responsive('large') {
+    width: 1000px;
+  }
   margin: 10px auto auto auto;
 }
 

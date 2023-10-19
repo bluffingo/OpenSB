@@ -5,10 +5,9 @@
 	{% block content %}
         <div class="profile-box">
             <h1>Upload your submission</h1>
-            <p style="margin: 0;">Please only upload works made by you, or for you. Make sure you have read the <a href="/guidelines.php">guidelines</a> first.</p>
         </div>
         <div class="content-box">
-        <form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data">
+            <form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="form-input">
@@ -46,8 +45,10 @@
                     </div>
                     {% endif %}
 
+                    <p>Please only upload works made by you, or for you. Make sure you have read the <a href="/guidelines.php">guidelines</a> first.</p>
+
                     <div class="form-button-container">
-                        <input class="form-button-submit" type="submit" id="upload" name="upload"
+                        <input class="button button-primary" type="submit" id="upload" name="upload"
                                value="Upload">
                     </div>
                 </div>

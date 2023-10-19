@@ -1,11 +1,28 @@
+// colors
+
+$threshold: 65%; // contrast threshold
+
+$primary: #f81eff; // primary color (orange)
+$primary-darker: darken($primary, 33%); // darker primary color (brown-ish?)
+$secondary: #eee; //secondary color (nearly white)
+
+$color-map: (
+        "primary": $primary,
+        "secondary": $secondary,
+);
+
+// fonts
+$font: 'Inter', sans-serif;
+$font-var: 'Inter var', sans-serif;
+
 // https://medium.com/@jainbhavukspeaks/leveraging-scss-mixins-to-create-responsive-layouts-the-easy-way-5bbe4080cb15
-$mobile-landscape: 300px;
+$mobile: 300px;
 $tablet: 768px;
 $desktop: 1024px;
 
 $breakpoints: (
         "small": (
-                $mobile-landscape,
+                $mobile,
         ),
         "medium": (
                 $tablet,
@@ -15,3 +32,13 @@ $breakpoints: (
         ),
 );
 //
+
+// profile pictures
+
+$pfp-roundness: 5%;
+
+// buttons
+$button-padding: 6px 11px;
+
+// content boxes
+$content-box-border-color: darken($secondary, 5%);

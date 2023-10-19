@@ -1,6 +1,6 @@
 div.content-header
 {
-    background: #ffbf58;
+    background: $content-box-border-color;
     padding: 6px;
     color: #000;
     font-size: 14px;
@@ -8,6 +8,7 @@ div.content-header
 
     &.profile-stats
     {
+        background: darken($content-box-border-color, 7.5%);
         text-align: center;
         font-weight: normal;
         font-size: 12px;
@@ -26,7 +27,7 @@ div.content-header-right
 
 .content-box
 {
-    border: 1px solid #ffbf58;
+    border: 1px solid $content-box-border-color;
     background: #ffffff;
     padding: 6px;
     overflow: hidden;
@@ -45,9 +46,7 @@ div.content-header-right
 
     .content-entry-index
     {
-        width: 164px;
-        height: 140px;
-        float: left;
+        max-height: 140px;
         text-align: center;
 
         // make "By [uploader]" (index) and "[submission title]" (profile) text smaller
@@ -55,7 +54,7 @@ div.content-header-right
             font-size: 10px;
             font-weight: normal;
 
-            width: 125px;
+            max-width: 125px;
             overflow: hidden;
             text-overflow: ellipsis;
             display: inline-block;
@@ -95,7 +94,7 @@ div.content-header-right
     }
 
     &.dark {
-        background: #ffbf58;
+        background: $content-box-border-color;
     }
 
     .content-text {
@@ -112,7 +111,7 @@ div.content-header-right
     }
 
     .text-title {
-        color: #a6621b;
+        color: $primary-darker;
         font-size: 16pt;
         margin-bottom: 5px;
 
