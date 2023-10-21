@@ -2,6 +2,13 @@
 
 {% set title = data.title %}
 
+{% set opengraph_description = data.contents|u.truncate(125, '...') %}
+
+{% set opengraph_type = "article" %}
+{% set opengraph_published = data.published | date("c") %}
+{% set opengraph_author = domain ~ "user?name=" ~ data.author.info.username %}
+{% set opengraph_section = "Qobo journal" %}
+
 {% block content %}
 	<div class="content-box">
 		<h1>{{ data.title }}</h1>

@@ -10,6 +10,33 @@
     <link rel="stylesheet" href="theme/famfamfam-silk.min.css">
     <link rel="stylesheet" href="theme/silk-companion.min.css">
     <meta name="theme-color" content="#ff9800">
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:url" content="{{ page_url }}">
+    <meta property="og:site_name" content="Qobo" />
+
+    {% if opengraph_type %}
+        <meta property="og:type" content="{{ opengraph_type }}" />
+    {% else %}
+        <meta property="og:type" content="website" />
+    {% endif %}
+    {% if opengraph_type == "profile" %}
+        <meta property="profile:username"
+              content="{{ opengraph_username }}" />
+    {% endif %}
+    <meta property="og:description"
+          content="{{ opengraph_description }}" />
+    {% if opengraph_image %}
+        <meta property="og:image" content="{{ opengraph_image }}">
+    {% endif %}
+    {% if opengraph_author %}
+        <meta property="article:author" content="{{ opengraph_author }}" />
+    {% endif %}
+    {% if opengraph_section %}
+        <meta property="article:section" content="{{ opengraph_section }}" />
+    {% endif %}
+    {% if opengraph_published %}
+        <meta property="article:published_time" content="{{ opengraph_published }}" />
+    {% endif %}
 
     {% if ad_client %}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-{{ ad_client }}"
