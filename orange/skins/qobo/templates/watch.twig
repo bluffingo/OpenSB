@@ -13,6 +13,7 @@
 {% set opengraph_type = "article" %}
 {% set opengraph_published = submission.published | date("c") %}
 {% set opengraph_author = domain ~ "user?name=" ~ submission.author.info.username %}
+{% set metadata_author = submission.author.info.username %}
 {% if submission.type == 0 %}
     {% set opengraph_section = "Qobo video" %}
 {% elseif submission.type == 2 %}
