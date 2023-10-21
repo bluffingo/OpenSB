@@ -40,6 +40,11 @@ class LocalStorage implements Storage
             $img = $manager->make($target_file);
             if ($resize) {
                 $img->resize($width, $height);
+            } else {
+                $img->resize($width, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
             }
             $img->save($target_file, 97, $format);
         }
