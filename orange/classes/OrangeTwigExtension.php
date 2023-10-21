@@ -130,12 +130,25 @@ class OrangeTwigExtension extends AbstractExtension
 
     public function Thumbnail($id, $type)
     {
-        global $isQoboTV, $storage;
-        if ($type == 0) {
-            $data = $storage->getVideoThumbnail($id);
-        }
-        if ($type == 2) {
-            $data = $storage->getImageThumbnail($id);
+        global $isQoboTV, $storage, $bunnySettings;
+
+        $custom_location = '/dynamic/custom_thumbnails/' . $id . '.jpg';
+
+        $data = null;
+
+        if ($storage->fileExists('..' . $custom_location)) {
+            if ($isQoboTV) {
+                $data = "https://" . $bunnySettings["pullZone"] . $custom_location;
+            } else {
+                $data = $custom_location;
+            }
+        } else {
+            if ($type == 0) {
+                $data = $storage->getVideoThumbnail($id);
+            }
+            if ($type == 2) {
+                $data = $storage->getImageThumbnail($id);
+            }
         }
         return $data;
     }

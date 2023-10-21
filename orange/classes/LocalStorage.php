@@ -41,7 +41,7 @@ class LocalStorage implements Storage
             if ($resize) {
                 $img->resize($width, $height);
             }
-            $img->save($target_file, 0, $format);
+            $img->save($target_file, 97, $format);
         }
     }
 

@@ -1,72 +1,32 @@
-##TODO: CLEAN THIS
-
 ## User-generated files
 private/conf/config.php
 private/templates/cache/
 templates/cache/
 cache/
+
 dynamic/pfp/
-dynamic/thumbnails/*.png
+dynamic/thumbnails/
 dynamic/banners/
-*.mp4
 dynamic/videos/
 dynamic/art/
 dynamic/art_thumbnails
-
-*/pma
-*/phpmyadmin
-*/phpma
+dynamic/custom_thumbnails
 
 ## Composer
 vendor/
 composer.phar
 composer.lock
-bootstrap/css/bootstrap.css
-bootstrap/css/bootstrap-theme.css
-
-## pre-cached stylesheets
-public/assets/bs*.css
-public/assets/bs*.css.map
-public/assets/css/*.css
-public/assets/dashboard.css
-public/assets/signin.css
-public/assets/_style_forums.css
-public/assets/darkmode.css
-public/assets/style.css
-public/assets/project111/css/style.css
-*.css.map
 
 ## Admin features
 adminer-*.php
 /latest-*-*.php
-
-## misc stuff
-downloads/
-wiki/
-*.sfk
-.vscode/
-videos_/
-assets/thumb_/*
-mead/images/
-*.bak
-/.metadata/
-debug.log
-/artwork
-tools/gourcelog.txt
-.idea/dataSources.xml
-.DS_Store
-dynamic.7z
-
-# trinity kate editor
-*~
+*/pma
+*/phpmyadmin
+*/phpma
 
 # official prod instances
 public/assets/cr_branding
 public/assets/qb_branding
-
-# tailwind shit
-node_modules
-public/assets/tailwind.css
 
 # mariadb stuff from docker
 mariadb-data
