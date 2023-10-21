@@ -82,7 +82,7 @@ class BunnyStorage implements Storage
         if ($resize) {
             $img->resize($width, $height);
         }
-        $img->save($temp_name, 0, $format);
+        $img->save($temp_name, 97, $format);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
             fileName: $target_file,
