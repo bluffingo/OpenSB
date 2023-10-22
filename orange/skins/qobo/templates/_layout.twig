@@ -56,7 +56,7 @@
         <meta property="article:published_time" content="{{ opengraph_published }}" />
     {% endif %}
 
-    {% if ad_client %}
+    {% if ad_client and user_data.comfortable_rating == "general" %}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-{{ ad_client }}"
                 crossorigin="anonymous"></script>
     {% endif %}

@@ -159,4 +159,15 @@ class MiscFunctions
 
         return $return_value;
     }
+
+    // TODO: This should probably be an enum class.
+    public static function RatingToNumber($rating) {
+        $return_value = match ($rating) {
+            'general' => 0,
+            'questionable' => 1,
+            'mature' => 2,
+        };
+
+        return $return_value;
+    }
 }

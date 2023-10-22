@@ -53,7 +53,9 @@ class Authentication
         if ($this->is_logged_in) {
             return $this->user_data;
         } else {
-            return null;
+            return [
+                "comfortable_rating" => "general",
+            ];
         }
     }
 

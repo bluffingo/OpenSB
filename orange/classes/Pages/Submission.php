@@ -72,6 +72,10 @@ class Submission
             $betty->Notification("This submission's author has blocked guest access.", "/login.php");
         }
 
+        if (MiscFunctions::RatingToNumber($this->data["rating"]) > MiscFunctions::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
+            $betty->Notification("This submission's content rating is higher than your maximum rating.", "/");
+        }
+
         $ip = MiscFunctions::get_ip_address();
         if ($this->database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$id, crypt($ip, $ip)])['COUNT(video_id)'] < 1) {
             $this->database->query("INSERT INTO views (video_id, user) VALUES (?,?)",
