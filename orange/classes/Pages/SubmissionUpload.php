@@ -51,9 +51,11 @@ class SubmissionUpload
             $betty->Notification("The ability to upload submissions has been disabled.", "/");
         }
 
-        // Rate limit uploading to a minute, both to prevent spam and to prevent double uploads.
-        if ($this->database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 180 , $auth->getUserID()]) && !$isDebug) {
-            $this->orange->Notification("Please wait three minutes before uploading again.", "/");
+        if (!$auth->isUserAdmin()) {
+            // Rate limit uploading to a minute, both to prevent spam and to prevent double uploads.
+            if ($this->database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 180, $auth->getUserID()]) && !$isDebug) {
+                $this->orange->Notification("Please wait three minutes before uploading again.", "/");
+            }
         }
     }
 
