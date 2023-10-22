@@ -30,4 +30,4 @@ If you have published personal information you would like to remove, use the too
 The Qobo site is fully open source and its source code [is available on GitLab](https://gitlab.com/qobo/opensb). You may inspect the source code yourself to see how your data is handled by the software.
 
 ## Updates
-Updates to this privacy policy are done as commits to the openSB Git repository ([View changes](https://gitlab.com/qobo/opensb/-/blob/main/private/templates/sbnext-common/markdown/privacy_policy.md)). You will be alerted of any substantial changes made to the privacy policy through the Qobo Discord server.
+Updates to this privacy policy are done as commits to the openSB Git repository ([View changes](https://gitlab.com/qobo/opensb/-/blob/main/orange/skins/common/markdown/privacy_policy.md)). You will be alerted of any substantial changes made to the privacy policy through the Qobo Discord server.
