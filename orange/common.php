@@ -2,7 +2,8 @@
 
 namespace Orange;
 
-global $host, $user, $pass, $db, $isQoboTV, $isMaintenance;
+// commented out because of SB_MEDIAWIKI
+// global $host, $user, $pass, $db, $isQoboTV, $isMaintenance;
 
 use GUMP;
 
@@ -23,17 +24,19 @@ class Orange {
     public array $options;
 
     public function __construct($host, $user, $pass, $db) {
-        session_start(["cookie_lifetime" => 0, "gc_maxlifetime" => 455800]);
+        if (!defined( 'SB_MEDIAWIKI' )) {
+            session_start(["cookie_lifetime" => 0, "gc_maxlifetime" => 455800]);
 
-        if (isset($_COOKIE["SBOPTIONS"])) {
-            $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
-        } else {
-            $this->options = [];
-        }
+            if (isset($_COOKIE["SBOPTIONS"])) {
+                $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
+            } else {
+                $this->options = [];
+            }
 
-        // should not be enabled on qobo.tv
-        if ($_SERVER['HTTP_HOST'] == "localhost" || $_SERVER['HTTP_HOST'] == "127.0.0.1") {
-            $this->options["development"] = true;
+            // should not be enabled on qobo.tv
+            if ($_SERVER['HTTP_HOST'] == "localhost" || $_SERVER['HTTP_HOST'] == "127.0.0.1") {
+                $this->options["development"] = true;
+            }
         }
 
         try {
@@ -106,27 +109,29 @@ $auth = new \Orange\Authentication($betty->getBettyDatabase(), $_COOKIE['SBTOKEN
 $profiler = new \Orange\Profiler();
 $gump = new GUMP('en');
 
-if ($isMaintenance) {
-    $twig = new \Orange\Templating($betty);
-    echo $twig->render("error.twig", [
-        "error_title" => "Offline",
-        "error_reason" => "This site is currently offline."
-    ]);
-    die();
-}
+if (!defined("SB_MEDIAWIKI")) {
+    if ($isMaintenance) {
+        $twig = new \Orange\Templating($betty);
+        echo $twig->render("error.twig", [
+            "error_title" => "Offline",
+            "error_reason" => "This site is currently offline."
+        ]);
+        die();
+    }
 
-if ( $ipban = $betty->getBettyDatabase()->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [MiscFunctions::get_ip_address()])) {
-    $twig = new \Orange\Templating($betty);
-    echo $twig->render("error.twig", [
-        "error_title" => "IP Banned",
-        "error_reason" => "You are IP banned from the site.",
-        // legacy opensb would show the reason, but i think these ip ban reasons should be kept internal.
-    ]);
-    die();
-}
+    if ( $ipban = $betty->getBettyDatabase()->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [MiscFunctions::get_ip_address()])) {
+        $twig = new \Orange\Templating($betty);
+        echo $twig->render("error.twig", [
+            "error_title" => "IP Banned",
+            "error_reason" => "You are IP banned from the site.",
+            // legacy opensb would show the reason, but i think these ip ban reasons should be kept internal.
+        ]);
+        die();
+    }
 
-if ($isQoboTV) {
-    $storage = new \Orange\BunnyStorage($betty);
-} else {
-    $storage = new \Orange\LocalStorage($betty);
+    if ($isQoboTV) {
+        $storage = new \Orange\BunnyStorage($betty);
+    } else {
+        $storage = new \Orange\LocalStorage($betty);
+    }
 }

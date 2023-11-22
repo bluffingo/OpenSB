@@ -2,7 +2,7 @@
 
 //SQL DB
 $host = '127.0.0.1';
-$db = 'squarebracket';
+$db = 'opensb';
 $user = '';
 $pass = '';
 
