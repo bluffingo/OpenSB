@@ -35,7 +35,7 @@ class Templating
             $this->twig->addExtension(new DebugExtension());
         } else {
             $this->twig->addFunction(new TwigFunction('dump', function() {
-                return "This instance is not in debug mode.";
+                return "This function is not available outside of debug mode.";
             }));
         }
 
@@ -57,7 +57,7 @@ class Templating
     }
 
     /**
-     * Get all the available skins. Currently, hardcoded to only Finalium.
+     * Get all the available skins. Currently, hardcoded to only Biscuit.
      *
      * @since 0.1.0
      *

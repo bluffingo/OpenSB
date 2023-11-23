@@ -3,6 +3,10 @@
 @import 'mixins/responsiveness';
 @import 'mixins/gradients';
 
+@function contrast-color($color, $dark, $light) {
+	@return if(lightness($color) < $threshold, $light, $dark)
+}
+
 :root { font-family: $font; }
 @supports (font-variation-settings: normal) {
 	:root { font-family: $font-var; }

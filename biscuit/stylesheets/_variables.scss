@@ -3,12 +3,16 @@
 $threshold: 65%; // contrast threshold
 
 $primary: #f81eff; // primary color (orange)
-$primary-darker: darken($primary, 33%); // darker primary color (brown-ish?)
+$primary-darker: darken($primary, 33%); // darker primary color
 $secondary: #eee; //secondary color (nearly white)
+$green: #198519;
+$red: #c02626;
 
 $color-map: (
         "primary": $primary,
         "secondary": $secondary,
+        "success": $green,
+        "danger": $red,
 );
 
 // fonts

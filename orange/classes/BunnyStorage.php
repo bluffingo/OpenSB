@@ -11,6 +11,14 @@ use ToshY\BunnyNet\StreamAPI;
 
 class BunnyStorage implements Storage
 {
+    private BunnyClient $bunnyClient;
+    private EdgeStorageAPI $edgeStorageApi;
+    private mixed $streamLibrary;
+    private mixed $streamHostname;
+    private mixed $storageZone;
+    private mixed $pullZone;
+    private Database $database;
+
     public function __construct(Orange $orange) {
         global $bunnySettings;
 

@@ -2,7 +2,6 @@
 
 namespace openSB;
 
-//this uploads and converts the video, should switch to a better solution!
 global $betty;
 
 use Orange\Templating;

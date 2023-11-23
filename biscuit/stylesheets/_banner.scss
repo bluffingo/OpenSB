@@ -1,13 +1,11 @@
-div.banner {
+.banner {
   padding: 8px 5px;
 }
 
-div.banner-danger {
-  background: red;
-  color: white;
-}
-
-div.banner-success {
-  background: forestgreen;
-  color: white;
+@each $color, $value in $color-map {
+  .banner-#{$color} {
+    background: $value;
+    @include gradient-y($start-color: lighten($value, 2.5%), $end-color: $value);
+    color: contrast-color($value, #000, #fff) !important;
+  }
 }

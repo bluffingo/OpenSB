@@ -78,6 +78,9 @@
         <div class="header-links">
             <a class="menulink" href="/browse.php">Browse</a>
             <a class="menulink" href="/users.php">Members</a>
+            {% if is_qobo %}
+            <a class="menulink" href="/wikis.php">Wikis</a>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -115,7 +118,7 @@
     <div class="page-contents">
         {% if user_ban_data %}
             <div class="banner banner-danger">
-                <p>This account is banned for the following reason:</p>
+                <p>This account has been banned for the following reason:</p>
                 {{ user_ban_data.reason | markdown }}
             </div>
         {% endif %}
@@ -128,8 +131,10 @@
         {% endif %}
         {% block content %}{% endblock %}
         <div class="footer">
-            <a href="/version.php">Powered by openSB {{ squarebracket_version }}.</a>
-            <p>© 2021-{{ 'now' | date('Y') }} openSB contributors.</p>
+            <img src="/assets/opensb_logo.png" alt="OpenSB">
+            <br>
+            <a href="/version.php">Powered by OpenSB {{ squarebracket_version }}.</a>
+            <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</p>
             <a href="/privacy.php">
                 Privacy policy
             </a>
