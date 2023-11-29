@@ -3,24 +3,39 @@
 {% set title = "Users" %}
 
 	{% block content %}
-		<div class="content-box">
-		<table class="c1">
-			<tr class="h">
-				<th>Username</th>
-				<th style="width:150px">Registered</th>
-				<th style="width:90px">Submissions</th>
-				<th style="width:90px">Journals</th>
-				<th style="width:90px">Followers</th>
-			</tr>
-			{% for user in users %}
-				<tr>
-					<td>{{ user_link(user) }}</td>
-					<td class="center">{{ user.info.joined | date('Y-m-d H:i') }}</td>
-					<td class="center">{{ user.submissions }}</td>
-					<td class="center">{{ user.journals }}</td>
-					<td class="center">{{ user.info.followers }}</td>
-				</tr>
+		<div class="section">
+			<div class="section-title">
+				<h1>Users ({{ users.total }})</h1>
+			</div>
+			{% for user in users.users %}
+				<div class="content-entry">
+					<table cellpadding="0" cellspacing="0">
+						<tr valign="top">
+							<td style="padding-right: 10px;">
+								<a href="/user?name={{ user.info.username }}">
+									<img src="{{ profile_picture(user.info.username) }}" width="80"
+										 alt="{{ user.info.username }}" class="content-image">
+								</a>
+							</td>
+							<td>
+								<div class="content-title">
+									{{ user_link(user) }} ({{ user.info.displayname }})
+								</div>
+								<div class="content-description">
+									{% if user.about|trim is not empty %}
+										<span>{{ user.about }}</span>
+									{% else %}
+										<span class="fade">No description.</span>
+									{% endif %}
+									<br>
+									<small>
+										{{ user.submissions }} submissions · {{ user.journals }} journals
+									</small>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
 			{% endfor %}
-		</table>
 		</div>
 	{% endblock %}

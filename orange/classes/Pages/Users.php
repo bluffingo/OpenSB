@@ -19,7 +19,7 @@ class Users
     public function __construct(\Orange\Orange $betty)
     {
         $this->database = $betty->getBettyDatabase();
-        $this->data = $this->database->fetchArray($this->database->query("SELECT u.id, (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num FROM users u"));
+        $this->data = $this->database->fetchArray($this->database->query("SELECT u.id, u.about, u.title, (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num FROM users u ORDER BY u.lastview DESC"));
     }
 
     public function getData()
@@ -36,9 +36,16 @@ class Users
                         "info" => $userData->getUserArray(),
                         "submissions" => $user["s_num"],
                         "journals" => $user["j_num"],
+                        "about" => $user["about"],
                     ];
             }
         }
-        return($usersData);
+
+        $data = [
+            "users" => $usersData,
+            "total" => count($usersData),
+        ];
+
+        return($data);
     }
 }
