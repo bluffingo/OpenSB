@@ -39,6 +39,29 @@ class Templating
             }));
         }
 
+
+        // 2021 SQUAREBRACKET FRONTEND COMPATIBILITY
+        $this->twig->addFunction(new TwigFunction('__', function($string, $placeholders = []) {
+            return vsprintf($string, $placeholders);
+        }));
+
+        $this->twig->addFunction(new TwigFunction('small_video_box', function() {
+            return false;
+        }));
+
+        $this->twig->addFunction(new TwigFunction('video_box', function() {
+            return false;
+        }));
+
+        $this->twig->addFunction(new TwigFunction('browse_video_box', function() {
+            return false;
+        }));
+
+        $this->twig->addFunction(new TwigFunction('icon', function($icon, $size) {
+            return $this->render('components/icon.twig', ['icon' => $icon, 'size' => $size]);
+        }, ['is_safe' => ['html']]));
+        // ---------------------------
+
         $this->twig->addGlobal('is_qobo', $isQoboTV);
         $this->twig->addGlobal('is_debug', $isDebug);
         $this->twig->addGlobal('is_user_logged_in', $auth->isUserLoggedIn());
@@ -67,6 +90,7 @@ class Templating
     {
         return [
             "qobo" => "skins/qobo/",
+            "squarebracket_bootstrap" => "skins/squarebracket_bootstrap/",
         ];
     }
 

@@ -1,0 +1,135 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Settings") }}{% endblock %}
+
+{% block content %}
+<div class="row">
+					<div class="row">
+						<div class="col-12">
+							<img class="float-start rounded-circle" src="{{ profile_picture(current_user.username) }}" style="margin-right: 1.5%;" width="64" alt="pfp">
+							<h2>{{ current_user.display_name }}</h2>
+							<p>Your squareBracket account (or channel?)</p>
+						</div>
+					</div>
+<div class="col-lg-2 col-4">
+	<ul class="list-group">
+		<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+			<button class="nav-link active text-start" id="v-pills-account-tab" data-bs-toggle="pill"
+				data-bs-target="#v-pills-account" type="button" role="tab" aria-controls="v-pills-account"
+				aria-selected="false">
+				{{ icon('person-fill', 16) }} {{ __("Account") }}</button>
+			<button class="nav-link text-start" id="v-pills-security-tab" data-bs-toggle="pill"
+				data-bs-target="#v-pills-security" type="button" role="tab" aria-controls="v-pills-security"
+				aria-selected="false">
+				{{ icon('shield', 16) }} {{ __("Security") }}</button>
+			<button class="nav-link text-start" id="v-pills-profile-tab" data-bs-toggle="pill"
+				data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+				aria-selected="false">
+				{{ icon('person-lines-fill', 16) }} {{ __("Profile") }}</button>
+			<button class="nav-link text-start" id="v-pills-partner-tab" data-bs-toggle="pill"
+				data-bs-target="#v-pills-partner" type="button" role="tab" aria-controls="v-pills-partner"
+				aria-selected="false">
+				{{ icon('check2-circle', 16) }} {{ __("Checkmark") }}</button>
+		</div>
+	</ul>
+</div>
+<div class="col-lg-10 col-8">
+	<div class="d-flex align-items-start">
+		<div class="tab-content" id="v-pills-tabContent" style="width: 100%;">
+			<div class="tab-pane fade show active" id="v-pills-account" role="tabpanel"
+				aria-labelledby="v-pills-account-tab">
+				<div class="p-4 bg-light border rounded-3">
+					<div class="row">
+						<div class="col-12">
+							<img class="float-start rounded" src="{{ profile_picture(current_user.username) }}" style="margin-right: 1.5%;" width="128" alt="pfp">
+							<h2>{{ current_user.display_name }}</h2>
+							<p>
+								{{ icon('at', 20) }}
+								<b>{{ __("Username:") }}</b> {{ current_user.username }}<br>
+								{% if current_user.email == "poktube_migrated@squarebracket.me" %}
+								{{ __("Account migrated from PokTube") }}
+								{% else %}
+								{{ icon('envelope', 20) }}
+								<b>{{ __("Email address:") }}</b> {{ current_user.email }}
+								{% endif %}
+							</p>
+						</div>
+					</div>
+				</div>
+				<br/>
+				<h4>Language</h4>
+				<select class="form-select" name="language">
+					{% for code,name in glob_languages %}
+					{% if name %}<option value="{{ code }}" {% if code==current_user.language %}selected{% endif %}>{{ name }}</option>{% endif %}
+					{% endfor %}
+				</select>
+			</div>
+			<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+				<div class="p-4 bg-light border rounded-3">
+					<h2>{{ __("Profile settings") }}</h2>
+					{{ __("Change the look of your channel's profile.") }}
+				</div>
+				<br>
+					<form action="settings.php" method="post" enctype="multipart/form-data">
+					<label for="displayName" class="form-label">Display Name</label>
+					<input id="displayName" class="form-control" name="displayName">
+					<h3>{{ __("Profile picture") }}</h3>
+					<div class="row">
+						<div class="col-10">
+							<input class="form-control" type="file" name="profilePicture" id="profilePicture">
+						</div>
+						<div class="col-2">
+							<img class="float-end rounded" src="{{ profile_picture(current_user.username) }}" width="128" alt="pfp">
+						</div>
+					</div>
+					<h3>{{ __("Channel background") }} {{ __("(Checkmark only)") }}</h3>
+					<input class="form-control" type="file" name="profileBackground" id="profileBackground" {% if current_user.u_flags != 1 %}disabled{% endif %}>
+					<h3>{{ __("Channel description") }}</h3>
+					<textarea class="form-control" id="description" id="floatingInput" name="description" maxlength="500" style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}">{{ current_user.description }}</textarea>
+					<h3>{{ __("Channel banner color") }}</h3>
+					<input type="color" class="form-control" id="color" name="color"
+						value="{{ current_user.color }}">
+					<input type="hidden" name="updatesettings" value="yes">
+					<input type="submit" class="btn btn-primary" name="action" value="{{ __("Update") }}">
+				</form>
+			</div>
+			<div class="tab-pane fade" id="v-pills-partner" role="tabpanel" aria-labelledby="v-pills-partner-tab">
+				<div class="h-100 p-5 bg-light border rounded-3">
+					<h2>{{ __("squareBracket Checkmark Program") }}</h2>
+					<p>{{ __("Getting checkmarked on squareBracket can give you some benefits, which haven't been decided. No, there won't be anything related to money/ads.") }}</p>
+					<a class="btn btn-primary" href="https://forms.gle/rD8sFd58S9pdCj617">{{ __("Apply for Checkmark") }}</a><br>
+					<small>{{ __("Made using Google Forms.") }}</small>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="v-pills-security" role="tabpanel" aria-labelledby="v-pills-security-tab">
+				<h2>{{ __("Security options") }}</h2>
+				<hr/>
+				<h4>{{ __("Change Password") }}</h4>
+				<form action="settings.php" method="post" enctype="multipart/form-data">
+					<div class="form-floating my-1">
+						<input type="password" name="current_pass" class="form-control" id="floatingCurrentPass" placeholder="">
+						<label for="floatingCurrentPass">{{ __("Current Password") }}</label>
+					</div>
+					<div class="form-floating my-1">
+						<input type="password" name="pass" class="form-control" id="floatingPass" placeholder="">
+						<label for="floatingPass">{{ __("Password") }}</label>
+					</div>
+					<div class="form-floating my-1">
+						<input type="password" name="pass2" class="form-control" id="floatingPass2" placeholder="">
+						<label for="floatingPass2">{{ __("Password (Again)") }}</label>
+					</div>
+					<button class="w-100 btn btn-lg btn-primary" type="submit" name="updatesettings" class="btn btn-primary">{{ __("Change") }}</button>
+				</form>
+				<br/>
+				<h4>{{ __("Other") }}</h4>
+				<hr/>
+				<form action="settings.php" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="reset_token" class="form-control" id="floatingCurrentPass" value="resetToken">
+					<button class="w-100 btn btn-lg btn-danger" type="submit" name="updatesettings" class="btn btn-primary">{{ __("Log out from all devices") }}</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+	{% endblock %}

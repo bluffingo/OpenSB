@@ -7,4 +7,4 @@
 # Load path is assuming you're running this script from the root of the sB site directory
 common_arguments="--style compressed --no-source-map --load-path ./"
 
-sass.bat ${common_arguments} biscuit/stylesheets/:public/img/css/
+sass.bat ${common_arguments} biscuit/stylesheets/:public/img/css/ bootstrap:public/img/css/

@@ -1,0 +1,71 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Home") }}{% endblock %}
+	{% block content %}
+<div class="row">
+	<div class="col-xl-8">
+		{% if subscriptionVideos %}
+			<div class="row">
+				<div class="col-8">
+				<h3>{{ __("From my subscriptions") }}</h3>
+				</div><div class="col-4">
+				<div class="text-end"><a href="browse.php?subscriptions" class="btn btn-light btn-sm">{{ __("Browse subscriptions") }}</a></div>
+				</div>
+				<h3></h3>
+				<div class="row">
+					{% for video in subscriptionVideos %}
+						<div class="col-3">
+							Test
+						</div>
+					{% else %}
+						<p>{{ __("There are currently no videos from your subscriptions.") }}</p>
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+		<div class="row">
+			<div class="col-8">
+			<h3>{{ __("Recently uploaded to squareBracket") }}</h3>
+			</div><div class="col-4">
+			<div class="text-end"><a href="browse.php" class="btn btn-light btn-sm">{{ __("Browse videos") }}</a></div>
+			</div>
+		</div>
+		{% for video in videos %}
+			Test
+		{% else %}
+			<p>{{ __("No uploaded videos.") }}</p>
+		{% endfor %}
+	</div>
+	<div class="col-xl-4">
+		{% if logged_in %}
+			</p>
+				<img class="float-start rounded-circle w-25 me-3" src="{{ profile_picture(current_user.username) }}"  alt="{{ current_user.username }}">
+				<p class="text-start float-end">
+				<h3>{{ current_user.display_name }}</h3>
+					{# hack to prevent twig from outputing the number 1 #}
+					{% if totalSubscribers != 1 %}
+						{% set pluralSubscribers = __("s") %}
+					{% endif %}
+					{% if totalViews != 1 %}
+						{% set pluralViews = __("s") %}
+					{% endif %}
+					<p class="fs-5 mb-1">@{{ current_user.username }}</p>
+					<p class="mb-2">{{ __("%s subscriber%s", [totalSubscribers ?? __("no"), pluralSubscribers]) }}</p>
+					<p class="mb-2">{{ __("%s view%s", [totalViews ?? __("no"), pluralViews]) }}</p>
+		{% else %}
+			<h3>{{ __("Welcome to squareBracket") }}</h3>
+			<p>{{ __("I can't believe it's not PokTube") }}</p>
+		{% endif %}
+		<hr/>
+		<h3>{{ __("News and updates") }}</h3>
+		<p>{{ __("There are currently no updates.") }}</p>
+		<hr/>
+		<h3>{{ __("Featured videos") }}</h3>
+		{% for video in featuredVideos %}
+			{{ small_video_box(video) }}
+		{% else %}
+			<p>{{ __("No featured videos.") }}</p>
+		{% endfor %}
+	</div>
+</div>
+	{% endblock %}

@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col-lg-1" style="width:5.5%;padding-right:0">
+		<a href="user.php?name={{ data.u_username }}">
+			<img class="rounded-circle w-100" src="{{ profile_picture(data.u_username) }}">
+		</a>
+	</div>
+	<div class="col-lg-10">
+		{{ userlink(data, 'u_') }} &bull; {{ data.date | relative_time}}
+		{% apply markdown_to_html | nl2br %}
+			{{ data.comment | raw }}
+		{% endapply %}
+	</div>
+</div>

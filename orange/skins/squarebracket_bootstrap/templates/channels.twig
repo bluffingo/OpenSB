@@ -1,0 +1,26 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Browse") }}{% endblock %}
+
+	{% block content %}
+<div class="alert alert-primary">TODO: Redesign this so that it doesn't look like utter garbage.</div>
+<div class="row"><div class="col">
+	<div class="card">
+		<div class="card-header bg-dark text-white">{{ __("Channels") }}</div>
+		<div class="card-body">
+			{% for user in users|batch(4) %}
+			<div class="row">
+				{% for cell in user %}
+					<div class="col-3">
+						{{ browse_channel_box(cell) }}
+					</div>
+				{% endfor %}
+			</div>
+			{% else %}
+				<p>{{ __("No users.") }}</p>
+			{% endfor %}
+			{{ pagination(pageCount, currentPage, url) }}
+		</div>
+	</div>
+</div></div>
+	{% endblock %}

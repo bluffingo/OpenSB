@@ -30,7 +30,9 @@ class Orange {
             if (isset($_COOKIE["SBOPTIONS"])) {
                 $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
             } else {
-                $this->options = [];
+                $this->options = [
+                    "skin" => "squarebracket_bootstrap"
+                ];
             }
 
             // should not be enabled on qobo.tv
