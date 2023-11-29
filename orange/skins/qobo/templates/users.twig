@@ -6,16 +6,14 @@
 		<div class="content-box">
 		<table class="c1">
 			<tr class="h">
-				<th style="width:50px">ID</th>
 				<th>Username</th>
-				<th style="width:180px">Registered on</th>
-				<th style="width:80px">Submissions</th>
-				<th style="width:80px">Journals</th>
-				<th style="width:80px">Followers</th>
+				<th style="width:150px">Registered</th>
+				<th style="width:90px">Submissions</th>
+				<th style="width:90px">Journals</th>
+				<th style="width:90px">Followers</th>
 			</tr>
 			{% for user in users %}
 				<tr>
-					<td>{{ user.id }}</td>
 					<td>{{ user_link(user) }}</td>
 					<td class="center">{{ user.info.joined | date('Y-m-d H:i') }}</td>
 					<td class="center">{{ user.submissions }}</td>

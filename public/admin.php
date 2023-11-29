@@ -12,7 +12,7 @@ require_once dirname(__DIR__) . '/private/class/common.php';
 require_once dirname(__DIR__) . '/orange/classes/Pages/AdminDashboard.php';
 
 try {
-    $page = new \Orange\Pages\AdminDashboard($betty);
+    $page = new \Orange\Pages\AdminDashboard($betty, $_POST, $_GET);
     $data = $page->getData();
 } catch (OrangeException $e) {
     $e->page();

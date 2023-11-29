@@ -27,14 +27,17 @@ class Users
         $usersData = [];
         foreach ($this->data as $user)
         {
-            $userData = new User($this->database, $user["id"]);
-            $usersData[] =
-                [
-                    "id" => $user["id"],
-                    "info" => $userData->getUserArray(),
-                    "submissions" => $user["s_num"],
-                    "journals" => $user["j_num"],
-                ];
+            $user_banned = $this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$user["id"]]);
+            if (!$user_banned) {
+                $userData = new User($this->database, $user["id"]);
+                $usersData[] =
+                    [
+                        "id" => $user["id"],
+                        "info" => $userData->getUserArray(),
+                        "submissions" => $user["s_num"],
+                        "journals" => $user["j_num"],
+                    ];
+            }
         }
         return($usersData);
     }

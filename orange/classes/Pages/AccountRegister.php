@@ -69,8 +69,8 @@ class AccountRegister
 
             if(!$error) {
                 $token = bin2hex(random_bytes(32));
-                $this->database->query("INSERT INTO users (name, password, token, joined, lastview, title, email) VALUES (?,?,?,?,?,?,?)",
-                    [$username, password_hash($pass, PASSWORD_DEFAULT), $token, time(), time(), $username, $mail]);
+                $this->database->query("INSERT INTO users (name, password, token, joined, lastview, title, email, ip) VALUES (?,?,?,?,?,?,?,?)",
+                    [$username, password_hash($pass, PASSWORD_DEFAULT), $token, time(), time(), $username, $mail, MiscFunctions::get_ip_address()]);
 
                 setcookie('SBTOKEN', $token, 2147483647);
 

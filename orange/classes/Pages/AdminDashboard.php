@@ -15,9 +15,9 @@ use Orange\Database;
 class AdminDashboard
 {
     private \Orange\Database $database;
-    private $data;
+    private array $data;
 
-    public function __construct(\Orange\Orange $betty)
+    public function __construct(\Orange\Orange $betty, $POST, $GET)
     {
         global $auth;
 
@@ -26,11 +26,48 @@ class AdminDashboard
             $betty->Notification("You do not have permission to access this page", "/");
         }
 
+        if(isset($POST["action"])) {
+            if ($POST["action"] == "ban_user") {
+                // Don't ban non-existent users.
+                if (!$this->database->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$POST["user_to_ban"]])) {
+                    $betty->Notification("This user does not exist.", "/admin.php");
+                }
+                // Don't ban mods/admins.
+                if ($this->database->fetch("SELECT u.powerlevel FROM users u WHERE u.name = ?", [$POST["user_to_ban"]])["powerlevel"] != 1) {
+                    $betty->Notification("This user cannot be banned.", "/admin.php");
+                }
+                // Check if user is already banned, if not, then ban.
+                $id = $this->database->fetch("SELECT u.id FROM users u WHERE u.name = ?", [$POST["user_to_ban"]])["id"];
+                if ($this->database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$id])) {
+                    $betty->Notification("This user is already banned.", "/admin.php");
+                } else {
+                    $this->database->query("INSERT INTO bans (userid, reason) VALUES (?,?)",
+                        [$id, $POST["reason"]]);
+                    $betty->Notification("Banned user!", "/admin.php");
+                }
+            }
+        } else if (isset($GET["action"])) {
+            if ($GET["action"] == "unban_user") {
+                if ($this->database->query("DELETE FROM bans WHERE userid = ?", [$GET["user"]])) {
+                    $betty->Notification("Unbanned user!", "/admin.php");
+                }
+            }
+        }
+
         $thingsToCount = ['comments', 'channel_comments', 'users', 'videos', 'views', 'favorites', 'bans', 'journals'];
         $query = "SELECT ";
         foreach ($thingsToCount as $thing) {
             if ($query != "SELECT ") $query .= ", ";
             $query .= sprintf("(SELECT COUNT(*) FROM %s) %s", $thing, $thing);
+        }
+
+        $bans = $this->database->fetchArray($this->database->query("SELECT * FROM bans"));
+
+        $bannedUserData = [];
+        foreach ($bans as $ban) {
+            $banned_user = $this->database->fetch("SELECT u.* FROM users u WHERE u.id = ?", [$ban["userid"]]);
+            $banned_user["ban_reason"] = $ban["reason"];
+            $bannedUserData[] = $banned_user;
         }
 
         $this->data = [
@@ -45,6 +82,7 @@ class AdminDashboard
                 "shouts" => $this->getShoutsGraph(),
                 "journals" => $this->getJournalGraph(),
             ],
+            "bans" => $bannedUserData,
         ];
     }
 
