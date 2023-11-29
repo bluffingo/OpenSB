@@ -1,15 +1,20 @@
 .section {
   .section-title {
     color: $primary-darker;
+    display: flex;
 
     h1, h2, h3, h4, h5, h6 {
       display: inline;
       font-weight: normal;
+      align-self: center;
+      margin: 0;
+      flex-grow: 1;
     }
 
     a {
       font-size: 14px;
       margin-left: 4px;
+      align-self: center;
     }
 
     margin-bottom: 0.5em;
