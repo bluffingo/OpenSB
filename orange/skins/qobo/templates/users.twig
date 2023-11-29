@@ -7,35 +7,37 @@
 			<div class="section-title">
 				<h1>Users ({{ users.total }})</h1>
 			</div>
-			{% for user in users.users %}
-				<div class="content-entry">
-					<table cellpadding="0" cellspacing="0">
-						<tr valign="top">
-							<td style="padding-right: 10px;">
-								<a href="/user?name={{ user.info.username }}">
-									<img src="{{ profile_picture(user.info.username) }}" width="80"
-										 alt="{{ user.info.username }}" class="content-image">
-								</a>
-							</td>
-							<td>
-								<div class="content-title">
-									{{ user_link(user) }} ({{ user.info.displayname }})
-								</div>
-								<div class="content-description">
-									{% if user.about|trim is not empty %}
-										<span>{{ user.about }}</span>
-									{% else %}
-										<span class="fade">No description.</span>
-									{% endif %}
-									<br>
-									<small>
-										{{ user.submissions }} submissions · {{ user.journals }} journals
-									</small>
-								</div>
-							</td>
-						</tr>
-					</table>
-				</div>
-			{% endfor %}
+			<div class="content-box">
+				{% for user in users.users %}
+					<div class="content-entry">
+						<table cellpadding="0" cellspacing="0">
+							<tr valign="top">
+								<td>
+									<a href="/user?name={{ user.info.username }}">
+										<img src="{{ profile_picture(user.info.username) }}" width="80"
+											 alt="{{ user.info.username }}" class="content-image">
+									</a>
+								</td>
+								<td>
+									<div class="content-title">
+										{{ user_link(user) }} ({{ user.info.displayname }})
+									</div>
+									<div class="content-description">
+										{% if user.about|trim is not empty %}
+											<span>{{ user.about }}</span>
+										{% else %}
+											<span class="fade">No description.</span>
+										{% endif %}
+										<br>
+										<small>
+											{{ user.submissions }} submissions · {{ user.journals }} journals
+										</small>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				{% endfor %}
+			</div>
 		</div>
 	{% endblock %}
