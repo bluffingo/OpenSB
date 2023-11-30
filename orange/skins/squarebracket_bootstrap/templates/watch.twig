@@ -1,107 +1,46 @@
 {% extends "_layout.twig" %}
 
 {% block head %}
-	<meta name="title" content="{{ video.title }} - squareBracket">
-	<meta name="description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-	<meta property="og:site_name" content="SquareBracket"/>
-	<meta property="og:title" content="{{ video.title }} - squareBracket">
-	<meta property="og:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-	<meta property="og:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
-	<meta property="og:url" content="{{ page_url }}">
-	<meta property="twitter:title" content="{{ video.title }} - squareBracket">
-	<meta property="twitter:description" content="{{ video.description|length > 250 ? video.description|slice(0, 250) ~ '...' : video.description }}">
-	<meta property="twitter:image" content="{{ domain }}{{ video_thumbnail(video.video_id) }}">
-	<meta name="twitter:card" content="summary_large_image">
+	<meta name="title" content="{{ submission.title }} - Qobo">
+	<meta name="description" content="{{ submission.description|length > 250 ? submission.description|slice(0, 250) ~ '...' : submission.description }}">
 	<script>
-		video_id = '{{ video.video_id }}';
-		user_id = '{{ video.author }}';
+		video_id = '{{ submission.video_id }}';
+		user_id = '{{ submission.author }}';
 	</script>
-	<link href="https://unpkg.com/plyr@3.6.8/dist/plyr.css" rel="stylesheet">
 {% endblock %}
 
-{% block title %}{{ video.title }}{% endblock %}
+{% block title %}{{ submission.title }}{% endblock %}
 
 	{% block content %}
 <div class="row">
 	<div class="col-lg-9">
-		<div id="container" style="height: 30rem;">
-			<!--- todo: redo "video processed" message to use _error.twig -gr 7/22/2021 --->
-			{% if (video.flags b-and 2) %}
-				<div style="background-color: black; color: white; text-align: center; padding: 15rem">
-					{{ __("This video is being processed. Try again later.") }}
-				</div>
-			{% else %}
-				<video controls crossorigin playsinline poster="{{ video_thumbnail(video.video_id) }}"></video>
-			{% endif %}
-		</div>
-		<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
-		<script src="https://unpkg.com/plyr@3.6.8/dist/plyr.min.js"></script>
-		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
-		<!-- indigo player (the player we used back in the milestone/alpha days) was starting to have a lot of techincal issues by the time of alpha 3.
-		videos would randomly glitch on indigo and sometimes it wouldn't even load the goddamn video (not a ffmpeg issue this time). 
-		we at squarebracket have decided to use plyr instead of indigo. the aspect ratio is a bit wonky but that should be fixed soon 
-		-gamerappa, July 31st 2021 -->
-		    <style>
-				.plyr--video {
-					height: 30rem;
-					--plyr-color-main: var(--bs-primary);
-					--plyr-font-family: var(--bs-font-sans-serif);
-				}
-		    </style>
-		<script>
-			{% if not (video.flags b-and 2) %}
-				document.addEventListener('DOMContentLoaded', () => {
-					const source = '{{ video.videofile }}';
-					// For more dash options, see https://github.com/Dash-Industry-Forum/dash.js
-					const dash = dashjs.MediaPlayer().create();
-					const video = document.querySelector('video');
-					dash.initialize(video, source, true);
-
-					// Update caption tracks after initializing Plyr to get the generated captions
-					// For more options see: https://github.com/sampotts/plyr/#options
-					const player = new Plyr(video);
-
-					// Expose player and dash so they can be used from the console
-					window.player = player;
-					window.dash = dash;
-				});
-			{% endif %}
-		</script>
+		{{ submission_view(submission) }}
 		<div style="margin-top:5px">
 			<div class="card">
 				<div class="card-body">
-					<h4>{{ video.title }}</h4><hr class="mt-2 mb-3"/>
+					<h4>{{ submission.title }}</h4><hr class="mt-2 mb-3"/>
 					<div class="row">
 						<div class="col-lg-9">
 							<div class="row">
 								<div class="col-lg-2" style="width:10%;padding-right:0">
-									<a href="user.php?name={{ video.u_username }}">
-										<img class="float-start rounded-circle w-100" src="{{ profile_picture(video.u_username) }}">
+									<a href="user.php?name={{ submission.u_username }}">
+										<img class="float-start rounded-circle w-100" src="{{ profile_picture(submission.u_username) }}">
 									</a>
 								</div>
 								<div class="col-lg-10">
-									{{ userlink(video, 'u_') }}<br>
+									{{ user_link(submission.author) }}<br>
 									{# hack to prevent twig from outputing the number 1 #}
-									{% if subCount != 1 %}
-										{% set pluralSubscribers = __("s") %}
-									{% endif %}
-									{% if video.views != 1 %}
+									{% if submission.interactions.views != 1 %}
 										{% set pluralViews = __("s") %}
 									{% endif %}
-									<small>{{ __("Uploaded on %s", [video.time | date('M j, Y')]) }} &bull; {{ video.views }} {{ __("view%s", [pluralViews]) }} &bull; {{ subCount }} {{ __("subscriber%s", [pluralSubscribers]) }}</small>
+									<small>{{ __("Uploaded on %s", [submission.time | date('M j, Y')]) }} &bull; {{ submission.interactions.views }} {{ __("view%s", [pluralViews]) }}</small>
 								</div>
 							</div>
 						</div>
 						<div class="col-3 text-end">
-							<a href="#" id="{% if logged_in %}like{% else %}action_unlogged{% endif %}" class="text-{% if total_likes != 0 %}success{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
-								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-up-fill"/>
-							</svg></a> <span id="likes">{{ total_likes }}</span>
-							<a href="#" id="{% if logged_in %}dislike{% else %}action_unlogged{% endif %}" class="text-{% if total_dislikes != 0 %}danger{% else %}body{% endif %}"><svg class="bi" width="20" height="20" fill="currentColor">
-								<use xlink:href="vendor/twbs/bootstrap-icons/bootstrap-icons.svg#hand-thumbs-down-fill"/>
-							</svg></a> <span id="dislikes" style="padding-right: 10px">{{ total_dislikes }}</span>
-							<button id="subscribe" class="btn btn-{% if subscribed %}secondary{% elseif current_user.id == video.author %}primary{% else %}warning{% endif %}" type="button" {% if not logged_in or current_user.id == video.author %}disabled{% endif %}>{% if subscribed %}{{ __("Unsubscribe") }}{% elseif current_user.id == video.author %}{{ __("Edit video") }}{% else %}{{ __("Subscribe") }}{% endif %}</button>
-							</div>
-						<p style="margin-top: 1rem;">{{ video.description }}</p>
+							Placeholder
+						</div>
+						<p style="margin-top: 1rem;">{{ submission.description }}</p>
 					</div>
 				</div>
 			</div>
@@ -111,17 +50,17 @@
 				<div class="card-body">
 				<h5>Comments</h5><hr class="mt-2 mb-3"/>
 							<textarea class="form-control mt-2 mb-2" id="commentContents" style="overflow:hidden;resize:none"
-			rows="3" placeholder="{% if logged_in %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
-			{% if logged_in %}<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top:5px;margin-bottom:15px">
+			rows="3" placeholder="{% if is_user_logged_in %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
+			{% if is_user_logged_in %}<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top:5px;margin-bottom:15px">
 			<class=
-			<button id="{% if logged_in %}post{% endif %}" class="btn btn-primary {% if not logged_in %}disabled{% endif %}">
+			<button id="{% if is_user_logged_in %}post{% endif %}" class="btn btn-primary {% if not is_user_logged_in %}disabled{% endif %}">
 			{{ __("Comment") }}
 			<div class="spinner-border spinner-border-sm d-none" id="commentPostingSpinner" role="status" aria-hidden="true"><span class="visually-hidden">{{ __("Posting...") }}</span></div>
 			</button>
 			</div>{% endif %}
 				<div id="comment"></div>
 				{% for comment in comments %}
-					{{ comment(comment) }}
+					FUCK!
 				{% endfor %}
 				</div>
 				</div>

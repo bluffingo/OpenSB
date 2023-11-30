@@ -227,6 +227,6 @@ HTML;
     public function Pagination($levels, $lpp, $url, $current)
     {
         global $twig;
-        return $twig->render('pagination.twig', ['levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current]);
+        return $twig->render('components/pagination.twig', ['levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current]);
     }
 }

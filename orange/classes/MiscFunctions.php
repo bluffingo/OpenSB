@@ -91,6 +91,8 @@ class MiscFunctions
                 "5" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$submission["id"]]),
             ];
 
+            $views = $database->result("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$submission["video_id"]]);
+
             $userData = new User($database, $submission["author"]);
             $submissionsData[] =
                 [
@@ -100,6 +102,7 @@ class MiscFunctions
                     "published" => $submission["time"],
                     "type" => $submission["post_type"],
                     "content_rating" => $submission["rating"],
+                    "views" => $views,
                     "author" => [
                         "id" => $submission["author"],
                         "info" => $userData->getUserArray(),

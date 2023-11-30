@@ -10,7 +10,7 @@
 	<link href="img/css/bootstrap.css" rel="stylesheet" id="bootstrap">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-	<script src="assets/common.js"></script>
+	<script src="assets/common_bootstrap.js"></script>
 	<script>
 		subscribe_string = '{{ __("Subscribe") }}';
 		unsubscribe_string = '{{ __("Unsubscribe") }}';
@@ -27,7 +27,7 @@
 
 <nav id="navbar" class="navbar {% if theme == 'dark' or theme == 'finalium-dark' %} navbar-dark bg-dark {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md">
 	<div class="container">
-		<a class="navbar-brand" href="/"><img src="/assets/logo.png" alt="[sb]" height="32"
+		<a class="navbar-brand" href="/"><img src="/img/logo.svg" alt="[sb]" height="32"
 											  class="d-inline-block align-text-top"></a>
 		<form class="d-flex" method="GET" action="search.php">
 			<div class="input-group">
@@ -42,7 +42,7 @@
 		<div id="navbarCollapse" class="collapse navbar-collapse">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
 			<ul class="navbar-nav">
-				{% if logged_in %}
+				{% if is_user_logged_in %}
 					<!-- can't put dropdown-toggle properly wtf -->
 					<li class="nav-item">
 						<a href="upload.php" class="nav-link">
@@ -67,18 +67,18 @@
 						</style>
 						<a href="#" id="openSettings" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"
 						   aria-expanded="false">
-							{% if logged_in %} <img src="{{ profile_picture(current_user.username) }}"
-													alt="{{ current_user.username }}" class="rounded-circle" width="30" height="30">
+							{% if is_user_logged_in %} <img src="{{ profile_picture(user_data.name) }}"
+													alt="{{ user_data.name }}" class="rounded-circle" width="30" height="30">
 							{% else %}{{ icon('three-dots-vertical', 30) }}{% endif %}
 						</a>
 					</li>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
-						{% if logged_in %}
+						{% if is_user_logged_in %}
 							<li><a class="dropdown-item" href="settings.php">{{ icon('tools', 16) }} {{ __("Settings") }}</a></li>
 						{% endif %}
 						<li><a class="dropdown-item" id="themeSelect" href="#">{{ icon('brush', 16) }} {{ __("Change theme") }}</a></li>
-						{% if logged_in %}
-							<li><a class="dropdown-item" href="user.php?name={{ current_user.username }}">{{ icon('person-lines-fill', 16) }} {{ __("My profile") }}</a></li>
+						{% if is_user_logged_in %}
+							<li><a class="dropdown-item" href="user.php?name={{ user_data.name }}">{{ icon('person-lines-fill', 16) }} {{ __("My profile") }}</a></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="logout.php">{{ icon('door-open', 16) }} {{ __("Sign off") }}</a></li>
 						{% endif %}
@@ -103,7 +103,7 @@
 			<ul class="nav me-auto">
 				<li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} {{ __("Home") }}</a></li>
 				<li class="nav-item"><a href="browse.php" class="nav-link link-light px-2">{{ icon('play-btn', 16) }} {{ __("Browse") }}</a></li>
-				<li class="nav-item"><a href="channels.php" class="nav-link link-light px-2">{{ icon('people', 16) }} {{ __("Channels") }}</a></li>
+				<li class="nav-item"><a href="users.php" class="nav-link link-light px-2">{{ icon('people', 16) }} {{ __("Channels") }}</a></li>
 				{% for menu_link in menu_links %}
 					<li class="nav-item"><a href="{{ menu_link.url }}" class="nav-link link-light px-2">{{ icon(menu_link.icon, 16) }} {{ menu_link.name }}</a></li>
 				{% endfor %}
@@ -119,11 +119,14 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-body">
-				<h4 class="my-0">Powered by OpenSB {{ squarebracket_version }}</h4>
+				<h4 class="my-0">OpenSB {{ squarebracket_version }}</h4>
 				<!-- 2020 was when work on PokTube (the predecessor of squareBracket) was started. Techically, PokTube and squareBracket are the same project, just with different codebases. -gr 7/20/2021 -->
 				<!-- is it me or is morale a bit... low? it seems like there's no hope for squarebracket or some shit. don't be surprised if i end up leaving the project -gr 8/3/2021 -->
-				<p class="my-0">© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</p>
-				<p class="my-0"><a href="about.php" class="me-1">{{ __("About") }}</a> <a class="me-1">{{ __("Terms") }}</a> <a class="me-1">{{ __("Guidelines") }}</a> <a class="me-1">{{ __("Contact") }}</a></p>
+				<p class="my-0">© 2021-{{ 'now' | date('Y') }} OpenSB contributors</p>
+				<p class="my-0">
+					<a href="version.php" class="me-1">About</a>
+					<a href="privacy.php" class="me-1">Privacy policy</a>
+				</p>
 			</div>
 		</div>
 </footer>

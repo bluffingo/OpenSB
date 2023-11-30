@@ -67,7 +67,7 @@ if ($userpagedata['about'] == null) {
 }
 
 $twig = twigloader();
-echo $twig->render("user.twig", [
+echo $twig->render("profile.twig", [
     'id' => $userpagedata['id'],
     'name' => $userpagedata['name'],
     'userpagedata' => $userpagedata,
