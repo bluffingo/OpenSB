@@ -27,6 +27,7 @@ class Orange {
         if (!defined( 'SB_MEDIAWIKI' )) {
             session_start(["cookie_lifetime" => 0, "gc_maxlifetime" => 455800]);
 
+            $this->options = [];
             if (isset($_COOKIE["SBOPTIONS"])) {
                 $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
             }
