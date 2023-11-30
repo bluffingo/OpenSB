@@ -1,0 +1,19 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Change theme{% endblock %}
+
+{% block content %}
+    <h1>Change theme</h1>
+    <p>Placeholder design, sorry.</p>
+    <form name="uploadForm" id="uploadForm" method="post" action="theme.php">
+        <label for="theme">Theme:</label>
+        <select id="theme" name="theme">
+            {% for skin in skins %}
+                <option value="{{ skin.metadata.id }}">{{ skin.metadata.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" id="apply" name="apply"
+               value="Apply">
+    </form>
+{% endblock %}
