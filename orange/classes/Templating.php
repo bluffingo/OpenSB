@@ -24,6 +24,12 @@ class Templating
         global $isQoboTV, $auth, $bettyTemplate, $isDebug, $branding, $googleAdsClient;
         chdir(__DIR__ . '/..');
         $this->skin = $betty->getLocalOptions()["skin"] ?? $bettyTemplate;
+
+        if ($this->skin === null || trim($this->skin) === '') {
+            trigger_error("Currently selected skin is invalid", E_USER_WARNING);
+            $this->skin = $bettyTemplate;
+        }
+
         $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
         $this->loader->addPath('skins/common/');
         $this->twig = new Environment($this->loader, ['debug' => $isDebug]);
@@ -80,7 +86,7 @@ class Templating
     }
 
     /**
-     * Get all the available skins. Currently, hardcoded to only Biscuit.
+     * Get all the available skins.
      *
      * @since 0.1.0
      *
@@ -88,10 +94,16 @@ class Templating
      */
     public function getAllSkins(): array
     {
-        return [
-            "qobo" => "skins/qobo/",
-            "squarebracket_bootstrap" => "skins/squarebracket_bootstrap/",
-        ];
+        $skins = [];
+        $unfiltered_skins = glob('skins/*', GLOB_ONLYDIR);
+
+        foreach($unfiltered_skins as $skin) {
+            if ($skin != "skins/common") {
+                $skins[] = $skin;
+            }
+        }
+
+        return $skins;
     }
 
     /**

@@ -34,4 +34,10 @@ mariadb-data
 
 # google moment
 ads.txt
+
+# gource log
 /tools/gourcelog.txt
+
+# experimental shit that might be copyright infringing
+/skins/inky_testing
+/public/inky_testing
