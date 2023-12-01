@@ -4,7 +4,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 });
 	function play(sound) {
-		var audio = new Audio('/assets/sounds/'+sound+'.wav');
+		var audio = new Audio('/assets/sounds/'+sound+'.ogg');
 		audio.play();
 	}
 	//document.getElementById("liveToastBtn").onclick = function() {
@@ -84,7 +84,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	$("#post").click(function(){
 		play("click");
 		$("#commentPostingSpinner").removeClass('d-none');
-		$.post("comment.php",
+		$.post("api/finalium/commenting.php",
 		{
 			comment: $.trim($('#commentContents').val()),
 			vidid: video_id

@@ -58,6 +58,7 @@
 						<a href="register.php" class="btn btn-secondary">{{ __("Register") }}</a>
 					</div>
 				{% endif %}
+				{% if is_user_logged_in %}
 				<div class="dropdown">
 					<li class="nav-item">
 						<style>
@@ -67,31 +68,19 @@
 						</style>
 						<a href="#" id="openSettings" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"
 						   aria-expanded="false">
-							{% if is_user_logged_in %} <img src="{{ profile_picture(user_data.name) }}"
+							<img src="{{ profile_picture(user_data.name) }}"
 													alt="{{ user_data.name }}" class="rounded-circle" width="30" height="30">
-							{% else %}{{ icon('three-dots-vertical', 30) }}{% endif %}
 						</a>
 					</li>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
-						{% if is_user_logged_in %}
 							<li><a class="dropdown-item" href="settings.php">{{ icon('tools', 16) }} {{ __("Settings") }}</a></li>
-						{% endif %}
-						<li><a class="dropdown-item" id="themeSelect" href="#">{{ icon('brush', 16) }} {{ __("Change theme") }}</a></li>
-						{% if is_user_logged_in %}
 							<li><a class="dropdown-item" href="user.php?name={{ user_data.name }}">{{ icon('person-lines-fill', 16) }} {{ __("My profile") }}</a></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="logout.php">{{ icon('door-open', 16) }} {{ __("Sign off") }}</a></li>
-						{% endif %}
-					</ul>
-					<ul class="dropdown-menu" id="themeSelection" aria-labelledby="navbarDropdown">
-						<li><a class="dropdown-item" id="back" href="#">{{ __("Back") }}</a></li>
-						<li><a class="dropdown-item" id="finalium" href="#">{{ __("Light") }}</a></li>
-						<li><a class="dropdown-item" id="finalium-dark" href="#">{{ __("Dark") }}</a></li>
-						<li><a class="dropdown-item" id="light" href="#">{{ __("Classic Light") }}</a></li>
-						<li><a class="dropdown-item" id="dark" href="#">{{ __("Classic Dark") }}</a></li>
-						<li><a class="dropdown-item" id="vanilla" href="#">{{ __("Bootstrap") }}</a></li>
+
 					</ul>
 				</div>
+				{% endif %}
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
@@ -101,12 +90,12 @@
 	<nav class="py-1 bg-dark">
 		<div class="container">
 			<ul class="nav me-auto">
-				<li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} {{ __("Home") }}</a></li>
-				<li class="nav-item"><a href="browse.php" class="nav-link link-light px-2">{{ icon('play-btn', 16) }} {{ __("Browse") }}</a></li>
-				<li class="nav-item"><a href="users.php" class="nav-link link-light px-2">{{ icon('people', 16) }} {{ __("Channels") }}</a></li>
-				{% for menu_link in menu_links %}
-					<li class="nav-item"><a href="{{ menu_link.url }}" class="nav-link link-light px-2">{{ icon(menu_link.icon, 16) }} {{ menu_link.name }}</a></li>
-				{% endfor %}
+				<li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} Home</a></li>
+				<li class="nav-item"><a href="/browse.php" class="nav-link link-light px-2">{{ icon('play-btn', 16) }} Browse</a></li>
+				<li class="nav-item"><a href="/users.php" class="nav-link link-light px-2">{{ icon('people', 16) }} Members</a></li>
+				{% if is_qobo %}
+				<li class="nav-item"><a href="/wikis.php" class="nav-link link-light px-2">{{ icon('book', 16) }} Wikis</a></li>
+				{% endif %}
 			</ul>
 		</div>
 	</nav>
@@ -134,5 +123,6 @@
 {% block postcontent %}{% endblock %}
 <!-- gamerappa killed the bazinga star -->
 </div>
+{% block scripts %}{% endblock %}
 </body>
 </html>

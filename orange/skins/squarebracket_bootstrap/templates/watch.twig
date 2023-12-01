@@ -4,9 +4,13 @@
 	<meta name="title" content="{{ submission.title }} - Qobo">
 	<meta name="description" content="{{ submission.description|length > 250 ? submission.description|slice(0, 250) ~ '...' : submission.description }}">
 	<script>
-		video_id = '{{ submission.video_id }}';
-		user_id = '{{ submission.author }}';
+		video_id = '{{ submission.id }}';
+		user_id = '{{ submission.author.id }}';
 	</script>
+{% endblock %}
+
+{% block scripts %}
+	{{ include('submission_rating_script.twig') }}
 {% endblock %}
 
 {% block title %}{{ submission.title }}{% endblock %}
@@ -33,14 +37,14 @@
 									{% if submission.interactions.views != 1 %}
 										{% set pluralViews = __("s") %}
 									{% endif %}
-									<small>{{ __("Uploaded on %s", [submission.time | date('M j, Y')]) }} &bull; {{ submission.interactions.views }} {{ __("view%s", [pluralViews]) }}</small>
+									<small>{{ __("Uploaded on %s", [submission.published | date('M j, Y')]) }} &bull; {{ submission.interactions.views }} {{ __("view%s", [pluralViews]) }}</small>
 								</div>
 							</div>
 						</div>
 						<div class="col-3 text-end">
-							Placeholder
+							<div id="rater"></div>
 						</div>
-						<p style="margin-top: 1rem;">{{ submission.description }}</p>
+						<div style="margin-top: 1rem;">{{ submission.description | markdown_user_written }}</div>
 					</div>
 				</div>
 			</div>
@@ -59,8 +63,8 @@
 			</button>
 			</div>{% endif %}
 				<div id="comment"></div>
-				{% for comment in comments %}
-					FUCK!
+				{% for comment in submission.comments %}
+					{{ include('/components/comment.twig') }}
 				{% endfor %}
 				</div>
 				</div>
