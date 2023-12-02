@@ -100,6 +100,7 @@ class MiscFunctions
                     "title" => $submission["title"],
                     "description" => $submission["description"],
                     "published" => $submission["time"],
+                    "published_originally" => $submission["original_time"],
                     "type" => $submission["post_type"],
                     "content_rating" => $submission["rating"],
                     "views" => $views,

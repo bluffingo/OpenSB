@@ -37,3 +37,6 @@ ads.txt
 
 # gource log
 /tools/gourcelog.txt
+
+#bootstrap theme
+/public/img/css/bootstrap.css

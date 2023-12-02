@@ -102,6 +102,12 @@
 </div>
 {% block precontent %}{% endblock %}
 <div class="container">
+	{% if session.notif_message %}
+		<div class="alert alert-{{ session.notif_color }}">
+			{{ session.notif_message }}
+		</div>
+		{{ remove_notification() }}
+	{% endif %}
 	{% block content %}{% endblock %}
 </div>
 <footer class="p-3">

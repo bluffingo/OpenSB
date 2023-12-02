@@ -102,7 +102,7 @@ class AccountSettings
         if (!$error) {
             $this->database->query("UPDATE users SET title = ?, about = ?, comfortable_rating = ? WHERE id = ?",
                 [$title, $about, $rating, $auth->getUserID()]);
-            $this->betty->Notification("Edited successfully!", ("user.php?name=" . $auth->getUserData()["name"]));
+            $this->betty->Notification("Edited successfully!", ("user.php?name=" . $auth->getUserData()["name"]), "success");
         } else {
             $this->betty->Notification($error, "/settings.php");
         }

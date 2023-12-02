@@ -47,7 +47,7 @@
         {{ submission_view(submission) }}
     </div>
     <div class="content-box dark">
-        <small>Submitted on {{ submission.published | date('F j, Y') }} by {{ user_link(submission.author) }}</small>
+        <small>Uploaded on {{ submission.published | date('F j, Y') }} by {{ user_link(submission.author) }}</small>
     </div>
     <div class="content-box">
         <div class="content-text">
@@ -62,19 +62,17 @@
 
         <div class="submission-stats-box">
             <div id="submission-stats-actions">
-                <div class="submission-stats-row icons">
-                    <span class="silk-companion star_gold"></span><a><span class="elink">Favorite</span></a>
-                </div>
-                <div class="submission-stats-row icons">
-                    <span class="silk-companion star_gold"></span><a><span class="elink">Flag</span></a>
-                </div>
                 <div class="submission-stats-row">
                     <div>Content rating: {{ submission.rating | capitalize }}</div>
                 </div>
             </div>
             <div id="submission-stats-stats">
                 <div class="submission-stats-row">
-                    <div id="submission-stats-views">{{ submission.interactions.views }} views</div>
+                    {# hack to prevent twig from outputing the number 1 #}
+                    {% if submission.interactions.views != 1 %}
+                        {% set pluralViews = "s" %}
+                    {% endif %}
+                    <div id="submission-stats-views">{{ submission.interactions.views }} view{{ pluralViews }}</div>
                     <div id="rater"></div>
                 </div>
                 <div class="submission-stats-row">

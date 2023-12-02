@@ -26,6 +26,7 @@ class Submission
     private $author;
     private $views;
     private $bools;
+    private $recommended;
 
     /**
      * @throws OrangeException
@@ -73,7 +74,7 @@ class Submission
         }
 
         if (MiscFunctions::RatingToNumber($this->data["rating"]) > MiscFunctions::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
-            $betty->Notification("This submission's content rating is higher than your maximum rating.", "/");
+            $betty->Notification("This submission is not suitable according to your settings.", "/");
         }
 
         $ip = MiscFunctions::get_ip_address();
@@ -81,6 +82,9 @@ class Submission
             $this->database->query("INSERT INTO views (video_id, user) VALUES (?,?)",
                 [$id, crypt($ip, $ip)]);
         }
+
+        $whereRatings = MiscFunctions::whereRatings();
+        $this->recommended = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings AND v.author = ? ORDER BY RAND() LIMIT 24", [$this->data["author"]]));
     }
 
     /**
@@ -102,6 +106,8 @@ class Submission
             "title" => $this->data["title"],
             "description" => $this->data["description"],
             "published" => $this->data["time"],
+            "original_site" => $this->data["original_site"],
+            "published_originally" => $this->data["original_time"],
             "type" => $this->data["post_type"],
             "file" => MiscFunctions::getSubmissionFile($this->data),
             "author" => [
@@ -116,6 +122,7 @@ class Submission
             "comments" => $this->comments->getComments(),
             "bools" => $this->bools,
             "rating" => $this->data["rating"],
+            "recommended" => MiscFunctions::makeSubmissionArray($this->database,$this->recommended),
         ];
     }
 }
