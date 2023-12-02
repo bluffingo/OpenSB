@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2023 at 11:54 PM
+-- Generation Time: Dec 02, 2023 at 09:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.11
 
@@ -112,7 +112,8 @@ CREATE TABLE `journals` (
   `title` varchar(128) NOT NULL,
   `post` text NOT NULL,
   `author` int(11) NOT NULL,
-  `date` int(11) NOT NULL
+  `date` int(11) NOT NULL,
+  `is_site_news` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -158,6 +159,20 @@ CREATE TABLE `passwordresets` (
   `time` int(11) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pools`
+--
+
+CREATE TABLE `pools` (
+  `id` int(11) NOT NULL,
+  `author` int(11) NOT NULL,
+  `submissions` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`submissions`)),
+  `title` varchar(128) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -257,7 +272,8 @@ CREATE TABLE `users` (
   `u_flags` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties',
   `powerlevel` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '0 - banned. 1 - normal user. 2 - moderator. 3 - administrator',
   `group_id` int(11) NOT NULL DEFAULT 3,
-  `comfortable_rating` enum('general','questionable','mature') NOT NULL DEFAULT 'general'
+  `comfortable_rating` enum('general','questionable','mature') NOT NULL DEFAULT 'general',
+  `blacklisted_tags` text DEFAULT NULL COMMENT 'Blacklisted tags, serialized in JSON.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -274,6 +290,7 @@ CREATE TABLE `videos` (
   `author` bigint(20) UNSIGNED NOT NULL COMMENT 'User ID of the video author',
   `time` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Unix timestamp for the time the video was uploaded',
   `most_recent_view` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `original_time` bigint(20) DEFAULT NULL,
   `views` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Video views',
   `flags` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',
   `category_id` int(11) DEFAULT 0 COMMENT 'Category ID for the video',
@@ -340,6 +357,12 @@ ALTER TABLE `journals`
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pools`
+--
+ALTER TABLE `pools`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -410,6 +433,12 @@ ALTER TABLE `journals`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pools`
+--
+ALTER TABLE `pools`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

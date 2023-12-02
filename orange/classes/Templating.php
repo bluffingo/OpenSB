@@ -25,7 +25,7 @@ class Templating
         chdir(__DIR__ . '/..');
         $this->skin = $betty->getLocalOptions()["skin"] ?? $bettyTemplate;
 
-        if ($this->skin === null || trim($this->skin) === '') {
+        if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
             $this->skin = $bettyTemplate;
         }
