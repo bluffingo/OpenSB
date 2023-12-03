@@ -26,6 +26,7 @@ class OrangeTwigExtension extends AbstractExtension
             new TwigFunction('show_ratings', [$this, 'ShowRatings']),
             new TwigFunction('notification_icon', [$this, 'NotificationIcon']),
             new TwigFunction('pagination', [$this, 'Pagination'], ['is_safe' => ['html']]),
+            new TwigFunction('random_slogan', [$this, 'RandomSlogan'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -228,5 +229,21 @@ HTML;
     {
         global $twig;
         return $twig->render('components/pagination.twig', ['levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current]);
+    }
+
+    public function RandomSlogan()
+    {
+        $slogans = [
+            "Your content, your narration, your niche on the web.",
+            "Technically BitView's sister site.",
+            "I can't believe it's not squareBracket!",
+            "I can't believe it's not CleberTube!",
+            "Coconuts have water in them!",
+            "Made in Quebec yet not available in French.",
+            "Not to be confused with Qubo.",
+            "Remember 2003page?",
+        ];
+
+        return array_rand(array_flip($slogans));
     }
 }
