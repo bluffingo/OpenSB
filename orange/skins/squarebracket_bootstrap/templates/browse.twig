@@ -10,28 +10,7 @@
 		<div class="row">
 			{% for submission in video %}
 				<div class="col-3">
-					<div class="card" style="margin-bottom:10px">
-						<div class="card-body text-center">
-							<div class="row"><a href="watch.php?v={{ submission.id }}">
-									<div class="col-lg-12" style="margin-bottom:15px">
-										<div class="img-thumbnail">
-											<img class="img-fluid" src="{{ thumbnail(submission.id, submission.type) }}">
-										</div>
-									</div>
-								</a>
-								<div class="col-lg-12">
-									<h4><a href="watch.php?v={{ submission.id }}">{{ submission.title }}</a></h4>
-									{# hack to prevent twig from outputing the number 1 #}
-									{% if submission.views != 1 %}
-										{% set pluralViews = __("s") %}
-									{% endif %}
-									<p>{{ user_link(submission.author) }} &bull; {{ submission.views }} {{ __("view%s", [pluralViews]) }} &bull;
-										{{ submission.published | relative_time }}</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
+					{{ include('/components/browsevideobox.twig') }}
 				</div>
 			{% endfor %}
 		</div>

@@ -6,16 +6,40 @@
 			<div class="col-xl-8">
 				<div class="row">
 					<div class="col-8">
-						<h3>{{ __("Recently uploaded to Qobo") }}</h3>
+						<ul class="nav nav-underline mb-3" id="homenav-tab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="homenav-recent-tab" data-bs-toggle="pill" data-bs-target="#homenav-recent" type="button" role="tab" aria-controls="homenav-recent" aria-selected="true">Recent</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="homenav-random-tab" data-bs-toggle="pill" data-bs-target="#homenav-random" type="button" role="tab" aria-controls="homenav-random" aria-selected="false">Random</button>
+							</li>
+						</ul>
 					</div><div class="col-4">
 						<div class="text-end"><a href="browse.php" class="btn btn-light btn-sm">{{ __("Browse") }}</a></div>
 					</div>
 				</div>
-				{% for submission in data.submissions_new %}
-					{{ include('/components/smallvideobox.twig') }}
-				{% else %}
-					<p>{{ __("No submissions.") }}</p>
-				{% endfor %}
+				<div class="card">
+					<div class="card-body">
+						<div class="tab-content" id="homenav-tabContent">
+							<div class="tab-pane fade show active" id="homenav-recent" role="tabpanel" aria-labelledby="homenav-recent-tab" tabindex="0">
+								<h3>Recent submissions</h3>
+								{% for submission in data.submissions_new %}
+									{{ include('/components/smallvideobox.twig') }}
+								{% else %}
+									<p>{{ __("No submissions.") }}</p>
+								{% endfor %}
+							</div>
+							<div class="tab-pane fade" id="homenav-random" role="tabpanel" aria-labelledby="homenav-random-tab" tabindex="0">
+								<h3>Random submissions</h3>
+								{% for submission in data.submissions %}
+									{{ include('/components/smallvideobox.twig') }}
+								{% else %}
+									<p>{{ __("No submissions.") }}</p>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col-xl-4">
 				{% if is_user_logged_in %}
