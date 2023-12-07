@@ -45,6 +45,9 @@
 			<span>Banned users</span>
 		</div>
 		<div class="content-box">
+			<div class="banner banner-secondary">
+				<strong>NOTE</strong>: If the account gets automatically banned after being unbanned, then the account's latest IP is IP banned.
+			</div>
 			<table class="c1">
 			<tr class="h">
 				<th style="width:150px">Username</th>
@@ -54,7 +57,10 @@
 			{% for user in data.bans %}
 				<tr style="height: 30px;">
 					<td>{{ user.name }}</td>
-					<td>{{ user.ban_reason }}</td>
+					<td>
+						{{ user.ban_reason }}
+						<small>({{ user.ban_time | date('F j, Y') }}/{{ user.ban_time | relative_time }})</small>
+					</td>
 					<td><a href="/admin.php?action=unban_user&user={{ user.id }}" class="button button-danger">Unban</a></td>
 				</tr>
 			{% endfor %}

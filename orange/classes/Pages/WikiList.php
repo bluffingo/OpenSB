@@ -10,6 +10,7 @@ use Orange\Database;
  * Backend code for the Qobo wikis page.
  *
  * @since 0.1.0
+ * @deprecated Chip Chillipedia was closed on December 7th 2023, leaving this page unused.
  */
 class WikiList
 {
@@ -19,9 +20,11 @@ class WikiList
         global $isQoboTV;
 
         $this->betty = $betty;
-        if(!$isQoboTV) {
-            $this->betty->Notification("This page is only intended for the official Qobo instance.", "/");
-        }
+        //if(!$isQoboTV) {
+        //    $this->betty->Notification("This page is only intended for the official Qobo instance.", "/");
+        //}
+
+        $this->betty->Notification("This page has been disabled.", "/");
     }
 
     /**

@@ -1,0 +1,29 @@
+{% extends "_layout.twig" %}
+
+{% block title %}IP Banned{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            You are IP banned!
+        </div>
+        <div class="card-body">
+            <p>You have been IP banned from Qobo for the following reason:</p>
+            <p>{{ data.reason | markdown_unsafe }}</p>
+            <p>Your ban was filed on {{ data.time | date('F j, Y') }}, and it will not expire.</p>
+            <p>Your IP is {{ data.ip }},
+                {% if users|length > 1 %}
+                    and the accounts linked to this IP are
+                    {% for user in users %}
+                        {{ user.name }}{{ not loop.last ? ',' }}
+                    {% endfor %}
+                {% else %}
+                    and the account linked to this IP is
+                    {% for user in users %}
+                        {{ user.name }}
+                    {% endfor %}
+                {% endif %}
+            </p>
+        </div>
+    </div>
+{% endblock %}

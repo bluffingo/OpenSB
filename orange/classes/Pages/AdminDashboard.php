@@ -41,8 +41,8 @@ class AdminDashboard
                 if ($this->database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$id])) {
                     $betty->Notification("This user is already banned.", "/admin.php");
                 } else {
-                    $this->database->query("INSERT INTO bans (userid, reason) VALUES (?,?)",
-                        [$id, $POST["reason"]]);
+                    $this->database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
+                        [$id, $POST["reason"], time()]);
                     $betty->Notification("Banned user!", "/admin.php");
                 }
             }
@@ -67,6 +67,7 @@ class AdminDashboard
         foreach ($bans as $ban) {
             $banned_user = $this->database->fetch("SELECT u.* FROM users u WHERE u.id = ?", [$ban["userid"]]);
             $banned_user["ban_reason"] = $ban["reason"];
+            $banned_user["ban_time"] = $ban["time"];
             $bannedUserData[] = $banned_user;
         }
 

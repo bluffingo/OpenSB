@@ -118,14 +118,32 @@ if (!defined("SB_MEDIAWIKI")) {
         die();
     }
 
-    if ( $ipban = $betty->getBettyDatabase()->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [MiscFunctions::get_ip_address()])) {
+    $database = $betty->getBettyDatabase();
+
+    if ( $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [MiscFunctions::get_ip_address()])) {
+        $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [MiscFunctions::get_ip_address()]));
         $twig = new \Orange\Templating($betty);
-        echo $twig->render("error.twig", [
-            "error_title" => "IP Banned",
-            "error_reason" => "You are IP banned from the site.",
-            // legacy opensb would show the reason, but i think these ip ban reasons should be kept internal.
+        echo $twig->render("ip_banned.twig", [
+            "data" => $ipban,
+            "users" => $usersAssociatedWithIP,
         ]);
         die();
+    }
+
+    // automatic stuff
+    // this should probably have a cooldown or something i don't fucking know
+
+    // ban users who are ip banned
+    $ipBannedUsers = $database->fetchArray($database->query("SELECT * from ipbans"));
+
+    foreach ($ipBannedUsers as $ipBannedUser) {
+        $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT id FROM users WHERE ip LIKE ?", [$ipBannedUser["ip"]]));
+        foreach ($usersAssociatedWithIP as $ipBannedUser2) { // i can't really name variables that well
+            if (!$database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$ipBannedUser2["id"]])) {
+                $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
+                [$ipBannedUser2["id"], "Automatically done by OpenSB", time()]);
+            }
+        }
     }
 
     if ($isQoboTV) {

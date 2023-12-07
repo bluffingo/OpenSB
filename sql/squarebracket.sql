@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2023 at 10:22 PM
+-- Generation Time: Dec 07, 2023 at 07:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.11
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `bans` (
   `autoint` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
-  `reason` text NOT NULL
+  `reason` text NOT NULL,
+  `time` bigint(20) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -98,7 +99,8 @@ CREATE TABLE `favorites` (
 CREATE TABLE `ipbans` (
   `autoint` int(11) NOT NULL,
   `ip` varchar(45) NOT NULL DEFAULT '0.0.0.0',
-  `reason` varchar(255) NOT NULL DEFAULT '<em>No reason specified</em>'
+  `reason` varchar(255) NOT NULL DEFAULT '<em>No reason specified</em>',
+  `time` bigint(20) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

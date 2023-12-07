@@ -18,7 +18,7 @@ class Authentication
 
     public function __construct(\Orange\Database $database, $token)
     {
-        $accountfields = "id, name, title, email, title, about, powerlevel, joined, lastview, comfortable_rating";
+        $accountfields = "id, ip, name, title, email, title, about, powerlevel, joined, lastview, comfortable_rating";
         $this->database = $database;
         if (isset($token)) {
             if($this->user_id = $this->database->result("SELECT id FROM users WHERE token = ?", [$token])) {
@@ -26,6 +26,12 @@ class Authentication
                 $this->user_data = $this->database->fetch("SELECT $accountfields FROM users WHERE id = ?", [$this->user_id]);
                 $this->user_notice_count = $this->database->result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$this->user_id]);
                 $this->user_ban_data = $this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->user_id]);
+
+                // check if the current logged-in user is IP banned from another address, if so, then log them out.
+                // this will prevent users from using IP banned accounts on other IPs.
+                if ($this->database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$this->user_data['ip']])) {
+                    setcookie("SBTOKEN", "", time() - 3600);
+                }
             } else {
                 $this->is_logged_in = false;
             }
