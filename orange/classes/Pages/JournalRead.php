@@ -19,7 +19,7 @@ class JournalRead
 {
     private \Orange\Database $database;
     private \Orange\Orange $orange;
-    private array $data;
+    private mixed $data;
     private User $author;
 
     public function __construct(\Orange\Orange $betty, $id)
@@ -28,6 +28,11 @@ class JournalRead
         $this->database = $betty->getBettyDatabase();
         // TODO: JournalData class
         $this->data = $this->database->fetch("SELECT j.* FROM journals j WHERE j.id = ?", [$id]);
+
+        if(!$this->data) {
+            $betty->Notification("This journal does not exist.", "/");
+        }
+
         $this->author = new User($this->database, $this->data["author"]);
     }
 
