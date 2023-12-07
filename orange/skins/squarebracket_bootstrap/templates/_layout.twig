@@ -17,6 +17,11 @@
 	</script>
 	<meta name="theme-color" content="#0065d8">
 	<title>{% block title %}{% endblock %} - Qobo</title>
+
+	{% if ad_client and user_data.comfortable_rating == "general" %}
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-{{ ad_client }}"
+				crossorigin="anonymous"></script>
+	{% endif %}
 </head>
 <style>
 	.bi {
