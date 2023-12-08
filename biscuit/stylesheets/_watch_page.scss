@@ -3,34 +3,23 @@
   background: darken($content-box-border-color, 7.5%);
 
   .img-submission {
-    max-width: 700px;
-    max-height: 700px;
+    @include responsive('small') {
+      max-width: 400px;
+      max-height: 400px;
+    }
+
+    @include responsive('medium') {
+      max-width: 650px;
+      max-height: 650px;
+    }
+
+    @include responsive('large') {
+      max-width: 700px;
+      max-height: 700px;
+    }
+
     padding: 15px 0;
   }
-}
-
-div.submission-stats-box {
-  margin: 6px 0;
-  height: 50px;
-}
-
-#submission-stats-actions {
-  width: 250px;
-  float: left;
-}
-
-#submission-stats-stats {
-  float: right;
-  text-align: right;
-}
-
-#submission-stats-views {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-div.submission-stats-row {
-  margin-bottom: 4px;
 }
 
 .content-box {
@@ -39,4 +28,72 @@ div.submission-stats-row {
       margin-right: 7px;
     }
   }
+}
+
+.watch-box {
+  border: 1px solid $content-box-border-color;
+  padding: 6px;
+  overflow: hidden;
+  word-break: break-word;
+
+  .watch-box-description {
+    // duplicate of the context-text class
+    max-width: 680px;
+    margin: 0 auto;
+    word-wrap: break-word;
+  }
+
+  .watch-box-row {
+    // unlike finalium, biscuit does not have a proper grid system. the closest thing to a grid system are the
+    // "page-left" and "page-right" classes, which are leftovers from earlier in the biscuit frontend's development
+    // from august 2023 and is currently only used in the user profile page, which has an issue on small displays (eg:
+    // phones) because of said classes. -bluffingo 12/8/2023
+
+    display: flex;
+
+    // view counter and star rating
+    .watch-box-right {
+      width: 25%;
+
+      text-align: right;
+
+      .watch-box-views {
+        font-weight: 550;
+        font-size: 16px;
+      }
+    }
+
+    // author and upload date.
+    .watch-box-left {
+      display: flex;
+      width: 75%;
+
+      .watch-box-profile-picture {
+        width: 56px;
+        height: 56px;
+        margin-right: 10px;
+      }
+
+      .watch-box-author {
+        line-height: 20px;
+
+        .watch-box-author-userlink {
+          font-weight: 600;
+          font-size: 14px;
+        }
+
+        .watch-box-author-info-small {
+          color: gray;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 550;
+  }
+
 }

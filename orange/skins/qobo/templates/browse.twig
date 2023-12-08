@@ -3,19 +3,21 @@
 {% set title = "Browse" %}
 
 {% block content %}
-    <div class="content-header">
-        <span>Submissions ({{ data.count }})</span>
-    </div>
-    <div class="content-box">
-        {% for submission in data.submissions %}
-            {{ include('/components/_index_submission.twig') }}
-        {% endfor %}
-    </div>
-    {% if data.type == 'all' %}
-        {% set le_url = 'browse.php?page=%s' %}
-    {% else %}
-        {% set le_url = 'browse.php?type=' ~ type ~ '&page=%s' %}
-    {% endif %}
+    <div class="section">
+        <div class="section-title">
+            <h1>Submissions ({{ data.count }})</h1>
+        </div>
+        <div class="content-box">
+            {% for submission in data.submissions %}
+                {{ include('/components/_index_submission.twig') }}
+            {% endfor %}
+        </div>
+        {% if data.type == 'all' %}
+            {% set le_url = 'browse.php?page=%s' %}
+        {% else %}
+            {% set le_url = 'browse.php?type=' ~ type ~ '&page=%s' %}
+        {% endif %}
 
-    {{ pagination(data.count, 20, le_url, page) }}
+        {{ pagination(data.count, 20, le_url, page) }}
+    </div>
 {% endblock %}

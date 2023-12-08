@@ -1,5 +1,6 @@
 /*!
  * Qobo.TV Biscuit (Finalium 2?)
+ * Made by Bluffingo (aka Chaziz)
  */
 
 @import 'variables';
@@ -29,6 +30,7 @@ body
 	font-size: small;
 	padding: 0px;
 	margin: 0px;
+	font-weight: 400;
 }
 
 td, th
@@ -131,6 +133,16 @@ pre {
 
 .pfp {
 	border-radius: $pfp-roundness;
+}
+
+hr {
+	border: 0;
+	border-bottom: 1px solid $content-box-border-color;
+	height: 0;
+	margin: 10px 0;
+	&.taller {
+		margin: 25px 0;
+	}
 }
 
 @import 'header';

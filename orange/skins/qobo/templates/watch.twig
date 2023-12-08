@@ -34,56 +34,53 @@
 
 
 {% block content %}
-    <div class="profile-box centered">
-        <h1>{{ submission.title }}</h1>
-    </div>
-    {% if submission.is_owner %}
-        <div class="content-box watch-edit">
-            <a href="/edit?v={{ submission.id }}">Edit</a>
-            <a href="/feature?v={{ submission.id }}">Feature on profile</a>
-        </div>
-    {% endif %}
     <div class="submission">
         {{ submission_view(submission) }}
     </div>
-    <div class="content-box dark">
-        <small>Uploaded on {{ submission.published | date('F j, Y') }} by {{ user_link(submission.author) }}</small>
-    </div>
-    <div class="content-box">
-        <div class="content-text">
+    <div class="watch-box">
+        <h1>{{ submission.title }}</h1>
+        {% if submission.is_owner %}
+            <div class="content-box watch-edit dark">
+                <a href="/edit?v={{ submission.id }}">Edit</a>
+                <a href="/feature?v={{ submission.id }}">Feature on profile</a>
+            </div>
+        {% endif %}
+        <hr>
+        <div class="watch-box-row">
+            <div class="watch-box-left">
+                <img class="watch-box-profile-picture pfp" src="{{ profile_picture(submission.author.info.username) }}">
+                <div class="watch-box-author">
+                    <div class="watch-box-author-userlink">
+                        {{ user_link(submission.author) }}
+                    </div>
+                    <div class="watch-box-author-info">Uploaded on {{ submission.published | date('F j, Y') }}</div>
+                    {% if submission.published_originally and submission.original_site %}
+                        <div class="watch-box-author-info-small">First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}</div>
+                    {% elseif submission.original_site %}
+                        <div class="watch-box-author-info-small">Originally uploaded on {{ submission.original_site }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="watch-box-right">
+                {# hack to prevent twig from outputing the number 1 #}
+                {% if submission.interactions.views != 1 %}
+                    {% set pluralViews = "s" %}
+                {% endif %}
+                <div class="watch-box-views">{{ submission.interactions.views }} view{{ pluralViews }}</div>
+                <div id="rater"></div>
+                <div><small>{{ submission.interactions.ratings.total }} ratings</small></div>
+            </div>
+        </div>
+        <hr>
+        <div class="watch-box-description">
             {% if submission.description | trim is not empty %}
                 {{ submission.description | markdown_user_written }}
             {% else %}
                 <p>This submission has no description.</p>
             {% endif %}
         </div>
-
         <hr>
-
-        <div class="submission-stats-box">
-            <div id="submission-stats-actions">
-                <div class="submission-stats-row">
-                    <div>Content rating: {{ submission.rating | capitalize }}</div>
-                </div>
-            </div>
-            <div id="submission-stats-stats">
-                <div class="submission-stats-row">
-                    {# hack to prevent twig from outputing the number 1 #}
-                    {% if submission.interactions.views != 1 %}
-                        {% set pluralViews = "s" %}
-                    {% endif %}
-                    <div id="submission-stats-views">{{ submission.interactions.views }} view{{ pluralViews }}</div>
-                    <div id="rater"></div>
-                </div>
-                <div class="submission-stats-row">
-                    <div>
-                        <small>
-                            {{ submission.interactions.ratings.total }} ratings
-                        </small>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div>Content rating: {{ submission.rating | capitalize }}</div>
     </div>
     <div class="clear"></div>
     <br>

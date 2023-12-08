@@ -15,6 +15,10 @@
                 </div>
                 <div class="content-description">
                     By {{ user_link(submission.author) }}, {{ submission.published | relative_time }}
+                    {% if submission.published_originally and submission.original_site %}
+                        <br>
+                        <span title="{{ submission.published_originally | date('F j, Y, g:i a') }} on {{ submission.original_site }}">Originally uploaded {{ submission.published_originally | relative_time }}</span>
+                    {% endif %}
                     <br>
                     {% if submission.description|trim is not empty %}
                         <span>{{ submission.description }}</span>

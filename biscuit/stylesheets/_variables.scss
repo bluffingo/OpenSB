@@ -39,10 +39,11 @@ $breakpoints: (
 
 // profile pictures
 
-$pfp-roundness: 5%;
+$pfp-roundness: 10%;
 
 // buttons
 $button-padding: 6px 11px;
 
 // content boxes
 $content-box-border-color: darken($secondary, 5%);
+$content-box-roundness: 5px;

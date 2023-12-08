@@ -12,9 +12,17 @@
 				<h5><a href="watch.php?v={{ submission.id }}">{{ submission.title }}</a></h5>
 				{# hack to prevent twig from outputing the number 1 #}
 				{% if submission.views != 1 %}
-					{% set pluralViews = __("s") %}
+					{% set pluralViews = "s" %}
 				{% endif %}
-				<p>{{ user_link(submission.author) }} &bull; {{ submission.views }} {{ __("view%s", [pluralViews]) }} &bull; {{ submission.published | relative_time }}</p>
+				<p>{{ user_link(submission.author) }} &bull; {{ submission.views }} view{{ pluralViews }} &bull;
+					<span title="{{ submission.published | date('F j, Y, g:i a') }}">{{ submission.published | relative_time }}</span>
+					<br>
+					<small class="text-secondary-emphasis">
+						{% if submission.published_originally and submission.original_site %}
+							<span title="{{ submission.published_originally | date('F j, Y, g:i a') }} on {{ submission.original_site }}">Originally uploaded {{ submission.published_originally | relative_time }}</span>
+						{% endif %}
+					</small>
+				</p>
 			</div>
 		</div>
 	</div>

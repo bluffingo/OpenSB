@@ -31,6 +31,7 @@ div.content-header-right
     padding: 6px;
     overflow: hidden;
     word-break: break-word;
+    border-radius: $content-box-roundness;
 
     .content-entry
     {
@@ -100,13 +101,6 @@ div.content-header-right
         width: 680px;
         margin: 0 auto;
         word-wrap: break-word;
-    }
-
-    hr {
-        border: 0;
-        border-bottom: 1px solid #aba196;
-        height: 0;
-        margin: 25px 0;
     }
 
     .text-title {
