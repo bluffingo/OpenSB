@@ -5,6 +5,7 @@
   padding: 15px 5px;
   line-height: 20px;
   clear: both;
-  background: #fafafa;
-  border: 1px solid #eee;
+  background: darken($content-box-border-color, 2%);
+  border: 1px solid $content-box-border-color;
+  border-radius: $content-box-roundness;
 }

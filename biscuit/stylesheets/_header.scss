@@ -1,3 +1,10 @@
+.headers {
+  position: sticky;
+  top: 0;
+  z-index: 47101;
+  backdrop-filter: blur(10px);
+}
+
 div.header-links
 {
   text-align: right;
@@ -10,7 +17,7 @@ div.header-logo
   img.logo {
     width: 40px;
   }
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 form.header-search
@@ -39,8 +46,8 @@ td.h
 div.header-user
 {
   width: 100%;
-  background-color: lighten($secondary, 5%);
-  height: 30px;
+  background-color: rgba(lighten($secondary, 1%), 0.9);
+  height: $header-user-height;
 
   .page {
     justify-content: space-between;
@@ -63,7 +70,7 @@ div.header-user-links
 
 a.menulink
 {
-  color: black;
+  color: white;
   margin: 0 4px;
   font-weight: 500;
   &.userlink {
@@ -80,7 +87,7 @@ div.header
   }
 
   width: 100%;
-  @include gradient-y($start-color: lighten($secondary, 5%), $end-color: darken($secondary, 2%));
-  height: 62px;
+  background-color: rgba(darken($secondary, 5%), 0.9);
+  height: $header-main-height;
   display: flex;
 }

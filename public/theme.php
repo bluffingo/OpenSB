@@ -17,7 +17,7 @@ if (isset($_POST['apply'])) {
 
     setcookie("SBOPTIONS", base64_encode(json_encode($options)), 2147483647);
 
-    $betty->Notification("Your theme has changed.", "/index.php", "success");
+    $betty->Notification("Successfully changed your theme.", "/index.php", "success");
 }
 
 echo $twig->render('theme.twig');

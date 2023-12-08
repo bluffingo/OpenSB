@@ -1,10 +1,12 @@
 // colors
 
-$threshold: 65%; // contrast threshold
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
-$primary: #f81eff; // primary color (orange)
+$threshold: 75%; // contrast threshold
+
+$primary: #f14fff; // primary color (orange)
 $primary-darker: darken($primary, 33%); // darker primary color
-$secondary: #eee; //secondary color (nearly white)
+$secondary: #333; //secondary color (nearly white)
 $green: #198519;
 $red: #c02626;
 
@@ -16,8 +18,7 @@ $color-map: (
 );
 
 // fonts
-$font: 'Inter', sans-serif;
-$font-var: 'Inter var', sans-serif;
+$font: 'Open Sans', sans-serif;
 
 // https://medium.com/@jainbhavukspeaks/leveraging-scss-mixins-to-create-responsive-layouts-the-easy-way-5bbe4080cb15
 $mobile: 300px;
@@ -39,11 +40,21 @@ $breakpoints: (
 
 // profile pictures
 
-$pfp-roundness: 10%;
+$pfp-roundness: 100%;
 
 // buttons
 $button-padding: 6px 11px;
 
 // content boxes
-$content-box-border-color: darken($secondary, 5%);
+$content-box-background-color: #2a2a2a;
+$content-box-border-color: darken($secondary, 7.5%);
 $content-box-roundness: 5px;
+
+// header
+$header-main-height: 60px;
+$header-user-height: 25px;
+
+// profile
+$pfp-width-profiles: 70px;
+$pfp-width-watch: 35px;
+$profile-intro-height: 90px;

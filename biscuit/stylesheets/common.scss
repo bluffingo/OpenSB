@@ -13,9 +13,6 @@
 }
 
 :root { font-family: $font; }
-@supports (font-variation-settings: normal) {
-	:root { font-family: $font-var; }
-}
 
 *,
 *::before,
@@ -25,8 +22,8 @@
 
 body
 {
-	background: #fff;
-	color: #000000;
+	background: #303033;
+	color: #ffffff;
 	font-size: small;
 	padding: 0px;
 	margin: 0px;
@@ -42,7 +39,7 @@ td, th
 a
 {
 	text-decoration: none;
-	color: $primary-darker;
+	color: $primary;
 }
 
 table.c1
@@ -105,12 +102,13 @@ div.icons span
 
 textarea,
 input[type]:not([type=file]):not([type=submit]) {
-	border: 1px solid #8d8d8d;
-	background: white;
-	color: black;
-	box-shadow: 0 0 1px #bebebe;
+	border: 1px solid darken($content-box-border-color, 1%);
+	background: lighten($content-box-background-color, 3.5%);
+	color: white;
+	box-shadow: 0 0 0px #0c0c0c;
 	transition: border linear 0.3s, box-shadow linear 0.3s;
-	border-radius: 2px;
+	border-radius: $content-box-roundness;
+	padding: 5px;
 }
 
 textarea:focus,
@@ -155,6 +153,7 @@ hr {
 @import 'sections';
 @import 'journals';
 @import 'buttons';
+@import 'jumbotron';
 
 @import 'watch_page';
 @import 'profile_page';

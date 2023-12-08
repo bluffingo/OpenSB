@@ -1,0 +1,31 @@
+.jumbotron {
+  background: purple;
+
+  &.profile-banner {
+    background: #111;
+    margin-top: -($header-user-height + $header-main-height);
+    height: 250px + ($header-user-height + $header-main-height);
+
+    .jumbotron-container {
+      padding-top: ($header-user-height + $header-main-height);
+    }
+  }
+
+  // duplicate of the page class
+  .jumbotron-container
+  {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    @include responsive('small') {
+      max-width: 450px;
+    }
+    @include responsive('medium') {
+      max-width: 700px;
+    }
+    @include responsive('large') {
+      max-width: 1000px;
+    }
+  }
+
+}

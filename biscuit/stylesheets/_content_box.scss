@@ -2,13 +2,12 @@ div.content-header
 {
     background: $content-box-border-color;
     padding: 6px;
-    color: #000;
     font-size: 14px;
     font-weight: bold;
 
     &.profile-stats
     {
-        background: darken($content-box-border-color, 7.5%);
+        background: darken($content-box-border-color, 2.5%);
         text-align: center;
         font-weight: normal;
         font-size: 12px;
@@ -28,6 +27,7 @@ div.content-header-right
 .content-box
 {
     border: 1px solid $content-box-border-color;
+    background: $content-box-background-color;
     padding: 6px;
     overflow: hidden;
     word-break: break-word;
@@ -37,7 +37,7 @@ div.content-header-right
     {
         clear: both;
         padding: 6px 2px;
-        border-bottom: 1px solid #d5d5d5;
+        border-bottom: 1px solid $content-box-border-color;
         img.content-image
         {
             margin-right: 8px;
@@ -104,7 +104,6 @@ div.content-header-right
     }
 
     .text-title {
-        color: $primary-darker;
         font-size: 16pt;
         margin-bottom: 5px;
 

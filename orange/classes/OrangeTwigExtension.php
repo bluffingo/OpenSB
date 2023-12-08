@@ -19,6 +19,7 @@ class OrangeTwigExtension extends AbstractExtension
             new TwigFunction('thumbnail', [$this, 'Thumbnail']),
             new TwigFunction('user_link', [$this, 'UserLink'], ['is_safe' => ['html']]),
             new TwigFunction('profile_picture', [$this, 'ProfilePicture']),
+            new TwigFunction('profile_banner', [$this, 'ProfileBanner']),
             new TwigFunction('profiler_stats', function () use ($profiler) {
                 $profiler->getStats();
             }),
@@ -171,6 +172,23 @@ class OrangeTwigExtension extends AbstractExtension
         return $data;
     }
 
+    public function ProfileBanner($username)
+    {
+        global $isQoboTV, $bunnySettings, $storage;
+        $location = '/dynamic/banners/' . $username . '.png';
+
+        if($storage->fileExists('..' . $location)) {
+            if ($isQoboTV) {
+                $data = "https://" . $bunnySettings["pullZone"] . $location;
+            } else {
+                $data = $location;
+            }
+        } else {
+            $data = false;
+        }
+        return $data;
+    }
+
     public function UserLink($user): string
     {
         return <<<HTML
@@ -221,6 +239,7 @@ HTML;
         $icon = "famfamfam-silk information";
 
         if ($type == "danger") { $icon = "famfamfam-silk exclamation"; }
+        if ($type == "success") { $icon = "famfamfam-silk accept"; }
 
         return $icon;
     }

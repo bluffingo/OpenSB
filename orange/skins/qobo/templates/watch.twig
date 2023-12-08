@@ -37,6 +37,7 @@
     <div class="submission">
         {{ submission_view(submission) }}
     </div>
+    <br>
     <div class="watch-box">
         <h1>{{ submission.title }}</h1>
         {% if submission.is_owner %}
@@ -84,23 +85,28 @@
     </div>
     <div class="clear"></div>
     <br>
-    <div id="comments">
-        <div class="content-header">
-            <span>Comments</span>
-        </div>
-        <div class="content-box">
-            {% if is_user_logged_in %}
-                {{ include('/components/_comment_input.twig') }}
+    <div class="section">
+        <div class="section-title">
+            <h1>Comments</h1>
+            {% if show_work_in_progress_stuff %}
+            <a href="comments.php?v={{ submission.id }}">View all</a>
             {% endif %}
-            <div id="comment"></div>
-            {% for comment in submission.comments %}
-                {{ include('/components/_comment.twig') }}
-                <div id="replies">
-                    {% for comment in comment.replies %}
-                        {{ include('/components/_comment.twig') }}
-                    {% endfor %}
-                </div>
-            {% endfor %}
+        </div>
+        <div id="comments">
+            <div class="content-box">
+                {% if is_user_logged_in %}
+                    {{ include('/components/_comment_input.twig') }}
+                {% endif %}
+                <div id="comment"></div>
+                {% for comment in submission.comments %}
+                    {{ include('/components/_comment.twig') }}
+                    <div id="replies">
+                        {% for comment in comment.replies %}
+                            {{ include('/components/_comment.twig') }}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

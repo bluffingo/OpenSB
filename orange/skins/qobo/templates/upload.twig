@@ -3,54 +3,54 @@
 {% set title = "Upload submission" %}
 
 	{% block content %}
-        <div class="profile-box">
-            <h1>Upload your submission</h1>
-        </div>
-        <div class="content-box">
-            <form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="form-input">
-                        <label for="title">Title:</label>
-                    <input type="text" class="form-submit" id="title" name="title" required>
-                    </div>
-
-                    <div class="form-input">
-                        <label for="desc">Description:</label>
-                        <textarea class="form-submit" name="desc" maxlength="2000"
-                              form="uploadForm"
-                              style="overflow:hidden;resize:vertical" rows="3" required></textarea>
-                    </div>
-
-                    <div class="form-input">
-                        <label for="tags">Tags (optional, for now):</label>
-                    <input type="text" class="form-submit" name="tags">
-                    </div>
-
-                    <div class="form-input">
-                        <label for="fileToUpload">File to upload:</label>
-                    <input class="form-submit" type="file" name="fileToUpload" id="fileToUpload" required>
-                    </div>
-
-                    <div class="form-input">
-                        <label for="rating">Select audience rating:</label>
-                        <div>You must set this correctly.</div>
-
-                        <select class="form-submit" name="rating" id="rating" required>
-                            <option value="general">General</option>
-                            <option value="questionable">Questionable</option>
-                            <option value="mature">Mature</option>
-                        </select>
-                    </div>
-
-                    <p>Please only upload works made by you, or for you. Make sure you have read the <a href="/guidelines.php">guidelines</a> first.</p>
-
-                    <div class="form-button-container">
-                        <input class="button button-primary" type="submit" id="upload" name="upload"
-                               value="Upload">
-                    </div>
-                </div>
+        <div class="section">
+            <div class="section-title">
+                <h1>Upload</h1>
             </div>
-        </form>
+            <p>Please only upload works made by you, or for you. Make sure you have read the <a href="/guidelines.php">guidelines</a> first.</p>
+            <div class="content-box">
+                <form name="uploadForm" id="uploadForm" method="post" action="upload.php" enctype="multipart/form-data">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-input">
+                                <label for="title">Title (required):</label>
+                                <input type="text" class="form-submit" id="title" name="title" required>
+                            </div>
+
+                            <div class="form-input">
+                                <label for="desc">Description (optional):</label>
+                                <textarea class="form-submit" name="desc" maxlength="2000"
+                                          form="uploadForm"
+                                          style="overflow:hidden;resize:vertical" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-input">
+                                <label for="tags">Tags (required):</label>
+                                <input type="text" class="form-submit" name="tags" required>
+                            </div>
+
+                            <div class="form-input">
+                                <label for="fileToUpload">File to upload (required):</label>
+                                <input class="form-submit" type="file" name="fileToUpload" id="fileToUpload" required>
+                            </div>
+
+                            <div class="form-input">
+                                <label for="rating">Select content rating (required):</label>
+
+                                <select class="form-submit" name="rating" id="rating" required>
+                                    <option value="general">General</option>
+                                    <option value="questionable">Questionable</option>
+                                    <option value="mature">Mature</option>
+                                </select>
+                            </div>
+
+                            <div class="form-button-container">
+                                <input class="button button-primary" type="submit" id="upload" name="upload"
+                                       value="Upload">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     {% endblock %}

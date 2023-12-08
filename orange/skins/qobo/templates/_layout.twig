@@ -60,57 +60,63 @@
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-{{ ad_client }}"
                 crossorigin="anonymous"></script>
     {% endif %}
+
+    {% block style %}
+    {% endblock %}
 </head>
 <body>
-<div class="header">
-    <div class="page">
-        <div class="header-logo">
-            <a href="/index.php"><img alt="Qobo" class="logo" src="/img/logo.svg"></a>
-        </div>
-        <form class="header-search" action="/search.php">
-            <input id="header-search-input" type="text" name="query" placeholder="Search...">
-            <div class="form-button-container">
-                <button id="header-search-button" class="button button-secondary">
-                    <span>Search</span>
-                </button>
+<div class="headers">
+    <div class="header">
+        <div class="page">
+            <div class="header-logo">
+                <a href="/index.php"><img alt="Qobo" class="logo" src="/img/logo.svg"></a>
             </div>
-        </form>
-        <div class="header-links">
-            <a class="menulink" href="/browse.php">Browse</a>
-            <a class="menulink" href="/users.php">Members</a>
+            <form class="header-search" action="/search.php">
+                <input id="header-search-input" type="text" name="query" placeholder="Search...">
+                <div class="form-button-container">
+                    <button id="header-search-button" class="button button-secondary">
+                        <span>Search</span>
+                    </button>
+                </div>
+            </form>
+            <div class="header-links">
+                <a class="menulink" href="/browse.php">Browse</a>
+                <a class="menulink" href="/users.php">Members</a>
+            </div>
         </div>
     </div>
-</div>
-<div class="header-user">
-    <div class="page">
-        {% if show_work_in_progress_stuff %}
-        {% if is_user_logged_in %}
-            <div class="header-user-notifications">
-                <a class="menulink" href="/notices.php">{{ user_notice_data }} notices</a>
-            </div>
-        {% endif %}
-        {% endif %}
-        <div class="header-user-links">
-            {% if is_user_logged_in %}
-                <a class="menulink userlink" href="/user.php?name={{ user_data.name }}">{{ user_data.name }}</a>
-                <a class="menulink" href="/settings.php">Settings</a>
-                {% if user_data.powerlevel > 2 %}
-                    <a class="menulink" href="/admin.php">Admin panel</a>
+    <div class="header-user">
+        <div class="page">
+            {% if show_work_in_progress_stuff %}
+                {% if is_user_logged_in %}
+                    <div class="header-user-notifications">
+                        <a class="menulink" href="/notices.php">{{ user_notice_data }} notices</a>
+                    </div>
                 {% endif %}
-                <a class="menulink" href="/write.php">Write</a>
-                <a class="menulink" href="/upload.php">Upload</a>
-                <a class="menulink" href="/logout.php">Log out</a>
-            {% else %}
-                <a class="menulink" href="/login.php">Login</a>
-                <a class="menulink" href="/register.php">Register</a>
             {% endif %}
+            <div class="header-user-links">
+                {% if is_user_logged_in %}
+                    <a class="menulink userlink" href="/user.php?name={{ user_data.name }}">{{ user_data.name }}</a>
+                    <a class="menulink" href="/settings.php">Settings</a>
+                    {% if user_data.powerlevel > 2 %}
+                        <a class="menulink" href="/admin.php">Admin panel</a>
+                    {% endif %}
+                    <a class="menulink" href="/write.php">Write</a>
+                    <a class="menulink" href="/upload.php">Upload</a>
+                    <a class="menulink" href="/logout.php">Log out</a>
+                {% else %}
+                    <a class="menulink" href="/login.php">Login</a>
+                    <a class="menulink" href="/register.php">Register</a>
+                {% endif %}
+            </div>
         </div>
+        <div class="clear"></div>
     </div>
-    <div class="clear"></div>
 </div>
 <form action="login.php" method="post" name="logout">
     <input type="hidden" name="action" value="logout">
 </form>
+{% block precontent %}{% endblock %}
 <div class="page">
     <div class="page-contents">
         {% if user_ban_data %}

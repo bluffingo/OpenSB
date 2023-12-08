@@ -18,48 +18,68 @@
     </script>
 {% endblock %}
 
-{% block content %}
-    <div>
-        <div class="profile-box">
-            <div class="profile-box-pfp">
-                <img src="{{ profile_picture(data.username) }}" class="pfp" alt="{{ data.username }}">
-            </div>
-            <div class="profile-box-info">
-                <div class="profile-box-username">
-                    {{ data.username }}
-                </div>
-                <div class="profile-box-displayname">
-                    {{ data.displayname }}
-                </div>
-                {% if show_work_in_progress_stuff %}
-                <div class="profile-box-links">
-                    <a href="user.php?name={{ data.username }}&page=submissions" class="link">
+{% block style %}
+    <style>
+        .jumbotron.profile-banner {
+            background-image: url('{{ profile_banner(data.username) }}');
+        }
+    </style>
+{% endblock %}
+
+{% block precontent %}
+    <div class="jumbotron profile-banner"></div>
+    <div class="profile-intro">
+        <div class="page">
+            <div class="page-contents">
+                <div class="profile-box">
+                    <div class="profile-box-pfp">
+                        <img src="{{ profile_picture(data.username) }}" class="pfp" alt="{{ data.username }}">
+                    </div>
+                    <div class="profile-box-info">
+                        <div class="profile-box-username">
+                            {{ data.displayname }}
+                        </div>
+                        <div class="profile-box-displayname">
+                            @{{ data.username }} | Joined {{ data.joined | relative_time }}
+                        </div>
+                        {% if show_work_in_progress_stuff %}
+                        <div class="profile-box-links">
+                            <a href="user.php?name={{ data.username }}&page=submissions" class="link">
                     <span class="elink">
                         Submissions
                     </span>
-                    </a>
-                    <a href="user.php?name={{ data.username }}&page=submissions" class="link">
+                            </a>
+                            <a href="user.php?name={{ data.username }}&page=submissions" class="link">
                     <span class="elink">
                         Scraps
                     </span>
-                    </a>
-                    <a href="user.php?name={{ data.username }}&page=submissions" class="link">
+                            </a>
+                            <a href="user.php?name={{ data.username }}&page=submissions" class="link">
                     <span class="elink">
                         Journals
                     </span>
-                    </a>
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
-            {% endif %}
         </div>
     </div>
-    <div class="content-header profile-stats">
-        <span class="stat">
-        Joined: {{ data.joined | relative_time }}
-        </span>
-        <span class="stat">
-            Last seen: {{ data.connected | relative_time }}
-        </span>
+{% endblock %}
+
+{% block content %}
+    <div class="section">
+        <div class="section-title">
+            <h1>Profile</h1>
+        </div>
+        <div class="content-box">
+            {% if data.about %}
+                {{ data.about }}
+            {% else %}
+                <em class="text-muted">This user has no description.</em>
+            {% endif %}
+        </div>
     </div>
     <div class="content-box">
         <div id="page-left" style="width: 460px;">
@@ -109,18 +129,6 @@
             </div>
         </div>
     {% endif %}
-    <div class="section">
-        <div class="section-title">
-            <h1>Profile</h1>
-        </div>
-        <div class="content-box">
-            {% if data.about %}
-                {{ data.about }}
-            {% else %}
-                <em class="text-muted">This user has no description.</em>
-            {% endif %}
-        </div>
-    </div>
     <div id="comments">
         <div class="content-header">
             <span>Comments</span>
