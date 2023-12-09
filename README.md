@@ -1,4 +1,5 @@
 # OpenSB
+![Screen Shot 2023-12-08 at 21 55 07](https://github.com/qobotv/OpenSB/assets/45898787/e7f0837c-ff8a-4b5c-b7fa-630131bc1507)
 
 ## How to setup an OpenSB instance.
 
@@ -40,12 +41,6 @@ You will have to modify the directories to match your instance's location.
 ```
 
 ## Questions
-
-### Where can I translate openSB?
-
-openSB translations: https://crowdin.com/project/opensb
-
-Relative time translations: https://github.com/mpratt/RelativeTime
 
 ### Why do I get 404 errors when I click on thumbnails?
 
