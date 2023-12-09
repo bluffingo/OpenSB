@@ -51,7 +51,7 @@ class Profile
                 $this->database->query("SELECT j.* FROM journals j WHERE
                          j.author = ? 
                          ORDER BY j.date 
-                         DESC LIMIT 12", [$this->data["id"]]));
+                         DESC LIMIT 3", [$this->data["id"]]));
 
         if ($this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->data["id"]]))
         {

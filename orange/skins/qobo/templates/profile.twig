@@ -72,6 +72,9 @@
     <div class="section">
         <div class="section-title">
             <h1>Profile</h1>
+            {% if data.is_current %}
+                <a href="/settings.php">Edit</a>
+            {% endif %}
         </div>
         <div class="content-box">
             {% if data.about %}

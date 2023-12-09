@@ -109,6 +109,7 @@ input[type]:not([type=file]):not([type=submit]) {
 	transition: border linear 0.3s, box-shadow linear 0.3s;
 	border-radius: $content-box-roundness;
 	padding: 5px;
+	font-family: $font;
 }
 
 textarea:focus,

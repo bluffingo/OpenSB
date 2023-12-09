@@ -20,7 +20,7 @@ foreach (glob(dirname(__DIR__) . "/orange/classes/*.php") as $file) {
  */
 class Orange {
     private \Orange\Database $database;
-    public string $version = "Orange 1.0";
+    private string $version;
     public array $options;
 
     public function __construct($host, $user, $pass, $db) {
@@ -36,6 +36,8 @@ class Orange {
             if ($_SERVER['HTTP_HOST'] == "localhost" || $_SERVER['HTTP_HOST'] == "127.0.0.1") {
                 $this->options["development"] = true;
             }
+
+            $this->version = MiscFunctions::getSquareBracketVersion();
         }
 
         try {

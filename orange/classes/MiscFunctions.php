@@ -175,4 +175,21 @@ class MiscFunctions
 
         return $return_value;
     }
+
+    /**
+     * Make the openSB version string.
+     *
+     * @return string
+     */
+    public static function getSquareBracketVersion()
+    {
+        $version = "Orange 1.0"; // is there a way to actually do a versioning system? our old ones were shit.
+        $gitBranch = "main"; // FIXME: this will fuck up on other branches
+
+        $commit = file_get_contents(__DIR__ . '/../../.git/refs/heads/' . $gitBranch); // kind of bad but hey it works
+
+        $hash = substr($commit, 0, 7);
+
+        return sprintf('%s.%s-%s', $version, $hash, $gitBranch);
+    }
 }
