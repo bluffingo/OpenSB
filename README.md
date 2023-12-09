@@ -41,12 +41,6 @@ You will have to modify the directories to match your instance's location.
 
 ## Questions
 
-### Where can I translate openSB?
-
-openSB translations: https://crowdin.com/project/opensb
-
-Relative time translations: https://github.com/mpratt/RelativeTime
-
 ### Why do I get 404 errors when I click on thumbnails?
 
 Assuming you use Apache and have the rewrite module installed, this is because AllowOverride is turned off. See the virtual host example above for a quick fix.
