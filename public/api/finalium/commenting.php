@@ -102,7 +102,7 @@ if (strlen($post_data["comment"]) > 1000) {
 }
 
 //TODO: Innerjoin???
-if (!$betty->getLocalOptions()["development"]) {
+if (!isset($betty->getLocalOptions()["development"])) {
     if ($database->result("SELECT COUNT(*) FROM comments WHERE date > ? AND author = ?", [time() - 60, $auth->getUserID()]) ||
         $database->result("SELECT COUNT(*) FROM channel_comments WHERE date > ? AND author = ?", [time() - 60, $auth->getUserID()])
     ) {

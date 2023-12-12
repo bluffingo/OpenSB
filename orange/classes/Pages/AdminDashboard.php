@@ -19,13 +19,31 @@ class AdminDashboard
 
     public function __construct(\Orange\Orange $betty, $POST, $GET)
     {
-        global $auth;
+        global $auth, $isQoboTV;
+        // Honest question: Why the fuck are we using globals for getting shit from config.php? This seems poorly
+        // designed. -Bluffingo 12/11/2023
 
         $this->database = $betty->getBettyDatabase();
         if (!$auth->isUserAdmin()) {
             $betty->Notification("You do not have permission to access this page", "/");
         }
 
+        // If $isQoboTV is on, just go with January 31st 2021, otherwise and try and guess the instance's creation date
+        // from the earliest account registration date. In normal conditions, the earliest account is older than the
+        // earliest submission on the instance. However, the "squareBracket" account on Qobo has an altered registration
+        // date of November 10th 2020, which was supposed to be a reference to when the site "began development".
+        // Unfortunately, it is unknown as to when that account was registered prior to the alteration, as the earliest
+        // archives of this account's profile from June 2021 are from after the account data was altered.
+        // https://web.archive.org/web/20210625203937/https://squarebracket.veselcraft.ru/user.php?name=squareBracket
+        // Bluffingo -12/11/2023
+
+        if ($isQoboTV) {
+            $date = mktime(0, 0, 0, 1, 31, 2021);
+        } else {
+            $date = $this->database->fetch("SELECT u.joined FROM users u ORDER BY u.joined ASC")["joined"];
+        }
+
+        // Admin actions
         if(isset($POST["action"])) {
             if ($POST["action"] == "ban_user") {
                 // Don't ban non-existent users.
@@ -54,6 +72,7 @@ class AdminDashboard
             }
         }
 
+        // Total number of things
         $thingsToCount = ['comments', 'channel_comments', 'users', 'videos', 'views', 'favorites', 'bans', 'journals'];
         $query = "SELECT ";
         foreach ($thingsToCount as $thing) {
@@ -61,6 +80,7 @@ class AdminDashboard
             $query .= sprintf("(SELECT COUNT(*) FROM %s) %s", $thing, $thing);
         }
 
+        // Get the bans
         $bans = $this->database->fetchArray($this->database->query("SELECT * FROM bans"));
 
         $bannedUserData = [];
@@ -84,6 +104,11 @@ class AdminDashboard
                 "journals" => $this->getJournalGraph(),
             ],
             "bans" => $bannedUserData,
+            "time" => [
+                "formatted_date" => date("F j, Y", $date),
+                "relative_days" => round((time() - $date) / 60 / 60 / 24), // we want the total number of days,
+                // not a rounded approximation, so relative time isn't gonna work.
+            ],
         ];
     }
 
@@ -186,5 +211,4 @@ ORDER BY date;");
         $videos = $this->database->fetchArray($videoData);
         return $videos;
     }
-
 }
