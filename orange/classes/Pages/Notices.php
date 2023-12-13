@@ -28,20 +28,13 @@ class Notices
             $betty->Notification("Please login to continue.", "/login.php");
         }
 
-        if (!($betty->getLocalOptions()["development"] ?? false))
-        {
-            $betty->Notification("This page is unfinished for production.", "/");
-        }
-
         $this->database = $betty->getBettyDatabase();
-        $this->data = $this->database->fetchArray($this->database->query("SELECT * FROM notifications WHERE recipient = ?", [$auth->getUserID()]));
+        $this->data = $this->database->fetchArray($this->database->query("SELECT * FROM notifications WHERE recipient = ? ORDER BY id DESC", [$auth->getUserID()]));
     }
 
     public function getData(): array
     {
         $noticeData = [];
-
-        var_dump($this->data);
 
         foreach ($this->data as $notice) {
             $userData = new User($this->database, $notice["sender"]);
@@ -79,6 +72,9 @@ class Notices
             case NoticeType::TakedownSubmission:
                 $name = "submission_takedown";
                 break;
+            case NoticeType::Follow:
+                $name = "user_follow";
+                break;
         }
 
         return $name;
@@ -100,6 +96,9 @@ class Notices
                 break;
             case NoticeType::TakedownSubmission:
                 $intro = "Your submission has been taken down.";
+                break;
+            case NoticeType::Follow:
+                $intro = "You have been followed by ";
                 break;
         }
 

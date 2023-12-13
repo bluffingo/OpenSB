@@ -3,6 +3,7 @@
 namespace Orange\Pages;
 
 use Orange\MiscFunctions;
+use Orange\NoticeType;
 use Orange\User;
 use Orange\OrangeException;
 use Orange\Database;

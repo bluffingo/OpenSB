@@ -192,4 +192,26 @@ class MiscFunctions
 
         return sprintf('%s.%s-%s', $version, $hash, $gitBranch);
     }
+
+    /**
+     * Not to be confused with Notification, which makes a banner.
+     *
+     * @return string
+     */
+    public static function NotifyUser($database, $user, $submission, $related_id, NoticeType $type)
+    {
+        global $auth, $database;
+
+        if (!$auth->isUserLoggedIn()) {
+            throw new OrangeException("NotifyUser should not be called by the backend if current user is logged off.");
+        }
+
+        // If this user hasen't been notified by an identical notification the day prior.
+        if (!$database->result("SELECT COUNT(*) FROM notifications WHERE timestamp > ? AND type = ? AND recipient = ? AND sender = ?",
+                [time() - 86400, $type->value, $user, $auth->getUserID()])) {
+            // Notify the user
+            $database->query("INSERT INTO notifications (type, level, recipient, sender, timestamp, related_id) VALUES (?,?,?,?,?,?);",
+                [$type->value, $submission, $user, $auth->getUserID(), time(), $related_id]);
+        }
+    }
 }

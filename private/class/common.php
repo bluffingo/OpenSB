@@ -1,7 +1,6 @@
 <?php
 
-// Note to anyone wanting to somehow merge this with orange\common.php
-// Doing that will break the MediaWiki authentication extension. -Bluffingo 11/22/2023
+// TODO: Merge this with orange's common.php.
 
 namespace openSB;
 

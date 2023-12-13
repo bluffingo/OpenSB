@@ -85,6 +85,8 @@ class Orange {
     /**
      * Notifies the user, VidLii-style.
      *
+     * Not to be confused with NotifyUser.
+     *
      * @since 0.1.0
      */
     public function Notification($message, $redirect, $color = "danger")

@@ -8,4 +8,5 @@ enum NoticeType: int
     case CommentProfile = 1;
     case CommentJournal = 2;
     case TakedownSubmission = 3;
+    case Follow = 4;
 }

@@ -87,12 +87,10 @@
     </div>
     <div class="header-user">
         <div class="page">
-            {% if show_work_in_progress_stuff %}
-                {% if is_user_logged_in %}
-                    <div class="header-user-notifications">
-                        <a class="menulink" href="/notices.php">{{ user_notice_data }} notices</a>
-                    </div>
-                {% endif %}
+            {% if is_user_logged_in %}
+                <div class="header-user-notifications">
+                    <a class="menulink" href="/notices.php">{{ user_notice_data }} notices</a>
+                </div>
             {% endif %}
             <div class="header-user-links">
                 {% if is_user_logged_in %}

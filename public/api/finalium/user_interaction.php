@@ -3,6 +3,10 @@
 namespace openSB\FinaliumApi;
 
 global $auth, $betty;
+
+use Orange\MiscFunctions;
+use Orange\NoticeType;
+
 chdir('../../');
 $rawOutputRequired = true;
 require_once dirname(__DIR__) . '/../../private/class/common.php';
@@ -38,6 +42,8 @@ function follow($member): array
     } else {
         $database->query("INSERT INTO subscriptions (id, user) VALUES (?,?)", [$member, $auth->getUserID()]);
         $result = true;
+
+        MiscFunctions::NotifyUser($database, $member, 0,0,NoticeType::Follow);
     }
 
     $number = $database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$member])['COUNT(user)'];
