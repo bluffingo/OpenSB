@@ -4,6 +4,10 @@
   border-radius: 5px;
   color: white;
   font-family: $font;
+
+  &.button-small {
+    padding: $button-padding-small;
+  }
 }
 
 @each $color, $value in $color-map {

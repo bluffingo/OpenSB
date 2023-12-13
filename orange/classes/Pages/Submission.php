@@ -19,14 +19,16 @@ class Submission
 {
     private \Orange\Database $database;
     private \Orange\SubmissionData $submission;
-    private $data;
-    private $comments;
-    private $ratings;
-    private $favorites;
-    private $author;
-    private $views;
-    private $bools;
-    private $recommended;
+    private mixed $data;
+    private Comments $comments;
+    private array $ratings;
+    private mixed $favorites;
+    private User $author;
+    private mixed $views;
+    private array $bools;
+    private array $recommended;
+    private mixed $followers;
+    private mixed $followed;
 
     /**
      * @throws OrangeException
@@ -54,6 +56,9 @@ class Submission
         if ($this->author->isUserBanned()) {
             $betty->Notification("This submission's author is banned.", "/");
         }
+
+        $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$this->data["author"]])['COUNT(user)'];
+        $this->followed = $this->database->result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$this->data["author"], $auth->getUserID()]);
 
         $this->ratings = [
             "1" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$this->data["id"]]),
@@ -113,6 +118,8 @@ class Submission
             "author" => [
                 "id" => $this->data["author"],
                 "info" => $this->author->getUserArray(),
+                "followers" => $this->followers,
+                "following" => $this->followed,
             ],
             "interactions" => [
                 "views" => $this->views,

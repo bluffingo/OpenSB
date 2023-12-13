@@ -7,17 +7,14 @@
 			<div class="section-title">
 				<h1>Admin dashboard</h1>
 			</div>
-			<div class="content-header">
-				<span>Over the years</span>
-			</div>
 			<div class="content-box">
+                <h1>Over the years</h1>
 				<span>Since {{ data.time.formatted_date }} ({{ data.time.relative_days }} days ago)</span>
 				<canvas id="myChart"></canvas>
 			</div>
-			<div class="content-header">
-				<span>Stats</span>
-			</div>
+            <br>
 			<div class="content-box">
+                <h1>Statistics</h1>
 				<ul>
 					<li>Uname: {{ data.system.uname }}</li>
 					{% for key, number in data.numbers %}
@@ -25,10 +22,9 @@
 					{% endfor %}
 				</ul>
 			</div>
-			<div class="content-header">
-				<span>Ban user</span>
-			</div>
+            <br>
 			<div class="content-box">
+                <h1>Ban user</h1>
 				<form name="uploadForm" id="uploadForm" method="post" action="admin.php" enctype="multipart/form-data">
 					<div class="banner banner-secondary">
 						<strong>NOTE</strong>: We don't support expiring bans yet.
@@ -46,10 +42,9 @@
 					</div>
 				</form>
 			</div>
-			<div class="content-header">
-				<span>Banned users</span>
-			</div>
+            <br>
 			<div class="content-box">
+                <h1>Banned users</h1>
 				<div class="banner banner-secondary">
 					<strong>NOTE</strong>: If the account gets automatically banned after being unbanned, then the account's latest IP is IP banned.
 				</div>

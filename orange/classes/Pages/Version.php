@@ -22,7 +22,23 @@ class Version
     }
 
     /**
-     * Returns an array containing the versions for the openSB frontend.
+     * Returns an array containing a list of OpenSB authors.
+     *
+     * @since 0.1.0
+     *
+     * @return array
+     */
+    public function getDevelopers(): array
+    {
+        return [
+            'Bluffingo',
+            'icanttellyou',
+            'ROllerozxa',
+        ];
+    }
+
+    /**
+     * Returns an array containing the versions of PHP, MySQL and OpenSB.
      *
      * @since 0.1.0
      *
@@ -30,19 +46,19 @@ class Version
      */
     public function getVersionData(): array
     {
-        return array(
-            'phpVersion' => array(
+        return [
+            'phpVersion' => [
                 'title' => "PHP version",
                 'info' => phpversion(),
-            ),
-            'dbVersion' => array(
+            ],
+            'dbVersion' => [
                 'title' => "Database version",
                 'info' => $this->database->getVersion(),
-            ),
-            'bettyVersion' => array(
+            ],
+            'bettyVersion' => [
                 'title' => "openSB version",
                 'info' => $this->betty->getBettyVersion(),
-            ),
-        );
+            ],
+        ];
     }
 }

@@ -12,4 +12,5 @@ $twig = new \Orange\Templating($betty);
 
 echo $twig->render('version.twig', [
     'version_stats' => $page->getVersionData(),
+    'developers' => $page->getDevelopers(),
 ]);

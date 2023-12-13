@@ -53,6 +53,16 @@
                 <div class="watch-box-author">
                     <div class="watch-box-author-userlink">
                         {{ user_link(submission.author) }}
+                        {% if not submission.is_owner %}
+                            <button class="button button-secondary button-small" id="follow-user">
+                                {% if submission.author.following %}
+                                    Unfollow
+                                {% else %}
+                                    Follow
+                                {% endif %}
+                            </button>
+                            (<span id="follower_count">{{ submission.author.followers }}</span> followers)
+                        {% endif %}
                     </div>
                     <div class="watch-box-author-info">Uploaded on {{ submission.published | date('F j, Y') }}</div>
                     {% if submission.published_originally and submission.original_site %}

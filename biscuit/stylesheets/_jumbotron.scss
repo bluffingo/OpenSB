@@ -4,6 +4,8 @@
   &.profile-banner {
     background: #111;
     background-size: cover;
+    background-position: center;
+
     margin-top: -($header-user-height + $header-main-height);
     height: 250px + ($header-user-height + $header-main-height);
 

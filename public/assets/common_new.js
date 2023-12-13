@@ -4,7 +4,7 @@ function error(error) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    let favorite_button = (document.getElementById('submission-favorite'));
+    let favorite_button = (document.getElementById('follow-user'));
     let comment_field = (document.getElementById('comment_field'));
 
     if (comment_field) {
@@ -35,20 +35,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (favorite_button) {
-        let favorite_count = (document.getElementById('submission-favorites'));
+        let favorite_count = (document.getElementById('follower_count'));
         favorite_button.onclick = function () {
-            fetch("/api/finalium/submission_interaction.php", {
+            fetch("/api/finalium/user_interaction.php", {
                 method: "POST",
                 body: JSON.stringify({
-                    action: "favorite",
-                    submission: submission_id,
+                    action: "follow",
+                    member: user_id,
                 }),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }
             })
                 .then((response) => response.json())
-                .then((json) => { if(json["error"]) { error(json["error"])} else { favorite_count.textContent = json["number"]}});
+                .then((json) => {
+                        if(json["error"])
+                        {
+                            error(json["error"])
+                        }
+                        else
+                        {
+                            favorite_count.textContent = json["number"];
+                            favorite_button.textContent = json["text"];
+                        }
+                    }
+                )
+            ;
 
         }
     }

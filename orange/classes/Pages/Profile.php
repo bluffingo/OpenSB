@@ -22,6 +22,8 @@ class Profile
     private array $user_submissions;
     private array $user_journals;
     private Comments $comments;
+    private mixed $followers;
+    private $followed;
 
     public function __construct(\Orange\Orange $betty, $username)
     {
@@ -35,6 +37,11 @@ class Profile
         if (!$this->data)
         {
             $betty->Notification("This user does not exist.", "/");
+        }
+
+        if ($this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->data["id"]]))
+        {
+            $betty->Notification("This user is banned.", "/");
         }
 
         $this->user_submissions =
@@ -53,17 +60,15 @@ class Profile
                          ORDER BY j.date 
                          DESC LIMIT 3", [$this->data["id"]]));
 
-        if ($this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->data["id"]]))
-        {
-            $betty->Notification("This user is banned.", "/");
-        }
-
         if ($this->data["id"] == $auth->getUserID())
         {
             $this->is_own_profile = true;
         }
 
         $this->comments = new Comments($this->database, CommentLocation::Profile, $this->data["id"]);
+
+        $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$this->data["id"]])['COUNT(user)'];
+        $this->followed = $this->database->result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$this->data["id"], $auth->getUserID()]);
     }
 
     public function getData(): array
@@ -73,7 +78,6 @@ class Profile
             "username" => $this->data["name"],
             "displayname" => $this->data["title"],
             "about" => ($this->data['about'] ?? false),
-            "color" => $this->data["customcolor"],
             "joined" => $this->data["joined"],
             "connected" => $this->data["lastview"],
             "is_current" => $this->is_own_profile,
@@ -81,6 +85,8 @@ class Profile
             "submissions" => MiscFunctions::makeSubmissionArray($this->database, $this->user_submissions),
             "journals" => MiscFunctions::makeJournalArray($this->database, $this->user_journals),
             "comments" => $this->comments->getComments(),
+            "followers" => $this->followers,
+            "following" => $this->followed,
         ];
     }
 

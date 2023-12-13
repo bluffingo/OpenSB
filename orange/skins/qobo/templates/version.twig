@@ -3,24 +3,48 @@
 {% set title = "Version" %}
 
 {% block content %}
-    <div class="content-box">
-        <table class="c1">
-            <caption>Version</caption>
-        {% for thing in version_stats %}
-            <tr>
-                <td class="a">{{ thing.title }}</td>
-                <td class="b">{{ thing.info }}</td>
-            </tr>
-        {% endfor %}
-        </table>
-        <table class="c1">
-            <caption>Skins</caption>
-            {% for skin in skins %}
-                <tr>
-                    <td class="a">{{ skin.metadata.name }}<br><small>by {{ skin.metadata.author }}</small></td>
-                    <td class="b">{{ skin.metadata.description }}</td>
+    <div class="section">
+        <div class="section-title">
+            <h1>Version</h1>
+        </div>
+        <div class="content-box">
+            <p>
+                This website is powered by OpenSB (Open SquareBracket). © 2021-{{ 'now' | date('Y') }}
+                {% for developer in developers %}
+                    {{ developer }}{{ not loop.last ? ',' }}
+                {% endfor %} and others.
+            </p>
+            <p>
+                OpenSB is licensed under the AGPL 3.0 license.
+            </p>
+            <hr>
+            <table class="c1">
+                <caption>Software</caption>
+                <tr class="h">
+                    <th>Product</th>
+                    <th>Version</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for thing in version_stats %}
+                    <tr>
+                        <td class="a">{{ thing.title }}</td>
+                        <td class="b">{{ thing.info }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <hr>
+            <table class="c1">
+                <caption>Skins</caption>
+                <tr class="h">
+                    <th>Skin/Author</th>
+                    <th>Description</th>
+                </tr>
+                {% for skin in skins %}
+                    <tr>
+                        <td class="a">{{ skin.metadata.name }}<br><small>by {{ skin.metadata.author }}</small></td>
+                        <td class="b">{{ skin.metadata.description }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 {% endblock %}
