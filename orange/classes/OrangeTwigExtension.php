@@ -191,8 +191,18 @@ class OrangeTwigExtension extends AbstractExtension
 
     public function UserLink($user): string
     {
+        global $auth;
+
+        $id = $user["id"];
+
+        if ($auth->isUserLoggedIn() && MiscFunctions::IsFollowingUser($id)) {
+            $class = "userlink following";
+        } else {
+            $class = "userlink";
+        }
+
         return <<<HTML
-<a class="userlink" href="user.php?name={$user["info"]["username"]}">{$user["info"]["username"]}</a>
+<a class="{$class}" href="user.php?name={$user["info"]["username"]}">{$user["info"]["username"]}</a>
 HTML;
     }
 

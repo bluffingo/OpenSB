@@ -214,4 +214,10 @@ class MiscFunctions
                 [$type->value, $submission, $user, $auth->getUserID(), time(), $related_id]);
         }
     }
+
+    public static function IsFollowingUser($user) {
+        global $auth, $database;
+
+        return $database->result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$user, $auth->getUserID()]);
+    }
 }

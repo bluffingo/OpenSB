@@ -144,6 +144,12 @@ hr {
 	}
 }
 
+.userlink {
+	&.following {
+		color: #d78157;
+	}
+}
+
 @import 'header';
 @import 'footer';
 @import 'page';

@@ -68,7 +68,7 @@ class Profile
         $this->comments = new Comments($this->database, CommentLocation::Profile, $this->data["id"]);
 
         $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$this->data["id"]])['COUNT(user)'];
-        $this->followed = $this->database->result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$this->data["id"], $auth->getUserID()]);
+        $this->followed = MiscFunctions::IsFollowingUser($this->data["id"]);
     }
 
     public function getData(): array

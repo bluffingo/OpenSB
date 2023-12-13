@@ -58,7 +58,7 @@ class Submission
         }
 
         $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$this->data["author"]])['COUNT(user)'];
-        $this->followed = $this->database->result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$this->data["author"], $auth->getUserID()]);
+        $this->followed = MiscFunctions::IsFollowingUser($this->data["author"]);
 
         $this->ratings = [
             "1" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$this->data["id"]]),
