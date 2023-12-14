@@ -1,5 +1,13 @@
 #!/usr/bin/php
 <?php
+
+/* DEPRECATED
+
+This piece of code hasn't been tested since Qobo's launch in April 2023
+and may not work.
+
+*/
+
 //namespace pokTwo;
 // I AM ABOUT TO GO FUCKING INSANE -grkb june 28th 2022
 namespace openSB;

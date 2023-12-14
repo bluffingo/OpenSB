@@ -116,25 +116,25 @@ class BunnyStorage implements Storage
             $constraint->aspectRatio();
             $constraint->upsize();
         });
-        $img->save(dirname(__DIR__) . '/opensb' . $target_file);
+        $img->save(dirname(__DIR__) . '/..' . $target_file);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
             fileName: $target_file,
-            localFilePath: dirname(__DIR__) . '/opensb' . $target_file,
+            localFilePath: dirname(__DIR__) . '/..' . $target_file,
         );
-        unlink(dirname(__DIR__) . '/opensb' . $target_file);
+        unlink(dirname(__DIR__) . '/..' . $target_file);
 
         $img = $manager->make($temp_name)->encode('jpg', 80);
         $img->resize(500, null, function ($constraint) {
             $constraint->aspectRatio();
             $constraint->upsize();
         });
-        $img->save(dirname(__DIR__) . '/opensb' . $target_thumbnail);
+        $img->save(dirname(__DIR__) . '/..' . $target_thumbnail);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
             fileName: $target_thumbnail,
-            localFilePath: dirname(__DIR__) . '/opensb' . $target_thumbnail,
+            localFilePath: dirname(__DIR__) . '/..' . $target_thumbnail,
         );
-        unlink(dirname(__DIR__) . '/opensb' . $target_thumbnail);
+        unlink(dirname(__DIR__) . '/..' . $target_thumbnail);
     }
 }
