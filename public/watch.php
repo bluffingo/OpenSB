@@ -8,7 +8,7 @@ use \Orange\OrangeException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/orange/classes/Pages/Submission.php';
+require_once dirname(__DIR__) . '/private/class/Pages/Submission.php';
 
 $id = ($_GET['v'] ?? null);
 

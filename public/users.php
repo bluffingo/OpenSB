@@ -8,7 +8,7 @@ use \Orange\OrangeException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/orange/classes/Pages/Users.php';
+require_once dirname(__DIR__) . '/private/class/Pages/Users.php';
 
 $page = new \Orange\Pages\Users($betty);
 $data = $page->getData();

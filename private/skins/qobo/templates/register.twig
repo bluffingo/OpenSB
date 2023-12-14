@@ -1,0 +1,39 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Register" %}
+
+	{% block content %}
+        <div class="content-header">
+            <span>Register a Qobo account</span>
+        </div>
+        <div class="content-box">
+            <div class="panel-body">
+                <form method="post" name="loginForm" id="loginForm" action="register.php" class="form-signin">
+                    <div>
+                        <label for="email">Email address:</label>
+                        <input type="email" name="email" class="form-submit" placeholder="Email address">
+                    </div>
+
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" class="form-submit" placeholder="Username">
+                    </div>
+
+                    <div>
+                        <label for="pass1">Password:</label>
+                        <input type="password" name="pass1" class="form-submit" placeholder="Password">
+                    </div>
+
+                    <div>
+                        <label for="pass2">Password (confirm):</label>
+                        <input type="password" name="pass2" class="form-submit" placeholder="Password (confirm)">
+                    </div>
+
+                    <div class="form-button-container">
+                        <input type="submit" class="button button-primary" value="Register" name="registersubmit">
+                    </div>
+                </form>
+                <div>By registering on Qobo, you accept the <a href="/privacy.php">Privacy Policy</a>.</div>
+            </div>
+        </div>
+    {% endblock %}

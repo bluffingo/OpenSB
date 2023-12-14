@@ -6,7 +6,7 @@ global $gump, $betty;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/orange/classes/Pages/AccountRegister.php';
+require_once dirname(__DIR__) . '/private/class/Pages/AccountRegister.php';
 
 $page = new \Orange\Pages\AccountRegister($betty);
 

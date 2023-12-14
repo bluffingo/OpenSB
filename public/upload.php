@@ -8,7 +8,7 @@ use Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/orange/classes/Pages/SubmissionUpload.php';
+require_once dirname(__DIR__) . '/private/class/Pages/SubmissionUpload.php';
 
 $page = new \Orange\Pages\SubmissionUpload($betty);
 

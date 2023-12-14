@@ -9,7 +9,7 @@ use \Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/orange/classes/Pages/Index.php';
+require_once dirname(__DIR__) . '/private/class/Pages/Index.php';
 
 try {
     $index = new \Orange\Pages\Index($betty);

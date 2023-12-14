@@ -5,7 +5,7 @@ namespace openSB;
 global $betty;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/orange/classes/Pages/AccountLogin.php';
+require_once dirname(__DIR__) . '/private/class/Pages/AccountLogin.php';
 
 $error = '';
 

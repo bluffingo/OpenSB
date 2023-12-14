@@ -8,7 +8,7 @@ use Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/orange/classes/Pages/AccountSettings.php';
+require_once dirname(__DIR__) . '/private/class/Pages/AccountSettings.php';
 
 $page = new \Orange\Pages\AccountSettings($betty);
 

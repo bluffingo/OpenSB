@@ -9,7 +9,7 @@ use Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/orange/classes/Pages/SubmissionSearch.php';
+require_once dirname(__DIR__) . '/private/class/Pages/SubmissionSearch.php';
 
 $query = $_GET['query'] ?? null;
 $type = ($_GET['type'] ?? 'recent');

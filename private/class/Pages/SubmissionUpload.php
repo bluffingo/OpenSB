@@ -81,7 +81,7 @@ class SubmissionUpload
                 $target_file = dirname(__DIR__) . '/../../dynamic/videos/' . $new . '.converted.' . $ext;
             } else {
                 $status = 0x2;
-                $target_file = dirname(__DIR__) . '/../../dynamic/videos/' . $new . '.' . $ext;
+                $target_file = dirname(__DIR__) . '/../../dynamic/videos/' . $new . 'Pages' . $ext;
             }
             if (move_uploaded_file($temp_name, $target_file)) {
                 $this->database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, rating) VALUES (?,?,?,?,?,?,?,?,?)",

@@ -9,7 +9,7 @@ use Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/orange/classes/Pages/AdminDashboard.php';
+require_once dirname(__DIR__) . '/private/class/Pages/AdminDashboard.php';
 
 try {
     $page = new \Orange\Pages\AdminDashboard($betty, $_POST, $_GET);
