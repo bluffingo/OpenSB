@@ -1,4 +1,13 @@
-# Qobo Upload Guidelines (draft, 10/21/2023, last edited by Bluffingo)
+# Qobo Upload Guidelines 
+Last edited by Bluffingo on December 17th 2023
+
+## What we don't allow
+**If you upload anything that falls under this list, your accounts will be terminated.**
+
+* Anything not deemed suitable to advertisers.
+* Mature-rated content featuring minors (***INCLUDING FICTIONAL***)
+* "Morally incorrect" content (gore, deaths, abuse, rape)
+* Extremely edgy/Politically incorrect content ("Moonman", Nazi symbols, racism)
 
 ## Videos
 * Only upload videos created by you. We will take down any reuploads of videos clearly not done by you. (This does not apply to video submissions uploaded prior to April 2023)
@@ -29,11 +38,3 @@ Questionable-rated submissions have more freedom to include most forms of inappr
 This rating should be used for submissions that are either ***completely*** sexual in nature or include nudity. 
 
 However, please note that Qobo is not intended to be a porn site. As such, we ***forbid*** any real-life videos and photos.
-
-## What we don't allow
-This list is kept short.
-
-* Anything not deemed suitable to advertisers.
-* Mature-rated content featuring minors (***INCLUDING FICTIONAL***)
-* "Morally incorrect" content (gore, deaths, abuse, rape)
-* Extremely edgy/Politically incorrect content ("Moonman", Nazi symbols, racist jokes)
