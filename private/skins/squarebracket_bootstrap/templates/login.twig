@@ -14,7 +14,7 @@
 		<div class="alert alert-success" role="alert">{{ __("You have been successfully logged out of all devices.") }}</div>
 	{% endif %}
 		<form method="post" name="loginForm" id="loginForm" action="login.php">
-			<img class="mb-2" src="/assets/logo_border_placeholder.png" alt="Qobo" width="90">
+			<img class="mb-2" src="/assets/logo_border_placeholder.png" alt="{{ website_branding.name }}" width="90">
 			<div class="login-box">
 			<h3 class="mb-4 text-white">{{ __("Login") }}</h3>
 				<div class="card">
@@ -34,7 +34,7 @@
 					</div>
 				</div>
 			<p class="mt-2 text-white">{{ __("Account passwords are hashed with bcrypt.") }}</p>
-			<p class="mt-5 mb-3 text-white">{{ __("By Qobo contributors") }} · 2020-{{ 'now' | date('Y') }}</p>
+			<p class="mt-5 mb-3 text-white">By OpenSB Contributors · 2020-{{ 'now' | date('Y') }}</p>
 			</div>
 		</form>
 </main>

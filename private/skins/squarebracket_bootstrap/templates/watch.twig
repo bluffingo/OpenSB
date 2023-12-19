@@ -1,7 +1,7 @@
 {% extends "_layout.twig" %}
 
 {% block head %}
-	<meta name="title" content="{{ submission.title }} - Qobo">
+	<meta name="title" content="{{ submission.title }} - {{ website_branding.name }}">
 	<meta name="description" content="{{ submission.description|length > 250 ? submission.description|slice(0, 250) ~ '...' : submission.description }}">
 	<script>
 		video_id = '{{ submission.id }}';

@@ -4,7 +4,7 @@
 
 	{% block content %}
         <div class="content-header">
-            <span>Register a Qobo account</span>
+            <span>Register a {{ website_branding.name }} account</span>
         </div>
         <div class="content-box">
             <div class="panel-body">
@@ -33,7 +33,7 @@
                         <input type="submit" class="button button-primary" value="Register" name="registersubmit">
                     </div>
                 </form>
-                <div>By registering on Qobo, you accept the <a href="/privacy.php">Privacy Policy</a>.</div>
+                <div>By registering on {{ website_branding.name }}, you accept the <a href="/privacy.php">Privacy Policy</a>.</div>
             </div>
         </div>
     {% endblock %}

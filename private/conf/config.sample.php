@@ -26,7 +26,7 @@ $bettyTemplate = "qobo"; // Template used by pages based on Betty.
 
 // Branding
 $branding = [
-    "name" => "a BettySB Instance",
+    "name" => "OpenSB Development",
 	"assets_location" => "/assets/placeholder",
 ];
 

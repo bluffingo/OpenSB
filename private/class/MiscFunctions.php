@@ -189,7 +189,7 @@ class MiscFunctions
         // * Bump the second number (x.XX) only if it's a feature update, say for Qobo.
         // * We do not have a third number unlike Semantic Versioning or something like Minecraft, since
         // we use Git hashes for indicating revisions, but this may change.
-        $version = "1.0";
+        $version = "1.1";
         $gitPath = __DIR__ . '/../../.git';
         
         // Check if the instance is git cloned. If it is, have the version string be

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ title }} - Qobo</title>
+    <title>{{ title }} - {{ website_branding.name }}</title>
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="img/css/common.css">
@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#DA20EA">
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:url" content="{{ page_url }}">
-    <meta property="og:site_name" content="Qobo" />
+    <meta property="og:site_name" content="{{ website_branding.name }}" />
 
     {% if opengraph_type %}
         <meta property="og:type" content="{{ opengraph_type }}" />
@@ -38,7 +38,7 @@
     {% if opengraph_image %}
         <meta property="og:image" content="{{ opengraph_image }}">
     {% else %}
-        <meta property="og:image" content="{{ domain }}img/qobo_768x768.png">
+        <meta property="og:image" content="{{ domain }}img/{{ website_branding.name }}_768x768.png">
     {% endif %}
 
     {% if opengraph_author %}
@@ -69,7 +69,7 @@
     <div class="header">
         <div class="page">
             <div class="header-logo">
-                <a href="/index.php"><img alt="Qobo" class="logo" src="/img/logo.svg"></a>
+                <a href="/index.php"><img alt="{{ website_branding.name }}" class="logo" src="/img/logo.svg"></a>
             </div>
             <form class="header-search" action="/search.php">
                 <input id="header-search-input" type="text" name="query" placeholder="Search...">
@@ -142,6 +142,12 @@
             <a href="/theme.php">
                 Change theme
             </a>
+            {% if is_debug %}
+            <br>
+            <p>
+            {{ profiler_stats() }}
+            </p>
+            {% endif %}
         </div>
     </div>
 </div>
