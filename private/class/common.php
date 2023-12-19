@@ -2,6 +2,10 @@
 
 namespace Orange;
 
+if (!file_exists(dirname(__DIR__) . '/../vendor/autoload.php')) {
+    die('<b>You are missing the required Composer packages. Please read the installing instructions in the README file.</b>');
+}
+
 if (!file_exists(dirname(__DIR__) . '/conf/config.php')) {
     die('<b>A configuration file could not be found. Please read the installing instructions in the README file.</b>');
 }
