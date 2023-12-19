@@ -9,7 +9,7 @@ use Orange\Database;
 /**
  * Backend code for the MediaWiki-styled version page.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class Version
 {
@@ -24,7 +24,7 @@ class Version
     /**
      * Returns an array containing a list of OpenSB authors.
      *
-     * @since 0.1.0
+     * @since Orange 1.0
      *
      * @return array
      */
@@ -40,7 +40,7 @@ class Version
     /**
      * Returns an array containing the versions of PHP, MySQL and OpenSB.
      *
-     * @since 0.1.0
+     * @since Orange 1.0
      *
      * @return array
      */
@@ -48,15 +48,15 @@ class Version
     {
         return [
             'phpVersion' => [
-                'title' => "PHP version",
+                'title' => "PHP",
                 'info' => phpversion(),
             ],
             'dbVersion' => [
-                'title' => "Database version",
+                'title' => "Database software",
                 'info' => $this->database->getVersion(),
             ],
             'bettyVersion' => [
-                'title' => "openSB version",
+                'title' => "OpenSB",
                 'info' => $this->betty->getBettyVersion(),
             ],
         ];

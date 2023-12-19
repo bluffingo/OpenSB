@@ -9,7 +9,7 @@ use Orange\Database;
 /**
  * Backend code for the Qobo wikis page.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  * @deprecated Chip Chillipedia was closed on December 7th 2023, leaving this page unused.
  */
 class WikiList

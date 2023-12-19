@@ -10,7 +10,7 @@ use Orange\Database;
 /**
  * Backend code for the admin dashboard.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class AdminDashboard
 {

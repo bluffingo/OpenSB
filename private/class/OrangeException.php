@@ -8,7 +8,7 @@ use ReturnTypeWillChange;
 /**
  * Betty exceptions.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class OrangeException extends \Exception
 {
@@ -23,7 +23,7 @@ class OrangeException extends \Exception
     /**
      * Display custom error page. A replacement for openSB's error() function.
      *
-     * @since 0.1.0
+     * @since Orange 1.0
      *
      * @return void
      */

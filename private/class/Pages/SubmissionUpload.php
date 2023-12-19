@@ -13,7 +13,7 @@ use Orange\SubmissionData;
 /**
  * Backend code for the submission uploading page.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class SubmissionUpload
 {

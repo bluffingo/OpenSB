@@ -11,7 +11,7 @@ use Twig\TwigFunction;
 /**
  * A rewrite of openSB's /private/layout.php.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class Templating
 {
@@ -88,7 +88,7 @@ class Templating
     /**
      * Get all the available skins.
      *
-     * @since 0.1.0
+     * @since Orange 1.0
      *
      * @return string[]
      */
@@ -109,7 +109,7 @@ class Templating
     /**
      * Get the skin's JSON metadata.
      *
-     * @since 0.1.0
+     * @since Orange 1.0
      *
      * @param $skin
      * @return array|null
@@ -143,7 +143,7 @@ class Templating
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
-     * @since 0.1.0
+     * @since Orange 1.0
      *
      */
     public function render($template, array $data = []): string

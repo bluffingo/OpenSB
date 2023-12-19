@@ -13,7 +13,7 @@ use Orange\SubmissionData;
 /**
  * Backend code for the account settings page.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class AccountSettings
 {

@@ -11,7 +11,7 @@ use Orange\Database;
 /**
  * Backend code for the index page.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class Index
 {
@@ -33,7 +33,7 @@ class Index
     /**
      * Returns an array containing a random list of submissions for the openSB frontend.
      *
-     * @since 0.1.0
+     * @since Orange 1.0
      *
      * @return array
      */

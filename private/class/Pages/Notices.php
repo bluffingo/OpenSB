@@ -11,7 +11,7 @@ use Orange\NoticeType;
 /**
  * Backend code for the notices page.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class Notices
 {

@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} - {{ website_branding.name }}</title>
-    <link rel="preconnect" href="https://rsms.me/">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="img/css/common.css">
     <link rel="stylesheet" href="theme/famfamfam-silk.min.css">
     <link rel="stylesheet" href="theme/silk-companion.min.css">
@@ -38,7 +36,7 @@
     {% if opengraph_image %}
         <meta property="og:image" content="{{ opengraph_image }}">
     {% else %}
-        <meta property="og:image" content="{{ domain }}img/{{ website_branding.name }}_768x768.png">
+        <meta property="og:image" content="{{ domain }}img/qobo_768x768.png">
     {% endif %}
 
     {% if opengraph_author %}

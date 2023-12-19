@@ -28,7 +28,7 @@ foreach (glob(dirname(__DIR__) . "/class/*.php") as $file) {
 }
 
 /**
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class Orange {
     private \Orange\Database $database;
@@ -62,7 +62,7 @@ class Orange {
     /**
      * Returns the database for other Betty classes to use.
      *
-     * @since 0.1.0
+     * @since Orange 1.0
      *
      * @return Database
      */
@@ -73,7 +73,7 @@ class Orange {
     /**
      * Returns Betty's version number.
      *
-     * @since 0.1.0
+     * @since Orange 1.0
      *
      * @return string
      */
@@ -85,7 +85,7 @@ class Orange {
     /**
      * Returns the user's local settings.
      *
-     * @since 0.1.0
+     * @since Orange 1.0
      *
      * @return array
      */
@@ -99,7 +99,7 @@ class Orange {
      *
      * Not to be confused with NotifyUser.
      *
-     * @since 0.1.0
+     * @since Orange 1.0
      */
     public function Notification($message, $redirect, $color = "danger")
     {

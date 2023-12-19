@@ -5,7 +5,7 @@ namespace Orange;
 /**
  * Submissions.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class SubmissionData
 {

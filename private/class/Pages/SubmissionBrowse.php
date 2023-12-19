@@ -10,7 +10,7 @@ use Orange\Database;
 /**
  * Backend code for the submission browsing page.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class SubmissionBrowse
 {

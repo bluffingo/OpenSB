@@ -13,7 +13,7 @@ use Orange\SubmissionData;
 /**
  * Backend code for the submission modification page.
  *
- * @since 0.1.0
+ * @since Orange 1.0
  */
 class SubmissionEdit
 {
@@ -49,7 +49,7 @@ class SubmissionEdit
     /**
      * Returns an array containing the submission for the openSB frontend.
      *
-     * @since 0.1.0
+     * @since Orange 1.0
      *
      * @return array
      */
