@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2023 at 07:14 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.11
+-- Generation Time: Dec 20, 2023 at 11:24 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -292,7 +292,7 @@ CREATE TABLE `videos` (
   `author` bigint(20) UNSIGNED NOT NULL COMMENT 'User ID of the video author',
   `time` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Unix timestamp for the time the video was uploaded',
   `most_recent_view` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-  `original_site` varchar(64) NOT NULL,
+  `original_site` varchar(64) DEFAULT NULL,
   `original_time` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `views` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Video views',
   `flags` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',
