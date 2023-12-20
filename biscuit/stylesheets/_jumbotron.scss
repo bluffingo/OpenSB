@@ -14,19 +14,6 @@
     }
   }
 
-  &.qobo-banner {
-    background: $primary;
-    background-image: url("/assets/qobo_banner.png");
-    background-size: cover;
-    background-position: center;
-    margin-top: -($header-user-height + $header-main-height);
-    height: 200px + ($header-user-height + $header-main-height);
-
-    .jumbotron-container {
-      padding-top: ($header-user-height + $header-main-height);
-    }
-  }
-
   // duplicate of the page class
   .jumbotron-container
   {

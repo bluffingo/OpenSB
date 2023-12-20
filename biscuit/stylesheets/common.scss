@@ -12,7 +12,13 @@
 	@return if(lightness($color) < $threshold, $light, $dark)
 }
 
-:root { font-family: $font; }
+:root {
+	font-family: $font;
+	font-feature-settings: 'liga' 1, 'calt' 1;
+}
+@supports (font-variation-settings: normal) {
+	:root { font-family: $font-var; }
+}
 
 *,
 *::before,
