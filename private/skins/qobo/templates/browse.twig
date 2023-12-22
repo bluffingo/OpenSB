@@ -13,9 +13,9 @@
             {% endfor %}
         </div>
         {% if data.type == 'all' %}
-            {% set le_url = 'browse.php?page=%s' %}
+            {% set le_url = 'browse?page=%s' %}
         {% else %}
-            {% set le_url = 'browse.php?type=' ~ type ~ '&page=%s' %}
+            {% set le_url = 'browse?type=' ~ type ~ '&page=%s' %}
         {% endif %}
 
         {{ pagination(data.count, 20, le_url, page) }}

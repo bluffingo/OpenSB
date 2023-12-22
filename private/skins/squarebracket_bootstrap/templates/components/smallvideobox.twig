@@ -2,14 +2,14 @@
 	<div class="card-body">
 		<div class="row">
 			<div class="col-5">
-				<a href="watch.php?v={{ submission.id }}">
+				<a href="view/{{ submission.id }}">
 					<div class="img-thumbnail" style="margin-bottom:0">
 						<img class="img-fluid" src="{{ thumbnail(submission.id, submission.type) }}">
 					</div>
 				</a>
 			</div>
 			<div class="col-7">
-				<h5><a href="watch.php?v={{ submission.id }}">{{ submission.title }}</a></h5>
+				<h5><a href="view/{{ submission.id }}">{{ submission.title }}</a></h5>
 				{# hack to prevent twig from outputing the number 1 #}
 				{% if submission.views != 1 %}
 					{% set pluralViews = "s" %}

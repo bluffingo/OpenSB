@@ -15,7 +15,7 @@
 							</li>
 						</ul>
 					</div><div class="col-4">
-						<div class="text-end"><a href="browse.php" class="btn btn-light btn-sm">{{ __("Browse") }}</a></div>
+						<div class="text-end"><a href="browse" class="btn btn-light btn-sm">{{ __("Browse") }}</a></div>
 					</div>
 				</div>
 				<div class="card">
@@ -60,7 +60,7 @@
 					<div class="card" style="margin-bottom:10px">
 						<div class="card-body">
 							<h5>
-								<a href="read.php?j={{ news.id }}">
+								<a href="read?j={{ news.id }}">
 									{{ news.title|u.truncate(100, '...') }}
 								</a>
 							</h5>

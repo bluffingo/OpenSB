@@ -8,7 +8,7 @@
         </div>
         <div class="content-box">
             <div class="panel-body">
-                <form method="post" name="loginForm" id="loginForm" action="register.php" class="form-signin">
+                <form method="post" name="loginForm" id="loginForm" action="register" class="form-signin">
                     <div>
                         <label for="email">Email address:</label>
                         <input type="email" name="email" class="form-submit" placeholder="Email address">
@@ -33,7 +33,7 @@
                         <input type="submit" class="button button-primary" value="Register" name="registersubmit">
                     </div>
                 </form>
-                <div>By registering on {{ website_branding.name }}, you accept the <a href="/privacy.php">Privacy Policy</a>.</div>
+                <div>By registering on {{ website_branding.name }}, you accept the <a href="/privacy">Privacy Policy</a>.</div>
             </div>
         </div>
     {% endblock %}

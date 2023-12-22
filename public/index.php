@@ -16,7 +16,8 @@ var_dump($_GET);
 echo("<br>");
 var_dump($_POST);
 
-function rewritePHP() {
+function rewritePHP(): void
+{
     if (str_contains($_SERVER["REQUEST_URI"], '.php'))
         MiscFunctions::redirectPerma('%s', str_replace('.php', '', $_SERVER["REQUEST_URI"]));
 }
@@ -60,8 +61,10 @@ if (isset($path[1]) && $path[1] != '') {
         require(dirname(__DIR__) . '/private/pages/users.php');
     } elseif ($path[1] == 'version') {
         require(dirname(__DIR__) . '/private/pages/version.php');
-    } elseif ($path[1] == 'watch') {
+    } elseif ($path[1] == 'view') {
         require(dirname(__DIR__) . '/private/pages/watch.php');
+    } elseif ($path[1] == 'watch') {
+        MiscFunctions::redirect('/view/'.$_GET['v']);
     } elseif ($path[1] == 'write') {
         require(dirname(__DIR__) . '/private/pages/write.php');
     } else {

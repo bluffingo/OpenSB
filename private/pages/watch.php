@@ -10,7 +10,9 @@ require_once dirname(__DIR__) . '/class/common.php';
 
 require_once dirname(__DIR__) . '/class/Pages/SubmissionView.php';
 
-$id = ($_GET['v'] ?? null);
+$id = $path[2] ?? null;
+
+if (isset($_GET['v'])) MiscFunctions::redirect('/submission/'.$_GET['v']);
 
 try {
     $page = new \Orange\Pages\SubmissionView($orange, $id);

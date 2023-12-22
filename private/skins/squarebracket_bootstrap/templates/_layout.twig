@@ -5,7 +5,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% block head %}{% endblock %}
-	<!-- https://www.youtube.com/watch?v=BAG6Y7xe6BY -->
 	<!-- REDO THIS REDO THIS REDO THIS REDO THIS -->
 	<link href="img/css/bootstrap.css" rel="stylesheet" id="bootstrap">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
@@ -34,7 +33,7 @@
 	<div class="container">
 		<a class="navbar-brand" href="/"><img src="/img/logo.svg" alt="[sb]" height="32"
                                               class="d-inline-block align-text-top"></a>
-		<form class="d-flex" method="GET" action="search.php">
+		<form class="d-flex" method="GET" action="search">
 			<div class="input-group">
 				<span class="input-group-text" id="basic-addon1">{{ icon('search', 16 ) }}</span>
 				<input name="query" class="form-control" type="search" placeholder="{{ __("Search") }}"
@@ -50,7 +49,7 @@
 				{% if is_user_logged_in %}
 					<!-- can't put dropdown-toggle properly wtf -->
 					<li class="nav-item">
-						<a href="upload.php" class="nav-link">
+						<a href="upload" class="nav-link">
 							<div class="d-flex align-items-center">
 								{{ icon('plus', 24) }}
 								<span class="pe-1">{{ __("Upload") }}</span>
@@ -59,8 +58,8 @@
 					</li>
 				{% else %}
 					<div class="d-grid gap-2 d-md-block">
-						<a href="login.php" class="btn btn-primary me-md-1">{{ __("Login") }}</a>
-						<a href="register.php" class="btn btn-secondary">{{ __("Register") }}</a>
+						<a href="login" class="btn btn-primary me-md-1">{{ __("Login") }}</a>
+						<a href="register" class="btn btn-secondary">{{ __("Register") }}</a>
 					</div>
 				{% endif %}
 				{% if is_user_logged_in %}
@@ -78,10 +77,10 @@
 						</a>
 					</li>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
-							<li><a class="dropdown-item" href="settings.php">{{ icon('tools', 16) }} {{ __("Settings") }}</a></li>
-							<li><a class="dropdown-item" href="user.php?name={{ user_data.name }}">{{ icon('person-lines-fill', 16) }} {{ __("My profile") }}</a></li>
+							<li><a class="dropdown-item" href="settings">{{ icon('tools', 16) }} {{ __("Settings") }}</a></li>
+							<li><a class="dropdown-item" href="user/{{ user_data.name }}">{{ icon('person-lines-fill', 16) }} {{ __("My profile") }}</a></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="logout.php">{{ icon('door-open', 16) }} {{ __("Sign off") }}</a></li>
+							<li><a class="dropdown-item" href="logout">{{ icon('door-open', 16) }} {{ __("Sign off") }}</a></li>
 
 					</ul>
 				</div>
@@ -96,8 +95,8 @@
 		<div class="container">
 			<ul class="nav me-auto">
 				<li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} Home</a></li>
-				<li class="nav-item"><a href="/browse.php" class="nav-link link-light px-2">{{ icon('play-btn', 16) }} Browse</a></li>
-				<li class="nav-item"><a href="/users.php" class="nav-link link-light px-2">{{ icon('people', 16) }} Members</a></li>
+				<li class="nav-item"><a href="/browse" class="nav-link link-light px-2">{{ icon('play-btn', 16) }} Browse</a></li>
+				<li class="nav-item"><a href="/users" class="nav-link link-light px-2">{{ icon('people', 16) }} Members</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -121,9 +120,9 @@
 				<!-- is it me or is morale a bit... low? it seems like there's no hope for squarebracket or some shit. don't be surprised if i end up leaving the project -gr 8/3/2021 -->
 				<p class="my-0">© 2021-{{ 'now' | date('Y') }} OpenSB contributors</p>
 				<p class="my-0">
-					<a href="version.php" class="me-1">About</a>
-					<a href="privacy.php" class="me-1">Privacy policy</a>
-					<a href="theme.php" class="me-1">Change theme</a>
+					<a href="version" class="me-1">About</a>
+					<a href="privacy" class="me-1">Privacy policy</a>
+					<a href="theme" class="me-1">Change theme</a>
 				</p>
 			</div>
 		</div>

@@ -10,10 +10,12 @@ require_once dirname(__DIR__) . '/class/common.php';
 
 require_once dirname(__DIR__) . '/class/Pages/UserProfile.php';
 
-$id = ($_GET['name'] ?? null);
+$name = $path[2] ?? null;
+
+if (isset($_GET['name'])) MiscFunctions::redirect('/user/'.$_GET['name']);
 
 try {
-    $page = new \Orange\Pages\UserProfile($orange, $id);
+    $page = new \Orange\Pages\UserProfile($orange, $name);
     $data = $page->getData();
 } catch (OrangeException $e) {
     $e->page();

@@ -206,7 +206,7 @@ class OrangeTwigExtension extends AbstractExtension
         }
 
         return <<<HTML
-<a class="{$class}" href="user.php?name={$user["info"]["username"]}">{$user["info"]["username"]}</a>
+<a class="{$class}" href="/user/{$user["info"]["username"]}">{$user["info"]["username"]}</a>
 HTML;
     }
 
