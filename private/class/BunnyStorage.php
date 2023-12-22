@@ -52,10 +52,11 @@ class BunnyStorage implements Storage
                 'title' => 'Qobo: ' . $new,
             ],
         );
+        $content = file_get_contents($target_file);
         $streamApi->uploadVideo(
             libraryId: $this->streamLibrary,
             videoId: $newVideo->getContents()["guid"],
-            localFilePath: $target_file,
+            body: $content,
             query: [
                 'enabledResolutions' => '240p,360p,480p,720p',
             ],
@@ -98,10 +99,11 @@ class BunnyStorage implements Storage
             }
         }
         $img->save($temp_name, 97, $format);
+        $content = file_get_contents($temp_name);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
             fileName: $target_file,
-            localFilePath: $temp_name,
+            body: $content,
         );
         unlink($temp_name);
     }
@@ -110,17 +112,18 @@ class BunnyStorage implements Storage
         $manager = new ImageManager();
         $target_file = '/dynamic/art/' . $new . '.png';
         $target_thumbnail = '/dynamic/art_thumbnails/' . $new . '.jpg';
-        
+
         $img = $manager->make($temp_name);
         $img->resize(2048, null, function ($constraint) {
             $constraint->aspectRatio();
             $constraint->upsize();
         });
         $img->save(dirname(__DIR__) . '/..' . $target_file);
+        $content = file_get_contents(dirname(__DIR__) . '/..' . $target_file);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
             fileName: $target_file,
-            localFilePath: dirname(__DIR__) . '/..' . $target_file,
+            body: $content,
         );
         unlink(dirname(__DIR__) . '/..' . $target_file);
 
@@ -130,10 +133,11 @@ class BunnyStorage implements Storage
             $constraint->upsize();
         });
         $img->save(dirname(__DIR__) . '/..' . $target_thumbnail);
+        $content = file_get_contents(dirname(__DIR__) . '/..' . $target_thumbnail);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
             fileName: $target_thumbnail,
-            localFilePath: dirname(__DIR__) . '/..' . $target_thumbnail,
+            body: $content,
         );
         unlink(dirname(__DIR__) . '/..' . $target_thumbnail);
     }
