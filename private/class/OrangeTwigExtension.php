@@ -128,6 +128,10 @@ class OrangeTwigExtension extends AbstractExtension
         if ($submission_data["type"] == 2) {
             echo $twig->render("image.twig", ['submission' => $submission_data]);
         }
+
+        if ($submission_data["type"] == 3) {
+            echo $twig->render("music.twig", ['submission' => $submission_data]);
+        }
     }
 
     public function Thumbnail($id, $type)
