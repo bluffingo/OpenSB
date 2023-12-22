@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} - {{ website_branding.name }}</title>
     <link rel="stylesheet" href="img/css/common.css">
-    <link rel="stylesheet" href="theme/famfamfam-silk.min.css">
-    <link rel="stylesheet" href="theme/silk-companion.min.css">
     <meta name="theme-color" content="#DA20EA">
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:url" content="{{ page_url }}">
@@ -123,8 +121,10 @@
         {% endif %}
         {% if session.notif_message %}
             <div class="banner banner-{{ session.notif_color }}">
-                <span class="{{ notification_icon(session.notif_color) }}" style="display: inline-block;"></span>
+                <i class="{{ notification_icon(session.notif_color) }} notification-icon"></i>
+                <span class="notification-text">
                 {{ session.notif_message }}
+                </span>
             </div>
             {{ remove_notification() }}
         {% endif %}

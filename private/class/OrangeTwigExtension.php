@@ -218,9 +218,9 @@ HTML;
 
     public function ShowRatings($ratings): void
     {
-        $full = "silk-companion star_gold";
-        $half = "silk-companion star_gold_half_grey";
-        $empty = "silk-companion star_grey";
+        $full = "bi bi-star-fill rating-spacing";
+        $half = "bi bi-star-half rating-spacing";
+        $empty = "bi bi-star rating-spacing";
 
         $full_stars = substr($ratings["average"], 0, 1);
         $half_stars = substr($ratings["average"], 2, 1);
@@ -229,31 +229,31 @@ HTML;
 
         for ($x = 0; $x < $full_stars; $x++) {
             $number++;
-            echo "<span class='$full'></span>";
+            echo "<i class='$full'></i>";
         }
 
         if ($half_stars) {
             $number++;
             if ($full_stars != 4) {
-                echo "<span class='$half'></span>";
+                echo "<i class='$half'></i>";
             } else {
-                echo "<span class='$full'></span>";
+                echo "<i class='$full'></i>";
             }
         }
 
         while($number != 5) {
             $number++;
-            echo "<span class='$empty'></span>";
+            echo "<i class='$empty'></i>";
         }
 
     }
 
     public function NotificationIcon($type)
     {
-        $icon = "famfamfam-silk information";
+        $icon = "bi bi-info-circle";
 
-        if ($type == "danger") { $icon = "famfamfam-silk exclamation"; }
-        if ($type == "success") { $icon = "famfamfam-silk accept"; }
+        if ($type == "danger") { $icon = "bi bi-x-circle-fill"; }
+        if ($type == "success") { $icon = "bi bi-check-circle-fill"; }
 
         return $icon;
     }

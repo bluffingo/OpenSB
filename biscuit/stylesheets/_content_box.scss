@@ -1,4 +1,4 @@
-div.content-header
+.content-header
 {
     background: $content-box-border-color;
     padding: 6px;
@@ -17,7 +17,7 @@ div.content-header
     }
 }
 
-div.content-header-right
+.content-header-right
 {
     float: right;
     padding: 2px 5px 0px 0px;
@@ -119,13 +119,19 @@ div.content-header-right
     }
 }
 
-div.content-title
+.content-title
 {
     font-size: 13px;
 }
 
-div.content-description
+.content-description
 {
     font-size: 11px;
     margin-bottom: 10px;
+}
+
+.icons {
+    .rating-spacing {
+        margin-right: 3px;
+    }
 }
