@@ -20,7 +20,7 @@ class SubmissionBrowse
     private $limit;
     private $submission_count;
 
-    public function __construct(\Orange\Orange $betty, $type, $page)
+    public function __construct(\Orange\Orange $orange, $type, $page)
     {
         global $auth;
         $this->order = $this->getOrderFromType($type);
@@ -28,7 +28,7 @@ class SubmissionBrowse
 
         $whereRatings = MiscFunctions::whereRatings();
 
-        $this->database = $betty->getBettyDatabase();
+        $this->database = $orange->getDatabase();
         $this->submissions = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings ORDER BY $this->order DESC $this->limit"));
         $this->submission_count = $this->database->result("SELECT COUNT(*) FROM videos");
     }

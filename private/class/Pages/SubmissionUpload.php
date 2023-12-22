@@ -28,27 +28,27 @@ class SubmissionUpload
      */
     private array $supportedImageFormats;
 
-    public function __construct(\Orange\Orange $betty)
+    public function __construct(\Orange\Orange $orange)
     {
         global $disableUploading, $auth, $isDebug;
 
-        $this->orange = $betty;
-        $this->database = $betty->getBettyDatabase();
+        $this->orange = $orange;
+        $this->database = $orange->getDatabase();
 
         $this->supportedVideoFormats = ["mp4", "mkv", "wmv", "flv", "avi", "mov", "3gp"];
         $this->supportedImageFormats = ["png", "jpg", "jpeg"];
         
         if (!$auth->isUserLoggedIn())
         {
-            $betty->Notification("Please login to continue.", "/login.php");
+            $orange->Notification("Please login to continue.", "/login.php");
         }
 
         if ($auth->getUserBanData()) {
-            $betty->Notification("You cannot proceed with this action.", "/");
+            $orange->Notification("You cannot proceed with this action.", "/");
         }
 
         if ($disableUploading) {
-            $betty->Notification("The ability to upload submissions has been disabled.", "/");
+            $orange->Notification("The ability to upload submissions has been disabled.", "/");
         }
 
         if (!$auth->isUserAdmin()) {
@@ -64,7 +64,7 @@ class SubmissionUpload
         global $storage, $auth, $isDebug;
 
         $uploader = $auth->getUserID();
-        $new = $this->orange->randomString(11);
+        $new = MiscFunctions::randomString(11);
 
         $title = ($post_data['title'] ?? null);
         $description = ($post_data['desc'] ?? null);

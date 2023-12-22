@@ -15,7 +15,7 @@ use Orange\SubmissionData;
  *
  * @since Orange 1.0
  */
-class Submission
+class SubmissionView
 {
     private \Orange\Database $database;
     private \Orange\SubmissionData $submission;
@@ -33,28 +33,28 @@ class Submission
     /**
      * @throws OrangeException
      */
-    public function __construct(\Orange\Orange $betty, $id)
+    public function __construct(\Orange\Orange $orange, $id)
     {
         global $auth; // honestly i feel like the whole "getBettyDatabase" shit is so redudant -chaziz 8/23/2023
 
-        $this->database = $betty->getBettyDatabase();
+        $this->database = $orange->getDatabase();
         $this->submission = new \Orange\SubmissionData($this->database, $id);
 
         // check if the submission has been taken down.
         $takedown = $this->submission->getTakedown();
         if ($takedown) {
             // don't load if it has been taken down.
-            $betty->Notification("This submission has been taken down. (" . $takedown["reason"] . ")", "/");
+            $orange->Notification("This submission has been taken down. (" . $takedown["reason"] . ")", "/");
         }
 
         $this->data = $this->submission->getData();
         if (!$this->data) {
-            $betty->Notification("This submission does not exist.", "/");
+            $orange->Notification("This submission does not exist.", "/");
         }
         $this->comments = new Comments($this->database, CommentLocation::Submission, $id);
         $this->author = new User($this->database, $this->data["author"]);
         if ($this->author->isUserBanned()) {
-            $betty->Notification("This submission's author is banned.", "/");
+            $orange->Notification("This submission's author is banned.", "/");
         }
 
         $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$this->data["author"]])['COUNT(user)'];
@@ -75,11 +75,11 @@ class Submission
 
         if ($this->bools["block_guests"] && !$auth->isUserLoggedIn())
         {
-            $betty->Notification("This submission's author has blocked guest access.", "/login.php");
+            $orange->Notification("This submission's author has blocked guest access.", "/login.php");
         }
 
         if (MiscFunctions::RatingToNumber($this->data["rating"]) > MiscFunctions::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
-            $betty->Notification("This submission is not suitable according to your settings.", "/");
+            $orange->Notification("This submission is not suitable according to your settings.", "/");
         }
 
         $ip = MiscFunctions::get_ip_address();

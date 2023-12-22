@@ -20,7 +20,7 @@ class SubmissionSearch
     private $limit;
     private $submission_count;
 
-    public function __construct(\Orange\Orange $betty, $type, $page, $query)
+    public function __construct(\Orange\Orange $orange, $type, $page, $query)
     {
         global $auth;
         $this->order = $this->getOrderFromType($type);
@@ -28,7 +28,7 @@ class SubmissionSearch
 
         $whereRatings = MiscFunctions::whereRatings();
 
-        $this->database = $betty->getBettyDatabase();
+        $this->database = $orange->getDatabase();
         $this->submissions = $this->database->fetchArray(
             $this->database->query(
                 "SELECT v.* FROM videos v WHERE (v.tags LIKE CONCAT('%', ?, '%') OR v.title LIKE CONCAT('%', ?, '%') OR v.description LIKE CONCAT('%', ?, '%')) AND $whereRatings AND v.video_id NOT IN (SELECT submission FROM takedowns) ORDER BY $this->order DESC $this->limit

@@ -28,24 +28,24 @@ class JournalWrite
      */
     private array $supportedImageFormats;
 
-    public function __construct(\Orange\Orange $betty)
+    public function __construct(\Orange\Orange $orange)
     {
         global $disableUploading, $auth, $isDebug;
 
-        $this->orange = $betty;
-        $this->database = $betty->getBettyDatabase();
+        $this->orange = $orange;
+        $this->database = $orange->getDatabase();
         
         if (!$auth->isUserLoggedIn())
         {
-            $betty->Notification("Please login to continue.", "/login.php");
+            $orange->Notification("Please login to continue.", "/login.php");
         }
 
         if ($auth->getUserBanData()) {
-            $betty->Notification("You cannot proceed with this action.", "/");
+            $orange->Notification("You cannot proceed with this action.", "/");
         }
 
         if ($disableUploading) {
-            $betty->Notification("The ability to write journals has been disabled.", "/");
+            $orange->Notification("The ability to write journals has been disabled.", "/");
         }
 
         if ($this->database->result("SELECT COUNT(*) FROM journals WHERE date > ? AND author = ?", [time() - 180 , $auth->getUserID()]) && !$isDebug) {

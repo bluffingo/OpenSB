@@ -2,7 +2,7 @@
 
 namespace openSB\FinaliumApi;
 
-global $auth, $betty;
+global $auth, $orange;
 
 use Orange\MiscFunctions;
 use Orange\NoticeType;
@@ -24,7 +24,7 @@ if ($auth->getUserBanData()) {
     ];
 }
 
-$database = $betty->getBettyDatabase();
+$database = $orange->getDatabase();
 
 function follow($member): array
 {

@@ -22,15 +22,15 @@ class JournalRead
     private mixed $data;
     private User $author;
 
-    public function __construct(\Orange\Orange $betty, $id)
+    public function __construct(\Orange\Orange $orange, $id)
     {
-        $this->orange = $betty;
-        $this->database = $betty->getBettyDatabase();
+        $this->orange = $orange;
+        $this->database = $orange->getDatabase();
         // TODO: JournalData class
         $this->data = $this->database->fetch("SELECT j.* FROM journals j WHERE j.id = ?", [$id]);
 
         if(!$this->data) {
-            $betty->Notification("This journal does not exist.", "/");
+            $orange->Notification("This journal does not exist.", "/");
         }
 
         $this->author = new User($this->database, $this->data["author"]);

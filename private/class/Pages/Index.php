@@ -20,11 +20,11 @@ class Index
     private array $submissions_recent;
     private array $news_recent;
 
-    public function __construct(\Orange\Orange $betty)
+    public function __construct(\Orange\Orange $orange)
     {
         $whereRatings = MiscFunctions::whereRatings();
 
-        $this->database = $betty->getBettyDatabase();
+        $this->database = $orange->getDatabase();
         $this->submissions = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings ORDER BY RAND() LIMIT 24"));
         $this->submissions_recent = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings ORDER BY v.time DESC LIMIT 24"));
         $this->news_recent = $this->database->fetchArray($this->database->query("SELECT j.* FROM journals j WHERE j.is_site_news = 1 ORDER BY j.date DESC LIMIT 3"));

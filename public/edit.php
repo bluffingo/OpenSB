@@ -2,7 +2,7 @@
 
 namespace openSB;
 
-global $betty;
+global $orange;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
 require_once dirname(__DIR__) . '/private/class/Pages/SubmissionEdit.php';
@@ -13,13 +13,13 @@ if (isset($_POST['upload'])) {
     $id = ($_GET['v'] ?? null);
 }
 
-$page = new \Orange\Pages\SubmissionEdit($betty, $id);
+$page = new \Orange\Pages\SubmissionEdit($orange, $id);
 
 if (isset($_POST['upload'])) {
     $page->postData($_POST);
 }
 
-$twig = new \Orange\Templating($betty);
+$twig = new \Orange\Templating($orange);
 echo $twig->render('edit.twig', [
     'data' => $page->getData(),
 ]);

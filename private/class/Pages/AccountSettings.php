@@ -20,25 +20,25 @@ class AccountSettings
     private \Orange\Database $database;
     private \Orange\SubmissionData $submission;
     private mixed $id;
-    private \Orange\Orange $betty;
+    private \Orange\Orange $orange;
     private mixed $data;
 
-    public function __construct(\Orange\Orange $betty)
+    public function __construct(\Orange\Orange $orange)
     {
         global $auth;
 
-        $this->betty = $betty;
-        $this->database = $betty->getBettyDatabase();
+        $this->orange = $orange;
+        $this->database = $orange->getDatabase();
 
         if (!$auth->isUserLoggedIn())
         {
-            $betty->Notification("Please login to continue.", "/login.php");
+            $orange->Notification("Please login to continue.", "/login.php");
         }
 
         // we should let banned users change settings.
         /*
         if ($auth->getUserBanData()) {
-            $betty->Notification("You cannot proceed with this action.", "/");
+            $orange->Notification("You cannot proceed with this action.", "/");
         }
         */
     }
@@ -102,9 +102,9 @@ class AccountSettings
         if (!$error) {
             $this->database->query("UPDATE users SET title = ?, about = ?, comfortable_rating = ? WHERE id = ?",
                 [$title, $about, $rating, $auth->getUserID()]);
-            $this->betty->Notification("Edited successfully!", ("user.php?name=" . $auth->getUserData()["name"]), "success");
+            $this->orange->Notification("Edited successfully!", ("user.php?name=" . $auth->getUserData()["name"]), "success");
         } else {
-            $this->betty->Notification($error, "/settings.php");
+            $this->orange->Notification($error, "/settings.php");
         }
     }
 }

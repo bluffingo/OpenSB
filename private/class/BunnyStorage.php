@@ -34,7 +34,7 @@ class BunnyStorage implements Storage
         $this->streamHostname = $bunnySettings["streamHostname"];
         $this->storageZone = $bunnySettings["storageZone"];
         $this->pullZone = $bunnySettings["pullZone"];
-        $this->database = $orange->getBettyDatabase();
+        $this->database = $orange->getDatabase();
     }
 
     public function processVideo($new, $target_file) {

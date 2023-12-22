@@ -14,16 +14,16 @@ class AccountRegister
     private \Orange\Database $database;
     private \Orange\Orange $orange;
 
-    public function __construct(\Orange\Orange $betty)
+    public function __construct(\Orange\Orange $orange)
     {
         $ipcheck = file_get_contents("https://api.stopforumspam.org/api?ip=" . miscFunctions::get_ip_address());
 
         if (str_contains($ipcheck, "<appears>yes</appears>")) {
-            $betty->Notification("This IP address appears to be suspicious.", "/index.php");
+            $orange->Notification("This IP address appears to be suspicious.", "/index.php");
         }
 
-        $this->database = $betty->getBettyDatabase();
-        $this->orange = $betty;
+        $this->database = $orange->getDatabase();
+        $this->orange = $orange;
     }
 
     public function postData(array $POST)

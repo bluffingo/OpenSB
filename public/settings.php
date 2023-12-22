@@ -2,7 +2,7 @@
 
 namespace openSB;
 
-global $betty;
+global $orange;
 
 use Orange\Templating;
 
@@ -10,12 +10,12 @@ require_once dirname(__DIR__) . '/private/class/common.php';
 
 require_once dirname(__DIR__) . '/private/class/Pages/AccountSettings.php';
 
-$page = new \Orange\Pages\AccountSettings($betty);
+$page = new \Orange\Pages\AccountSettings($orange);
 
 if (isset($_POST['save'])) {
     $page->postData($_POST);
 }
 
-$twig = new Templating($betty);
+$twig = new Templating($orange);
 
 echo $twig->render('settings.twig');

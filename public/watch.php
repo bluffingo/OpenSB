@@ -2,18 +2,18 @@
 
 namespace openSB;
 
-global $betty;
+global $orange;
 
 use \Orange\OrangeException;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-require_once dirname(__DIR__) . '/private/class/Pages/Submission.php';
+require_once dirname(__DIR__) . '/private/class/Pages/SubmissionView.php';
 
 $id = ($_GET['v'] ?? null);
 
 try {
-    $page = new \Orange\Pages\Submission($betty, $id);
+    $page = new \Orange\Pages\SubmissionView($orange, $id);
     $data = $page->getSubmission();
 } catch (OrangeException $e) {
     $e->page();
@@ -75,7 +75,7 @@ $currentTime = time();
 $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
 */
 
-$twig = new \Orange\Templating($betty);
+$twig = new \Orange\Templating($orange);
 
 echo $twig->render('watch.twig', [
     'submission' => $data,

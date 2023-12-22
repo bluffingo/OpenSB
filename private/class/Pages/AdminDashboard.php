@@ -17,15 +17,15 @@ class AdminDashboard
     private \Orange\Database $database;
     private array $data;
 
-    public function __construct(\Orange\Orange $betty, $POST, $GET)
+    public function __construct(\Orange\Orange $orange, $POST, $GET)
     {
         global $auth, $isQoboTV;
         // Honest question: Why the fuck are we using globals for getting shit from config.php? This seems poorly
         // designed. -Bluffingo 12/11/2023
 
-        $this->database = $betty->getBettyDatabase();
+        $this->database = $orange->getDatabase();
         if (!$auth->isUserAdmin()) {
-            $betty->Notification("You do not have permission to access this page", "/");
+            $orange->Notification("You do not have permission to access this page", "/");
         }
 
         // If $isQoboTV is on, just go with January 31st 2021, otherwise and try and guess the instance's creation date
@@ -48,26 +48,26 @@ class AdminDashboard
             if ($POST["action"] == "ban_user") {
                 // Don't ban non-existent users.
                 if (!$this->database->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$POST["user_to_ban"]])) {
-                    $betty->Notification("This user does not exist.", "/admin.php");
+                    $orange->Notification("This user does not exist.", "/admin.php");
                 }
                 // Don't ban mods/admins.
                 if ($this->database->fetch("SELECT u.powerlevel FROM users u WHERE u.name = ?", [$POST["user_to_ban"]])["powerlevel"] != 1) {
-                    $betty->Notification("This user cannot be banned.", "/admin.php");
+                    $orange->Notification("This user cannot be banned.", "/admin.php");
                 }
                 // Check if user is already banned, if not, then ban.
                 $id = $this->database->fetch("SELECT u.id FROM users u WHERE u.name = ?", [$POST["user_to_ban"]])["id"];
                 if ($this->database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$id])) {
-                    $betty->Notification("This user is already banned.", "/admin.php");
+                    $orange->Notification("This user is already banned.", "/admin.php");
                 } else {
                     $this->database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
                         [$id, $POST["reason"], time()]);
-                    $betty->Notification("Banned user!", "/admin.php");
+                    $orange->Notification("Banned user!", "/admin.php");
                 }
             }
         } else if (isset($GET["action"])) {
             if ($GET["action"] == "unban_user") {
                 if ($this->database->query("DELETE FROM bans WHERE userid = ?", [$GET["user"]])) {
-                    $betty->Notification("Unbanned user!", "/admin.php");
+                    $orange->Notification("Unbanned user!", "/admin.php");
                 }
             }
         }

@@ -6,7 +6,7 @@ use JetBrains\PhpStorm\NoReturn;
 use ReturnTypeWillChange;
 
 /**
- * Betty exceptions.
+ * Orange exceptions.
  *
  * @since Orange 1.0
  */
@@ -21,7 +21,7 @@ class OrangeException extends \Exception
     }
 
     /**
-     * Display custom error page. A replacement for openSB's error() function.
+     * Display custom page for exceptions instead of using the frontend.
      *
      * @since Orange 1.0
      *

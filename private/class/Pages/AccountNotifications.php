@@ -13,22 +13,22 @@ use Orange\NoticeType;
  *
  * @since Orange 1.0
  */
-class Notices
+class AccountNotifications
 {
     private \Orange\Database $database;
 
     private $data;
 
-    public function __construct(\Orange\Orange $betty)
+    public function __construct(\Orange\Orange $orange)
     {
         global $auth;
 
         if (!$auth->isUserLoggedIn())
         {
-            $betty->Notification("Please login to continue.", "/login.php");
+            $orange->Notification("Please login to continue.", "/login.php");
         }
 
-        $this->database = $betty->getBettyDatabase();
+        $this->database = $orange->getDatabase();
         $this->data = $this->database->fetchArray($this->database->query("SELECT * FROM notifications WHERE recipient = ? ORDER BY id DESC", [$auth->getUserID()]));
     }
 
@@ -86,10 +86,10 @@ class Notices
 
         switch (NoticeType::from($type)) {
             case NoticeType::CommentSubmission:
-                $intro = "Submission comment by ";
+                $intro = "SubmissionView comment by ";
                 break;
             case NoticeType::CommentProfile:
-                $intro = "Profile comment by ";
+                $intro = "UserProfile comment by ";
                 break;
             case NoticeType::CommentJournal:
                 $intro = "Journal comment by ";

@@ -2,20 +2,20 @@
 
 namespace openSB;
 
-global $betty;
+global $orange;
 require_once dirname(__DIR__) . '/private/class/common.php';
 
 require_once dirname(__DIR__) . '/private/class/Pages/AccountLogin.php';
 
 $error = '';
 
-$page = new \Orange\Pages\AccountLogin($betty);
+$page = new \Orange\Pages\AccountLogin($orange);
 
 if (isset($_POST["loginsubmit"])) {
     $page->postData($_POST);
 }
 
-$twig = new \Orange\Templating($betty);
+$twig = new \Orange\Templating($orange);
 
 echo $twig->render('login.twig', [
     'error' => $error,

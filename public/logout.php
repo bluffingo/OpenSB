@@ -2,8 +2,8 @@
 
 namespace openSB;
 
-global $betty;
+global $orange;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 setcookie("SBTOKEN", "", time() - 3600);
-$betty->Notification("Logged out!", "/", "success");
+$orange->Notification("Logged out!", "/", "success");

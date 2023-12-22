@@ -2,7 +2,7 @@
 
 namespace openSB\FinaliumApi;
 
-global $auth, $betty;
+global $auth, $orange;
 chdir('../../');
 $rawOutputRequired = true;
 require_once dirname(__DIR__) . '/../../private/class/common.php';
@@ -20,7 +20,7 @@ if ($auth->getUserBanData()) {
     ];
 }
 
-$database = $betty->getBettyDatabase();
+$database = $orange->getDatabase();
 
 function rate($number, $submission): array
 {

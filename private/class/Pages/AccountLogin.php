@@ -11,13 +11,13 @@ use Orange\User;
  */
 class AccountLogin
 {
-    private $betty;
+    private $orange;
     private \Orange\Database $database;
 
-    public function __construct(\Orange\Orange $betty)
+    public function __construct(\Orange\Orange $orange)
     {
-        $this->betty = $betty;
-        $this->database = $betty->getBettyDatabase();
+        $this->orange = $orange;
+        $this->database = $orange->getDatabase();
     }
 
     public function postData(array $POST)
@@ -38,7 +38,7 @@ class AccountLogin
                 $ipban = $this->database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$logindata['ip']]);
 
                 if ($ipban) {
-                    $this->betty->Notification("This account's latest IP address is banned.", "/login.php");
+                    $this->orange->Notification("This account's latest IP address is banned.", "/login.php");
                 }
 
                 setcookie('SBTOKEN', $logindata['token'], 2147483647);
@@ -47,10 +47,10 @@ class AccountLogin
 
                 MiscFunctions::redirect('./');
             } else {
-                $this->betty->Notification("Incorrect credentials.", "/login.php");
+                $this->orange->Notification("Incorrect credentials.", "/login.php");
             }
         } else {
-            $this->betty->Notification("Please input your credentials.", "/login.php");
+            $this->orange->Notification("Please input your credentials.", "/login.php");
         }
     }
 }

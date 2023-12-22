@@ -14,7 +14,7 @@ use Orange\SubmissionData;
  *
  * @since Orange 1.0
  */
-class Profile
+class UserProfile
 {
     private \Orange\Database $database;
     private $data;
@@ -25,23 +25,23 @@ class Profile
     private mixed $followers;
     private $followed;
 
-    public function __construct(\Orange\Orange $betty, $username)
+    public function __construct(\Orange\Orange $orange, $username)
     {
         global $auth;
 
         $whereRatings = MiscFunctions::whereRatings();
 
-        $this->database = $betty->getBettyDatabase();
+        $this->database = $orange->getDatabase();
         $this->data = $this->database->fetch("SELECT u.* FROM users u WHERE u.name = ?", [$username]);
 
         if (!$this->data)
         {
-            $betty->Notification("This user does not exist.", "/");
+            $orange->Notification("This user does not exist.", "/");
         }
 
         if ($this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->data["id"]]))
         {
-            $betty->Notification("This user is banned.", "/");
+            $orange->Notification("This user is banned.", "/");
         }
 
         $this->user_submissions =

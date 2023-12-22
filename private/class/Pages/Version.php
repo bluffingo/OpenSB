@@ -13,12 +13,12 @@ use Orange\Database;
  */
 class Version
 {
-    private $betty;
+    private $orange;
     private $database;
-    public function __construct(\Orange\Orange $betty)
+    public function __construct(\Orange\Orange $orange)
     {
-        $this->betty = $betty;
-        $this->database = $betty->getBettyDatabase();
+        $this->orange = $orange;
+        $this->database = $orange->getDatabase();
     }
 
     /**
@@ -57,7 +57,7 @@ class Version
             ],
             'bettyVersion' => [
                 'title' => "OpenSB",
-                'info' => $this->betty->getBettyVersion(),
+                'info' => $this->orange->getVersionString(),
             ],
         ];
     }

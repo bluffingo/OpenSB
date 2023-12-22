@@ -2,22 +2,22 @@
 
 namespace openSB;
 
-global $betty;
+global $orange;
 
 use Orange\Templating;
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-$twig = new Templating($betty);
+$twig = new Templating($orange);
 
 if (isset($_POST['apply'])) {
-    $options = $betty->getLocalOptions();
+    $options = $orange->getLocalOptions();
 
     $options["skin"] = $_POST["theme"];
 
     setcookie("SBOPTIONS", base64_encode(json_encode($options)), 2147483647);
 
-    $betty->Notification("Successfully changed your theme.", "/index.php", "success");
+    $orange->Notification("Successfully changed your theme.", "/index.php", "success");
 }
 
 echo $twig->render('theme.twig');

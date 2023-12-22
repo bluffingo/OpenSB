@@ -2,7 +2,7 @@
 
 namespace openSB;
 
-global $betty;
+global $orange;
 
 use Orange\OrangeException;
 use Orange\Templating;
@@ -16,13 +16,13 @@ $type = ($_GET['type'] ?? 'recent');
 $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
 try {
-    $page = new \Orange\Pages\SubmissionSearch($betty, $type, $page_number, $query);
+    $page = new \Orange\Pages\SubmissionSearch($orange, $type, $page_number, $query);
     $data = $page->getData();
 } catch (OrangeException $e) {
     $e->page();
 }
 
-$twig = new Templating($betty);
+$twig = new Templating($orange);
 
 echo $twig->render('browse.twig', [
     'data' => $data,

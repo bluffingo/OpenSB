@@ -75,7 +75,7 @@ class Templating
         $this->twig->addGlobal('user_ban_data', $auth->getUserBanData());
         $this->twig->addGlobal('user_notice_data', $auth->getUserNoticesCount());
         $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
-        $this->twig->addGlobal('squarebracket_version', $betty->getBettyVersion());
+        $this->twig->addGlobal('squarebracket_version', $betty->getVersionString());
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('website_branding', $branding);
         $this->twig->addGlobal('ad_client', $googleAdsClient);
