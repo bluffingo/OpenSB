@@ -1,14 +1,14 @@
 <?php
 
-namespace openSB;
+namespace Orange;
 
 global $orange;
 
 use \Orange\OrangeException;
 
-require_once dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/class/common.php';
 
-require_once dirname(__DIR__) . '/private/class/Pages/SubmissionView.php';
+require_once dirname(__DIR__) . '/class/Pages/SubmissionView.php';
 
 $id = ($_GET['v'] ?? null);
 

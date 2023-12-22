@@ -1,11 +1,11 @@
 <?php
 
-namespace openSB;
+namespace Orange;
 
 global $orange;
-require_once dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/class/common.php';
 
-require_once dirname(__DIR__) . '/private/class/Pages/SubmissionEdit.php';
+require_once dirname(__DIR__) . '/class/Pages/SubmissionEdit.php';
 
 if (isset($_POST['upload'])) {
     $id = ($_POST['vid_id'] ?? null);

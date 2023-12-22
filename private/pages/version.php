@@ -1,11 +1,11 @@
 <?php
 
-namespace openSB;
+namespace Orange;
 
 global $orange, $bettyTemplate, $opensb_version;
-require_once dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/class/common.php';
 
-require_once dirname(__DIR__) . '/private/class/Pages/Version.php';
+require_once dirname(__DIR__) . '/class/Pages/Version.php';
 
 $page = new \Orange\Pages\Version($orange);
 $twig = new \Orange\Templating($orange);

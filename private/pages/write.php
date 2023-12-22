@@ -1,14 +1,14 @@
 <?php
 
-namespace openSB;
+namespace Orange;
 
 global $orange;
 
 use Orange\Templating;
 
-require_once dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/class/common.php';
 
-require_once dirname(__DIR__) . '/private/class/Pages/JournalWrite.php';
+require_once dirname(__DIR__) . '/class/Pages/JournalWrite.php';
 
 $page = new \Orange\Pages\JournalWrite($orange);
 

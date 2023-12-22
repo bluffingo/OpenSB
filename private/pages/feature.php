@@ -1,9 +1,9 @@
 <?php
 
-namespace openSB;
+namespace Orange;
 
 global $orange, $auth;
-require_once dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/class/common.php';
 
 $id = ($_GET['v'] ?? null);
 $db = $orange->getDatabase();

@@ -72,9 +72,13 @@ class MiscFunctions
         return $_SERVER['REMOTE_ADDR'];
     }
 
-    public static function redirect($url)
-    {
-        header(sprintf('Location: %s', $url));
+    public static function redirect($url, ...$args) {
+        header('Location: '.sprintf($url, ...$args));
+        die();
+    }
+
+    public static function redirectPerma($url, ...$args) {
+        header('Location: '.sprintf($url, ...$args), true, 301);
         die();
     }
 

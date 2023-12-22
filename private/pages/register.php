@@ -1,12 +1,12 @@
 <?php
 
-namespace openSB;
+namespace Orange;
 
 global $gump, $orange;
 
-require_once dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/class/common.php';
 
-require_once dirname(__DIR__) . '/private/class/Pages/AccountRegister.php';
+require_once dirname(__DIR__) . '/class/Pages/AccountRegister.php';
 
 $page = new \Orange\Pages\AccountRegister($orange);
 

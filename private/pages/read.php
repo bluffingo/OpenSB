@@ -1,14 +1,14 @@
 <?php
 
-namespace openSB;
+namespace Orange;
 
 global $orange;
 
 use \Orange\OrangeException;
 
-require_once dirname(__DIR__) . '/private/class/common.php';
+require_once dirname(__DIR__) . '/class/common.php';
 
-require_once dirname(__DIR__) . '/private/class/Pages/JournalRead.php';
+require_once dirname(__DIR__) . '/class/Pages/JournalRead.php';
 
 $id = ($_GET['j'] ?? null);
 
