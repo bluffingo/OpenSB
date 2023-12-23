@@ -87,6 +87,8 @@ class MiscFunctions
         $submissionsData = [];
         foreach ($submissions as $submission) {
 
+            $bools = MiscFunctions::submissionBitmaskToArray($submission["flags"]);
+
             $ratingData = [
                 "1" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$submission["id"]]),
                 "2" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$submission["id"]]),
@@ -109,6 +111,7 @@ class MiscFunctions
                     "type" => $submission["post_type"],
                     "content_rating" => $submission["rating"],
                     "views" => $views,
+                    "flags" => $bools,
                     "author" => [
                         "id" => $submission["author"],
                         "info" => $userData->getUserArray(),
@@ -211,5 +214,16 @@ class MiscFunctions
     public static function randomString($length)
     {
         return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"),0,$length);
+    }
+
+    public static function submissionBitmaskToArray($bitmask)
+    {
+        return [
+            "featured" => (bool)($bitmask & 1),
+            "unprocessed" => (bool)($bitmask & 2),
+            "block_guests" => (bool)($bitmask & 4),
+            "block_comments" => (bool)($bitmask & 8),
+            "custom_thumbnail" => (bool)($bitmask & 16),
+        ];
     }
 }

@@ -103,7 +103,7 @@
                 <div class="text-title">Featured submission</div>
                 <div class="profile-featured-submission">
                     <a href="/view/{{ data.featured_submission.id }}">
-                        <img src="{{ thumbnail(data.featured_submission.id, data.featured_submission.type) }}"
+                        <img src="{{ thumbnail(data.featured_submission.id, data.featured_submission.type, data.featured_submission.bools.custom_thumbnail) }}"
                              alt="{{ data.featured_submission.title }}">
                     </a>
                     <div class="profile-featured-submission-title">

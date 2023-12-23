@@ -28,6 +28,9 @@ class SubmissionData
     // 00001000: "Block users from commenting in this submission"
     public const FLAG_BLOCK_COMMENTS = 8;
 
+    // 00010000: "Submission has custom thumbnail"
+    public const FLAG_CUSTOM_THUMBNAIL = 16;
+
     public function __construct(\Orange\Database $database, $id)
     {
         $this->database = $database;
@@ -60,6 +63,7 @@ class SubmissionData
             "unprocessed" => (bool)($this->data["flags"] & $this::FLAG_UNPROCESSED),
             "block_guests" => (bool)($this->data["flags"] & $this::FLAG_BLOCK_GUESTS),
             "block_comments" => (bool)($this->data["flags"] & $this::FLAG_BLOCK_COMMENTS),
+            "custom_thumbnail" => (bool)($this->data["flags"] & $this::FLAG_CUSTOM_THUMBNAIL),
         ];
     }
 }

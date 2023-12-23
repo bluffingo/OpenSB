@@ -4,7 +4,7 @@
 			<div class="col-5">
 				<a href="view/{{ submission.id }}">
 					<div class="img-thumbnail" style="margin-bottom:0">
-						<img class="img-fluid" src="{{ thumbnail(submission.id, submission.type) }}">
+						<img class="img-fluid" src="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}">
 					</div>
 				</a>
 			</div>

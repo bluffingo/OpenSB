@@ -134,7 +134,7 @@ class OrangeTwigExtension extends AbstractExtension
         }
     }
 
-    public function Thumbnail($id, $type)
+    public function Thumbnail($id, $type, $custom)
     {
         global $isQoboTV, $storage, $bunnySettings;
 
@@ -142,11 +142,13 @@ class OrangeTwigExtension extends AbstractExtension
 
         $data = null;
 
-        if ($storage->fileExists('..' . $custom_location)) {
-            if ($isQoboTV) {
-                $data = "https://" . $bunnySettings["pullZone"] . $custom_location;
-            } else {
-                $data = $custom_location;
+        if ($custom) {
+            if ($storage->fileExists('..' . $custom_location)) {
+                if ($isQoboTV) {
+                    $data = "https://" . $bunnySettings["pullZone"] . $custom_location;
+                } else {
+                    $data = $custom_location;
+                }
             }
         } else {
             if ($type == 0) {
@@ -156,6 +158,7 @@ class OrangeTwigExtension extends AbstractExtension
                 $data = $storage->getImageThumbnail($id);
             }
         }
+
         return $data;
     }
 
