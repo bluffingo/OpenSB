@@ -71,8 +71,16 @@ if (!defined("SB_MEDIAWIKI")) {
     }
 
     if ($isQoboTV) {
-        $storage = new \Orange\BunnyStorage($orange);
+        if ($useMuffinCDN) {
+            $storage = new \Orange\MuffinStorage($orange);
+        } else {
+            $storage = new \Orange\BunnyStorage($orange);
+        }
     } else {
-        $storage = new \Orange\LocalStorage($orange);
+        if ($useMuffinCDN) {
+            throw new OrangeException("The MuffinCDN interface can only be used in Qobo mode");
+        } else {
+            $storage = new \Orange\LocalStorage($orange);
+        }
     }
 }

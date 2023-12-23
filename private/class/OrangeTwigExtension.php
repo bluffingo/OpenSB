@@ -161,12 +161,16 @@ class OrangeTwigExtension extends AbstractExtension
 
     public function ProfilePicture($username)
     {
-        global $isQoboTV, $bunnySettings, $storage;
+        global $isQoboTV, $bunnySettings, $storage, $muffinSettings, $useMuffinCDN;
         $location = '/dynamic/pfp/' . $username . '.png';
 
         if($storage->fileExists('..' . $location)) {
             if ($isQoboTV) {
-                $data = "https://" . $bunnySettings["pullZone"] . $location;
+                if ($useMuffinCDN) {
+                    $data = $muffinSettings["muffURL"] . "/get_file.php?file=" . 'pfp/' . $username . '.png';
+                } else {
+                    $data = "https://" . $bunnySettings["pullZone"] . $location;
+                }
             } else {
                 $data = $location;
             }

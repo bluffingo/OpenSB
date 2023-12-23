@@ -151,6 +151,12 @@ hr {
 	}
 }
 
+.xdebug-var-dump {
+	border: 1px solid $content-box-border-color;
+	background: $content-box-background-color;
+	margin: 5px;
+}
+
 @import 'header';
 @import 'footer';
 @import 'page';
