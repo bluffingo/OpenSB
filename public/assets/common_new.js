@@ -12,6 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const menuId = button.getAttribute('data-menu-id');
         const menu = document.getElementById(menuId);
 
+        // Show the menu on mobile when the button is tapped.
+        button.addEventListener('touchstart', () => {
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
+        });
+
         // Show the menu when hovering over the button or the menu
         button.addEventListener('mouseenter', () => {
             menu.style.display = 'block';
