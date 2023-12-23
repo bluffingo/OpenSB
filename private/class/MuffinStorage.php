@@ -8,6 +8,10 @@ class MuffinStorage implements Storage
 {
     private \Symfony\Contracts\HttpClient\HttpClientInterface $muffinClient;
     private BunnyStorage $bunnyFallback;
+    /**
+     * @var string[]
+     */
+    private array $settings;
 
     public function __construct(Orange $orange) {
         global $muffinSettings;
@@ -17,19 +21,23 @@ class MuffinStorage implements Storage
             'extra' => ['key' => $muffinSettings["muffAPI"]],
         ]);
         $this->bunnyFallback = new BunnyStorage($orange);
+        $this->settings = $muffinSettings;
     }
 
+    // Video processing is still done under BunnyCDN due to its reliability.
     public function processVideo($new, $target_file) {
-        // Video processing is still done under BunnyCDN due to its reliability.
         $this->bunnyFallback->processVideo($new, $target_file);
     }
 
+    // Video thumbnails are also done by BunnyCDN.
     public function getVideoThumbnail($id) {
-        return false;
+        return $this->bunnyFallback->getVideoThumbnail($id);
     }
 
     public function getImageThumbnail($id) {
-        return false;
+        if ($this->fileExists("/art_thumbnails/" . $id  . ".jpg")) {
+            return $this->settings["muffURL"] . "/get_file.php?file=art_thumbnails/" . $id  . ".jpg";
+        }
     }
 
     public function fileExists($file) {
