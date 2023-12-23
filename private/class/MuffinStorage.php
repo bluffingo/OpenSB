@@ -98,12 +98,12 @@ class MuffinStorage implements Storage
             $constraint->upsize();
         });
         $img->save(dirname(__DIR__) . '/..' . $target_file);
-        $content = file_get_contents(dirname(__DIR__) . '/..' . $target_file);
+        $fileHandle = fopen(dirname(__DIR__) . '/..' . $target_file, 'r');
 
         $response = $this->muffinClient->request('POST', '/upload_file.php', [
             'body' => [
                 'name' => $target_file,
-                'file' => $content,
+                'file' => $fileHandle,
                 'folder' => "art",
             ],
         ]);
@@ -116,12 +116,12 @@ class MuffinStorage implements Storage
             $constraint->upsize();
         });
         $img->save(dirname(__DIR__) . '/..' . $target_thumbnail);
-        $content = file_get_contents(dirname(__DIR__) . '/..' . $target_thumbnail);
+        $fileHandle = fopen(dirname(__DIR__) . '/..' . $target_thumbnail, 'r');
 
         $response = $this->muffinClient->request('POST', '/upload_file.php', [
             'body' => [
                 'name' => $target_thumbnail,
-                'file' => $content,
+                'file' => $fileHandle,
                 'folder' => "art_thumbnails",
             ],
         ]);

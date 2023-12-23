@@ -18,7 +18,7 @@ class MiscFunctions
      */
     public static function getSubmissionFile(array|bool $submission): array|string|null
     {
-        global $isQoboTV, $bunnySettings;
+        global $isQoboTV, $bunnySettings, $useMuffinCDN, $muffinSettings;
         if ($submission == null)
         {
             return null;
@@ -29,8 +29,12 @@ class MiscFunctions
                 // videofile on videos using bunnycdn are the guid, don't ask me why. -grkb 4/8/2023
                 return "https://" . $bunnySettings["streamHostname"] . "/" . $submission["videofile"] . "/playlist.m3u8";
             } elseif ($submission['post_type'] == 2) {
-                // https://qobo-grkb.b-cdn.net/dynamic/art/f_eKEJNj4bm.png
-                return "https://" . $bunnySettings["pullZone"] . $submission["videofile"];
+                if ($useMuffinCDN) {
+                    return $muffinSettings["muffURL"] . $submission["videofile"];
+                } else {
+                    // https://qobo-grkb.b-cdn.net/dynamic/art/f_eKEJNj4bm.png
+                    return "https://" . $bunnySettings["pullZone"] . $submission["videofile"];
+                }
             }
         }
         return $submission['videofile'];
