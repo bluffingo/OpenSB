@@ -1,0 +1,26 @@
+/* Style for the menu */
+.menu {
+  display: none;
+  position: absolute;
+  background-color: $content-box-background-color;
+  border: 1px solid $content-box-border-color;
+  border-radius: $content-box-roundness;
+  padding: 5px 10px;
+  min-width: 100px;
+  z-index: 5259;
+
+  .menu-item-button {
+    display: block;
+    text-align: left;
+    padding: 5px 0;
+    color: rgba(white, 80%);
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+/* Style for the button */
+.menuButton {
+  cursor: pointer;
+}

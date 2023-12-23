@@ -9,13 +9,6 @@ $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $path = explode('/', $uri);
 
 require_once dirname(__DIR__) . '/private/class/common.php';
-
-var_dump($path);
-echo("<br>");
-var_dump($_GET);
-echo("<br>");
-var_dump($_POST);
-
 function rewritePHP(): void
 {
     if (str_contains($_SERVER["REQUEST_URI"], '.php'))

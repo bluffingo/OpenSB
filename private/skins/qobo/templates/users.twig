@@ -1,11 +1,11 @@
 {% extends "_layout.twig" %}
 
-{% set title = "Users" %}
+{% set title = "Members" %}
 
 	{% block content %}
 		<div class="section">
 			<div class="section-title">
-				<h1>Users ({{ users.total }})</h1>
+				<h1>Members ({{ users.total }})</h1>
 			</div>
 			<div class="content-box">
 				{% for user in users.users %}
