@@ -89,14 +89,12 @@ class BunnyStorage implements Storage
         $manager = new ImageManager();
         $img = $manager->make($temp_name);
         if ($resize) {
-            if ($resize) {
-                $img->resize($width, $height);
-            } else {
-                $img->resize($width, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                });
-            }
+            $img->resize($width, $height);
+        } else {
+            $img->resize($width, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
         }
         $img->save($temp_name, 97, $format);
         $content = file_get_contents($temp_name);

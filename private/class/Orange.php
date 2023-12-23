@@ -74,9 +74,9 @@ class Orange {
 
             $hash = substr($commit, 0, 7);
 
-            $this->version = sprintf('Orange %s.%s-%s', $version, $hash, $gitBranch);
+            $this->version = sprintf('%s.%s-%s', $version, $hash, $gitBranch);
         } else {
-            $this->version = sprintf('Orange %s (Non-source copy)', $version);
+            $this->version = sprintf('%s (Non-source copy)', $version);
         }
     }
 
