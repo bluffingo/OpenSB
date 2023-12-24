@@ -39,7 +39,7 @@ class MuffinStorage implements Storage
 
     public function getImageThumbnail($id) {
         if ($this->fileExists("/art_thumbnails/" . $id  . ".jpg")) {
-            return $this->settings["muffURL"] . "/get_file.php?file=art_thumbnails/" . $id  . ".jpg";
+            return $this->settings["muffURL"] . "/dynamic/art_thumbnails/" . $id  . ".jpg";
         }
     }
 

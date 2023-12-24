@@ -170,7 +170,7 @@ class OrangeTwigExtension extends AbstractExtension
         if($storage->fileExists('..' . $location)) {
             if ($isQoboTV) {
                 if ($useMuffinCDN) {
-                    $data = $muffinSettings["muffURL"] . "/get_file.php?file=" . 'pfp/' . $username . '.png';
+                    $data = $muffinSettings["muffURL"] . '/dynamic/pfp/' . $username . '.png';
                 } else {
                     $data = "https://" . $bunnySettings["pullZone"] . $location;
                 }
