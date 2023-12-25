@@ -1,40 +1,38 @@
 # Qobo Upload Guidelines 
-Last edited by Bluffingo on December 17th 2023
+Last edited by Bluffingo on December 25th 2023.
 
 ## What we don't allow
-**If you upload anything that falls under this list, your accounts will be terminated.**
+**If you upload anything that falls under this list, your accounts will most likely be terminated.**
 
-* Anything not deemed suitable to advertisers.
-* Mature-rated content featuring minors (***INCLUDING FICTIONAL***)
-* "Morally incorrect" content (gore, deaths, abuse, rape)
-* Extremely edgy/Politically incorrect content ("Moonman", Nazi symbols, racism)
+* Content intended for children. We are not babysitters.
+* Mature-rated submissions depicting/featuring minors, real or not. Even if it's like a thousand years old and yet it looks like a child, we won't allow it.
+* Shock content (Real gore, people dying).
+* Non-consenting content (Rape, leaking personal information).
+* Edgy, politically-incorrect content (Nazism, racism, bigotry).
 
 ## Videos
-* Only upload videos created by you. We will take down any reuploads of videos clearly not done by you. (This does not apply to video submissions uploaded prior to April 2023)
-* * Modifying the copyrighted material to be parodic (akin to a YTP) or a "remix" should be fine, but you must not use automatic tools (VEG replaces for example).
+* Only upload videos that you have created yourself. Any reuploads of videos not made by you will be taken down. However, an exception is made for memes. This does not apply to Qobo submissions uploaded before April 2023.
+* Parody edits of copyrighted material (known as YTPs) are allowed.
 
-## Images/Artwork
-* Fan-art depicting copyrighted characters are allowed.
-* It is forbidden to upload images done using any kind of AI, even partially.
-* Images that are traced off someone else's image are not allowed.
-* Do not reupload any images not created by you.
-* You are allowed to upload anything made **for you** that's a result of a gift/commission/trade/YCH (Your Character Here), However, you must get permission and are required to credit whoever made it, and preferably link to the original, even if it's not on Qobo.
-* * An exception is allowed regarding linking the original from outside Qobo if the author doesn't allow guests to view that submission.
+## Images and drawings
+* Fan-art featuring copyrighted characters is permitted.
+* It is forbidden to upload images generated using AI, except for drawings made using an AI-generated image as a reference.
+* Tracing images from someone else's work is not allowed.
+* Only upload images that you have created. Do not reupload images created by others.
+* You can upload content made for you as a gift, commission, trade, or YCH, but you need permission, must credit the creator, and preferably provide a link to the original. An exception is allowed if the original submission cannot be linked if it's site requires an account to access it.
 
 ## Content ratings
-Note that your submission may be viewed by less users if your rating is higher. ***This is not to be confused with the star-rating system***
+Note that your submission will be seen by fewer people if it's content rating is higher. This is not to be confused with the star-rating system.
 
-In order to see Questionable and Mature content, you ***must*** have be logged in and change your "Comfortable Ratings" setting in your Settings page.
+In order to view Questionable and Mature content on Qobo, you must be logged in and change your "Comfortable Rating" setting in your Settings page.
 
-### General
-(Please note that content intended for children is forbidden)
+### General rating
+* General submissions should not have any references or depictions to fetishes and inappropriate content.
 
-General-rated submissions should NOT have any use/reference to fetishes or any stuff deemed inappropriate.
+### Questionable rating
+* Questionable submissions can have references/depictions to fetishes and inappropriate content.
+* Questionable submissions must not depict sexual situations (sexual pleasure, horniness).
 
-### Questionable
-Questionable-rated submissions have more freedom to include most forms of inappropriate content. However, you must not depict anything sexual (being turned on, sexual pleasure, etc.).
-
-### Mature
-This rating should be used for submissions that are either ***completely*** sexual in nature or include nudity. 
-
-However, please note that Qobo is not intended to be a porn site. As such, we ***forbid*** any real-life videos and photos.
+### Mature rating
+* Mature submissions can have references/depictions to sexual situations and nudity.
+* Real-life videos and photos are not allowed.
