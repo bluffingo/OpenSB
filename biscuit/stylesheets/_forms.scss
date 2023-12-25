@@ -19,6 +19,9 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  &.edit-page {
+    width: 300px;
+  }
 }
 
 label {
