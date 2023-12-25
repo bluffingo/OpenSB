@@ -6,8 +6,8 @@
 <form action="settings" method="post" enctype="multipart/form-data">
 	<div class="card">
 		<div class="card-body">
-			<h5 class="card-title">Ratings</h5>
-			<p class="card-text">Choose the option you are the most comfortable with. Higher rating submissions may not be appropriate.</p>
+			<h5 class="card-title">Audience rating</h5>
+			<p class="card-text">Choose the highest audience rating you are most comfortable with. Higher rating submissions may not be appropriate.</p>
 			<select class="form-select" name="rating" id="rating">
 				<option value="general" {% if user_data.comfortable_rating == "general" %}selected{% endif %}>General</option>
 				<option value="questionable" {% if user_data.comfortable_rating == "questionable" %}selected{% endif %}>Questionable</option>
