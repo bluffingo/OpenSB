@@ -2,17 +2,27 @@
 namespace Orange;
 
 use Orange\Database;
+use Orange\SiteSettings;
 use Orange\Utilities;
 use Orange\OrangeException;
 
 /**
+ * The core Orange class.
+ *
  * @since Orange 1.0
  */
 class Orange {
     private \Orange\Database $database;
+    private \Orange\SiteSettings $settings;
     private string $version;
     public array $options;
 
+
+    /**
+     * Initialize core Orange classes.
+     *
+     * @since Orange 1.0
+     */
     public function __construct($host, $user, $pass, $db) {
         $this->makeVersionString();
 
@@ -23,20 +33,16 @@ class Orange {
             $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
         }
 
-        // should not be enabled on qobo.tv
-        if ($_SERVER['HTTP_HOST'] == "localhost" || $_SERVER['HTTP_HOST'] == "127.0.0.1") {
-            $this->options["development"] = true;
-        }
-
         try {
             $this->database = new \Orange\Database($host, $user, $pass, $db);
+            $this->settings = new \Orange\SiteSettings($this->database);
         } catch (OrangeException $e) {
             $e->page();
         }
     }
 
     /**
-     * Returns the database for other Orange classes to use.
+     * Returns the database class for other Orange classes to use.
      *
      * @since Orange 1.0
      *
@@ -44,6 +50,17 @@ class Orange {
      */
     public function getDatabase(): \Orange\Database {
         return $this->database;
+    }
+
+    /**
+     * Returns the site settings class for other Orange classes to use.
+     *
+     * @since Orange 1.1
+     *
+     * @return SiteSettings
+     */
+    public function getSettings(): \Orange\SiteSettings {
+        return $this->settings;
     }
 
     /**

@@ -19,11 +19,11 @@ class Templating
     private FilesystemLoader $loader;
     private Environment $twig;
 
-    public function __construct(\Orange\Orange $betty)
+    public function __construct(\Orange\Orange $orange)
     {
         global $isQoboTV, $auth, $bettyTemplate, $isDebug, $branding, $googleAdsClient;
         chdir(__DIR__ . '/..');
-        $this->skin = $betty->getLocalOptions()["skin"] ?? $bettyTemplate;
+        $this->skin = $orange->getLocalOptions()["skin"] ?? $bettyTemplate;
 
         if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
@@ -75,11 +75,11 @@ class Templating
         $this->twig->addGlobal('user_ban_data', $auth->getUserBanData());
         $this->twig->addGlobal('user_notice_data', $auth->getUserNoticesCount());
         $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
-        $this->twig->addGlobal('squarebracket_version', $betty->getVersionString());
+        $this->twig->addGlobal('squarebracket_version', $orange->getVersionString());
         $this->twig->addGlobal('session', $_SESSION);
-        $this->twig->addGlobal('website_branding', $branding);
+        $this->twig->addGlobal('website_branding', $orange->getSettings()->getBrandingSettings());
         $this->twig->addGlobal('ad_client', $googleAdsClient);
-        $this->twig->addGlobal('show_work_in_progress_stuff', ($betty->getLocalOptions()["development"] ?? false));
+        $this->twig->addGlobal('show_work_in_progress_stuff', ($orange->getSettings()->getDevelopmentMode()));
 
         $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         $this->twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");

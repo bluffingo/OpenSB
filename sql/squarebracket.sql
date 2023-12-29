@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2023 at 11:24 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Dec 29, 2023 at 09:54 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -187,6 +187,19 @@ CREATE TABLE `rating` (
   `video` bigint(20) UNSIGNED NOT NULL COMMENT 'Video that is being rated.',
   `rating` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '1 for like, 0 for dislike.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `site_settings`
+--
+
+CREATE TABLE `site_settings` (
+  `development` tinyint(1) NOT NULL,
+  `maintenance` tinyint(1) NOT NULL,
+  `branding_name` varchar(64) NOT NULL,
+  `branding_assets` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 

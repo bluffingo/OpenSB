@@ -31,7 +31,7 @@ $auth = new \Orange\Authentication($orange->getDatabase(), $_COOKIE['SBTOKEN'] ?
 $profiler = new \Orange\Profiler();
 $gump = new GUMP('en');
 
-if ($isMaintenance) {
+if ($orange->getSettings()->getMaintenanceMode()) {
     $twig = new \Orange\Templating($orange);
     echo $twig->render("error.twig", [
         "error_title" => "Offline",
