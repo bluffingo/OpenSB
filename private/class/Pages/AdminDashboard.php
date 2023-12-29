@@ -25,7 +25,7 @@ class AdminDashboard
 
         $this->database = $orange->getDatabase();
         if (!$auth->isUserAdmin()) {
-            $orange->Notification("You do not have permission to access this page", "/");
+            Utilities::Notification("You do not have permission to access this page", "/");
         }
 
         // If $isQoboTV is on, just go with January 31st 2021, otherwise and try and guess the instance's creation date
@@ -48,26 +48,26 @@ class AdminDashboard
             if ($POST["action"] == "ban_user") {
                 // Don't ban non-existent users.
                 if (!$this->database->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$POST["user_to_ban"]])) {
-                    $orange->Notification("This user does not exist.", "/admin.php");
+                    Utilities::Notification("This user does not exist.", "/admin.php");
                 }
                 // Don't ban mods/admins.
                 if ($this->database->fetch("SELECT u.powerlevel FROM users u WHERE u.name = ?", [$POST["user_to_ban"]])["powerlevel"] != 1) {
-                    $orange->Notification("This user cannot be banned.", "/admin.php");
+                    Utilities::Notification("This user cannot be banned.", "/admin.php");
                 }
                 // Check if user is already banned, if not, then ban.
                 $id = $this->database->fetch("SELECT u.id FROM users u WHERE u.name = ?", [$POST["user_to_ban"]])["id"];
                 if ($this->database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$id])) {
-                    $orange->Notification("This user is already banned.", "/admin.php");
+                    Utilities::Notification("This user is already banned.", "/admin.php");
                 } else {
                     $this->database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
                         [$id, $POST["reason"], time()]);
-                    $orange->Notification("Banned user!", "/admin.php");
+                    Utilities::Notification("Banned user!", "/admin.php");
                 }
             }
         } else if (isset($GET["action"])) {
             if ($GET["action"] == "unban_user") {
                 if ($this->database->query("DELETE FROM bans WHERE userid = ?", [$GET["user"]])) {
-                    $orange->Notification("Unbanned user!", "/admin.php");
+                    Utilities::Notification("Unbanned user!", "/admin.php");
                 }
             }
         }
@@ -97,11 +97,11 @@ class AdminDashboard
                 "uname" => php_uname(),
             ],
             "graph_data" => [
-                "users" => $this->getUserGraph(),
-                "submissions" => $this->getVideoGraph(),
-                "comments" => $this->getCommentGraph(),
-                "shouts" => $this->getShoutsGraph(),
-                "journals" => $this->getJournalGraph(),
+                "users" => $this->makeRunningTotalGraph('users', 'joined'),
+                "submissions" => $this->makeRunningTotalGraph('videos', 'time'),
+                "comments" => $this->makeRunningTotalGraph('comments', 'date'),
+                "shouts" => $this->makeRunningTotalGraph('channel_comments', 'date'),
+                "journals" => $this->makeRunningTotalGraph('journals', 'date'),
             ],
             "bans" => $bannedUserData,
             "time" => [
@@ -117,98 +117,21 @@ class AdminDashboard
         return $this->data;
     }
 
-    private function getVideoGraph(): array
+    /**
+     * Based on the implementation in principia-web. Originally, this was 5 slightly different duplicated functions.
+     *
+     * @since Orange 1.1
+     */
+    private function makeRunningTotalGraph($table, $orderfield): array
     {
         $this->database->query("SET @runningTotal = 0;");
-        $videoData = $this->database->query("
-SELECT 
-    time,
-    num_interactions,
-    @runningTotal := @runningTotal + totals.num_interactions AS runningTotal
-FROM
-(SELECT 
-    FROM_UNIXTIME(time) AS time,
-    COUNT(*) AS num_interactions
-FROM videos AS e
-GROUP BY DATE(FROM_UNIXTIME(e.time))) totals
-ORDER BY time;");
-        $videos = $this->database->fetchArray($videoData);
-        return $videos;
-    }
-
-    private function getCommentGraph(): array
-    {
-        $this->database->query("SET @runningTotal = 0;");
-        $videoData = $this->database->query("
-SELECT 
-    date,
-    num_interactions,
-    @runningTotal := @runningTotal + totals.num_interactions AS runningTotal
-FROM
-(SELECT 
-    FROM_UNIXTIME(date) AS date,
-    COUNT(*) AS num_interactions
-FROM comments AS e
-GROUP BY DATE(FROM_UNIXTIME(e.date))) totals
-ORDER BY date;");
-        $videos = $this->database->fetchArray($videoData);
-        return $videos;
-    }
-
-    private function getShoutsGraph(): array
-    {
-        $this->database->query("SET @runningTotal = 0;");
-        $videoData = $this->database->query("
-SELECT 
-    date,
-    num_interactions,
-    @runningTotal := @runningTotal + totals.num_interactions AS runningTotal
-FROM
-(SELECT 
-    FROM_UNIXTIME(date) AS date,
-    COUNT(*) AS num_interactions
-FROM channel_comments AS e
-GROUP BY DATE(FROM_UNIXTIME(e.date))) totals
-ORDER BY date;");
-        $videos = $this->database->fetchArray($videoData);
-        return $videos;
-    }
-
-    private function getUserGraph(): array
-    {
-        $this->database->query("SET @runningTotal = 0;");
-        $userData = $this->database->query("
-SELECT 
-    joined,
-    num_interactions,
-    @runningTotal := @runningTotal + totals.num_interactions AS runningTotal
-FROM
-(SELECT 
-    FROM_UNIXTIME(joined) AS joined,
-    COUNT(*) AS num_interactions
-FROM users AS e
-GROUP BY DATE(FROM_UNIXTIME(e.joined))) totals
-ORDER BY joined;");
-        $users = $this->database->fetchArray($userData);
-        return $users;
-    }
-
-    private function getJournalGraph(): array
-    {
-        $this->database->query("SET @runningTotal = 0;");
-        $videoData = $this->database->query("
-SELECT 
-    date,
-    num_interactions,
-    @runningTotal := @runningTotal + totals.num_interactions AS runningTotal
-FROM
-(SELECT 
-    FROM_UNIXTIME(date) AS date,
-    COUNT(*) AS num_interactions
-FROM journals AS e
-GROUP BY DATE(FROM_UNIXTIME(e.date))) totals
-ORDER BY date;");
-        $videos = $this->database->fetchArray($videoData);
-        return $videos;
+        return $this->database->fetchArray($this->database->query(
+            "SELECT $orderfield, num_interactions,
+			@runningTotal := @runningTotal + totals.num_interactions AS runningTotal
+		FROM
+			(SELECT FROM_UNIXTIME($orderfield) AS $orderfield, COUNT(*) AS num_interactions
+				FROM $table AS e
+				GROUP BY DATE(FROM_UNIXTIME(e.$orderfield))) totals
+		ORDER BY $orderfield"));
     }
 }

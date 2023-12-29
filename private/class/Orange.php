@@ -99,22 +99,4 @@ class Orange {
     {
         return $this->options;
     }
-
-    /**
-     * Notifies the user, VidLii-style.
-     *
-     * Not to be confused with NotifyUser.
-     *
-     * @since Orange 1.0
-     */
-    public function Notification($message, $redirect, $color = "danger")
-    {
-        $_SESSION["notif_message"] = $message;
-        $_SESSION["notif_color"] = $color;
-
-        if ($redirect) {
-            header(sprintf('Location: %s', $redirect));
-            die();
-        }
-    }
 }

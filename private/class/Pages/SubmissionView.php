@@ -44,17 +44,17 @@ class SubmissionView
         $takedown = $this->submission->getTakedown();
         if ($takedown) {
             // don't load if it has been taken down.
-            $orange->Notification("This submission has been taken down. (" . $takedown["reason"] . ")", "/");
+            Utilities::Notification("This submission has been taken down. (" . $takedown["reason"] . ")", "/");
         }
 
         $this->data = $this->submission->getData();
         if (!$this->data) {
-            $orange->Notification("This submission does not exist.", "/");
+            Utilities::Notification("This submission does not exist.", "/");
         }
         $this->comments = new CommentData($this->database, CommentLocation::Submission, $id);
         $this->author = new UserData($this->database, $this->data["author"]);
         if ($this->author->isUserBanned()) {
-            $orange->Notification("This submission's author is banned.", "/");
+            Utilities::Notification("This submission's author is banned.", "/");
         }
 
         $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$this->data["author"]])['COUNT(user)'];
@@ -75,11 +75,11 @@ class SubmissionView
 
         if ($this->bools["block_guests"] && !$auth->isUserLoggedIn())
         {
-            $orange->Notification("This submission's author has blocked guest access.", "/login.php");
+            Utilities::Notification("This submission's author has blocked guest access.", "/login.php");
         }
 
         if (Utilities::RatingToNumber($this->data["rating"]) > Utilities::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
-            $orange->Notification("This submission is not suitable according to your settings.", "/");
+            Utilities::Notification("This submission is not suitable according to your settings.", "/");
         }
 
         $ip = Utilities::get_ip_address();

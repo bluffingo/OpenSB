@@ -34,15 +34,15 @@ class SubmissionEdit
 
         if (!$auth->isUserLoggedIn())
         {
-            $orange->Notification("Please login to continue.", "/login.php");
+            Utilities::Notification("Please login to continue.", "/login.php");
         }
 
         if ($auth->getUserBanData() || $this->submission->getTakedown()) {
-            $orange->Notification("You cannot proceed with this action.", "/");
+            Utilities::Notification("You cannot proceed with this action.", "/");
         }
 
         if ($auth->getUserID() != $this->data["author"]) {
-            $orange->Notification("This is not your submission.", "/");
+            Utilities::Notification("This is not your submission.", "/");
         }
     }
 
@@ -82,6 +82,6 @@ class SubmissionEdit
 
         $this->database->query("UPDATE videos SET title = ?, description = ? WHERE video_id = ?",
             [$title, $desc, $this->id]);
-        $this->orange->Notification("Your submission's details has been modified.", "/watch?v=" . $this->id, "success");
+        Utilities::Notification("Your submission's details has been modified.", "/watch?v=" . $this->id, "success");
     }
 }

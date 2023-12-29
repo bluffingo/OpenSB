@@ -229,5 +229,24 @@ class Utilities
             "block_comments" => (bool)($bitmask & 8),
             "custom_thumbnail" => (bool)($bitmask & 16),
         ];
+    }/**
+ * Notifies the user, VidLii-style.
+ *
+ * Not to be confused with NotifyUser.
+ *
+ * @param $message
+ * @param $redirect
+ * @param string $color
+ * @since Orange 1.0
+ */
+    public static function Notification($message, $redirect, $color = "danger")
+    {
+        $_SESSION["notif_message"] = $message;
+        $_SESSION["notif_color"] = $color;
+
+        if ($redirect) {
+            header(sprintf('Location: %s', $redirect));
+            die();
+        }
     }
 }

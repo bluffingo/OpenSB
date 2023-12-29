@@ -38,7 +38,7 @@ class AccountLogin
                 $ipban = $this->database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$logindata['ip']]);
 
                 if ($ipban) {
-                    $this->orange->Notification("This account's latest IP address is banned.", "/login.php");
+                    Utilities::Notification("This account's latest IP address is banned.", "/login.php");
                 }
 
                 setcookie('SBTOKEN', $logindata['token'], 2147483647);
@@ -47,10 +47,10 @@ class AccountLogin
 
                 Utilities::redirect('./');
             } else {
-                $this->orange->Notification("Incorrect credentials.", "/login.php");
+                Utilities::Notification("Incorrect credentials.", "/login.php");
             }
         } else {
-            $this->orange->Notification("Please input your credentials.", "/login.php");
+            Utilities::Notification("Please input your credentials.", "/login.php");
         }
     }
 }

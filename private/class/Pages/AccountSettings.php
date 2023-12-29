@@ -32,7 +32,7 @@ class AccountSettings
 
         if (!$auth->isUserLoggedIn())
         {
-            $orange->Notification("Please login to continue.", "/login.php");
+            Utilities::Notification("Please login to continue.", "/login.php");
         }
 
         // we should let banned users change settings.
@@ -102,9 +102,9 @@ class AccountSettings
         if (!$error) {
             $this->database->query("UPDATE users SET title = ?, about = ?, comfortable_rating = ? WHERE id = ?",
                 [$title, $about, $rating, $auth->getUserID()]);
-            $this->orange->Notification("Edited successfully!", ("user.php?name=" . $auth->getUserData()["name"]), "success");
+            Utilities::Notification("Edited successfully!", ("user.php?name=" . $auth->getUserData()["name"]), "success");
         } else {
-            $this->orange->Notification($error, "/settings.php");
+            Utilities::Notification($error, "/settings.php");
         }
     }
 }

@@ -37,19 +37,19 @@ class JournalWrite
         
         if (!$auth->isUserLoggedIn())
         {
-            $orange->Notification("Please login to continue.", "/login.php");
+            Utilities::Notification("Please login to continue.", "/login.php");
         }
 
         if ($auth->getUserBanData()) {
-            $orange->Notification("You cannot proceed with this action.", "/");
+            Utilities::Notification("You cannot proceed with this action.", "/");
         }
 
         if ($disableUploading) {
-            $orange->Notification("The ability to write journals has been disabled.", "/");
+            Utilities::Notification("The ability to write journals has been disabled.", "/");
         }
 
         if ($this->database->result("SELECT COUNT(*) FROM journals WHERE date > ? AND author = ?", [time() - 180 , $auth->getUserID()]) && !$isDebug) {
-            $this->orange->Notification("Please wait three minutes before posting a journal again.", "/");
+            Utilities::Notification("Please wait three minutes before posting a journal again.", "/");
         }
     }
 
@@ -65,6 +65,6 @@ class JournalWrite
         $this->database->query("INSERT INTO journals (title, post, author, date) VALUES (?,?,?,?)",
             [$title, $description, $uploader, time()]);
 
-            $this->orange->Notification("Your journal has been posted.", "./user.php?name=" . $auth->getUserData()["name"], "success");
+            Utilities::Notification("Your journal has been posted.", "./user.php?name=" . $auth->getUserData()["name"], "success");
     }
 }

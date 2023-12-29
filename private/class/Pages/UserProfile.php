@@ -36,12 +36,12 @@ class UserProfile
 
         if (!$this->data)
         {
-            $orange->Notification("This user does not exist.", "/");
+            Utilities::Notification("This user does not exist.", "/");
         }
 
         if ($this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->data["id"]]))
         {
-            $orange->Notification("This user is banned.", "/");
+            Utilities::Notification("This user is banned.", "/");
         }
 
         $this->user_submissions =

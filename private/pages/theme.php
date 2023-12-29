@@ -17,7 +17,7 @@ if (isset($_POST['apply'])) {
 
     setcookie("SBOPTIONS", base64_encode(json_encode($options)), 2147483647);
 
-    $orange->Notification("Successfully changed your theme.", "/index.php", "success");
+    Utilities::Notification("Successfully changed your theme.", "/index.php", "success");
 }
 
 echo $twig->render('theme.twig');

@@ -19,7 +19,7 @@ class AccountRegister
         $ipcheck = file_get_contents("https://api.stopforumspam.org/api?ip=" . Utilities::get_ip_address());
 
         if (str_contains($ipcheck, "<appears>yes</appears>")) {
-            $orange->Notification("This IP address appears to be suspicious.", "/index.php");
+            Utilities::Notification("This IP address appears to be suspicious.", "/index.php");
         }
 
         $this->database = $orange->getDatabase();
@@ -54,7 +54,7 @@ class AccountRegister
             foreach ($error as $error_data) {
                 $error_message = $error_message . $error_data . '. ';
             }
-            $this->orange->Notification($error_message, "/register.php");
+            Utilities::Notification($error_message, "/register.php");
         } else {
             $username = (string)$filter['username'];
             $pass = $filter['pass1'];
@@ -76,7 +76,7 @@ class AccountRegister
 
                 Utilities::redirect('./');
             } else {
-                $this->orange->Notification($error, "/register.php");
+                Utilities::Notification($error, "/register.php");
             }
         }
     }

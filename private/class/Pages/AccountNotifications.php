@@ -25,7 +25,7 @@ class AccountNotifications
 
         if (!$auth->isUserLoggedIn())
         {
-            $orange->Notification("Please login to continue.", "/login.php");
+            Utilities::Notification("Please login to continue.", "/login.php");
         }
 
         $this->database = $orange->getDatabase();

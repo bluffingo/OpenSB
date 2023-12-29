@@ -30,7 +30,7 @@ class JournalRead
         $this->data = $this->database->fetch("SELECT j.* FROM journals j WHERE j.id = ?", [$id]);
 
         if(!$this->data) {
-            $orange->Notification("This journal does not exist.", "/");
+            Utilities::Notification("This journal does not exist.", "/");
         }
 
         $this->author = new UserData($this->database, $this->data["author"]);
