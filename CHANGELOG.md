@@ -1,5 +1,7 @@
 # OpenSB Orange 1.x (May 2023-now)
 ## Orange 1.1 (2024)
+* The minimum supported PHP version is now PHP 8.3.
+* Moved a few settings over to the database.
 * Refactored backend.
 * Implemented a router based on the Principia-Web router.
 * Modernized Biscuit frontend further.

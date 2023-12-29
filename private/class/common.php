@@ -2,6 +2,10 @@
 
 namespace Orange;
 
+if (version_compare(PHP_VERSION, '8.3.0') <= 0) {
+    die('<b>OpenSB is not compatible with your PHP version. OpenSB supports PHP 8.3 or newer.</b>');
+}
+
 if (!file_exists(dirname(__DIR__) . '/../vendor/autoload.php')) {
     die('<b>You are missing the required Composer packages. Please read the installing instructions in the README file.</b>');
 }
