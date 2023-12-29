@@ -64,7 +64,7 @@ class SubmissionUpload
         global $storage, $auth, $isDebug;
 
         $uploader = $auth->getUserID();
-        $new = Utilities::randomString(11);
+        $new = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"),0,11);
 
         $title = ($post_data['title'] ?? null);
         $description = ($post_data['desc'] ?? null);

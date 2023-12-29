@@ -127,5 +127,7 @@ class BunnyStorage implements Storage
             body: $content,
         );
         unlink(dirname(__DIR__) . '/..' . $target_thumbnail);
+
+        unlink($temp_name);
     }
 }

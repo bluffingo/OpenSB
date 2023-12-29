@@ -218,11 +218,6 @@ class Utilities
         return $database->result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$user, $auth->getUserID()]);
     }
 
-    public static function randomString($length)
-    {
-        return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"),0,$length);
-    }
-
     public static function submissionBitmaskToArray($bitmask)
     {
         return [
@@ -255,6 +250,9 @@ class Utilities
         }
     }
 
+    /**
+     * @since Orange 1.1
+     */
     public static function processImageSubmissionFile($temp_name, $target, $new) {
         $manager = new ImageManager(Driver::class);
         $img = $manager->read($temp_name);
@@ -262,10 +260,27 @@ class Utilities
         $img->toPng()->save($target);
     }
 
+    /**
+     * @since Orange 1.1
+     */
     public static function processImageSubmissionThumbnail($temp_name, $target, $new) {
         $manager = new ImageManager(Driver::class);
         $img = $manager->read($temp_name);
-        $img->scaleDown(500);
+        $img->scaleDown(240); // used to be 500, but 500 was too big when the site displays thumbnails smaller than that.
         $img->toJpeg(90)->save($target);
+    }
+
+    /**
+     * @since Orange 1.1
+     */
+    public static function processImageSubmissionCustomThumbnail($temp_name, $target) {
+        // wip
+    }
+
+    /**
+     * @since Orange 1.1
+     */
+    public static function processProfilePicture($temp_name, $target) {
+        // wip
     }
 }

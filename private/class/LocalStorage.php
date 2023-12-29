@@ -58,5 +58,7 @@ class LocalStorage implements Storage
 
         Utilities::processImageSubmissionFile($temp_name, $new, $target_file);
         Utilities::processImageSubmissionThumbnail($temp_name, $new, $target_thumbnail);
+
+        unlink($temp_name);
     }
 }
