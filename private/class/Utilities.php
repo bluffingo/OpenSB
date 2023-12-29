@@ -2,6 +2,9 @@
 
 namespace Orange;
 
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
+
 /**
  * Static utilities.
  *
@@ -190,7 +193,7 @@ class Utilities
     /**
      * Not to be confused with Notification, which makes a banner.
      *
-     * @return string
+     * @since Orange 1.0
      */
     public static function NotifyUser($database, $user, $submission, $related_id, NotificationEnum $type)
     {
@@ -229,16 +232,18 @@ class Utilities
             "block_comments" => (bool)($bitmask & 8),
             "custom_thumbnail" => (bool)($bitmask & 16),
         ];
-    }/**
- * Notifies the user, VidLii-style.
- *
- * Not to be confused with NotifyUser.
- *
- * @param $message
- * @param $redirect
- * @param string $color
- * @since Orange 1.0
- */
+    }
+
+    /**
+     * Notifies the user, VidLii-style.
+     *
+     * Not to be confused with NotifyUser.
+     *
+     * @param $message
+     * @param $redirect
+     * @param string $color
+     * @since Orange 1.0
+     */
     public static function Notification($message, $redirect, $color = "danger")
     {
         $_SESSION["notif_message"] = $message;
@@ -248,5 +253,19 @@ class Utilities
             header(sprintf('Location: %s', $redirect));
             die();
         }
+    }
+
+    public static function processImageSubmissionFile($temp_name, $target, $new) {
+        $manager = new ImageManager(Driver::class);
+        $img = $manager->read($temp_name);
+        $img->scaleDown(2048);
+        $img->toPng()->save($target);
+    }
+
+    public static function processImageSubmissionThumbnail($temp_name, $target, $new) {
+        $manager = new ImageManager(Driver::class);
+        $img = $manager->read($temp_name);
+        $img->scaleDown(500);
+        $img->toJpeg(90)->save($target);
     }
 }

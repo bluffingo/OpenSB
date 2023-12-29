@@ -107,16 +107,10 @@ class BunnyStorage implements Storage
     }
 
     public function processImage($temp_name, $new) {
-        $manager = new ImageManager();
         $target_file = '/dynamic/art/' . $new . '.png';
         $target_thumbnail = '/dynamic/art_thumbnails/' . $new . '.jpg';
 
-        $img = $manager->make($temp_name);
-        $img->resize(2048, null, function ($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        });
-        $img->save(dirname(__DIR__) . '/..' . $target_file);
+        Utilities::processImageSubmissionFile($temp_name, $target_file, $new);
         $content = file_get_contents(dirname(__DIR__) . '/..' . $target_file);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
@@ -125,12 +119,7 @@ class BunnyStorage implements Storage
         );
         unlink(dirname(__DIR__) . '/..' . $target_file);
 
-        $img = $manager->make($temp_name)->encode('jpg', 80);
-        $img->resize(500, null, function ($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        });
-        $img->save(dirname(__DIR__) . '/..' . $target_thumbnail);
+        Utilities::processImageSubmissionThumbnail($temp_name, $target_thumbnail, $new,);
         $content = file_get_contents(dirname(__DIR__) . '/..' . $target_thumbnail);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,

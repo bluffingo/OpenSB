@@ -88,16 +88,10 @@ class MuffinStorage implements Storage
     }
 
     public function processImage($temp_name, $new) {
-        $manager = new ImageManager();
         $target_file = '/dynamic/art/' . $new . '.png';
         $target_thumbnail = '/dynamic/art_thumbnails/' . $new . '.jpg';
 
-        $img = $manager->make($temp_name);
-        $img->resize(2048, null, function ($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        });
-        $img->save(dirname(__DIR__) . '/..' . $target_file);
+        Utilities::processImageSubmissionFile($temp_name, dirname(__DIR__) . '/..' . $target_file, $new);
         $fileHandle = fopen(dirname(__DIR__) . '/..' . $target_file, 'r');
 
         $response = $this->muffinClient->request('POST', '/upload_file.php', [
@@ -110,12 +104,7 @@ class MuffinStorage implements Storage
 
         unlink(dirname(__DIR__) . '/..' . $target_file);
 
-        $img = $manager->make($temp_name)->encode('jpg', 80);
-        $img->resize(500, null, function ($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        });
-        $img->save(dirname(__DIR__) . '/..' . $target_thumbnail);
+        Utilities::processImageSubmissionThumbnail($temp_name, dirname(__DIR__) . '/..' . $target_thumbnail, $new);
         $fileHandle = fopen(dirname(__DIR__) . '/..' . $target_thumbnail, 'r');
 
         $response = $this->muffinClient->request('POST', '/upload_file.php', [
@@ -127,5 +116,7 @@ class MuffinStorage implements Storage
         ]);
 
         unlink(dirname(__DIR__) . '/..' . $target_thumbnail);
+
+        unlink($temp_name);
     }
 }
