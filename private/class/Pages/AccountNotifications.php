@@ -3,10 +3,10 @@
 namespace Orange\Pages;
 
 use Orange\Utilities;
-use Orange\User;
+use Orange\UserData;
 use Orange\OrangeException;
 use Orange\Database;
-use Orange\NoticeType;
+use Orange\NotificationEnum;
 
 /**
  * Backend code for the notices page.
@@ -37,7 +37,7 @@ class AccountNotifications
         $noticeData = [];
 
         foreach ($this->data as $notice) {
-            $userData = new User($this->database, $notice["sender"]);
+            $userData = new UserData($this->database, $notice["sender"]);
 
             $noticeData[] = [
                 "id" => $notice["id"],
@@ -59,20 +59,20 @@ class AccountNotifications
     {
         $name = "generic";
 
-        switch (NoticeType::from($type)) {
-            case NoticeType::CommentSubmission:
+        switch (NotificationEnum::from($type)) {
+            case NotificationEnum::CommentSubmission:
                 $name = "comment_submission";
                 break;
-            case NoticeType::CommentProfile:
+            case NotificationEnum::CommentProfile:
                 $name = "comment_profile";
                 break;
-            case NoticeType::CommentJournal:
+            case NotificationEnum::CommentJournal:
                 $name = "comment_journal";
                 break;
-            case NoticeType::TakedownSubmission:
+            case NotificationEnum::TakedownSubmission:
                 $name = "submission_takedown";
                 break;
-            case NoticeType::Follow:
+            case NotificationEnum::Follow:
                 $name = "user_follow";
                 break;
         }
@@ -84,20 +84,20 @@ class AccountNotifications
     {
         $intro = "Generic notice by ";
 
-        switch (NoticeType::from($type)) {
-            case NoticeType::CommentSubmission:
+        switch (NotificationEnum::from($type)) {
+            case NotificationEnum::CommentSubmission:
                 $intro = "SubmissionView comment by ";
                 break;
-            case NoticeType::CommentProfile:
+            case NotificationEnum::CommentProfile:
                 $intro = "UserProfile comment by ";
                 break;
-            case NoticeType::CommentJournal:
+            case NotificationEnum::CommentJournal:
                 $intro = "Journal comment by ";
                 break;
-            case NoticeType::TakedownSubmission:
+            case NotificationEnum::TakedownSubmission:
                 $intro = "Your submission has been taken down.";
                 break;
-            case NoticeType::Follow:
+            case NotificationEnum::Follow:
                 $intro = "You have been followed by ";
                 break;
         }
@@ -111,14 +111,14 @@ class AccountNotifications
 
         // THIS SHOULD PROBABLY BE A SWITCH CASE
 
-        switch (NoticeType::from($notice["type"])) {
-            case NoticeType::CommentSubmission:
+        switch (NotificationEnum::from($notice["type"])) {
+            case NotificationEnum::CommentSubmission:
                 $comment = $this->database->fetch("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM comments c WHERE c.comment_id = ?", [$notice["related_id"]]);
 
                 $data = $comment["comment"];
                 break;
 
-            case NoticeType::CommentProfile:
+            case NotificationEnum::CommentProfile:
                 $comment = $this->database->fetch("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c WHERE c.comment_id = ?", [$notice["related_id"]]);
 
                 $data = $comment["comment"];

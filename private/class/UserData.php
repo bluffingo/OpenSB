@@ -2,7 +2,7 @@
 
 namespace Orange;
 
-class User
+class UserData
 {
     private \Orange\Database $database;
     private $data;

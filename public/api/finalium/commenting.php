@@ -5,7 +5,7 @@ namespace openSB\FinaliumApi;
 global $auth, $orange;
 
 use Orange\Templating;
-use Orange\User;
+use Orange\UserData;
 
 chdir('../../');
 $rawOutputRequired = true;
@@ -27,7 +27,7 @@ $apiOutput = [
 
 if ($auth->getUserBanData()) {
     $apiOutput = [
-        "error" => "User is banned!!!"
+        "error" => "UserData is banned!!!"
     ];
 }
 
@@ -38,7 +38,7 @@ if (isset($post_data['type'])) {
     // Biscuit frontend outputs in JSON.
     header('Content-Type: application/json');
 
-    $author = new User($orange->getDatabase(), $auth->getUserID());
+    $author = new UserData($orange->getDatabase(), $auth->getUserID());
 
     //if ($post_data['type'] == "submission") {
         $comment = [
@@ -69,7 +69,7 @@ if (isset($post_data['type'])) {
     // However, the Bootstrap frontend's comment.twig template has been patched to use the same variables as the Biscuit
     // frontend, since 2021 openSB and 2023 openSB are completely different things.
 
-    $author = new User($orange->getDatabase(), $auth->getUserID());
+    $author = new UserData($orange->getDatabase(), $auth->getUserID());
 
     $comment = [
         "id" => 123456789,

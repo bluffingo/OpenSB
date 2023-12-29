@@ -3,10 +3,10 @@
 namespace Orange\Pages;
 
 use Orange\Utilities;
-use Orange\User;
+use Orange\UserData;
 use Orange\OrangeException;
 use Orange\CommentLocation;
-use Orange\Comments;
+use Orange\CommentData;
 use Orange\Database;
 use Orange\SubmissionData;
 

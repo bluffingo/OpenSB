@@ -3,10 +3,10 @@
 namespace Orange\Pages;
 
 use Orange\Utilities;
-use Orange\User;
+use Orange\UserData;
 use Orange\OrangeException;
 use Orange\CommentLocation;
-use Orange\Comments;
+use Orange\CommentData;
 use Orange\Database;
 use Orange\SubmissionData;
 
@@ -20,7 +20,7 @@ class JournalRead
     private \Orange\Database $database;
     private \Orange\Orange $orange;
     private mixed $data;
-    private User $author;
+    private UserData $author;
 
     public function __construct(\Orange\Orange $orange, $id)
     {
@@ -33,7 +33,7 @@ class JournalRead
             $orange->Notification("This journal does not exist.", "/");
         }
 
-        $this->author = new User($this->database, $this->data["author"]);
+        $this->author = new UserData($this->database, $this->data["author"]);
     }
 
     public function getData()

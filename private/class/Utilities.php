@@ -103,7 +103,7 @@ class Utilities
 
             $views = $database->result("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$submission["video_id"]]);
 
-            $userData = new User($database, $submission["author"]);
+            $userData = new UserData($database, $submission["author"]);
             $submissionsData[] =
                 [
                     "id" => $submission["video_id"],
@@ -133,7 +133,7 @@ class Utilities
     {
         $journalsData = [];
         foreach ($journals as $journal) {
-            $userData = new User($database, $journal["author"]);
+            $userData = new UserData($database, $journal["author"]);
             $journalsData[] =
                 [
                     "id" => $journal["id"],
@@ -192,7 +192,7 @@ class Utilities
      *
      * @return string
      */
-    public static function NotifyUser($database, $user, $submission, $related_id, NoticeType $type)
+    public static function NotifyUser($database, $user, $submission, $related_id, NotificationEnum $type)
     {
         global $auth, $database;
 

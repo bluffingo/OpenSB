@@ -3,8 +3,8 @@
 namespace Orange\Pages;
 
 use Orange\Utilities;
-use Orange\NoticeType;
-use Orange\User;
+use Orange\NotificationEnum;
+use Orange\UserData;
 use Orange\OrangeException;
 use Orange\Database;
 

@@ -2,7 +2,7 @@
 
 namespace Orange;
 
-enum NoticeType: int
+enum NotificationEnum: int
 {
     case CommentSubmission = 0;
     case CommentProfile = 1;

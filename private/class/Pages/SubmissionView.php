@@ -3,10 +3,10 @@
 namespace Orange\Pages;
 
 use Orange\Utilities;
-use Orange\User;
+use Orange\UserData;
 use Orange\OrangeException;
 use Orange\CommentLocation;
-use Orange\Comments;
+use Orange\CommentData;
 use Orange\Database;
 use Orange\SubmissionData;
 
@@ -20,10 +20,10 @@ class SubmissionView
     private \Orange\Database $database;
     private \Orange\SubmissionData $submission;
     private mixed $data;
-    private Comments $comments;
+    private CommentData $comments;
     private array $ratings;
     private mixed $favorites;
-    private User $author;
+    private UserData $author;
     private mixed $views;
     private array $bools;
     private array $recommended;
@@ -51,8 +51,8 @@ class SubmissionView
         if (!$this->data) {
             $orange->Notification("This submission does not exist.", "/");
         }
-        $this->comments = new Comments($this->database, CommentLocation::Submission, $id);
-        $this->author = new User($this->database, $this->data["author"]);
+        $this->comments = new CommentData($this->database, CommentLocation::Submission, $id);
+        $this->author = new UserData($this->database, $this->data["author"]);
         if ($this->author->isUserBanned()) {
             $orange->Notification("This submission's author is banned.", "/");
         }

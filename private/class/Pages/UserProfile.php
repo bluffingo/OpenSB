@@ -5,7 +5,7 @@ namespace Orange\Pages;
 use Orange\Utilities;
 use Orange\OrangeException;
 use Orange\CommentLocation;
-use Orange\Comments;
+use Orange\CommentData;
 use Orange\Database;
 use Orange\SubmissionData;
 
@@ -21,7 +21,7 @@ class UserProfile
     private $is_own_profile;
     private array $user_submissions;
     private array $user_journals;
-    private Comments $comments;
+    private CommentData $comments;
     private mixed $followers;
     private $followed;
 
@@ -65,7 +65,7 @@ class UserProfile
             $this->is_own_profile = true;
         }
 
-        $this->comments = new Comments($this->database, CommentLocation::Profile, $this->data["id"]);
+        $this->comments = new CommentData($this->database, CommentLocation::Profile, $this->data["id"]);
 
         $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$this->data["id"]])['COUNT(user)'];
         $this->followed = Utilities::IsFollowingUser($this->data["id"]);

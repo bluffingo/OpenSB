@@ -7,7 +7,7 @@ namespace Orange;
  *
  * @since Orange 1.0
  */
-class Comments
+class CommentData
 {
     private \Orange\Database $database;
     private CommentLocation $type;
@@ -37,7 +37,7 @@ class Comments
 
         $data = [];
         foreach ($database_data as $comment) {
-            $author = new User($this->database, $comment["author"]);
+            $author = new UserData($this->database, $comment["author"]);
             $data[$comment["comment_id"]] = [
                 "id" => $comment["comment_id"],
                 "posted_id" => $comment["id"],
@@ -70,7 +70,7 @@ class Comments
 
         $data = [];
         foreach ($database_data as $comment) {
-            $author = new User($this->database, $comment["author"]);
+            $author = new UserData($this->database, $comment["author"]);
             $data[$comment["comment_id"]] = [
                 "id" => $comment["comment_id"],
                 "posted_id" => $comment["id"],

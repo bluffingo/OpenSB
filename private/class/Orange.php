@@ -16,18 +16,16 @@ class Orange {
     public function __construct($host, $user, $pass, $db) {
         $this->makeVersionString();
 
-        if (!defined( 'SB_MEDIAWIKI' )) {
-            session_start(["cookie_lifetime" => 0, "gc_maxlifetime" => 455800]);
+        session_start(["cookie_lifetime" => 0, "gc_maxlifetime" => 455800]);
 
-            $this->options = [];
-            if (isset($_COOKIE["SBOPTIONS"])) {
-                $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
-            }
+        $this->options = [];
+        if (isset($_COOKIE["SBOPTIONS"])) {
+            $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
+        }
 
-            // should not be enabled on qobo.tv
-            if ($_SERVER['HTTP_HOST'] == "localhost" || $_SERVER['HTTP_HOST'] == "127.0.0.1") {
-                $this->options["development"] = true;
-            }
+        // should not be enabled on qobo.tv
+        if ($_SERVER['HTTP_HOST'] == "localhost" || $_SERVER['HTTP_HOST'] == "127.0.0.1") {
+            $this->options["development"] = true;
         }
 
         try {

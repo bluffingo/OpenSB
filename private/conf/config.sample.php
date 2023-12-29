@@ -17,6 +17,7 @@ $tplNoCache = false; // **DO NOT SET AS TRUE IN PROD - DEV ONLY**
 $domain = 'https://squarebracket.local';
 $isDebug = false; // DEV ONLY
 $isMaintenance = false;
+$isDevelopment = false;
 
 $paginationLimit = 20; //Pagination limit.
 

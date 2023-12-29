@@ -3,7 +3,7 @@
 namespace Orange\Pages;
 
 use Orange\Utilities;
-use Orange\User;
+use Orange\UserData;
 use Orange\Database;
 
 /**
@@ -29,7 +29,7 @@ class UserList
         {
             $user_banned = $this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$user["id"]]);
             if (!$user_banned) {
-                $userData = new User($this->database, $user["id"]);
+                $userData = new UserData($this->database, $user["id"]);
                 $usersData[] =
                     [
                         "id" => $user["id"],

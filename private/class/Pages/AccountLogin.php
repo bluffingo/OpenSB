@@ -2,7 +2,7 @@
 
 namespace Orange\Pages;
 use Orange\Utilities;
-use Orange\User;
+use Orange\UserData;
 
 /**
  * Backend code for the login page.

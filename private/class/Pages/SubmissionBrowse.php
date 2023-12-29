@@ -3,7 +3,7 @@
 namespace Orange\Pages;
 
 use Orange\Utilities;
-use Orange\User;
+use Orange\UserData;
 use Orange\OrangeException;
 use Orange\Database;
 
