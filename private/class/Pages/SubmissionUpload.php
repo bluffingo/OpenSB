@@ -2,7 +2,7 @@
 
 namespace Orange\Pages;
 
-use Orange\MiscFunctions;
+use Orange\Utilities;
 use Orange\User;
 use Orange\OrangeException;
 use Orange\CommentLocation;
@@ -64,7 +64,7 @@ class SubmissionUpload
         global $storage, $auth, $isDebug;
 
         $uploader = $auth->getUserID();
-        $new = MiscFunctions::randomString(11);
+        $new = Utilities::randomString(11);
 
         $title = ($post_data['title'] ?? null);
         $description = ($post_data['desc'] ?? null);

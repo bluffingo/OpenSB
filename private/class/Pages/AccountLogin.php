@@ -1,7 +1,7 @@
 <?php
 
 namespace Orange\Pages;
-use Orange\MiscFunctions;
+use Orange\Utilities;
 use Orange\User;
 
 /**
@@ -43,9 +43,9 @@ class AccountLogin
 
                 setcookie('SBTOKEN', $logindata['token'], 2147483647);
                 $nid = $this->database->result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
-                $this->database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), MiscFunctions::get_ip_address(), $nid]);
+                $this->database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), Utilities::get_ip_address(), $nid]);
 
-                MiscFunctions::redirect('./');
+                Utilities::redirect('./');
             } else {
                 $this->orange->Notification("Incorrect credentials.", "/login.php");
             }

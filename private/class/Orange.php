@@ -2,7 +2,7 @@
 namespace Orange;
 
 use Orange\Database;
-use Orange\MiscFunctions;
+use Orange\Utilities;
 use Orange\OrangeException;
 
 /**

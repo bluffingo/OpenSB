@@ -3,14 +3,14 @@
 namespace Orange;
 
 /**
- * Miscellaneous functions that need to be reused.
+ * Static utilities.
  *
  * @since Orange 1.0
  */
-class MiscFunctions
+class Utilities
 {
     /**
-     * Get the submission's file, works for both Qobo mode and local mode.
+     * Get the submission's file, works for all three storage modes.
      *
      * @param array|bool $submission The submission data
      * @return array|string|null
@@ -91,7 +91,7 @@ class MiscFunctions
         $submissionsData = [];
         foreach ($submissions as $submission) {
 
-            $bools = MiscFunctions::submissionBitmaskToArray($submission["flags"]);
+            $bools = Utilities::submissionBitmaskToArray($submission["flags"]);
 
             $ratingData = [
                 "1" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$submission["id"]]),
@@ -121,7 +121,7 @@ class MiscFunctions
                         "info" => $userData->getUserArray(),
                     ],
                     "interactions" => [
-                        "ratings" => MiscFunctions::calculateRatings($ratingData),
+                        "ratings" => Utilities::calculateRatings($ratingData),
                     ],
                 ];
         }

@@ -2,7 +2,7 @@
 
 namespace Orange\Pages;
 
-use Orange\MiscFunctions;
+use Orange\Utilities;
 use Orange\OrangeException;
 use Orange\CommentLocation;
 use Orange\Comments;
@@ -29,7 +29,7 @@ class UserProfile
     {
         global $auth;
 
-        $whereRatings = MiscFunctions::whereRatings();
+        $whereRatings = Utilities::whereRatings();
 
         $this->database = $orange->getDatabase();
         $this->data = $this->database->fetch("SELECT u.* FROM users u WHERE u.name = ?", [$username]);
@@ -68,7 +68,7 @@ class UserProfile
         $this->comments = new Comments($this->database, CommentLocation::Profile, $this->data["id"]);
 
         $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$this->data["id"]])['COUNT(user)'];
-        $this->followed = MiscFunctions::IsFollowingUser($this->data["id"]);
+        $this->followed = Utilities::IsFollowingUser($this->data["id"]);
     }
 
     public function getData(): array
@@ -82,8 +82,8 @@ class UserProfile
             "connected" => $this->data["lastview"],
             "is_current" => $this->is_own_profile,
             "featured_submission" => $this->getSubmissionFromFeaturedID(),
-            "submissions" => MiscFunctions::makeSubmissionArray($this->database, $this->user_submissions),
-            "journals" => MiscFunctions::makeJournalArray($this->database, $this->user_journals),
+            "submissions" => Utilities::makeSubmissionArray($this->database, $this->user_submissions),
+            "journals" => Utilities::makeJournalArray($this->database, $this->user_journals),
             "comments" => $this->comments->getComments(),
             "followers" => $this->followers,
             "following" => $this->followed,

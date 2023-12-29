@@ -2,7 +2,7 @@
 
 namespace Orange\Pages;
 
-use Orange\MiscFunctions;
+use Orange\Utilities;
 use Orange\User;
 use Orange\OrangeException;
 use Orange\Database;
@@ -26,7 +26,7 @@ class SubmissionSearch
         $this->order = $this->getOrderFromType($type);
         $this->limit = sprintf("LIMIT %s,%s", (($page - 1) * 20), 20);
 
-        $whereRatings = MiscFunctions::whereRatings();
+        $whereRatings = Utilities::whereRatings();
 
         $this->database = $orange->getDatabase();
         $this->submissions = $this->database->fetchArray(
@@ -63,7 +63,7 @@ class SubmissionSearch
     public function getData(): array
     {
         return [
-            "submissions" => MiscFunctions::makeSubmissionArray($this->database, $this->submissions),
+            "submissions" => Utilities::makeSubmissionArray($this->database, $this->submissions),
         ];
     }
 }

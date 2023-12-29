@@ -206,7 +206,7 @@ class OrangeTwigExtension extends AbstractExtension
 
         $id = $user["id"];
 
-        if ($auth->isUserLoggedIn() && MiscFunctions::IsFollowingUser($id)) {
+        if ($auth->isUserLoggedIn() && Utilities::IsFollowingUser($id)) {
             $class = "userlink following";
         } else {
             $class = "userlink";

@@ -3,7 +3,7 @@
 // https://github.com/principia-game/principia-web/blob/master/router.php
 namespace Orange;
 
-use Orange\MiscFunctions;
+use Orange\Utilities;
 
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $path = explode('/', $uri);
@@ -12,7 +12,7 @@ require_once dirname(__DIR__) . '/private/class/common.php';
 function rewritePHP(): void
 {
     if (str_contains($_SERVER["REQUEST_URI"], '.php'))
-        MiscFunctions::redirectPerma('%s', str_replace('.php', '', $_SERVER["REQUEST_URI"]));
+        Utilities::redirectPerma('%s', str_replace('.php', '', $_SERVER["REQUEST_URI"]));
 }
 
 if (isset($path[1]) && $path[1] != '') {
@@ -57,7 +57,7 @@ if (isset($path[1]) && $path[1] != '') {
     } elseif ($path[1] == 'view') {
         require(dirname(__DIR__) . '/private/pages/watch.php');
     } elseif ($path[1] == 'watch') {
-        MiscFunctions::redirect('/view/'.$_GET['v']);
+        Utilities::redirect('/view/'.$_GET['v']);
     } elseif ($path[1] == 'write') {
         require(dirname(__DIR__) . '/private/pages/write.php');
     } else {

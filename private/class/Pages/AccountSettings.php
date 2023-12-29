@@ -2,7 +2,7 @@
 
 namespace Orange\Pages;
 
-use Orange\MiscFunctions;
+use Orange\Utilities;
 use Orange\User;
 use Orange\OrangeException;
 use Orange\CommentLocation;

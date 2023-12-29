@@ -2,7 +2,7 @@
 
 namespace Orange\Pages;
 
-use Orange\MiscFunctions;
+use Orange\Utilities;
 use Orange\User;
 use Orange\OrangeException;
 use Orange\CommentLocation;
@@ -58,7 +58,7 @@ class SubmissionView
         }
 
         $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$this->data["author"]])['COUNT(user)'];
-        $this->followed = MiscFunctions::IsFollowingUser($this->data["author"]);
+        $this->followed = Utilities::IsFollowingUser($this->data["author"]);
 
         $this->ratings = [
             "1" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$this->data["id"]]),
@@ -78,17 +78,17 @@ class SubmissionView
             $orange->Notification("This submission's author has blocked guest access.", "/login.php");
         }
 
-        if (MiscFunctions::RatingToNumber($this->data["rating"]) > MiscFunctions::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
+        if (Utilities::RatingToNumber($this->data["rating"]) > Utilities::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
             $orange->Notification("This submission is not suitable according to your settings.", "/");
         }
 
-        $ip = MiscFunctions::get_ip_address();
+        $ip = Utilities::get_ip_address();
         if ($this->database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$id, crypt($ip, $ip)])['COUNT(video_id)'] < 1) {
             $this->database->query("INSERT INTO views (video_id, user) VALUES (?,?)",
                 [$id, crypt($ip, $ip)]);
         }
 
-        $whereRatings = MiscFunctions::whereRatings();
+        $whereRatings = Utilities::whereRatings();
         $this->recommended = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings AND v.author = ? ORDER BY RAND() LIMIT 24", [$this->data["author"]]));
     }
 
@@ -114,7 +114,7 @@ class SubmissionView
             "original_site" => $this->data["original_site"],
             "published_originally" => $this->data["original_time"],
             "type" => $this->data["post_type"],
-            "file" => MiscFunctions::getSubmissionFile($this->data),
+            "file" => Utilities::getSubmissionFile($this->data),
             "author" => [
                 "id" => $this->data["author"],
                 "info" => $this->author->getUserArray(),
@@ -123,13 +123,13 @@ class SubmissionView
             ],
             "interactions" => [
                 "views" => $this->views,
-                "ratings" => MiscFunctions::calculateRatings($this->ratings),
+                "ratings" => Utilities::calculateRatings($this->ratings),
                 "favorites" => $this->favorites,
             ],
             "comments" => $this->comments->getComments(),
             "bools" => $this->bools,
             "rating" => $this->data["rating"],
-            "recommended" => MiscFunctions::makeSubmissionArray($this->database,$this->recommended),
+            "recommended" => Utilities::makeSubmissionArray($this->database,$this->recommended),
         ];
     }
 }

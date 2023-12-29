@@ -12,7 +12,7 @@ require_once dirname(__DIR__) . '/class/Pages/UserProfile.php';
 
 $name = $path[2] ?? null;
 
-if (isset($_GET['name'])) MiscFunctions::redirect('/user/'.$_GET['name']);
+if (isset($_GET['name'])) Utilities::redirect('/user/'.$_GET['name']);
 
 try {
     $page = new \Orange\Pages\UserProfile($orange, $name);

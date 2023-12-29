@@ -2,7 +2,7 @@
 
 namespace Orange\Pages;
 
-use Orange\MiscFunctions;
+use Orange\Utilities;
 use Orange\NoticeType;
 use Orange\User;
 use Orange\OrangeException;
@@ -22,7 +22,7 @@ class Index
 
     public function __construct(\Orange\Orange $orange)
     {
-        $whereRatings = MiscFunctions::whereRatings();
+        $whereRatings = Utilities::whereRatings();
 
         $this->database = $orange->getDatabase();
         $this->submissions = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings ORDER BY RAND() LIMIT 24"));
@@ -40,8 +40,8 @@ class Index
     public function getData(): array
     {
         return [
-            "submissions" => MiscFunctions::makeSubmissionArray($this->database, $this->submissions),
-            "submissions_new" => MiscFunctions::makeSubmissionArray($this->database, $this->submissions_recent),
+            "submissions" => Utilities::makeSubmissionArray($this->database, $this->submissions),
+            "submissions_new" => Utilities::makeSubmissionArray($this->database, $this->submissions_recent),
             "news_recent" => $this->news_recent,
         ];
     }
