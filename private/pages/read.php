@@ -1,25 +1,23 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
 
-use \Orange\OrangeException;
-
-require_once dirname(__DIR__) . '/class/common.php';
-
-require_once dirname(__DIR__) . '/class/Pages/JournalRead.php';
+use Orange\OrangeException;
+use Orange\Templating;
+use Orange\Pages\JournalRead;
 
 $id = ($_GET['j'] ?? null);
 
 try {
-    $page = new \Orange\Pages\JournalRead($orange, $id);
+    $page = new JournalRead($orange, $id);
     $data = $page->getData();
 } catch (OrangeException $e) {
     $e->page();
 }
 
-$twig = new \Orange\Templating($orange);
+$twig = new Templating($orange);
 
 echo $twig->render('read.twig', [
     'data' => $data,

@@ -10,7 +10,7 @@
         <div class="content-box">
             <p>
                 This website is powered by OpenSB (Open SquareBracket). © 2021-{{ 'now' | date('Y') }}
-                {% for developer in developers %}
+                {% for developer in data.developers %}
                     {{ developer }}{{ not loop.last ? ',' }}
                 {% endfor %} and others.
             </p>
@@ -18,13 +18,13 @@
                 OpenSB is licensed under the AGPL 3.0 license.
             </p>
             <hr>
+            <h2>Installed software</h2>
             <table class="c1">
-                <caption>Software</caption>
                 <tr class="h">
                     <th>Product</th>
                     <th>Version</th>
                 </tr>
-                {% for thing in version_stats %}
+                {% for thing in data.software %}
                     <tr>
                         <td class="a">{{ thing.title }}</td>
                         <td class="b">{{ thing.info }}</td>
@@ -32,8 +32,8 @@
                 {% endfor %}
             </table>
             <hr>
+            <h2>Installed skins</h2>
             <table class="c1">
-                <caption>Skins</caption>
                 <tr class="h">
                     <th>Skin/Author</th>
                     <th>Description</th>
@@ -42,6 +42,40 @@
                     <tr>
                         <td class="a">{{ skin.metadata.name }}<br><small>by {{ skin.metadata.author }}</small></td>
                         <td class="b">{{ skin.metadata.description }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <hr>
+            <h2>Installed libraries</h2>
+            <table class="c1">
+                <tr class="h">
+                    <th>Library</th>
+                    <th>Version</th>
+                    <th>License</th>
+                    <th>Description</th>
+                    <th>Authors</th>
+                </tr>
+                {% for key, package in data.composer_packages %}
+                    <tr>
+                        <td class="a" width="200">{{ key }}</td>
+                        <td class="b" width="100">{{ package.version }}</td>
+                        <td class="b" width="75">
+                            {% for license in package.licenses %}
+                                {{ license }}{{ not loop.last ? ',' }}
+                            {% endfor %}
+                        </td>
+                        <td class="b">
+                            {{ package.description }}
+                        </td>
+                        <td class="b">
+                            {% for author in package.authors %}
+                                {% if author.homepage %}
+                                    <a href="{{ author.homepage }}">{{ author.name }}</a>{{ not loop.last ? ',' }}
+                                {% else %}
+                                    {{ author.name }}{{ not loop.last ? ',' }}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
                     </tr>
                 {% endfor %}
             </table>

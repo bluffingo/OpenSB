@@ -2,7 +2,6 @@
 
 namespace Orange\Pages;
 use Orange\Utilities;
-use Orange\UserData;
 
 /**
  * Backend code for the register page.

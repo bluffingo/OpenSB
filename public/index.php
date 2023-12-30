@@ -1,14 +1,19 @@
 <?php
 // Based on Rollerozxa's router implementation in Principia-Web.
 // https://github.com/principia-game/principia-web/blob/master/router.php
-namespace Orange;
+namespace OpenSB;
+
+define("SB_DYNAMIC_PATH", dirname(__DIR__) . '/dynamic');
+define("SB_PRIVATE_PATH", dirname(__DIR__) . '/private');
+define("SB_VENDOR_PATH", dirname(__DIR__) . '/vendor');
+// SB_PUBLIC_PATH is not needed because all the core functionality is in the private folder.
 
 use Orange\Utilities;
 
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $path = explode('/', $uri);
 
-require_once dirname(__DIR__) . '/private/class/common.php';
+require_once SB_PRIVATE_PATH . '/class/common.php';
 function rewritePHP(): void
 {
     if (str_contains($_SERVER["REQUEST_URI"], '.php'))
@@ -17,52 +22,52 @@ function rewritePHP(): void
 
 if (isset($path[1]) && $path[1] != '') {
     if ($path[1] == 'admin') {
-        require(dirname(__DIR__) . '/private/pages/admin.php');
+        require(SB_PRIVATE_PATH . '/pages/admin.php');
     } elseif ($path[1] == 'browse') {
-        require(dirname(__DIR__) . '/private/pages/browse.php');
+        require(SB_PRIVATE_PATH . '/pages/browse.php');
     } elseif ($path[1] == 'edit') {
-        require(dirname(__DIR__) . '/private/pages/edit.php');
+        require(SB_PRIVATE_PATH . '/pages/edit.php');
     } elseif ($path[1] == 'feature') {
-        require(dirname(__DIR__) . '/private/pages/feature.php');
+        require(SB_PRIVATE_PATH . '/pages/feature.php');
     } elseif ($path[1] == 'guidelines') {
-        require(dirname(__DIR__) . '/private/pages/guidelines.php');
+        require(SB_PRIVATE_PATH . '/pages/guidelines.php');
     } elseif ($path[1] == 'index') {
-        require(dirname(__DIR__) . '/private/pages/index.php');
+        require(SB_PRIVATE_PATH . '/pages/index.php');
     } elseif ($path[1] == 'login') {
-        require(dirname(__DIR__) . '/private/pages/login.php');
+        require(SB_PRIVATE_PATH . '/pages/login.php');
     } elseif ($path[1] == 'logout') {
-        require(dirname(__DIR__) . '/private/pages/logout.php');
+        require(SB_PRIVATE_PATH . '/pages/logout.php');
     } elseif ($path[1] == 'notices') {
-        require(dirname(__DIR__) . '/private/pages/notices.php');
+        require(SB_PRIVATE_PATH . '/pages/notices.php');
     } elseif ($path[1] == 'privacy') {
-        require(dirname(__DIR__) . '/private/pages/privacy.php');
+        require(SB_PRIVATE_PATH . '/pages/privacy.php');
     } elseif ($path[1] == 'read') {
-        require(dirname(__DIR__) . '/private/pages/read.php');
+        require(SB_PRIVATE_PATH . '/pages/read.php');
     } elseif ($path[1] == 'register') {
-        require(dirname(__DIR__) . '/private/pages/register.php');
+        require(SB_PRIVATE_PATH . '/pages/register.php');
     } elseif ($path[1] == 'search') {
-        require(dirname(__DIR__) . '/private/pages/search.php');
+        require(SB_PRIVATE_PATH . '/pages/search.php');
     } elseif ($path[1] == 'settings') {
-        require(dirname(__DIR__) . '/private/pages/settings.php');
+        require(SB_PRIVATE_PATH . '/pages/settings.php');
     } elseif ($path[1] == 'theme') {
-        require(dirname(__DIR__) . '/private/pages/theme.php');
+        require(SB_PRIVATE_PATH . '/pages/theme.php');
     } elseif ($path[1] == 'upload') {
-        require(dirname(__DIR__) . '/private/pages/upload.php');
+        require(SB_PRIVATE_PATH . '/pages/upload.php');
     } elseif ($path[1] == 'user') {
-        require(dirname(__DIR__) . '/private/pages/user.php');
+        require(SB_PRIVATE_PATH . '/pages/user.php');
     } elseif ($path[1] == 'users') {
-        require(dirname(__DIR__) . '/private/pages/users.php');
+        require(SB_PRIVATE_PATH . '/pages/users.php');
     } elseif ($path[1] == 'version') {
-        require(dirname(__DIR__) . '/private/pages/version.php');
+        require(SB_PRIVATE_PATH . '/pages/version.php');
     } elseif ($path[1] == 'view') {
-        require(dirname(__DIR__) . '/private/pages/watch.php');
+        require(SB_PRIVATE_PATH . '/pages/watch.php');
     } elseif ($path[1] == 'watch') {
         Utilities::redirect('/view/'.$_GET['v']);
     } elseif ($path[1] == 'write') {
-        require(dirname(__DIR__) . '/private/pages/write.php');
+        require(SB_PRIVATE_PATH . '/pages/write.php');
     } else {
         rewritePHP();
     }
 } else {
-    require(dirname(__DIR__) . '/private/pages/index.php');
+    require(SB_PRIVATE_PATH . '/pages/index.php');
 }

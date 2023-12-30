@@ -3,9 +3,6 @@
 namespace Orange\Pages;
 
 use Orange\Utilities;
-use Orange\UserData;
-use Orange\OrangeException;
-use Orange\Database;
 
 /**
  * Backend code for the submission browsing page.

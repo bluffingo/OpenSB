@@ -2,11 +2,9 @@
 
 namespace Orange\Pages;
 
-use Orange\Utilities;
-use Orange\NotificationEnum;
-use Orange\UserData;
-use Orange\OrangeException;
 use Orange\Database;
+use Orange\Orange;
+use Orange\Utilities;
 
 /**
  * Backend code for the index page.
@@ -15,12 +13,12 @@ use Orange\Database;
  */
 class Index
 {
-    private \Orange\Database $database;
+    private Database $database;
     private array $submissions;
     private array $submissions_recent;
     private array $news_recent;
 
-    public function __construct(\Orange\Orange $orange)
+    public function __construct(Orange $orange)
     {
         $whereRatings = Utilities::whereRatings();
 

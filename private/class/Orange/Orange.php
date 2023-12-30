@@ -1,11 +1,6 @@
 <?php
 namespace Orange;
 
-use Orange\Database;
-use Orange\SiteSettings;
-use Orange\Utilities;
-use Orange\OrangeException;
-
 /**
  * The core Orange class.
  *
@@ -70,14 +65,14 @@ class Orange {
      */
     private function makeVersionString()
     {
-        // Versioning guide (By Bluffingo, last updated 12/19/2023):
+        // Versioning guide (By Bluffingo, last updated 12/29/2023):
         //
-        // * Bump the first number (X.xx) only if a major internal codebase update occurs.
-        // * Bump the second number (x.XX) only if it's a feature update, say for Qobo.
+        // * Don't bump the first number unless if the codebase is rewritten.
+        // * Bump the second number for every new release.
         // * We do not have a third number unlike Semantic Versioning or something like Minecraft, since
         // we use Git hashes for indicating revisions, but this may change.
         $version = "1.1";
-        $gitPath = __DIR__ . '/../../.git';
+        $gitPath = __DIR__ . '/../../../.git';
 
         // Check if the instance is git cloned. If it is, have the version string be
         // precise. Otherwise, just indicate that it's a "Non-source copy", though we

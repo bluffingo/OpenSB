@@ -1,18 +1,15 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $orange, $bettyTemplate;
 
-use \Orange\OrangeException;
-use \Orange\Templating;
-
-require_once dirname(__DIR__) . '/class/common.php';
-
-require_once dirname(__DIR__) . '/class/Pages/AccountNotifications.php';
+use Orange\OrangeException;
+use Orange\Templating;
+use Orange\Pages\AccountNotifications;
 
 try {
-    $page = new \Orange\Pages\AccountNotifications($orange);
+    $page = new AccountNotifications($orange);
     $data = $page->getData();
 } catch (OrangeException $e) {
     $e->page();

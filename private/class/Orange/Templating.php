@@ -22,7 +22,7 @@ class Templating
     public function __construct(\Orange\Orange $orange)
     {
         global $isQoboTV, $auth, $bettyTemplate, $isDebug, $branding, $googleAdsClient;
-        chdir(__DIR__ . '/..');
+        chdir(__DIR__ . '/../..');
         $this->skin = $orange->getLocalOptions()["skin"] ?? $bettyTemplate;
 
         if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {

@@ -4,8 +4,8 @@ namespace openSB\FinaliumApi;
 
 global $auth, $orange;
 
-use Orange\Utilities;
 use Orange\NotificationEnum;
+use Orange\Utilities;
 
 chdir('../../');
 $rawOutputRequired = true;

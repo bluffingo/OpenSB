@@ -1,18 +1,15 @@
 <?php
 // ported from principia-web by grkb -4/20/2023
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
 
-use \Orange\OrangeException;
+use Orange\Templating;
+use Orange\Pages\UserList;
 
-require_once dirname(__DIR__) . '/class/common.php';
-
-require_once dirname(__DIR__) . '/class/Pages/UserList.php';
-
-$page = new \Orange\Pages\UserList($orange);
+$page = new UserList($orange);
 $data = $page->getData();
-$twig = new \Orange\Templating($orange);
+$twig = new Templating($orange);
 
 echo $twig->render('users.twig', [
 	'users' => $data,

@@ -1,21 +1,21 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
-require_once dirname(__DIR__) . '/class/common.php';
 
-require_once dirname(__DIR__) . '/class/Pages/AccountLogin.php';
+use Orange\Templating;
+use Orange\Pages\AccountLogin;
 
 $error = '';
 
-$page = new \Orange\Pages\AccountLogin($orange);
+$page = new AccountLogin($orange);
 
 if (isset($_POST["loginsubmit"])) {
     $page->postData($_POST);
 }
 
-$twig = new \Orange\Templating($orange);
+$twig = new Templating($orange);
 
 echo $twig->render('login.twig', [
     'error' => $error,

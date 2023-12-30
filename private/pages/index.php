@@ -1,22 +1,15 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
-global $orange, $bettyTemplate;
+global $orange;
 
-use \Orange\OrangeException;
-use \Orange\Templating;
+use Orange\OrangeException;
+use Orange\Templating;
+use Orange\Pages\Index;
 
-require_once dirname(__DIR__) . '/class/common.php';
-
-require_once dirname(__DIR__) . '/class/Pages/Index.php';
-
-try {
-    $index = new \Orange\Pages\Index($orange);
-    $data = $index->getData();
-} catch (OrangeException $e) {
-    $e->page();
-}
+$index = new Index($orange);
+$data = $index->getData();
 
 $twig = new Templating($orange);
 

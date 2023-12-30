@@ -1,16 +1,13 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
 
 use Orange\Templating;
+use Orange\Pages\JournalWrite;
 
-require_once dirname(__DIR__) . '/class/common.php';
-
-require_once dirname(__DIR__) . '/class/Pages/JournalWrite.php';
-
-$page = new \Orange\Pages\JournalWrite($orange);
+$page = new JournalWrite($orange);
 
 if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata['name'])) {
     $page->postData($_POST, $_FILES);

@@ -1,12 +1,11 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
 
 use Orange\Templating;
-
-require_once dirname(__DIR__) . '/class/common.php';
+use Orange\Utilities;
 
 $twig = new Templating($orange);
 

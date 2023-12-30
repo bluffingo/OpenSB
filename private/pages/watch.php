@@ -1,21 +1,19 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
 
-use \Orange\OrangeException;
-
-require_once dirname(__DIR__) . '/class/common.php';
-
-require_once dirname(__DIR__) . '/class/Pages/SubmissionView.php';
+use Orange\OrangeException;
+use Orange\Utilities;
+use Orange\Pages\SubmissionView;
 
 $id = $path[2] ?? null;
 
 if (isset($_GET['v'])) Utilities::redirect('/submission/'.$_GET['v']);
 
 try {
-    $page = new \Orange\Pages\SubmissionView($orange, $id);
+    $page = new SubmissionView($orange, $id);
     $data = $page->getSubmission();
 } catch (OrangeException $e) {
     $e->page();

@@ -3,12 +3,6 @@
 namespace Orange\Pages;
 
 use Orange\Utilities;
-use Orange\UserData;
-use Orange\OrangeException;
-use Orange\CommentLocation;
-use Orange\CommentData;
-use Orange\Database;
-use Orange\SubmissionData;
 
 /**
  * Backend code for the submission uploading page.

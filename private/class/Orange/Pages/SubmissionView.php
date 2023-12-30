@@ -2,13 +2,11 @@
 
 namespace Orange\Pages;
 
-use Orange\Utilities;
-use Orange\UserData;
-use Orange\OrangeException;
-use Orange\CommentLocation;
 use Orange\CommentData;
-use Orange\Database;
-use Orange\SubmissionData;
+use Orange\CommentLocation;
+use Orange\OrangeException;
+use Orange\UserData;
+use Orange\Utilities;
 
 /**
  * Backend code for the submission view (watch) page.

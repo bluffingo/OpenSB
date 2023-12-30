@@ -1,16 +1,15 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
-global $orange, $bettyTemplate, $opensb_version;
-require_once dirname(__DIR__) . '/class/common.php';
+global $orange;
 
-require_once dirname(__DIR__) . '/class/Pages/Version.php';
+use Orange\Templating;
+use Orange\Pages\Version;
 
-$page = new \Orange\Pages\Version($orange);
-$twig = new \Orange\Templating($orange);
+$page = new Version($orange);
+$twig = new Templating($orange);
 
 echo $twig->render('version.twig', [
-    'version_stats' => $page->getVersionData(),
-    'developers' => $page->getDevelopers(),
+    'data' => $page->getData(),
 ]);

@@ -1,11 +1,11 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
-require_once dirname(__DIR__) . '/class/common.php';
 
-require_once dirname(__DIR__) . '/class/Pages/SubmissionEdit.php';
+use Orange\Templating;
+use Orange\Pages\SubmissionEdit;
 
 if (isset($_POST['upload'])) {
     $id = ($_POST['vid_id'] ?? null);
@@ -13,13 +13,13 @@ if (isset($_POST['upload'])) {
     $id = ($_GET['v'] ?? null);
 }
 
-$page = new \Orange\Pages\SubmissionEdit($orange, $id);
+$page = new SubmissionEdit($orange, $id);
 
 if (isset($_POST['upload'])) {
     $page->postData($_POST);
 }
 
-$twig = new \Orange\Templating($orange);
+$twig = new Templating($orange);
 echo $twig->render('edit.twig', [
     'data' => $page->getData(),
 ]);

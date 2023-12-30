@@ -3,6 +3,7 @@
 namespace Orange;
 
 use Intervention\Image\ImageManager;
+use Orange\Storage;
 use ToshY\BunnyNet\Client\BunnyClient;
 use ToshY\BunnyNet\EdgeStorageAPI;
 use ToshY\BunnyNet\Enum\Region;

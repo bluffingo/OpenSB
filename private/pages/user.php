@@ -1,27 +1,22 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
 
 use Orange\OrangeException;
-
-require_once dirname(__DIR__) . '/class/common.php';
-
-require_once dirname(__DIR__) . '/class/Pages/UserProfile.php';
+use Orange\Templating;
+use Orange\Utilities;
+use Orange\Pages\UserProfile;
 
 $name = $path[2] ?? null;
 
 if (isset($_GET['name'])) Utilities::redirect('/user/'.$_GET['name']);
 
-try {
-    $page = new \Orange\Pages\UserProfile($orange, $name);
-    $data = $page->getData();
-} catch (OrangeException $e) {
-    $e->page();
-}
+$page = new UserProfile($orange, $name);
+$data = $page->getData();
 
-$twig = new \Orange\Templating($orange);
+$twig = new Templating($orange);
 
 echo $twig->render('profile.twig', [
     'data' => $data,

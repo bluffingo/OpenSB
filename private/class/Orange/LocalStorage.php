@@ -2,8 +2,9 @@
 
 namespace Orange;
 
-use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
+use Orange\Storage;
 
 class LocalStorage implements Storage
 {

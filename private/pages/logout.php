@@ -1,9 +1,10 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
 
-require_once dirname(__DIR__) . '/class/common.php';
+use Orange\Utilities;
+
 setcookie("SBTOKEN", "", time() - 3600);
 Utilities::Notification("Logged out!", "/", "success");

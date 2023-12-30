@@ -2,11 +2,9 @@
 
 namespace Orange\Pages;
 
-use Orange\Utilities;
-use Orange\UserData;
-use Orange\OrangeException;
-use Orange\Database;
 use Orange\NotificationEnum;
+use Orange\UserData;
+use Orange\Utilities;
 
 /**
  * Backend code for the notices page.

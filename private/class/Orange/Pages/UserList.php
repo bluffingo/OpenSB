@@ -2,9 +2,7 @@
 
 namespace Orange\Pages;
 
-use Orange\Utilities;
 use Orange\UserData;
-use Orange\Database;
 
 /**
  * Backend code for the users list page.

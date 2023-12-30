@@ -1,16 +1,13 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
 
 use Orange\Templating;
+use Orange\Pages\AccountSettings;
 
-require_once dirname(__DIR__) . '/class/common.php';
-
-require_once dirname(__DIR__) . '/class/Pages/AccountSettings.php';
-
-$page = new \Orange\Pages\AccountSettings($orange);
+$page = new AccountSettings($orange);
 
 if (isset($_POST['save'])) {
     $page->postData($_POST);

@@ -3,6 +3,7 @@
 namespace Orange;
 
 use Intervention\Image\ImageManager;
+use Orange\Storage;
 use Symfony\Component\HttpClient\HttpClient;
 
 class MuffinStorage implements Storage

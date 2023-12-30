@@ -1,16 +1,13 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
 
 use Orange\Templating;
+use Orange\Pages\SubmissionUpload;
 
-require_once dirname(__DIR__) . '/class/common.php';
-
-require_once dirname(__DIR__) . '/class/Pages/SubmissionUpload.php';
-
-$page = new \Orange\Pages\SubmissionUpload($orange);
+$page = new SubmissionUpload($orange);
 
 if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata['name'])) {
     $page->postData($_POST, $_FILES);

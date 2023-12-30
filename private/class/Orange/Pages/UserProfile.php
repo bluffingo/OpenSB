@@ -2,12 +2,10 @@
 
 namespace Orange\Pages;
 
-use Orange\Utilities;
-use Orange\OrangeException;
-use Orange\CommentLocation;
 use Orange\CommentData;
-use Orange\Database;
+use Orange\CommentLocation;
 use Orange\SubmissionData;
+use Orange\Utilities;
 
 /**
  * Backend code for the profile page.

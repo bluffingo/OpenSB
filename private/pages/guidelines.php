@@ -1,11 +1,12 @@
 <?php
 // ported from principia-web by grkb -4/20/2023
-namespace Orange;
+namespace OpenSB;
 
 global $orange;
-require_once dirname(__DIR__) . '/class/common.php';
 
-$twig = new \Orange\Templating($orange);
+use Orange\Templating;
+
+$twig = new Templating($orange);
 
 echo $twig->render('_markdown.twig', [
 	'pagetitle' => 'Guidelines',

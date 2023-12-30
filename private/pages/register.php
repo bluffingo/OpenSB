@@ -1,18 +1,17 @@
 <?php
 
-namespace Orange;
+namespace OpenSB;
 
 global $gump, $orange;
 
-require_once dirname(__DIR__) . '/class/common.php';
+use Orange\Templating;
+use Orange\Pages\AccountRegister;
 
-require_once dirname(__DIR__) . '/class/Pages/AccountRegister.php';
-
-$page = new \Orange\Pages\AccountRegister($orange);
+$page = new AccountRegister($orange);
 
 if (isset($_POST['registersubmit']) or isset($_POST['terms_agreed'])) {
     $page->postData($_POST);
 }
 
-$twig = new \Orange\Templating($orange);
+$twig = new Templating($orange);
 echo $twig->render('register.twig');
