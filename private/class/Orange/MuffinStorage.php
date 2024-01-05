@@ -64,7 +64,7 @@ class MuffinStorage implements Storage
         $target_file = '/dynamic/art/' . $new . '.png';
         $target_thumbnail = '/dynamic/art_thumbnails/' . $new . '.jpg';
 
-        Utilities::processImageSubmissionFile($temp_name, dirname(__DIR__) . '/..' . $target_file, $new);
+        Utilities::processImageSubmissionFile($temp_name, dirname(__DIR__) . '/..' . $target_file);
         $fileHandle = fopen(dirname(__DIR__) . '/..' . $target_file, 'r');
 
         $response = $this->muffinClient->request('POST', '/upload_file.php', [
@@ -77,7 +77,7 @@ class MuffinStorage implements Storage
 
         unlink(dirname(__DIR__) . '/..' . $target_file);
 
-        Utilities::processImageSubmissionThumbnail($temp_name, dirname(__DIR__) . '/..' . $target_thumbnail, $new);
+        Utilities::processImageSubmissionThumbnail($temp_name, dirname(__DIR__) . '/..' . $target_thumbnail);
         $fileHandle = fopen(dirname(__DIR__) . '/..' . $target_thumbnail, 'r');
 
         $response = $this->muffinClient->request('POST', '/upload_file.php', [

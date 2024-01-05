@@ -96,7 +96,7 @@ class BunnyStorage implements Storage
         $target_file = SB_DYNAMIC_PATH . '/art/' . $new . '.png';
         $target_thumbnail = SB_DYNAMIC_PATH . '/art_thumbnails/' . $new . '.jpg';
 
-        Utilities::processImageSubmissionFile($temp_name, $target_file, $new);
+        Utilities::processImageSubmissionFile($temp_name, $target_file);
         $content = file_get_contents(dirname(__DIR__) . '/..' . $target_file);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
@@ -105,7 +105,7 @@ class BunnyStorage implements Storage
         );
         unlink(dirname(__DIR__) . '/..' . $target_file);
 
-        Utilities::processImageSubmissionThumbnail($temp_name, $target_thumbnail, $new,);
+        Utilities::processImageSubmissionThumbnail($temp_name, $target_thumbnail);
         $content = file_get_contents(dirname(__DIR__) . '/..' . $target_thumbnail);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
