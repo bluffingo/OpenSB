@@ -89,8 +89,7 @@ class AccountSettings
             $name = $_FILES['profilePicture']['name'];
             $temp_name = $_FILES['profilePicture']['tmp_name'];
             $ext = pathinfo($_FILES['profilePicture']['name'], PATHINFO_EXTENSION);
-            $target_file = '../dynamic/pfp/' . $auth->getUserData()["name"] . '.png';
-            $storage->uploadImage($temp_name, $target_file, 'png', true, 512, 512);
+            $storage->uploadProfilePicture($temp_name, $auth->getUserData()["name"]);
         }
 
         if (!$error) {

@@ -38,7 +38,8 @@ class BunnyStorage implements Storage
         $this->database = $orange->getDatabase();
     }
 
-    public function processVideo($new, $target_file) {
+    public function processVideo($new, $target_file): void
+    {
         global $bunnySettings;
 
         // this fucking shit won't work if i put this on __construct(). -grkb 4/7/2023
@@ -66,16 +67,19 @@ class BunnyStorage implements Storage
         unlink($target_file);
     }
 
-    public function getVideoThumbnail($id) {
+    public function getVideoThumbnail($id): string
+    {
         $guid = $this->database->fetch("SELECT videofile from videos where video_id = ?", [$id]);
         return "https://" . $this->streamHostname . "/" . $guid["videofile"] . "/thumbnail.jpg";
     }
 
-    public function getImageThumbnail($id) {
+    public function getImageThumbnail($id): string
+    {
         return "https://" . $this->pullZone . "/dynamic/art_thumbnails/" . $id  . ".jpg";
     }
 
-    public function fileExists($file) {
+    public function fileExists($file): bool
+    {
         try {
             $file = $this->edgeStorageApi->downloadFile(
                 storageZoneName: $this->storageZone,
@@ -86,30 +90,11 @@ class BunnyStorage implements Storage
         }
         return true;
     }
-    public function uploadImage($temp_name, $target_file, $format, $resize = false, $width = 0, $height = 0) {
-        $manager = new ImageManager();
-        $img = $manager->make($temp_name);
-        if ($resize) {
-            $img->resize($width, $height);
-        } else {
-            $img->resize($width, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-        }
-        $img->save($temp_name, 97, $format);
-        $content = file_get_contents($temp_name);
-        $this->edgeStorageApi->uploadFile(
-            storageZoneName: $this->storageZone,
-            fileName: $target_file,
-            body: $content,
-        );
-        unlink($temp_name);
-    }
 
-    public function processImage($temp_name, $new) {
-        $target_file = '/dynamic/art/' . $new . '.png';
-        $target_thumbnail = '/dynamic/art_thumbnails/' . $new . '.jpg';
+    public function processImage($temp_name, $new): void
+    {
+        $target_file = SB_DYNAMIC_PATH . '/art/' . $new . '.png';
+        $target_thumbnail = SB_DYNAMIC_PATH . '/art_thumbnails/' . $new . '.jpg';
 
         Utilities::processImageSubmissionFile($temp_name, $target_file, $new);
         $content = file_get_contents(dirname(__DIR__) . '/..' . $target_file);
@@ -128,6 +113,38 @@ class BunnyStorage implements Storage
             body: $content,
         );
         unlink(dirname(__DIR__) . '/..' . $target_thumbnail);
+
+        unlink($temp_name);
+    }
+
+    public function uploadProfilePicture($temp_name, $new): void
+    {
+        $target_file = SB_DYNAMIC_PATH . '/pfp/' . $new . '.png';
+
+        Utilities::processProfilePicture($temp_name, $target_file);
+        $content = file_get_contents($target_file);
+        $this->edgeStorageApi->uploadFile(
+            storageZoneName: $this->storageZone,
+            fileName: $target_file,
+            body: $content,
+        );
+        unlink($target_file);
+
+        unlink($temp_name);
+    }
+
+    public function uploadCustomThumbnail($temp_name, $new): void
+    {
+        $target_file = SB_DYNAMIC_PATH . '/custom_thumbnails/' . $new . '.png';
+
+        Utilities::processCustomThumbnail($temp_name, $target_file);
+        $content = file_get_contents($target_file);
+        $this->edgeStorageApi->uploadFile(
+            storageZoneName: $this->storageZone,
+            fileName: $target_file,
+            body: $content,
+        );
+        unlink($target_file);
 
         unlink($temp_name);
     }

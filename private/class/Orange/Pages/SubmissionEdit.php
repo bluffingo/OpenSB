@@ -71,7 +71,7 @@ class SubmissionEdit
             $temp_name = $_FILES['thumbnail']['tmp_name'];
             $ext = pathinfo($_FILES['thumbnail']['name'], PATHINFO_EXTENSION);
             $target_file = '../dynamic/custom_thumbnails/' . $this->data["video_id"] . '.jpg';
-            $storage->uploadImage($temp_name, $target_file, 'jpg', false, 1280);
+            $storage->uploadCustomThumbnail($temp_name, $target_file);
         }
 
         $this->database->query("UPDATE videos SET title = ?, description = ? WHERE video_id = ?",

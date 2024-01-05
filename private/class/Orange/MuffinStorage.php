@@ -60,34 +60,6 @@ class MuffinStorage implements Storage
         }
     }
 
-    public function uploadImage($temp_name, $target_file, $format, $resize = false, $width = 0, $height = 0) {
-        $path = explode('/', $target_file);
-
-        $manager = new ImageManager();
-        $img = $manager->make($temp_name);
-        if ($resize) {
-            $img->resize($width, $height);
-        } else {
-            $img->resize($width, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-        }
-        $img->save($temp_name, 97, $format);
-
-        $fileHandle = fopen($temp_name, 'r');
-
-        $response = $this->muffinClient->request('POST', '/upload_file.php', [
-            'body' => [
-                'name' => $target_file,
-                'file' => $fileHandle,
-                'folder' => $path[2], // this is shit. -bluffingo 12/23/2023
-            ],
-        ]);
-
-        unlink($temp_name);
-    }
-
     public function processImage($temp_name, $new) {
         $target_file = '/dynamic/art/' . $new . '.png';
         $target_thumbnail = '/dynamic/art_thumbnails/' . $new . '.jpg';
@@ -117,6 +89,46 @@ class MuffinStorage implements Storage
         ]);
 
         unlink(dirname(__DIR__) . '/..' . $target_thumbnail);
+
+        unlink($temp_name);
+    }
+
+    public function uploadProfilePicture($temp_name, $new): void
+    {
+        $target_file = '/dynamic/pfp/' . $new . '.png';
+
+        Utilities::processProfilePicture($temp_name, $target_file);
+        $fileHandle = fopen(dirname(__DIR__) . '/..' . $target_file, 'r');
+
+        $response = $this->muffinClient->request('POST', '/upload_file.php', [
+            'body' => [
+                'name' => $target_file,
+                'file' => $fileHandle,
+                'folder' => "pfp",
+            ],
+        ]);
+
+        unlink(dirname(__DIR__) . '/..' . $target_file);
+
+        unlink($temp_name);
+    }
+
+    public function uploadCustomThumbnail($temp_name, $new): void
+    {
+        $target_file = '/dynamic/custom_thumbnails/' . $new . '.png';
+
+        Utilities::processCustomThumbnail($temp_name, $target_file);
+        $fileHandle = fopen(dirname(__DIR__) . '/..' . $target_file, 'r');
+
+        $response = $this->muffinClient->request('POST', '/upload_file.php', [
+            'body' => [
+                'name' => $target_file,
+                'file' => $fileHandle,
+                'folder' => "custom_thumbnails",
+            ],
+        ]);
+
+        unlink(dirname(__DIR__) . '/..' . $target_file);
 
         unlink($temp_name);
     }

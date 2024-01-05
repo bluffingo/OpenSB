@@ -4,6 +4,7 @@ namespace Orange;
 
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
+use JetBrains\PhpStorm\NoReturn;
 
 /**
  * Static utilities.
@@ -79,12 +80,12 @@ class Utilities
         return $_SERVER['REMOTE_ADDR'];
     }
 
-    public static function redirect($url, ...$args) {
+    #[NoReturn] public static function redirect($url, ...$args) {
         header('Location: '.sprintf($url, ...$args));
         die();
     }
 
-    public static function redirectPerma($url, ...$args) {
+    #[NoReturn] public static function redirectPerma($url, ...$args) {
         header('Location: '.sprintf($url, ...$args), true, 301);
         die();
     }
@@ -153,7 +154,8 @@ class Utilities
         return $journalsData;
     }
 
-    public static function whereRatings() {
+    public static function whereRatings(): string
+    {
         global $auth;
 
         if ($auth->isUserLoggedIn()) {
@@ -180,14 +182,13 @@ class Utilities
     }
 
     // TODO: This should probably be an enum class.
-    public static function RatingToNumber($rating) {
-        $return_value = match ($rating) {
+    public static function RatingToNumber($rating): int
+    {
+        return match ($rating) {
             'general' => 0,
             'questionable' => 1,
             'mature' => 2,
         };
-
-        return $return_value;
     }
 
     /**
@@ -195,7 +196,7 @@ class Utilities
      *
      * @since Orange 1.0
      */
-    public static function NotifyUser($database, $user, $submission, $related_id, NotificationEnum $type)
+    public static function NotifyUser($database, $user, $submission, $related_id, NotificationEnum $type): void
     {
         global $auth, $database;
 
@@ -218,7 +219,7 @@ class Utilities
         return $database->result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$user, $auth->getUserID()]);
     }
 
-    public static function submissionBitmaskToArray($bitmask)
+    public static function submissionBitmaskToArray($bitmask): array
     {
         return [
             "featured" => (bool)($bitmask & 1),
@@ -239,7 +240,7 @@ class Utilities
      * @param string $color
      * @since Orange 1.0
      */
-    public static function Notification($message, $redirect, $color = "danger")
+    public static function Notification($message, $redirect, string $color = "danger"): void
     {
         $_SESSION["notif_message"] = $message;
         $_SESSION["notif_color"] = $color;
@@ -253,7 +254,8 @@ class Utilities
     /**
      * @since Orange 1.1
      */
-    public static function processImageSubmissionFile($temp_name, $target, $new) {
+    public static function processImageSubmissionFile($temp_name, $target, $new): void
+    {
         $manager = new ImageManager(Driver::class);
         $img = $manager->read($temp_name);
         $img->scaleDown(2048);
@@ -263,7 +265,8 @@ class Utilities
     /**
      * @since Orange 1.1
      */
-    public static function processImageSubmissionThumbnail($temp_name, $target, $new) {
+    public static function processImageSubmissionThumbnail($temp_name, $target, $new): void
+    {
         $manager = new ImageManager(Driver::class);
         $img = $manager->read($temp_name);
         $img->scaleDown(240); // used to be 500, but 500 was too big when the site displays thumbnails smaller than that.
@@ -273,14 +276,22 @@ class Utilities
     /**
      * @since Orange 1.1
      */
-    public static function processImageSubmissionCustomThumbnail($temp_name, $target) {
-        // wip
+    public static function processCustomThumbnail($temp_name, $target) {
+        $manager = new ImageManager(Driver::class);
+        $img = $manager->read($temp_name);
+        $img->scaleDown(1280);
+        $img->toJpeg(80)->save($target);
     }
 
     /**
      * @since Orange 1.1
      */
-    public static function processProfilePicture($temp_name, $target) {
-        // wip
+    public static function processProfilePicture($temp_name, $target): void
+    {
+        $manager = new ImageManager(Driver::class);
+        $img = $manager->read($temp_name);
+        // i have to do this otherwise non-1:1 images that are smaller than 512x512 won't be stretched
+        $img->resize(512, 512);
+        $img->toPng()->save($target);
     }
 }
