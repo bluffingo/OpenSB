@@ -8,8 +8,18 @@
 div.header-links
 {
   text-align: right;
-  font-size: 20px;
   margin-left: auto;
+  display: flex;
+  gap: 10px;
+  vertical-align: middle;
+  align-items: center;
+
+  .menuButton {
+    font-size: 20px;
+    .pfp {
+      width: 40px;
+    }
+  }
 }
 
 div.header-logo
@@ -26,6 +36,8 @@ form.header-search
   width: 250px;
   @include responsive('medium') {
     display: block;
+    flex-grow: 1;
+    text-align: center;
   }
 
   #header-search-input {
@@ -71,11 +83,8 @@ div.header-user-links
 a.menulink
 {
   color: white;
-  margin: 0 4px;
-  font-weight: 500;
-  &.userlink {
-    font-weight: 600;
-  }
+  margin: 0 7px;
+  font-size: 16px;
 }
 
 div.header

@@ -1,4 +1,4 @@
-# OpenSB
+# OpenSB Orange
 ![Screen Shot 2023-12-08 at 21 55 07](https://github.com/qobotv/OpenSB/assets/45898787/e7f0837c-ff8a-4b5c-b7fa-630131bc1507)
 
 ## How to setup an OpenSB instance.
@@ -30,7 +30,6 @@ You will have to modify the directories to match your instance's location.
     DocumentRoot "C:/xampp/openSB/public"
 
     Alias /dynamic "C:/xampp/openSB/dynamic"
-    Alias /finalium "C:/xampp/openSB/finalium/dist"
 
     <Directory "C:/xampp/openSB">
         Options Indexes FollowSymLinks
@@ -45,3 +44,6 @@ You will have to modify the directories to match your instance's location.
 ### Why do I get 404 errors when I click on thumbnails?
 
 Assuming you use Apache and have the rewrite module installed, this is because AllowOverride is turned off. See the virtual host example above for a quick fix.
+
+### Is this related to Kylarz's squareBracket?
+No. Kylarz's squareBracket uses a closed-source "TicTac" backend and is not affiliated with us. The original squareBracket (by Bluffingo) was renamed to Qobo in the latter half of 2022, and still uses OpenSB.

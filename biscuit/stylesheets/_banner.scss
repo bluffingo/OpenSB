@@ -1,5 +1,15 @@
 .banner {
   padding: 8px 5px;
+
+  .notification-icon {
+    font-size: 20px;
+  }
+
+  .notification-text {
+    vertical-align: middle;
+    height: 20px;
+    display: inline-block;
+  }
 }
 
 @each $color, $value in $color-map {

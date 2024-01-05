@@ -8,11 +8,11 @@
     {% set opengraph_description = "No description." %}
 {% endif %}
 
-{% set opengraph_image = thumbnail(submission.id, submission.type) %}
+{% set opengraph_image = thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) %}
 
 {% set opengraph_type = "article" %}
 {% set opengraph_published = submission.published | date("c") %}
-{% set opengraph_author = domain ~ "user?name=" ~ submission.author.info.username %}
+{% set opengraph_author = domain ~ "user/" ~ submission.author.info.username %}
 {% set metadata_author = submission.author.info.username %}
 {% if submission.type == 0 %}
     {% set opengraph_section = "Qobo video" %}
@@ -91,7 +91,7 @@
             {% endif %}
         </div>
         <hr>
-        <div>Content rating: {{ submission.rating | capitalize }}</div>
+        <div>Audience rating: {{ submission.rating | capitalize }}</div>
     </div>
     <div class="clear"></div>
     <br>
@@ -99,7 +99,7 @@
         <div class="section-title">
             <h1>Comments</h1>
             {% if show_work_in_progress_stuff %}
-            <a href="comments.php?v={{ submission.id }}">View all</a>
+            <a href="comments?v={{ submission.id }}">View all</a>
             {% endif %}
         </div>
         <div id="comments">

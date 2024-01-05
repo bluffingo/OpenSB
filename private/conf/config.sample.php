@@ -26,7 +26,7 @@ $bettyTemplate = "qobo"; // Template used by pages based on Betty.
 
 // Branding
 $branding = [
-    "name" => "a BettySB Instance",
+    "name" => "OpenSB Development",
 	"assets_location" => "/assets/placeholder",
 ];
 
@@ -40,6 +40,14 @@ $bunnySettings = [
 	"storageApi" => "storage api key",
 	"storageZone" => "storage zone name",
 	"pullZone" => "[pull zone].b-cdn.net",
+];
+
+// NOT FINALIZED!!! -Bluffingo 12/23/2023
+$useMuffinCDN = false;
+
+$muffinSettings = [
+    "muffAPI" => "PleaseGenerateARandomString",
+    "muffURL" => "http://localhost-muffin",
 ];
 
 $disableUploading = false;

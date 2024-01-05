@@ -4,6 +4,42 @@ function error(error) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Get all menu buttons and menus
+    const menuButtons = document.querySelectorAll('.menuButton');
+
+    // Add event listeners for each menu button
+    menuButtons.forEach(button => {
+        const menuId = button.getAttribute('data-menu-id');
+        const menu = document.getElementById(menuId);
+
+        // Show the menu on mobile when the button is tapped.
+        button.addEventListener('touchstart', () => {
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
+        });
+
+        // Show the menu when hovering over the button or the menu
+        button.addEventListener('mouseenter', () => {
+            menu.style.display = 'block';
+        });
+
+        // Hide the menu when not hovering over the button or the menu
+        button.addEventListener('mouseleave', () => {
+            menu.style.display = 'none';
+        });
+
+        menu.addEventListener('mouseenter', () => {
+            menu.style.display = 'block';
+        });
+
+        menu.addEventListener('mouseleave', () => {
+            menu.style.display = 'none';
+        });
+    });
+
     let favorite_button = (document.getElementById('follow-user'));
     let comment_field = (document.getElementById('comment_field'));
 

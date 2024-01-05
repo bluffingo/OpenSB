@@ -1,5 +1,5 @@
 /*!
- * Qobo.TV Biscuit (Finalium 2?)
+ * OpenSB Biscuit (Finalium 2?)
  * Made by Bluffingo (aka Chaziz)
  */
 
@@ -12,7 +12,13 @@
 	@return if(lightness($color) < $threshold, $light, $dark)
 }
 
-:root { font-family: $font; }
+:root {
+	font-family: $font;
+	font-feature-settings: 'liga' 1, 'calt' 1;
+}
+@supports (font-variation-settings: normal) {
+	:root { font-family: $font-var; }
+}
 
 *,
 *::before,
@@ -95,11 +101,6 @@ div.clear {
 	clear: both;
 }
 
-div.icons span
-{
-	display: inline-block;
-}
-
 textarea,
 input[type]:not([type=file]):not([type=submit]) {
 	border: 1px solid darken($content-box-border-color, 1%);
@@ -150,6 +151,12 @@ hr {
 	}
 }
 
+.xdebug-var-dump {
+	border: 1px solid $content-box-border-color;
+	background: $content-box-background-color;
+	margin: 5px;
+}
+
 @import 'header';
 @import 'footer';
 @import 'page';
@@ -161,6 +168,7 @@ hr {
 @import 'journals';
 @import 'buttons';
 @import 'jumbotron';
+@import 'menus';
 
 @import 'watch_page';
 @import 'profile_page';

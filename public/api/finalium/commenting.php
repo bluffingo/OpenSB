@@ -2,10 +2,10 @@
 
 namespace openSB\FinaliumApi;
 
-global $auth, $betty;
+global $auth, $orange;
 
 use Orange\Templating;
-use Orange\User;
+use Orange\UserData;
 
 chdir('../../');
 $rawOutputRequired = true;
@@ -27,18 +27,18 @@ $apiOutput = [
 
 if ($auth->getUserBanData()) {
     $apiOutput = [
-        "error" => "User is banned!!!"
+        "error" => "UserData is banned!!!"
     ];
 }
 
-$database = $betty->getBettyDatabase();
-$twig = new Templating($betty);
+$database = $orange->getDatabase();
+$twig = new Templating($orange);
 
 if (isset($post_data['type'])) {
     // Biscuit frontend outputs in JSON.
     header('Content-Type: application/json');
 
-    $author = new User($betty->getBettyDatabase(), $auth->getUserID());
+    $author = new UserData($orange->getDatabase(), $auth->getUserID());
 
     //if ($post_data['type'] == "submission") {
         $comment = [
@@ -69,7 +69,7 @@ if (isset($post_data['type'])) {
     // However, the Bootstrap frontend's comment.twig template has been patched to use the same variables as the Biscuit
     // frontend, since 2021 openSB and 2023 openSB are completely different things.
 
-    $author = new User($betty->getBettyDatabase(), $auth->getUserID());
+    $author = new UserData($orange->getDatabase(), $auth->getUserID());
 
     $comment = [
         "id" => 123456789,
@@ -102,7 +102,7 @@ if (strlen($post_data["comment"]) > 1000) {
 }
 
 //TODO: Innerjoin???
-if (!isset($betty->getLocalOptions()["development"])) {
+if (!$orange->getSettings()->getDevelopmentMode()) {
     if ($database->result("SELECT COUNT(*) FROM comments WHERE date > ? AND author = ?", [time() - 60, $auth->getUserID()]) ||
         $database->result("SELECT COUNT(*) FROM channel_comments WHERE date > ? AND author = ?", [time() - 60, $auth->getUserID()])
     ) {

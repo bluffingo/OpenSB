@@ -2,10 +2,10 @@
 
 namespace openSB\FinaliumApi;
 
-global $auth, $betty;
+global $auth, $orange;
 
-use Orange\MiscFunctions;
-use Orange\NoticeType;
+use Orange\NotificationEnum;
+use Orange\Utilities;
 
 chdir('../../');
 $rawOutputRequired = true;
@@ -24,7 +24,7 @@ if ($auth->getUserBanData()) {
     ];
 }
 
-$database = $betty->getBettyDatabase();
+$database = $orange->getDatabase();
 
 function follow($member): array
 {
@@ -43,7 +43,7 @@ function follow($member): array
         $database->query("INSERT INTO subscriptions (id, user) VALUES (?,?)", [$member, $auth->getUserID()]);
         $result = true;
 
-        MiscFunctions::NotifyUser($database, $member, 0,0,NoticeType::Follow);
+        Utilities::NotifyUser($database, $member, 0,0,NotificationEnum::Follow);
     }
 
     $number = $database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$member])['COUNT(user)'];

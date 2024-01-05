@@ -8,9 +8,9 @@
                 <h1>Modify submission ({{ data.id }})</h1>
             </div>
             <div class="content-box">
-                <form name="uploadForm" id="uploadForm" method="post" action="edit.php" enctype="multipart/form-data">
-                    <img src="{{ thumbnail(data.id, data.type) }}" width="300"
-                         alt="{{ data.title }}" class="form-image">
+                <form name="uploadForm" id="uploadForm" method="post" action="edit" enctype="multipart/form-data">
+                    <img src="{{ thumbnail(data.id, data.type, data.bools.custom_thumbnail) }}"
+                         alt="{{ data.title }}" class="form-image edit-page">
                     <input type="hidden" name="vid_id" value="{{ data.id }}">
 
                     <div class="form-input">

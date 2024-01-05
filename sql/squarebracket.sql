@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2023 at 07:14 PM
+-- Generation Time: Dec 29, 2023 at 09:54 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.11
 
@@ -191,6 +191,19 @@ CREATE TABLE `rating` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `site_settings`
+--
+
+CREATE TABLE `site_settings` (
+  `development` tinyint(1) NOT NULL,
+  `maintenance` tinyint(1) NOT NULL,
+  `branding_name` varchar(64) NOT NULL,
+  `branding_assets` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subscriptions`
 --
 
@@ -292,7 +305,7 @@ CREATE TABLE `videos` (
   `author` bigint(20) UNSIGNED NOT NULL COMMENT 'User ID of the video author',
   `time` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Unix timestamp for the time the video was uploaded',
   `most_recent_view` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-  `original_site` varchar(64) NOT NULL,
+  `original_site` varchar(64) DEFAULT NULL,
   `original_time` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `views` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Video views',
   `flags` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',

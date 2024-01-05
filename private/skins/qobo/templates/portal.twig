@@ -1,13 +1,13 @@
 {% extends "_layout.twig" %}
 
-{% set title = "Notices" %}
+{% set title = "Notifications" %}
 
 {% block content %}
     <div class="section">
         <div class="section-title">
-            <h1>Notices</h1>
+            <h1>Notifications</h1>
             {% if 0 %}
-            <a href="notices.php?action=clear_all">Clear all</a>
+            <a href="notices?action=clear_all">Clear all</a>
             {% endif %}
         </div>
         <div class="banner banner-secondary">
@@ -27,7 +27,7 @@
                                     {{ notice.intro }} {{ user_link(notice.sender) }}
                                     {{ notice.detail | markdown_user_written }}
                                     <small>
-                                        {{ notice.time | relative_time }} on Qobo, could be anywhere.
+                                        {{ notice.time | relative_time }} on {{ website_branding.name }}, could be anywhere.
                                     </small>
                                 </td>
                             </tr>

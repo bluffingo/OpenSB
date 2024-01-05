@@ -25,7 +25,7 @@
             <br>
 			<div class="content-box">
                 <h1>Ban user</h1>
-				<form name="uploadForm" id="uploadForm" method="post" action="admin.php" enctype="multipart/form-data">
+				<form name="uploadForm" id="uploadForm" method="post" action="admin" enctype="multipart/form-data">
 					<div class="banner banner-secondary">
 						<strong>NOTE</strong>: We don't support expiring bans yet.
 					</div>
@@ -61,7 +61,7 @@
 								{{ user.ban_reason }}
 								<small>({{ user.ban_time | date('F j, Y') }}/{{ user.ban_time | relative_time }})</small>
 							</td>
-							<td><a href="/admin.php?action=unban_user&user={{ user.id }}" class="button button-danger">Unban</a></td>
+							<td><a href="/admin?action=unban_user&user={{ user.id }}" class="button button-danger">Unban</a></td>
 						</tr>
 					{% endfor %}
 				</table>

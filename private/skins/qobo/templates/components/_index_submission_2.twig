@@ -1,7 +1,7 @@
 <div class="content-entry-index">
     <div class="content-image-container">
-        <a href="/watch.php?v={{ submission.id }}" class="content-image-link">
-            <img src="{{ thumbnail(submission.id, submission.type) }}"
+        <a href="/view/{{ submission.id }}" class="content-image-link">
+            <img src="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}"
                  alt="{{ submission.title }}"
                  title="{{ submission.title }} by {{ submission.author.info.username }}"
                  class="content-image">

@@ -4,6 +4,7 @@ private/templates/cache/
 templates/cache/
 cache/
 
+# UGC
 dynamic/pfp/
 dynamic/thumbnails/
 dynamic/banners/
@@ -11,6 +12,7 @@ dynamic/videos/
 dynamic/art/
 dynamic/art_thumbnails
 dynamic/custom_thumbnails
+dynamic/music/
 
 ## Composer
 vendor/

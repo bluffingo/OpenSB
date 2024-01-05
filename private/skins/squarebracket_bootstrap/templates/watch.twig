@@ -1,7 +1,7 @@
 {% extends "_layout.twig" %}
 
 {% block head %}
-	<meta name="title" content="{{ submission.title }} - Qobo">
+	<meta name="title" content="{{ submission.title }} - {{ website_branding.name }}">
 	<meta name="description" content="{{ submission.description|length > 250 ? submission.description|slice(0, 250) ~ '...' : submission.description }}">
 	<script>
 		video_id = '{{ submission.id }}';
@@ -28,7 +28,7 @@
 								<div class="col-lg-9">
 									<div class="row">
 										<div class="col-lg-2" style="width:10%;padding-right:0">
-											<a href="user.php?name={{ submission.author.info.username }}">
+											<a href="user/{{ submission.author.info.username }}">
 												<img class="float-start rounded-circle w-100" src="{{ profile_picture(submission.author.info.username) }}">
 											</a>
 										</div>
@@ -64,7 +64,7 @@
 							<hr class="mt-2 mb-3"/>
 							<div>
 								<small>
-									Content rating: {{ submission.rating | capitalize }}
+									Audience rating: {{ submission.rating | capitalize }}
 								</small>
 							</div>
 						</div>
