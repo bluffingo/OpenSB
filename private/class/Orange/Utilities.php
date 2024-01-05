@@ -254,7 +254,7 @@ class Utilities
     /**
      * @since Orange 1.1
      */
-    public static function processImageSubmissionFile($temp_name, $target, $new): void
+    public static function processImageSubmissionFile($temp_name, $target): void
     {
         $manager = new ImageManager(Driver::class);
         $img = $manager->read($temp_name);
@@ -265,7 +265,7 @@ class Utilities
     /**
      * @since Orange 1.1
      */
-    public static function processImageSubmissionThumbnail($temp_name, $target, $new): void
+    public static function processImageSubmissionThumbnail($temp_name, $target): void
     {
         $manager = new ImageManager(Driver::class);
         $img = $manager->read($temp_name);

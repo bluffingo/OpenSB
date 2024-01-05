@@ -49,8 +49,8 @@ class LocalStorage implements Storage
         $target_file = SB_DYNAMIC_PATH . '/art/' . $new . '.png';
         $target_thumbnail = SB_DYNAMIC_PATH . '/art_thumbnails/' . $new . '.jpg';
 
-        Utilities::processImageSubmissionFile($temp_name, $new, $target_file);
-        Utilities::processImageSubmissionThumbnail($temp_name, $new, $target_thumbnail);
+        Utilities::processImageSubmissionFile($temp_name, $target_file);
+        Utilities::processImageSubmissionThumbnail($temp_name, $target_thumbnail);
 
         unlink($temp_name);
     }

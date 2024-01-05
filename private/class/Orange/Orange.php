@@ -65,13 +65,16 @@ class Orange {
      */
     private function makeVersionString()
     {
-        // Versioning guide (By Bluffingo, last updated 12/29/2023):
+        // Versioning guide (By Bluffingo, last updated 1/5/2024):
         //
         // * Don't bump the first number unless if the codebase is rewritten.
         // * Bump the second number for every new release.
-        // * We do not have a third number unlike Semantic Versioning or something like Minecraft, since
+        // * We do not have a third number unlike Semantic Versioning, since
         // we use Git hashes for indicating revisions, but this may change.
-        $version = "1.1";
+        // * Pre-release versions not ready for Qobo production should be marked "x.x-dev"
+        // * Pre-release versions ready for Qobo production should be marked "x.x-RCx", with every
+        // (non-bugfix) update to production being a new release candidate version.
+        $version = "1.1-RC1";
         $gitPath = __DIR__ . '/../../../.git';
 
         // Check if the instance is git cloned. If it is, have the version string be
