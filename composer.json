@@ -11,7 +11,6 @@
 		"wixel/gump": "dev-master",
 		"ext-pdo": "*",
 		"twig/string-extra": "3.x-dev",
-		"twbs/bootstrap": "5.3.2",
 		"psr/http-client": "^1.0@dev"
 	},
 	"minimum-stability": "dev",
