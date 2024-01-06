@@ -26,14 +26,3 @@ div.page-contents
   }
   margin: 10px auto auto auto;
 }
-
-// DO NOT USE THESE!!!
-// these two classes are from when this frontend didn't account for small displays and was just a mix of
-// shades of orange. -bluffingo 12/8/2023
-#page-left {
-  float: left;
-}
-
-#page-right {
-  float: right;
-}
