@@ -72,10 +72,10 @@ class SubmissionUpload
         if (in_array(strtolower($ext), $this->supportedVideoFormats, true)) {
             if (isset($noProcess) && $isDebug) {
                 $status = 0x0; // pretend that video has been successfully uploaded
-                $target_file = dirname(__DIR__) . '/../../dynamic/videos/' . $new . '.converted.' . $ext;
+                $target_file = SB_DYNAMIC_PATH . '/dynamic/videos/' . $new . '.converted.' . $ext;
             } else {
                 $status = 0x2;
-                $target_file = dirname(__DIR__) . '/../../dynamic/videos/' . $new . 'Pages' . $ext;
+                $target_file = SB_DYNAMIC_PATH . '/videos/' . $new . '.' . $ext;
             }
             if (move_uploaded_file($temp_name, $target_file)) {
                 $this->database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, rating) VALUES (?,?,?,?,?,?,?,?,?)",
