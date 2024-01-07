@@ -15,19 +15,18 @@ class OrangeTwigExtension extends AbstractExtension
         global $profiler;
 
         return [
-            new TwigFunction('submission_view', [$this, 'SubmissionView']),
-            new TwigFunction('thumbnail', [$this, 'Thumbnail']),
+            new TwigFunction('submission_view', [$this, 'submissionView']),
+            new TwigFunction('thumbnail', [$this, 'thumbnail']),
             new TwigFunction('user_link', [$this, 'UserLink'], ['is_safe' => ['html']]),
-            new TwigFunction('profile_picture', [$this, 'ProfilePicture']),
-            new TwigFunction('profile_banner', [$this, 'ProfileBanner']),
+            new TwigFunction('profile_picture', [$this, 'profilePicture']),
+            new TwigFunction('profile_banner', [$this, 'profileBanner']),
             new TwigFunction('profiler_stats', function () use ($profiler) {
                 $profiler->getStats();
             }),
-            new TwigFunction('remove_notification', [$this, 'RemoveNotification']),
-            new TwigFunction('show_ratings', [$this, 'ShowRatings']),
-            new TwigFunction('notification_icon', [$this, 'NotificationIcon']),
-            new TwigFunction('pagination', [$this, 'Pagination'], ['is_safe' => ['html']]),
-            new TwigFunction('random_slogan', [$this, 'RandomSlogan'], ['is_safe' => ['html']]),
+            new TwigFunction('remove_notification', [$this, 'removeNotification']),
+            new TwigFunction('show_ratings', [$this, 'showRatings']),
+            new TwigFunction('notification_icon', [$this, 'notificationIcon']),
+            new TwigFunction('pagination', [$this, 'pagination'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -115,7 +114,7 @@ class OrangeTwigExtension extends AbstractExtension
         return $relativeTime->timeAgo($time);
     }
 
-    public function SubmissionView($submission_data)
+    public function submissionView($submission_data)
     {
         global $twig;
         if (!$submission_data) {
@@ -134,7 +133,7 @@ class OrangeTwigExtension extends AbstractExtension
         }
     }
 
-    public function Thumbnail($id, $type, $custom)
+    public function thumbnail($id, $type, $custom)
     {
         global $isQoboTV, $storage, $bunnySettings;
 
@@ -162,7 +161,7 @@ class OrangeTwigExtension extends AbstractExtension
         return $data;
     }
 
-    public function ProfilePicture($username)
+    public function profilePicture($username)
     {
         global $isQoboTV, $bunnySettings, $storage, $muffinSettings, $useMuffinCDN;
         $location = '/dynamic/pfp/' . $username . '.png';
@@ -183,7 +182,7 @@ class OrangeTwigExtension extends AbstractExtension
         return $data;
     }
 
-    public function ProfileBanner($username)
+    public function profileBanner($username)
     {
         global $isQoboTV, $bunnySettings, $storage;
         $location = '/dynamic/banners/' . $username . '.png';
@@ -217,13 +216,13 @@ class OrangeTwigExtension extends AbstractExtension
 HTML;
     }
 
-    public function RemoveNotification()
+    public function removeNotification()
     {
         unset($_SESSION["notif_message"]);
         unset($_SESSION["notif_color"]);
     }
 
-    public function ShowRatings($ratings): void
+    public function showRatings($ratings): void
     {
         $full = "bi bi-star-fill rating-spacing";
         $half = "bi bi-star-half rating-spacing";
@@ -255,7 +254,7 @@ HTML;
 
     }
 
-    public function NotificationIcon($type)
+    public function notificationIcon($type)
     {
         $icon = "bi bi-info-circle";
 
@@ -265,25 +264,11 @@ HTML;
         return $icon;
     }
 
-    public function Pagination($levels, $lpp, $url, $current)
+    public function pagination($levels, $lpp, $url, $current)
     {
         global $twig;
         return $twig->render('components/pagination.twig', ['levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current]);
     }
 
-    public function RandomSlogan()
-    {
-        $slogans = [
-            "Your content, your narration, your niche on the web.",
-            "Technically BitView's sister site.",
-            "I can't believe it's not squareBracket!",
-            "I can't believe it's not CleberTube!",
-            "Coconuts have water in them!",
-            "Made in Quebec yet not available in French.",
-            "Not to be confused with Qubo.",
-            "Remember 2003page?",
-        ];
 
-        return array_rand(array_flip($slogans));
-    }
 }

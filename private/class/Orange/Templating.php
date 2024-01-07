@@ -3,6 +3,9 @@
 namespace Orange;
 
 use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 use Twig\Extension\DebugExtension;
 use Twig\Extra\String\StringExtension;
 use Twig\Loader\FilesystemLoader;
@@ -19,7 +22,10 @@ class Templating
     private FilesystemLoader $loader;
     private Environment $twig;
 
-    public function __construct(\Orange\Orange $orange)
+    /**
+     * @throws LoaderError
+     */
+    public function __construct(Orange $orange)
     {
         global $isQoboTV, $auth, $bettyTemplate, $isDebug, $branding, $googleAdsClient;
         chdir(__DIR__ . '/../..');
@@ -96,7 +102,7 @@ class Templating
         if (file_exists($skin . "/skin.json")) {
             $metadata = file_get_contents($skin . "/skin.json");
         } else {
-            trigger_error(sprintf("The metadata for Betty skin %s is missing", $skin), E_USER_WARNING);
+            trigger_error(sprintf("The metadata for Orange skin %s is missing", $skin), E_USER_WARNING);
             return null;
         }
         return json_decode($metadata, true);
@@ -112,14 +118,13 @@ class Templating
     }
 
     /**
-     * This function exists to keep compatibility with openSB pages based on twigloader.
      *
      * @param $template
      * @param array $data
      * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      * @since Orange 1.0
      *
      */
