@@ -67,8 +67,9 @@
             <div class="header-logo">
                 <a href="/"><img alt="{{ website_branding.name }}" class="logo" src="/img/logo.svg"></a>
             </div>
-            <a class="menulink" href="/browse">Browse</a>
-            <a class="menulink" href="/users">Members</a>
+            {% for link in header_main_links() %}
+                <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
+            {% endfor %}
             <form class="header-search" action="/search">
                 <input id="header-search-input" type="text" name="query" placeholder="Search...">
                 <div class="form-button-container">

@@ -27,6 +27,7 @@ class OrangeTwigExtension extends AbstractExtension
             new TwigFunction('show_ratings', [$this, 'showRatings']),
             new TwigFunction('notification_icon', [$this, 'notificationIcon']),
             new TwigFunction('pagination', [$this, 'pagination'], ['is_safe' => ['html']]),
+            new TwigFunction('header_main_links', [$this, 'headerMainLinks']),
         ];
     }
 
@@ -119,7 +120,7 @@ class OrangeTwigExtension extends AbstractExtension
         global $twig;
         if (!$submission_data) {
             throw new OrangeException('SubmissionView is null', 500);
-        };
+        }
         if ($submission_data["type"] == 0) {
             echo $twig->render("player.twig", ['submission' => $submission_data]);
         }
@@ -166,7 +167,7 @@ class OrangeTwigExtension extends AbstractExtension
         global $isQoboTV, $bunnySettings, $storage, $muffinSettings, $useMuffinCDN;
         $location = '/dynamic/pfp/' . $username . '.png';
 
-        if($storage->fileExists('..' . $location)) {
+        if ($storage->fileExists('..' . $location)) {
             if ($isQoboTV) {
                 if ($useMuffinCDN) {
                     $data = $muffinSettings["muffURL"] . '/dynamic/pfp/' . $username . '.png';
@@ -187,7 +188,7 @@ class OrangeTwigExtension extends AbstractExtension
         global $isQoboTV, $bunnySettings, $storage;
         $location = '/dynamic/banners/' . $username . '.png';
 
-        if($storage->fileExists('..' . $location)) {
+        if ($storage->fileExists('..' . $location)) {
             if ($isQoboTV) {
                 $data = "https://" . $bunnySettings["pullZone"] . $location;
             } else {
@@ -247,7 +248,7 @@ HTML;
             }
         }
 
-        while($number != 5) {
+        while ($number != 5) {
             $number++;
             echo "<i class='$empty'></i>";
         }
@@ -258,8 +259,12 @@ HTML;
     {
         $icon = "bi bi-info-circle";
 
-        if ($type == "danger") { $icon = "bi bi-x-circle-fill"; }
-        if ($type == "success") { $icon = "bi bi-check-circle-fill"; }
+        if ($type == "danger") {
+            $icon = "bi bi-x-circle-fill";
+        }
+        if ($type == "success") {
+            $icon = "bi bi-check-circle-fill";
+        }
 
         return $icon;
     }
@@ -270,5 +275,17 @@ HTML;
         return $twig->render('components/pagination.twig', ['levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current]);
     }
 
-
+    public function headerMainLinks()
+    {
+        return array(
+            "browse" => array(
+                "name" => "Browse",
+                "url" => "/browse",
+            ),
+            "members" => array(
+                "name" => "Members",
+                "url" => "/users",
+            ),
+        );
+    }
 }
