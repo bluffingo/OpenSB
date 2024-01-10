@@ -93,58 +93,65 @@ class BunnyStorage implements Storage
 
     public function processImage($temp_name, $new): void
     {
-        $target_file = SB_DYNAMIC_PATH . '/art/' . $new . '.png';
-        $target_thumbnail = SB_DYNAMIC_PATH . '/art_thumbnails/' . $new . '.jpg';
+        $target_file = '/dynamic/art/' . $new . '.png';
+        $target_thumbnail = '/dynamic/art_thumbnails/' . $new . '.jpg';
 
-        Utilities::processImageSubmissionFile($temp_name, $target_file);
-        $content = file_get_contents($target_file);
+        $target_file_local = SB_DYNAMIC_PATH . '/art/' . $new . '.png';
+        $target_thumbnail_local = SB_DYNAMIC_PATH . '/art_thumbnails/' . $new . '.jpg';
+
+        Utilities::processImageSubmissionFile($temp_name, $target_file_local);
+        $content = file_get_contents($target_file_local);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
             fileName: $target_file,
             body: $content,
         );
-        unlink($target_file);
+        unlink($target_file_local);
 
-        Utilities::processImageSubmissionThumbnail($temp_name, $target_thumbnail);
-        $content = file_get_contents($target_thumbnail);
+        Utilities::processImageSubmissionThumbnail($temp_name, $target_thumbnail_local);
+        $content = file_get_contents($target_thumbnail_local);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
             fileName: $target_thumbnail,
             body: $content,
         );
-        unlink($target_thumbnail);
+        unlink($target_thumbnail_local);
 
         unlink($temp_name);
     }
 
     public function uploadProfilePicture($temp_name, $new): void
     {
-        $target_file = SB_DYNAMIC_PATH . '/pfp/' . $new . '.png';
+        $target_file = '/dynamic/pfp/' . $new . '.png';
 
-        Utilities::processProfilePicture($temp_name, $target_file);
-        $content = file_get_contents($target_file);
+        $target_file_local = SB_DYNAMIC_PATH . '/pfp/' . $new . '.png';
+
+        Utilities::processProfilePicture($temp_name, $target_file_local);
+        $content = file_get_contents($target_file_local);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
             fileName: $target_file,
             body: $content,
         );
-        unlink($target_file);
+        unlink($target_file_local);
 
         unlink($temp_name);
     }
 
     public function uploadCustomThumbnail($temp_name, $new): void
     {
-        $target_file = SB_DYNAMIC_PATH . '/custom_thumbnails/' . $new . '.png';
+        $target_file = '/dynamic/custom_thumbnails/' . $new . '.png';
 
-        Utilities::processCustomThumbnail($temp_name, $target_file);
-        $content = file_get_contents($target_file);
+        $target_file_local = SB_DYNAMIC_PATH . '/custom_thumbnails/' . $new . '.png';
+
+        Utilities::processCustomThumbnail($temp_name, $target_file_local);
+        $content = file_get_contents($target_file_local);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
             fileName: $target_file,
             body: $content,
         );
-        unlink($target_file);
+        unlink($target_file_local);
 
         unlink($temp_name);
     }
