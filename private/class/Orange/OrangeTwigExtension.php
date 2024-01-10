@@ -28,6 +28,7 @@ class OrangeTwigExtension extends AbstractExtension
             new TwigFunction('notification_icon', [$this, 'notificationIcon']),
             new TwigFunction('pagination', [$this, 'pagination'], ['is_safe' => ['html']]),
             new TwigFunction('header_main_links', [$this, 'headerMainLinks']),
+            new TwigFunction('header_user_links', [$this, 'headerUserLinks']),
         ];
     }
 
@@ -277,15 +278,67 @@ HTML;
 
     public function headerMainLinks()
     {
-        return array(
-            "browse" => array(
+        return [
+            "browse" => [
                 "name" => "Browse",
                 "url" => "/browse",
-            ),
-            "members" => array(
+            ],
+            "members" => [
                 "name" => "Members",
                 "url" => "/users",
-            ),
-        );
+            ],
+        ];
+    }
+
+    public function headerUserLinks()
+    {
+        global $auth;
+
+        if ($auth->isUserLoggedIn()) {
+            $username = $auth->getUserData()["name"];
+
+            $array = [
+                "profile" => [
+                    "name" => $username,
+                    "url" => "/user/" . $username,
+                ],
+                "settings" => [
+                    "name" => "Settings",
+                    "url" => "/settings",
+                ],
+                "new_journal" => [
+                    "name" => "Write",
+                    "url" => "/write",
+                ],
+                "new_submission" => [
+                    "name" => "Upload",
+                    "url" => "/upload",
+                ],
+                "logout" => [
+                    "name" => "Log out",
+                    "url" => "/logout",
+                ],
+            ];
+
+            if ($auth->isUserAdmin()) {
+                $array["admin"] = [
+                    "name" => "Admin",
+                    "url" => "/admin",
+                ];
+            }
+        } else {
+            $array = [
+                "login" => [
+                    "name" => "Login",
+                    "url" => "/login",
+                ],
+                "register" => [
+                    "name" => "Register",
+                    "url" => "/register",
+                ],
+            ];
+        }
+
+        return $array;
     }
 }

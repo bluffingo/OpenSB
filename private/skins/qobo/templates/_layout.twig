@@ -86,33 +86,26 @@
                         <img src="{{ profile_picture(user_data.name) }}" class="pfp" alt="{{ user_data.name }}">
                     </div>
                     <div class="menu" id="user-menu">
-                        <a class="menu-item-button" href="/user/{{ user_data.name }}">{{ user_data.name }}</a>
-                        <a class="menu-item-button" href="/settings">Settings</a>
-                        {% if user_data.powerlevel > 2 %}
-                            <a class="menu-item-button" href="/admin">Admin</a>
-                        {% endif %}
-                        <a class="menu-item-button" href="/write">Write</a>
-                        <a class="menu-item-button" href="/upload">Upload</a>
-                        <a class="menu-item-button" href="/logout">Log out</a>
+                        {% for link in header_user_links() %}
+                            <a class="menu-item-button" href="{{ link.url }}">{{ link.name }}</a>
+                        {% endfor %}
                     </div>
                 </div>
                 {% else %}
-                    <a class="menulink" href="/login">Login</a>
-                    <a class="menulink" href="/register">Register</a>
+                    {% for link in header_user_links() %}
+                        <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
+                    {% endfor %}
                 {% endif %}
             </div>
         </div>
     </div>
 </div>
-<form action="login" method="post" name="logout">
-    <input type="hidden" name="action" value="logout">
-</form>
 {% block precontent %}{% endblock %}
 <div class="page">
     <div class="page-contents">
         {% if user_ban_data %}
             <div class="banner banner-danger">
-                <p>Your account has been banned for the following reason:</p>
+                <p>You have been banned for the following reason:</p>
                 {{ user_ban_data.reason | markdown }}
             </div>
         {% endif %}
