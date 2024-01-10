@@ -3,22 +3,22 @@
 namespace OpenSB;
 
 if (version_compare(PHP_VERSION, '8.2.0') <= 0) {
-    die('<b>OpenSB is not compatible with your PHP version. OpenSB supports PHP 8.2 or newer.</b>');
+    die('<strong>OpenSB is not compatible with your PHP version. OpenSB supports PHP 8.2 or newer.</strong>');
 }
 
 if (!file_exists(SB_VENDOR_PATH . '/autoload.php')) {
-    die('<b>You are missing the required Composer packages. Please read the installing instructions in the README file.</b>');
+    die('<strong>You are missing the required Composer packages. Please read the installing instructions in the README file.</strong>');
 }
 
 if (!file_exists(SB_PRIVATE_PATH . '/conf/config.php')) {
-    die('<b>The configuration file could not be found. Please read the installing instructions in the README file.</b>');
+    die('<strong>The configuration file could not be found. Please read the installing instructions in the README file.</strong>');
 }
 
 require_once(SB_PRIVATE_PATH . '/conf/config.php');
 
 require_once(SB_VENDOR_PATH . '/autoload.php');
 
-global $host, $user, $pass, $db, $isQoboTV, $isMaintenance, $useMuffinCDN;
+global $host, $user, $pass, $db, $isQoboTV, $useMuffinCDN;
 
 use GUMP;
 use Orange\Authentication;

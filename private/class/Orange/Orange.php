@@ -74,16 +74,15 @@ class Orange {
         // * Pre-release versions not ready for Qobo production should be marked "x.x-dev"
         // * Pre-release versions ready for Qobo production should be marked "x.x-RCx", with every
         // (non-bugfix) update to production being a new release candidate version.
-        $version = "1.1-RC1";
-        $gitPath = __DIR__ . '/../../../.git';
+        $version = "1.1-RC2";
 
         // Check if the instance is git cloned. If it is, have the version string be
         // precise. Otherwise, just indicate that it's a "Non-source copy", though we
         // should find a better term for this. -Bluffingo 12/19/2023
-        if(file_exists($gitPath)) {
-            $gitHead = file_get_contents($gitPath . '/HEAD');
+        if(file_exists(SB_GIT_PATH)) {
+            $gitHead = file_get_contents(SB_GIT_PATH . '/HEAD');
             $gitBranch = rtrim(preg_replace("/(.*?\/){2}/", '', $gitHead));
-            $commit = file_get_contents($gitPath . '/refs/heads/' . $gitBranch); // kind of bad but hey it works
+            $commit = file_get_contents(SB_GIT_PATH . '/refs/heads/' . $gitBranch); // kind of bad but hey it works
 
             $hash = substr($commit, 0, 7);
 
