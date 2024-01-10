@@ -97,8 +97,8 @@
             {% endif %}
         </div>
     </div>
-    <div class="content-box">
-        <div id="page-left" style="width: 460px;">
+    <div class="content-box grid">
+        <div class="col-small-12 col-medium-6">
             {% if data.featured_submission %}
                 <div class="text-title">Featured submission</div>
                 <div class="profile-featured-submission">
@@ -112,7 +112,7 @@
                 </div>
             {% endif %}
         </div>
-        <div id="page-right" style="width: 460px;">
+        <div class="col-small-12 col-medium-6">
             {% if data.journals %}
                 <div class="text-title">Journals</div>
                 {% for journal in data.journals %}

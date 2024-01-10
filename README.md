@@ -8,8 +8,7 @@
 1. Run `composer update` from the terminal.
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
 1. Import the database template found in `sql/` into the database you want to use.
-1. Run the `compile-scss-dartsass` script available in the tools directory to generate CSS. This will be a bit more complicated for Windows users.
-
+1. Run the `compile-scss` script available in the tools directory to generate the required stylesheets. You may find Dart-Sass here at https://sass-lang.com/install/.
 ### Production specific
 
 1. Instead of installing dependencies using `composer update` you do `composer update --no-dev`

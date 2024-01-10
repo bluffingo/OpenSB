@@ -6,22 +6,8 @@
   border-radius: $content-box-roundness;
 
   .img-submission {
-    @include responsive('small') {
-      max-width: 400px;
-      max-height: 400px;
-    }
-
-    @include responsive('medium') {
-      max-width: 650px;
-      max-height: 650px;
-    }
-
-    @include responsive('large') {
-      max-width: 700px;
-      max-height: 700px;
-    }
-
-    padding: 15px 0;
+    max-width: 100%;
+    padding: 15px 15px;
   }
 }
 

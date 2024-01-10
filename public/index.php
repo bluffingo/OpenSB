@@ -6,6 +6,8 @@ namespace OpenSB;
 define("SB_DYNAMIC_PATH", dirname(__DIR__) . '/dynamic');
 define("SB_PRIVATE_PATH", dirname(__DIR__) . '/private');
 define("SB_VENDOR_PATH", dirname(__DIR__) . '/vendor');
+define("SB_GIT_PATH", dirname(__DIR__) . '/.git'); // ONLY FOR makeVersionString() IN Orange CLASS.
+
 // SB_PUBLIC_PATH is not needed because all the core functionality is in the private folder.
 
 use Orange\Utilities;
