@@ -6,7 +6,7 @@
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
 		"mobiledetect/mobiledetectlib": "3.74",
-		"php-ffmpeg/php-ffmpeg": "1.1.0",
+		"php-ffmpeg/php-ffmpeg": "1.2.0",
 		"whitecube/lingua": "dev-master",
 		"toshy/bunnynet-php": "^3.0",
 		"symfony/http-client": "6.3.x-dev"
