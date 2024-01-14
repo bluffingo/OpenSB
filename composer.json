@@ -5,7 +5,7 @@
 		"intervention/image": "^2.5",
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
-		"mobiledetect/mobiledetectlib": "3.74",
+		"mobiledetect/mobiledetectlib": "4.8.05",
 		"php-ffmpeg/php-ffmpeg": "1.1.0",
 		"whitecube/lingua": "dev-master",
 		"toshy/bunnynet-php": "^3.0",
