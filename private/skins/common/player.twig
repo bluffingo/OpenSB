@@ -13,22 +13,30 @@
             style="--vm-player-theme: #e61ff7;"
             theme="dark"
     >
-        <vm-video
-                cross-origin="true"
-                poster="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}"
-        >
-            {% if is_qobo %}
-                <source
-                        data-src="{{ submission.file }}"
-                        type="application/x-mpegURL"
-                />
+        {% if is_qobo %}
+        <vm-hls version="latest" poster="/media/poster.png">
             {% else %}
-                <source
-                        data-src="/dynamic/videos/{{ submission.id }}.converted.mp4"
-                        type="video/mp4"
-                />
-            {% endif %}
+            <vm-video
+                    cross-origin="true"
+                    poster="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}"
+            >
+                {% endif %}
+                {% if is_qobo %}
+                    <source
+                            data-src="{{ submission.file }}"
+                            type="application/x-mpegURL"
+                    />
+                {% else %}
+                    <source
+                            data-src="/dynamic/videos/{{ submission.id }}.converted.mp4"
+                            type="video/mp4"
+                    />
+                {% endif %}
+                {% if is_qobo %}
+        </vm-hls>
+    {% else %}
         </vm-video>
+        {% endif %}
 
         <vm-default-ui></vm-default-ui>
     </vm-player>
