@@ -1,38 +1,41 @@
-<!-- Default theme. -->
-<link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@vime/core@^5/themes/default.css"
-/>
-<script
-        defer
-        type="module"
-        src="https://cdn.jsdelivr.net/npm/@vime/core@^5/dist/vime/vime.esm.js"
-></script>
-<div style="text-align: left;">
-    <vm-player
-            style="--vm-player-theme: #e61ff7;"
-            theme="dark"
-    >
-        <vm-video
-                cross-origin="true"
-                poster="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}"
+<script src="https://vjs.zencdn.net/8.9.0/video.min.js"></script>
+<link href="https://vjs.zencdn.net/8.9.0/video-js.css" rel="stylesheet" />
+<video
+        id="sb-video"
+        class="video-js"
+        controls
+        preload="auto"
+        width="640"
+        height="264"
+        data-setup="{}"
+>
+    <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a
+        web browser that
+        <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
         >
-            {% if is_qobo %}
-                <source
-                        data-src="{{ submission.file }}"
-                        type="application/x-mpegURL"
-                />
-            {% else %}
-                <source
-                        data-src="/dynamic/videos/{{ submission.id }}.converted.mp4"
-                        type="video/mp4"
-                />
-            {% endif %}
-        </vm-video>
-
-        <vm-default-ui></vm-default-ui>
-    </vm-player>
-</div>
+    </p>
+</video>
 <script>
-    window.player = document.querySelector('vm-player');
+    var player = videojs('sb-video', {
+        sourceOrder: true,
+        retryOnError: true,
+        aspectRatio: "16:9",
+        fluid: true,
+        autoplay: false,
+        preload: "auto"
+    });
+
+    {% if is_qobo %}
+    player.src([{
+        src: '{{ submission.file }}',
+        type: 'application/x-mpegURL'
+    }]);
+    {% else %}
+    player.src([{
+        src: '/dynamic/videos/{{ submission.id }}.converted.mp4',
+        type: 'video/mp4'
+    }]);
+    {% endif %}
 </script>
