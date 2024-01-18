@@ -14,11 +14,15 @@
             theme="dark"
     >
         {% if is_qobo %}
-            <vm-dash
-                    src="{{ submission.file }}"
+            <vm-hls
                     version="latest"
                     poster="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}"
-            ></vm-dash>
+            >
+                <source
+                        data-src="{{ submission.file }}"
+                        type="application/x-mpegURL"
+                />
+            </vm-hls>
         {% else %}
             <vm-video
                     cross-origin="true"
