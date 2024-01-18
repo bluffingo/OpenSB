@@ -14,28 +14,22 @@
             theme="dark"
     >
         {% if is_qobo %}
-        <vm-hls version="latest" poster="/media/poster.png">
-            {% else %}
+            <vm-hls version="latest" poster="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}">
+                <source
+                        data-src="{{ submission.file }}"
+                        type="application/x-mpegURL"
+                />
+            </vm-hls>
+        {% else %}
             <vm-video
                     cross-origin="true"
                     poster="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}"
             >
-                {% endif %}
-                {% if is_qobo %}
-                    <source
-                            data-src="{{ submission.file }}"
-                            type="application/x-mpegURL"
-                    />
-                {% else %}
-                    <source
-                            data-src="/dynamic/videos/{{ submission.id }}.converted.mp4"
-                            type="video/mp4"
-                    />
-                {% endif %}
-                {% if is_qobo %}
-        </vm-hls>
-    {% else %}
-        </vm-video>
+                <source
+                        data-src="/dynamic/videos/{{ submission.id }}.converted.mp4"
+                        type="video/mp4"
+                />
+            </vm-video>
         {% endif %}
 
         <vm-default-ui></vm-default-ui>
