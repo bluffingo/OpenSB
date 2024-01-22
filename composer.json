@@ -2,7 +2,7 @@
 	"require": {
 		"twig/twig": "^3.0",
 		"mpratt/relativetime": "dev-master",
-		"intervention/image": "^2.5",
+		"intervention/image": "^3.3",
 		"twig/markdown-extra": "3.x-dev",
 		"erusev/parsedown": "dev-master",
 		"mobiledetect/mobiledetectlib": "3.74",
