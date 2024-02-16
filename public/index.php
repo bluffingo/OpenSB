@@ -67,6 +67,18 @@ if (isset($path[1]) && $path[1] != '') {
         Utilities::redirect('/view/'.$_GET['v']);
     } elseif ($path[1] == 'write') {
         require(SB_PRIVATE_PATH . '/pages/write.php');
+    } elseif ($path[1] == 'api') {
+        if ($path[2] == 'finalium') {
+            if ($path[3] == 'commenting.php') {
+                require(SB_PRIVATE_PATH . '/pages/api/commenting.php');
+            } elseif ($path[3] == 'submission_interaction') {
+                require(SB_PRIVATE_PATH . '/pages/api/submission_interaction.php');
+            } elseif ($path[3] == 'user_interaction.php') {
+                require(SB_PRIVATE_PATH . '/pages/api/user_interaction.php');
+            }
+        } else {
+            die("Invalid API.");
+        }
     } else {
         rewritePHP();
     }

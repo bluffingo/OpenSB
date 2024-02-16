@@ -1,5 +1,5 @@
 # Qobo Upload Guidelines 
-Last edited by Bluffingo on January 1st 2024.
+Last edited by Bluffingo on February 16th 2024.
 
 ## What we don't allow
 **If you upload anything that falls under this list, your accounts will most likely be terminated.**
@@ -13,6 +13,7 @@ Last edited by Bluffingo on January 1st 2024.
 ## Videos
 * Only upload videos that you have created yourself. Any reuploads of videos not made by you will be taken down. However, an exception is made for memes and content in the public domain. This does not apply to Qobo submissions uploaded before April 2023.
 * Parody edits of copyrighted material (known as YTPs) are allowed.
+* Videos produced using AI, akin to OpenAI's Sora, are not allowed.
 
 ## Images and drawings
 * Fan-art featuring copyrighted characters is permitted.

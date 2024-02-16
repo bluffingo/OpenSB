@@ -82,7 +82,7 @@ foreach ($ipBannedUsers as $ipBannedUser) {
 
 if ($isQoboTV) {
     if ($useMuffinCDN) {
-        $storage = new MuffinStorage($orange);
+        throw new OrangeException("The MuffinCDN interface is no longer available.");
     } else {
         $storage = new BunnyStorage($orange);
     }

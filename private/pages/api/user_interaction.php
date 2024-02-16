@@ -1,15 +1,13 @@
 <?php
 
-namespace openSB\FinaliumApi;
+namespace OpenSB;
 
 global $auth, $orange;
 
 use Orange\NotificationEnum;
 use Orange\Utilities;
 
-chdir('../../');
 $rawOutputRequired = true;
-require_once dirname(__DIR__) . '/../../private/class/common.php';
 header('Content-Type: application/json');
 
 $post_data = json_decode(file_get_contents('php://input'), true);

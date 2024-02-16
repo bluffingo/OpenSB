@@ -1,6 +1,6 @@
 <?php
 
-namespace openSB\FinaliumApi;
+namespace OpenSB;
 
 global $auth, $orange;
 
@@ -9,7 +9,6 @@ use Orange\UserData;
 
 chdir('../../');
 $rawOutputRequired = true;
-require_once dirname(__DIR__) . '/../../private/class/common.php';
 
 $post_data = json_decode(file_get_contents('php://input'), true);
 $legacy_frontend = false;
