@@ -1,5 +1,7 @@
-# Qobo Upload Guidelines 
-Last edited by Bluffingo on February 16th 2024.
+# squareBracket Upload Guidelines 
+Last edited by Bluffingo on March 1st 2024.
+
+Note that these guidelines were originally written for Qobo.
 
 ## What we don't allow
 **If you upload anything that falls under this list, your accounts will most likely be terminated.**
@@ -11,7 +13,7 @@ Last edited by Bluffingo on February 16th 2024.
 * Edgy, politically-incorrect content (Nazism, racism, bigotry).
 
 ## Videos
-* Only upload videos that you have created yourself. Any reuploads of videos not made by you will be taken down. However, an exception is made for memes and content in the public domain. This does not apply to Qobo submissions uploaded before April 2023.
+* Only upload videos that you have created yourself. Any reuploads of videos not made by you will be taken down. However, an exception is made for memes and content in the public domain. This does not apply to squareBracket submissions uploaded before April 2023.
 * Parody edits of copyrighted material (known as YTPs) are allowed.
 * Videos produced using AI, akin to OpenAI's Sora, are not allowed.
 
@@ -25,7 +27,7 @@ Last edited by Bluffingo on February 16th 2024.
 ## Content ratings
 Note that your submission will be seen by fewer people if it's content rating is higher. This is not to be confused with the star-rating system.
 
-In order to view Questionable and Mature content on Qobo, you must be logged in and change your "Comfortable Rating" setting in your Settings page.
+In order to view Questionable and Mature content on squareBracket, you must be logged in and change your "Comfortable Rating" setting in your Settings page.
 
 ### General rating
 * General submissions should not have any references or depictions to fetishes and inappropriate content.

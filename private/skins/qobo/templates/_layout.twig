@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} - {{ website_branding.name }}</title>
     <link rel="stylesheet" href="/img/css/common.css">
-    <meta name="theme-color" content="#DA20EA">
+    <meta name="theme-color" content="#FF723D">
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:url" content="{{ page_url }}">
     <meta property="og:site_name" content="{{ website_branding.name }}" />
@@ -27,14 +27,14 @@
         <meta name="description" content="{{ opengraph_description }}">
     {% else %}
         <meta property="og:description"
-              content="Your content, your narration, your niche on the web." />
-        <meta name="description" content="Your content, your narration, your niche on the web.">
+              content="Yet again." />
+        <meta name="description" content="Yet again.">
     {% endif %}
 
     {% if opengraph_image %}
         <meta property="og:image" content="{{ opengraph_image }}">
     {% else %}
-        <meta property="og:image" content="{{ domain }}img/qobo_768x768.png">
+        <meta property="og:image" content="{{ domain }}img/sb_512x512.png">
     {% endif %}
 
     {% if opengraph_author %}
@@ -52,11 +52,6 @@
         <meta property="article:published_time" content="{{ opengraph_published }}" />
     {% endif %}
 
-    {% if ad_client and user_data.comfortable_rating == "general" %}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-{{ ad_client }}"
-                crossorigin="anonymous"></script>
-    {% endif %}
-
     {% block style %}
     {% endblock %}
 </head>
@@ -65,7 +60,7 @@
     <div class="header">
         <div class="page">
             <div class="header-logo">
-                <a href="/"><img alt="{{ website_branding.name }}" class="logo" src="/img/logo.svg"></a>
+                <a href="/"><img alt="{{ website_branding.name }}" class="logo" src="/img/logo.png"></a>
             </div>
             {% for link in header_main_links() %}
                 <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>

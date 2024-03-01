@@ -52,5 +52,3 @@ $muffinSettings = [
 
 $disableUploading = false;
 $disableWritingJournals = false;
-
-$googleAdsClient = false;

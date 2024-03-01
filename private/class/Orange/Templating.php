@@ -61,7 +61,6 @@ class Templating
         $this->twig->addGlobal('squarebracket_version', $orange->getVersionString());
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('website_branding', $orange->getSettings()->getBrandingSettings());
-        $this->twig->addGlobal('ad_client', $googleAdsClient);
         $this->twig->addGlobal('show_work_in_progress_stuff', ($orange->getSettings()->getDevelopmentMode()));
 
         $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
