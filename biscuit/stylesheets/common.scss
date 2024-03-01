@@ -28,8 +28,8 @@
 
 body
 {
-	background: #303033;
-	color: #ffffff;
+	background: #F9F9F9;
+	color: #000000;
 	font-size: small;
 	padding: 0px;
 	margin: 0px;
@@ -105,7 +105,7 @@ textarea,
 input[type]:not([type=file]):not([type=submit]) {
 	border: 1px solid darken($content-box-border-color, 1%);
 	background: lighten($content-box-background-color, 3.5%);
-	color: white;
+	color: black;
 	box-shadow: 0 0 0px #0c0c0c;
 	transition: border linear 0.3s, box-shadow linear 0.3s;
 	border-radius: $content-box-roundness;

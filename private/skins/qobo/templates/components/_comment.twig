@@ -1,11 +1,9 @@
 <div class="comment" id="comment-{{ comment.id }}">
     <img src="{{ profile_picture(comment.author.info.username) }}" class="pfp" alt="{{ comment.author.info.username }}">
-    <div class="comment-details">
-        <div class="comment-username">{{ user_link(comment.author) }}</div>
-        <div class="comment-displayname">{{ comment.author.info.displayname }}</div>
-        <div><small title="{{ comment.posted | date('F j, Y') }}">{{ comment.posted | relative_time }}</small></div>
-    </div>
     <div class="comment-body">
+        <div class="comment-author">
+            {{ user_link(comment.author) }} ({{ comment.author.info.displayname }}) • <small title="{{ comment.posted | date('F j, Y') }}">{{ comment.posted | relative_time }}</small>
+        </div>
         <div class="comment-contents">
             {% if comment.post | trim is not empty %}
                 {{ comment.post | markdown_user_written }}

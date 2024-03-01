@@ -15,9 +15,8 @@ div.header-links
   align-items: center;
 
   .menuButton {
-    font-size: 20px;
     .pfp {
-      width: 40px;
+      width: 32px;
     }
   }
 }
@@ -25,7 +24,7 @@ div.header-links
 div.header-logo
 {
   img.logo {
-    width: 40px;
+    height: 30px;
   }
   margin-right: 10px;
 }
@@ -82,9 +81,9 @@ div.header-user-links
 
 a.menulink
 {
-  color: white;
+  color: black;
   margin: 0 7px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 div.header
@@ -96,7 +95,8 @@ div.header
   }
 
   width: 100%;
-  background-color: rgba(darken($secondary, 5%), 0.9);
+  background-color: rgba(white, 0.9);
   height: $header-main-height;
   display: flex;
+  border-bottom: 1px solid lightgrey;
 }

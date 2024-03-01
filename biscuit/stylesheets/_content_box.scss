@@ -1,7 +1,7 @@
 .content-header
 {
     background: $content-box-border-color;
-    padding: 6px;
+    padding: $context-box-padding;
     font-size: 14px;
     font-weight: bold;
 
@@ -28,7 +28,7 @@
 {
     border: 1px solid $content-box-border-color;
     background: $content-box-background-color;
-    padding: 6px;
+    padding: $context-box-padding;
     overflow: hidden;
     word-break: break-word;
     border-radius: $content-box-roundness;
@@ -94,7 +94,7 @@
     }
 
     &.dark {
-        background: $content-box-border-color;
+        background: #404040;
     }
 
     .content-text {
