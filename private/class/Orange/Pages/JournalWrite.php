@@ -24,7 +24,7 @@ class JournalWrite
 
     public function __construct(\Orange\Orange $orange)
     {
-        global $disableUploading, $auth, $isDebug;
+        global $disableWritingJournals, $auth, $isDebug;
 
         $this->orange = $orange;
         $this->database = $orange->getDatabase();
@@ -38,7 +38,7 @@ class JournalWrite
             Utilities::Notification("You cannot proceed with this action.", "/");
         }
 
-        if ($disableUploading) {
+        if ($disableWritingJournals) {
             Utilities::Notification("The ability to write journals has been disabled.", "/");
         }
 
