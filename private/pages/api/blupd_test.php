@@ -3,7 +3,12 @@
 // it's not the first time I've used opensb's repository for prototyping other things in it.
 namespace OpenSB;
 
+global $path;
+$parsed_date = strtotime($path[4]);
+
 header('Content-Type: application/json');
+
+$date = date('Y-m-d', $parsed_date);
 
 $application = [
     "firefox" => [
@@ -17,7 +22,7 @@ $application = [
         "id" => "test",
         "name" => "Testing 2nd Application",
         "version" => "1.2.3a-helloworld",
-        "released" => "2024-03-03", // ISO 8601
+        "released" => $date, // ISO 8601
         "download" => "https://ftp.mozilla.org/pub/firefox/releases/3.6.28/win32/en-US/Firefox%20Setup%203.6.28.exe",
     ],
 ];
