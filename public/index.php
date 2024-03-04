@@ -69,7 +69,9 @@ if (isset($path[1]) && $path[1] != '') {
         require(SB_PRIVATE_PATH . '/pages/write.php');
     } elseif ($path[1] == 'api') {
         if ($path[2] == 'finalium') {
-            if ($path[3] == 'commenting.php') {
+            if (!isset($path[3])) {
+                die("Invalid API.");
+            } elseif ($path[3] == 'commenting.php') {
                 require(SB_PRIVATE_PATH . '/pages/api/commenting.php');
             } elseif ($path[3] == 'submission_interaction') {
                 require(SB_PRIVATE_PATH . '/pages/api/submission_interaction.php');
@@ -77,7 +79,13 @@ if (isset($path[1]) && $path[1] != '') {
                 require(SB_PRIVATE_PATH . '/pages/api/user_interaction.php');
             }
         } elseif ($path[2] == 'bluffingo_updater_test') {
-            require(SB_PRIVATE_PATH . '/pages/api/blupd_test.php');
+            if (!isset($path[3])) {
+                die("Invalid API.");
+            } elseif ($path[3] == 'get_versions') {
+                require(SB_PRIVATE_PATH . '/pages/api/blupd_test.php');
+            } elseif ($path[3] == 'get_software') {
+                require(SB_PRIVATE_PATH . '/pages/api/blupd_test_2.php');
+            }
         } else {
             die("Invalid API.");
         }
