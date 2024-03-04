@@ -102,6 +102,11 @@ class Orange {
         return $this->version;
     }
 
+    public function printVersionForOutput()
+    {
+        return sprintf("OpenSB %s - Executed at %s", $this->getVersionString(), date("Y-m-d h:i:s")) . PHP_EOL;
+    }
+
     /**
      * Returns the user's local settings.
      *

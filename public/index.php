@@ -76,6 +76,8 @@ if (isset($path[1]) && $path[1] != '') {
             } elseif ($path[3] == 'user_interaction.php') {
                 require(SB_PRIVATE_PATH . '/pages/api/user_interaction.php');
             }
+        } elseif ($path[2] == 'bluffingo_updater_test') {
+            require(SB_PRIVATE_PATH . '/pages/api/blupd_test.php');
         } else {
             die("Invalid API.");
         }

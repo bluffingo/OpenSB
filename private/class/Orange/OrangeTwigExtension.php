@@ -12,7 +12,7 @@ class OrangeTwigExtension extends AbstractExtension
 {
     public function getFunctions(): array
     {
-        global $profiler;
+        global $profiler, $orange;
 
         return [
             new TwigFunction('submission_view', [$this, 'submissionView']),
@@ -22,6 +22,9 @@ class OrangeTwigExtension extends AbstractExtension
             new TwigFunction('profile_banner', [$this, 'profileBanner']),
             new TwigFunction('profiler_stats', function () use ($profiler) {
                 $profiler->getStats();
+            }),
+            new TwigFunction('version_banner', function () use ($orange) {
+                echo $orange->printVersionForOutput();
             }),
             new TwigFunction('remove_notification', [$this, 'removeNotification']),
             new TwigFunction('show_ratings', [$this, 'showRatings']),

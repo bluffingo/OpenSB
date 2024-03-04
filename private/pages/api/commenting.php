@@ -8,7 +8,6 @@ use Orange\Templating;
 use Orange\UserData;
 
 chdir('../../');
-$rawOutputRequired = true;
 
 $post_data = json_decode(file_get_contents('php://input'), true);
 $legacy_frontend = false;

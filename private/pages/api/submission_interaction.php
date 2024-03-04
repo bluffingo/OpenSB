@@ -4,8 +4,6 @@ namespace OpenSB;
 
 global $auth, $orange;
 
-
-$rawOutputRequired = true;
 header('Content-Type: application/json');
 
 $post_data = json_decode(file_get_contents('php://input'), true);
