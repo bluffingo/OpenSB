@@ -1,8 +1,32 @@
-if ! test -f dynamic/videos/BigBuckBunnyTest.mp4; then
-  echo "Downloading Big Buck Bunny MP4 from Blender servers"
-  wget https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4 -O dynamic/videos/BigBuckBunnyTest.mp4
+#!/bin/bash
+
+cecho(){
+    Error='\033[0;31m'
+    Success='\033[0;32m'
+    Warning='\033[0;33m'
+    Info='\033[0;34m'
+
+    NC="\033[0m" # No Color
+
+    printf "${!1}${2} ${NC}\n"
+}
+
+echo "OpenSB Uploader Test Script"
+
+
+if ! [ -f dynamic/videos/text_videos.txt ]; then
+  cp -R tools/test_videos/. dynamic/videos/
 else
-  echo "Big Buck Bunny has already been downloaded. If running from production, please remove this file."
+  cecho "Warning" "Testing videos appear to have been copied already. If running on production, please remove them."
 fi
 
-php private/scripts/processingworker.php "BigBuckBunnyTest" "dynamic/videos/BigBuckBunnyTest.mp4"
+cecho "Info" "192x144 6fps H264"
+php private/scripts/processingworker.php "192x144" "dynamic/videos/192x144.mp4" "0"
+cecho "Info" "720x1280 29.97fps H264"
+php private/scripts/processingworker.php "720x1280" "dynamic/videos/720x1280.mp4" "0"
+cecho "Info" "1920x1080 60fps H264"
+php private/scripts/processingworker.php "1920x1080" "dynamic/videos/1920x1080.mp4" "0"
+cecho "Info" "1920x1080 30fps WMV"
+php private/scripts/processingworker.php "1920x1080windows" "dynamic/videos/1920x1080windows.wmv" "0"
+cecho "Info" "3200x1080 29.97fps H264"
+php private/scripts/processingworker.php "verywide1080" "dynamic/videos/verywide1080.mp4" "0"
