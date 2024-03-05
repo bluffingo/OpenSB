@@ -11,7 +11,7 @@ use SquareBracket\Utilities;
  */
 class SubmissionBrowse
 {
-    private \Orange\Database $database;
+    private \SquareBracket\Database $database;
     private array $submissions;
     private $order;
     private $limit;

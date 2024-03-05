@@ -11,7 +11,7 @@ use SquareBracket\Utilities;
  */
 class SubmissionEdit
 {
-    private \Orange\Database $database;
+    private \SquareBracket\Database $database;
     private \SquareBracket\SubmissionData $submission;
     private mixed $id;
     private \SquareBracket\SquareBracket $orange;

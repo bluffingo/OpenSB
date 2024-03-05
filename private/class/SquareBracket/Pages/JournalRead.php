@@ -12,7 +12,7 @@ use SquareBracket\Utilities;
  */
 class JournalRead
 {
-    private \Orange\Database $database;
+    private \SquareBracket\Database $database;
     private \SquareBracket\SquareBracket $orange;
     private mixed $data;
     private UserData $author;

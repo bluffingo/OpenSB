@@ -1,10 +1,9 @@
 <?php
 
-namespace Orange;
+namespace SquareBracket;
 
 use PDO;
 use PDOException;
-use \Orange\OrangeException;
 
 /**
  * PDO interface(?).
@@ -16,7 +15,7 @@ class Database
     private $sql;
 
     /**
-     * @throws \Orange\OrangeException
+     * @throws SquareBracketException
      */
     public function __construct($host, $user, $pass, $db)
     {
@@ -29,7 +28,7 @@ class Database
         try {
             $this->sql = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
         } catch (PDOException $e) {
-            throw new OrangeException('The database is currently not available. [' . $e . ']');
+            throw new SquareBracketException('The database is currently not available. [' . $e . ']');
         }
     }
 

@@ -81,15 +81,7 @@ foreach ($ipBannedUsers as $ipBannedUser) {
 }
 
 if ($isQoboTV) {
-    if ($useMuffinCDN) {
-        throw new SquareBracketException("The MuffinCDN interface is no longer available.");
-    } else {
-        $storage = new BunnyStorage($orange);
-    }
+    $storage = new BunnyStorage($orange);
 } else {
-    if ($useMuffinCDN) {
-        throw new SquareBracketException("The MuffinCDN interface can only be used in Qobo mode");
-    } else {
-        $storage = new LocalStorage($orange);
-    }
+    $storage = new LocalStorage($orange);
 }

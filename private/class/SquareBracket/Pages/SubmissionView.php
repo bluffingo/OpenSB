@@ -15,7 +15,7 @@ use SquareBracket\Utilities;
  */
 class SubmissionView
 {
-    private \Orange\Database $database;
+    private \SquareBracket\Database $database;
     private \SquareBracket\SubmissionData $submission;
     private mixed $data;
     private CommentData $comments;

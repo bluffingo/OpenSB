@@ -9,14 +9,14 @@ namespace SquareBracket;
  */
 class Authentication
 {
-    private \Orange\Database $database;
+    private \SquareBracket\Database $database;
     private bool $is_logged_in;
     private int $user_id;
     private array $user_data;
     private $user_ban_data;
     private $user_notice_count; // this shouldn't be here but whatever
 
-    public function __construct(\Orange\Database $database, $token)
+    public function __construct(\SquareBracket\Database $database, $token)
     {
         $accountfields = "id, ip, name, title, email, title, about, powerlevel, joined, lastview, comfortable_rating";
         $this->database = $database;

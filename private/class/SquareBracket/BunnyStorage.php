@@ -2,7 +2,6 @@
 
 namespace SquareBracket;
 
-use Orange\Database;
 use ToshY\BunnyNet\Client\BunnyClient;
 use ToshY\BunnyNet\EdgeStorageAPI;
 use ToshY\BunnyNet\Enum\Region;

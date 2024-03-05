@@ -1,15 +1,13 @@
 <?php
 namespace SquareBracket;
 
-use Orange\Database;
-
 /**
  * The core SquareBracket class.
  *
  * @since SquareBracket 1.0
  */
 class SquareBracket {
-    private \Orange\Database $database;
+    private \SquareBracket\Database $database;
     private \SquareBracket\SiteSettings $settings;
     private string $version;
     public array $options;
@@ -31,7 +29,7 @@ class SquareBracket {
         }
 
         try {
-            $this->database = new \Orange\Database($host, $user, $pass, $db);
+            $this->database = new \SquareBracket\Database($host, $user, $pass, $db);
             $this->settings = new \SquareBracket\SiteSettings($this->database);
         } catch (SquareBracketException $e) {
             $e->page();
@@ -45,7 +43,7 @@ class SquareBracket {
      *
      * @return Database
      */
-    public function getDatabase(): \Orange\Database {
+    public function getDatabase(): \SquareBracket\Database {
         return $this->database;
     }
 

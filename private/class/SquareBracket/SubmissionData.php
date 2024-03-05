@@ -9,7 +9,7 @@ namespace SquareBracket;
  */
 class SubmissionData
 {
-    private \Orange\Database $database;
+    private \SquareBracket\Database $database;
     private $takedown;
     private $data;
 
@@ -31,7 +31,7 @@ class SubmissionData
     // 00010000: "Submission has custom thumbnail"
     public const FLAG_CUSTOM_THUMBNAIL = 16;
 
-    public function __construct(\Orange\Database $database, $id)
+    public function __construct(\SquareBracket\Database $database, $id)
     {
         $this->database = $database;
 

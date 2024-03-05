@@ -10,7 +10,7 @@ use SquareBracket\Utilities;
  */
 class AccountRegister
 {
-    private \Orange\Database $database;
+    private \SquareBracket\Database $database;
     private \SquareBracket\SquareBracket $orange;
 
     public function __construct(\SquareBracket\SquareBracket $orange)

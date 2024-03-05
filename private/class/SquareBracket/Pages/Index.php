@@ -2,7 +2,7 @@
 
 namespace SquareBracket\Pages;
 
-use Orange\Database;
+use SquareBracket\Database;
 use SquareBracket\SquareBracket;
 use SquareBracket\Utilities;
 
