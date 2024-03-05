@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\Templating;
-use Orange\Pages\JournalWrite;
+use SquareBracket\Pages\JournalWrite;
+use SquareBracket\Templating;
 
 $page = new JournalWrite($orange);
 

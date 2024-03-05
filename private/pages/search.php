@@ -4,9 +4,9 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\OrangeException;
-use Orange\Templating;
-use Orange\Pages\SubmissionSearch;
+use SquareBracket\SquareBracketException;
+use SquareBracket\Pages\SubmissionSearch;
+use SquareBracket\Templating;
 
 $query = $_GET['query'] ?? null;
 $type = ($_GET['type'] ?? 'recent');
@@ -15,7 +15,7 @@ $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page
 try {
     $page = new SubmissionSearch($orange, $type, $page_number, $query);
     $data = $page->getData();
-} catch (OrangeException $e) {
+} catch (SquareBracketException $e) {
     $e->page();
 }
 

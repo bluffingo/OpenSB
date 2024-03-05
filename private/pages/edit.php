@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\Templating;
-use Orange\Pages\SubmissionEdit;
+use SquareBracket\Pages\SubmissionEdit;
+use SquareBracket\Templating;
 
 if (isset($_POST['upload'])) {
     $id = ($_POST['vid_id'] ?? null);

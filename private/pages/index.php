@@ -4,9 +4,8 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\OrangeException;
-use Orange\Templating;
-use Orange\Pages\Index;
+use SquareBracket\Pages\Index;
+use SquareBracket\Templating;
 
 $index = new Index($orange);
 $data = $index->getData();

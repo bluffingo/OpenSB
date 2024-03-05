@@ -23,7 +23,7 @@ $application = [
         "name" => "Testing 2nd Application",
         "version" => "1.2.3a-helloworld",
         "released" => $date, // ISO 8601
-        "download" => "https://ftp.mozilla.org/pub/firefox/releases/3.6.28/win32/en-US/Firefox%20Setup%203.6.28.exe",
+        "download" => "http://ftp.mozilla.org/pub/firefox/releases/3.6.28/win32/en-US/Firefox%20Setup%203.6.28.exe",
     ],
 ];
 

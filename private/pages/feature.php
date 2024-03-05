@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $orange, $auth;
 
-use Orange\Utilities;
+use SquareBracket\Utilities;
 
 $id = ($_GET['v'] ?? null);
 $db = $orange->getDatabase();
@@ -14,7 +14,7 @@ if (!$auth->isUserLoggedIn())
     Utilities::Notification("Please login to continue.", "/login.php");
 }
 
-$submission = new \Orange\SubmissionData($db, $id);
+$submission = new \SquareBracket\SubmissionData($db, $id);
 
 if (!$id) {
     Utilities::Notification("You have not specified the submission.", "/");

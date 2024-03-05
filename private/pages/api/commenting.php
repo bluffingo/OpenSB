@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $auth, $orange;
 
-use Orange\Templating;
-use Orange\UserData;
+use SquareBracket\Templating;
+use SquareBracket\UserData;
 
 chdir('../../');
 

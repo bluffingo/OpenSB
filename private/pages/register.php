@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $gump, $orange;
 
-use Orange\Templating;
-use Orange\Pages\AccountRegister;
+use SquareBracket\Pages\AccountRegister;
+use SquareBracket\Templating;
 
 $page = new AccountRegister($orange);
 

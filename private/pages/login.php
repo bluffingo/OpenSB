@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\Templating;
-use Orange\Pages\AccountLogin;
+use SquareBracket\Pages\AccountLogin;
+use SquareBracket\Templating;
 
 $error = '';
 

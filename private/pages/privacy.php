@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\Templating;
+use SquareBracket\Templating;
 
 $twig = new Templating($orange);
 

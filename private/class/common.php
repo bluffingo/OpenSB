@@ -21,15 +21,15 @@ require_once(SB_VENDOR_PATH . '/autoload.php');
 global $host, $user, $pass, $db, $isQoboTV, $useMuffinCDN;
 
 use GUMP;
-use Orange\Authentication;
-use Orange\BunnyStorage;
-use Orange\LocalStorage;
 use Orange\MuffinStorage;
-use Orange\Orange;
-use Orange\OrangeException;
-use Orange\Profiler;
-use Orange\Templating;
-use Orange\Utilities;
+use SquareBracket\Authentication;
+use SquareBracket\BunnyStorage;
+use SquareBracket\LocalStorage;
+use SquareBracket\SquareBracket;
+use SquareBracket\SquareBracketException;
+use SquareBracket\Profiler;
+use SquareBracket\Templating;
+use SquareBracket\Utilities;
 
 spl_autoload_register(function ($class_name) {
     $class_name = str_replace('\\', '/', $class_name);
@@ -38,7 +38,7 @@ spl_autoload_register(function ($class_name) {
     }
 });
 
-$orange = new Orange($host, $user, $pass, $db);
+$orange = new SquareBracket($host, $user, $pass, $db);
 $auth = new Authentication($orange->getDatabase(), $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new Profiler();
 $gump = new GUMP('en');
@@ -82,13 +82,13 @@ foreach ($ipBannedUsers as $ipBannedUser) {
 
 if ($isQoboTV) {
     if ($useMuffinCDN) {
-        throw new OrangeException("The MuffinCDN interface is no longer available.");
+        throw new SquareBracketException("The MuffinCDN interface is no longer available.");
     } else {
         $storage = new BunnyStorage($orange);
     }
 } else {
     if ($useMuffinCDN) {
-        throw new OrangeException("The MuffinCDN interface can only be used in Qobo mode");
+        throw new SquareBracketException("The MuffinCDN interface can only be used in Qobo mode");
     } else {
         $storage = new LocalStorage($orange);
     }

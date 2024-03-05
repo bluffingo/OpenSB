@@ -4,9 +4,9 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\OrangeException;
-use Orange\Utilities;
-use Orange\Pages\SubmissionView;
+use SquareBracket\SquareBracketException;
+use SquareBracket\Pages\SubmissionView;
+use SquareBracket\Utilities;
 
 $id = $path[2] ?? null;
 
@@ -15,7 +15,7 @@ if (isset($_GET['v'])) Utilities::redirect('/submission/'.$_GET['v']);
 try {
     $page = new SubmissionView($orange, $id);
     $data = $page->getSubmission();
-} catch (OrangeException $e) {
+} catch (SquareBracketException $e) {
     $e->page();
 }
 
@@ -75,7 +75,7 @@ $currentTime = time();
 $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
 */
 
-$twig = new \Orange\Templating($orange);
+$twig = new \SquareBracket\Templating($orange);
 
 echo $twig->render('watch.twig', [
     'submission' => $data,

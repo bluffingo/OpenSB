@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\Templating;
-use Orange\Pages\AccountSettings;
+use SquareBracket\Pages\AccountSettings;
+use SquareBracket\Templating;
 
 $page = new AccountSettings($orange);
 

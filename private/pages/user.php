@@ -4,10 +4,9 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\OrangeException;
-use Orange\Templating;
-use Orange\Utilities;
-use Orange\Pages\UserProfile;
+use SquareBracket\Pages\UserProfile;
+use SquareBracket\Templating;
+use SquareBracket\Utilities;
 
 $name = $path[2] ?? null;
 

@@ -4,16 +4,16 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\OrangeException;
-use Orange\Templating;
-use Orange\Pages\JournalRead;
+use SquareBracket\SquareBracketException;
+use SquareBracket\Pages\JournalRead;
+use SquareBracket\Templating;
 
 $id = ($_GET['j'] ?? null);
 
 try {
     $page = new JournalRead($orange, $id);
     $data = $page->getData();
-} catch (OrangeException $e) {
+} catch (SquareBracketException $e) {
     $e->page();
 }
 

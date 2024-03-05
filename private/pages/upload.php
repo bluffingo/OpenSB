@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\Templating;
-use Orange\Pages\SubmissionUpload;
+use SquareBracket\Pages\SubmissionUpload;
+use SquareBracket\Templating;
 
 $page = new SubmissionUpload($orange);
 

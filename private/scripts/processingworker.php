@@ -20,7 +20,7 @@ use FFMpeg\Format\Video\X264;
 define("SB_DYNAMIC_PATH", dirname(__DIR__, 2) . '/dynamic');
 define("SB_PRIVATE_PATH", dirname(__DIR__, 2) . '/private');
 define("SB_VENDOR_PATH", dirname(__DIR__, 2) . '/vendor');
-define("SB_GIT_PATH", dirname(__DIR__, 2) . '/.git'); // ONLY FOR makeVersionString() IN Orange CLASS.
+define("SB_GIT_PATH", dirname(__DIR__, 2) . '/.git'); // ONLY FOR makeVersionString() IN SquareBracket CLASS.
 
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
