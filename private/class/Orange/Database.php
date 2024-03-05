@@ -4,6 +4,7 @@ namespace Orange;
 
 use PDO;
 use PDOException;
+use \Orange\OrangeException;
 
 /**
  * PDO interface(?).
@@ -15,7 +16,7 @@ class Database
     private $sql;
 
     /**
-     * @throws OrangeException
+     * @throws \Orange\OrangeException
      */
     public function __construct($host, $user, $pass, $db)
     {
