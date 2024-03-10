@@ -43,6 +43,3 @@ You will have to modify the directories to match your instance's location.
 ### Why do I get 404 errors when I click on thumbnails?
 
 Assuming you use Apache and have the rewrite module installed, this is because AllowOverride is turned off. See the virtual host example above for a quick fix.
-
-### Is this related to Kylarz's squareBracket?
-No. Kylarz's squareBracket uses a closed-source "TicTac" backend and is not affiliated with us. The original squareBracket (by Bluffingo) was renamed to Qobo in the latter half of 2022, and still uses OpenSB.
