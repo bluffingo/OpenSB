@@ -5,7 +5,6 @@ namespace SquareBracket;
 use Core\CoreException;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
-use JetBrains\PhpStorm\NoReturn;
 
 /**
  * Static utilities.
@@ -69,22 +68,6 @@ class Utilities
             "total" => $total_ratings,
             "average" => $average_ratings,
         ];
-    }
-
-    public static function get_ip_address()
-    {
-        if (php_sapi_name() == "cli") return Null;
-        return $_SERVER['REMOTE_ADDR'];
-    }
-
-    #[NoReturn] public static function redirect($url, ...$args) {
-        header('Location: '.sprintf($url, ...$args));
-        die();
-    }
-
-    #[NoReturn] public static function redirectPerma($url, ...$args) {
-        header('Location: '.sprintf($url, ...$args), true, 301);
-        die();
     }
 
     public static function makeSubmissionArray($database, $submissions): array

@@ -4,13 +4,13 @@ namespace OpenSB;
 
 global $orange;
 
+use Core\Utilities as UtilitiesAlias;
 use SquareBracket\Pages\UserProfile;
 use SquareBracket\Templating;
-use SquareBracket\Utilities;
 
 $name = $path[2] ?? null;
 
-if (isset($_GET['name'])) Utilities::redirect('/user/'.$_GET['name']);
+if (isset($_GET['name'])) UtilitiesAlias::redirect('/user/' . $_GET['name']);
 
 $page = new UserProfile($orange, $name);
 $data = $page->getData();

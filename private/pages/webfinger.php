@@ -63,20 +63,20 @@ if ($extractedHandle[1] != $domain) {
         $data = [
             "subject" => $resource,
             "aliases" => [
-                "https://" . $domain . "/user/" . $extractedHandle[0],
+                "https://{$domain}/user/{$extractedHandle[0]}",
             ],
             "links" => [
                 [
                     "rel" => "http://webfinger.net/rel/profile-page",
                     "type" => "text/html",
-                    "href" => "https://" . $domain . "/user/" . $extractedHandle[0],
+                    "href" => "https://{$domain}/user/{$extractedHandle[0]}",
                 ],
                 //requires activitypub to be implemented.
-                //[
-                //    "rel" => "self",
-                //    "type" => "application/activity+json",
-                //    "href" => "https://mastodon.social/users/chazizgrkb"
-                //],
+                [
+                    "rel" => "self",
+                    "type" => "application/activity+json",
+                    "href" => "https://{$domain}/{$extractedHandle[0]}"
+                ],
                 //[
                 //    "rel" => "http://ostatus.org/schema/1.0/subscribe",
                 //    "template" => "https://mastodon.social/authorize_interaction?uri={uri}"

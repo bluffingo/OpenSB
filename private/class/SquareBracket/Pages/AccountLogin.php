@@ -1,6 +1,7 @@
 <?php
 
 namespace SquareBracket\Pages;
+use Core\Utilities as UtilitiesAlias;
 use SquareBracket\Utilities;
 
 /**
@@ -42,9 +43,9 @@ class AccountLogin
 
                 setcookie('SBTOKEN', $logindata['token'], 2147483647);
                 $nid = $this->database->result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
-                $this->database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), Utilities::get_ip_address(), $nid]);
+                $this->database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), UtilitiesAlias::get_ip_address(), $nid]);
 
-                Utilities::redirect('./');
+                UtilitiesAlias::redirect('./');
             } else {
                 Utilities::Notification("Incorrect credentials.", "/login.php");
             }

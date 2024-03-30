@@ -3,7 +3,7 @@
 // https://github.com/principia-game/principia-web/blob/master/router.php
 namespace OpenSB;
 
-global $enableFederatedStuff;
+global $enableFederatedStuff, $orange; // <-- awful design
 
 define("SB_DYNAMIC_PATH", dirname(__DIR__) . '/dynamic');
 define("SB_PRIVATE_PATH", dirname(__DIR__) . '/private');
@@ -12,7 +12,7 @@ define("SB_GIT_PATH", dirname(__DIR__) . '/.git'); // ONLY FOR makeVersionString
 
 // SB_PUBLIC_PATH is not needed because all the core functionality is in the private folder.
 
-use SquareBracket\Utilities;
+use Core\Utilities as UtilitiesAlias;
 
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $path = explode('/', $uri);
@@ -30,26 +30,7 @@ $handle = 'bluffingo@sbdev.qobo.tv';
 $webfinger = $server->actor($handle)->webfinger();
 */
 
-function rewritePHP(): void
-{
-    if (str_contains($_SERVER["REQUEST_URI"], '.php'))
-        Utilities::redirectPerma('%s', str_replace('.php', '', $_SERVER["REQUEST_URI"]));
-}
-
 if (isset($path[1]) && $path[1] != '') {
-    if ($enableFederatedStuff) {
-        // i don't think this is how it should be done, but whatever. if you're a developer looking to implement
-        // stuff like activitypub or webfinger or whatever, i don't recommend using opensb as reference, i am a
-        // self-taught programmer and as such my code quality is abysmal. -bluffingo 3/30/2024
-
-        if ($path[1] == '.well-known') {
-            if ($path[2] == 'webfinger') { // let's start with implementing webfinger.
-                require(SB_PRIVATE_PATH . '/pages/webfinger.php');
-            }
-        }
-        // todo: add inbox and outbox
-    }
-
     if ($path[1] == 'admin') {
         require(SB_PRIVATE_PATH . '/pages/admin.php');
     } elseif ($path[1] == 'browse') {
@@ -91,7 +72,7 @@ if (isset($path[1]) && $path[1] != '') {
     } elseif ($path[1] == 'view') {
         require(SB_PRIVATE_PATH . '/pages/watch.php');
     } elseif ($path[1] == 'watch') {
-        Utilities::redirect('/view/'.$_GET['v']);
+        UtilitiesAlias::redirect('/view/' . $_GET['v']);
     } elseif ($path[1] == 'write') {
         require(SB_PRIVATE_PATH . '/pages/write.php');
     } elseif ($path[1] == 'api') {
@@ -108,8 +89,21 @@ if (isset($path[1]) && $path[1] != '') {
         } else {
             die("Invalid API.");
         }
+    } elseif ($enableFederatedStuff) {
+        // i don't think this is how it should be done, but whatever. if you're a developer looking to implement
+        // stuff like activitypub or webfinger or whatever, i don't recommend using opensb as reference, i am a
+        // self-taught programmer and as such my code quality is abysmal. -bluffingo 3/30/2024
+
+        if ($path[1] == '.well-known') {
+            if ($path[2] == 'webfinger') { // let's start with implementing webfinger.
+                require(SB_PRIVATE_PATH . '/pages/webfinger.php');
+            }
+        } elseif (UtilitiesAlias::isUsername($orange->getDatabase(), $path[1])) {
+            require(SB_PRIVATE_PATH . '/pages/user_json.php');
+        }
+        // todo: add inbox and outbox
     } else {
-        rewritePHP();
+        UtilitiesAlias::rewritePHP();
     }
 } else {
     require(SB_PRIVATE_PATH . '/pages/index.php');

@@ -21,13 +21,13 @@ require_once(SB_VENDOR_PATH . '/autoload.php');
 global $host, $user, $pass, $db, $isQoboTV;
 
 use Core\Authentication;
+use Core\Utilities as UtilitiesAlias;
 use GUMP;
 use SquareBracket\BunnyStorage;
 use SquareBracket\LocalStorage;
 use SquareBracket\Profiler;
 use SquareBracket\SquareBracket;
 use SquareBracket\Templating;
-use SquareBracket\Utilities;
 
 spl_autoload_register(function ($class_name) {
     $class_name = str_replace('\\', '/', $class_name);
@@ -52,8 +52,8 @@ if ($orange->getSettings()->getMaintenanceMode()) {
 
 $database = $orange->getDatabase();
 
-if ( $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities::get_ip_address()])) {
-    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [Utilities::get_ip_address()]));
+if ( $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [UtilitiesAlias::get_ip_address()])) {
+    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [UtilitiesAlias::get_ip_address()]));
     $twig = new Templating($orange);
     echo $twig->render("ip_banned.twig", [
         "data" => $ipban,
