@@ -37,19 +37,6 @@ function rewritePHP(): void
 }
 
 if (isset($path[1]) && $path[1] != '') {
-    if ($enableFederatedStuff) {
-        // i don't think this is how it should be done, but whatever. if you're a developer looking to implement
-        // stuff like activitypub or webfinger or whatever, i don't recommend using opensb as reference, i am a
-        // self-taught programmer and as such my code quality is abysmal. -bluffingo 3/30/2024
-
-        if ($path[1] == '.well-known') {
-            if ($path[2] == 'webfinger') { // let's start with implementing webfinger.
-                require(SB_PRIVATE_PATH . '/pages/webfinger.php');
-            }
-        }
-        // todo: add inbox and outbox
-    }
-
     if ($path[1] == 'admin') {
         require(SB_PRIVATE_PATH . '/pages/admin.php');
     } elseif ($path[1] == 'browse') {
