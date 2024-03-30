@@ -22,9 +22,9 @@ $output = [
     "preferredUsername" => "{$data["name"]}",
     "name" => "{$data["title"]}",
     "summary" => "{$data["about"]}",
-    //"icon" => [
-    //    "https://kenzoishii.example.com/image/165987aklre4"
-    //]
+    "icon" => [
+        "https://{$domain}/dynamic/pfp/{$data["name"]}.png"
+    ]
 ];
 
 header("Content-Type: application/activity+json");
