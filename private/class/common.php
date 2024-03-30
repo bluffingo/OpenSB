@@ -2,6 +2,7 @@
 
 namespace OpenSB;
 
+global $debugLogging;
 if (version_compare(PHP_VERSION, '8.2.0') <= 0) {
     die('<strong>OpenSB is not compatible with your PHP version. OpenSB supports PHP 8.2 or newer.</strong>');
 }
@@ -35,6 +36,46 @@ spl_autoload_register(function ($class_name) {
         require SB_PRIVATE_PATH . "/class/$class_name.php";
     }
 });
+
+if ($debugLogging) {
+    // Get all headers and requests sent to this server
+    $headers     = getallheaders();
+    $postData    = $_POST;
+    $getData     = $_GET;
+    $filesData   = $_FILES;
+    $body        = json_decode(file_get_contents("php://input"), true);
+    $requestData = $_REQUEST;
+    $serverData  = $_SERVER;
+
+    // Get the type of request - used in the log filename
+    $type = isset($body["type"]) ? " " . $body["type"] : "";
+
+    // Unix timestamp, whatever.
+    $timestamp = time();
+
+    // Filename for the log
+    $filename  = "{$timestamp}{$type}.txt";
+
+    // Save headers and request data to the timestamped file in the logs directory
+    $log_path = SB_PRIVATE_PATH . "/logs";
+
+    if (!is_dir($log_path)) {
+        mkdir($log_path);
+    }
+
+// Generate the log content
+    $logContent =
+        "Headers:     \n" . print_r($headers, true) . "\n\n" .
+        "Body Data:   \n" . print_r($body, true) . "\n\n" .
+        "POST Data:   \n" . print_r($postData, true) . "\n\n" .
+        "GET Data:    \n" . print_r($getData, true) . "\n\n" .
+        "Files Data:  \n" . print_r($filesData, true) . "\n\n" .
+        "Request Data:\n" . print_r($requestData, true) . "\n\n" .
+        "Server Data: \n" . print_r($serverData, true) . "\n\n";
+
+// Write the log content to the file
+    file_put_contents($log_path . "/{$filename}", $logContent);
+}
 
 $orange = new SquareBracket($host, $user, $pass, $db);
 $auth = new Authentication($orange->getDatabase(), $_COOKIE['SBTOKEN'] ?? null);

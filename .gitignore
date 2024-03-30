@@ -1,10 +1,9 @@
 ## User-generated files
+private/logs/
 private/conf/config.php
 private/templates/cache/
 templates/cache/
 cache/
-
-# UGC
 dynamic/pfp/
 dynamic/thumbnails/
 dynamic/banners/
