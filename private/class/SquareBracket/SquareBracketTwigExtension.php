@@ -169,16 +169,12 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     public function profilePicture($username)
     {
-        global $isQoboTV, $bunnySettings, $storage, $muffinSettings, $useMuffinCDN;
+        global $isQoboTV, $bunnySettings, $storage;
         $location = '/dynamic/pfp/' . $username . '.png';
 
         if ($storage->fileExists('..' . $location)) {
             if ($isQoboTV) {
-                if ($useMuffinCDN) {
-                    $data = $muffinSettings["muffURL"] . '/dynamic/pfp/' . $username . '.png';
-                } else {
-                    $data = "https://" . $bunnySettings["pullZone"] . $location;
-                }
+                $data = "https://" . $bunnySettings["pullZone"] . $location;
             } else {
                 $data = $location;
             }

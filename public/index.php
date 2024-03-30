@@ -3,6 +3,8 @@
 // https://github.com/principia-game/principia-web/blob/master/router.php
 namespace OpenSB;
 
+global $enableFederatedStuff;
+
 define("SB_DYNAMIC_PATH", dirname(__DIR__) . '/dynamic');
 define("SB_PRIVATE_PATH", dirname(__DIR__) . '/private');
 define("SB_VENDOR_PATH", dirname(__DIR__) . '/vendor');
@@ -23,6 +25,18 @@ function rewritePHP(): void
 }
 
 if (isset($path[1]) && $path[1] != '') {
+    if ($enableFederatedStuff) {
+        // i don't think this is how it should be done, but whatever. if you're a developer looking to implement
+        // stuff like activitypub or webfinger or whatever, i don't recommend using opensb as reference, i am a
+        // self-taught programmer and as such my code quality is abysmal. -bluffingo 3/30/2024
+
+        if ($path[1] == '.well-known') {
+            if ($path[2] == 'webfinger') { // let's start with implementing webfinger.
+                require(SB_PRIVATE_PATH . '/pages/webfinger.php');
+            }
+        }
+    }
+
     if ($path[1] == 'admin') {
         require(SB_PRIVATE_PATH . '/pages/admin.php');
     } elseif ($path[1] == 'browse') {
@@ -77,18 +91,6 @@ if (isset($path[1]) && $path[1] != '') {
                 require(SB_PRIVATE_PATH . '/pages/api/submission_interaction.php');
             } elseif ($path[3] == 'user_interaction.php') {
                 require(SB_PRIVATE_PATH . '/pages/api/user_interaction.php');
-            }
-        } elseif ($path[2] == 'bluffingo_updater_test') {
-            if (!isset($path[3])) {
-                die("Invalid API.");
-            } elseif ($path[3] == 'get_versions') {
-                if (isset($path[4])) {
-                    require(SB_PRIVATE_PATH . '/pages/api/blupd_test.php');
-                } else {
-                    die("Missing date.");
-                }
-            } elseif ($path[3] == 'get_software') {
-                require(SB_PRIVATE_PATH . '/pages/api/blupd_test_2.php');
             }
         } else {
             die("Invalid API.");

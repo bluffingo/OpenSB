@@ -23,7 +23,7 @@ class Utilities
      */
     public static function getSubmissionFile(array|bool $submission): array|string|null
     {
-        global $isQoboTV, $bunnySettings, $useMuffinCDN, $muffinSettings;
+        global $isQoboTV, $bunnySettings;
         if ($submission == null)
         {
             return null;
@@ -34,12 +34,8 @@ class Utilities
                 // videofile on videos using bunnycdn are the guid, don't ask me why. -grkb 4/8/2023
                 return "https://" . $bunnySettings["streamHostname"] . "/" . $submission["videofile"] . "/playlist.m3u8";
             } elseif ($submission['post_type'] == 2) {
-                if ($useMuffinCDN) {
-                    return $muffinSettings["muffURL"] . $submission["videofile"];
-                } else {
-                    // https://qobo-grkb.b-cdn.net/dynamic/art/f_eKEJNj4bm.png
-                    return "https://" . $bunnySettings["pullZone"] . $submission["videofile"];
-                }
+                // https://qobo-grkb.b-cdn.net/dynamic/art/f_eKEJNj4bm.png
+                return "https://" . $bunnySettings["pullZone"] . $submission["videofile"];
             }
         }
         return $submission['videofile'];

@@ -27,13 +27,13 @@ class Templating
      */
     public function __construct(SquareBracket $orange)
     {
-        global $isQoboTV, $auth, $bettyTemplate, $isDebug, $branding, $googleAdsClient;
+        global $isQoboTV, $auth, $defaultTemplate, $isDebug, $branding, $googleAdsClient;
         chdir(__DIR__ . '/../..');
-        $this->skin = $orange->getLocalOptions()["skin"] ?? $bettyTemplate;
+        $this->skin = $orange->getLocalOptions()["skin"] ?? $defaultTemplate;
 
         if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
-            $this->skin = $bettyTemplate;
+            $this->skin = $defaultTemplate;
         }
 
         $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
