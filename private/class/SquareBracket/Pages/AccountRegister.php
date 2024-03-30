@@ -15,6 +15,12 @@ class AccountRegister
 
     public function __construct(\SquareBracket\SquareBracket $orange)
     {
+        global $disableRegistration;
+
+        if ($disableRegistration) {
+            Utilities::Notification("The ability to register on this OpenSB instance has been disabled.", "/");
+        }
+
         $ipcheck = file_get_contents("https://api.stopforumspam.org/api?ip=" . Utilities::get_ip_address());
 
         if (str_contains($ipcheck, "<appears>yes</appears>")) {

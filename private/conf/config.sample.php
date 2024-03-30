@@ -42,6 +42,7 @@ $bunnySettings = [
 	"pullZone" => "[pull zone].b-cdn.net",
 ];
 
+$disableRegistration = false;
 $disableUploading = false;
 $disableWritingJournals = false;
 
