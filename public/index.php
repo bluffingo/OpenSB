@@ -18,6 +18,18 @@ $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $path = explode('/', $uri);
 
 require_once SB_PRIVATE_PATH . '/class/common.php';
+
+/*
+use ActivityPhp\Server;
+
+$server = new Server();
+
+$handle = 'bluffingo@sbdev.qobo.tv';
+
+// Get a WebFinger instance
+$webfinger = $server->actor($handle)->webfinger();
+*/
+
 function rewritePHP(): void
 {
     if (str_contains($_SERVER["REQUEST_URI"], '.php'))
@@ -35,6 +47,7 @@ if (isset($path[1]) && $path[1] != '') {
                 require(SB_PRIVATE_PATH . '/pages/webfinger.php');
             }
         }
+        // todo: add inbox and outbox
     }
 
     if ($path[1] == 'admin') {
