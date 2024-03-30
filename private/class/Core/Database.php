@@ -1,6 +1,6 @@
 <?php
 
-namespace SquareBracket;
+namespace Core;
 
 use PDO;
 use PDOException;
@@ -15,7 +15,7 @@ class Database
     private $sql;
 
     /**
-     * @throws SquareBracketException
+     * @throws CoreException
      */
     public function __construct($host, $user, $pass, $db)
     {
@@ -28,7 +28,7 @@ class Database
         try {
             $this->sql = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
         } catch (PDOException $e) {
-            throw new SquareBracketException('The database is currently not available. [' . $e . ']');
+            throw new CoreException('The database is currently not available. [' . $e . ']');
         }
     }
 

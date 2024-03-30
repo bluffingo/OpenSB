@@ -11,7 +11,7 @@ use SquareBracket\Utilities;
  */
 class AccountSettings
 {
-    private \SquareBracket\Database $database;
+    private \Core\Database $database;
     private \SquareBracket\SubmissionData $submission;
     private mixed $id;
     private \SquareBracket\SquareBracket $orange;

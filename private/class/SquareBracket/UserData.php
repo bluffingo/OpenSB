@@ -4,12 +4,12 @@ namespace SquareBracket;
 
 class UserData
 {
-    private \SquareBracket\Database $database;
+    private \Core\Database $database;
     private $data;
     private $followers;
     private $is_banned;
 
-    public function __construct(\SquareBracket\Database $database, $id)
+    public function __construct(\Core\Database $database, $id)
     {
         $this->database = $database;
         $this->data = $this->database->fetch("SELECT u.* FROM users u WHERE u.id = ?", [$id]);

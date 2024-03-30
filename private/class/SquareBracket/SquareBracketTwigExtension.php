@@ -2,6 +2,7 @@
 
 namespace SquareBracket;
 
+use Core\CoreException;
 use Parsedown;
 use RelativeTime\RelativeTime;
 use Twig\Extension\AbstractExtension;
@@ -123,7 +124,7 @@ class SquareBracketTwigExtension extends AbstractExtension
     {
         global $twig;
         if (!$submission_data) {
-            throw new SquareBracketException('SubmissionView is null', 500);
+            throw new CoreException('SubmissionView is null', 500);
         }
         if ($submission_data["type"] == 0) {
             echo $twig->render("player.twig", ['submission' => $submission_data]);

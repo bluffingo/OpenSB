@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $orange;
 
-use SquareBracket\SquareBracketException;
+use Core\CoreException;
 use SquareBracket\Pages\SubmissionView;
 use SquareBracket\Utilities;
 
@@ -15,7 +15,7 @@ if (isset($_GET['v'])) Utilities::redirect('/submission/'.$_GET['v']);
 try {
     $page = new SubmissionView($orange, $id);
     $data = $page->getSubmission();
-} catch (SquareBracketException $e) {
+} catch (CoreException $e) {
     $e->page();
 }
 

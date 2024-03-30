@@ -2,9 +2,9 @@
 
 namespace SquareBracket\Pages;
 
+use Core\CoreException;
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
-use SquareBracket\SquareBracketException;
 use SquareBracket\UserData;
 use SquareBracket\Utilities;
 
@@ -15,7 +15,7 @@ use SquareBracket\Utilities;
  */
 class SubmissionView
 {
-    private \SquareBracket\Database $database;
+    private \Core\Database $database;
     private \SquareBracket\SubmissionData $submission;
     private mixed $data;
     private CommentData $comments;
@@ -29,7 +29,7 @@ class SubmissionView
     private mixed $followed;
 
     /**
-     * @throws SquareBracketException
+     * @throws CoreException
      */
     public function __construct(\SquareBracket\SquareBracket $orange, $id)
     {

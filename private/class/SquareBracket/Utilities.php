@@ -2,6 +2,7 @@
 
 namespace SquareBracket;
 
+use Core\CoreException;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use JetBrains\PhpStorm\NoReturn;
@@ -201,7 +202,7 @@ class Utilities
         global $auth, $database;
 
         if (!$auth->isUserLoggedIn()) {
-            throw new SquareBracketException("NotifyUser should not be called by the backend if current user is logged off.");
+            throw new CoreException("NotifyUser should not be called by the backend if current user is logged off.");
         }
 
         // If this user hasen't been notified by an identical notification the day prior.

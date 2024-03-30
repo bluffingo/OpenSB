@@ -13,7 +13,7 @@ use SquareBracket\Utilities;
  */
 class AccountNotifications
 {
-    private \SquareBracket\Database $database;
+    private \Core\Database $database;
 
     private $data;
 

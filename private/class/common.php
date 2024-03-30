@@ -18,16 +18,14 @@ require_once(SB_PRIVATE_PATH . '/conf/config.php');
 
 require_once(SB_VENDOR_PATH . '/autoload.php');
 
-global $host, $user, $pass, $db, $isQoboTV, $useMuffinCDN;
+global $host, $user, $pass, $db, $isQoboTV;
 
+use Core\Authentication;
 use GUMP;
-use Orange\MuffinStorage;
-use SquareBracket\Authentication;
 use SquareBracket\BunnyStorage;
 use SquareBracket\LocalStorage;
-use SquareBracket\SquareBracket;
-use SquareBracket\SquareBracketException;
 use SquareBracket\Profiler;
+use SquareBracket\SquareBracket;
 use SquareBracket\Templating;
 use SquareBracket\Utilities;
 

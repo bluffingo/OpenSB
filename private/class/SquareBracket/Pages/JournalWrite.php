@@ -11,7 +11,7 @@ use SquareBracket\Utilities;
  */
 class JournalWrite
 {
-    private \SquareBracket\Database $database;
+    private \Core\Database $database;
     private \SquareBracket\SquareBracket $orange;
     /**
      * @var array|string[]

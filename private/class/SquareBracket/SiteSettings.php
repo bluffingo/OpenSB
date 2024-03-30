@@ -9,10 +9,10 @@ namespace SquareBracket;
  */
 class SiteSettings
 {
-    private \SquareBracket\Database $database;
+    private \Core\Database $database;
     private $data;
 
-    public function __construct(\SquareBracket\Database $database)
+    public function __construct(\Core\Database $database)
     {
         global $branding, $isMaintenance;
 

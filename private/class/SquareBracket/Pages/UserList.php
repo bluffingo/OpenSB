@@ -11,7 +11,7 @@ use SquareBracket\UserData;
  */
 class UserList
 {
-    private \SquareBracket\Database $database;
+    private \Core\Database $database;
     private array $data;
 
     public function __construct(\SquareBracket\SquareBracket $orange)

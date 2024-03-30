@@ -11,7 +11,7 @@ use SquareBracket\Utilities;
  */
 class AdminDashboard
 {
-    private \SquareBracket\Database $database;
+    private \Core\Database $database;
     private array $data;
 
     public function __construct(\SquareBracket\SquareBracket $orange, $POST, $GET)

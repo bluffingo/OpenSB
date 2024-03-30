@@ -4,14 +4,14 @@ namespace OpenSB;
 
 global $orange;
 
-use SquareBracket\SquareBracketException;
+use Core\CoreException;
 use SquareBracket\Pages\AdminDashboard;
 use SquareBracket\Templating;
 
 try {
     $page = new AdminDashboard($orange, $_POST, $_GET);
     $data = $page->getData();
-} catch (SquareBracketException $e) {
+} catch (CoreException $e) {
     $e->page();
 }
 

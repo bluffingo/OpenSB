@@ -2,7 +2,7 @@
 
 namespace SquareBracket\Pages;
 
-use SquareBracket\Database;
+use Core\Database;
 use SquareBracket\SquareBracket;
 use SquareBracket\Utilities;
 

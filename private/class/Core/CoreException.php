@@ -1,17 +1,12 @@
 <?php
 
-namespace SquareBracket;
+namespace Core;
 
 use JetBrains\PhpStorm\NoReturn;
 use Orange\Throwable;
 use ReturnTypeWillChange;
 
-/**
- * SquareBracket exceptions.
- *
- * @since SquareBracket 1.0
- */
-class SquareBracketException extends \Exception
+class CoreException extends \Exception
 {
     public function __construct($message, $code = 500, Throwable $previous = null) {
         parent::__construct($message, $code, $previous);

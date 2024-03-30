@@ -11,7 +11,7 @@ use SquareBracket\Utilities;
 class AccountLogin
 {
     private $orange;
-    private \SquareBracket\Database $database;
+    private \Core\Database $database;
 
     public function __construct(\SquareBracket\SquareBracket $orange)
     {

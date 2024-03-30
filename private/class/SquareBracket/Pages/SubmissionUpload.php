@@ -11,7 +11,7 @@ use SquareBracket\Utilities;
  */
 class SubmissionUpload
 {
-    private \SquareBracket\Database $database;
+    private \Core\Database $database;
     private \SquareBracket\SquareBracket $orange;
     /**
      * @var array|string[]

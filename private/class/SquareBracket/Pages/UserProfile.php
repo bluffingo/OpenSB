@@ -14,7 +14,7 @@ use SquareBracket\Utilities;
  */
 class UserProfile
 {
-    private \SquareBracket\Database $database;
+    private \Core\Database $database;
     private $data;
     private $is_own_profile;
     private array $user_submissions;

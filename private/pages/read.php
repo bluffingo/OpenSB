@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $orange;
 
-use SquareBracket\SquareBracketException;
+use Core\CoreException;
 use SquareBracket\Pages\JournalRead;
 use SquareBracket\Templating;
 
@@ -13,7 +13,7 @@ $id = ($_GET['j'] ?? null);
 try {
     $page = new JournalRead($orange, $id);
     $data = $page->getData();
-} catch (SquareBracketException $e) {
+} catch (CoreException $e) {
     $e->page();
 }
 

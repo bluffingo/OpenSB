@@ -4,14 +4,14 @@ namespace OpenSB;
 
 global $orange, $bettyTemplate;
 
-use SquareBracket\SquareBracketException;
+use Core\CoreException;
 use SquareBracket\Pages\AccountNotifications;
 use SquareBracket\Templating;
 
 try {
     $page = new AccountNotifications($orange);
     $data = $page->getData();
-} catch (SquareBracketException $e) {
+} catch (CoreException $e) {
     $e->page();
 }
 
