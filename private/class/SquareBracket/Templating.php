@@ -2,6 +2,7 @@
 
 namespace SquareBracket;
 
+use Core\VersionNumber;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -58,7 +59,7 @@ class Templating
         $this->twig->addGlobal('user_ban_data', $auth->getUserBanData());
         $this->twig->addGlobal('user_notice_data', $auth->getUserNoticesCount());
         $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
-        $this->twig->addGlobal('squarebracket_version', $orange->getVersionString());
+        $this->twig->addGlobal('squarebracket_version', (new \Core\VersionNumber)->getVersionString());
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('website_branding', $orange->getSettings()->getBrandingSettings());
         $this->twig->addGlobal('show_work_in_progress_stuff', ($orange->getSettings()->getDevelopmentMode()));

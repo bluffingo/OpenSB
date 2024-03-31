@@ -3,6 +3,7 @@
 namespace SquareBracket\Pages;
 
 use Composer\ComposerInstalled;
+use Core\VersionNumber;
 
 /**
  * Backend code for the MediaWiki-styled version page.
@@ -37,7 +38,7 @@ class Version
             "software" => [
                 'orangeVersion' => [
                     'title' => "OpenSB",
-                    'info' => $this->orange->getVersionString(),
+                    'info' => VersionNumber::getVersionString(),
                 ],
                 'phpVersion' => [
                     'title' => "PHP",

@@ -6,6 +6,7 @@ use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\SubmissionData;
 use SquareBracket\Utilities;
+use WebFinger\WebFinger;
 
 /**
  * Backend code for the profile page.
@@ -34,9 +35,18 @@ class UserProfile
 
         if (!$this->data)
         {
-            Utilities::Notification("This user does not exist.", "/");
+            // if the user doesn't exist in opensb's db, check if it's a fediverse account first
+            if (str_contains($username, "@")) {
+                $webfinger = new WebFinger($this->database, $username);
+                if (!$webfinger->getWebFinger()) {
+                    Utilities::Notification("This user and/or instance does not exist.", "/");
+                }
+            } else {
+                Utilities::Notification("This user and/or instance does not exist.", "/");
+            }
         }
 
+        // shit, how will bans work via fediverse?
         if ($this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->data["id"]]))
         {
             Utilities::Notification("This user is banned.", "/");

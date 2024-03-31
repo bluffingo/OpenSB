@@ -40,19 +40,19 @@ $db = $orange->getDatabase();
 
 $resource = $_GET['resource'] ?? null;
 
-$handle = substr($resource, 5); // remove "acct:"
-$extractedHandle = explode('@', $handle);
-// $extractedHandle[0] -> "bluffingo"
-// $extractedHandle[1] -> "squarebracket.pw"
+$address = substr($resource, 5); // remove "acct:"
+$extractedAddress = explode('@', $address);
+// $extractedAddress[0] -> "bluffingo"
+// $extractedAddress[1] -> "squarebracket.pw"
 
 // check if the domain is our domain
-if ($extractedHandle[1] != $domain) {
+if ($extractedAddress[1] != $domain) {
     // it isn't our domain, just 404.
     http_response_code(404);
     die();
 } else {
     // it's our domain, so do a db query to see if the user exists.
-    if (!$db->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$extractedHandle[0]])) {
+    if (!$db->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$extractedAddress[0]])) {
         // user doesn't exist, so 404.
         http_response_code(404);
         die();
@@ -63,19 +63,19 @@ if ($extractedHandle[1] != $domain) {
         $data = [
             "subject" => $resource,
             "aliases" => [
-                "https://{$domain}/user/{$extractedHandle[0]}",
+                "https://{$domain}/user/{$extractedAddress[0]}",
             ],
             "links" => [
                 [
                     "rel" => "http://webfinger.net/rel/profile-page",
                     "type" => "text/html",
-                    "href" => "https://{$domain}/user/{$extractedHandle[0]}",
+                    "href" => "https://{$domain}/user/{$extractedAddress[0]}",
                 ],
                 //requires activitypub to be implemented.
                 [
                     "rel" => "self",
                     "type" => "application/activity+json",
-                    "href" => "https://{$domain}/{$extractedHandle[0]}"
+                    "href" => "https://{$domain}/{$extractedAddress[0]}"
                 ],
                 //[
                 //    "rel" => "http://ostatus.org/schema/1.0/subscribe",

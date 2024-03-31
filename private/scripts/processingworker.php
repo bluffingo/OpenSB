@@ -4,6 +4,7 @@ namespace OpenSB;
 
 global $ffmpegPath, $ffprobePath, $database, $orange;
 
+use Core\VersionNumber;
 use FFMpeg\Coordinate;
 use FFMpeg\FFMpeg;
 use FFMpeg\FFProbe;
@@ -24,7 +25,7 @@ define("SB_GIT_PATH", dirname(__DIR__, 2) . '/.git'); // ONLY FOR makeVersionStr
 
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
-echo $orange->printVersionForOutput();
+echo VersionNumber::printVersionForOutput();
 
 $config = [
     'timeout' => 3600, // The timeout for the underlying process (1 hour?)

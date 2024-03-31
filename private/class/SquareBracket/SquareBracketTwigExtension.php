@@ -3,6 +3,7 @@
 namespace SquareBracket;
 
 use Core\CoreException;
+use Core\VersionNumber;
 use Parsedown;
 use RelativeTime\RelativeTime;
 use Twig\Extension\AbstractExtension;
@@ -25,7 +26,7 @@ class SquareBracketTwigExtension extends AbstractExtension
                 $profiler->getStats();
             }),
             new TwigFunction('version_banner', function () use ($orange) {
-                echo $orange->printVersionForOutput();
+                echo (new \Core\VersionNumber)->printVersionForOutput();
             }),
             new TwigFunction('remove_notification', [$this, 'removeNotification']),
             new TwigFunction('show_ratings', [$this, 'showRatings']),
@@ -67,7 +68,7 @@ class SquareBracketTwigExtension extends AbstractExtension
                 $parsed_text = preg_replace('/(?<!=|\b|&)#([a-z0-9_]+)/i', '<a href="/search?tags=$1">#$1</a>', $parsed_text);
 
                 // Mentions
-                $parsed_text = preg_replace('/(?<!=|\b|&)@([a-z0-9_]+)/i', '<a href="/user?name=$1">@$1</a>', $parsed_text);
+                $parsed_text = preg_replace('/(?<!=|\b|&)@([a-z0-9_]+(?:@[a-z0-9.-]+)?)/i', '<a href="/user/$1">@$1</a>', $parsed_text);
 
 
                 return $parsed_text;
@@ -86,7 +87,7 @@ class SquareBracketTwigExtension extends AbstractExtension
                 $parsed_text = preg_replace('/(?<!=|\b|&)#([a-z0-9_]+)/i', '<a href="/search?tags=$1">#$1</a>', $parsed_text);
 
                 // Mentions
-                $parsed_text = preg_replace('/(?<!=|\b|&)@([a-z0-9_]+)/i', '<a href="/user?name=$1">@$1</a>', $parsed_text);
+                $parsed_text = preg_replace('/(?<!=|\b|&)@([a-z0-9_]+(?:@[a-z0-9.-]+)?)/i', '<a href="/user/$1">@$1</a>', $parsed_text);
 
 
                 return $parsed_text;
