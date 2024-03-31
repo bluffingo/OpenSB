@@ -23,7 +23,8 @@ $output = [
     "name" => "{$data["title"]}",
     "summary" => "{$data["about"]}",
     "icon" => [
-        "https://{$domain}/dynamic/pfp/{$data["name"]}.png"
+        "type" => "Image",
+        "url" => "https://{$domain}/dynamic/pfp/{$data["name"]}.png"
     ]
 ];
 

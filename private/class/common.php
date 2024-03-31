@@ -23,7 +23,6 @@ global $host, $user, $pass, $db, $isQoboTV;
 
 use Core\Authentication;
 use Core\Utilities as UtilitiesAlias;
-use GUMP;
 use SquareBracket\BunnyStorage;
 use SquareBracket\LocalStorage;
 use SquareBracket\Profiler;
@@ -80,7 +79,6 @@ if ($debugLogging) {
 $orange = new SquareBracket($host, $user, $pass, $db);
 $auth = new Authentication($orange->getDatabase(), $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new Profiler();
-$gump = new GUMP('en');
 
 if ($orange->getSettings()->getMaintenanceMode()) {
     $twig = new Templating($orange);

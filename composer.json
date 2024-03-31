@@ -8,11 +8,11 @@
 		"php-ffmpeg/php-ffmpeg": "1.2.0",
 		"toshy/bunnynet-php": "^4.0",
 		"symfony/http-client": "7.0.5",
-		"wixel/gump": "dev-master",
 		"ext-pdo": "*",
 		"twig/string-extra": "3.x-dev",
 		"psr/http-client": "^1.0@dev",
-		"landrok/activitypub": "dev-master"
+		"landrok/activitypub": "dev-master",
+		"symfony/http-kernel": "7.1.x-dev"
 	},
 	"minimum-stability": "dev",
 	"config": {

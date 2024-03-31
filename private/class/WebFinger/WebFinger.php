@@ -26,7 +26,7 @@ class WebFinger
         ]);
     }
 
-    public function getWebFinger()
+    public function requestWebFinger()
     {
         $extractedAddress = explode('@', $this->address);
         // $extractedAddress[0] -> "bluffingo"
@@ -42,8 +42,12 @@ class WebFinger
         if ($response->getStatusCode() != 200) {
             return false;
         } else {
-            $this->data = json_decode($response->getContent(), true);
+            $this->data = $response->toArray();
             return true;
         }
+    }
+
+    public function getWebFingerData() {
+        return $this->data;
     }
 }

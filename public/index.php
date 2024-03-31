@@ -95,6 +95,7 @@ if (isset($path[1]) && $path[1] != '') {
         // self-taught programmer and as such my code quality is abysmal. -bluffingo 3/30/2024
 
         if ($path[1] == '.well-known') {
+            // todo: nodeinfo so that opensb can be included within "fediverse" statistic pages
             if ($path[2] == 'webfinger') { // let's start with implementing webfinger.
                 require(SB_PRIVATE_PATH . '/pages/webfinger.php');
             }

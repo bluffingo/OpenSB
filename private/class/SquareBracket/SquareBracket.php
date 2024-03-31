@@ -39,11 +39,12 @@ class SquareBracket {
     /**
      * Returns the database class for other SquareBracket classes to use.
      *
+     * @return Database
      * @since SquareBracket 1.0
      *
-     * @return Database
      */
-    public function getDatabase(): \Core\Database {
+    public function getDatabase(): \Core\Database
+    {
         return $this->database;
     }
 

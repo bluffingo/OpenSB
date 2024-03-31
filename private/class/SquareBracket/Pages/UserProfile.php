@@ -2,6 +2,7 @@
 
 namespace SquareBracket\Pages;
 
+use SquareBracket\Adapter\ActivityPubToSB;
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\SubmissionData;
@@ -28,6 +29,8 @@ class UserProfile
     {
         global $auth;
 
+        $activityPubAdapter = new ActivityPubToSB($orange);
+
         $whereRatings = Utilities::whereRatings();
 
         $this->database = $orange->getDatabase();
@@ -38,7 +41,11 @@ class UserProfile
             // if the user doesn't exist in opensb's db, check if it's a fediverse account first
             if (str_contains($username, "@")) {
                 $webfinger = new WebFinger($this->database, $username);
-                if (!$webfinger->getWebFinger()) {
+                if ($webfinger->requestWebFinger()) {
+                    if ($data = $activityPubAdapter->getProfileFromWebFinger($webfinger->getWebFingerData())) {
+                        $activityPubAdapter->makeDummySquareBracketAccount($data, $username);
+                    }
+                } else {
                     Utilities::Notification("This user and/or instance does not exist.", "/");
                 }
             } else {
