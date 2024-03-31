@@ -17,16 +17,7 @@ class VersionNumber
      */
     private function makeVersionString(): void
     {
-        // Versioning guide (By Bluffingo, last updated 1/5/2024):
-        //
-        // * Don't bump the first number unless if the codebase is rewritten.
-        // * Bump the second number for every new release.
-        // * We do not have a third number unlike Semantic Versioning, since
-        // we use Git hashes for indicating revisions, but this may change.
-        // * Pre-release versions not ready for Qobo production should be marked "x.x-dev"
-        // * Pre-release versions ready for Qobo production should be marked "x.x-RCx", with every
-        // (non-bugfix) update to production being a new release candidate version.
-        $version = "1.1-RC3";
+        $version = "2.0-dev";
 
         // Check if the instance is git cloned. If it is, have the version string be
         // precise. Otherwise, just indicate that it's a "Non-source copy", though we
