@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2024 at 06:09 AM
+-- Generation Time: Mar 31, 2024 at 06:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,6 +39,7 @@ CREATE TABLE `activitypub_sites` (
 --
 
 CREATE TABLE `activitypub_user_urls` (
+  `int_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `id` text NOT NULL,
   `featured` text NOT NULL,
@@ -47,7 +48,8 @@ CREATE TABLE `activitypub_user_urls` (
   `profile_picture` text NOT NULL,
   `banner_picture` text NOT NULL,
   `inbox` text NOT NULL,
-  `outbox` text NOT NULL
+  `outbox` text NOT NULL,
+  `last_updated` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -327,7 +329,7 @@ ALTER TABLE `activitypub_sites`
 -- Indexes for table `activitypub_user_urls`
 --
 ALTER TABLE `activitypub_user_urls`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`int_id`);
 
 --
 -- Indexes for table `bans`
@@ -392,6 +394,12 @@ ALTER TABLE `videos`
 --
 ALTER TABLE `activitypub_sites`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `activitypub_user_urls`
+--
+ALTER TABLE `activitypub_user_urls`
+  MODIFY `int_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `bans`

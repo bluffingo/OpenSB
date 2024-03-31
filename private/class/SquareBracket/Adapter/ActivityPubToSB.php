@@ -60,13 +60,15 @@ class ActivityPubToSB
     // downtimes over hosting-related issues.
     public function makeDummySquareBracketAccount($profileData, $name)
     {
-        // $this->database->query("INSERT INTO users (name, password, token, joined, lastview, title, email, ip) VALUES (?,?,?,?,?,?,?,?)",
-        // [$username, password_hash($pass, PASSWORD_DEFAULT), $token, time(), time(), $username, $mail, UtilitiesAlias::get_ip_address()]);
-
         // using preferredUsername would be better but ergh, whatever.
         $this->db->query("INSERT INTO users (name, email, password, title, about, token) VALUES (?,?,?,?,?,?)",
             [$name, "dummy@fakeemail.com", "UselessHash-" . time(), $profileData["name"], $profileData["summary"], bin2hex(random_bytes(32))]);
 
-        // INSERT INTO `activitypub_user_urls` (`user_id`, `id`, `featured`, `followers`, `following`, `profile_picture`, `banner_picture`, `inbox`, `outbox`) VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1');
+        $new_id = $this->db->result("SELECT id FROM users WHERE name = ?", [$name]);
+
+        $this->db->query("INSERT INTO activitypub_user_urls (user_id, id, featured, followers, following, profile_picture, banner_picture, inbox, outbox, last_updated) VALUES (?,?,?,?,?,?,?,?,?,?)",
+            [$new_id, $profileData["id"], $profileData["featured"], $profileData["followers"],
+                $profileData["following"], $profileData["icon"]["url"], $profileData["image"]["url"],
+                $profileData["inbox"], $profileData["outbox"], time()]);
     }
 }

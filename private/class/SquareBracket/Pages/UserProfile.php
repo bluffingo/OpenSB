@@ -16,6 +16,7 @@ use WebFinger\WebFinger;
  */
 class UserProfile
 {
+    private bool $isFediverse;
     private \Core\Database $database;
     private $data;
     private $is_own_profile;
@@ -34,7 +35,17 @@ class UserProfile
         $whereRatings = Utilities::whereRatings();
 
         $this->database = $orange->getDatabase();
-        $this->data = $this->database->fetch("SELECT u.* FROM users u WHERE u.name = ?", [$username]);
+
+        if (str_contains($username, "@")) {
+            $this->isFediverse = true;
+            $this->data = $this->database->fetch(
+                "SELECT * FROM users u INNER JOIN activitypub_user_urls ON activitypub_user_urls.user_id = u.id WHERE u.name = ?", [$username]);
+        } else {
+            $this->isFediverse = false;
+            $this->data = $this->database->fetch("SELECT * FROM users u WHERE u.name = ?", [$username]);
+        }
+
+        //var_dump($this->data);
 
         if (!$this->data)
         {
@@ -88,7 +99,7 @@ class UserProfile
 
     public function getData(): array
     {
-        return [
+        $data = [
             "id" => $this->data["id"],
             "username" => $this->data["name"],
             "displayname" => $this->data["title"],
@@ -102,7 +113,15 @@ class UserProfile
             "comments" => $this->comments->getComments(),
             "followers" => $this->followers,
             "following" => $this->followed,
+            "is_fedi" => $this->isFediverse,
         ];
+
+        if ($this->isFediverse) {
+            $data["fedi_pfp"] = $this->data["profile_picture"];
+            $data["fedi_banner"] = $this->data["banner_picture"];
+        }
+
+        return $data;
     }
 
     private function getSubmissionFromFeaturedID()
