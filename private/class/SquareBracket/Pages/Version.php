@@ -38,7 +38,7 @@ class Version
             "software" => [
                 'orangeVersion' => [
                     'title' => "OpenSB",
-                    'info' => VersionNumber::getVersionString(),
+                    'info' => (new \Core\VersionNumber)->getVersionString(),
                 ],
                 'phpVersion' => [
                     'title' => "PHP",

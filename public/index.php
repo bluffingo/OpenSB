@@ -43,6 +43,8 @@ if (isset($path[1]) && $path[1] != '') {
         require(SB_PRIVATE_PATH . '/pages/guidelines.php');
     } elseif ($path[1] == 'index') {
         require(SB_PRIVATE_PATH . '/pages/index.php');
+    } elseif ($path[1] == 'license') {
+        require(SB_PRIVATE_PATH . '/pages/license.php');
     } elseif ($path[1] == 'login') {
         require(SB_PRIVATE_PATH . '/pages/login.php');
     } elseif ($path[1] == 'logout') {
