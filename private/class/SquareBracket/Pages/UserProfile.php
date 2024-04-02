@@ -28,20 +28,25 @@ class UserProfile
 
     public function __construct(\SquareBracket\SquareBracket $orange, $username)
     {
-        global $auth;
+        global $auth, $domain;
+
+        $this->isFediverse = false;
 
         $activityPubAdapter = new ActivityPubToSB($orange);
-
         $whereRatings = Utilities::whereRatings();
-
         $this->database = $orange->getDatabase();
 
-        if (str_contains($username, "@")) {
+        if (str_contains($username, "@" . $domain)) {
+            // if the handle matches our domain then don't treat it as an external fediverse account
+            $extractedAddress = explode('@', $username);
+            $this->data = $this->database->fetch("SELECT * FROM users u WHERE u.name = ?", [$extractedAddress[0]]);
+        } elseif (str_contains($username, "@")) {
+            // if the handle contains "@" then check if it's in our db
             $this->isFediverse = true;
             $this->data = $this->database->fetch(
                 "SELECT * FROM users u INNER JOIN activitypub_user_urls ON activitypub_user_urls.user_id = u.id WHERE u.name = ?", [$username]);
         } else {
-            $this->isFediverse = false;
+            // otherwise it's a normal opensb account
             $this->data = $this->database->fetch("SELECT * FROM users u WHERE u.name = ?", [$username]);
         }
 
@@ -49,8 +54,9 @@ class UserProfile
 
         if (!$this->data)
         {
-            // if the user doesn't exist in opensb's db, check if it's a fediverse account first
-            if (str_contains($username, "@")) {
+            // if we know if it's a fediverse account, then try getting its profile and then copying it over to our
+            // database. (TODO: handle blacklisted sites)
+            if ($this->isFediverse) {
                 $webfinger = new WebFinger($this->database, $username);
                 if ($webfinger->requestWebFinger()) {
                     if ($data = $activityPubAdapter->getProfileFromWebFinger($webfinger->getWebFingerData())) {
