@@ -71,11 +71,10 @@ if ($extractedAddress[1] != $domain) {
                     "type" => "text/html",
                     "href" => "https://{$domain}/user/{$extractedAddress[0]}",
                 ],
-                //requires activitypub to be implemented.
                 [
                     "rel" => "self",
                     "type" => "application/activity+json",
-                    "href" => "https://{$domain}/{$extractedAddress[0]}"
+                    "href" => "https://{$domain}/user/{$extractedAddress[0]}"
                 ],
                 //[
                 //    "rel" => "http://ostatus.org/schema/1.0/subscribe",

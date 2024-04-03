@@ -46,5 +46,4 @@ $disableRegistration = false;
 $disableUploading = false;
 $disableWritingJournals = false;
 
-$enableFederatedStuff = false; // development, don't enable unless if you know what you are doing.
 $debugLogging = false;

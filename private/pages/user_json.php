@@ -6,7 +6,22 @@ global $orange, $domain, $path;
 
 $db = $orange->getDatabase();
 
-$data = $db->fetch("SELECT u.* FROM users u WHERE u.name = ?", [$path[1]]);
+if (str_contains($path[2], "@" . $domain)) {
+    $name = explode('@', $path[2])[0];
+} elseif (str_contains($path[2], "@")) {
+    http_response_code(404);
+    die();
+} else {
+    $name = $path[2];
+}
+
+$data = $db->fetch("SELECT u.* FROM users u WHERE u.name = ?", [$name]);
+
+if (!$data)
+{
+    http_response_code(404);
+    die();
+}
 
 $output = [
     "@context" => [
