@@ -6,26 +6,28 @@
         {% if error %}
             <div class="banner banner-danger">{{ error }}</div>
         {% endif %}
-        <div class="content-header">
-            <span>Login to your {{ website_branding.name }} account</span>
-        </div>
-        <div class="content-box">
-            <div class="panel-body">
-                <form method="post" name="loginForm" id="loginForm" action="login" class="form-signin">
-                    <div>
-                        <label for="username">Username:</label>
-                        <input type="text" name="username" class="form-submit" placeholder="Username">
-                    </div>
+        <div class="section">
+            <div class="section-title">
+                <h1>Login to your {{ website_branding.name }} account</h1>
+            </div>
+            <div class="content-box">
+                <div class="panel-body">
+                    <form method="post" name="loginForm" id="loginForm" action="login" class="form-signin">
+                        <div>
+                            <label for="username">Username:</label>
+                            <input type="text" name="username" class="form-submit" placeholder="Username">
+                        </div>
 
-                    <div>
-                        <label for="password">Password:</label>
-                        <input type="password" name="password" class="form-submit" placeholder="Password">
-                    </div>
+                        <div>
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" class="form-submit" placeholder="Password">
+                        </div>
 
-                    <div class="form-button-container">
-                        <input type="submit" class="button button-primary" value="Login" name="loginsubmit">
-                    </div>
-                </form>
+                        <div class="form-button-container">
+                            <input type="submit" class="button button-primary" value="Login" name="loginsubmit">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     {% endblock %}

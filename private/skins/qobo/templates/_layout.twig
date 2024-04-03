@@ -113,7 +113,9 @@
             </div>
             {{ remove_notification() }}
         {% endif %}
+        <div class="container {{ page_name }}">
         {% block content %}{% endblock %}
+        </div>
         <div class="footer">
             <img src="/assets/opensb_logo.png" alt="OpenSB">
             <br>

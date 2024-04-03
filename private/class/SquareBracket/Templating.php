@@ -63,6 +63,7 @@ class Templating
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('website_branding', $orange->getSettings()->getBrandingSettings());
         $this->twig->addGlobal('show_work_in_progress_stuff', ($orange->getSettings()->getDevelopmentMode()));
+        $this->twig->addGlobal('page_name', empty(basename($_SERVER["REQUEST_URI"], '.php')) ? 'index' : basename($_SERVER["REQUEST_URI"], '.php'));
 
         $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         $this->twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
