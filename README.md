@@ -5,14 +5,15 @@
 
 I wouldn't recommend using this code unless if you ***really*** know what you're doing.
 
-1. Get an Apache server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. NGINX/FreeNGINX should work, but we use Apache on Qobo production.
+1. Get an Apache server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. NGINX/FreeNGINX should work, but we use Apache with squareBracket.
 1. Setup a virtual host. Look below the steps for an example.
 1. Run `composer update` from the terminal.
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
 1. Import the database template found in `sql/` into the database you want to use.
 1. Run the `compile-scss` script available in the tools directory to generate the required stylesheets. You may find Dart-Sass here at https://sass-lang.com/install/.
-### Production specific
 
+### Production specific (partially outdated)
+1. Use Linux for anything related to production.
 1. Instead of installing dependencies using `composer update` you do `composer update --no-dev`
 1. Make the `dynamic/` and `templates/cache/` directories writable by your web server.
 1. Modify `$branding` to replace openSB branding with your custom branding. Check the `public/assets/placeholder` directory for reference.
