@@ -2,7 +2,6 @@
 
 namespace OpenSB;
 
-global $debugLogging;
 if (version_compare(PHP_VERSION, '8.2.0') <= 0) {
     die('<strong>OpenSB is not compatible with your PHP version. OpenSB supports PHP 8.2 or newer.</strong>');
 }
@@ -19,7 +18,14 @@ require_once(SB_PRIVATE_PATH . '/conf/config.php');
 
 require_once(SB_VENDOR_PATH . '/autoload.php');
 
-global $host, $user, $pass, $db, $isQoboTV;
+// please use apache/nginx for production stuff.
+if (php_sapi_name() == "cli-server") {
+    define("SB_PHP_BUILTINSERVER", true);
+} else {
+    define("SB_PHP_BUILTINSERVER", false);
+}
+
+global $host, $user, $pass, $db, $isQoboTV, $debugLogging;
 
 use Core\Authentication;
 use Core\Utilities as UtilitiesAlias;
@@ -36,7 +42,16 @@ spl_autoload_register(function ($class_name) {
     }
 });
 
-if ($debugLogging) {
+function sb_debug_output($string) {
+    if (SB_PHP_BUILTINSERVER) {
+        $time = date("Y-m-d H:i:s");
+
+        $output = "[OPENSB {$time}] {$string}";
+        file_put_contents("php://stdout", $output . PHP_EOL);
+    }
+}
+
+if ($debugLogging) { // TODO: migrate this over to sb_debug_output
     // Get all headers and requests sent to this server
     $headers     = getallheaders();
     $postData    = $_POST;
@@ -80,7 +95,7 @@ $orange = new SquareBracket($host, $user, $pass, $db);
 $auth = new Authentication($orange->getDatabase(), $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new Profiler();
 
-if ($orange->getSettings()->getMaintenanceMode()) {
+if ($orange->getSettings()->getMaintenanceMode() && !SB_PHP_BUILTINSERVER) {
     $twig = new Templating($orange);
     echo $twig->render("error.twig", [
         "error_title" => "Offline",
@@ -108,9 +123,10 @@ if ( $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilitie
 $ipBannedUsers = $database->fetchArray($database->query("SELECT * from ipbans"));
 
 foreach ($ipBannedUsers as $ipBannedUser) {
-    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT id FROM users WHERE ip LIKE ?", [$ipBannedUser["ip"]]));
+    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT id, name FROM users WHERE ip LIKE ?", [$ipBannedUser["ip"]]));
     foreach ($usersAssociatedWithIP as $ipBannedUser2) { // i can't really name variables that well
         if (!$database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$ipBannedUser2["id"]])) {
+            sb_debug_output("Automatically banning user {$ipBannedUser2["name"]}");
             $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
                 [$ipBannedUser2["id"], "Automatically done by OpenSB", time()]);
         }

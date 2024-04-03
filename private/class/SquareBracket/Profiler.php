@@ -18,9 +18,9 @@ class Profiler
     function getAuthData() {
         global $auth;
         if ($auth->isUserLoggedIn()) {
-            return "Site user logged in as " . $auth->getUserData()["name"] . ".";
+            return "Site user is logged in as " . $auth->getUserData()["name"] . ".";
         } else {
-            return "Site user is guest.";
+            return "Site user is logged out.";
         }
     }
 

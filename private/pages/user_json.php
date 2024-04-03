@@ -15,7 +15,7 @@ if (str_contains($path[2], "@" . $domain)) {
     $name = $path[2];
 }
 
-$data = $db->fetch("SELECT u.* FROM users u WHERE u.name = ?", [$name]);
+$data = $db->fetch("SELECT name, title, about FROM users WHERE name = ?", [$name]);
 
 if (!$data)
 {
@@ -28,12 +28,12 @@ $output = [
         "https://www.w3.org/ns/activitystreams",
     ],
     "type" => "Person",
-    "id" => "https://{$domain}/{$data["name"]}",
-    "following" => "https://{$domain}/{$data["name"]}/following",
-    "followers" => "https://{$domain}/{$data["name"]}/followers",
-    "liked" => "https://{$domain}/{$data["name"]}/liked",
-    "inbox" => "https://{$domain}/{$data["name"]}/inbox",
-    "outbox" => "https://{$domain}/{$data["name"]}/feed",
+    "id" => "https://{$domain}/user/{$data["name"]}",
+    "following" => "https://{$domain}/user/{$data["name"]}/following",
+    "followers" => "https://{$domain}/user/{$data["name"]}/followers",
+    "liked" => "https://{$domain}/user/{$data["name"]}/liked",
+    "inbox" => "https://{$domain}/user/{$data["name"]}/inbox",
+    "outbox" => "https://{$domain}/user/{$data["name"]}/feed",
     "preferredUsername" => "{$data["name"]}",
     "name" => "{$data["title"]}",
     "summary" => "{$data["about"]}",
