@@ -6,7 +6,7 @@ use SquareBracket\Adapter\ActivityPubToSB;
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\SubmissionData;
-use SquareBracket\Utilities;
+use SquareBracket\UnorganizedFunctions;
 use WebFinger\WebFinger;
 
 /**
@@ -33,7 +33,7 @@ class UserProfile
         $this->isFediverse = false;
 
         $activityPubAdapter = new ActivityPubToSB($orange);
-        $whereRatings = Utilities::whereRatings();
+        $whereRatings = UnorganizedFunctions::whereRatings();
         $this->database = $orange->getDatabase();
 
         if (str_contains($username, "@" . $domain)) {
@@ -63,17 +63,17 @@ class UserProfile
                         $activityPubAdapter->makeDummySquareBracketAccount($data, $username);
                     }
                 } else {
-                    Utilities::Notification("This user and/or instance does not exist.", "/");
+                    UnorganizedFunctions::Notification("This user and/or instance does not exist.", "/");
                 }
             } else {
-                Utilities::Notification("This user and/or instance does not exist.", "/");
+                UnorganizedFunctions::Notification("This user and/or instance does not exist.", "/");
             }
         }
 
         // shit, how will bans work via fediverse?
         if ($this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->data["id"]]))
         {
-            Utilities::Notification("This user is banned.", "/");
+            UnorganizedFunctions::Notification("This user is banned.", "/");
         }
 
         $this->user_submissions =
@@ -100,7 +100,7 @@ class UserProfile
         $this->comments = new CommentData($this->database, CommentLocation::Profile, $this->data["id"]);
 
         $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$this->data["id"]])['COUNT(user)'];
-        $this->followed = Utilities::IsFollowingUser($this->data["id"]);
+        $this->followed = UnorganizedFunctions::IsFollowingUser($this->data["id"]);
     }
 
     public function getData(): array
@@ -114,8 +114,8 @@ class UserProfile
             "connected" => $this->data["lastview"],
             "is_current" => $this->is_own_profile,
             "featured_submission" => $this->getSubmissionFromFeaturedID(),
-            "submissions" => Utilities::makeSubmissionArray($this->database, $this->user_submissions),
-            "journals" => Utilities::makeJournalArray($this->database, $this->user_journals),
+            "submissions" => UnorganizedFunctions::makeSubmissionArray($this->database, $this->user_submissions),
+            "journals" => UnorganizedFunctions::makeJournalArray($this->database, $this->user_journals),
             "comments" => $this->comments->getComments(),
             "followers" => $this->followers,
             "following" => $this->followed,

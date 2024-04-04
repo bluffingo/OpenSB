@@ -98,7 +98,7 @@ class BunnyStorage implements Storage
         $target_file_local = SB_DYNAMIC_PATH . '/art/' . $new . '.png';
         $target_thumbnail_local = SB_DYNAMIC_PATH . '/art_thumbnails/' . $new . '.jpg';
 
-        Utilities::processImageSubmissionFile($temp_name, $target_file_local);
+        UnorganizedFunctions::processImageSubmissionFile($temp_name, $target_file_local);
         $content = file_get_contents($target_file_local);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
@@ -107,7 +107,7 @@ class BunnyStorage implements Storage
         );
         unlink($target_file_local);
 
-        Utilities::processImageSubmissionThumbnail($temp_name, $target_thumbnail_local);
+        UnorganizedFunctions::processImageSubmissionThumbnail($temp_name, $target_thumbnail_local);
         $content = file_get_contents($target_thumbnail_local);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
@@ -125,7 +125,7 @@ class BunnyStorage implements Storage
 
         $target_file_local = SB_DYNAMIC_PATH . '/pfp/' . $new . '.png';
 
-        Utilities::processProfilePicture($temp_name, $target_file_local);
+        UnorganizedFunctions::processProfilePicture($temp_name, $target_file_local);
         $content = file_get_contents($target_file_local);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,
@@ -143,7 +143,7 @@ class BunnyStorage implements Storage
 
         $target_file_local = SB_DYNAMIC_PATH . '/custom_thumbnails/' . $new . '.png';
 
-        Utilities::processCustomThumbnail($temp_name, $target_file_local);
+        UnorganizedFunctions::processCustomThumbnail($temp_name, $target_file_local);
         $content = file_get_contents($target_file_local);
         $this->edgeStorageApi->uploadFile(
             storageZoneName: $this->storageZone,

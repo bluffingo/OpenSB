@@ -28,7 +28,7 @@ if (php_sapi_name() == "cli-server") {
 global $host, $user, $pass, $db, $isQoboTV, $debugLogging;
 
 use Core\Authentication;
-use Core\Utilities as UtilitiesAlias;
+use Core\Utilities;
 use SquareBracket\BunnyStorage;
 use SquareBracket\LocalStorage;
 use SquareBracket\Profiler;
@@ -106,8 +106,8 @@ if ($orange->getSettings()->getMaintenanceMode() && !SB_PHP_BUILTINSERVER) {
 
 $database = $orange->getDatabase();
 
-if ( $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [UtilitiesAlias::get_ip_address()])) {
-    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [UtilitiesAlias::get_ip_address()]));
+if ( $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities::get_ip_address()])) {
+    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [Utilities::get_ip_address()]));
     $twig = new Templating($orange);
     echo $twig->render("ip_banned.twig", [
         "data" => $ipban,

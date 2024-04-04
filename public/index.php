@@ -10,7 +10,7 @@ define("SB_GIT_PATH", dirname(__DIR__) . '/.git'); // ONLY FOR makeVersionString
 
 // SB_PUBLIC_PATH is not needed because all the core functionality is in the private folder.
 
-use Core\Utilities as UtilitiesAlias;
+use SquareBracket\UnorganizedFunctions;
 
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $path = explode('/', $uri);
@@ -74,7 +74,7 @@ if (isset($path[1]) && $path[1] != '') {
     } elseif ($path[1] == 'view') {
         require(SB_PRIVATE_PATH . '/pages/watch.php');
     } elseif ($path[1] == 'watch') {
-        UtilitiesAlias::redirect('/view/' . $_GET['v']);
+        UnorganizedFunctions::redirect('/view/' . $_GET['v']);
     } elseif ($path[1] == 'write') {
         require(SB_PRIVATE_PATH . '/pages/write.php');
     } elseif ($path[1] == 'api') {
@@ -92,7 +92,7 @@ if (isset($path[1]) && $path[1] != '') {
             die("Invalid API.");
         }
     } else {
-        UtilitiesAlias::rewritePHP();
+        UnorganizedFunctions::rewritePHP();
     }
 } else {
     require(SB_PRIVATE_PATH . '/pages/index.php');

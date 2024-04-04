@@ -208,7 +208,7 @@ class SquareBracketTwigExtension extends AbstractExtension
 
         $id = $user["id"];
 
-        if ($auth->isUserLoggedIn() && Utilities::IsFollowingUser($id)) {
+        if ($auth->isUserLoggedIn() && UnorganizedFunctions::IsFollowingUser($id)) {
             $class = "userlink following";
         } else {
             $class = "userlink";

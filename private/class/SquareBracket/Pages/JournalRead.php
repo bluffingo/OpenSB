@@ -3,7 +3,7 @@
 namespace SquareBracket\Pages;
 
 use SquareBracket\UserData;
-use SquareBracket\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 /**
  * Backend code for the journal reading page.
@@ -25,7 +25,7 @@ class JournalRead
         $this->data = $this->database->fetch("SELECT j.* FROM journals j WHERE j.id = ?", [$id]);
 
         if(!$this->data) {
-            Utilities::Notification("This journal does not exist.", "/");
+            UnorganizedFunctions::Notification("This journal does not exist.", "/");
         }
 
         $this->author = new UserData($this->database, $this->data["author"]);

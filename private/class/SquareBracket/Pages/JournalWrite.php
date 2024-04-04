@@ -2,7 +2,7 @@
 
 namespace SquareBracket\Pages;
 
-use SquareBracket\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 /**
  * Backend code for the journal writing page.
@@ -31,19 +31,19 @@ class JournalWrite
         
         if (!$auth->isUserLoggedIn())
         {
-            Utilities::Notification("Please login to continue.", "/login.php");
+            UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
         }
 
         if ($auth->getUserBanData()) {
-            Utilities::Notification("You cannot proceed with this action.", "/");
+            UnorganizedFunctions::Notification("You cannot proceed with this action.", "/");
         }
 
         if ($disableWritingJournals) {
-            Utilities::Notification("The ability to write journals has been disabled.", "/");
+            UnorganizedFunctions::Notification("The ability to write journals has been disabled.", "/");
         }
 
         if ($this->database->result("SELECT COUNT(*) FROM journals WHERE date > ? AND author = ?", [time() - 180 , $auth->getUserID()]) && !$isDebug) {
-            Utilities::Notification("Please wait three minutes before posting a journal again.", "/");
+            UnorganizedFunctions::Notification("Please wait three minutes before posting a journal again.", "/");
         }
     }
 
@@ -59,6 +59,6 @@ class JournalWrite
         $this->database->query("INSERT INTO journals (title, post, author, date) VALUES (?,?,?,?)",
             [$title, $description, $uploader, time()]);
 
-            Utilities::Notification("Your journal has been posted.", "./user.php?name=" . $auth->getUserData()["name"], "success");
+            UnorganizedFunctions::Notification("Your journal has been posted.", "./user.php?name=" . $auth->getUserData()["name"], "success");
     }
 }

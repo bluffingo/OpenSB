@@ -5,12 +5,12 @@ namespace OpenSB;
 global $orange;
 
 use Core\CoreException;
-use Core\Utilities as UtilitiesAlias;
 use SquareBracket\Pages\SubmissionView;
+use SquareBracket\UnorganizedFunctions;
 
 $id = $path[2] ?? null;
 
-if (isset($_GET['v'])) UtilitiesAlias::redirect('/submission/' . $_GET['v']);
+if (isset($_GET['v'])) UnorganizedFunctions::redirect('/submission/' . $_GET['v']);
 
 try {
     $page = new SubmissionView($orange, $id);

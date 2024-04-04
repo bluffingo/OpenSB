@@ -2,7 +2,7 @@
 
 namespace SquareBracket\Pages;
 
-use SquareBracket\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 /**
  * Backend code for the account settings page.
@@ -26,7 +26,7 @@ class AccountSettings
 
         if (!$auth->isUserLoggedIn())
         {
-            Utilities::Notification("Please login to continue.", "/login.php");
+            UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
         }
 
         // we should let banned users change settings.
@@ -95,9 +95,9 @@ class AccountSettings
         if (!$error) {
             $this->database->query("UPDATE users SET title = ?, about = ?, comfortable_rating = ? WHERE id = ?",
                 [$title, $about, $rating, $auth->getUserID()]);
-            Utilities::Notification("Edited successfully!", ("user.php?name=" . $auth->getUserData()["name"]), "success");
+            UnorganizedFunctions::Notification("Edited successfully!", ("user.php?name=" . $auth->getUserData()["name"]), "success");
         } else {
-            Utilities::Notification($error, "/settings.php");
+            UnorganizedFunctions::Notification($error, "/settings.php");
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace SquareBracket\Pages;
 
-use SquareBracket\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 /**
  * Backend code for the submission modification page.
@@ -28,15 +28,15 @@ class SubmissionEdit
 
         if (!$auth->isUserLoggedIn())
         {
-            Utilities::Notification("Please login to continue.", "/login.php");
+            UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
         }
 
         if ($auth->getUserBanData() || $this->submission->getTakedown()) {
-            Utilities::Notification("You cannot proceed with this action.", "/");
+            UnorganizedFunctions::Notification("You cannot proceed with this action.", "/");
         }
 
         if ($auth->getUserID() != $this->data["author"]) {
-            Utilities::Notification("This is not your submission.", "/");
+            UnorganizedFunctions::Notification("This is not your submission.", "/");
         }
     }
 
@@ -76,6 +76,6 @@ class SubmissionEdit
 
         $this->database->query("UPDATE videos SET title = ?, description = ? WHERE video_id = ?",
             [$title, $desc, $this->id]);
-        Utilities::Notification("Your submission's details has been modified.", "/watch?v=" . $this->id, "success");
+        UnorganizedFunctions::Notification("Your submission's details has been modified.", "/watch?v=" . $this->id, "success");
     }
 }

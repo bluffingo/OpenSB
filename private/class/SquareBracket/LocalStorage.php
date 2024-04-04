@@ -45,8 +45,8 @@ class LocalStorage implements Storage
         $target_file = SB_DYNAMIC_PATH . '/art/' . $new . '.png';
         $target_thumbnail = SB_DYNAMIC_PATH . '/art_thumbnails/' . $new . '.jpg';
 
-        Utilities::processImageSubmissionFile($temp_name, $target_file);
-        Utilities::processImageSubmissionThumbnail($temp_name, $target_thumbnail);
+        UnorganizedFunctions::processImageSubmissionFile($temp_name, $target_file);
+        UnorganizedFunctions::processImageSubmissionThumbnail($temp_name, $target_thumbnail);
 
         unlink($temp_name);
     }
@@ -55,7 +55,7 @@ class LocalStorage implements Storage
     {
         $target_file = SB_DYNAMIC_PATH . '/pfp/' . $new . '.png';
 
-        Utilities::processProfilePicture($temp_name, $target_file);
+        UnorganizedFunctions::processProfilePicture($temp_name, $target_file);
 
         unlink($temp_name);
     }
@@ -64,7 +64,7 @@ class LocalStorage implements Storage
     {
         $target_file = SB_DYNAMIC_PATH . '/custom_thumbnails/' . $new . '.png';
 
-        Utilities::processCustomThumbnail($temp_name, $target_file);
+        UnorganizedFunctions::processCustomThumbnail($temp_name, $target_file);
 
         unlink($temp_name);
     }

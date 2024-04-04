@@ -4,7 +4,7 @@ namespace SquareBracket\Pages;
 
 use Core\Database;
 use SquareBracket\SquareBracket;
-use SquareBracket\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 /**
  * Backend code for the index page.
@@ -20,7 +20,7 @@ class Index
 
     public function __construct(SquareBracket $orange)
     {
-        $whereRatings = Utilities::whereRatings();
+        $whereRatings = UnorganizedFunctions::whereRatings();
 
         $this->database = $orange->getDatabase();
         $this->submissions = $this->database->fetchArray($this->database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings ORDER BY RAND() LIMIT 24"));
@@ -38,8 +38,8 @@ class Index
     public function getData(): array
     {
         return [
-            "submissions" => Utilities::makeSubmissionArray($this->database, $this->submissions),
-            "submissions_new" => Utilities::makeSubmissionArray($this->database, $this->submissions_recent),
+            "submissions" => UnorganizedFunctions::makeSubmissionArray($this->database, $this->submissions),
+            "submissions_new" => UnorganizedFunctions::makeSubmissionArray($this->database, $this->submissions_recent),
             "news_recent" => $this->news_recent,
         ];
     }

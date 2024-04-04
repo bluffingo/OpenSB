@@ -2,7 +2,7 @@
 
 namespace SquareBracket\Pages;
 
-use SquareBracket\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 /**
  * Backend code for the submission uploading page.
@@ -34,21 +34,21 @@ class SubmissionUpload
         
         if (!$auth->isUserLoggedIn())
         {
-            Utilities::Notification("Please login to continue.", "/login.php");
+            UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
         }
 
         if ($auth->getUserBanData()) {
-            Utilities::Notification("You cannot proceed with this action.", "/");
+            UnorganizedFunctions::Notification("You cannot proceed with this action.", "/");
         }
 
         if ($disableUploading) {
-            Utilities::Notification("The ability to upload submissions has been disabled.", "/");
+            UnorganizedFunctions::Notification("The ability to upload submissions has been disabled.", "/");
         }
 
         if (!$auth->isUserAdmin()) {
             // Rate limit uploading to a minute, both to prevent spam and to prevent double uploads.
             if ($this->database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 180, $auth->getUserID()]) && !$isDebug) {
-                Utilities::Notification("Please wait three minutes before uploading again.", "/");
+                UnorganizedFunctions::Notification("Please wait three minutes before uploading again.", "/");
             }
         }
     }
@@ -85,7 +85,7 @@ class SubmissionUpload
                     $storage->processVideo($new, $target_file);
                 }
 
-                Utilities::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
+                UnorganizedFunctions::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
             }
         } elseif (in_array(strtolower($ext), $this->supportedImageFormats, true)) {
             $storage->processImage($temp_name, $new);
@@ -93,9 +93,9 @@ class SubmissionUpload
             $this->database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, post_type, rating) VALUES (?,?,?,?,?,?,?,?,?,?)",
                 [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $post_data['tags'])), '/dynamic/art/' . $new . '.png', $status, 2, ($post_data["rating"] ?? "general")]);
 
-            Utilities::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
+            UnorganizedFunctions::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
         } else {
-            Utilities::Notification("This file format is not supported.", "/");
+            UnorganizedFunctions::Notification("This file format is not supported.", "/");
         }
     }
 }

@@ -4,7 +4,7 @@ namespace SquareBracket\Pages;
 
 use SquareBracket\NotificationEnum;
 use SquareBracket\UserData;
-use SquareBracket\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 /**
  * Backend code for the notices page.
@@ -23,7 +23,7 @@ class AccountNotifications
 
         if (!$auth->isUserLoggedIn())
         {
-            Utilities::Notification("Please login to continue.", "/login.php");
+            UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
         }
 
         $this->database = $orange->getDatabase();

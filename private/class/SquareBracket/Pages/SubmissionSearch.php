@@ -2,7 +2,7 @@
 
 namespace SquareBracket\Pages;
 
-use SquareBracket\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 /**
  * Backend code for the submission browsing page.
@@ -23,7 +23,7 @@ class SubmissionSearch
         $this->order = $this->getOrderFromType($type);
         $this->limit = sprintf("LIMIT %s,%s", (($page - 1) * 20), 20);
 
-        $whereRatings = Utilities::whereRatings();
+        $whereRatings = UnorganizedFunctions::whereRatings();
 
         $this->database = $orange->getDatabase();
         $this->submissions = $this->database->fetchArray(
@@ -60,7 +60,7 @@ class SubmissionSearch
     public function getData(): array
     {
         return [
-            "submissions" => Utilities::makeSubmissionArray($this->database, $this->submissions),
+            "submissions" => UnorganizedFunctions::makeSubmissionArray($this->database, $this->submissions),
         ];
     }
 }

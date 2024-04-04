@@ -5,7 +5,7 @@ namespace OpenSB;
 global $auth, $orange;
 
 use SquareBracket\NotificationEnum;
-use SquareBracket\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 header('Content-Type: application/json');
 
@@ -40,7 +40,7 @@ function follow($member): array
         $database->query("INSERT INTO subscriptions (id, user) VALUES (?,?)", [$member, $auth->getUserID()]);
         $result = true;
 
-        Utilities::NotifyUser($database, $member, 0,0,NotificationEnum::Follow);
+        UnorganizedFunctions::NotifyUser($database, $member, 0,0,NotificationEnum::Follow);
     }
 
     $number = $database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$member])['COUNT(user)'];

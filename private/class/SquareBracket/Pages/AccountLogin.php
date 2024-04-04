@@ -1,8 +1,8 @@
 <?php
 
 namespace SquareBracket\Pages;
-use Core\Utilities as UtilitiesAlias;
-use SquareBracket\Utilities;
+use Core\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 /**
  * Backend code for the login page.
@@ -38,19 +38,19 @@ class AccountLogin
                 $ipban = $this->database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$logindata['ip']]);
 
                 if ($ipban) {
-                    Utilities::Notification("This account's latest IP address is banned.", "/login.php");
+                    UnorganizedFunctions::Notification("This account's latest IP address is banned.", "/login.php");
                 }
 
                 setcookie('SBTOKEN', $logindata['token'], 2147483647);
                 $nid = $this->database->result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
-                $this->database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), UtilitiesAlias::get_ip_address(), $nid]);
+                $this->database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), Utilities::get_ip_address(), $nid]);
 
-                UtilitiesAlias::redirect('./');
+                UnorganizedFunctions::redirect('./');
             } else {
-                Utilities::Notification("Incorrect credentials.", "/login.php");
+                UnorganizedFunctions::Notification("Incorrect credentials.", "/login.php");
             }
         } else {
-            Utilities::Notification("Please input your credentials.", "/login.php");
+            UnorganizedFunctions::Notification("Please input your credentials.", "/login.php");
         }
     }
 }

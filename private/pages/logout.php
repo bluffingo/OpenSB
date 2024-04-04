@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $orange;
 
-use SquareBracket\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 setcookie("SBTOKEN", "", time() - 3600);
-Utilities::Notification("Logged out!", "/", "success");
+UnorganizedFunctions::Notification("Logged out!", "/", "success");

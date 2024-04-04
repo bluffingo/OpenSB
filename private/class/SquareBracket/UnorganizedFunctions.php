@@ -5,13 +5,14 @@ namespace SquareBracket;
 use Core\CoreException;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
+use JetBrains\PhpStorm\NoReturn;
 
 /**
  * Static utilities.
  *
  * @since SquareBracket 1.0
  */
-class Utilities
+class UnorganizedFunctions
 {
     /**
      * Get the submission's file, works for all three storage modes.
@@ -75,7 +76,7 @@ class Utilities
         $submissionsData = [];
         foreach ($submissions as $submission) {
 
-            $bools = Utilities::submissionBitmaskToArray($submission["flags"]);
+            $bools = UnorganizedFunctions::submissionBitmaskToArray($submission["flags"]);
 
             $ratingData = [
                 "1" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$submission["id"]]),
@@ -105,7 +106,7 @@ class Utilities
                         "info" => $userData->getUserArray(),
                     ],
                     "interactions" => [
-                        "ratings" => Utilities::calculateRatings($ratingData),
+                        "ratings" => UnorganizedFunctions::calculateRatings($ratingData),
                     ],
                 ];
         }
@@ -273,5 +274,23 @@ class Utilities
         // i have to do this otherwise non-1:1 images that are smaller than 512x512 won't be stretched
         $img->resize(512, 512);
         $img->toPng()->save($target);
+    }
+
+    #[NoReturn] public static function redirectPerma($url, ...$args)
+    {
+        header('Location: ' . sprintf($url, ...$args), true, 301);
+        die();
+    }
+
+    public static function rewritePHP(): void
+    {
+        if (str_contains($_SERVER["REQUEST_URI"], '.php'))
+            \Core\Utilities::redirectPerma('%s', str_replace('.php', '', $_SERVER["REQUEST_URI"]));
+    }
+
+    #[NoReturn] public static function redirect($url, ...$args)
+    {
+        header('Location: ' . sprintf($url, ...$args));
+        die();
     }
 }
