@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
 use Core\CoreException;
 use SquareBracket\Pages\AdminDashboard;
@@ -14,8 +14,6 @@ try {
 } catch (CoreException $e) {
     $e->page();
 }
-
-$twig = new Templating($orange);
 
 echo $twig->render('admin.twig', [
     'data' => $data

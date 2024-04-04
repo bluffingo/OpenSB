@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $orange, $bettyTemplate;
+global $twig, $orange, $bettyTemplate;
 
 use Core\CoreException;
 use SquareBracket\Pages\AccountNotifications;
@@ -14,8 +14,6 @@ try {
 } catch (CoreException $e) {
     $e->page();
 }
-
-$twig = new Templating($orange);
 
 echo $twig->render('portal.twig', [
     'data' => $data,

@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
 use Core\CoreException;
 use SquareBracket\Pages\JournalRead;
@@ -16,8 +16,6 @@ try {
 } catch (CoreException $e) {
     $e->page();
 }
-
-$twig = new Templating($orange);
 
 echo $twig->render('read.twig', [
     'data' => $data,

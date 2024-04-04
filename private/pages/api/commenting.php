@@ -30,7 +30,6 @@ if ($auth->getUserBanData()) {
 }
 
 $database = $orange->getDatabase();
-$twig = new Templating($orange);
 
 if (isset($post_data['type'])) {
     // Biscuit frontend outputs in JSON.

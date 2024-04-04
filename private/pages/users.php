@@ -9,7 +9,6 @@ use SquareBracket\Templating;
 
 $page = new UserList($orange);
 $data = $page->getData();
-$twig = new Templating($orange);
 
 echo $twig->render('users.twig', [
 	'users' => $data,

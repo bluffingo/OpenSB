@@ -94,9 +94,9 @@ if ($debugLogging) { // TODO: migrate this over to sb_debug_output
 $orange = new SquareBracket($host, $user, $pass, $db);
 $auth = new Authentication($orange->getDatabase(), $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new Profiler();
+$twig = new Templating($orange);
 
 if ($orange->getSettings()->getMaintenanceMode() && !SB_PHP_BUILTINSERVER) {
-    $twig = new Templating($orange);
     echo $twig->render("error.twig", [
         "error_title" => "Offline",
         "error_reason" => "The site is currently offline."
@@ -108,7 +108,6 @@ $database = $orange->getDatabase();
 
 if ( $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities::get_ip_address()])) {
     $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [Utilities::get_ip_address()]));
-    $twig = new Templating($orange);
     echo $twig->render("ip_banned.twig", [
         "data" => $ipban,
         "users" => $usersAssociatedWithIP,

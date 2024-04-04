@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
 use Core\CoreException;
 use SquareBracket\Pages\SubmissionBrowse;
@@ -17,8 +17,6 @@ try {
 } catch (CoreException $e) {
     $e->page();
 }
-
-$twig = new Templating($orange);
 
 echo $twig->render('browse.twig', [
     'data' => $data,

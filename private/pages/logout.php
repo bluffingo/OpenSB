@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
 use SquareBracket\UnorganizedFunctions;
 

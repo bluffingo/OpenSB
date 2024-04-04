@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
 use SquareBracket\Pages\SubmissionEdit;
 use SquareBracket\Templating;
@@ -19,7 +19,6 @@ if (isset($_POST['upload'])) {
     $page->postData($_POST);
 }
 
-$twig = new Templating($orange);
 echo $twig->render('edit.twig', [
     'data' => $page->getData(),
 ]);

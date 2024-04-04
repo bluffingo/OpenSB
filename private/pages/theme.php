@@ -2,12 +2,10 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
 use SquareBracket\Templating;
 use SquareBracket\UnorganizedFunctions;
-
-$twig = new Templating($orange);
 
 if (isset($_POST['apply'])) {
     $options = $orange->getLocalOptions();

@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
 use Core\CoreException;
 use SquareBracket\Pages\SubmissionView;
@@ -74,8 +74,6 @@ $currentTime = time();
 
 $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
 */
-
-$twig = new \SquareBracket\Templating($orange);
 
 echo $twig->render('watch.twig', [
     'submission' => $data,
