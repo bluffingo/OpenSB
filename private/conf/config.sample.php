@@ -47,3 +47,5 @@ $disableUploading = false;
 $disableWritingJournals = false;
 
 $debugLogging = false;
+
+$enableFederatedStuff = false;

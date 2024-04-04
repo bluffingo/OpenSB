@@ -28,7 +28,7 @@ class UserProfile
 
     public function __construct(\SquareBracket\SquareBracket $orange, $username)
     {
-        global $auth, $domain;
+        global $auth, $domain, $enableFederatedStuff;
 
         $this->isFediverse = false;
 
@@ -36,11 +36,11 @@ class UserProfile
         $whereRatings = UnorganizedFunctions::whereRatings();
         $this->database = $orange->getDatabase();
 
-        if (str_contains($username, "@" . $domain)) {
+        if (str_contains($username, "@" . $domain) && $enableFederatedStuff) {
             // if the handle matches our domain then don't treat it as an external fediverse account
             $extractedAddress = explode('@', $username);
             $this->data = $this->database->fetch("SELECT * FROM users u WHERE u.name = ?", [$extractedAddress[0]]);
-        } elseif (str_contains($username, "@")) {
+        } elseif (str_contains($username, "@") && $enableFederatedStuff) {
             // if the handle contains "@" then check if it's in our db
             $this->isFediverse = true;
             $this->data = $this->database->fetch(
@@ -66,7 +66,7 @@ class UserProfile
                     UnorganizedFunctions::Notification("This user and/or instance does not exist.", "/");
                 }
             } else {
-                UnorganizedFunctions::Notification("This user and/or instance does not exist.", "/");
+                UnorganizedFunctions::Notification("This user does not exist.", "/");
             }
         }
 

@@ -2,7 +2,9 @@
 
 namespace OpenSB;
 
-global $orange, $domain;
+global $orange, $domain, $enableFederatedStuff;
+
+if (!$enableFederatedStuff) { die(); }
 
 $db = $orange->getDatabase();
 

@@ -25,7 +25,7 @@ if (php_sapi_name() == "cli-server") {
     define("SB_PHP_BUILTINSERVER", false);
 }
 
-global $host, $user, $pass, $db, $isQoboTV, $debugLogging;
+global $host, $user, $pass, $db, $isQoboTV, $debugLogging, $isMaintenance;;
 
 use Core\Authentication;
 use Core\Utilities;
@@ -96,7 +96,7 @@ $auth = new Authentication($orange->getDatabase(), $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new Profiler();
 $twig = new Templating($orange);
 
-if ($orange->getSettings()->getMaintenanceMode() && !SB_PHP_BUILTINSERVER) {
+if ($isMaintenance && !SB_PHP_BUILTINSERVER) {
     echo $twig->render("error.twig", [
         "error_title" => "Offline",
         "error_reason" => "The site is currently offline."
