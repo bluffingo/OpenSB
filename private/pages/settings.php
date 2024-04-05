@@ -2,17 +2,15 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
-use Orange\Templating;
-use Orange\Pages\AccountSettings;
+use SquareBracket\Pages\AccountSettings;
+use SquareBracket\Templating;
 
 $page = new AccountSettings($orange);
 
 if (isset($_POST['save'])) {
     $page->postData($_POST);
 }
-
-$twig = new Templating($orange);
 
 echo $twig->render('settings.twig');

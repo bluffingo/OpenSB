@@ -11,18 +11,18 @@ $basepath = '/';
 $ffmpegPath = '';
 $ffprobePath = '';
 
+// these probably don't work
 $tplCache = 'templates/cache';
 $tplNoCache = false; // **DO NOT SET AS TRUE IN PROD - DEV ONLY**
 
-$domain = 'https://squarebracket.local';
+$domain = 'example.com';
 $isDebug = false; // DEV ONLY
 $isMaintenance = false;
 
 $paginationLimit = 20; //Pagination limit.
 
 // TEMPLATE OPTIONS
-$useTemplate = "sbnext"; // Template used by pages yet to be migrated onto Betty.
-$bettyTemplate = "qobo"; // Template used by pages based on Betty.
+$defaultTemplate = "qobo";
 
 // Branding
 $branding = [
@@ -30,9 +30,9 @@ $branding = [
 	"assets_location" => "/assets/placeholder",
 ];
 
-$isQoboTV = false; // if enabled, storage is switched to use bunnycdn. this is for a constraint regarding qobo.
+$isBluffingoSB = false; // this makes opensb use bunnycdn for storage.
 
-// only used if $isQoboTV is true
+// only used if $isBluffingoSB is true
 $bunnySettings = [
 	"streamApi" => "stream api key",
 	"streamLibrary" => 12345,
@@ -42,14 +42,10 @@ $bunnySettings = [
 	"pullZone" => "[pull zone].b-cdn.net",
 ];
 
-// NOT FINALIZED!!! -Bluffingo 12/23/2023
-$useMuffinCDN = false;
-
-$muffinSettings = [
-    "muffAPI" => "PleaseGenerateARandomString",
-    "muffURL" => "http://localhost-muffin",
-];
-
+$disableRegistration = false;
 $disableUploading = false;
+$disableWritingJournals = false;
 
-$googleAdsClient = false;
+$debugLogging = false;
+
+$enableFederatedStuff = false;

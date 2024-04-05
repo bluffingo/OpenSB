@@ -2,10 +2,10 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
-use Orange\Templating;
-use Orange\Pages\AccountLogin;
+use SquareBracket\Pages\AccountLogin;
+use SquareBracket\Templating;
 
 $error = '';
 
@@ -15,7 +15,7 @@ if (isset($_POST["loginsubmit"])) {
     $page->postData($_POST);
 }
 
-$twig = new Templating($orange);
+
 
 echo $twig->render('login.twig', [
     'error' => $error,

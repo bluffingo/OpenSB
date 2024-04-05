@@ -4,12 +4,11 @@ namespace OpenSB;
 
 global $orange;
 
-use Orange\Templating;
-use Orange\Pages\UserList;
+use SquareBracket\Pages\UserList;
+use SquareBracket\Templating;
 
 $page = new UserList($orange);
 $data = $page->getData();
-$twig = new Templating($orange);
 
 echo $twig->render('users.twig', [
 	'users' => $data,

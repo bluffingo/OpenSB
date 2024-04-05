@@ -6,7 +6,7 @@ namespace Composer;
  * Reads a composer.lock file and provides accessors to get
  * its hash and what is installed
  *
- * @since Orange 1.1/MediaWiki 1.25
+ * @since SquareBracket 1.1/MediaWiki 1.25
  */
 class ComposerLock {
 	/**

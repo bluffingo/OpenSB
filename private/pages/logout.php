@@ -2,9 +2,9 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
-use Orange\Utilities;
+use SquareBracket\UnorganizedFunctions;
 
 setcookie("SBTOKEN", "", time() - 3600);
-Utilities::Notification("Logged out!", "/", "success");
+UnorganizedFunctions::Notification("Logged out!", "/", "success");

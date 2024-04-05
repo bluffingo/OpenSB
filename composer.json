@@ -7,11 +7,12 @@
 		"erusev/parsedown": "dev-master",
 		"php-ffmpeg/php-ffmpeg": "1.2.0",
 		"toshy/bunnynet-php": "^4.0",
-		"symfony/http-client": "7.0.2",
-		"wixel/gump": "dev-master",
+		"symfony/http-client": "7.0.6",
 		"ext-pdo": "*",
 		"twig/string-extra": "3.x-dev",
-		"psr/http-client": "^1.0@dev"
+		"psr/http-client": "^1.0@dev",
+		"landrok/activitypub": "dev-master",
+		"symfony/http-kernel": "7.1.x-dev"
 	},
 	"minimum-stability": "dev",
 	"config": {

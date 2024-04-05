@@ -6,7 +6,7 @@ namespace Composer;
  * Reads an installed.json file and provides accessors to get what is
  * installed
  *
- * @since Orange 1.1/MediaWiki 1.27
+ * @since SquareBracket 1.1/MediaWiki 1.27
  */
 class ComposerInstalled {
 	/**

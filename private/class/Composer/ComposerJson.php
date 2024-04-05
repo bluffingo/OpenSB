@@ -6,7 +6,7 @@ namespace Composer;
  * Reads a composer.json file and provides accessors to get
  * its hash and the required dependencies
  *
- * @since Orange 1.1/MediaWiki 1.25
+ * @since SquareBracket 1.1/MediaWiki 1.25
  */
 class ComposerJson {
 	/**

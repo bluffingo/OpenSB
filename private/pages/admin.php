@@ -2,20 +2,18 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
-use Orange\OrangeException;
-use Orange\Templating;
-use Orange\Pages\AdminDashboard;
+use Core\CoreException;
+use SquareBracket\Pages\AdminDashboard;
+use SquareBracket\Templating;
 
 try {
     $page = new AdminDashboard($orange, $_POST, $_GET);
     $data = $page->getData();
-} catch (OrangeException $e) {
+} catch (CoreException $e) {
     $e->page();
 }
-
-$twig = new Templating($orange);
 
 echo $twig->render('admin.twig', [
     'data' => $data

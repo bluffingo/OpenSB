@@ -1,9 +1,11 @@
 # Privacy Policy
-This is the privacy policy for this site, Qobo.
+**subject to change prior to relaunch**
 
-The only people who currently have full server and database access are Bluffingo and sks2002, they are the server administrators. Moderators do not have full server or database access, and can only use moderation tools provided by them.
+This is the privacy policy for this site, squareBracket.
 
-Currently, Qobo is hosted in a server located in the United Kingdom. With backups stored by Bluffingo in Canada.
+The only people who currently have full server and database access are Bluffingo and «John», they are the server administrators. Moderators do not have full server or database access, and can only use moderation tools provided by them.
+
+Currently, squareBracket is hosted in a server located in the United States. Backups are stored by Bluffingo in Canada.
 
 Whenever a request is sent, it is logged in the server's access logs. This will include your IP, user agent and HTTP referer. These access logs are only accessible to the server administrators. They will be used for temporary statistics and for logging potential errors that occur. In the case of illegal activity (e.g. a DDoS attack) the offending parts of an access log may be saved for further analysis.
 
@@ -19,15 +21,13 @@ Whenever you are logged in, your latest IP address is stored in the database (in
 Any additional user information you add to your profile (Profile description, etc.) is strictly optional and will be displayed publicly on your user page, do not put private or otherwise personal information you do not want accessible on the internet.
 
 ## Cookies and Advertisements
-This site uses a token cookie (`SBTOKEN`) to keep you logged in, this token should not be publicly disclosed to *anyone* as it will make them able to log into your account. 
-
-The ``__gads`` and ``__gpi`` cookies are used by Google to serve advertisements based on a user's visits to this site and other sites. Users may opt out of personalized advertising by visiting Google's [My Ad Center](https://myadcenter.google.com/).
+This site uses a token cookie (`SBTOKEN`) to keep you logged in, this token should not be publicly disclosed to *anyone* as it will make them able to log into your account.
 
 ## Removal Requests
 If you have published personal information you would like to remove, use the tools given to edit it out if applicable. If this is not possible (e.g. you want to rename a personally identifiable username) or you would like to fully erase it, please contact Bluffingo or sks2002.
 
 ## Transparency
-The Qobo site is fully open source and its source code [is available on GitHub](https://github.com/qobotv/OpenSB). You may inspect the source code yourself to see how your data is handled by the software.
+squareBracket runs on OpenSB, which is fully open source and its source code [is available on GitHub](https://github.com/bluffingo/OpenSB). You may inspect the source code yourself to see how your data is handled by the software.
 
 ## Updates
-Updates to this privacy policy are done as commits to the openSB Git repository ([View changes](https://github.com/qobotv/OpenSB/blob/main/orange/skins/common/markdown/privacy_policy.md)). You will be alerted of any substantial changes made to the privacy policy through the Qobo Discord server.
+Updates to this privacy policy are done as commits to the OpenSB Git repository ([View changes](https://github.com/bluffingo/OpenSB/blob/main/private/skins/common/markdown/privacy_policy.md)). You will be alerted of any substantial changes made to the privacy policy through the squareBracket Discord server.

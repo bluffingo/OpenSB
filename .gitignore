@@ -1,10 +1,11 @@
 ## User-generated files
+private/logs/
 private/conf/config.php
 private/templates/cache/
 templates/cache/
 cache/
 
-# UGC
+## Dynamic folders
 dynamic/pfp/
 dynamic/thumbnails/
 dynamic/banners/
@@ -13,6 +14,9 @@ dynamic/art/
 dynamic/art_thumbnails
 dynamic/custom_thumbnails
 dynamic/music/
+
+## CSS
+/public/assets/css/*.css
 
 ## Composer
 vendor/
@@ -26,19 +30,14 @@ adminer-*.php
 */phpmyadmin
 */phpma
 
-# official prod instances
-public/assets/cr_branding
-public/assets/qb_branding
+# official production branding
+public/assets/sb_branding
 
 # mariadb stuff from docker
 mariadb-data
-/public/img/css/common.css
 
 # google moment
 ads.txt
 
 # gource log
 /tools/gourcelog.txt
-
-#bootstrap theme
-/public/img/css/bootstrap.css

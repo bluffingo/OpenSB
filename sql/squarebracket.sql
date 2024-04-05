@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2023 at 09:54 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.11
+-- Generation Time: Apr 05, 2024 at 04:10 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,39 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `opensb`
+-- Database: `qobo`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activitypub_sites`
+--
+
+CREATE TABLE `activitypub_sites` (
+  `id` int(11) NOT NULL,
+  `domain` tinytext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activitypub_user_urls`
+--
+
+CREATE TABLE `activitypub_user_urls` (
+  `int_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `id` text NOT NULL,
+  `featured` text NOT NULL,
+  `followers` text NOT NULL,
+  `following` text NOT NULL,
+  `profile_picture` text NOT NULL,
+  `banner_picture` text NOT NULL,
+  `inbox` text NOT NULL,
+  `outbox` text NOT NULL,
+  `last_updated` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -33,19 +64,6 @@ CREATE TABLE `bans` (
   `reason` text NOT NULL,
   `time` bigint(20) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `channels`
---
-
-CREATE TABLE `channels` (
-  `id` bigint(30) UNSIGNED NOT NULL,
-  `channel_name` varchar(32) NOT NULL,
-  `lobby_type` enum('true','false') NOT NULL DEFAULT 'false',
-  `locked` enum('true','false') NOT NULL DEFAULT 'false'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -97,7 +115,6 @@ CREATE TABLE `favorites` (
 --
 
 CREATE TABLE `ipbans` (
-  `autoint` int(11) NOT NULL,
   `ip` varchar(45) NOT NULL DEFAULT '0.0.0.0',
   `reason` varchar(255) NOT NULL DEFAULT '<em>No reason specified</em>',
   `time` bigint(20) NOT NULL DEFAULT 0
@@ -121,17 +138,18 @@ CREATE TABLE `journals` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Table structure for table `journal_comments`
 --
 
-CREATE TABLE `news` (
-  `id` int(11) NOT NULL,
-  `title` varchar(128) NOT NULL DEFAULT 'Lorem ipsum',
-  `text` text DEFAULT NULL,
-  `time` bigint(20) DEFAULT 0,
-  `redirect` varchar(256) DEFAULT NULL,
-  `author_userid` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `journal_comments` (
+  `comment_id` int(11) NOT NULL,
+  `id` text NOT NULL,
+  `reply_to` bigint(20) NOT NULL DEFAULT 0,
+  `comment` text NOT NULL,
+  `author` bigint(20) NOT NULL,
+  `date` bigint(20) NOT NULL,
+  `deleted` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -161,20 +179,6 @@ CREATE TABLE `passwordresets` (
   `time` int(11) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pools`
---
-
-CREATE TABLE `pools` (
-  `id` int(11) NOT NULL,
-  `author` int(11) NOT NULL,
-  `submissions` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`submissions`)),
-  `title` varchar(128) NOT NULL,
-  `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -287,8 +291,7 @@ CREATE TABLE `users` (
   `u_flags` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties',
   `powerlevel` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '0 - banned. 1 - normal user. 2 - moderator. 3 - administrator',
   `group_id` int(11) NOT NULL DEFAULT 3,
-  `comfortable_rating` enum('general','questionable','mature') NOT NULL DEFAULT 'general',
-  `blacklisted_tags` text DEFAULT NULL COMMENT 'Blacklisted tags, serialized in JSON.'
+  `comfortable_rating` enum('general','questionable','mature') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -306,7 +309,7 @@ CREATE TABLE `videos` (
   `time` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Unix timestamp for the time the video was uploaded',
   `most_recent_view` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `original_site` varchar(64) DEFAULT NULL,
-  `original_time` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `original_time` bigint(20) UNSIGNED DEFAULT NULL,
   `views` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Video views',
   `flags` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',
   `category_id` int(11) DEFAULT 0 COMMENT 'Category ID for the video',
@@ -314,7 +317,7 @@ CREATE TABLE `videos` (
   `videolength` bigint(20) UNSIGNED DEFAULT NULL COMMENT 'Length of the video in seconds',
   `tags` text DEFAULT NULL COMMENT 'Video tags, serialized in JSON',
   `post_type` int(11) NOT NULL DEFAULT 0 COMMENT 'The type of the post, 0 is a video, 1 is a legacy video, 2 is art, and 3 is music.',
-  `rating` enum('general','questionable','mature') NOT NULL DEFAULT 'general'
+  `rating` enum('general','questionable','mature') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -333,17 +336,22 @@ CREATE TABLE `views` (
 --
 
 --
+-- Indexes for table `activitypub_sites`
+--
+ALTER TABLE `activitypub_sites`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `activitypub_user_urls`
+--
+ALTER TABLE `activitypub_user_urls`
+  ADD PRIMARY KEY (`int_id`);
+
+--
 -- Indexes for table `bans`
 --
 ALTER TABLE `bans`
   ADD PRIMARY KEY (`autoint`);
-
---
--- Indexes for table `channels`
---
-ALTER TABLE `channels`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `channel_name_UNIQUE` (`channel_name`);
 
 --
 -- Indexes for table `channel_comments`
@@ -358,27 +366,21 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
 
 --
--- Indexes for table `ipbans`
---
-ALTER TABLE `ipbans`
-  ADD PRIMARY KEY (`autoint`);
-
---
 -- Indexes for table `journals`
 --
 ALTER TABLE `journals`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `journal_comments`
+--
+ALTER TABLE `journal_comments`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `pools`
---
-ALTER TABLE `pools`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -410,16 +412,22 @@ ALTER TABLE `videos`
 --
 
 --
+-- AUTO_INCREMENT for table `activitypub_sites`
+--
+ALTER TABLE `activitypub_sites`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `activitypub_user_urls`
+--
+ALTER TABLE `activitypub_user_urls`
+  MODIFY `int_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `bans`
 --
 ALTER TABLE `bans`
   MODIFY `autoint` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `channels`
---
-ALTER TABLE `channels`
-  MODIFY `id` bigint(30) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `channel_comments`
@@ -434,27 +442,21 @@ ALTER TABLE `comments`
   MODIFY `comment_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ipbans`
---
-ALTER TABLE `ipbans`
-  MODIFY `autoint` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `journals`
 --
 ALTER TABLE `journals`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `journal_comments`
+--
+ALTER TABLE `journal_comments`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pools`
---
-ALTER TABLE `pools`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

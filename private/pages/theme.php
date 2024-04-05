@@ -2,12 +2,10 @@
 
 namespace OpenSB;
 
-global $orange;
+global $twig, $orange;
 
-use Orange\Templating;
-use Orange\Utilities;
-
-$twig = new Templating($orange);
+use SquareBracket\Templating;
+use SquareBracket\UnorganizedFunctions;
 
 if (isset($_POST['apply'])) {
     $options = $orange->getLocalOptions();
@@ -16,7 +14,7 @@ if (isset($_POST['apply'])) {
 
     setcookie("SBOPTIONS", base64_encode(json_encode($options)), 2147483647);
 
-    Utilities::Notification("Successfully changed your theme.", "/index.php", "success");
+    UnorganizedFunctions::Notification("Successfully changed your theme.", "/index.php", "success");
 }
 
 echo $twig->render('theme.twig');

@@ -1,4 +1,4 @@
-div.page {
+.page {
   display: flex;
   align-items: center;
   margin: auto;
@@ -13,7 +13,7 @@ div.page {
   }
 }
 
-div.page-contents
+.page-contents
 {
   @include responsive('small') {
     width: 450px;
@@ -25,4 +25,11 @@ div.page-contents
     width: 1000px;
   }
   margin: 10px auto auto auto;
+}
+
+.container {
+  &.login, &.register {
+    margin: auto;
+    width: 500px;
+  }
 }

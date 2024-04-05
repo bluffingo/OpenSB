@@ -1,6 +1,6 @@
 .submission {
   text-align: center;
-  background: darken($content-box-border-color, 3.5%);
+  background: $content-box-background-color;
   border: 1px solid $content-box-border-color;
   border-bottom: none;
   border-radius: $content-box-roundness;
@@ -11,10 +11,16 @@
   }
 }
 
+#sb-video, #sb-video_html5_api {
+  border-radius: $content-box-roundness;
+}
+
+
 .content-box {
   &.watch-edit {
     a {
       margin-right: 7px;
+      color: white;
     }
   }
 }
@@ -23,7 +29,7 @@
   background: $content-box-background-color;
   border: 1px solid $content-box-border-color;
   border-radius: $content-box-roundness;
-  padding: 6px;
+  padding: $context-box-padding;
   overflow: hidden;
   word-break: break-word;
 

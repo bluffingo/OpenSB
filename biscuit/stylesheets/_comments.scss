@@ -1,35 +1,21 @@
 .comment {
-  padding-bottom: 5px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  border-bottom: 1px solid $content-box-border-color;;
 
   img.pfp {
-    width: 80px;
-    float: left;
-    padding-right: 5px;
-  }
-
-  .comment-details {
-    float: left;
-    padding: 5px;
-    width: 130px;
-
-    .comment-username {
-      font-weight: bold;
-    }
-
-    .comment-displayname {
-      font-size: 11px;
-      color: gray;
-    }
+    width: 50px;
+    height: 50px;
   }
 
   .comment-body {
-    width: 775px;
-    float: left;
+    //width: 775px;
+    width: 100%;
+    margin-left: 10px;
 
     .comment-contents {
-      padding: 10px;
-      background: lighten($content-box-border-color, 3.5%);
-      border: 1px solid darken($content-box-border-color, 1.5%);;
+      margin-top: 6px;
 
       p {
         margin: 0;

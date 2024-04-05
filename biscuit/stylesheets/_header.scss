@@ -5,7 +5,7 @@
   backdrop-filter: blur(10px);
 }
 
-div.header-links
+.header-links
 {
   text-align: right;
   margin-left: auto;
@@ -15,17 +15,16 @@ div.header-links
   align-items: center;
 
   .menuButton {
-    font-size: 20px;
     .pfp {
-      width: 40px;
+      width: 32px;
     }
   }
 }
 
-div.header-logo
+.header-logo
 {
   img.logo {
-    width: 40px;
+    height: 30px;
   }
   margin-right: 10px;
 }
@@ -55,7 +54,7 @@ td.h
   padding: 5px;
 }
 
-div.header-user
+.header-user
 {
   width: 100%;
   background-color: rgba(lighten($secondary, 1%), 0.9);
@@ -70,24 +69,24 @@ div.header-user
   display: flex;
 }
 
-div.header-user-notifications
+.header-user-notifications
 {
   margin-right: auto;
 }
 
-div.header-user-links
+.header-user-links
 {
   margin-left: auto;
 }
 
 a.menulink
 {
-  color: white;
+  color: black;
   margin: 0 7px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
-div.header
+.header
 {
   .page {
     justify-content: space-between;
@@ -96,7 +95,8 @@ div.header
   }
 
   width: 100%;
-  background-color: rgba(darken($secondary, 5%), 0.9);
+  background-color: rgba(white, 0.9);
   height: $header-main-height;
   display: flex;
+  border-bottom: 1px solid lightgrey;
 }
