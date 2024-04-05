@@ -1,6 +1,7 @@
 <?php
 namespace OpenSB;
 
+global $orange;
 define("SB_DYNAMIC_PATH", dirname(__DIR__) . '/dynamic');
 define("SB_PRIVATE_PATH", dirname(__DIR__) . '/private');
 define("SB_VENDOR_PATH", dirname(__DIR__) . '/vendor');

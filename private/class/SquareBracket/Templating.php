@@ -63,10 +63,15 @@ class Templating
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('website_branding', $branding);
         $this->twig->addGlobal('show_work_in_progress_stuff', false); // todo
-        $this->twig->addGlobal('page_name', empty(basename($_SERVER["REQUEST_URI"], '.php')) ? 'index' : basename($_SERVER["REQUEST_URI"], '.php'));
 
-        $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
-        $this->twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
+        if (isset($_SERVER["REQUEST_URI"])) {
+            $this->twig->addGlobal('page_name', empty(basename($_SERVER["REQUEST_URI"], '.php')) ? 'index' : basename($_SERVER["REQUEST_URI"], '.php'));
+        }
+
+        if (isset($_SERVER['HTTP_HOST'])) {
+            $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+            $this->twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
+        }
     }
 
     /**
