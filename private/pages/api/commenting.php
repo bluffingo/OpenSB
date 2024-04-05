@@ -99,7 +99,7 @@ if (strlen($post_data["comment"]) > 1000) {
 }
 
 //TODO: Innerjoin???
-if (!$orange->getSettings()->getDevelopmentMode()) {
+//if (!$orange->getSettings()->getDevelopmentMode()) {
     if ($database->result("SELECT COUNT(*) FROM comments WHERE date > ? AND author = ?", [time() - 60, $auth->getUserID()]) ||
         $database->result("SELECT COUNT(*) FROM channel_comments WHERE date > ? AND author = ?", [time() - 60, $auth->getUserID()])
     ) {
@@ -107,7 +107,7 @@ if (!$orange->getSettings()->getDevelopmentMode()) {
             "error" => "Please wait at least a minute before commenting again."
         ];
     }
-}
+//}
 
 if(!isset($apiOutput["error"])) {
     if (isset($post_data['type'])) {

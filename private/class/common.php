@@ -96,14 +96,6 @@ $auth = new Authentication($orange->getDatabase(), $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new Profiler();
 $twig = new Templating($orange);
 
-if ($isMaintenance && !SB_PHP_BUILTINSERVER) {
-    echo $twig->render("error.twig", [
-        "error_title" => "Offline",
-        "error_reason" => "The site is currently offline."
-    ]);
-    die();
-}
-
 $database = $orange->getDatabase();
 
 if ( $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities::get_ip_address()])) {
@@ -136,4 +128,20 @@ if ($isQoboTV) {
     $storage = new BunnyStorage($orange);
 } else {
     $storage = new LocalStorage($orange);
+}
+
+if ($isMaintenance && !SB_PHP_BUILTINSERVER) {
+    echo $twig->render("error.twig", [
+        "error_title" => "Offline",
+        "error_reason" => "The site is currently offline."
+    ]);
+    die();
+}
+
+if (!file_exists(SB_GIT_PATH)) {
+    echo $twig->render("error.twig", [
+        "error_title" => "Critical error",
+        "error_reason" => "Please initialize OpenSB using git clone instead of downloading it straight from GitHub's website."
+    ]);
+    die();
 }

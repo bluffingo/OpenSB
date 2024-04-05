@@ -12,7 +12,6 @@ use Core\VersionNumber;
  */
 class SquareBracket {
     private \Core\Database $database;
-    private \SquareBracket\SiteSettings $settings;
     public array $options;
 
     /**
@@ -30,7 +29,6 @@ class SquareBracket {
 
         try {
             $this->database = new \Core\Database($host, $user, $pass, $db);
-            $this->settings = new \SquareBracket\SiteSettings($this->database);
         } catch (CoreException $e) {
             $e->page();
         }

@@ -17,8 +17,6 @@ class VersionNumber
      */
     private function makeVersionString(): void
     {
-        $version = "2.0-dev";
-
         // Check if the instance is git cloned. If it is, have the version string be
         // precise. Otherwise, just indicate that it's a "Non-source copy", though we
         // should find a better term for this. -Bluffingo 12/19/2023
@@ -29,9 +27,9 @@ class VersionNumber
 
             $hash = substr($commit, 0, 7);
 
-            $this->version = sprintf('%s.%s-%s', $version, $hash, $gitBranch);
+            $this->version = sprintf('%s-%s', $hash, $gitBranch);
         } else {
-            $this->version = sprintf('%s (Non-source copy)', $version);
+            $this->version = sprintf('Unknown');
         }
     }
 
