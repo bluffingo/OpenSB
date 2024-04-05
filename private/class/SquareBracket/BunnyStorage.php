@@ -3,6 +3,7 @@
 namespace SquareBracket;
 
 use Core\Database;
+use Symfony\Component\HttpClient\Psr18Client;
 use ToshY\BunnyNet\Client\BunnyClient;
 use ToshY\BunnyNet\EdgeStorageAPI;
 use ToshY\BunnyNet\Enum\Region;
@@ -23,7 +24,7 @@ class BunnyStorage implements Storage
         global $bunnySettings;
 
         $this->bunnyClient = new BunnyClient(
-            client: new \Symfony\Component\HttpClient\Psr18Client(),
+            client: new Psr18Client(),
         );
         $this->edgeStorageApi = new EdgeStorageAPI(
             apiKey: $bunnySettings["storageApi"],
