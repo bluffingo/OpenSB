@@ -285,7 +285,7 @@ class UnorganizedFunctions
     public static function rewritePHP(): void
     {
         if (str_contains($_SERVER["REQUEST_URI"], '.php'))
-            \Core\Utilities::redirectPerma('%s', str_replace('.php', '', $_SERVER["REQUEST_URI"]));
+            redirectPerma('%s', str_replace('.php', '', $_SERVER["REQUEST_URI"]));
     }
 
     #[NoReturn] public static function redirect($url, ...$args)
