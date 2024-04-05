@@ -25,7 +25,7 @@ if (php_sapi_name() == "cli-server") {
     define("SB_PHP_BUILTINSERVER", false);
 }
 
-global $host, $user, $pass, $db, $isQoboTV, $debugLogging, $isMaintenance;;
+global $host, $user, $pass, $db, $isBluffingoSB, $debugLogging, $isMaintenance;;
 
 use Core\Authentication;
 use Core\Utilities;
@@ -124,7 +124,7 @@ foreach ($ipBannedUsers as $ipBannedUser) {
     }
 }
 
-if ($isQoboTV) {
+if ($isBluffingoSB) {
     $storage = new BunnyStorage($orange);
 } else {
     $storage = new LocalStorage($orange);

@@ -8,12 +8,49 @@
 {% set opengraph_published = data.published | date("c") %}
 {% set opengraph_author = domain ~ "user/" ~ data.author.info.username %}
 {% set metadata_author = data.author.info.username %}
-{% set opengraph_section = "Qobo journal" %}
+{% set opengraph_section = "squareBracket journal" %}
+
+{% block scripts %}
+	{{ include('submission_rating_script.twig') }}
+
+	<script>
+		user_id = '{{ data.author.id }}';
+		comment_type = 'journal';
+		comment_id = '{{ data.int_id }}';
+	</script>
+{% endblock %}
 
 {% block content %}
-	<div class="content-box">
-		<h1>{{ data.title }}</h1>
-		<p>By {{ user_link(data.author) }}, {{ data.published | relative_time }}</p>
-		<p>{{ data.contents | markdown_user_journal }}</p>
+	<div class="section">
+		<div class="section-title">
+			<h1>{{ data.title }}</h1>
+			<div>
+				<p>By {{ user_link(data.author) }}, {{ data.published | relative_time }}</p>
+			</div>
+		</div>
+		<div class="content-box">
+			<p>{{ data.contents | markdown_user_journal }}</p>
+		</div>
+	</div>
+	<div class="section">
+		<div class="section-title">
+			<h1>Comments</h1>
+		</div>
+		<div id="comments">
+			<div class="content-box">
+				{% if is_user_logged_in %}
+					{{ include('/components/_comment_input.twig') }}
+				{% endif %}
+				<div id="comment"></div>
+				{% for comment in data.comments %}
+					{{ include('/components/_comment.twig') }}
+					<div id="replies">
+						{% for comment in comment.replies %}
+							{{ include('/components/_comment.twig') }}
+						{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
 	</div>
 {% endblock %}

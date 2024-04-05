@@ -15,9 +15,9 @@
 {% set opengraph_author = domain ~ "user/" ~ submission.author.info.username %}
 {% set metadata_author = submission.author.info.username %}
 {% if submission.type == 0 %}
-    {% set opengraph_section = "Qobo video" %}
+    {% set opengraph_section = "squareBracket video" %}
 {% elseif submission.type == 2 %}
-    {% set opengraph_section = "Qobo image" %}
+    {% set opengraph_section = "squareBracket image" %}
 {% endif %}
 
 {% block scripts %}
@@ -101,9 +101,6 @@
             <div class="section">
                 <div class="section-title">
                     <h1>Comments</h1>
-                    {% if show_work_in_progress_stuff %}
-                        <a href="comments?v={{ submission.id }}">View all</a>
-                    {% endif %}
                 </div>
                 <div id="comments">
                     <div class="content-box">

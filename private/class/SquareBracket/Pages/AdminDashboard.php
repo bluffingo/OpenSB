@@ -16,7 +16,7 @@ class AdminDashboard
 
     public function __construct(\SquareBracket\SquareBracket $orange, $POST, $GET)
     {
-        global $auth, $isQoboTV;
+        global $auth, $isBluffingoSB;
         // Honest question: Why the fuck are we using globals for getting shit from config.php? This seems poorly
         // designed. -Bluffingo 12/11/2023
 
@@ -25,7 +25,7 @@ class AdminDashboard
             UnorganizedFunctions::Notification("You do not have permission to access this page", "/");
         }
 
-        // If $isQoboTV is on, just go with January 31st 2021, otherwise and try and guess the instance's creation date
+        // If $isBluffingoSB is on, just go with January 31st 2021, otherwise and try and guess the instance's creation date
         // from the earliest account registration date. In normal conditions, the earliest account is older than the
         // earliest submission on the instance. However, the "squareBracket" account on Qobo has an altered registration
         // date of November 10th 2020, which was supposed to be a reference to when the site "began development".
@@ -34,7 +34,7 @@ class AdminDashboard
         // https://web.archive.org/web/20210625203937/https://squarebracket.veselcraft.ru/user.php?name=squareBracket
         // Bluffingo -12/11/2023
 
-        if ($isQoboTV) {
+        if ($isBluffingoSB) {
             $date = mktime(0, 0, 0, 1, 31, 2021);
         } else {
             $date = $this->database->fetch("SELECT u.joined FROM users u ORDER BY u.joined ASC")["joined"];

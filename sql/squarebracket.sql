@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2024 at 06:59 AM
+-- Generation Time: Apr 05, 2024 at 04:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -134,6 +134,22 @@ CREATE TABLE `journals` (
   `date` int(11) NOT NULL,
   `is_site_news` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `journal_comments`
+--
+
+CREATE TABLE `journal_comments` (
+  `comment_id` int(11) NOT NULL,
+  `id` text NOT NULL,
+  `reply_to` bigint(20) NOT NULL DEFAULT 0,
+  `comment` text NOT NULL,
+  `author` bigint(20) NOT NULL,
+  `date` bigint(20) NOT NULL,
+  `deleted` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -356,6 +372,12 @@ ALTER TABLE `journals`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `journal_comments`
+--
+ALTER TABLE `journal_comments`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
@@ -424,6 +446,12 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `journals`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `journal_comments`
+--
+ALTER TABLE `journal_comments`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `notifications`

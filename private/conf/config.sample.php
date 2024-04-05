@@ -30,9 +30,9 @@ $branding = [
 	"assets_location" => "/assets/placeholder",
 ];
 
-$isQoboTV = false; // this makes opensb use bunnycdn for storage.
+$isBluffingoSB = false; // this makes opensb use bunnycdn for storage.
 
-// only used if $isQoboTV is true
+// only used if $isBluffingoSB is true
 $bunnySettings = [
 	"streamApi" => "stream api key",
 	"streamLibrary" => 12345,

@@ -2,6 +2,8 @@
 
 namespace SquareBracket\Pages;
 
+use SquareBracket\CommentData;
+use SquareBracket\CommentLocation;
 use SquareBracket\UserData;
 use SquareBracket\UnorganizedFunctions;
 
@@ -16,12 +18,12 @@ class JournalRead
     private \SquareBracket\SquareBracket $orange;
     private mixed $data;
     private UserData $author;
+    private CommentData $comments;
 
     public function __construct(\SquareBracket\SquareBracket $orange, $id)
     {
         $this->orange = $orange;
         $this->database = $orange->getDatabase();
-        // TODO: JournalData class
         $this->data = $this->database->fetch("SELECT j.* FROM journals j WHERE j.id = ?", [$id]);
 
         if(!$this->data) {
@@ -29,6 +31,8 @@ class JournalRead
         }
 
         $this->author = new UserData($this->database, $this->data["author"]);
+
+        $this->comments = new CommentData($this->database, CommentLocation::Journal, $id);
     }
 
     public function getData()
@@ -46,6 +50,7 @@ class JournalRead
                 "id" => $this->data["author"],
                 "info" => $this->author->getUserArray(),
             ],
+            "comments" => $this->comments->getComments(),
         ];
     }
 }

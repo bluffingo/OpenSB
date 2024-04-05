@@ -142,7 +142,7 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     public function thumbnail($id, $type, $custom)
     {
-        global $isQoboTV, $storage, $bunnySettings;
+        global $isBluffingoSB, $storage, $bunnySettings;
 
         $custom_location = '/dynamic/custom_thumbnails/' . $id . '.jpg';
 
@@ -150,7 +150,7 @@ class SquareBracketTwigExtension extends AbstractExtension
 
         if ($custom) {
             if ($storage->fileExists('..' . $custom_location)) {
-                if ($isQoboTV) {
+                if ($isBluffingoSB) {
                     $data = "https://" . $bunnySettings["pullZone"] . $custom_location;
                 } else {
                     $data = $custom_location;
@@ -170,11 +170,11 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     public function profilePicture($username)
     {
-        global $isQoboTV, $bunnySettings, $storage;
+        global $isBluffingoSB, $bunnySettings, $storage;
         $location = '/dynamic/pfp/' . $username . '.png';
 
         if ($storage->fileExists('..' . $location)) {
-            if ($isQoboTV) {
+            if ($isBluffingoSB) {
                 $data = "https://" . $bunnySettings["pullZone"] . $location;
             } else {
                 $data = $location;
@@ -187,11 +187,11 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     public function profileBanner($username)
     {
-        global $isQoboTV, $bunnySettings, $storage;
+        global $isBluffingoSB, $bunnySettings, $storage;
         $location = '/dynamic/banners/' . $username . '.png';
 
         if ($storage->fileExists('..' . $location)) {
-            if ($isQoboTV) {
+            if ($isBluffingoSB) {
                 $data = "https://" . $bunnySettings["pullZone"] . $location;
             } else {
                 $data = $location;

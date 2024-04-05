@@ -28,7 +28,7 @@ class Templating
      */
     public function __construct(SquareBracket $orange)
     {
-        global $isQoboTV, $auth, $defaultTemplate, $isDebug, $branding, $googleAdsClient;
+        global $isBluffingoSB, $auth, $defaultTemplate, $isDebug, $branding, $googleAdsClient;
         chdir(__DIR__ . '/../..');
         $this->skin = $orange->getLocalOptions()["skin"] ?? $defaultTemplate;
 
@@ -52,7 +52,7 @@ class Templating
             }));
         }
 
-        $this->twig->addGlobal('is_qobo', $isQoboTV);
+        $this->twig->addGlobal('is_qobo', $isBluffingoSB);
         $this->twig->addGlobal('is_debug', $isDebug);
         $this->twig->addGlobal('is_user_logged_in', $auth->isUserLoggedIn());
         $this->twig->addGlobal('user_data', $auth->getUserData());
