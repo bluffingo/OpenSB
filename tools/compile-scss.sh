@@ -20,4 +20,4 @@ else
 sass_executable="sass"
 fi
 
-${sass_executable} ${common_arguments} biscuit/stylesheets/:public/img/css/
+${sass_executable} ${common_arguments} biscuit/stylesheets/:public/assets/css/

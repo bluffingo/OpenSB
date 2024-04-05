@@ -25,16 +25,12 @@
         <meta property="og:description"
               content="{{ opengraph_description }}" />
         <meta name="description" content="{{ opengraph_description }}">
-    {% else %}
-        <meta property="og:description"
-              content="Yet again." />
-        <meta name="description" content="Yet again.">
     {% endif %}
 
     {% if opengraph_image %}
         <meta property="og:image" content="{{ opengraph_image }}">
     {% else %}
-        <meta property="og:image" content="{{ domain }}img/sb_512x512.png">
+        <meta property="og:image" content="{{ website_branding.assets_location }}/logo_square_icon.png">
     {% endif %}
 
     {% if opengraph_author %}
@@ -60,7 +56,8 @@
     <div class="header">
         <div class="page">
             <div class="header-logo">
-                <a href="/"><img alt="{{ website_branding.name }}" class="logo" src="/img/sb_wordmark_black.png"></a>
+                <a href="/"><img alt="{{ website_branding.name }}"
+                                 class="logo" src="{{ website_branding.assets_location }}/logo-wordmark.png"></a>
             </div>
             {% for link in header_main_links() %}
                 <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
