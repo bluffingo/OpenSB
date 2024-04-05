@@ -30,7 +30,7 @@ $branding = [
 	"assets_location" => "/assets/placeholder",
 ];
 
-$isQoboTV = false; // this makes opensb use bunnycdn for storage. meant for qobo, but it's dead.
+$isQoboTV = false; // this makes opensb use bunnycdn for storage.
 
 // only used if $isQoboTV is true
 $bunnySettings = [

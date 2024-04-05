@@ -17,21 +17,25 @@ class LocalStorage implements Storage
         }
     }
 
-    public function getVideoThumbnail($id): false|string
+    public function getVideoThumbnail($id): string
     {
-        if  (file_exists('../dynamic/thumbnails/' . $id . '.png')) {
+        global $branding;
+
+        if (file_exists('../dynamic/thumbnails/' . $id . '.png')) {
             return '../dynamic/thumbnails/' . $id . '.png';
         } else {
-            return false;
+            return $branding["assets_location"] . '/placeholder.png';
         }
     }
 
-    public function getImageThumbnail($id): false|string
+    public function getImageThumbnail($id): string
     {
+        global $branding;
+
         if  (file_exists('../dynamic/art_thumbnails/' . $id . '.jpg')) {
             return '../dynamic/art_thumbnails/' . $id . '.jpg';
         } else {
-            return false;
+            return $branding["assets_location"] . '/placeholder.png';
         }
     }
 

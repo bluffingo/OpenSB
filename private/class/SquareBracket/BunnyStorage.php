@@ -50,7 +50,7 @@ class BunnyStorage implements Storage
         $newVideo = $streamApi->createVideo(
             libraryId: $this->streamLibrary,
             body: [
-                'title' => 'Qobo: ' . $new,
+                'title' => 'squareBracket: ' . $new,
             ],
         );
         $content = file_get_contents($target_file);
@@ -77,6 +77,7 @@ class BunnyStorage implements Storage
         return "https://" . $this->pullZone . "/dynamic/art_thumbnails/" . $id  . ".jpg";
     }
 
+    // WARNING: THIS IS INEFFICIENT AND SLOW.
     public function fileExists($file): bool
     {
         try {
