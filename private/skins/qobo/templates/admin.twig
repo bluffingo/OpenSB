@@ -3,68 +3,74 @@
 {% set title = "Admin dashboard" %}
 
 	{% block content %}
-		<div class="section">
-			<div class="section-title">
-				<h1>Admin dashboard</h1>
-			</div>
-			<div class="content-box">
-                <h1>Over the years</h1>
-				<span>Since {{ data.time.formatted_date }} ({{ data.time.relative_days }} days ago)</span>
-				<canvas id="myChart"></canvas>
-			</div>
-            <br>
-			<div class="content-box">
-                <h1>Statistics</h1>
-				<ul>
-					<li>Uname: {{ data.system.uname }}</li>
-					{% for key, number in data.numbers %}
-						<li>{{ key }}: {{ number }}</li>
-					{% endfor %}
-				</ul>
-			</div>
-            <br>
-			<div class="content-box">
-                <h1>Ban user</h1>
-				<form name="uploadForm" id="uploadForm" method="post" action="admin" enctype="multipart/form-data">
-					<div class="banner banner-secondary">
-						<strong>NOTE</strong>: We don't support expiring bans yet.
-					</div>
-					<input type="hidden" id="action" name="action" value="ban_user" />
-					<div class="form-input">
-						<label for="user_to_ban">Username:</label>
-						<input type="text" class="form-submit" id="user_to_ban" name="user_to_ban" required="">
-						<label for="reason">Reason:</label>
-						<input type="text" class="form-submit" id="reason" name="reason" required="">
-					</div>
-					<div class="form-button-container">
-						<input class="button button-danger" type="submit" id="upload" name="upload"
-							   value="Ban">
-					</div>
-				</form>
-			</div>
-            <br>
-			<div class="content-box">
-                <h1>Banned users</h1>
-				<div class="banner banner-secondary">
-					<strong>NOTE</strong>: If the account gets automatically banned after being unbanned, then the account's latest IP is IP banned.
+		<div class="grid">
+			<div class="col-8">
+				<div class="content-box">
+					<h1>Over the years</h1>
+					<span>Since {{ data.time.formatted_date }} ({{ data.time.relative_days }} days ago)</span>
+					<canvas id="cumulativeChart"></canvas>
 				</div>
-				<table class="c1">
-					<tr class="h">
-						<th style="width:150px">Username</th>
-						<th>Reason</th>
-						<th style="width:70px">Unban</th>
-					</tr>
-					{% for user in data.bans %}
-						<tr style="height: 30px;">
-							<td>{{ user.name }}</td>
-							<td>
-								{{ user.ban_reason }}
-								<small>({{ user.ban_time | date('F j, Y') }}/{{ user.ban_time | relative_time }})</small>
-							</td>
-							<td><a href="/admin?action=unban_user&user={{ user.id }}" class="button button-danger">Unban</a></td>
+				<br>
+				<div class="content-box">
+					<h1>Views</h1>
+					<canvas id="viewChart"></canvas>
+				</div>
+				<br>
+				<div class="content-box">
+					<h1>Banned users</h1>
+					<div class="banner banner-secondary">
+						<strong>NOTE</strong>: If the account gets automatically banned after being unbanned, then the account's latest IP is IP banned.
+					</div>
+					<table class="c1">
+						<tr class="h">
+							<th style="width:150px">Username</th>
+							<th>Reason</th>
+							<th style="width:70px">Unban</th>
 						</tr>
-					{% endfor %}
-				</table>
+						{% for user in data.bans %}
+							<tr style="height: 30px;">
+								<td>{{ user.name }}</td>
+								<td>
+									{{ user.ban_reason }}
+									<small>({{ user.ban_time | date('F j, Y') }}/{{ user.ban_time | relative_time }})</small>
+								</td>
+								<td><a href="/admin?action=unban_user&user={{ user.id }}" class="button button-danger">Unban</a></td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="content-box">
+					<h1>Statistics</h1>
+					<ul>
+						<li>Uname: {{ data.system.uname }}</li>
+						{% for key, number in data.numbers %}
+							<li>{{ key }}: {{ number }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<br>
+				<div class="content-box">
+					<h1>Ban user</h1>
+					<form name="uploadForm" id="uploadForm" method="post" action="admin" enctype="multipart/form-data">
+						<div class="banner banner-secondary">
+							<strong>NOTE</strong>: We don't support expiring bans yet.
+						</div>
+						<input type="hidden" id="action" name="action" value="ban_user" />
+						<div class="form-input">
+							<label for="user_to_ban">Username:</label>
+							<input type="text" class="form-submit" id="user_to_ban" name="user_to_ban" required="">
+							<label for="reason">Reason:</label>
+							<input type="text" class="form-submit" id="reason" name="reason" required="">
+						</div>
+						<div class="form-button-container">
+							<input class="button button-danger" type="submit" id="upload" name="upload"
+								   value="Ban">
+						</div>
+					</form>
+				</div>
+				<br>
 			</div>
 		</div>
 	{% endblock %}
@@ -74,9 +80,10 @@
 	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 
 	<script>
-		const ctx = document.getElementById('myChart');
+		const cumulativeChart = document.getElementById('cumulativeChart');
+		const viewChart = document.getElementById('viewChart');
 
-		new Chart(ctx, {
+		new Chart(cumulativeChart, {
 			type: 'line',
 			data: {
 				datasets: [
@@ -105,21 +112,9 @@
 						borderWidth: 1
 					},
 					{
-						label: 'Submission Comments',
+						label: 'Comments',
 						data: [
 							{% for graph in data.graph_data.comments %}
-							{
-								x: "{{ graph.date }}",
-								y: {{ graph.runningTotal }},
-							},
-							{% endfor %}
-						],
-						borderWidth: 1
-					},
-					{
-						label: 'Profile Comments',
-						data: [
-							{% for graph in data.graph_data.shouts %}
 							{
 								x: "{{ graph.date }}",
 								y: {{ graph.runningTotal }},
@@ -143,6 +138,11 @@
 				]
 			},
 			options: {
+				elements: {
+					point: {
+						radius: 0
+					}
+				},
 				scales: {
 					y: {
 						beginAtZero: true
@@ -157,6 +157,41 @@
 						type: 'time',
 					}
 					{% endif %}
+				}
+			}
+		});
+
+		new Chart(viewChart, {
+			type: 'line',
+			data: {
+				datasets: [
+					{
+						label: 'Views',
+						data: [
+							{% for graph in data.graph_data.views %}
+							{
+								x: "{{ graph.date }}",
+								y: {{ graph.view_count }},
+							},
+							{% endfor %}
+						],
+						borderWidth: 1
+					},
+				]
+			},
+			options: {
+				elements: {
+					point: {
+						radius: 0
+					}
+				},
+				scales: {
+					y: {
+						beginAtZero: true
+					},
+					x: {
+						type: 'time',
+					}
 				}
 			}
 		});

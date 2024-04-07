@@ -96,9 +96,9 @@ class AdminDashboard
             "graph_data" => [
                 "users" => $this->makeRunningTotalGraph('users', 'joined'),
                 "submissions" => $this->makeRunningTotalGraph('videos', 'time'),
-                "comments" => $this->makeRunningTotalGraph('comments', 'date'),
-                "shouts" => $this->makeRunningTotalGraph('channel_comments', 'date'),
+                "comments" => $this->makeRunningTotalGraphFromMultipleCommentTables(),
                 "journals" => $this->makeRunningTotalGraph('journals', 'date'),
+                "views" => $this->countViews(),
             ],
             "bans" => $bannedUserData,
             "time" => [
@@ -130,5 +130,38 @@ class AdminDashboard
 				FROM $table AS e
 				GROUP BY DATE(FROM_UNIXTIME(e.$orderfield))) totals
 		ORDER BY $orderfield"));
+    }
+
+    private function makeRunningTotalGraphFromMultipleCommentTables(): array
+    {
+        $this->database->query("SET @runningTotal = 0;");
+        return $this->database->fetchArray($this->database->query(
+            "SELECT date, num_interactions,
+            @runningTotal := @runningTotal + num_interactions AS runningTotal
+        FROM (
+            (SELECT FROM_UNIXTIME(date) AS date, COUNT(*) AS num_interactions
+            FROM comments
+            GROUP BY DATE(FROM_UNIXTIME(date)))
+            UNION ALL
+            (SELECT FROM_UNIXTIME(date) AS date, COUNT(*) AS num_interactions
+            FROM channel_comments
+            GROUP BY DATE(FROM_UNIXTIME(date)))
+            UNION ALL
+            (SELECT FROM_UNIXTIME(date) AS date, COUNT(*) AS num_interactions
+            FROM journal_comments
+            GROUP BY DATE(FROM_UNIXTIME(date)))
+        ) AS combined_data
+        ORDER BY date"
+        ));
+    }
+
+    private function countViews(): array
+    {
+        return $this->database->fetchArray($this->database->query(
+            "SELECT DATE(FROM_UNIXTIME(timestamp)) AS date, COUNT(*) AS view_count
+        FROM views
+        GROUP BY DATE(FROM_UNIXTIME(timestamp))
+        ORDER BY DATE(FROM_UNIXTIME(timestamp))"
+        ));
     }
 }

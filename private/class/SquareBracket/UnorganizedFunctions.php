@@ -86,8 +86,6 @@ class UnorganizedFunctions
                 "5" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$submission["id"]]),
             ];
 
-            $views = $database->result("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$submission["video_id"]]);
-
             $userData = new UserData($database, $submission["author"]);
             $submissionsData[] =
                 [
@@ -99,7 +97,7 @@ class UnorganizedFunctions
                     "original_site" => $submission["original_site"],
                     "type" => $submission["post_type"],
                     "content_rating" => $submission["rating"],
-                    "views" => $views,
+                    "views" => $submission["views"],
                     "flags" => $bools,
                     "author" => [
                         "id" => $submission["author"],

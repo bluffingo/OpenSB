@@ -8,6 +8,7 @@ use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\UserData;
 use SquareBracket\UnorganizedFunctions;
+use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
 /**
  * Backend code for the submission view (watch) page.
@@ -23,7 +24,6 @@ class SubmissionView
     private array $ratings;
     private mixed $favorites;
     private UserData $author;
-    private mixed $views;
     private array $bools;
     private array $recommended;
     private mixed $followers;
@@ -36,14 +36,15 @@ class SubmissionView
     {
         global $auth; // honestly i feel like the whole "getBettyDatabase" shit is so redudant -chaziz 8/23/2023
 
+        $CrawlerDetect = new CrawlerDetect;
         $this->database = $orange->getDatabase();
         $this->submission = new \SquareBracket\SubmissionData($this->database, $id);
 
         // check if the submission has been taken down.
         $takedown = $this->submission->getTakedown();
         if ($takedown) {
-            // don't load if it has been taken down.
-            UnorganizedFunctions::Notification("This submission has been taken down. (" . $takedown["reason"] . ")", "/");
+            // go back to homepage with a notification
+            UnorganizedFunctions::Notification("This submission has been taken down: " . $takedown["reason"], "/");
         }
 
         $this->data = $this->submission->getData();
@@ -53,12 +54,13 @@ class SubmissionView
         $this->comments = new CommentData($this->database, CommentLocation::Submission, $id);
         $this->author = new UserData($this->database, $this->data["author"]);
         if ($this->author->isUserBanned()) {
-            UnorganizedFunctions::Notification("This submission's author is banned.", "/");
+            UnorganizedFunctions::Notification("The author of this submission is banned.", "/");
         }
 
         $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$this->data["author"]])['COUNT(user)'];
         $this->followed = UnorganizedFunctions::IsFollowingUser($this->data["author"]);
 
+        // looks weird, whatever.
         $this->ratings = [
             "1" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$this->data["id"]]),
             "2" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$this->data["id"]]),
@@ -67,8 +69,6 @@ class SubmissionView
             "5" => $this->database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$this->data["id"]]),
         ];
         $this->favorites = $this->database->result("SELECT COUNT(video_id) FROM favorites WHERE video_id=?", [$id]);
-
-        $this->views = $this->database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$this->data["video_id"]])['COUNT(video_id)'];
 
         $this->bools = $this->submission->bitmaskToArray();
 
@@ -82,9 +82,19 @@ class SubmissionView
         }
 
         $ip = Utilities::get_ip_address();
-        if ($this->database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$id, crypt($ip, $ip)])['COUNT(video_id)'] < 1) {
-            $this->database->query("INSERT INTO views (video_id, user) VALUES (?,?)",
-                [$id, crypt($ip, $ip)]);
+
+        // I have a feeling that more than half of the views gained since qobo are non-genuine crawler views. -bluff 4/6/2024
+        if (!$CrawlerDetect->isCrawler()) {
+            if ($this->database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$id, crypt($ip, $ip)])['COUNT(video_id)'] < 1) {
+                $this->database->query("INSERT INTO views (video_id, user, timestamp) VALUES (?,?,?)",
+                    [$id, crypt($ip, $ip), time()]);
+
+                // increment the indexed view count. this might go out of sync eventually, but this can be fixed with a
+                // script that'll be run at least once a week via cron. -bluff 4/6/2024
+                $new_views = $this->data["views"] + 1;
+                $this->database->query("UPDATE videos SET views = ? WHERE id = ?",
+                    [$new_views, $this->data["id"]]);
+            }
         }
 
         $whereRatings = UnorganizedFunctions::whereRatings();
@@ -121,7 +131,7 @@ class SubmissionView
                 "following" => $this->followed,
             ],
             "interactions" => [
-                "views" => $this->views,
+                "views" => $this->data["views"],
                 "ratings" => UnorganizedFunctions::calculateRatings($this->ratings),
                 "favorites" => $this->favorites,
             ],
