@@ -2,6 +2,9 @@
   display: flex;
   align-items: center;
   margin: auto;
+  @include responsive('tiny') {
+    max-width: 290px;
+  }
   @include responsive('small') {
     max-width: 450px;
   }
@@ -15,6 +18,9 @@
 
 .page-contents
 {
+  @include responsive('tiny') {
+    width: 290px;
+  }
   @include responsive('small') {
     width: 450px;
   }

@@ -6,11 +6,10 @@ namespace OpenSB;
 global $enableFederatedStuff;
 
 define("SB_DYNAMIC_PATH", dirname(__DIR__) . '/dynamic');
+define("SB_PUBLIC_PATH", dirname(__DIR__) . '/public'); // in reality, we need this for SquareBracketTwigExtension
 define("SB_PRIVATE_PATH", dirname(__DIR__) . '/private');
 define("SB_VENDOR_PATH", dirname(__DIR__) . '/vendor');
 define("SB_GIT_PATH", dirname(__DIR__) . '/.git'); // ONLY FOR makeVersionString() IN SquareBracket CLASS.
-
-// SB_PUBLIC_PATH is not needed because all the core functionality is in the private folder.
 
 use SquareBracket\UnorganizedFunctions;
 

@@ -23,9 +23,26 @@
 
 .header-logo
 {
-  img.logo {
+  .logo {
+    @include responsive('tiny') {
+      display: none;
+    }
+    @include responsive('medium') {
+      display: inline;
+    }
     height: 30px;
   }
+
+  .logo-small {
+    @include responsive('tiny') {
+      display: inline;
+    }
+    @include responsive('medium') {
+      display: none;
+    }
+    height: 30px;
+  }
+
   margin-right: 10px;
 }
 

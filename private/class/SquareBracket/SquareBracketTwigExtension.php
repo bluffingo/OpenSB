@@ -34,6 +34,7 @@ class SquareBracketTwigExtension extends AbstractExtension
             new TwigFunction('pagination', [$this, 'pagination'], ['is_safe' => ['html']]),
             new TwigFunction('header_main_links', [$this, 'headerMainLinks']),
             new TwigFunction('header_user_links', [$this, 'headerUserLinks']),
+            new TwigFunction('get_css_file_date', [$this, 'getCSSFileDate']),
         ];
     }
 
@@ -341,5 +342,10 @@ HTML;
         }
 
         return $array;
+    }
+
+    public function getCSSFileDate()
+    {
+        return filemtime(SB_PUBLIC_PATH . "/assets/css/common.css");
     }
 }

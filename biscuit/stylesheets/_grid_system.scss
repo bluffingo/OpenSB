@@ -23,10 +23,21 @@ $gap: 10px;
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat($columns, 1fr);
-    grid-gap: $gap;
-    gap: $gap;
+    @include responsive('small') {
+        display: block;
+    }
+    @include responsive('medium') {
+        display: grid;
+        grid-template-columns: repeat($columns, 1fr);
+        grid-gap: $gap;
+        gap: $gap;
+    }
+    @include responsive('large') {
+        display: grid;
+        grid-template-columns: repeat($columns, 1fr);
+        grid-gap: $gap;
+        gap: $gap;
+    }
 }
 
 @include create-selectors;

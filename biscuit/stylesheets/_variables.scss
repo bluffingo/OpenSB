@@ -23,19 +23,19 @@ $font: 'Inter', sans-serif;
 $font-var: 'InterVariable', sans-serif;
 
 // https://medium.com/@jainbhavukspeaks/leveraging-scss-mixins-to-create-responsive-layouts-the-easy-way-5bbe4080cb15
-$mobile: 300px;
-$tablet: 768px;
-$desktop: 1024px;
 
 $breakpoints: (
+        "tiny": (
+                300px,
+        ),
         "small": (
-                $mobile,
+                500px,
         ),
         "medium": (
-                $tablet,
+                768px,
         ),
         "large": (
-                $desktop,
+                1024px,
         ),
 );
 //
