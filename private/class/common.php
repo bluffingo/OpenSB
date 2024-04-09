@@ -102,14 +102,16 @@ $database = $orange->getDatabase();
 // this should probably have a cooldown or something i don't fucking know
 
 // this can be easily bypassed but my paranoia wants me to implement this -bluffingo 4/8/2024
-$blacklistedReferers = $database->fetch("SELECT url from blacklisted_referer where url = ?", [$_SERVER['HTTP_REFERER']]);
-if ($blacklistedReferers) {
-    $alreadyIpBanned = $database->fetch("SELECT * from ipbans where ip = ?", [Utilities::get_ip_address()]);
-    if (!$alreadyIpBanned) {
-        sb_debug_output("Automatically banning IP " . Utilities::get_ip_address());
-        $database->query("INSERT INTO ipbans (ip, reason, time) VALUES (?,?,?)",
-            [Utilities::get_ip_address(), "[Automatically done by OpenSB] Referer is from blacklisted website "
-                . $_SERVER['HTTP_REFERER'], time()]);
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $blacklistedReferers = $database->fetch("SELECT url from blacklisted_referer where url = ?", [$_SERVER['HTTP_REFERER']]);
+    if ($blacklistedReferers) {
+        $alreadyIpBanned = $database->fetch("SELECT * from ipbans where ip = ?", [Utilities::get_ip_address()]);
+        if (!$alreadyIpBanned) {
+            sb_debug_output("Automatically banning IP " . Utilities::get_ip_address());
+            $database->query("INSERT INTO ipbans (ip, reason, time) VALUES (?,?,?)",
+                [Utilities::get_ip_address(), "[Automatically done by OpenSB] Referer is from blacklisted website "
+                    . $_SERVER['HTTP_REFERER'], time()]);
+        }
     }
 }
 
