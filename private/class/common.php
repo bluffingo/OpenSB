@@ -98,21 +98,23 @@ $twig = new Templating($orange);
 
 $database = $orange->getDatabase();
 
-if ( $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities::get_ip_address()])) {
-    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [Utilities::get_ip_address()]));
-    echo $twig->render("ip_banned.twig", [
-        "data" => $ipban,
-        "users" => $usersAssociatedWithIP,
-    ]);
-    die();
-}
-
 // automatic stuff
 // this should probably have a cooldown or something i don't fucking know
 
-// ban users who are ip banned
-$ipBannedUsers = $database->fetchArray($database->query("SELECT * from ipbans"));
+// this can be easily bypassed but my paranoia wants me to implement this -bluffingo 4/8/2024
+$blacklistedReferers = $database->fetch("SELECT url from blacklisted_referer where url = ?", [$_SERVER['HTTP_REFERER']]);
+if ($blacklistedReferers) {
+    $alreadyIpBanned = $database->fetch("SELECT * from ipbans where ip = ?", [Utilities::get_ip_address()]);
+    if (!$alreadyIpBanned) {
+        sb_debug_output("Automatically banning IP " . Utilities::get_ip_address());
+        $database->query("INSERT INTO ipbans (ip, reason, time) VALUES (?,?,?)",
+            [Utilities::get_ip_address(), "[Automatically done by OpenSB] Referer is from blacklisted website "
+                . $_SERVER['HTTP_REFERER'], time()]);
+    }
+}
 
+// automatically ban accounts linked to banned ips.
+$ipBannedUsers = $database->fetchArray($database->query("SELECT * from ipbans"));
 foreach ($ipBannedUsers as $ipBannedUser) {
     $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT id, name FROM users WHERE ip LIKE ?", [$ipBannedUser["ip"]]));
     foreach ($usersAssociatedWithIP as $ipBannedUser2) { // i can't really name variables that well
@@ -130,18 +132,27 @@ if ($isBluffingoSB) {
     $storage = new LocalStorage($orange);
 }
 
-if ($isMaintenance && !SB_PHP_BUILTINSERVER) {
-    echo $twig->render("error.twig", [
-        "error_title" => "Offline",
-        "error_reason" => "The site is currently offline."
-    ]);
-    die();
-}
-
 if (!file_exists(SB_GIT_PATH)) {
     echo $twig->render("error.twig", [
         "error_title" => "Critical error",
         "error_reason" => "Please initialize OpenSB using git clone instead of downloading it straight from GitHub's website."
+    ]);
+    die();
+}
+
+if ( $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities::get_ip_address()])) {
+    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [Utilities::get_ip_address()]));
+    echo $twig->render("ip_banned.twig", [
+        "data" => $ipban,
+        "users" => $usersAssociatedWithIP,
+    ]);
+    die();
+}
+
+if ($isMaintenance && !SB_PHP_BUILTINSERVER) {
+    echo $twig->render("error.twig", [
+        "error_title" => "Offline",
+        "error_reason" => "The site is currently offline."
     ]);
     die();
 }

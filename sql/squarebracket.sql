@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2024 at 04:10 AM
+-- Generation Time: Apr 09, 2024 at 02:22 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -63,6 +63,17 @@ CREATE TABLE `bans` (
   `userid` int(11) NOT NULL,
   `reason` text NOT NULL,
   `time` bigint(20) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blacklisted_referer`
+--
+
+CREATE TABLE `blacklisted_referer` (
+  `id` int(11) NOT NULL,
+  `url` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -328,7 +339,8 @@ CREATE TABLE `videos` (
 
 CREATE TABLE `views` (
   `video_id` text NOT NULL,
-  `user` text NOT NULL
+  `user` text NOT NULL,
+  `timestamp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -352,6 +364,12 @@ ALTER TABLE `activitypub_user_urls`
 --
 ALTER TABLE `bans`
   ADD PRIMARY KEY (`autoint`);
+
+--
+-- Indexes for table `blacklisted_referer`
+--
+ALTER TABLE `blacklisted_referer`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `channel_comments`
@@ -428,6 +446,12 @@ ALTER TABLE `activitypub_user_urls`
 --
 ALTER TABLE `bans`
   MODIFY `autoint` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `blacklisted_referer`
+--
+ALTER TABLE `blacklisted_referer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `channel_comments`
