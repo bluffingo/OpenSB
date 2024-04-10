@@ -1,6 +1,6 @@
 /*!
- * OpenSB Biscuit (Finalium 2?)
- * Made by Bluffingo (aka Chaziz)
+ * OpenSB Biscuit (Finalium 2)
+ * Made by Bluffingo for OpenSB
  */
 
 @import 'variables';
@@ -108,7 +108,7 @@ input[type]:not([type=file]):not([type=submit]) {
 	color: black;
 	box-shadow: 0 0 0px #0c0c0c;
 	transition: border linear 0.3s, box-shadow linear 0.3s;
-	border-radius: $content-box-roundness;
+	border-radius: 3px;
 	padding: 5px;
 	font-family: $font;
 }

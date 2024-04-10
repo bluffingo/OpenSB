@@ -1,7 +1,7 @@
 // colors
 
 @import url('https://rsms.me/inter/inter.css');
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 $threshold: 75%; // contrast threshold
 
@@ -51,12 +51,12 @@ $button-padding-small: 3px 8px;
 // content boxes
 $content-box-background-color: #FFF;
 $content-box-border-color: darken($secondary, 7.5%);
-$content-box-roundness: 5px;
 $context-box-padding: 12px;
 
 // header
 $header-main-height: 48px;
 $header-user-height: 25px;
+$header-logo-height: 30px;
 
 // profile
 $pfp-width-profiles: 70px;

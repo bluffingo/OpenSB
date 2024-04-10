@@ -3,16 +3,11 @@
   background: $content-box-background-color;
   border: 1px solid $content-box-border-color;
   border-bottom: none;
-  border-radius: $content-box-roundness;
 
   .img-submission {
     max-width: 100%;
     padding: 15px 15px;
   }
-}
-
-#sb-video, #sb-video_html5_api {
-  border-radius: $content-box-roundness;
 }
 
 
@@ -28,7 +23,6 @@
 .watch-box {
   background: $content-box-background-color;
   border: 1px solid $content-box-border-color;
-  border-radius: $content-box-roundness;
   padding: $context-box-padding;
   overflow: hidden;
   word-break: break-word;
