@@ -105,10 +105,14 @@ a.menulink
 
 .header
 {
-  .page {
+  .header-container {
+    @include maxwidths();
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
+    margin: auto;
   }
 
   width: 100%;

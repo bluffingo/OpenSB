@@ -1,7 +1,11 @@
 .footer
 {
-  margin: 15px 0;
-  text-align: center;
+  .footer-container {
+    @include maxwidths();
+    margin: auto;
+  }
+
+  margin-top: 5px;
   padding: 15px 5px;
   line-height: 20px;
   clear: both;

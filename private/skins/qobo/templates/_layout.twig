@@ -54,7 +54,7 @@
 <body>
 <div class="headers">
     <div class="header">
-        <div class="page">
+        <div class="header-container">
             <div class="header-logo">
                 <a href="/">
                     <img alt="{{ website_branding.name }}" class="logo" src="{{ website_branding.assets_location }}/logo-wordmark.png">
@@ -117,22 +117,19 @@
         <div class="container {{ page_name }}">
         {% block content %}{% endblock %}
         </div>
-        <div class="footer">
+    </div>
+    <div class="footer">
+        <div class="footer-container">
             <img src="/assets/opensb_logo.png" alt="OpenSB">
-            <br>
-            <a href="/version">Powered by OpenSB {{ squarebracket_version }}.</a>
-            <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</p>
-            <a href="/privacy">
-                Privacy policy
-            </a>
-            <a href="/theme">
+            <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors. | <a href="/privacy">Privacy policy</a></p>
+            <!-- <a href="/theme">
                 Change theme
-            </a>
+            </a> -->
+            <p>Running <a href="/version">OpenSB {{ squarebracket_version }}</a></p>
             {% if is_debug %}
-            <br>
-            <p>
-            {{ profiler_stats() }}
-            </p>
+                <p>
+                    {{ profiler_stats() }}
+                </p>
             {% endif %}
         </div>
     </div>

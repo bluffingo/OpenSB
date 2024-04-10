@@ -1,35 +1,10 @@
 .page {
-  display: flex;
-  align-items: center;
   margin: auto;
-  @include responsive('tiny') {
-    max-width: 290px;
-  }
-  @include responsive('small') {
-    max-width: 450px;
-  }
-  @include responsive('medium') {
-    max-width: 700px;
-  }
-  @include responsive('large') {
-    max-width: 1000px;
-  }
 }
 
 .page-contents
 {
-  @include responsive('tiny') {
-    width: 290px;
-  }
-  @include responsive('small') {
-    width: 450px;
-  }
-  @include responsive('medium') {
-    width: 700px;
-  }
-  @include responsive('large') {
-    width: 1000px;
-  }
+  @include maxwidths();
   margin: 10px auto auto auto;
 }
 
