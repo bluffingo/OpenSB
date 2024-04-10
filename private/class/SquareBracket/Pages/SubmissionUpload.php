@@ -2,6 +2,7 @@
 
 namespace SquareBracket\Pages;
 
+use Random\Randomizer;
 use SquareBracket\UnorganizedFunctions;
 
 /**
@@ -31,7 +32,7 @@ class SubmissionUpload
 
         $this->supportedVideoFormats = ["mp4", "mkv", "wmv", "flv", "avi", "mov", "3gp"];
         $this->supportedImageFormats = ["png", "jpg", "jpeg"];
-        
+
         if (!$auth->isUserLoggedIn())
         {
             UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
@@ -57,8 +58,18 @@ class SubmissionUpload
     {
         global $storage, $auth, $isDebug;
 
+        if (version_compare(PHP_VERSION, '8.3.0', '<')) {
+            $new = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"),0,11);
+        } else {
+            // this feels cleaner imho
+            $randomizer = new Randomizer();
+            $new = $randomizer->getBytesFromString(
+                '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-',
+                11,
+            );
+        }
+
         $uploader = $auth->getUserID();
-        $new = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"),0,11);
 
         $title = ($post_data['title'] ?? null);
         $description = ($post_data['desc'] ?? null);
