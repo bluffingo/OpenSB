@@ -3,14 +3,9 @@
  * Made by Bluffingo for OpenSB
  */
 
-@import 'variables';
+@import 'base_variables';
 
-@import 'mixins/responsiveness';
-@import 'mixins/gradients';
-
-@function contrast-color($color, $dark, $light) {
-	@return if(lightness($color) < $threshold, $light, $dark)
-}
+@import '_imports.scss';
 
 :root {
 	font-family: $font;
@@ -157,21 +152,6 @@ hr {
 	margin: 5px;
 }
 
-@import 'header';
-@import 'footer';
-@import 'page';
-@import 'forms';
-@import 'content_box';
-@import 'banner';
-@import 'comments';
-@import 'sections';
-@import 'journals';
-@import 'buttons';
-@import 'jumbotron';
-@import 'menus';
-
 @import 'watch_page';
 @import 'profile_page';
 @import 'notice_page';
-
-@import 'grid_system';

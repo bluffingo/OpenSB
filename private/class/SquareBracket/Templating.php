@@ -41,9 +41,22 @@ class Templating
             $this->skin = $defaultTemplate;
         }
 
-        $this->loader = new FilesystemLoader('skins/' . $this->skin . '/templates');
+        $loader_path = 'skins/' . $this->skin . '/templates';
+        $this->loader = new FilesystemLoader($loader_path);
         $this->loader->addPath('skins/common/');
         $this->twig = new Environment($this->loader, ['debug' => $isDebug]);
+
+        // an alternative for "include" that loads components depending on the theme.
+        $this->twig->addFunction(new TwigFunction('include_component', function($component) use ($loader_path) {
+            $path = '/components/' . $this->theme . '/' . $component . '.twig';
+            $path_default = '/components/default/' . $component . '.twig';
+
+            if (file_exists(SB_PRIVATE_PATH . '/' . $loader_path . $path)) {
+                echo $this->twig->render($path);
+            } else {
+                echo $this->twig->render($path_default);
+            }
+        }));
 
         $this->twig->addExtension(new SquareBracketTwigExtension());
         $this->twig->addExtension(new StringExtension());

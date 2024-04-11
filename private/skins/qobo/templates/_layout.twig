@@ -1,13 +1,13 @@
-{% set component_location = "components/" ~ current_theme ~ "/" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} - {{ website_branding.name }}</title>
-    <link rel="stylesheet" href="/assets/css/common.css?r={{ get_css_file_date() }}">
     {% if current_theme != "default" %}
         <link rel="stylesheet" href="/assets/css/{{ current_theme }}.css?r={{ get_css_file_date() }}">
+    {% else %}
+        <link rel="stylesheet" href="/assets/css/common.css?r={{ get_css_file_date() }}">
     {% endif %}
     <meta name="theme-color" content="#FF723D">
     <meta property="og:title" content="{{ title }}" />
@@ -56,7 +56,7 @@
     {% endblock %}
 </head>
 <body>
-{% include component_location ~ 'header.twig' %}
+{{ include_component('header') }}
 {% block precontent %}{% endblock %}
 <div class="page">
     <div class="page-contents">
