@@ -3,7 +3,11 @@
 {% set title = "Home" %}
 
 {% block scripts %}
-    <!-- it feels so stupid to do this -bluffingo 10/7/2023 -->
+    {#
+        this is only really needed in the default theme (and maybe a dark default theme in the future)
+        this will break the "random submissions" thing, and that's by design.
+    #}
+    {% if current_theme == "default" %}
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
     <script>
@@ -23,9 +27,11 @@
             }
         } );
     </script>
+    {% endif %}
 {% endblock %}
 
 {% block precontent %}
+    {% if current_theme == "default" %}
     <div class="jumbotron homepage-banner">
         <div class="jumbotron-container">
             <div class="jumbotron-welcome">
@@ -50,65 +56,9 @@
             </div>
         </div>
     </div>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
-    <div class="grid">
-        <div class="col-8">
-            <div class="section">
-                <div class="section-title">
-                    <h1>Random Submissions</h1>
-                    <a href="browse">More</a>
-                </div>
-                <div class="content-box">
-                    <section class="splide" id="splide1" aria-labelledby="carousel-heading">
-                        <div class="splide__track">
-                            <ul class="splide__list">
-                                {% for submission in data.submissions %}
-                                    {{ include('/components/_index_submission_3.twig') }}
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </section>
-                </div>
-            </div>
-            <div class="section">
-                <div class="section-title">
-                    <h1>Recent Submissions</h1>
-                    <a href="browse">More</a>
-                </div>
-                <div class="content-box">
-                    {% for submission in data.submissions_new %}
-                        {{ include('/components/_index_submission.twig') }}
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            {% if data.news_recent %}
-                <div class="section">
-                    <div class="section-title">
-                        <h1>Site news</h1>
-                    </div>
-                    <div class="content-box">
-                        {% for news in data.news_recent %}
-                            <div class="journal-entry">
-                                <div class="journal-title">
-                                    <a href="read?j={{ news.id }}">
-                                        {{ news.title|u.truncate(100, '...') }}
-                                    </a>
-                                </div>
-                                <div class="journal-info">
-                                    {{ news.date | relative_time }}
-                                </div>
-                                <div class="journal-contents">
-                                    {{ news.post|u.truncate(300, '...') }}
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endif %}
-        </div>
-    </div>
+    {{ include(include_component('index_content')) }}
 {% endblock %}

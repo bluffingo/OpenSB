@@ -46,15 +46,17 @@ class Templating
         $this->loader->addPath('skins/common/');
         $this->twig = new Environment($this->loader, ['debug' => $isDebug]);
 
-        // an alternative for "include" that loads components depending on the theme.
+        // gets relevant path for include to use
         $this->twig->addFunction(new TwigFunction('include_component', function($component) use ($loader_path) {
             $path = '/components/' . $this->theme . '/' . $component . '.twig';
             $path_default = '/components/default/' . $component . '.twig';
 
             if (file_exists(SB_PRIVATE_PATH . '/' . $loader_path . $path)) {
-                echo $this->twig->render($path);
+                return $path;
+            } elseif (file_exists(SB_PRIVATE_PATH . '/' . $loader_path . $path_default)) {
+                return $path_default;
             } else {
-                echo $this->twig->render($path_default);
+                return '/missing_component.twig';
             }
         }));
 

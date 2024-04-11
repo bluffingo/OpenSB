@@ -56,42 +56,16 @@
     {% endblock %}
 </head>
 <body>
-{{ include_component('header') }}
+{{ include(include_component('header')) }}
 {% block precontent %}{% endblock %}
 <div class="page">
     <div class="page-contents">
-        {% if user_ban_data %}
-            <div class="banner banner-danger">
-                <p>You have been banned for the following reason:</p>
-                {{ user_ban_data.reason | markdown }}
-            </div>
-        {% endif %}
-        {% if session.notif_message %}
-            <div class="banner banner-{{ session.notif_color }}">
-                <i class="{{ notification_icon(session.notif_color) }} notification-icon"></i>
-                <span class="notification-text">
-                {{ session.notif_message }}
-                </span>
-            </div>
-            {{ remove_notification() }}
-        {% endif %}
+        {{ include(include_component('banners')) }}
         <div class="container {{ page_name }}">
         {% block content %}{% endblock %}
         </div>
     </div>
-    <div class="footer">
-        <div class="footer-container">
-            <img src="/assets/opensb_logo.png" alt="OpenSB">
-            <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.
-                | <a href="/privacy">Privacy policy</a> · <a href="/theme">Customize</a></p>
-            <p>Running <a href="/version">OpenSB {{ opensb_version }}</a></p>
-            {% if is_debug %}
-                <p>
-                    {{ profiler_stats() }}
-                </p>
-            {% endif %}
-        </div>
-    </div>
+    {{ include(include_component('footer')) }}
 </div>
 {% block scripts %}{% endblock %}
 <script src="/assets/common_new.js"></script>

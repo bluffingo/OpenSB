@@ -1,0 +1,37 @@
+<h1>News</h1>
+{% if data.news_recent %}
+    <ul>
+        {% for news in data.news_recent %}
+            <li>
+                <h2>
+                    <a href="read?j={{ news.id }}">
+                        {{ news.title|u.truncate(100, '...') }}
+                    </a>
+                </h2>
+                <p>
+                    {{ news.post|u.truncate(300, '...') }}
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<h1>
+    Random submissions
+</h1>
+<ul>
+    {% for submission in data.submissions %}
+        <li>
+            <a href="/view/{{ submission.id }}">{{ submission.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<h1>
+    Recent submissions
+</h1>
+<ul>
+    {% for submission in data.submissions_new %}
+        <li>
+            <a href="/view/{{ submission.id }}">{{ submission.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
