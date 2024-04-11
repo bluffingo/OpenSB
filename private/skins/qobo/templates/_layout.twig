@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} - {{ website_branding.name }}</title>
-    <link rel="stylesheet" href="/assets/css/common.css?r={{ get_css_file_date() }}">
+    {% if current_theme != "default" %}
+        <link rel="stylesheet" href="/assets/css/{{ current_theme }}.css?r={{ get_css_file_date() }}">
+    {% else %}
+        <link rel="stylesheet" href="/assets/css/common.css?r={{ get_css_file_date() }}">
+    {% endif %}
     <meta name="theme-color" content="#FF723D">
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:url" content="{{ page_url }}">
@@ -52,90 +56,16 @@
     {% endblock %}
 </head>
 <body>
-<div class="headers">
-    <div class="header">
-        <div class="page">
-            <div class="header-logo">
-                <a href="/">
-                    <img alt="{{ website_branding.name }}" class="logo" src="{{ website_branding.assets_location }}/logo-wordmark.png">
-                    <img alt="{{ website_branding.name }}" class="logo-small" src="{{ website_branding.assets_location }}/logo.png">
-                </a>
-            </div>
-            {% for link in header_main_links() %}
-                <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
-            {% endfor %}
-            <form class="header-search" action="/search">
-                <input id="header-search-input" type="text" name="query" placeholder="Search...">
-                <div class="form-button-container">
-                    <button id="header-search-button" class="button button-secondary">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
-            </form>
-            <div class="header-links">
-                {% if is_user_logged_in %}
-                    <!--
-                    <a class="menulink" href="/notices">{{ user_notice_data }} notifications</a>
-                    -->
-                <div>
-                    <div class="menuButton" data-menu-id="user-menu">
-                        <img src="{{ profile_picture(user_data.name) }}" class="pfp" alt="{{ user_data.name }}">
-                    </div>
-                    <div class="menu" id="user-menu">
-                        {% for link in header_user_links() %}
-                            <a class="menu-item-button" href="{{ link.url }}">{{ link.name }}</a>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% else %}
-                    {% for link in header_user_links() %}
-                        <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
+{{ include(include_component('header')) }}
 {% block precontent %}{% endblock %}
 <div class="page">
     <div class="page-contents">
-        {% if user_ban_data %}
-            <div class="banner banner-danger">
-                <p>You have been banned for the following reason:</p>
-                {{ user_ban_data.reason | markdown }}
-            </div>
-        {% endif %}
-        {% if session.notif_message %}
-            <div class="banner banner-{{ session.notif_color }}">
-                <i class="{{ notification_icon(session.notif_color) }} notification-icon"></i>
-                <span class="notification-text">
-                {{ session.notif_message }}
-                </span>
-            </div>
-            {{ remove_notification() }}
-        {% endif %}
+        {{ include(include_component('banners')) }}
         <div class="container {{ page_name }}">
         {% block content %}{% endblock %}
         </div>
-        <div class="footer">
-            <img src="/assets/opensb_logo.png" alt="OpenSB">
-            <br>
-            <a href="/version">Powered by OpenSB {{ squarebracket_version }}.</a>
-            <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</p>
-            <a href="/privacy">
-                Privacy policy
-            </a>
-            <a href="/theme">
-                Change theme
-            </a>
-            {% if is_debug %}
-            <br>
-            <p>
-            {{ profiler_stats() }}
-            </p>
-            {% endif %}
-        </div>
     </div>
+    {{ include(include_component('footer')) }}
 </div>
 {% block scripts %}{% endblock %}
 <script src="/assets/common_new.js"></script>

@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 47101;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px);
 }
 
 .header-links
@@ -23,6 +23,11 @@
 
 .header-logo
 {
+  a {
+    display: block;
+    height: $header-logo-height;
+  }
+
   .logo {
     @include responsive('tiny') {
       display: none;
@@ -30,7 +35,7 @@
     @include responsive('medium') {
       display: inline;
     }
-    height: 30px;
+    height: $header-logo-height;
   }
 
   .logo-small {
@@ -40,7 +45,7 @@
     @include responsive('medium') {
       display: none;
     }
-    height: 30px;
+    height: $header-logo-height;
   }
 
   margin-right: 10px;
@@ -71,32 +76,7 @@ td.h
   padding: 5px;
 }
 
-.header-user
-{
-  width: 100%;
-  background-color: rgba(lighten($secondary, 1%), 0.9);
-  height: $header-user-height;
-
-  .page {
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  display: flex;
-}
-
-.header-user-notifications
-{
-  margin-right: auto;
-}
-
-.header-user-links
-{
-  margin-left: auto;
-}
-
-a.menulink
+.menulink
 {
   color: black;
   margin: 0 7px;
@@ -105,10 +85,14 @@ a.menulink
 
 .header
 {
-  .page {
+  .header-container {
+    @include maxwidths();
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
+    margin: auto;
   }
 
   width: 100%;

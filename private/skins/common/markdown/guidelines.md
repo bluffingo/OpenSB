@@ -1,20 +1,19 @@
 # squareBracket Upload Guidelines 
-Last edited by Bluffingo on March 1st 2024.
-
-Note that these guidelines were originally written for Qobo.
+Last updated by Bluffingo on April 11th 2024.
 
 ## What we don't allow
 **If you upload anything that falls under this list, your accounts will most likely be terminated.**
 
 * Content intended for children. We are not babysitters.
-* Mature-rated submissions depicting/featuring minors, real or not. Even if it's like a thousand years old and yet it looks like a child, we won't allow it.
-* Shock content (Real gore, people dying).
+* Illegal pornographic content.
+* Shock content (Real or realistic gore, deaths).
 * Non-consenting content (Rape, leaking personal information).
-* Edgy, politically-incorrect content (Nazism, racism, bigotry).
+* Edgy content (Nazism, racism, bigotry).
 
 ## Videos
 * Only upload videos that you have created yourself. Any reuploads of videos not made by you will be taken down. However, an exception is made for memes and content in the public domain. This does not apply to squareBracket submissions uploaded before April 2023.
 * Parody edits of copyrighted material (known as YTPs) are allowed.
+* "Effect" and "VEG replace" videos are not allowed.
 * Videos produced using AI, akin to OpenAI's Sora, are not allowed.
 
 ## Images and drawings

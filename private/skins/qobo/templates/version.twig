@@ -56,7 +56,18 @@
                 {% for skin in skins %}
                     <tr>
                         <td class="a">{{ skin.metadata.name }}<br><small>by {{ skin.metadata.author }}</small></td>
-                        <td class="b">{{ skin.metadata.description }}</td>
+                        <td class="b">
+                            <div>
+                            {{ skin.metadata.description }}
+                            </div>
+                            <div>
+                                <ul>
+                                    {% for theme in skin.metadata.themes %}
+                                        <li>{{ theme.name }}: {{ theme.description }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>

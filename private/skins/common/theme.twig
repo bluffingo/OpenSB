@@ -1,15 +1,17 @@
 {% extends "_layout.twig" %}
 
-{% set title = "Change theme" %}
+{% set title = "Customize" %}
 
 {% block content %}
-    <h1>Change theme</h1>
+    <h1>Customize</h1>
     <p>Placeholder design, sorry.</p>
     <form name="uploadForm" id="uploadForm" method="post" action="theme">
-        <label for="theme">Theme:</label>
+        <label for="theme">Skin:</label>
         <select id="theme" name="theme">
             {% for skin in skins %}
-                <option value="{{ skin.metadata.id }}">{{ skin.metadata.name }}</option>
+                {% for theme in skin.metadata.themes %}
+                    <option value="{{ skin.metadata.id }},{{ theme.id }}">{{ skin.metadata.name }}: {{ theme.name }}</option>
+                {% endfor %}
             {% endfor %}
         </select>
         <br>

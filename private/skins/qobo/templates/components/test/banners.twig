@@ -1,0 +1,11 @@
+{% if user_ban_data %}
+    <div class="banner-test banner-test-danger">
+        {{ user_ban_data.reason | markdown }}
+    </div>
+{% endif %}
+{% if session.notif_message %}
+    <div class="banner-test banner-test-{{ session.notif_color }}">
+        {{ session.notif_message }}
+    </div>
+    {{ remove_notification() }}
+{% endif %}
