@@ -1,13 +1,10 @@
-<div class="footer">
-    <div class="footer-container">
-        <h1>NOT OPENBSD THAT'S FOR SURE</h1>
-        <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.
-            | <a href="/privacy">Privacy policy</a> · <a href="/theme">Get me out of this hellhole!</a></p>
-        <p>Running <a href="/version">OpenSB {{ opensb_version }}</a></p>
-        {% if is_debug %}
-            <p>
-                {{ profiler_stats() }}
-            </p>
-        {% endif %}
-    </div>
+<div class="footer-test">
+    <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.
+        | <a href="/privacy">Privacy policy</a> · <a href="/theme">Customize theme</a></p>
+    <p>Running <a href="/version">OpenSB {{ opensb_version }}</a></p>
+    {% if is_debug %}
+        <p>
+            {{ profiler_stats() }}
+        </p>
+    {% endif %}
 </div>
