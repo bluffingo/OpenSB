@@ -1,3 +1,4 @@
+{% set component_location = "components/" ~ current_theme ~ "/" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} - {{ website_branding.name }}</title>
     <link rel="stylesheet" href="/assets/css/common.css?r={{ get_css_file_date() }}">
+    {% if current_theme != "default" %}
+        <link rel="stylesheet" href="/assets/css/{{ current_theme }}.css?r={{ get_css_file_date() }}">
+    {% endif %}
     <meta name="theme-color" content="#FF723D">
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:url" content="{{ page_url }}">
@@ -52,50 +56,7 @@
     {% endblock %}
 </head>
 <body>
-<div class="headers">
-    <div class="header">
-        <div class="header-container">
-            <div class="header-logo">
-                <a href="/">
-                    <img alt="{{ website_branding.name }}" class="logo" src="{{ website_branding.assets_location }}/logo-wordmark.png">
-                    <img alt="{{ website_branding.name }}" class="logo-small" src="{{ website_branding.assets_location }}/logo.png">
-                </a>
-            </div>
-            {% for link in header_main_links() %}
-                <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
-            {% endfor %}
-            <form class="header-search" action="/search">
-                <input id="header-search-input" type="text" name="query" placeholder="Search...">
-                <div class="form-button-container">
-                    <button id="header-search-button" class="button button-secondary">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
-            </form>
-            <div class="header-links">
-                {% if is_user_logged_in %}
-                    <!--
-                    <a class="menulink" href="/notices">{{ user_notice_data }} notifications</a>
-                    -->
-                <div>
-                    <div class="menuButton" data-menu-id="user-menu">
-                        <img src="{{ profile_picture(user_data.name) }}" class="pfp" alt="{{ user_data.name }}">
-                    </div>
-                    <div class="menu" id="user-menu">
-                        {% for link in header_user_links() %}
-                            <a class="menu-item-button" href="{{ link.url }}">{{ link.name }}</a>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% else %}
-                    {% for link in header_user_links() %}
-                        <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
+{% include component_location ~ 'header.twig' %}
 {% block precontent %}{% endblock %}
 <div class="page">
     <div class="page-contents">
@@ -121,11 +82,9 @@
     <div class="footer">
         <div class="footer-container">
             <img src="/assets/opensb_logo.png" alt="OpenSB">
-            <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors. | <a href="/privacy">Privacy policy</a></p>
-            <!-- <a href="/theme">
-                Change theme
-            </a> -->
-            <p>Running <a href="/version">OpenSB {{ squarebracket_version }}</a></p>
+            <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.
+                | <a href="/privacy">Privacy policy</a> · <a href="/theme">Customize</a></p>
+            <p>Running <a href="/version">OpenSB {{ opensb_version }}</a></p>
             {% if is_debug %}
                 <p>
                     {{ profiler_stats() }}

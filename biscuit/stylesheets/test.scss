@@ -1,0 +1,19 @@
+/*!
+ * OpenSB Biscuit "Eyesore" theme
+ */
+
+:root {
+  font-family: "Comic Sans MS", cursive;
+}
+
+.header-test {
+  text-align: center;
+  background: black;
+  color: #ff7300;
+  z-index: 5318008;
+  position: sticky;
+
+  a {
+    color: red;
+  }
+}

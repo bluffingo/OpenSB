@@ -20,6 +20,7 @@ use Twig\TwigFunction;
 class Templating
 {
     private $skin;
+    private $theme;
     private FilesystemLoader $loader;
     private Environment $twig;
 
@@ -31,6 +32,9 @@ class Templating
         global $isBluffingoSB, $auth, $defaultTemplate, $isDebug, $branding, $googleAdsClient;
         chdir(__DIR__ . '/../..');
         $this->skin = $orange->getLocalOptions()["skin"] ?? $defaultTemplate;
+        $this->theme = $orange->getLocalOptions()["theme"] ?? "default";
+
+        // TODO: reset theme if the user changes their skin to another skin
 
         if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
@@ -59,10 +63,10 @@ class Templating
         $this->twig->addGlobal('user_ban_data', $auth->getUserBanData());
         $this->twig->addGlobal('user_notice_data', $auth->getUserNoticesCount());
         $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
-        $this->twig->addGlobal('squarebracket_version', (new \Core\VersionNumber)->getVersionString());
+        $this->twig->addGlobal('opensb_version', (new VersionNumber)->getVersionString());
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('website_branding', $branding);
-        $this->twig->addGlobal('show_work_in_progress_stuff', false); // todo
+        $this->twig->addGlobal('current_theme', $this->theme); // not to be confused with skins
 
         if (isset($_SERVER["REQUEST_URI"])) {
             $this->twig->addGlobal('page_name', empty(basename($_SERVER["REQUEST_URI"], '.php')) ? 'index' : basename($_SERVER["REQUEST_URI"], '.php'));
@@ -108,7 +112,7 @@ class Templating
         if (file_exists($skin . "/skin.json")) {
             $metadata = file_get_contents($skin . "/skin.json");
         } else {
-            trigger_error(sprintf("The metadata for SquareBracket skin %s is missing", $skin), E_USER_WARNING);
+            trigger_error(sprintf("The metadata for OpenSB skin %s is missing", $skin), E_USER_WARNING);
             return null;
         }
         return json_decode($metadata, true);

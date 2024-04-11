@@ -1,9 +1,20 @@
 {
-  "metadata":
-  {
+  "metadata": {
     "id": "qobo",
     "name": "Biscuit",
     "author": "Bluffingo",
-    "description": "The default squareBracket user experience."
+    "description": "Bluffingo's OpenSB frontend.",
+    "themes": [
+      {
+        "id": "default",
+        "name": "Default",
+        "description": "The default squareBracket user experience."
+      },
+      {
+        "id": "test",
+        "name": "Test Theme",
+        "description": "A theme intended to test themes in OpenSB."
+      }
+    ]
   }
 }
