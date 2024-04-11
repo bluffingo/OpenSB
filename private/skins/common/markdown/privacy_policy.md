@@ -1,5 +1,4 @@
 # Privacy Policy
-**subject to change prior to relaunch**
 
 This is the privacy policy for this site, squareBracket.
 
