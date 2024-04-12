@@ -35,7 +35,6 @@ class SubmissionView
     {
         global $auth; // honestly i feel like the whole "getBettyDatabase" shit is so redudant -chaziz 8/23/2023
 
-        $CrawlerDetect = new CrawlerDetect;
         $this->database = $orange->getDatabase();
         $this->submission = new \SquareBracket\SubmissionData($this->database, $id);
 
