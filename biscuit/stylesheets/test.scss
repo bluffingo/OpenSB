@@ -1,7 +1,6 @@
 /*!
- * OpenSB Biscuit "Eyesore" theme
+ * OpenSB Biscuit "Test" theme
  * This is an example of a "theme" for the Biscuit skin.
- * It's meant to look like shit on purpose, for real.
  *
  * Unlike pre-"Orange" OpenSB's Finalium 1 frontend, where CSS
  * for themes would be overlaid on top of the base theme (I think?).
@@ -10,45 +9,22 @@
 
 @import 'shared/base_variables';
 
-// AND NOW we override these variables
-
-// random-ass colors
-$primary: #000cff;
-$primary-darker: #0000aa;
-$secondary: #aaaaaa;
-$green: #00ff00;
-$red: #ff0000;
-
-$color-map: (
-        "primary": $primary,
-        "secondary": $secondary,
-        "success": $green,
-        "danger": $red,
-);
-
-// content boxes
-$content-box-background-color: #eeeeee;
-$content-box-border-color: darken($secondary, 7.5%);
-$context-box-padding: 12px;
-
 // now import the basic biscuit stuff
 @import 'shared/imports';
 
-.header-test {
+.header {
   text-align: center;
-  z-index: 5318008;
-  position: sticky;
   padding-bottom: 10px;
   border-bottom: 1px solid gray;
 }
 
-.footer-test {
+.footer {
   text-align: center;
   padding-top: 10px;
   border-top: 1px solid gray;
 }
 
-.banner-test {
+.banner {
   text-align: center;
   padding: 5px;
 }

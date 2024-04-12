@@ -1,7 +1,6 @@
-// colors
+// these are most of the variables used by the default theme.
 
-@import url('https://rsms.me/inter/inter.css');
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+// colors
 
 $threshold: 75%; // contrast threshold
 
@@ -9,6 +8,7 @@ $primary: #1b7fcc; // primary color
 $primary-darker: darken($primary, 33%); // darker primary color
 $secondary: #EEEEEE; //secondary color (nearly white)
 $green: #559900;
+$yellow: #ffb81f;
 $red: #993300;
 
 $color-map: (
@@ -16,11 +16,11 @@ $color-map: (
         "secondary": $secondary,
         "success": $green,
         "danger": $red,
+        "warning": $yellow,
 );
 
 // fonts
-$font: 'Inter', sans-serif;
-$font-var: 'InterVariable', sans-serif;
+$font: sans-serif;
 
 // https://medium.com/@jainbhavukspeaks/leveraging-scss-mixins-to-create-responsive-layouts-the-easy-way-5bbe4080cb15
 
