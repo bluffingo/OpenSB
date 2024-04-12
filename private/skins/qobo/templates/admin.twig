@@ -166,12 +166,36 @@
 			data: {
 				datasets: [
 					{
-						label: 'Views',
+						label: 'Logged-in views',
 						data: [
 							{% for graph in data.graph_data.views %}
 							{
 								x: "{{ graph.date }}",
-								y: {{ graph.view_count }},
+								y: {{ graph.user_views }},
+							},
+							{% endfor %}
+						],
+						borderWidth: 1
+					},
+					{
+						label: 'Logged-out views',
+						data: [
+							{% for graph in data.graph_data.views %}
+							{
+								x: "{{ graph.date }}",
+								y: {{ graph.guest_views }},
+							},
+							{% endfor %}
+						],
+						borderWidth: 1
+					},
+					{
+						label: 'Crawler views',
+						data: [
+							{% for graph in data.graph_data.views %}
+							{
+								x: "{{ graph.date }}",
+								y: {{ graph.crawler_views }},
 							},
 							{% endfor %}
 						],

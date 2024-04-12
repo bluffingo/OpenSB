@@ -83,12 +83,24 @@ class SubmissionView
 
         $ip = Utilities::get_ip_address();
 
-        // I have a feeling that more than half of the views gained since qobo are non-genuine crawler views. -bluff 4/6/2024
-        if (!$CrawlerDetect->isCrawler()) {
-            if ($this->database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$id, crypt($ip, $ip)])['COUNT(video_id)'] < 1) {
-                $this->database->query("INSERT INTO views (video_id, user, timestamp) VALUES (?,?,?)",
-                    [$id, crypt($ip, $ip), time()]);
+        // I have a feeling that more than half of the views gained in 2023 are non-genuine crawler views.
+        // even with crawler detect, it doesn't quite work since squarebracket got 240 views on 4/11/2024.
+        // the best solution would be to check if the ip is from a consumer isp and not from a vps or a search
+        // engine crawler, but this would most likely require an api that would cost money to use in the long-term.
+        // i think only counting views from logged-in users would be good for now. -bluff 4/12/2024
+        if ($CrawlerDetect->isCrawler()) {
+            $type = "crawler";
+        } elseif ($auth->isUserLoggedIn()) {
+            $type = "user";
+        } else {
+            $type = "guest";
+        }
 
+        if ($this->database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$id, crypt($ip, $ip)])['COUNT(video_id)'] < 1) {
+            $this->database->query("INSERT INTO views (video_id, user, timestamp, type) VALUES (?,?,?,?)",
+                [$id, crypt($ip, $ip), time(), $type]);
+
+            if ($auth->isUserLoggedIn()) {
                 // increment the indexed view count. this might go out of sync eventually, but this can be fixed with a
                 // script that'll be run at least once a week via cron. -bluff 4/6/2024
                 $new_views = $this->data["views"] + 1;

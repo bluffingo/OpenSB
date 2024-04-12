@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2024 at 02:22 AM
+-- Generation Time: Apr 12, 2024 at 09:54 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -340,7 +340,8 @@ CREATE TABLE `videos` (
 CREATE TABLE `views` (
   `video_id` text NOT NULL,
   `user` text NOT NULL,
-  `timestamp` int(11) NOT NULL
+  `timestamp` int(11) NOT NULL,
+  `type` enum('guest','crawler','user') NOT NULL DEFAULT 'guest'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
