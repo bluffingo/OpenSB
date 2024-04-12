@@ -88,10 +88,10 @@ class SubmissionView
         // the best solution would be to check if the ip is from a consumer isp and not from a vps or a search
         // engine crawler, but this would most likely require an api that would cost money to use in the long-term.
         // i think only counting views from logged-in users would be good for now. -bluff 4/12/2024
-        if ($CrawlerDetect->isCrawler()) {
-            $type = "crawler";
-        } elseif ($auth->isUserLoggedIn()) {
+        if ($auth->isUserLoggedIn()) {
             $type = "user";
+        } elseif ($CrawlerDetect->isCrawler()) {
+            $type = "crawler";
         } else {
             $type = "guest";
         }
