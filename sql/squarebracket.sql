@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2024 at 09:54 PM
+-- Generation Time: Apr 12, 2024 at 10:21 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.3.4
 
@@ -341,7 +341,7 @@ CREATE TABLE `views` (
   `video_id` text NOT NULL,
   `user` text NOT NULL,
   `timestamp` int(11) NOT NULL,
-  `type` enum('guest','crawler','user') NOT NULL DEFAULT 'guest'
+  `type` enum('guest','user') NOT NULL DEFAULT 'guest'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --

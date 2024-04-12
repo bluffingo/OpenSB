@@ -189,18 +189,6 @@
 						],
 						borderWidth: 1
 					},
-					{
-						label: 'Crawler views',
-						data: [
-							{% for graph in data.graph_data.views %}
-							{
-								x: "{{ graph.date }}",
-								y: {{ graph.crawler_views }},
-							},
-							{% endfor %}
-						],
-						borderWidth: 1
-					},
 				]
 			},
 			options: {

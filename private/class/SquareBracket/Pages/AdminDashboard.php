@@ -161,8 +161,7 @@ class AdminDashboard
             "SELECT 
             DATE(FROM_UNIXTIME(timestamp)) AS date, 
             SUM(CASE WHEN type = 'user' THEN 1 ELSE 0 END) AS user_views,
-            SUM(CASE WHEN type = 'guest' THEN 1 ELSE 0 END) AS guest_views,
-            SUM(CASE WHEN type = 'crawler' THEN 1 ELSE 0 END) AS crawler_views
+            SUM(CASE WHEN type = 'guest' THEN 1 ELSE 0 END) AS guest_views
         FROM views
         GROUP BY DATE(FROM_UNIXTIME(timestamp))
         ORDER BY DATE(FROM_UNIXTIME(timestamp))"

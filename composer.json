@@ -11,8 +11,7 @@
 		"ext-pdo": "*",
 		"twig/string-extra": "3.x-dev",
 		"psr/http-client": "^1.0@dev",
-		"symfony/http-kernel": "7.1.x-dev",
-		"jaybizzle/crawler-detect": "dev-master"
+		"symfony/http-kernel": "7.1.x-dev"
 	},
 	"minimum-stability": "dev",
 	"config": {

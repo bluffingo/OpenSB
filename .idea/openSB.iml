@@ -2,7 +2,6 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/private/class" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/markdown-extra" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
@@ -54,7 +53,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-kernel" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/jaybizzle/crawler-detect" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

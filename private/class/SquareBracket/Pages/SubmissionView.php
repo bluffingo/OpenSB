@@ -8,7 +8,6 @@ use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\UserData;
 use SquareBracket\UnorganizedFunctions;
-use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
 /**
  * Backend code for the submission view (watch) page.
@@ -89,10 +88,8 @@ class SubmissionView
         // engine crawler, but this would most likely require an api that would cost money to use in the long-term.
         // i think only counting views from logged-in users would be good for now. -bluff 4/12/2024
         if ($auth->isUserLoggedIn()) {
-            $type = "user";
-        } elseif ($CrawlerDetect->isCrawler()) {
-            $type = "crawler";
-        } else {
+            $type = "user"; }
+        else {
             $type = "guest";
         }
 
