@@ -47,7 +47,7 @@ class Templating
         $this->twig = new Environment($this->loader, ['debug' => $isDebug]);
 
         // gets relevant path for include to use
-        $this->twig->addFunction(new TwigFunction('include_component', function($component) use ($loader_path) {
+        $this->twig->addFunction(new TwigFunction('component', function($component) use ($loader_path) {
             $path = '/components/' . $this->theme . '/' . $component . '.twig';
             $path_default = '/components/default/' . $component . '.twig';
 

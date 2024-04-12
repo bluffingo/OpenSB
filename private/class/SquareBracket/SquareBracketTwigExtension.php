@@ -346,6 +346,6 @@ HTML;
 
     public function getCSSFileDate()
     {
-        return filemtime(SB_PUBLIC_PATH . "/assets/css/common.css");
+        return filemtime(SB_PUBLIC_PATH . "/assets/css/default.css");
     }
 }

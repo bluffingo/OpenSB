@@ -3,9 +3,9 @@
  * Made by Bluffingo for OpenSB
  */
 
-@import 'base_variables';
+@import 'shared/base_variables';
 
-@import '_imports.scss';
+@import 'shared/imports';
 
 :root {
 	font-family: $font;
@@ -152,6 +152,19 @@ hr {
 	margin: 5px;
 }
 
-@import 'watch_page';
-@import 'profile_page';
-@import 'notice_page';
+
+@import 'default/header';
+@import 'default/footer';
+@import 'default/forms';
+@import 'default/content_box';
+@import 'default/banner';
+@import 'default/comments';
+@import 'default/sections';
+@import 'default/journals';
+@import 'default/buttons';
+@import 'default/jumbotron';
+@import 'default/menus';
+
+@import 'default/watch_page';
+@import 'default/profile_page';
+@import 'default/notice_page';

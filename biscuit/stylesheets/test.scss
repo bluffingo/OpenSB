@@ -8,7 +8,7 @@
  * Biscuit themes are going to be a lot more "flexible".
  */
 
-@import 'base_variables';
+@import 'shared/base_variables';
 
 // AND NOW we override these variables
 
@@ -32,7 +32,7 @@ $content-box-border-color: darken($secondary, 7.5%);
 $context-box-padding: 12px;
 
 // now import the basic biscuit stuff
-@import '_imports.scss';
+@import 'shared/imports';
 
 .header-test {
   text-align: center;

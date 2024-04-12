@@ -4,11 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} - {{ website_branding.name }}</title>
-    {% if current_theme != "default" %}
-        <link rel="stylesheet" href="/assets/css/{{ current_theme }}.css?r={{ get_css_file_date() }}">
-    {% else %}
-        <link rel="stylesheet" href="/assets/css/common.css?r={{ get_css_file_date() }}">
-    {% endif %}
+    <link rel="stylesheet" href="/assets/css/{{ current_theme }}.css?r={{ get_css_file_date() }}">
     <meta name="theme-color" content="#FF723D">
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:url" content="{{ page_url }}">
@@ -56,16 +52,16 @@
     {% endblock %}
 </head>
 <body>
-{{ include(include_component('header')) }}
+{{ include(component('header')) }}
 {% block precontent %}{% endblock %}
 <div class="page">
     <div class="page-contents">
-        {{ include(include_component('banners')) }}
+        {{ include(component('banners')) }}
         <div class="container {{ page_name }}">
         {% block content %}{% endblock %}
         </div>
     </div>
-    {{ include(include_component('footer')) }}
+    {{ include(component('footer')) }}
 </div>
 {% block scripts %}{% endblock %}
 <script src="/assets/common_new.js"></script>
