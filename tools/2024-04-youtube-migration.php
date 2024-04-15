@@ -102,3 +102,5 @@ INSERT INTO videos (video_id, title, description, author, time, tags, videofile,
 // this script should automatically remove these strings
 // -~--~-~~-~- Please watch: "Its Gamerappa Bro " https://www.youtube.com/watch?v=3SoYlf99KEU -~--~-~~-~-
 // 💬 Join the Gamerappium Discord Server! https://discord.gg/FAEEuMhn3M
+
+// ALSO THIS IS INCOMPLETE. IDK IF I'LL FINISH IT

@@ -96,6 +96,8 @@ class SubmissionView
             $this->database->query("INSERT INTO views (video_id, user, timestamp, type) VALUES (?,?,?,?)",
                 [$id, crypt($ip, $ip), time(), $type]);
 
+            // BUG: if a user views a submission logged out, and then logs onto sb, and then comes back to that submission,
+            // the views doesn't count even though it should. -bluff 4/13/2024
             if ($auth->isUserLoggedIn()) {
                 // increment the indexed view count. this might go out of sync eventually, but this can be fixed with a
                 // script that'll be run at least once a week via cron. -bluff 4/6/2024
