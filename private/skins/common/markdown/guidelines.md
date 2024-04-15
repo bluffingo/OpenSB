@@ -1,5 +1,5 @@
 # squareBracket Upload Guidelines 
-Last updated by Bluffingo on April 11th 2024.
+Last updated by Chaziz on April 11th 2024.
 
 ## What we don't allow
 **If you upload anything that falls under this list, your accounts will most likely be terminated.**

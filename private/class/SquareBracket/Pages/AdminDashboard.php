@@ -18,7 +18,7 @@ class AdminDashboard
     {
         global $auth, $isBluffingoSB;
         // Honest question: Why the fuck are we using globals for getting shit from config.php? This seems poorly
-        // designed. -Bluffingo 12/11/2023
+        // designed. -Chaziz 12/11/2023
 
         $this->database = $orange->getDatabase();
         if (!$auth->isUserAdmin()) {
@@ -32,7 +32,7 @@ class AdminDashboard
         // Unfortunately, it is unknown as to when that account was registered prior to the alteration, as the earliest
         // archives of this account's profile from June 2021 are from after the account data was altered.
         // https://web.archive.org/web/20210625203937/https://squarebracket.veselcraft.ru/user.php?name=squareBracket
-        // Bluffingo -12/11/2023
+        // Chaziz -12/11/2023
 
         if ($isBluffingoSB) {
             $date = mktime(0, 0, 0, 1, 31, 2021);

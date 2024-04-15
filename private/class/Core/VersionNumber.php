@@ -19,7 +19,7 @@ class VersionNumber
     {
         // Check if the instance is git cloned. If it is, have the version string be
         // precise. Otherwise, just indicate that it's a "Non-source copy", though we
-        // should find a better term for this. -Bluffingo 12/19/2023
+        // should find a better term for this. -Chaziz 12/19/2023
         if (file_exists(SB_GIT_PATH)) {
             $gitHead = file_get_contents(SB_GIT_PATH . '/HEAD');
             $gitBranch = rtrim(preg_replace("/(.*?\/){2}/", '', $gitHead));

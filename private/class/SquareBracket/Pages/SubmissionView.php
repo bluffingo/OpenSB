@@ -85,7 +85,7 @@ class SubmissionView
         // even with crawler detect, it doesn't quite work since squarebracket got 240 views on 4/11/2024.
         // the best solution would be to check if the ip is from a consumer isp and not from a vps or a search
         // engine crawler, but this would most likely require an api that would cost money to use in the long-term.
-        // i think only counting views from logged-in users would be good for now. -bluff 4/12/2024
+        // i think only counting views from logged-in users would be good for now. -chaziz 4/12/2024
         if ($auth->isUserLoggedIn()) {
             $type = "user"; }
         else {
@@ -97,10 +97,10 @@ class SubmissionView
                 [$id, crypt($ip, $ip), time(), $type]);
 
             // BUG: if a user views a submission logged out, and then logs onto sb, and then comes back to that submission,
-            // the views doesn't count even though it should. -bluff 4/13/2024
+            // the views doesn't count even though it should. -chaziz 4/13/2024
             if ($auth->isUserLoggedIn()) {
                 // increment the indexed view count. this might go out of sync eventually, but this can be fixed with a
-                // script that'll be run at least once a week via cron. -bluff 4/6/2024
+                // script that'll be run at least once a week via cron. -chaziz 4/6/2024
                 $new_views = $this->data["views"] + 1;
                 $this->database->query("UPDATE videos SET views = ? WHERE id = ?",
                     [$new_views, $this->data["id"]]);

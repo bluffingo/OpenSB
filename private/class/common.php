@@ -101,7 +101,7 @@ $database = $orange->getDatabase();
 // automatic stuff
 // this should probably have a cooldown or something i don't fucking know
 
-// this can be easily bypassed but my paranoia wants me to implement this -bluffingo 4/8/2024
+// this can be easily bypassed but my paranoia wants me to implement this -Chaziz 4/8/2024
 if (isset($_SERVER['HTTP_REFERER'])) {
     $blacklistedReferers = $database->fetch("SELECT url from blacklisted_referer where url = ?", [$_SERVER['HTTP_REFERER']]);
     if ($blacklistedReferers) {

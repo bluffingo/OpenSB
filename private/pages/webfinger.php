@@ -44,7 +44,7 @@ $resource = $_GET['resource'] ?? null;
 
 $address = substr($resource, 5); // remove "acct:"
 $extractedAddress = explode('@', $address);
-// $extractedAddress[0] -> "bluffingo"
+// $extractedAddress[0] -> "Chaziz"
 // $extractedAddress[1] -> "squarebracket.pw"
 
 // check if the domain is our domain

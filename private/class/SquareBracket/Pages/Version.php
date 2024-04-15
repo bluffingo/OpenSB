@@ -31,7 +31,7 @@ class Version
     {
         return [
             "developers" => [
-                'Bluffingo',
+                'Chaziz',
                 'icanttellyou',
                 'ROllerozxa',
             ],
