@@ -26,7 +26,7 @@ This site uses a token cookie (`SBTOKEN`) to keep you logged in, this token shou
 If you have published personal information you would like to remove, use the tools given to edit it out if applicable. If this is not possible (e.g. you want to rename a personally identifiable username) or you would like to fully erase it, please contact Chaziz or sks2002.
 
 ## Transparency
-squareBracket runs on OpenSB, which is fully open source and its source code [is available on GitHub](https://github.com/Chaziz/OpenSB). You may inspect the source code yourself to see how your data is handled by the software.
+squareBracket runs on OpenSB, which is fully open source and its source code [is available on GitHub](https://github.com/Bluffingo/OpenSB). You may inspect the source code yourself to see how your data is handled by the software.
 
 ## Updates
-Updates to this privacy policy are done as commits to the OpenSB Git repository ([View changes](https://github.com/Chaziz/OpenSB/blob/main/private/skins/common/markdown/privacy_policy.md)). You will be alerted of any substantial changes made to the privacy policy through the squareBracket Discord server.
+Updates to this privacy policy are done as commits to the OpenSB Git repository ([View changes](https://github.com/Bluffingo/OpenSB/blob/main/private/skins/common/markdown/privacy_policy.md)). You will be alerted of any substantial changes made to the privacy policy through the squareBracket Discord server.
