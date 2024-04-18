@@ -30,7 +30,7 @@ $branding = [
 	"assets_location" => "/assets/placeholder",
 ];
 
-$isBluffingoSB = false; // this makes opensb use bunnycdn for storage.
+$isBluffingoSB = false; // this makes opensb use bunnycdn for storage. however, this is deprecated.
 
 // only used if $isBluffingoSB is true
 $bunnySettings = [
@@ -49,3 +49,8 @@ $disableWritingJournals = false;
 $debugLogging = false;
 
 $enableFederatedStuff = false;
+
+// this should match with the dynamic alias' location.
+// for a production environment, it may be preferred to
+// not have the dynamic folder be inside the opensb directory.
+$dynamicFolderLocation = "insert/dynamic/location/here";

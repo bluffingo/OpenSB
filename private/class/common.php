@@ -2,6 +2,8 @@
 
 namespace OpenSB;
 
+global $host, $user, $pass, $db, $isBluffingoSB, $debugLogging, $isMaintenance, $dynamicFolderLocation;
+
 if (version_compare(PHP_VERSION, '8.2.0') <= 0) {
     die('<strong>OpenSB is not compatible with your PHP version. OpenSB supports PHP 8.2 or newer.</strong>');
 }
@@ -16,6 +18,10 @@ if (!file_exists(SB_PRIVATE_PATH . '/conf/config.php')) {
 
 require_once(SB_PRIVATE_PATH . '/conf/config.php');
 
+if(!file_exists($dynamicFolderLocation)) {
+    die('<strong>The dynamic folder can not be found. Please read the installing instructions in the README file.</strong>');
+}
+
 require_once(SB_VENDOR_PATH . '/autoload.php');
 
 // please use apache/nginx for production stuff.
@@ -24,8 +30,6 @@ if (php_sapi_name() == "cli-server") {
 } else {
     define("SB_PHP_BUILTINSERVER", false);
 }
-
-global $host, $user, $pass, $db, $isBluffingoSB, $debugLogging, $isMaintenance;;
 
 use Core\Authentication;
 use Core\Utilities;
