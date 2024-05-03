@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2024 at 12:12 AM
+-- Generation Time: May 03, 2024 at 01:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.3.4
 
@@ -129,7 +129,9 @@ CREATE TABLE `invite_keys` (
   `id` int(11) NOT NULL,
   `invite_key` varchar(64) NOT NULL,
   `generated_by` int(11) NOT NULL,
-  `claimed_by` int(11) DEFAULT NULL
+  `claimed_by` int(11) DEFAULT NULL,
+  `generated_time` int(11) NOT NULL,
+  `claimed_time` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

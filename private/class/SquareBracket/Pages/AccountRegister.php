@@ -19,7 +19,7 @@ class AccountRegister
         global $disableRegistration;
 
         if ($disableRegistration) {
-            UnorganizedFunctions::Notification("The ability to register on this OpenSB instance has been disabled.", "/");
+            UnorganizedFunctions::Notification("The ability to register has been disabled.", "/");
         }
 
         $ipcheck = file_get_contents("https://api.stopforumspam.org/api?ip=" . Utilities::get_ip_address());
@@ -70,7 +70,7 @@ class AccountRegister
             $userId = $this->database->insertId();
 
             if ($enableInviteKeys) {
-                $this->database->query("UPDATE invite_keys SET claimed_by = ? WHERE invite_key = ?", [$userId, $invite]);
+                $this->database->query("UPDATE invite_keys SET claimed_by = ?, claimed_time = ? WHERE invite_key = ?", [$userId, time(), $invite]);
             }
 
             setcookie('SBTOKEN', $token, 2147483647);

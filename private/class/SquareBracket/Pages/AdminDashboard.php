@@ -58,13 +58,20 @@ class AdminDashboard
                 } else {
                     $this->database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
                         [$id, $POST["reason"], time()]);
-                    UnorganizedFunctions::Notification("Banned user!", "/admin.php");
+                    UnorganizedFunctions::Notification("Banned user!", "/admin.php", "success");
                 }
+            } elseif ($POST["action"] == "generate_invite_key") {
+                $random = strtoupper("SB" . UnorganizedFunctions::generateRandomizedString(16));
+
+                $this->database->query("INSERT INTO invite_keys (invite_key, generated_by, generated_time) VALUES (?,?,?)",
+                    [$random, $auth->getUserID(), time()]);
+
+                UnorganizedFunctions::Notification("Generated key! ($random)", "/admin.php", "success");
             }
         } else if (isset($GET["action"])) {
             if ($GET["action"] == "unban_user") {
                 if ($this->database->query("DELETE FROM bans WHERE userid = ?", [$GET["user"]])) {
-                    UnorganizedFunctions::Notification("Unbanned user!", "/admin.php");
+                    UnorganizedFunctions::Notification("Unbanned user!", "/admin.php", "success");
                 }
             }
         }
@@ -88,6 +95,20 @@ class AdminDashboard
             $bannedUserData[] = $banned_user;
         }
 
+        // Get the invite keys
+        $inviteKeys = $this->database->fetchArray($this->database->query("SELECT * FROM invite_keys"));
+
+        $inviteKeyData = [];
+        foreach ($inviteKeys as $inviteKey) {
+            $generatedBy = $this->database->fetch("SELECT u.name FROM users u WHERE u.id = ?", [$inviteKey["generated_by"]]);
+            $claimedBy = $this->database->fetch("SELECT u.name FROM users u WHERE u.id = ?", [$inviteKey["claimed_by"]]);
+
+            $inviteKey["generated_by"] = $generatedBy;
+            $inviteKey["claimed_by"] = $claimedBy;
+
+            $inviteKeyData[] = $inviteKey;
+        }
+
         $this->data = [
             "numbers" => $this->database->fetch($query),
             "system" => [
@@ -101,6 +122,7 @@ class AdminDashboard
                 "views" => $this->countViews(),
             ],
             "bans" => $bannedUserData,
+            "invites" => $inviteKeyData,
             "time" => [
                 "formatted_date" => date("F j, Y", $date),
                 "relative_days" => round((time() - $date) / 60 / 60 / 24), // we want the total number of days,

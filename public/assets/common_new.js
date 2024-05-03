@@ -3,6 +3,30 @@ function error(error) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Get all tab links
+    const tabLinks = document.querySelectorAll(".tablink");
+
+    // Add click event listener to each tab link
+    tabLinks.forEach(tabLink => {
+        tabLink.addEventListener("click", function() {
+            const tabId = this.getAttribute("data-tab");
+
+            // Hide all tab content
+            const tabContents = document.querySelectorAll(".tabcontent");
+            tabContents.forEach(tabContent => {
+                tabContent.style.display = "none";
+            });
+
+            // Remove 'active' class from all tab links
+            tabLinks.forEach(link => {
+                link.classList.remove("active");
+            });
+
+            // Show the selected tab content and mark the button as active
+            document.getElementById(tabId).style.display = "block";
+            this.classList.add("active");
+        });
+    });
 
     // Get all menu buttons and menus
     const menuButtons = document.querySelectorAll('.menuButton');

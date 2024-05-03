@@ -64,7 +64,8 @@
     {{ include(component('footer')) }}
 </div>
 {% block scripts %}{% endblock %}
-<script src="/assets/common_new.js"></script>
+{# yes #}
+<script src="/assets/common_new.js?r={{ get_css_file_date() }}"></script>
 <!-- {{ version_banner() }} -->
 </body>
 </html>

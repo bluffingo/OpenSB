@@ -6,6 +6,7 @@ use Core\CoreException;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use JetBrains\PhpStorm\NoReturn;
+use Random\Randomizer;
 
 /**
  * Static utilities.
@@ -290,5 +291,27 @@ class UnorganizedFunctions
     {
         header('Location: ' . sprintf($url, ...$args));
         die();
+    }
+
+    public static function generateRandomizedString($length, $includeSymbols = false): string
+    {
+        if ($includeSymbols) {
+            $string = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-";
+        } else {
+            $string = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        }
+
+        if (version_compare(PHP_VERSION, '8.3.0', '<')) {
+            $new = substr(str_shuffle($string),0,$length);
+        } else {
+            // this feels cleaner imho
+            $randomizer = new Randomizer();
+            $new = $randomizer->getBytesFromString(
+                $string,
+                $length,
+            );
+        }
+
+        return $new;
     }
 }

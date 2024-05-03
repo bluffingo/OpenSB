@@ -58,17 +58,7 @@ class SubmissionUpload
     {
         global $storage, $auth, $isDebug;
 
-        if (version_compare(PHP_VERSION, '8.3.0', '<')) {
-            $new = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"),0,11);
-        } else {
-            // this feels cleaner imho
-            $randomizer = new Randomizer();
-            $new = $randomizer->getBytesFromString(
-                '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-',
-                11,
-            );
-        }
-
+        $new = UnorganizedFunctions::generateRandomizedString(11, true);
         $uploader = $auth->getUserID();
 
         $title = ($post_data['title'] ?? null);

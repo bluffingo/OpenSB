@@ -8,6 +8,12 @@
   &.button-small {
     padding: $button-padding-small;
   }
+
+  &.button-huge {
+    font-size: 32px;
+    padding: $button-padding-huge;
+    border-radius: 10px;
+  }
 }
 
 @each $color, $value in $color-map {
