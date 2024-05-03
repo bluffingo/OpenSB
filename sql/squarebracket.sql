@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2024 at 10:21 PM
+-- Generation Time: May 03, 2024 at 12:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.3.4
 
@@ -117,6 +117,19 @@ CREATE TABLE `comments` (
 CREATE TABLE `favorites` (
   `user_id` int(11) NOT NULL,
   `video_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invite_keys`
+--
+
+CREATE TABLE `invite_keys` (
+  `id` int(11) NOT NULL,
+  `invite_key` varchar(64) NOT NULL,
+  `generated_by` int(11) NOT NULL,
+  `claimed_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -260,8 +273,7 @@ CREATE TABLE `tag_index` (
 
 CREATE TABLE `tag_meta` (
   `tag_id` int(11) NOT NULL,
-  `name` text NOT NULL,
-  `latestUse` bigint(20) NOT NULL
+  `name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -385,6 +397,12 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
 
 --
+-- Indexes for table `invite_keys`
+--
+ALTER TABLE `invite_keys`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `journals`
 --
 ALTER TABLE `journals`
@@ -465,6 +483,12 @@ ALTER TABLE `channel_comments`
 --
 ALTER TABLE `comments`
   MODIFY `comment_id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `invite_keys`
+--
+ALTER TABLE `invite_keys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `journals`

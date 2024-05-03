@@ -12,30 +12,37 @@
                     <form method="post" name="loginForm" id="loginForm" action="register" class="form-signin">
                         <div>
                             <label for="email">Email address:</label>
-                            <input type="email" name="email" class="form-submit" placeholder="Email address">
+                            <input type="email" name="email" class="form-submit">
                         </div>
 
                         <div>
                             <label for="username">Username:</label>
-                            <input type="text" name="username" class="form-submit" placeholder="Username">
+                            <input type="text" name="username" class="form-submit">
                         </div>
 
                         <div>
                             <label for="pass1">Password:</label>
-                            <input type="password" name="pass1" class="form-submit" placeholder="Password">
+                            <input type="password" name="pass1" class="form-submit">
                         </div>
 
                         <div>
                             <label for="pass2">Password (confirm):</label>
-                            <input type="password" name="pass2" class="form-submit" placeholder="Password (confirm)">
+                            <input type="password" name="pass2" class="form-submit">
                         </div>
+
+                        {% if invite_keys_enabled %}
+                        <div>
+                            <label for="invite">Invite key:</label>
+                            <input type="text" name="invite" class="form-submit">
+                        </div>
+                        {% endif %}
 
                         <div class="form-button-container">
                             <input type="submit" class="button button-primary" value="Register" name="registersubmit">
                         </div>
                     </form>
-                    <div>By registering on {{ website_branding.name }}, you accept the <a href="/privacy">Privacy Policy</a>.</div>
                 </div>
             </div>
+            <div>By registering on {{ website_branding.name }}, you accept the <a href="/privacy">Privacy Policy</a>.</div>
         </div>
     {% endblock %}

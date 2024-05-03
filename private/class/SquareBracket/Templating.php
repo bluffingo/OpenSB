@@ -29,7 +29,7 @@ class Templating
      */
     public function __construct(SquareBracket $orange)
     {
-        global $isBluffingoSB, $auth, $defaultTemplate, $isDebug, $branding, $googleAdsClient;
+        global $isBluffingoSB, $auth, $defaultTemplate, $isDebug, $branding, $enableInviteKeys;
         chdir(__DIR__ . '/../..');
         $this->skin = $orange->getLocalOptions()["skin"] ?? $defaultTemplate;
         $this->theme = $orange->getLocalOptions()["theme"] ?? "default";
@@ -82,6 +82,7 @@ class Templating
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('website_branding', $branding);
         $this->twig->addGlobal('current_theme', $this->theme); // not to be confused with skins
+        $this->twig->addGlobal('invite_keys_enabled', $enableInviteKeys); // not to be confused with skins
 
         if (isset($_SERVER["REQUEST_URI"])) {
             $this->twig->addGlobal('page_name', empty(basename($_SERVER["REQUEST_URI"], '.php')) ? 'index' : basename($_SERVER["REQUEST_URI"], '.php'));

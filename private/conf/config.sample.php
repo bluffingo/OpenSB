@@ -49,3 +49,4 @@ $disableWritingJournals = false;
 $debugLogging = false;
 
 $enableFederatedStuff = false;
+$enableInviteKeys = false;
