@@ -127,7 +127,7 @@ foreach ($ipBannedUsers as $ipBannedUser) {
     }
 }
 
-$storage = new Storage($isChazizSB, $bunnySettings);
+$storage = new Storage($orange->getDatabase(), $isChazizSB, $bunnySettings);
 
 if (!file_exists(SB_GIT_PATH)) {
     echo $twig->render("error.twig", [
