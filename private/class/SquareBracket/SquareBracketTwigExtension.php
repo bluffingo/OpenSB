@@ -304,6 +304,10 @@ HTML;
                     "name" => $username,
                     "url" => "/user/" . $username,
                 ],
+                "my_submissions" => [
+                    "name" => "My submissions",
+                    "url" => "/my_submissions",
+                ],
                 "settings" => [
                     "name" => "Settings",
                     "url" => "/settings",
