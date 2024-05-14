@@ -63,7 +63,7 @@ class Storage
 
         if ($this->chazizInstance) {
             $guid = $this->database->fetch("SELECT videofile from videos where video_id = ?", [$id]);
-            return "https://" . $this->bunnyCDNSettings["streamHostName"] . "/" . $guid["videofile"] . "/thumbnail.jpg";
+            return "https://" . $this->bunnyCDNSettings["streamHostname"] . "/" . $guid["videofile"] . "/thumbnail.jpg";
         } else {
             if (file_exists('../dynamic/thumbnails/' . $id . '.png')) {
                 return '../dynamic/thumbnails/' . $id . '.png';
