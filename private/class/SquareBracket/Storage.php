@@ -3,10 +3,13 @@
 namespace SquareBracket;
 
 use Core\Database;
+use Symfony\Component\HttpClient\Psr18Client;
+use ToshY\BunnyNet\Client\BunnyClient;
 use ToshY\BunnyNet\StreamAPI;
 
 class Storage
 {
+    private mixed $bunnyClient;
     private Database $database;
     private bool $chazizInstance;
     private array $bunnyCDNSettings;
@@ -14,9 +17,13 @@ class Storage
         $this->database = $database;
 
         if ($isChazizSB) {
+            $this->bunnyClient = new BunnyClient(
+                client: new Psr18Client(),
+            );
             $this->chazizInstance = true;
             $this->bunnyCDNSettings = $bunnySettings;
         } else {
+            $this->bunnyClient = null;
             $this->chazizInstance = false;
             $this->bunnyCDNSettings = [];
         }
