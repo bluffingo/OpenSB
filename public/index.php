@@ -4,11 +4,12 @@ namespace OpenSB;
 
 global $enableFederatedStuff;
 
-define("SB_DYNAMIC_PATH", dirname(__DIR__) . '/dynamic');
-define("SB_PUBLIC_PATH", dirname(__DIR__) . '/public'); // we need this for SquareBracketTwigExtension
-define("SB_PRIVATE_PATH", dirname(__DIR__) . '/private');
-define("SB_VENDOR_PATH", dirname(__DIR__) . '/vendor');
-define("SB_GIT_PATH", dirname(__DIR__) . '/.git'); // ONLY FOR makeVersionString() IN SquareBracket CLASS.
+define("SB_ROOT_PATH", dirname(__DIR__));
+define("SB_DYNAMIC_PATH", SB_ROOT_PATH . '/dynamic');
+define("SB_PUBLIC_PATH", SB_ROOT_PATH . '/public'); // we need this for SquareBracketTwigExtension
+define("SB_PRIVATE_PATH", SB_ROOT_PATH . '/private');
+define("SB_VENDOR_PATH", SB_ROOT_PATH . '/vendor');
+define("SB_GIT_PATH", SB_ROOT_PATH . '/.git'); // ONLY FOR makeVersionString() IN SquareBracket CLASS.
 
 use SquareBracket\UnorganizedFunctions;
 
@@ -33,6 +34,7 @@ if (isset($path[1]) && $path[1] != '') {
         },
         'admin' => require(SB_PRIVATE_PATH . '/pages/admin.php'),
         'browse' => require(SB_PRIVATE_PATH . '/pages/browse.php'),
+        'delete' => require(SB_PRIVATE_PATH . '/pages/delete.php'),
         'edit' => require(SB_PRIVATE_PATH . '/pages/edit.php'),
         'feature' => require(SB_PRIVATE_PATH . '/pages/feature.php'),
         'guidelines' => require(SB_PRIVATE_PATH . '/pages/guidelines.php'),
@@ -40,6 +42,7 @@ if (isset($path[1]) && $path[1] != '') {
         'license' => require(SB_PRIVATE_PATH . '/pages/license.php'),
         'login' => require(SB_PRIVATE_PATH . '/pages/login.php'),
         'logout' => require(SB_PRIVATE_PATH . '/pages/logout.php'),
+        'my_submissions' => require(SB_PRIVATE_PATH . '/pages/my_submissions.php'),
         'notices' => require(SB_PRIVATE_PATH . '/pages/notices.php'),
         'privacy' => require(SB_PRIVATE_PATH . '/pages/privacy.php'),
         'read' => require(SB_PRIVATE_PATH . '/pages/read.php'),

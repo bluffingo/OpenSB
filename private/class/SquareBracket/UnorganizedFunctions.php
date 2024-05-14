@@ -141,14 +141,6 @@ class UnorganizedFunctions
         if ($auth->isUserLoggedIn()) {
             $rating = $auth->getUserData()["comfortable_rating"];
 
-            /*
-            $return_value = match ($rating) {
-                'general' => 'v.rating = "general"',
-                'questionable' => 'v.rating = "general" or v.rating = "questionable"',
-                'mature' => 'v.rating = "general" or v.rating = "questionable" or v.rating = "mature"',
-            };
-            */
-
             $return_value = match ($rating) {
                 'general' => 'v.rating IN ("general")',
                 'questionable' => 'v.rating IN ("general","questionable")',

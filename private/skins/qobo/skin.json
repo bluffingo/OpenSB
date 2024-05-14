@@ -9,11 +9,6 @@
         "id": "default",
         "name": "Default",
         "description": "The default squareBracket user experience."
-      },
-      {
-        "id": "test",
-        "name": "Test Theme",
-        "description": "A theme intended to test themes in OpenSB."
       }
     ]
   }

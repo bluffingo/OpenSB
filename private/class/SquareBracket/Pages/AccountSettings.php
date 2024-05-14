@@ -29,7 +29,7 @@ class AccountSettings
             UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
         }
 
-        // we should let banned users change settings.
+        // we shouldn't let banned users change settings.
         /*
         if ($auth->getUserBanData()) {
             $orange->Notification("You cannot proceed with this action.", "/");

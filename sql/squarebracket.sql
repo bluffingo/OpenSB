@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2024 at 01:57 AM
+-- Generation Time: May 14, 2024 at 07:19 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.3.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `qobo`
+-- Database: `qobo_idontfuckingcare`
 --
 
 -- --------------------------------------------------------
@@ -107,6 +107,20 @@ CREATE TABLE `comments` (
   `date` bigint(20) NOT NULL COMMENT 'UNIX timestamp when the comment was posted.',
   `deleted` tinyint(4) NOT NULL COMMENT 'States that the comment is deleted'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `deleted_videos`
+--
+
+CREATE TABLE `deleted_videos` (
+  `autoint` int(11) NOT NULL,
+  `id` varchar(11) NOT NULL,
+  `uploaded_time` bigint(20) NOT NULL,
+  `deleted_time` bigint(20) NOT NULL,
+  `moved_to_bitqobo` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -275,7 +289,8 @@ CREATE TABLE `tag_index` (
 
 CREATE TABLE `tag_meta` (
   `tag_id` int(11) NOT NULL,
-  `name` text NOT NULL
+  `name` text NOT NULL,
+  `latestUse` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -355,7 +370,7 @@ CREATE TABLE `views` (
   `video_id` text NOT NULL,
   `user` text NOT NULL,
   `timestamp` int(11) NOT NULL,
-  `type` enum('guest','user') NOT NULL DEFAULT 'guest'
+  `type` enum('guest','user') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -397,6 +412,12 @@ ALTER TABLE `channel_comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
+
+--
+-- Indexes for table `deleted_videos`
+--
+ALTER TABLE `deleted_videos`
+  ADD PRIMARY KEY (`autoint`);
 
 --
 -- Indexes for table `invite_keys`
@@ -485,6 +506,12 @@ ALTER TABLE `channel_comments`
 --
 ALTER TABLE `comments`
   MODIFY `comment_id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `deleted_videos`
+--
+ALTER TABLE `deleted_videos`
+  MODIFY `autoint` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `invite_keys`

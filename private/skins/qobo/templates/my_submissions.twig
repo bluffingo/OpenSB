@@ -5,18 +5,14 @@
 {% block content %}
     <div class="section">
         <div class="section-title">
-            <h1>Browse ({{ data.count }})</h1>
+            <h1>My submissions ({{ data.count }})</h1>
         </div>
         <div class="content-box">
             {% for submission in data.submissions %}
-                {{ include('/components/_index_submission.twig') }}
+                {{ include('/components/_edit_submission.twig') }}
             {% endfor %}
         </div>
-        {% if data.type == 'all' %}
-            {% set le_url = 'browse?page=%s' %}
-        {% else %}
-            {% set le_url = 'browse?type=' ~ type ~ '&page=%s' %}
-        {% endif %}
+        {% set le_url = 'my_submissions?page=%s' %}
 
         {{ pagination(data.count, 20, le_url, page) }}
     </div>

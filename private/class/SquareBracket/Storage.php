@@ -113,4 +113,25 @@ class Storage
 
         unlink($temp_name);
     }
+
+    public function deleteSubmission($data): void
+    {
+        if ($data["post_type"] == 0) {
+            if ($this->chazizInstance) {
+                $streamApi = new StreamAPI(
+                    apiKey: $this->bunnyCDNSettings["streamApi"],
+                    client: $this->bunnyClient,
+                );
+
+                $streamApi->deleteVideo(
+                    libraryId: $this->bunnyCDNSettings["streamLibrary"],
+                    videoId: $data["videofile"],
+                );
+            } else {
+                unlink(SB_ROOT_PATH . $data["videofile"]);
+            }
+        } else {
+            unlink(SB_ROOT_PATH . $data["videofile"]);
+        }
+    }
 }

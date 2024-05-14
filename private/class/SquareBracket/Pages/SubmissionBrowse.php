@@ -19,7 +19,6 @@ class SubmissionBrowse
 
     public function __construct(\SquareBracket\SquareBracket $orange, $type, $page)
     {
-        global $auth;
         $this->order = $this->getOrderFromType($type);
         $this->limit = sprintf("LIMIT %s,%s", (($page - 1) * 20), 20);
 
