@@ -24,13 +24,13 @@ class UnorganizedFunctions
      */
     public static function getSubmissionFile(array|bool $submission): array|string|null
     {
-        global $isBluffingoSB, $bunnySettings;
+        global $isChazizSB, $bunnySettings;
         if ($submission == null)
         {
             return null;
         }
 
-        if ($isBluffingoSB) {
+        if ($isChazizSB) {
             if ($submission['post_type'] == 0) {
                 // videofile on videos using bunnycdn are the guid, don't ask me why. -grkb 4/8/2023
                 return "https://" . $bunnySettings["streamHostname"] . "/" . $submission["videofile"] . "/playlist.m3u8";

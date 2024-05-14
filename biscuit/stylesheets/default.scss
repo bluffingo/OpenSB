@@ -16,7 +16,7 @@ $font-var: 'InterVariable', sans-serif;
 
 :root {
 	font-family: $font;
-	font-feature-settings: 'liga' 1, 'calt' 1;
+	font-feature-settings: 'calt' 1, 'ospz' 1;
 }
 @supports (font-variation-settings: normal) {
 	:root { font-family: $font-var; }
@@ -33,8 +33,8 @@ body
 	background: #F9F9F9;
 	color: #000000;
 	font-size: small;
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	margin: 0;
 	font-weight: 400;
 }
 

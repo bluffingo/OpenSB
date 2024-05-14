@@ -30,9 +30,10 @@ $branding = [
 	"assets_location" => "/assets/placeholder",
 ];
 
-$isBluffingoSB = false; // this makes opensb use bunnycdn for storage.
+$isChazizSB = false; // this makes opensb use bunnycdn for storage.
 
-// only used if $isBluffingoSB is true
+// only used if $isChazizSB is true
+// not everything here is actually used.
 $bunnySettings = [
 	"streamApi" => "stream api key",
 	"streamLibrary" => 12345,

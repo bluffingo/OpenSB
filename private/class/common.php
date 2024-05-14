@@ -25,12 +25,11 @@ if (php_sapi_name() == "cli-server") {
     define("SB_PHP_BUILTINSERVER", false);
 }
 
-global $host, $user, $pass, $db, $isBluffingoSB, $debugLogging, $isMaintenance;;
+global $host, $user, $pass, $db, $isChazizSB, $debugLogging, $isMaintenance, $bunnySettings;
 
 use Core\Authentication;
 use Core\Utilities;
-use SquareBracket\BunnyStorage;
-use SquareBracket\LocalStorage;
+use SquareBracket\Storage;
 use SquareBracket\Profiler;
 use SquareBracket\SquareBracket;
 use SquareBracket\Templating;
@@ -128,11 +127,7 @@ foreach ($ipBannedUsers as $ipBannedUser) {
     }
 }
 
-if ($isBluffingoSB) {
-    $storage = new BunnyStorage($orange);
-} else {
-    $storage = new LocalStorage($orange);
-}
+$storage = new Storage($isChazizSB, $bunnySettings);
 
 if (!file_exists(SB_GIT_PATH)) {
     echo $twig->render("error.twig", [

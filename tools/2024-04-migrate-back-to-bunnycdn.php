@@ -1,7 +1,7 @@
 <?php
 namespace OpenSB;
 
-global $orange, $storage, $isBluffingoSB;
+global $orange, $storage, $isChazizSB;
 
 define("SB_DYNAMIC_PATH", dirname(__DIR__) . '/dynamic');
 define("SB_PRIVATE_PATH", dirname(__DIR__) . '/private');
@@ -15,7 +15,7 @@ $sql = $orange->getDatabase();
 // this only does videos. everything else should be migrated manually using the bunnycdn admin panel.
 $submissions = $sql->fetchArray($sql->query("SELECT * FROM videos WHERE post_type = 0"));
 
-if (!$isBluffingoSB) { die("The isBluffingoSB variable MUST be enabled."); }
+if (!$isChazizSB) { die("The isChazizSB variable MUST be enabled."); }
 
 // if this fails during a video, edit default_socket_timeout in php.ini to a higher value.
 foreach ($submissions as $submission) {

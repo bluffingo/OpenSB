@@ -1,6 +1,5 @@
 <?php
-// Based on Rollerozxa's router implementation in Principia-Web.
-// https://github.com/principia-game/principia-web/blob/master/router.php
+// NOTE: This code fucking sucks
 namespace OpenSB;
 
 global $enableFederatedStuff;
@@ -21,6 +20,9 @@ require_once SB_PRIVATE_PATH . '/class/common.php';
 // if you're a developer looking to implement stuff like activitypub or webfinger or whatever,
 // i don't recommend using opensb as reference, i am a self-taught programmer and as such my
 // code quality is abysmal. -bluffingo 3/30/2024
+
+// Based on Rollerozxa's router implementation in Principia-Web.
+// https://github.com/principia-game/principia-web/blob/master/router.php
 
 if (isset($path[1]) && $path[1] != '') {
     match ($path[1]) {
