@@ -76,6 +76,6 @@ class SubmissionEdit
 
         $this->database->query("UPDATE videos SET title = ?, description = ? WHERE video_id = ?",
             [$title, $desc, $this->id]);
-        UnorganizedFunctions::Notification("Your submission's details has been modified.", "/watch?v=" . $this->id, "success");
+        UnorganizedFunctions::Notification("Your submission's details has been modified.", "/view/" . $this->id, "success");
     }
 }

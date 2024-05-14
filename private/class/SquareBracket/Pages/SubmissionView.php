@@ -45,6 +45,7 @@ class SubmissionView
             UnorganizedFunctions::Notification("This submission has been taken down: " . $takedown["reason"], "/");
         }
 
+        // todo: check if video is in deleted_videos
         $this->data = $this->submission->getData();
         if (!$this->data) {
             UnorganizedFunctions::Notification("This submission does not exist.", "/");
