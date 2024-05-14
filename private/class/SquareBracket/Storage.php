@@ -2,13 +2,17 @@
 
 namespace SquareBracket;
 
+use Core\Database;
 use ToshY\BunnyNet\StreamAPI;
 
 class Storage
 {
+    private Database $database;
     private bool $chazizInstance;
     private array $bunnyCDNSettings;
-    public function __construct(bool $isChazizSB, array $bunnySettings) {
+    public function __construct(Database $database, bool $isChazizSB, array $bunnySettings) {
+        $this->database = $database;
+
         if ($isChazizSB) {
             $this->chazizInstance = true;
             $this->bunnyCDNSettings = $bunnySettings;
