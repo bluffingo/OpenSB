@@ -7,12 +7,20 @@
 
 @import 'shared/imports';
 
+// google fonts inter is outdated
 @import url('https://rsms.me/inter/inter.css');
+
+// font used for chaziz/squarebracket branding
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+
+// bootstrap fonts
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 // fonts
-$font: 'Inter', sans-serif;
+$font: 'Inter', Helvetica, Arial, sans-serif;
 $font-var: 'InterVariable', sans-serif;
+
+$font-branding: 'Rethink Sans', Helvetica, Arial, sans-serif;
 
 :root {
 	font-family: $font;
@@ -48,6 +56,10 @@ a
 {
 	text-decoration: none;
 	color: $primary;
+
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 table.c1
@@ -76,6 +88,7 @@ img
 }
 
 h1 {
+	font-family: $font-branding;
 	margin-top: 0px;
 	font-size: 24px;
 }

@@ -36,15 +36,15 @@
         <div class="jumbotron-container">
             <div class="jumbotron-welcome">
                 {% if is_user_logged_in %}
-                    <div class="logged-in">
+                    <div class="jumbotron-logged-in">
                         <img src="{{ profile_picture(user_data.name) }}" class="pfp" alt="{{ user_data.name }}">
-                        <div>
+                        <div class="jumbotron-logged-in-text">
                             <h1>Welcome to {{ website_branding.name }}, {{ user_data.title }}</h1>
                             <p>@{{ user_data.name }}</p>
                         </div>
                     </div>
                 {% else %}
-                    <div class="logged-out">
+                    <div class="jumbotron-logged-out">
                         <h1>Welcome to {{ website_branding.name }}</h1>
                         {% if is_qobo %}
                             <p>Your content, your narration, your niche on the web.</p>

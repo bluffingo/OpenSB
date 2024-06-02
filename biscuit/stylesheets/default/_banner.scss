@@ -16,6 +16,12 @@
   .banner-#{$color} {
     background: $value;
     @include gradient-y($start-color: lighten($value, 2.5%), $end-color: $value);
-    color: contrast-color($value, #000, #fff) !important;
+    color: contrast-color($value, #000, #fff);
+
+    // without this, for example, the "guidelines" link in "Make sure you have read the guidelines first"
+    // would look weird as shit.
+    a {
+      color: contrast-color($value, #000, #fff);
+    }
   }
 }
