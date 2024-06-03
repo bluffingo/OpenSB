@@ -4,7 +4,7 @@
             <img src="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}"
                  alt="{{ submission.title }}"
                  title="{{ submission.title }} by {{ submission.author.info.username }}"
-                 class="content-image">
+                 class="content-image thumbnail">
         </a>
     </div>
     <div class="content-author">By {{ user_link(submission.author) }}</div>

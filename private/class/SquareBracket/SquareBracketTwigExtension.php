@@ -207,7 +207,7 @@ class SquareBracketTwigExtension extends AbstractExtension
                 $data = $location;
             }
         } else {
-            $data = false;
+            $data = "/assets/sbnext_channel_header_template.png";
         }
         return $data;
     }
