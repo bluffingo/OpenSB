@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $gump, $orange;
+global $twig, $orange;
 
 use SquareBracket\Pages\AccountRegister;
 use SquareBracket\Templating;

@@ -143,7 +143,7 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     public function thumbnail($id, $type, $custom)
     {
-        global $isChazizSB, $storage, $bunnySettings;
+        global $storage;
 
         $custom_location = '/dynamic/custom_thumbnails/' . $id . '.jpg';
 
@@ -151,11 +151,7 @@ class SquareBracketTwigExtension extends AbstractExtension
 
         if ($custom) {
             if ($storage->fileExists('..' . $custom_location)) {
-                if ($isChazizSB) {
-                    $data = "https://" . $bunnySettings["pullZone"] . $custom_location;
-                } else {
-                    $data = $custom_location;
-                }
+                $data = $custom_location;
             }
         } else {
             if ($type == 0) {
@@ -171,7 +167,7 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     public function profilePicture($username)
     {
-        global $database, $isChazizSB, $bunnySettings, $storage;
+        global $database, $storage;
         $location = '/dynamic/pfp/' . $username . '.png';
 
         $id = UnorganizedFunctions::usernameToID($database, $username);
@@ -182,11 +178,7 @@ class SquareBracketTwigExtension extends AbstractExtension
             $data = "/assets/profiledel.png";
         } else {
             if ($storage->fileExists('..' . $location)) {
-                if ($isChazizSB) {
-                    $data = "https://" . $bunnySettings["pullZone"] . $location;
-                } else {
-                    $data = $location;
-                }
+                $data = $location;
             } else {
                 $data = "/assets/profiledef.png";
             }
@@ -197,15 +189,11 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     public function profileBanner($username)
     {
-        global $isChazizSB, $bunnySettings, $storage;
+        global $storage;
         $location = '/dynamic/banners/' . $username . '.png';
 
         if ($storage->fileExists('..' . $location)) {
-            if ($isChazizSB) {
-                $data = "https://" . $bunnySettings["pullZone"] . $location;
-            } else {
-                $data = $location;
-            }
+            $data = $location;
         } else {
             $data = "/assets/sbnext_channel_header_template.png";
         }
