@@ -171,18 +171,27 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     public function profilePicture($username)
     {
-        global $isChazizSB, $bunnySettings, $storage;
+        global $database, $isChazizSB, $bunnySettings, $storage;
         $location = '/dynamic/pfp/' . $username . '.png';
 
-        if ($storage->fileExists('..' . $location)) {
-            if ($isChazizSB) {
-                $data = "https://" . $bunnySettings["pullZone"] . $location;
-            } else {
-                $data = $location;
-            }
+        $id = UnorganizedFunctions::usernameToID($database, $username);
+        // don't bother with userdata since that might slow shit down
+        $is_banned = $database->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
+
+        if ($is_banned) {
+            $data = "/assets/profiledel.png";
         } else {
-            $data = "/assets/placeholder/profiledef.png";
+            if ($storage->fileExists('..' . $location)) {
+                if ($isChazizSB) {
+                    $data = "https://" . $bunnySettings["pullZone"] . $location;
+                } else {
+                    $data = $location;
+                }
+            } else {
+                $data = "/assets/profiledef.png";
+            }
         }
+
         return $data;
     }
 
