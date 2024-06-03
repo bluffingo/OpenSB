@@ -1,3 +1,8 @@
+.content-image
+{
+    border-radius: 4px;
+}
+
 .content-header
 {
     background: $content-box-border-color;
@@ -37,7 +42,7 @@
         clear: both;
         padding: 6px 2px;
         border-bottom: 1px solid $content-box-border-color;
-        img.content-image
+        .content-image
         {
             margin-right: 8px;
         }
@@ -79,7 +84,7 @@
             a.content-image-link {
                 display: table-cell;
                 vertical-align: middle;
-                img.content-image {
+                .content-image {
                     max-height: 120px;
                     max-width: 120px;
                     margin: 2px auto;

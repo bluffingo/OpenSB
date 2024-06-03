@@ -10,9 +10,21 @@
   text-align: right;
   margin-left: auto;
   display: flex;
-  gap: 10px;
-  vertical-align: middle;
   align-items: center;
+
+  .header-links-username {
+    @include responsive('medium') {
+      display: block;
+    }
+    display: none;
+    margin-right: 10px;
+    font-size: 12px;
+  }
+
+  .header-links-caret {
+    margin-left: 2px;
+    font-size: 10px;
+  }
 
   .menuButton {
     .pfp {
@@ -55,14 +67,21 @@ form.header-search
 {
   display: none;
   width: 250px;
-  @include responsive('medium') {
+
+  @include responsive('small') {
     display: block;
-    flex-grow: 1;
-    text-align: center;
+    margin-left: 15px;
   }
 
   #header-search-input {
-    width: 250px - 75px;
+
+    @include responsive('small') {
+      max-width: 100px;
+    }
+    @include responsive('medium') {
+      max-width: 250px - 75px;
+    }
+
     padding: 6px;
   }
 

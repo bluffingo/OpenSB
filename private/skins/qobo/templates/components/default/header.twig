@@ -23,6 +23,7 @@
                     <!--
                     <a class="menulink" href="/notices">{{ user_notice_data }} notifications</a>
                     -->
+                    <div class="header-links-username">TESTIFICATE</div>
                     <div>
                         <div class="menuButton" data-menu-id="user-menu">
                             <img src="{{ profile_picture(user_data.name) }}" class="pfp" alt="{{ user_data.name }}">
@@ -32,6 +33,9 @@
                                 <a class="menu-item-button" href="{{ link.url }}">{{ link.name }}</a>
                             {% endfor %}
                         </div>
+                    </div>
+                    <div class="header-links-caret">
+                        <i class="bi bi-caret-down-fill"></i>
                     </div>
                 {% else %}
                     {% for link in header_user_links() %}

@@ -294,10 +294,12 @@ HTML;
                 "name" => "Browse",
                 "url" => "/browse",
             ],
+            /*
             "members" => [
                 "name" => "Members",
                 "url" => "/users",
             ],
+            */
         ];
     }
 
