@@ -18,9 +18,9 @@ $path = explode('/', $uri);
 
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
-// if you're a developer looking to implement stuff like activitypub or webfinger or whatever,
-// i don't recommend using opensb as reference, i am a self-taught programmer and as such my
-// code quality is abysmal. -bluffingo 3/30/2024
+// hello to anyone reading this code. i know this fucking sucks. 2024 is supposed to be the last year of opensb.
+// why am i not rewriting the codebase? because i already did that but it's for another project that's co-owned so
+// unless if that project dies off i can't use that codebase for squarebracket. -chaziz 6/2/2024
 
 // Based on Rollerozxa's router implementation in Principia-Web.
 // https://github.com/principia-game/principia-web/blob/master/router.php

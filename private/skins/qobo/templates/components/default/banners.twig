@@ -1,7 +1,9 @@
 {% if user_ban_data %}
     <div class="banner banner-danger">
-        <p>You have been banned for the following reason:</p>
-        {{ user_ban_data.reason | markdown }}
+        <i class="{{ notification_icon("danger") }} notification-icon"></i>
+        <span class="notification-text">
+        You have been banned for the following reason: {{ user_ban_data.reason }}
+        </span>
     </div>
 {% endif %}
 {% if session.notif_message %}

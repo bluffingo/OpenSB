@@ -2,8 +2,9 @@
   background: purple;
 
   &.homepage-banner {
-    background-size: cover;
-    background: linear-gradient(180deg, rgba(255,114,61,1) 42%, rgba(254,180,45,1) 100%); //straight outta chip chilla
+    //background-size: cover;
+    background: #FF8A00;
+    // background: linear-gradient(180deg, rgba(255,114,61,1) 42%, rgba(254,180,45,1) 100%); (march-june 2024 gradient)
     //background: linear-gradient(to bottom, #ffc578 0%, #fb9d23 100%) center; (old 2022 cheeserox gradient)
     color: white;
 
@@ -16,8 +17,11 @@
 
       .jumbotron-welcome {
         flex-grow: 1;
-        .logged-in {
+
+        .jumbotron-logged-in {
           display: flex;
+          align-items: center;
+
           .pfp {
             height: 100px;
             margin-right: 10px;

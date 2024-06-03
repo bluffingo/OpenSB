@@ -306,4 +306,9 @@ class UnorganizedFunctions
 
         return $new;
     }
+
+    public static function usernameToID($database, $username)
+    {
+        return $database->fetch("SELECT id FROM users WHERE name = ?", [$username])["id"];
+    }
 }
