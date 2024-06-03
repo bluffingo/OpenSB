@@ -1,13 +1,7 @@
 .jumbotron {
-  background: purple;
-
   &.homepage-banner {
-    //background-size: cover;
     background: #FF8A00;
-    // background: linear-gradient(180deg, rgba(255,114,61,1) 42%, rgba(254,180,45,1) 100%); (march-june 2024 gradient)
-    //background: linear-gradient(to bottom, #ffc578 0%, #fb9d23 100%) center; (old 2022 cheeserox gradient)
     color: white;
-
     margin-top: -$header-main-height;
     height: 150px + $header-main-height;
 
@@ -32,9 +26,7 @@
   }
 
   &.profile-banner {
-    background-size: cover;
-    background: #111 center;
-
+    background: #111 center/cover;
     margin-top: -($header-user-height + $header-main-height);
     height: 250px + ($header-user-height + $header-main-height);
 
@@ -44,10 +36,8 @@
   }
 
   // duplicate of the page class
-  .jumbotron-container
-  {
+  .jumbotron-container {
     @include maxwidths();
-
     display: flex;
     align-items: center;
     margin: auto;

@@ -1,17 +1,25 @@
-/* Hide all tab content by default */
 .tabcontent {
   display: none;
 }
 
-/* Style the tab buttons */
 .tablink {
   border: none;
   font-family: $font;
-  padding: 8px 18px;
+  padding: 4px 14px;
   cursor: pointer;
-}
+  transition: background-color 0.3s ease;
+  background-color: #eeeeee;
 
-/* Style the active tab */
-.tablink.active {
-  background-color: #ccc;
+  &:hover {
+    background-color: #fafafa;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: #ddd;
+  }
+
+  &.active {
+    background-color: #ccc;
+  }
 }

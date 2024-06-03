@@ -4,6 +4,9 @@
   border-radius: 5px;
   color: white;
   font-family: $font;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 
   &.button-small {
     padding: $button-padding-small;
@@ -19,22 +22,17 @@
 @each $color, $value in $color-map {
   .button-#{$color} {
     border: 1px solid darken($value, 7.5%);
-    background-color: lighten($value, 2.5%);
-    @include gradient-y($start-color: lighten($value, 2.5%), $end-color: $value);
-    color: contrast-color($value, #000, #fff) !important;
-  }
+    background-color: $value;
+    color: contrast-color($value, #000, #fff);
 
-  .button-#{$color}:hover {
-    background-color: lighten($value, 8.5%);
-    @include gradient-y($start-color: lighten($value, 8.5%), $end-color: lighten($value, 1.5%));
-    border: 1px solid darken($value, 1%);
-    color: contrast-color($value, #000, #fff) !important;
-  }
+    &:hover {
+      background-color: lighten($value, 10%);
+      border-color: darken($value, 10%);
+    }
 
-  .button-#{$color}:active {
-    border: 1px solid darken($value, 7.5%);
-    background-color: lighten($value, 10.5%);
-    @include gradient-y($start-color: lighten($value, 10.5%), $end-color: lighten($value, 5.5%));
-    color: contrast-color($value, #000, #fff) !important;
+    &:active {
+      background-color: darken($value, 5%);
+      border-color: darken($value, 12%);
+    }
   }
 }

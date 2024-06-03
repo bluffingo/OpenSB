@@ -90,6 +90,16 @@ class AdminDashboard
         $bannedUserData = [];
         foreach ($bans as $ban) {
             $banned_user = $this->database->fetch("SELECT u.* FROM users u WHERE u.id = ?", [$ban["userid"]]);
+
+            // avoids "conversion from false to array" is deprecated error if the banned user no longer exists
+            // due to manual db modification although in reality these bans should get automatically revoked
+            if (!$banned_user)
+            {
+                $banned_user = [
+                    "name" => "Deleted user"
+                ];
+            }
+
             $banned_user["ban_reason"] = $ban["reason"];
             $banned_user["ban_time"] = $ban["time"];
             $bannedUserData[] = $banned_user;

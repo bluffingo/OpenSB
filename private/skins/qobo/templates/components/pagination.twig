@@ -1,15 +1,30 @@
-{% set pages = (levels / lpp)|round(0, 'ceil') %}
+{% set pages = (levels / lpp) | round(0, 'ceil') %}
+{% set range = 5 %}
+{% set start = current - range > 0 ? current - range : 1 %}
+{% set end = current + range < pages ? current + range : pages %}
+
 {% if pages > 1 %}
     <div class="pagination">
-        {% for page in 1..pages %}
-            <span>
-				{% if page != current %}
-                    <a href="{{ url | format(page) }}"> {{ page }} </a>
+        {% if start > 1 %}
+            <a href="{{ url | format(1) }}" class="button button-secondary">1</a>
+            {% if start > 2 %}
+                <span class="pagination-ellipsis">...</span>
+            {% endif %}
+        {% endif %}
+        {% for page in start..end %}
+            <span class="pagination-item">
+                {% if page != current %}
+                    <a href="{{ url | format(page) }}" class="button button-secondary">{{ page }}</a>
                 {% else %}
-                    {{ page }}
+                    <span class="button button-primary">{{ page }}</span>
                 {% endif %}
-			</span>
+            </span>
         {% endfor %}
+        {% if end < pages %}
+            {% if end < pages - 1 %}
+                <span class="pagination-ellipsis">...</span>
+            {% endif %}
+            <a href="{{ url | format(pages) }}" class="button button-secondary">{{ pages }}</a>
+        {% endif %}
     </div>
 {% endif %}
-

@@ -1,13 +1,14 @@
-<div class="footer">
+<footer class="footer">
     <div class="footer-container">
-        <img src="/assets/opensb_logo.png" alt="OpenSB">
+        <img src="/assets/opensb_logo.png" alt="OpenSB Logo">
         <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.
-            | <a href="/privacy">Privacy policy</a> · <a href="/theme">Customize</a></p>
+            <span aria-hidden="true">|</span> <a href="/privacy">Privacy policy</a></p>
         <p>Running <a href="/version">OpenSB {{ opensb_version }}</a></p>
         {% if is_debug %}
-            <p>
-                {{ profiler_stats() }}
-            </p>
+            <p>{{ profiler_stats() }}</p>
+        {% endif %}
+        {% if is_qobo %}
+            <p><small>A <a href="https://bluffingo.net/">Chaziz</a> Project.</small></p>
         {% endif %}
     </div>
-</div>
+</footer>

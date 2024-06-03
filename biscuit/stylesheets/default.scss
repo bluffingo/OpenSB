@@ -44,6 +44,7 @@ body
 	padding: 0;
 	margin: 0;
 	font-weight: 400;
+	line-height: 1.4;
 }
 
 td, th
@@ -62,24 +63,23 @@ a
 	}
 }
 
-table.c1
-{
+table.c1 {
 	width: 100%;
 	border: 1px solid darken($secondary, 15%);
+
 	tbody {
 		margin: 0;
 	}
-}
 
-tr.h
-{
-	background-color: darken($secondary, 15%);
-	color: #ffffff;
-}
+	tr {
+		border: 1px solid darken($secondary, 15%);
+		padding: 20px;
+	}
 
-tr {
-	border: 1px solid darken($secondary, 15%);
-	padding: 20px;
+	tr.h {
+		background-color: darken($secondary, 15%);
+		color: #fff;
+	}
 }
 
 img
@@ -117,22 +117,22 @@ img.img-responsive {
 }
 
 textarea,
-input[type]:not([type=file]):not([type=submit]) {
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
 	border: 1px solid darken($content-box-border-color, 1%);
-	background: lighten($content-box-background-color, 3.5%);
-	color: black;
-	box-shadow: 0 0 0px #0c0c0c;
-	transition: border linear 0.3s, box-shadow linear 0.3s;
+	background-color: lighten($content-box-background-color, 3.5%);
+	color: #000;
+	transition: border linear 0.3s;
 	border-radius: 3px;
 	padding: 5px;
 	font-family: $font;
-}
 
-textarea:focus,
-input[type]:not([type=file]):not([type=submit]):focus {
-	border-color: $primary;
-	outline: none;
-	box-shadow: 0 0 1px $primary;
+	&:focus {
+		border-color: $primary;
+		outline: none;
+	}
 }
 
 code {
@@ -140,10 +140,14 @@ code {
 }
 
 pre {
-	background: #ffe8e8;
+	background-color: #ffe8e8;
+	border: 1px solid #eed1d1;
 	border-radius: 5px;
-	padding: 5px;
+	padding: 10px;
 	margin: 0;
+	overflow-x: auto;
+	line-height: 1.5;
+	white-space: pre-wrap;
 }
 
 .pfp {
@@ -165,13 +169,6 @@ hr {
 		color: #d78157;
 	}
 }
-
-.xdebug-var-dump {
-	border: 1px solid $content-box-border-color;
-	background: $content-box-background-color;
-	margin: 5px;
-}
-
 
 @import 'default/header';
 @import 'default/footer';
