@@ -34,8 +34,13 @@ class Templating
         $this->skin = $orange->getLocalOptions()["skin"] ?? $defaultTemplate;
         $this->theme = $orange->getLocalOptions()["theme"] ?? "default";
 
-        // TODO: reset theme if the user changes their skin to another skin
+        // biscuit frontend is now internally called "biscuit" to avoid any confusion with bitqobo
+        if ($this->skin == "qobo")
+        {
+            $this->skin = "biscuit";
+        }
 
+        // TODO: reset theme if the user changes their skin to another skin
         if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
             $this->skin = $defaultTemplate;
@@ -71,7 +76,7 @@ class Templating
             }));
         }
 
-        $this->twig->addGlobal('is_qobo', $isChazizSB);
+        $this->twig->addGlobal('is_chaziz_sb', $isChazizSB);
         $this->twig->addGlobal('is_debug', $isDebug);
         $this->twig->addGlobal('is_user_logged_in', $auth->isUserLoggedIn());
         $this->twig->addGlobal('user_data', $auth->getUserData());

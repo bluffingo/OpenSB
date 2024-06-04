@@ -30,15 +30,12 @@ class UnorganizedFunctions
             return null;
         }
 
-        if ($isChazizSB) {
-            if ($submission['post_type'] == 0) {
-                // videofile on videos using bunnycdn are the guid, don't ask me why. -grkb 4/8/2023
-                return "https://" . $bunnySettings["streamHostname"] . "/" . $submission["videofile"] . "/playlist.m3u8";
-            } elseif ($submission['post_type'] == 2) {
-                // https://qobo-grkb.b-cdn.net/dynamic/art/f_eKEJNj4bm.png
-                return "https://" . $bunnySettings["pullZone"] . $submission["videofile"];
-            }
+        if ($isChazizSB && $submission['post_type'] == 0)
+        {
+            // videofile on videos using bunnycdn are the guid, don't ask me why. -grkb 4/8/2023
+            return "https://" . $bunnySettings["streamHostname"] . "/" . $submission["videofile"] . "/playlist.m3u8";
         }
+
         return $submission['videofile'];
     }
 
@@ -55,7 +52,7 @@ class UnorganizedFunctions
             $ratings["4"] +
             $ratings["5"]);
 
-        if($total_ratings == 0) {
+        if ($total_ratings == 0) {
             $average_ratings = 0;
         } else {
             $average_ratings = ($ratings["1"] +

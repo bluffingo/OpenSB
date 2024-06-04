@@ -22,7 +22,7 @@ $isMaintenance = false;
 $paginationLimit = 20; //Pagination limit.
 
 // TEMPLATE OPTIONS
-$defaultTemplate = "qobo";
+$defaultTemplate = "biscuit";
 
 // Branding
 $branding = [

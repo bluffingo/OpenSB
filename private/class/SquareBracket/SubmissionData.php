@@ -15,10 +15,10 @@ class SubmissionData
 
     // FLAGS
 
-    // 00000001: featured submission, at least back in the squarebracket milestone/alpha 2 days.
+    // 00000001: featured submission, at least back in the opensb milestone/alpha 2 days.
     public const FLAG_FEATURED = 1;
 
-    // 00000010: Unprocessed VIDEO submission, which is now unused but a few image submissions on qobo still have
+    // 00000010: Unprocessed VIDEO submission, which is now unused but a few image submissions on squarebracket still have
     // this flag toggled.
     public const FLAG_UNPROCESSED = 2;
 
