@@ -3,6 +3,10 @@
   .footer-container {
     @include maxwidths();
     margin: auto;
+
+    img {
+      height: 50px;
+    }
   }
 
   margin-top: 5px;

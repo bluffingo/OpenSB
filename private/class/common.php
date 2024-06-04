@@ -91,11 +91,10 @@ if ($debugLogging) { // TODO: migrate this over to sb_debug_output
 }
 
 $orange = new SquareBracket($host, $user, $pass, $db);
-$auth = new Authentication($orange->getDatabase(), $_COOKIE['SBTOKEN'] ?? null);
+$database = $orange->getDatabase();
+$auth = new Authentication($database, $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new Profiler();
 $twig = new Templating($orange);
-
-$database = $orange->getDatabase();
 
 // automatic stuff
 // this should probably have a cooldown or something i don't fucking know
