@@ -1,11 +1,15 @@
 {% extends "_layout.twig" %}
 
-{% set title = "Browse" %}
+{% set title = "My submissions" %}
 
 {% block content %}
+    {% set items_per_page = 20 %}
+    {% set total_pages = (data.count / items_per_page) | round(0, 'ceil') %}
+    {% set current_page = page %}
+
     <div class="section">
         <div class="section-title">
-            <h1>My submissions ({{ data.count }})</h1>
+            <h1>My submissions (Page {{ current_page }} of {{ total_pages }})</h1>
         </div>
         <div class="content-box">
             {% for submission in data.submissions %}
@@ -14,6 +18,6 @@
         </div>
         {% set le_url = 'my_submissions?page=%s' %}
 
-        {{ pagination(data.count, 20, le_url, page) }}
+        {{ pagination(data.count, items_per_page, le_url, current_page) }}
     </div>
 {% endblock %}
