@@ -7,7 +7,7 @@
 		"erusev/parsedown": "dev-master",
 		"php-ffmpeg/php-ffmpeg": "1.2.0",
 		"toshy/bunnynet-php": "^4.0",
-		"symfony/http-client": "7.1.0",
+		"symfony/http-client": "7.1.1",
 		"ext-pdo": "*",
 		"twig/string-extra": "3.x-dev",
 		"psr/http-client": "^1.0@dev",
