@@ -29,6 +29,7 @@ global $host, $user, $pass, $db, $isChazizSB, $debugLogging, $isMaintenance, $bu
 
 use Core\Authentication;
 use Core\Utilities;
+use SquareBracket\Adapter\ActivityPubToSB;
 use SquareBracket\Storage;
 use SquareBracket\Profiler;
 use SquareBracket\SquareBracket;
@@ -95,6 +96,7 @@ $database = $orange->getDatabase();
 $auth = new Authentication($database, $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new Profiler();
 $twig = new Templating($orange);
+$activityPubAdapter = new ActivityPubToSB($orange);
 
 // automatic stuff
 // this should probably have a cooldown or something i don't fucking know

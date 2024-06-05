@@ -38,7 +38,7 @@ if (isset($_POST["loginsubmit"])) {
                 'expires' => $expires,
                 'path' => '/',
                 'domain' => '',
-                'secure' => true,
+                'secure' => false,
                 'httponly' => true,
                 'samesite' =>'Lax',
             ]);

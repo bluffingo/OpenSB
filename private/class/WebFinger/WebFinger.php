@@ -32,10 +32,17 @@ class WebFinger
         // $extractedAddress[0] -> "Chaziz"
         // $extractedAddress[1] -> "squarebracket.pw"
 
+        // DEV
+        if ($extractedAddress[1] == "helloworld.chaziz") {
+            $type = "http";
+        } else {
+            $type = "https";
+        }
+
         // http://squarebracket.pw/.well-known/webfinger?resource=acct:Chaziz@squarebracket.pw
         $response = $this->client->request(
             "GET",
-            "https://{$extractedAddress[1]}/.well-known/webfinger?resource=acct:{$this->address}"
+            "{$type}://{$extractedAddress[1]}/.well-known/webfinger?resource=acct:{$this->address}"
         );
 
         // If the webfinger request failed, then don't bother.
