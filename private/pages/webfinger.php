@@ -2,11 +2,9 @@
 
 namespace OpenSB;
 
-global $orange, $domain, $enableFederatedStuff;
+global $domain, $enableFederatedStuff, $database;
 
 if (!$enableFederatedStuff) { die(); }
-
-$db = $orange->getDatabase();
 
 // https://docs.joinmastodon.org/spec/webfinger/
 
@@ -54,7 +52,7 @@ if ($extractedAddress[1] != $domain) {
     die();
 } else {
     // it's our domain, so do a db query to see if the user exists.
-    if (!$db->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$extractedAddress[0]])) {
+    if (!$database->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$extractedAddress[0]])) {
         // user doesn't exist, so 404.
         http_response_code(404);
         die();
