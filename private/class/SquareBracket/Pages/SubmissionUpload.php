@@ -87,6 +87,8 @@ class SubmissionUpload
                 }
 
                 UnorganizedFunctions::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
+            } else {
+                UnorganizedFunctions::Notification("There's a problem with permissions and/or PHP File configuration on the server. Please contact the instance staff.", "/upload");
             }
         } elseif (in_array(strtolower($ext), $this->supportedImageFormats, true)) {
             $storage->processImage($temp_name, $new);
@@ -96,7 +98,7 @@ class SubmissionUpload
 
             UnorganizedFunctions::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
         } else {
-            UnorganizedFunctions::Notification("This file format is not supported.", "/");
+            UnorganizedFunctions::Notification("This file format is not supported.", "/upload");
         }
     }
 }

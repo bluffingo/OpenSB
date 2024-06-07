@@ -9,7 +9,7 @@ use SquareBracket\Templating;
 
 $page = new SubmissionUpload($orange);
 
-if (isset($_POST['upload']) or isset($_POST['upload_video']) and isset($userdata['name'])) {
+if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLoggedIn()) {
     $page->postData($_POST, $_FILES);
 }
 
