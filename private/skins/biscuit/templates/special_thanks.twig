@@ -1,0 +1,25 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Version" %}
+
+{% block content %}
+    <div class="section">
+        <div class="section-title">
+            <h1>Special thanks to</h1>
+        </div>
+        <div class="content-box">
+            <ul>
+                {% for user, details in data %}
+                    <li>
+                        {% if details.url is defined %}
+                            <a href="{{ details.url }}">{{ details.name }}</a>
+                        {% else %}
+                            {{ details.name }}
+                        {% endif %}
+                        - {{ details.reason }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

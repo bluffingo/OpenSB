@@ -56,7 +56,10 @@ if (isset($path[1]) && $path[1] != '') {
             default => require(SB_PRIVATE_PATH . '/pages/user.php')
         },
         'users' => require(SB_PRIVATE_PATH . '/pages/users.php'),
-        'version' => require(SB_PRIVATE_PATH . '/pages/version.php'),
+        'version' => match ($path[2] ?? null) {
+            'special_thanks' => require(SB_PRIVATE_PATH . '/pages/special_thanks.php'),
+            default => require(SB_PRIVATE_PATH . '/pages/version.php'),
+        },
         'view' => require(SB_PRIVATE_PATH . '/pages/watch.php'),
         'watch' => UnorganizedFunctions::redirect('/view/' . $_GET['v']),
         'write' => require(SB_PRIVATE_PATH . '/pages/write.php'),

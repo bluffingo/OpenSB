@@ -1,7 +1,6 @@
 {
 	"require": {
 		"twig/twig": "3.10.3",
-		"mpratt/relativetime": "1.5.13",
 		"intervention/image": "^3.2",
 		"twig/markdown-extra": "3.10.0",
 		"erusev/parsedown": "dev-master",
