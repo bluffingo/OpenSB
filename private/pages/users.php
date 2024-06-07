@@ -1,5 +1,5 @@
 <?php
-// ported from principia-web by grkb -4/20/2023
+// ported from principia-web by chaziz -4/20/2023
 namespace OpenSB;
 
 // TODO: do not include fake "users" generated from activitypub profiles. -chaziz 6/7/2024
