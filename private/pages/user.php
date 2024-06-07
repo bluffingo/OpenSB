@@ -17,7 +17,7 @@ if (isset($_GET['name'])) UnorganizedFunctions::redirect('/user/' . $_GET['name'
 if ($enableFederatedStuff) {
     if (str_contains($_SERVER['HTTP_ACCEPT'], 'application/ld+json') ||
         str_contains($_SERVER['HTTP_ACCEPT'], 'application/activity+json')) {
-        require(SB_PRIVATE_PATH . '/pages/user_json.php');
+        require(SB_PRIVATE_PATH . '/pages/user_activitypub.php');
         die();
     }
 }

@@ -51,7 +51,7 @@ function sb_debug_output($string) {
     }
 }
 
-if ($debugLogging) { // TODO: migrate this over to sb_debug_output
+if ($debugLogging) {
     // Get all headers and requests sent to this server
     $headers     = getallheaders();
     $postData    = $_POST;
@@ -62,7 +62,26 @@ if ($debugLogging) { // TODO: migrate this over to sb_debug_output
     $serverData  = $_SERVER;
 
     // Get the type of request - used in the log filename
-    $type = isset($body["type"]) ? " " . $body["type"] : "";
+    // If there's nothing, use the URL as an alternative.
+    $urlPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $pathParts = explode('/', trim($urlPath, '/'));
+
+    if (isset($body["type"])) {
+        $type = $body["type"];
+    } else {
+        if (!empty($pathParts)) {
+            if ($pathParts[0] === "") {
+                $type = "index";
+            } else if (count($pathParts) >= 2) {
+                $lastTwoParts = array_slice($pathParts, -2);
+                $type = implode(" ", $lastTwoParts);
+            } else {
+                $type = $pathParts[0];
+            }
+        } else {
+            $type = "unknown";
+        }
+    }
 
     // Unix timestamp, whatever.
     $timestamp = time();

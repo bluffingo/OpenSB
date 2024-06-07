@@ -19,6 +19,8 @@ $domain = 'example.com';
 $isDebug = false; // DEV ONLY
 $isMaintenance = false;
 
+$debugLogging = false;
+
 $paginationLimit = 20; //Pagination limit.
 
 // TEMPLATE OPTIONS
@@ -46,8 +48,6 @@ $bunnySettings = [
 $disableRegistration = false;
 $disableUploading = false;
 $disableWritingJournals = false;
-
-$debugLogging = false;
 
 $enableFederatedStuff = false;
 $enableInviteKeys = false;
