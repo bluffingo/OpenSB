@@ -33,11 +33,6 @@ class ActivityPubToSB
             }
         }
 
-        // dev only
-        if (str_contains($url, 'https://helloworld.chaziz')) {
-            $url = str_replace('https://', 'http://', $url);
-        }
-
         if ($url) {
             $response = $this->httpClient->request(
                 "GET",

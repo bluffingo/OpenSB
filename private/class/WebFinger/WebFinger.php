@@ -32,13 +32,6 @@ class WebFinger
         // $extractedAddress[0] -> "Chaziz"
         // $extractedAddress[1] -> "squarebracket.pw"
 
-        // DEV
-        if ($extractedAddress[1] == "helloworld.chaziz") {
-            $type = "http";
-        } else {
-            $type = "https";
-        }
-
         // http://squarebracket.pw/.well-known/webfinger?resource=acct:Chaziz@squarebracket.pw
         $response = $this->client->request(
             "GET",
