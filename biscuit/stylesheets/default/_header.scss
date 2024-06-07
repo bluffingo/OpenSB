@@ -12,6 +12,10 @@
   display: flex;
   align-items: center;
 
+  .header-links-menu-container {
+    direction: rtl;
+  }
+
   .header-links-username {
     @include responsive('medium') {
       display: block;
