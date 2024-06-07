@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $orange, $auth, $domain, $enableFederatedStuff, $activityPubAdapter;
+global $auth, $domain, $enableFederatedStuff, $activityPubAdapter, $database;
 
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
@@ -13,6 +13,14 @@ use WebFinger\WebFinger;
 $username = $path[2] ?? null;
 
 if (isset($_GET['name'])) UnorganizedFunctions::redirect('/user/' . $_GET['name']);
+
+if ($enableFederatedStuff) {
+    if (str_contains($_SERVER['HTTP_ACCEPT'], 'application/ld+json') ||
+        str_contains($_SERVER['HTTP_ACCEPT'], 'application/activity+json')) {
+        require(SB_PRIVATE_PATH . '/pages/user_json.php');
+        die();
+    }
+}
 
 function getSubmissionFromFeaturedID($database, $data)
 {
@@ -63,7 +71,6 @@ function getSubmissionFromFeaturedID($database, $data)
 
 $isFediverse = false;
 $whereRatings = UnorganizedFunctions::whereRatings();
-$database = $orange->getDatabase();
 
 if (str_contains($username, "@" . $domain) && $enableFederatedStuff) {
     // if the handle matches our domain then don't treat it as an external fediverse account

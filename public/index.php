@@ -53,7 +53,6 @@ if (isset($path[1]) && $path[1] != '') {
         'theme' => require(SB_PRIVATE_PATH . '/pages/theme.php'),
         'upload' => require(SB_PRIVATE_PATH . '/pages/upload.php'),
         'user' => match ($_SERVER['HTTP_ACCEPT'] ?? null) {
-            ($enableFederatedStuff && (str_contains($_SERVER['HTTP_ACCEPT'], "application/ld+json") || str_contains($_SERVER['HTTP_ACCEPT'], "application/activity+json"))) => require(SB_PRIVATE_PATH . '/pages/user_json.php'),
             default => require(SB_PRIVATE_PATH . '/pages/user.php')
         },
         'users' => require(SB_PRIVATE_PATH . '/pages/users.php'),
