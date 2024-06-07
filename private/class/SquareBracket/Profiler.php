@@ -33,7 +33,7 @@ class Profiler
     }
 
     function getStats() {
-        printf("Rendered in %1.3fs with %dKB memory used. %s. %s",
+        printf("Rendered in %1.8fs with %dKB memory used. %s. %s",
             microtime(true) - $this->starttime,
             memory_get_usage(false) / 1024, $this->whoAmI(), $this->getAuthData());
     }

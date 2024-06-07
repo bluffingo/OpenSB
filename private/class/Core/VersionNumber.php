@@ -29,7 +29,7 @@ class VersionNumber
 
             $this->version = sprintf('%s-%s', $hash, $gitBranch);
         } else {
-            $this->version = sprintf('Unknown');
+            $this->version = 'Unknown';
         }
     }
 

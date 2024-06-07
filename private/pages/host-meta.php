@@ -13,6 +13,9 @@ my testing instance of akkoma 3.13.2 complains about not finding a lrdd template
 this appears to be a new thing, since my previous testing which was done online in the wild on an akkoma 3.10.4
 instance was able to fetch a opensb profile pretty easily.
 
+UPDATE: no, it's a weird-ass WSL quirk mixed with ssl shittery. i pointed helloworld.sb to my local ip and i
+disabled ssl checks on akkoma through via the help of https://docs.akkoma.dev/stable/development/setting_up_akkoma_dev/#testing-with-https
+
 this is the output:
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -30,5 +33,5 @@ header('Content-Type: application/xrd+xml; charset=utf-8');
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' .
     '<XRD xmlns="http://docs.oasis-open.org/ns/xri/xrd-1.0">' .
-    '<Link type="application/xrd+xml" template="' . $domain . '/.well-known/webfinger?resource={uri}" rel="lrdd" />' .
+    '<Link type="application/xrd+xml" template="https://' . $domain . '/.well-known/webfinger?resource={uri}" rel="lrdd" />' .
     '</XRD>';
