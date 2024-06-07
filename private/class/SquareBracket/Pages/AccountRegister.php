@@ -49,8 +49,8 @@ class AccountRegister
         if (!isset($username)) $error .= "Blank username. ";
         if (!isset($pass2) || $pass != $pass2) $error .= "The passwords don't match. ";
         //if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) $error .= "Invalid email format. ";
-        if ($this->database->result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= "Username has already been taken. "; //ashley2012 bypassed this -gr 7/26/2021
-        if (!preg_match('/^[a-zA-Z0-9\-_]+$/', $username)) $error .= "Username contains invalid characters. "; //ashley2012 bypassed this with the long-ass arabic character. -gr 7/26/2021
+        if ($this->database->result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= "Username has already been taken. ";
+        if (!preg_match('/^[a-zA-Z0-9\-_]+$/', $username)) $error .= "Username contains invalid characters. "; //the "long-ass arabic character" exploit was fixed a long time ago. -chaziz 6/7/2024
         if ($this->database->result("SELECT COUNT(*) FROM users WHERE email = ?", [$mail])) $error .= "Email already registered. ";
         if ($this->database->result("SELECT COUNT(*) FROM users WHERE ip = ?", [Utilities::get_ip_address()]) > 10)
             $error .= "Limit of 10 accounts per IP reached. ";

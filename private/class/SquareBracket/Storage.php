@@ -32,7 +32,7 @@ class Storage
     public function processVideo($new, $target_file): void
     {
         if ($this->chazizInstance) {
-            // this fucking shit won't work if i put this on __construct(). -grkb 4/7/2023
+            // this fucking shit won't work if i put this on __construct(). -chaziz 4/7/2023
             $streamApi = new StreamAPI(
                 apiKey: $this->bunnyCDNSettings["streamApi"],
                 client: $this->bunnyClient,

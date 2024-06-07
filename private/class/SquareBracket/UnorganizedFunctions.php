@@ -32,7 +32,7 @@ class UnorganizedFunctions
 
         if ($isChazizSB && $submission['post_type'] == 0)
         {
-            // videofile on videos using bunnycdn are the guid, don't ask me why. -grkb 4/8/2023
+            // videofile on videos using bunnycdn are the guid, don't ask me why. -chaziz 4/8/2023
             return "https://" . $bunnySettings["streamHostname"] . "/" . $submission["videofile"] . "/playlist.m3u8";
         }
 
