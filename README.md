@@ -5,7 +5,7 @@
 
 I wouldn't recommend using this code unless if you ***really*** know what you're doing.
 
-1. Get an Apache server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. NGINX/FreeNGINX should work, but we use Apache with squareBracket.
+1. Get an Apache or NGINX server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. NGINX/FreeNGINX will work, but we use Apache with squareBracket.
 1. Setup a virtual host. Look below the steps for an example.
 1. Run `composer update` from the terminal.
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
@@ -24,7 +24,7 @@ I wouldn't recommend using this code unless if you ***really*** know what you're
 1. Enable debugging features by setting `$isDebug` to true.
 1. If you want to be able to upload during development, make the `dynamic/` directory and the directories inside it writable by your web server.
 
-### Virtual host example
+### Apache's Virtual host example
 You will have to modify the directories to match your instance's location.
 ```
 <VirtualHost *> 
@@ -39,6 +39,34 @@ You will have to modify the directories to match your instance's location.
         AllowOverride All
     </Directory>
 </VirtualHost>
+```
+
+### NGINX's config example
+Please note that this example uses `php-fpm`.
+You will have to modify the directories to match your instance's location.
+```
+server {
+    listen       80;
+    server_name  localhost;
+
+    root   /opt/html/OpenSB/public;
+
+    location / {
+        try_files $uri /index.php$is_args$args;
+    }
+
+    location /dynamic/ {
+        root /opt/html/OpenSB/;
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ index.php$ {
+        include fastcgi_params;
+        fastcgi_index index.php;
+        fastcgi_pass unix:/run/php-fpm/php-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+}
 ```
 
 ## Questions
