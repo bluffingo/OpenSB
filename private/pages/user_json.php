@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $orange, $domain, $path;
+global $orange, $domain, $path, $storage;
 
 $db = $orange->getDatabase();
 
@@ -23,6 +23,8 @@ if (!$data)
     die();
 }
 
+$pfpLocation = '/dynamic/pfp/' . $data["name"] . '.png';
+
 $output = [
     "@context" => [
         "https://www.w3.org/ns/activitystreams",
@@ -37,11 +39,14 @@ $output = [
     "preferredUsername" => "{$data["name"]}",
     "name" => "{$data["title"]}",
     "summary" => "{$data["about"]}",
-    "icon" => [
+];
+
+if ($storage->fileExists('..' . $pfpLocation)) {
+    $output["icon"] = [
         "type" => "Image",
         "url" => "https://{$domain}/dynamic/pfp/{$data["name"]}.png"
-    ]
-];
+    ];
+}
 
 header("Content-Type: application/activity+json");
 echo json_encode($output);
