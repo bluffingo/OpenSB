@@ -1,19 +1,19 @@
 {
 	"require": {
-		"twig/twig": "^3.0",
-		"mpratt/relativetime": "dev-master",
+		"twig/twig": "3.10.3",
+		"mpratt/relativetime": "1.5.13",
 		"intervention/image": "^3.2",
-		"twig/markdown-extra": "3.x-dev",
+		"twig/markdown-extra": "3.10.0",
 		"erusev/parsedown": "dev-master",
 		"php-ffmpeg/php-ffmpeg": "1.2.0",
-		"toshy/bunnynet-php": "^4.0",
+		"toshy/bunnynet-php": "4.2.1",
 		"symfony/http-client": "7.1.1",
 		"ext-pdo": "*",
-		"twig/string-extra": "3.x-dev",
-		"psr/http-client": "^1.0@dev",
-		"symfony/http-kernel": "7.1.x-dev"
+		"twig/string-extra": "3.10.0",
+		"psr/http-client": "1.0.3",
+		"symfony/http-kernel": "7.1.1"
 	},
-	"minimum-stability": "dev",
+	"minimum-stability": "stable",
 	"config": {
 		"platform": {
 			"php": "8.2"
