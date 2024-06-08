@@ -12,11 +12,15 @@ use SquareBracket\UserData;
 $id = ($_GET['j'] ?? null);
 
 if ($enableFederatedStuff) {
+    if (!$auth->isUserLoggedIn())
+    {
+        UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
+    }
+
     $data = $database->fetch("SELECT p.* FROM posts p WHERE p.id = ?", [$id]);
 
     if (!$data && $isDebug) {
         $data = $database->fetchArray($database->query("SELECT p.* FROM posts p",));
-        var_dump($data);
         echo $twig->render('debug_posts.twig', [
             'data' => $data,
         ]);
