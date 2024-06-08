@@ -71,9 +71,12 @@ class ActivityPubAdapter
 
         $new_id = $this->db->result("SELECT id FROM users WHERE name = ?", [$name]);
 
+        $iconUrl = $profileData["icon"]["url"] ?? null;
+        $imageUrl = $profileData["image"]["url"] ?? null;
+
         $this->db->query("INSERT INTO activitypub_user_urls (user_id, id, featured, followers, following, profile_picture, banner_picture, inbox, outbox, last_updated) VALUES (?,?,?,?,?,?,?,?,?,?)",
             [$new_id, $profileData["id"], $profileData["featured"], $profileData["followers"],
-                $profileData["following"], $profileData["icon"]["url"], $profileData["image"]["url"],
+                $profileData["following"], $iconUrl, $imageUrl,
                 $profileData["inbox"], $profileData["outbox"], time()]);
     }
 

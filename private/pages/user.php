@@ -134,7 +134,7 @@ $comments = new CommentData($database, CommentLocation::Profile, $data["id"]);
 $followers = $database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$data["id"]])['COUNT(user)'];
 $followed = UnorganizedFunctions::IsFollowingUser($data["id"]);
 
-$data = [
+$profile_data = [
     "id" => $data["id"],
     "username" => $data["name"],
     "displayname" => $data["title"],
@@ -153,18 +153,18 @@ $data = [
 
 if ($isFediverse) {
     if (isset($data["profile_picture"])) {
-        $data["fedi_pfp"] = $data["profile_picture"];
+        $profile_data["fedi_pfp"] = $data["profile_picture"];
     } else {
-        $data["fedi_pfp"] = "/assets/profiledef.png";
+        $profile_data["fedi_pfp"] = "/assets/profiledef.png";
     }
 
     if (isset($data["banner_picture"])) {
-        $data["fedi_banner"] = $data["banner_picture"];
+        $profile_data["fedi_banner"] = $data["banner_picture"];
     } else {
-        $data["fedi_banner"] = "/assets/sbnext_channel_header_template.png";
+        $profile_data["fedi_banner"] = "/assets/sbnext_channel_header_template.png";
     }
 }
 
 echo $twig->render('profile.twig', [
-    'data' => $data,
+    'data' => $profile_data,
 ]);
