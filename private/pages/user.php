@@ -97,7 +97,7 @@ if (!$data)
     // if we know if it's a fediverse account, then try getting its profile and then copying it over to our
     // database. (TODO: handle blacklisted sites)
     if ($isFediverse) {
-        if (!$activityPubAdapter->getWebFinger($username)) {
+        if (!$activityPubAdapter->getFediProfileFromWebFinger($username)) {
             UnorganizedFunctions::Notification("This user and/or instance does not exist.", "/");
         }
     } else {

@@ -32,21 +32,28 @@ class ActivityPubAdapter
         }
 
         if ($url) {
-            $response = $this->httpClient->request(
-                "GET",
-                $url,
-                [
-                    'headers' => [
-                        'Accept' => 'application/ld+json; profile="https://www.w3.org/ns/activitystreams"',
-                    ],
-                ]
-            );
+            return $this->getProfileFromURL($url);
+        } else {
+            return false;
+        }
+    }
 
-            if ($response->getStatusCode() != 200) {
-                return false;
-            } else {
-                return $response->toArray();
-            }
+    public function getProfileFromURL($url)
+    {
+        $response = $this->httpClient->request(
+            "GET",
+            $url,
+            [
+                'headers' => [
+                    'Accept' => 'application/ld+json; profile="https://www.w3.org/ns/activitystreams"',
+                ],
+            ]
+        );
+
+        if ($response->getStatusCode() != 200) {
+            return false;
+        } else {
+            return $response->toArray();
         }
     }
 
@@ -70,8 +77,7 @@ class ActivityPubAdapter
                 $profileData["inbox"], $profileData["outbox"], time()]);
     }
 
-    // TODO: should makeDummySquareBracketAccount be merged into this?
-    public function getWebFinger($handle)
+    public function getFediProfileFromWebFinger($handle)
     {
         $webfinger = new WebFinger($this->db, $handle);
         if ($webfinger->requestWebFinger()) {
@@ -86,10 +92,33 @@ class ActivityPubAdapter
         }
     }
 
+    public function getFediProfileFromURL($url)
+    {
+        if ($data = $this->getProfileFromURL($url)) {
+            $handle = $this->urlToWebFinger($url);
+            if (!$this->db->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$handle])) {
+                $this->makeDummySquareBracketAccount($data, $handle);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function urlToWebFinger($url) {
+        $parsedUrl = parse_url($url);
+        $domain = $parsedUrl['host'];
+        $path = $parsedUrl['path'];
+        $pathParts = explode('/', trim($path, '/'));
+        $username = end($pathParts);
+        return "acct:$username@$domain";
+    }
+
     public function create(mixed $body)
     {
         $actor = $body["actor"];
-        $this->getWebFinger($actor);
+        $this->getFediProfileFromURL($actor);
+        //$this->getWebFinger($actor); it's not a webfinger
     }
 
     // todo: figure out why i get random requests from instances that i haven't interacted with -chaziz 6/7/2024
