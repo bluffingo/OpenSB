@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2024 at 07:19 AM
+-- Generation Time: Jun 08, 2024 at 02:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.3.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `qobo_idontfuckingcare`
+-- Database: `squarebracket_development`
 --
 
 -- --------------------------------------------------------
@@ -41,15 +41,15 @@ CREATE TABLE `activitypub_sites` (
 CREATE TABLE `activitypub_user_urls` (
   `int_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `id` text NOT NULL,
-  `featured` text NOT NULL,
-  `followers` text NOT NULL,
-  `following` text NOT NULL,
-  `profile_picture` text NOT NULL,
-  `banner_picture` text NOT NULL,
-  `inbox` text NOT NULL,
-  `outbox` text NOT NULL,
-  `last_updated` int(15) NOT NULL
+  `id` text DEFAULT NULL,
+  `featured` text DEFAULT NULL,
+  `followers` text DEFAULT NULL,
+  `following` text DEFAULT NULL,
+  `profile_picture` text DEFAULT NULL,
+  `banner_picture` text DEFAULT NULL,
+  `inbox` text DEFAULT NULL,
+  `outbox` text DEFAULT NULL,
+  `last_updated` int(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -219,6 +219,24 @@ CREATE TABLE `passwordresets` (
   `time` int(11) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `author` int(11) NOT NULL,
+  `contents` text NOT NULL,
+  `attachments` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `context` text DEFAULT NULL,
+  `conversation` text DEFAULT NULL,
+  `activitypubId` text DEFAULT NULL,
+  `inReplyTo` text DEFAULT NULL,
+  `posted` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -444,6 +462,12 @@ ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `suggestions`
 --
 ALTER TABLE `suggestions`
@@ -535,6 +559,12 @@ ALTER TABLE `journal_comments`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

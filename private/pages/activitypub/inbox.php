@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $enableFederatedStuff;
+global $enableFederatedStuff, $activityPubAdapter;
 
 if (!$enableFederatedStuff) { die(); }
 
@@ -15,16 +15,16 @@ $body = json_decode(file_get_contents("php://input"), true);
 if (isset($body["type"])) {
     switch ($body["type"]) {
         case "Create":
-            die();
+            $activityPubAdapter->create($body);
             break;
         case "Delete":
-            die();
+            $activityPubAdapter->delete($body);
             break;
         case "Update":
-            die();
+            $activityPubAdapter->update($body);
             break;
         case "Like":
-            die();
+            $activityPubAdapter->like($body);
             break;
     }
     // "EmojiReact" is a pleroma feature i believe, not adding that for now.

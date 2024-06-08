@@ -97,12 +97,7 @@ if (!$data)
     // if we know if it's a fediverse account, then try getting its profile and then copying it over to our
     // database. (TODO: handle blacklisted sites)
     if ($isFediverse) {
-        $webfinger = new WebFinger($database, $username);
-        if ($webfinger->requestWebFinger()) {
-            if ($data = $activityPubAdapter->getProfileFromWebFinger($webfinger->getWebFingerData())) {
-                $activityPubAdapter->makeDummySquareBracketAccount($data, $username);
-            }
-        } else {
+        if (!$activityPubAdapter->getWebFinger($username)) {
             UnorganizedFunctions::Notification("This user and/or instance does not exist.", "/");
         }
     } else {

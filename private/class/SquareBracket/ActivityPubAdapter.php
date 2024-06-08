@@ -56,7 +56,7 @@ class ActivityPubAdapter
     // to "desync" from other instances since those can't send updates to the opensb instance
     // for the time being. this will be problematic with squarebracket.pw as it often has long
     // downtimes over hosting-related issues.
-    public function makeDummySquareBracketAccount($profileData, $name)
+    private function makeDummySquareBracketAccount($profileData, $name)
     {
         // using preferredUsername would be better but ergh, whatever.
         $this->db->query("INSERT INTO users (name, email, password, title, about, token) VALUES (?,?,?,?,?,?)",
@@ -68,5 +68,40 @@ class ActivityPubAdapter
             [$new_id, $profileData["id"], $profileData["featured"], $profileData["followers"],
                 $profileData["following"], $profileData["icon"]["url"], $profileData["image"]["url"],
                 $profileData["inbox"], $profileData["outbox"], time()]);
+    }
+
+    // TODO: should makeDummySquareBracketAccount be merged into this?
+    public function getWebFinger($handle)
+    {
+        $webfinger = new WebFinger($this->db, $handle);
+        if ($webfinger->requestWebFinger()) {
+            if ($data = $this->getProfileFromWebFinger($webfinger->getWebFingerData())) {
+                if (!$this->db->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$handle])) {
+                    $this->makeDummySquareBracketAccount($data, $handle);
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function create(mixed $body)
+    {
+        $actor = $body["actor"];
+        $this->getWebFinger($actor);
+    }
+
+    // todo: figure out why i get random requests from instances that i haven't interacted with -chaziz 6/7/2024
+    public function delete(mixed $body)
+    {
+    }
+
+    public function update(mixed $body)
+    {
+    }
+
+    public function like(mixed $body)
+    {
     }
 }

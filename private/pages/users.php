@@ -4,9 +4,17 @@ namespace OpenSB;
 
 // TODO: do not include fake "users" generated from activitypub profiles. -chaziz 6/7/2024
 
-global $twig, $database;
+global $twig, $database, $enableFederatedStuff, $auth;
 
+use SquareBracket\UnorganizedFunctions;
 use SquareBracket\UserData;
+
+if ($enableFederatedStuff) {
+    if (!$auth->isUserLoggedIn())
+    {
+        UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
+    }
+}
 
 $queryData = $database->fetchArray($database->query("SELECT u.id, u.about, u.title, (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num FROM users u ORDER BY u.lastview DESC"));
 
