@@ -34,7 +34,7 @@ class WebFinger
         // http://squarebracket.pw/.well-known/webfinger?resource=acct:Chaziz@squarebracket.pw
         $response = $this->client->request(
             "GET",
-            "{$type}://{$extractedAddress[1]}/.well-known/webfinger?resource=acct:{$this->address}"
+            "https://{$extractedAddress[1]}/.well-known/webfinger?resource=acct:{$this->address}"
         );
 
         // If the webfinger request failed, then don't bother.
