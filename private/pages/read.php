@@ -17,22 +17,22 @@ if(!$data) {
     UnorganizedFunctions::Notification("This journal does not exist.", "/");
 }
 
-if ($auth->getUserID() == $this->data["author"]) { $owner = true; } else { $owner = false; }
+if ($auth->getUserID() == $data["author"]) { $owner = true; } else { $owner = false; }
 
 $author = new UserData($database, $data["author"]);
 $comments = new CommentData($database, CommentLocation::Journal, $id);
 
 $data = [
     "is_owner" => $owner,
-    "int_id" => $this->data["id"],
-    "title" => $this->data["title"],
-    "contents" => $this->data["post"],
-    "published" => $this->data["date"],
+    "int_id" => $data["id"],
+    "title" => $data["title"],
+    "contents" => $data["post"],
+    "published" => $data["date"],
     "author" => [
-        "id" => $this->data["author"],
-        "info" => $this->author->getUserArray(),
+        "id" => $data["author"],
+        "info" => $author->getUserArray(),
     ],
-    "comments" => $this->comments->getComments(),
+    "comments" => $comments->getComments(),
 ];
 
 echo $twig->render('read.twig', [
