@@ -2,7 +2,6 @@
 
 namespace SquareBracket;
 
-use Core\Database;
 use Symfony\Component\HttpClient\Psr18Client;
 use ToshY\BunnyNet\Client\BunnyClient;
 use ToshY\BunnyNet\StreamAPI;

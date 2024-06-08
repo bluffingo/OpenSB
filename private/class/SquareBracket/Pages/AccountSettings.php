@@ -11,7 +11,7 @@ use SquareBracket\UnorganizedFunctions;
  */
 class AccountSettings
 {
-    private \Core\Database $database;
+    private \SquareBracket\Database $database;
     private \SquareBracket\SubmissionData $submission;
     private mixed $id;
     private \SquareBracket\SquareBracket $orange;

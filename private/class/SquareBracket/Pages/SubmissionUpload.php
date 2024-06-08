@@ -2,7 +2,6 @@
 
 namespace SquareBracket\Pages;
 
-use Random\Randomizer;
 use SquareBracket\UnorganizedFunctions;
 
 /**
@@ -12,7 +11,7 @@ use SquareBracket\UnorganizedFunctions;
  */
 class SubmissionUpload
 {
-    private \Core\Database $database;
+    private \SquareBracket\Database $database;
     private \SquareBracket\SquareBracket $orange;
     /**
      * @var array|string[]

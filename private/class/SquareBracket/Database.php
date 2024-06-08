@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace SquareBracket;
 
 use PDO;
 use PDOException;

@@ -9,11 +9,11 @@ namespace SquareBracket;
  */
 class CommentData
 {
-    private \Core\Database $database;
+    private \SquareBracket\Database $database;
     private CommentLocation $type;
     private $id;
     private $data;
-    public function __construct(\Core\Database $database, $type, $id = null) {
+    public function __construct(\SquareBracket\Database $database, $type, $id = null) {
         $this->database = $database;
         $this->type = $type;
         $this->id = $id;

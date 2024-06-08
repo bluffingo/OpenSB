@@ -8,16 +8,20 @@ use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\SubmissionData;
 use SquareBracket\UnorganizedFunctions;
-use WebFinger\WebFinger;
+use SquareBracket\WebFinger;
 
 $username = $path[2] ?? null;
 
 if (isset($_GET['name'])) UnorganizedFunctions::redirect('/user/' . $_GET['name']);
 
 if ($enableFederatedStuff) {
+    // TODO: following and followers
     if (str_contains($_SERVER['HTTP_ACCEPT'], 'application/ld+json') ||
         str_contains($_SERVER['HTTP_ACCEPT'], 'application/activity+json')) {
-        require(SB_PRIVATE_PATH . '/pages/user_activitypub.php');
+        require(SB_PRIVATE_PATH . '/pages/activitypub/user.php');
+        die();
+    } elseif (str_contains($_SERVER['REQUEST_URI'], '/inbox')) {
+        require(SB_PRIVATE_PATH . '/pages/activitypub/inbox.php');
         die();
     }
 }

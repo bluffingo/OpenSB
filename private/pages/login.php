@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $twig, $database;
 
-use Core\Utilities;
 use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 if (isset($_POST["loginsubmit"])) {
     $error = false;

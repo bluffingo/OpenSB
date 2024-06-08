@@ -5,7 +5,6 @@ namespace OpenSB;
 global $twig, $orange;
 
 use SquareBracket\Pages\AccountSettings;
-use SquareBracket\Templating;
 
 $page = new AccountSettings($orange);
 

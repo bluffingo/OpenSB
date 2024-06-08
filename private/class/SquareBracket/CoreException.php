@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace SquareBracket;
 
 use JetBrains\PhpStorm\NoReturn;
 use Orange\Throwable;

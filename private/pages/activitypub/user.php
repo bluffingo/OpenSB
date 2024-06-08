@@ -2,9 +2,7 @@
 
 namespace OpenSB;
 
-global $orange, $domain, $path, $storage;
-
-$db = $orange->getDatabase();
+global $database, $domain, $path, $storage;
 
 if (str_contains($path[2], "@" . $domain)) {
     $name = explode('@', $path[2])[0];
@@ -15,7 +13,7 @@ if (str_contains($path[2], "@" . $domain)) {
     $name = $path[2];
 }
 
-$data = $db->fetch("SELECT name, title, about FROM users WHERE name = ?", [$name]);
+$data = $database->fetch("SELECT name, title, about FROM users WHERE name = ?", [$name]);
 
 if (!$data)
 {

@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $auth, $orange, $storage;
+global $auth, $orange, $storage, $database;
 
 use SquareBracket\SubmissionData;
 use SquareBracket\UnorganizedFunctions;
@@ -23,12 +23,10 @@ if ($auth->getUserID() != $data["author"]) {
 
 // INSERT INTO `deleted_videos` (`autoint`, `id`, `uploaded_time`, `deleted_time`) VALUES ('1', 'sex', '231', '312');
 
-$db = $orange->getDatabase();
-
-$db->query("DELETE FROM videos WHERE video_id = ?", [$id]);
+$database->query("DELETE FROM videos WHERE video_id = ?", [$id]);
 // NOTE FOR BITQOBO DEVS: for squarebracket-to-bitqobo migration, moved_to_bitqobo should be set to 1. this will
 // redirect users from squarebracket.pw to qobo.tv if they stumble upon a video that's been migrated. -chaziz 5/14/2024
-$db->query("INSERT INTO deleted_videos (id, uploaded_time, deleted_time, moved_to_bitqobo) VALUES (?,?,?,?)", [$id, $data["time"], time(), 0]);
+$database->query("INSERT INTO deleted_videos (id, uploaded_time, deleted_time, moved_to_bitqobo) VALUES (?,?,?,?)", [$id, $data["time"], time(), 0]);
 
 $storage->deleteSubmission($data);
 

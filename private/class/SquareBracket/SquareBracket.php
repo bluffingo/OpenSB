@@ -1,17 +1,13 @@
 <?php
 namespace SquareBracket;
 
-use Core\CoreException;
-use Core\Database;
-use Core\VersionNumber;
-
 /**
  * The core SquareBracket class.
  *
  * @since SquareBracket 1.0
  */
 class SquareBracket {
-    private \Core\Database $database;
+    private \SquareBracket\Database $database;
     public array $options;
 
     /**
@@ -28,7 +24,7 @@ class SquareBracket {
         }
 
         try {
-            $this->database = new \Core\Database($host, $user, $pass, $db);
+            $this->database = new \SquareBracket\Database($host, $user, $pass, $db);
         } catch (CoreException $e) {
             $e->page();
         }
@@ -41,7 +37,7 @@ class SquareBracket {
      * @since SquareBracket 1.0
      *
      */
-    public function getDatabase(): \Core\Database
+    public function getDatabase(): \SquareBracket\Database
     {
         return $this->database;
     }

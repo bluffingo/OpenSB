@@ -2,8 +2,6 @@
 
 namespace SquareBracket;
 
-use Core\CoreException;
-use Core\VersionNumber;
 use Parsedown;
 use RelativeTime\RelativeTime;
 use Twig\Extension\AbstractExtension;
@@ -26,7 +24,7 @@ class SquareBracketTwigExtension extends AbstractExtension
                 $profiler->getStats();
             }),
             new TwigFunction('version_banner', function () use ($orange) {
-                echo (new \Core\VersionNumber)->printVersionForOutput();
+                echo (new \SquareBracket\VersionNumber)->printVersionForOutput();
             }),
             new TwigFunction('remove_notification', [$this, 'removeNotification']),
             new TwigFunction('show_ratings', [$this, 'showRatings']),

@@ -11,7 +11,7 @@ use SquareBracket\UnorganizedFunctions;
  */
 class SubmissionBrowse
 {
-    private \Core\Database $database;
+    private \SquareBracket\Database $database;
     private array $submissions;
     private $order;
     private $limit;

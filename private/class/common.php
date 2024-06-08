@@ -27,13 +27,13 @@ if (php_sapi_name() == "cli-server") {
 
 global $host, $user, $pass, $db, $isChazizSB, $debugLogging, $isMaintenance, $bunnySettings;
 
-use Core\Authentication;
-use Core\Utilities;
-use SquareBracket\Adapter\ActivityPubToSB;
-use SquareBracket\Storage;
+use SquareBracket\ActivityPubAdapter;
+use SquareBracket\Authentication;
 use SquareBracket\Profiler;
 use SquareBracket\SquareBracket;
+use SquareBracket\Storage;
 use SquareBracket\Templating;
+use SquareBracket\Utilities;
 
 spl_autoload_register(function ($class_name) {
     $class_name = str_replace('\\', '/', $class_name);
@@ -115,7 +115,7 @@ $database = $orange->getDatabase();
 $auth = new Authentication($database, $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new Profiler();
 $twig = new Templating($orange);
-$activityPubAdapter = new ActivityPubToSB($orange);
+$activityPubAdapter = new ActivityPubAdapter($orange);
 
 // automatic stuff
 // this should probably have a cooldown or something i don't fucking know

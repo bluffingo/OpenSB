@@ -5,7 +5,6 @@ namespace OpenSB;
 global $twig, $orange;
 
 use SquareBracket\Pages\AccountRegister;
-use SquareBracket\Templating;
 
 $page = new AccountRegister($orange);
 

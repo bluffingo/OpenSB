@@ -35,7 +35,7 @@ $data = [
     "software" => [
         'orangeVersion' => [
             'title' => "OpenSB",
-            'info' => (new \Core\VersionNumber)->getVersionString(),
+            'info' => (new \SquareBracket\VersionNumber)->getVersionString(),
         ],
         'phpVersion' => [
             'title' => "PHP",

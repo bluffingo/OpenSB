@@ -2,12 +2,12 @@
 
 namespace SquareBracket\Pages;
 
-use Core\CoreException;
-use Core\Utilities;
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
-use SquareBracket\UserData;
+use SquareBracket\CoreException;
 use SquareBracket\UnorganizedFunctions;
+use SquareBracket\UserData;
+use SquareBracket\Utilities;
 
 /**
  * Backend code for the submission view (watch) page.
@@ -16,7 +16,7 @@ use SquareBracket\UnorganizedFunctions;
  */
 class SubmissionView
 {
-    private \Core\Database $database;
+    private \SquareBracket\Database $database;
     private \SquareBracket\SubmissionData $submission;
     private mixed $data;
     private CommentData $comments;

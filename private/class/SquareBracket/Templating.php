@@ -2,7 +2,6 @@
 
 namespace SquareBracket;
 
-use Core\VersionNumber;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;

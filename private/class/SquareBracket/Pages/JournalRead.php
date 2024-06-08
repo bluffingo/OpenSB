@@ -4,8 +4,8 @@ namespace SquareBracket\Pages;
 
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
-use SquareBracket\UserData;
 use SquareBracket\UnorganizedFunctions;
+use SquareBracket\UserData;
 
 /**
  * Backend code for the journal reading page.
@@ -14,7 +14,7 @@ use SquareBracket\UnorganizedFunctions;
  */
 class JournalRead
 {
-    private \Core\Database $database;
+    private \SquareBracket\Database $database;
     private \SquareBracket\SquareBracket $orange;
     private mixed $data;
     private UserData $author;

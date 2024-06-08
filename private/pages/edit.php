@@ -5,7 +5,6 @@ namespace OpenSB;
 global $twig, $orange;
 
 use SquareBracket\Pages\SubmissionEdit;
-use SquareBracket\Templating;
 
 if (isset($_POST['upload'])) {
     $id = ($_POST['vid_id'] ?? null);

@@ -1,8 +1,7 @@
 <?php
 
-namespace WebFinger;
+namespace SquareBracket;
 
-use Core\VersionNumber;
 use Symfony\Component\HttpClient\HttpClient;
 
 // class for dealing with other server's webfingers.
@@ -21,7 +20,7 @@ class WebFinger
 
         $this->client = HttpClient::create([
             "headers" => [
-                "User-Agent" => (new \Core\VersionNumber)->printVersionForUserAgent(),
+                "User-Agent" => (new \SquareBracket\VersionNumber)->printVersionForUserAgent(),
             ],
         ]);
     }

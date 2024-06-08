@@ -1,8 +1,8 @@
 <?php
 
 namespace SquareBracket\Pages;
-use Core\Utilities;
 use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 /**
  * Backend code for the register page.
@@ -11,7 +11,7 @@ use SquareBracket\UnorganizedFunctions;
  */
 class AccountRegister
 {
-    private \Core\Database $database;
+    private \SquareBracket\Database $database;
     private \SquareBracket\SquareBracket $orange;
 
     public function __construct(\SquareBracket\SquareBracket $orange)

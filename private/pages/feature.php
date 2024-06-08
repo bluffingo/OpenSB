@@ -2,19 +2,18 @@
 
 namespace OpenSB;
 
-global $twig, $orange, $auth;
+global $database, $auth;
 
 use SquareBracket\UnorganizedFunctions;
 
 $id = ($_GET['v'] ?? null);
-$db = $orange->getDatabase();
 
 if (!$auth->isUserLoggedIn())
 {
     UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
 }
 
-$submission = new \SquareBracket\SubmissionData($db, $id);
+$submission = new \SquareBracket\SubmissionData($database, $id);
 
 if (!$id) {
     UnorganizedFunctions::Notification("You have not specified the submission.", "/");
@@ -34,7 +33,7 @@ if (!$auth->getUserID() == $data["author"]) {
     UnorganizedFunctions::Notification("This is not your submission.", "/");
 }
 
-if ($db->query("UPDATE users SET featured_submission = ? WHERE id = ?",
+if ($database->query("UPDATE users SET featured_submission = ? WHERE id = ?",
     [$data["id"], $auth->getUserID()])) {
-    UnorganizedFunctions::Notification("You have successfully changed your featured submission.", "/user?name=" . $auth->getUserData()["name"], "success");
+    UnorganizedFunctions::Notification("You have successfully changed your profile's featured submission.", "/user?name=" . $auth->getUserData()["name"], "success");
 }

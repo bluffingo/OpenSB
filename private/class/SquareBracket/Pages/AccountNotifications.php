@@ -3,8 +3,8 @@
 namespace SquareBracket\Pages;
 
 use SquareBracket\NotificationEnum;
-use SquareBracket\UserData;
 use SquareBracket\UnorganizedFunctions;
+use SquareBracket\UserData;
 
 /**
  * Backend code for the notices page.
@@ -13,7 +13,7 @@ use SquareBracket\UnorganizedFunctions;
  */
 class AccountNotifications
 {
-    private \Core\Database $database;
+    private \SquareBracket\Database $database;
 
     private $data;
 

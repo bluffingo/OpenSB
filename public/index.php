@@ -29,8 +29,8 @@ if (isset($path[1]) && $path[1] != '') {
     match ($path[1]) {
         '.well-known' => match ($path[2] ?? null) {
             // todo: nodeinfo so that opensb can be included within "fediverse" statistic pages
-            'host-meta' => require(SB_PRIVATE_PATH . '/pages/host-meta.php'),
-            'webfinger' => require(SB_PRIVATE_PATH . '/pages/webfinger.php'),
+            'host-meta' => require(SB_PRIVATE_PATH . '/pages/activitypub/host-meta.php'),
+            'webfinger' => require(SB_PRIVATE_PATH . '/pages/activitypub/webfinger.php'),
             default => die(),
         },
         'admin' => require(SB_PRIVATE_PATH . '/pages/admin.php'),

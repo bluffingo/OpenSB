@@ -1,12 +1,10 @@
 <?php
 
-namespace SquareBracket\Adapter;
+namespace SquareBracket;
 
-use Core\VersionNumber;
-use SquareBracket\SquareBracket;
 use Symfony\Component\HttpClient\HttpClient;
 
-class ActivityPubToSB
+class ActivityPubAdapter
 {
     private $httpClient;
     private $sb;

@@ -4,7 +4,6 @@ namespace OpenSB;
 
 global $twig, $orange;
 
-use SquareBracket\Templating;
 use SquareBracket\UnorganizedFunctions;
 
 if (isset($_POST['apply'])) {

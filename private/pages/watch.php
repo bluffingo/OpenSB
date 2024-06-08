@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $orange;
 
-use Core\CoreException;
+use SquareBracket\CoreException;
 use SquareBracket\Pages\SubmissionView;
 use SquareBracket\UnorganizedFunctions;
 

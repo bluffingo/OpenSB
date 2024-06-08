@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $orange;
+global $orange, $twig, $auth;
 
 use SquareBracket\Pages\SubmissionUpload;
 use SquareBracket\Templating;
