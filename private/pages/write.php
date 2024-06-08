@@ -49,7 +49,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
 }
 
 if ($enableFederatedStuff) {
-    echo $twig->render('write_message.twig');
+    echo $twig->render('write_post.twig');
 } else {
     echo $twig->render('write_journal.twig');
 }

@@ -121,12 +121,12 @@ class ActivityPubAdapter
     {
         $actor = $body["actor"];
         $content = $body["object"]["content"];
-        $published = strtotime($body["published"]);
+        $published = strtotime($body["object"]["published"]);
 
-        $id = $body["id"];
-        $context = $body["context"];
-        $conversation = $body["conversation"];
-        $inReplyTo = $body["inReplyTo"];
+        $id = $body["object"]["id"] ?? null;
+        $context = $body["object"]["context"] ?? null;
+        $conversation = $body["object"]["conversation"] ?? null;
+        $inReplyTo = $body["object"]["inReplyTo"] ?? null;
 
         $this->getFediProfileFromURL($actor);
         $handle = $this->urlToWebFinger($actor); // stupid poor design that should be redone!!!

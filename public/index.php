@@ -22,7 +22,7 @@ require_once SB_PRIVATE_PATH . '/class/common.php';
 // why am i not rewriting the codebase? because i already did that but it's for another project that's co-owned so
 // unless if that project dies off i can't use that codebase for squarebracket. -chaziz 6/2/2024
 
-// Based on Rollerozxa's router implementation in Principia-Web.
+// Originally based on Rollerozxa's router implementation in Principia-Web.
 // https://github.com/principia-game/principia-web/blob/master/router.php
 
 if (isset($path[1]) && $path[1] != '') {
@@ -34,6 +34,15 @@ if (isset($path[1]) && $path[1] != '') {
             default => die(),
         },
         'admin' => require(SB_PRIVATE_PATH . '/pages/admin.php'),
+        'api' => match ($path[2] ?? null) {
+            'finalium' => match ($path[3] ?? null) {
+                'commenting.php' => require(SB_PRIVATE_PATH . '/pages/api/commenting.php'),
+                'submission_interaction' => require(SB_PRIVATE_PATH . '/pages/api/submission_interaction.php'),
+                'user_interaction.php' => require(SB_PRIVATE_PATH . '/pages/api/user_interaction.php'),
+                default => die("Invalid API.")
+            },
+            default => die("Invalid API.")
+        },
         'browse' => require(SB_PRIVATE_PATH . '/pages/browse.php'),
         'delete' => require(SB_PRIVATE_PATH . '/pages/delete.php'),
         'edit' => require(SB_PRIVATE_PATH . '/pages/edit.php'),
@@ -63,15 +72,6 @@ if (isset($path[1]) && $path[1] != '') {
         'view' => require(SB_PRIVATE_PATH . '/pages/watch.php'),
         'watch' => UnorganizedFunctions::redirect('/view/' . $_GET['v']),
         'write' => require(SB_PRIVATE_PATH . '/pages/write.php'),
-        'api' => match ($path[2] ?? null) {
-            'finalium' => match ($path[3] ?? null) {
-                'commenting.php' => require(SB_PRIVATE_PATH . '/pages/api/commenting.php'),
-                'submission_interaction' => require(SB_PRIVATE_PATH . '/pages/api/submission_interaction.php'),
-                'user_interaction.php' => require(SB_PRIVATE_PATH . '/pages/api/user_interaction.php'),
-                default => die("Invalid API.")
-            },
-            default => die("Invalid API.")
-        },
         default => UnorganizedFunctions::rewritePHP()
     };
 } else {

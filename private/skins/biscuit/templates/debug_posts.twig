@@ -1,0 +1,16 @@
+{% extends "_layout.twig" %}
+
+{% set title = data.title %}
+
+{% block content %}
+    <div class="section">
+        <div class="section-title">
+            <h1>Debug!</h1>
+        </div>
+        {% for post in data %}
+            <div class="content-box">
+                <p>{{ post.contents | raw }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
