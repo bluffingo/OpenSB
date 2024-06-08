@@ -2,13 +2,12 @@
 
 namespace OpenSB;
 
-global $auth, $domain, $enableFederatedStuff, $activityPubAdapter, $database;
+global $auth, $domain, $enableFederatedStuff, $activityPubAdapter, $database, $twig;
 
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\SubmissionData;
 use SquareBracket\UnorganizedFunctions;
-use SquareBracket\WebFinger;
 
 $username = $path[2] ?? null;
 
@@ -76,6 +75,7 @@ function getSubmissionFromFeaturedID($database, $data)
 $isFediverse = false;
 $whereRatings = UnorganizedFunctions::whereRatings();
 
+$instance = null;
 if (str_contains($username, "@" . $domain) && $enableFederatedStuff) {
     // if the handle matches our domain then don't treat it as an external fediverse account
     $extractedAddress = explode('@', $username);
@@ -83,14 +83,14 @@ if (str_contains($username, "@" . $domain) && $enableFederatedStuff) {
 } elseif (str_contains($username, "@") && $enableFederatedStuff) {
     // if the handle contains "@" then check if it's in our db
     $isFediverse = true;
+    $extractedAddress = explode('@', $username);
+    $instance = $extractedAddress[1];
     $data = $database->fetch(
         "SELECT * FROM users u INNER JOIN activitypub_user_urls ON activitypub_user_urls.user_id = u.id WHERE u.name = ?", [$username]);
 } else {
     // otherwise it's a normal opensb account
     $data = $database->fetch("SELECT * FROM users u WHERE u.name = ?", [$username]);
 }
-
-//var_dump($data);
 
 if (!$data)
 {
@@ -152,6 +152,8 @@ $profile_data = [
 ];
 
 if ($isFediverse) {
+    $profile_data["instance"] = $instance;
+
     if (isset($data["profile_picture"])) {
         $profile_data["fedi_pfp"] = $data["profile_picture"];
     } else {

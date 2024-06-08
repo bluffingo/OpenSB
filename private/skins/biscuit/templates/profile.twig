@@ -47,6 +47,11 @@
                     <div class="profile-box-info">
                         <div class="profile-box-username">
                             {{ data.displayname }}
+                            {% if data.is_fedi %}
+                                <img class="profile-box-instance-icon" src="https://{{ data.instance }}/favicon.png">
+                            {% else %}
+                                <img class="profile-box-instance-icon" src="{{ website_branding.assets_location }}/logo.png">
+                            {% endif %}
                         </div>
                         <div class="profile-box-displayname">
                             @{{ data.username }}

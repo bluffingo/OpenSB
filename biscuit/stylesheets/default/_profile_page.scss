@@ -26,18 +26,11 @@
     width: 100%;
 
     .profile-box-username {
-      font-size: 15pt;
+      font-size: 20px;
       font-weight: bold;
       margin-bottom: 5px;
-    }
-
-    .profile-box-links {
-      font-size: 12pt;
-
-      .link {
-        margin-right: 7px;
-        text-decoration: none;
-        border-bottom: 1px dotted #864e14;
+      .profile-box-instance-icon {
+        width: 16px;
       }
     }
   }
