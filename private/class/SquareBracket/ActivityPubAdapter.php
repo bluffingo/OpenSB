@@ -136,7 +136,7 @@ class ActivityPubAdapter
 
         //INSERT INTO `posts` (`id`, `author`, `contents`, `attachments`, `context`, `conversation`, `activitypubId`, `inReplyTo`, `posted`) VALUES ('1', '1', '1', NULL, '1', '1', '1', '1', '1');
 
-        $this->db->query("INSERT INTO posts (activitypubId, author, contents, attachments, context, conversation, activitypubId, inReplyTo, posted) VALUES (?,?,?,?,?,?,?,?,?)",
+        $this->db->query("INSERT INTO posts (activitypubId, author, contents, attachments, context, conversation, inReplyTo, posted) VALUES (?,?,?,?,?,?,?,?)",
             [$id, $actorSbID, $content, null,
                 $context, $conversation, $inReplyTo,
                 $published]);
