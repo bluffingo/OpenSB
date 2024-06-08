@@ -111,7 +111,7 @@ class ActivityPubAdapter
         $path = $parsedUrl['path'];
         $pathParts = explode('/', trim($path, '/'));
         $username = end($pathParts);
-        return "acct:$username@$domain";
+        return "$username@$domain";
     }
 
     public function create(mixed $body)
