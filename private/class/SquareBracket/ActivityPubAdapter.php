@@ -120,7 +120,7 @@ class ActivityPubAdapter
     public function create(mixed $body)
     {
         $actor = $body["actor"];
-        $content = $body["content"];
+        $content = $body["object"]["content"];
         $published = strtotime($body["published"]);
 
         $id = $body["id"];
