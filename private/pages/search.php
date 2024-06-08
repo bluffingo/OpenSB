@@ -2,16 +2,52 @@
 
 namespace OpenSB;
 
-global $twig, $orange;
+global $twig, $database;
 
-use SquareBracket\Pages\SubmissionSearch;
+use SquareBracket\UnorganizedFunctions;
+
+function getOrderFromType($type): string
+{
+    switch ($type) {
+        case 'recent':
+            $order = "v.time";
+            break;
+        case 'popular':
+            $order = "views";
+            break;
+        case 'discussed':
+            $order = "comments";
+            break;
+        case 'favorited':
+            $order = "favorites";
+            break;
+        case 'random':
+            $order = "RAND()";
+            break;
+        default:
+            $order = "v.time";
+            break;
+    }
+    return $order;
+}
 
 $query = $_GET['query'] ?? null;
 $type = ($_GET['type'] ?? 'recent');
 $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
-$page = new SubmissionSearch($orange, $type, $page_number, $query);
-$data = $page->getData();
+$order = getOrderFromType($type);
+$limit = sprintf("LIMIT %s,%s", (($page_number - 1) * 20), 20);
+
+$whereRatings = UnorganizedFunctions::whereRatings();
+
+$submissions = $database->fetchArray(
+    $database->query(
+        "SELECT v.* FROM videos v WHERE (v.tags LIKE CONCAT('%', ?, '%') OR v.title LIKE CONCAT('%', ?, '%') OR v.description LIKE CONCAT('%', ?, '%')) AND $whereRatings AND v.video_id NOT IN (SELECT submission FROM takedowns) ORDER BY $order DESC $limit",
+        [$query, $query, $query]));
+
+$data = [
+    "submissions" => UnorganizedFunctions::makeSubmissionArray($this->database, $this->submissions),
+];
 
 echo $twig->render('browse.twig', [
     'data' => $data,
