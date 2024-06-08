@@ -120,8 +120,26 @@ class ActivityPubAdapter
     public function create(mixed $body)
     {
         $actor = $body["actor"];
+        $content = $body["content"];
+        $published = strtotime($body["published"]);
+
+        $id = $body["id"];
+        $context = $body["context"];
+        $conversation = $body["conversation"];
+        $inReplyTo = $body["inReplyTo"];
+
         $this->getFediProfileFromURL($actor);
+        $handle = $this->urlToWebFinger($actor); // stupid poor design that should be redone!!!
+
+        $actorSbID = $this->db->fetch("SELECT u.name, u.id FROM users u WHERE u.name = ?", [$handle])["id"];
         //$this->getWebFinger($actor); it's not a webfinger
+
+        //INSERT INTO `posts` (`id`, `author`, `contents`, `attachments`, `context`, `conversation`, `activitypubId`, `inReplyTo`, `posted`) VALUES ('1', '1', '1', NULL, '1', '1', '1', '1', '1');
+
+        $this->db->query("INSERT INTO posts (activitypubId, author, contents, attachments, context, conversation, activitypubId, inReplyTo, posted) VALUES (?,?,?,?,?,?,?,?,?)",
+            [$id, $actorSbID, $content, null,
+                $context, $conversation, $inReplyTo,
+                $published]);
     }
 
     // todo: figure out why i get random requests from instances that i haven't interacted with -chaziz 6/7/2024
