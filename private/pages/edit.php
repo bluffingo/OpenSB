@@ -37,7 +37,7 @@ if (isset($_POST['upload'])) {
         $name = $_FILES['thumbnail']['name'];
         $temp_name = $_FILES['thumbnail']['tmp_name'];
         $ext = pathinfo($_FILES['thumbnail']['name'], PATHINFO_EXTENSION);
-        $target_file = '../dynamic/custom_thumbnails/' . $data["video_id"] . '.jpg';
+        $target_file = SB_DYNAMIC_PATH . '/custom_thumbnails/' . $data["video_id"] . '.jpg';
         $storage->uploadCustomThumbnail($temp_name, $target_file);
     }
 
