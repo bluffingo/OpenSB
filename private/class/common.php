@@ -152,7 +152,7 @@ $storage = new Storage($orange->getDatabase(), $isChazizSB, $bunnySettings);
 if (!file_exists(SB_GIT_PATH)) {
     echo $twig->render("error.twig", [
         "error_title" => "Critical error",
-        "error_reason" => "Please initialize OpenSB using git clone instead of downloading it straight from GitHub's website."
+        "error_reason" => "Please initialize OpenSB using git clone instead of downloading it straight from GitHub."
     ]);
     die();
 }

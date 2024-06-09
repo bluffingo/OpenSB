@@ -31,6 +31,15 @@ class Authentication
                 // this will prevent users from using IP banned accounts on other IPs.
                 if ($this->database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$this->user_data['ip']])) {
                     setcookie("SBTOKEN", "", time() - 3600);
+                    UnorganizedFunctions::Notification("You have been logged out, as this account is linked to a banned IP address.", true);
+                }
+
+                // if "comfortable rating" is questionable, reset it back to general. this is because the site now uses
+                // "general" and "sensitive" instead of the old "general", "questionable" and "mature" ratings, but the
+                // old system is left there for compatibility. -chaziz 6/9/2024
+                if ($this->user_data["comfortable_rating"] == "questionable") {
+                    $this->database->query("UPDATE users SET comfortable_rating = 'general' WHERE id = ?", [$this->user_id]);
+                    UnorganizedFunctions::Notification("Due to updates with content filtering, your filtering settings have been reset from Questionable to General.", false, "primary");
                 }
             } else {
                 $this->is_logged_in = false;

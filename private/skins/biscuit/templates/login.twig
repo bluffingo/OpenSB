@@ -8,22 +8,22 @@
         {% endif %}
         <div class="section">
             <div class="section-title">
-                <h1>Login to your {{ website_branding.name }} account</h1>
+                <h1>Login</h1>
             </div>
             <div class="content-box">
                 <div class="panel-body">
                     <form method="post" name="loginForm" id="loginForm" action="login" class="form-signin">
-                        <div>
+                        <div class="form-input">
                             <label for="username">Username:</label>
                             <input type="text" name="username" class="form-submit" placeholder="Username">
                         </div>
 
-                        <div>
+                        <div class="form-input">
                             <label for="password">Password:</label>
                             <input type="password" name="password" class="form-submit" placeholder="Password">
                         </div>
 
-                        <div>
+                        <div class="form-input">
                             <input type="checkbox" name="remember_me" id="remember_me">
                             <label for="remember_me">Remember me (for up to a year)</label>
                         </div>

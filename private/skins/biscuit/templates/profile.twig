@@ -94,8 +94,8 @@
             {% endif %}
         </div>
         <div class="content-box">
-            {% if data.about %}
-                {{ data.about }}
+            {% if data.about | trim is not empty %}
+                {{ data.about | markdown_user_written }}
             {% else %}
                 <em class="text-muted">This user has no description.</em>
             {% endif %}

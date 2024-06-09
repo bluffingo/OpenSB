@@ -12,44 +12,6 @@
         </div>
         <div class="content-box">
         <form action="settings" method="post" enctype="multipart/form-data">
-
-            <div class="text-title">
-                <span>Audience rating</span>
-            </div>
-
-            <p>Select the highest audience rating you're comfortable with. Higher ratings might not be suitable.</p>
-
-            <select class="form-submit" name="rating" id="rating">
-                <option value="general" {% if user_data.comfortable_rating == "general" %}selected{% endif %}>General</option>
-                <option value="questionable" {% if user_data.comfortable_rating == "questionable" %}selected{% endif %}>Questionable</option>
-                <option value="mature" {% if user_data.comfortable_rating == "mature" %}selected{% endif %}>Mature</option>
-            </select>
-
-            <hr>
-
-            <div class="text-title">
-                <span>Security</span>
-            </div>
-
-            <div class="form-input">
-                <label for="current_pass">Current password:</label>
-            <input class="form-submit" type="password" name="current_pass" size="30" maxlength="256"
-                   placeholder="Current password"><br>
-            </div>
-
-            <div class="form-input">
-                <label for="pass">New password:</label>
-            <input class="form-submit" type="password" name="pass" size="30" maxlength="256" placeholder="New password"><br>
-            </div>
-
-            <div class="form-input">
-                <label for="pass2">Confirm new password:</label>
-            <input class="form-submit" type="password" name="pass2" size="30" maxlength="256"
-                   placeholder="Confirm new password">
-            </div>
-
-            <hr>
-
             <div class="text-title">
                 <span>Profile</span>
             </div>
@@ -61,13 +23,49 @@
 
             <div class="form-input">
                 <label for="title">Profile name:</label>
-            <input class="form-submit" type="text" name="title" size="45" maxlength="50" value="{{ user_data.title }}">
+                <input class="form-submit" type="text" name="title" size="45" maxlength="50" value="{{ user_data.title }}">
             </div>
 
             <div class="form-input">
                 <label for="about">Profile description:</label>
-            <textarea class="form-submit" name="about" rows="5" cols="80" wrap="virtual">{{ user_data.about }}</textarea>
+                <textarea class="form-submit" name="about" rows="5" cols="80" wrap="virtual">{{ user_data.about }}</textarea>
             </div>
+
+            <hr>
+
+            <div class="text-title">
+                <span>Security</span>
+            </div>
+
+            <div class="form-input">
+                <label for="current_pass">Current password:</label>
+                <input class="form-submit" type="password" name="current_pass" size="30" maxlength="256"
+                       placeholder="Current password"><br>
+            </div>
+
+            <div class="form-input">
+                <label for="pass">New password:</label>
+                <input class="form-submit" type="password" name="pass" size="30" maxlength="256" placeholder="New password"><br>
+            </div>
+
+            <div class="form-input">
+                <label for="pass2">Confirm new password:</label>
+                <input class="form-submit" type="password" name="pass2" size="30" maxlength="256"
+                       placeholder="Confirm new password">
+            </div>
+
+            <hr>
+
+            <div class="text-title">
+                <span>Sensitive content</span>
+            </div>
+
+            <div class="form-submit">
+                <input type="checkbox" name="rating" id="rating" value="true" {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
+                <label for="rating"> Enable sensitive content</label><br>
+            </div>
+
+            <hr>
 
             <div class="form-button-container">
                 <input type="submit" id="upload" name="save" class="button button-primary"

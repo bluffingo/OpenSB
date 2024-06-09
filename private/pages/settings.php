@@ -33,7 +33,7 @@ if (isset($_POST['save'])) {
     $pass = ($_POST['pass'] ?? null);
     $pass2 = ($_POST['pass2'] ?? null);
 
-    $rating = $_POST['rating'] ?? "general";
+    $rating = isset($_POST['rating']) && $_POST['rating'] === 'true' ? 'mature' : 'general';
 
     $error = '';
 

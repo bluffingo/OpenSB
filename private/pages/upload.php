@@ -26,8 +26,8 @@ if ($disableUploading) {
 
 if (!$auth->isUserAdmin()) {
     // Rate limit uploading to a minute, both to prevent spam and to prevent double uploads.
-    if ($database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 180, $auth->getUserID()]) && !$isDebug) {
-        UnorganizedFunctions::Notification("Please wait three minutes before uploading again.", "/");
+    if ($database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 120, $auth->getUserID()]) && !$isDebug) {
+        UnorganizedFunctions::Notification("Please wait two minutes before uploading again.", "/");
     }
 }
 
@@ -37,6 +37,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
 
     $title = ($_POST['title'] ?? null);
     $description = ($_POST['desc'] ?? null);
+    $rating = isset($_POST['rating']) && $_POST['rating'] === 'true' ? 'mature' : 'general';
     if ($isDebug) {
         $noProcess = ($_POST['debugUploaderSkip'] ?? null);
     }
@@ -54,7 +55,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
         }
         if (move_uploaded_file($temp_name, $target_file)) {
             $database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, rating) VALUES (?,?,?,?,?,?,?,?,?)",
-                [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), 'dynamic/videos/' . $new, $status, ($_POST["rating"] ?? "general")]);
+                [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), 'dynamic/videos/' . $new, $status, $rating]);
 
             if (!isset($noProcess)) {
                 $storage->processVideo($new, $target_file);
@@ -68,7 +69,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
         $storage->processImage($temp_name, $new);
         $status = 0x0;
         $database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, post_type, rating) VALUES (?,?,?,?,?,?,?,?,?,?)",
-            [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), '/dynamic/art/' . $new . '.png', $status, 2, ($_POST["rating"] ?? "general")]);
+            [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), '/dynamic/art/' . $new . '.png', $status, 2, $rating]);
 
         UnorganizedFunctions::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
     } else {
