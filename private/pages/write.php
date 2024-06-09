@@ -38,8 +38,8 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
     } else {
     $uploader = $auth->getUserID();
 
-    $title = ($post_data['title'] ?? null);
-    $description = ($post_data['desc'] ?? null);
+    $title = ($_POST['title'] ?? "No title");
+    $description = ($_POST['desc'] ?? null);
 
     $database->query("INSERT INTO journals (title, post, author, date) VALUES (?,?,?,?)",
         [$title, $description, $uploader, time()]);
