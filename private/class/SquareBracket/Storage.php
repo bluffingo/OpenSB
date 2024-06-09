@@ -67,15 +67,15 @@ class Storage
     {
         global $branding;
 
-        if ($this->chazizInstance) {
+        if (file_exists(SB_DYNAMIC_PATH . '/custom_thumbnails/' . $id . '.jpg')) {
+            return '/dynamic/custom_thumbnails/' . $id . '.jpg';
+        } elseif ($this->chazizInstance) {
             $guid = $this->database->fetch("SELECT videofile from videos where video_id = ?", [$id]);
             return "https://" . $this->bunnyCDNSettings["streamHostname"] . "/" . $guid["videofile"] . "/thumbnail.jpg";
+        } elseif (file_exists(SB_DYNAMIC_PATH . '/thumbnails/' . $id . '.png')) {
+            return '/dynamic/thumbnails/' . $id . '.png';
         } else {
-            if (file_exists('../dynamic/thumbnails/' . $id . '.png')) {
-                return '../dynamic/thumbnails/' . $id . '.png';
-            } else {
-                return $branding["assets_location"] . '/placeholder.png';
-            }
+            return $branding["assets_location"] . '/placeholder.png';
         }
     }
 
@@ -83,8 +83,11 @@ class Storage
     {
         global $branding;
 
-        if  (file_exists('../dynamic/art_thumbnails/' . $id . '.jpg')) {
-            return '../dynamic/art_thumbnails/' . $id . '.jpg';
+        if (file_exists(SB_DYNAMIC_PATH . '/custom_thumbnails/' . $id . '.jpg')) {
+            return '/dynamic/custom_thumbnails/' . $id . '.jpg';
+        }
+        elseif (file_exists(SB_DYNAMIC_PATH . '/art_thumbnails/' . $id . '.jpg')) {
+            return'/dynamic/art_thumbnails/' . $id . '.jpg';
         } else {
             return $branding["assets_location"] . '/placeholder.png';
         }
@@ -117,8 +120,6 @@ class Storage
 
     public function uploadCustomThumbnail($temp_name, $new): void
     {
-        //$target_file = SB_DYNAMIC_PATH . '/custom_thumbnails/' . $new . '.png';
-
         UnorganizedFunctions::processCustomThumbnail($temp_name, $new);
 
         unlink($temp_name);
