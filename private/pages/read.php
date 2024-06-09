@@ -60,7 +60,7 @@ if ($enableFederatedStuff) {
         "comments" => $comments->getComments(),
     ];
 
-    echo $twig->render('read.twig', [
+    echo $twig->render('read_journal.twig', [
         'data' => $data,
     ]);
 }
