@@ -117,9 +117,9 @@ class Storage
 
     public function uploadCustomThumbnail($temp_name, $new): void
     {
-        $target_file = SB_DYNAMIC_PATH . '/custom_thumbnails/' . $new . '.png';
+        //$target_file = SB_DYNAMIC_PATH . '/custom_thumbnails/' . $new . '.png';
 
-        UnorganizedFunctions::processCustomThumbnail($temp_name, $target_file);
+        UnorganizedFunctions::processCustomThumbnail($temp_name, $new);
 
         unlink($temp_name);
     }
