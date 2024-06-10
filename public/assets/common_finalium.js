@@ -223,6 +223,7 @@ $(document).ready(function () {
         $("#showSearch").attr("style", "display:none");
         $("#header-main").attr("style", "display:none");
     });
+    /*
     $(".options-button").click(function () {
         $.ajax({
             url: "/customizer.php",
@@ -233,6 +234,7 @@ $(document).ready(function () {
             dataType: "html"
         });
     });
+    */
     $(".debug-button").click(function () {
         $("#debugModal").show();
     });

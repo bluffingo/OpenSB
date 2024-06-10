@@ -273,10 +273,17 @@ blockquote {
 }
 
 .commentPost {
-	margin-bottom: 17.5px;
-	.time {
-		font-size: .9em;
-	}
+  margin-bottom: 17.5px;
+  .commentAuthor {
+    .commentDisplayName {
+      color: $gray-600;
+      font-size: .9em;
+    }
+
+    .time {
+      font-size: .9em;
+    }
+  }
 }
 
 #player-container {

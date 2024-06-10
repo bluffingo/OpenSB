@@ -27,7 +27,7 @@
                <div class="grid">
                   <div class="col-md-8">
                      <img src="{{ profile_picture(submission.author.info.username) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
-                     <a href="/user.php?name={{ submission.author.info.username }}" style="color:{{ submission.u_customcolor }}"><b style="height: 20px;display: inline-block;">{{ submission.author.info.username }}</b></a> {# • {{ allVideos }} videos#}
+                     <a href="/user.php?name={{ submission.author.info.username }}" style="color:{{ submission.author.info.customcolor }}"><b style="height: 20px;display: inline-block;">{{ submission.author.info.username }}</b></a> {# • {{ allVideos }} videos#}
                      <br>
                      {% if user_data.id == submission.author %}<a class="button button-secondary button-small">Settings</a>{% else %}
                         <button id="subscribe-watch" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not log or user_data.id == submission.author %}disabled{% endif %}>{% if subscribed %}Unfollow{% else %}Follow{% endif %}</button>
@@ -118,7 +118,7 @@
                      </div>
                   {% endif %}
                   <div id="comment"></div>
-                  {% for comment in comments %}
+                  {% for comment in submission.comments %}
                      {{ comment(comment) }}
                   {% endfor %}
                </div>

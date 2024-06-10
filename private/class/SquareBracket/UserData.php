@@ -32,6 +32,7 @@ class UserData
             "followers" => $this->followers,
             "joined" => $this->data["joined"],
             "connected" => $this->data["lastview"],
+            "customcolor" => $this->data["customcolor"],
         ];
     }
 }

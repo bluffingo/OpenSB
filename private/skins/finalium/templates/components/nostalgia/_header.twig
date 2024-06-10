@@ -16,11 +16,9 @@
 				<span>{{ user_data.title }}{{ icon("caret-down", 16) }}</span>
 				<div class="usermenushit" id="masthead-below">
 					<ul style="padding:0">
-						<li><a href="/user?name={{ user_data.name }}">My profile</a></li>
-						<li><a href="/settings">Settings</a></li>
-						{% if user_data.powerlevel > 2 %}
-						<li><a href="/admin">Admin panel</a></li>
-						{% endif %}
+						{% for link in navigationList %}
+							<a href="{{ link.url }}">{{ link.name }}</a>
+						{% endfor %}
 					</ul>
 				</div>
 			</button>

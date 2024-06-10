@@ -17,9 +17,9 @@
 			<td class="b">{{ user_data.name }}</td>
 		</tr>
 		<tr>
-		<td class="a">Email address
-			<abbr title="Emails are stored hashed and cannot be retrieved outside of providing the email during password resets.">(?)</abbr></td>
-			<td class="b"></td>
+		<tr>
+			<td class="a">Email address</td>
+			<td class="b">{{ user_data.name }}</td>
 		</tr>
 		<tr>
 			<td class="a">Password</td>
@@ -74,9 +74,8 @@
 	<!-- <h3>Miscellaneous</h3>
 	<table class="settings">
 	</table> -->
-
-	<input type="hidden" name="magic" value="opensb_settings_save">
+	
 	<div class="right">
-		<input class="button button-primary" type="submit" name="action" value="Save Changes">
+		<input type="submit" id="upload" name="save" class="button button-primary" value="Save Changes">
 	</div>
 	{% endblock %}

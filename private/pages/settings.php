@@ -33,6 +33,8 @@ if (isset($_POST['save'])) {
     $pass = ($_POST['pass'] ?? null);
     $pass2 = ($_POST['pass2'] ?? null);
 
+    $customcolor = ($_POST['customcolor'] ?? '#523bb8');
+
     $rating = isset($_POST['rating']) && $_POST['rating'] === 'true' ? 'mature' : 'general';
 
     $error = '';
@@ -76,8 +78,8 @@ if (isset($_POST['save'])) {
     }
 
     if (!$error) {
-        $database->query("UPDATE users SET title = ?, about = ?, comfortable_rating = ? WHERE id = ?",
-            [$title, $about, $rating, $auth->getUserID()]);
+        $database->query("UPDATE users SET title = ?, about = ?, comfortable_rating = ?, customcolor = ? WHERE id = ?",
+            [$title, $about, $rating, $customcolor, $auth->getUserID()]);
         UnorganizedFunctions::Notification("Edited successfully!", ("user.php?name=" . $auth->getUserData()["name"]), "success");
     } else {
         UnorganizedFunctions::Notification($error, "/settings.php");

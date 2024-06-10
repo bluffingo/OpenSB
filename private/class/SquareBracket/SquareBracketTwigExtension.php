@@ -202,18 +202,8 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     public function UserLink($user): string
     {
-        global $auth;
-
-        $id = $user["id"];
-
-        if ($auth->isUserLoggedIn() && UnorganizedFunctions::IsFollowingUser($id)) {
-            $class = "userlink following";
-        } else {
-            $class = "userlink";
-        }
-
         return <<<HTML
-<a class="{$class}" href="/user/{$user["info"]["username"]}">{$user["info"]["username"]}</a>
+<a class="userlink userlink-{$user["info"]["username"]}" style="color:{$user["info"]["customcolor"]};" href="/user/{$user["info"]["username"]}">{$user["info"]["username"]}</a>
 HTML;
     }
 
