@@ -12,7 +12,7 @@
                 <h4><a href="/view/{{ submission.video_id }}">{{ submission.title }}</a></h4>
                 {# hack to prevent twig from outputing the number 1 #}
                 {% if submission.views != 1 %}
-                    {% set pluralViews = __("s") %}
+                    {% set pluralViews = "s" %}
                 {% endif %}
                 <p>{{ user_link(submission.author) }} &bull; {{ submission.views }} view%s", [pluralViews]) }} &bull;
                     {{ submission.published | relative_time }}</p>

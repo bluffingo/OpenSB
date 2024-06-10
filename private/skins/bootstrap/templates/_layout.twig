@@ -5,8 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block head %}{% endblock %}
-    <!-- REDO THIS REDO THIS REDO THIS REDO THIS -->
-    <link href="/assets/css/bootstrap.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
+    {% if current_theme == "default" %}
+        <link href="/assets/css/bootstrap.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
+    {% elseif current_theme == "arson" %}
+        <link href="/assets/css/bootstrap_arson.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
+    {% elseif current_theme == "virtue" %}
+        <link href="/assets/css/bootstrap_virtue.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
+    {% endif %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
             integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -22,15 +27,9 @@
     <meta name="theme-color" content="#0065d8">
     <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
 </head>
-<style>
-    .bi {
-        vertical-align: -4px;
-    }
-</style>
 <body>
-
 <nav id="navbar"
-     class="navbar {% if theme == 'dark' or theme == 'finalium-dark' %} navbar-dark bg-dark {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md">
+     class="navbar navbar-light bg-light navbar-static-top navbar-expand-md">
     <div class="container">
         <a class="navbar-brand" href="/"><img src="{{ website_branding.assets_location }}/logo.png" alt="[sb]"
                                               height="32"
@@ -126,8 +125,6 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="my-0">OpenSB {{ opensb_version }}</h4>
-                <!-- 2020 was when work on PokTube (the predecessor of squareBracket) was started. Techically, PokTube and squareBracket are the same project, just with different codebases. -gr 7/20/2021 -->
-                <!-- is it me or is morale a bit... low? it seems like there's no hope for squarebracket or some shit. don't be surprised if i end up leaving the project -gr 8/3/2021 -->
                 <p class="my-0">© 2021-{{ 'now' | date('Y') }} OpenSB contributors</p>
                 <p class="my-0">
                     <a href="/version" class="me-1">About</a>
@@ -144,7 +141,6 @@
         </div>
 </footer>
 {% block postcontent %}{% endblock %}
-<!-- gamerappa killed the bazinga star -->
 </div>
 {% block scripts %}{% endblock %}
 </body>

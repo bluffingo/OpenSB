@@ -68,10 +68,6 @@ class Templating
         $this->twig->addExtension(new StringExtension());
 
         // 2021 SQUAREBRACKET FRONTEND COMPATIBILITY
-        $this->twig->addFunction(new TwigFunction('__', function($string, $placeholders = []) {
-            return vsprintf($string, $placeholders);
-        }));
-
         $this->twig->addFunction(new TwigFunction('small_video_box', function() {
             return false;
         }));
