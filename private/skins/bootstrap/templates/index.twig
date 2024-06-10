@@ -78,11 +78,13 @@
                         <p>Insert slogan.</p>
                     {% endif %}
                 {% endif %}
-                {% if current_theme == "virtue" %}
-                <div class="btn-group my-auto w-100">
-                    <a href="/register" class="btn btn-primary">Register</a>
-                    <a href="/login" class="btn btn-secondary">Login</a>
-                </div>
+                {% if not is_user_logged_in %}
+                    {% if current_theme == "virtue" %}
+                    <div class="btn-group my-auto w-100">
+                        <a href="/register" class="btn btn-primary">Register</a>
+                        <a href="/login" class="btn btn-secondary">Login</a>
+                    </div>
+                    {% endif %}
                 {% endif %}
                 <hr/>
                 <h3>News and updates</h3>
