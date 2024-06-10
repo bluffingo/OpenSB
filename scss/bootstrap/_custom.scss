@@ -1,0 +1,57 @@
+@import url('https://rsms.me/inter/inter.css');
+
+@each $state, $value in $theme-colors {
+  .bg-#{$state} {
+    @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
+  }
+}
+
+@mixin btn-styles($btn-color: #555) {
+  @include gradient-y($start-color: $btn-color, $end-color: darken($btn-color, 5%));
+  background-repeat: repeat-x;
+  border-color: darken($btn-color, 14%);
+
+  &:hover  {
+    //Hack to fix the smooth fade between hover and normal button style.
+    @include gradient-y($start-color: darken($btn-color, 5%), $end-color: darken($btn-color, 10%));
+  }
+
+  &:focus {
+    //Hack to fix the smooth fade between focus and normal button style.
+    @include gradient-y($start-color: darken($btn-color, 7%), $end-color: darken($btn-color, 12%));
+  }
+
+  &:active,
+  &.active {
+    background-color: darken($btn-color, 12%);
+	border-color: darken($btn-color, 14%);
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: darken($btn-color, 12%);
+    }
+  }
+}
+
+.btn {
+  // Remove the gradient for the pressed/active state
+  &:active,
+  &.active {
+    background-image: none;
+  }
+}
+
+// Apply the mixin to the buttons
+@each $state, $value in $theme-colors {
+  .btn-#{$state} {
+    @include btn-styles($value);
+  }
+}

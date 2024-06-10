@@ -1,0 +1,16 @@
+{
+  "metadata":
+  {
+    "id": "bootstrap",
+    "name": "Bootstrap",
+    "author": "Chaziz",
+    "description": "The 2021 squareBracket user experience.",
+    "themes": [
+      {
+        "id": "default",
+        "name": "Default",
+        "description": "The default 2021 squareBracket user experience."
+      }
+    ]
+  }
+}

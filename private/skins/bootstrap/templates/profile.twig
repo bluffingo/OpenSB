@@ -1,0 +1,84 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ data.username }}{% endblock %}
+
+	{% block head %}
+		<script>
+			user_id = '{{ data.id }}';
+		</script>
+	{% endblock %}
+
+	{% block precontent %}
+<style>
+	.bg-custom-profile {
+		background-color: purple;
+	}
+
+	.bg-channel-background {
+		margin-top: -24px;
+		padding-bottom: 25px;
+	}
+</style>
+<div class="bg-channel-background">
+	<div class="col-12 mb-2 mt-0">
+		<div class="p-1 bg-custom-profile text-white">
+			<div class="container py-4">
+				<div class="row">
+					<div class="col-md-12">
+						<img class="float-start rounded-circle me-3" src="{{ profile_picture(data.username) }}" width="150" alt="pfp">
+						<h1 class="align-top fw-bold mb-0">{{ data.displayname }}</h1>
+						<div class="fs-4">@{{ data.username }}</div>
+						<p class="fs-6 text-break">{{ data.description }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+
+	{% block content %}
+	<div class="row">
+		{% if edited %}
+			<div class="col-12">
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					{{ __("Your profile has been successfully updated.") }}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			</div>
+		{% endif %}
+		<!-- This prevents the user info box from being extremely tall. Box probably needs to be redesigned... -->
+		<div class="col-md-8 order-2 order-md-1">
+			<div class="card">
+				<div class="card-body">
+					<div class="caption">
+						<h3>{{ __("Uploaded by %s", [data.username]) }}</h3>
+						{% for submission in data.submissions %}
+							{{ include('/components/smallvideobox.twig') }}
+						{% else %}
+							<p>{{ __("There are currently no videos uploaded by %s.", [data.username]) }}</p>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 order-1 order-md-2">
+			<div class="card mb-2">
+				<div class="card-body">
+					<h4>{{ __("About %s", [data.username]) }}</h4>
+					<hr>
+					<dl class="row mb-0">
+						<dt class="col-auto">{{ __("Last seen") }}</dt>
+						<dd class="col-auto">{{ data.connected | relative_time }}</dd>
+					</dl>
+					<dl class="row mb-0">
+						<dt class="col-auto">{{ __("Joined") }}</dt>
+						<dd class="col-auto">{{ data.joined | date('M j, Y') }}</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class="container">
+	{% endblock %}

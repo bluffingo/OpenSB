@@ -3,7 +3,7 @@
     "id": "biscuit",
     "name": "Biscuit",
     "author": "Chaziz",
-    "description": "Chaziz's OpenSB frontend.",
+    "description": "The default squareBracket user experience.",
     "themes": [
       {
         "id": "default",

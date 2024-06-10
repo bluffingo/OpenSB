@@ -10,7 +10,8 @@
 		"ext-pdo": "*",
 		"twig/string-extra": "3.10.0",
 		"psr/http-client": "1.0.3",
-		"symfony/http-kernel": "7.1.1"
+		"symfony/http-kernel": "7.1.1",
+		"twbs/bootstrap": "^5.3"
 	},
 	"minimum-stability": "stable",
 	"config": {

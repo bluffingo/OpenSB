@@ -1,0 +1,39 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Wikis" %}
+
+{% block content %}
+    <div class="alert alert-secondary">
+        <strong>NOTE</strong>: A Qobo account is required in order to contribute.
+    </div>
+    <h1>Qobo wikis</h1>
+            {% for entry in data %}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+                                <a href="/{{ entry.url }}">
+                                    <img src="{{ entry.logo }}"
+                                         alt="{{ entry.title }}" class="img-fluid">
+                                </a>
+                            </div>
+                            <div class="col-10">
+                                <div class="content-title">
+                                    <a href="/{{ entry.url }}">
+                                        {{ entry.title }}
+                                    </a>
+                                </div>
+                                <div class="content-description">
+                                    <br>
+                                    {% if entry.desc|trim is not empty %}
+                                        <span>{{ entry.desc }}</span>
+                                    {% else %}
+                                        <span class="fade">No description.</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+{% endblock %}

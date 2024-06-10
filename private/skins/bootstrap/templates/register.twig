@@ -1,0 +1,59 @@
+{% extends "_layout-login.twig" %}
+
+{% block title %}Register{% endblock %}
+
+	{% block content %}
+<main class="form-signin">
+{% if error %}
+	<div class="alert alert-warning" role="alert">{{ error }}</div>
+{% endif %}
+<div class="container">
+</div>
+<!-- HOLY SHIT the page looked broken for a while.
+register page should be merged with login page on sbnext
+-gamerappa 7/10/2021 -->
+  <form method="post" name="registerForm" id="registerForm" action="register">
+    <img class="mb-2" src="/assets/logo_border_placeholder.png" alt="{{ website_branding.name }}" width="90">
+	<h3 class="mb-4 text-white">{{ __("Register") }}</h3>
+<form method="POST">
+	<div class="card">
+		<div class="card-body">
+		<div class="form-floating my-2">
+			<input type="email" name="email" class="form-control" id="floatingEmail" placeholder="">
+			<label for="floatingEmail">{{ __("E-mail") }}</label>
+		</div>
+		<div class="form-floating my-2">
+			<input type="text" name="displayName" class="form-control" id="floatingDname" placeholder="">
+			<label for="floatingDname">{{ __("Display Name") }}</label>
+		</div>
+		<div class="form-floating my-2">
+			<input type="text" name="username" class="form-control" id="floatingUsername" placeholder="">
+			<label for="floatingUsername">{{ __("Username") }}</label>
+		</div>
+		<div class="form-floating my-2">
+			<input type="password" name="pass1" class="form-control" id="floatingPass" placeholder="">
+			<label for="floatingPass">{{ __("Password") }}</label>
+		</div>
+		<div class="form-floating my-2">
+			<input type="password" name="pass2" class="form-control" id="floatingPass2" placeholder="">
+			<label for="floatingPass2">{{ __("Password (Again)") }}</label>
+		</div>
+		{% if hcaptcha_sitekey %}
+		<div class="form-floating my-2">
+			<div class="h-captcha" data-sitekey="{{ hcaptcha_sitekey }}"></div>
+		</div>
+		{% endif %}
+		<div class="d-flex gap-2 justify-content-between">
+			<input class="btn btn-lg btn-primary flex-grow-1" type="submit" value="{{ __("Register") }}" name="action">
+			<a class="btn btn-lg btn-secondary" href="/">{{ __("Back") }}</a>
+		</div>
+	</div>
+</div>
+	<p class="mt-2 text-white"><b>{{ __("You must be 13 years or older to register to website_branding.name.") }}</b> <br>{{ __("Account passwords are hashed with bcrypt.") }}</p>
+	<p class="mt-5 mb-3 text-white">By OpenSB Contributors · 2021-{{ 'now' | date('Y') }}</p>
+</form>
+</main>
+{% if hcaptcha_sitekey %}
+	<script src='https://www.hCaptcha.com/1/api.js' async defer></script>
+{% endif %}
+	{% endblock %}

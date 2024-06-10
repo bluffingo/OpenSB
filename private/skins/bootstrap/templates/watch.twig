@@ -1,0 +1,99 @@
+{% extends "_layout.twig" %}
+
+{% block head %}
+	<meta name="title" content="{{ submission.title }} - {{ website_branding.name }}">
+	<meta name="description" content="{{ submission.description|length > 250 ? submission.description|slice(0, 250) ~ '...' : submission.description }}">
+	<script>
+		video_id = '{{ submission.id }}';
+		user_id = '{{ submission.author.id }}';
+		submission_int_id = '{{ submission.int_id }}';
+	</script>
+{% endblock %}
+
+{% block scripts %}
+	{{ include('submission_rating_script.twig') }}
+{% endblock %}
+
+{% block title %}{{ submission.title }}{% endblock %}
+
+	{% block content %}
+		<div class="row">
+			<div class="col-lg-9">
+				{{ submission_view(submission) }}
+				<div style="margin-top:5px">
+					<div class="card">
+						<div class="card-body">
+							<h4>{{ submission.title }}</h4><hr class="mt-2 mb-3"/>
+							<div class="row">
+								<div class="col-lg-9">
+									<div class="row">
+										<div class="col-lg-2" style="width:10%;padding-right:0">
+											<a href="/user/{{ submission.author.info.username }}">
+												<img class="float-start rounded-circle w-100" src="{{ profile_picture(submission.author.info.username) }}">
+											</a>
+										</div>
+										<div class="col-lg-10">
+											{{ user_link(submission.author) }}<br>
+											<small>Uploaded on {{ submission.published | date('M j, Y') }}
+												{% if submission.published_originally and submission.original_site %}
+													<br>First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}
+												{% elseif submission.original_site %}
+													<br>Originally uploaded on {{ submission.original_site }}
+												{% endif %}
+											</small>
+										</div>
+									</div>
+								</div>
+								<div class="col-3 text-end">
+									{# hack to prevent twig from outputing the number 1 #}
+									{% if submission.interactions.views != 1 %}
+										{% set pluralViews = "s" %}
+									{% endif %}
+									<div class="fs-5">
+										{{ submission.interactions.views }} view{{pluralViews}}
+									</div>
+									<div id="rater"></div>
+									<div>
+										<small>
+											{{ submission.interactions.ratings.total }} ratings
+										</small>
+									</div>
+								</div>
+							</div>
+							<div style="margin-top: 1rem;">{{ submission.description | markdown_user_written }}</div>
+							<hr class="mt-2 mb-3"/>
+							<div>
+								<small>
+									Audience rating: {{ submission.rating | capitalize }}
+								</small>
+							</div>
+						</div>
+					</div>
+				</div> <!-- WATCH VIDEO BOX -->
+				<div class="mt-1">
+					<div class="card">
+						<div class="card-body">
+							<h5>Comments</h5><hr class="mt-2 mb-3"/>
+							<textarea class="form-control mt-2 mb-2" id="commentContents" style="overflow:hidden;resize:none"
+									  rows="3" placeholder="{% if is_user_logged_in %}{{ __("Enter comment here, Markdown can be used here.") }}{% else %}{{ __("Please sign in in order to comment.") }}{% endif %}"></textarea>
+							{% if is_user_logged_in %}<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top:5px;margin-bottom:15px">
+								<button id="{% if is_user_logged_in %}post{% endif %}" class="btn btn-primary {% if not is_user_logged_in %}disabled{% endif %}">
+									{{ __("Comment") }}
+									<div class="spinner-border spinner-border-sm d-none" id="commentPostingSpinner" role="status" aria-hidden="true"><span class="visually-hidden">{{ __("Posting...") }}</span></div>
+								</button>
+								</div>{% endif %}
+							<div id="comment"></div>
+							{% for comment in submission.comments %}
+								{{ include('/components/comment.twig') }}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				{% for submission in submission.recommended %}
+					{{ include('/components/smallvideobox.twig') }}
+				{% endfor %}
+			</div>
+		</div>
+	{% endblock %}

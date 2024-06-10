@@ -1,0 +1,80 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Home") }}{% endblock %}
+	{% block content %}
+		<div class="row">
+			<div class="col-xl-8">
+				<div class="row">
+					<div class="col-8">
+						<ul class="nav nav-underline mb-3" id="homenav-tab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="homenav-recent-tab" data-bs-toggle="pill" data-bs-target="#homenav-recent" type="button" role="tab" aria-controls="homenav-recent" aria-selected="true">Recent</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="homenav-random-tab" data-bs-toggle="pill" data-bs-target="#homenav-random" type="button" role="tab" aria-controls="homenav-random" aria-selected="false">Random</button>
+							</li>
+						</ul>
+					</div><div class="col-4">
+						<div class="text-end"><a href="/browse" class="btn btn-light btn-sm">{{ __("Browse") }}</a></div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-body">
+						<div class="tab-content" id="homenav-tabContent">
+							<div class="tab-pane fade show active" id="homenav-recent" role="tabpanel" aria-labelledby="homenav-recent-tab" tabindex="0">
+								<h3>Recent submissions</h3>
+								{% for submission in data.submissions_new %}
+									{{ include('/components/smallvideobox.twig') }}
+								{% else %}
+									<p>{{ __("No submissions.") }}</p>
+								{% endfor %}
+							</div>
+							<div class="tab-pane fade" id="homenav-random" role="tabpanel" aria-labelledby="homenav-random-tab" tabindex="0">
+								<h3>Random submissions</h3>
+								{% for submission in data.submissions %}
+									{{ include('/components/smallvideobox.twig') }}
+								{% else %}
+									<p>{{ __("No submissions.") }}</p>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4">
+				{% if is_user_logged_in %}
+					<div>
+						<img class="float-start rounded-circle w-25 me-3" src="{{ profile_picture(user_data.name) }}"  alt="{{ user_data.name }}">
+						<p class="text-start float-end">
+						<h3>{{ user_data.title }}</h3>
+						<p class="fs-5 mb-1">@{{ user_data.name }}</p>
+					</div>
+					<div class="clearfix"></div>
+				{% else %}
+					<h3>Welcome to {{ website_branding.name }}</h3>
+					{% if is_chaziz_sb %}
+						<p>Your content, your narration, your niche on the web.</p>
+					{% else %}
+						<p>Insert slogan.</p>
+					{% endif %}
+				{% endif %}
+				<hr/>
+				<h3>{{ __("News and updates") }}</h3>
+				{% for news in data.news_recent %}
+					<div class="card" style="margin-bottom:10px">
+						<div class="card-body">
+							<h5>
+								<a href="/read?j={{ news.id }}">
+									{{ news.title|u.truncate(100, '...') }}
+								</a>
+							</h5>
+							{{ news.post|u.truncate(250, '...') }}
+						</div>
+						<div class="card-footer text-body-secondary">
+							{{ news.date | relative_time }}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	{% endblock %}

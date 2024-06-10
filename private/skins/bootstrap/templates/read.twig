@@ -1,0 +1,15 @@
+{% extends "_layout.twig" %}
+
+{% set title = data.title %}
+
+{% block title %}{{ data.title }}{% endblock %}
+
+{% block content %}
+	<div class="card">
+		<div class="card-body">
+			<h1>{{ data.title }}</h1>
+			<p>By {{ user_link(data.author) }}, {{ data.published | relative_time }}</p>
+			<p>{{ data.contents | markdown_user_journal }}</p>
+		</div>
+	</div>
+{% endblock %}

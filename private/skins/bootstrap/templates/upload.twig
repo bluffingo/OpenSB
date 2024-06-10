@@ -1,0 +1,56 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ __("Upload") }}{% endblock %}
+
+	{% block content %}
+<div class="row">
+<h3>{{ __("Upload video") }}</h3>
+<p><span class="badge bg-primary">{{ icon('info-circle', 16) }} {{ __("Important") }}</span> {{ __("By uploading your videos onto This Very Website Running OpenSB, you acknowledge about the upload guidelines.") }}</p>
+<div class="col-8">
+<form name="uploadForm" id="uploadForm" method="post" action="upload"
+enctype="multipart/form-data">
+<br>
+
+<div class="row">
+	<div class="col-auto pe-0">
+		{{ icon('text-left', 24) }}
+	</div>
+	<div class="col-auto">
+		<h4>{{ __("Video info") }}</h4>
+	</div>
+</div>
+<p>{{ __("Enter the title and description of your video.") }}</p>
+
+	<input type="text" class="form-control mb-1" name="title" value="" placeholder="{{ __("Title") }}">
+	<textarea class="form-control mb-1" name="desc" maxlength="2000" form="uploadForm"
+	style="overflow:hidden;resize:none" rows="3" placeholder="{{ __("Description") }}"></textarea>
+	<input type="text" class="form-control" name="tags" value="" placeholder="{{ __("Tags") }}">
+	<br>
+<div class="row">
+	<div class="col-auto pe-0">
+		{{ icon('file-earmark-play', 24) }}
+	</div>
+	<div class="col-auto">
+		<h4>{{ __("Video file") }}</h4>
+	</div>
+</div>
+<p>{{ __("Select the video file you want to upload.") }}</p>
+	<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
+	<br>
+	</div>
+	<div class="col-4">
+<div class="card">
+  <h5 class="card-header">{{ __("Upload Guidelines") }}</h5>
+  <div class="card-body">
+    <p class="card-text">Placeholder</p>
+  </div>
+</div>
+	</div>
+	
+	<div class="text-end">
+	<input class="btn btn-primary" type="submit" id="upload" name="upload"
+	value="{{ __("Upload") }}">
+	</div>
+</form>
+</div>
+	{% endblock %}

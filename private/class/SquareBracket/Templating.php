@@ -67,6 +67,28 @@ class Templating
         $this->twig->addExtension(new SquareBracketTwigExtension());
         $this->twig->addExtension(new StringExtension());
 
+        // 2021 SQUAREBRACKET FRONTEND COMPATIBILITY
+        $this->twig->addFunction(new TwigFunction('__', function($string, $placeholders = []) {
+            return vsprintf($string, $placeholders);
+        }));
+
+        $this->twig->addFunction(new TwigFunction('small_video_box', function() {
+            return false;
+        }));
+
+        $this->twig->addFunction(new TwigFunction('video_box', function() {
+            return false;
+        }));
+
+        $this->twig->addFunction(new TwigFunction('browse_video_box', function() {
+            return false;
+        }));
+
+        $this->twig->addFunction(new TwigFunction('icon', function($icon, $size) {
+            return $this->render('components/icon.twig', ['icon' => $icon, 'size' => $size]);
+        }, ['is_safe' => ['html']]));
+        // ---------------------------
+
         if ($isDebug) {
             $this->twig->addExtension(new DebugExtension());
         } else {
@@ -86,7 +108,7 @@ class Templating
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('website_branding', $branding);
         $this->twig->addGlobal('current_theme', $this->theme); // not to be confused with skins
-        $this->twig->addGlobal('invite_keys_enabled', $enableInviteKeys); // not to be confused with skins
+        $this->twig->addGlobal('invite_keys_enabled', $enableInviteKeys);
 
         if (isset($_SERVER["REQUEST_URI"])) {
             $this->twig->addGlobal('page_name', empty(basename($_SERVER["REQUEST_URI"], '.php')) ? 'index' : basename($_SERVER["REQUEST_URI"], '.php'));
