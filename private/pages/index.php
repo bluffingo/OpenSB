@@ -15,7 +15,7 @@ $news_recent = $database->fetchArray($database->query("SELECT j.* FROM journals 
 $data = [
     "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $submissions),
     "submissions_new" => UnorganizedFunctions::makeSubmissionArray($database, $submissions_recent),
-    "news_recent" => $news_recent,
+    "news_recent" => UnorganizedFunctions::makeJournalArray($database, $news_recent),
 ];
 
 echo $twig->render('index.twig', [

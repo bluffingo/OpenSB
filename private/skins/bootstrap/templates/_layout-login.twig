@@ -5,8 +5,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% block head %}{% endblock %}
-	<!-- REDO THIS REDO THIS REDO THIS REDO THIS -->
-	<link href="/assets/css/bootstrap.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
+	{% if current_theme == "default" %}
+		<link href="/assets/css/bootstrap.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
+	{% elseif current_theme == "arson" %}
+		<link href="/assets/css/bootstrap_arson.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
+	{% elseif current_theme == "virtue" %}
+		<link href="/assets/css/bootstrap_virtue.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
+	{% endif %}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
 			integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
 			crossorigin="anonymous" referrerpolicy="no-referrer"></script>

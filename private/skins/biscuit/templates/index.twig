@@ -106,10 +106,10 @@
                                     </a>
                                 </div>
                                 <div class="journal-info">
-                                    {{ news.date | relative_time }}
+                                    {{ news.published | relative_time }}
                                 </div>
                                 <div class="journal-contents">
-                                    {{ news.post|u.truncate(300, '...') }}
+                                    {{ news.contents|u.truncate(300, '...') }}
                                 </div>
                             </div>
                         {% endfor %}

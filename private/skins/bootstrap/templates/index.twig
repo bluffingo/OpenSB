@@ -30,7 +30,12 @@
                         <div class="tab-content" id="homenav-tabContent">
                             <div class="tab-pane fade show active" id="homenav-recent" role="tabpanel"
                                  aria-labelledby="homenav-recent-tab" tabindex="0">
-                                <h3>Recent submissions</h3>
+                                <h3>
+                                    {% if current_theme == "virtue" %}
+                                    <i class="fa-solid fa-clock"></i>
+                                    {% endif %}
+                                    Recent submissions
+                                </h3>
                                 {% for submission in data.submissions_new %}
                                     {{ include('/components/smallvideobox.twig') }}
                                 {% else %}
@@ -39,7 +44,12 @@
                             </div>
                             <div class="tab-pane fade" id="homenav-random" role="tabpanel"
                                  aria-labelledby="homenav-random-tab" tabindex="0">
-                                <h3>Random submissions</h3>
+                                <h3>
+                                    {% if current_theme == "virtue" %}
+                                        <i class="fa-solid fa-shuffle"></i>
+                                    {% endif %}
+                                    Random submissions
+                                </h3>
                                 {% for submission in data.submissions %}
                                     {{ include('/components/smallvideobox.twig') }}
                                 {% else %}
@@ -68,23 +78,47 @@
                         <p>Insert slogan.</p>
                     {% endif %}
                 {% endif %}
+                {% if current_theme == "virtue" %}
+                <div class="btn-group my-auto w-100">
+                    <a href="/register" class="btn btn-primary">Register</a>
+                    <a href="/login" class="btn btn-secondary">Login</a>
+                </div>
+                {% endif %}
                 <hr/>
                 <h3>News and updates</h3>
-                {% for news in data.news_recent %}
-                    <div class="card" style="margin-bottom:10px">
-                        <div class="card-body">
-                            <h5>
-                                <a href="/read?j={{ news.id }}">
+                {% if current_theme == "virtue" %}
+                    {% for news in data.news_recent %}
+                        <figure>
+                            <blockquote class="blockquote position-relative mt-3">
+                                <span class="position-absolute top-0 start-0 translate-middle text-primary">
+                                    <i class="fa-solid fa-quote-left"></i>
+                                </span>
+                                <a style="position: relative; left: 1rem;" href="read?j={{ news.id }}" class="text-reset">
                                     {{ news.title|u.truncate(100, '...') }}
                                 </a>
-                            </h5>
-                            {{ news.post|u.truncate(250, '...') }}
+                            </blockquote>
+                            <figcaption class="blockquote-footer">
+                                <cite style="font-style: normal;">@{{ news.author.info.username }}</cite>
+                            </figcaption>
+                        </figure>
+                    {% endfor %}
+                {% else %}
+                    {% for news in data.news_recent %}
+                        <div class="card" style="margin-bottom:10px">
+                            <div class="card-body">
+                                <h5>
+                                    <a href="/read?j={{ news.id }}">
+                                        {{ news.title|u.truncate(100, '...') }}
+                                    </a>
+                                </h5>
+                                {{ news.contents|u.truncate(250, '...') }}
+                            </div>
+                            <div class="card-footer text-body-secondary">
+                                {{ news.published | relative_time }}
+                            </div>
                         </div>
-                        <div class="card-footer text-body-secondary">
-                            {{ news.date | relative_time }}
-                        </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     {% endblock %}

@@ -18,9 +18,13 @@ $path = explode('/', $uri);
 
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
-// hello to anyone reading this code. i know this fucking sucks. 2024 is supposed to be the last year of opensb.
-// why am i not rewriting the codebase? because i already did that but it's for another project that's co-owned so
-// unless if that project dies off i can't use that codebase for squarebracket. -chaziz 6/2/2024
+// this is very ugly, i know.
+function load_file_from_vendor($path, $content_type): void
+{
+    header("Content-Type: $content_type");
+    require(SB_VENDOR_PATH . $path);
+    die();
+}
 
 // Originally based on Rollerozxa's router implementation in Principia-Web.
 // https://github.com/principia-game/principia-web/blob/master/router.php
@@ -42,6 +46,11 @@ if (isset($path[1]) && $path[1] != '') {
                 default => die("Invalid API.")
             },
             default => die("Invalid API.")
+        },
+        'assets' => match ($path[2] ?? null) {
+            'fa-solid-900.woff2' => load_file_from_vendor('/fortawesome/font-awesome/webfonts/fa-solid-900.woff2', 'font/woff2'),
+            'bootstrap-icons.woff2' => load_file_from_vendor('/twbs/bootstrap-icons/font/fonts/bootstrap-icons.woff2', 'font/woff2'),
+            default => die(),
         },
         'browse' => require(SB_PRIVATE_PATH . '/pages/browse.php'),
         'delete' => require(SB_PRIVATE_PATH . '/pages/delete.php'),
