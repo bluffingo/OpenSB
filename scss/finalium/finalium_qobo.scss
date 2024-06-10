@@ -3,6 +3,10 @@
 /// Variables \\\
 @import "_variables";
 
+/// Shit \\\
+@import "clearfix";
+@import "grid-breakpoints";
+
 // inter
 @import url('https://rsms.me/inter/inter.css');
 
@@ -28,6 +32,14 @@ $theme-colors: (
 .main-content {
 	background: rgb(24, 0, 36);
 	background: linear-gradient(90deg, rgba(24, 0, 36, 1) 0%, rgba(100, 9, 121, 1) 35%, rgba(200, 21, 200, 1) 100%);
+	.sb-welcome {
+		text-align: center;
+		h1 {
+			font-weight:600;
+			font-size: 2.5em;
+			margin: 8px 0;
+		}
+	}
 }
 
 a:link,
@@ -51,3 +63,43 @@ $mastheadwidth: 100%;
 
 /// Imports \\\
 @import "_imports";
+
+// breakpoints in april 2023 finalium were wider
+.container {
+	padding: 0 15px;
+	transition: max-width ease-out 1s, margin-left ease-out 2s, padding ease-out 1s;
+	// 576px window width and more
+	@include sm {
+		padding: 0 12px;
+	}
+	// 992px window width and more
+	@include lg {
+		margin-right: auto;
+		margin-left: auto;
+		max-width: 1500px;
+	}
+	// i have no idea
+	@include xl {
+		max-width: 1650px;
+		padding: 0 35px;
+	}
+}
+
+// inputs lost their glow around may-june 2023?
+textarea,
+input[type]:not([type=file]):not([type=submit]) {
+	border: 1px solid $gray-300;
+	background: $form-input;
+	border-radius: 4px;
+	color: $text-color;
+	box-shadow: none;
+	transition: none;
+}
+
+textarea:focus,
+input[type]:not([type=file]):not([type=submit]):focus {
+	border-color: $gray-600;
+	outline: none;
+	box-shadow: none;
+	transition: none;
+}

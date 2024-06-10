@@ -5,7 +5,6 @@ body {
   font-size: 13px;
   margin: auto;
   width: 100%;
-  font-weight: 500;
 }
 
 #masthead-container {
@@ -75,16 +74,18 @@ body {
 
 textarea,
 input[type]:not([type=file]):not([type=submit]) {
-  border: 1px solid $gray-300;
+  border: 1px solid $gray-400;
   background: $form-input;
   border-radius: 4px;
-  color: $text-color;
+  box-shadow: 0 0 1px $gray-400;
+  transition: border linear 0.3s, box-shadow linear 0.3s;
 }
 
 textarea:focus,
 input[type]:not([type=file]):not([type=submit]):focus {
-  border-color: $gray-600;
-  outline: none;
+  border-color: $primary;
+  box-shadow: 0 0 5px $primary;
+  outline: 0;
 }
 
 #masthead {
