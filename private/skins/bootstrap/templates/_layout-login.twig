@@ -1,5 +1,11 @@
+{% if is_chaziz_sb %}
+	{% set logo = '/assets/sb_branding/bootstrap/logo_border_placeholder.png' %}
+{% else %}
+	{% set logo = website_branding.assets_location ~ '/logo.png' %}
+{% endif %}
+
 <!doctype html>
-<html lang="en">
+<html lang="en" class="signin">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
