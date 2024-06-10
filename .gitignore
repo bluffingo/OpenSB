@@ -31,9 +31,6 @@ adminer-*.php
 */phpmyadmin
 */phpma
 
-# official production branding
-public/assets/sb_branding
-
 # mariadb stuff from docker
 mariadb-data
 
