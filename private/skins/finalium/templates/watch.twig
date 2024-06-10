@@ -72,7 +72,7 @@
             </div>
             <div class="card card-body-fat">
                <div id="About" class="tabcontent" style="display: block;">
-                  <p><b>Uploaded on {{ submission.time | date('M j, Y') }}</b></p>
+                  <p><b>Uploaded on {{ submission.published | date('M j, Y') }}</b></p>
                   {% if submission.published_originally and submission.original_site %}
                      <div class="watch-box-author-info-small">First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}</div>
                   {% elseif submission.original_site %}
