@@ -1,0 +1,11 @@
+{% extends "_layout.twig" %}
+
+{% block title %}News{% endblock %}
+
+{% block content %}
+    {% for news in news %}
+        <h1>{{ news.time | date("F jS Y</h1>
+        <p>{{ news.text | markdown }}</p>
+        <br><br><br>
+    {% endfor %}
+{% endblock %}

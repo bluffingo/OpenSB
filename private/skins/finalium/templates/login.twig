@@ -1,0 +1,35 @@
+{% extends "_layout_chaziz.twig" %}
+
+{% block title %}Login{% endblock %}
+
+	{% block content %}
+        {% if error %}
+            <div class="header_message header-danger" role="alert">{{ error }}</div>
+			<br>
+        {% elseif resetted %}
+            <div class="header_message header-success"
+                 role="alert">Password successfully reset! Please login with your new password.</div>
+			<br>
+        {% elseif new_pass %}
+            <div class="header_message header-success"
+                 role="alert">Password successfully reset! Please login with your new password.</div>
+			<br>
+        {% elseif new_token %}
+            <div class="header_message header-success"
+                 role="alert">You have been successfully logged out of all devices.</div>
+			<br>
+        {% endif %}
+
+        <div class="grid chazizPage">
+            <form method="post" name="loginForm" id="loginForm" action="login.php" class="form-signin">
+                <h2 class="form-signin-heading">Login</h2>
+                <input type="text" name="username" class="input-block-level" placeholder="Username">
+                <input type="password" name="password" class="input-block-level" placeholder="Password">
+                <br>
+                <input class="button button-large button-primary" type="submit" value="Login"
+                       name="loginsubmit">
+                <br>
+				<p>Don't have an account? <a href="./register.php">Register</a>
+            </form>
+        </div>
+    {% endblock %}

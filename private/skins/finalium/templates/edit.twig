@@ -1,0 +1,29 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Edit upload{% endblock %}
+
+	{% block content %}
+        <form name="uploadForm" id="uploadForm" method="post" action="edit.php" enctype="multipart/form-data">
+            <div class="card">
+                <div class="card-body-fat">
+                    <input type="hidden" name="vid_id" value="{{ video.video_id }}">
+                    <h2 style="margin-bottom: 0.5em;">Edit your submission</h2>
+                    <p>Enter the new information for your submission.</p>
+                    <h4 style="margin-bottom: 0.5em;">Title</h4>
+                    <input type="text" class="form-control form-long uploader-form" name="title"
+                        value="{{ video.title }}">
+                    <br>
+                    <h4 style="margin-bottom: 0.5em;">Description</h4>
+                    <textarea class="form-control form-long uploader-form" name="desc" maxlength="2000"
+                            form="uploadForm"
+                            style="overflow:hidden;resize:vertical" rows="3">{{ video.description }}</textarea>
+                    <br>
+                    <br>
+                    <div class="right">
+                        <input class="button button-primary" type="submit" id="upload" name="upload"
+                            value="Save">
+                    </div>
+                </div>
+            </div>
+        </form>
+    {% endblock %}

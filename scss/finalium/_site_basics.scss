@@ -1,0 +1,333 @@
+body {
+  background: $gray-100;
+  color: $text-color;
+  font-family: $font;
+  font-size: 13px;
+  margin: auto;
+  width: 100%;
+  font-weight: 500;
+}
+
+#masthead-container {
+  z-index: 10;
+  margin: 0;
+  background-color: rgba($gray-100,0.5);
+  padding: 7px;
+  position: sticky;
+  display: block;
+  top: 0;
+  backdrop-filter: blur(50px);
+  border-bottom: 1px solid $gray-300;
+}
+
+.footer {
+  background-color: $gray-100;
+  border-bottom: 1px solid $gray-300;
+  border-top: 1px solid $gray-200;
+  margin-top: 0;
+  overflow: hidden;
+  padding: 2em 3em;
+  
+  img {
+    width: 135px;
+  }
+}
+
+.profiler {
+  background-color: rgba($gray-100,0.5);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  backdrop-filter: blur(50px);
+}
+
+.settings {
+	width: 100%;
+	border-collapse: collapse;
+
+	.a {
+		text-align: center;
+		width: 200px;
+	}
+
+	td, th {
+		border-bottom: 1px solid $gray-300;
+		padding: 10px 5px;
+	}
+
+	tr th {
+		background-color: $gray-100;
+		font-size: 12pt;
+	}
+
+	tr {
+		&:nth-child(odd)  { background-color: $gray-200; }
+		&:nth-child(even) { background-color: $gray-300; }
+	}
+
+	.fotnot {
+		margin-top: 8px;
+		font-size: 10.5pt;
+	}
+}
+
+textarea,
+input[type]:not([type=file]):not([type=submit]) {
+  border: 1px solid $gray-300;
+  background: $form-input;
+  border-radius: 4px;
+  color: $text-color;
+}
+
+textarea:focus,
+input[type]:not([type=file]):not([type=submit]):focus {
+  border-color: $gray-600;
+  outline: none;
+}
+
+#masthead {
+  width: 100%;
+  position: relative;
+  margin: auto;
+  height: 33px;
+  font-size: 13px;
+
+  a {
+    padding: 6px 10px;
+    font-size: 13px;
+    color: $gray-900;
+  }
+
+  .button {
+    margin: 0;
+    padding: 0.65em 0;
+  }
+
+  #logo-container {
+    float: left;
+  }
+
+  #logo {
+    background-size: auto;
+    height: 30px;
+    border: 0;
+  }
+
+  .masthead-button {
+    margin-top: 2px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .guide-button {
+    float: left;
+  }
+}
+
+#masthead-search {
+  overflow: hidden;
+  padding: 3px;
+
+  label {
+    height: 100%;
+    line-height: 30px;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+  }
+
+  #search-btn {
+    height: 31px;
+    float: right;
+    border-radius: 0 3px 3px 0;
+
+    span {
+      margin: 0 12px;
+    }
+  }
+
+  #masthead-search-terms {
+    border-radius: 0;
+    height: 31px;
+    overflow: hidden;
+
+    input {
+      display: inline-block;
+      width: 100%;
+      padding: 2px 6px;
+      margin: 0;
+      font-size: 16px;
+      box-sizing: border-box;
+      height: 31px;
+      border-radius: 3px 0 0 3px;
+      border: 1px solid $gray-200;
+      border-right: none;
+	  background-color: $form-input;
+	  color: $text-color;
+    }
+  }
+}
+
+.masthead-links-container {
+	float: left;
+	.masthead-links {
+		display: table-cell;
+		vertical-align: middle;
+		height: 33px;
+	}
+}
+
+.subscribe-count {
+  padding: 0 6px;
+  border: 1px solid #ccc;
+  color: $gray-600;
+  font-size: 12px;
+  text-align: center;
+  line-height: 24px;
+  display: inline-block;
+}
+
+/// "Likesaber" for watch page \\\
+.likesaber {
+  width: 200px;
+  height: 3px;
+  background-color: $gray-400;
+  float: right;
+
+  .like {
+    float: left;
+    height: 3px;
+    background-color: $green;
+  }
+}
+
+#About {
+  line-height: 17px;
+
+  p {
+    margin: 0;
+  }
+
+  .description-extra {
+    margin: 10px 0;
+
+    li {
+      clear: both;
+      margin-bottom: 5px;
+      line-height: 1.2;
+    }
+
+    .title {
+      float: left;
+      margin: 0 10px 0 0;
+      width: 80px;
+      text-align: right;
+      font-size: 11px;
+      color: $gray-800;
+      font-weight: bold;
+    }
+
+    .content {
+      color: $gray-600;
+      font-size: 11px;
+    }
+  }
+}
+
+.vid-info {
+  .title {
+    font-size: 14px;
+    max-height: 2.4em;
+    line-height: 1.2;
+    display: block;
+    margin: 0 0 2px;
+    overflow: hidden;
+
+    a {
+      color: $gray-800;
+    }
+
+    a:hover {
+      color: $primary;
+    }
+  }
+
+  .stat {
+    color: $gray-600;
+    font-size: 11px;
+    display: block;
+    line-height: 1.4em;
+    height: 1.4em;
+  }
+
+  .stat-larger {
+    color: $gray-600;
+    font-size: 13px;
+    display: block;
+    line-height: 1.4em;
+    height: 1.4em;
+  }
+}
+
+.usermenushit {
+  position: absolute;
+  top: 100%;
+  max-height: 80vh;
+  z-index: 1000;
+  width: 160px;
+  overflow: hidden;
+  background: $gray-100;
+  right: 0px;
+  text-align: left;
+
+  ul {
+    li {
+      padding: 6px 0;
+
+      a {
+		color: $text-color !important;
+        width: 100%;
+        display: block;
+        padding: 0 10px !important;
+      }
+    }
+
+    li:hover {
+      background-color: $primary;
+    }
+  }
+}
+
+.watchNext {
+  h1 {
+    font-size: 19px;
+  }
+
+  .viewcount {
+    color: $gray-800;
+    font-weight: normal;
+    margin-bottom: 4px;
+  }
+
+  .below-likesaber {
+    margin-top: 16px;
+    color: $gray-600;
+  }
+}
+
+.statbox {
+  text-align: center;
+  font-size: 3em;
+  border: 1px solid $gray-200;
+  padding: 0.5em;
+  background-color: $gray-100;
+
+  .stat-title {
+    font-size: 0.5em;
+    font-weight: semibold;
+  }
+}

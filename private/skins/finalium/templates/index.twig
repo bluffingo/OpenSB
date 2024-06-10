@@ -1,0 +1,41 @@
+{% extends "_layout.twig" %}
+{% block head %}
+    <meta name="title" content="{{ website_branding.name }}">
+    <meta property="og:site_name" content="{{ website_branding.name }}"/>
+    <meta property="og:title" content="{{ website_branding.name }}">
+    <meta property="og:image" content="{{ domain }}assets/logo_square_icon.png">
+    <meta property="og:url" content="{{ page_url }}">
+{% endblock %}
+{% block title %}Home{% endblock %}
+
+    {% block content %}
+		{% if updated %}
+			<div class="header_message header-primary">Options successfully saved!</div>
+			<br>
+		{% endif %}
+		<div class="card">
+			<div class="card-body-fat">
+				{% if videos %}
+				<a class="button button-secondary float-right" href="browse.php">Browse more</a>
+				{% endif %}
+				{% if log %}
+				<h3 style="margin-top:0">Your follow's submissions</h3>
+				{% else %}
+				<h3 style="margin-top:0">Randomly selected submissions</h3>
+				{% endif %}
+				{% if log %}
+					{% for video in subscriptionVideos %}
+						{{ small_video_box(video) }}
+					{% else %}
+						<p>Either you're not following anyone, or none of your follows have submissions.</p>
+					{% endfor %}
+				{% else %}
+					{% for video in videos %}
+						{{ small_video_box(video) }}
+					{% else %}
+						<p>This instance currently lacks submissions.</p>
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+{% endblock %}

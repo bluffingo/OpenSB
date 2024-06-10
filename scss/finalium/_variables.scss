@@ -1,0 +1,69 @@
+$threshold: 65%;
+$teal: #468aca;
+$red: #ce1818;
+$white: #FCFCFC;
+$black: #111;
+$purple: #9c35ef;
+$pink: #ff23b1;
+$orange: #ff8800;
+$yellow: #ffd104;
+$cyan: #1778b8;
+$blue: #297fd6;
+$green: #74a60a;
+$aqua: #20c997;
+$primary: $blue;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+
+$form-input: #fff;
+
+$card-bg: #fff;
+
+$gray-100: #F8F8F8;
+$gray-200: #EEEEEE;
+$gray-300: #E2E2E2;
+$gray-400: #D3D3D3;
+$gray-500: #B4B4B4;
+$gray-600: #858585;
+$gray-700: #4F4F4F;
+$gray-800: #393939;
+$gray-900: #242424;
+
+$text-color: #000;
+
+$light: #f8f9fa;
+$dark: #343a40;
+$teal-color: $teal;
+$orange-color: $orange;
+
+$primary: $blue;
+$secondary: $gray-100;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$gray-dark: $gray-800;
+$neutral: $gray-100;
+$teal-color: $teal;
+$aqua-color: $aqua;
+$orange-color: $orange;
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "neutral": $neutral,
+        "light": $gray-100,
+        "dark": $gray-dark,
+        "blue-green": $teal-color,
+        "aqua": $aqua-color,
+        "carrot": $orange-color,
+);
+
+$font: "Inter", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$sidebarlength: 50px;

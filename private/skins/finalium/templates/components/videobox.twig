@@ -1,0 +1,25 @@
+<div class="card" style="margin-bottom:4px">
+    <div class="card-body">
+        <div class="grid">
+            <div class="col-md-16">
+                <a href="watch.php?v={{ data.video_id }}">
+                    <img class="img-fluid" src="{{ video_thumbnail(data.video_id) }}" alt="{{ data.title }}">
+                    <span class="video-time">{{ video_length(data) }}</span>
+                </a>
+            </div>
+            <div class="col-md-16">
+                <h1 style="max-height: 2.2em;height:2.2em;overflow: hidden;display: block;"><a
+                            href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h1>
+                <div class="col-md-1" style="padding-left:0;">
+                    <img class="rounded img-fluid" src="{{ profile_picture(data.u_name) }}" alt="{{ data.u_name }}" alt="{{ data.u_name }}">
+                </div>
+                <div class="col-md-11">
+                    <h3 style="line-height:1;margin:0;">{{ userlink(data, 'u_') }}</h3>
+                    <p style="line-height:1;margin:0.5em 0;">{{ data.views }} views &bull;
+                        <span class="text-muted">{{ data.time | relative_time }}</span>
+                        &bull; {{ data.category_id | category_id_to_name() }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

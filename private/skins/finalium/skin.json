@@ -1,0 +1,31 @@
+{
+  "metadata":
+  {
+    "id": "finalium",
+    "name": "Finalium",
+    "author": "OpenSB developers",
+    "description": "The 2022-2023 squareBracket user experience.",
+    "themes": [
+      {
+        "id": "default",
+        "name": "Default",
+        "description": "The default 2022-2023 squareBracket user experience."
+      },
+      {
+        "id": "dark",
+        "name": "Dark",
+        "description": "A dark theme for Finalium, might be unmaintained."
+      },
+      {
+        "id": "nostalgia",
+        "name": "Nostalgia",
+        "description": "April 2021 squareBracket Header (very shit placeholder description)"
+      },
+      {
+        "id": "qobo",
+        "name": "Qobo",
+        "description": "Replaces primary color with purple."
+      }
+    ]
+  }
+}

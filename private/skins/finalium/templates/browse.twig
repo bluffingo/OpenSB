@@ -1,0 +1,37 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Browse {% if page != 1 %}(Page %s)", [page]) }}{% endif %}{% endblock %}
+
+	{% block content %}
+        <h1>{{ title }}</h1>
+        <div class="grid">
+            <div class="card">
+                <ul class="nav">
+                    <li {% if type=='recent' %}class="active" {% endif %}><a
+                                href="browse.php?type=recent">Most recent</a></li>
+                    <li {% if type=='popular' %}class="active" {% endif %}><a
+                                href="browse.php?type=popular">Most popular</a></li>
+                    <li {% if type=='discussed' %}class="active" {% endif %}><a
+                                href="browse.php?type=discussed">Most discussed</a></li>
+                    <li {% if type=='favorited' %}class="active" {% endif %}><a
+                                href="browse.php?type=favorited">Most favorited</a></li>
+                    <li {% if type=='random' %}class="active" {% endif %}><a
+                                href="browse.php?type=random">Random</a></li>
+                </ul>
+            </div>
+            {% for level in levels %}
+                {{ small_video_box(level) }}
+            {% else %}
+                <div class="header_message header-danger" role="alert">There are no submissions.</div>
+            {% endfor %}
+
+            {% if type == 'all' %}
+                {% set le_url = 'browse.php?page=%s' %}
+            {% else %}
+                {% set le_url = 'browse.php?type=' ~ type ~ '&page=%s' %}
+            {% endif %}
+            <div class="center">{{ pagination(level_count, glob_lpp, le_url, page) }}</div>
+
+            <br><br>
+        </div>
+    {% endblock %}
