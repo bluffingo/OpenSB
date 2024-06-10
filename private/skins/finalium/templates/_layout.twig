@@ -4,75 +4,60 @@
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
     {% block head %}{% endblock %}
-    <link rel="manifest" href="{{ website_branding.assets_location }}/icons/site.webmanifest">
-    <link rel="shortcut icon" href="{{ website_branding.assets_location }}/icons/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ website_branding.assets_location }}/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ website_branding.assets_location }}/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ website_branding.assets_location }}/icons/favicon-16x16.png">
+    <link rel="manifest" href="/{{ website_branding.assets_location }}/icons/site.webmanifest">
+    <link rel="shortcut icon" href="/{{ website_branding.assets_location }}/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/{{ website_branding.assets_location }}/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/{{ website_branding.assets_location }}/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/{{ website_branding.assets_location }}/icons/favicon-16x16.png">
     <meta name="apple-mobile-web-app-title" content="{{ website_branding.name }}">
     <meta name="application-name" content="{{ website_branding.name }}">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <link rel="stylesheet" href="/assets/css/finalium.css?r={{ get_css_file_date() }}" type="text/css">
-    {% if theme == 'dark' %}
+    {% if current_theme == 'dark' %}
         <link id="darkthm" rel="stylesheet" href="/assets/css/finalium_darkmode.css?r={{ get_css_file_date() }}" type="text/css">
-    {% elseif theme == 'nostalgia' %}
+    {% elseif current_theme == 'nostalgia' %}
         <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_nostalgia.css?r={{ get_css_file_date() }}" type="text/css">
-    {% elseif theme == 'qobo' %}
+    {% elseif current_theme == 'qobo' %}
         <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_qobo.css?r={{ get_css_file_date() }}" type="text/css">
     {% endif %}
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/assets/common.js"></script>
+    <script src="/assets/common_finalium.js?r={{ get_css_file_date() }}"></script>
     {% block script %}{% endblock %}
     <script>
         subscribe_string = 'Follow';
         unsubscribe_string = 'Unfollow';
     </script>
     <style>
-        {% if pfpRoundness == 'square' %}
-        .rounded {
-            border-radius: 0;
-        }
-
-        {% elseif pfpRoundness == 'rounded' %}
-        .rounded {
-            border-radius: 10%;
-        }
-
-        {% endif %}
         {% block customcss %}{% endblock %}
     </style>
 </head>
 <body>
-{% if theme == 'nostalgia' %}
+{% if current_theme == 'nostalgia' %}
     {% include "components/nostalgia/_header.twig" %}
 {% else %}
     {% include "components/_header.twig" %}
 {% endif %}
 {% block precontent %}{% endblock %}
 <div class="container page-container">
-    {% if userbandata %}
-        <div class="header_message header-danger">
-            <h1>Sorry %s, you are banned from %s.", [userdata.name, website_branding.name]) }}</h1>
-            <p><strong>{{ userbandata.reason | markdown }}</strong><br>This ban is not set to expire.</p>
-            {# do we really need ban durations? #}
+    {% if session.notif_message %}
+        <div class="header_message header-{{ session.notif_color }}">
+        {{ session.notif_message }}
         </div>
+        {{ remove_notification() }}
+    {% endif %}
+    {% if user_ban_data %}
+        <div class="header_message header-danger">You have been banned for the following reason: {{ user_ban_data.reason }}</div>
     {% endif %}
     {% block content %}{% endblock %}
 </div>
 <footer>
     <div class="footer">
-        <img src="/assets/opensb_logo.png" alt="{{ website_branding.name }}">
+        <img src="/assets/opensb_logo.png" alt="OpenSB">
         <p><strong>© openSB contributors</strong> · 2021-{{ 'now' | date('Y') }}
-            | <strong><a href="/statistics">Statistics</a></strong>
             | <strong><a href="/privacy">Privacy Policy</a></strong>
         </p>
         <h5>Running OpenSB {{ opensb_version }}</h5>
-        {% if isDebug %}
-            <p>User agent: {{ user_agent }}</p>
-            <p>Current browser: {% if browser_info.name is empty %}Unknown browser{% else %}{{ browser_info.name }}{% endif %}</p>
-        {% endif %}
         {% if isMaintenance != true %}
             <a class="button button-neutral button-small options-button" role="button">Options</a>
             {% if isDebug %}

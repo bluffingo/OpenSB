@@ -1,32 +1,32 @@
 <div class="masthead-container">
 	<div class="masthead">
-		<a href="/index.php"><img class="logo" src="{{ website_branding.assets_location }}/logo-wordmark-nostalgia.png" alt="{{ website_branding.name }}" border="0"></a>
+		<a href="/index"><img class="logo" src="{{ website_branding.assets_location }}/logo-wordmark.png" alt="{{ website_branding.name }}" border="0"></a>
 		<div class="masthead-search">
-			<form method="GET" action="search.php">
+			<form method="GET" action="search">
 				<input class="masthead-input" type="text" value="" name="query" size="30" maxlength="128">
 				<input class="button button-secondary" type="submit" value="Search">
 			</form>
 		</div>
 		<div class="masthead-nav">
-			<a href="browse.php">Browse</a><a href="upload.php">Upload</a>
+			<a href="/browse">Browse</a><a href="/upload">Upload</a>
 		</div>
 		<div class="masthead-utility">
-			{% if log %}
+			{% if is_user_logged_in %}
 			<button id="masthead-loggedin" class="masthead-user">
-				<span>{{ userdata.title }}{{ icon("caret-down", 16) }}</span>
+				<span>{{ user_data.title }}{{ icon("caret-down", 16) }}</span>
 				<div class="usermenushit" id="masthead-below">
 					<ul style="padding:0">
-						<li><a href="user.php?name={{ userdata.name }}">My profile</a></li>
-						<li><a href="/settings.php">Settings</a></li>
-						{% if userdata.powerlevel > 2 %}
+						<li><a href="/user?name={{ user_data.name }}">My profile</a></li>
+						<li><a href="/settings">Settings</a></li>
+						{% if user_data.powerlevel > 2 %}
 						<li><a href="/admin">Admin panel</a></li>
 						{% endif %}
 					</ul>
 				</div>
 			</button>
-			<a href="logout.php" class="end">Log out</a>
+			<a href="/logout" class="end">Log out</a>
 			{% else %}
-			<a href="register.php" class="start">Register</a><a href="login.php" class="end">Login</a>
+			<a href="/register" class="start">Register</a><a href="/login" class="end">Login</a>
 			{% endif %}
 		</div>
 	</div>

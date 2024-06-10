@@ -20,5 +20,4 @@ else
 sass_executable="sass"
 fi
 
-${sass_executable} ${common_arguments} scss/bootstrap/:public/assets/css/
-${sass_executable} ${common_arguments} scss/biscuit/:public/assets/css/
+${sass_executable} ${common_arguments} scss/bootstrap/:public/assets/css/ scss/finalium/:public/assets/css/ scss/biscuit/:public/assets/css/

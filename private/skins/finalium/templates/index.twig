@@ -1,41 +1,74 @@
 {% extends "_layout.twig" %}
-{% block head %}
-    <meta name="title" content="{{ website_branding.name }}">
-    <meta property="og:site_name" content="{{ website_branding.name }}"/>
-    <meta property="og:title" content="{{ website_branding.name }}">
-    <meta property="og:image" content="{{ domain }}assets/logo_square_icon.png">
-    <meta property="og:url" content="{{ page_url }}">
-{% endblock %}
 {% block title %}Home{% endblock %}
 
+	{% block precontent %}
+{% if current_theme != 'nostalgia' %}
+<div class="indexNext">
+    <div class="main-content">
+        <div class="container page-container">
+            {% if is_user_logged_in %}
+                <div class="col-md-10">
+                    <h1>Welcome to {{ website_branding.name }}</h1>
+                    <h3>@{{ user_data.name }}</h3>
+                    <a class="button button-neutral button-large"
+                       href="/my_submissions">Manage {{ icon('caret-right-fill', 12) }}</a>
+                </div>
+                <div class="col-md-6 right stats">
+                    {# hack to prevent twig from outputing the number 1 #}
+                    {% if totalSubscribers != 1 %}
+                        {% set pluralSubscribers = "s" %}
+                    {% endif %}
+                    {% if totalViews != 1 %}
+                        {% set pluralViews = "s" %}
+                    {% endif %}
+                    <p>{{ totalSubscribers ?? "no" }} follower{{ pluralSubscribers}}
+                        <br>{{ totalViews ?? "no" }} view{{ pluralViews }}</p>
+                </div>
+            {% else %}
+                <div class="col-md-10">
+                    <h1>Welcome to {{ website_branding.name }}</h1>
+                    <h3 style="padding:0;margin:0;">Again.</h3>
+                </div>
+                <div class="col-md-6">
+                    <a class="button button-neutral button-large"
+                       href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br><br>
+                    <big>Already have an account? <a class="button button-neutral"
+                                                                 href="/login">Sign in</a></big>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %}
+
     {% block content %}
-		{% if updated %}
-			<div class="header_message header-primary">Options successfully saved!</div>
-			<br>
-		{% endif %}
-		<div class="card">
-			<div class="card-body-fat">
-				{% if videos %}
-				<a class="button button-secondary float-right" href="browse.php">Browse more</a>
-				{% endif %}
-				{% if log %}
-				<h3 style="margin-top:0">Your follow's submissions</h3>
-				{% else %}
-				<h3 style="margin-top:0">Randomly selected submissions</h3>
-				{% endif %}
-				{% if log %}
-					{% for video in subscriptionVideos %}
-						{{ small_video_box(video) }}
-					{% else %}
-						<p>Either you're not following anyone, or none of your follows have submissions.</p>
-					{% endfor %}
-				{% else %}
-					{% for video in videos %}
-						{{ small_video_box(video) }}
-					{% else %}
-						<p>This instance currently lacks submissions.</p>
-					{% endfor %}
-				{% endif %}
-			</div>
-		</div>
+    <div class="grid">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body-fat">
+                    <h3 style="margin-top:0">Recommended randomly</h3>
+                    {% for submission in data.submissions %}
+                        {{ submission_box(submission) }}
+                    {% else %}
+                        <p>No uploaded videos.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body-fat">
+                    <h3 style="margin-top:0">Recently uploaded to {{ website_branding.name }}</h3>
+                    {% for submission in data.submissions_new %}
+                        {{ submission_box(submission) }}
+                    {% else %}
+                        <p>No uploaded videos.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+<br><br>
 {% endblock %}

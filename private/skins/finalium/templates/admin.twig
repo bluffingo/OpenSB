@@ -16,7 +16,7 @@
 						</tr>
 						{% for user in latest_registered_users %}
 							<tr>
-								<td class="b"><a href="user.php?name={{ user.name }}">{{ user.name }}</a></td>
+								<td class="b"><a href="/user?name={{ user.name }}">{{ user.name }}</a></td>
 								<td class="b">{{ user.joined | date() }}</td>
 							</tr>
 						{% endfor %}
@@ -30,7 +30,7 @@
 						</tr>
 						{% for user in latest_seen_users %}
 							<tr>
-								<td class="b"><a href="user.php?name={{ user.name }}">{{ user.name }}</a></td>
+								<td class="b"><a href="/user?name={{ user.name }}">{{ user.name }}</a></td>
 								<td class="b">{{ user.lastview | relative_time }}</td>
 							</tr>
 						{% endfor %}
@@ -44,7 +44,7 @@
 						</tr>
 						{% for video in videos %}
 							<tr>
-								<td class="b"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</td>
+								<td class="b"><a href="/watch?v={{ video.video_id }}">{{ video.title }}</td>
 								<td class="b">{{ video.time | relative_time }}</td>
 							</tr>
 						{% endfor %}
@@ -71,7 +71,7 @@
 		{% for comment in comments %}
 			<div class="grid">
 				<div class="col-md-12" id="{{ comment.comment_id }}">
-					{{ userlink(comment, 'u_') }} &bull; {{ comment.date | relative_time }}
+					{{ user_link(comment, 'u_') }} &bull; {{ comment.date | relative_time }}
 					<br>
 					<div class="comment">
 						{{ comment.comment | markdown }}

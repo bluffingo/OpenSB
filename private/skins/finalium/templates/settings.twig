@@ -5,7 +5,7 @@
     {% if error %}
         <div class="header_message header-danger" role="alert">{{ error }}</div>
     {% endif %}
-<form action="settings.php" method="post" enctype="multipart/form-data">
+<form action="settings" method="post" enctype="multipart/form-data">
 	<table class="settings">
 		<caption><h3>Your account</h3></caption>
 		<tr>
@@ -14,7 +14,7 @@
 		</tr>
 		<tr>
 			<td class="a">Username</td>
-			<td class="b">{{ userdata.name }}</td>
+			<td class="b">{{ user_data.name }}</td>
 		</tr>
 		<tr>
 		<td class="a">Email address
@@ -52,19 +52,19 @@
 			</tr>
 			<tr>
 				<td class="a">Display name</td>
-				<td class="b"><input type="text" name="title" size="45" maxlength="50" value="{{ userdata.title }}"></td>
+				<td class="b"><input type="text" name="title" size="45" maxlength="50" value="{{ user_data.title }}"></td>
 			</tr>
 			<tr>
 				<td class="a">
 					Description
 					<br><em>Markdown is allowed.</em>
 				</td>
-				<td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual">{{ userdata.about }}</textarea></td>
+				<td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual">{{ user_data.about }}</textarea></td>
 			</tr>
 			<tr>
 				<td class="a">Username color</td>
 				<td class="b"><input name="customcolor" type="color"
-									 value="{{ userdata.customcolor | default('523bb8') }}"></td>
+									 value="{{ user_data.customcolor | default('523bb8') }}"></td>
 			</tr>
 		</table>
 	{% else %}

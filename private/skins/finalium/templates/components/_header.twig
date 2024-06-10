@@ -3,16 +3,16 @@
         <div class="grid" style="margin-bottom: 17.5px;">
             <div class="col-md-10">
                 <div id="header-main">
-                    <a href="/" id="logo-container"><img id="logo" src="{{ website_branding.assets_location }}/logo-wordmark{% if theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}"></a>
+                    <a href="/" id="logo-container"><img id="logo" src="{{ website_branding.assets_location }}/logo-wordmark{% if current_theme == 'dark' %}-dark{% endif %}.png" alt="{{ website_branding.name }}"></a>
                     {% if isMaintenance != true %}
                         <div class="masthead-links-container">
                             <div class="masthead-links">
                                 {% for link in navigationList %}
-                                    <a href="{{ link.url }}">{{ link.name }}</a>
+                                    <a href="/{{ link.url }}">{{ link.name }}</a>
                                 {% endfor %}
                             </div>
                         </div>
-                        <form id="masthead-search" action="/search.php">
+                        <form id="masthead-search" action="/search">
                             <button id="search-btn" class="button button-secondary">
                                 <span>{{ icon("search", 16) }}</span>
                             </button>
@@ -24,32 +24,29 @@
                 </div>
             </div>
             <div class="col-md-6" style="text-align: right;">
-                {% if log %}
-                    <a href="/upload.php">
+                {% if is_user_logged_in %}
+                    <a href="/upload">
                         <div class="button button-neutral-invis masthead-button tooltip" title="Upload">{{ icon("upload", 20) }}</div>
                     </a>
                 {% endif %}
-                <div style="margin:0;{% if log %}width:1.75rem{% endif %}"
-                     id="{% if log %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
+                <div style="margin:0;{% if is_user_logged_in %}width:1.75rem{% endif %}"
+                     id="{% if is_user_logged_in %}masthead-loggedin{% else %}masthead-signin{% endif %}" class="masthead-user">
                     {% if isMaintenance != true %}
-                        {% if log %}
+                        {% if is_user_logged_in %}
                             <div style="margin-top: 4px;">
-                                <img class="rounded img-fluid" src="{{ profile_picture(userdata.name) }}" alt="{{ userdata.name }}">
+                                <img class="rounded img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
                                 <div class="usermenushit" id="masthead-below">
                                     <ul style="padding:0">
-                                        <li><a href="user.php?name={{ userdata.name }}">My profile</a></li>
-                                        <li><a href="/settings.php">Settings</a></li>
-                                        {% if userdata.powerlevel > 2 %}
-                                        <li><a href="/admin">Admin panel</a></li>
-                                        {% endif %}
-                                        <li><a href="logout.php">Log out</a></li>
+                                        {% for link in header_user_links() %}
+                                        <li><a class="menulink" href="/{{ link.url }}">{{ link.name }}</a></li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
                         {% else %}
                             <div style="display: flex;justify-content: center;align-items: center;gap: 5px;margin-top: 2px;">
-                                <a href="../login.php">Login</a>
-								<a href="../register.php">Register</a>
+                                <a href="/login">Login</a>
+								<a href="/register">Register</a>
                             </div>
                         {% endif %}
                     {% endif %}

@@ -5,6 +5,11 @@
 /// Variables \\\
 @import "_variables";
 
+// bootstrap icons
+$bootstrap-icons-font-dir: "/assets" !default;
+@import "../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
+
+// inter
 @import url('https://rsms.me/inter/inter.css');
 
 /* SB CSS STARTS HERE ======================================================== */
@@ -121,6 +126,32 @@ blockquote {
 
 .clear_right {
   clear: right;
+}
+
+.main-content {
+  //background: rgb(62,62,62);
+  //background: linear-gradient(90deg, rgba(62,62,62,1) 0%, rgba(107,107,107,1) 35%, rgba(155,155,155,1) 100%);
+  background: #FF8A00;
+  margin:0;
+  color:white;
+  margin-top: -48px;
+  padding: 75px 0px 20px;
+  display: inline-block;
+  width: 100%;
+  .page-container {
+    min-height: auto;
+    h1, h2, h3, h4, h5, h6, p {
+      padding: 0;
+      margin: 8px 0;
+    }
+    h1 {
+      font-weight:600;
+      font-size: 2.5em;
+    }
+    .stats {
+      font-size: 1.5em;
+    }
+  }
 }
 
 .chaziz-body {

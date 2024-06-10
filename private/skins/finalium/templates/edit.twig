@@ -3,7 +3,7 @@
 {% block title %}Edit upload{% endblock %}
 
 	{% block content %}
-        <form name="uploadForm" id="uploadForm" method="post" action="edit.php" enctype="multipart/form-data">
+        <form name="uploadForm" id="uploadForm" method="post" action="edit" enctype="multipart/form-data">
             <div class="card">
                 <div class="card-body-fat">
                     <input type="hidden" name="vid_id" value="{{ video.video_id }}">

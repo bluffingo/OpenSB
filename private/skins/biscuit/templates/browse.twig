@@ -3,7 +3,6 @@
 {% set title = "Browse" %}
 
 {% block content %}
-    {% set items_per_page = 20 %}
     {% set total_pages = (data.count / items_per_page) | round(0, 'ceil') %}
     {% set current_page = page %}
 

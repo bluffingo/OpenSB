@@ -33,6 +33,8 @@ class SquareBracketTwigExtension extends AbstractExtension
             new TwigFunction('header_main_links', [$this, 'headerMainLinks']),
             new TwigFunction('header_user_links', [$this, 'headerUserLinks']),
             new TwigFunction('get_css_file_date', [$this, 'getCSSFileDate']),
+            new TwigFunction('submission_box', [$this, 'submissionBox'], ['is_safe' => ['html']]),
+            new TwigFunction('comment', [$this, 'comment'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -353,5 +355,17 @@ HTML;
     public function getCSSFileDate()
     {
         return filemtime(SB_PUBLIC_PATH . "/assets/css/default.css");
+    }
+
+    public function submissionBox($submission)
+    {
+        global $twig;
+        return $twig->render('components/smallvideobox.twig', ['data' => $submission]);
+    }
+
+    public function comment($comment)
+    {
+        global $twig;
+        return $twig->render('components/comment.twig', ['data' => $comment]);
     }
 }

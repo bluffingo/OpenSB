@@ -68,10 +68,6 @@ class Templating
         $this->twig->addExtension(new StringExtension());
 
         // 2021 SQUAREBRACKET FRONTEND COMPATIBILITY
-        $this->twig->addFunction(new TwigFunction('small_video_box', function() {
-            return false;
-        }));
-
         $this->twig->addFunction(new TwigFunction('video_box', function() {
             return false;
         }));
@@ -105,6 +101,7 @@ class Templating
         $this->twig->addGlobal('website_branding', $branding);
         $this->twig->addGlobal('current_theme', $this->theme); // not to be confused with skins
         $this->twig->addGlobal('invite_keys_enabled', $enableInviteKeys);
+        $this->twig->addGlobal('items_per_page', 20);
 
         if (isset($_SERVER["REQUEST_URI"])) {
             $this->twig->addGlobal('page_name', empty(basename($_SERVER["REQUEST_URI"], '.php')) ? 'index' : basename($_SERVER["REQUEST_URI"], '.php'));

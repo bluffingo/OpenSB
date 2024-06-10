@@ -1,16 +1,11 @@
 <div class="grid" style="margin-bottom: 5px;display:block;">
     <div class="col-md-4 ">
-        <a href="watch.php?v={{ data.video_id }}">
-        {% if data.post_type == 0 %}
-            <img class="img-fluid" src="{{ video_thumbnail(data.video_id) }}" alt="{{ data.title }}">
-        {% elseif data.post_type == 2 %}
-            <img class="img-fluid" src="{{ art_thumbnail(data.video_id) }}" alt="{{ data.title }}">
-        {% endif %}
+        <a href="/watch?v={{ data.id }}">
+            <img class="img-fluid" src="{{ thumbnail(data.id, data.type, data.bools.custom_thumbnail) }}" alt="{{ data.title }}">
         </a>
     </div>
     <div class="col-md-12 vid-info">
-        <h3 class="title"><a href="watch.php?v={{ data.video_id }}">{{ data.title }}</a></h3>
-        <span class="stat">by {{ userlink(data, 'u_') }} {% if data.u_powerlevel > 1 %}{{ icon("shield", 14) }}{% endif %} &bull; {{ data.views }} views</span>
-        <!-- <span class="stat">{{ video_length(data) }}</span> -->
+        <h3 class="title"><a href="/watch?v={{ data.id }}">{{ data.title }}</a></h3>
+        <span class="stat">by {{ user_link(data.author) }} &bull; {{ data.views }} views</span>
     </div>
 </div>

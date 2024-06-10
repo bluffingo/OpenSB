@@ -14,13 +14,13 @@
     <meta name="application-name" content="{{ website_branding.name }}">
     <meta name="msapplication-TileColor" content="#1d3fc4">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
+    <link rel="stylesheet" href="/https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
     <link rel="stylesheet" href="/assets/css/finalium.css" type="text/css">
-    {% if theme == 'dark' %}
+    {% if current_theme == 'dark' %}
         <link id="darkthm" rel="stylesheet" href="/assets/css/finalium_darkmode.css" type="text/css">
-    {% elseif theme == 'nostalgia' %}
+    {% elseif current_theme == 'nostalgia' %}
         <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_nostalgia.css" type="text/css">
-    {% elseif theme == 'qobo' %}
+    {% elseif current_theme == 'qobo' %}
         <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_qobo.css" type="text/css">
     {% endif %}
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>

@@ -1,5 +1,5 @@
 <h1>Options</h1>
-<form action="customizer.php" method="post">
+<form action="customizer" method="post">
     <h2>User interface</h2>
     <label for="theme">Theme</label>
     <select class="form-select" name="theme">
@@ -12,7 +12,7 @@
         {% for code,name in glob_languages %}
             {% if name %}
                 <option value="{{ code }}"
-                        {% if code==userdata.language %}selected{% endif %}>{{ name }}</option>{% endif %}
+                        {% if code==user_data.language %}selected{% endif %}>{{ name }}</option>{% endif %}
         {% endfor %}
     </select>
     <input type="checkbox" id="enableSounds" name="enableSounds" value="true">

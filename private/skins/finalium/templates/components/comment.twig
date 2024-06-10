@@ -1,6 +1,6 @@
 <div class="grid commentPost">
     <div class="col-md-3">
-        {{ userlink(data, 'u_') }}
+        {{ user_link(data, 'u_') }}
         {% if data.u_powerlevel > 1 %}{{ icon("shield", 16) }}{% endif %}
 		<br>
 		<span class="time">{{ data.date | relative_time }}</span>
