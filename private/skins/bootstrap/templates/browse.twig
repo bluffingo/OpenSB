@@ -1,23 +1,25 @@
 {% extends "_layout.twig" %}
 
-{% block title %}{{ __("Browse") }}{% endblock %}
+{% block title %}Browse{% endblock %}
 
 	{% block content %}
-<div class="row"><div class="col">
-	<h3>Browse submissions</h3>
-	<div class="card-body">
-		{% for video in data.submissions|batch(4) %}
-		<div class="row">
-			{% for submission in video %}
-				<div class="col-3">
-					{{ include('/components/browsevideobox.twig') }}
-				</div>
-			{% endfor %}
-		</div>
-		{% else %}
-			<p>No submissions.</p>
-		{% endfor %}
-		{{ pagination(pageCount, 20, currentPage, url) }}
-	</div>
-</div></div>
-	{% endblock %}
+        <div class="row">
+            <div class="col">
+                <h3>Browse submissions</h3>
+                <div class="card-body">
+                    {% for video in data.submissions|batch(4) %}
+                        <div class="row">
+                            {% for submission in video %}
+                                <div class="col-3">
+                                    {{ include('/components/browsevideobox.twig') }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p>No submissions.</p>
+                    {% endfor %}
+                    {{ pagination(pageCount, 20, currentPage, url) }}
+                </div>
+            </div>
+        </div>
+    {% endblock %}

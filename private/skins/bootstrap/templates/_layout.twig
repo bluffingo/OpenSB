@@ -1,126 +1,147 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{% block head %}{% endblock %}
-	<!-- REDO THIS REDO THIS REDO THIS REDO THIS -->
-	<link href="/assets/css/bootstrap.css" rel="stylesheet" id="bootstrap">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-	<script src="/assets/common_bootstrap.js"></script>
-	<script>
-		subscribe_string = '{{ __("Subscribe") }}';
-		unsubscribe_string = '{{ __("Unsubscribe") }}';
-	</script>
-	<meta name="theme-color" content="#0065d8">
-	<title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block head %}{% endblock %}
+    <!-- REDO THIS REDO THIS REDO THIS REDO THIS -->
+    <link href="/assets/css/bootstrap.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <script src="/assets/common_bootstrap.js"></script>
+    <script>
+        subscribe_string = 'Subscribe';
+        unsubscribe_string = 'Unsubscribe';
+    </script>
+    <meta name="theme-color" content="#0065d8">
+    <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
 </head>
 <style>
-	.bi {
-		vertical-align: -4px;
-	}
+    .bi {
+        vertical-align: -4px;
+    }
 </style>
 <body>
 
-<nav id="navbar" class="navbar {% if theme == 'dark' or theme == 'finalium-dark' %} navbar-dark bg-dark {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md">
-	<div class="container">
-		<a class="navbar-brand" href="/"><img src="{{ website_branding.assets_location }}/logo.png" alt="[sb]" height="32"
+<nav id="navbar"
+     class="navbar {% if theme == 'dark' or theme == 'finalium-dark' %} navbar-dark bg-dark {% else %} navbar-light bg-light {% endif %} navbar-static-top navbar-expand-md">
+    <div class="container">
+        <a class="navbar-brand" href="/"><img src="{{ website_branding.assets_location }}/logo.png" alt="[sb]"
+                                              height="32"
                                               class="d-inline-block align-text-top"></a>
-		<form class="d-flex" method="GET" action="search">
-			<div class="input-group">
-				<span class="input-group-text" id="basic-addon1">{{ icon('search', 16 ) }}</span>
-				<input name="query" class="form-control" type="search" placeholder="{{ __("Search") }}"
-					   aria-label="Search">
-			</div>
-		</form>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div id="navbarCollapse" class="collapse navbar-collapse">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-			<ul class="navbar-nav">
-				{% if is_user_logged_in %}
-					<!-- can't put dropdown-toggle properly wtf -->
-					<li class="nav-item">
-						<a href="/upload" class="nav-link">
-							<div class="d-flex align-items-center">
-								{{ icon('plus', 24) }}
-								<span class="pe-1">{{ __("Upload") }}</span>
-							</div>
-						</a>
-					</li>
-				{% else %}
-					<div class="d-grid gap-2 d-md-block">
-						<a href="/login" class="btn btn-primary me-md-1">{{ __("Login") }}</a>
-						<a href="/register" class="btn btn-secondary">{{ __("Register") }}</a>
-					</div>
-				{% endif %}
-				{% if is_user_logged_in %}
-				<div class="dropdown">
-					<li class="nav-item">
-						<style>
-							#openSettings.nav-link {
-								padding: 0.25rem;
-							}
-						</style>
-						<a href="/#" id="openSettings" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"
-						   aria-expanded="false">
-							<img src="{{ profile_picture(user_data.name) }}"
-													alt="{{ user_data.name }}" class="rounded-circle" width="30" height="30">
-						</a>
-					</li>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
-							<li><a class="dropdown-item" href="/settings">{{ icon('tools', 16) }} {{ __("Settings") }}</a></li>
-							<li><a class="dropdown-item" href="/user/{{ user_data.name }}">{{ icon('person-lines-fill', 16) }} {{ __("My profile") }}</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="/logout">{{ icon('door-open', 16) }} {{ __("Sign off") }}</a></li>
+        <form class="d-flex" method="GET" action="search">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">{{ icon('search', 16 ) }}</span>
+                <input name="query" class="form-control" type="search" placeholder="Search"
+                       aria-label="Search">
+            </div>
+        </form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <ul class="navbar-nav">
+                {% if is_user_logged_in %}
+                    <!-- can't put dropdown-toggle properly wtf -->
+                    <li class="nav-item">
+                        <a href="/upload" class="nav-link">
+                            <div class="d-flex align-items-center">
+                                {{ icon('plus', 24) }}
+                                <span class="pe-1">Upload</span>
+                            </div>
+                        </a>
+                    </li>
+                {% else %}
+                    <div class="d-grid gap-2 d-md-block">
+                        <a href="/login" class="btn btn-primary me-md-1">Login</a>
+                        <a href="/register" class="btn btn-secondary">Register</a>
+                    </div>
+                {% endif %}
+                {% if is_user_logged_in %}
+                    <div class="dropdown">
+                        <li class="nav-item">
+                            <style>
+                                #openSettings.nav-link {
+                                    padding: 0.25rem;
+                                }
+                            </style>
+                            <a href="/#" id="openSettings" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                <img src="{{ profile_picture(user_data.name) }}"
+                                     alt="{{ user_data.name }}" class="rounded-circle" width="30" height="30">
+                            </a>
+                        </li>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
+                            <li><a class="dropdown-item" href="/settings">{{ icon('tools', 16) }} Settings</a></li>
+                            <li><a class="dropdown-item"
+                                   href="/user/{{ user_data.name }}">{{ icon('person-lines-fill', 16) }} My profile</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/logout">{{ icon('door-open', 16) }} Sign off</a></li>
 
-					</ul>
-				</div>
-				{% endif %}
-			</ul>
-		</div>
-		<!--/.nav-collapse -->
-	</div>
+                        </ul>
+                    </div>
+                {% endif %}
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
 </nav>
 <div class="mb-4">
-	<nav class="py-1 bg-dark">
-		<div class="container">
-			<ul class="nav me-auto">
-				<li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} Home</a></li>
-				<li class="nav-item"><a href="/browse" class="nav-link link-light px-2">{{ icon('play-btn', 16) }} Browse</a></li>
-				<li class="nav-item"><a href="/users" class="nav-link link-light px-2">{{ icon('people', 16) }} Members</a></li>
-			</ul>
-		</div>
-	</nav>
+    <nav class="py-1 bg-dark">
+        <div class="container">
+            <ul class="nav me-auto">
+                <li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} Home</a>
+                </li>
+                <li class="nav-item"><a href="/browse" class="nav-link link-light px-2">{{ icon('play-btn', 16) }}
+                        Browse</a></li>
+                <li class="nav-item"><a href="/users" class="nav-link link-light px-2">{{ icon('people', 16) }}
+                        Members</a></li>
+            </ul>
+        </div>
+    </nav>
 </div>
 {% block precontent %}{% endblock %}
 <div class="container">
-	{% if session.notif_message %}
-		<div class="alert alert-{{ session.notif_color }}">
-			{{ session.notif_message }}
-		</div>
-		{{ remove_notification() }}
-	{% endif %}
-	{% block content %}{% endblock %}
+    {% if session.notif_message %}
+        <div class="alert alert-{{ session.notif_color }}">
+            {{ session.notif_message }}
+        </div>
+        {{ remove_notification() }}
+    {% endif %}
+    {% block content %}{% endblock %}
 </div>
 <footer class="p-3">
-	<div class="container">
-		<div class="card">
-			<div class="card-body">
-				<h4 class="my-0">OpenSB Orange {{ squarebracket_version }}</h4>
-				<!-- 2020 was when work on PokTube (the predecessor of squareBracket) was started. Techically, PokTube and squareBracket are the same project, just with different codebases. -gr 7/20/2021 -->
-				<!-- is it me or is morale a bit... low? it seems like there's no hope for squarebracket or some shit. don't be surprised if i end up leaving the project -gr 8/3/2021 -->
-				<p class="my-0">© 2021-{{ 'now' | date('Y') }} OpenSB contributors</p>
-				<p class="my-0">
-					<a href="/version" class="me-1">About</a>
-					<a href="/privacy" class="me-1">Privacy policy</a>
-					<a href="/theme" class="me-1">Change theme</a>
-				</p>
-			</div>
-		</div>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="my-0">OpenSB {{ opensb_version }}</h4>
+                <!-- 2020 was when work on PokTube (the predecessor of squareBracket) was started. Techically, PokTube and squareBracket are the same project, just with different codebases. -gr 7/20/2021 -->
+                <!-- is it me or is morale a bit... low? it seems like there's no hope for squarebracket or some shit. don't be surprised if i end up leaving the project -gr 8/3/2021 -->
+                <p class="my-0">© 2021-{{ 'now' | date('Y') }} OpenSB contributors</p>
+                <p class="my-0">
+                    <a href="/version" class="me-1">About</a>
+                    <a href="/privacy" class="me-1">Privacy policy</a>
+                    <a href="/theme" class="me-1">Change theme</a>
+                </p>
+                {% if is_debug %}
+                    <p class="my-0">{{ profiler_stats() }}</p>
+                {% endif %}
+                {% if is_chaziz_sb %}
+                    <p class="my-0"><small>A <a href="https://bluffingo.net/">Chaziz</a> Project.</small></p>
+                {% endif %}
+            </div>
+        </div>
 </footer>
 {% block postcontent %}{% endblock %}
 <!-- gamerappa killed the bazinga star -->
