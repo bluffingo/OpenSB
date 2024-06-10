@@ -5,12 +5,11 @@
 /// Variables \\\
 @import "_variables";
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 // bootstrap icons
 $bootstrap-icons-font-dir: "/assets" !default;
 @import "../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
-
-// inter
-@import url('https://rsms.me/inter/inter.css');
 
 /* SB CSS STARTS HERE ======================================================== */
 
@@ -22,11 +21,11 @@ html {
 @import "_grid-breakpoints";
 
 h1, h2, h3 {
-  font-weight: 450;
+  font-weight: 400;
 }
 
 h4, h5, h6 {
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .clearfix {
@@ -129,9 +128,8 @@ blockquote {
 }
 
 .main-content {
-  //background: rgb(62,62,62);
-  //background: linear-gradient(90deg, rgba(62,62,62,1) 0%, rgba(107,107,107,1) 35%, rgba(155,155,155,1) 100%);
-  background: #FF8A00;
+  background: #3e3e3e;
+  background: linear-gradient(90deg, rgb(62, 62, 62) 0%, rgb(107, 107, 107) 35%, rgb(155, 155, 155) 100%);
   margin:0;
   color:white;
   margin-top: -48px;

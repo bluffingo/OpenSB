@@ -33,6 +33,12 @@ $gray-900: #242424;
 
 $text-color: #000;
 
+$masthead-bg: #fffffff0;
+$masthead-border: lightgrey;
+
+$footer-bg: #F1F1F1; //gray-150
+$footer-border: #E8E8E8; //gray-250
+
 $light: #f8f9fa;
 $dark: #343a40;
 $teal-color: $teal;
@@ -65,5 +71,7 @@ $theme-colors: (
         "carrot": $orange-color,
 );
 
-$font: "Inter", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font: "Roboto", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $sidebarlength: 50px;
+
+$mastheadwidth: 1200px;

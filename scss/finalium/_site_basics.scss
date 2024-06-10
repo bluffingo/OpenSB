@@ -11,19 +11,19 @@ body {
 #masthead-container {
   z-index: 10;
   margin: 0;
-  background-color: rgba($gray-100,0.5);
+  background-color: $masthead-bg;
   padding: 7px;
   position: sticky;
   display: block;
   top: 0;
-  backdrop-filter: blur(50px);
-  border-bottom: 1px solid $gray-300;
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid $masthead-border;
 }
 
 .footer {
-  background-color: $gray-100;
-  border-bottom: 1px solid $gray-300;
-  border-top: 1px solid $gray-200;
+  background-color: $footer-bg;
+  border-bottom: 1px solid $footer-border;
+  border-top: 1px solid $footer-border;
   margin-top: 0;
   overflow: hidden;
   padding: 2em 3em;
@@ -89,6 +89,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
 
 #masthead {
   width: 100%;
+  max-width: $mastheadwidth;
   position: relative;
   margin: auto;
   height: 33px;

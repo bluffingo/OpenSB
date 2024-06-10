@@ -1,3 +1,13 @@
+{% if is_chaziz_sb %}
+    {% if current_theme == 'dark' %}
+        {% set logo = '/assets/sb_branding/finalium/logo-wordmark-dark.png' %}
+    {% else %}
+        {% set logo = '/assets/sb_branding/finalium/logo-wordmark.png' %}
+    {% endif %}
+{% else %}
+    {% set logo = website_branding.assets_location ~ '/logo-wordmark.png' %}
+{% endif %}
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
