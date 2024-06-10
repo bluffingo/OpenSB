@@ -1,0 +1,9 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ pagetitle }}{% endblock %}
+
+{% block content %}
+	<div class="card card-body">
+		{{ source('markdown/' ~ file) | markdown_unsafe }}
+	</div>
+{% endblock %}
