@@ -16,11 +16,17 @@ class SquareBracket {
      * @since SquareBracket 1.0
      */
     public function __construct($host, $user, $pass, $db) {
+        global $defaultTemplate;
         session_start(["cookie_lifetime" => 0, "gc_maxlifetime" => 455800]);
 
-        $this->options = [];
         if (isset($_COOKIE["SBOPTIONS"])) {
             $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
+        } else {
+            $this->options = [
+                "skin" => $defaultTemplate,
+                "theme" => "default",
+                "sounds" => false,
+            ];
         }
 
         try {

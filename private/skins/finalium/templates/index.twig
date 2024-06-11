@@ -3,10 +3,10 @@
 
 {# hack to prevent twig from outputing the number 1 #}
 {% if is_user_logged_in %}
-    {% if totalSubscribers != 1 %}
+    {% if data.totals.followers != 1 %}
         {% set pluralSubscribers = "s" %}
     {% endif %}
-    {% if totalViews != 1 %}
+    {% if data.totals.views != 1 %}
         {% set pluralViews = "s" %}
     {% endif %}
 {% endif %}
@@ -19,7 +19,7 @@
             <div class="container sb-welcome">
                 {% if is_user_logged_in %}
                     <h1>Welcome to {{ website_branding.name }}, {{ user_data.title }}</h1>
-                    <p>{{ totalSubscribers ?? "no" }} follower{{ pluralSubscribers }} - {{ totalViews ?? "no" }} view{{ pluralViews }} (FIXME: inaccurate info)</p>
+                    <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }} - {{ data.totals.views ?? "no" }} view{{ pluralViews }} (FIXME: inaccurate info)</p>
                 {% else %}
                     <h1>Welcome to {{ website_branding.name }}</h1>
                     <a class="button button-primary button-large" href="/register.php">Get started</a>
@@ -36,8 +36,8 @@
                        href="/my_submissions">Manage {{ icon('caret-right-fill', 12) }}</a>
                 </div>
                 <div class="col-md-6 right stats">
-                    <p>{{ totalSubscribers ?? "no" }} follower{{ pluralSubscribers }}
-                        <br>{{ totalViews ?? "no" }} view{{ pluralViews }}</p>
+                    <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
+                        <br>{{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
                 </div>
             {% else %}
                 <div class="col-md-10">

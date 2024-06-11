@@ -131,8 +131,9 @@ $is_own_profile = ($data["id"] == $auth->getUserID());
 
 $comments = new CommentData($database, CommentLocation::Profile, $data["id"]);
 
-$followers = $database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$data["id"]])['COUNT(user)'];
+$followers = $database->result("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$data["id"]]);
 $followed = UnorganizedFunctions::IsFollowingUser($data["id"]);
+$views = $database->result("SELECT SUM(views) FROM videos WHERE author = ?", [$data["id"]]);
 
 $profile_data = [
     "id" => $data["id"],
@@ -149,6 +150,7 @@ $profile_data = [
     "followers" => $followers,
     "following" => $followed,
     "is_fedi" => $isFediverse,
+    "views" => $views,
 ];
 
 if ($isFediverse) {

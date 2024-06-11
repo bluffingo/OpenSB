@@ -1,37 +1,41 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Browse {% if page != 1 %}(Page %s)", [page]) }}{% endif %}{% endblock %}
+{% block title %}Browse {% if page != 1 %}(Page {{ page }}){% endif %}{% endblock %}
 
 	{% block content %}
-        <h1>{{ title }}</h1>
+        <h1>Browse {% if page != 1 %}(Page {{ page }}){% endif %}</h1>
         <div class="grid">
-            <div class="card">
-                <ul class="nav">
-                    <li {% if type=='recent' %}class="active" {% endif %}><a
-                                href="/browse?type=recent">Most recent</a></li>
-                    <li {% if type=='popular' %}class="active" {% endif %}><a
-                                href="/browse?type=popular">Most popular</a></li>
-                    <li {% if type=='discussed' %}class="active" {% endif %}><a
-                                href="/browse?type=discussed">Most discussed</a></li>
-                    <li {% if type=='favorited' %}class="active" {% endif %}><a
-                                href="/browse?type=favorited">Most favorited</a></li>
-                    <li {% if type=='random' %}class="active" {% endif %}><a
-                                href="/browse?type=random">Random</a></li>
-                </ul>
+            <div class="col-md-6">
+                <div class="card">
+                    <ul class="nav">
+                        <li {% if type=='recent' %}class="active" {% endif %}><a
+                                    href="/browse?type=recent">Most recent</a></li>
+                        <li {% if type=='popular' %}class="active" {% endif %}><a
+                                    href="/browse?type=popular">Most popular</a></li>
+                        {# <li {% if type=='discussed' %}class="active" {% endif %}><a
+                                    href="/browse?type=discussed">Most discussed</a></li>
+                        <li {% if type=='favorited' %}class="active" {% endif %}><a
+                                    href="/browse?type=favorited">Most favorited</a></li> #}
+                        <li {% if type=='random' %}class="active" {% endif %}><a
+                                    href="/browse?type=random">Random</a></li>
+                    </ul>
+                </div>
             </div>
-            {% for level in levels %}
-                {{ submission_box(level) }}
-            {% else %}
-                <div class="header_message header-danger" role="alert">There are no submissions.</div>
-            {% endfor %}
+            <div class="col-md-10">
+                {% for submission in data.submissions %}
+                    {{ submission_box(submission) }}
+                {% else %}
+                    <div class="header_message header-danger" role="alert">There are no submissions.</div>
+                {% endfor %}
 
-            {% if type == 'all' %}
-                {% set le_url = 'browse?page=%s' %}
-            {% else %}
-                {% set le_url = 'browse?type=' ~ type ~ '&page=%s' %}
-            {% endif %}
-            <div class="center">{{ pagination(level_count, items_per_page, le_url, page) }}</div>
+                {% if type == 'all' %}
+                    {% set le_url = 'browse?page=%s' %}
+                {% else %}
+                    {% set le_url = 'browse?type=' ~ type ~ '&page=%s' %}
+                {% endif %}
+                <div class="center">{{ pagination(data.count, items_per_page, le_url, page) }}</div>
 
-            <br><br>
+                <br><br>
+            </div>
         </div>
     {% endblock %}

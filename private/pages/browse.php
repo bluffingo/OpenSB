@@ -16,10 +16,10 @@ function getOrderFromType($type): string
             $order = "views";
             break;
         case 'discussed':
-            $order = "comments";
+            $order = "comments"; // BROKEN
             break;
         case 'favorited':
-            $order = "favorites";
+            $order = "favorites"; // BROKEN
             break;
         case 'random':
             $order = "RAND()";
@@ -41,7 +41,7 @@ $whereRatings = UnorganizedFunctions::whereRatings();
 
 $database = $orange->getDatabase();
 $submissions = $database->fetchArray($database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings ORDER BY $order DESC $limit"));
-$submission_count = $database->result("SELECT COUNT(*) FROM videos");
+$submission_count = $database->result("SELECT COUNT(*) FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings");
 
 $data = [
     "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $submissions),
@@ -51,4 +51,5 @@ $data = [
 echo $twig->render('browse.twig', [
     'data' => $data,
     'page' => $page_number,
+    'type' => $type,
 ]);

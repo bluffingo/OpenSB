@@ -1,0 +1,17 @@
+{% extends "_layout.twig" %}
+
+{% block title %}My submissions {% if page != 1 %}(Page {{ page }}){% endif %}{% endblock %}
+
+	{% block content %}
+        <h1>My submissions {% if page != 1 %}(Page {{ page }}){% endif %}</h1>
+        <div class="grid">
+            {% for submission in data.submissions %}
+                {{ submission_box(submission) }}
+            {% else %}
+                <div class="header_message header-danger" role="alert">You have no submissions!</div>
+            {% endfor %}
+
+            {% set le_url = 'my_submissions?page=%s' %}
+            <div class="center">{{ pagination(data.count, items_per_page, le_url, page) }}</div>
+        </div>
+    {% endblock %}

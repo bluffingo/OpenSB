@@ -56,11 +56,11 @@
                     {% if data.followers != 1 %}
                         {% set pluralSubscribers = "s" %}
                     {% endif %}
-                    {% if views != 1 %}
+                    {% if data.views != 1 %}
                         {% set pluralViews = "s" %}
                     {% endif %}
-                    &bull; {{ data.followers ?? "no" }} follower{{pluralSubscribers }}
-                    &bull; {{ views ?? "no" }} view{{ pluralViews }}
+                    &bull; {{ data.followers ?? "no" }} follower{{ pluralSubscribers }}
+                    &bull; {{ data.views ?? "no" }} view{{ pluralViews }}
                 </p>
             </div>
             <div class="col-md-2 right">

@@ -35,7 +35,7 @@ if ($author->isUserBanned()) {
     UnorganizedFunctions::Notification("The author of this submission is banned.", "/");
 }
 
-$followers = $database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$data["author"]])['COUNT(user)'];
+$followers = $database->result("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$data["author"]]);
 $followed = UnorganizedFunctions::IsFollowingUser($data["author"]);
 
 // looks weird, whatever.
