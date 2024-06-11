@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $twig, $database, $auth;
+global $twig, $database, $auth, $orange;
 
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
@@ -92,7 +92,7 @@ $recommended = $database->fetchArray($database->query("SELECT v.* FROM videos v 
 
 if ($auth->getUserID() == $data["author"]) { $owner = true; } else { $owner = false; }
 
-$data = [
+$page_data = [
     "is_owner" => $owner,
     "int_id" => $data["id"],
     "id" => $data["video_id"],
@@ -120,6 +120,48 @@ $data = [
     "recommended" => UnorganizedFunctions::makeSubmissionArray($database,$recommended),
 ];
 
+if ($orange->getLocalOptions()["skin"] == "finalium") {
+    // calculates the ratio, copied from a late-2021 commit
+    function calculateRatio($number, $percent, $total) {
+        // If there's no ratio or dislikes, it returns 100.
+        if ($total == 0 or $number == 0) {
+            return 100;
+        } else {
+            // It returns the Like-to-dislike ratio.
+            return ($percent / $total) * $number * 100;
+        }
+    }
+
+    if ($auth->isUserLoggedIn()) {
+        $current_rating_from_db = $database->result("SELECT rating FROM rating WHERE video=? AND user=?", [$data["id"], $auth->getUserID()]);
+
+        // this is for the like/dislike buttons in the frontend
+        if (($current_rating_from_db == "4") || ($current_rating_from_db == "5")) {
+            $current_rating = "like";;
+        } elseif (($current_rating_from_db == "1") || ($current_rating_from_db == "2")) {
+            $current_rating = "dislike";
+        } else {
+            $current_rating = null;
+        }
+    } else {
+        $current_rating = null;
+    }
+
+    // translate 5 stars into like/dislikes. we do this because using the star rating ratio doesn't work that well
+    // with the likesaber on finalium. TODO: bring back like/dislike system onto bootstrap
+    // -chaziz 6/11/2024
+    $likes = $ratings["4"] + $ratings["5"];
+    $dislikes = $ratings["1"] + $ratings["2"];
+    $total = $likes + $dislikes;
+
+    $page_data["interactions"]["legacy"] = [
+        "likes" => $likes,
+        "dislikes" => $dislikes,
+        "ratio" => calculateRatio($dislikes, $likes, $total),
+        "current_rating" => $current_rating,
+    ];
+}
+
 echo $twig->render('watch.twig', [
-    'submission' => $data,
+    'submission' => $page_data,
 ]);

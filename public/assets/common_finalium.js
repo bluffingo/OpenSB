@@ -1,16 +1,15 @@
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
 index = 0;
-sbnextSounds = getCookie("SBSOUNDS");
+
+let sbnextSounds = false;
+const cookie = document.cookie.split('; ').find(row => row.startsWith('SBOPTIONS='));
+if (cookie) {
+    const encodedOptions = cookie.split('=')[1];
+    const decodedOptions = decodeURIComponent(encodedOptions);
+    const options = JSON.parse(atob(decodedOptions));
+    if (options.hasOwnProperty('sounds')) {
+        sbnextSounds = options.sounds;
+    }
+}
 
 $(document).ready(function () {
     console.log("squareBracket Sounds: " + sbnextSounds);
@@ -59,10 +58,10 @@ $(document).ready(function () {
             return alert('you must put something to comment!');
         }
 
-        $.post("comment.php",
+        $.post("/api/legacy/comment",
             {
                 comment: $.trim($('#commentContents').val()),
-                vidid: video_id,
+                vidid: submission_id,
                 really: "ofcourse",
                 type: "video"
             },
@@ -80,7 +79,7 @@ $(document).ready(function () {
     $("#post-user").click(function () {
         play("click");
         $("#commentPostingSpinner").removeClass('d-none');
-        $.post("comment.php",
+        $.post("/api/legacy/comment",
             {
                 comment: $.trim($('#commentContents').val()),
                 uid: user_id,
@@ -99,7 +98,7 @@ $(document).ready(function () {
             });
     });
     $("#subscribe").click(function () {
-        $.post("subscribe.php",
+        $.post("/api/legacy/subscribe",
             {
                 subscription: user_id
             },
@@ -123,7 +122,7 @@ $(document).ready(function () {
             });
     });
     $("#subscribe-watch").click(function () {
-        $.post("subscribe.php",
+        $.post("/api/legacy/subscribe",
             {
                 subscription: user_id
             },
@@ -148,10 +147,10 @@ $(document).ready(function () {
     });
     $("#like").click(function () {
         if ($("#like").attr("class") != "button button-success") {
-            $.post("rate.php",
+            $.post("/api/legacy/rate",
                 {
-                    rating: 1,
-                    vidid: video_id
+                    rating: 5, // sb ratings are internally 5 stars
+                    vidid: submission_id
                 },
                 function (data, status) {
                     if (status == "success") {
@@ -173,10 +172,10 @@ $(document).ready(function () {
     });
     $("#dislike").click(function () {
         if ($("#dislike").attr("class") != "button button-danger") {
-            $.post("rate.php",
+            $.post("/api/legacy/rate",
                 {
-                    rating: 0,
-                    vidid: video_id
+                    rating: 1, // sb ratings are internally 5 stars
+                    vidid: submission_id
                 },
                 function (data, status) {
                     if (status == "success") {
@@ -198,10 +197,10 @@ $(document).ready(function () {
     });
     $("#favorite").click(function () {
         if ($("#favorite").attr("class") != "button button-warning") {
-            $.post("favorite.php",
+            $.post("/api/legacy/favorite",
                 {
                     action: "favorite",
-                    video_id: video_id
+                    submission_id: submission_id
                 },
                 function (data, status) {
                     if (status == "success") {
@@ -226,7 +225,7 @@ $(document).ready(function () {
     /*
     $(".options-button").click(function () {
         $.ajax({
-            url: "/customizer.php",
+            url: "/customizer",
             success: function (returndata) {
                 $('#optionsModal').html(returndata);
                 $("#optionsModal").show();
@@ -271,7 +270,7 @@ function myFunction() {
 }
 
 function showReplies(id) {
-    $.post("get_replies.php",
+    $.post("/api/legacy/get_replies",
         {
             comment_id: id
         },
@@ -284,7 +283,7 @@ function showReplies(id) {
 
 function showMoreVideos() {
     if ($("#fromUserVideoList").attr("class") != "card-body") {
-        $.post("ajax_watch.php",
+        $.post("/api/legacy/ajax_watch",
             {
                 from: index,
                 limit: 10,
@@ -309,7 +308,7 @@ function reply(id) {
     }
     $("#" + id + " #commentField .col-md-11 .right #post").click(function () {
         play("click");
-        $.post("comment.php",
+        $.post("/api/legacy/comment",
             {
                 comment: $.trim($('#' + id + ' #commentContents').val()),
                 reply_to: id,
@@ -327,7 +326,7 @@ function reply(id) {
     });
     $("#" + id + " #commentField .col-md-11 .right #post-user").click(function () {
         play("click");
-        $.post("comment.php",
+        $.post("/api/legacy/comment",
             {
                 comment: $.trim($('#' + id + ' #commentContents').val()),
                 reply_to: id,

@@ -39,10 +39,16 @@ if (isset($path[1]) && $path[1] != '') {
         },
         'admin' => require(SB_PRIVATE_PATH . '/pages/admin.php'),
         'api' => match ($path[2] ?? null) {
-            'finalium' => match ($path[3] ?? null) {
-                'commenting.php' => require(SB_PRIVATE_PATH . '/pages/api/commenting.php'),
-                'submission_interaction' => require(SB_PRIVATE_PATH . '/pages/api/submission_interaction.php'),
-                'user_interaction.php' => require(SB_PRIVATE_PATH . '/pages/api/user_interaction.php'),
+            'biscuit' => match ($path[3] ?? null) {
+                'commenting' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/commenting.php'),
+                'submission_interaction' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/submission_interaction.php'),
+                'user_interaction' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/user_interaction.php'),
+                default => die("Invalid API.")
+            },
+            'legacy' => match ($path[3] ?? null) {
+                'comment' => require(SB_PRIVATE_PATH . '/pages/api/legacy/comment.php'),
+                'rate' => require(SB_PRIVATE_PATH . '/pages/api/legacy/rate.php'),
+                'subscribe' => require(SB_PRIVATE_PATH . '/pages/api/legacy/subscribe.php'),
                 default => die("Invalid API.")
             },
             default => die("Invalid API.")

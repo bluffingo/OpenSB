@@ -13,6 +13,7 @@ if (isset($_POST['apply'])) {
 
     $options["skin"] = $new[0];
     $options["theme"] = $new[1];
+    $options["sounds"] = ($_POST['sounds'] ?? false);
 
     setcookie("SBOPTIONS", base64_encode(json_encode($options)), 2147483647);
 

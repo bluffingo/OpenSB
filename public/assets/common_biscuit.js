@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let comment_button = (document.getElementById('comment_button'));
         let comment_contents = (document.getElementById('comment_contents'));
         comment_button.onclick = function () {
-            fetch("/api/finalium/commenting.php", {
+            fetch("/api/biscuit/commenting", {
                 method: "POST",
                 body: JSON.stringify({
                     type: comment_type,
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (favorite_button) {
         let favorite_count = (document.getElementById('follower_count'));
         favorite_button.onclick = function () {
-            fetch("/api/finalium/user_interaction.php", {
+            fetch("/api/biscuit/user_interaction", {
                 method: "POST",
                 body: JSON.stringify({
                     action: "follow",

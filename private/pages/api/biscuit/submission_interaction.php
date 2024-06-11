@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $auth, $orange;
+global $auth, $database;
 
 header('Content-Type: application/json');
 
@@ -18,12 +18,11 @@ if ($auth->getUserBanData()) {
     ];
 }
 
-$database = $orange->getDatabase();
-
 function rate($number, $submission): array
 {
     global $database, $auth;
 
+    // shouldn't this update instead?
     if ($database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND user=?", [$submission, $auth->getUserID()]))
     {
         $database->query("DELETE FROM rating WHERE video=? AND user=?", [$submission, $auth->getUserID()]);
@@ -37,7 +36,7 @@ if (isset($post_data['submission'])) {
         $apiOutput = match ($post_data['action']) {
             'favorite' => [
                 "favorited" => true,
-                "number" => rand(0, 47101), // placeholder code
+                "number" => rand(0, 47101), // placeholder code (which is still placeholder even a year later since favorites were never implemented WHOOPS)
             ],
             'rate' => [
                 rate($post_data['number'], $post_data['submission']),

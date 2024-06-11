@@ -65,9 +65,9 @@
             </div>
             <div class="col-md-2 right">
                 {% if data.id != user_data.id %}
-                    <button id="subscribe" class="button button-{% if subscribed %}secondary{% else %}primary{% endif %}"
+                    <button id="subscribe" class="button button-{% if data.following %}secondary{% else %}primary{% endif %}"
                             type="button"
-                            {% if not is_user_logged_in %}disabled{% endif %}>{% if subscribed %}Unfollow{% else %}Follow{% endif %}</button>
+                            {% if not is_user_logged_in %}disabled{% endif %}>{% if data.following %}Unfollow{% else %}Follow{% endif %}</button>
                 {% endif %}
             </div>
         </div>

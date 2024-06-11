@@ -19,7 +19,7 @@
             <div class="container sb-welcome">
                 {% if is_user_logged_in %}
                     <h1>Welcome to {{ website_branding.name }}, {{ user_data.title }}</h1>
-                    <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }} - {{ data.totals.views ?? "no" }} view{{ pluralViews }} (FIXME: inaccurate info)</p>
+                    <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }} - {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
                 {% else %}
                     <h1>Welcome to {{ website_branding.name }}</h1>
                     <a class="button button-primary button-large" href="/register.php">Get started</a>
