@@ -30,7 +30,7 @@ if [ ! -d "public/assets/css" ]; then
 fi
 
 # Execute Sass compilation
-${sass_executable} ${common_arguments} --update \
+${sass_executable} ${common_arguments} \
   "scss/bootstrap/:public/assets/css/bootstrap" \
   "scss/finalium/:public/assets/css/finalium" \
   "scss/biscuit/:public/assets/css/biscuit"
