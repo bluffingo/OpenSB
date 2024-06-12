@@ -34,6 +34,11 @@ class Authentication
                     UnorganizedFunctions::Notification("You have been logged out, as this account is linked to a banned IP address.", true);
                 }
 
+                // update "last logged in" timestamp after 12 hours.
+                if ($database->result("SELECT COUNT(*) FROM users WHERE lastview < ? AND id = ?", [time() - (12 * 60 * 60), $this->user_id])) {
+                    $database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), Utilities::get_ip_address(), $this->user_id]);
+                }
+
                 // if "comfortable rating" is questionable, reset it back to general. this is because the site now uses
                 // "general" and "sensitive" instead of the old "general", "questionable" and "mature" ratings, but the
                 // old system is left there for compatibility. -chaziz 6/9/2024
