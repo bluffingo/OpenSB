@@ -165,7 +165,7 @@ if ($isFediverse) {
     if (isset($data["banner_picture"])) {
         $profile_data["fedi_banner"] = $data["banner_picture"];
     } else {
-        $profile_data["fedi_banner"] = "/assets/sbnext_channel_header_template.png";
+        $profile_data["fedi_banner"] = "/assets/biscuit_banner.png";
     }
 }
 

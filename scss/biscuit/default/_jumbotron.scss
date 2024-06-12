@@ -1,7 +1,9 @@
 .jumbotron {
   &.homepage-banner {
-    background: #FF8A00;
+    background: #FF8A00 url("/assets/biscuit_banner.png");
     color: white;
+    text-shadow: 0 0 0.5em #00000050;
+
     margin-top: -$header-main-height;
     height: 150px + $header-main-height;
 
