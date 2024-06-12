@@ -2,10 +2,10 @@
 
 command=$1
 
-common_arguments="--style=expanded --load-path=./scss"
+common_arguments="--style expanded --no-source-map --load-path=./scss"
 
 if [ "$command" = "dev" ]; then
-  common_arguments+=" --update"
+  common_arguments+=" --watch"
 fi
 
 machine=$(uname -s)
@@ -29,14 +29,7 @@ if [ ! -d "public/assets/css" ]; then
   mkdir -p public/assets/css || { echo "Error: Failed to create public/assets/css directory"; exit 1; }
 fi
 
-# Execute Sass compilation
 ${sass_executable} ${common_arguments} \
-  "scss/bootstrap/:public/assets/css/bootstrap" \
-  "scss/finalium/:public/assets/css/finalium" \
-  "scss/biscuit/:public/assets/css/biscuit"
-
-# Check for errors
-if [ $? -ne 0 ]; then
-  echo "Error: Sass compilation failed."
-  exit 1
-fi
+  "scss/bootstrap/:public/assets/css" \
+  "scss/finalium/:public/assets/css" \
+  "scss/biscuit/:public/assets/css"

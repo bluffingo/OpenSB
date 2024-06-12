@@ -63,7 +63,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
 
             UnorganizedFunctions::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
         } else {
-            UnorganizedFunctions::Notification("There's a problem with permissions and/or PHP File configuration on the server. Please contact the instance staff.", "/upload");
+            UnorganizedFunctions::Notification("There is a problem with file permissions and/or PHP on this instance.", "/upload");
         }
     } elseif (in_array(strtolower($ext), $supportedImageFormats, true)) {
         $storage->processImage($temp_name, $new);
