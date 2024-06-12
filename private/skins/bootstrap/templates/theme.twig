@@ -1,0 +1,42 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Customize" %}
+
+{% block content %}
+    <h1>Change theme</h1>
+    <div class="row">
+        <div class="col-lg-4">
+            <div id="previewContainer">
+                <img id="themePreview" src="" alt="Theme Preview" class="img-fluid">
+                <p id="themeDescription"></p>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <form name="uploadForm" id="uploadForm" method="post" action="theme">
+                <label for="theme">Skin:</label>
+                <select id="theme" name="theme" onchange="updatePreview()" class="form-control">
+                    {% for skin in skins %}
+                        {% for theme in skin.metadata.themes %}
+                            <option value="{{ skin.metadata.id }},{{ theme.id }}"
+                                    data-preview-url="/assets/previews/{{ skin.metadata.id }}_{{ theme.id }}.png"
+                                    data-description="{{ theme.description }}">
+                                {{ skin.metadata.name }}: {{ theme.name }}
+                            </option>
+                        {% endfor %}
+                    {% endfor %}
+                </select>
+                <br>
+                <input type="checkbox" id="sounds" name="sounds" value="true">
+                <label for="sounds"> Enable UI sounds</label><br>
+                <br>
+                <div class="text-end">
+                    <input type="submit" id="apply" name="apply" value="Apply" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/assets/theme.js"></script>
+{% endblock %}

@@ -5,12 +5,21 @@
 {% block content %}
     <h1>Customize</h1>
     <p>Placeholder design, sorry.</p>
+    <div id="previewContainer" style="margin-top: 20px;">
+        <h2>Preview</h2>
+        <img id="themePreview" src="" alt="Theme Preview" style="max-width: 300px; max-height: 200px; display: none;">
+        <p id="themeDescription"></p>
+    </div>
     <form name="uploadForm" id="uploadForm" method="post" action="theme">
         <label for="theme">Skin:</label>
-        <select id="theme" name="theme">
+        <select id="theme" name="theme" onchange="updatePreview()">
             {% for skin in skins %}
                 {% for theme in skin.metadata.themes %}
-                    <option value="{{ skin.metadata.id }},{{ theme.id }}">{{ skin.metadata.name }}: {{ theme.name }}</option>
+                    <option value="{{ skin.metadata.id }},{{ theme.id }}"
+                            data-preview-url="/assets/previews/{{ skin.metadata.id }}_{{ theme.id }}.png"
+                            data-description="{{ theme.description }}">
+                        {{ skin.metadata.name }}: {{ theme.name }}
+                    </option>
                 {% endfor %}
             {% endfor %}
         </select>
@@ -18,7 +27,10 @@
         <input type="checkbox" id="sounds" name="sounds" value="true">
         <label for="sounds"> Enable UI sounds</label><br>
         <br>
-        <input type="submit" id="apply" name="apply"
-               value="Apply">
+        <input type="submit" id="apply" name="apply" value="Apply">
     </form>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/assets/theme.js"></script>
 {% endblock %}
