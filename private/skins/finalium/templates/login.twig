@@ -1,23 +1,23 @@
-{% extends "_layout_chaziz.twig" %}
+{% set layout_template = current_theme == 'beta' ? '_layout.twig' : '_layout_chaziz.twig' %}
+{% embed layout_template %}
+    {% block title %}Login{% endblock %}
 
-{% block title %}Login{% endblock %}
-
-	{% block content %}
+    {% block content %}
         {% if error %}
             <div class="header_message header-danger" role="alert">{{ error }}</div>
-			<br>
+            <br>
         {% elseif resetted %}
             <div class="header_message header-success"
                  role="alert">Password successfully reset! Please login with your new password.</div>
-			<br>
+            <br>
         {% elseif new_pass %}
             <div class="header_message header-success"
                  role="alert">Password successfully reset! Please login with your new password.</div>
-			<br>
+            <br>
         {% elseif new_token %}
             <div class="header_message header-success"
                  role="alert">You have been successfully logged out of all devices.</div>
-			<br>
+            <br>
         {% endif %}
 
         <div class="grid chazizPage">
@@ -29,7 +29,10 @@
                 <input class="button button-large button-primary" type="submit" value="Login"
                        name="loginsubmit">
                 <br>
-				<p>Don't have an account? <a href="/./register">Register</a>
+                {% if current_theme != "beta" %}
+                <p>Don't have an account? <a href="/register">Register</a>
+                {% endif %}
             </form>
         </div>
     {% endblock %}
+{% endembed %}

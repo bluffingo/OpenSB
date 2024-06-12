@@ -3,11 +3,11 @@
 {% block title %}Browse {% if page != 1 %}(Page {{ page }}){% endif %}{% endblock %}
 
 	{% block content %}
-        <h1>Browse {% if page != 1 %}(Page {{ page }}){% endif %}</h1>
         <div class="grid">
             <div class="col-md-6">
                 <div class="card">
                     <ul class="nav">
+                        <li class="title">Sort by</li>
                         <li {% if type=='recent' %}class="active" {% endif %}><a
                                     href="/browse?type=recent">Most recent</a></li>
                         <li {% if type=='popular' %}class="active" {% endif %}><a

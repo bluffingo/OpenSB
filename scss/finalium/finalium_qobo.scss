@@ -103,3 +103,8 @@ input[type]:not([type=file]):not([type=submit]):focus {
 	box-shadow: none;
 	transition: none;
 }
+
+.chaziz-body {
+	background: #2B3644 url(/assets/sb_branding/finalium/brisbane.jpg);
+	background-size: cover;
+}

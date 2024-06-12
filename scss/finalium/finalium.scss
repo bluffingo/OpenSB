@@ -149,7 +149,7 @@ blockquote {
 }
 
 .chaziz-body {
-  background: #2B3644 url(/assets/placeholder/login_bg.jpg);
+  background: #2B3644 url(/assets/sb_branding/finalium/droplets.jpg);
   background-size: cover;
   display: flex;
   align-items: center;
@@ -291,9 +291,14 @@ blockquote {
 
 ul.nav {
 	margin: 0;
-	padding: 1em;
-	.title { margin: 0 0 0.5em; }
-	li { padding: 0.75em; } 
+	padding: 1.25em 0;
+	.title {
+      color: $gray-600;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: bold;
+    }
+	li { padding: 6px 15px;; }
 	li.active { background: $primary; a { color: white; } }
 }
 

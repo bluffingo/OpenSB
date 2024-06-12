@@ -101,6 +101,11 @@ $theme-colors: (
 
 // insert shit here afterwards
 
+// headers were all bold
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
 body {
   background: #ebebeb;
   color: black;
@@ -120,6 +125,10 @@ body {
 .container {
   max-width: 970px;
   padding: 0;
+}
+
+.page-container {
+  min-height: auto;
 }
 
 // pfps weren't fully rounded back then
@@ -260,6 +269,18 @@ body {
   font-size: 11px;
 }
 
+.button-large {
+  padding:10px 14px;
+  border-radius:5px;
+  font-size:14px
+}
+
+.button-small {
+  padding:5px 13px;
+  border-radius:2px;
+  height:26px
+}
+
 // footer
 .footer {
   min-width: 984px;
@@ -315,4 +336,52 @@ input[type="color"]:focus,
   border-color: rgba(82, 168, 236, 0.8) !important; // gonna override for some fuckass reason
   outline: 0;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+// random stuff from watch page
+.watchNext {
+  h1 {
+    font-size: 19px;
+  }
+  .viewcount {
+    color: $gray-850;
+    font-weight: normal;
+    margin-bottom: 4px;
+  }
+  .below-likesaber {
+    margin-top: 16px;
+    color: $gray-600;
+  }
+}
+
+// video info
+.vid-info {
+  .title {
+    font-size: 13px;
+    max-height: 2.4em;
+    line-height: 1.2;
+    display: block;
+    margin: 0 0 2px;
+    overflow:hidden;
+    a {
+      color: #333;
+    }
+    a:hover {
+      color: #438bc5;
+    }
+  }
+  .stat {
+    color: #999;
+    font-size: 11px;
+    display: block;
+    line-height: 1.4em;
+    height: 1.4em;
+  }
+}
+
+// login/register pages
+.chazizPage {
+  .form-signin {
+    max-width: 250px // less wider in the beta
+  }
 }

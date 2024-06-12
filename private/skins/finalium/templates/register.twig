@@ -1,25 +1,26 @@
-{% extends "_layout_chaziz.twig" %}
+{% set layout_template = current_theme == 'beta' ? '_layout.twig' : '_layout_chaziz.twig' %}
+{% embed layout_template %}
+    {% block title %}Register{% endblock %}
 
-{% block title %}Register{% endblock %}
+    {% block content %}
 
-{% block content %}
+        {% if error %}
+            <div class="header_message header-danger" role="alert">{{ error }}</div>
+            <br>
+        {% endif %}
+        <div class="grid chazizPage">
+            <form method="post" name="loginForm" id="loginForm" action="register" class="form-signin">
+                <h2 class="form-signin-heading">Register</h2>
 
-    {% if error %}
-        <div class="header_message header-danger" role="alert">{{ error }}</div>
-		<br>
-    {% endif %}
-    <div class="grid chazizPage">
-        <form method="post" name="loginForm" id="loginForm" action="register" class="form-signin">
-            <h2 class="form-signin-heading">Register</h2>
+                <input type="text" name="email" class="input-block-level" placeholder="Email">
+                <input type="text" name="username" class="input-block-level" placeholder="Username">
 
-            <input type="text" name="email" class="input-block-level" placeholder="Email">
-            <input type="text" name="username" class="input-block-level" placeholder="Username">
+                <input type="password" name="pass1" class="input-block-level" placeholder="Password">
+                <input type="password" name="pass2" class="input-block-level" placeholder="Confirm Password">
 
-            <input type="password" name="pass1" class="input-block-level" placeholder="Password">
-            <input type="password" name="pass2" class="input-block-level" placeholder="Confirm Password">
-
-            <input class="button button-large button-primary" type="submit" value="Register"
-                   name="registersubmit">
-        </form>
-    </div>
-{% endblock %}
+                <input class="button button-large button-primary" type="submit" value="Register"
+                       name="registersubmit">
+            </form>
+        </div>
+    {% endblock %}
+{% endembed %}

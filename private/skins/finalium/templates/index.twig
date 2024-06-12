@@ -26,6 +26,42 @@
                     <a class="button button-secondary button-large" href="/login.php">Login</a>
                 {% endif %}
             </div>
+        {% elseif current_theme == 'beta' %}
+            <div class="container sb-welcome">
+                <div class="grid">
+                {% if is_user_logged_in %}
+                    <!-- hardcoded widths, whoops! -chaziz 6/12/2024 -->
+                    <div class="col-md-2" style="width:16.6666666667%;">
+                        <img class="rounded img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
+                    </div>
+                    <div class="col-md-14" style="width:83.3333333333%;">
+                        <p class="text-start">
+                        </p><h1 style="padding:0;margin:8px 0;">Welcome, {{ user_data.title }}</h1>
+                        <h3 style="padding:0;margin:8px 0;">@{{ user_data.name }}</h3>
+                        <p style="padding:0;margin:8px 0;">{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
+                            • {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
+                        <a class="button button-neutral button-large" href="/my_submissions">Manage my content {{ icon('caret-right-fill', 12) }}</a>
+                    </div>
+                {% else %}
+                    <div class="col-md-10">
+                        <h1>Welcome to {{ website_branding.name }}</h1>
+                        <h3 style="padding:0;margin:0;">
+                            {% if is_chaziz_sb %}
+                                Your content, your narration, your niche on the web.
+                            {% else %}
+                                Insert slogan.
+                            {% endif %}
+                        </h3>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="button button-neutral button-large"
+                           href="/register">Get started {{ icon('caret-right-fill', 16) }}</a><br><br>
+                        <big>Already have an account? <a class="button button-neutral"
+                                                         href="/login">Sign in</a></big>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
         {% else %}
         <div class="container page-container">
             {% if is_user_logged_in %}
