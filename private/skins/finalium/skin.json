@@ -22,9 +22,14 @@
         "description": "Loosely emulates the design aesthetics seen on YouTube around 2010."
       },
       {
+        "id": "beta",
+        "name": "Beta",
+        "description": "Emulates the December 2021 version of Finalium."
+      },
+      {
         "id": "qobo",
         "name": "Qobo",
-        "description": "Emulates the early-2023 version of Finalium"
+        "description": "Emulates the April-June 2023 version of Finalium."
       }
     ]
   }

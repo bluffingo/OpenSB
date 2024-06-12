@@ -103,6 +103,13 @@ class Templating
         $this->twig->addGlobal('invite_keys_enabled', $enableInviteKeys);
         $this->twig->addGlobal('items_per_page', 20);
 
+        if ($this->skin == "finalium" && $this->theme == "beta")
+        {
+            $db = $orange->getDatabase();
+            $footerstats = $db->fetch("SELECT (SELECT COUNT(*) FROM users) users, (SELECT COUNT(*) FROM videos) submissions");
+            $this->twig->addGlobal('footer_stats', $footerstats);
+        }
+
         if (isset($_SERVER["REQUEST_URI"])) {
             $this->twig->addGlobal('page_name', empty(basename($_SERVER["REQUEST_URI"], '.php')) ? 'index' : basename($_SERVER["REQUEST_URI"], '.php'));
         }

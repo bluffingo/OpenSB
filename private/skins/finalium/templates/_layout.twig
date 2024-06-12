@@ -1,6 +1,8 @@
 {% if is_chaziz_sb %}
     {% if current_theme == 'dark' %}
         {% set logo = '/assets/sb_branding/finalium/logo-wordmark-dark.png' %}
+    {% elseif current_theme == 'beta' %}
+        {% set logo = '/assets/sb_branding/finalium/logo-2021.png' %}
     {% else %}
         {% set logo = '/assets/sb_branding/finalium/logo-wordmark.png' %}
     {% endif %}
@@ -29,6 +31,8 @@
         <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_nostalgia.css?r={{ get_css_file_date() }}" type="text/css">
     {% elseif current_theme == 'qobo' %}
         <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_qobo.css?r={{ get_css_file_date() }}" type="text/css">
+    {% elseif current_theme == 'beta' %}
+        <link id="nostalgia" rel="stylesheet" href="/assets/css/finalium_beta.css?r={{ get_css_file_date() }}" type="text/css">
     {% endif %}
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -47,6 +51,8 @@
 <body>
 {% if current_theme == 'nostalgia' %}
     {% include "components/nostalgia/_header.twig" %}
+{% elseif current_theme == 'beta' %}
+    {% include "components/beta/_header.twig" %}
 {% else %}
     {% include "components/_header.twig" %}
 {% endif %}
@@ -63,29 +69,10 @@
     {% endif %}
     {% block content %}{% endblock %}
 </div>
-<footer>
-    <div class="footer">
-        <img src="/assets/opensb_logo.png" alt="OpenSB">
-        <p><strong>© openSB contributors</strong> · 2021-{{ 'now' | date('Y') }}
-            | <strong><a href="/privacy">Privacy Policy</a></strong>
-        </p>
-        <h5>Running OpenSB {{ opensb_version }}</h5>
-        {% if isMaintenance != true %}
-            <a class="button button-neutral button-small options-button" role="button" href="/theme">Options</a>
-            {% if isDebug %}
-                <a class="button button-danger button-small debug-button tooltip" title="Spicy!" role="button">Debug</a>
-            {% endif %}
-            <div id="optionsModal" class="bg-neutral" style="padding:0.3em;">
-            </div>
-            {% if isDebug %}
-                <div id="debugModal" class="bg-neutral" style="padding:0.3em;">
-                    <h3>Debug info</h3>
-                    <div class="header_message header-danger">It is risky to screenshot this due to security reasons, so please don't.</div>
-                    <p><pre>{{ dump() }}</pre></p>
-                </div>
-            {% endif %}
-        {% endif %}
-    </div>
-</footer>
+{% if current_theme == 'beta' %}
+    {% include "components/beta/_footer.twig" %}
+{% else %}
+    {% include "components/_footer.twig" %}
+{% endif %}
 </body>
 </html>

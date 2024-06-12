@@ -1,0 +1,114 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Version" %}
+
+{% block content %}
+    <div class="section-title">
+        <h1>Version</h1>
+    </div>
+    <div class="card card-body">
+        <p>
+            This website is powered by OpenSB (Open SquareBracket). © 2021-{{ 'now' | date('Y') }}
+            {% for developer in data.developers %}
+                {{ developer }}{{ not loop.last ? ',' }}
+            {% endfor %} and others.
+        </p>
+        <p>
+            OpenSB is free software: you can redistribute it and/or modify
+            it under the terms of the GNU Affero General Public License as
+            published by the Free Software Foundation, either version 3 of the
+            License, or (at your option) any later version.
+        </p>
+        <p>
+            OpenSB is distributed in the hope that it will be useful,
+            but WITHOUT ANY WARRANTY; without even the implied warranty of
+            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+            GNU Affero General Public License for more details.
+        </p>
+        <p>
+            You should have received
+            <a href="/license">a copy of the GNU Affero General Public License</a>
+            along with this program. If not, see
+            <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
+        </p>
+        <p>
+            You can download the OpenSB source code <a href="https://github.com/bluffingo/OpenSB">here</a>.
+        </p>
+        <p>
+            Special thanks <a href="/version/special_thanks/">here</a>.
+        </p>
+        <hr>
+        <h2>Installed software</h2>
+        <table class="c1">
+            <tr class="h">
+                <th>Product</th>
+                <th>Version</th>
+            </tr>
+            {% for thing in data.software %}
+                <tr>
+                    <td class="a">{{ thing.title }}</td>
+                    <td class="b">{{ thing.info }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <hr>
+        <h2>Installed skins</h2>
+        <table class="c1">
+            <tr class="h">
+                <th>Skin/Author</th>
+                <th>Description</th>
+            </tr>
+            {% for skin in skins %}
+                <tr>
+                    <td class="a">{{ skin.metadata.name }}<br><small>by {{ skin.metadata.author }}</small></td>
+                    <td class="b">
+                        <div>
+                        {{ skin.metadata.description }}
+                        </div>
+                        <div>
+                            <ul>
+                                {% for theme in skin.metadata.themes %}
+                                    <li>{{ theme.name }}: {{ theme.description }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <hr>
+        <h2>Installed libraries</h2>
+        <table class="c1">
+            <tr class="h">
+                <th>Library</th>
+                <th>Version</th>
+                <th>License</th>
+                <th>Description</th>
+                <th>Authors</th>
+            </tr>
+            {% for key, package in data.composer_packages %}
+                <tr>
+                    <td class="a" width="200">{{ key }}</td>
+                    <td class="b" width="100">{{ package.version }}</td>
+                    <td class="b" width="75">
+                        {% for license in package.licenses %}
+                            {{ license }}{{ not loop.last ? ',' }}
+                        {% endfor %}
+                    </td>
+                    <td class="b">
+                        {{ package.description }}
+                    </td>
+                    <td class="b">
+                        {% for author in package.authors %}
+                            {% if author.homepage %}
+                                <a href="{{ author.homepage }}">{{ author.name }}</a>{{ not loop.last ? ',' }}
+                            {% else %}
+                                {{ author.name }}{{ not loop.last ? ',' }}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

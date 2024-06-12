@@ -1,0 +1,24 @@
+<footer>
+    <div class="footer">
+        <img src="/assets/opensb_logo.png" alt="OpenSB">
+        <p><strong>© openSB contributors</strong> · 2021-{{ 'now' | date('Y') }}
+            | <strong><a href="/privacy">Privacy Policy</a></strong>
+        </p>
+        <h5><a href="/version.php">Running OpenSB {{ opensb_version }}</a></h5>
+        {% if isMaintenance != true %}
+            <a class="button button-neutral button-small options-button" role="button" href="/theme">Options</a>
+            {% if isDebug %}
+                <a class="button button-danger button-small debug-button tooltip" title="Spicy!" role="button">Debug</a>
+            {% endif %}
+            <div id="optionsModal" class="bg-neutral" style="padding:0.3em;">
+            </div>
+            {% if isDebug %}
+                <div id="debugModal" class="bg-neutral" style="padding:0.3em;">
+                    <h3>Debug info</h3>
+                    <div class="header_message header-danger">It is risky to screenshot this due to security reasons, so please don't.</div>
+                    <p><pre>{{ dump() }}</pre></p>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</footer>
