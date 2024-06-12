@@ -1,5 +1,17 @@
 function error(error) {
+    play('error');
     console.error("OpenSB Biscuit Frontend Error: " + error);
+}
+
+let uiSounds = false;
+const cookie = document.cookie.split('; ').find(row => row.startsWith('SBOPTIONS='));
+if (cookie) {
+    const encodedOptions = cookie.split('=')[1];
+    const decodedOptions = decodeURIComponent(encodedOptions);
+    const options = JSON.parse(atob(decodedOptions));
+    if (options.hasOwnProperty('sounds')) {
+        uiSounds = options.sounds;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -64,13 +76,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    let favorite_button = (document.getElementById('follow-user'));
+    let follow_button = (document.getElementById('follow-user'));
     let comment_field = (document.getElementById('comment_field'));
 
     if (comment_field) {
         let comment_button = (document.getElementById('comment_button'));
         let comment_contents = (document.getElementById('comment_contents'));
         comment_button.onclick = function () {
+            play('click');
             fetch("/api/biscuit/commenting", {
                 method: "POST",
                 body: JSON.stringify({
@@ -85,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then((response) => response.json())
                 .then((json) => { if(json["error"]) { error(json["error"])} else
                 {
+                    play('comment');
                     document.getElementById('comment').insertAdjacentHTML(
                         "afterbegin",
                         json["html"],
@@ -94,9 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    if (favorite_button) {
-        let favorite_count = (document.getElementById('follower_count'));
-        favorite_button.onclick = function () {
+    if (follow_button) {
+        let follow_count = (document.getElementById('follower_count'));
+        follow_button.onclick = function () {
+            play('click');
             fetch("/api/biscuit/user_interaction", {
                 method: "POST",
                 body: JSON.stringify({
@@ -115,8 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                         else
                         {
-                            favorite_count.textContent = json["number"];
-                            favorite_button.textContent = json["text"];
+                            follow_count.textContent = json["number"];
+                            follow_button.textContent = json["text"];
+                            if (json["followed"]) {
+                                play('subscribe');
+                            }
                         }
                     }
                 )
@@ -125,3 +143,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
+function play(sound) {
+    if (JSON.parse(uiSounds) == true) {
+        var audio = new Audio('/assets/sounds/' + sound + '.ogg');
+        audio.play();
+    }
+}

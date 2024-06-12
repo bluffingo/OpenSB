@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $auth, $orange, $twig;
+global $auth, $orange, $twig, $isDebug;
 
 use SquareBracket\Templating;
 use SquareBracket\UserData;
@@ -66,7 +66,7 @@ if (strlen($post_data["comment"]) > 1000) {
 }
 
 //TODO: Innerjoin???
-//if (!$orange->getSettings()->getDevelopmentMode()) {
+if (!$isDebug) {
     if ($database->result("SELECT COUNT(*) FROM comments WHERE date > ? AND author = ?", [time() - 60, $auth->getUserID()]) ||
         $database->result("SELECT COUNT(*) FROM channel_comments WHERE date > ? AND author = ?", [time() - 60, $auth->getUserID()]) ||
         $database->result("SELECT COUNT(*) FROM journal_comments WHERE date > ? AND author = ?", [time() - 60, $auth->getUserID()])
@@ -75,7 +75,7 @@ if (strlen($post_data["comment"]) > 1000) {
             "error" => "Please wait at least a minute before commenting again."
         ];
     }
-//}
+}
 
 if(!isset($apiOutput["error"])) {
     if (isset($post_data['type'])) {
