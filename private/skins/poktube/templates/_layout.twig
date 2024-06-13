@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="This is a video sharing website">
+    <meta name="keywords" content="video, clips, camera, recording, upload, share">
+
+    <title>PokTube - Your Digital Video Repository</title>
+
+    <link href="/assets/css/poktube.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="hd">
+    <div class="hd_top">
+        <a href="/"><img src="/assets/poktube/poktube.svg" alt="PokTube" class="logo"></a>
+        <div class="hd_float1">
+            <div class="hd_slogan">Upload, tag and share your videos worldwide!</div>
+            <form action="/results.php" method="GET">
+                <input type="text" name="search" size="30" maxlength="128" style="color:#e67402; font-size: 14px; padding: 2px;">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div class="hd_float2">
+            {% if is_user_logged_in %}
+                <div class="hd_welcome">
+                    Hello, {{ user_data.name }}
+                    <img class="hd_welcome_pfp" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
+                </div>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+
+            {% else %}
+            <a href="/signup.php" style="font-weight:bold">Sign Up</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="/login.php">Log In</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="/help.php">Help</a>
+            {% endif %}
+            <div class="hd_upload">
+                <a href="/upload.php">
+                    <img src="/assets/poktube/upload.svg">
+                    <span>Upload</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <ul class="hd_nav">
+        <li><a href="/">Home</a></li>
+        <li> | </li>
+        <li><a href="/browse.php">Browse</a></li>
+    </ul>
+</div>
+<div class="page">
+    <div class="page-contents">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+<div class="footer">
+    <a href="/whats_new.php">What's New</a> | <a href="/about.php">About Us</a> | <a href="/help.php">Help</a> | <a href="/terms.php">Terms of Use</a> | <a href="/privacy.php">Privacy Policy</a>
+</div>
+</body>
+</html>
