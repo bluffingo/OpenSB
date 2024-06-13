@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="description" content="This is a video sharing website">
@@ -14,7 +14,13 @@
     <div class="hd_top">
         <a href="/"><img src="/assets/poktube/poktube.svg" alt="PokTube" class="logo"></a>
         <div class="hd_float1">
-            <div class="hd_slogan">Upload, tag and share your videos worldwide!</div>
+            <div class="hd_slogan">
+                {% if is_chaziz_sb %}
+                    Your content, your narration, your niche on the web.
+                {% else %}
+                    Insert slogan.
+                {% endif %}
+            </div>
             <form action="/results.php" method="GET">
                 <input type="text" name="search" size="30" maxlength="128" style="color:#e67402; font-size: 14px; padding: 2px;">
                 <input type="submit" value="Search">
@@ -23,7 +29,7 @@
         <div class="hd_float2">
             {% if is_user_logged_in %}
                 <div class="hd_welcome">
-                    Hello, {{ user_data.name }}
+                    Hello, {{ user_data.title }}
                     <img class="hd_welcome_pfp" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
                 </div>
                 &nbsp;&nbsp;|&nbsp;&nbsp;

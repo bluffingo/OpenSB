@@ -21,7 +21,7 @@ $data = [
 // on the homepage on the finalium layout, when logged in, it shows stats
 // (they were actually broken for a long time LOL). this isn't on biscuit
 // (yet) or bootstrap. -chaziz 6/11/2024
-if ($orange->getLocalOptions()["skin"] == "finalium" && $auth->isUserLoggedIn()) {
+if ($auth->isUserLoggedIn()) {
     $followers = $database->result("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$auth->getUserID()]);
     $views = $database->result("SELECT SUM(views) FROM videos WHERE author = ?", [$auth->getUserID()]);
 

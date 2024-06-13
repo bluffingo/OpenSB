@@ -3,12 +3,12 @@
     "id": "poktube",
     "name": "PokTube",
     "author": "OpenSB developers",
-    "description": "The classic PokTube experience.",
+    "description": "A modernized take on the classic PokTube experience.",
     "themes": [
       {
         "id": "default",
         "name": "Default",
-        "description": "Emulates the February 2021 launch version of PokTube."
+        "description": "Based on the February 2021 launch version of PokTube."
       }
     ]
   }
