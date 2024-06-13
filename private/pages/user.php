@@ -45,7 +45,7 @@ function getSubmissionFromFeaturedID($database, $data)
     }
 
     $submission = new SubmissionData($database, $data["featured_submission"]);
-    $data = $submission->getData();
+    $submission_data = $submission->getData();
     $bools = $submission->bitmaskToArray();
 
     // IF:
@@ -57,17 +57,17 @@ function getSubmissionFromFeaturedID($database, $data)
     // then simply just return false, so we don't show the featured submission.
     if (
         $submission->getTakedown()
-        || !$data
-        || ($data["author"] != $data["id"])
+        || !$submission_data
+        || ($submission_data["author"] != $data["id"])
         || ($bools["block_guests"] && !$auth->isUserLoggedIn())
     )
     {
         return false;
     } else {
         return [
-            "title" => $data["title"],
-            "id" => $data["video_id"],
-            "type" => $data["post_type"],
+            "title" => $submission_data["title"],
+            "id" => $submission_data["video_id"],
+            "type" => $submission_data["post_type"],
         ];
     }
 }
@@ -95,7 +95,7 @@ if (str_contains($username, "@" . $domain) && $enableFederatedStuff) {
 if (!$data)
 {
     // if we know if it's a fediverse account, then try getting its profile and then copying it over to our
-    // database. (TODO: handle blacklisted sites)
+    // database. (TODO: handle blacklisted instances)
     if ($isFediverse) {
         if (!$activityPubAdapter->getFediProfileFromWebFinger($username)) {
             UnorganizedFunctions::Notification("This user and/or instance does not exist.", "/");
