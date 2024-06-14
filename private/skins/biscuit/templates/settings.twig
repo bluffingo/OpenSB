@@ -22,13 +22,18 @@
             </div>
 
             <div class="form-input">
+                <label for="profileBanner">Profile banner:</label>
+                <input type="file" name="profileBanner" id="profileBanner">
+            </div>
+
+            <div class="form-input">
                 <label for="title">Profile name:</label>
                 <input class="form-submit" type="text" name="title" size="45" maxlength="50" value="{{ user_data.title }}">
             </div>
 
             <div class="form-input">
                 <label for="about">Profile description:</label>
-                <textarea class="form-submit" name="about" rows="5" cols="80" wrap="virtual">{{ user_data.about }}</textarea>
+                <textarea class="form-submit" name="about" rows="5" cols="80" wrap="hard">{{ user_data.about }}</textarea>
             </div>
 
             <div class="form-input">

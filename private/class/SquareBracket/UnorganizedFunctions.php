@@ -263,6 +263,14 @@ class UnorganizedFunctions
         $img->toPng()->save($target);
     }
 
+    public static function processProfileBanner($temp_name, $target): void
+    {
+        $manager = new ImageManager(Driver::class);
+        $img = $manager->read($temp_name);
+        $img->resizeDown(1600);
+        $img->toPng()->save($target);
+    }
+
     #[NoReturn] public static function redirectPerma($url, ...$args)
     {
         header('Location: ' . sprintf($url, ...$args), true, 301);

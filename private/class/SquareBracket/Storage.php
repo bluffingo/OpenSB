@@ -127,6 +127,15 @@ class Storage
         unlink($temp_name);
     }
 
+    public function uploadProfileBanner($temp_name, $new): void
+    {
+        $target_file = SB_DYNAMIC_PATH . '/banners/' . $new . '.png';
+
+        UnorganizedFunctions::processProfileBanner($temp_name, $target_file);
+
+        unlink($temp_name);
+    }
+
     public function deleteSubmission($data): void
     {
         if ($data["post_type"] == 0) {

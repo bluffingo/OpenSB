@@ -70,11 +70,19 @@ if (isset($_POST['save'])) {
     if (strlen($title) > 50) {
         $error .= "Your display name is too long.";
     }
+
     if (!empty($_FILES['profilePicture']['name'])) {
         $name = $_FILES['profilePicture']['name'];
         $temp_name = $_FILES['profilePicture']['tmp_name'];
         $ext = pathinfo($_FILES['profilePicture']['name'], PATHINFO_EXTENSION);
         $storage->uploadProfilePicture($temp_name, $auth->getUserData()["name"]);
+    }
+
+    if (!empty($_FILES['profileBanner']['name'])) {
+        $name = $_FILES['profileBanner']['name'];
+        $temp_name = $_FILES['profileBanner']['tmp_name'];
+        $ext = pathinfo($_FILES['profileBanner']['name'], PATHINFO_EXTENSION);
+        $storage->uploadProfileBanner($temp_name, $auth->getUserData()["name"]);
     }
 
     if (!$error) {
