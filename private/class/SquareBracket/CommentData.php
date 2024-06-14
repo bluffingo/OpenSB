@@ -13,32 +13,31 @@ class CommentData
     private CommentLocation $type;
     private $id;
     private $data;
+
     public function __construct(\SquareBracket\Database $database, $type, $id = null) {
         $this->database = $database;
         $this->type = $type;
         $this->id = $id;
     }
 
+    private function fetchComments($query, $params) {
+        return $this->database->fetchArray($this->database->query($query, $params));
+    }
+
     // probably stupid and should be part of getComments. -chaziz 8/26/2023
     public function getReplies($comment_id) {
         $database_data = null;
 
-        // Submission view page.
-        if ($this->type == CommentLocation::Submission)
-        {
-            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM comments c WHERE c.reply_to = ? ORDER BY c.date DESC", [$comment_id]));
-        }
-
-        // Profile page.
-        if ($this->type == CommentLocation::Profile)
-        {
-            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c WHERE c.reply_to = ? ORDER BY c.date DESC", [$comment_id]));
-        }
-
-        // Journal read page.
-        if ($this->type == CommentLocation::Journal)
-        {
-            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM journal_comments c WHERE c.reply_to = ? ORDER BY c.date DESC", [$comment_id]));
+        switch ($this->type) {
+            case CommentLocation::Submission:
+                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM comments c WHERE c.reply_to = ? ORDER BY c.date DESC", [$comment_id]);
+                break;
+            case CommentLocation::Profile:
+                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c WHERE c.reply_to = ? ORDER BY c.date DESC", [$comment_id]);
+                break;
+            case CommentLocation::Journal:
+                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM journal_comments c WHERE c.reply_to = ? ORDER BY c.date DESC", [$comment_id]);
+                break;
         }
 
         $data = [];
@@ -53,31 +52,25 @@ class CommentData
                     "id" => $comment["author"],
                     "info" => $author->getUserArray(),
                 ],
+                "replies" => $this->getReplies($comment["comment_id"]) // recursive call to get nested replies
             ];
         }
         return $data;
     }
 
     public function getComments() {
-
         $database_data = null;
 
-        // Submission view page.
-        if ($this->type == CommentLocation::Submission)
-        {
-            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c WHERE c.id = ? ORDER BY c.date DESC", [$this->id]));
-        }
-
-        // Profile page.
-        if ($this->type == CommentLocation::Profile)
-        {
-            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM channel_comments WHERE reply_to = c.comment_id) AS replycount FROM channel_comments c WHERE c.id = ? ORDER BY c.date DESC", [$this->id]));
-        }
-
-        // Journal read page.
-        if ($this->type == CommentLocation::Journal)
-        {
-            $database_data = $this->database->fetchArray($this->database->query("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM journal_comments WHERE reply_to = c.comment_id) AS replycount FROM journal_comments c WHERE c.id = ? ORDER BY c.date DESC", [$this->id]));
+        switch ($this->type) {
+            case CommentLocation::Submission:
+                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c WHERE c.id = ? ORDER BY c.date DESC", [$this->id]);
+                break;
+            case CommentLocation::Profile:
+                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM channel_comments WHERE reply_to = c.comment_id) AS replycount FROM channel_comments c WHERE c.id = ? ORDER BY c.date DESC", [$this->id]);
+                break;
+            case CommentLocation::Journal:
+                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM journal_comments WHERE reply_to = c.comment_id) AS replycount FROM journal_comments c WHERE c.id = ? ORDER BY c.date DESC", [$this->id]);
+                break;
         }
 
         $data = [];

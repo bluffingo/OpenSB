@@ -164,10 +164,13 @@ hr {
 	}
 }
 
-.userlink {
-	&.following {
-		color: #d78157;
-	}
+.userlink-handle {
+	color: #aaa;
+	text-decoration: none;
+}
+
+.fade {
+	color: #888;
 }
 
 @import 'default/header';

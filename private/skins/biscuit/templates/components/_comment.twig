@@ -2,7 +2,7 @@
     <img src="{{ profile_picture(comment.author.info.username) }}" class="pfp" alt="{{ comment.author.info.username }}">
     <div class="comment-body">
         <div class="comment-author">
-            {{ user_link(comment.author) }} ({{ comment.author.info.displayname }}) • <small title="{{ comment.posted | date('F j, Y') }}">{{ comment.posted | relative_time }}</small>
+            {{ user_link(comment.author) }} • <small title="{{ comment.posted | date('F j, Y') }}">{{ comment.posted | relative_time }}</small>
         </div>
         <div class="comment-contents">
             {% if comment.post | trim is not empty %}
@@ -10,7 +10,13 @@
             {% else %}
                 <small>Null comment</small>
             {% endif %}
+            {% if comment.replies %}
+                <div id="replies">
+                    {% for comment in comment.replies %}
+                        {{ include('/components/_comment.twig') }}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
-    <div class="clear"></div>
 </div>

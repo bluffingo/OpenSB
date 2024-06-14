@@ -1,7 +1,11 @@
+{% if submission.views != 1 %}
+    {% set pluralViews = "s" %}
+{% endif %}
+
 <div class="content-entry">
     <div class="content-thumbnail">
         <a href="/view/{{ submission.id }}">
-            <img src="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}" width="140"
+            <img src="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}" width="100"
                  alt="{{ submission.title }}" class="content-image thumbnail">
         </a>
     </div>
@@ -12,15 +16,9 @@
             </a>
         </div>
         <div class="content-description">
-            By {{ user_link(submission.author) }}
+            {{ submission.views }} view{{ pluralViews }}
             <br>
-            {{ submission.published | relative_time }}
-            <br>
-            {% if submission.description|trim is not empty %}
-                <span>{{ submission.description }}</span>
-            {% else %}
-                <span class="fade">No description.</span>
-            {% endif %}
+            {{ user_link(submission.author) }}
         </div>
         <div class="content-rating">
             {{ show_ratings(submission.interactions.ratings) }}

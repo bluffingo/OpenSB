@@ -202,9 +202,30 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     public function UserLink($user): string
     {
-        return <<<HTML
-<a class="userlink userlink-{$user["info"]["username"]}" style="color:{$user["info"]["customcolor"]};" href="/user/{$user["info"]["username"]}">{$user["info"]["username"]}</a>
-HTML;
+        // Extract and sanitize user information
+        $username = htmlspecialchars($user["info"]["username"]);
+        $displayName = htmlspecialchars($user["info"]["displayname"]);
+        $customColor = htmlspecialchars($user["info"]["customcolor"]);
+
+        // Define common values
+        $href = "/user/" . $username;
+        $class = "userlink userlink-" . $username;
+        $style = "color:" . $customColor;
+
+        // Determine the display text
+        if ($username === $displayName) {
+            $displayText = sprintf('<span style="%s">@%s</span>', $style, $username);
+        } else {
+            $displayText = sprintf(
+                '%s <a class="userlink-handle" style="text-decoration: none;" href="%s">@%s</a>',
+                $displayName,
+                $href,
+                $username
+            );
+        }
+
+        // Return the formatted link
+        return sprintf('<a class="%s" style="%s" href="%s">%s</a>', $class, $style, $href, $displayText);
     }
 
     public function removeNotification()
@@ -295,7 +316,7 @@ HTML;
 
             $array = [
                 "profile" => [
-                    "name" => $username,
+                    "name" => "My profile",
                     "url" => "/user/" . $username,
                 ],
                 "my_submissions" => [
@@ -303,16 +324,16 @@ HTML;
                     "url" => "/my_submissions",
                 ],
                 "settings" => [
-                    "name" => "Settings",
+                    "name" => "Account settings",
                     "url" => "/settings",
                 ],
-                "new_journal" => [
-                    "name" => "Write",
-                    "url" => "/write",
-                ],
                 "new_submission" => [
-                    "name" => "Upload",
+                    "name" => "Upload submission",
                     "url" => "/upload",
+                ],
+                "new_journal" => [
+                    "name" => "Write journal",
+                    "url" => "/write",
                 ],
                 "logout" => [
                     "name" => "Log out",

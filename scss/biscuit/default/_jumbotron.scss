@@ -1,8 +1,16 @@
 .jumbotron {
   &.homepage-banner {
-    background: #FF8A00 url("/assets/biscuit_banner.png");
+    h1, p {
+      margin: 0 0 12px 0;
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    background: #FF8A00 url("/assets/biscuit_banner.svg");
+    background-size: cover;
     color: white;
-    text-shadow: 0 0 0.5em #00000050;
+    text-shadow: 0 0 0.5em #00000090;
 
     margin-top: -$header-main-height;
     height: 150px + $header-main-height;
@@ -19,7 +27,7 @@
           align-items: center;
 
           .pfp {
-            height: 100px;
+            height: 110px;
             margin-right: 10px;
           }
         }

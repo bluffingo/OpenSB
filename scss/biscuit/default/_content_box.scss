@@ -41,9 +41,23 @@
 
     .content-entry
     {
-        clear: both;
+        display: flex;
         padding: 6px 2px;
         border-bottom: 1px solid $content-box-border-color;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .content-info {
+            .content-rating {
+                font-size: 12px;
+                .rating-spacing {
+                    margin-right: 3px;
+                }
+            }
+        }
+
         .content-image
         {
             margin-right: 8px;
@@ -134,10 +148,4 @@
 {
     font-size: 11px;
     margin-bottom: 10px;
-}
-
-.icons {
-    .rating-spacing {
-        margin-right: 3px;
-    }
 }

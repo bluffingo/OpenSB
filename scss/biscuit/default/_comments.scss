@@ -1,8 +1,12 @@
 .comment {
-  margin-bottom: 10px;
-  padding-bottom: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
   display: flex;
-  border-bottom: 1px solid $content-box-border-color;;
+  border-bottom: 1px solid $content-box-border-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
 
   img.pfp {
     width: 50px;
@@ -33,14 +37,15 @@
 }
 
 #replies {
+  margin-top: 15px;
   .comment {
     img.pfp {
-      width: 60px;
-    }
+      width: 32px;
+      height: 32px;
 
-    .comment-body {
-      width: 675px;
-      padding-left: 46px;
+      &:last-child {
+        padding-bottom: 0;
+      }
     }
   }
 }

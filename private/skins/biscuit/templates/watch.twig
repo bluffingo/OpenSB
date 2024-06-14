@@ -42,7 +42,7 @@
         <br>
     {% endif %}
     <div class="grid">
-        <div class="col-8">
+        <div class="col-large-9 col-8">
             <div class="submission">
                 {{ submission_view(submission) }}
             </div>
@@ -101,7 +101,7 @@
             <br>
             <div class="section">
                 <div class="section-title">
-                    <h1>Comments</h1>
+                    <h2>Comments</h2>
                 </div>
                 <div id="comments">
                     <div class="content-box">
@@ -111,20 +111,15 @@
                         <div id="comment"></div>
                         {% for comment in submission.comments %}
                             {{ include('/components/_comment.twig') }}
-                            <div id="replies">
-                                {% for comment in comment.replies %}
-                                    {{ include('/components/_comment.twig') }}
-                                {% endfor %}
-                            </div>
                         {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-large-3 col-4">
             <div class="content-box">
                 {% for submission in submission.recommended %}
-                    {{ include('/components/_index_submission.twig') }}
+                    {{ include('/components/_small_submission.twig') }}
                 {% endfor %}
             </div>
         </div>
