@@ -1,5 +1,5 @@
 # OpenSB
-![Screen Shot 2024-06-05 at 10 47 31](https://github.com/bluffingo/OpenSB/assets/45898787/d3df00b8-204d-4488-a3d4-417bd22f7429)
+![Screen Shot 2024-06-14 at 02 51 55](https://github.com/bluffingo/OpenSB/assets/45898787/8c29248f-9aca-421f-bfd2-d438f38642b2)
 
 ## How to setup an OpenSB instance.
 
