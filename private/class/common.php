@@ -51,7 +51,7 @@ function sb_debug_output($string) {
     }
 }
 
-if ($debugLogging) {
+if ($debugLogging && function_exists('getallheaders')) {
     // Get all headers and requests sent to this server
     $headers     = getallheaders();
     $postData    = $_POST;

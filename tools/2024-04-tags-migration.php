@@ -29,7 +29,7 @@ $stuff = 1;
 $uniqueTags = [];
 
 foreach ($submissions as $submission) {
-    if (isset($submission["tags"]) && $submission["tags"] !== null && ($submission["tags"] != '[""]')) {
+    if (isset($submission["tags"]) && ($submission["tags"] != '[""]')) {
         $stuff = $stuff + 1;
         echo($stuff . PHP_EOL);
         $tags = json_decode($submission["tags"]);

@@ -44,9 +44,13 @@ class VersionNumber
         // For example, The user agent for Akkoma-based instances goes something like this:
         // Software Version-GitHash; Website <hostmaster@website.social>
         // OpenSB will use that, but without a hostmaster address at the end.
-        $domain = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/";
+        if (isset($_SERVER['HTTP_HOST'])) {
+            $domain = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/";
 
-        return sprintf("OpenSB %s; %s", VersionNumber::getVersionString(), $domain);
+            return sprintf("OpenSB %s; %s", VersionNumber::getVersionString(), $domain);
+        } else {
+            return "printVersionForUserAgent() shouldn't be used in this context";
+        }
     }
 
     /**
