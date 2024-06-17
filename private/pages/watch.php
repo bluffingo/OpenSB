@@ -13,8 +13,6 @@ use SquareBracket\Utilities;
 
 $id = $path[2] ?? null;
 
-if (isset($_GET['v'])) UnorganizedFunctions::redirect('/submission/' . $_GET['v']);
-
 $submission = new SubmissionData($database, $id);
 
 // check if the submission has been taken down.
@@ -32,8 +30,10 @@ if (!$data) {
 $comments = new CommentData($database, CommentLocation::Submission, $id);
 $author = new UserData($database, $data["author"]);
 if ($author->isUserBanned()) {
-    UnorganizedFunctions::Notification("The author of this submission is banned.", "/");
+    UnorganizedFunctions::Notification("This submission's author is banned.", "/");
 }
+
+$tags = $submission->getTags();
 
 $followers = $database->result("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$data["author"]]);
 $followed = UnorganizedFunctions::IsFollowingUser($data["author"]);
@@ -88,7 +88,79 @@ if ($database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND use
 }
 
 $whereRatings = UnorganizedFunctions::whereRatings();
-$recommended = $database->fetchArray($database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings AND v.author = ? ORDER BY RAND() LIMIT 24", [$data["author"]]));
+
+// ported from poktwo, modified to accommodate for takedowns.
+$recommendfields = "
+    jaccard.video_id,
+    jaccard.flags,
+    jaccard.intersect,
+    jaccard.union,
+    jaccard.intersect / jaccard.union AS 'jaccard_index'
+FROM
+    (
+    SELECT
+        c2.video_id AS video_id,
+        c2.flags AS flags,
+        COUNT(ct2.tag_id) AS 'intersect',
+        (
+        SELECT
+            COUNT(DISTINCT ct3.tag_id)
+        FROM
+            tag_index ct3
+        WHERE
+            ct3.video_id IN(c1.id, c2.id)
+    ) AS 'union'
+    FROM
+        videos AS c1
+    INNER JOIN videos AS c2
+    ON
+        c1.id != c2.id
+    LEFT JOIN tag_index AS ct1
+    ON
+        ct1.video_id = c1.id
+    LEFT JOIN tag_index AS ct2
+    ON
+        ct2.video_id = c2.id AND ct1.tag_id = ct2.tag_id
+    WHERE
+        c1.id = ?
+    GROUP BY
+        c1.id,
+        c2.id
+    ) AS jaccard
+WHERE
+    jaccard.flags != 0x2
+ORDER BY
+    jaccard.intersect / jaccard.union DESC";
+
+if ($tags === []) {
+    // if there are no tags, list the author's other submissions
+    $recommended = $database->fetchArray($database->query(
+        "SELECT v.* 
+        FROM videos v 
+        WHERE v.video_id NOT IN (SELECT submission FROM takedowns) 
+        AND $whereRatings 
+        AND v.author = ? 
+        ORDER BY RAND() 
+        LIMIT 24",
+        [$data["author"]]
+    ));
+} else {
+    // if there are tags, use jaccard stuff ported from poktwo to list submissions that may be relevant enough.
+    // this WILL slow the site down.
+    $recommended = $database->fetchArray($database->query("
+        SELECT v.* 
+        FROM videos v
+        INNER JOIN (
+            SELECT $recommendfields
+            LIMIT 24
+        ) AS recommended
+        ON v.video_id = recommended.video_id
+        WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
+        AND $whereRatings
+        ORDER BY RAND()
+    ", [$data["id"]]));
+}
+
 
 if ($auth->getUserID() == $data["author"]) { $owner = true; } else { $owner = false; }
 
@@ -117,17 +189,19 @@ $page_data = [
     "comments" => $comments->getComments(),
     "bools" => $bools,
     "rating" => $data["rating"],
-    "recommended" => UnorganizedFunctions::makeSubmissionArray($database,$recommended),
+    "recommended" => UnorganizedFunctions::makeSubmissionArray($database, $recommended),
+    "tags" => $tags,
 ];
 
+// this is for the like/dislike buttons in the finalium frontend
 if ($orange->getLocalOptions()["skin"] == "finalium") {
-    // calculates the ratio, copied from a late-2021 commit
+    // calculates the ratio for the likesaber
     function calculateRatio($number, $percent, $total) {
-        // If there's no ratio or dislikes, it returns 100.
+        // if there's no ratio or dislikes, return 100.
         if ($total == 0 or $number == 0) {
             return 100;
         } else {
-            // It returns the Like-to-dislike ratio.
+            // return the Like-to-dislike ratio.
             return ($percent / $total) * $number * 100;
         }
     }
@@ -135,9 +209,8 @@ if ($orange->getLocalOptions()["skin"] == "finalium") {
     if ($auth->isUserLoggedIn()) {
         $current_rating_from_db = $database->result("SELECT rating FROM rating WHERE video=? AND user=?", [$data["id"], $auth->getUserID()]);
 
-        // this is for the like/dislike buttons in the frontend
         if (($current_rating_from_db == "4") || ($current_rating_from_db == "5")) {
-            $current_rating = "like";;
+            $current_rating = "like";
         } elseif (($current_rating_from_db == "1") || ($current_rating_from_db == "2")) {
             $current_rating = "dislike";
         } else {

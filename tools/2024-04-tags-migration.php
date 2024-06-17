@@ -1,7 +1,7 @@
 <?php
 namespace OpenSB;
 
-global $orange;
+global $database;
 
 define("SB_DYNAMIC_PATH", dirname(__DIR__) . '/dynamic');
 define("SB_PRIVATE_PATH", dirname(__DIR__) . '/private');
@@ -20,22 +20,15 @@ function removeLastComma(&$array) {
 }
 
 
-$sql = $orange->getDatabase();
-
-$submissions = $sql->fetchArray($sql->query("SELECT * FROM videos"));
-
-$stuff = 1;
+$submissions = $database->fetchArray($database->query("SELECT * FROM videos"));
 
 $uniqueTags = [];
 
 foreach ($submissions as $submission) {
     if (isset($submission["tags"]) && ($submission["tags"] != '[""]')) {
-        $stuff = $stuff + 1;
-        echo($stuff . PHP_EOL);
         $tags = json_decode($submission["tags"]);
         if ($tags !== null) {
-            removeLastComma($tags);
-            foreach ($tags as $tag) {
+           foreach ($tags as $tag) {
                 if (!in_array($tag, $uniqueTags)) {
                     $uniqueTags[] = $tag;
                 }
@@ -44,4 +37,22 @@ foreach ($submissions as $submission) {
     }
 }
 
-var_dump($uniqueTags);
+foreach ($uniqueTags as $tag) {
+    if (!$database->result("SELECT tag_id FROM tag_meta WHERE name = ?", [$tag])) {
+        $database->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
+    }
+}
+
+foreach ($submissions as $submission) {
+    if (isset($submission["tags"]) && ($submission["tags"] != '[""]')) {
+        $tags = json_decode($submission["tags"]);
+        if ($tags !== null) {
+            foreach ($tags as $tag) {
+                $tagID = $database->fetchArray($database->query("SELECT tag_id FROM tag_meta WHERE name = ?", [$tag]))[0]['tag_id'];
+                if (!$database->result("SELECT tag_id FROM tag_index WHERE tag_id = ? AND video_id = ?", [$tagID, $submission['id']])) {
+                    $database->query("INSERT INTO tag_index (video_id, tag_id) VALUES (?,?)", [$submission['id'], $tagID]);
+                }
+            }
+        }
+    }
+}

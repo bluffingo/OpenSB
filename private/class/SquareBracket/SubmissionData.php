@@ -12,6 +12,7 @@ class SubmissionData
     private \SquareBracket\Database $database;
     private $takedown;
     private $data;
+    private $tags;
 
     // FLAGS
 
@@ -44,6 +45,7 @@ class SubmissionData
             $this->data = $this->database->fetch("SELECT v.* FROM videos v WHERE v.video_id = ?", [$id]);
         }
         $this->takedown = $this->database->fetch("SELECT * FROM takedowns t WHERE t.submission = ?", [$id]);
+        $this->tags = $this->database->fetchArray($this->database->query("SELECT * FROM `tag_index` ti JOIN tag_meta t ON (t.tag_id = ti.tag_id) WHERE ti.video_id = ?", [$this->data["id"]]));
     }
 
     public function getTakedown()
@@ -54,6 +56,11 @@ class SubmissionData
     public function getData()
     {
         return $this->data;
+    }
+
+    public function getTags()
+    {
+        return $this->tags;
     }
 
     public function bitmaskToArray()

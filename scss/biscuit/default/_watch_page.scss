@@ -27,18 +27,26 @@
   word-break: break-word;
   border-radius: 4px;
 
+  .watch-box-tags {
+    .section-title {
+      h2 {
+        font-size: 13px;
+      }
+    }
+  }
+
   .watch-box-description {
-    // duplicate of the content-text class
-    max-width: 680px;
     margin: 0 auto;
     word-wrap: break-word;
   }
 
   .watch-box-row {
+    // ↓ this is outdated, but it's best if we keep this class instead of porting all of this shit into rows. -chaziz 6/17/2024
+
     // unlike finalium, biscuit does not have a proper grid system. the closest thing to a grid system are the
     // "page-left" and "page-right" classes, which are leftovers from earlier in the biscuit frontend's development
     // from august 2023 and is currently only used in the user profile page, which has an issue on small displays (eg:
-    // phones) because of said classes. -bluffingo 12/8/2023
+    // phones) because of said classes. -chaziz 12/8/2023
 
     display: flex;
 
@@ -50,7 +58,7 @@
 
       .watch-box-views {
         font-weight: 550;
-        font-size: 16px;
+        font-size: 15px;
       }
     }
 
@@ -60,8 +68,8 @@
       width: 75%;
 
       .watch-box-profile-picture {
-        width: 56px;
-        height: 56px;
+        width: 60px;
+        height: 60px;
         margin-right: 10px;
       }
 
@@ -69,7 +77,6 @@
         line-height: 20px;
 
         .watch-box-author-userlink {
-          font-weight: 600;
           font-size: 14px;
         }
 

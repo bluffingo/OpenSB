@@ -6,18 +6,21 @@
         <form name="uploadForm" id="uploadForm" method="post" action="upload" enctype="multipart/form-data">
             <div class="card">
                 <div class="card-body-fat">
-                    <h2 style="margin-bottom: 0.5em;">Upload a submission</h2>
-                    <p>Enter the required information and select the file for your submission.</p>
+                    <h2 style="margin-bottom: 0.5em;">Upload</h2>
+                    <p>
+                        Make sure you have read the <a href="/guidelines">guidelines</a> first. Failure to comply
+                        with the guidelines will result in a swift termination of your account(s).
+                    </p>
                     <h4 style="margin-bottom: 0.5em;">Title</h4>
-                    <input type="text" class="form-control form-long uploader-form" id="title" name="title">
+                    <input type="text" class="form-control form-long uploader-form" id="title" name="title" required>
                     <br>
-                    <h4 style="margin-bottom: 0.5em;">Description</h4>
-                    <textarea class="form-control form-long uploader-form" name="desc" maxlength="2000"
+                    <h4 style="margin-bottom: 0.5em;">Description (optional)</h4>
+                    <textarea class="form-control form-long uploader-form" name="desc" maxlength="65500"
                               form="uploadForm"
                               style="overflow:hidden;resize:vertical" rows="3"></textarea>
                     <br>
-                    <h4 style="margin-bottom: 0.5em;">Tags (optional)</h4>
-                    <input type="text" class="form-control form-long uploader-form" name="tags">
+                    <h4 style="margin-bottom: 0.5em;">Tags</h4>
+                    <input type="text" class="form-control form-long uploader-form" name="tags" required>
                     <h2 style="margin-bottom: 0.5em;">Select file</h2>
                     <p>Most popular video and image formats should be supported.</p>
                     <input class="form-control" type="file" name="fileToUpload" id="fileToUpload"

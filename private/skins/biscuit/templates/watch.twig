@@ -85,13 +85,24 @@
                         <div><small>{{ submission.interactions.ratings.total }} ratings</small></div>
                     </div>
                 </div>
+                {% if submission.description | trim is not empty %}
                 <hr>
                 <div class="watch-box-description">
-                    {% if submission.description | trim is not empty %}
                         {{ submission.description | markdown_user_written }}
-                    {% else %}
-                        <p>This submission has no description.</p>
-                    {% endif %}
+                </div>
+                {% endif %}
+                <hr>
+                <div class="watch-box-tags">
+                    <div class="section">
+                        <div class="section-title">
+                            <h2>Tags (wip!)</h2>
+                        </div>
+                        {% for tag in submission.tags %}
+                            {{ tag.name }}
+                        {% else %}
+                            No tags.
+                        {% endfor %}
+                    </div>
                 </div>
                 {% if submission.rating == 'mature' %}
                 <hr><div>Rated sensitive</div>

@@ -4,54 +4,32 @@
 
 	{% block content %}
         <div class="row">
-            <h3>Upload video</h3>
-            <p><span class="badge bg-primary">{{ icon('info-circle', 16) }} Important</span> By uploading your videos
-                onto This Very Website Running OpenSB, you acknowledge about the upload guidelines.</p>
-            <div class="col-8">
-                <form name="uploadForm" id="uploadForm" method="post" action="upload"
-                      enctype="multipart/form-data">
-                    <br>
+            <h3>Upload</h3>
+            <p>
+                Make sure you have read the <a href="/guidelines">guidelines</a> first. Failure to comply
+                with the guidelines will result in a swift termination of your account(s).
+            </p>
+            <form name="uploadForm" id="uploadForm" method="post" action="upload"
+                  enctype="multipart/form-data">
+                <br>
 
-                    <div class="row">
-                        <div class="col-auto pe-0">
-                            {{ icon('text-left', 24) }}
-                        </div>
-                        <div class="col-auto">
-                            <h4>Video info</h4>
-                        </div>
-                    </div>
-                    <p>Enter the title and description of your video.</p>
+                <h4>Details</h4>
+                <p>Enter the title and description of your submission.</p>
 
-                    <input type="text" class="form-control mb-1" name="title" value="" placeholder="Title">
-                    <textarea class="form-control mb-1" name="desc" maxlength="2000" form="uploadForm"
-                              style="overflow:hidden;resize:none" rows="3" placeholder="Description"></textarea>
-                    <input type="text" class="form-control" name="tags" value="" placeholder="Tags">
-                    <br>
-                    <div class="row">
-                        <div class="col-auto pe-0">
-                            {{ icon('file-earmark-play', 24) }}
-                        </div>
-                        <div class="col-auto">
-                            <h4>Video file</h4>
-                        </div>
-                    </div>
-                    <p>Select the video file you want to upload.</p>
-                    <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
-                    <br>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <h5 class="card-header">Upload Guidelines</h5>
-                    <div class="card-body">
-                        <p class="card-text">Placeholder</p>
-                    </div>
+                <input type="text" class="form-control mb-1" name="title" value="" placeholder="Title" required>
+                <textarea class="form-control mb-1" name="desc" maxlength="65500" form="uploadForm"
+                          style="overflow:hidden;resize:none" rows="3" placeholder="Description"></textarea>
+                <input type="text" class="form-control" name="tags" value="" placeholder="Tags" required>
+                <br>
+                <h4>File</h4>
+                <p>Select the file you want to upload.</p>
+                <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
+                <br>
+
+                <div class="text-end">
+                    <input class="btn btn-primary" type="submit" id="upload" name="upload"
+                           value="Upload">
                 </div>
-            </div>
-
-            <div class="text-end">
-                <input class="btn btn-primary" type="submit" id="upload" name="upload"
-                       value="Upload">
-            </div>
             </form>
         </div>
     {% endblock %}
