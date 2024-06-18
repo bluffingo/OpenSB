@@ -20,62 +20,62 @@
 
 {% block scripts %}
     {#
-        this is only really needed in the default theme (and maybe a dark default theme in the future)
-        this will break the "random submissions" thing, and that's by design.
+    this is only really needed in the default theme (and maybe a dark default theme in the future)
+    this will break the "random submissions" thing, and that's by design.
     #}
     {% if current_theme == "default" %}
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
-    <script>
-        document.addEventListener( 'DOMContentLoaded', function() {
-            var elms = document.getElementsByClassName( 'splide' );
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
+        <script>
+            document.addEventListener( 'DOMContentLoaded', function() {
+                var elms = document.getElementsByClassName( 'splide' );
 
-            for ( var i = 0; i < elms.length; i++ ) {
-                new Splide( elms[ i ], {
-                    perPage: 6,
-                    rewind: true,
-                    pagination: false,
-                    breakpoints: {
-                        1899 : { perPage: 4 },
-                        1249 : { perPage: 3 },
-                        899 : { perPage: 2 },
-                    },
-                } ).mount();
-            }
-        } );
-    </script>
+                for ( var i = 0; i < elms.length; i++ ) {
+                    new Splide( elms[ i ], {
+                        perPage: 6,
+                        rewind: true,
+                        pagination: false,
+                        breakpoints: {
+                            1899 : { perPage: 4 },
+                            1249 : { perPage: 3 },
+                            899 : { perPage: 2 },
+                        },
+                    } ).mount();
+                }
+            } );
+        </script>
     {% endif %}
 {% endblock %}
 
 {% block precontent %}
     {% if current_theme == "default" %}
-    <div class="jumbotron homepage-banner">
-        <div class="jumbotron-container">
-            <div class="jumbotron-welcome">
-                {% if is_user_logged_in %}
-                    <div class="jumbotron-logged-in">
-                        <img src="{{ profile_picture(user_data.name) }}" class="pfp" alt="{{ user_data.name }}">
-                        <div class="jumbotron-logged-in-text">
-                            <h1>Welcome to {{ site_name | raw }}, {{ user_data.title }}</h1>
-                            <p>@{{ user_data.name }}</p>
-                            <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
-                                • {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
+        <div class="jumbotron homepage-banner">
+            <div class="jumbotron-container">
+                <div class="jumbotron-welcome">
+                    {% if is_user_logged_in %}
+                        <div class="jumbotron-logged-in">
+                            <img src="{{ profile_picture(user_data.name) }}" class="pfp" alt="{{ user_data.name }}">
+                            <div class="jumbotron-logged-in-text">
+                                <h1>Welcome to {{ site_name | raw }}, {{ user_data.title }}</h1>
+                                <p>@{{ user_data.name }}</p>
+                                <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
+                                    • {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
+                            </div>
                         </div>
-                    </div>
-                {% else %}
-                    <div class="jumbotron-logged-out">
-                        <h1>Welcome to {{ site_name | raw }}</h1>
-                        {% if is_chaziz_sb %}
-                            <p>Your content, your narration, your niche on the web.</p>
-                        {% else %}
-                            <p>Insert slogan.</p>
-                        {% endif %}
-                        <a href="/register.php" class="button button-primary">Get started ›</a>
-                    </div>
-                {% endif %}
+                    {% else %}
+                        <div class="jumbotron-logged-out">
+                            <h1>Welcome to {{ site_name | raw }}</h1>
+                            {% if is_chaziz_sb %}
+                                <p>Your content, your narration, your niche on the web.</p>
+                            {% else %}
+                                <p>Insert slogan.</p>
+                            {% endif %}
+                            <a href="/register.php" class="button button-primary">Get started ›</a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
-    </div>
     {% endif %}
 {% endblock %}
 
@@ -85,7 +85,7 @@
             <div class="section">
                 <div class="section-title">
                     <h1>Random Submissions</h1>
-                    <a href="browse">More</a>
+                    <a href="/browse">More</a>
                 </div>
                 <div class="content-box">
                     <section class="splide" id="splide1" aria-labelledby="carousel-heading">
@@ -102,7 +102,7 @@
             <div class="section">
                 <div class="section-title">
                     <h1>Recent Submissions</h1>
-                    <a href="browse">More</a>
+                    <a href="/browse">More</a>
                 </div>
                 <div class="content-box">
                     {% for submission in data.submissions_new %}
@@ -121,7 +121,7 @@
                         {% for news in data.news_recent %}
                             <div class="journal-entry">
                                 <div class="journal-title">
-                                    <a href="read?j={{ news.id }}">
+                                    <a href="/read?j={{ news.id }}">
                                         {{ news.title|u.truncate(100, '...') }}
                                     </a>
                                 </div>
@@ -129,13 +129,39 @@
                                     {{ news.published | relative_time }}
                                 </div>
                                 <div class="journal-contents">
-                                    {{ news.contents|u.truncate(250, '...') }}
+                                    {{ news.contents|u.truncate(150, '...') }}
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
                 </div>
             {% endif %}
+            <div class="section">
+                <div class="section-title">
+                    <h1>Recent Tags</h1>
+                </div>
+                <div class="content-box">
+                    {% for tag in data.tags_recent %}
+                        <a href="search.php?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
+                    {% else %}
+                        <p>No tags!</p>
+                    {% endfor %}
+                </div>
+            </div>
+            {#
+            <div class="section">
+                <div class="section-title">
+                    <h1>Last 5 Users Online</h1>
+                </div>
+                <div class="content-box">
+                    {% for tag in data.tags_recent %}
+                        {{ include('/components/_index_user.twig') }}
+                    {% else %}
+                        <p>No users!</p>
+                    {% endfor %}
+                </div>
+            </div>
+            #}
         </div>
     </div>
 {% endblock %}
