@@ -31,6 +31,32 @@ if (!$auth->isUserAdmin()) {
     }
 }
 
+function parse_tags($tags, $submission_id, $database) {
+    // parse tags from input
+    $tagsID = [];
+    foreach ($tags as $tag) {
+        $tagId = $database->result("SELECT tag_id FROM tag_meta WHERE name = ?", [$tag]);
+
+        if ($tagId === false) {
+            $database->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
+            $tagId = $database->insertId(); // Get the ID of the newly inserted tag
+        } else {
+            $database->query("UPDATE tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]);
+        }
+
+        $tagsID[] = $tagId;
+    }
+
+    $submission_integer_id = $database->result("SELECT id from videos WHERE video_id = ?", [$submission_id]);
+
+    // link tags to the submission
+    foreach ($tagsID as $tagID) {
+        if (!$database->result("SELECT tag_id FROM tag_index WHERE tag_id = ? AND video_id = ?", [$tagID, $submission_integer_id])) {
+            $database->query("INSERT INTO tag_index (video_id, tag_id) VALUES (?,?)", [$submission_integer_id, $tagID]);
+        }
+    }
+}
+
 if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLoggedIn()) {
     $new = UnorganizedFunctions::generateRandomizedString(11, true);
     $uploader = $auth->getUserID();
@@ -38,6 +64,9 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
     $title = ($_POST['title'] ?? null);
     $description = ($_POST['desc'] ?? null);
     $rating = isset($_POST['rating']) && $_POST['rating'] === 'true' ? 'mature' : 'general';
+    $tags = ($_POST['tags'] ?? '');
+    $tags2 = preg_split('/[\s,]+/', $tags); // parses both commas and spaces
+
     if ($isDebug) {
         $noProcess = ($_POST['debugUploaderSkip'] ?? null);
     }
@@ -61,6 +90,8 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
                 $storage->processVideo($new, $target_file);
             }
 
+            parse_tags($tags2, $new, $database);
+
             UnorganizedFunctions::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
         } else {
             UnorganizedFunctions::Notification("There is a problem with file permissions and/or PHP on this instance.", "/upload");
@@ -70,6 +101,8 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
         $status = 0x0;
         $database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, post_type, rating) VALUES (?,?,?,?,?,?,?,?,?,?)",
             [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), '/dynamic/art/' . $new . '.png', $status, 2, $rating]);
+
+        parse_tags($tags2, $new, $database);
 
         UnorganizedFunctions::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
     } else {

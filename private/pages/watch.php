@@ -89,78 +89,83 @@ if ($database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND use
 
 $whereRatings = UnorganizedFunctions::whereRatings();
 
-// ported from poktwo, modified to accommodate for takedowns.
+// ported from poktwo, modified to accommodate for takedowns and relevancy.
 $recommendfields = "
     jaccard.video_id,
     jaccard.flags,
-    jaccard.intersect,
-    jaccard.union,
-    jaccard.intersect / jaccard.union AS 'jaccard_index'
+    jaccard.intersect_count,
+    jaccard.union_count,
+    jaccard.intersect_count / jaccard.union_count AS jaccard_index
 FROM
     (
     SELECT
         c2.video_id AS video_id,
         c2.flags AS flags,
-        COUNT(ct2.tag_id) AS 'intersect',
+        COUNT(ct2.tag_id) AS intersect_count,
         (
         SELECT
             COUNT(DISTINCT ct3.tag_id)
         FROM
             tag_index ct3
         WHERE
-            ct3.video_id IN(c1.id, c2.id)
-    ) AS 'union'
+            ct3.video_id IN (c1.id, c2.id)
+    ) AS union_count
     FROM
         videos AS c1
     INNER JOIN videos AS c2
-    ON
-        c1.id != c2.id
+        ON c1.id != c2.id
     LEFT JOIN tag_index AS ct1
-    ON
-        ct1.video_id = c1.id
+        ON ct1.video_id = c1.id
     LEFT JOIN tag_index AS ct2
-    ON
-        ct2.video_id = c2.id AND ct1.tag_id = ct2.tag_id
+        ON ct2.video_id = c2.id AND ct1.tag_id = ct2.tag_id
     WHERE
         c1.id = ?
+        AND ct1.tag_id IS NOT NULL
+        AND ct2.tag_id IS NOT NULL
     GROUP BY
-        c1.id,
-        c2.id
+        c2.video_id, c2.flags
+    HAVING
+        intersect_count > 0
     ) AS jaccard
 WHERE
     jaccard.flags != 0x2
 ORDER BY
-    jaccard.intersect / jaccard.union DESC";
+    jaccard_index DESC
+LIMIT 24";
 
-if ($tags === []) {
-    // if there are no tags, list the author's other submissions
-    $recommended = $database->fetchArray($database->query(
-        "SELECT v.* 
+$submissions_by_author = $database->fetchArray($database->query(
+    "SELECT v.* 
         FROM videos v 
         WHERE v.video_id NOT IN (SELECT submission FROM takedowns) 
         AND $whereRatings 
         AND v.author = ? 
         ORDER BY RAND() 
         LIMIT 24",
-        [$data["author"]]
-    ));
+    [$data["author"]]
+));
+
+if ($tags === []) {
+    // if there are no tags, list the author's other submissions
+    $recommended = $submissions_by_author;
 } else {
     // if there are tags, use jaccard stuff ported from poktwo to list submissions that may be relevant enough.
-    // this WILL slow the site down.
     $recommended = $database->fetchArray($database->query("
-        SELECT v.* 
-        FROM videos v
-        INNER JOIN (
-            SELECT $recommendfields
-            LIMIT 24
-        ) AS recommended
-        ON v.video_id = recommended.video_id
-        WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
-        AND $whereRatings
-        ORDER BY RAND()
-    ", [$data["id"]]));
-}
+    SELECT v.* 
+    FROM videos v
+    INNER JOIN (
+        SELECT $recommendfields
+    ) AS recommended
+    ON v.video_id = recommended.video_id
+    WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
+    AND $whereRatings
+    ORDER BY RAND()",
+    [$data["id"]]));
 
+    // if no other submissions match, then fallback to listing the author's other submissions
+    if (empty($recommended)) {
+        $recommended = $submissions_by_author;
+    }
+}
 
 if ($auth->getUserID() == $data["author"]) { $owner = true; } else { $owner = false; }
 
