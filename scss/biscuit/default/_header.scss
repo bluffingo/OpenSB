@@ -70,7 +70,7 @@
 form.header-search
 {
   display: none;
-  width: 250px;
+  max-width: 250px;
 
   @include responsive('small') {
     display: block;
@@ -78,14 +78,6 @@ form.header-search
   }
 
   #header-search-input {
-
-    @include responsive('small') {
-      max-width: 100px;
-    }
-    @include responsive('medium') {
-      max-width: 250px - 75px;
-    }
-
     padding: 6px;
   }
 
@@ -104,6 +96,13 @@ td.h
   color: black;
   margin: 0 7px;
   font-size: 14px;
+  &.username {
+    display: none;
+
+    @include responsive('medium') {
+      display: inline;
+    }
+  }
 }
 
 .header

@@ -10,7 +10,7 @@
             {% for link in header_main_links() %}
                 <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
             {% endfor %}
-            <form class="header-search" action="/search">
+            <form class="header-search form-flex" action="/search">
                 <input id="header-search-input" type="text" name="query" placeholder="Search...">
                 <div class="form-button-container">
                     <button id="header-search-button" class="button button-secondary">
@@ -21,7 +21,7 @@
             <div class="header-links">
                 {% if is_user_logged_in %}
                     <!--<a class="menulink" href="/notices">{{ user_notice_data }} notifications</a>-->
-                    <a class="menulink" href="/user/{{ user_data.name }}">{{ user_data.name }}</a>
+                    <a class="menulink username" href="/user/{{ user_data.name }}">{{ user_data.name }}</a>
                     <div class="header-links-menu-container">
                         <div class="menuButton" data-menu-id="user-menu">
                             <img src="{{ profile_picture(user_data.name) }}" class="pfp" alt="{{ user_data.name }}">

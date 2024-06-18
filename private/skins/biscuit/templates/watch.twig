@@ -92,21 +92,45 @@
                 </div>
                 {% endif %}
                 <hr>
-                <div class="watch-box-tags">
-                    <div class="section">
-                        <div class="section-title">
-                            <h2>Tags</h2>
+                <div class="watch-box-info">
+                    <div class="grid">
+                        <div class="col-6">
+                            <div class="section">
+                                <div class="section-title">
+                                    <h2>Tags</h2>
+                                </div>
+                                {% for tag in submission.tags %}
+                                    {{ tag.name }}
+                                {% else %}
+                                    No tags.
+                                {% endfor %}
+                                {# TODO:
+                                {% if is_user_logged_in %}
+                                    <form class="form-flex">
+                                        <input type="text" class="form-submit">
+                                        <input type="submit" value="Add" class="button button-secondary">
+                                    </form>
+                                {% endif %}
+                                #}
+                            </div>
                         </div>
-                        {% for tag in submission.tags %}
-                            {{ tag.name }}
-                        {% else %}
-                            No tags.
-                        {% endfor %}
+                        <div class="col-6">
+                            <div class="section">
+                                <div class="section-title">
+                                    <h2>Details</h2>
+                                </div>
+                                <div>
+                                    Rating:
+                                    {% if submission.rating == 'mature' %}
+                                        Sensitive
+                                    {% else %}
+                                        General
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                {% if submission.rating == 'mature' %}
-                <hr><div>Rated sensitive</div>
-                {% endif %}
             </div>
             <div class="clear"></div>
             <br>
