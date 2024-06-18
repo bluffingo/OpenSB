@@ -100,7 +100,7 @@
                                     <h2>Tags</h2>
                                 </div>
                                 {% for tag in submission.tags %}
-                                    {{ tag.name }}
+                                    <a href="search.php?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
                                 {% else %}
                                     No tags.
                                 {% endfor %}
