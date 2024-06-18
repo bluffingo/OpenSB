@@ -14,10 +14,16 @@ class SquareBracketTwigExtension extends AbstractExtension
     {
         global $profiler, $orange;
 
+        if ($orange->getLocalOptions()["skin"] == "biscuit") {
+            $userlink_function_name = "UserLink";
+        } else {
+            $userlink_function_name = "UserLinkOld";
+        }
+
         return [
             new TwigFunction('submission_view', [$this, 'submissionView']),
             new TwigFunction('thumbnail', [$this, 'thumbnail']),
-            new TwigFunction('user_link', [$this, 'UserLink'], ['is_safe' => ['html']]),
+            new TwigFunction('user_link', [$this, $userlink_function_name], ['is_safe' => ['html']]),
             new TwigFunction('profile_picture', [$this, 'profilePicture']),
             new TwigFunction('profile_banner', [$this, 'profileBanner']),
             new TwigFunction('profiler_stats', function () use ($profiler) {
@@ -226,6 +232,13 @@ class SquareBracketTwigExtension extends AbstractExtension
 
         // Return the formatted link
         return sprintf('<a class="%s" style="%s" href="%s">%s</a>', $class, $style, $href, $displayText);
+    }
+
+    public function UserLinkOld($user): string
+    {
+        return <<<HTML
+<a class="userlink userlink-{$user["info"]["username"]}" style="color:{$user["info"]["customcolor"]};" href="/user/{$user["info"]["username"]}">{$user["info"]["username"]}</a>
+HTML;
     }
 
     public function removeNotification()
