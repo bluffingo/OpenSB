@@ -54,29 +54,29 @@
                         <div class="profile-box-displayname">
                             @{{ data.username }}
                             {% if not data.is_fedi %}
-                            | Joined {{ data.joined | relative_time }} |
-                            <span id="follower_count">{{ data.followers }}</span> followers
+                                | Joined {{ data.joined | relative_time }} |
+                                <span id="follower_count">{{ data.followers }}</span> followers
                             {% endif %}
                             {% if data.old_usernames %}
                                 <br>Old usernames:
                                 {% for old_username in data.old_usernames %}
-                                {{ old_username.old_name }}{{ not loop.last ? ',' }}
+                                    {{ old_username.old_name }}{{ not loop.last ? ',' }}
                                 {% endfor %}
                             {% endif %}
                         </div>
                     </div>
                     {% if not data.is_fedi %}
-                    <div class="profile-box-follow">
-                        {% if not data.is_current %}
-                            <button class="button button-secondary" id="follow-user">
-                                {% if data.following %}
-                                    Unfollow
-                                {% else %}
-                                    Follow
-                                {% endif %}
-                            </button>
-                        {% endif %}
-                    </div>
+                        <div class="profile-box-follow">
+                            {% if not data.is_current %}
+                                <button class="button button-secondary" id="follow-user">
+                                    {% if data.following %}
+                                        Unfollow
+                                    {% else %}
+                                        Follow
+                                    {% endif %}
+                                </button>
+                            {% endif %}
+                        </div>
                     {% endif %}
                 </div>
             </div>
@@ -97,65 +97,71 @@
                 <a href="/settings">Edit</a>
             {% endif %}
         </div>
-        <div class="content-box">
-            {% if data.about | trim is not empty %}
-                {{ data.about | markdown_user_written }}
-            {% else %}
-                <em class="text-muted">This user has no description.</em>
-            {% endif %}
-        </div>
     </div>
-    <div class="content-box grid">
-        <div class="col-small-12 col-medium-6">
-            {% if data.featured_submission %}
-                <div class="text-title">Featured submission</div>
-                <div class="profile-featured-submission">
-                    <a href="/view/{{ data.featured_submission.id }}">
-                        <img src="{{ thumbnail(data.featured_submission.id, data.featured_submission.type, data.featured_submission.bools.custom_thumbnail) }}"
-                             alt="{{ data.featured_submission.title }}" class="thumbnail">
-                    </a>
-                    <div class="profile-featured-submission-title">
-                        <a href="/view/{{ data.featured_submission.id }}">{{ data.featured_submission.title }}</a>
-                    </div>
+    <div class="content-box">
+        {% if data.about | trim is not empty %}
+            <div class="section">
+                <div class="section-title">
+                    <h2>About me</h2>
                 </div>
-            {% endif %}
-        </div>
-        <div class="col-small-12 col-medium-6">
-            {% if data.journals %}
-                <div class="text-title">Journals</div>
-                {% for journal in data.journals %}
-                    <div>
-                        <div class="journal-entry">
-                            <div class="journal-title">
-                                <a href="/read?j={{ journal.id }}">
-                                    {{ journal.title|u.truncate(100, '...') }}
-                                </a>
-                            </div>
-                            <div class="journal-contents">
-                                {{ journal.contents|u.truncate(250, '...') }}
-                            </div>
+            </div>
+            {{ data.about | markdown_user_written }}
+        {% endif %}
+        <hr>
+        <div class="grid">
+            <div class="col-small-12 col-medium-6">
+                {% if data.featured_submission %}
+                    <div class="text-title">Featured submission</div>
+                    <div class="profile-featured-submission">
+                        <a href="/view/{{ data.featured_submission.id }}">
+                            <img src="{{ thumbnail(data.featured_submission.id, data.featured_submission.type, data.featured_submission.bools.custom_thumbnail) }}"
+                                 alt="{{ data.featured_submission.title }}" class="thumbnail">
+                        </a>
+                        <div class="profile-featured-submission-title">
+                            <a href="/view/{{ data.featured_submission.id }}">{{ data.featured_submission.title }}</a>
                         </div>
                     </div>
-                {% endfor %}
-            {% endif %}
+                {% endif %}
+            </div>
+            <div class="col-small-12 col-medium-6">
+                {% if data.journals %}
+                    <div class="text-title">Journals</div>
+                    {% for journal in data.journals %}
+                        <div>
+                            <div class="journal-entry">
+                                <div class="journal-title">
+                                    <a href="/read?j={{ journal.id }}">
+                                        {{ journal.title|u.truncate(100, '...') }}
+                                    </a>
+                                </div>
+                                <div class="journal-contents">
+                                    {{ journal.contents|u.truncate(250, '...') }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
         </div>
     </div>
+    <br>
     {% if data.submissions %}
         <div class="section">
             <div class="section-title">
-                <h1>{{ data.username }}'s recent submissions</h1>
-                <a href="browse">Browse</a>
+                <h1>Recent submissions</h1>
+                <a href="browse">More</a>
             </div>
-            <div class="content-box">
+            <div class="content-box content-box-profile-submissions">
                 {% for submission in data.submissions %}
-                    {{ include('/components/_index_submission.twig') }}
+                    {{ include('/components/_profile_submission.twig') }}
                 {% endfor %}
             </div>
         </div>
     {% endif %}
-    <div id="comments">
-        <div class="content-header">
-            <span>Comments</span>
+    <br>
+    <div class="section">
+        <div class="section-title">
+            <h2>Comments</h2>
         </div>
         <div class="content-box">
             {% if is_user_logged_in %}
