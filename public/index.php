@@ -54,7 +54,6 @@ if (isset($path[1]) && $path[1] != '') {
             default => die("Invalid API.")
         },
         'assets' => match ($path[2] ?? null) {
-            'fa-solid-900.woff2' => load_file_from_vendor('/fortawesome/font-awesome/webfonts/fa-solid-900.woff2', 'font/woff2'),
             'bootstrap-icons.woff2' => load_file_from_vendor('/twbs/bootstrap-icons/font/fonts/bootstrap-icons.woff2', 'font/woff2'),
             default => die(),
         },

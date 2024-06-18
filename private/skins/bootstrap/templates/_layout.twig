@@ -11,13 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block head %}{% endblock %}
-    {% if current_theme == "default" %}
-        <link href="/assets/css/bootstrap.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
-    {% elseif current_theme == "arson" %}
-        <link href="/assets/css/bootstrap_arson.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
-    {% elseif current_theme == "virtue" %}
-        <link href="/assets/css/bootstrap_virtue.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
-    {% endif %}
+	<link href="/assets/css/bootstrap.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
             integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -34,11 +28,7 @@
     <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
 </head>
 <body>
-{% if current_theme == "virtue" %}
-    {{ include('/components/_header_virtue.twig') }}
-{% else %}
-    {{ include('/components/_header_default.twig') }}
-{% endif %}
+{{ include('/components/_header_default.twig') }}
 {% block precontent %}{% endblock %}
 <div class="container">
     {% if session.notif_message %}
@@ -49,11 +39,7 @@
     {% endif %}
     {% block content %}{% endblock %}
 </div>
-{% if current_theme == "virtue" %}
-    {{ include('/components/_footer_virtue.twig') }}
-{% else %}
-    {{ include('/components/_footer_default.twig') }}
-{% endif %}
+{{ include('/components/_footer_default.twig') }}
 {% block postcontent %}{% endblock %}
 {% block scripts %}{% endblock %}
 </body>
