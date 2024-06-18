@@ -27,11 +27,10 @@ if (isset($_POST['save'])) {
     $title = htmlspecialchars($_POST['title']) ?? null;
     $about = $_POST['about'] ?? null;
 
-    $resetToken = $_POST['reset_token'] ?? null;
-
     $currentPass = ($_POST['current_pass'] ?? null);
     $pass = ($_POST['pass'] ?? null);
     $pass2 = ($_POST['pass2'] ?? null);
+    $new_username = $_POST['new_username'] ?? null;
 
     $customcolor = ($_POST['customcolor'] ?? '#523bb8');
 
@@ -39,16 +38,14 @@ if (isset($_POST['save'])) {
 
     $error = '';
 
+    $password = $database->fetch("SELECT password FROM users WHERE id = ?", [$auth->getUserID()])["password"];
     if ($currentPass && $pass && $pass2) {
-        $password = $database->fetch("SELECT password FROM users WHERE id = ?", [$auth->getUserID()])["password"];
         if (password_verify($currentPass, $password)) {
             if ($pass == $pass2) {
                 $database->query("UPDATE users SET password = ?, token = ? WHERE id = ?",
                     [password_hash($pass, PASSWORD_DEFAULT), bin2hex(random_bytes(32)), $auth->getUserID()]);
 
-                // TODO
-                die("TODO: REDIRECT TO LOGIN PAGE");
-                //redirect('login.php?new_pass');
+                UnorganizedFunctions::Notification("Your password has been changed.", "/login.php");
             } else {
                 $error .= " The new passwords aren't identical.";
             }
@@ -56,14 +53,41 @@ if (isset($_POST['save'])) {
             $error .= "Your current password is incorrect.";
         }
     }
-    if ($error) $error = "The following errors occured while changing your password: " . $error;
 
-    // does this even work???
-    if ($resetToken) {
-        $database->query("UPDATE users SET token = ? WHERE id = ?", [bin2hex(random_bytes(32)), $auth->getUserID()]);
-        // TODO
-        die("TODO: REDIRECT TO LOGIN PAGE");
-        //redirect('login.php?new_pass');
+    $username_changed = false;
+
+    if ($currentPass && $new_username) {
+        if (password_verify($currentPass, $password)) {
+            $old_username = $database->fetch("SELECT name FROM users WHERE id = ?", [$auth->getUserID()])["name"];
+
+            $is_old_username = $database->fetch("SELECT COUNT(*) FROM user_old_names WHERE user = ? AND old_name = ?", [$auth->getUserID(), $new_username]);
+
+            if ($is_old_username) {
+                $database->query("INSERT INTO user_old_names (user, old_name, time) VALUES (?, ?, ?)",
+                    [$auth->getUserID(), $old_username, time()]);
+                $database->query("UPDATE users SET name = ? WHERE id = ?", [$new_username, $auth->getUserID()]);
+                $username_changed = true;
+            } else {
+                $error .= UnorganizedFunctions::validateUsername($new_username, $database);
+                if ($database->fetch("SELECT COUNT(*) FROM user_old_names WHERE user != ? AND old_name = ?", [$auth->getUserID(), $new_username])) {
+                    $error .= "You cannot use someone else's previous username.";
+                }
+
+                if (!$error) {
+                    $last_entry_time = $database->fetch("SELECT MAX(time) AS last_time FROM user_old_names WHERE user = ?", [$auth->getUserID()])["last_time"];
+
+                    if (!$last_entry_time || (time() - $last_entry_time >= 2592000)) {
+                        $database->query("INSERT INTO user_old_names (user, old_name, time) VALUES (?, ?, ?)",
+                            [$auth->getUserID(), $old_username, time()]);
+                        $database->query("UPDATE users SET name = ? WHERE id = ?", [$new_username, $auth->getUserID()]);
+                        $username_changed = true;
+                    } else {
+                        $days_left = ceil((2592000 - (time() - $last_entry_time)) / 86400);
+                        $error .= "Please wait until $days_left days to change your username.";
+                    }
+                }
+            }
+        }
     }
 
     // banned users shouldn't be able to change their profile
@@ -88,7 +112,16 @@ if (isset($_POST['save'])) {
     if (!$error) {
         $database->query("UPDATE users SET title = ?, about = ?, comfortable_rating = ?, customcolor = ? WHERE id = ?",
             [$title, $about, $rating, $customcolor, $auth->getUserID()]);
-        UnorganizedFunctions::Notification("Edited successfully!", ("user.php?name=" . $auth->getUserData()["name"]), "success");
+
+        if ($username_changed) {
+            // fixes "This user does not exist." error since $auth by this point still uses outdated data.
+            // poor design? pretty much, yea. -chaziz 6/18/2024
+            $url = "/user/" . $new_username;
+        } else {
+            $url = "/user/" . $auth->getUserData()["name"];
+        }
+
+        UnorganizedFunctions::Notification("Successfully updated your settings!", $url, "success");
     } else {
         UnorganizedFunctions::Notification($error, "/settings.php");
     }

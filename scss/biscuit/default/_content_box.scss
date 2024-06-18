@@ -124,8 +124,12 @@
     }
 
     .text-title {
-        font-size: 16pt;
+        font-size: 24px;
         margin-bottom: 5px;
+
+        &.smaller {
+            font-size: 18px;
+        }
 
         &.tabled {
             display: table;

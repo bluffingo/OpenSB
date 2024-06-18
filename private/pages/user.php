@@ -129,6 +129,12 @@ $user_journals =
 
 $is_own_profile = ($data["id"] == $auth->getUserID());
 
+if ($is_own_profile || $auth->isUserAdmin()) {
+    $old_usernames = $database->fetchArray($database->query("SELECT * FROM user_old_names WHERE user = ?", [$data["id"]]));
+} else {
+    $old_usernames = [];
+}
+
 $comments = new CommentData($database, CommentLocation::Profile, $data["id"]);
 
 $followers = $database->result("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$data["id"]]);
@@ -151,6 +157,7 @@ $profile_data = [
     "following" => $followed,
     "is_fedi" => $isFediverse,
     "views" => $views,
+    "old_usernames" => $old_usernames,
 ];
 
 if ($isFediverse) {

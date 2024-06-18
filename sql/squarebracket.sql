@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2024 at 08:10 AM
+-- Generation Time: Jun 18, 2024 at 08:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.3.4
 
@@ -337,6 +337,19 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_old_names`
+--
+
+CREATE TABLE `user_old_names` (
+  `autoint` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `old_name` varchar(128) NOT NULL,
+  `time` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `videos`
 --
 
@@ -468,6 +481,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_old_names`
+--
+ALTER TABLE `user_old_names`
+  ADD PRIMARY KEY (`autoint`);
+
+--
 -- Indexes for table `videos`
 --
 ALTER TABLE `videos`
@@ -566,6 +585,12 @@ ALTER TABLE `takedowns`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.';
+
+--
+-- AUTO_INCREMENT for table `user_old_names`
+--
+ALTER TABLE `user_old_names`
+  MODIFY `autoint` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `videos`

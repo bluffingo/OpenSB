@@ -20,22 +20,22 @@ if (str_contains($ipcheck, "<appears>yes</appears>")) {
 if (isset($_POST['registersubmit'])) {
     $error = "";
 
-    $username = trim($POST['username'] ?? '');
-    $pass = $POST['pass1'] ?? '';
-    $pass2 = $POST['pass2'] ?? '';
-    $mail = filter_var($POST['email'], FILTER_SANITIZE_EMAIL);
+    $username = trim($_POST['username'] ?? '');
+    $pass = $_POST['pass1'] ?? '';
+    $pass2 = $_POST['pass2'] ?? '';
+    $mail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     if ($enableInviteKeys) {
-        $invite = $POST['invite'];
+        $invite = $_POST['invite'];
     }
 
-    if (!isset($username)) $error .= "Blank username. ";
+    $error .= UnorganizedFunctions::validateUsername($username, $database);
+    if ($database->result("SELECT COUNT(*) FROM users WHERE email = ?", [$mail]) > 0) $error .= "This email address is used by another account. ";
     if (!isset($pass2) || $pass != $pass2) $error .= "The passwords don't match. ";
     //if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) $error .= "Invalid email format. ";
-    if ($database->result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= "Username has already been taken. ";
-    if (!preg_match('/^[a-zA-Z0-9\-_]+$/', $username)) $error .= "Username contains invalid characters. "; //the "long-ass arabic character" exploit was fixed a long time ago. -chaziz 6/7/2024
-    if ($database->result("SELECT COUNT(*) FROM users WHERE email = ?", [$mail])) $error .= "Email already registered. ";
     if ($database->result("SELECT COUNT(*) FROM users WHERE ip = ?", [Utilities::get_ip_address()]) > 10)
         $error .= "Limit of 10 accounts per IP reached. ";
+    if ($database->fetch("SELECT COUNT(*) FROM user_old_names WHERE old_name = ?", [$username]) > 1)
+        $error .= "You cannot use someone's previous username.";
 
     if ($enableInviteKeys) {
         $inviteValidationResult = $database->result("SELECT id FROM invite_keys WHERE invite_key = ? AND claimed_by IS NULL", [$invite]);

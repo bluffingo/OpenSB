@@ -11,9 +11,18 @@
             <h1>Account settings</h1>
         </div>
         <div class="content-box">
-        <form action="settings" method="post" enctype="multipart/form-data">
+        <form action="/settings" method="post" enctype="multipart/form-data">
             <div class="text-title">
                 <span>Profile</span>
+            </div>
+            <div class="form-input">
+                <label for="title">Profile name:</label>
+                <input class="form-submit" type="text" name="title" size="45" maxlength="50" value="{{ user_data.title }}">
+            </div>
+
+            <div class="form-input">
+                <label for="about">Profile description:</label>
+                <textarea class="form-submit" name="about" rows="5" cols="80" wrap="hard">{{ user_data.about }}</textarea>
             </div>
 
             <div class="form-input">
@@ -26,15 +35,6 @@
                 <input type="file" name="profileBanner" id="profileBanner">
             </div>
 
-            <div class="form-input">
-                <label for="title">Profile name:</label>
-                <input class="form-submit" type="text" name="title" size="45" maxlength="50" value="{{ user_data.title }}">
-            </div>
-
-            <div class="form-input">
-                <label for="about">Profile description:</label>
-                <textarea class="form-submit" name="about" rows="5" cols="80" wrap="hard">{{ user_data.about }}</textarea>
-            </div>
 
             <div class="form-input">
                 <label for="about">Username color:</label>
@@ -51,6 +51,20 @@
                 <label for="current_pass">Current password:</label>
                 <input class="form-submit" type="password" name="current_pass" size="30" maxlength="256"
                        placeholder="Current password"><br>
+            </div>
+
+            <div class="text-title smaller">
+                <span>Change username</span>
+            </div>
+
+            <div class="form-input">
+                <label for="current_pass">New username:</label>
+                <input class="form-submit" type="text" name="new_username" size="30" maxlength="256"
+                       placeholder="New username"><br>
+            </div>
+
+            <div class="text-title smaller">
+                <span>Change password</span>
             </div>
 
             <div class="form-input">
