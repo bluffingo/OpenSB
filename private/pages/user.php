@@ -94,9 +94,18 @@ if (str_contains($username, "@" . $domain) && $enableFederatedStuff) {
 
 if (!$data)
 {
-    // if we know if it's a fediverse account, then try getting its profile and then copying it over to our
-    // database. (TODO: handle blacklisted instances)
-    if ($isFediverse) {
+    // check if this username was used before and was changed out of.
+    $old_username_data = $database->fetch("SELECT user FROM user_old_names WHERE old_name = ?", [$username]);
+
+    if ($old_username_data) {
+        // if so, redirect to the new profile.
+        $new_username = $database->fetch("SELECT name FROM users WHERE id = ?", [$old_username_data['user']])["name"];
+        http_response_code(301);
+        header("Location: /user/$new_username");
+        exit();
+    } else if ($isFediverse) {
+        // if we know if it's a fediverse account, then try getting its profile and then copying it over to our
+        // database. (TODO: handle blacklisted instances)
         if (!$activityPubAdapter->getFediProfileFromWebFinger($username)) {
             UnorganizedFunctions::Notification("This user and/or instance does not exist.", "/");
         }

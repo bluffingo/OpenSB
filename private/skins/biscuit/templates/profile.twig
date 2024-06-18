@@ -151,9 +151,9 @@
                 <h1>Recent submissions</h1>
                 <a href="browse">More</a>
             </div>
-            <div class="content-box content-box-profile-submissions">
+            <div class="content-box">
                 {% for submission in data.submissions %}
-                    {{ include('/components/_profile_submission.twig') }}
+                    {{ include('/components/_index_submission.twig') }}
                 {% endfor %}
             </div>
         </div>
