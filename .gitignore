@@ -37,5 +37,5 @@ mariadb-data
 # google moment
 ads.txt
 
-# gource log
-/tools/gourcelog.txt
+# output from 2024-02-video_url_export.php
+/tools/video_urls.txt
