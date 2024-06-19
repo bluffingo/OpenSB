@@ -53,6 +53,10 @@ if (isset($_POST['save'])) {
             $error .= "Your current password is incorrect.";
         }
     }
+    
+    if (strlen($title) > 80) {
+        $error .= "Your display name is too long.";
+    }
 
     $username_changed = false;
 
@@ -90,23 +94,18 @@ if (isset($_POST['save'])) {
         }
     }
 
-    // banned users shouldn't be able to change their profile
-    if (strlen($title) > 50) {
-        $error .= "Your display name is too long.";
-    }
-
     if (!empty($_FILES['profilePicture']['name'])) {
         $name = $_FILES['profilePicture']['name'];
         $temp_name = $_FILES['profilePicture']['tmp_name'];
         $ext = pathinfo($_FILES['profilePicture']['name'], PATHINFO_EXTENSION);
-        $storage->uploadProfilePicture($temp_name, $auth->getUserData()["name"]);
+        $storage->uploadProfilePicture($temp_name, $auth->getUserData()["id"]);
     }
 
     if (!empty($_FILES['profileBanner']['name'])) {
         $name = $_FILES['profileBanner']['name'];
         $temp_name = $_FILES['profileBanner']['tmp_name'];
         $ext = pathinfo($_FILES['profileBanner']['name'], PATHINFO_EXTENSION);
-        $storage->uploadProfileBanner($temp_name, $auth->getUserData()["name"]);
+        $storage->uploadProfileBanner($temp_name, $auth->getUserData()["id"]);
     }
 
     if (!$error) {
@@ -114,7 +113,7 @@ if (isset($_POST['save'])) {
             [$title, $about, $rating, $customcolor, $auth->getUserID()]);
 
         if ($username_changed) {
-            // fixes "This user does not exist." error since $auth by this point still uses outdated data.
+            // avoids "This user does not exist." error since $auth by this point still uses outdated data.
             // poor design? pretty much, yea. -chaziz 6/18/2024
             $url = "/user/" . $new_username;
         } else {

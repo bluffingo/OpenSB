@@ -77,7 +77,6 @@ class SquareBracketTwigExtension extends AbstractExtension
                 // Mentions
                 $parsed_text = preg_replace('/(?<!=|\b|&)@([a-z0-9_]+(?:@[a-z0-9.-]+)?)/i', '<a href="/user/$1">@$1</a>', $parsed_text);
 
-
                 return $parsed_text;
 
             }, ['is_safe' => ['html']]),
@@ -142,6 +141,7 @@ class SquareBracketTwigExtension extends AbstractExtension
             echo $twig->render("image.twig", ['submission' => $submission_data]);
         }
 
+        // fyi: opensb still doesn't fully support music submissions.
         if ($submission_data["type"] == 3) {
             echo $twig->render("music.twig", ['submission' => $submission_data]);
         }
@@ -174,9 +174,9 @@ class SquareBracketTwigExtension extends AbstractExtension
     public function profilePicture($username)
     {
         global $database, $storage;
-        $location = '/dynamic/pfp/' . $username . '.png';
 
         $id = UnorganizedFunctions::usernameToID($database, $username);
+        $location = '/dynamic/pfp/' . $id . '.png';
         // don't bother with userdata since that might slow shit down
         $is_banned = $database->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
 
@@ -195,13 +195,15 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     public function profileBanner($username)
     {
-        global $storage;
-        $location = '/dynamic/banners/' . $username . '.png';
+        global $database, $storage;
+
+        $id = UnorganizedFunctions::usernameToID($database, $username);
+        $location = '/dynamic/banners/' . $id . '.png';
 
         if ($storage->fileExists('..' . $location)) {
             $data = $location;
         } else {
-            $data = "/assets/biscuit_banner.png";
+            $data = "/assets/biscuit_banner.svg";
         }
         return $data;
     }
