@@ -143,7 +143,7 @@
                         {% if is_user_logged_in %}
                             {{ include('/components/_comment_input.twig') }}
                         {% endif %}
-                        <div id="comment"></div>
+                        <div id="new-comments-here"></div>
                         {% for comment in submission.comments %}
                             {{ include('/components/_comment.twig') }}
                         {% endfor %}

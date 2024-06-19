@@ -41,14 +41,9 @@
 				{% if is_user_logged_in %}
 					{{ include('/components/_comment_input.twig') }}
 				{% endif %}
-				<div id="comment"></div>
+				<div id="new-comments-here"></div>
 				{% for comment in data.comments %}
 					{{ include('/components/_comment.twig') }}
-					<div id="replies">
-						{% for comment in comment.replies %}
-							{{ include('/components/_comment.twig') }}
-						{% endfor %}
-					</div>
 				{% endfor %}
 			</div>
 		</div>

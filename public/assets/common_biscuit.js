@@ -76,38 +76,85 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    let follow_button = (document.getElementById('follow-user'));
-    let comment_field = (document.getElementById('comment_field'));
-
-    if (comment_field) {
-        let comment_button = (document.getElementById('comment_button'));
-        let comment_contents = (document.getElementById('comment_contents'));
-        comment_button.onclick = function () {
-            play('click');
-            fetch("/api/biscuit/commenting", {
-                method: "POST",
-                body: JSON.stringify({
-                    type: comment_type,
-                    id: comment_id,
-                    comment: comment_contents.value,
-                }),
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            })
-                .then((response) => response.json())
-                .then((json) => { if(json["error"]) { error(json["error"])} else
-                {
-                    play('comment');
-                    document.getElementById('comment').insertAdjacentHTML(
-                        "afterbegin",
-                        json["html"],
-                    )
-                }});
-
-        }
+    function closeAllReplyForms() {
+        const openReplyForms = document.querySelectorAll(".reply-form");
+        openReplyForms.forEach(form => {
+            form.style.display = "none";
+        });
     }
 
+    function submitComment(type, id, content, replyTo = 0) {
+        play('click');
+        fetch("/api/biscuit/commenting", {
+            method: "POST",
+            body: JSON.stringify({
+                type: type,
+                id: id,
+                comment: content,
+                reply_to: replyTo
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(response => response.json())
+            .then(json => {
+                if (json.error) {
+                    error(json.error);
+                } else {
+                    play('comment');
+                    if (replyTo !== 0) {
+                        const repliesContainer = document.getElementById(`replies-${replyTo}`);
+                        if (repliesContainer) {
+                            repliesContainer.insertAdjacentHTML("beforeend", json.html);
+                        } else {
+                            error(`replies-${replyTo} doesn't exist. Biscuit fucked up.`);
+                        }
+                    } else {
+                        const commentsSection = document.getElementById('new-comments-here');
+                        if (commentsSection) {
+                            commentsSection.insertAdjacentHTML("afterbegin", json.html);
+                        } else {
+                            error(`Comments section doesn't exist????? Biscuit fucked up.`);
+                        }
+                    }
+
+                    closeAllReplyForms();
+                }
+            });
+    }
+
+    let comment_field = (document.getElementById('comment_field'));
+    if (comment_field) {
+        let comment_button = document.getElementById('comment_button');
+        let comment_contents = document.getElementById('comment_contents');
+        comment_button.onclick = function() {
+            submitComment(comment_type, comment_id, comment_contents.value);
+        };
+    }
+
+    document.addEventListener("click", function(event) {
+        if (event.target && event.target.classList.contains("reply-button")) {
+            let commentId = event.target.getAttribute("data-comment-id");
+
+            closeAllReplyForms();
+
+            let replyForm = document.getElementById(`reply-form-${commentId}`);
+            if (replyForm) {
+                replyForm.style.display = "block";
+            }
+        }
+
+        if (event.target && event.target.classList.contains("submit-reply-button")) {
+            let commentId = event.target.getAttribute("data-comment-id");
+            let replyContents = document.getElementById(`reply_contents_${commentId}`);
+            if (replyContents) {
+                submitComment(comment_type, comment_id, replyContents.value, commentId);
+            }
+        }
+    });
+
+    let follow_button = (document.getElementById('follow-user'));
     if (follow_button) {
         let follow_count = (document.getElementById('follower_count'));
         follow_button.onclick = function () {
