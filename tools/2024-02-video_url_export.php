@@ -2,10 +2,13 @@
 namespace OpenSB;
 
 global $database;
-define("SB_DYNAMIC_PATH", dirname(__DIR__) . '/dynamic');
-define("SB_PRIVATE_PATH", dirname(__DIR__) . '/private');
-define("SB_VENDOR_PATH", dirname(__DIR__) . '/vendor');
-define("SB_GIT_PATH", dirname(__DIR__) . '/.git'); // ONLY FOR makeVersionString() IN SquareBracket CLASS.
+define("SB_ROOT_PATH", dirname(__DIR__));
+define("SB_DYNAMIC_PATH", SB_ROOT_PATH . '/dynamic');
+define("SB_PUBLIC_PATH", SB_ROOT_PATH . '/public'); // we need this for SquareBracketTwigExtension
+define("SB_PRIVATE_PATH", SB_ROOT_PATH . '/private');
+define("SB_VENDOR_PATH", SB_ROOT_PATH . '/vendor');
+define("SB_GIT_PATH", SB_ROOT_PATH . '/.git'); // ONLY FOR makeVersionString() IN SquareBracket CLASS.
+
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
