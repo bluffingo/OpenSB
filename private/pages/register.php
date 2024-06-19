@@ -34,8 +34,8 @@ if (isset($_POST['registersubmit'])) {
     //if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) $error .= "Invalid email format. ";
     if ($database->result("SELECT COUNT(*) FROM users WHERE ip = ?", [Utilities::get_ip_address()]) > 10)
         $error .= "Limit of 10 accounts per IP reached. ";
-    if ($database->fetch("SELECT COUNT(*) FROM user_old_names WHERE old_name = ?", [$username]) > 1)
-        $error .= "You cannot use someone's previous username.";
+    if ($database->fetch("SELECT COUNT(*) FROM user_old_names WHERE old_name = ?", [$username])["COUNT(*)"] >= 1)
+        $error .= "You cannot use someone's previous username. ";
 
     if ($enableInviteKeys) {
         $inviteValidationResult = $database->result("SELECT id FROM invite_keys WHERE invite_key = ? AND claimed_by IS NULL", [$invite]);
