@@ -25,26 +25,26 @@ if ($enableFederatedStuff) {
     }
 }
 
-function getSubmissionFromFeaturedID($database, $data)
+function handleFeaturedSubmission($database, $data): false|array
 {
     global $auth;
 
-    // featured_submission, replaces the unused "lastpost" column in the users table.
-
+    // handle featured submission
     // if user hasn't specified anything, then use latest submission, if that doesn't exist, do not bother.
-    if ($data["featured_submission"] == 0) {
+    $featured_id = $database->fetch("SELECT video_id FROM videos v WHERE v.id = ?", [$data["featured_submission"]]);
+
+    if ($featured_id == 0 || !$featured_id) {
         $featured_id = $database->fetch(
             "SELECT video_id FROM videos v WHERE v.author = ? ORDER BY v.time DESC", [$data["id"]]);
         if(!isset($featured_id["video_id"])) {
             return false;
         }
-        $data["featured_submission"] = $featured_id["video_id"];
-        if ($data["featured_submission"] == 0) {
+        if ($featured_id == 0) {
             return false;
         }
     }
 
-    $submission = new SubmissionData($database, $data["featured_submission"]);
+    $submission = new SubmissionData($database, $featured_id["video_id"]);
     $submission_data = $submission->getData();
     $bools = $submission->bitmaskToArray();
 
@@ -158,7 +158,7 @@ $profile_data = [
     "joined" => $data["joined"],
     "connected" => $data["lastview"],
     "is_current" => $is_own_profile,
-    "featured_submission" => getSubmissionFromFeaturedID($database, $data),
+    "featured_submission" => handleFeaturedSubmission($database, $data),
     "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $user_submissions),
     "journals" => UnorganizedFunctions::makeJournalArray($database, $user_journals),
     "comments" => $comments->getComments(),

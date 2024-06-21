@@ -52,7 +52,7 @@ if (!$isDebug) {
 }
 
 $comment = [
-    "id" => 123456789, // Replace with actual comment ID generation logic
+    "id" => 0, // todo
     "posted_id" => $post_data['id'],
     "post" => $commentText,
     "posted" => time(),

@@ -40,12 +40,16 @@ class SubmissionData
         // stuff won't work.
         if (is_int($id)) {
             $this->data = $this->database->fetch("SELECT v.* FROM videos v WHERE v.id = ?", [$id]);
-            $id = $this->data["video_id"];
+            if ($this->data != []) {
+                $id = $this->data["video_id"];
+            }
         } else {
             $this->data = $this->database->fetch("SELECT v.* FROM videos v WHERE v.video_id = ?", [$id]);
         }
-        $this->takedown = $this->database->fetch("SELECT * FROM takedowns t WHERE t.submission = ?", [$id]);
-        $this->tags = $this->database->fetchArray($this->database->query("SELECT * FROM `tag_index` ti JOIN tag_meta t ON (t.tag_id = ti.tag_id) WHERE ti.video_id = ?", [$this->data["id"]]));
+        if ($this->data != []) {
+            $this->takedown = $this->database->fetch("SELECT * FROM takedowns t WHERE t.submission = ?", [$id]);
+            $this->tags = $this->database->fetchArray($this->database->query("SELECT * FROM `tag_index` ti JOIN tag_meta t ON (t.tag_id = ti.tag_id) WHERE ti.video_id = ?", [$this->data["id"]]));
+        }
     }
 
     public function getTakedown()
@@ -65,12 +69,14 @@ class SubmissionData
 
     public function bitmaskToArray()
     {
-        return [
-            "featured" => (bool)($this->data["flags"] & $this::FLAG_FEATURED),
-            "unprocessed" => (bool)($this->data["flags"] & $this::FLAG_UNPROCESSED),
-            "block_guests" => (bool)($this->data["flags"] & $this::FLAG_BLOCK_GUESTS),
-            "block_comments" => (bool)($this->data["flags"] & $this::FLAG_BLOCK_COMMENTS),
-            "custom_thumbnail" => (bool)($this->data["flags"] & $this::FLAG_CUSTOM_THUMBNAIL),
-        ];
+        if ($this->data != []) {
+            return [
+                "featured" => (bool)($this->data["flags"] & $this::FLAG_FEATURED),
+                "unprocessed" => (bool)($this->data["flags"] & $this::FLAG_UNPROCESSED),
+                "block_guests" => (bool)($this->data["flags"] & $this::FLAG_BLOCK_GUESTS),
+                "block_comments" => (bool)($this->data["flags"] & $this::FLAG_BLOCK_COMMENTS),
+                "custom_thumbnail" => (bool)($this->data["flags"] & $this::FLAG_CUSTOM_THUMBNAIL),
+            ];
+        }
     }
 }
