@@ -3,7 +3,11 @@
 {% set title = "Home" %}
 
 {% if is_chaziz_sb %}
-    {% set site_name = '<span style="font-weight: 400;">square</span><span style="font-weight: 800;">bracket</span>' %}
+    {% if is_fulptube %}
+        {% set site_name = '<span style="font-weight: 400;">Fulp</span><span style="font-weight: 800;">Tube</span>' %}
+    {% else %}
+        {% set site_name = '<span style="font-weight: 400;">square</span><span style="font-weight: 800;">bracket</span>' %}
+    {% endif %}
 {% else %}
     {% set site_name = website_branding.name %}
 {% endif %}
@@ -49,7 +53,7 @@
 
 {% block precontent %}
     {% if current_theme == "default" %}
-        <div class="jumbotron homepage-banner">
+        <div class="jumbotron homepage-banner {% if is_fulptube %}fulptube{% endif %}">
             <div class="jumbotron-container">
                 <div class="jumbotron-welcome">
                     {% if is_user_logged_in %}

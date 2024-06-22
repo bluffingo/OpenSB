@@ -1,5 +1,7 @@
 {% if is_chaziz_sb %}
-    {% if current_theme == 'dark' %}
+    {% if is_fulptube %}
+        {% set logo = '/assets/sb_branding/fulp/logo-wordmark.png' %}
+    {% elseif current_theme == 'dark' %}
         {% set logo = '/assets/sb_branding/finalium/logo-wordmark-dark.png' %}
     {% elseif current_theme == 'beta' %}
         {% set logo = '/assets/sb_branding/finalium/logo-2021.png' %}

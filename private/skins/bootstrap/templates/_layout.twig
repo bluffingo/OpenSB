@@ -1,5 +1,9 @@
 {% if is_chaziz_sb %}
-    {% set logo = '/assets/sb_branding/bootstrap/logo.png' %}
+    {% if is_fulptube %}
+        {% set logo = '/assets/sb_branding/fulp/logo-wordmark.png' %}
+    {% else %}
+        {% set logo = '/assets/sb_branding/bootstrap/logo.png' %}
+    {% endif %}
 {% else %}
     {% set logo = website_branding.assets_location ~ '/logo.png' %}
 {% endif %}

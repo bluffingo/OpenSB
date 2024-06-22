@@ -89,7 +89,21 @@ class Templating
             }));
         }
 
+        // override squarebracket branding with fulptube branding if accessed via fulptube.rocks.
+        // this fulptube branding is meant to look like the squarebracket branding on purpose, since
+        // both squarebracket.pw and fulptube.rocks lead to the same site.
+        if (($isChazizSB) && ($_SERVER['SERVER_NAME'] === 'fulptube.rocks')) {
+            $isFulpTube = true;
+            $branding = [
+                "name" => "FulpTube",
+                "assets_location" => "/assets/sb_branding/fulp",
+            ];
+        } else {
+            $isFulpTube = false;
+        }
+
         $this->twig->addGlobal('is_chaziz_sb', $isChazizSB);
+        $this->twig->addGlobal('is_fulptube', $isFulpTube);
         $this->twig->addGlobal('is_debug', $isDebug);
         $this->twig->addGlobal('is_user_logged_in', $auth->isUserLoggedIn());
         $this->twig->addGlobal('user_data', $auth->getUserData());
