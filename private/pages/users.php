@@ -16,7 +16,19 @@ if ($enableFederatedStuff) {
     }
 }
 
-$queryData = $database->fetchArray($database->query("SELECT u.id, u.about, u.title, (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num FROM users u ORDER BY u.lastview DESC"));
+$page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
+$limit = sprintf("%s,%s", (($page_number - 1) * 20), 20);
+
+$queryData = $database->fetchArray(
+    $database->query(
+        "SELECT u.id, u.about, u.title, 
+       (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, 
+       (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num 
+        FROM users u 
+        WHERE u.id NOT IN (SELECT userid FROM bans)
+        ORDER BY u.lastview DESC LIMIT $limit"));
+
+$countData = $database->result("SELECT COUNT(*) FROM users u WHERE u.id NOT IN (SELECT userid FROM bans)");
 
 $usersData = [];
 foreach ($queryData as $user)
@@ -36,10 +48,11 @@ foreach ($queryData as $user)
 }
 
 $data = [
-    "users" => $usersData,
-    "total" => count($usersData),
+    'users' => $usersData,
+    'count' => $countData,
 ];
 
 echo $twig->render('users.twig', [
 	'users' => $data,
+    'page' => $page_number,
 ]);

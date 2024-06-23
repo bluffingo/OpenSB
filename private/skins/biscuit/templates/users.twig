@@ -3,9 +3,12 @@
 {% set title = "Members" %}
 
 	{% block content %}
+		{% set total_pages = (users.count / items_per_page) | round(0, 'ceil') %}
+		{% set current_page = page %}
+
 		<div class="section">
 			<div class="section-title">
-				<h1>Members ({{ users.total }})</h1>
+				<h1>Members (Page {{ current_page }} of {{ total_pages }})</h1>
 			</div>
 			<div class="content-box">
 				{% for user in users.users %}
@@ -20,7 +23,7 @@
 								</td>
 								<td>
 									<div class="content-title">
-										{{ user_link(user) }} ({{ user.info.displayname }})
+										{{ user_link(user) }}
 									</div>
 									<div class="content-description">
 										{% if user.about|trim is not empty %}
@@ -40,4 +43,8 @@
 				{% endfor %}
 			</div>
 		</div>
+
+		{% set le_url = 'users?page=%s' %}
+
+		{{ pagination(users.count, items_per_page, le_url, current_page) }}
 	{% endblock %}

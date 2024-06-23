@@ -1,0 +1,33 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Members{% endblock %}
+
+	{% block content %}
+		{% set total_pages = (users.count / items_per_page) | round(0, 'ceil') %}
+		{% set current_page = page %}
+
+		<h1>Members</h1>
+		<table class="settings">
+			<tr>
+				<th style="width:80px">Profile picture</th>
+				<th>Username</th>
+				<th style="width:80px">Submissions</th>
+				<th style="width:80px">Journals</th>
+			</tr>
+			{% for user in users.users %}
+				<tr>
+					<td>
+						<img src="{{ profile_picture(user.info.username) }}" width="80" alt="{{ user.info.username }}" class="rounded">
+					</td>
+					<td>{{ user_link(user) }} ({{ user.info.displayname }})
+						{% if user.rank > 1 %}<img src="/assets/icons/shield{% if user_data.darkmode %}_w{%endif%}.svg" height="16">{% endif %}
+						{% if user.rank > 3 %}<img src="/assets/icons/root{% if user_data.darkmode %}_w{%endif%}.svg" height="16">{% endif %}</td>
+					<td class="center">{{ user.submissions }}</td>
+					<td class="center">{{ user.journals }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+		{% set le_url = 'users?page=%s' %}
+
+		{{ pagination(users.count, items_per_page, le_url, current_page) }}
+	{% endblock %}
