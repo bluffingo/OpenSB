@@ -6,19 +6,33 @@
     <form action="settings" method="post" enctype="multipart/form-data">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Audience rating</h5>
-                <p class="card-text">Choose the highest audience rating you are most comfortable with. Higher rating
-                    submissions may not be appropriate.</p>
-                <select class="form-select" name="rating" id="rating">
-                    <option value="general" {% if user_data.comfortable_rating == "general" %}selected{% endif %}>
-                        General
-                    </option>
-                    <option value="questionable"
-                            {% if user_data.comfortable_rating == "questionable" %}selected{% endif %}>Questionable
-                    </option>
-                    <option value="mature" {% if user_data.comfortable_rating == "mature" %}selected{% endif %}>Mature
-                    </option>
-                </select>
+                <h5 class="card-title">Profile</h5>
+                <div class="form-input">
+                    <label for="profilePicture" class="form-label">Profile picture:</label>
+                    <input type="file" name="profilePicture" id="profilePicture" class="form-control">
+                </div>
+
+                <div class="form-input">
+                    <label for="profilePicture" class="form-label">Profile banner (Biscuit frontend):</label>
+                    <input type="file" name="profileBanner" id="profileBanner" class="form-control">
+                </div>
+
+                <div class="form-input">
+                    <label for="title" class="form-label">Profile name:</label>
+                    <input class="form-control" type="text" name="title" size="45" maxlength="50"
+                           value="{{ user_data.title }}">
+                </div>
+
+                <div class="form-input">
+                    <label for="about" class="form-label">Profile description:</label>
+                    <textarea class="form-control" name="about" rows="5" cols="80"
+                              wrap="virtual">{{ user_data.about }}</textarea>
+                </div>
+
+                <div class="form-input">
+                    <label class="form-label" for="customcolor">Username color:</label>
+                    <input class="form-control" name="customcolor" type="color" value="{{ user_data.customcolor | default('523bb8') }}">
+                </div>
             </div>
         </div>
         <br>
@@ -47,23 +61,14 @@
         <br>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Profile</h5>
-                <div class="form-input">
-                    <label for="profilePicture" class="form-label">Profile picture:</label>
-                    <input type="file" name="profilePicture" id="profilePicture" class="form-control">
+                <h5 class="card-title">Filtering</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="rating" id="rating" value="true" {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
+                    <label class="form-check-label" for="rating"> Enable sensitive content</label><br>
                 </div>
-
-                <div class="form-input">
-                    <label for="title" class="form-label">Profile name:</label>
-                    <input class="form-control" type="text" name="title" size="45" maxlength="50"
-                           value="{{ user_data.title }}">
-                </div>
-
-                <div class="form-input">
-                    <label for="about" class="form-label">Profile description:</label>
-                    <textarea class="form-control" name="about" rows="5" cols="80"
-                              wrap="virtual">{{ user_data.about }}</textarea>
-                </div>
+                <hr>
+                <h6>Blacklisted tags</h6>
+                <textarea class="form-control" name="blacklisted_tags" rows="5" cols="80" wrap="hard">{% for tag in user_data.blacklisted_tags %}{{ tag }},{% endfor %}</textarea>
             </div>
         </div>
         <br>

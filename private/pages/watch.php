@@ -83,8 +83,8 @@ $ip = Utilities::get_ip_address();
 // engine crawler, but this would most likely require an api that would cost money to use in the long-term.
 // i think only counting views from logged-in users would be good for now. -chaziz 4/12/2024
 if ($auth->isUserLoggedIn()) {
-    $type = "user"; }
-else {
+    $type = "user";
+} else {
     $type = "guest";
 }
 

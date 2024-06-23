@@ -150,6 +150,7 @@ $profile_data = [
     "id" => $data["id"],
     "username" => $data["name"],
     "displayname" => $data["title"],
+    "color" => $data["customcolor"],
     "about" => ($data['about'] ?? false),
     "joined" => $data["joined"],
     "connected" => $data["lastview"],

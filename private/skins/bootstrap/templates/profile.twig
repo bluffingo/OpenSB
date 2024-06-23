@@ -11,7 +11,7 @@
 	{% block precontent %}
 <style>
     .bg-custom-profile {
-        background-color: purple;
+        background-color: {{ data.color }};
     }
 
     .bg-channel-background {
@@ -52,7 +52,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="caption">
-                        <h3>Uploaded by %s", [data.username]) }}</h3>
+                        <h3>Uploaded by {{ data.username }}</h3>
                         {% for submission in data.submissions %}
                             {{ include('/components/smallvideobox.twig') }}
                         {% else %}
@@ -65,7 +65,7 @@
         <div class="col-md-4 order-1 order-md-2">
             <div class="card mb-2">
                 <div class="card-body">
-                    <h4>About %s", [data.username]) }}</h4>
+                    <h4>About {{ data.username }}</h4>
                     <hr>
                     <dl class="row mb-0">
                         <dt class="col-auto">Last seen</dt>
@@ -80,6 +80,4 @@
         </div>
     </div>
 </div>
-</div>
-<div class="container">
     {% endblock %}
