@@ -33,12 +33,14 @@ if (!$data) {
 
 $tagBlacklist = $auth->getUserBlacklistedTags();
 
-foreach (json_decode($data["tags"]) as $tag) {
-    if (in_array($tag, $tagBlacklist)) {
-        if ($auth->isUserLoggedIn()) {
-            UnorganizedFunctions::Notification("This submission is blacklisted per your settings.", "/");
-        } else {
-            UnorganizedFunctions::Notification("This submission is blacklisted by default.", "/");
+if (isset($data["tags"])) {
+    foreach (json_decode($data["tags"]) as $tag) {
+        if (in_array($tag, $tagBlacklist)) {
+            if ($auth->isUserLoggedIn()) {
+                UnorganizedFunctions::Notification("This submission is blacklisted per your settings.", "/");
+            } else {
+                UnorganizedFunctions::Notification("This submission is blacklisted by default.", "/");
+            }
         }
     }
 }
