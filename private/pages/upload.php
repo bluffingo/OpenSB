@@ -21,7 +21,7 @@ if ($auth->getUserBanData()) {
 }
 
 if ($disableUploading) {
-    UnorganizedFunctions::Notification("The ability to upload submissions has been disabled.", "/");
+    UnorganizedFunctions::Notification("The ability to upload has been disabled.", "/");
 }
 
 if (!$auth->isUserAdmin()) {
@@ -96,7 +96,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
 
             parse_tags($tags2, $new, $database);
 
-            UnorganizedFunctions::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
+            UnorganizedFunctions::Notification("Your upload has been completed.", "./watch.php?v=" . $new, "success");
         } else {
             UnorganizedFunctions::Notification("There is a problem with file permissions and/or PHP on this instance.", "/upload");
         }
@@ -108,7 +108,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
 
         parse_tags($tags2, $new, $database);
 
-        UnorganizedFunctions::Notification("Your submission has been uploaded.", "./watch.php?v=" . $new, "success");
+        UnorganizedFunctions::Notification("Your upload has been completed.", "./watch.php?v=" . $new, "success");
     } else {
         UnorganizedFunctions::Notification("This file format is not supported.", "/upload");
     }

@@ -6,29 +6,29 @@ global $twig, $database, $auth, $orange;
 
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
-use SquareBracket\SubmissionData;
-use SquareBracket\SubmissionQuery;
+use SquareBracket\UploadData;
+use SquareBracket\UploadQuery;
 use SquareBracket\UnorganizedFunctions;
 use SquareBracket\UserData;
 use SquareBracket\Utilities;
 
 $id = $path[2] ?? null;
 
-$submission = new SubmissionData($database, $id);
+$submission = new UploadData($database, $id);
 
-// check if the submission has been taken down.
+// check if the upload has been taken down.
 if ($takedown = $submission->getTakedown()) {
     // go back to homepage with a notification
-    UnorganizedFunctions::Notification("This submission has been taken down: " . $takedown["reason"], "/");
+    UnorganizedFunctions::Notification("This upload has been taken down: " . $takedown["reason"], "/");
 }
 
 if ($submission->isDeleted()) {
-    UnorganizedFunctions::Notification("This submission has been deleted.", "/");
+    UnorganizedFunctions::Notification("This upload has been deleted.", "/");
 }
 
 $data = $submission->getData();
 if (!$data) {
-    UnorganizedFunctions::Notification("This submission does not exist.", "/");
+    UnorganizedFunctions::Notification("This upload does not exist.", "/");
 }
 
 $tagBlacklist = $auth->getUserBlacklistedTags();
@@ -37,9 +37,9 @@ if (isset($data["tags"])) {
     foreach (json_decode($data["tags"]) as $tag) {
         if (in_array($tag, $tagBlacklist)) {
             if ($auth->isUserLoggedIn()) {
-                UnorganizedFunctions::Notification("This submission is blacklisted per your settings.", "/");
+                UnorganizedFunctions::Notification("This upload is blacklisted per your settings.", "/");
             } else {
-                UnorganizedFunctions::Notification("This submission is blacklisted by default.", "/");
+                UnorganizedFunctions::Notification("This upload is blacklisted by default.", "/");
             }
         }
     }
@@ -48,7 +48,7 @@ if (isset($data["tags"])) {
 $comments = new CommentData($database, CommentLocation::Submission, $id);
 $author = new UserData($database, $data["author"]);
 if ($author->isUserBanned()) {
-    UnorganizedFunctions::Notification("This submission's author is banned.", "/");
+    UnorganizedFunctions::Notification("This upload's author is banned.", "/");
 }
 
 $tags = $submission->getTags();
@@ -107,7 +107,7 @@ if ($database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND use
 
 $whereRatings = UnorganizedFunctions::whereRatings();
 $whereTagBlacklist = UnorganizedFunctions::whereTagBlacklist();
-$submission_query = new SubmissionQuery($database);
+$submission_query = new UploadQuery($database);
 
 // ported from poktwo, modified to accommodate for takedowns and relevancy.
 $recommendfields = "
@@ -160,7 +160,7 @@ if ($tags === []) {
     $recommended = $submissions_by_author;
 } else {
     // if there are tags, use jaccard stuff ported from poktwo to list submissions that may be relevant enough.
-    // this isn't ported to SubmissionQuery for now since this query uses a slightly different syntax.
+    // this isn't ported to UploadQuery for now since this query uses a slightly different syntax.
 
     $query = "SELECT v.* 
     FROM videos v

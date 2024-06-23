@@ -31,23 +31,23 @@
                             <div class="tab-pane fade show active" id="homenav-recent" role="tabpanel"
                                  aria-labelledby="homenav-recent-tab" tabindex="0">
                                 <h3>
-                                    Recent submissions
+                                    Recent Uploads
                                 </h3>
                                 {% for submission in data.submissions_new %}
                                     {{ include('/components/smallvideobox.twig') }}
                                 {% else %}
-                                    <p>No submissions.</p>
+                                    <p>No uploads.</p>
                                 {% endfor %}
                             </div>
                             <div class="tab-pane fade" id="homenav-random" role="tabpanel"
                                  aria-labelledby="homenav-random-tab" tabindex="0">
                                 <h3>
-                                    Random submissions
+                                    Random Uploads
                                 </h3>
                                 {% for submission in data.submissions %}
                                     {{ include('/components/smallvideobox.twig') }}
                                 {% else %}
-                                    <p>No submissions.</p>
+                                    <p>No uploads.</p>
                                 {% endfor %}
                             </div>
                         </div>

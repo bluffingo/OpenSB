@@ -1,6 +1,6 @@
 {% extends "_layout.twig" %}
 
-{% set title = "My submissions" %}
+{% set title = "My uploads" %}
 
 {% block content %}
     {% set items_per_page = 20 %}
@@ -9,7 +9,7 @@
 
     <div class="section">
         <div class="section-title">
-            <h1>My submissions (Page {{ current_page }} of {{ total_pages }})</h1>
+            <h1>My uploads (Page {{ current_page }} of {{ total_pages }})</h1>
         </div>
         <div class="content-box">
             {% for submission in data.submissions %}

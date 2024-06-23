@@ -5,9 +5,9 @@
 	{% block content %}
         <div class="row">
             <div class="col">
-                <h3>Browse submissions</h3>
+                <h3>Browse uploads</h3>
                 <div class="card-body">
-                    {% for video in data.submissions|batch(4) %}
+                    {% for video in data.uploads|batch(4) %}
                         <div class="row">
                             {% for submission in video %}
                                 <div class="col-3">
@@ -16,7 +16,7 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        <p>No submissions.</p>
+                        <p>No uploads.</p>
                     {% endfor %}
                     {{ pagination(pageCount, 20, currentPage, url) }}
                 </div>

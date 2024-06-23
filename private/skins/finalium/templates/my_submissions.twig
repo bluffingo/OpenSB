@@ -1,14 +1,14 @@
 {% extends "_layout.twig" %}
 
-{% block title %}My submissions {% if page != 1 %}(Page {{ page }}){% endif %}{% endblock %}
+{% block title %}My uploads {% if page != 1 %}(Page {{ page }}){% endif %}{% endblock %}
 
 	{% block content %}
-        <h1>My submissions {% if page != 1 %}(Page {{ page }}){% endif %}</h1>
+        <h1>My uploads {% if page != 1 %}(Page {{ page }}){% endif %}</h1>
         <div class="grid">
             {% for submission in data.submissions %}
                 {{ submission_box(submission) }}
             {% else %}
-                <div class="header_message header-danger" role="alert">You have no submissions!</div>
+                <div class="header_message header-danger" role="alert">You have no uploads!</div>
             {% endfor %}
 
             {% set le_url = 'my_submissions?page=%s' %}

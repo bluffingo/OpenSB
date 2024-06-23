@@ -5,9 +5,9 @@ namespace OpenSB;
 global $twig, $database, $orange, $auth;
 
 use SquareBracket\UnorganizedFunctions;
-use SquareBracket\SubmissionQuery;
+use SquareBracket\UploadQuery;
 
-$submission_query = new SubmissionQuery($database);
+$submission_query = new UploadQuery($database);
 
 if ($orange->getLocalOptions()["skin"] == "biscuit") {
     $submissions_random_query_limit = 24;

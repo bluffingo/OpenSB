@@ -13,7 +13,7 @@ if (!$auth->isUserLoggedIn())
     UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
 }
 
-$submission = new \SquareBracket\SubmissionData($database, $id);
+$submission = new \SquareBracket\UploadData($database, $id);
 
 if (!$id) {
     UnorganizedFunctions::Notification("You have not specified the submission.", "/");

@@ -25,7 +25,7 @@
                 {% for submission in data.submissions %}
                     {{ submission_box(submission) }}
                 {% else %}
-                    <div class="header_message header-danger" role="alert">There are no submissions.</div>
+                    <div class="header_message header-danger" role="alert">There are no uploads.</div>
                 {% endfor %}
 
                 {% if type == 'all' %}

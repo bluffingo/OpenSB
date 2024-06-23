@@ -2,7 +2,7 @@
 
 namespace SquareBracket;
 
-class SubmissionQuery
+class UploadQuery
 {
     private $database;
     private $whereRatings;

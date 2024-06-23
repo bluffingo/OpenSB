@@ -4,12 +4,12 @@ namespace OpenSB;
 
 global $auth, $orange, $storage, $database;
 
-use SquareBracket\SubmissionData;
+use SquareBracket\UploadData;
 use SquareBracket\UnorganizedFunctions;
 
 $id = ($_GET['v'] ?? null);
 
-$submission = new SubmissionData($orange->getDatabase(), $id);
+$submission = new UploadData($orange->getDatabase(), $id);
 $data = $submission->getData();
 
 if (!$auth->isUserLoggedIn())

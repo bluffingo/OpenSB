@@ -111,7 +111,7 @@
         <div class="grid">
             <div class="col-small-12 col-medium-6">
                 {% if data.featured_submission %}
-                    <div class="text-title">Featured submission</div>
+                    <div class="text-title">Featured Upload</div>
                     <div class="profile-featured-submission">
                         <a href="/view/{{ data.featured_submission.id }}">
                             <img src="{{ thumbnail(data.featured_submission.id, data.featured_submission.type, data.featured_submission.bools.custom_thumbnail) }}"
@@ -148,7 +148,7 @@
     {% if data.submissions %}
         <div class="section">
             <div class="section-title">
-                <h1>Recent submissions</h1>
+                <h1>Recent Uploads</h1>
                 <a href="/browse?user={{ data.username }}">More</a>
             </div>
             <div class="content-box">

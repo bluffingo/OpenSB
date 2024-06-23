@@ -333,16 +333,16 @@ HTML;
                     "name" => "My profile",
                     "url" => "/user/" . $username,
                 ],
-                "my_submissions" => [
-                    "name" => "My submissions",
-                    "url" => "/my_submissions",
+                "my_uploads" => [
+                    "name" => "My uploads",
+                    "url" => "/my_uploads",
                 ],
                 "settings" => [
                     "name" => "Account settings",
                     "url" => "/settings",
                 ],
-                "new_submission" => [
-                    "name" => "Upload submission",
+                "upload" => [
+                    "name" => "Upload",
                     "url" => "/upload",
                 ],
                 "new_journal" => [

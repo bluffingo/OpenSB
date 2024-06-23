@@ -6,11 +6,11 @@ global $auth, $domain, $enableFederatedStuff, $activityPubAdapter, $database, $t
 
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
-use SquareBracket\SubmissionData;
+use SquareBracket\UploadData;
 use SquareBracket\UnorganizedFunctions;
-use SquareBracket\SubmissionQuery;
+use SquareBracket\UploadQuery;
 
-$submission_query = new SubmissionQuery($database);
+$submission_query = new UploadQuery($database);
 
 $username = $path[2] ?? null;
 
@@ -47,7 +47,7 @@ function handleFeaturedSubmission($database, $data): false|array
         }
     }
 
-    $submission = new SubmissionData($database, $featured_id["video_id"]);
+    $submission = new UploadData($database, $featured_id["video_id"]);
     $submission_data = $submission->getData();
     $bools = $submission->bitmaskToArray();
 

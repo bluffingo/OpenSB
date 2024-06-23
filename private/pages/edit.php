@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $database, $auth, $storage;
 
-use SquareBracket\SubmissionData;
+use SquareBracket\UploadData;
 use SquareBracket\UnorganizedFunctions;
 
 if (isset($_POST['upload'])) {
@@ -13,7 +13,7 @@ if (isset($_POST['upload'])) {
     $id = ($_GET['v'] ?? null);
 }
 
-$submission = new SubmissionData($database, $id);
+$submission = new UploadData($database, $id);
 $data = $submission->getData();
 
 if (!$auth->isUserLoggedIn())

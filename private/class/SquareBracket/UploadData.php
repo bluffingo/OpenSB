@@ -7,7 +7,7 @@ namespace SquareBracket;
  *
  * @since SquareBracket 1.0
  */
-class SubmissionData
+class UploadData
 {
     private \SquareBracket\Database $database;
     private $takedown;

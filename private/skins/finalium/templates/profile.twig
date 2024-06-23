@@ -90,7 +90,7 @@
             {% for submission in data.submissions %}
                 {{ submission_box(submission) }}
             {% else %}
-                <p>There are currently no submissions by {{ data.displayname }}</p>
+                <p>There are currently no uploads by {{ data.displayname }}</p>
             {% endfor %}
             {% if user_data.id == id %}
                 {% set forceuser = "&forceuser" %}

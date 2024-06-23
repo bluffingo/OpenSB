@@ -104,7 +104,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body-fat">
-                    <h3 style="margin-top:0">Recommended randomly</h3>
+                    <h3 style="margin-top:0">Random Uploads</h3>
                     {% for submission in data.submissions %}
                         {{ submission_box(submission) }}
                     {% else %}
@@ -116,7 +116,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body-fat">
-                    <h3 style="margin-top:0">Recently uploaded to {{ website_branding.name }}</h3>
+                    <h3 style="margin-top:0">Recent Uploads</h3>
                     {% for submission in data.submissions_new %}
                         {{ submission_box(submission) }}
                     {% else %}

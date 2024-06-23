@@ -5,9 +5,9 @@ namespace OpenSB;
 global $twig, $database;
 
 use SquareBracket\UnorganizedFunctions;
-use SquareBracket\SubmissionQuery;
+use SquareBracket\UploadQuery;
 
-$submission_query = new SubmissionQuery($database);
+$submission_query = new UploadQuery($database);
 
 function getOrderFromType($type): string
 {

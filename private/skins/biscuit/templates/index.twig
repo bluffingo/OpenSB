@@ -25,7 +25,7 @@
 {% block scripts %}
     {#
     this is only really needed in the default theme (and maybe a dark default theme in the future)
-    this will break the "random submissions" thing, and that's by design.
+    this will break the "random uploads" thing, and that's by design.
     #}
     {% if current_theme == "default" %}
         <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
@@ -88,7 +88,7 @@
         <div class="col-8">
             <div class="section">
                 <div class="section-title">
-                    <h1>Random Submissions</h1>
+                    <h1>Random Uploads</h1>
                     <a href="/browse">More</a>
                 </div>
                 <div class="content-box">
@@ -105,7 +105,7 @@
             </div>
             <div class="section">
                 <div class="section-title">
-                    <h1>Recent Submissions</h1>
+                    <h1>Recent Uploads</h1>
                     <a href="/browse">More</a>
                 </div>
                 <div class="content-box">
