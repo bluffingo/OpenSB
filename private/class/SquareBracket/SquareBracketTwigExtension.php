@@ -117,6 +117,7 @@ class SquareBracketTwigExtension extends AbstractExtension
     {
         $config = [
             'language' => '\RelativeTime\Languages\English',
+            'use_weeks' => true,
             'separator' => ', ',
             'suffix' => true,
             'truncate' => 1,
