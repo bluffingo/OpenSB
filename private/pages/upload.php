@@ -65,7 +65,11 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
     $description = ($_POST['desc'] ?? null);
     $rating = isset($_POST['rating']) && $_POST['rating'] === 'true' ? 'mature' : 'general';
     $tags = ($_POST['tags'] ?? '');
-    $tags2 = preg_split('/[\s,]+/', $tags); // parses both commas and spaces
+    if ($tags === '') {
+        $tags2 = [];
+    } else {
+        $tags2 = preg_split('/[\s,]+/', trim($tags, ","));
+    }
 
     if ($isDebug) {
         $noProcess = ($_POST['debugUploaderSkip'] ?? null);
@@ -84,7 +88,7 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
         }
         if (move_uploaded_file($temp_name, $target_file)) {
             $database->query("INSERT INTO videos (video_id, title, description, author, time, tags, videofile, flags, rating) VALUES (?,?,?,?,?,?,?,?,?)",
-                [$new, $title, $description, $uploader, time(), json_encode(explode(', ', $_POST['tags'])), 'dynamic/videos/' . $new, $status, $rating]);
+                [$new, $title, $description, $uploader, time(), json_encode($tags2), 'dynamic/videos/' . $new, $status, $rating]);
 
             if (!isset($noProcess)) {
                 $storage->processVideo($new, $target_file);

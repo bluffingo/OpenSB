@@ -22,7 +22,7 @@ if ($takedown) {
     UnorganizedFunctions::Notification("This submission has been taken down: " . $takedown["reason"], "/");
 }
 
-// todo: check if video is in deleted_videos
+// todo: check if submission is in deleted_videos
 $data = $submission->getData();
 if (!$data) {
     UnorganizedFunctions::Notification("This submission does not exist.", "/");
@@ -56,7 +56,7 @@ if ($bools["block_guests"] && !$auth->isUserLoggedIn())
 }
 
 if (UnorganizedFunctions::RatingToNumber($data["rating"]) > UnorganizedFunctions::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
-    UnorganizedFunctions::Notification("This submission is not suitable according to your settings.", "/");
+    UnorganizedFunctions::Notification("You cannot access sensitive-rated submissions.", "/");
 }
 
 $ip = Utilities::get_ip_address();
@@ -158,6 +158,7 @@ if ($tags === []) {
     ON v.video_id = recommended.video_id
     WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
     AND $whereRatings
+    AND v.author NOT IN (SELECT userid FROM bans)
     ORDER BY RAND()",
     [$data["id"]]));
 

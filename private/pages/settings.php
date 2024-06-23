@@ -4,7 +4,6 @@ namespace OpenSB;
 
 global $twig, $auth, $database;
 
-use SquareBracket\Pages\AccountSettings;
 use SquareBracket\UnorganizedFunctions;
 
 global $auth;
@@ -35,6 +34,13 @@ if (isset($_POST['save'])) {
     $customcolor = ($_POST['customcolor'] ?? '#523bb8');
 
     $rating = isset($_POST['rating']) && $_POST['rating'] === 'true' ? 'mature' : 'general';
+    $blacklisted_tags = ($_POST['blacklisted_tags'] ?? $auth->getDefaultBlacklistedTags());
+
+    if ($blacklisted_tags === '') {
+        $parsed_tags = [];
+    } else {
+        $parsed_tags = preg_split('/[\s,]+/', trim($blacklisted_tags, ","));
+    }
 
     $error = '';
 
@@ -109,8 +115,14 @@ if (isset($_POST['save'])) {
     }
 
     if (!$error) {
-        $database->query("UPDATE users SET title = ?, about = ?, comfortable_rating = ?, customcolor = ? WHERE id = ?",
-            [$title, $about, $rating, $customcolor, $auth->getUserID()]);
+        $database->query("UPDATE users SET 
+                 title = ?, 
+                 about = ?, 
+                 comfortable_rating = ?, 
+                 customcolor = ?, 
+                 blacklisted_tags = ?
+                 WHERE id = ?",
+            [$title, $about, $rating, $customcolor, json_encode($parsed_tags), $auth->getUserID()]);
 
         if ($username_changed) {
             // avoids "This user does not exist." error since $auth by this point still uses outdated data.

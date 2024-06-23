@@ -15,10 +15,13 @@ class Authentication
     private array $user_data;
     private $user_ban_data;
     private $user_notice_count; // this shouldn't be here but whatever
+    private $default_tags_blacklist = [
+        "diaper"
+    ];
 
     public function __construct(\SquareBracket\Database $database, $token)
     {
-        $accountfields = "id, ip, name, title, email, title, about, powerlevel, joined, lastview, comfortable_rating, customcolor";
+        $accountfields = "id, ip, name, title, email, title, about, powerlevel, joined, lastview, comfortable_rating, customcolor, blacklisted_tags";
         $this->database = $database;
         if (isset($token)) {
             if($this->user_id = $this->database->result("SELECT id FROM users WHERE token = ?", [$token])) {
@@ -26,6 +29,12 @@ class Authentication
                 $this->user_data = $this->database->fetch("SELECT $accountfields FROM users WHERE id = ?", [$this->user_id]);
                 $this->user_notice_count = $this->database->result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$this->user_id]);
                 $this->user_ban_data = $this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->user_id]);
+
+                if (!isset($this->user_data['blacklisted_tags'])) {
+                    $this->user_data['blacklisted_tags'] = $this->default_tags_blacklist;
+                } else {
+                    $this->user_data['blacklisted_tags'] = json_decode($this->user_data['blacklisted_tags']); // decode this shit on the fly
+                }
 
                 // check if the current logged-in user is IP banned from another address, if so, then log them out.
                 // this will prevent users from using IP banned accounts on other IPs.
@@ -75,6 +84,7 @@ class Authentication
         } else {
             return [
                 "comfortable_rating" => "general",
+                "blacklisted_tags" => $this->default_tags_blacklist,
             ];
         }
     }
@@ -100,5 +110,19 @@ class Authentication
         } else {
             return false;
         }
+    }
+
+    public function getUserBlacklistedTags()
+    {
+        if ($this->is_logged_in) {
+            return $this->user_data['blacklisted_tags'];
+        } else {
+            return $this->default_tags_blacklist;
+        }
+    }
+
+    public function getDefaultBlacklistedTags()
+    {
+        return $this->default_tags_blacklist;
     }
 }

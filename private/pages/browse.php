@@ -38,10 +38,26 @@ $order = getOrderFromType($type);
 $limit = sprintf("LIMIT %s,%s", (($page_number - 1) * 20), 20);
 
 $whereRatings = UnorganizedFunctions::whereRatings();
+$whereTagBlacklist = UnorganizedFunctions::whereTagBlacklist();
 
 $database = $orange->getDatabase();
-$submissions = $database->fetchArray($database->query("SELECT v.* FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings ORDER BY $order DESC $limit"));
-$submission_count = $database->result("SELECT COUNT(*) FROM videos v WHERE v.video_id NOT IN (SELECT submission FROM takedowns) AND $whereRatings");
+$submissions = $database->fetchArray($database->query("
+    SELECT v.*
+    FROM videos v
+    WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
+    AND v.author NOT IN (SELECT userid FROM bans)
+    AND $whereRatings
+    AND $whereTagBlacklist
+    ORDER BY $order DESC $limit
+"));
+
+$submission_count = $database->result("
+    SELECT COUNT(*)
+    FROM videos v
+    WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
+    AND v.author NOT IN (SELECT userid FROM bans)
+    AND $whereRatings"
+);
 
 $data = [
     "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $submissions),

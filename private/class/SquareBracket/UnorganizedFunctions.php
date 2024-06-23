@@ -139,7 +139,7 @@ class UnorganizedFunctions
 
             $return_value = match ($rating) {
                 'general' => 'v.rating IN ("general")',
-                'questionable' => 'v.rating IN ("general","questionable")',
+                'questionable' => 'v.rating IN ("general","questionable")', // unused
                 'mature' => 'v.rating IN ("general","questionable","mature")',
             };
         } else {
@@ -149,12 +149,29 @@ class UnorganizedFunctions
         return $return_value;
     }
 
+    public static function whereTagBlacklist(): string {
+        global $auth;
+
+        // FIXME: if this is blank, in the case a user wants to see everything. this completely fucks up.
+        $tagBlacklist = $auth->getUserBlacklistedTags();
+
+        // we use old-fashioned json tags instead of the "new" ported-from-poktwo tags so we don't have to bloat
+        // submission-related queries into 20 fucking useless lines that slows the site down to a crawl.
+        // -chaziz 6/23/2024
+        $conditions = [];
+        foreach ($tagBlacklist as $tag) {
+            $conditions[] = "JSON_CONTAINS(v.tags, '\"$tag\"') = 0";
+        }
+
+        return implode(' AND ', $conditions);
+    }
+
     // TODO: This should probably be an enum class.
     public static function RatingToNumber($rating): int
     {
         return match ($rating) {
             'general' => 0,
-            'questionable' => 1,
+            'questionable' => 1, // completely unused
             'mature' => 2,
         };
     }

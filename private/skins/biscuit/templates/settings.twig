@@ -50,9 +50,10 @@
             <div class="form-input">
                 <label for="current_pass">Current password:</label>
                 <input class="form-submit" type="password" name="current_pass" size="30" maxlength="256"
-                       placeholder="Current password"><br>
+                       placeholder="Current password">
             </div>
 
+            <br>
             <div class="text-title smaller">
                 <span>Change username</span>
             </div>
@@ -60,9 +61,10 @@
             <div class="form-input">
                 <label for="current_pass">New username:</label>
                 <input class="form-submit" type="text" name="new_username" size="30" maxlength="256"
-                       placeholder="New username"><br>
+                       placeholder="New username">
             </div>
 
+            <br>
             <div class="text-title smaller">
                 <span>Change password</span>
             </div>
@@ -81,12 +83,22 @@
             <hr>
 
             <div class="text-title">
-                <span>Sensitive content</span>
+                <span>Filtering</span>
             </div>
 
             <div class="form-submit">
                 <input type="checkbox" name="rating" id="rating" value="true" {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
                 <label for="rating"> Enable sensitive content</label><br>
+            </div>
+
+            <br>
+
+            <div class="text-title smaller">
+                <span>Blacklisted tags</span>
+            </div>
+
+            <div class="form-submit">
+                <textarea class="form-submit" name="blacklisted_tags" rows="5" cols="80" wrap="hard">{% for tag in user_data.blacklisted_tags %}{{ tag }},{% endfor %}</textarea>
             </div>
 
             <hr>
