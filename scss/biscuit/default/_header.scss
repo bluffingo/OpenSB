@@ -70,11 +70,26 @@
 form.header-search
 {
   display: none;
-  max-width: 250px;
 
+  @include responsive('tiny') {
+    max-width: 120px;
+  }
   @include responsive('small') {
     display: block;
+    margin-left: 5px;
+    max-width: 200px;
+    #header-search-input {
+      width: 100px;
+    }
+  }
+  @include responsive('medium') {
+    display: block;
     margin-left: 15px;
+    max-width: 300px;
+
+    #header-search-input {
+      width: 200px;
+    }
   }
 
   #header-search-input {
