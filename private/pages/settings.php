@@ -66,34 +66,36 @@ if (isset($_POST['save'])) {
 
     $username_changed = false;
 
-    if ($currentPass && $new_username) {
-        if (password_verify($currentPass, $password)) {
-            $old_username = $database->fetch("SELECT name FROM users WHERE id = ?", [$auth->getUserID()])["name"];
+    if ($currentPass && isset($new_username)) {
+        if ($new_username !== $auth->getUserData()["username"]) {
+            if (password_verify($currentPass, $password)) {
+                $old_username = $database->fetch("SELECT name FROM users WHERE id = ?", [$auth->getUserID()])["name"];
 
-            $is_old_username = $database->fetch("SELECT COUNT(*) FROM user_old_names WHERE user = ? AND old_name = ?", [$auth->getUserID(), $new_username]);
+                $is_old_username = $database->fetch("SELECT COUNT(*) FROM user_old_names WHERE user = ? AND old_name = ?", [$auth->getUserID(), $new_username]);
 
-            if ($is_old_username) {
-                $database->query("INSERT INTO user_old_names (user, old_name, time) VALUES (?, ?, ?)",
-                    [$auth->getUserID(), $old_username, time()]);
-                $database->query("UPDATE users SET name = ? WHERE id = ?", [$new_username, $auth->getUserID()]);
-                $username_changed = true;
-            } else {
-                $error .= UnorganizedFunctions::validateUsername($new_username, $database);
-                if ($database->fetch("SELECT COUNT(*) FROM user_old_names WHERE user != ? AND old_name = ?", [$auth->getUserID(), $new_username])) {
-                    $error .= "You cannot use someone else's previous username.";
-                }
+                if ($is_old_username) {
+                    $database->query("INSERT INTO user_old_names (user, old_name, time) VALUES (?, ?, ?)",
+                        [$auth->getUserID(), $old_username, time()]);
+                    $database->query("UPDATE users SET name = ? WHERE id = ?", [$new_username, $auth->getUserID()]);
+                    $username_changed = true;
+                } else {
+                    $error .= UnorganizedFunctions::validateUsername($new_username, $database);
+                    if ($database->fetch("SELECT COUNT(*) FROM user_old_names WHERE user != ? AND old_name = ?", [$auth->getUserID(), $new_username])) {
+                        $error .= "You cannot use someone else's previous username.";
+                    }
 
-                if (!$error) {
-                    $last_entry_time = $database->fetch("SELECT MAX(time) AS last_time FROM user_old_names WHERE user = ?", [$auth->getUserID()])["last_time"];
+                    if (!$error) {
+                        $last_entry_time = $database->fetch("SELECT MAX(time) AS last_time FROM user_old_names WHERE user = ?", [$auth->getUserID()])["last_time"];
 
-                    if (!$last_entry_time || (time() - $last_entry_time >= 2592000)) {
-                        $database->query("INSERT INTO user_old_names (user, old_name, time) VALUES (?, ?, ?)",
-                            [$auth->getUserID(), $old_username, time()]);
-                        $database->query("UPDATE users SET name = ? WHERE id = ?", [$new_username, $auth->getUserID()]);
-                        $username_changed = true;
-                    } else {
-                        $days_left = ceil((2592000 - (time() - $last_entry_time)) / 86400);
-                        $error .= "Please wait until $days_left days to change your username.";
+                        if (!$last_entry_time || (time() - $last_entry_time >= 2592000)) {
+                            $database->query("INSERT INTO user_old_names (user, old_name, time) VALUES (?, ?, ?)",
+                                [$auth->getUserID(), $old_username, time()]);
+                            $database->query("UPDATE users SET name = ? WHERE id = ?", [$new_username, $auth->getUserID()]);
+                            $username_changed = true;
+                        } else {
+                            $days_left = ceil((2592000 - (time() - $last_entry_time)) / 86400);
+                            $error .= "Please wait until $days_left days to change your username.";
+                        }
                     }
                 }
             }

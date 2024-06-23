@@ -21,6 +21,15 @@ class SquareBracket {
 
         if (isset($_COOKIE["SBOPTIONS"])) {
             $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
+
+            // biscuit frontend is now internally called "biscuit" to avoid any confusion with bitqobo.
+            // to avoid a bug where the old userlink implementation is used in squarebrackettwigextension,
+            // automatically update SBOPTIONS on the fly.
+            if ($this->options["skin"] == "qobo")
+            {
+                $this->options["skin"] = "biscuit";
+                setcookie("SBOPTIONS", base64_encode(json_encode($this->options)), 2147483647);
+            }
         } else {
             $this->options = [
                 "skin" => $defaultTemplate,

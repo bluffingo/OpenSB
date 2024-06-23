@@ -30,14 +30,11 @@ class Templating
     {
         global $isChazizSB, $auth, $defaultTemplate, $isDebug, $branding, $enableInviteKeys;
         chdir(__DIR__ . '/../..');
-        $this->skin = $orange->getLocalOptions()["skin"] ?? $defaultTemplate;
-        $this->theme = $orange->getLocalOptions()["theme"] ?? "default";
 
-        // biscuit frontend is now internally called "biscuit" to avoid any confusion with bitqobo
-        if ($this->skin == "qobo")
-        {
-            $this->skin = "biscuit";
-        }
+        $options = $orange->getLocalOptions();
+
+        $this->skin = $options["skin"] ?? $defaultTemplate;
+        $this->theme = $options["theme"] ?? "default";
 
         // TODO: reset theme if the user changes their skin to another skin
         if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {
