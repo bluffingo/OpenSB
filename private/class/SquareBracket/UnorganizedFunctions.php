@@ -330,7 +330,11 @@ class UnorganizedFunctions
 
     public static function usernameToID($database, $username)
     {
-        return $database->fetch("SELECT id FROM users WHERE name = ?", [$username])["id"];
+        if ($data = $database->fetch("SELECT id FROM users WHERE name = ?", [$username])) {
+            return $data["id"];
+        } else {
+            return false;
+        }
     }
 
     public static function validateUsername($username, $database) {

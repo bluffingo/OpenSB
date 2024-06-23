@@ -29,16 +29,24 @@ function getOrderFromType($type): string
 }
 
 $type = ($_GET['type'] ?? 'recent');
+$user = ($_GET['user'] ?? null);
 $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
 $order = getOrderFromType($type);
 $limit = sprintf("%s,%s", (($page_number - 1) * 20), 20);
 
-$whereRatings = UnorganizedFunctions::whereRatings();
-$whereTagBlacklist = UnorganizedFunctions::whereTagBlacklist();
-
-$submissions = $submission_query->query($order, $limit);
-$submission_count = $submission_query->count();
+if ($user) {
+    // TODO: handle old names
+    $id = UnorganizedFunctions::usernameToID($database, $user);
+    if (!$id) {
+        UnorganizedFunctions::Notification("This user does not exist.", "/");
+    }
+    $submissions = $submission_query->query($order, $limit, "v.author = ?", [$id]);
+    $submission_count = $submission_query->count("v.author = ?", [$id]);
+} else {
+    $submissions = $submission_query->query($order, $limit);
+    $submission_count = $submission_query->count();
+}
 
 $data = [
     "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $submissions),
@@ -46,6 +54,7 @@ $data = [
 ];
 
 echo $twig->render('browse.twig', [
+    'user' => $user,
     'data' => $data,
     'page' => $page_number,
     'type' => $type,

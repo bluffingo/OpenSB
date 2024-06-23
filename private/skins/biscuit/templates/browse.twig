@@ -10,24 +10,25 @@
         <div class="section-title">
             <h1>Browse (Page {{ current_page }} of {{ total_pages }})</h1>
         </div>
-        <ul class="nav">
-            <li {% if type=='recent' %}class="active" {% endif %}><a
-                        href="/browse?type=recent">Most recent</a></li>
-            <li {% if type=='popular' %}class="active" {% endif %}><a
-                        href="/browse?type=popular">Most popular</a></li>
-            {# <li {% if type=='discussed' %}class="active" {% endif %}><a
-                                href="/browse?type=discussed">Most discussed</a></li>
-                    <li {% if type=='favorited' %}class="active" {% endif %}><a
-                                href="/browse?type=favorited">Most favorited</a></li> #}
-            <li {% if type=='random' %}class="active" {% endif %}><a
-                        href="/browse?type=random">Random</a></li>
-        </ul>
+        {% if not user %}
+            <ul class="nav">
+                <li {% if type=='recent' %}class="active" {% endif %}><a
+                            href="/browse?type=recent">Most recent</a></li>
+                <li {% if type=='popular' %}class="active" {% endif %}><a
+                            href="/browse?type=popular">Most popular</a></li>
+                <li {% if type=='random' %}class="active" {% endif %}><a
+                            href="/browse?type=random">Random</a></li>
+            </ul>
+        {% endif %}
         <div class="content-box">
             {% for submission in data.submissions %}
                 {{ include('/components/_index_submission.twig') }}
             {% endfor %}
         </div>
-        {% if data.type == 'all' %}
+
+        {% if user %}
+            {% set le_url = 'browse?user=' ~ user ~ '&page=%s' %}
+        {% elseif type == 'recent' %}
             {% set le_url = 'browse?page=%s' %}
         {% else %}
             {% set le_url = 'browse?type=' ~ type ~ '&page=%s' %}

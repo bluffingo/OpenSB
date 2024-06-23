@@ -40,13 +40,17 @@ class SubmissionQuery
     }
 
     // used in the browse page
-    public function count() {
+    public function count($whereCondition = null, $params = []) {
         $query = "
         SELECT COUNT(*)
         FROM videos v
         WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
         AND v.author NOT IN (SELECT userid FROM bans)
         ";
+
+        if (!empty($whereCondition)) {
+            $query .= "AND $whereCondition ";
+        }
 
         if (!empty($this->whereRatings)) {
             $query .= "AND $this->whereRatings ";
@@ -56,6 +60,6 @@ class SubmissionQuery
             $query .= "AND $this->whereTagBlacklist ";
         }
 
-        return $this->database->result($query);
+        return $this->database->result($query, $params);
     }
 }
