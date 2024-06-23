@@ -127,7 +127,8 @@
     }
 
     &.dark {
-        background: #404040;
+        background: darken($content-box-background-color, 70%);
+        border-color: darken($content-box-border-color, 65%);
     }
 
     .content-text {

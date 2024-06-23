@@ -34,13 +34,6 @@
 
 
 {% block content %}
-    {% if submission.is_owner %}
-        <div class="content-box watch-edit dark">
-            <a href="/edit?v={{ submission.id }}">Edit</a>
-            <a href="/feature?v={{ submission.id }}">Feature on profile</a>
-        </div>
-        <br>
-    {% endif %}
     <div class="grid">
         <div class="col-large-9 col-8">
             <div class="submission">
@@ -49,6 +42,13 @@
             <br>
             <div class="watch-box">
                 <h1>{{ submission.title }}</h1>
+                {% if submission.is_owner %}
+                    <hr>
+                    <div class="watch-box-edit">
+                        <a href="/edit?v={{ submission.id }}">Edit</a>
+                        <a href="/feature?v={{ submission.id }}">Feature on profile</a>
+                    </div>
+                {% endif %}
                 <hr>
                 <div class="watch-box-row">
                     <div class="watch-box-left">
@@ -56,6 +56,8 @@
                         <div class="watch-box-author">
                             <div class="watch-box-author-userlink">
                                 {{ user_link(submission.author) }}
+                            </div>
+                            <div class="watch-box-author-follow">
                                 {% if not submission.is_owner %}
                                     <button class="button button-secondary button-small" id="follow-user">
                                         {% if submission.author.following %}
@@ -64,15 +66,11 @@
                                             Follow
                                         {% endif %}
                                     </button>
-                                    (<span id="follower_count">{{ submission.author.followers }}</span> followers)
+                                    <span id="follower_count">{{ submission.author.followers }}</span>
+                                {% else %}
+                                    <span>{{ submission.author.followers }} followers</span>
                                 {% endif %}
                             </div>
-                            <div class="watch-box-author-info">Uploaded on {{ submission.published | date('F j, Y') }}</div>
-                            {% if submission.published_originally and submission.original_site %}
-                                <div class="watch-box-author-info-small">First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}</div>
-                            {% elseif submission.original_site %}
-                                <div class="watch-box-author-info-small">Originally uploaded on {{ submission.original_site }}</div>
-                            {% endif %}
                         </div>
                     </div>
                     <div class="watch-box-right">
@@ -82,13 +80,21 @@
                         {% endif %}
                         <div class="watch-box-views">{{ submission.interactions.views }} view{{ pluralViews }}</div>
                         <div id="rater"></div>
+                        {#
                         <div><small>{{ submission.interactions.ratings.total }} ratings</small></div>
+                        #}
                     </div>
                 </div>
-                {% if submission.description | trim is not empty %}
                 <hr>
                 <div class="watch-box-description">
-                        {{ submission.description | markdown_user_written }}
+                    <div class="watch-box-description-info">Uploaded on {{ submission.published | date('F j, Y') }}</div>
+                    {% if submission.published_originally and submission.original_site %}
+                        <div class="watch-box-description-info-small">First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}</div>
+                    {% elseif submission.original_site %}
+                        <div class="watch-box-description-info-small">Originally uploaded on {{ submission.original_site }}</div>
+                    {% endif %}
+                    {% if submission.description | trim is not empty %}
+                    {{ submission.description | markdown_user_written }}
                 </div>
                 {% endif %}
                 <hr>
