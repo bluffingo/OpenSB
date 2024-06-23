@@ -13,6 +13,7 @@ class SubmissionData
     private $takedown;
     private $data;
     private $tags;
+    private $deleted_data;
 
     // FLAGS
 
@@ -35,6 +36,8 @@ class SubmissionData
     public function __construct(\SquareBracket\Database $database, $id)
     {
         $this->database = $database;
+
+        $this->deleted_data = $this->database->fetch("SELECT COUNT(*) FROM deleted_videos v WHERE id = ?", [$id])["COUNT(*)"];
 
         // if we get the internal id instead of the string id, we correct $id after fetching the submission otherwise
         // stuff won't work.
@@ -65,6 +68,11 @@ class SubmissionData
     public function getTags()
     {
         return $this->tags;
+    }
+
+    public function isDeleted()
+    {
+        return $this->deleted_data;
     }
 
     public function bitmaskToArray()

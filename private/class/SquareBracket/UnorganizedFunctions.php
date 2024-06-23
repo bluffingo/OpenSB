@@ -151,8 +151,7 @@ class UnorganizedFunctions
 
     public static function whereTagBlacklist(): string {
         global $auth;
-
-        // FIXME: if this is blank, in the case a user wants to see everything. this completely fucks up.
+        
         $tagBlacklist = $auth->getUserBlacklistedTags();
 
         // we use old-fashioned json tags instead of the "new" ported-from-poktwo tags so we don't have to bloat

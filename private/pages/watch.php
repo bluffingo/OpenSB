@@ -17,17 +17,32 @@ $id = $path[2] ?? null;
 $submission = new SubmissionData($database, $id);
 
 // check if the submission has been taken down.
-$takedown = $submission->getTakedown();
-if ($takedown) {
+if ($takedown = $submission->getTakedown()) {
     // go back to homepage with a notification
     UnorganizedFunctions::Notification("This submission has been taken down: " . $takedown["reason"], "/");
 }
 
-// todo: check if submission is in deleted_videos
+if ($submission->isDeleted()) {
+    UnorganizedFunctions::Notification("This submission has been deleted.", "/");
+}
+
 $data = $submission->getData();
 if (!$data) {
     UnorganizedFunctions::Notification("This submission does not exist.", "/");
 }
+
+$tagBlacklist = $auth->getUserBlacklistedTags();
+
+foreach (json_decode($data["tags"]) as $tag) {
+    if (in_array($tag, $tagBlacklist)) {
+        if ($auth->isUserLoggedIn()) {
+            UnorganizedFunctions::Notification("This submission is blacklisted per your settings.", "/");
+        } else {
+            UnorganizedFunctions::Notification("This submission is blacklisted by default.", "/");
+        }
+    }
+}
+
 $comments = new CommentData($database, CommentLocation::Submission, $id);
 $author = new UserData($database, $data["author"]);
 if ($author->isUserBanned()) {
