@@ -7,6 +7,7 @@ global $twig, $database, $auth, $orange;
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\SubmissionData;
+use SquareBracket\SubmissionQuery;
 use SquareBracket\UnorganizedFunctions;
 use SquareBracket\UserData;
 use SquareBracket\Utilities;
@@ -88,6 +89,8 @@ if ($database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND use
 }
 
 $whereRatings = UnorganizedFunctions::whereRatings();
+$whereTagBlacklist = UnorganizedFunctions::whereTagBlacklist();
+$submission_query = new SubmissionQuery($database);
 
 // ported from poktwo, modified to accommodate for takedowns and relevancy.
 $recommendfields = "
@@ -133,34 +136,35 @@ ORDER BY
     jaccard_index DESC
 LIMIT 24";
 
-$submissions_by_author = $database->fetchArray($database->query(
-    "SELECT v.* 
-        FROM videos v 
-        WHERE v.video_id NOT IN (SELECT submission FROM takedowns) 
-        AND $whereRatings 
-        AND v.author = ? 
-        ORDER BY RAND() 
-        LIMIT 24",
-    [$data["author"]]
-));
+$submissions_by_author = $submission_query->query("RAND()", 24, "v.author = ?", [$data["author"]]);
 
 if ($tags === []) {
     // if there are no tags, list the author's other submissions
     $recommended = $submissions_by_author;
 } else {
     // if there are tags, use jaccard stuff ported from poktwo to list submissions that may be relevant enough.
-    $recommended = $database->fetchArray($database->query("
-    SELECT v.* 
+    // this isn't ported to SubmissionQuery for now since this query uses a slightly different syntax.
+
+    $query = "SELECT v.* 
     FROM videos v
     INNER JOIN (
         SELECT $recommendfields
     ) AS recommended
     ON v.video_id = recommended.video_id
-    WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
-    AND $whereRatings
-    AND v.author NOT IN (SELECT userid FROM bans)
-    ORDER BY RAND()",
-    [$data["id"]]));
+    WHERE v.video_id NOT IN (SELECT submission FROM takedowns)";
+
+    if (!empty($whereRatings)) {
+        $query .= "AND $whereRatings ";
+    }
+
+    if (!empty($twhereTagBlacklist)) {
+        $query .= "AND $whereTagBlacklist ";
+    }
+
+    $query .= "AND v.author NOT IN (SELECT userid FROM bans)
+    ORDER BY RAND()";
+
+    $recommended = $database->fetchArray($database->query($query, [$data["id"]]));
 
     // if no other submissions match, then fallback to listing the author's other submissions
     if (empty($recommended)) {
@@ -202,7 +206,8 @@ $page_data = [
 // this is for the like/dislike buttons in the finalium frontend
 if ($orange->getLocalOptions()["skin"] == "finalium") {
     // calculates the ratio for the likesaber
-    function calculateRatio($number, $percent, $total) {
+    function calculateRatio($number, $percent, $total): float|int
+    {
         // if there's no ratio or dislikes, return 100.
         if ($total == 0 or $number == 0) {
             return 100;

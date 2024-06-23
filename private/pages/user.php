@@ -8,6 +8,9 @@ use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\SubmissionData;
 use SquareBracket\UnorganizedFunctions;
+use SquareBracket\SubmissionQuery;
+
+$submission_query = new SubmissionQuery($database);
 
 $username = $path[2] ?? null;
 
@@ -120,14 +123,7 @@ if ($database->fetch("SELECT * FROM bans WHERE userid = ?", [$data["id"]]))
     UnorganizedFunctions::Notification("This user is banned.", "/");
 }
 
-$user_submissions =
-    $database->fetchArray(
-        $database->query("SELECT v.* FROM videos v WHERE v.video_id 
-                                   NOT IN (SELECT submission FROM takedowns) 
-                           AND v.author = ?
-                           AND $whereRatings 
-                         ORDER BY v.time 
-                         DESC LIMIT 12", [$data["id"]]));
+$user_submissions = $submission_query->query("v.time desc", 12, "v.author = ?", [$data["id"]]);
 
 $user_journals =
     $database->fetchArray(

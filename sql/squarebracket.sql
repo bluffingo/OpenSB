@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2024 at 08:14 AM
+-- Generation Time: Jun 23, 2024 at 06:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.3.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sb_dev`
+-- Database: `broken_shit`
 --
 
 -- --------------------------------------------------------
@@ -314,7 +314,7 @@ CREATE TABLE `takedowns` (
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL COMMENT 'Incrementing ID for internal purposes.',
+  `id` int(11) NOT NULL COMMENT ' 	Incrementing ID for internal purposes.',
   `name` varchar(128) NOT NULL COMMENT 'Username, chosen by the user',
   `email` varchar(128) NOT NULL,
   `password` varchar(128) NOT NULL COMMENT 'Password, hashed in bcrypt.',
@@ -331,7 +331,8 @@ CREATE TABLE `users` (
   `u_flags` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain user properties',
   `powerlevel` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '0 - banned. 1 - normal user. 2 - moderator. 3 - administrator',
   `group_id` int(11) NOT NULL DEFAULT 3,
-  `comfortable_rating` enum('general','questionable','mature') NOT NULL
+  `comfortable_rating` enum('general','questionable','mature') NOT NULL,
+  `blacklisted_tags` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -584,7 +585,7 @@ ALTER TABLE `takedowns`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Incrementing ID for internal purposes.';
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT ' 	Incrementing ID for internal purposes.';
 
 --
 -- AUTO_INCREMENT for table `user_old_names`

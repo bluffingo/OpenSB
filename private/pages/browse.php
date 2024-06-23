@@ -2,30 +2,27 @@
 
 namespace OpenSB;
 
-global $twig, $orange;
+global $twig, $database;
 
 use SquareBracket\UnorganizedFunctions;
+use SquareBracket\SubmissionQuery;
+
+$submission_query = new SubmissionQuery($database);
 
 function getOrderFromType($type): string
 {
     switch ($type) {
         case 'recent':
-            $order = "v.time";
+            $order = "v.time DESC";
             break;
         case 'popular':
-            $order = "views";
-            break;
-        case 'discussed':
-            $order = "comments"; // BROKEN
-            break;
-        case 'favorited':
-            $order = "favorites"; // BROKEN
+            $order = "views DESC";
             break;
         case 'random':
             $order = "RAND()";
             break;
         default:
-            $order = "v.time";
+            $order = "v.time DESC";
             break;
     }
     return $order;
@@ -35,29 +32,13 @@ $type = ($_GET['type'] ?? 'recent');
 $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
 $order = getOrderFromType($type);
-$limit = sprintf("LIMIT %s,%s", (($page_number - 1) * 20), 20);
+$limit = sprintf("%s,%s", (($page_number - 1) * 20), 20);
 
 $whereRatings = UnorganizedFunctions::whereRatings();
 $whereTagBlacklist = UnorganizedFunctions::whereTagBlacklist();
 
-$database = $orange->getDatabase();
-$submissions = $database->fetchArray($database->query("
-    SELECT v.*
-    FROM videos v
-    WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
-    AND v.author NOT IN (SELECT userid FROM bans)
-    AND $whereRatings
-    AND $whereTagBlacklist
-    ORDER BY $order DESC $limit
-"));
-
-$submission_count = $database->result("
-    SELECT COUNT(*)
-    FROM videos v
-    WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
-    AND v.author NOT IN (SELECT userid FROM bans)
-    AND $whereRatings"
-);
+$submissions = $submission_query->query($order, $limit);
+$submission_count = $submission_query->count();
 
 $data = [
     "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $submissions),

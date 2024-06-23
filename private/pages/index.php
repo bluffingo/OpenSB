@@ -5,9 +5,9 @@ namespace OpenSB;
 global $twig, $database, $orange, $auth;
 
 use SquareBracket\UnorganizedFunctions;
+use SquareBracket\SubmissionQuery;
 
-$whereRatings = UnorganizedFunctions::whereRatings();
-$whereTagBlacklist = UnorganizedFunctions::whereTagBlacklist();
+$submission_query = new SubmissionQuery($database);
 
 if ($orange->getLocalOptions()["skin"] == "biscuit") {
     $submissions_random_query_limit = 24;
@@ -17,25 +17,8 @@ if ($orange->getLocalOptions()["skin"] == "biscuit") {
     $submissions_recent_query_limit = 12;
 }
 
-$submissions_random = $database->fetchArray($database->query("
-    SELECT v.*
-    FROM videos v
-    WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
-    AND v.author NOT IN (SELECT userid FROM bans)
-    AND $whereRatings
-    AND $whereTagBlacklist
-    ORDER BY RAND() LIMIT {$submissions_random_query_limit}
-"));
-
-$submissions_recent = $database->fetchArray($database->query("
-    SELECT v.*
-    FROM videos v
-    WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
-    AND v.author NOT IN (SELECT userid FROM bans)
-    AND $whereRatings
-    AND $whereTagBlacklist
-    ORDER BY v.time DESC LIMIT {$submissions_recent_query_limit}
-"));
+$submissions_random = $submission_query->query("RAND()", $submissions_random_query_limit);
+$submissions_recent = $submission_query->query("v.time DESC", $submissions_recent_query_limit);
 
 $news_recent = $database->fetchArray($database->query("SELECT j.* FROM journals j WHERE j.is_site_news = 1 ORDER BY j.date DESC LIMIT 3"));
 $tags_recent = $database->fetchArray($database->query("SELECT t.*, COUNT(t.tag_id) AS use_count FROM tag_index ct LEFT JOIN tag_meta t ON ct.tag_id = t.tag_id GROUP BY ct.tag_id ORDER BY latestUse DESC LIMIT 75"));
