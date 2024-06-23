@@ -2,9 +2,9 @@
 
 This is the privacy policy for this site, squareBracket.
 
-The only people who currently have full server and database access are Chaziz and sks2002, they are the server administrators. Moderators do not have full server or database access, and can only use moderation tools provided by them.
+The only person who currently has full server and database access is Chaziz, who is the server administrator. Moderators do not have full server or database access and can only use moderation tools provided by Chaziz.
 
-Currently, squareBracket is hosted in a server located in the United Kingdom. Backups are stored by Chaziz in Canada.
+Currently, squareBracket is hosted on a server provided by Endless Hosting in the United States. Backups are stored by Chaziz in Canada.
 
 Whenever a request is sent, it is logged in the server's access logs. This will include your IP, user agent and HTTP referer. These access logs are only accessible to the server administrators. They will be used for temporary statistics and for logging potential errors that occur. In the case of illegal activity (e.g. a DDoS attack) the offending parts of an access log may be saved for further analysis.
 
