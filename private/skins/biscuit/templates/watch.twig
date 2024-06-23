@@ -95,8 +95,8 @@
                     {% endif %}
                     {% if submission.description | trim is not empty %}
                     {{ submission.description | markdown_user_written }}
+                    {% endif %}
                 </div>
-                {% endif %}
                 <hr>
                 <div class="watch-box-info">
                     <div class="grid">
