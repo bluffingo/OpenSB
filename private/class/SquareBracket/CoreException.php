@@ -3,8 +3,8 @@
 namespace SquareBracket;
 
 use JetBrains\PhpStorm\NoReturn;
-use Orange\Throwable;
 use ReturnTypeWillChange;
+use Throwable;
 
 class CoreException extends \Exception
 {

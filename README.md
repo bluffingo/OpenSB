@@ -47,23 +47,23 @@ You will have to modify the directories to match your instance's location.
 ```
 server {
     listen       80;
-    server_name  localhost;
+    server_name  squarebracket.pw;
 
-    root   /opt/html/OpenSB/public;
+    root   /var/www/squarebracket/public/;
 
     location / {
         try_files $uri /index.php$is_args$args;
     }
 
     location /dynamic/ {
-        root /opt/html/OpenSB/;
+        root /var/www/squarebracket/dynamic/;
         try_files $uri $uri/ =404;
     }
 
-    location ~ index.php$ {
+    location ~ \.php$ {
         include fastcgi_params;
         fastcgi_index index.php;
-        fastcgi_pass unix:/run/php-fpm/php-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
 }
