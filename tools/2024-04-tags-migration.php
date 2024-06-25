@@ -12,16 +12,6 @@ define("SB_GIT_PATH", SB_ROOT_PATH . '/.git'); // ONLY FOR makeVersionString() I
 
 require_once dirname(__DIR__) . '/private/class/common.php';
 
-function removeLastComma(&$array) {
-    if (count($array) > 0) {
-        end($array);
-        $lastKey = key($array);
-        $lastValue = &$array[$lastKey];
-        $lastValue = rtrim($lastValue, ',');
-    }
-}
-
-
 $submissions = $database->fetchArray($database->query("SELECT * FROM videos"));
 
 $uniqueTags = [];
@@ -30,7 +20,7 @@ foreach ($submissions as $submission) {
     if (isset($submission["tags"]) && ($submission["tags"] != '[""]')) {
         $tags = json_decode($submission["tags"]);
         if ($tags !== null) {
-           foreach ($tags as $tag) {
+            foreach ($tags as $tag) {
                 if (!in_array($tag, $uniqueTags)) {
                     $uniqueTags[] = $tag;
                 }
