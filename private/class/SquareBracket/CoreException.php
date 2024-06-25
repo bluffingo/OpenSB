@@ -28,8 +28,8 @@ class CoreException extends \Exception
         $errorMsg = sprintf('<b>%s</b> (line %s in %s)', $this->getMessage(), $this->getLine(), $this->getFile());
 
         http_response_code(500);
-        echo "<body bgcolor='black' text='blue'>";
-        echo "<h1>SquareBracket Exception</h1>";
+        echo "<body>";
+        echo "<h1>squareBracket Exception</h1>";
         echo "<p>" . $errorMsg . "</p>";
         echo "</body>";
         die();
