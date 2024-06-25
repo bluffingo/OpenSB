@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2024 at 06:32 AM
+-- Generation Time: Jun 25, 2024 at 03:54 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.3.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `broken_shit`
+-- Database: `squarebracket_migration`
 --
 
 -- --------------------------------------------------------
@@ -90,7 +90,7 @@ CREATE TABLE `channel_comments` (
   `author` bigint(20) NOT NULL,
   `date` bigint(20) NOT NULL,
   `deleted` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -106,7 +106,7 @@ CREATE TABLE `comments` (
   `author` bigint(20) NOT NULL COMMENT 'Numerical ID of comment author.',
   `date` bigint(20) NOT NULL COMMENT 'UNIX timestamp when the comment was posted.',
   `deleted` tinyint(4) NOT NULL COMMENT 'States that the comment is deleted'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -130,7 +130,7 @@ CREATE TABLE `deleted_videos` (
 
 CREATE TABLE `favorites` (
   `user_id` int(11) NOT NULL,
-  `video_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `video_id` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -173,7 +173,7 @@ CREATE TABLE `journals` (
   `author` int(11) NOT NULL,
   `date` int(11) NOT NULL,
   `is_site_news` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -189,7 +189,7 @@ CREATE TABLE `journal_comments` (
   `author` bigint(20) NOT NULL,
   `date` bigint(20) NOT NULL,
   `deleted` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -205,7 +205,7 @@ CREATE TABLE `notifications` (
   `sender` int(11) NOT NULL,
   `timestamp` int(11) NOT NULL,
   `related_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -218,7 +218,7 @@ CREATE TABLE `passwordresets` (
   `user` int(11) NOT NULL,
   `time` int(11) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -230,7 +230,7 @@ CREATE TABLE `rating` (
   `user` bigint(20) UNSIGNED NOT NULL COMMENT 'User that does the rating.',
   `video` bigint(20) UNSIGNED NOT NULL COMMENT 'Video that is being rated.',
   `rating` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '1 for like, 0 for dislike.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -254,7 +254,7 @@ CREATE TABLE `site_settings` (
 CREATE TABLE `subscriptions` (
   `id` int(11) NOT NULL COMMENT 'ID of the user that wants to subscribe to a user.',
   `user` int(11) NOT NULL COMMENT 'The user that the user wants to subscribe to.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -268,7 +268,7 @@ CREATE TABLE `suggestions` (
   `title` text NOT NULL,
   `description` text NOT NULL,
   `time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -305,7 +305,7 @@ CREATE TABLE `takedowns` (
   `time` int(11) NOT NULL,
   `reason` text NOT NULL,
   `sender` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -332,8 +332,8 @@ CREATE TABLE `users` (
   `powerlevel` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '0 - banned. 1 - normal user. 2 - moderator. 3 - administrator',
   `group_id` int(11) NOT NULL DEFAULT 3,
   `comfortable_rating` enum('general','questionable','mature') NOT NULL,
-  `blacklisted_tags` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `blacklisted_tags` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`blacklisted_tags`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -372,7 +372,7 @@ CREATE TABLE `videos` (
   `tags` text DEFAULT NULL COMMENT 'Video tags, serialized in JSON',
   `post_type` int(11) NOT NULL DEFAULT 0 COMMENT 'The type of the post, 0 is a video, 1 is a legacy video, 2 is art, and 3 is music.',
   `rating` enum('general','questionable','mature') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -385,7 +385,7 @@ CREATE TABLE `views` (
   `user` text NOT NULL,
   `timestamp` int(11) NOT NULL,
   `type` enum('guest','user') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
