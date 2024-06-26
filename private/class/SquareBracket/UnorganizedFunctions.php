@@ -242,7 +242,7 @@ class UnorganizedFunctions
     {
         $manager = new ImageManager(Driver::class);
         $img = $manager->read($temp_name);
-        $img->scaleDown(2048);
+        $img->scaleDown(4096);
         $img->toPng()->save($target);
     }
 
