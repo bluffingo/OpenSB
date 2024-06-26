@@ -5,7 +5,7 @@
 
 I wouldn't recommend using this code unless if you ***really*** know what you're doing.
 
-1. Get an Apache or NGINX server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. We recommend Apache, as NGINX is a piece of fucking shit.
+1. Get an Apache or NGINX server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. We recommend Apache, as you will experience issues with NGINX. This is shit code. You've been warned.
 1. Setup a virtual host. Look below the steps for an example.
 1. Run `composer update` from the terminal.
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
