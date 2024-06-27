@@ -78,7 +78,6 @@ table.c1 {
 
 	tr.h {
 		background-color: darken($secondary, 15%);
-		color: #fff;
 	}
 }
 
@@ -89,7 +88,7 @@ img
 
 h1 {
 	font-family: $font-branding;
-	margin-top: 0px;
+	margin-top: 0;
 	font-size: 24px;
 }
 
