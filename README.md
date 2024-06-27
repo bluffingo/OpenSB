@@ -5,12 +5,12 @@
 
 I wouldn't recommend using this code unless if you ***really*** know what you're doing.
 
-1. Get an Apache or NGINX server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. NGINX/FreeNGINX will work, but we use Apache with squareBracket.
+1. Get an Apache or NGINX server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. We recommend Apache, as you will experience issues with NGINX. This is shit code. You've been warned.
 1. Setup a virtual host. Look below the steps for an example.
 1. Run `composer update` from the terminal.
 1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
 1. Import the database template found in `sql/` into the database you want to use.
-1. Run the `compile-scss` script available in the tools directory to generate the required stylesheets. You may find Dart-Sass here at https://sass-lang.com/install. Ruby Sass is deprecated, do not use it. You MUST use a specific Dart-Sass, or it won't work. (Presumably the one that uses bash. You can find it [here](https://github.com/sass/dart-sass/releases/).)
+1. Run the `compile-scss` script available in the tools directory to generate the required stylesheets. You may find Dart-Sass here at https://sass-lang.com/install. Ruby Sass is deprecated, do not use it. You MUST use a specific Dart-Sass, or it won't work. You can find it [here](https://github.com/sass/dart-sass/releases/).
 
 ### Production specific (partially outdated)
 1. Use Linux for anything related to production.
