@@ -67,25 +67,31 @@ if (isset($_POST['save'])) {
     $username_changed = false;
 
     if ($currentPass && isset($new_username)) {
-        if ($new_username !== $auth->getUserData()["username"]) {
+        if ($new_username != $auth->getUserData()["name"]) {
             if (password_verify($currentPass, $password)) {
                 $old_username = $database->fetch("SELECT name FROM users WHERE id = ?", [$auth->getUserID()])["name"];
 
-                $is_old_username = $database->fetch("SELECT COUNT(*) FROM user_old_names WHERE user = ? AND old_name = ?", [$auth->getUserID(), $new_username]);
+                $is_old_username = $database->result("SELECT COUNT(*) FROM user_old_names WHERE user = ? AND old_name = ?", [$auth->getUserID(), $new_username]);
 
                 if ($is_old_username) {
+                    // still validate any old usernames because this code was actually broken and
+                    // didn't validate anything (sql was sanitized tho), at all! -chaziz 6/28/2024
+                    $error .= UnorganizedFunctions::validateUsername($new_username, $database, false);
                     $database->query("INSERT INTO user_old_names (user, old_name, time) VALUES (?, ?, ?)",
                         [$auth->getUserID(), $old_username, time()]);
-                    $database->query("UPDATE users SET name = ? WHERE id = ?", [$new_username, $auth->getUserID()]);
-                    $username_changed = true;
+
+                    if (!$error) {
+                        $database->query("UPDATE users SET name = ? WHERE id = ?", [$new_username, $auth->getUserID()]);
+                        $username_changed = true;
+                    }
                 } else {
                     $error .= UnorganizedFunctions::validateUsername($new_username, $database);
-                    if ($database->fetch("SELECT COUNT(*) FROM user_old_names WHERE user != ? AND old_name = ?", [$auth->getUserID(), $new_username])) {
+                    if ($database->result("SELECT COUNT(*) FROM user_old_names WHERE user != ? AND old_name = ?", [$auth->getUserID(), $new_username])) {
                         $error .= "You cannot use someone else's previous username.";
                     }
 
                     if (!$error) {
-                        $last_entry_time = $database->fetch("SELECT MAX(time) AS last_time FROM user_old_names WHERE user = ?", [$auth->getUserID()])["last_time"];
+                        $last_entry_time = $database->result("SELECT MAX(time) FROM user_old_names WHERE user = ?", [$auth->getUserID()]);
 
                         if (!$last_entry_time || (time() - $last_entry_time >= 2592000)) {
                             $database->query("INSERT INTO user_old_names (user, old_name, time) VALUES (?, ?, ?)",

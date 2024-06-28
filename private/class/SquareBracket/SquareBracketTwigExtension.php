@@ -209,6 +209,7 @@ class SquareBracketTwigExtension extends AbstractExtension
         return $data;
     }
 
+    // new userlink used on biscuit
     public function UserLink($user): string
     {
         // Extract and sanitize user information
@@ -237,6 +238,7 @@ class SquareBracketTwigExtension extends AbstractExtension
         return sprintf('<a class="%s" style="%s" href="%s">%s</a>', $class, $style, $href, $displayText);
     }
 
+    // old userlink used on bootstrap and finalium
     public function UserLinkOld($user): string
     {
         return <<<HTML

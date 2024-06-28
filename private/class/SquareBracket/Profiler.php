@@ -15,16 +15,18 @@ class Profiler
         $this->starttime = microtime(true);
     }
 
-    function getAuthData() {
+    function getAuthData(): string
+    {
         global $auth;
         if ($auth->isUserLoggedIn()) {
-            return "Site user is logged in as " . $auth->getUserData()["name"] . ".";
+            return "Site user is logged in as " . htmlspecialchars($auth->getUserData()["name"]) . ".";
         } else {
             return "Site user is logged out.";
         }
     }
 
-    function whoAmI() {
+    function whoAmI(): string
+    {
         $whoami = exec('whoami');
         if ($whoami) {
             return "Running under system user " . $whoami;
@@ -32,7 +34,8 @@ class Profiler
         return "Running under unknown system user";
     }
 
-    function getStats() {
+    function getStats(): void
+    {
         printf("Rendered in %1.8fs with %dKB memory used. %s. %s",
             microtime(true) - $this->starttime,
             memory_get_usage(false) / 1024, $this->whoAmI(), $this->getAuthData());

@@ -336,11 +336,13 @@ class UnorganizedFunctions
         }
     }
 
-    public static function validateUsername($username, $database) {
+    public static function validateUsername($username, $database, $checkIfTaken = true) {
         $error = "";
 
         if (!isset($username)) $error .= "Blank username. ";
-        if ($database->result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= "Username has already been taken. ";
+        if ($checkIfTaken) {
+            if ($database->result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= "Username has already been taken. ";
+        }
         if (!preg_match('/^[a-zA-Z0-9\-_]+$/', $username)) $error .= "Username contains invalid characters. ";
 
         return $error;
