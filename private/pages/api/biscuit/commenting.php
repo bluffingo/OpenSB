@@ -4,7 +4,6 @@ namespace OpenSB;
 
 global $auth, $orange, $twig, $isDebug;
 
-use SquareBracket\Templating;
 use SquareBracket\UserData;
 
 chdir('../../');

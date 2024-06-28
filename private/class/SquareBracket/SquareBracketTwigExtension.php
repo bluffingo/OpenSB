@@ -38,6 +38,7 @@ class SquareBracketTwigExtension extends AbstractExtension
             new TwigFunction('pagination', [$this, 'pagination'], ['is_safe' => ['html']]),
             new TwigFunction('header_main_links', [$this, 'headerMainLinks']),
             new TwigFunction('header_user_links', [$this, 'headerUserLinks']),
+            new TwigFunction('header_user_account_links', [$this, 'headerUserAccountLinks']),
             new TwigFunction('get_css_file_date', [$this, 'getCSSFileDate']),
             new TwigFunction('submission_box', [$this, 'submissionBox'], ['is_safe' => ['html']]),
             new TwigFunction('comment', [$this, 'comment'], ['is_safe' => ['html']]),
@@ -373,6 +374,25 @@ HTML;
                     "name" => "Register",
                     "url" => "/register",
                 ],
+            ];
+        }
+
+        return $array;
+    }
+
+    public function headerUserAccountLinks()
+    {
+        global $orange, $database;
+        $accountsArray = $orange->getAccountsArray();
+
+        $array = [];
+
+        foreach ($accountsArray as $account) {
+            $data = $database->result("SELECT name FROM users WHERE id = ?", [$account["userid"]]);
+
+            $array[] = [
+                "id" => $account["userid"],
+                "username" => $data,
             ];
         }
 

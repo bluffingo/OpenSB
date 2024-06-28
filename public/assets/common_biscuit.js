@@ -1,12 +1,31 @@
+sbAccounts = document.cookie.split('; ').find(row => row.startsWith('SBACCOUNTS='));
+
 function error(error) {
     play('error');
     console.error("OpenSB Biscuit Frontend Error: " + error);
 }
 
+function getSbUser(id) {
+    let data;
+    fetch("/api/biscuit/get_user/" + id, {
+        method: "GET",
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+        .then(response => response.json())
+        .then(json => {
+            if (json.error) {
+                error(json.error);
+            }
+            return json;
+        })
+}
+
 let uiSounds = false;
-const cookie = document.cookie.split('; ').find(row => row.startsWith('SBOPTIONS='));
-if (cookie) {
-    const encodedOptions = cookie.split('=')[1];
+const sbOptions = document.cookie.split('; ').find(row => row.startsWith('SBOPTIONS='));
+if (sbOptions) {
+    const encodedOptions = sbOptions.split('=')[1];
     const decodedOptions = decodeURIComponent(encodedOptions);
     const options = JSON.parse(atob(decodedOptions));
     if (options.hasOwnProperty('sounds')) {

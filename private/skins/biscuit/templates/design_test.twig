@@ -1,0 +1,17 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Whoooo! Biscuit!" %}
+
+{% block content %}
+    {% for color in color_types %}
+        <div class="banner banner-{{ color }}">
+            <span class="notification-text">
+                This is a {{ color }} banner. You may go back to the homepage <a href="/">here</a>.
+            </span>
+        </div>
+    {% endfor %}
+    <br>
+    {% for color in color_types %}
+        <div class="button button-{{ color }}">{{ color }} button!</div>
+    {% endfor %}
+{% endblock %}

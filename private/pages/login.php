@@ -2,12 +2,68 @@
 
 namespace OpenSB;
 
-global $twig, $database;
+global $twig, $database, $auth, $orange;
 
 use SquareBracket\UnorganizedFunctions;
 use SquareBracket\Utilities;
 
+$warning = $orange->getWarningString();
+
+$path_username = $path[2] ?? null;
+
+if (isset($path_username)) {
+    if (isset($_POST["loginsubmit"])) {
+        die("?????");
+    }
+
+    $is_the_account_in_the_accounts_array = false;
+    $id = UnorganizedFunctions::usernameToID($database, $path_username);
+    $accounts = $orange->getAccountsArray();
+    $new_array = [];
+    $token = null;
+
+    // stupid shit
+    foreach ($accounts as $account) {
+        if ($account["userid"] == $id) {
+            $is_the_account_in_the_accounts_array = true;
+            $token = $account["token"];
+            $new_array[] = [
+                "userid" => $auth->getUserID(),
+                "token" => $_COOKIE["SBTOKEN"],
+            ];
+        } else {
+            $new_array[] = $account;
+        }
+    }
+
+    if ($is_the_account_in_the_accounts_array) {
+        setcookie('SBTOKEN', $token, [
+            'expires' => time() + (30 * 24 * 60 * 60),
+            'path' => '/',
+            'domain' => '',
+            'secure' => false,
+            'httponly' => true,
+            'samesite' =>'Lax',
+        ]);
+
+        $encoded_sbaccounts_cookie = ($warning . base64_encode(json_encode($new_array)));
+
+        setcookie('SBACCOUNTS', $encoded_sbaccounts_cookie, [
+            'expires' => time() + (30 * 24 * 60 * 60),
+            'path' => '/',
+            'domain' => '',
+            'secure' => false,
+            'httponly' => false,
+            'samesite' =>'Lax',
+        ]);
+        UnorganizedFunctions::Notification("Switched to $path_username", '/', "success");
+    } else {
+        UnorganizedFunctions::Notification("You have not logged into this account.", '/');
+    }
+}
+
 if (isset($_POST["loginsubmit"])) {
+
     $error = false;
 
     $username = ($_POST['username'] ?? null);
@@ -16,6 +72,10 @@ if (isset($_POST["loginsubmit"])) {
 
     if (!$username) $error = true;
     if (!$password) $error = true;
+
+    if ($username == $auth->getUserData()["name"]) {
+        UnorganizedFunctions::Notification("You're already logged into this account.", "/");
+    }
 
     if (!$error) {
         $logindata = $database->fetch("SELECT password,token,ip FROM users WHERE name = ?", [$username]);
@@ -32,6 +92,44 @@ if (isset($_POST["loginsubmit"])) {
                 $expires = time() + (365 * 24 * 60 * 60);
             } else {
                 $expires = time() + (30 * 24 * 60 * 60);
+            }
+
+            // if we're logged in, add our current token in an array for account switching purposes.
+            if (isset($_COOKIE["SBTOKEN"])) {
+                if (!isset($_COOKIE["SBACCOUNTS"])) {
+                    $current_userid = $auth->getUserID();
+
+                    $cookie_shit_testing = [
+                        [
+                            "userid" => $current_userid,
+                            "token" => $_COOKIE["SBTOKEN"],
+                        ]
+                    ];
+
+                    $encoded_sbaccounts_cookie = ($warning . base64_encode(json_encode($cookie_shit_testing)));
+                } else {
+                    // TODO: this will be buggy, i can feel it. -chaziz 6/28/2024
+                    $stupid_fucking_bullshit = str_replace($warning, "", $_COOKIE["SBACCOUNTS"]);
+                    $decoded_accounts = json_decode(base64_decode($stupid_fucking_bullshit));
+
+                    $current_userid = $auth->getUserID();
+
+                    $decoded_accounts[] = [
+                        "userid" => $current_userid,
+                        "token" => $_COOKIE["SBTOKEN"],
+                    ];
+
+                    $encoded_sbaccounts_cookie = ($warning . base64_encode(json_encode($decoded_accounts)));
+                }
+
+                setcookie('SBACCOUNTS', $encoded_sbaccounts_cookie, [
+                    'expires' => $expires,
+                    'path' => '/',
+                    'domain' => '',
+                    'secure' => false,
+                    'httponly' => false,
+                    'samesite' =>'Lax',
+                ]);
             }
 
             setcookie('SBTOKEN', $logindata['token'], [

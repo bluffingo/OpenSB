@@ -2,21 +2,19 @@
 
 // colors
 
-$threshold: 75%; // contrast threshold
+$threshold: 66%; // contrast threshold
 
 $primary: #3498db; // primary color
 $primary-darker: darken($primary, 33%); // darker primary color
-$secondary: #f5f5f5; //secondary color (nearly white)
-$green: #22c522;
-$yellow: #ffc107;
-$red: #dc143c;
+$secondary: #eee; //secondary color (nearly white)
+$green: #28c228;
+$red: #c01b0c;
 
 $color-map: (
         "primary": $primary,
         "secondary": $secondary,
         "success": $green,
         "danger": $red,
-        "warning": $yellow,
 );
 
 // fonts
@@ -46,6 +44,7 @@ $image-border-color: rgba(black, 0.25);
 // buttons
 $button-padding: 6px 11px;
 $button-padding-small: 3px 8px;
+$button-padding-big: 7px 15px;
 $button-padding-huge: 0.5em 1em;
 
 // content boxes

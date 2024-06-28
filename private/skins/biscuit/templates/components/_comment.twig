@@ -11,7 +11,7 @@
                 <small>Null comment</small>
             {% endif %}
 
-            {% if comment.id %}
+            {% if comment.id and is_user_logged_in %}
             <a class="reply-button" data-comment-id="{{ comment.id }}">Reply</a>
             <div class="reply-form" id="reply-form-{{ comment.id }}" style="display: none;">
                 <textarea class="form-submit-wide" id="reply_contents_{{ comment.id }}" maxlength="1000"></textarea>

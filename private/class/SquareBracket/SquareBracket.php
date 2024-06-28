@@ -7,8 +7,10 @@ namespace SquareBracket;
  * @since SquareBracket 1.0
  */
 class SquareBracket {
-    private \SquareBracket\Database $database;
+    private Database $database;
     public array $options;
+    private array $accounts;
+    private string $accounts_cookie_warning = "DO-NOT-SHARE-THIS-WITH-ANYONE-";
 
     /**
      * Initialize core SquareBracket classes.
@@ -38,8 +40,15 @@ class SquareBracket {
             ];
         }
 
+        if (isset($_COOKIE["SBACCOUNTS"])) {
+            $stupid_fucking_bullshit = str_replace($this->accounts_cookie_warning, "", $_COOKIE["SBACCOUNTS"]);
+            $this->accounts = json_decode(base64_decode($stupid_fucking_bullshit), true);
+        } else {
+            $this->accounts = [];
+        }
+
         try {
-            $this->database = new \SquareBracket\Database($host, $user, $pass, $db);
+            $this->database = new Database($host, $user, $pass, $db);
         } catch (CoreException $e) {
             $e->page();
         }
@@ -49,34 +58,40 @@ class SquareBracket {
      * Returns the database class for other SquareBracket classes to use.
      *
      * @return Database
-     * @since SquareBracket 1.0
      *
      */
-    public function getDatabase(): \SquareBracket\Database
+    public function getDatabase(): Database
     {
         return $this->database;
     }
 
     /**
-     * Returns the site settings class for other SquareBracket classes to use.
-     *
-     * @since SquareBracket 1.1
-     *
-     * @return SiteSettings
-     */
-    public function getSettings(): \SquareBracket\SiteSettings {
-        return $this->settings;
-    }
-
-    /**
      * Returns the user's local settings.
-     *
-     * @since SquareBracket 1.0
      *
      * @return array
      */
     public function getLocalOptions(): array
     {
         return $this->options;
+    }
+
+    /**
+     * Returns warning string for accounts cookie.
+     *
+     * @return string
+     */
+    public function getWarningString(): string
+    {
+        return $this->accounts_cookie_warning;
+    }
+
+    /**
+     * Returns array for changing accounts.
+     *
+     * @return string
+     */
+    public function getAccountsArray()
+    {
+        return $this->accounts;
     }
 }

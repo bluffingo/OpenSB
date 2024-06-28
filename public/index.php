@@ -43,6 +43,7 @@ if (isset($path[1]) && $path[1] != '') {
                 'commenting' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/commenting.php'),
                 'submission_interaction' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/submission_interaction.php'),
                 'user_interaction' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/user_interaction.php'),
+                'get_user' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/get_user.php'),
                 default => die("Invalid API.")
             },
             'legacy' => match ($path[3] ?? null) {
@@ -50,6 +51,13 @@ if (isset($path[1]) && $path[1] != '') {
                 'rate' => require(SB_PRIVATE_PATH . '/pages/api/legacy/rate.php'),
                 'subscribe' => require(SB_PRIVATE_PATH . '/pages/api/legacy/subscribe.php'),
                 default => die("Invalid API.")
+            },
+            'v2' => match ($path[3] ?? null) { //TODO
+                //'get_comments' => require(SB_PRIVATE_PATH . '/pages/api/v2/get_comments.php'),
+                //'get_statistics' => require(SB_PRIVATE_PATH . '/pages/api/v2/get_statistics.php'),
+                //'get_upload' => require(SB_PRIVATE_PATH . '/pages/api/v2/get_upload.php'),
+                //'get_uploads' => require(SB_PRIVATE_PATH . '/pages/api/v2/get_uploads.php'),
+                default => die(json_encode("Invalid API."))
             },
             default => die("Invalid API.")
         },
@@ -59,6 +67,7 @@ if (isset($path[1]) && $path[1] != '') {
         },
         'browse' => require(SB_PRIVATE_PATH . '/pages/browse.php'),
         'delete' => require(SB_PRIVATE_PATH . '/pages/delete.php'),
+        'design_test' => require(SB_PRIVATE_PATH . '/pages/design_test.php'),
         'edit' => require(SB_PRIVATE_PATH . '/pages/edit.php'),
         'feature' => require(SB_PRIVATE_PATH . '/pages/feature.php'),
         'guidelines' => require(SB_PRIVATE_PATH . '/pages/guidelines.php'),
