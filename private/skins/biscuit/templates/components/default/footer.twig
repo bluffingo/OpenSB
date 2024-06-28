@@ -1,16 +1,25 @@
 <footer class="footer">
     <div class="footer-container">
-        <img src="/assets/opensb_logo.png" alt="OpenSB Logo">
-        <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.
-            <span aria-hidden="true">|</span> <a href="/theme">Change theme</a>
-            <span aria-hidden="true">|</span> <a href="/privacy">Privacy policy</a>
-        </p>
-        <p>Running <a href="/version">OpenSB {{ opensb_version }}</a></p>
-        {% if is_debug %}
-            <p>{{ profiler_stats() }}</p>
-        {% endif %}
+        <div class="footer-logo-opensb">
+            <img src="/assets/opensb_logo_dark.png" alt="OpenSB">
+        </div>
+        <div class="footer-content">
+            <p>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</p>
+            <div class="footer-links">
+                <a href="/theme">Change theme</a>
+                <a href="/privacy">Privacy policy</a>
+            </div>
+            <p>Running <a href="/version">OpenSB {{ opensb_version }}</a></p>
+            {% if is_debug %}
+                <p>{{ profiler_stats() }}</p>
+            {% endif %}
+        </div>
         {% if is_chaziz_sb %}
-            <p><small>A <a href="https://bluffingo.net/">Chaziz</a> Project.</small></p>
+            <div class="footer-logo-chaziz">
+                <a href="https://bluffingo.net/">
+                    <img src="/assets/sb_branding/chaziz.png" alt="Chaziz">
+                </a>
+            </div>
         {% endif %}
     </div>
 </footer>

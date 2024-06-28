@@ -11,17 +11,17 @@
       background: #d90808 url("/assets/biscuit_banner_fulp.svg");
     }
 
-    background: #FF8A00 url("/assets/biscuit_banner.svg");
+    background: #111 url("/assets/biscuit_banner.svg");
     background-size: cover;
     color: white;
     text-shadow: 0 0 0.5em #00000090;
 
-    margin-top: -$header-main-height;
-    height: 150px + $header-main-height;
+    margin-top: -$header-height;
+    height: 150px + $header-height;
 
     .jumbotron-container {
-      padding-top: $header-main-height;
-      height: 150px + $header-main-height;
+      padding-top: $header-height;
+      height: 150px + $header-height;
 
       .jumbotron-welcome {
         flex-grow: 1;
@@ -41,11 +41,11 @@
 
   &.profile-banner {
     background: #111 center/cover;
-    margin-top: -($header-user-height + $header-main-height);
-    height: 250px + ($header-user-height + $header-main-height);
+    margin-top: -$header-height;
+    height: 250px + $header-height;
 
     .jumbotron-container {
-      padding-top: ($header-user-height + $header-main-height);
+      padding-top: $header-height;
     }
   }
 

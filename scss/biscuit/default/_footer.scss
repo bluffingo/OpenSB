@@ -4,15 +4,30 @@
     @include maxwidths();
     margin: auto;
 
-    img {
-      height: 50px;
+    .footer-logo-opensb {
+      img {
+        height: 50px;
+      }
+    }
+
+    .footer-logo-chaziz {
+      img {
+        height: 20px;
+      }
+    }
+
+    .footer-links {
+      a {
+        margin-right: 5px;
+      }
     }
   }
 
+  color: white;
   margin-top: 5px;
-  padding: 15px 5px;
+  padding: 20px 5px;
   line-height: 20px;
   clear: both;
-  background: $content-box-background-color;
-  border-top: 1px solid $content-box-border-color;
+  background: #111;
+  border: 1px solid #222;
 }

@@ -40,45 +40,60 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Get all menu buttons and menus
-    const menuButtons = document.querySelectorAll('.menuButton');
+    // Get all menu buttons
+    const menuButtons = document.querySelectorAll('.menu-button');
 
     // Add event listeners for each menu button
     menuButtons.forEach(button => {
         const menuId = button.getAttribute('data-menu-id');
         const menu = document.getElementById(menuId);
 
-        // Show the menu on mobile when the button is tapped.
-        button.addEventListener('touchstart', () => {
+        // check if this menu button is the one in the header.
+        const isThisTheHeaderUserMenu = button.classList.contains("user-menu-button");
+
+        // get the caret if that exists. this is primarily for the one in the header.
+        const menuCaret = button.getElementsByClassName("menu-caret");
+
+        // DON'T FORGET TO UPDATE THIS IF WE EVER SWITCH OUT OF BOOTSTRAP ICONS (not that we should)
+        const menuCaretOff= "bi bi-caret-down-fill menu-caret";
+        const menuCaretOn = "bi bi-caret-up-fill menu-caret";
+
+        let actualCaret;
+        if (menuCaret.length === 1) {
+            actualCaret = menuCaret.item(0);
+        } else if(menuCaret.length > 1) {
+            // this shouldn't happen. if it does then i fucked this up. -chaziz 6/28/2024
+            console.warn("There's a menu that has more than one caret? Huh?")
+            actualCaret = menuCaret.item(0);
+        }
+
+        // initialize all menus with "none"
+        menu.style.display = 'none';
+
+        button.addEventListener('mousedown', () => {
             if (menu.style.display === 'none') {
+                if (actualCaret) {
+                    actualCaret.className = menuCaretOn;
+                }
+                if (isThisTheHeaderUserMenu) {
+                    button.classList.add("selected");
+                }
                 menu.style.display = 'block';
             } else {
+                if (actualCaret) {
+                    actualCaret.className = menuCaretOff;
+                }
+                if (isThisTheHeaderUserMenu) {
+                    button.classList.remove("selected");
+                }
                 menu.style.display = 'none';
             }
         });
-
-        // Show the menu when hovering over the button or the menu
-        button.addEventListener('mouseenter', () => {
-            menu.style.display = 'block';
-        });
-
-        // Hide the menu when not hovering over the button or the menu
-        button.addEventListener('mouseleave', () => {
-            menu.style.display = 'none';
-        });
-
-        menu.addEventListener('mouseenter', () => {
-            menu.style.display = 'block';
-        });
-
-        menu.addEventListener('mouseleave', () => {
-            menu.style.display = 'none';
-        });
     });
 
-    function closeAllReplyForms() {
-        const openReplyForms = document.querySelectorAll(".reply-form");
-        openReplyForms.forEach(form => {
+    function closeCommentReplyForm() {
+        const openReplyForm = document.querySelectorAll(".reply-form");
+        openReplyForm.forEach(form => {
             form.style.display = "none";
         });
     }
@@ -119,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
 
-                    closeAllReplyForms();
+                    closeCommentReplyForm();
                 }
             });
     }
@@ -137,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.target && event.target.classList.contains("reply-button")) {
             let commentId = event.target.getAttribute("data-comment-id");
 
-            closeAllReplyForms();
+            closeCommentReplyForm();
 
             let replyForm = document.getElementById(`reply-form-${commentId}`);
             if (replyForm) {

@@ -40,9 +40,8 @@ $breakpoints: (
 );
 //
 
-// profile pictures
-
-$pfp-roundness: 100%;
+// pfps/thumbnails
+$image-border-color: rgba(black, 0.25);
 
 // buttons
 $button-padding: 6px 11px;
@@ -55,9 +54,9 @@ $content-box-border-color: darken($secondary, 7.5%);
 $context-box-padding: 12px;
 
 // header
-$header-main-height: 48px;
-$header-user-height: 25px;
+$header-height: 44px;
 $header-logo-height: 30px;
+$header-pfp-width: 28px;
 
 // profile
 $pfp-width-profiles: 70px;
