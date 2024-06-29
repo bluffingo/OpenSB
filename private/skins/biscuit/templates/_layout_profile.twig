@@ -1,0 +1,26 @@
+{% extends "_layout.twig" %}
+
+{% block style %}
+    <style>
+        .jumbotron.profile-banner {
+            background-image: url('{{ banner_picture }}');
+        }
+        {#
+        body {
+            background: #323232;
+        }
+        #}
+    </style>
+{% endblock %}
+
+{% block precontent %}
+    <div class="jumbotron profile-banner"></div>
+    <div class="profile-intro">
+        <div class="page">
+            <div class="page-contents">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}{% endblock %}

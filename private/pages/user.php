@@ -29,7 +29,6 @@ if ($enableFederatedStuff) {
 }
 
 $isFediverse = false;
-$whereRatings = UnorganizedFunctions::whereRatings();
 
 $instance = null;
 if (str_contains($username, "@" . $domain) && $enableFederatedStuff) {

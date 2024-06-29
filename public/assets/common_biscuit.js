@@ -231,7 +231,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                         else
                         {
-                            follow_count.textContent = json["number"];
+                            if (follow_count) {
+                                follow_count.textContent = json["number"];
+                            }
                             follow_button.textContent = json["text"];
                             if (json["followed"]) {
                                 play('subscribe');

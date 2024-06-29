@@ -1,4 +1,6 @@
-{% extends "_layout.twig" %}
+{% extends "_layout_profile.twig" %}
+
+{% set banner_picture = profile_banner(data.author.info.username) %}
 
 {% set title = data.title %}
 
@@ -21,31 +23,20 @@
 {% endblock %}
 
 {% block content %}
-	<div class="section">
-		<div class="section-title">
-			<h1>{{ data.title }}</h1>
-			<div>
-				<p>By {{ user_link(data.author) }}, {{ data.published | relative_time }}</p>
-			</div>
-		</div>
-		<div class="content-box">
-			<p>{{ data.contents | markdown_user_journal }}</p>
-		</div>
+	<div class="content-box no-border-top">
+		<h1>{{ data.title }}</h1>
+		<p>By {{ user_link(data.author) }}, {{ data.published | relative_time }}</p>
+		{{ data.contents | markdown_user_journal }}
 	</div>
-	<div class="section">
-		<div class="section-title">
-			<h1>Comments</h1>
-		</div>
-		<div id="comments">
-			<div class="content-box">
-				{% if is_user_logged_in %}
-					{{ include('/components/_comment_input.twig') }}
-				{% endif %}
-				<div id="new-comments-here"></div>
-				{% for comment in data.comments %}
-					{{ include('/components/_comment.twig') }}
-				{% endfor %}
-			</div>
+	<div id="comments">
+		<div class="content-box no-border-top">
+			{% if is_user_logged_in %}
+				{{ include('/components/_comment_input.twig') }}
+			{% endif %}
+			<div id="new-comments-here"></div>
+			{% for comment in data.comments %}
+				{{ include('/components/_comment.twig') }}
+			{% endfor %}
 		</div>
 	</div>
 {% endblock %}
