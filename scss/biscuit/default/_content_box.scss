@@ -15,6 +15,20 @@
         border-top: none;
     }
 
+    // used for staff notes. i think it just looks cool honestly
+    &.content-note
+    {
+        background: #FDFDCB;
+        background: linear-gradient(180deg, rgba(253,253,203,1) 0%, rgba(252,249,161,1) 100%);
+        border-color: #DDDB9A;
+        font-family: $font-serif;
+        color: #4A1D0C;
+
+        p {
+            margin: 0;
+        }
+    }
+
     .content-entry
     {
         display: flex;

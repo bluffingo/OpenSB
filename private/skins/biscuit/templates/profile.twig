@@ -94,6 +94,9 @@
                     <button class="tablink" data-tab="tab_posts">Journals</button>
                 {% endif %}
                 <button class="tablink" data-tab="tab_comments">Comments</button>
+                {% if user_is_admin %}
+                    <button class="tablink" data-tab="tab_staff_notes">Notes (temporary!)</button>
+                {% endif %}
             {% endapply %}
         </div>
 
@@ -137,5 +140,19 @@
                 </div>
             </div>
         </div>
+
+        {% if user_is_admin %}
+            <div id="tab_staff_notes" class="tabcontent">
+                <div class="section">
+                    <div class="content-box no-border-top">
+                        {% for note in data.notes %}
+                            <div class="content-box content-note">
+                                {{ note.note | markdown_user_journal }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

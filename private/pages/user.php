@@ -134,6 +134,13 @@ if ($isFediverse) {
     }
 }
 
+
+// TODO: this should be in the admin panel instead of here.
+if ($auth->isUserAdmin()) {
+    $staff_notes = $database->fetchArray($database->query("SELECT * FROM user_staff_notes WHERE user = ?", [$data["id"]]));
+    $profile_data["notes"] = $staff_notes;
+}
+
 echo $twig->render('profile.twig', [
     'data' => $profile_data,
 ]);

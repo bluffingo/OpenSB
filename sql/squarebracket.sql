@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2024 at 03:54 PM
+-- Generation Time: Jun 29, 2024 at 07:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.3.4
 
@@ -351,6 +351,20 @@ CREATE TABLE `user_old_names` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_staff_notes`
+--
+
+CREATE TABLE `user_staff_notes` (
+  `autoint` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `note` text NOT NULL,
+  `author` int(11) NOT NULL,
+  `time` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `videos`
 --
 
@@ -488,6 +502,12 @@ ALTER TABLE `user_old_names`
   ADD PRIMARY KEY (`autoint`);
 
 --
+-- Indexes for table `user_staff_notes`
+--
+ALTER TABLE `user_staff_notes`
+  ADD PRIMARY KEY (`autoint`);
+
+--
 -- Indexes for table `videos`
 --
 ALTER TABLE `videos`
@@ -591,6 +611,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_old_names`
 --
 ALTER TABLE `user_old_names`
+  MODIFY `autoint` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_staff_notes`
+--
+ALTER TABLE `user_staff_notes`
   MODIFY `autoint` int(11) NOT NULL AUTO_INCREMENT;
 
 --
