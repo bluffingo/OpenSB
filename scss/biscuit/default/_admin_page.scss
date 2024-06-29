@@ -4,3 +4,27 @@
   border: 1px solid $content-box-border-color;
   display: block;
 }
+
+.admin-legend-title {
+  margin-bottom: 3px;
+  color: #999;
+  font-weight: bold;
+}
+
+.admin-legend-icon {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+
+  @each $color, $value in $color-map-admin {
+    &.#{$color} {
+      background: $value;
+    }
+  }
+}
+
+.admin-legend {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 15px;
+}

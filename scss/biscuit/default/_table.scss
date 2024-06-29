@@ -11,16 +11,22 @@ table.c1 {
   tr {
     border: 1px solid $content-box-border-color;
     padding: 20px;
-  }
 
-  tr.h {
-    @include gradient-y($start-color: lighten($content-box-border-color, 13%), $end-color: $content-box-border-color);
-    background-color: $content-box-border-color;
-    th {
-      padding: 0 4px;
-      text-align: left;
-      font-size: 11px;
-      border: 1px solid darken($content-box-border-color, 10%);
+    &.h {
+      @include gradient-y($start-color: lighten($content-box-border-color, 13%), $end-color: $content-box-border-color);
+      background-color: $content-box-border-color;
+      th {
+        padding: 0 4px;
+        text-align: left;
+        font-size: 11px;
+        border: 1px solid darken($content-box-border-color, 10%);
+      }
+    }
+
+    @each $color, $value in $color-map-admin {
+      &.#{$color} {
+        background: $value;
+      }
     }
   }
 

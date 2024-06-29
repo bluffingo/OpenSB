@@ -3,6 +3,37 @@
 {% set title = "Users" %}
 
 	{% block admincontent %}
+        <div class="admin-legend-title">Legend:</div>
+        <ul class="admin-legend">
+            <li class="admin-legend-entry">
+                <span class="admin-legend-icon banned-other-unbanned"></span>
+                Banned with other unbanned accounts
+            </li>
+            <li class="admin-legend-entry">
+                <span class="admin-legend-icon unbanned-other-banned"></span>
+                Unbanned with other banned accounts
+            </li>
+            <li class="admin-legend-entry">
+                <span class="admin-legend-icon banned"></span>
+                Banned
+            </li>
+            <li class="admin-legend-entry">
+                <span class="admin-legend-icon shadow-banned"></span>
+                Shadowbanned
+            </li>
+            <li class="admin-legend-entry">
+                <span class="admin-legend-icon unbanned-other-unbanned"></span>
+                Unbanned with other unbanned accounts
+            </li>
+            <li class="admin-legend-entry">
+                <span class="admin-legend-icon partner"></span>
+                Partner (unused)
+            </li>
+            <li class="admin-legend-entry">
+                <span class="admin-legend-icon staff"></span>
+                Staff
+            </li>
+        </ul>
         <table class="c1">
             <tr class="h">
                 <th>Username</th>
@@ -12,7 +43,7 @@
                 <th>Last logged in</th>
             </tr>
             {% for user in users %}
-                <tr>
+                <tr class="{% if user.class %}{{ user.class }}{% endif %}">
                     <td class="a">{{ user.info.username }}</td>
                     <td class="a">{{ user.submissions }}</td>
                     <td class="a">{{ user.journals }}</td>

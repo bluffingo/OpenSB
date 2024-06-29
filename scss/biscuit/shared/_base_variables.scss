@@ -19,6 +19,17 @@ $color-map: (
         "danger": $red,
 );
 
+// colors used for the users section in the admin panel. taken from the ones on bitview, sorry!
+$color-map-admin: (
+        "banned-other-unbanned": #ff9696,
+        "unbanned-other-banned": #ffc848,
+        "banned": #ffcccc,
+        "shadow-banned": #ffe2cc, // "Reuploader" on bitview
+        "unbanned-other-unbanned": #fffdcc,
+        "partner": #e2ffcc,
+        "staff": #e2f0ff,
+);
+
 // fonts
 $font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-serif: Georgia, "Times New Roman", serif;
