@@ -36,7 +36,10 @@
     padding: $context-box-padding;
     overflow: hidden;
     word-break: break-word;
-    border-radius: 4px;
+
+    &.no-border-top {
+        border-top: none;
+    }
 
     &.content-box-profile-submissions
     {

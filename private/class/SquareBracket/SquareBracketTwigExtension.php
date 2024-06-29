@@ -70,7 +70,7 @@ class SquareBracketTwigExtension extends AbstractExtension
                 $markdown->setSafeMode(true);
                 $markdown->setUrlsLinked(true);
 
-                $parsed_text = $markdown->text($text);
+                $parsed_text = $markdown->line($text);
 
                 // Hashtags
                 $parsed_text = preg_replace('/(?<!=|\b|&)#([a-z0-9_]+)/i', '<a href="/search?tags=$1">#$1</a>', $parsed_text);

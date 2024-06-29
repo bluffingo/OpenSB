@@ -11,79 +11,78 @@
 			{% endif %}
 
 			<div id="tab1" class="tabcontent">
-				<div class="grid">
-					<div class="col-6">
-						<div class="content-box">
-							<h1>Over the years</h1>
-							<span>Since {{ data.time.formatted_date }} ({{ data.time.relative_days }} days ago)</span>
-							<canvas id="cumulativeChart"></canvas>
-						</div>
-					</div>
-					<div class="col-6">
-						<div class="content-box">
-							<h1>Views</h1>
-							<canvas id="viewChart"></canvas>
-						</div>
-					</div>
-				</div>
-				<br>
 				<div class="content-box">
-					<h1>Statistics</h1>
-					<ul>
-						<li>Uname: {{ data.system.uname }}</li>
-						{% for key, number in data.numbers %}
-							<li>{{ key }}: {{ number }}</li>
-						{% endfor %}
-					</ul>
+					<div class="content-box">
+						<h1>Over the years</h1>
+						<span>Since {{ data.time.formatted_date }} ({{ data.time.relative_days }} days ago)</span>
+						<canvas id="cumulativeChart"></canvas>
+					</div>
+					<br>
+					<div class="content-box">
+						<h1>Views</h1>
+						<canvas id="viewChart"></canvas>
+					</div>
+					<br>
+					<div class="content-box">
+						<h1>Statistics</h1>
+						<ul>
+							<li>Uname: {{ data.system.uname }}</li>
+							{% for key, number in data.numbers %}
+								<li>{{ key }}: {{ number }}</li>
+							{% endfor %}
+						</ul>
+					</div>
 				</div>
 			</div>
 
 			<div id="tab2" class="tabcontent">
 				<div class="content-box">
-					<h1>Ban User</h1>
-					<form id="banForm" method="post" action="admin" enctype="multipart/form-data">
-						<div class="banner banner-secondary">
-							<strong>NOTE</strong>: We currently don't support expirable bans.
-						</div>
-						<input type="hidden" name="action" value="ban_user" />
-						<div class="form-input">
-							<label for="user_to_ban">Username:</label>
-							<input type="text" id="user_to_ban" name="user_to_ban" class="form-submit" required>
-							<label for="reason">Reason:</label>
-							<input type="text" id="reason" name="reason" class="form-submit" required>
-						</div>
-						<div class="form-button-container">
-							<input type="submit" id="upload" name="upload" class="button button-danger" value="Ban">
-						</div>
-					</form>
-				</div>
-				<br>
-				<div class="content-box">
-					<h1>Banned Users</h1>
-					<div class="banner banner-secondary">
-						<strong>NOTE</strong>: If the account gets automatically banned after being unbanned, then the account's latest IP is IP banned.
+					<div class="content-box">
+						<h1>Ban User</h1>
+						<form id="banForm" method="post" action="admin" enctype="multipart/form-data">
+							<div>
+								<strong>NOTE</strong>: We currently don't support expirable bans.
+							</div>
+							<input type="hidden" name="action" value="ban_user" />
+							<div class="form-input">
+								<label for="user_to_ban">Username:</label>
+								<input type="text" id="user_to_ban" name="user_to_ban" class="form-submit" required>
+								<label for="reason">Reason:</label>
+								<input type="text" id="reason" name="reason" class="form-submit" required>
+							</div>
+							<div class="form-button-container">
+								<input type="submit" id="upload" name="upload" class="button button-danger" value="Ban">
+							</div>
+						</form>
 					</div>
-					<table class="c1">
-						<thead>
-						<tr class="h">
-							<th style="width:150px">Username</th>
-							<th>Reason</th>
-							<th style="width:70px">Unban</th>
-						</tr>
-						</thead>
-						<tbody>
-						{% for user in data.bans %}
-							<tr style="height: 30px;">
-								<td>{{ user.name }}</td>
-								<td>
-									{{ user.ban_reason }}
-									<small>({{ user.ban_time | date('F j, Y') }}/{{ user.ban_time | relative_time }})</small>
-								</td>
-								<td><a href="/admin?action=unban_user&user={{ user.id }}" class="button button-secondary">Unban</a></td>
+					<br>
+					<div class="content-box">
+						<h1>Banned Users</h1>
+						<div>
+							<strong>NOTE</strong>: If the account gets automatically banned after being unbanned, then the account's latest IP is IP banned.
+						</div>
+						<table class="c1">
+							<thead>
+							<tr class="h">
+								<th style="width:150px">Username</th>
+								<th>Reason</th>
+								<th style="width:70px">Unban</th>
 							</tr>
-						{% endfor %}
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+							{% for user in data.bans %}
+								<tr style="height: 30px;">
+									<td>{{ user.name }}</td>
+									<td>
+										{{ user.ban_reason }}
+										<small>({{ user.ban_time | date('F j, Y') }}/{{ user.ban_time | relative_time }})</small>
+									</td>
+									<td><a href="/admin?action=unban_user&user={{ user.id }}" class="button button-secondary">Unban</a></td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 

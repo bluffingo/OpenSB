@@ -37,6 +37,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Get all tab links
     const tabLinks = document.querySelectorAll(".tablink");
 
+    // open the first tab automatically
+    if (tabLinks.length !== 0) {
+        const firstTab = tabLinks.item(0);
+
+        if (firstTab) {
+            const tabId = firstTab.getAttribute("data-tab");
+            if (firstTab) {
+            document.getElementById(tabId).style.display = "block";
+            firstTab.classList.add("active");
+            } else {
+                error("THIS SHOULD NOT HAPPEN. (tab code fail 1)");
+            }
+        } else {
+            error("THIS SHOULD NOT HAPPEN. (tab code fail 2)");
+        }
+    }
+
     // Add click event listener to each tab link
     tabLinks.forEach(tabLink => {
         tabLink.addEventListener("click", function() {

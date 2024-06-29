@@ -50,11 +50,12 @@
   }
 }
 
-.new-comment {
+.new-comment, .reply-form {
   margin-bottom: 5px;
 
-  #comment_button {
+  #comment_button, .submit-reply-button {
     margin-left: auto;
     display: block;
+    padding: 5px 10px;
   }
 }

@@ -7,14 +7,8 @@
 
 @import 'shared/imports';
 
-// font used for chaziz/squarebracket branding
-@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
-
 // bootstrap icons
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
-
-// fonts
-$font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 :root {
 	font-family: $font;
@@ -29,7 +23,7 @@ $font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 body
 {
 	background: #F5F5F5;
-	color: #000000;
+	color: #333;
 	font-size: small;
 	padding: 0;
 	margin: 0;
@@ -46,10 +40,14 @@ td, th
 a
 {
 	text-decoration: none;
-	color: $primary;
+	color: #0061c5;
 
 	&:hover {
 		text-decoration: underline;
+	}
+
+	&:focus {
+		outline: 1px dotted;
 	}
 }
 

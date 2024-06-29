@@ -28,53 +28,6 @@ if ($enableFederatedStuff) {
     }
 }
 
-function handleFeaturedSubmission($database, $data): false|array
-{
-    global $auth;
-
-    // handle featured submission
-    // if user hasn't specified anything, then use latest submission, if that doesn't exist, do not bother.
-    $featured_id = $database->fetch("SELECT video_id FROM videos v WHERE v.id = ?", [$data["featured_submission"]]);
-
-    if ($featured_id == 0 || !$featured_id) {
-        $featured_id = $database->fetch(
-            "SELECT video_id FROM videos v WHERE v.author = ? ORDER BY v.time DESC", [$data["id"]]);
-        if(!isset($featured_id["video_id"])) {
-            return false;
-        }
-        if ($featured_id == 0) {
-            return false;
-        }
-    }
-
-    $submission = new UploadData($database, $featured_id["video_id"]);
-    $submission_data = $submission->getData();
-    $bools = $submission->bitmaskToArray();
-
-    // IF:
-    // * The submission is taken down, and/or
-    // * The submission no longer exists and/or
-    // * The submission's author is not the user whose profile we're looking at and/or
-    // * The submission is not available to guests and the user isn't signed in and/or
-    // * TODO: The submission is privated...
-    // then simply just return false, so we don't show the featured submission.
-    if (
-        $submission->getTakedown()
-        || !$submission_data
-        || ($submission_data["author"] != $data["id"])
-        || ($bools["block_guests"] && !$auth->isUserLoggedIn())
-    )
-    {
-        return false;
-    } else {
-        return [
-            "title" => $submission_data["title"],
-            "id" => $submission_data["video_id"],
-            "type" => $submission_data["post_type"],
-        ];
-    }
-}
-
 $isFediverse = false;
 $whereRatings = UnorganizedFunctions::whereRatings();
 
@@ -130,7 +83,7 @@ $user_journals =
         $database->query("SELECT j.* FROM journals j WHERE
                          j.author = ? 
                          ORDER BY j.date 
-                         DESC LIMIT 3", [$data["id"]]));
+                         DESC LIMIT 20", [$data["id"]]));
 
 $is_own_profile = ($data["id"] == $auth->getUserID());
 
@@ -155,7 +108,6 @@ $profile_data = [
     "joined" => $data["joined"],
     "connected" => $data["lastview"],
     "is_current" => $is_own_profile,
-    "featured_submission" => handleFeaturedSubmission($database, $data),
     "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $user_submissions),
     "journals" => UnorganizedFunctions::makeJournalArray($database, $user_journals),
     "comments" => $comments->getComments(),

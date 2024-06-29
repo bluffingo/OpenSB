@@ -41,97 +41,99 @@
             </div>
             <br>
             <div class="watch-box">
-                <h1>{{ submission.title }}</h1>
-                {% if submission.is_owner %}
-                    <hr>
-                    <div class="watch-box-edit">
-                        <a href="/edit?v={{ submission.id }}">Edit</a>
-                        <a href="/feature?v={{ submission.id }}">Feature on profile</a>
+                <div class="section">
+                    <div class="section-title">
+                        <h1>{{ submission.title }}</h1>
+                        {% if submission.is_owner %}
+                            <a href="/edit?v={{ submission.id }}">Edit</a>
+                        {% endif %}
                     </div>
-                {% endif %}
-                <hr>
-                <div class="watch-box-row">
-                    <div class="watch-box-left">
-                        <img class="watch-box-profile-picture pfp" src="{{ profile_picture(submission.author.info.username) }}">
-                        <div class="watch-box-author">
-                            <div class="watch-box-author-userlink">
-                                {{ user_link(submission.author) }}
-                            </div>
-                            <div class="watch-box-author-follow">
-                                {% if not submission.is_owner %}
-                                    <button class="button button-secondary button-small" id="follow-user">
-                                        {% if submission.author.following %}
-                                            Unfollow
-                                        {% else %}
-                                            Follow
-                                        {% endif %}
-                                    </button>
-                                    <span id="follower_count">{{ submission.author.followers }}</span>
-                                {% else %}
-                                    <span>{{ submission.author.followers }} followers</span>
-                                {% endif %}
+                    <hr>
+                    <div class="watch-box-row">
+                        <div class="watch-box-left">
+                            <img class="watch-box-profile-picture pfp" src="{{ profile_picture(submission.author.info.username) }}">
+                            <div class="watch-box-author">
+                                <div class="watch-box-author-userlink">
+                                    {{ user_link(submission.author) }}
+                                </div>
+                                <div class="watch-box-author-follow">
+                                    {% if not submission.is_owner %}
+                                        <button class="button button-secondary button-small" id="follow-user">
+                                            {% if submission.author.following %}
+                                                Unfollow
+                                            {% else %}
+                                                Follow
+                                            {% endif %}
+                                        </button>
+                                        <span id="follower_count">{{ submission.author.followers }}</span>
+                                    {% else %}
+                                        <span>{{ submission.author.followers }} followers</span>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
+                        <div class="watch-box-right">
+                            {# hack to prevent twig from outputing the number 1 #}
+                            {% if submission.interactions.views != 1 %}
+                                {% set pluralViews = "s" %}
+                            {% endif %}
+                            <div class="watch-box-views">{{ submission.interactions.views }} view{{ pluralViews }}</div>
+                            <div id="rater"></div>
+                            {#
+                            <div><small>{{ submission.interactions.ratings.total }} ratings</small></div>
+                            #}
+                        </div>
                     </div>
-                    <div class="watch-box-right">
-                        {# hack to prevent twig from outputing the number 1 #}
-                        {% if submission.interactions.views != 1 %}
-                            {% set pluralViews = "s" %}
+                    <hr>
+                    <div class="watch-box-description">
+                        <div class="watch-box-description-info">Uploaded on {{ submission.published | date('F j, Y') }}</div>
+                        {% if submission.published_originally and submission.original_site %}
+                            <div class="watch-box-description-info-small">First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}</div>
+                        {% elseif submission.original_site %}
+                            <div class="watch-box-description-info-small">Originally uploaded on {{ submission.original_site }}</div>
                         {% endif %}
-                        <div class="watch-box-views">{{ submission.interactions.views }} view{{ pluralViews }}</div>
-                        <div id="rater"></div>
-                        {#
-                        <div><small>{{ submission.interactions.ratings.total }} ratings</small></div>
-                        #}
+                        <div class="watch-box-description-contents">
+                            {% if submission.description | trim is not empty %}
+                                {{ submission.description | markdown_user_journal }}
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-                <hr>
-                <div class="watch-box-description">
-                    <div class="watch-box-description-info">Uploaded on {{ submission.published | date('F j, Y') }}</div>
-                    {% if submission.published_originally and submission.original_site %}
-                        <div class="watch-box-description-info-small">First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}</div>
-                    {% elseif submission.original_site %}
-                        <div class="watch-box-description-info-small">Originally uploaded on {{ submission.original_site }}</div>
-                    {% endif %}
-                    {% if submission.description | trim is not empty %}
-                    {{ submission.description | markdown_user_written }}
-                    {% endif %}
-                </div>
-                <hr>
-                <div class="watch-box-info">
-                    <div class="grid">
-                        <div class="col-6">
-                            <div class="section">
-                                <div class="section-title">
-                                    <h2>Tags</h2>
-                                </div>
-                                {% for tag in submission.tags %}
-                                    <a href="/search.php?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
-                                {% else %}
-                                    No tags.
-                                {% endfor %}
-                                {# TODO:
+                    <hr>
+                    <div class="watch-box-info">
+                        <div class="grid">
+                            <div class="col-6">
+                                <div class="section">
+                                    <div class="section-title">
+                                        <h2>Tags</h2>
+                                    </div>
+                                    {% for tag in submission.tags %}
+                                        <a href="/search.php?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
+                                    {% else %}
+                                        No tags.
+                                    {% endfor %}
+                                    {# TODO:
                                 {% if is_user_logged_in %}
                                     <form class="form-flex">
                                         <input type="text" class="form-submit">
                                         <input type="submit" value="Add" class="button button-secondary">
                                     </form>
                                 {% endif %}
-                                #}
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="section">
-                                <div class="section-title">
-                                    <h2>Details</h2>
+                                    #}
                                 </div>
-                                <div>
-                                    Rating:
-                                    {% if submission.rating == 'mature' %}
-                                        Sensitive
-                                    {% else %}
-                                        General
-                                    {% endif %}
+                            </div>
+                            <div class="col-6">
+                                <div class="section">
+                                    <div class="section-title">
+                                        <h2>Details</h2>
+                                    </div>
+                                    <div>
+                                        Rating:
+                                        {% if submission.rating == 'mature' %}
+                                            Sensitive
+                                        {% else %}
+                                            General
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>

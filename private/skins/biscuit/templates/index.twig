@@ -74,6 +74,7 @@
 {% block content %}
     <div class="grid">
         <div class="col-8">
+            {% if current_theme != "test" %}
             <div class="section">
                 <div class="section-title">
                     <h2>Random Uploads</h2>
@@ -91,6 +92,7 @@
                     </section>
                 </div>
             </div>
+            {% endif %}
             <div class="section">
                 <div class="section-title">
                     <h2>Recent Uploads</h2>

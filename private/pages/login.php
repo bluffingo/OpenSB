@@ -56,7 +56,7 @@ if (isset($path_username)) {
             'httponly' => false,
             'samesite' =>'Lax',
         ]);
-        UnorganizedFunctions::Notification("Switched to $path_username", '/', "success");
+        UnorganizedFunctions::Notification("Switched to $path_username.", '/', "success");
     } else {
         UnorganizedFunctions::Notification("You have not logged into this account.", '/');
     }

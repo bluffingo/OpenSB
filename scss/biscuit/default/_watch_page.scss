@@ -15,7 +15,6 @@
   padding: $context-box-padding;
   overflow: hidden;
   word-break: break-word;
-  border-radius: 4px;
 
   .watch-box-edit {
     a {
@@ -36,13 +35,19 @@
     word-wrap: break-word;
 
     .watch-box-description-info {
-      font-weight: 600;
+      color: #777;
     }
 
     .watch-box-description-info-small {
       color: gray;
       font-size: 11px;
     }
+
+    /*
+    .watch-box-description-contents {
+      font-family: $font-serif;
+    }
+     */
   }
 
   .watch-box-row {

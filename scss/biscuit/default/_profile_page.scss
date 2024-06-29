@@ -1,7 +1,6 @@
 .profile-box {
-  color: white;
   display: flex;
-  padding: 10px;
+  padding: 8px;
   height: $profile-intro-height;
 
   &.centered {
@@ -24,38 +23,36 @@
 
   .profile-box-info {
     width: 100%;
+    line-height: 22px;
 
     .profile-box-username {
-      font-size: 20px;
+      font-size: 24px;
       font-weight: bold;
-      margin-bottom: 5px;
       .profile-box-instance-icon {
         width: 16px;
       }
     }
-  }
-}
 
-.profile-featured-submission {
-  text-align: center;
+    .profile-box-handle {
+      color: #777;
+      font-size: 17px;
+    }
 
-  .profile-featured-submission-title {
-    margin-top: 6px;
-    a {
-      font-weight: normal;
+    .profile-box-details {
+      font-family: $font-serif;
+      color: #777;
+      font-style: italic;
     }
   }
 
-  /* will this fuck up with wide thumbnails? */
-  img {
-    height: 200px;
+  .profile-box-follow {
+    width: 120px;
+    text-align: right;
   }
 }
 
 .profile-intro {
-  margin-top: -$profile-intro-height;
-
-  text-shadow: 0 0 0.35em #000000;
+  margin-top: -75px;
 
   .page-contents {
     margin: auto;

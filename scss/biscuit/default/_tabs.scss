@@ -2,24 +2,26 @@
   display: none;
 }
 
+.tabs {
+  border-bottom: 1px solid #ddd;
+}
+
 .tablink {
-  border: none;
   font-family: $font;
-  padding: 4px 14px;
+  padding: 5px 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  background-color: #eeeeee;
+  background-color: #fff0;
+  margin-bottom: -1px;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
 
   &:hover {
-    background-color: #fafafa;
-  }
-
-  &:focus {
-    outline: none;
     background-color: #ddd;
   }
 
   &.active {
-    background-color: #ccc;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom: 1px solid #fff0;
   }
 }

@@ -1,18 +1,23 @@
 .footer
 {
   .footer-container {
+    border-top: 1px solid $content-box-border-color;
+
     @include maxwidths();
     margin: auto;
 
-    .footer-logo-opensb {
-      img {
-        height: 50px;
+    .footer-content {
+      margin-top: 16px;
+      text-align: center;
+      span {
+        margin: 0 3px;
       }
     }
 
     .footer-logo-chaziz {
+      margin-top: 5px;
       img {
-        height: 20px;
+        height: 15px;
       }
     }
 
@@ -23,11 +28,7 @@
     }
   }
 
-  color: white;
-  margin-top: 5px;
-  padding: 20px 5px;
+  margin-top: 16px;
   line-height: 20px;
   clear: both;
-  background: #111;
-  border: 1px solid #222;
 }

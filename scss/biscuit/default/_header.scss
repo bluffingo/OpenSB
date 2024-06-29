@@ -45,6 +45,10 @@
   a {
     display: block;
     height: $header-logo-height;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   .logo {

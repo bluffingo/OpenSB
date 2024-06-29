@@ -10,6 +10,8 @@ $secondary: #eee; //secondary color (nearly white)
 $green: #28c228;
 $red: #c01b0c;
 
+$link-color: #0061c5;
+
 $color-map: (
         "primary": $primary,
         "secondary": $secondary,
@@ -18,7 +20,8 @@ $color-map: (
 );
 
 // fonts
-$font: sans-serif;
+$font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-serif: Georgia, "Times New Roman", serif;
 
 // https://medium.com/@jainbhavukspeaks/leveraging-scss-mixins-to-create-responsive-layouts-the-easy-way-5bbe4080cb15
 
