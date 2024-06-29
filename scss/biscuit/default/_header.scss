@@ -90,6 +90,10 @@ form.header-search
 
     height: 30px;
     width: 34px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   #header-search-input {

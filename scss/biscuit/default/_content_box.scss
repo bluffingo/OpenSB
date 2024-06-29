@@ -3,32 +3,6 @@
     border: 1px solid $image-border-color;
 }
 
-.content-header
-{
-    background: $content-box-border-color;
-    padding: $context-box-padding;
-    font-size: 14px;
-    font-weight: bold;
-
-    &.profile-stats
-    {
-        background: darken($content-box-background-color, 10%);
-        text-align: center;
-        font-weight: normal;
-        font-size: 12px;
-        .stat {
-            margin: 0 4px;
-        }
-    }
-}
-
-.content-header-right
-{
-    float: right;
-    padding: 2px 5px 0px 0px;
-    font-size: 12px;
-}
-
 .content-box
 {
     border: 1px solid $content-box-border-color;
@@ -39,13 +13,6 @@
 
     &.no-border-top {
         border-top: none;
-    }
-
-    &.content-box-profile-submissions
-    {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 10px;
     }
 
     .content-entry
@@ -84,12 +51,6 @@
 
     .content-entry-small
     {
-        &.content-entry-profile
-        {
-            width: 125px;
-            height: 140px;
-        }
-
         max-height: 140px;
         text-align: center;
 
@@ -115,7 +76,7 @@
             }
         }
 
-        // Thumbnails as seen in the browse and profile pages.
+        // Thumbnails used by the "Random Uploads" thing in homepage.
         .content-image-container {
             display: table;
             text-align: center;
@@ -133,37 +94,8 @@
         }
     }
 
+    // only used by "invite keys" admin panel section
     &.centered {
         text-align: center
-    }
-
-    &.dark {
-        background: darken($content-box-background-color, 70%);
-        border-color: darken($content-box-border-color, 65%);
-    }
-
-    .content-text {
-        width: 680px;
-        margin: 0 auto;
-        word-wrap: break-word;
-    }
-
-    .text-title {
-        font-size: 24px;
-        margin-bottom: 5px;
-
-        &.smaller {
-            font-size: 18px;
-        }
-
-        &.tabled {
-            display: table;
-
-            span {
-                padding-left: 4px;
-                display: table-cell;
-                vertical-align: middle;
-            }
-        }
     }
 }

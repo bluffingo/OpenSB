@@ -17,5 +17,4 @@ class ParsedownExtension extends Parsedown
     {
         return;
     }
-
 }

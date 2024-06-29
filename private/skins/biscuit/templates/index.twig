@@ -112,20 +112,8 @@
                         <h2>Site News</h2>
                     </div>
                     <div class="content-box">
-                        {% for news in data.news_recent %}
-                            <div class="journal-entry">
-                                <div class="journal-title">
-                                    <a href="/read?j={{ news.id }}">
-                                        {{ news.title|u.truncate(100, '...') }}
-                                    </a>
-                                </div>
-                                <div class="journal-info">
-                                    {{ news.published | relative_time }}
-                                </div>
-                                <div class="journal-contents">
-                                    {{ news.contents|u.truncate(150, '...') }}
-                                </div>
-                            </div>
+                        {% for journal in data.news_recent %}
+                            {{ include('/components/_journal.twig') }}
                         {% endfor %}
                     </div>
                 </div>

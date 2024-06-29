@@ -59,8 +59,11 @@
             <div class="profile-box-info">
                 <div class="profile-box-username">
                     <span style="color:{{ data.color }}">{{ data.displayname }}</span>
+                    {% if data.is_staff %}
+                        <img class="profile-box-icon" src="/assets/staff.svg">
+                    {% endif %}
                     {% if data.is_fedi %}
-                        <img class="profile-box-instance-icon" src="https://{{ data.instance }}/favicon.png">
+                        <img class="profile-box-icon" src="https://{{ data.instance }}/favicon.png">
                     {% endif %}
                 </div>
                 <div class="profile-box-handle">
@@ -137,18 +140,7 @@
                 <div class="content-box no-border-top">
                     {% if data.journals %}
                         {% for journal in data.journals %}
-                            <div>
-                                <div class="journal-entry">
-                                    <div class="journal-title">
-                                        <a href="/read?j={{ journal.id }}">
-                                            {{ journal.title|u.truncate(100, '...') }}
-                                        </a>
-                                    </div>
-                                    <div class="journal-contents">
-                                        {{ journal.contents|u.truncate(250, '...') }}
-                                    </div>
-                                </div>
-                            </div>
+                            {{ include('/components/_journal.twig') }}
                         {% endfor %}
                     {% endif %}
                 </div>

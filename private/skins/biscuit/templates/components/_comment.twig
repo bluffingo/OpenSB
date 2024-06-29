@@ -5,13 +5,11 @@
             {{ user_link(comment.author) }} • <small title="{{ comment.posted | date('F j, Y') }}">{{ comment.posted | relative_time }}</small>
         </div>
         <div class="comment-contents">
-            <p>
-                {% if comment.post | trim is not empty %}
-                    {{ comment.post | markdown_user_written }}
-                {% else %}
-                    <small>Null comment</small>
-                {% endif %}
-            </p>
+            {% if comment.post | trim is not empty %}
+                {{ comment.post | markdown_user_written }}
+            {% else %}
+                <small>Null comment</small>
+            {% endif %}
 
             {% if comment.id and is_user_logged_in %}
             <a class="reply-button" data-comment-id="{{ comment.id }}">Reply</a>

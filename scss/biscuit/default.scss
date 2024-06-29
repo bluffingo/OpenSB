@@ -112,6 +112,12 @@ pre {
 	white-space: pre-wrap;
 }
 
+blockquote {
+	margin: 0 0 0.5em 0;
+	padding-left: 0.8em;
+	border-left: 4px solid $content-box-border-color;
+}
+
 .pfp {
 	border: 1px solid rgba(black, 0.2);
 }

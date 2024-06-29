@@ -26,10 +26,14 @@
     line-height: 22px;
 
     .profile-box-username {
+      display: flex;
+      gap: 5px;
+
       font-size: 24px;
       font-weight: bold;
-      .profile-box-instance-icon {
-        width: 16px;
+      .profile-box-icon {
+        width: 24px;
+        display: inline;
       }
     }
 

@@ -114,6 +114,7 @@ $profile_data = [
     "followers" => $followers,
     "following" => $followed,
     "is_fedi" => $isFediverse,
+    "is_staff" => ($data["powerlevel"] > 1),
     "views" => $views,
     "old_usernames" => $old_usernames,
 ];

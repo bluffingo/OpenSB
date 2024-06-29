@@ -1,0 +1,15 @@
+<div class="content-entry">
+    <div class="content-info">
+        <div class="content-title">
+            <a href="/read?j={{ journal.id }}">
+                {{ journal.title }}
+            </a>
+        </div>
+        <div class="content-description">
+            {{ journal.published | relative_time }}
+        </div>
+        <div>
+            {{ journal.contents|u.truncate(250, '...') }}
+        </div>
+    </div>
+</div>
