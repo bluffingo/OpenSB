@@ -14,14 +14,23 @@
   margin-bottom: -1px;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
+  color: $link-color;
+  display: inline-block;
 
   &:hover {
     background-color: #ddd;
+    text-decoration: none;
   }
 
   &.active {
     background-color: #fff;
     border: 1px solid #ddd;
     border-bottom: 1px solid #fff0;
+    color: black;
+    font-weight: bold;
+  }
+
+  &:focus {
+    outline: none;
   }
 }

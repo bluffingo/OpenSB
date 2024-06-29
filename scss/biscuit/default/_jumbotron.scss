@@ -1,4 +1,17 @@
 .jumbotron {
+
+  &.page-banner {
+    h1, p {
+      margin: 0;
+    }
+
+    background: #111 url("/assets/biscuit_banner.svg");
+    background-size: cover;
+    color: white;
+    text-shadow: 0 0 0.5em #00000090;
+    padding: 20px 0;
+  }
+
   &.homepage-banner {
     h1, p {
       margin: 0 0 12px 0;

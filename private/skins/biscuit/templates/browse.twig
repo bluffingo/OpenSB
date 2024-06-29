@@ -11,16 +11,13 @@
             <h1>Browse (Page {{ current_page }} of {{ total_pages }})</h1>
         </div>
         {% if not user %}
-            <ul class="nav">
-                <li {% if type=='recent' %}class="active" {% endif %}><a
-                            href="/browse?type=recent">Most recent</a></li>
-                <li {% if type=='popular' %}class="active" {% endif %}><a
-                            href="/browse?type=popular">Most popular</a></li>
-                <li {% if type=='random' %}class="active" {% endif %}><a
-                            href="/browse?type=random">Random</a></li>
-            </ul>
+            <div class="tabs">
+                <a class="tablink {% if type=='recent' %}active{% endif %}" href="/browse?type=recent">Newest</a>
+                <a class="tablink {% if type=='popular' %}active{% endif %}" href="/browse?type=popular">Popular</a>
+                <a class="tablink {% if type=='random' %}active{% endif %}" href="/browse?type=random">Random</a>
+            </div>
         {% endif %}
-        <div class="content-box">
+        <div class="content-box no-border-top">
             {% for submission in data.submissions %}
                 {{ include('/components/_index_submission.twig') }}
             {% endfor %}

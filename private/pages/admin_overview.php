@@ -2,12 +2,16 @@
 
 namespace OpenSB;
 
-global $auth, $isChazizSB, $twig, $database;
+global $auth, $isChazizSB, $twig, $database, $orange;
 
 use SquareBracket\UnorganizedFunctions;
 
 if (!$auth->isUserAdmin()) {
     UnorganizedFunctions::Notification("You do not have permission to access this page", "/");
+}
+
+if ($orange->getLocalOptions()["skin"] != "biscuit") {
+    UnorganizedFunctions::Notification("Please change your skin to Biscuit.", "/theme");
 }
 
 /**
@@ -116,7 +120,7 @@ foreach ($thingsToCount as $thing) {
     $query .= sprintf("(SELECT COUNT(*) FROM %s) %s", $thing, $thing);
 }
 
-// Get the bans
+// Get bans (used in the old bans tab)
 $bans = $database->fetchArray($database->query("SELECT * FROM bans"));
 
 $bannedUserData = [];
@@ -172,6 +176,6 @@ $data = [
     ],
 ];
 
-echo $twig->render('admin.twig', [
+echo $twig->render('admin_overview.twig', [
     'data' => $data
 ]);

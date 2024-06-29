@@ -43,37 +43,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (firstTab) {
             const tabId = firstTab.getAttribute("data-tab");
-            if (firstTab) {
-            document.getElementById(tabId).style.display = "block";
-            firstTab.classList.add("active");
-            } else {
-                error("THIS SHOULD NOT HAPPEN. (tab code fail 1)");
-            }
+            if (tabId) {
+                document.getElementById(tabId).style.display = "block";
+                firstTab.classList.add("active");
+            } //else {
+            //    error("THIS SHOULD NOT HAPPEN. (tab code fail 1)");
+            //}
+            // actually that's fine. some pages use javascript-less tabs (browse and admin for example)
         } else {
-            error("THIS SHOULD NOT HAPPEN. (tab code fail 2)");
+            error("THIS SHOULD NOT HAPPEN.");
         }
     }
 
-    // Add click event listener to each tab link
     tabLinks.forEach(tabLink => {
-        tabLink.addEventListener("click", function() {
-            const tabId = this.getAttribute("data-tab");
+        // check if this tab has "data-tab". if it doesn't then don't bother.
+        const tabId = tabLink.getAttribute("data-tab");
 
-            // Hide all tab content
-            const tabContents = document.querySelectorAll(".tabcontent");
-            tabContents.forEach(tabContent => {
-                tabContent.style.display = "none";
+        if (tabId) {
+            tabLink.addEventListener("click", function () {
+                // Hide all tab content
+                const tabContents = document.querySelectorAll(".tabcontent");
+                tabContents.forEach(tabContent => {
+                    tabContent.style.display = "none";
+                });
+
+                // Remove 'active' class from all tab links
+                tabLinks.forEach(link => {
+                    link.classList.remove("active");
+                });
+
+                // Show the selected tab content and mark the button as active
+                document.getElementById(tabId).style.display = "block";
+                this.classList.add("active");
             });
-
-            // Remove 'active' class from all tab links
-            tabLinks.forEach(link => {
-                link.classList.remove("active");
-            });
-
-            // Show the selected tab content and mark the button as active
-            document.getElementById(tabId).style.display = "block";
-            this.classList.add("active");
-        });
+        }
     });
 
     // Get all menu buttons

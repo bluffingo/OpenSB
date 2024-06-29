@@ -37,7 +37,15 @@ if (isset($path[1]) && $path[1] != '') {
             'webfinger' => require(SB_PRIVATE_PATH . '/pages/activitypub/webfinger.php'),
             default => die(),
         },
-        'admin' => require(SB_PRIVATE_PATH . '/pages/admin.php'),
+        'admin' => match ($path[2] ?? null) {
+            'overview' => require(SB_PRIVATE_PATH . '/pages/admin_overview.php'),
+            'users' => require(SB_PRIVATE_PATH . '/pages/admin_users.php'),
+            'uploads' => require(SB_PRIVATE_PATH . '/pages/admin_uploads.php'),
+            'interactions' => require(SB_PRIVATE_PATH . '/pages/admin_interactions.php'),
+            'bans' => require(SB_PRIVATE_PATH . '/pages/admin_bans.php'), // old
+            'invitekeys' => require(SB_PRIVATE_PATH . '/pages/admin_invitekeys.php'),
+            default => UnorganizedFunctions::redirect('/admin/overview/'),
+        },
         'api' => match ($path[2] ?? null) {
             'biscuit' => match ($path[3] ?? null) {
                 'commenting' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/commenting.php'),

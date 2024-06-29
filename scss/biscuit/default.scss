@@ -40,7 +40,7 @@ td, th
 a
 {
 	text-decoration: none;
-	color: #0061c5;
+	color: $link-color;
 
 	&:hover {
 		text-decoration: underline;
@@ -171,8 +171,8 @@ hr {
 @import 'default/jumbotron';
 @import 'default/menus';
 @import 'default/tabs';
-@import 'default/navigation';
 
 @import 'default/watch_page';
 @import 'default/profile_page';
 @import 'default/notice_page';
+@import 'default/admin_page';
