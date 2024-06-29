@@ -31,12 +31,6 @@ body
 	line-height: 1.4;
 }
 
-td, th
-{
-	font-size: small;
-	padding: 0;
-}
-
 a
 {
 	text-decoration: none;
@@ -48,24 +42,6 @@ a
 
 	&:focus {
 		outline: 1px dotted;
-	}
-}
-
-table.c1 {
-	width: 100%;
-	border: 1px solid darken($secondary, 15%);
-
-	tbody {
-		margin: 0;
-	}
-
-	tr {
-		border: 1px solid darken($secondary, 15%);
-		padding: 20px;
-	}
-
-	tr.h {
-		background-color: darken($secondary, 15%);
 	}
 }
 
@@ -171,6 +147,7 @@ hr {
 @import 'default/jumbotron';
 @import 'default/menus';
 @import 'default/tabs';
+@import 'default/table';
 
 @import 'default/watch_page';
 @import 'default/profile_page';

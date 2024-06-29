@@ -33,18 +33,18 @@ $countData = $database->result("SELECT COUNT(*) FROM users u WHERE u.id NOT IN (
 $usersData = [];
 foreach ($queryData as $user)
 {
-    $user_banned = $database->fetch("SELECT * FROM bans WHERE userid = ?", [$user["id"]]);
-    if (!$user_banned) {
-        $userData = new UserData($database, $user["id"]);
-        $usersData[] =
-            [
-                "id" => $user["id"],
-                "info" => $userData->getUserArray(),
-                "submissions" => $user["s_num"],
-                "journals" => $user["j_num"],
-                "about" => $user["about"],
-            ];
-    }
+    //$user_banned = $database->fetch("SELECT * FROM bans WHERE userid = ?", [$user["id"]]);
+    //if (!$user_banned) {
+    $userData = new UserData($database, $user["id"]);
+    $usersData[] =
+        [
+            "id" => $user["id"],
+            "info" => $userData->getUserArray(),
+            "submissions" => $user["s_num"],
+            "journals" => $user["j_num"],
+            "about" => $user["about"],
+        ];
+    //}
 }
 
 $data = [

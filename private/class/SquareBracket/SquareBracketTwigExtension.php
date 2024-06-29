@@ -3,7 +3,6 @@
 namespace SquareBracket;
 
 use Parsedown;
-use RelativeTime\RelativeTime;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
@@ -111,20 +110,13 @@ class SquareBracketTwigExtension extends AbstractExtension
 
     /**
      * Relative time function.
-     *
-     * @since openSB Pre-Alpha 1?
      */
-    function relativeTime($time): string
-    {
-        $config = [
-            'language' => '\RelativeTime\Languages\English',
-            'use_weeks' => true,
-            'separator' => ', ',
-            'suffix' => true,
-            'truncate' => 1,
-        ];
+    function relativeTime($time) {
+        if (!$time) return 'unknown';
 
-        $relativeTime = new RelativeTime($config);
+        $relativeTime = new RelativeTime([
+            'truncate' => 1,
+        ]);
 
         return $relativeTime->timeAgo($time);
     }

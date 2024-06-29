@@ -1,0 +1,24 @@
+{% extends "_layout_admin.twig" %}
+
+{% set title = "Users" %}
+
+	{% block admincontent %}
+        <table class="c1">
+            <tr class="h">
+                <th>Username</th>
+                <th>Uploads</th>
+                <th>Journals</th>
+                <th>Registered</th>
+                <th>Last logged in</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td class="a">{{ user.info.username }}</td>
+                    <td class="a">{{ user.submissions }}</td>
+                    <td class="a">{{ user.journals }}</td>
+                    <td class="a">{{ user.info.joined | relative_time() }}</td>
+                    <td class="a">{{ user.info.connected | relative_time() }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}

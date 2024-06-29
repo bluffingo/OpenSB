@@ -2,6 +2,16 @@
 
 {% set title = "Whoooo! Biscuit!" %}
 
+{% block precontent %}
+    {% if current_theme == "default" %}
+        <div class="jumbotron page-banner">
+            <div class="jumbotron-container">
+                <h1>{{ title }}</h1>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     {% for color in color_types %}
         <div class="banner banner-{{ color }}">
@@ -10,10 +20,14 @@
             </span>
         </div>
     {% endfor %}
-    <br>
+    <hr>
     {% for color in color_types %}
         <div class="button button-{{ color }}">{{ color }} button!</div>
     {% endfor %}
     <!-- not an actual color -->
     <div class="button button-get-started">get started button!</div>
+    <hr>
+    <div>Unix epoch: {{ "0" | relative_time() }}</div>
+    <div>Unix epoch: {{ "1" | relative_time() }}</div>
+    <div>Right now: {{ 'now'| date('U') | relative_time() }}</div>
 {% endblock %}
