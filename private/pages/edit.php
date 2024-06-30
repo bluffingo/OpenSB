@@ -30,8 +30,8 @@ if ($auth->getUserID() != $data["author"]) {
 }
 
 if (isset($_POST['upload'])) {
-    $title = $data['title'] ?? null;
-    $desc = $data['desc'] ?? null;
+    $title = $_POST['title'] ?? null;
+    $desc = $_POST['desc'] ?? null;
 
     if (!empty($_FILES['thumbnail']['name'])) {
         $name = $_FILES['thumbnail']['name'];

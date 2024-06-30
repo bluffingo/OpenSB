@@ -26,7 +26,7 @@
                                   style="overflow:hidden;resize:vertical" rows="3">{{ data.description }}</textarea>
                     </div>
 
-                    {% if show_work_in_progress_stuff %}
+                    {% if is_debug %}
                         <div class="form-input">
                             Visibility:
                             <select name="visibility" id="visibility">
