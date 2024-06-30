@@ -28,11 +28,14 @@
     .profile-box-username {
       display: flex;
       gap: 5px;
+      align-items: center;
 
       font-size: 24px;
       font-weight: bold;
       .profile-box-icon {
-        width: 24px;
+        width: 20px;
+        height: 20px;
+        background-size: 20px;
         display: inline;
       }
     }

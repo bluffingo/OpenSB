@@ -37,7 +37,7 @@
                 <div class="profile-box-username">
                     <span style="color:{{ data.color }}">{{ data.displayname }}</span>
                     {% if data.is_staff %}
-                        <img class="profile-box-icon" src="/assets/staff.svg">
+                        <div class="profile-box-icon biscuit-icon staff"></div>
                     {% endif %}
                     {% if data.is_fedi %}
                         <img class="profile-box-icon" src="https://{{ data.instance }}/favicon.png">

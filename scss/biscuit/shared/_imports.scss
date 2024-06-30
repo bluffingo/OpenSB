@@ -5,5 +5,7 @@
   @return if(lightness($color) < $threshold, $light, $dark)
 }
 
+@import 'icons';
+
 @import 'page';
 @import 'grid_system';

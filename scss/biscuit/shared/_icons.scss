@@ -1,0 +1,29 @@
+// icons!
+
+.biscuit-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: 16px;
+
+  &.star-full {
+    background-image: url( '/assets/icons/star_full.svg' );
+  }
+
+  &.star-half {
+    background-image: url( '/assets/icons/star_half.svg' );
+  }
+
+  &.star-empty {
+    background-image: url( '/assets/icons/star_empty.svg' );
+  }
+
+  &.partner {
+    background-image: url( '/assets/icons/partner.svg' );
+  }
+
+  &.staff {
+    background-image: url( '/assets/icons/staff.svg' );
+  }
+}

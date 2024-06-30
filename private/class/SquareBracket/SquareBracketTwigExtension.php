@@ -247,9 +247,9 @@ HTML;
 
     public function showRatings($ratings): void
     {
-        $full = "bi bi-star-fill rating-spacing";
-        $half = "bi bi-star-half rating-spacing";
-        $empty = "bi bi-star rating-spacing";
+        $full = "biscuit-icon star-full";
+        $half = "biscuit-icon star-half";
+        $empty = "biscuit-icon star-empty";
 
         $full_stars = substr($ratings["average"], 0, 1);
         $half_stars = substr($ratings["average"], 2, 1);
