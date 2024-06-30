@@ -10,6 +10,7 @@
   box-shadow: 0 1px 0 rgba(black, 0.2);
   text-shadow: 0 -1px 0 rgba(black, 0.4);
   font-weight: bold;
+  background-repeat: repeat-x;
 
   &:hover {
     text-decoration: none;
@@ -34,22 +35,22 @@
 
 @each $color, $value in $color-map {
   .button-#{$color} {
-    border: 1px solid adjust-hue(darken($value, 4%), -6);
+    border: 1px solid adjust-hue(darken($value, 4%), 6);
     background-color: $value;
-    @include gradient-y($start-color: adjust-hue(lighten($value, 9%), 2), $end-color: adjust-hue(darken($value, 6%), -6));
+    @include gradient-y($start-color: adjust-hue(lighten($value, 9%), 2), $end-color: adjust-hue(darken($value, 6%), 6));
 
     color: contrast-color($value, #000, #fff);
     text-shadow: 0 -1px 0 rgba(black, 0.4);
 
     &:hover {
       background-color: lighten($value, 10%);
-      @include gradient-y($start-color: adjust-hue(lighten($value, 15%), 1), $end-color: adjust-hue(darken($value, 2.5%), -2));
+      @include gradient-y($start-color: adjust-hue(lighten($value, 15%), 1), $end-color: adjust-hue(darken($value, 2.5%), 2));
       border-color: darken($value, 5%);
     }
 
     &:active {
       background-color: darken($value, 5%);
-      @include gradient-y($start-color: $value, $end-color: adjust-hue(darken($value, 7%), -4));
+      @include gradient-y($start-color: $value, $end-color: adjust-hue(darken($value, 7%), 4));
       border-color: darken($value, 12%);
     }
 

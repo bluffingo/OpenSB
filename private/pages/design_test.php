@@ -5,7 +5,7 @@ global $twig, $orange, $isDebug;
 
 use SquareBracket\UnorganizedFunctions;
 
-if ($orange->getLocalOptions()["skin"] == "biscuit" && $isDebug) {
+if ($orange->getLocalOptions()["skin"] == "biscuit") {
     echo $twig->render('design_test.twig',
         [
             "color_types" => [
