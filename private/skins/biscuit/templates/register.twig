@@ -1,4 +1,4 @@
-{% extends "_layout.twig" %}
+{% extends "_layout_login.twig" %}
 
 {% set title = "Register" %}
 
@@ -7,7 +7,7 @@
             <div class="section-title">
                 <h1>Register</h1>
             </div>
-            <div class="content-box">
+            <div class="content-box rounded login">
                 <div class="panel-body">
                     <form method="post" name="loginForm" id="loginForm" action="register" class="form-signin">
                         <div class="form-input">
@@ -43,6 +43,10 @@
                     </form>
                 </div>
             </div>
-            <div>By registering on {{ website_branding.name }}, you accept the <a href="/privacy">Privacy Policy</a>.</div>
+            <div class="login-text">
+                By registering on {{ website_branding.name }},
+                you accept the <a href="/tos">Terms of Service</a>
+                and <a href="/privacy">Privacy Policy</a>.
+            </div>
         </div>
     {% endblock %}
