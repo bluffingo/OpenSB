@@ -23,7 +23,7 @@ Any additional user information you add to your profile (Profile description, et
 This site uses a token cookie (`SBTOKEN`) to keep you logged in, this token should not be publicly disclosed to *anyone* as it will make them able to log into your account.
 
 ## Removal Requests
-If you have published personal information you would like to remove, use the tools given to edit it out if applicable. If this is not possible (e.g. you want to rename a personally identifiable username) or you would like to fully erase it, please contact Chaziz or sks2002.
+If you have published personal information you would like to remove, use the tools given to edit it out if applicable. If this is not possible (e.g. you want to rename a personally identifiable username) or you would like to fully erase it, please contact Chaziz.
 
 ## Transparency
 squareBracket runs on OpenSB, which is fully open source and its source code [is available on GitHub](https://github.com/Bluffingo/OpenSB). You may inspect the source code yourself to see how your data is handled by the software.
