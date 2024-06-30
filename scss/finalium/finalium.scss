@@ -130,9 +130,8 @@ blockquote {
 .main-content {
   background: #3e3e3e;
   background: linear-gradient(90deg, rgb(62, 62, 62) 0%, rgb(107, 107, 107) 35%, rgb(155, 155, 155) 100%);
-  margin:0;
   color:white;
-  margin-top: -48px;
+  margin: -48px 0 0;
   padding: 75px 0px 20px;
   display: inline-block;
   width: 100%;

@@ -117,8 +117,12 @@ body {
 }
 
 .main-content {
-  background: linear-gradient(60deg, #312a6c, #852d91); // gradient used in october 2021 finalium
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) !important;
+  background-image: url("/assets/sb_branding/finalium/rain.jpg");
+  background-size: cover;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) !important;
+  .button {
+    text-shadow: none;
+  }
 }
 
 // containers were locked to 970px.
