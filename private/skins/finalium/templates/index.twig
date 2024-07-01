@@ -27,7 +27,7 @@
                 {% endif %}
             </div>
         {% elseif current_theme == 'beta' %}
-            <div class="container sb-welcome">
+            <div class="container sb-welcome grid">
                 <div class="grid">
                 {% if is_user_logged_in %}
                     <!-- hardcoded widths, whoops! -chaziz 6/12/2024 -->
@@ -63,7 +63,7 @@
                 </div>
             </div>
         {% else %}
-        <div class="container page-container">
+        <div class="container page-container sb-welcome grid">
             {% if is_user_logged_in %}
                 <div class="col-md-10">
                     <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>

@@ -7,7 +7,7 @@
     {% set info_col = 'col-md-12' %}
 {% endif %}
 
-<div class="grid" style="margin-bottom: 5px;display:block;">
+<div class="grid" style="margin-bottom: 5px;">
     <div class="{{ thumbnail_col }}">
         <a href="/watch?v={{ data.id }}">
             <img class="img-fluid" src="{{ thumbnail(data.id, data.type, data.bools.custom_thumbnail) }}" alt="{{ data.title }}">

@@ -4,7 +4,7 @@
 
 	{% block content %}
         <h1>My uploads {% if page != 1 %}(Page {{ page }}){% endif %}</h1>
-        <div class="grid">
+        <div>
             {% for submission in data.submissions %}
                 {{ submission_box(submission) }}
             {% else %}

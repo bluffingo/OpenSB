@@ -12,11 +12,9 @@
 {% block title %}{{ submission.title }}{% endblock %}
 {% block content %}
    <div class="watchNext">
-      {% if user_data.id == submission.author %}
+      {% if submission.is_owner %}
          <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
-            <div class="grid">
-               <a class="button button-dark" href="/edit.php?v={{submission.video_id}}">Edit submission</a>
-            </div>
+            <a class="button button-dark" href="/edit.php?v={{submission.video_id}}">Edit submission</a>
          </div>
       {% endif %}
       <div class="grid">
@@ -26,16 +24,22 @@
                <h1>{{ submission.title }}</h1>
                <div class="grid">
                   <div class="col-md-8">
-                     <img src="{{ profile_picture(submission.author.info.username) }}" class="rounded" style="width:48px;float: left;margin-right:8px;">
-                     <a href="/user.php?name={{ submission.author.info.username }}" style="color:{{ submission.author.info.customcolor }}"><b style="height: 20px;display: inline-block;">{{ submission.author.info.username }}</b></a> {# • {{ allVideos }} videos#}
-                     <br>
-                     {% if submission.is_owner %}
-                        <a class="button button-secondary button-small">Settings</a>
-                     {% else %}
-                        <button id="subscribe-watch" class="button button-{% if submission.author.following %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == submission.author.id %}disabled{% endif %}>{% if submission.author.following %}Unfollow{% else %}Follow{% endif %}</button>
-                        <div class="subscribe-count">{{ submission.author.followers }}</div>
-                     {% endif %}
-                     <br>
+                     <div class="watch-creator">
+                        <div>
+                           <img src="{{ profile_picture(submission.author.info.username) }}" class="rounded" style="width:48px;">
+                        </div>
+                        <div>
+                           <a href="/user.php?name={{ submission.author.info.username }}" style="color:{{ submission.author.info.customcolor }}"><b style="height: 20px;display: inline-block;">{{ submission.author.info.username }}</b></a> {# • {{ allVideos }} videos#}
+                           <br>
+                           {% if submission.is_owner %}
+                              <a class="button button-secondary button-small">Settings</a>
+                           {% else %}
+                              <button id="subscribe-watch" class="button button-{% if submission.author.following %}secondary{% else %}primary{% endif %} button-small" type="button" {% if not is_user_logged_in or user_data.id == submission.author.id %}disabled{% endif %}>{% if submission.author.following %}Unfollow{% else %}Follow{% endif %}</button>
+                              <div class="subscribe-count">{{ submission.author.followers }}</div>
+                           {% endif %}
+                        </div>
+                        <br>
+                     </div>
                   </div>
                   <div class="col-md-8 right">
                      <h1 class="viewcount">{{ submission.interactions.views }}</h1>

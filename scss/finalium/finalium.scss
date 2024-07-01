@@ -105,6 +105,9 @@ blockquote {
 
 .left {
   text-align: left;
+  &:dir(rtl) {
+    text-align: right;
+  }
 }
 
 .center {
@@ -113,18 +116,30 @@ blockquote {
 
 .right {
   text-align: right;
+  &:dir(rtl) {
+    text-align: left;
+  }
 }
 
 .float-left {
   float: left;
+  &:dir(rtl) {
+    float: right;
+  }
 }
 
 .float-right {
   float: right;
+  &:dir(rtl) {
+    float: left;
+  }
 }
 
 .clear_right {
   clear: right;
+  &:dir(rtl) {
+    clear: left;
+  }
 }
 
 .main-content {
@@ -299,6 +314,20 @@ ul.nav {
     }
 	li { padding: 6px 15px;; }
 	li.active { background: $primary; a { color: white; } }
+}
+
+// post-mortem changes
+.watch-creator {
+  display: flex;
+  gap: 8px;
+}
+
+#header-main {
+  display: flex;
+  #masthead-search {
+    // FIXME: this fucks up header links on qobo theme
+    //width: 100%;
+  }
 }
 
 /// Imports \\\

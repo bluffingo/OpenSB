@@ -39,13 +39,13 @@ if (strlen($commentText) > 1000) {
 }
 
 if (!$isDebug) {
-    $timeLimit = time() - 60;
+    $timeLimit = time() - 5;
     $userId = $auth->getUserID();
     if ($database->result("SELECT COUNT(*) FROM comments WHERE date > ? AND author = ?", [$timeLimit, $userId]) ||
         $database->result("SELECT COUNT(*) FROM channel_comments WHERE date > ? AND author = ?", [$timeLimit, $userId]) ||
         $database->result("SELECT COUNT(*) FROM journal_comments WHERE date > ? AND author = ?", [$timeLimit, $userId])
     ) {
-        echo json_encode(["error" => "Please wait at least a minute before commenting again."]);
+        echo json_encode(["error" => "Please wait at 5 seconds before commenting again."]);
         exit;
     }
 }
