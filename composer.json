@@ -10,7 +10,7 @@
 		"ext-pdo": "*",
 		"twig/string-extra": "3.10.0",
 		"psr/http-client": "1.0.3",
-		"symfony/http-kernel": "7.1.1",
+		"symfony/http-kernel": "7.1.2",
 		"twbs/bootstrap": "^5.3",
 		"twbs/bootstrap-icons": "^1.11"
 	},
