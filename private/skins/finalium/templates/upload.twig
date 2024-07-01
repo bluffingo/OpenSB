@@ -9,7 +9,7 @@
                     <h2 style="margin-bottom: 0.5em;">Upload</h2>
                     <p>
                         Make sure you have read the <a href="/guidelines">guidelines</a> first. Failure to comply
-                        with the guidelines will result in a swift termination of your account(s).
+                        with the guidelines will result in your upload being taken down.
                     </p>
                     <h4 style="margin-bottom: 0.5em;">Title</h4>
                     <input type="text" class="form-control form-long uploader-form" id="title" name="title" required>
@@ -22,17 +22,11 @@
                     <h4 style="margin-bottom: 0.5em;">Tags</h4>
                     <input type="text" class="form-control form-long uploader-form" name="tags" required>
                     <h2 style="margin-bottom: 0.5em;">Select file</h2>
-                    <p>Most popular video and image formats should be supported.</p>
+                    <p>File limit: {{ limit }}</p>
                     <input class="form-control" type="file" name="fileToUpload" id="fileToUpload"
                            onchange="$('#title').val($('#fileToUpload').val().split('\\').pop().split('/').pop())"
                            required>
                     <br>
-                    {% if isDebug %}
-                        <label class="checkbox">
-                            <input type="checkbox" id="debugUploaderSkip" name="debugUploaderSkip">
-                            Skip processing (Debug, MP4 only)
-                        </label>
-                    {% endif %}
                     <div class="right">
                         <input class="button button-primary" type="submit" id="upload" name="upload"
                                value="Upload">

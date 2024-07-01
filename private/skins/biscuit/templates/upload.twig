@@ -7,15 +7,10 @@
             <div class="section-title">
                 <h1>Upload</h1>
             </div>
-            <p>
+            <p style="font-weight: bold;">
                 Make sure you have read the <a href="/guidelines">guidelines</a> first. Failure to comply
-                with the guidelines will result in a swift termination of your account(s).
+                with the guidelines will result in your upload being taken down.
             </p>
-            {% if is_chaziz_sb %}
-            <p>
-                NOTE: The upload limit is around 100 megabytes.
-            </p>
-            {% endif %}
             <div class="content-box">
                 <form name="uploadForm" id="uploadForm" method="post" action="upload" enctype="multipart/form-data">
                     <div class="panel panel-default">
@@ -41,6 +36,8 @@
                                 <label for="fileToUpload">File to upload (required):</label>
                                 <input class="form-submit" type="file" name="fileToUpload" id="fileToUpload" required>
                             </div>
+
+                            <div>File limit: {{ limit }}</div>
 
                             <div class="form-submit">
                                 <input type="checkbox" name="rating" id="rating" value="true">

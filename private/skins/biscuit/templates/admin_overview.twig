@@ -10,11 +10,6 @@
 			</div>
 			<br>
 			<div class="content-box">
-				<h1>Views</h1>
-				<canvas id="viewChart"></canvas>
-			</div>
-			<br>
-			<div class="content-box">
 				<h1>Statistics</h1>
 				<ul>
 					<li>Uname: {{ data.system.uname }}</li>
@@ -124,10 +119,11 @@
 {% block scripts %}
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-
 	<script>
 		const cumulativeChart = document.getElementById('cumulativeChart');
 		const viewChart = document.getElementById('viewChart');
+
+		/* todo: replace chart.js with anything else that can offer a zoom slider. */
 
 		new Chart(cumulativeChart, {
 			type: 'line',
@@ -181,12 +177,36 @@
 						],
 						borderWidth: 1
 					},
+					{
+						label: 'Views (Logged in)',
+						data: [
+							{% for graph in data.graph_data.views %}
+							{
+								x: "{{ graph.date }}",
+								y: {{ graph.user_views }},
+							},
+							{% endfor %}
+						],
+						borderWidth: 1
+					},
+					{
+						label: 'Views (Guests)',
+						data: [
+							{% for graph in data.graph_data.views %}
+							{
+								x: "{{ graph.date }}",
+								y: {{ graph.guest_views }},
+							},
+							{% endfor %}
+						],
+						borderWidth: 1
+					},
 				]
 			},
 			options: {
 				elements: {
 					point: {
-						radius: 0
+						radius: 2
 					}
 				},
 				scales: {
@@ -203,53 +223,6 @@
 						type: 'time',
 					}
 					{% endif %}
-				}
-			}
-		});
-
-		new Chart(viewChart, {
-			type: 'line',
-			data: {
-				datasets: [
-					{
-						label: 'Logged-in views',
-						data: [
-							{% for graph in data.graph_data.views %}
-							{
-								x: "{{ graph.date }}",
-								y: {{ graph.user_views }},
-							},
-							{% endfor %}
-						],
-						borderWidth: 1
-					},
-					{
-						label: 'Logged-out views',
-						data: [
-							{% for graph in data.graph_data.views %}
-							{
-								x: "{{ graph.date }}",
-								y: {{ graph.guest_views }},
-							},
-							{% endfor %}
-						],
-						borderWidth: 1
-					},
-				]
-			},
-			options: {
-				elements: {
-					point: {
-						radius: 0
-					}
-				},
-				scales: {
-					y: {
-						beginAtZero: true
-					},
-					x: {
-						type: 'time',
-					}
 				}
 			}
 		});

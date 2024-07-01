@@ -7,7 +7,7 @@
             <h3>Upload</h3>
             <p>
                 Make sure you have read the <a href="/guidelines">guidelines</a> first. Failure to comply
-                with the guidelines will result in a swift termination of your account(s).
+                with the guidelines will result in your upload being taken down.
             </p>
             <form name="uploadForm" id="uploadForm" method="post" action="upload"
                   enctype="multipart/form-data">
@@ -23,6 +23,7 @@
                 <br>
                 <h4>File</h4>
                 <p>Select the file you want to upload.</p>
+                <p>File limit: {{ limit }}</p>
                 <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
                 <br>
 
