@@ -26,4 +26,20 @@
   &.staff {
     background-image: url( '/assets/icons/staff.svg' );
   }
+
+  &.b-danger {
+    background-image: url( '/assets/icons/banner-danger.svg' );
+  }
+
+  &.b-primary {
+    background-image: url( '/assets/icons/banner-primary.svg' );
+  }
+
+  &.b-secondary {
+    background-image: url( '/assets/icons/banner-secondary.svg' );
+  }
+
+  &.b-success {
+    background-image: url( '/assets/icons/banner-success.svg' );
+  }
 }

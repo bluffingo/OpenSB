@@ -1,5 +1,5 @@
-<script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
-<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+<script src="https://vjs.zencdn.net/8.12.0/video.min.js"></script>
+<link href="https://vjs.zencdn.net/8.12.0/video-js.css" rel="stylesheet" />
 <video
         id="sb-video"
         class="video-js"
@@ -28,6 +28,7 @@
     });
 
     {% if is_chaziz_sb %}
+    {# bunnycdn don't repeat part of the video challenge: near fucking impossible #}
     player.src([{
         src: '{{ submission.file }}',
         type: 'application/x-mpegURL'

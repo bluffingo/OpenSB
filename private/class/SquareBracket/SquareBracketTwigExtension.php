@@ -279,19 +279,7 @@ HTML;
 
     public function notificationIcon($type)
     {
-        $icon = "bi bi-info-circle-fill";
-
-        if ($type == "danger") {
-            $icon = "bi bi-x-circle-fill";
-        }
-
-        if ($type == "success") {
-            $icon = "bi bi-check-circle-fill";
-        }
-
-        if ($type == "warning") {
-            $icon = "bi bi-exclamation-triangle-fill";
-        }
+        $icon = "biscuit-icon b-$type";
 
         return $icon;
     }
