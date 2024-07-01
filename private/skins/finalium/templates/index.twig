@@ -18,10 +18,10 @@
         {% if current_theme == 'qobo' %}
             <div class="container sb-welcome">
                 {% if is_user_logged_in %}
-                    <h1>Welcome to {{ website_branding.name }}, {{ user_data.title }}</h1>
+                    <h1>{{ localize('welcome_logged_in', website_branding.name, user_data.title) }}</h1>
                     <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }} - {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
                 {% else %}
-                    <h1>Welcome to {{ website_branding.name }}</h1>
+                    <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
                     <a class="button button-primary button-large" href="/register.php">Get started</a>
                     <a class="button button-secondary button-large" href="/login.php">Login</a>
                 {% endif %}
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-md-14" style="width:83.3333333333%;">
                         <p class="text-start">
-                        </p><h1 style="padding:0;margin:8px 0;">Welcome, {{ user_data.title }}</h1>
+                        </p><h1 style="padding:0;margin:8px 0;">{{ localize('welcome_logged_in_beta', user_data.title) }}</h1>
                         <h3 style="padding:0;margin:8px 0;">@{{ user_data.name }}</h3>
                         <p style="padding:0;margin:8px 0;">{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
                             • {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
@@ -44,7 +44,7 @@
                     </div>
                 {% else %}
                     <div class="col-md-10">
-                        <h1>Welcome to {{ website_branding.name }}</h1>
+                        <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
                         <h3 style="padding:0;margin:0;">
                             {% if is_chaziz_sb %}
                                 Your content, your narration, your niche on the web.
@@ -66,7 +66,7 @@
         <div class="container page-container">
             {% if is_user_logged_in %}
                 <div class="col-md-10">
-                    <h1>Welcome to {{ website_branding.name }}</h1>
+                    <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
                     <h3>@{{ user_data.name }}</h3>
                     <a class="button button-neutral button-large"
                        href="/my_submissions">Manage {{ icon('caret-right-fill', 12) }}</a>
@@ -104,7 +104,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body-fat">
-                    <h3 style="margin-top:0">Random Uploads</h3>
+                    <h3 style="margin-top:0">{{ localize('random_uploads') }}</h3>
                     {% for submission in data.submissions %}
                         {{ submission_box(submission) }}
                     {% else %}
@@ -116,7 +116,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body-fat">
-                    <h3 style="margin-top:0">Recent Uploads</h3>
+                    <h3 style="margin-top:0">{{ localize('recent_uploads') }}</h3>
                     {% for submission in data.submissions_new %}
                         {{ submission_box(submission) }}
                     {% else %}

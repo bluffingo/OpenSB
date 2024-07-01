@@ -41,6 +41,7 @@ class SquareBracketTwigExtension extends AbstractExtension
             new TwigFunction('get_css_file_date', [$this, 'getCSSFileDate']),
             new TwigFunction('submission_box', [$this, 'submissionBox'], ['is_safe' => ['html']]),
             new TwigFunction('comment', [$this, 'comment'], ['is_safe' => ['html']]),
+            new TwigFunction('localize', [$this, 'localize']),
         ];
     }
 
@@ -394,5 +395,10 @@ HTML;
     {
         global $twig;
         return $twig->render('components/comment.twig', ['data' => $comment]);
+    }
+
+    public function localize($key, ...$args) {
+        global $localization;
+        return $localization->getMessage($key, ...$args);
     }
 }

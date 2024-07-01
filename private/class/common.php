@@ -29,6 +29,7 @@ global $host, $user, $pass, $db, $isChazizSB, $debugLogging, $isMaintenance, $bu
 
 use SquareBracket\ActivityPubAdapter;
 use SquareBracket\Authentication;
+use SquareBracket\Localization;
 use SquareBracket\Profiler;
 use SquareBracket\SquareBracket;
 use SquareBracket\Storage;
@@ -116,6 +117,7 @@ $auth = new Authentication($database, $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new Profiler();
 $twig = new Templating($orange);
 $activityPubAdapter = new ActivityPubAdapter($orange);
+$localization = new Localization();
 
 // automatic stuff
 // this should probably have a cooldown or something i don't fucking know

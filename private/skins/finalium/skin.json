@@ -4,7 +4,7 @@
     "id": "finalium",
     "name": "Finalium",
     "author": "OpenSB developers",
-    "description": "The classic squareBracket user experience.",
+    "description": "The classic squareBracket user experience, originally known as sbNext.",
     "themes": [
       {
         "id": "default",
@@ -14,7 +14,7 @@
       {
         "id": "dark",
         "name": "Dark",
-        "description": "A dark theme for Finalium. Might be unmaintained."
+        "description": "A dark theme for Finalium. May be unmaintained."
       },
       {
         "id": "nostalgia",

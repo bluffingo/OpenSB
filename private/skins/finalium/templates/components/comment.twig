@@ -36,7 +36,7 @@
             {% endif %}
             {% if is_user_logged_in %}
             {% if data.id|length > 0 %}
-                <a onclick="reply({{ data.id }})">Reply</a>
+                <a onclick="reply({{ data.id }})">{{ localize('reply') }}</a>
             {% endif %}
             {% endif %}
         </p>

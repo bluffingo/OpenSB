@@ -1,11 +1,11 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Browse{% endblock %}
+{% block title %}{{ localize('browse') }}{% endblock %}
 
 	{% block content %}
         <div class="row">
             <div class="col">
-                <h3>Browse uploads</h3>
+                <h3>{{ localize('browse') }} uploads</h3>
                 <div class="card-body">
                     {% for video in data.uploads|batch(4) %}
                         <div class="row">

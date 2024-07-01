@@ -1,6 +1,6 @@
 {% extends "_layout.twig" %}
 
-{% set title = "Browse" %}
+{% set title = "{{ localize('browse') }}" %}
 
 {% block content %}
     {% set total_pages = (data.count / items_per_page) | round(0, 'ceil') %}
@@ -8,7 +8,7 @@
 
     <div class="section">
         <div class="section-title">
-            <h1>Browse (Page {{ current_page }} of {{ total_pages }})</h1>
+            <h1>{{ localize('browse') }} (Page {{ current_page }} of {{ total_pages }})</h1>
         </div>
         {% if not user %}
             <div class="tabs">

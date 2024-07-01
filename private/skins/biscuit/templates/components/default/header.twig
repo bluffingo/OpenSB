@@ -11,7 +11,7 @@
                 <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
             {% endfor %}
             <form class="header-search" action="/search">
-                <input id="header-search-input" type="text" name="query" placeholder="Search...">
+                <input id="header-search-input" type="text" name="query" placeholder="{{ localize('search') }}...">
                 <button id="header-search-button">
                     <i class="bi bi-search"></i>
                 </button>

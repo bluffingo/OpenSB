@@ -48,7 +48,7 @@
                         <div class="jumbotron-logged-in">
                             <img src="{{ profile_picture(user_data.name) }}" class="pfp" alt="{{ user_data.name }}">
                             <div class="jumbotron-logged-in-text">
-                                <h1>Welcome to {{ website_branding.name }}, {{ user_data.title }}</h1>
+                                <h1>{{ localize('welcome_logged_in', website_branding.name, user_data.title) }}</h1>
                                 <p>@{{ user_data.name }}</p>
                                 <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
                                     • {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
@@ -56,7 +56,7 @@
                         </div>
                     {% else %}
                         <div class="jumbotron-logged-out">
-                            <h1>Welcome to {{ website_branding.name }}</h1>
+                            <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
                             {% if is_chaziz_sb %}
                                 <p>Your content, your narration, your niche on the web.</p>
                             {% else %}
@@ -77,8 +77,8 @@
             {% if current_theme != "test" %}
             <div class="section">
                 <div class="section-title">
-                    <h2>Random Uploads</h2>
-                    <a href="/browse">More</a>
+                    <h2>{{ localize('random_uploads') }}</h2>
+                    <a href="/browse">{{ localize('more') }}</a>
                 </div>
                 <div class="content-box">
                     <section class="splide" id="splide1" aria-labelledby="carousel-heading">
@@ -95,8 +95,8 @@
             {% endif %}
             <div class="section">
                 <div class="section-title">
-                    <h2>Recent Uploads</h2>
-                    <a href="/browse">More</a>
+                    <h2>{{ localize('recent_uploads') }}</h2>
+                    <a href="/browse">{{ localize('more') }}</a>
                 </div>
                 <div class="content-box">
                     {% for submission in data.submissions_new %}
@@ -109,7 +109,7 @@
             {% if data.news_recent %}
                 <div class="section">
                     <div class="section-title">
-                        <h2>Site News</h2>
+                        <h2>{{ localize('site_news') }}</h2>
                     </div>
                     <div class="content-box">
                         {% for journal in data.news_recent %}
@@ -128,7 +128,7 @@
             {% endif %}
             <div class="section">
                 <div class="section-title">
-                    <h2>Recent Tags</h2>
+                    <h2>{{ localize('recent_tags') }}</h2>
                 </div>
                 <div class="content-box">
                     {% for tag in data.tags_recent %}

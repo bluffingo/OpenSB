@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="col-4">
-                        <div class="text-end"><a href="/browse" class="btn btn-light btn-sm">Browse</a></div>
+                        <div class="text-end"><a href="/browse" class="btn btn-light btn-sm">{{ localize('browse') }}</a></div>
                     </div>
                 </div>
                 <div class="card">
@@ -31,7 +31,7 @@
                             <div class="tab-pane fade show active" id="homenav-recent" role="tabpanel"
                                  aria-labelledby="homenav-recent-tab" tabindex="0">
                                 <h3>
-                                    Recent Uploads
+                                    {{ localize('recent_uploads') }}
                                 </h3>
                                 {% for submission in data.submissions_new %}
                                     {{ include('/components/smallvideobox.twig') }}
@@ -42,7 +42,7 @@
                             <div class="tab-pane fade" id="homenav-random" role="tabpanel"
                                  aria-labelledby="homenav-random-tab" tabindex="0">
                                 <h3>
-                                    Random Uploads
+                                    {{ localize('random_uploads') }}
                                 </h3>
                                 {% for submission in data.submissions %}
                                     {{ include('/components/smallvideobox.twig') }}
