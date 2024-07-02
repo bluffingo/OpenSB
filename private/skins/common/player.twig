@@ -1,42 +1,14 @@
-<script src="https://vjs.zencdn.net/8.12.0/video.min.js"></script>
-<link href="https://vjs.zencdn.net/8.12.0/video-js.css" rel="stylesheet" />
-<video
-        id="sb-video"
-        class="video-js"
-        controls
-        preload="auto"
-        width="640"
-        height="264"
-        data-setup="{}"
->
-    <p class="vjs-no-js">
-        To view this video please enable JavaScript, and consider upgrading to a
-        web browser that
-        <a href="https://videojs.com/html5-video-support/" target="_blank"
-        >supports HTML5 video</a
-        >
-    </p>
-</video>
-<script>
-    var player = videojs('sb-video', {
-        sourceOrder: true,
-        retryOnError: true,
-        aspectRatio: "16:9",
-        fluid: true,
-        autoplay: false,
-        preload: "auto"
-    });
+<link rel="stylesheet" href="https://cdn.vidstack.io/player/theme.css" />
+<link rel="stylesheet" href="https://cdn.vidstack.io/player/video.css" />
+<script src="https://cdn.vidstack.io/player" type="module"></script>
 
-    {% if is_chaziz_sb %}
-    {# bunnycdn don't repeat part of the video challenge: near fucking impossible #}
-    player.src([{
-        src: '{{ submission.file }}',
-        type: 'application/x-mpegURL'
-    }]);
-    {% else %}
-    player.src([{
-        src: '/dynamic/videos/{{ submission.id }}.converted.mp4',
-        type: 'video/mp4'
-    }]);
-    {% endif %}
-</script>
+{% if is_chaziz_sb %}
+    {% set video = submission.file %}
+{% else %}
+    {% set video = "/dynamic/videos/" ~ submission.id ~ ".converted.mp4" %}
+{% endif %}
+
+<media-player title="{{ submission.title }}" src="{{ video }}">
+    <media-provider></media-provider>
+    <media-video-layout thumbnails="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}"></media-video-layout>
+</media-player>
