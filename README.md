@@ -1,5 +1,5 @@
 # OpenSB
-![Screen Shot 2024-06-14 at 02 51 55](https://github.com/bluffingo/OpenSB/assets/45898787/8c29248f-9aca-421f-bfd2-d438f38642b2)
+![Screen Shot 2024-06-14 at 02 51 55](https://gdps.hs.vc/squarebrackdf.png)
 
 ## How to setup an OpenSB instance.
 
