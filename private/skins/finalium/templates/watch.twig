@@ -14,7 +14,7 @@
    <div class="watchNext">
       {% if submission.is_owner %}
          <div class="bg-dark text-light card card-body" style="border-bottom:none;border-color:black;">
-            <a class="button button-dark" href="/edit.php?v={{submission.video_id}}">Edit submission</a>
+            <a class="button button-dark" href="/edit.php?v={{submission.video_id}}">Edit</a>
          </div>
       {% endif %}
       <div class="grid">
@@ -119,10 +119,10 @@
                      <div>
                         <div>
                      <textarea class="form-control" id="commentContents" style="overflow:hidden;resize:none" rows="3"
-                               placeholder="Enter comment here."></textarea>
+                               placeholder="{{ localize('write_comment') }}"></textarea>
                         </div>
                         <div class="right">
-                           <button id="post" class="button button-primary" style="margin-bottom:0;">Comment</button>
+                           <button id="post" class="button button-primary" style="margin-bottom:0;">{{ localize('post') }}</button>
                         </div>
                      </div>
                   {% endif %}

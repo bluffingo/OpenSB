@@ -34,16 +34,20 @@ if (!$data) {
 $tagBlacklist = $auth->getUserBlacklistedTags();
 
 if (isset($data["tags"])) {
-    foreach (json_decode($data["tags"]) as $tag) {
-        if (in_array($tag, $tagBlacklist)) {
-            if ($auth->isUserLoggedIn()) {
-                UnorganizedFunctions::Notification("This upload is blacklisted per your settings.", "/");
-            } else {
-                UnorganizedFunctions::Notification("This upload is blacklisted by default.", "/");
+    $decodedTags = json_decode($data["tags"]);
+    if ($decodedTags !== null) {
+        foreach ($decodedTags as $tag) {
+            if (in_array($tag, $tagBlacklist)) {
+                if ($auth->isUserLoggedIn()) {
+                    UnorganizedFunctions::Notification("This upload is blacklisted per your settings.", "/");
+                } else {
+                    UnorganizedFunctions::Notification("This upload is blacklisted by default.", "/");
+                }
             }
         }
     }
 }
+
 
 $comments = new CommentData($database, CommentLocation::Submission, $id);
 $author = new UserData($database, $data["author"]);

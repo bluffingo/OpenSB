@@ -87,13 +87,13 @@
                             <textarea class="form-control mt-2 mb-2" id="commentContents"
                                       style="overflow:hidden;resize:none"
                                       rows="3"
-                                      placeholder="{% if is_user_logged_in %}Enter comment here, Markdown can be used here.{% else %}Please sign in in order to comment.{% endif %}"></textarea>
+                                      placeholder="{% if is_user_logged_in %}{{ localize('write_comment') }}{% else %}Please sign in in order to comment.{% endif %}"></textarea>
                             {% if is_user_logged_in %}
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end"
                                      style="margin-top:5px;margin-bottom:15px">
                                 <button id="{% if is_user_logged_in %}post{% endif %}"
                                         class="btn btn-primary {% if not is_user_logged_in %}disabled{% endif %}">
-                                    Comment
+                                    {{ localize('post') }}
                                     <div class="spinner-border spinner-border-sm d-none" id="commentPostingSpinner"
                                          role="status" aria-hidden="true"><span
                                                 class="visually-hidden">Posting...</span></div>
