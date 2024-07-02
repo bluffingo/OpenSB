@@ -1,5 +1,5 @@
 # OpenSB
-![Screen Shot 2024-06-14 at 02 51 55](https://gdps.hs.vc/squarebrackdf.png)
+![Screen Shot 2024-06-14 at 02 51 55](http://gdps.hs.vc/squarebrackdf.png)
 
 ## How to setup an OpenSB instance.
 
