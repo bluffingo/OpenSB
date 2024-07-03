@@ -34,8 +34,10 @@ adminer-*.php
 # mariadb stuff from docker
 mariadb-data
 
-# google moment
-ads.txt
-
 # output from 2024-02-video_url_export.php
 /tools/video_urls.txt
+
+# sound stuff
+*.bak
+*.sfk
+Ocean_Sound_Theme_OpenSB.wav
