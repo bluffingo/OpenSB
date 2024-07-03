@@ -10,13 +10,6 @@ use FFMpeg\FFProbe;
 use FFMpeg\Filters;
 use FFMpeg\Format\Video\X264;
 
-// Fun fact:
-// KamTape is using a heavily modified version of this script, given how their
-// script has a mention of the string "Something went wrong!:", which originates
-// from an earlier version of OpenSB's processing worker script.
-//
-// -Chaziz March 1st 2024
-
 define("SB_DYNAMIC_PATH", dirname(__DIR__, 2) . '/dynamic');
 define("SB_PRIVATE_PATH", dirname(__DIR__, 2) . '/private');
 define("SB_VENDOR_PATH", dirname(__DIR__, 2) . '/vendor');
