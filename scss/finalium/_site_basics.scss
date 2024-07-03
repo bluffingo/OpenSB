@@ -26,7 +26,7 @@ body {
   margin-top: 0;
   overflow: hidden;
   padding: 2em 3em;
-  
+
   img {
     width: 135px;
   }
@@ -45,10 +45,11 @@ body {
 .settings {
 	width: 100%;
 	border-collapse: collapse;
+    margin-bottom: 1em;
 
 	.a {
 		text-align: center;
-		width: 200px;
+		width: 250px;
 	}
 
 	td, th {
@@ -275,7 +276,7 @@ input[type]:not([type=file]):not([type=submit]):focus {
   }
 }
 
-.usermenushit {
+.menu {
   position: absolute;
   top: 100%;
   max-height: 80vh;

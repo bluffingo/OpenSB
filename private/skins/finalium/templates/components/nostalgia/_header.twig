@@ -16,7 +16,7 @@
 			{% if is_user_logged_in %}
 			<button id="masthead-loggedin" class="masthead-user">
 				<span>{{ user_data.title }}{{ icon("caret-down", 16) }}</span>
-				<div class="usermenushit" id="masthead-below">
+				<div class="menu" id="masthead-below">
 					<ul style="padding:0">
 						{% for link in navigationList %}
 							<a href="{{ link.url }}">{{ link.name }}</a>

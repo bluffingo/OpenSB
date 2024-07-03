@@ -7,7 +7,7 @@
                     {{ user_data.title }}
                     <div {% if user_notice_data > 0 %}class="bg-danger text-light"{% else %}class="bg-neutral{% endif %}" style="padding:6px 8px;display: inline-block;">{{ user_notice_data }}</div>
                     <img class="rounded" style="width:32px;margin-top: -2px;" src="{{ profile_picture(user_data.name) }}"  alt="{{ user_data.title }}">
-                    <div class="usermenushit" id="masthead-below">
+                    <div class="menu" id="masthead-below">
                         <ul style="padding:0">
                             <li><a href="/user/{{ user_data.name }}">Profile</a></li>
                             <li><a href="/my_submissions">Studio</a></li>

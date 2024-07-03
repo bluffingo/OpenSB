@@ -41,7 +41,7 @@
                         {% if is_user_logged_in %}
                             <div style="margin-top: 4px;">
                                 <img class="rounded img-fluid" src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}">
-                                <div class="usermenushit" id="masthead-below">
+                                <div class="menu" id="masthead-below">
                                     <ul style="padding:0">
                                         {% for link in header_user_links() %}
                                         <li><a class="menulink" href="{{ link.url }}">{{ link.name }}</a></li>

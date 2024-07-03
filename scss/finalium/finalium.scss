@@ -51,20 +51,37 @@ a:hover {
   text-decoration-line: underline;
 }
 
-p {
-  line-height: 1.25em;
+p, blockquote, ul li, ol li {
+  line-height: 1.6;
 }
 
-menu, ol, ul, li {
+menu {
   list-style: none;
 }
 
+ul li, ol li {
+  margin-bottom: 0.6em;
+}
+
+code {
+  color: #e83e3e;
+}
+
+pre {
+  background-color: #ffe8e8;
+  border: 1px solid #eed1d1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0;
+  overflow-x: auto;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
 blockquote {
-	color: #789922;
-	margin: 0;
-	p:before {
-		content: ">";
-	}
+  margin: 0 0 0.5em 0;
+  padding-left: 0.8em;
+  border-left: 4px solid $gray-400;
 }
 
 .t_user {
