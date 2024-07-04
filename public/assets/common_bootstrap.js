@@ -84,7 +84,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	$("#post").click(function(){
 		play("click");
 		$("#commentPostingSpinner").removeClass('d-none');
-		$.post("api/finalium/commenting.php",
+		$.post("/api/legacy/comment",
 		{
 			comment: $.trim($('#commentContents').val()),
 			vidid: video_id
@@ -101,7 +101,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		});
 	});
 	$("#subscribe").click(function(){
-		$.post("subscribe.php",
+		$.post("/api/legacy/subscribe",
 		{
 			subscription: user_id
 		},
@@ -109,7 +109,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 			if (status == "success") {
 				if(data == subscribe_string) {
 					$("#subscribe").text(subscribe_string);
-					$("#subscribe").attr("class", "btn btn-warning");
+					$("#subscribe").attr("class", "btn btn-primary");
 					console.log("Unsubscribed " + user_id);
 					play("click");
 				} else if(data == unsubscribe_string) {
@@ -119,16 +119,16 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 					play("subscribe");
 				} else {
 					play("error");
-					alert('unexpected output! report to https://github.com/squarebracket-gamerappa/squarebracket/issues');
+					alert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
 				}
 			}
 		});
 	});	
 	$("#like").click(function(){
 		if($("#like").attr("class") != "text-success") {
-			$.post("rate.php",
+			$.post("/api/legacy/rate",
 			{
-				rating: 1,
+				rating: 5, // sb ratings are internally 5 stars
 				vidid: video_id
 			},
 			function(data,status){
@@ -143,7 +143,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 						$("#like").click();
 					} else {
 						play("error");
-						alert('unexpected output! report to https://github.com/squarebracket-gamerappa/squarebracket/issues');
+						alert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
 					}
 				}
 			});
@@ -151,9 +151,9 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	});
 	$("#dislike").click(function(){
 		if($("#dislike").attr("class") != "text-danger") {
-			$.post("rate.php",
+			$.post("/api/legacy/rate",
 			{
-				rating: 0,
+				rating: 1, // sb ratings are internally 5 stars
 				vidid: video_id
 			},
 			function(data,status){
@@ -168,7 +168,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 						$("#dislike").click();
 					} else {
 						play("error");
-						alert('unexpected output! report to https://github.com/squarebracket-gamerappa/squarebracket/issues');
+						alert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
 					}
 				}
 			});

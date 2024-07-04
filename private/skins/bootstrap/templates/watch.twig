@@ -11,10 +11,6 @@
     </script>
 {% endblock %}
 
-{% block scripts %}
-    {{ include('submission_rating_script.twig') }}
-{% endblock %}
-
 {% block title %}{{ submission.title }}{% endblock %}
 
 	{% block content %}
@@ -48,19 +44,21 @@
                                     </div>
                                 </div>
                                 <div class="col-3 text-end">
-                                    {# hack to prevent twig from outputing the number 1 #}
-                                    {% if submission.interactions.views != 1 %}
-                                        {% set pluralViews = "s" %}
-                                    {% endif %}
-                                    <div class="fs-5">
-                                        {{ submission.interactions.views }} view{{ pluralViews }}
-                                    </div>
-                                    <div id="rater"></div>
-                                    <div>
-                                        <small>
-                                            {{ submission.interactions.ratings.total }} ratings
-                                        </small>
-                                    </div>
+                                    <a href="#" id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
+                                       class="text-{% if submission.interactions.legacy.likes != 0 %}success{% else %}body{% endif %}"
+                                       style="text-decoration: none;">
+                                        {{ icon("hand-thumbs-up-fill", 20) }}
+                                    </a>
+                                    <span id="likes">{{ submission.interactions.legacy.likes }}</span>
+
+                                    <a href="#" id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
+                                       class="text-{% if total_dislikessubmission.interactions.legacy.dislikes != 0 %}danger{% else %}body{% endif %}"
+                                       style="text-decoration: none;">
+                                        {{ icon("hand-thumbs-down-fill", 20) }}
+                                    </a>
+                                    <span id="dislikes" style="padding-right: 10px">{{ submission.interactions.legacy.dislikes }}</span>
+
+                                    <button id="subscribe" class="btn btn-{% if submission.author.following %}secondary{% else %}primary{% endif %}" type="button" {% if not is_user_logged_in or submission.is_owner %}disabled{% endif %}>{% if submission.author.following %}Unfollow{% elseif submission.is_owner %}Edit{% else %}Follow{% endif %}</button>
                                 </div>
                             </div>
                             <div style="margin-top: 1rem;">

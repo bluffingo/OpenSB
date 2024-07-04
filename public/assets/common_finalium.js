@@ -116,7 +116,7 @@ $(document).ready(function () {
                         play("subscribe");
                     } else {
                         play("error");
-                        alert('unexpected output! report to https://github.com/bluffingo/OpenSB');
+                        alert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
                     }
                 }
             });
@@ -140,7 +140,7 @@ $(document).ready(function () {
                         play("subscribe");
                     } else {
                         play("error");
-                        alert('unexpected output! report to https://github.com/bluffingo/OpenSB');
+                        alert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
                     }
                 }
             });
@@ -164,7 +164,7 @@ $(document).ready(function () {
                             $("#like").click();
                         } else {
                             play("error");
-                            alert('unexpected output! report to https://github.com/bluffingo/OpenSB');
+                            alert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
                         }
                     }
                 });
@@ -189,7 +189,7 @@ $(document).ready(function () {
                             $("#dislike").click();
                         } else {
                             play("error");
-                            alert('unexpected output! report to https://github.com/bluffingo/OpenSB');
+                            alert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
                         }
                     }
                 });
@@ -211,7 +211,7 @@ $(document).ready(function () {
                             $("#favorite").click();
                         } else {
                             play("error");
-                            alert('unexpected output! report to https://github.com/bluffingo/OpenSB');
+                            alert('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
                         }
                     }
                 });

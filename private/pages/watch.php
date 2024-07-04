@@ -224,8 +224,7 @@ $page_data = [
     "tags" => $tags,
 ];
 
-// this is for the like/dislike buttons in the finalium frontend
-if ($orange->getLocalOptions()["skin"] == "finalium") {
+if ($orange->getLocalOptions()["skin"] == "finalium" || $orange->getLocalOptions()["skin"] == "bootstrap") {
     // calculates the ratio for the likesaber
     function calculateRatio($number, $percent, $total): float|int
     {

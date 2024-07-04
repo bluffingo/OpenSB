@@ -35,29 +35,14 @@
                     </div>
                 {% endif %}
                 {% if is_user_logged_in %}
-                    <div class="dropdown">
-                        <li class="nav-item">
-                            <style>
-                                #openSettings.nav-link {
-                                    padding: 0.25rem;
-                                }
-                            </style>
-                            <a href="/#" id="openSettings" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                <img src="{{ profile_picture(user_data.name) }}"
-                                     alt="{{ user_data.name }}" class="rounded-circle" width="30" height="30">
-                            </a>
-                        </li>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="mainMenu">
-                            <li><a class="dropdown-item" href="/settings">{{ icon('tools', 16) }} Settings</a></li>
-                            <li><a class="dropdown-item"
-                                   href="/user/{{ user_data.name }}">{{ icon('person-lines-fill', 16) }} My profile</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/logout">{{ icon('door-open', 16) }} Sign off</a></li>
-
+                    <div class="dropdown nav-item">
+                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}" class="rounded-circle" width="32" height="32">
+                        </a>
+                        <ul class="dropdown-menu text-small dropdown-menu-end" style="">
+                            {% for link in header_user_links() %}
+                                <li><a class="dropdown-item" href="{{ link.url }}">{{ link.name }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 {% endif %}
@@ -70,12 +55,24 @@
     <nav class="py-1 bg-dark">
         <div class="container">
             <ul class="nav me-auto">
-                <li class="nav-item"><a href="/" class="nav-link link-light px-2">{{ icon('house-door', 16) }} Home</a>
+                <li class="nav-item">
+                    <a href="/" class="nav-link link-light px-2">
+                        {{ icon('house-door', 16) }}
+                        Home
+                    </a>
                 </li>
-                <li class="nav-item"><a href="/browse" class="nav-link link-light px-2">{{ icon('play-btn', 16) }}
-                        {{ localize('browse') }}</a></li>
-                <li class="nav-item"><a href="/users" class="nav-link link-light px-2">{{ icon('people', 16) }}
-                        Members</a></li>
+                <li class="nav-item">
+                    <a href="/browse" class="nav-link link-light px-2">
+                        {{ icon('play-btn', 16) }}
+                        {{ localize('browse') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/users" class="nav-link link-light px-2">
+                        {{ icon('people', 16) }}
+                        Members
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
