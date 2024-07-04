@@ -4,17 +4,9 @@ namespace OpenSB;
 
 // TODO: do not include fake "users" generated from activitypub profiles. -chaziz 6/7/2024
 
-global $twig, $database, $enableFederatedStuff, $auth;
+global $twig, $database;
 
-use SquareBracket\UnorganizedFunctions;
 use SquareBracket\UserData;
-
-if ($enableFederatedStuff) {
-    if (!$auth->isUserLoggedIn())
-    {
-        UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
-    }
-}
 
 $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 $limit = sprintf("%s,%s", (($page_number - 1) * 20), 20);

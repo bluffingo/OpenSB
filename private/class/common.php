@@ -116,7 +116,6 @@ $database = $orange->getDatabase();
 $auth = new Authentication($database, $_COOKIE['SBTOKEN'] ?? null);
 $profiler = new Profiler();
 $twig = new Templating($orange);
-$activityPubAdapter = new ActivityPubAdapter($orange);
 $localization = new Localization();
 
 // automatic stuff

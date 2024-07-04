@@ -49,5 +49,4 @@ $disableRegistration = false;
 $disableUploading = false;
 $disableWritingJournals = false;
 
-$enableFederatedStuff = false;
 $enableInviteKeys = false;

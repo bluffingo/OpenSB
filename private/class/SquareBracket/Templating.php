@@ -28,7 +28,7 @@ class Templating
      */
     public function __construct(SquareBracket $orange)
     {
-        global $isChazizSB, $auth, $defaultTemplate, $isDebug, $branding, $enableInviteKeys, $enableFederatedStuff;
+        global $isChazizSB, $auth, $defaultTemplate, $isDebug, $branding, $enableInviteKeys;
         chdir(__DIR__ . '/../..');
 
         $options = $orange->getLocalOptions();
@@ -113,7 +113,6 @@ class Templating
         $this->twig->addGlobal('website_branding', $branding);
         $this->twig->addGlobal('current_theme', $this->theme); // not to be confused with skins
         $this->twig->addGlobal('invite_keys_enabled', $enableInviteKeys);
-        $this->twig->addGlobal('activitypub_enabled', $enableFederatedStuff);
         $this->twig->addGlobal('items_per_page', 20);
 
         if ($this->skin == "finalium" && $this->theme == "beta")

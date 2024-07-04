@@ -2,8 +2,6 @@
 // NOTE: This code fucking sucks
 namespace OpenSB;
 
-global $enableFederatedStuff;
-
 define("SB_ROOT_PATH", dirname(__DIR__));
 define("SB_DYNAMIC_PATH", SB_ROOT_PATH . '/dynamic');
 define("SB_PUBLIC_PATH", SB_ROOT_PATH . '/public'); // we need this for SquareBracketTwigExtension
@@ -31,12 +29,6 @@ function load_file_from_vendor($path, $content_type): void
 
 if (isset($path[1]) && $path[1] != '') {
     match ($path[1]) {
-        '.well-known' => match ($path[2] ?? null) {
-            // todo: nodeinfo so that opensb can be included within "fediverse" statistic pages
-            'host-meta' => require(SB_PRIVATE_PATH . '/pages/activitypub/host-meta.php'),
-            'webfinger' => require(SB_PRIVATE_PATH . '/pages/activitypub/webfinger.php'),
-            default => die(),
-        },
         'admin' => match ($path[2] ?? null) {
             'overview' => require(SB_PRIVATE_PATH . '/pages/admin_overview.php'),
             'users' => require(SB_PRIVATE_PATH . '/pages/admin_users.php'),
