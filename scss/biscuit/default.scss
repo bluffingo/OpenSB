@@ -3,13 +3,13 @@
  * Made by Chaziz for OpenSB
  */
 
-@import 'shared/base_variables';
+@import 'biscuit/base_variables';
 
 // bootstrap icons
-$bootstrap-icons-font-dir: "/assets" !default;
-@import "../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
+//$bootstrap-icons-font-dir: "/assets" !default;
+//@import "../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
 
-@import 'shared/imports';
+@import 'biscuit/imports';
 
 :root {
 	font-family: $font;
@@ -142,22 +142,22 @@ hr {
 	color: #888;
 }
 
-@import 'default/header';
-@import 'default/footer';
-@import 'default/forms';
-@import 'default/content_box';
-@import 'default/banner';
-@import 'default/comments';
-@import 'default/sections';
-@import 'default/buttons';
-@import 'default/jumbotron';
-@import 'default/menus';
-@import 'default/tabs';
-@import 'default/table';
-@import 'default/pagination';
+@import 'biscuit/header';
+@import 'biscuit/footer';
+@import 'biscuit/forms';
+@import 'biscuit/content_box';
+@import 'biscuit/banner';
+@import 'biscuit/comments';
+@import 'biscuit/sections';
+@import 'biscuit/buttons';
+@import 'biscuit/jumbotron';
+@import 'biscuit/menus';
+@import 'biscuit/tabs';
+@import 'biscuit/table';
+@import 'biscuit/pagination';
 
-@import 'default/watch_page';
-@import 'default/profile_page';
-@import 'default/notice_page';
-@import 'default/admin_page';
-@import 'default/login_register_page';
+@import 'biscuit/watch_page';
+@import 'biscuit/profile_page';
+@import 'biscuit/notice_page';
+@import 'biscuit/admin_page';
+@import 'biscuit/login_register_page';
