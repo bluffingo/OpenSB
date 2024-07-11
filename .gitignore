@@ -4,8 +4,6 @@ private/conf/config.php
 private/templates/cache/
 templates/cache/
 cache/
-
-## Dynamic folders
 dynamic/pfp/
 dynamic/thumbnails/
 dynamic/banners/
@@ -41,3 +39,6 @@ mariadb-data
 *.bak
 *.sfk
 Ocean_Sound_Theme_OpenSB.wav
+
+# chat server config
+chat_server/config.py
