@@ -1,0 +1,104 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Chat" %}
+
+{% block precontent %}
+    {% if current_theme == "default" %}
+        <div class="jumbotron page-banner">
+            <div class="jumbotron-container">
+                <div>
+                    <h1>Chat (beta)</h1>
+                    {% if is_chaziz_sb %}
+                        <p>
+                            This is currently only a simple relay to the official squareBracket Discord server,
+                            also known as Gamerappium 8.
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        let websocket;
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            connectWebSocket(); // Connect WebSocket when the page loads
+        });
+
+        async function connectWebSocket() {
+            if (websocket) {
+                websocket.close();
+            }
+
+            websocket = new WebSocket("ws://localhost:6789/");
+
+            websocket.onopen = function(event) {
+                console.log("WebSocket connected");
+                sendToken();
+            };
+
+            websocket.onmessage = async function(event) {
+                let chatbox = document.getElementById("chatbox");
+                let message = document.createElement("div");
+                let data = JSON.parse(event.data);
+
+                if (data.system) {
+                    message.textContent = data.system;
+                    message.style.color = "gray";
+                } else if (data.error) {
+                    message.textContent = `Error: ${data.error}`;
+                    message.style.color = "red";
+                    play('error');
+                } else if (data.warning) {
+                    message.textContent = `Warning: ${data.warning}`;
+                    message.style.color = "orange";
+                    play('error');
+                } else {
+                    message.textContent = `${data.username}: ${data.message}`;
+                    if (data.username === "{{ user_data.name }}") {
+                        play('comment');
+                    } else {
+                        play('notify');
+                    }
+                }
+
+                chatbox.appendChild(message);
+                chatbox.scrollTop = chatbox.scrollHeight;
+            };
+
+            websocket.onerror = function(event) {
+                console.error("WebSocket error:", event);
+            };
+
+            websocket.onclose = function(event) {
+                console.log("WebSocket closed:", event);
+            };
+        }
+
+        async function sendToken() {
+            let message = JSON.stringify({token: "{{ user_data.token }}"});
+            websocket.send(message);
+        }
+
+        function sendMessage() {
+            let input = document.getElementById("message");
+            if (input.value.trim() === "") {
+                return;
+            }
+            let message = JSON.stringify({message: input.value});
+            websocket.send(message);
+            input.value = "";
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div id="chatbox"></div>
+    <div class="chat-send-shit">
+        <input type="text" id="message" class="input">
+        <button onclick="sendMessage()" class="button button-primary">Send</button>
+    </div>
+{% endblock %}

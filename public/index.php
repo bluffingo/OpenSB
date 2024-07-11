@@ -20,7 +20,7 @@ require_once SB_PRIVATE_PATH . '/class/common.php';
 function load_file_from_vendor($path, $content_type): void
 {
     header("Content-Type: $content_type");
-    require(SB_VENDOR_PATH . $path);
+    readfile(SB_VENDOR_PATH . $path);
     die();
 }
 
@@ -66,6 +66,7 @@ if (isset($path[1]) && $path[1] != '') {
             default => die(),
         },
         'browse' => require(SB_PRIVATE_PATH . '/pages/browse.php'),
+        'chat' => require(SB_PRIVATE_PATH . '/pages/chat.php'),
         'delete' => require(SB_PRIVATE_PATH . '/pages/delete.php'),
         'design_test' => require(SB_PRIVATE_PATH . '/pages/design_test.php'),
         'edit' => require(SB_PRIVATE_PATH . '/pages/edit.php'),

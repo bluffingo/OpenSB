@@ -22,7 +22,7 @@ class Authentication
 
     public function __construct(\SquareBracket\Database $database, $token)
     {
-        $accountfields = "id, ip, name, title, email, title, about, powerlevel, joined, lastview, comfortable_rating, customcolor, blacklisted_tags";
+        $accountfields = "id, ip, name, title, email, title, about, powerlevel, joined, lastview, comfortable_rating, customcolor, blacklisted_tags, token";
         $this->database = $database;
         if (isset($token)) {
             if($this->user_id = $this->database->result("SELECT id FROM users WHERE token = ?", [$token])) {

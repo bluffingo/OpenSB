@@ -6,8 +6,8 @@
 @import 'biscuit/base_variables';
 
 // bootstrap icons
-//$bootstrap-icons-font-dir: "/assets" !default;
-//@import "../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
+$bootstrap-icons-font-dir: "/assets" !default;
+@import "../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
 
 @import 'biscuit/imports';
 
@@ -142,6 +142,10 @@ hr {
 	color: #888;
 }
 
+.flex {
+	display: flex;
+}
+
 @import 'biscuit/header';
 @import 'biscuit/footer';
 @import 'biscuit/forms';
@@ -161,3 +165,4 @@ hr {
 @import 'biscuit/notice_page';
 @import 'biscuit/admin_page';
 @import 'biscuit/login_register_page';
+@import 'biscuit/chat_page';

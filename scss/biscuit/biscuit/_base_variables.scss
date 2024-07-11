@@ -1,5 +1,7 @@
 // these are most of the variables used by the default theme.
 
+$isOpenSB2: false;
+
 // colors
 
 $threshold: 66%; // contrast threshold
@@ -64,7 +66,7 @@ $button-padding-huge: 0.5em 1em;
 // content boxes
 $content-box-background-color: #FFF;
 $content-box-border-color: darken($secondary, 7.5%);
-$context-box-padding: 12px;
+$content-box-padding: 12px;
 
 // header
 $header-height: 44px;

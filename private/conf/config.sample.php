@@ -49,4 +49,5 @@ $disableRegistration = false;
 $disableUploading = false;
 $disableWritingJournals = false;
 
+$enableChat = false;
 $enableInviteKeys = false;
