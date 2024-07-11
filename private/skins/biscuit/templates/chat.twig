@@ -33,7 +33,7 @@
                 websocket.close();
             }
 
-            websocket = new WebSocket("ws://localhost:47101/");
+            websocket = new WebSocket("{{ url }}");
 
             websocket.onopen = function(event) {
                 console.log("WebSocket connected");

@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $database, $twig, $enableChat, $auth;
+global $isChazizSB, $twig, $enableChat, $auth;
 
 use SquareBracket\UnorganizedFunctions;
 
@@ -21,4 +21,13 @@ if ($auth->getUserBanData())
     UnorganizedFunctions::Notification("You cannot proceed with this action.", "/");
 }
 
-echo $twig->render('chat.twig');
+if ($isChazizSB) {
+    // hardcode to chat.bluffingo.net since getting jack to update squarebracket.pw cloudflare shit
+    // would take weeks.
+    $url = "ws://chat.bluffingo.net:47101/";
+} else {
+    $host = $_SERVER['HTTP_HOST'];
+    $url ="ws://$host:47101/";
+}
+
+echo $twig->render('chat.twig', ["url" => $url]);
