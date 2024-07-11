@@ -24,7 +24,7 @@ if ($auth->getUserBanData())
 if ($isChazizSB) {
     // hardcode to chat.bluffingo.net since getting jack to update squarebracket.pw cloudflare shit
     // would take weeks.
-    $url = "wss://chat.bluffingo.net/";
+    $url = "wss://chat.bluffingo.net:47101/";
 } else {
     $host = $_SERVER['HTTP_HOST'];
     $url ="ws://$host:47101/";
