@@ -184,7 +184,7 @@ async def check_rate_limit(username):
     return True
 
 async def start_websocket_server():
-    async with websockets.serve(handler, "localhost", 6789):
+    async with websockets.serve(handler, "localhost", 47101):
         await asyncio.Future()
 
 async def start_bot():
