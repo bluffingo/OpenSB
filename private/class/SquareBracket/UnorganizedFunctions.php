@@ -344,7 +344,8 @@ class UnorganizedFunctions
             if ($database->result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= "Username has already been taken. ";
         }
         if (!preg_match('/^[a-zA-Z0-9\-_]+$/', $username)) $error .= "Username contains invalid characters. ";
-        if (str_starts_with($username, 'Discord')) { $error .= "Username cannot start with 'Discord' due to chat feature). ";}
+        if (str_starts_with($username, 'Discord')) { $error .= "Username cannot start with 'Discord' due to chat feature. ";}
+        if (str_starts_with($username, 'Blockland')) { $error .= "Username cannot start with 'Blockland' due to chat feature. ";}
 
         return $error;
     }

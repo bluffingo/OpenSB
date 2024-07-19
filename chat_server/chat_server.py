@@ -1,15 +1,16 @@
 import asyncio
 import websockets
 import json
-import random
 import discord
+from aiohttp import web
 from discord.ext import commands
 from collections import defaultdict
 import time
 import pymysql
-import config # configs
+from urllib.parse import parse_qs
+import config  # configs
 
-# WebSocket server variables
+# Connected clients
 connected_clients = {}
 
 # Discord bot variables
@@ -32,6 +33,103 @@ DB_USER = config.DB_USER
 DB_PASSWORD = config.DB_PASSWORD
 DB_NAME = config.DB_NAME
 
+
+class ClientProtocol:
+    def __init__(self, username, client_type, client):
+        self.username = username
+        self.client_type = client_type
+        self.client = client
+        self.authenticated = False
+
+
+# squarebracket to sbchat
+class WebSocketProtocol:
+    def __init__(self, websocket, path):
+        self.websocket = websocket
+        self.path = path
+        self.client_protocol = ClientProtocol(None, 'websocket', self.websocket)
+
+    async def handle(self):
+        try:
+            # Receive the initial message which should include the token
+            initial_message = await self.websocket.recv()
+            data = json.loads(initial_message)
+            token = data.get("token")
+
+            # Perform authentication and get username
+            if not await authenticate_with_token(token):
+                await self.websocket.send(json.dumps({"error": "Authentication failed. Invalid token."}))
+                return
+
+            self.client_protocol.username = await fetch_username_from_token(token)
+            self.client_protocol.authenticated = True
+            connected_clients[self.websocket] = self.client_protocol
+            await notify_users(f"{self.client_protocol.username} has joined the chat")
+
+            async for message in self.websocket:
+                if not message:
+                    continue
+
+                # Rate limiting logic and message handling
+                if await check_rate_limit(self.client_protocol.username):
+                    try:
+                        data = json.loads(message)
+                        chat_message = {
+                            "username": self.client_protocol.username,
+                            "message": data["message"]
+                        }
+                        await broadcast_message(chat_message)
+                        await send_to_discord(chat_message)
+                    except json.JSONDecodeError:
+                        await self.websocket.send(json.dumps({"error": "Invalid JSON format"}))
+                else:
+                    await self.websocket.send(
+                        json.dumps({"warning": "You are sending messages too quickly. Please slow down."}))
+
+        except websockets.exceptions.ConnectionClosed:
+            pass
+        finally:
+            if self.websocket in connected_clients:
+                del connected_clients[self.websocket]
+                if self.client_protocol.authenticated:
+                    await notify_users(f"{self.client_protocol.username} has left the chat")
+
+
+# blockland-to-sbchat
+class BlocklandHTTPProtocol:
+    def __init__(self, host='0.0.0.0', port=28010):
+        self.host = host
+        self.port = port
+        self.app = web.Application()
+        self.app.router.add_post('/rcvmsg', self.handle_request)
+        self.client_protocol = ClientProtocol(None, 'http', None)
+        self.runner = web.AppRunner(self.app)
+        self.site = None
+
+    async def handle_request(self, request):
+        # the syntax is this, which is simillar to whats on conan's farming server:
+        # author=Chazpelo&message=test&bl_id=999999&verifykey=&type=message
+        data = await request.text()
+        parsed_data = parse_qs(data)
+        parsed_data_dict = {k: v[0] for k, v in parsed_data.items()}
+
+        print(parsed_data)
+
+        chat_message = {
+            "username": "Blockland-" + parsed_data_dict["author"],
+            "message": parsed_data_dict["message"]
+        }
+        await broadcast_message(chat_message, False)
+        await send_to_discord(chat_message)
+
+        return web.json_response({'status': 'success', 'message': 'Message received'})
+
+    async def run(self):
+        await self.runner.setup()
+        self.site = web.TCPSite(self.runner, self.host, self.port)
+        await self.site.start()
+
+
 async def authenticate_with_token(token):
     try:
         connection = pymysql.connect(host='localhost',
@@ -53,7 +151,7 @@ async def authenticate_with_token(token):
 
     finally:
         connection.close()
-                
+
 
 async def fetch_username_from_token(token):
     try:
@@ -78,10 +176,13 @@ async def fetch_username_from_token(token):
     finally:
         connection.close()
 
+
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
+
+# discord-to-sbchat
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
@@ -95,73 +196,61 @@ async def on_message(message):
         await broadcast_message(chat_message)
     await bot.process_commands(message)
 
-async def handler(websocket, path):
-    try:
-        # Receive the initial message which should include the token
-        initial_message = await websocket.recv()
-        data = json.loads(initial_message)
-        token = data.get("token")
-
-        # Perform authentication and get username
-        if not await authenticate_with_token(token):
-            await websocket.send(json.dumps({"error": "Authentication failed. Invalid token."}))
-            return
-
-        username = await fetch_username_from_token(token)
-
-        connected_clients[websocket] = username
-        await notify_users(f"{username} has joined the chat")
-
-        async for message in websocket:
-            if not message:
-                continue
-
-            # Rate limiting logic and message handling
-            if await check_rate_limit(username):
-                try:
-                    data = json.loads(message)
-                    chat_message = {
-                        "username": username,
-                        "message": data["message"]
-                    }
-                    await broadcast_message(chat_message)
-                    await send_to_discord(chat_message)
-                except json.JSONDecodeError:
-                    await websocket.send(json.dumps({"error": "Invalid JSON format"}))
-            else:
-                await websocket.send(json.dumps({"warning": "You are sending messages too quickly. Please slow down."}))
-
-    except websockets.exceptions.ConnectionClosed:
-        pass
-    finally:
-        if websocket in connected_clients:
-            del connected_clients[websocket]
-            await notify_users(f"{username} has left the chat")
-
 
 async def notify_users(message):
     notification = json.dumps({"system": message})
     await broadcast_message_to_all(notification)
 
-async def broadcast_message(message):
-    json_message = json.dumps(message)
-    await broadcast_message_to_all(json_message)
 
-async def broadcast_message_to_all(message):
+async def broadcast_message(message, send_to_blockland=True):
+    json_message = json.dumps(message)
+    await broadcast_message_to_all(json_message, send_to_blockland)
+
+
+# sbchat-to-blockland
+async def forward_message_over_to_blockland(message, host='localhost'):
+    reader, writer = await asyncio.open_connection(host, 28008)
+    try:
+        # Forward the message
+        writer.write(message.encode('cp1252'))
+        await writer.drain()
+    finally:
+        writer.close()
+        await writer.wait_closed()
+
+
+async def broadcast_message_to_all(message, send_to_blockland=True):
     print(f'{message}')
-    send_tasks = [client.send(message) for client in connected_clients.keys()]
+    send_tasks = []
+    for client in connected_clients.values():
+        if client.client_type == 'websocket':
+            send_tasks.append(client.client.send(message))
+
+    if send_to_blockland:
+        send_tasks.append(forward_message_over_to_blockland(message))
+
     results = await asyncio.gather(*send_tasks, return_exceptions=True)
-    disconnected_clients = [client for client, result in zip(connected_clients.keys(), results) if isinstance(result, websockets.exceptions.ConnectionClosed)]
+    disconnected_clients = [client for client, result in zip(connected_clients.keys(), results) if
+                            isinstance(result, (websockets.exceptions.ConnectionClosed, ConnectionResetError))]
     for client in disconnected_clients:
         del connected_clients[client]
 
+
+async def async_write(transport, message):
+    loop = asyncio.get_event_loop()
+    await loop.run_in_executor(None, transport.write, message.encode())
+
+
+# sbchat-to-discord
 async def send_to_discord(message):
     channel = bot.get_channel(CHANNEL_ID)
     await channel.send(f"{message['username']}: {message['message']}")
 
+
+# ratelimit squarebracket users
 async def check_rate_limit(username):
     current_time = time.time()
-    
+
     if username in user_message_counts:
         user_data = user_message_counts[username]
         if current_time - user_data["last_message_time"] < RATE_LIMIT_SECONDS:
@@ -180,22 +269,37 @@ async def check_rate_limit(username):
             "last_message_time": current_time,
             "count": 1
         }
-    
+
     return True
 
+
+async def websocket_handler(websocket, path):
+    protocol = WebSocketProtocol(websocket, path)
+    await protocol.handle()
+
+
 async def start_websocket_server():
-    async with websockets.serve(handler, "localhost", 47101):
+    async with websockets.serve(websocket_handler, "0.0.0.0", 47101):
         await asyncio.Future()
+
+
+async def start_http_blockland_server():
+    protocol = BlocklandHTTPProtocol('0.0.0.0', 28010)
+    await protocol.run()
+
 
 async def start_bot():
     await bot.start(TOKEN)
 
+
 async def main():
-    # Start both WebSocket server and Discord bot at the same time
+    # Start WebSocket server, TCP server, and Discord bot at the same time
     await asyncio.gather(
         start_websocket_server(),
+        start_http_blockland_server(),
         start_bot()
     )
+
 
 if __name__ == "__main__":
     asyncio.run(main())
