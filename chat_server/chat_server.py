@@ -33,6 +33,8 @@ DB_USER = config.DB_USER
 DB_PASSWORD = config.DB_PASSWORD
 DB_NAME = config.DB_NAME
 
+ENABLE_BLOCKLAND_RELAY = config.ENABLE_BLOCKLAND_RELAY
+BLOCKLAND_VERIFY_KEY = config.BLOCKLAND_VERIFY_KEY
 
 class ClientProtocol:
     def __init__(self, username, client_type, client):
@@ -113,21 +115,23 @@ class BlocklandHTTPProtocol:
         parsed_data = parse_qs(data)
         parsed_data_dict = {k: v[0] for k, v in parsed_data.items()}
 
-        print(parsed_data)
-
-        chat_message = {
-            "username": "Blockland-" + parsed_data_dict["author"],
-            "message": parsed_data_dict["message"]
-        }
-        await broadcast_message(chat_message, False)
-        await send_to_discord(chat_message)
-
-        return web.json_response({'status': 'success', 'message': 'Message received'})
+        if parsed_data_dict["verifykey"] == BLOCKLAND_VERIFY_KEY:
+            chat_message = {
+                "username": "Blockland-" + parsed_data_dict["author"],
+                "message": parsed_data_dict["message"]
+            }
+            await broadcast_message(chat_message, False)
+            await send_to_discord(chat_message)
+        else:
+            print("Invalid verify key")
 
     async def run(self):
-        await self.runner.setup()
-        self.site = web.TCPSite(self.runner, self.host, self.port)
-        await self.site.start()
+        if ENABLE_BLOCKLAND_RELAY:
+            await self.runner.setup()
+            self.site = web.TCPSite(self.runner, self.host, self.port)
+            await self.site.start()
+        else:
+            print("what the fuck?")
 
 
 async def authenticate_with_token(token):
@@ -209,14 +213,15 @@ async def broadcast_message(message, send_to_blockland=True):
 
 # sbchat-to-blockland
 async def forward_message_over_to_blockland(message, host='localhost'):
-    reader, writer = await asyncio.open_connection(host, 28008)
-    try:
-        # Forward the message
-        writer.write(message.encode('cp1252'))
-        await writer.drain()
-    finally:
-        writer.close()
-        await writer.wait_closed()
+    if ENABLE_BLOCKLAND_RELAY:
+        reader, writer = await asyncio.open_connection(host, 28008)
+        try:
+            # Forward the message
+            writer.write(message.encode('cp1252'))
+            await writer.drain()
+        finally:
+            writer.close()
+            await writer.wait_closed()
 
 
 async def broadcast_message_to_all(message, send_to_blockland=True):
@@ -293,13 +298,13 @@ async def start_bot():
 
 
 async def main():
-    # Start WebSocket server, TCP server, and Discord bot at the same time
-    await asyncio.gather(
-        start_websocket_server(),
-        start_http_blockland_server(),
-        start_bot()
-    )
+    # start all of the stuff
+    tasks = [start_websocket_server(), start_bot()]
 
+    if ENABLE_BLOCKLAND_RELAY:
+        tasks.append(start_http_blockland_server())
+
+    await asyncio.gather(*tasks)
 
 if __name__ == "__main__":
     asyncio.run(main())

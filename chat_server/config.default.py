@@ -7,3 +7,7 @@ CHANNEL_ID = 1
 DB_USER = 'root'
 DB_PASSWORD = ''
 DB_NAME = ''
+
+ENABLE_BLOCKLAND_RELAY = False
+# should match $Pref::Server::sbchatkey in blockland install
+BLOCKLAND_VERIFY_KEY = ''
