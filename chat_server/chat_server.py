@@ -257,7 +257,7 @@ async def broadcast_message(message):
 
     # don't send any discord stuff back over to discord
     if message["client"] != "discord":
-        send_tasks.append(forward_message_over_to_blockland(encoded_message))
+        send_tasks.append(send_to_discord(message))
 
     results = await asyncio.gather(*send_tasks, return_exceptions=True)
     disconnected_clients = [client for client, result in zip(connected_clients.keys(), results) if
