@@ -109,19 +109,25 @@ class BlocklandHTTPProtocol:
         self.site = None
 
     async def handle_request(self, request):
-        # the syntax is this, which is simillar to whats on conan's farming server:
+        # the syntax is this, which is simillar to what's on conan's farming server:
         # author=Chazpelo&message=test&bl_id=999999&verifykey=&type=message
         data = await request.text()
         parsed_data = parse_qs(data)
         parsed_data_dict = {k: v[0] for k, v in parsed_data.items()}
 
         if parsed_data_dict["verifykey"] == BLOCKLAND_VERIFY_KEY:
-            chat_message = {
-                "username": "Blockland-" + parsed_data_dict["author"],
-                "message": parsed_data_dict["message"]
-            }
-            await broadcast_message(chat_message, False)
-            await send_to_discord(chat_message)
+            # user messages
+            if parsed_data_dict["type"] == "message":
+                chat_message = {
+                    "username": "Blockland-" + parsed_data_dict["author"],
+                    "message": parsed_data_dict["message"]
+                }
+                # don't broadcast back to the blockland server itself
+                await broadcast_message(chat_message, False)
+                await send_to_discord(chat_message)
+            # user joined/left the game
+            elif parsed_data_dict["type"] == "connection":
+                await notify_users(f"Blockland-{parsed_data_dict["author"]} {parsed_data_dict["message"]}", False)
         else:
             print("Invalid verify key")
 
@@ -201,9 +207,10 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
-async def notify_users(message):
+async def notify_users(message, send_to_blockland=True):
     notification = json.dumps({"system": message})
-    await broadcast_message_to_all(notification)
+    await broadcast_message_to_all(notification, send_to_blockland)
+    await send_to_discord(message)
 
 
 async def broadcast_message(message, send_to_blockland=True):
@@ -249,7 +256,10 @@ async def async_write(transport, message):
 # sbchat-to-discord
 async def send_to_discord(message):
     channel = bot.get_channel(CHANNEL_ID)
-    await channel.send(f"{message['username']}: {message['message']}")
+    if isinstance(message, dict) and 'username' in message:
+        await channel.send(f"{message['username']}: {message['message']}")
+    else:
+        await channel.send(f"{message}")
 
 
 # ratelimit squarebracket users
