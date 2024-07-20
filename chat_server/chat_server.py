@@ -36,6 +36,7 @@ DB_NAME = config.DB_NAME
 ENABLE_BLOCKLAND_RELAY = config.ENABLE_BLOCKLAND_RELAY
 BLOCKLAND_VERIFY_KEY = config.BLOCKLAND_VERIFY_KEY
 
+
 class ClientProtocol:
     def __init__(self, username, client_type, client):
         self.username = username
@@ -45,11 +46,11 @@ class ClientProtocol:
 
 
 # squarebracket to sbchat
-class WebSocketProtocol:
+class SquareBracketWebSocketProtocol:
     def __init__(self, websocket, path):
         self.websocket = websocket
         self.path = path
-        self.client_protocol = ClientProtocol(None, 'websocket', self.websocket)
+        self.client_protocol = ClientProtocol(None, 'squarebracket', self.websocket)
 
     async def handle(self):
         try:
@@ -59,14 +60,18 @@ class WebSocketProtocol:
             token = data.get("token")
 
             # Perform authentication and get username
-            if not await authenticate_with_token(token):
-                await self.websocket.send(json.dumps({"error": "Authentication failed. Invalid token."}))
+            if not await authenticate_squarebracket_user(token):
+                await self.websocket.send(json.dumps({"error": "This squareBracket token is invalid."}))
                 return
 
-            self.client_protocol.username = await fetch_username_from_token(token)
+            self.client_protocol.username = await get_squarebracket_username(token)
             self.client_protocol.authenticated = True
             connected_clients[self.websocket] = self.client_protocol
-            await notify_users(f"{self.client_protocol.username} has joined the chat")
+            chat_message = {
+                "notification": f"{self.client_protocol.username} joined the chat",
+                "client": "squarebracket"
+            }
+            await broadcast_message(chat_message)
 
             async for message in self.websocket:
                 if not message:
@@ -78,10 +83,10 @@ class WebSocketProtocol:
                         data = json.loads(message)
                         chat_message = {
                             "username": self.client_protocol.username,
-                            "message": data["message"]
+                            "message": data["message"],
+                            "client": "squarebracket"
                         }
                         await broadcast_message(chat_message)
-                        await send_to_discord(chat_message)
                     except json.JSONDecodeError:
                         await self.websocket.send(json.dumps({"error": "Invalid JSON format"}))
                 else:
@@ -94,7 +99,11 @@ class WebSocketProtocol:
             if self.websocket in connected_clients:
                 del connected_clients[self.websocket]
                 if self.client_protocol.authenticated:
-                    await notify_users(f"{self.client_protocol.username} has left the chat")
+                    chat_message = {
+                        "notification": f"{self.client_protocol.username} left the chat",
+                        "client": "squarebracket"
+                    }
+                    await broadcast_message(chat_message)
 
 
 # blockland-to-sbchat
@@ -119,15 +128,18 @@ class BlocklandHTTPProtocol:
             # user messages
             if parsed_data_dict["type"] == "message":
                 chat_message = {
-                    "username": "Blockland-" + parsed_data_dict["author"],
-                    "message": parsed_data_dict["message"]
+                    "username": parsed_data_dict["author"],
+                    "message": parsed_data_dict["message"],
+                    "client": "blockland"
                 }
-                # don't broadcast back to the blockland server itself
-                await broadcast_message(chat_message, False)
-                await send_to_discord(chat_message)
+                await broadcast_message(chat_message)
             # user joined/left the game
             elif parsed_data_dict["type"] == "connection":
-                await notify_users(f"Blockland-{parsed_data_dict["author"]} {parsed_data_dict["message"]}", False)
+                chat_message = {
+                    "notification": f"{parsed_data_dict["author"]} {parsed_data_dict["message"]}",
+                    "client": "blockland"
+                }
+                await broadcast_message(chat_message)
         else:
             print("Invalid verify key")
 
@@ -140,7 +152,7 @@ class BlocklandHTTPProtocol:
             print("what the fuck?")
 
 
-async def authenticate_with_token(token):
+async def authenticate_squarebracket_user(token):
     try:
         connection = pymysql.connect(host='localhost',
                                      user=DB_USER,
@@ -163,7 +175,7 @@ async def authenticate_with_token(token):
         connection.close()
 
 
-async def fetch_username_from_token(token):
+async def get_squarebracket_username(token):
     try:
         connection = pymysql.connect(host='localhost',
                                      user=DB_USER,
@@ -200,22 +212,26 @@ async def on_message(message):
 
     if message.guild.id == GUILD_ID and message.channel.id == CHANNEL_ID:
         chat_message = {
-            "username": "Discord-" + message.author.display_name,
-            "message": message.content
+            "username": message.author.display_name,
+            "message": message.content,
+            "client": "discord"
         }
         await broadcast_message(chat_message)
     await bot.process_commands(message)
 
 
 async def notify_users(message, send_to_blockland=True):
-    notification = json.dumps({"system": message})
-    await broadcast_message_to_all(notification, send_to_blockland)
+    print("dont fucking use this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    print(message)
+    # notification = json.dumps({"system": message})
+    # await broadcast_message_to_all(notification, send_to_blockland)
+    # await send_to_discord(message)
+
+
+async def broadcast_message(message):
+    # json_message = json.dumps(message)
+    await broadcast_message_to_all(message)
     await send_to_discord(message)
-
-
-async def broadcast_message(message, send_to_blockland=True):
-    json_message = json.dumps(message)
-    await broadcast_message_to_all(json_message, send_to_blockland)
 
 
 # sbchat-to-blockland
@@ -231,15 +247,18 @@ async def forward_message_over_to_blockland(message, host='localhost'):
             await writer.wait_closed()
 
 
-async def broadcast_message_to_all(message, send_to_blockland=True):
+async def broadcast_message_to_all(message):
+    encoded_message = json.dumps(message)
+
     print(f'{message}')
     send_tasks = []
     for client in connected_clients.values():
-        if client.client_type == 'websocket':
-            send_tasks.append(client.client.send(message))
+        if client.client_type == 'squarebracket':
+            send_tasks.append(client.client.send(encoded_message))
 
-    if send_to_blockland:
-        send_tasks.append(forward_message_over_to_blockland(message))
+    # don't send any blockland stuff back over to blockland
+    if message["client"] != "blockland":
+        send_tasks.append(forward_message_over_to_blockland(encoded_message))
 
     results = await asyncio.gather(*send_tasks, return_exceptions=True)
     disconnected_clients = [client for client, result in zip(connected_clients.keys(), results) if
@@ -289,7 +308,7 @@ async def check_rate_limit(username):
 
 
 async def websocket_handler(websocket, path):
-    protocol = WebSocketProtocol(websocket, path)
+    protocol = SquareBracketWebSocketProtocol(websocket, path)
     await protocol.handle()
 
 
@@ -308,6 +327,7 @@ async def start_bot():
 
 
 async def main():
+    print("Starting sbChat...")
     # start all of the stuff
     tasks = [start_websocket_server(), start_bot()]
 
@@ -315,6 +335,7 @@ async def main():
         tasks.append(start_http_blockland_server())
 
     await asyncio.gather(*tasks)
+
 
 if __name__ == "__main__":
     asyncio.run(main())

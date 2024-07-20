@@ -45,8 +45,22 @@
                 let message = document.createElement("div");
                 let data = JSON.parse(event.data);
 
-                if (data.system) {
-                    message.textContent = data.system;
+                function getClientDisplayName(client) {
+                    switch (client) {
+                        case 'blockland':
+                            return 'Blockland';
+                        case 'squarebracket':
+                            return 'squareBracket';
+                        case 'discord':
+                            return 'Discord';
+                        default:
+                            return client;
+                    }
+                }
+
+                if (data.notification) {
+                    let clientDisplayName = getClientDisplayName(data.client);
+                    message.textContent = `[${clientDisplayName}] ${data.notification}`;
                     message.style.color = "gray";
                 } else if (data.error) {
                     message.textContent = `Error: ${data.error}`;
@@ -57,7 +71,8 @@
                     message.style.color = "orange";
                     play('error');
                 } else {
-                    message.textContent = `${data.username}: ${data.message}`;
+                    let clientDisplayName = getClientDisplayName(data.client);
+                    message.textContent = `[${clientDisplayName}] ${data.username}: ${data.message}`;
                     if (data.username === "{{ user_data.name }}") {
                         play('comment');
                     } else {
