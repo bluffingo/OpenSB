@@ -152,6 +152,15 @@ class BlocklandHTTPProtocol:
             print("what the fuck?")
 
 
+def get_client_name(client):
+    client_mapping = {
+        'blockland': 'Blockland',
+        'squarebracket': 'squareBracket',
+        'discord': 'Discord'
+    }
+    return client_mapping.get(client, client)
+
+
 async def authenticate_squarebracket_user(token):
     try:
         connection = pymysql.connect(host='localhost',
@@ -220,20 +229,6 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
-async def notify_users(message, send_to_blockland=True):
-    print("dont fucking use this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    print(message)
-    # notification = json.dumps({"system": message})
-    # await broadcast_message_to_all(notification, send_to_blockland)
-    # await send_to_discord(message)
-
-
-async def broadcast_message(message):
-    # json_message = json.dumps(message)
-    await broadcast_message_to_all(message)
-    await send_to_discord(message)
-
-
 # sbchat-to-blockland
 async def forward_message_over_to_blockland(message, host='localhost'):
     if ENABLE_BLOCKLAND_RELAY:
@@ -247,7 +242,7 @@ async def forward_message_over_to_blockland(message, host='localhost'):
             await writer.wait_closed()
 
 
-async def broadcast_message_to_all(message):
+async def broadcast_message(message):
     encoded_message = json.dumps(message)
 
     print(f'{message}')
@@ -258,6 +253,10 @@ async def broadcast_message_to_all(message):
 
     # don't send any blockland stuff back over to blockland
     if message["client"] != "blockland":
+        send_tasks.append(forward_message_over_to_blockland(encoded_message))
+
+    # don't send any discord stuff back over to discord
+    if message["client"] != "discord":
         send_tasks.append(forward_message_over_to_blockland(encoded_message))
 
     results = await asyncio.gather(*send_tasks, return_exceptions=True)
@@ -276,7 +275,11 @@ async def async_write(transport, message):
 async def send_to_discord(message):
     channel = bot.get_channel(CHANNEL_ID)
     if isinstance(message, dict) and 'username' in message:
-        await channel.send(f"{message['username']}: {message['message']}")
+        client_name = get_client_name(message['client'])
+        await channel.send(f"[{client_name}] {message['username']}: {message['message']}")
+    elif isinstance(message, dict) and 'notification' in message:
+        client_name = get_client_name(message['client'])
+        await channel.send(f"[{client_name}] {message['notification']}")
     else:
         await channel.send(f"{message}")
 
