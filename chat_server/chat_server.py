@@ -136,7 +136,7 @@ class BlocklandHTTPProtocol:
             # user joined/left the game
             elif parsed_data_dict["type"] == "connection":
                 chat_message = {
-                    "notification": f"{parsed_data_dict["author"]} {parsed_data_dict["message"]}",
+                    "notification": f'{parsed_data_dict["author"]} {parsed_data_dict["message"]}',
                     "client": "blockland"
                 }
                 await broadcast_message(chat_message)
