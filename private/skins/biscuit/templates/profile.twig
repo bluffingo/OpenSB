@@ -1,5 +1,7 @@
 {% extends "_layout_profile.twig" %}
 
+{% set banner_picture = profile_banner(data.author.info.username) %}
+
 {% set title = data.username %}
 
 {% set opengraph_type = "profile" %}
