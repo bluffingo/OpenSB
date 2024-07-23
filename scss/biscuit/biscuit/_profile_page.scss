@@ -32,6 +32,10 @@
 
       font-size: 24px;
       font-weight: bold;
+      @if $theme == "cubicle" {
+        font-family: "Trebuchet MS", $font;
+      }
+
       .profile-box-icon {
         width: 20px;
         height: 20px;
@@ -46,7 +50,9 @@
     }
 
     .profile-box-details {
-      font-family: $font-serif;
+      @if $theme == "biscuit" {
+        font-family: $font-serif;
+      }
       color: #777;
       font-style: italic;
     }

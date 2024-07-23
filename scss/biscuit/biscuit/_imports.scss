@@ -1,3 +1,5 @@
+@import 'variables';
+
 // bootstrap icons
 $bootstrap-icons-font-dir: "/assets" !default;
 @import "../../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
@@ -27,11 +29,11 @@ $bootstrap-icons-font-dir: "/assets" !default;
 
 body
 {
-  @if $theme == "cubicle" {
-    background: #333333
-  } @else {
+  //@if $theme == "cubicle" {
+  //  background: #333333
+  //} @else {
     background: #F5F5F5;
-  }
+  //}
   color: #333;
   font-size: small;
   padding: 0;
@@ -153,3 +155,24 @@ hr {
 .flex {
   display: flex;
 }
+
+@import 'header';
+@import 'footer';
+@import 'forms';
+@import 'content_box';
+@import 'banner';
+@import 'comments';
+@import 'sections';
+@import 'buttons';
+@import 'jumbotron';
+@import 'menus';
+@import 'tabs';
+@import 'table';
+@import 'pagination';
+
+@import 'watch_page';
+@import 'profile_page';
+@import 'notice_page';
+@import 'admin_page';
+@import 'login_register_page';
+@import 'chat_page';

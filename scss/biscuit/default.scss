@@ -5,27 +5,4 @@
 
 $theme: "biscuit";
 
-@import 'biscuit/base_variables';
-
 @import 'biscuit/imports';
-
-@import 'biscuit/header';
-@import 'biscuit/footer';
-@import 'biscuit/forms';
-@import 'biscuit/content_box';
-@import 'biscuit/banner';
-@import 'biscuit/comments';
-@import 'biscuit/sections';
-@import 'biscuit/buttons';
-@import 'biscuit/jumbotron';
-@import 'biscuit/menus';
-@import 'biscuit/tabs';
-@import 'biscuit/table';
-@import 'biscuit/pagination';
-
-@import 'biscuit/watch_page';
-@import 'biscuit/profile_page';
-@import 'biscuit/notice_page';
-@import 'biscuit/admin_page';
-@import 'biscuit/login_register_page';
-@import 'biscuit/chat_page';

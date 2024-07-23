@@ -75,5 +75,8 @@ $header-pfp-width: 28px;
 
 // profile
 $pfp-width-profiles: 70px;
+@if $theme == "cubicle" {
+        $pfp-width-profiles: 100px;
+}
 $pfp-width-watch: 35px;
 $profile-intro-height: 90px;
