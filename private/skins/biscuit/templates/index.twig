@@ -2,10 +2,16 @@
 
 {# hack to prevent twig from outputing the number 1 #}
 {% if is_user_logged_in %}
-    {% if data.totals.followers != 1 %}
+    {% set followers = data.totals.followers ?? "no" %}
+    {% set views = data.totals.views ?? "no" %}
+    {% set followersText = followers == 0 ? "no" : followers %}
+    {% set viewsText = views == 0 ? "no" : views %}
+
+    {% if followersText != 1 %}
         {% set pluralSubscribers = "s" %}
     {% endif %}
-    {% if data.totals.views != 1 %}
+
+    {% if viewsText != 1 %}
         {% set pluralViews = "s" %}
     {% endif %}
 {% endif %}
@@ -50,8 +56,8 @@
                             <div class="jumbotron-logged-in-text">
                                 <h1>{{ localize('welcome_logged_in', website_branding.name, user_data.title) }}</h1>
                                 <p>@{{ user_data.name }}</p>
-                                <p>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
-                                    • {{ data.totals.views ?? "no" }} view{{ pluralViews }}</p>
+                                <p>{{ followersText }} follower{{ pluralSubscribers }}
+                                    • {{ viewsText }} view{{ pluralViews }}</p>
                             </div>
                         </div>
                     {% else %}

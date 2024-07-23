@@ -92,6 +92,12 @@
             websocket.send(message);
         }
 
+        addEventListener("keypress", (event) => {
+            if (event.code === "Enter") {
+                sendMessage();
+            }
+        });
+
         function sendMessage() {
             let input = document.getElementById("message");
             if (input.value.trim() === "") {
