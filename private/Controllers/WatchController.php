@@ -7,12 +7,11 @@ namespace OpenSB\Controllers;
 
 use OpenSB\Framework\Controller;
 
-class ViewController extends Controller {
-    public function view() {
+class WatchController extends Controller {
+    public function watch() {
         $id = $_GET["id"];
 
-        // placeholder, this should redirect to the homepage while showing an error banner,
-        // akin to vidlii and opensb1.
+        // placeholder, this should redirect to the homepage while showing an error banner.
         if (!isset($id)) {
             throw new \Exception("Missing upload id.");
         }

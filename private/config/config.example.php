@@ -4,7 +4,7 @@
  */
 
 return [
-    // Database details. (Qobo only supports MySQL / MariaDB databases)
+    // Database details. (OpenSB only supports MySQL / MariaDB databases)
     "mysql" => [
         "database" => "sb",
         "username" => "",

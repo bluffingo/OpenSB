@@ -16,7 +16,7 @@ use OpenSB\Framework\Router;
 
 use OpenSB\Controllers\IndexController;
 use OpenSB\Controllers\MiscController;
-use OpenSB\Controllers\ViewController;
+use OpenSB\Controllers\WatchController;
 use OpenSB\Controllers\AuthController;
 use OpenSB\Controllers\UploadController;
 use OpenSB\Controllers\ProfileController;
@@ -33,7 +33,7 @@ $router->GET("/guidelines", [MiscController::class, "guidelines"]);
 $router->GET("/privacy", [MiscController::class, "privacy"]);
 
 $router->GET("/browse", [BrowseController::class, "browse"]);
-$router->GET("/view", [ViewController::class, "view"]);
+$router->GET("/watch", [WatchController::class, "watch"]);
 $router->GET("/profile", [ProfileController::class, "profile"]);
 
 $router->GET("/signin", [AuthController::class, "signin"])->useMiddleware("guest");

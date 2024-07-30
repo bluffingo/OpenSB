@@ -5,17 +5,14 @@
 
 namespace OpenSB\Framework;
 
-use OpenSB\Framework\DateUtilities;
 use Parsedown;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
 {
-    private $date;
-
     public function __construct() {
-        $this->date = new DateUtilities();
+
     }
 
     public function getFunctions()
@@ -24,6 +21,16 @@ class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
             // profile pictures
             new TwigFunction('profile_picture', function ($username) {
                 return "placeholder";
+            }, ['is_safe' => ['html']]),
+
+            // thumbnail
+            new TwigFunction('thumbnail', function ($upload) {
+                return "placeholder";
+            }, ['is_safe' => ['html']]),
+
+            // user links
+            new TwigFunction('user_link', function ($user_id) {
+                return $user_id;
             }, ['is_safe' => ['html']]),
 
             // localization
