@@ -9,6 +9,7 @@ use OpenSB\App;
 use OpenSB\Framework\FrontendTwigExtension;
 use OpenSB\Framework\DB;
 use OpenSB\Framework\Auth;
+use Twig\Loader\FilesystemLoader;
 
 class Frontend {
     private $twig;
@@ -16,7 +17,8 @@ class Frontend {
     private $auth;
 
     function __construct() {
-        $loader = new \Twig\Loader\FilesystemLoader($_SERVER["DOCUMENT_ROOT"] . '/../src/templates/prototype/');
+        // hardcoded to default biscuit for now
+        $loader = new FilesystemLoader($_SERVER["DOCUMENT_ROOT"] . '/../private/skins/biscuit/templates/');
 
         $this->twig = new \Twig\Environment($loader, [
             //"cache" => $_SERVER['DOCUMENT_ROOT'] . '/../.twigcache',
@@ -26,8 +28,9 @@ class Frontend {
         $this->db = App::container()->get(DB::class);
         $this->auth = App::container()->get(Auth::class);
 
-        $this->twig->addGlobal('loggedIn', $this->auth->isLoggedIn());
-        $this->twig->addGlobal('userData', $this->auth->getUserData());
+        $this->twig->addGlobal('is_user_logged_in', $this->auth->isLoggedIn());
+        $this->twig->addGlobal('user_data', $this->auth->getUserData());
+        $this->twig->addGlobal('current_theme', "default");
     }
 
     function render($name, $array = []) {
