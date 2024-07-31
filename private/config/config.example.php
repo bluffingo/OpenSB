@@ -12,5 +12,6 @@ return [
         "host" => "127.0.0.1",
     ],
     // put "PROD" for production, put "DEV" for development
-    "mode" => "PROD"
+    "mode" => "PROD",
+    "site" => "squarebracket",
 ];

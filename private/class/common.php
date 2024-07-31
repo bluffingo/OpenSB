@@ -2,6 +2,8 @@
 
 namespace OpenSB;
 
+global $host, $user, $pass, $db, $isChazizSB, $debugLogging, $isMaintenance, $bunnySettings, $runNewShit;
+
 if (version_compare(PHP_VERSION, '8.2.0') <= 0) {
     die('<strong>OpenSB is not compatible with your PHP version. OpenSB supports PHP 8.2 or newer.</strong>');
 }
@@ -10,15 +12,21 @@ if (!file_exists(SB_VENDOR_PATH . '/autoload.php')) {
     die('<strong>You are missing the required Composer packages. Please read the installing instructions in the README file.</strong>');
 }
 
-if (!file_exists(SB_PRIVATE_PATH . '/conf/config.php')) {
-    die('<strong>The configuration file could not be found. Please read the installing instructions in the README file.</strong>');
+if ($runNewShit) {
+    if (!file_exists(SB_PRIVATE_PATH . '/config/config.php')) {
+        die('<strong>The NEW configuration file could not be found.</strong>');
+    }
+} else {
+    if (!file_exists(SB_PRIVATE_PATH . '/conf/config.php')) {
+        die('<strong>The configuration file could not be found. Please read the installing instructions in the README file.</strong>');
+    }
 }
 
-require_once(SB_PRIVATE_PATH . '/conf/config.php');
+if (!$runNewShit) {
+    require_once(SB_PRIVATE_PATH . '/conf/config.php');
+}
 
 require_once(SB_VENDOR_PATH . '/autoload.php');
-
-global $host, $user, $pass, $db, $isChazizSB, $debugLogging, $isMaintenance, $bunnySettings, $runNewShit;
 
 use SquareBracket\Authentication;
 use SquareBracket\Localization;

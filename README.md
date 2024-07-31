@@ -1,3 +1,5 @@
+**MASSIVE REWORK IN PROGRESS. DO NOT USE IN ANY PROD ENVIRONMENT**
+
 # OpenSB
 ![Screen Shot 2024-07-04 at 13 41 44](https://github.com/bluffingo/OpenSB/assets/45898787/b7293f29-f17e-493c-8545-bed2afbe5889)
 
