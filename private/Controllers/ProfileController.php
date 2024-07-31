@@ -11,8 +11,7 @@ class ProfileController extends Controller {
     public function profile() {
         $id = $_GET["user"];
 
-        // placeholder, this should redirect to the homepage while showing an error banner,
-        // akin to vidlii and opensb.
+        // placeholder, this should redirect to the homepage while showing an error banner.
         if (!isset($id)) {
             throw new \Exception("Missing username.");
         }

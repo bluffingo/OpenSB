@@ -8,7 +8,6 @@ namespace OpenSB\Framework;
 use \SimpleXMLElement;
 
 use OpenSB\App;
-use OpenSB\Helpers\XML;
 use OpenSB\Framework\DB;
 use OpenSB\Framework\Frontend;
 
@@ -33,16 +32,6 @@ class Controller {
     public function returnJSON(object $data) {
         header('Content-Type: application/json');
         echo json_encode($data);
-    }
-
-    // TODO: remove this, not used by anything
-    public function returnXML($data) {
-        header('Content-Type: application/xml');
-
-        $xml_data = new SimpleXMLElement('<?xml version="1.0"?><data></data>');
-        XML::arrayToXML($data, $xml_data);
-
-        return $xml_data->asXML();
     }
 
     public function redirect(string $url) {

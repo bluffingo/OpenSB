@@ -84,12 +84,12 @@ class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
             new TwigFunction('header_user_links', function () {
                 return [
                     "browse" => [
-                        "name" => "Browse",
-                        "url" => "/browse",
+                        "name" => "Login",
+                        "url" => "/login",
                     ],
                     "members" => [
-                        "name" => "Members",
-                        "url" => "/users",
+                        "name" => "Register",
+                        "url" => "/register",
                     ],
                 ];
             }, ['is_safe' => ['html']]),

@@ -15,6 +15,8 @@ use SquareBracket\UnorganizedFunctions;
 use OpenSB\App;
 use OpenSB\Helpers\Profiler;
 
+// false: run relatively complete/old "orange" code
+// true: run very incomplete/new "theseus" code
 $runNewShit = true;
 
 require_once SB_PRIVATE_PATH . '/class/common.php';

@@ -31,6 +31,9 @@ class Frontend {
         $this->twig->addGlobal('is_user_logged_in', $this->auth->isLoggedIn());
         $this->twig->addGlobal('user_data', $this->auth->getUserData());
         $this->twig->addGlobal('current_theme', "default");
+
+        // temporary measure to update the frontend code without breaking old backend until we toss that shit out
+        $this->twig->addGlobal('areWeRunningTheNewCode', true);
     }
 
     function render($name, $array = []) {

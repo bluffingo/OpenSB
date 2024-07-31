@@ -43,7 +43,7 @@ class AuthController extends Controller {
     }
 
     public function signup() {
-        $this->frontend->render("signup");
+        $this->frontend->render("register");
     }
 
     public function signup_post() {
