@@ -9,11 +9,6 @@
         "id": "default",
         "name": "Default",
         "description": "The default squareBracket user experience."
-      },
-      {
-        "id": "cubicle",
-        "name": "Cubicle",
-        "description": "Cubicle"
       }
     ]
   }
