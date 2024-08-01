@@ -106,19 +106,24 @@ class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
                     ],
                 ];
             }, ['is_safe' => ['html']]),
+
+            // upload view
+            new TwigFunction('submission_view', function () {
+                return "placeholder";
+            }, ['is_safe' => ['html']]),
         ];
     }
 
     public function getFilters()
     {
         return [
-            new TwigFilter('parse_md_read_only', function ($text) {
+            new TwigFilter('markdown_unsafe', function ($text) {
                 $parsedown = new Parsedown();
                 return $parsedown->text($text);
             }, ['is_safe' => ['html']]),
 
-            new TwigFilter('parse_md_user_written', function ($text) {
-                return "CURRENTLY UNFINISHED! (parse_md_user_written)";
+            new TwigFilter('markdown_user_journal', function ($text) {
+                return "CURRENTLY UNFINISHED! (markdown_user_journal)";
             }, ['is_safe' => ['html']]),
         ];
     }

@@ -54,15 +54,13 @@ class App {
 
             $router->run(parse_url($_SERVER["REQUEST_URI"])["path"], $_SERVER['REQUEST_METHOD']);
         } catch (\Exception $error) {
-            die('<pre>OpenSB: Something went very wrong. Error:</pre> <pre>'. $error->getMessage() . '</pre>');
+            die('<pre>OpenSB Error:</pre> <pre>'. $error->getMessage() . '</pre>');
         }
 
         self::cleanup();
     }
 
     private static function cleanup() {
-        unset($_SESSION["__flash"]);
-
         if (self::$config["mode"] == "DEV") {
             Profiler::getInfo();
         }

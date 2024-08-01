@@ -44,15 +44,18 @@ class Router {
 
     public function run($uri, $method) {
         foreach ($this->routes as $route) {
-            if ($route["uri"] == $uri && $route["method"] == strtoupper($method)) {
-                foreach ($route["middlewares"] as $middleware) {
+            $routeUriPattern = preg_replace('/\{[^\}]+\}/', '([^/]+)', $route['uri']);
+            if (preg_match('#^' . $routeUriPattern . '$#', $uri, $matches) && $route['method'] == strtoupper($method)) {
+                array_shift($matches); // remove full match from the matches array
+
+                foreach ($route['middlewares'] as $middleware) {
                     App::resolveMiddleware($middleware, $uri, $method);
                 }
 
-                if (is_callable($route["controller"])) {
-                    return call_user_func_array($route["controller"], []);
+                if (is_callable($route['controller'])) {
+                    return call_user_func_array($route['controller'], $matches);
                 } else {
-                    list($controller, $method) = $route["controller"];
+                    list($controller, $method) = $route['controller'];
 
                     try {
                         $reflectedMethod = new \ReflectionMethod($controller, $method);
@@ -61,10 +64,10 @@ class Router {
                             $controller = new $controller();
 
                             if (!($controller instanceof Controller)) {
-                                throw new \Exception("This controller doesn't extend the Qobo\Framework\Controller class.");
+                                throw new \Exception("This controller doesn't extend the OpenSB\Framework\Controller class.");
                             }
 
-                            return call_user_func_array([$controller, $method], []);
+                            return call_user_func_array([$controller, $method], $matches);
                         }
                     } catch (\ReflectionException $reflectionException) {
                         throw new \Exception("Invalid controller.");
