@@ -1,0 +1,80 @@
+{% extends "_layout.twig" %}
+
+{# hack to prevent twig from outputing the number 1 (copied from finalium) #}
+{% if is_user_logged_in %}
+    {% if data.totals.followers != 1 %}
+        {% set pluralSubscribers = "s" %}
+    {% endif %}
+    {% if data.totals.views != 1 %}
+        {% set pluralViews = "s" %}
+    {% endif %}
+{% endif %}
+
+{% block content %}
+    <div class="grid">
+        <div class="col-8">
+            {% if is_user_logged_in %}
+                <div class="home_welcome_logged_in">
+                    <div>
+                        <img class="thumb" src="{{ profile_picture(user_data.name) }}">
+                    </div>
+                    <div>
+                        <div class="home_welcome_logged_in_welcome_back">Welcome back, {{ user_data.title }}!</div>
+                        <div>{{ data.totals.followers ?? "no" }} follower{{ pluralSubscribers }}
+                            • {{ data.totals.views ?? "no" }} view{{ pluralViews }}</div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="home_welcome_guest">
+                    <div>
+                        <span class="home_welcome_guest_gimmick">Watch</span>
+                        <div>Instantly find and watch hundreds of submissions.</div>
+                    </div>
+                    <div>
+                        <span class="home_welcome_guest_gimmick">Upload</span>
+                        <div>Quickly upload and tag videos and images.</div>
+                    </div>
+                    <div>
+                        <span class="home_welcome_guest_gimmick">Share</span>
+                        <div>Easily share your submissions with anyone.</div>
+                    </div>
+                </div>
+            {% endif %}
+            <br>
+            <div class="videos_box">
+                <div class="videos_box_container">
+                    <div class="videos_box_head">
+                        <div style="float:left">
+                            Randomized list of submissions
+                        </div>
+                    </div>
+                    {% for submission in data.submissions %}
+                    <div class="videos_box_in" style="padding-bottom:9px">
+                        <div style="float:left;width:135px;margin:0 10px 0 0">
+                            <a href="/view/{{ submission.id }}">
+                                <img src="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}" class="thumb" width="120">
+                            </a>
+                        </div>
+                        <div style="float:left;width:410px">
+                            <div class="v_video_title">
+                                <a href="/view/{{ submission.id }}">{{ submission.title }}</a>
+                            </div>
+                            {% if submission.description|trim is not empty %}
+                                <div class="v_video_descr">
+                                    {{ submission.description }}
+                                </div>
+                            {% endif %}
+                            <div style="font-size:11px;color:#444;margin:0 0 5px">
+                                Added: January 26, 2018 by {{ user_link(submission.author) }}
+                            </div>
+                            <div style="font-size:11px;color:#444;margin:0 0 5px">
+                                Views: {{ submission.views }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

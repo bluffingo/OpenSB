@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "id": "poktube",
+    "name": "PokTube",
+    "author": "OpenSB developers",
+    "description": "A modernized take on the classic PokTube experience.",
+    "themes": [
+      {
+        "id": "default",
+        "name": "Default",
+        "description": "Based on the February 2021 launch version of PokTube."
+      }
+    ]
+  }
+}
