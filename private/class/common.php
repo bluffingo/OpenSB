@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $host, $user, $pass, $db, $isChazizSB, $debugLogging, $isMaintenance, $bunnySettings, $runNewShit;
+global $host, $user, $pass, $db, $isChazizSB, $debugLogging, $isMaintenance, $bunnySettings, $runNewShit, $dynamicFolderLocation;
 
 if (version_compare(PHP_VERSION, '8.2.0') <= 0) {
     die('<strong>OpenSB is not compatible with your PHP version. OpenSB supports PHP 8.2 or newer.</strong>');
@@ -26,6 +26,10 @@ if ($runNewShit) {
 
 if (!$runNewShit) {
     require_once(SB_PRIVATE_PATH . '/conf/config.php');
+
+    if(!file_exists($dynamicFolderLocation)) {
+        die('<strong>The dynamic folder can not be found. Please read the installing instructions in the README file.</strong>');
+    }
 }
 
 require_once(SB_VENDOR_PATH . '/autoload.php');
@@ -40,12 +44,11 @@ use SquareBracket\Utilities;
 
 if(!$runNewShit) {
 // please use apache/nginx for production stuff.
-    if (php_sapi_name() == "cli-server") {
-        define("SB_PHP_BUILTINSERVER", true);
-    } else {
-        define("SB_PHP_BUILTINSERVER", false);
-    }
-
+if (php_sapi_name() == "cli-server") {
+    define("SB_PHP_BUILTINSERVER", true);
+} else {
+    define("SB_PHP_BUILTINSERVER", false);
+}
     spl_autoload_register(function ($class_name) {
         $class_name = str_replace('\\', '/', $class_name);
         if (file_exists(SB_PRIVATE_PATH . "/class/$class_name.php")) {

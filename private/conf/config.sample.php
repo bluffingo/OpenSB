@@ -19,12 +19,10 @@ $domain = 'example.com';
 $isDebug = false; // DEV ONLY
 $isMaintenance = false;
 
-$debugLogging = false;
-
 $paginationLimit = 20; //Pagination limit.
 
 // TEMPLATE OPTIONS
-$defaultTemplate = "biscuit";
+$defaultTemplate = "qobo";
 
 // Branding
 $branding = [
@@ -32,10 +30,9 @@ $branding = [
 	"assets_location" => "/assets/placeholder",
 ];
 
-$isChazizSB = false; // this makes opensb use bunnycdn for storage.
+$isBluffingoSB = false; // this makes opensb use bunnycdn for storage.
 
-// only used if $isChazizSB is true
-// not everything here is actually used.
+// only used if $isBluffingoSB is true
 $bunnySettings = [
 	"streamApi" => "stream api key",
 	"streamLibrary" => 12345,
@@ -49,5 +46,11 @@ $disableRegistration = false;
 $disableUploading = false;
 $disableWritingJournals = false;
 
-$enableChat = false;
-$enableInviteKeys = false;
+$debugLogging = false;
+
+$enableFederatedStuff = false;
+
+// this should match with the dynamic alias' location.
+// for a production environment, it may be preferred to
+// not have the dynamic folder be inside the opensb directory.
+$dynamicFolderLocation = "insert/dynamic/location/here";
