@@ -4,49 +4,36 @@ namespace OpenSB;
 
 global $twig, $database;
 
-use Composer\ComposerInstalled;
+use SquareBracket\VersionNumber;
 
-/**
- * Get a list of all the installed Composer packages. Akin to getExternalLibraries on MediaWiki.
- *
- * @since SquareBracket 1.1
- *
- * @return array
- */
-function getComposerPackages(): array
-{
-    $dependencies = [];
+$database_version = $database->getVersion();
 
-    $installed = new ComposerInstalled(SB_VENDOR_PATH . '/composer/installed.json');
-
-    $dependencies += $installed->getInstalledDependencies();
-
-    ksort($dependencies);
-
-    return $dependencies;
+// instead of using "Database software", check if we're running on MariaDB or MySQL.
+// OpenSB is intended to be used with either one of these.
+if (str_contains(strtolower($database_version), "maria")) {
+    $database_software = "MariaDB";
+} else {
+    $database_software = "MySQL";
 }
 
 $data = [
     "developers" => [
-        'Chaziz',
-        'icanttellyou',
-        'ROllerozxa',
+        'Chaziz'
     ],
     "software" => [
-        'orangeVersion' => [
+        'sbVersion' => [
             'title' => "OpenSB",
-            'info' => (new \SquareBracket\VersionNumber)->getVersionString(),
+            'info' => (new VersionNumber)->getVersionString(),
         ],
         'phpVersion' => [
             'title' => "PHP",
             'info' => phpversion(),
         ],
         'dbVersion' => [
-            'title' => "Database software",
-            'info' => $database->getVersion(),
+            'title' => $database_software,
+            'info' => $database_version,
         ],
     ],
-    "composer_packages" => getComposerPackages(),
 ];
 
 echo $twig->render('version.twig', [
