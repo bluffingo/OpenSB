@@ -5,6 +5,7 @@
     "name": "Finalium",
     "author": "OpenSB developers",
     "description": "The classic squareBracket user experience, originally known as sbNext.",
+    "site": "squarebracket",
     "themes": [
       {
         "id": "default",

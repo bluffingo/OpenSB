@@ -5,6 +5,7 @@
     "name": "Bootstrap",
     "author": "OpenSB developers",
     "description": "The 2021 squareBracket user experience.",
+    "site": "squarebracket",
     "themes": [
       {
         "id": "default",

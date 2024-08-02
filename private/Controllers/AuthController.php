@@ -6,7 +6,7 @@
 namespace OpenSB\Controllers;
 
 use OpenSB\App;
-use OpenSB\Framework\Auth;
+use OpenSB\Framework\Authentication;
 use OpenSB\Framework\Controller;
 
 class AuthController extends Controller {
@@ -18,7 +18,7 @@ class AuthController extends Controller {
 
     public function signin_post() {
         $error = "";
-        $authSerivce = App::container()->get(Auth::class);
+        $authSerivce = App::container()->get(Authentication::class);
 
         if (isset($_POST["field_command"])) {
             $username = (isset($_POST['field_login_username']) ? $_POST['field_login_username'] : null);

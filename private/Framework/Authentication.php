@@ -6,9 +6,9 @@
 namespace OpenSB\Framework;
 
 use OpenSB\App;
-use OpenSB\Framework\DB;
+use OpenSB\Framework\Database;
 
-class Auth {
+class Authentication {
     private $db;
     private $token;
     private $loggedin;
@@ -16,7 +16,7 @@ class Auth {
     private $id;
 
     public function __construct($token) {
-        $this->db = App::container()->get(DB::class);
+        $this->db = App::container()->get(Database::class);
         $this->loggedin = false;
         $this->id = 0;
 

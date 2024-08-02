@@ -6,12 +6,12 @@
 namespace OpenSB\Middlewares;
 
 use OpenSB\App;
-use OpenSB\Framework\Auth;
+use OpenSB\Framework\Authentication;
 use OpenSB\Framework\Middleware;
 
 class Guest extends Middleware {
     public function handle($uri, $method) {
-        $authService = App::container()->get(Auth::class);
+        $authService = App::container()->get(Authentication::class);
 
         if ($authService->isLoggedIn()) {
             header("Location: /");

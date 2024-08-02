@@ -16,7 +16,7 @@ if (!file_exists(SB_VENDOR_PATH . '/autoload.php')) {
 // configs. -chaziz 7/31/2024
 if ($runNewShit) {
     if (!file_exists(SB_PRIVATE_PATH . '/config/config.php')) {
-        die('<strong>The NEW configuration file could not be found.</strong>');
+        die('<strong>The OpenSB Theseus configuration file could not be found.</strong>');
     }
 } else {
     if (!file_exists(SB_PRIVATE_PATH . '/conf/config.php')) {
@@ -56,76 +56,6 @@ if (php_sapi_name() == "cli-server") {
         }
     });
 
-    function sb_debug_output($string)
-    {
-        if (SB_PHP_BUILTINSERVER) {
-            $time = date("Y-m-d H:i:s");
-
-            $output = "[OPENSB {$time}] {$string}";
-            file_put_contents("php://stdout", $output . PHP_EOL);
-        }
-    }
-
-    if ($debugLogging && function_exists('getallheaders')) {
-        // Get all headers and requests sent to this server
-        $headers = getallheaders();
-        $postData = $_POST;
-        $getData = $_GET;
-        $filesData = $_FILES;
-        $body = json_decode(file_get_contents("php://input"), true);
-        $requestData = $_REQUEST;
-        $serverData = $_SERVER;
-
-        // Get the type of request - used in the log filename
-        // If there's nothing, use the URL as an alternative.
-        $urlPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        $pathParts = explode('/', trim($urlPath, '/'));
-
-        if (isset($body["type"])) {
-            $type = $body["type"];
-        } else {
-            if (!empty($pathParts)) {
-                if ($pathParts[0] === "") {
-                    $type = "index";
-                } else if (count($pathParts) >= 2) {
-                    $lastTwoParts = array_slice($pathParts, -2);
-                    $type = implode(" ", $lastTwoParts);
-                } else {
-                    $type = $pathParts[0];
-                }
-            } else {
-                $type = "unknown";
-            }
-        }
-
-        // Unix timestamp, whatever.
-        $timestamp = time();
-
-        // Filename for the log
-        $filename = "{$timestamp}{$type}.txt";
-
-        // Save headers and request data to the timestamped file in the logs directory
-        $log_path = SB_PRIVATE_PATH . "/logs";
-
-        if (!is_dir($log_path)) {
-            mkdir($log_path);
-        }
-
-// Generate the log content
-        $logContent =
-            "Headers:     \n" . print_r($headers, true) . "\n\n" .
-            "Body Data:   \n" . print_r($body, true) . "\n\n" .
-            "POST Data:   \n" . print_r($postData, true) . "\n\n" .
-            "GET Data:    \n" . print_r($getData, true) . "\n\n" .
-            "Files Data:  \n" . print_r($filesData, true) . "\n\n" .
-            "Request Data:\n" . print_r($requestData, true) . "\n\n" .
-            "Server Data: \n" . print_r($serverData, true) . "\n\n";
-
-// Write the log content to the file
-        file_put_contents($log_path . "/{$filename}", $logContent);
-    }
-
-
     $orange = new SquareBracket($host, $user, $pass, $db);
     $database = $orange->getDatabase();
     $auth = new Authentication($database, $_COOKIE['SBTOKEN'] ?? null);
@@ -142,7 +72,6 @@ if (php_sapi_name() == "cli-server") {
         if ($blacklistedReferers) {
             $alreadyIpBanned = $database->fetch("SELECT * from ipbans where ip = ?", [Utilities::get_ip_address()]);
             if (!$alreadyIpBanned) {
-                sb_debug_output("Automatically banning IP " . Utilities::get_ip_address());
                 $database->query("INSERT INTO ipbans (ip, reason, time) VALUES (?,?,?)",
                     [Utilities::get_ip_address(), "[Automatically done by OpenSB] Referer is from blacklisted website "
                         . $_SERVER['HTTP_REFERER'], time()]);
@@ -156,7 +85,6 @@ if (php_sapi_name() == "cli-server") {
         $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT id, name FROM users WHERE ip LIKE ?", [$ipBannedUser["ip"]]));
         foreach ($usersAssociatedWithIP as $ipBannedUser2) { // i can't really name variables that well
             if (!$database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$ipBannedUser2["id"]])) {
-                sb_debug_output("Automatically banning user {$ipBannedUser2["name"]}");
                 $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
                     [$ipBannedUser2["id"], "Automatically done by OpenSB", time()]);
             }
@@ -185,7 +113,7 @@ if (php_sapi_name() == "cli-server") {
     if ($isMaintenance && !SB_PHP_BUILTINSERVER) {
         echo $twig->render("error.twig", [
             "error_title" => "Offline",
-            "error_reason" => "The site is currently offline."
+            "error_reason" => "This site is currently offline."
         ]);
         die();
     }

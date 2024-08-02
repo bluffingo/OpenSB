@@ -4,11 +4,17 @@
     "name": "Biscuit",
     "author": "OpenSB developers",
     "description": "Our default and recommended frontend.",
+    "site": "squarebracket",
     "themes": [
       {
         "id": "default",
         "name": "Default",
         "description": "The default squareBracket user experience."
+      },
+      {
+        "id": "cubicle",
+        "name": "Cubicle",
+        "description": "Cubicle"
       }
     ]
   }

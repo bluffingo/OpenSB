@@ -11,14 +11,14 @@
 
 use OpenSB\Framework\Container;
 
-use OpenSB\Framework\DB;
-use OpenSB\Framework\Auth;
+use OpenSB\Framework\Database;
+use OpenSB\Framework\Authentication;
 use OpenSB\Framework\Frontend;
 
 $container = new Container();
 
-$container->set(DB::class, fn () => new DB($config["mysql"]));
-$container->set(Auth::class, fn () => new Auth((isset($_SESSION["token"]) ? $_SESSION["token"] : null)));
+$container->set(Database::class, fn () => new Database($config["mysql"]));
+$container->set(Authentication::class, fn () => new Authentication((isset($_SESSION["token"]) ? $_SESSION["token"] : null)));
 $container->set(Frontend::class, fn () => new Frontend());
 
 return $container;

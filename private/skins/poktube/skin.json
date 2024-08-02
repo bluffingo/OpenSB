@@ -3,7 +3,8 @@
     "id": "poktube",
     "name": "PokTube",
     "author": "OpenSB developers",
-    "description": "A modernized take on the classic PokTube experience.",
+    "description": "A modernized take on the classic PokTube experience. (Incomplete)",
+    "site": "squarebracket",
     "themes": [
       {
         "id": "default",

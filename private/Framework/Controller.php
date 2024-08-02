@@ -5,10 +5,8 @@
 
 namespace OpenSB\Framework;
 
-use \SimpleXMLElement;
-
 use OpenSB\App;
-use OpenSB\Framework\DB;
+use OpenSB\Framework\Database;
 use OpenSB\Framework\Frontend;
 
 /**
@@ -24,7 +22,7 @@ class Controller {
     public $appConfig;
 
     public function __construct() {
-        $this->db = App::container()->get(DB::class);
+        $this->db = App::container()->get(Database::class);
         $this->frontend = App::container()->get(Frontend::class);
         $this->appConfig = App::config();
     }

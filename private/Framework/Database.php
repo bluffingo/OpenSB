@@ -8,7 +8,7 @@ namespace OpenSB\Framework;
 use PDO;
 use PDOException;
 
-class DB
+class Database
 {
     private $db;
     private $allQueries;
@@ -22,7 +22,7 @@ class DB
         try {
             $this->db = new PDO($connection, $config["username"], $config["password"]);
         } catch (PDOException $e) {
-            die('DB fail: ' . $e);
+            die('Database fail: ' . $e);
         }
     }
 
@@ -33,7 +33,7 @@ class DB
             $this->allQueries[] = $result->queryString;
             $result->execute($params);
         } catch (PDOException $e) {
-            die('DB execute fail: ' . $e);
+            die('Database execute fail: ' . $e);
         }
 
         $rows = $result->rowCount();
@@ -47,7 +47,7 @@ class DB
         }
     }
 
-    public function getAllQueries()
+    public function getAllQueries(): array
     {
         return $this->allQueries;
     }

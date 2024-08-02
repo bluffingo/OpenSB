@@ -36,8 +36,15 @@ class Templating
         $this->skin = $options["skin"] ?? $defaultTemplate;
         $this->theme = $options["theme"] ?? "default";
 
-        // TODO: reset theme if the user changes their skin to another skin
         if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {
+            trigger_error("Currently selected skin is invalid", E_USER_WARNING);
+            $this->skin = $defaultTemplate;
+        }
+
+        // get metadata so that we can check if the skin is actually intended for squarebracket since
+        // soos skins wont work on orange opensb
+        $metadata = $this->getSkinMetadata($this->skin);
+        if ($metadata["metadata"]["site"] != "squarebracket") {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
             $this->skin = $defaultTemplate;
         }
@@ -64,7 +71,7 @@ class Templating
         $this->twig->addExtension(new SquareBracketTwigExtension());
         $this->twig->addExtension(new StringExtension());
 
-        // 2021 SQUAREBRACKET FRONTEND COMPATIBILITY
+        // BOOTSTRAP SQUAREBRACKET FRONTEND COMPATIBILITY
         $this->twig->addFunction(new TwigFunction('video_box', function() {
             return false;
         }));
@@ -179,7 +186,11 @@ class Templating
     {
         $skins = [];
         foreach($this->getAllSkins() as $skin) {
-            $skins[] = $this->getSkinMetadata($skin);
+            $metadata = $this->getSkinMetadata($skin);
+            // only list squarebracket skins since soos skins will Not work with orange opensb
+            if ($metadata["metadata"]["site"] == "squarebracket") {
+                $skins[] = $this->getSkinMetadata($skin);
+            }
         }
         return $skins;
     }
