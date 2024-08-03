@@ -52,7 +52,6 @@ if ($config["enable_theseus"]) {
                 'users' => require(SB_PRIVATE_PATH . '/pages/admin_users.php'),
                 'uploads' => require(SB_PRIVATE_PATH . '/pages/admin_uploads.php'),
                 'interactions' => require(SB_PRIVATE_PATH . '/pages/admin_interactions.php'),
-                'bans' => require(SB_PRIVATE_PATH . '/pages/admin_bans.php'), // old
                 'invitekeys' => require(SB_PRIVATE_PATH . '/pages/admin_invitekeys.php'),
                 default => UnorganizedFunctions::redirect('/admin/overview/'),
             },

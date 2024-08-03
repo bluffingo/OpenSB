@@ -184,12 +184,18 @@ class Templating
 
     public function getAllSkinsMetadata(): array
     {
+        global $isDebug;
         $skins = [];
         foreach($this->getAllSkins() as $skin) {
             $metadata = $this->getSkinMetadata($skin);
             // only list squarebracket skins since soos skins will Not work with orange opensb
-            if ($metadata["metadata"]["site"] == "squarebracket") {
-                $skins[] = $this->getSkinMetadata($skin);
+            $site = $metadata["metadata"]["site"] ?? "unknown";
+            if ($site == "squarebracket") {
+                $incomplete = $metadata["incomplete"] ?? false;
+                // dont show incomplete skins
+                if (!$isDebug || $incomplete) {
+                    $skins[] = $this->getSkinMetadata($skin);
+                }
             }
         }
         return $skins;

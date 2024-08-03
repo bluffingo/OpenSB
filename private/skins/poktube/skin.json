@@ -5,11 +5,12 @@
     "author": "OpenSB developers",
     "description": "A modernized take on the classic PokTube experience. (Incomplete)",
     "site": "squarebracket",
+    "incomplete": "true",
     "themes": [
       {
         "id": "default",
         "name": "Default",
-        "description": "Based on the February 2021 launch version of PokTube."
+        "description": "Based on the February 2021 launch version of PokTube.",
       }
     ]
   }
