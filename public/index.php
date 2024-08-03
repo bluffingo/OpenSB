@@ -17,7 +17,7 @@ use OpenSB\Helpers\Profiler;
 
 // false: run relatively complete/old "orange" code
 // true: run very incomplete/new "theseus" code
-$runNewShit = true;
+$runNewShit = false;
 
 require_once SB_PRIVATE_PATH . '/class/common.php';
 

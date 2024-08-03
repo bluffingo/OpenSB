@@ -28,25 +28,26 @@ class Templating
      */
     public function __construct(SquareBracket $orange)
     {
-        global $isChazizSB, $auth, $defaultTemplate, $isDebug, $branding, $enableInviteKeys;
+        global $isChazizSB, $auth, $isDebug, $branding, $enableInviteKeys;
         chdir(__DIR__ . '/../..');
 
         $options = $orange->getLocalOptions();
 
-        $this->skin = $options["skin"] ?? $defaultTemplate;
+        $this->skin = $options["skin"] ?? "biscuit";
         $this->theme = $options["theme"] ?? "default";
 
         if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
-            $this->skin = $defaultTemplate;
+            $this->skin = "biscuit";
         }
 
         // get metadata so that we can check if the skin is actually intended for squarebracket since
         // soos skins wont work on orange opensb
-        $metadata = $this->getSkinMetadata($this->skin);
+        $metadata = $this->getSkinMetadata("skins/" . $this->skin);
+
         if ($metadata["metadata"]["site"] != "squarebracket") {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
-            $this->skin = $defaultTemplate;
+            $this->skin = "biscuit";
         }
 
         $loader_path = 'skins/' . $this->skin . '/templates';
@@ -54,7 +55,6 @@ class Templating
         $this->loader->addPath('skins/common/');
         $this->twig = new Environment($this->loader, ['debug' => $isDebug]);
 
-        // gets relevant path for include to use
         $this->twig->addFunction(new TwigFunction('component', function($component) use ($loader_path) {
             $path = '/components/' . $this->theme . '/' . $component . '.twig';
             $path_default = '/components/default/' . $component . '.twig';

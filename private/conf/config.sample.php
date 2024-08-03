@@ -21,9 +21,6 @@ $isMaintenance = false;
 
 $paginationLimit = 20; //Pagination limit.
 
-// TEMPLATE OPTIONS
-$defaultTemplate = "qobo";
-
 // Branding
 $branding = [
     "name" => "OpenSB Development",
