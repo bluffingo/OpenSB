@@ -25,6 +25,7 @@
 <div class="page">
     <div class="page-contents">
         <div class="container {{ page_name }}">
+            {{ include(component('banners')) }}
             {% block content %}{% endblock %}
         </div>
     </div>

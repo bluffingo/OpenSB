@@ -28,18 +28,26 @@ class Templating
      */
     public function __construct(SquareBracket $orange)
     {
-        global $isChazizSB, $auth, $defaultTemplate, $isDebug, $branding, $enableInviteKeys;
+        global $isChazizSB, $auth, $isDebug, $branding, $enableInviteKeys;
         chdir(__DIR__ . '/../..');
 
         $options = $orange->getLocalOptions();
 
-        $this->skin = $options["skin"] ?? $defaultTemplate;
+        $this->skin = $options["skin"] ?? "biscuit";
         $this->theme = $options["theme"] ?? "default";
 
-        // TODO: reset theme if the user changes their skin to another skin
         if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
-            $this->skin = $defaultTemplate;
+            $this->skin = "biscuit";
+        }
+
+        // get metadata so that we can check if the skin is actually intended for squarebracket since
+        // soos skins wont work on orange opensb
+        $metadata = $this->getSkinMetadata("skins/" . $this->skin);
+
+        if ($metadata["metadata"]["site"] != "squarebracket") {
+            trigger_error("Currently selected skin is invalid", E_USER_WARNING);
+            $this->skin = "biscuit";
         }
 
         $loader_path = 'skins/' . $this->skin . '/templates';
@@ -47,7 +55,6 @@ class Templating
         $this->loader->addPath('skins/common/');
         $this->twig = new Environment($this->loader, ['debug' => $isDebug]);
 
-        // gets relevant path for include to use
         $this->twig->addFunction(new TwigFunction('component', function($component) use ($loader_path) {
             $path = '/components/' . $this->theme . '/' . $component . '.twig';
             $path_default = '/components/default/' . $component . '.twig';
@@ -64,7 +71,7 @@ class Templating
         $this->twig->addExtension(new SquareBracketTwigExtension());
         $this->twig->addExtension(new StringExtension());
 
-        // 2021 SQUAREBRACKET FRONTEND COMPATIBILITY
+        // BOOTSTRAP SQUAREBRACKET FRONTEND COMPATIBILITY
         $this->twig->addFunction(new TwigFunction('video_box', function() {
             return false;
         }));
@@ -130,6 +137,9 @@ class Templating
             $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
             $this->twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
         }
+
+        // temporary measure to update the frontend code without breaking old backend until we toss that shit out
+        $this->twig->addGlobal('areWeRunningTheNewCode', false);
     }
 
     /**
@@ -174,9 +184,19 @@ class Templating
 
     public function getAllSkinsMetadata(): array
     {
+        global $isDebug;
         $skins = [];
         foreach($this->getAllSkins() as $skin) {
-            $skins[] = $this->getSkinMetadata($skin);
+            $metadata = $this->getSkinMetadata($skin);
+            // only list squarebracket skins since soos skins will Not work with orange opensb
+            $site = $metadata["metadata"]["site"] ?? "unknown";
+            if ($site == "squarebracket") {
+                $incomplete = $metadata["incomplete"] ?? false;
+                // dont show incomplete skins
+                if (!$isDebug || $incomplete) {
+                    $skins[] = $this->getSkinMetadata($skin);
+                }
+            }
         }
         return $skins;
     }

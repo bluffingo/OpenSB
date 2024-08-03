@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "id": "soos",
+    "name": "Biscuit (Second Official OpenSB Site)",
+    "author": "OpenSB developers",
+    "description": "Our default and recommended frontend.",
+    "site": "soos",
+    "themes": [
+      {
+        "id": "default",
+        "name": "Default",
+        "description": "The default Second Official OpenSB Site user experience."
+      }
+    ]
+  }
+}

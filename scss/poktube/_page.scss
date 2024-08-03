@@ -1,0 +1,16 @@
+.page {
+  margin: auto;
+}
+
+.page-contents
+{
+  @include maxwidths();
+  margin: 10px auto auto auto;
+}
+
+.container {
+  &.login, &.register {
+    margin: auto;
+    width: 500px;
+  }
+}

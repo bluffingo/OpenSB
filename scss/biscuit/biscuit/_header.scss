@@ -199,6 +199,22 @@ td.h
   display: flex;
 }
 
+// SOOS
+.subheader {
+  height: 23px;
+  background: linear-gradient(to bottom, #E8E8E8, #D3D3D3);
+  display: flex;
+  .subheader-container {
+    @include maxwidths();
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+  }
+}
+
 .menu#user-menu {
   background: #2A2A2A;
   border: none;

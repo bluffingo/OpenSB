@@ -1,0 +1,455 @@
+// TODO: not too sure if the 2017 bitview src has it in scss/sass form, so we may have to scss-ify this ourselves.
+@import 'variables';
+// copied from biscuit
+@import 'responsiveness';
+@import 'grid_system';
+@import 'page';
+
+.page_title,
+body {
+  font-family: $font
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #FFF;
+  font-size: 12px;
+  color: #222;
+}
+
+a {
+  color: #03C
+}
+
+a img {
+  border: 0
+}
+
+.videos_box_head,
+.videos_box_in {
+  border-bottom: 1px dashed #999;
+  overflow: hidden
+}
+
+textarea {
+  resize: none
+}
+
+.hd {
+  margin: 0 auto;
+  // equivalent to "headertext" class on poktube css
+  .hd_slogan, .hd_welcome, a {
+    color: white;
+  }
+}
+
+.hd_top {
+  overflow: hidden;
+  padding: 5px 5px 3px 5px;
+  background: linear-gradient(180deg, rgba(15,74,193,1) 0%, rgba(21,53,125,1) 100%);
+  img.logo {
+    float: left;
+  }
+}
+
+.hd_float1 div {
+  font-style: italic;
+  margin: 0 0 10px 3px;
+}
+
+.hd_float1 {
+  float: left;
+  margin: 0 0 0 7px
+}
+
+.hd_float2 {
+  float: right;
+  text-align: right;
+  .hd_welcome {
+    display: inline;
+    font-weight: bold;
+    // "what the fuck" this was in the poktube feb2021 header.
+    .hd_welcome_pfp {
+      width: 16px;
+      padding: 0 2px;
+      vertical-align: middle;
+    }
+  }
+
+  .hd_upload {
+    margin-top: 2px;
+    font-weight: bold;
+    span {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
+}
+
+.hd_nav {
+  border-top: 1px solid #858585;
+  border-bottom: 1px solid #1B1B1B;
+  background: linear-gradient(to bottom, #6F6F6F 0%, #545454 50%, #3D3D3D 50%, #292929 100%);
+  background-repeat: no-repeat;
+  padding: 6px 10px;
+  margin: 0;
+}
+
+.hd_nav li {
+  list-style: none;
+  display: inline-block;
+  display: inline;
+  margin-right: 4.5px;
+}
+
+.big_links,
+.footer,
+.main,
+.videos_box_sct {
+  text-align: center
+}
+
+.main {
+  margin-top: 17px
+}
+
+.slogan {
+  margin: 11px 0 20px
+}
+
+.search_box {
+  color: #0097d6;
+  font-size: 18px;
+  padding: 3px;
+  margin-bottom: 6px
+}
+
+.big_links {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 30px;
+  margin-top: 23px
+}
+
+.big_links_seperator {
+  display: inline-block;
+  display: inline;
+  margin: 0 9px
+}
+
+.home_tags {
+  color: #333;
+  font-size: 13px;
+  width: 70%;
+  margin: 0 auto 30px
+}
+
+.videos_box {
+  width: 100%;
+  margin: 0 auto 2px;
+  background: #ccc;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px
+}
+
+.videos_box_container {
+  padding: 5px;
+}
+
+.videos_box_head {
+  font-size: 14px;
+  color: #444;
+  font-weight: 700;
+  padding: 1px 6px 4px
+}
+
+.videos_box_in {
+  background: linear-gradient(180deg, #EEEEEE 0%, #DDDDDD 100%);
+  padding: 5px 5px 15px;
+  &:hover {
+    background: linear-gradient(180deg, #eff8ff 0%, #d1eaff 100%);
+  }
+}
+
+.thumb {
+  border: 5px solid #FFF;
+  margin: 5px 5px 2px
+}
+
+.videos_box_sct {
+  float: left;
+  width: 20%
+}
+
+.videos_info {
+  font-size: 10px;
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 3px
+}
+
+.videos_box_title {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  display: block
+}
+
+.footer {
+  font-size: 11px;
+  color: #111;
+  margin: 24px 0
+}
+
+#mid,
+#midin {
+  height: 4.5px
+}
+
+.hd_under2_left .search_box {
+  padding: 2px;
+  vertical-align: sub;
+  margin: 0 0 0 3px
+}
+
+.hd_under2_left form {
+  display: inline-block;
+  display: inline;
+  position: relative;
+  bottom: 2px
+}
+
+.hd_under2_right {
+  position: absolute;
+  bottom: 6px;
+  right: 4.5px
+}
+
+.hd_under2_seperator {
+  display: inline-block;
+  display: inline;
+  margin: 0 5px;
+  font-weight: 700;
+  font-size: 13px
+}
+
+.highlight,
+.page_title {
+  font-size: 14px;
+  font-weight: 700
+}
+
+.page_title {
+  padding: 4px 4px 5px 7px;
+  margin-bottom: 15px;
+  background-color: #E5ECF9;
+  border-bottom: 1px dashed #36C
+}
+
+.highlight {
+  color: #333
+}
+
+.login_box {
+  background-color: #D5E5F5;
+  padding: 5px 10px 10px;
+  border: 6px double #FFF;
+  width: 275px;
+  margin-right: 10px
+}
+
+#left,
+#right {
+  width: 20px;
+  height: 14px;
+  cursor: pointer;
+  background-position-x: 5px;
+  background-repeat: no-repeat;
+  text-align: center
+}
+
+.profile_info {
+  font-size: 12px;
+  font-weight: 700;
+  color: #D83;
+  margin: 10px 0 2px
+}
+
+#video_controls {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y0ZThlOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-linear-gradient(top, #f4e8e8 0, #fff 65%, #fff 65%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f4e8e8), color-stop(65%, #fff), color-stop(65%, #fff));
+  background: -webkit-linear-gradient(top, #f4e8e8 0, #fff 65%, #fff 65%);
+  background: -o-linear-gradient(top, #f4e8e8 0, #fff 65%, #fff 65%);
+  background: -ms-linear-gradient(top, #f4e8e8 0, #fff 65%, #fff 65%);
+  background: linear-gradient(to bottom, #f4e8e8 0, #fff 65%, #fff 65%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4e8e8', endColorstr='#ffffff', GradientType=0);
+  -webkit-box-shadow: 0 .5px 5px .2px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0 .5px 5px .2px rgba(0, 0, 0, 1);
+  box-shadow: 0 .5px 5px .2px rgba(0, 0, 0, 1);
+  overflow: hidden;
+  padding: 1px
+}
+
+#left {
+  float: left;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: url(/img/ply0.png);
+  background-size: 10px 10px;
+  background-position-y: 2px
+}
+
+#mid,
+#right {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none
+}
+
+#mid {
+  overflow: hidden;
+  background: #404040;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  position: relative;
+  top: 5px;
+  user-select: none
+}
+
+#midin {
+  width: 0;
+  background: #0097d6;
+  transition: 50ms width
+}
+
+#video_player {
+  background: #000;
+  margin: 0 0 7px
+}
+
+#right {
+  float: right;
+  user-select: none;
+  background-image: url(/img/vol1.png);
+  background-size: 9px 9px;
+  background-position-y: 2.7px
+}
+
+.share_links {
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 10px;
+  font-size: 13px
+}
+
+.videodescription {
+  font-size: 12px;
+  padding-bottom: 10px;
+  color: #000;
+  border-bottom: 1px dashed #CCC
+}
+
+.c_title,
+.comment {
+  font-size: 11px;
+  border-bottom: 1px dashed #999
+}
+
+.videocontainer {
+  margin: 0 auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  outline: 0
+}
+
+.c_title {
+  font-weight: 700;
+  color: #333;
+  background-color: #EEE;
+  padding: 5px 5px 6px;
+  border-top: 1px dashed #999
+}
+
+.comment {
+  background-color: #FFC;
+  padding: 10px
+}
+
+.v_video_title {
+  font-weight: 700;
+  margin: 3px 0 2px;
+  font-size: 14px;
+  color: #333
+}
+
+.v_video_descr {
+  font-size: 12px;
+  margin: 3px 0 5px;
+  color: #333;
+  padding-right: 10px
+}
+
+.home_welcome_guest {
+  background: #e5ecf9;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 10px 10px 15px 10px;
+
+  span.home_welcome_guest_gimmick {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  > div {
+    border-right: 1px dashed #369;
+    padding: 0px 10px 10px 10px;
+    color: #444;
+    float: left;
+    width: 33%;
+    box-sizing: border-box;
+
+    &:first-of-type {
+      padding-left: 5px;
+    }
+
+    &:last-of-type {
+      border: none;
+    }
+
+    div {
+      margin: 5px 0 0 0;
+    }
+  }
+}
+
+.home_welcome_logged_in {
+  background: #ffeebb;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 10px 10px 15px 10px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+
+  .home_welcome_logged_in_welcome_back {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  img.thumb {
+    width: 64px;
+  }
+}

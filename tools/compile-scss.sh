@@ -32,4 +32,5 @@ fi
 ${sass_executable} ${common_arguments} \
   "scss/bootstrap/:public/assets/css" \
   "scss/finalium/:public/assets/css" \
-  "scss/biscuit/:public/assets/css"
+  "scss/biscuit/:public/assets/css" \
+  "scss/poktube/:public/assets/css"
