@@ -1,6 +1,7 @@
 <?php
-// NOTE: This code fucking sucks
 namespace OpenSB;
+
+global $config; // temporary
 
 define("SB_ROOT_PATH", dirname(__DIR__));
 define("SB_DYNAMIC_PATH", SB_ROOT_PATH . '/dynamic');
@@ -15,10 +16,6 @@ use SquareBracket\UnorganizedFunctions;
 use OpenSB\App;
 use OpenSB\Helpers\Profiler;
 
-// false: run relatively complete/old "orange" code
-// true: run very incomplete/new "theseus" code
-$runNewShit = false;
-
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
 // this is very ugly, i know.
@@ -29,13 +26,14 @@ function load_file_from_vendor($path, $content_type): void
     die();
 }
 
-if ($runNewShit) {
+if ($config["enable_theseus"]) {
     Profiler::start();
 
     session_name("sbsession");
     session_start();
 
-    $config = include_once $_SERVER["DOCUMENT_ROOT"] . '/../private/config/config.php';
+    //$config will temporarily be in common.php
+    //$config = include_once $_SERVER["DOCUMENT_ROOT"] . '/../private/config/config.php';
     $container = include_once $_SERVER["DOCUMENT_ROOT"] . '/../private/Services.php';
     $router = include_once $_SERVER["DOCUMENT_ROOT"] . '/../private/Routes.php';
 

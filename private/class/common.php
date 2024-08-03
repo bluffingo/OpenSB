@@ -2,8 +2,6 @@
 
 namespace OpenSB;
 
-global $host, $user, $pass, $db, $isChazizSB, $debugLogging, $isMaintenance, $bunnySettings, $runNewShit, $dynamicFolderLocation;
-
 if (version_compare(PHP_VERSION, '8.2.0') <= 0) {
     die('<strong>OpenSB is not compatible with your PHP version. OpenSB supports PHP 8.2 or newer.</strong>');
 }
@@ -14,23 +12,15 @@ if (!file_exists(SB_VENDOR_PATH . '/autoload.php')) {
 
 // yes. you can call me stupid for this. but this is done because i don't want the new code to use the old shitty
 // configs. -chaziz 7/31/2024
-if ($runNewShit) {
-    if (!file_exists(SB_PRIVATE_PATH . '/config/config.php')) {
-        die('<strong>The OpenSB Theseus configuration file could not be found.</strong>');
-    }
-} else {
-    if (!file_exists(SB_PRIVATE_PATH . '/conf/config.php')) {
-        die('<strong>The configuration file could not be found. Please read the installing instructions in the README file.</strong>');
-    }
+if (!file_exists(SB_PRIVATE_PATH . '/config/config.php')) {
+    die('<strong>The configuration file could not be found. Please read the installing instructions in the README file.</strong>');
 }
 
-if (!$runNewShit) {
-    require_once(SB_PRIVATE_PATH . '/conf/config.php');
+$config = include_once(SB_PRIVATE_PATH . '/config/config.php');
 
-    if(!file_exists($dynamicFolderLocation)) {
-        die('<strong>The dynamic folder can not be found. Please read the installing instructions in the README file.</strong>');
-    }
-}
+//if(!file_exists($dynamicFolderLocation)) {
+//    die('<strong>The dynamic folder can not be found. Please read the installing instructions in the README file.</strong>');
+//}
 
 require_once(SB_VENDOR_PATH . '/autoload.php');
 
@@ -42,13 +32,14 @@ use SquareBracket\Storage;
 use SquareBracket\Templating;
 use SquareBracket\Utilities;
 
-if(!$runNewShit) {
 // please use apache/nginx for production stuff.
 if (php_sapi_name() == "cli-server") {
     define("SB_PHP_BUILTINSERVER", true);
 } else {
     define("SB_PHP_BUILTINSERVER", false);
 }
+
+if(!$config["enable_theseus"]) {
     spl_autoload_register(function ($class_name) {
         $class_name = str_replace('\\', '/', $class_name);
         if (file_exists(SB_PRIVATE_PATH . "/class/$class_name.php")) {
@@ -56,6 +47,60 @@ if (php_sapi_name() == "cli-server") {
         }
     });
 
+    // since opensb orange is shitty code and uses global everywhere. convert new config variables
+    // to old global config variables to avoid fucking around with the legacy orange code.
+    $host = $config["mysql"]["host"];
+    $db = $config["mysql"]["database"];
+    $user = $config["mysql"]["username"];
+    $pass = $config["mysql"]["password"];
+
+    if ($config["site"] == "squarebracket_chaziz") {
+        $isChazizSB = true;
+        $enableChat = true; // sorry
+    } else {
+        $isChazizSB = false;
+        $enableChat = false;
+        if ($config["site"] != "squarebracket") {
+            trigger_error("Incompatible site mode (OpenSB Orange only supports squareBracket mode 
+                                    and Chaziz squareBracket mode)", E_USER_ERROR);
+        }
+    }
+
+    if ($config["mode"] == "DEV") {
+        $isDebug = true;
+    } else {
+        $isDebug = false;
+    }
+
+    if ($config["maintenance"]) {
+        $isMaintenance = true;
+    } else {
+        $isMaintenance = false;
+    }
+
+    // Bunny settings which are only used if $isChazizSB is true
+    $bunnySettings = [
+        "streamApi" => $config["bunny_settings"]["stream_api"],
+        "streamLibrary" => $config["bunny_settings"]["stream_library"],
+        "streamHostname" => $config["bunny_settings"]["stream_hostname"],
+        "storageApi" => $config["bunny_settings"]["storage_api"],
+        "storageZone" => $config["bunny_settings"]["storage_zone"],
+        "pullZone" => $config["bunny_settings"]["pull_zone"],
+    ];
+
+    // Branding settings
+    $branding = [
+        "name" => $config["branding"]["name"],
+        "assets_location" => $config["branding"]["assets"],
+    ];
+
+    // TODO: port these to feature flags or settings that can be changed in-site.
+    $disableRegistration = false;
+    $disableUploading = false;
+    $disableWritingJournals = false;
+    $enableInviteKeys = false;
+
+    // now initialize the orange classes
     $orange = new SquareBracket($host, $user, $pass, $db);
     $database = $orange->getDatabase();
     $auth = new Authentication($database, $_COOKIE['SBTOKEN'] ?? null);

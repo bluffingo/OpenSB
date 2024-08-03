@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $auth, $domain, $database, $twig;
+global $auth, $database, $twig;
 
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;

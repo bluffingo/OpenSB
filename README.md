@@ -1,5 +1,3 @@
-**MASSIVE REWORK IN PROGRESS. DO NOT USE IN ANY PROD ENVIRONMENT**
-
 # OpenSB
 ![Screen Shot 2024-07-04 at 13 41 44](https://github.com/bluffingo/OpenSB/assets/45898787/b7293f29-f17e-493c-8545-bed2afbe5889)
 
@@ -7,22 +5,23 @@
 
 I wouldn't recommend using this code unless if you ***really*** know what you're doing.
 
-1. Get an Apache or NGINX server with PHP and MariaDB up and running, including Composer and the PHP GD library extension. We recommend Apache, as you will experience issues with NGINX. This is shit code. You've been warned.
-1. Setup a virtual host. Look below the steps for an example.
+1. Get a webserver (Apache or NGINX) with PHP and MariaDB (MySQL may work but it is untested) up and running, including Composer and the PHP GD library extension. We recommend Apache, as you will experience issues with NGINX.
+1. Configure your webserver. Look below the steps for an example.
 1. Run `composer update` from the terminal.
-1. Copy `config.sample.php`, rename it to `config.php` and fill in your database credentials.
+1. Copy `config.sample.php` in `private/config`, rename it to `config.php` and fill in your database credentials.
 1. Import the database template found in `sql/` into the database you want to use.
 1. Run the `compile-scss` script available in the tools directory to generate the required stylesheets. You may find Dart-Sass here at https://sass-lang.com/install. Ruby Sass is deprecated, do not use it. You MUST use a specific Dart-Sass, or it won't work. You can find it [here](https://github.com/sass/dart-sass/releases/).
 
-### Production specific (partially outdated)
+### Production specific
+
 1. Use Linux for anything related to production.
+1. Enable `LEGACY_enable` in the configuration. Do **NOT** use OpenSB Theseus code on production. It is very, very incomplete.
 1. Instead of installing dependencies using `composer update` you do `composer update --no-dev`
 1. Make the `dynamic/` and `templates/cache/` directories writable by your web server.
-1. Modify `$branding` to replace openSB branding with your custom branding. Check the `public/assets/placeholder` directory for reference.
+1. Modify branding settings to replace the default OpenSB branding with your custom branding. Check the `public/assets/placeholder` directory for reference.
 
 ### Development specific
 
-1. Disable Twig's template caching by setting `$tplNoCache` to true.
 1. Enable debugging features by setting `$isDebug` to true.
 1. If you want to be able to upload during development, make the `dynamic/` directory and the directories inside it writable by your web server.
 
@@ -49,6 +48,7 @@ You will have to modify the directories to match your instance's location.
 ```
 server {
     listen       80;
+    server_name  www.squarebracket.pw
     server_name  squarebracket.pw;
 
     root   /var/www/squarebracket/public/;
@@ -70,9 +70,3 @@ server {
     }
 }
 ```
-
-## Questions
-
-### Why do I get 404 errors when I click on thumbnails?
-
-Assuming you use Apache and have the rewrite module installed, this is because AllowOverride is turned off. See the virtual host example above for a quick fix.
