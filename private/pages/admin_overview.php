@@ -68,6 +68,65 @@ function countViews($database): array
     ));
 }
 
+/*
+function countCumulativeViewsCSV($database): string
+{
+    $results = $database->fetchArray($database->query(
+        "SELECT 
+            video_id,
+            DATE(FROM_UNIXTIME(timestamp)) AS date, 
+            SUM(CASE WHEN type = 'user' THEN 1 ELSE 0 END) AS daily_user_views,
+            SUM(CASE WHEN type = 'guest' THEN 1 ELSE 0 END) AS daily_guest_views
+        FROM views
+        GROUP BY video_id, DATE(FROM_UNIXTIME(timestamp))
+        HAVING SUM(CASE WHEN type = 'user' THEN 1 ELSE 0 END) + SUM(CASE WHEN type = 'guest' THEN 1 ELSE 0 END) >= 1
+        ORDER BY video_id, DATE(FROM_UNIXTIME(timestamp))"
+    ));
+
+    // Organize the results into a nested array and calculate cumulative views
+    $data = [];
+    $dates = [];
+    foreach ($results as $row) {
+        $video_id = $row['video_id'];
+        $date = $row['date'];
+        $daily_views = $row['daily_user_views'] + $row['daily_guest_views'];
+
+        if (!isset($data[$video_id])) {
+            $data[$video_id] = [];
+        }
+        $data[$video_id][$date] = $daily_views;
+
+        if (!in_array($date, $dates)) {
+            $dates[] = $date;
+        }
+    }
+
+    // Sort the dates
+    sort($dates);
+
+    // Build the CSV content
+    $csv = "video_id";
+    foreach ($dates as $date) {
+        $csv .= ",$date";
+    }
+    $csv .= "\n";
+
+    foreach ($data as $video_id => $views) {
+        $cumulative_views = 0;
+        $csv .= $video_id;
+        foreach ($dates as $date) {
+            if (isset($views[$date])) {
+                $cumulative_views += $views[$date];
+            }
+            $csv .= ",$cumulative_views";
+        }
+        $csv .= "\n";
+    }
+
+    return $csv;
+}
+*/
+
 // squarebracket's production db has random references to dates prior to january 31st 2021, but the site
 // did launch back there, so just hardcode $date to that date. -chaziz 6/4/2024 (replaces rambling)
 if ($isChazizSB) {

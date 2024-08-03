@@ -4,6 +4,8 @@ namespace OpenSB;
 
 global $twig, $database, $auth, $orange;
 
+use Jaybizzle\CrawlerDetect\CrawlerDetect;
+
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\UploadData;
@@ -83,24 +85,20 @@ if (UnorganizedFunctions::RatingToNumber($data["rating"]) > UnorganizedFunctions
 
 $ip = Utilities::get_ip_address();
 
-// I have a feeling that more than half of the views gained in 2023 are non-genuine crawler views.
-// even with crawler detect, it doesn't quite work since squarebracket got 240 views on 4/11/2024.
-// the best solution would be to check if the ip is from a consumer isp and not from a vps or a search
-// engine crawler, but this would most likely require an api that would cost money to use in the long-term.
-// i think only counting views from logged-in users would be good for now. -chaziz 4/12/2024
+$CrawlerDetect = new CrawlerDetect;
+
 if ($auth->isUserLoggedIn()) {
     $type = "user";
 } else {
     $type = "guest";
 }
 
-if ($database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$id, crypt($ip, $ip)])['COUNT(video_id)'] < 1) {
-    $database->query("INSERT INTO views (video_id, user, timestamp, type) VALUES (?,?,?,?)",
-        [$id, crypt($ip, $ip), time(), $type]);
+// probably shit
+if (!$CrawlerDetect->isCrawler()) {
+    if ($database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$id, crypt($ip, $ip)])['COUNT(video_id)'] < 1) {
+        $database->query("INSERT INTO views (video_id, user, timestamp, type) VALUES (?,?,?,?)",
+            [$id, crypt($ip, $ip), time(), $type]);
 
-    // BUG: if a user views a submission logged out, and then logs onto sb, and then comes back to that submission,
-    // the views doesn't count even though it should. -chaziz 4/13/2024
-    if ($auth->isUserLoggedIn()) {
         // increment the indexed view count. this might go out of sync eventually, but this can be fixed with a
         // script that'll be run at least once a week via cron. -chaziz 4/6/2024
         $new_views = $data["views"] + 1;
