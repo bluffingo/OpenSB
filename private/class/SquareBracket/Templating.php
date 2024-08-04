@@ -192,7 +192,6 @@ class Templating
             $site = $metadata["metadata"]["site"] ?? "unknown";
             if ($site == "squarebracket") {
                 $incomplete = $metadata["metadata"]["incomplete"] ?? false;
-                var_dump($incomplete);
                 // dont show incomplete skins
                 if (!$isDebug & !$incomplete) {
                     $skins[] = $this->getSkinMetadata($skin);
