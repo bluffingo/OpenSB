@@ -9,7 +9,8 @@
       {
         "id": "default",
         "name": "Default",
-        "description": "The default Second Official OpenSB Site user experience."
+        "description": "The default Second Official OpenSB Site user experience.",
+        "author": "OpenSB developers"
       }
     ]
   }

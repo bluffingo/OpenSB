@@ -4,11 +4,10 @@
 
 {% block content %}
     <h1>Customize</h1>
-    <p>Placeholder design, sorry.</p>
     <div id="previewContainer" style="margin-top: 20px;">
         <h2>Preview</h2>
         <img id="themePreview" src="" alt="Theme Preview" style="max-width: 300px; max-height: 200px; display: none;">
-        <p id="themeDescription"></p>
+        <p id="themeDescription"></p><p id="themeAuthor"></p>
     </div>
     <form name="uploadForm" id="uploadForm" method="post" action="theme">
         <label for="theme">Skin:</label>
@@ -17,7 +16,7 @@
                 {% for theme in skin.metadata.themes %}
                     <option value="{{ skin.metadata.id }},{{ theme.id }}"
                             data-preview-url="/assets/previews/{{ skin.metadata.id }}_{{ theme.id }}.png"
-                            data-description="{{ theme.description }}">
+                            data-description="{{ theme.description }}" data-author="{{ theme.author }}">
                         {{ skin.metadata.name }}: {{ theme.name }}
                     </option>
                 {% endfor %}

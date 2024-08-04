@@ -11,6 +11,7 @@
         "id": "default",
         "name": "Default",
         "description": "Based on the February 2021 launch version of PokTube.",
+        "author": "Chaziz"
       }
     ]
   }

@@ -21,7 +21,7 @@
     this is only really needed in the default theme (and maybe a dark default theme in the future)
     this will break the "random uploads" thing, and that's by design.
     #}
-    {% if current_theme == "default" %}
+    {% if current_theme in ["default", "pink"] %}
         <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
         <script>
@@ -46,7 +46,7 @@
 {% endblock %}
 
 {% block precontent %}
-    {% if current_theme == "default" %}
+    {% if current_theme in ["default", "pink"] %}
         <div class="jumbotron homepage-banner {% if is_fulptube %}fulptube{% endif %}">
             <div class="jumbotron-container">
                 <div class="jumbotron-welcome">

@@ -3,8 +3,11 @@ function updatePreview() {
     const selectedOption = themeSelect.options[themeSelect.selectedIndex];
     const previewUrl = selectedOption.getAttribute('data-preview-url');
     const description = selectedOption.getAttribute('data-description');
+    const author = selectedOption.getAttribute('data-author');
+
     const themePreview = document.getElementById('themePreview');
     const themeDescription = document.getElementById('themeDescription');
+    const themeAuthor = document.getElementById('themeAuthor');
 
     if (previewUrl) {
         themePreview.src = previewUrl;
@@ -14,5 +17,6 @@ function updatePreview() {
     }
 
     themeDescription.textContent = description || 'No description available.';
+    themeAuthor.textContent = author ? `By ${author}` : '';
 }
 window.onload = updatePreview;

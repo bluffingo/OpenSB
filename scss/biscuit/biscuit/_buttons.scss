@@ -39,8 +39,13 @@
     background-color: $value;
     @include gradient-y($start-color: adjust-hue(lighten($value, 9%), 2), $end-color: adjust-hue(darken($value, 6%), 6));
 
-    color: contrast-color($value, #000, #fff);
-    text-shadow: 0 -1px 0 rgba(black, 0.4);
+    $text-color: contrast-color($value, #000, #fff);
+
+    color: $text-color;
+
+    @if $text-color != #fff {
+      text-shadow: none;
+    }
 
     &:hover {
       background-color: lighten($value, 10%);

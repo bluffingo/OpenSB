@@ -1,18 +1,20 @@
-// these are most of the variables used by the default theme.
-
-$isOpenSB2: false;
-
 // colors
 
 $threshold: 66%; // contrast threshold
 
 $primary: #3498db; // primary color
+@if $theme == "pink" {
+        $primary: #edb1c1; // primary color
+}
 $primary-darker: darken($primary, 33%); // darker primary color
 $secondary: #eee; //secondary color (nearly white)
 $green: #28c228;
 $red: #c01b0c;
 
 $link-color: #0061c5;
+@if $theme == "pink" {
+        $link-color: #c61b7a;
+}
 
 $color-map: (
         "primary": $primary,

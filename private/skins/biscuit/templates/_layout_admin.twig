@@ -1,13 +1,11 @@
 {% extends "_layout.twig" %}
 
 {% block precontent %}
-    {% if current_theme == "default" %}
-        <div class="jumbotron page-banner">
-            <div class="jumbotron-container">
-                <h1>{{ title }}</h1>
-            </div>
+    <div class="jumbotron page-banner">
+        <div class="jumbotron-container">
+            <h1>{{ title }}</h1>
         </div>
-    {% endif %}
+    </div>
 {% endblock %}
 
 	{% block content %}

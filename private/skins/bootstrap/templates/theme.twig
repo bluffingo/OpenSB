@@ -8,7 +8,7 @@
         <div class="col-lg-4">
             <div id="previewContainer">
                 <img id="themePreview" src="" alt="Theme Preview" class="img-fluid">
-                <p id="themeDescription"></p>
+                <p id="themeDescription"></p><p id="themeAuthor"></p>
             </div>
         </div>
         <div class="col-lg-8">
@@ -19,7 +19,7 @@
                         {% for theme in skin.metadata.themes %}
                             <option value="{{ skin.metadata.id }},{{ theme.id }}"
                                     data-preview-url="/assets/previews/{{ skin.metadata.id }}_{{ theme.id }}.png"
-                                    data-description="{{ theme.description }}">
+                                    data-description="{{ theme.description }}" data-author="{{ theme.author }}">
                                 {{ skin.metadata.name }}: {{ theme.name }}
                             </option>
                         {% endfor %}
