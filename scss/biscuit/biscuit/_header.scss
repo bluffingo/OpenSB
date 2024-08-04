@@ -263,7 +263,7 @@ td.h
 
   @if $theme == "pink" {
     background: linear-gradient(to bottom, #ffc2c2, #FF9A9A);
-  } @elseif $theme == "cubicle" or $theme == "classic" {
+  } @else if $theme == "cubicle" or $theme == "classic" {
     background: none;
     box-shadow: none;
   } @else {
