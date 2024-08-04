@@ -191,9 +191,10 @@ class Templating
             // only list squarebracket skins since soos skins will Not work with orange opensb
             $site = $metadata["metadata"]["site"] ?? "unknown";
             if ($site == "squarebracket") {
-                $incomplete = $metadata["incomplete"] ?? false;
+                $incomplete = $metadata["metadata"]["incomplete"] ?? false;
+                var_dump($incomplete);
                 // dont show incomplete skins
-                if (!$isDebug || $incomplete) {
+                if (!$isDebug & !$incomplete) {
                     $skins[] = $this->getSkinMetadata($skin);
                 }
             }
