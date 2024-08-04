@@ -1,13 +1,28 @@
 .footer
 {
   .footer-container {
-    border-top: 1px solid $content-box-border-color;
+    @if $theme == "cubicle" {
+      border-radius: 20px;
+      background: #555753;
+      color: #cccccc;
+
+      a {
+        color: #888a85;
+      }
+
+    } @else {
+      border-top: 1px solid $content-box-border-color;
+    }
 
     @include maxwidths();
+
+    // shitty
+    padding-top: 20px;
+    padding-bottom: 20px;
+
     margin: auto;
 
     .footer-content {
-      margin-top: 16px;
       text-align: center;
       span {
         margin: 0 3px;

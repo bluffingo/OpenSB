@@ -1,56 +1,44 @@
 .jumbotron {
+  @if $theme == "cubicle" or $theme == "classic" {
+    @include maxwidths();
+    margin: auto;
+  }
 
   &.page-banner {
     h1, p {
       margin: 0;
     }
 
-    background: #111 linear-gradient(45deg, #222 0%, #111 100%);
     @if $theme == "pink" {
       background: #111 linear-gradient(45deg, #fdbaba 0%, #E89693 100%);
+    } @else if $theme == "cubicle" {
+      background: #555753;
+    } @else {
+      background: #111 linear-gradient(45deg, #222 0%, #111 100%);
     }
     background-size: cover;
 
     color: white;
     text-shadow: 0 0 0.5em #00000090;
     padding: 20px 0;
-  }
 
-  &.homepage-banner {
-    h1, p {
-      margin: 0 0 12px 0;
-      &:last-child {
-        margin: 0;
+    .jumbotron-welcome {
+      flex-grow: 1;
+
+      h1, p {
+        margin: 0 0 12px 0;
+        &:last-child {
+          margin: 0;
+        }
       }
-    }
 
-    background: #111 linear-gradient(45deg, #222 0%, #111 100%);
-    @if $theme == "pink" {
-      background: #111 linear-gradient(45deg, #fdbaba 0%, #E89693 100%);
-    }
+      .jumbotron-logged-in {
+        display: flex;
+        align-items: center;
 
-    background-size: cover;
-    color: white;
-    text-shadow: 0 0 0.5em #00000090;
-
-    margin-top: -$header-height;
-    height: 150px + $header-height;
-
-    .jumbotron-container {
-      padding-top: $header-height;
-      height: 150px + $header-height;
-
-      .jumbotron-welcome {
-        flex-grow: 1;
-
-        .jumbotron-logged-in {
-          display: flex;
-          align-items: center;
-
-          .pfp {
-            height: 110px;
-            margin-right: 10px;
-          }
+        .pfp {
+          height: 110px;
+          margin-right: 10px;
         }
       }
     }
@@ -58,8 +46,7 @@
 
   &.profile-banner {
     background: #111 center/cover;
-    margin-top: -$header-height;
-    height: 250px + $header-height;
+    height: 250px;
 
     .jumbotron-container {
       padding-top: $header-height;
@@ -68,7 +55,11 @@
 
   // duplicate of the page class
   .jumbotron-container {
-    @include maxwidths();
+    @if $theme != "cubicle" and $theme != "classic" {
+      @include maxwidths();
+    } @else {
+      padding: 0 2em;
+    }
     display: flex;
     align-items: center;
     margin: auto;

@@ -1,27 +1,16 @@
-{% if current_theme == 'pink' %}
-    {% set logo = website_branding.assets_location ~ '/logo-wordmark.png' %}
-{% else %}
-    {% set logo = website_branding.assets_location ~ '/logo-wordmark-dark.png' %}
-{% endif %}
-
 <div class="headers">
-    <div class="header">
-        <div class="header-container">
+    <div class="cubicle-header">
+        <div class="cubicle-header-container">
             <div class="header-logo">
                 <a href="/">
-                    <img alt="{{ website_branding.name }}" class="logo" src="{{ logo }}">
+                    <img alt="{{ website_branding.name }}" class="logo" src="{{ website_branding.assets_location }}/logo-wordmark.png">
                     <img alt="{{ website_branding.name }}" class="logo-small" src="{{ website_branding.assets_location }}/logo.png">
                 </a>
             </div>
-            <div class="header-main-links">
-                {% for link in header_main_links() %}
-                    <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
-                {% endfor %}
-            </div>
             <form class="header-search" action="/search">
                 <input id="header-search-input" type="text" name="query" placeholder="{{ localize('search') }}...">
-                <button id="header-search-button">
-                    <i class="bi bi-search"></i>
+                <button id="header-search-button" class="button button-secondary">
+                    Search
                 </button>
             </form>
             <div class="header-links">
@@ -53,6 +42,15 @@
                         <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
                     {% endfor %}
                 {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header-container">
+            <div class="header-main-links">
+                {% for link in header_main_links() %}
+                    <a class="menulink" href="{{ link.url }}">{{ link.name }}</a>
+                {% endfor %}
             </div>
         </div>
     </div>

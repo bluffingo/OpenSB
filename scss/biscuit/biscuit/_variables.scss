@@ -72,8 +72,16 @@ $content-box-padding: 12px;
 
 // header
 $header-height: 44px;
+@if $theme == "cubicle" {
+        $header-height: 30px;
+} @else if $theme == "classic" {
+        $header-height: 35px;
+}
 $header-logo-height: 30px;
 $header-pfp-width: 28px;
+@if $theme == "cubicle" {
+        $header-pfp-width: 20px;
+}
 
 // profile
 $pfp-width-profiles: 70px;

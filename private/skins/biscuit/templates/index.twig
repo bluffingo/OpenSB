@@ -17,37 +17,31 @@
 {% endif %}
 
 {% block scripts %}
-    {#
-    this is only really needed in the default theme (and maybe a dark default theme in the future)
-    this will break the "random uploads" thing, and that's by design.
-    #}
-    {% if current_theme in ["default", "pink"] %}
-        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
-        <script>
-            document.addEventListener( 'DOMContentLoaded', function() {
-                var elms = document.getElementsByClassName( 'splide' );
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function() {
+            var elms = document.getElementsByClassName( 'splide' );
 
-                for ( var i = 0; i < elms.length; i++ ) {
-                    new Splide( elms[ i ], {
-                        perPage: 6,
-                        rewind: true,
-                        pagination: false,
-                        breakpoints: {
-                            1899 : { perPage: 4 },
-                            1249 : { perPage: 3 },
-                            899 : { perPage: 2 },
-                        },
-                    } ).mount();
-                }
-            } );
-        </script>
-    {% endif %}
+            for ( var i = 0; i < elms.length; i++ ) {
+                new Splide( elms[ i ], {
+                    perPage: 6,
+                    rewind: true,
+                    pagination: false,
+                    breakpoints: {
+                        1899 : { perPage: 4 },
+                        1249 : { perPage: 3 },
+                        899 : { perPage: 2 },
+                    },
+                } ).mount();
+            }
+        } );
+    </script>
 {% endblock %}
 
 {% block precontent %}
-    {% if current_theme in ["default", "pink"] %}
-        <div class="jumbotron homepage-banner {% if is_fulptube %}fulptube{% endif %}">
+    {% if current_theme in ["default", "pink", "classic"] %}
+        <div class="jumbotron page-banner">
             <div class="jumbotron-container">
                 <div class="jumbotron-welcome">
                     {% if is_user_logged_in %}

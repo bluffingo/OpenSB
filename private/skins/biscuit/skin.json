@@ -13,6 +13,12 @@
         "author": "OpenSB developers"
       },
       {
+        "id": "classic",
+        "name": "Classic",
+        "description": "Emulates the April 2021 version of squareBracket.",
+        "author": "Chaziz"
+      },
+      {
         "id": "cubicle",
         "name": "Cubicle",
         "description": "Cubicle",
