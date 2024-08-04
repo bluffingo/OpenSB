@@ -18,7 +18,6 @@ class SquareBracket {
      * @since SquareBracket 1.0
      */
     public function __construct($host, $user, $pass, $db) {
-        global $defaultTemplate;
         session_start(["cookie_lifetime" => 0, "gc_maxlifetime" => 455800]);
 
         if (isset($_COOKIE["SBOPTIONS"])) {
@@ -34,7 +33,7 @@ class SquareBracket {
             }
         } else {
             $this->options = [
-                "skin" => $defaultTemplate,
+                "skin" => "biscuit",
                 "theme" => "default",
                 "sounds" => false,
             ];
