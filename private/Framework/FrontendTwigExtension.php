@@ -5,14 +5,18 @@
 
 namespace OpenSB\Framework;
 
+use OpenSB\App;
+
 use Parsedown;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
 {
-    public function __construct() {
+    private $feature_flags;
 
+    public function __construct() {
+        $this->feature_flags = App::container()->get(SiteConfig::class)->getFeatureFlags();
     }
 
     public function getFunctions()
@@ -69,7 +73,7 @@ class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
 
             // header links
             new TwigFunction('header_main_links', function () {
-                return [
+                $array = [
                     "browse" => [
                         "name" => "Browse",
                         "url" => "/browse",
@@ -79,6 +83,15 @@ class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
                         "url" => "/users",
                     ],
                 ];
+
+                if ($this->feature_flags["SBChat_Enable"]) {
+                    $array["chat"] = [
+                        "name" => "Chat",
+                        "url" => "/chat",
+                    ];
+                }
+
+                return $array;
             }, ['is_safe' => ['html']]),
 
             new TwigFunction('header_user_links', function () {

@@ -18,6 +18,7 @@ class Frontend {
     private $db;
     private $auth;
     private $site;
+    private $feature_flags;
 
     function __construct() {
         $this->site = App::config()["site"] ?? "squarebracket";
@@ -39,10 +40,12 @@ class Frontend {
 
         $this->db = App::container()->get(Database::class);
         $this->auth = App::container()->get(Authentication::class);
+        $this->feature_flags = App::container()->get(SiteConfig::class)->getFeatureFlags();
 
         $this->twig->addGlobal('is_user_logged_in', $this->auth->isLoggedIn());
         $this->twig->addGlobal('user_data', $this->auth->getUserData());
         $this->twig->addGlobal('current_theme', $theme);
+        $this->twig->addGlobal('feature_flags', $this->feature_flags);
 
         // temporary measure to update the frontend code without breaking the old orange backend until we toss
         // that shit out

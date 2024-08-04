@@ -4,6 +4,13 @@
             <div>add links here or something idk</div>
             <div>Running <a href="/version">OpenSB Theseus</a></div>
             <span>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</span>
+            {% if (is_chaziz_sb or feature_flags.Footer_Show_Chaziz_Logo) %}
+                <div class="footer-logo-chaziz">
+                    <a href="https://bluffingo.net/">
+                        <img src="/assets/sb_branding/chaziz.svg" alt="Chaziz">
+                    </a>
+                </div>
+            {% endif %}
         </div>
     </div>
 </footer>
