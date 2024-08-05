@@ -16,9 +16,7 @@ class Authentication
     private $user_ban_data;
     private $user_notice_count; // this shouldn't be here but whatever
     // TODO: make this default blacklist configurable per instance
-    private $default_tags_blacklist = [
-        "diaper",
-    ];
+    private $default_tags_blacklist = [];
 
     public function __construct(\SquareBracket\Database $database, $token)
     {
