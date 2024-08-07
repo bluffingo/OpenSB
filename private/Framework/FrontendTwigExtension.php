@@ -124,6 +124,11 @@ class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
             new TwigFunction('submission_view', function () {
                 return "placeholder";
             }, ['is_safe' => ['html']]),
+
+            // star ratings
+            new TwigFunction('show_ratings', function ($stars) {
+                return "CURRENTLY UNFINISHED! (show_ratings)";
+            }, ['is_safe' => ['html']]),
         ];
     }
 
@@ -137,6 +142,10 @@ class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
 
             new TwigFilter('markdown_user_journal', function ($text) {
                 return "CURRENTLY UNFINISHED! (markdown_user_journal)";
+            }, ['is_safe' => ['html']]),
+
+            new TwigFilter('relative_time', function ($time) {
+                return "CURRENTLY UNFINISHED! (relative_time)";
             }, ['is_safe' => ['html']]),
         ];
     }

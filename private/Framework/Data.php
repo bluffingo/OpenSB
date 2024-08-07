@@ -10,7 +10,7 @@ interface Data
     /**
      * this is where all the database fetching stuff should happen
      */
-    public function __construct();
+    public function __construct(Database $database, $data);
 
     /**
      * returns cleaner array to be used by the frontend

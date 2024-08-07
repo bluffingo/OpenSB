@@ -141,10 +141,12 @@ if(!$config["enable_theseus"]) {
 
     $storage = new Storage($orange->getDatabase(), $isChazizSB, $bunnySettings);
 
+    // and i am being serious with this. -chaziz 8/7/2024
     if (!file_exists(SB_GIT_PATH)) {
         echo $twig->render("error.twig", [
             "error_title" => "Critical error",
-            "error_reason" => "Please initialize OpenSB using git clone instead of downloading it straight from GitHub."
+            "error_reason" => "Please initialize OpenSB using git clone instead of downloading it straight from GitHub,
+             especially if you want to keep your instance up to date."
         ]);
         die();
     }

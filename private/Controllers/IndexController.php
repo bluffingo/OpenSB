@@ -7,13 +7,19 @@ namespace OpenSB\Controllers;
 
 use OpenSB\Framework\Controller;
 
+use OpenSB\Framework\UploadArray;
+
 class IndexController extends Controller {
     public function index() {
-        $uploads = $this->db->execute("SELECT * FROM videos ORDER BY time DESC LIMIT 12");
+        $upload_array = new UploadArray($this->db);
+
+        $random_uploads = $upload_array->query("RAND()", 24);
+        $recent_uploads = $upload_array->query("v.time DESC", 12);
 
         return $this->frontend->render("index", [
             'data' => [
-                "submissions" => $uploads,
+                "submissions" => $random_uploads,
+                'submissions_new' => $recent_uploads,
             ],
         ]);
     }

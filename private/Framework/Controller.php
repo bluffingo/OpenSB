@@ -16,9 +16,8 @@ use OpenSB\Framework\Frontend;
  * @author RGB
  */
 class Controller {
-    public $db;
-    public $frontend;
-    public $sbdb;
+    public Database $db;
+    public Frontend $frontend;
     public $appConfig;
 
     public function __construct() {

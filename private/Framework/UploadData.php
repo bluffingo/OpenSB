@@ -9,19 +9,38 @@ namespace OpenSB\Framework;
 
 class UploadData implements Data
 {
-    public function __construct()
+    private Database $database;
+    private $data;
+
+    public function __construct(Database $database, $data)
     {
+        $this->database = $database;
+        $this->data = $this->database->execute("SELECT * FROM videos where video_id = ?", [$data], true);
     }
 
     public function getData(): array
     {
-        // TODO: Implement getData() method.
-        return [];
+        return [
+            "id" => $this->data["video_id"],
+            "title" => $this->data["title"],
+            "description" => $this->data["description"],
+            "published" => $this->data["time"],
+            "published_originally" => $this->data["original_time"],
+            "original_site" => $this->data["original_site"],
+            "type" => $this->data["post_type"],
+            "content_rating" => $this->data["rating"],
+            "views" => $this->data["views"],
+            //"flags" => $bools,
+            "author" => [
+                "id" => $this->data["author"],
+                //"info" => $userData->getUserArray(),
+            ],
+        ];
     }
 
     public function modifyData($data): bool
     {
-        // TODO: Implement updateData() method.
+        // TODO: Implement modifyData() method.
         return false;
     }
 }
