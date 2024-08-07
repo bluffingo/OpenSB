@@ -94,6 +94,9 @@ if(!$config["enable_theseus"]) {
         "assets_location" => $config["branding"]["assets"],
     ];
 
+    // Custom external skins
+    $externalSkins = $config["external_skins"];
+
     // TODO: port these to feature flags or settings that can be changed in-site.
     $disableRegistration = false;
     $disableUploading = false;

@@ -11,6 +11,7 @@ define("SB_VENDOR_PATH", SB_ROOT_PATH . '/vendor');
 define("SB_GIT_PATH", SB_ROOT_PATH . '/.git'); // ONLY FOR makeVersionString() IN SquareBracket CLASS.
 
 // old shit
+use JetBrains\PhpStorm\NoReturn;
 use SquareBracket\UnorganizedFunctions;
 // new shit
 use OpenSB\App;
@@ -18,12 +19,38 @@ use OpenSB\Helpers\Profiler;
 
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
+// hopefully this doesn't fuck up with normal skins which should load normally
+#[NoReturn] function load_thumbnail_from_external_skin($path) {
+    global $externalSkins;
+
+    $pathParts = explode('_', $path);
+    $skin = $pathParts[0] ?? '';
+    $theme = $pathParts[1] ?? '';
+
+    $skinPath = 'skins/' . $skin;
+    if (isset($externalSkins[$skin])) {
+        $skinPath = $externalSkins[$skin];
+    }
+
+    $previewPath = $skinPath . '/preview.png';
+
+    if (file_exists($previewPath)) {
+        header('Content-Type: image/png');
+        readfile($previewPath);
+        exit;
+    } else {
+        header("HTTP/1.1 404 Not Found");
+        echo 'File not found.';
+        exit;
+    }
+}
+
 // this is very ugly, i know.
-function load_file_from_vendor($path, $content_type): void
+#[NoReturn] function load_file_from_vendor($path, $content_type): void
 {
     header("Content-Type: $content_type");
     readfile(SB_VENDOR_PATH . $path);
-    die();
+    exit;
 }
 
 if ($config["enable_theseus"]) {
@@ -80,6 +107,7 @@ if ($config["enable_theseus"]) {
             },
             'assets' => match ($path[2] ?? null) {
                 'bootstrap-icons.woff2' => load_file_from_vendor('/twbs/bootstrap-icons/font/fonts/bootstrap-icons.woff2', 'font/woff2'),
+                'previews' => load_thumbnail_from_external_skin($path[3] ?? ''),
                 default => die(),
             },
             'browse' => require(SB_PRIVATE_PATH . '/pages/browse.php'),

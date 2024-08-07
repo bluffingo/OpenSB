@@ -28,7 +28,7 @@ class Templating
      */
     public function __construct(SquareBracket $orange)
     {
-        global $isChazizSB, $auth, $isDebug, $branding, $enableInviteKeys;
+        global $isChazizSB, $auth, $isDebug, $branding, $enableInviteKeys, $externalSkins;
         chdir(__DIR__ . '/../..');
 
         $options = $orange->getLocalOptions();
@@ -36,32 +36,53 @@ class Templating
         $this->skin = $options["skin"] ?? "biscuit";
         $this->theme = $options["theme"] ?? "default";
 
-        if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {
+        //if ($this->skin === null || trim($this->skin) === '' || !is_dir('skins/' . $this->skin . '/templates')) {
+        if ($this->skin === null || trim($this->skin) === '') {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
             $this->skin = "biscuit";
         }
 
+        $skinPath = 'skins/' . $this->skin;
+
+        // if this is an external skin, change path to an external path.
+        if (isset($externalSkins[$this->skin])) {
+            $skinPath = $externalSkins[$this->skin];
+        }
+
         // get metadata so that we can check if the skin is actually intended for squarebracket since
         // soos skins wont work on orange opensb
-        $metadata = $this->getSkinMetadata("skins/" . $this->skin);
+        $metadata = $this->getSkinMetadata($skinPath);
 
+        // if this skin is not meant for squarebracket, don't load.
         if ($metadata["metadata"]["site"] != "squarebracket") {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
             $this->skin = "biscuit";
         }
 
-        $loader_path = 'skins/' . $this->skin . '/templates';
-        $this->loader = new FilesystemLoader($loader_path);
+        $templatePath = $skinPath . '/templates';
+
+        // if this skin isnt an actual skin, don't load.
+        try {
+            $this->loader = new FilesystemLoader($templatePath);
+        } catch (LoaderError $e) {
+            trigger_error("Currently selected skin is invalid", E_USER_WARNING);
+
+            $this->skin = "biscuit";
+            $this->theme = "default";
+            $templatePath = "skins/biscuit/templates";
+            $this->loader = new FilesystemLoader($templatePath);
+        }
+
         $this->loader->addPath('skins/common/');
         $this->twig = new Environment($this->loader, ['debug' => $isDebug]);
 
-        $this->twig->addFunction(new TwigFunction('component', function($component) use ($loader_path) {
+        $this->twig->addFunction(new TwigFunction('component', function($component) use ($templatePath) {
             $path = '/components/' . $this->theme . '/' . $component . '.twig';
             $path_default = '/components/default/' . $component . '.twig';
 
-            if (file_exists(SB_PRIVATE_PATH . '/' . $loader_path . $path)) {
+            if (file_exists(SB_PRIVATE_PATH . '/' . $templatePath . $path)) {
                 return $path;
-            } elseif (file_exists(SB_PRIVATE_PATH . '/' . $loader_path . $path_default)) {
+            } elseif (file_exists(SB_PRIVATE_PATH . '/' . $templatePath . $path_default)) {
                 return $path_default;
             } else {
                 return '/missing_component.twig';
@@ -151,12 +172,22 @@ class Templating
      */
     public function getAllSkins(): array
     {
+        global $externalSkins;
+
         $skins = [];
         $unfiltered_skins = glob('skins/*', GLOB_ONLYDIR);
 
+        // include skins bundled with opensb, except "common" since thats not a skin.
         foreach($unfiltered_skins as $skin) {
             if ($skin != "skins/common") {
                 $skins[] = $skin;
+            }
+        }
+
+        // if we have external skins, include those as well
+        if ($externalSkins) {
+            foreach ($externalSkins as $externalSkin) {
+                $skins[] = $externalSkin;
             }
         }
 
