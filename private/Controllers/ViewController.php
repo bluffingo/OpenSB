@@ -21,10 +21,8 @@ class ViewController extends Controller {
             throw new \Exception("This upload does not exist.");
         }
 
-        echo(json_encode([
-            'data' => [
-                "submission" => $submission,
-            ],
-        ]));
+        $this->frontend->render("watch", [
+            'submission' => $submission,
+        ]);
     }
 }

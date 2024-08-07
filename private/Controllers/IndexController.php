@@ -11,10 +11,10 @@ class IndexController extends Controller {
     public function index() {
         $uploads = $this->db->execute("SELECT * FROM videos ORDER BY time DESC LIMIT 12");
 
-        echo(json_encode([
+        return $this->frontend->render("index", [
             'data' => [
                 "submissions" => $uploads,
             ],
-        ]));
+        ]);
     }
 }

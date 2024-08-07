@@ -21,11 +21,9 @@ class BrowseController extends Controller {
 
         $uploads = $this->db->execute("SELECT * FROM uploads where type = ? LIMIT 12", [$category]);
 
-        echo(json_encode([
-            'data' => [
-                'uploads' => $uploads,
-                'category' => $category,
-            ],
-        ]));
+        return $this->frontend->render("browse", [
+            'uploads' => $uploads,
+            'category' => $category,
+        ]);
     }
 }
