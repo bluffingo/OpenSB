@@ -27,6 +27,8 @@ function load_file_from_vendor($path, $content_type): void
 }
 
 if ($config["enable_theseus"]) {
+    header('Content-type: application/json');
+
     Profiler::start();
 
     session_name("sbsession");

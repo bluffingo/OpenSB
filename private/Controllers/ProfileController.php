@@ -23,8 +23,10 @@ class ProfileController extends Controller {
             throw new \Exception("This user does not exist.");
         }
 
-        $this->frontend->render("profile", [
-            'profile' => $profile,
-        ]);
+        echo(json_encode([
+            'data' => [
+                'profile' => $profile,
+            ],
+        ]));
     }
 }
