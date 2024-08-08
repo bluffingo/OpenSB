@@ -11,11 +11,13 @@ class UploadData implements Data
 {
     private Database $database;
     private $data;
+    private UserData $userdata;
 
     public function __construct(Database $database, $data)
     {
         $this->database = $database;
         $this->data = $this->database->execute("SELECT * FROM videos where video_id = ?", [$data], true);
+        $this->userdata = new UserData($database, $this->data["author"]);
     }
 
     public function getData(): array
@@ -33,7 +35,7 @@ class UploadData implements Data
             //"flags" => $bools,
             "author" => [
                 "id" => $this->data["author"],
-                //"info" => $userData->getUserArray(),
+                "info" => $this->userdata->getData(),
             ],
         ];
     }

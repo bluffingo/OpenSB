@@ -23,7 +23,7 @@ class SquareBracket {
         if (isset($_COOKIE["SBOPTIONS"])) {
             $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
 
-            // biscuit frontend is now internally called "biscuit" to avoid any confusion with bitqobo.
+            // the finalium 2/biscuit frontend is now internally called "biscuit" instead of "qobo".
             // to avoid a bug where the old userlink implementation is used in squarebrackettwigextension,
             // automatically update SBOPTIONS on the fly.
             if ($this->options["skin"] == "qobo")

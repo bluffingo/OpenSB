@@ -24,17 +24,18 @@ class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
         return [
             // profile pictures
             new TwigFunction('profile_picture', function ($username) {
-                return "placeholder";
+                return "/assets/profiledef.png";
             }, ['is_safe' => ['html']]),
 
             // thumbnail
             new TwigFunction('thumbnail', function ($upload) {
-                return "placeholder";
+                return "/assets/placeholder/placeholder.png";
             }, ['is_safe' => ['html']]),
 
             // user links
             new TwigFunction('user_link', function ($user_id) {
-                return $user_id;
+                // temporary
+                return $user_id["info"]["username"];
             }, ['is_safe' => ['html']]),
 
             // localization
