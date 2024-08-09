@@ -4,13 +4,7 @@
 # common (stuff shared between skins)
 !/common
 
-# bootstrap
-!/bootstrap
-# finalium 1
-!/finalium
 # finalium 2 (biscuit)
 !/biscuit
 # finalium 2 (biscuit, soos-specific)
 !/soos
-# poktube
-!/poktube
