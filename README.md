@@ -1,6 +1,8 @@
 # OpenSB
 ![Screen Shot 2024-07-04 at 13 41 44](https://github.com/bluffingo/OpenSB/assets/45898787/b7293f29-f17e-493c-8545-bed2afbe5889)
 
+<h3 align="center"><a href="https://squarebracket.me/">squareBracket (our official instance)</a></h3>
+
 ## How to setup an OpenSB instance.
 
 I wouldn't recommend using this code unless if you ***really*** know what you're doing.
