@@ -11,6 +11,11 @@
     overflow: hidden;
     word-break: break-word;
 
+    // used by "random uploads" box
+    &.no-side-padding {
+        padding: $content-box-padding 0;
+    }
+
     &.no-border-top {
         border-top: none;
     }
