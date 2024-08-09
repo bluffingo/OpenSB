@@ -29,7 +29,7 @@ class Templating
     public function __construct(SquareBracket $orange)
     {
         global $isChazizSB, $auth, $isDebug, $branding, $enableInviteKeys, $externalSkins;
-        chdir(__DIR__ . '/../..');
+        chdir(SB_PRIVATE_PATH);
 
         $options = $orange->getLocalOptions();
 
@@ -43,11 +43,6 @@ class Templating
         }
 
         $skinPath = 'skins/' . $this->skin;
-
-        // if this is an external skin, change path to an external path.
-        if (isset($externalSkins[$this->skin])) {
-            $skinPath = $externalSkins[$this->skin];
-        }
 
         // get metadata so that we can check if the skin is actually intended for squarebracket since
         // soos skins wont work on orange opensb
@@ -124,11 +119,16 @@ class Templating
                 "assets_location" => "/assets/sb_branding/fulp",
             ];
         } else {
+            // custom branding for themes. for that Extra Accuracy™.
             if ($isChazizSB) {
-                if ($this->skin == "finalium" && $this->theme == "qobo")
-                {
+                if ($this->skin == "finalium" && $this->theme == "qobo") {
                     $branding = [
                         "name" => "Qobo",
+                        "assets_location" => "/assets/sb_branding",
+                    ];
+                } elseif ($this->skin == "finalium" && $this->theme == "beta") {
+                    $branding = [
+                        "name" => "cheeseRox",
                         "assets_location" => "/assets/sb_branding",
                     ];
                 }
@@ -154,12 +154,14 @@ class Templating
         // shit
         $this->twig->addGlobal('current_skin_and_theme', $this->skin . ',' . $this->theme);
 
+        /*
         if ($this->skin == "finalium" && $this->theme == "beta")
         {
             $db = $orange->getDatabase();
             $footerstats = $db->fetch("SELECT (SELECT COUNT(*) FROM users) users, (SELECT COUNT(*) FROM videos) submissions");
             $this->twig->addGlobal('footer_stats', $footerstats);
         }
+        */
 
         if (isset($_SERVER["REQUEST_URI"])) {
             $this->twig->addGlobal('page_name', empty(basename($_SERVER["REQUEST_URI"], '.php')) ? 'index' : basename($_SERVER["REQUEST_URI"], '.php'));
