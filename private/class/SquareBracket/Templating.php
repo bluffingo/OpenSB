@@ -124,6 +124,15 @@ class Templating
                 "assets_location" => "/assets/sb_branding/fulp",
             ];
         } else {
+            if ($isChazizSB) {
+                if ($this->skin == "finalium" && $this->theme == "qobo")
+                {
+                    $branding = [
+                        "name" => "Qobo",
+                        "assets_location" => "/assets/sb_branding",
+                    ];
+                }
+            }
             $isFulpTube = false;
         }
 
