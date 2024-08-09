@@ -186,13 +186,6 @@ class Templating
             }
         }
 
-        // if we have external skins, include those as well
-        if ($externalSkins) {
-            foreach ($externalSkins as $externalSkin) {
-                $skins[] = $externalSkin;
-            }
-        }
-
         return $skins;
     }
 

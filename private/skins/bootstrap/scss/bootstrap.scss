@@ -3,13 +3,13 @@
 
 // bootstrap icons
 $bootstrap-icons-font-dir: "/assets" !default;
-@import "../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
+@import "../../../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
 
 // custom variables
 @import "variables";
 
 // bootstrap
-@import "../../vendor/twbs/bootstrap/scss/bootstrap.scss";
+@import "../../../../vendor/twbs/bootstrap/scss/bootstrap.scss";
 
 // custom stuff
 @import "custom";
