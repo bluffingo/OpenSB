@@ -9,21 +9,12 @@ use OpenSB\Framework\Controller;
 
 class BrowseController extends Controller {
     public function browse() {
-        // TODO: PAGINATION
+        // TODO: pagination
 
-        $category = $_GET["category"] ?? null;
-
-        if ($category == null) {
-            throw new \Exception("Invalid catagory");
-        }
-
-        // todo: validation
-
-        $uploads = $this->db->execute("SELECT * FROM uploads where type = ? LIMIT 12", [$category]);
+        $uploads = $this->db->execute("SELECT * FROM videos LIMIT 12");
 
         return $this->frontend->render("browse", [
             'uploads' => $uploads,
-            'category' => $category,
         ]);
     }
 }

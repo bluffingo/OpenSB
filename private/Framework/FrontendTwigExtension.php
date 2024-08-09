@@ -150,6 +150,11 @@ class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
                     echo "<i class='{$icons['empty']}'></i>";
                 }
             }, ['is_safe' => ['html']]),
+
+            // pagination
+            new TwigFunction('pagination', function () {
+                return "placeholder";
+            }, ['is_safe' => ['html']]),
         ];
     }
 

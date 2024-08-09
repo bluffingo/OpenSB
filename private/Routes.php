@@ -26,6 +26,7 @@ use OpenSB\Controllers\AuthController;
 use OpenSB\Controllers\UploadController;
 use OpenSB\Controllers\ProfileController;
 use OpenSB\Controllers\BrowseController;
+use OpenSB\Controllers\UsersController;
 
 $router = new Router();
 
@@ -36,6 +37,7 @@ $router->GET("/guidelines", [MiscController::class, "guidelines"]);
 $router->GET("/privacy", [MiscController::class, "privacy"]);
 
 $router->GET("/browse", [BrowseController::class, "browse"]);
+$router->GET("/users", [UsersController::class, "users"]);
 $router->GET("/view/{id}", [ViewController::class, "view"]);
 $router->GET("/profile", [ProfileController::class, "profile"]);
 
