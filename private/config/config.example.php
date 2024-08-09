@@ -28,5 +28,4 @@ return [
         "slogan" => "Insert slogan here",
         "assets" => "/assets/placeholder",
     ],
-    "external_skins" => [],
 ];

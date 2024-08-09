@@ -19,31 +19,22 @@ use OpenSB\Helpers\Profiler;
 
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
-// hopefully this doesn't fuck up with normal skins which should load normally
-#[NoReturn] function load_thumbnail_from_external_skin($path) {
-    global $externalSkins;
-
+#[NoReturn] function load_thumbnail_from_skin($path) {
     $pathParts = explode('_', $path);
     $skin = $pathParts[0] ?? '';
-    $theme = $pathParts[1] ?? '';
+    $theme = $pathParts[1] ?? 'default.png';
 
-    $skinPath = 'skins/' . $skin;
-    if (isset($externalSkins[$skin])) {
-        $skinPath = $externalSkins[$skin];
-    }
+    $skinPath = SB_PRIVATE_PATH . '/skins/' . $skin . '/' . $theme;
 
-    $previewPath = $skinPath . '/preview.png';
-
-    if (file_exists($previewPath)) {
+    if (file_exists($skinPath)) {
         header('Content-Type: image/png');
-        readfile($previewPath);
+        readfile($skinPath);
         exit;
     } else {
-        header("HTTP/1.1 404 Not Found");
-        echo 'File not found.';
-        exit;
+        UnorganizedFunctions::redirect('/assets/unknown_theme.png');
     }
 }
+
 
 // this is very ugly, i know.
 #[NoReturn] function load_file_from_vendor($path, $content_type): void
@@ -107,7 +98,7 @@ if ($config["enable_theseus"]) {
             },
             'assets' => match ($path[2] ?? null) {
                 'bootstrap-icons.woff2' => load_file_from_vendor('/twbs/bootstrap-icons/font/fonts/bootstrap-icons.woff2', 'font/woff2'),
-                'previews' => load_thumbnail_from_external_skin($path[3] ?? ''),
+                'previews' => load_thumbnail_from_skin($path[3] ?? ''),
                 default => die(),
             },
             'browse' => require(SB_PRIVATE_PATH . '/pages/browse.php'),
