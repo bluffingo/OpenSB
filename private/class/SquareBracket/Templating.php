@@ -142,6 +142,8 @@ class Templating
         $this->twig->addGlobal('current_theme', $this->theme); // not to be confused with skins
         $this->twig->addGlobal('invite_keys_enabled', $enableInviteKeys);
         $this->twig->addGlobal('items_per_page', 20);
+        // shit
+        $this->twig->addGlobal('current_skin_and_theme', $this->skin . ',' . $this->theme);
 
         if ($this->skin == "finalium" && $this->theme == "beta")
         {
@@ -229,6 +231,12 @@ class Templating
                 }
             }
         }
+
+        // sort by metadata name
+        usort($skins, function ($a, $b) {
+            return strcmp($a["metadata"]["name"], $b["metadata"]["name"]);
+        });
+
         return $skins;
     }
 

@@ -29,7 +29,7 @@ class SquareBracketTwigExtension extends AbstractExtension
                 $profiler->getStats();
             }),
             new TwigFunction('version_banner', function () use ($orange) {
-                echo (new \SquareBracket\VersionNumber)->printVersionForOutput();
+                echo (new VersionNumber)->printVersionForOutput();
             }),
             new TwigFunction('remove_notification', [$this, 'removeNotification']),
             new TwigFunction('show_ratings', [$this, 'showRatings']),
