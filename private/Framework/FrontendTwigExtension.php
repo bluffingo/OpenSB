@@ -127,8 +127,28 @@ class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
             }, ['is_safe' => ['html']]),
 
             // star ratings
-            new TwigFunction('show_ratings', function ($stars) {
-                return "CURRENTLY UNFINISHED! (show_ratings)";
+            new TwigFunction('show_ratings', function ($ratings) {
+                $icons = [
+                    'full' => "biscuit-icon star-full",
+                    'half' => "biscuit-icon star-half",
+                    'empty' => "biscuit-icon star-empty"
+                ];
+
+                $full_stars = substr($ratings["average"], 0, 1);
+                $half_stars = substr($ratings["average"], 2, 1);
+
+                for ($i = 0; $i < $full_stars; $i++) {
+                    echo "<i class='{$icons['full']}'></i>";
+                }
+
+                if ($half_stars) {
+                    echo "<i class='" . ($full_stars == 4 ? $icons['full'] : $icons['half']) . "'></i>";
+                    $full_stars++;
+                }
+
+                for ($i = $full_stars; $i < 5; $i++) {
+                    echo "<i class='{$icons['empty']}'></i>";
+                }
             }, ['is_safe' => ['html']]),
         ];
     }
@@ -146,7 +166,28 @@ class FrontendTwigExtension extends \Twig\Extension\AbstractExtension
             }, ['is_safe' => ['html']]),
 
             new TwigFilter('relative_time', function ($time) {
-                return "CURRENTLY UNFINISHED! (relative_time)";
+                if ($time == 0) {
+                    return "unknown";
+                }
+
+                $time_difference = time() - $time;
+                $units = [
+                    31536000 => 'year',
+                    2592000  => 'month',
+                    604800   => 'week',
+                    86400    => 'day',
+                    3600     => 'hour',
+                    60       => 'minute',
+                    1        => 'second'
+                ];
+
+                foreach ($units as $unit => $text) {
+                    if ($time_difference < $unit) continue;
+                    $numberOfUnits = floor($time_difference / $unit);
+                    return $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '') . ' ago';
+                }
+
+                return 'just now';
             }, ['is_safe' => ['html']]),
         ];
     }

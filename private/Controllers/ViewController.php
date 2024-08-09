@@ -6,6 +6,7 @@
 namespace OpenSB\Controllers;
 
 use OpenSB\Framework\Controller;
+use OpenSB\Framework\UploadData;
 
 class ViewController extends Controller {
     public function view($id) {
@@ -14,15 +15,16 @@ class ViewController extends Controller {
             throw new \Exception("Missing upload id.");
         }
 
-        $submission = $this->db->execute("SELECT * FROM videos where video_id = ?", [$id], true);
+        //$submission = $this->db->execute("SELECT * FROM videos where video_id = ?", [$id], true);
+        $submission = new UploadData($this->db, $id);
 
         // ditto.
-        if (!$submission) {
-            throw new \Exception("This upload does not exist.");
-        }
+        //if (!$submission) {
+        //    throw new \Exception("This upload does not exist.");
+        //}
 
         $this->frontend->render("watch", [
-            'submission' => $submission,
+            'submission' => $submission->getData(),
         ]);
     }
 }
