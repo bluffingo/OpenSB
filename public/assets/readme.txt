@@ -8,11 +8,12 @@ sb_branding: squarebracket branding ONLY FOR SQUAREBRACKET.PW
 	- finalium: old 2022 branding
 	- fulp: joke fulptube branding used on fulptube.rocks
 sounds: sounds, optional feature
-icons: biscuit icons
-previews: screenshots for theme picker
+icons: biscuit/charla icons
 css: compiled css
 
 ATTRIBUTION:
+charla login background by Chaziz
+
 biscuit sunset login background by Quino Al on Unsplash: https://unsplash.com/photos/body-of-water-and-seashore-JFeOy62yjXk
 
 qobo-era "brisbane" finalium login background by Elliott Brennan on Unsplash: https://unsplash.com/photos/silhouette-of-trees-at-nighttime-va926-45QYk
