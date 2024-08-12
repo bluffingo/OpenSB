@@ -13,6 +13,14 @@
     min-height: 20px;
     background-size: 20px;
   }
+
+  &.full-screen {
+    margin: 0;
+    border-radius: 0;
+    .notification-text {
+      margin: auto;
+    }
+  }
 }
 
 @each $color, $value in $color-map {

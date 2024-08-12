@@ -63,6 +63,14 @@
     {% endblock %}
 </head>
 <body>
+{% if show_warning_banner %}
+<div class="banner banner-danger full-screen">
+    <span class="notification-text">
+    Due to unknown circumstances with the provider of the squareBracket.pw and FulpTube.rocks domains, please use our
+    site through the squareBracket.me domain.
+    </span>
+</div>
+{% endif %}
 {{ include(component('header')) }}
 {% block precontent %}{% endblock %}
 <div class="page">

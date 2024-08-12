@@ -136,6 +136,15 @@ class Templating
             $isFulpTube = false;
         }
 
+        if (($isChazizSB) && isset($_SERVER['HTTP_HOST']) &&
+            ($_SERVER['HTTP_HOST'] === 'fulptube.rocks' || $_SERVER['HTTP_HOST'] === 'squarebracket.pw')) {
+            $showWarningBanner = true;
+        } else {
+            $showWarningBanner = false;
+        }
+
+        $showWarningBanner = true;
+
         $this->twig->addGlobal('is_chaziz_sb', $isChazizSB);
         $this->twig->addGlobal('is_fulptube', $isFulpTube);
         $this->twig->addGlobal('is_debug', $isDebug);
@@ -153,6 +162,10 @@ class Templating
         $this->twig->addGlobal('items_per_page', 20);
         // shit
         $this->twig->addGlobal('current_skin_and_theme', $this->skin . ',' . $this->theme);
+        // temporary
+        $this->twig->addGlobal('show_warning_banner', $showWarningBanner);
+
+
 
         /*
         if ($this->skin == "finalium" && $this->theme == "beta")
