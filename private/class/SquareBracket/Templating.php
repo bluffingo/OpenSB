@@ -143,8 +143,6 @@ class Templating
             $showWarningBanner = false;
         }
 
-        $showWarningBanner = true;
-
         $this->twig->addGlobal('is_chaziz_sb', $isChazizSB);
         $this->twig->addGlobal('is_fulptube', $isFulpTube);
         $this->twig->addGlobal('is_debug', $isDebug);
