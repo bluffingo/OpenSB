@@ -68,6 +68,62 @@
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/mpratt/relativetime" />
       <path value="$PROJECT_DIR$/vendor/jaybizzle/crawler-detect" />
+      <path value="$PROJECT_DIR$/pma/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/pma/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/pma/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/pma/vendor/paragonie/sodium_compat" />
+      <path value="$PROJECT_DIR$/pma/vendor/tecnickcom/tcpdf" />
+      <path value="$PROJECT_DIR$/pma/vendor/composer" />
+      <path value="$PROJECT_DIR$/pma/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/pma/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/pma/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/pma/vendor/beberlei/assert" />
+      <path value="$PROJECT_DIR$/pma/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/pma/vendor/phpmyadmin/shapefile" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/pma/vendor/phpmyadmin/motranslator" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/pma/vendor/phpmyadmin/twig-i18n-extension" />
+      <path value="$PROJECT_DIR$/pma/vendor/fig/http-message-util" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/pma/vendor/phpmyadmin/sql-parser" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/pma/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/pma/vendor/williamdes/mariadb-mysql-kbs" />
+      <path value="$PROJECT_DIR$/pma/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/pma/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/pma/vendor/code-lts/u2f-php-server" />
+      <path value="$PROJECT_DIR$/pma/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/pma/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/pma/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/pma/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/pma/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/pma/vendor/spomky-labs/cbor-php" />
+      <path value="$PROJECT_DIR$/pma/vendor/spomky-labs/base64url" />
+      <path value="$PROJECT_DIR$/pma/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/pma/vendor/nikic/fast-route" />
+      <path value="$PROJECT_DIR$/pma/vendor/pragmarx/google2fa-qrcode" />
+      <path value="$PROJECT_DIR$/pma/vendor/pragmarx/google2fa" />
+      <path value="$PROJECT_DIR$/pma/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/pma/vendor/fgrosse/phpasn1" />
+      <path value="$PROJECT_DIR$/pma/vendor/google/recaptcha" />
+      <path value="$PROJECT_DIR$/pma/vendor/thecodingmachine/safe" />
+      <path value="$PROJECT_DIR$/pma/vendor/slim/psr7" />
+      <path value="$PROJECT_DIR$/pma/vendor/web-auth/metadata-service" />
+      <path value="$PROJECT_DIR$/pma/vendor/web-auth/cose-lib" />
+      <path value="$PROJECT_DIR$/pma/vendor/web-auth/webauthn-lib" />
+      <path value="$PROJECT_DIR$/pma/vendor/league/uri" />
+      <path value="$PROJECT_DIR$/pma/vendor/league/uri-interfaces" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.3">
@@ -78,6 +134,7 @@
   </component>
   <component name="PhpUnit">
     <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/pma/vendor/autoload.php" />
       <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" />
     </phpunit_settings>
   </component>

@@ -26,9 +26,9 @@ composer.lock
 ## Admin features
 adminer-*.php
 /latest-*-*.php
-*/pma
-*/phpmyadmin
-*/phpma
+pma
+phpmyadmin
+phpma
 
 # mariadb stuff from docker
 mariadb-data

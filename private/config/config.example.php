@@ -12,7 +12,7 @@ return [
     "enable_theseus" => false,
     // put "PROD" for production, put "DEV" for development
     "mode" => "PROD",
-    "site" => "squarebracket_chaziz",
+    "site" => "squarebracket",
     "maintenance" => false,
     // Bunny settings, only used if the "site" parameter above is squarebracket_chaziz
     "bunny_settings" => [
