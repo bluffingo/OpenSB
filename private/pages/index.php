@@ -9,7 +9,7 @@ use SquareBracket\UploadQuery;
 
 $submission_query = new UploadQuery($database);
 
-if ($orange->getLocalOptions()["skin"] == "biscuit") {
+if ($orange->getLocalOptions()["skin"] == "biscuit" || $orange->getLocalOptions()["skin"] == "charla") {
     $submissions_random_query_limit = 24;
     $submissions_recent_query_limit = 12;
 } else {

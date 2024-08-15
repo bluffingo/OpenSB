@@ -13,7 +13,7 @@ class SquareBracketTwigExtension extends AbstractExtension
     {
         global $profiler, $orange;
 
-        if ($orange->getLocalOptions()["skin"] == "biscuit") {
+        if ($orange->getLocalOptions()["skin"] == "biscuit" || $orange->getLocalOptions()["skin"] == "charla") {
             $userlink_function_name = "UserLink";
         } else {
             $userlink_function_name = "UserLinkOld";
@@ -306,7 +306,7 @@ HTML;
             ],
         ];
 
-        if ($orange->getLocalOptions()["skin"] == "biscuit" && $enableChat) {
+        if (($orange->getLocalOptions()["skin"] == "biscuit" || $orange->getLocalOptions()["skin"] == "charla") && $enableChat) {
             $array["chat"] = [
                 "name" => "Chat",
                 "url" => "/chat",
