@@ -1,6 +1,6 @@
 {
 	"require": {
-		"twig/twig": "3.10.3",
+		"twig/twig": "3.11.0",
 		"intervention/image": "^3.2",
 		"twig/markdown-extra": "3.10.0",
 		"erusev/parsedown": "dev-master",
