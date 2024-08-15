@@ -2,7 +2,7 @@
 	"require": {
 		"twig/twig": "3.11.0",
 		"intervention/image": "^3.2",
-		"twig/markdown-extra": "3.10.0",
+		"twig/markdown-extra": "3.11.0",
 		"erusev/parsedown": "dev-master",
 		"php-ffmpeg/php-ffmpeg": "1.2.0",
 		"toshy/bunnynet-php": "4.2.1",
