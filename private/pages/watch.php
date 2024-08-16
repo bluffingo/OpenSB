@@ -93,8 +93,28 @@ if ($auth->isUserLoggedIn()) {
     $type = "guest";
 }
 
+
+// stupid fucking check
+function domainCheck()
+{
+    global $isChazizSB;
+
+    $allowedChazizSbDomains = ['squarebracket.pw', 'squarebracket.me', 'fulptube.rocks'];
+    $currentDomain = $_SERVER['HTTP_HOST'];
+
+    if ($isChazizSB) {
+        if (in_array($currentDomain, $allowedChazizSbDomains)) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return true;
+    }
+}
+
 // probably shit
-if (!$CrawlerDetect->isCrawler()) {
+if (!$CrawlerDetect->isCrawler() && domainChecK()) {
     if ($database->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$id, crypt($ip, $ip)])['COUNT(video_id)'] < 1) {
         $database->query("INSERT INTO views (video_id, user, timestamp, type) VALUES (?,?,?,?)",
             [$id, crypt($ip, $ip), time(), $type]);
