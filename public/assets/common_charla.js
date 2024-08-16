@@ -2,7 +2,7 @@ sbAccounts = document.cookie.split('; ').find(row => row.startsWith('SBACCOUNTS=
 
 function error(error) {
     play('error');
-    console.error("OpenSB Biscuit Frontend Error: " + error);
+    console.error("OpenSB Charla Frontend Error: " + error);
 }
 
 let uiSounds = false;
@@ -17,6 +17,22 @@ if (sbOptions) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // get those two buttons in the homepage
+    let indexListButton = (document.getElementById('index-list-button'));
+    let indexGridButton = (document.getElementById('index-grid-button'));
+
+    if (indexListButton) {
+        indexListButton.onclick = function () {
+            window.alert("Incomplete!");
+        }
+    }
+
+    if (indexGridButton) {
+        indexGridButton.onclick = function () {
+            window.alert("Incomplete!");
+        }
+    }
+
     // Get all tab links
     const tabLinks = document.querySelectorAll(".tablink");
 
@@ -76,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // get the caret if that exists. this is primarily for the one in the header.
         const menuCaret = button.getElementsByClassName("menu-caret");
 
-        // DON'T FORGET TO UPDATE THIS IF WE EVER SWITCH OUT OF BOOTSTRAP ICONS (not that we should)
+        // DON'T FORGET TO UPDATE THIS IF WE EVER SWITCH OUT OF BOOTSTRAP ICONS
         const menuCaretOff= "bi bi-caret-down-fill menu-caret";
         const menuCaretOn = "bi bi-caret-up-fill menu-caret";
 

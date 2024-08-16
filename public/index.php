@@ -78,7 +78,6 @@ if ($config["enable_theseus"]) {
                     'commenting' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/commenting.php'),
                     'submission_interaction' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/submission_interaction.php'),
                     'user_interaction' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/user_interaction.php'),
-                    'get_user' => require(SB_PRIVATE_PATH . '/pages/api/biscuit/get_user.php'),
                     default => die("Invalid API.")
                 },
                 'legacy' => match ($path[3] ?? null) {

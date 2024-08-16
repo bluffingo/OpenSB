@@ -6,7 +6,6 @@
       <sourceFolder url="file://$MODULE_DIR$/pma/test/classes" isTestSource="true" packagePrefix="PhpMyAdmin\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/pma/test/selenium" isTestSource="true" packagePrefix="PhpMyAdmin\Tests\Selenium\" />
       <sourceFolder url="file://$MODULE_DIR$/private" isTestSource="false" packagePrefix="OpenSB\" />
-      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/markdown-extra" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />

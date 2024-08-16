@@ -7,10 +7,18 @@
   "welcome_logged_in_finalium_beta": "Welcome, %s",
   "welcome_logged_out": "Welcome to %s",
 
-  "random_uploads": "Random Uploads",
-  "recent_uploads": "Recent Uploads",
-  "site_news": "Site News",
-  "recent_tags": "Recent Tags",
+  "random_uploads": "Random",
+  "random_uploads_desc": "Random selection of uploads",
+
+  "recent_uploads": "Recent",
+  "recent_uploads_desc": "All latest uploads",
+
+  "site_news": "News",
+  "site_news_desc": "Site announcements",
+
+  "recent_tags": "Tags",
+  "recent_tags_desc": "Last 100 tags",
+
   "more": "More",
 
   "search": "Search",
