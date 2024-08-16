@@ -136,12 +136,14 @@ class Templating
             $isFulpTube = false;
         }
 
+        /*
         if (($isChazizSB) && isset($_SERVER['HTTP_HOST']) &&
             ($_SERVER['HTTP_HOST'] === 'fulptube.rocks' || $_SERVER['HTTP_HOST'] === 'squarebracket.pw')) {
             $showWarningBanner = true;
         } else {
             $showWarningBanner = false;
-        }
+        } */
+        $showWarningBanner = false;
 
         $this->twig->addGlobal('is_chaziz_sb', $isChazizSB);
         $this->twig->addGlobal('is_fulptube', $isFulpTube);
