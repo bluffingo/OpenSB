@@ -142,7 +142,9 @@ class Templating
             $showWarningBanner = true;
         } else {
             $showWarningBanner = false;
-        } */
+        }
+        */
+
         $showWarningBanner = false;
 
         $this->twig->addGlobal('is_chaziz_sb', $isChazizSB);

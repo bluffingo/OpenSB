@@ -32,6 +32,7 @@ class SquareBracket {
                 setcookie("SBOPTIONS", base64_encode(json_encode($this->options)), 2147483647);
             }
         } else {
+            // NOTE: dont add any more default options.
             $this->options = [
                 "skin" => "biscuit",
                 "theme" => "default",
@@ -54,7 +55,7 @@ class SquareBracket {
     }
 
     /**
-     * Returns the database class for other SquareBracket classes to use.
+     * Returns the database class for other SquareBracket classes to use. (this is stupid design)
      *
      * @return Database
      *
@@ -89,7 +90,7 @@ class SquareBracket {
      *
      * @return string
      */
-    public function getAccountsArray()
+    public function getAccountsArray(): array|string
     {
         return $this->accounts;
     }

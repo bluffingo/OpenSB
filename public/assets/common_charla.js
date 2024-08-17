@@ -11,9 +11,31 @@ if (sbOptions) {
     const encodedOptions = sbOptions.split('=')[1];
     const decodedOptions = decodeURIComponent(encodedOptions);
     const options = JSON.parse(atob(decodedOptions));
+    console.log(options);
     if (options.hasOwnProperty('sounds')) {
         uiSounds = options.sounds;
     }
+}
+
+function updateConfig(key, value) {
+    // fetch sboptions cookie
+    let sbOptions = document.cookie.split('; ').find(row => row.startsWith('SBOPTIONS='));
+    let options = {};
+
+    if (sbOptions) {
+        const encodedOptions = sbOptions.split('=')[1];
+        const decodedOptions = decodeURIComponent(encodedOptions);
+        options = JSON.parse(atob(decodedOptions));
+    }
+
+    options[key] = value;
+
+    // turn into json, encoded into base64 and then Idfk
+    const updatedOptions = btoa(JSON.stringify(options));
+    const encodedUpdatedOptions = encodeURIComponent(updatedOptions);
+
+    // set the cookie
+    document.cookie = `SBOPTIONS=${encodedUpdatedOptions}; path=/; SameSite=Lax`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,13 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (indexListButton) {
         indexListButton.onclick = function () {
-            window.alert("Incomplete!");
+            updateConfig("charla_homepage_type", "list");
+            location.reload();
         }
     }
 
     if (indexGridButton) {
         indexGridButton.onclick = function () {
-            window.alert("Incomplete!");
+            updateConfig("charla_homepage_type", "grid");
+            location.reload();
         }
     }
 
