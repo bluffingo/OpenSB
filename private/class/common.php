@@ -56,7 +56,7 @@ if(!$config["enable_theseus"]) {
 
     if ($config["site"] == "squarebracket_chaziz") {
         $isChazizSB = true;
-        $enableChat = false; // cloudflare broke sbchat
+        $enableChat = true;
     } else {
         $isChazizSB = false;
         $enableChat = false;
