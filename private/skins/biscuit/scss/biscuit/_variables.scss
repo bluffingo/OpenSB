@@ -16,6 +16,14 @@ $link-color: #0061c5;
         $link-color: #c61b7a;
 }
 
+@if $theme == "biscuit" {
+        $primary: #1b7fcc; // primary color
+        $primary-darker: darken($primary, 33%); // darker primary color
+        $secondary: #EEEEEE; //secondary color (nearly white)
+        $green: #559900;
+        $red: #993300;
+}
+
 $color-map: (
         "primary": $primary,
         "secondary": $secondary,
@@ -36,6 +44,9 @@ $color-map-admin: (
 
 // fonts
 $font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@if $theme == "biscuit" {
+        $font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 $font-serif: Georgia, "Times New Roman", serif;
 
 // https://medium.com/@jainbhavukspeaks/leveraging-scss-mixins-to-create-responsive-layouts-the-easy-way-5bbe4080cb15

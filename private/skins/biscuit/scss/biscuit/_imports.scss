@@ -1,4 +1,9 @@
+@import 'normalize';
 @import 'variables';
+
+@if $theme == "biscuit" {
+  @import url('https://rsms.me/inter/inter.css');
+}
 
 // bootstrap icons
 $bootstrap-icons-font-dir: "/assets" !default;
@@ -34,11 +39,17 @@ body
     background-size: cover;
   } @else if $theme == "classic" {
     background: #EAEAEA;
+  } @else if $theme == "biscuit" {
+    background: #F9F9F9;
   } @else {
     background: #F5F5F5;
   }
 
-  color: #333;
+  @if $theme == "biscuit" {
+    color: #000;
+  } @else {
+    color: #333;
+  }
   font-size: small;
   padding: 0;
   margin: 0;

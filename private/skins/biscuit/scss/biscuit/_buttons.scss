@@ -7,9 +7,12 @@
   display: inline-block;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 1px 0 rgba(black, 0.2);
-  text-shadow: 0 -1px 0 rgba(black, 0.4);
-  font-weight: bold;
+
+  @if $theme != "biscuit" {
+    box-shadow: 0 1px 0 rgba(black, 0.2);
+    text-shadow: 0 -1px 0 rgba(black, 0.4);
+    font-weight: bold;
+  }
   background-repeat: repeat-x;
 
   &:hover {
@@ -35,9 +38,15 @@
 
 @each $color, $value in $color-map {
   .button-#{$color} {
-    border: 1px solid adjust-hue(darken($value, 4%), 6);
-    background-color: $value;
-    @include gradient-y($start-color: adjust-hue(lighten($value, 9%), 2), $end-color: adjust-hue(darken($value, 6%), 6));
+    @if $theme != "biscuit" {
+      border: 1px solid adjust-hue(darken($value, 4%), 6);
+      background-color: $value;
+      @include gradient-y($start-color: adjust-hue(lighten($value, 9%), 2), $end-color: adjust-hue(darken($value, 6%), 6));
+    } @else {
+      border: 1px solid darken($value, 7.5%);
+      background-color: lighten($value, 2.5%);
+      @include gradient-y($start-color: lighten($value, 2.5%), $end-color: $value);
+    }
 
     $text-color: contrast-color($value, #000, #fff);
     color: $text-color;
@@ -51,15 +60,27 @@
     }
 
     &:hover {
-      background-color: lighten($value, 10%);
-      @include gradient-y($start-color: adjust-hue(lighten($value, 15%), 1), $end-color: adjust-hue(darken($value, 2.5%), 2));
-      border-color: darken($value, 5%);
+      @if $theme != "biscuit" {
+        border-color: darken($value, 5%);
+        background-color: lighten($value, 10%);
+        @include gradient-y($start-color: adjust-hue(lighten($value, 15%), 1), $end-color: adjust-hue(darken($value, 2.5%), 2));
+      } @else {
+        border: 1px solid darken($value, 1%);
+        background-color: lighten($value, 8.5%);
+        @include gradient-y($start-color: lighten($value, 8.5%), $end-color: lighten($value, 1.5%));
+      }
     }
 
     &:active {
-      background-color: darken($value, 5%);
-      @include gradient-y($start-color: $value, $end-color: adjust-hue(darken($value, 7%), 4));
-      border-color: darken($value, 12%);
+      @if $theme != "biscuit" {
+        border-color: darken($value, 12%);
+        background-color: darken($value, 5%);
+        @include gradient-y($start-color: $value, $end-color: adjust-hue(darken($value, 7%), 4));
+      } @else {
+        border: 1px solid darken($value, 7.5%);
+        background-color: lighten($value, 10.5%);
+        @include gradient-y($start-color: lighten($value, 10.5%), $end-color: lighten($value, 5.5%));
+      }
     }
   }
 }
@@ -68,22 +89,44 @@
 // how the other buttons are done without massively fucking things up. -chaziz 6/28/2024
 $value: #ffa60a;
 
+@if $theme != "biscuit" {
+  $value: #ffb81f;
+}
+
 .button-get-started {
-  border: 1px solid adjust-hue(darken($value, 4%), -6);
-  background-color: $value;
-  @include gradient-y($start-color: adjust-hue(lighten($value, 12%), 6), $end-color: adjust-hue(darken($value, 4%), -6));
+  @if $theme != "biscuit" {
+    border: 1px solid adjust-hue(darken($value, 4%), -6);
+    background-color: $value;
+    @include gradient-y($start-color: adjust-hue(lighten($value, 12%), 6), $end-color: adjust-hue(darken($value, 4%), -6));
+    text-shadow: 0 -1px 0 rgba(white, 0.4);
+  } @else {
+    border: 1px solid darken($value, 7.5%);
+    background-color: lighten($value, 2.5%);
+    @include gradient-y($start-color: lighten($value, 2.5%), $end-color: $value);
+  }
   color: #15110e;
-  text-shadow: 0 -1px 0 rgba(white, 0.4);
 
   &:hover {
-    background-color: lighten($value, 10%);
-    @include gradient-y($start-color: adjust-hue(lighten($value, 15%), 8), $end-color: adjust-hue(lighten($value, 4.5%), -2));
-    border-color: darken($value, 10%);
+    @if $theme != "biscuit" {
+      border-color: darken($value, 10%);
+      @include gradient-y($start-color: adjust-hue(lighten($value, 15%), 8), $end-color: adjust-hue(lighten($value, 4.5%), -2));
+      background-color: lighten($value, 10%);
+    } @else {
+      border: 1px solid darken($value, 1%);
+      background-color: lighten($value, 8.5%);
+      @include gradient-y($start-color: lighten($value, 8.5%), $end-color: lighten($value, 1.5%));
+    }
   }
 
   &:active {
-    background-color: darken($value, 5%);
-    @include gradient-y($start-color: $value, $end-color: adjust-hue(darken($value, 5%), -4));
-    border-color: darken($value, 12%);
+    @if $theme != "biscuit" {
+      border-color: darken($value, 12%);
+      background-color: darken($value, 5%);
+      @include gradient-y($start-color: $value, $end-color: adjust-hue(darken($value, 5%), -4));
+    } @else {
+      border: 1px solid darken($value, 7.5%);
+      background-color: lighten($value, 10.5%);
+      @include gradient-y($start-color: lighten($value, 10.5%), $end-color: lighten($value, 5.5%));
+    }
   }
 }

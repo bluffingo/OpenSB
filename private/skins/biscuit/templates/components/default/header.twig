@@ -1,4 +1,4 @@
-{% if current_theme == 'pink' %}
+{% if current_theme in ["default", "pink"] %}
     {% set logo = website_branding.assets_location ~ '/logo-wordmark.png' %}
 {% else %}
     {% set logo = website_branding.assets_location ~ '/logo-wordmark-dark.png' %}
@@ -20,9 +20,17 @@
             </div>
             <form class="header-search" action="/search">
                 <input id="header-search-input" type="text" name="query" placeholder="{{ localize('search') }}...">
-                <button id="header-search-button">
-                    <i class="bi bi-search"></i>
-                </button>
+                {% if current_theme == 'default' %}
+                    <div class="form-button-container">
+                        <button id="header-search-button" class="button button-secondary">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                {% else %}
+                    <button id="header-search-button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                {% endif %}
             </form>
             <div class="header-links">
                 {% if is_user_logged_in %}

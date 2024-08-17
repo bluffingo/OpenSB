@@ -13,6 +13,12 @@
         "author": "OpenSB developers"
       },
       {
+        "id": "soretro",
+        "name": "So Retro",
+        "description": "The July-August 2024 version of Biscuit.",
+        "author": "OpenSB developers"
+      },
+      {
         "id": "classic",
         "name": "Classic",
         "description": "Emulates the April 2021 version of squareBracket.",
