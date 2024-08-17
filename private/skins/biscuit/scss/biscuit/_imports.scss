@@ -24,6 +24,15 @@ $bootstrap-icons-font-dir: "/assets" !default;
 // misc unorganized shit
 :root {
   font-family: $font;
+  @if $theme == "biscuit" {
+    font-feature-settings: 'calt' 1, 'ospz' 1;
+  }
+}
+
+@if $theme == "biscuit" {
+  @supports (font-variation-settings: normal) {
+    :root { font-family: 'InterVariable', sans-serif; }
+  }
 }
 
 *,
