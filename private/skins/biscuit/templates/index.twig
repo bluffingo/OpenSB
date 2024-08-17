@@ -59,8 +59,6 @@
                             <h1>{{ localize('welcome_logged_out', website_branding.name) }}</h1>
                             {% if is_chaziz_sb %}
                                 <p>Your content, your narration, your niche on the web.</p>
-                            {% else %}
-                                <p>Insert slogan.</p>
                             {% endif %}
                             <a href="/register" class="button button-get-started button-big">Get started ›</a>
                         </div>
@@ -106,16 +104,24 @@
             </div>
         </div>
         <div class="col-4">
-            {% if data.news_recent %}
+            <div class="section">
+                <div class="section-title">
+                    <h2>{{ localize('site_news') }}</h2>
+                </div>
+                <div class="content-box">
+                    {% for journal in data.news_recent %}
+                        {{ include('/components/_journal.twig') }}
+                    {% else %}
+                        <p>No news!</p>
+                    {% endfor %}
+                </div>
+            </div>
+            {% if is_chaziz_sb %}
                 <div class="section">
                     <div class="section-title">
-                        <h2>{{ localize('site_news') }}</h2>
+                        <h2>Discord</h2>
                     </div>
-                    <div class="content-box">
-                        {% for journal in data.news_recent %}
-                            {{ include('/components/_journal.twig') }}
-                        {% endfor %}
-                    </div>
+                    <iframe src="https://discord.com/widget?id=1209695092554858548&theme=dark" width="100%" height="360" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
             {% endif %}
             <div class="section">

@@ -112,12 +112,12 @@ class Templating
         // override squarebracket branding with fulptube branding if accessed via fulptube.rocks.
         // this fulptube branding is meant to look like the squarebracket branding on purpose, since
         // both squarebracket.pw and fulptube.rocks lead to the same site.
-        if (($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] === 'fulptube.rocks')) {
-            $isFulpTube = true;
+        if (($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'fulptube.rocks')) {
             $branding = [
                 "name" => "FulpTube",
                 "assets_location" => "/assets/sb_branding/fulp",
             ];
+            $isFulpTube = true;
         } else {
             // custom branding for themes. for that Extra Accuracy™.
             if ($isChazizSB) {

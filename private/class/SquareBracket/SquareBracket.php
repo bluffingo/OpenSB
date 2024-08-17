@@ -18,6 +18,8 @@ class SquareBracket {
      * @since SquareBracket 1.0
      */
     public function __construct($host, $user, $pass, $db) {
+        global $isChazizSB;
+
         session_start(["cookie_lifetime" => 0, "gc_maxlifetime" => 455800]);
 
         if (isset($_COOKIE["SBOPTIONS"])) {
@@ -33,11 +35,20 @@ class SquareBracket {
             }
         } else {
             // NOTE: dont add any more default options.
+
+            $defaultSkin = "biscuit";
+            // if we're on chaziz mode, opt 10% of first-time users into charla.
+            if ($isChazizSB) {
+                $randomNumber = rand(1, 10);
+                $defaultSkin = ($randomNumber === 1) ? "charla" : "biscuit";
+            }
+
             $this->options = [
-                "skin" => "biscuit",
+                "skin" => $defaultSkin,
                 "theme" => "default",
                 "sounds" => false,
             ];
+            setcookie("SBOPTIONS", base64_encode(json_encode($this->options)), 2147483647);
         }
 
         if (isset($_COOKIE["SBACCOUNTS"])) {

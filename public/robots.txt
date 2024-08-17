@@ -6,3 +6,9 @@ User-agent: CCbot
 Disallow: /
 User-agent: ChatGPT-User
 Disallow: /
+User-agent: Applebot-Extended
+Disallow: /
+User-agent: Bytespider
+Disallow: /
+User-agent: FacebookBot
+Disallow: /
