@@ -318,7 +318,7 @@ HTML;
 
     public function headerUserLinks()
     {
-        global $auth;
+        global $auth, $orange;
 
         if ($auth->isUserLoggedIn()) {
             $username = $auth->getUserData()["name"];
@@ -340,8 +340,8 @@ HTML;
                     "name" => "Upload",
                     "url" => "/upload",
                 ],
-                "new_journal" => [
-                    "name" => "Write journal",
+                "write" => [
+                    "name" => "Write",
                     "url" => "/write",
                 ],
                 "logout" => [
@@ -355,6 +355,15 @@ HTML;
                     "name" => "Admin",
                     "url" => "/admin",
                 ];
+            }
+
+            // remove upload link on finalium 1 and bootstrap
+            // remove upload and write links on finalium 3/charla
+            if ($orange->getLocalOptions()["skin"] == "finalium" || $orange->getLocalOptions()["skin"] == "bootstrap") {
+                unset($array["upload"]);
+            } elseif ($orange->getLocalOptions()["skin"] == "charla") {
+                unset($array["upload"]);
+                unset($array["write"]);
             }
         } else {
             $array = [
