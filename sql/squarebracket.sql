@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2024 at 07:12 PM
+-- Generation Time: Aug 18, 2024 at 07:25 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.3.4
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `squarebracket_migration`
+-- Database: `opensb_testdb`
 --
 
 -- --------------------------------------------------------
@@ -119,7 +119,10 @@ CREATE TABLE `deleted_videos` (
   `id` varchar(11) NOT NULL,
   `uploaded_time` bigint(20) NOT NULL,
   `deleted_time` bigint(20) NOT NULL,
-  `moved_to_bitqobo` tinyint(1) NOT NULL
+  `moved_to_bitqobo` tinyint(1) NOT NULL,
+  `type` int(1) NOT NULL COMMENT '0 = Deleted by user, 1 = removed by staff, 2 = copyright takedown',
+  `claimed_by` text NOT NULL,
+  `reason` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
