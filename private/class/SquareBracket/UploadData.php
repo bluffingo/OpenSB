@@ -36,8 +36,7 @@ class UploadData
     public function __construct(\SquareBracket\Database $database, $id)
     {
         $this->database = $database;
-
-        $this->deleted_data = $this->database->fetch("SELECT COUNT(*) FROM deleted_videos v WHERE id = ?", [$id])["COUNT(*)"];
+        $this->deleted_data = $this->database->fetch("SELECT * FROM deleted_videos WHERE id = ?", [$id]);
 
         // if we get the internal id instead of the string id, we correct $id after fetching the submission otherwise
         // stuff won't work.
