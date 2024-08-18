@@ -124,6 +124,7 @@
       <path value="$PROJECT_DIR$/pma/vendor/web-auth/webauthn-lib" />
       <path value="$PROJECT_DIR$/pma/vendor/league/uri" />
       <path value="$PROJECT_DIR$/pma/vendor/league/uri-interfaces" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.3">

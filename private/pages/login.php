@@ -70,6 +70,11 @@ if (isset($_POST["loginsubmit"])) {
     $password = ($_POST['password'] ?? null);
     $rememberMe = isset($_POST['remember_me']);
 
+    // backwards compatibility with youclipped
+    if ($username !== null) {
+        $username = str_replace(' ', '_', $username);
+    }
+
     if (!$username) $error = true;
     if (!$password) $error = true;
 
