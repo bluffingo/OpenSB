@@ -37,9 +37,9 @@ class SquareBracket {
             // NOTE: dont add any more default options.
 
             $defaultSkin = "biscuit";
-            // if we're on chaziz mode, opt 10% of first-time users into charla.
+            // if we're on chaziz mode, opt 50% of first-time users into charla.
             if ($isChazizSB) {
-                $randomNumber = rand(1, 10);
+                $randomNumber = rand(1, 2);
                 $defaultSkin = ($randomNumber === 1) ? "charla" : "biscuit";
             }
 
