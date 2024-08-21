@@ -2,9 +2,6 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/pma/libraries/classes" isTestSource="false" packagePrefix="PhpMyAdmin\" />
-      <sourceFolder url="file://$MODULE_DIR$/pma/test/classes" isTestSource="true" packagePrefix="PhpMyAdmin\Tests\" />
-      <sourceFolder url="file://$MODULE_DIR$/pma/test/selenium" isTestSource="true" packagePrefix="PhpMyAdmin\Tests\Selenium\" />
       <sourceFolder url="file://$MODULE_DIR$/private" isTestSource="false" packagePrefix="OpenSB\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/markdown-extra" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />
