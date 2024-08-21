@@ -56,10 +56,8 @@ if(!$config["enable_theseus"]) {
 
     if ($config["site"] == "squarebracket_chaziz") {
         $isChazizSB = true;
-        $enableChat = true;
     } else {
         $isChazizSB = false;
-        $enableChat = false;
         if ($config["site"] != "squarebracket") {
             trigger_error("Incompatible site mode (OpenSB Orange only supports squareBracket mode 
                                     and Chaziz squareBracket mode)", E_USER_ERROR);

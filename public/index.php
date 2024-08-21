@@ -101,7 +101,7 @@ if ($config["enable_theseus"]) {
                 default => die(),
             },
             'browse' => require(SB_PRIVATE_PATH . '/pages/browse.php'),
-            'chat' => require(SB_PRIVATE_PATH . '/pages/chat.php'),
+            'chat' => die("The sbChat service has been shutdown due to abuse."),
             'delete' => require(SB_PRIVATE_PATH . '/pages/delete.php'),
             'design_test' => require(SB_PRIVATE_PATH . '/pages/design_test.php'),
             'edit' => require(SB_PRIVATE_PATH . '/pages/edit.php'),
