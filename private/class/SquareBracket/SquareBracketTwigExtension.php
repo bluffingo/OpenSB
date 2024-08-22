@@ -293,8 +293,6 @@ HTML;
 
     public function headerMainLinks()
     {
-        global $orange, $enableChat;
-
         $array = [
             "browse" => [
                 "name" => "Browse",
@@ -305,13 +303,6 @@ HTML;
                 "url" => "/users",
             ],
         ];
-
-        if (($orange->getLocalOptions()["skin"] == "biscuit" || $orange->getLocalOptions()["skin"] == "charla") && $enableChat) {
-            $array["chat"] = [
-                "name" => "Chat",
-                "url" => "/chat",
-            ];
-        }
 
         return $array;
     }
