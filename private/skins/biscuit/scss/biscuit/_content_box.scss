@@ -73,6 +73,11 @@
         .content-image
         {
             margin-right: 8px;
+            min-width: 50px;
+            min-height: 50px;
+            max-width: 140px;
+            max-height: 140px;
+            display: block;
         }
     }
 
