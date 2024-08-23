@@ -2,6 +2,8 @@
 
 namespace SquareBracket;
 
+use DateTime;
+
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use JetBrains\PhpStorm\NoReturn;
@@ -334,6 +336,32 @@ class UnorganizedFunctions
         } else {
             return false;
         }
+    }
+
+    public static function idToUsername($database, $id)
+    {
+        if ($data = $database->fetch("SELECT name FROM users WHERE id = ?", [$id])) {
+            return $data["name"];
+        } else {
+            return false;
+        }
+    }
+
+    public static function calculateAge($birthdate)
+    {
+        $birthDate = new DateTime($birthdate);
+        $today = new DateTime('now');
+        $interval = $today->diff($birthDate);
+        return $interval->y;
+    }
+
+    public static function calculateAgeFrom($birthdate, $date)
+    {
+        $birthDate = new DateTime($birthdate);
+        $date_fuck = new DateTime();
+        $date_fuck->setTimestamp($date);
+        $interval = $date_fuck->diff($birthDate);
+        return $interval->y;
     }
 
     public static function validateUsername($username, $database, $checkIfTaken = true) {

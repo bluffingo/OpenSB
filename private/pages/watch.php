@@ -19,7 +19,8 @@ $id = $path[2] ?? null;
 $submission = new UploadData($database, $id);
 
 // check if the upload has been taken down.
-if ($takedown = $submission->getTakedown()) {
+$takedown = $submission->getTakedown();
+if ($takedown && !$auth->isUserAdmin()) {
     // go back to homepage with a notification
     UnorganizedFunctions::Notification("This upload has been taken down.", "/");
 }
@@ -53,7 +54,7 @@ if (isset($data["tags"])) {
 
 $comments = new CommentData($database, CommentLocation::Submission, $id);
 $author = new UserData($database, $data["author"]);
-if ($author->isUserBanned()) {
+if ($author->isUserBanned() && !$auth->isUserAdmin()) {
     UnorganizedFunctions::Notification("This upload's author is banned.", "/");
 }
 
@@ -282,6 +283,15 @@ if ($orange->getLocalOptions()["skin"] == "finalium" || $orange->getLocalOptions
         "ratio" => calculateRatio($dislikes, $likes, $total),
         "current_rating" => $current_rating,
     ];
+}
+
+if ($auth->isUserAdmin() && $takedown) {
+    $page_data["takedown"] = $takedown[0];
+    $page_data["takedown"]["takedownee"] = UnorganizedFunctions::idToUsername($database, $takedown[0]["sender"]);
+    $page_data["author_banned"] = $author->isUserBanned();
+} else {
+    $page_data["takedown"] = [];
+    $page_data["author_banned"] = false;
 }
 
 echo $twig->render('watch.twig', [

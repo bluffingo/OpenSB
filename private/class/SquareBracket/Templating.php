@@ -114,7 +114,7 @@ class Templating
         // both squarebracket.pw and fulptube.rocks lead to the same site.
         if (($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'fulptube.rocks')) {
             $branding = [
-                "name" => "FulpTube",
+                "name" => "CleberTube",
                 "assets_location" => "/assets/sb_branding/fulp",
             ];
             $isFulpTube = true;

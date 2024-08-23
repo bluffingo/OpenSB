@@ -51,6 +51,9 @@ class SquareBracketTwigExtension extends AbstractExtension
         return [
             new TwigFilter('relative_time', [$this, 'relativeTime']),
 
+            new TwigFilter('calculate_age', [UnorganizedFunctions::class, 'calculateAge']),
+            new TwigFilter('calculate_age_from', [UnorganizedFunctions::class, 'calculateAgeFrom']),
+
             // Markdown function for non-inline text, sanitized.
             new TwigFilter('markdown', function ($text) {
                 $markdown = new Parsedown();

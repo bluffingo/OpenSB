@@ -18,13 +18,6 @@
                 <span><a href="/tos">Terms of Service</a></span>
                 <span><a href="/privacy">Privacy policy</a></span>
                 <span>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</span>
-                {% if is_chaziz_sb %}
-                    <div class="footer-logo-chaziz">
-                        <a href="https://bluffingo.net/">
-                            <img src="/assets/sb_branding/chaziz.svg" alt="Chaziz">
-                        </a>
-                    </div>
-                {% endif %}
                 {% if is_debug %}
                     <p>{{ profiler_stats() }}</p>
                 {% endif %}

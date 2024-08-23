@@ -50,7 +50,7 @@ class UploadData
             $this->data = $this->database->fetch("SELECT v.* FROM videos v WHERE v.video_id = ?", [$id]);
         }
         if ($this->data != []) {
-            $this->takedown = $this->database->fetch("SELECT * FROM takedowns t WHERE t.submission = ?", [$id]);
+            $this->takedown = $this->database->fetchArray($this->database->query("SELECT * FROM takedowns t WHERE t.submission = ?", [$id]));
             $this->tags = $this->database->fetchArray($this->database->query("SELECT * FROM `tag_index` ti JOIN tag_meta t ON (t.tag_id = ti.tag_id) WHERE ti.video_id = ?", [$this->data["id"]]));
         }
     }
