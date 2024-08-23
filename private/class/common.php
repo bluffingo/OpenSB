@@ -93,7 +93,11 @@ if(!$config["enable_theseus"]) {
     ];
 
     // TODO: port these to feature flags or settings that can be changed in-site.
-    $disableRegistration = false;
+    if ($config["site"] == "squarebracket_chaziz") {
+        $disableRegistration = true;
+    } else {
+        $disableRegistration = false;
+    }
     $disableUploading = false;
     $disableWritingJournals = false;
     $enableInviteKeys = false;
