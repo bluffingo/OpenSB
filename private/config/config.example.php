@@ -8,8 +8,6 @@ return [
         "password" => "",
         "host" => "127.0.0.1",
     ],
-    // false for OpenSB Orange, true for OpenSB Theseus (DO NOT USE THESEUS IN PRODUCTION. IT IS TOO INCOMPLETE)
-    "enable_theseus" => false,
     // put "PROD" for production, put "DEV" for development
     "mode" => "PROD",
     "site" => "squarebracket",

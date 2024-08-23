@@ -1,26 +1,14 @@
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-content">
-            {% if areWeRunningTheNewCode %}
-                <div>Running <a href="/version">OpenSB Theseus</a></div>
-                <span>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</span>
-                {% if feature_flags.Footer_Show_Chaziz_Logo %}
-                    <div class="footer-logo-chaziz">
-                        <a href="https://bluffingo.net/">
-                            <img src="/assets/sb_branding/chaziz.svg" alt="Chaziz">
-                        </a>
-                    </div>
-                {% endif %}
-            {% else %}
-                <div>Running <a href="/version">OpenSB {{ opensb_version }}</a></div>
-                <span><a href="/theme">Change theme</a></span>
-                <span><a href="/rules">Rules</a></span>
-                <span><a href="/tos">Terms of Service</a></span>
-                <span><a href="/privacy">Privacy policy</a></span>
-                <span>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</span>
-                {% if is_debug %}
-                    <p>{{ profiler_stats() }}</p>
-                {% endif %}
+            <div>Running <a href="/version">OpenSB {{ opensb_version }}</a></div>
+            <span><a href="/theme">Change theme</a></span>
+            <span><a href="/rules">Rules</a></span>
+            <span><a href="/tos">Terms of Service</a></span>
+            <span><a href="/privacy">Privacy policy</a></span>
+            <span>© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</span>
+            {% if is_debug %}
+                <p>{{ profiler_stats() }}</p>
             {% endif %}
         </div>
     </div>

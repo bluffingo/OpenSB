@@ -27,7 +27,6 @@ body.login {
   }
 }
 
-// FIXME: on theseus, the page classes do not get applied, so the login and register pages remain wide.
 .container {
   &.login, &.register {
     margin: auto;

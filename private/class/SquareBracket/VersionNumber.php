@@ -24,9 +24,7 @@ class VersionNumber
 
             $hash = substr($commit, 0, 7);
 
-            // to differentiate the older OpenSB Orange (this one) code with the newer OpenSB Theseus code, bring back
-            // the codename in the version string.
-            $this->version = sprintf('Orange %s-%s', $hash, $gitBranch);
+            $this->version = sprintf('%s-%s', $hash, $gitBranch);
         } else {
             $this->version = 'Unknown';
         }

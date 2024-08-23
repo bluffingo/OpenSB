@@ -17,7 +17,6 @@ I wouldn't recommend using this code unless if you ***really*** know what you're
 ### Production specific
 
 1. Use Linux for anything related to production.
-1. Enable `LEGACY_enable` in the configuration. Do **NOT** use OpenSB Theseus code on production. It is very, very incomplete.
 1. Instead of installing dependencies using `composer update` you do `composer update --no-dev`
 1. Make the `dynamic/` and `templates/cache/` directories writable by your web server.
 1. Modify branding settings to replace the default OpenSB branding with your custom branding. Check the `public/assets/placeholder` directory for reference.
