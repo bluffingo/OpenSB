@@ -14,16 +14,18 @@ if (!$auth->isUserLoggedIn())
 }
 
 // we shouldn't let banned users change settings.
-/*
 if ($auth->getUserBanData()) {
-    $orange->Notification("You cannot proceed with this action.", "/");
+    UnorganizedFunctions::Notification("You cannot proceed with this action.", "/");
 }
-*/
 
 if (isset($_POST['save'])) {
     global $auth, $storage;
 
     $title = htmlspecialchars($_POST['title']) ?? null;
+
+    // if display name is set to empty, fallback to our current username.
+    $title = trim($title) === '' ? $auth->getUserData()["name"] : $title;
+
     $about = $_POST['about'] ?? null;
 
     $currentPass = ($_POST['current_pass'] ?? null);
@@ -59,8 +61,8 @@ if (isset($_POST['save'])) {
             $error .= "Your current password is incorrect.";
         }
     }
-    
-    if (strlen($title) > 80) {
+
+    if (strlen($title) > 100) {
         $error .= "Your display name is too long.";
     }
 

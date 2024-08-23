@@ -13,7 +13,7 @@ class SquareBracket {
     private string $accounts_cookie_warning = "DO-NOT-SHARE-THIS-WITH-ANYONE-";
 
     /**
-     * Initialize core SquareBracket classes.
+     * Initialize core SquareBracket classes. (this is fucking stupid)
      *
      * @since SquareBracket 1.0
      */
@@ -35,10 +35,8 @@ class SquareBracket {
             // NOTE: dont add any more default options.
 
             $defaultSkin = "biscuit";
-            // if we're on chaziz mode, opt 50% of first-time users into charla.
             if ($isChazizSB) {
-                $randomNumber = rand(1, 2);
-                $defaultSkin = ($randomNumber === 1) ? "charla" : "biscuit";
+                $defaultSkin = "charla";
             }
 
             $this->options = [
