@@ -21,13 +21,22 @@ if ($orange->getLocalOptions()["skin"] != "biscuit" && $orange->getLocalOptions(
 
 $usersData = [];
 
+$amount = $_GET["amount"] ?? 16;
+$search = $_GET["search"] ?? "";
+$page = $_GET["page"] ?? 1;
+
+$limit = sprintf("LIMIT %s,%s", (($page - 1) * $amount), $amount);
+
 $usersDataQuery = $database->fetchArray(
     $database->query(
         "SELECT u.id, u.about, u.title, u.ip, u.powerlevel,
        (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, 
        (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num,
        (SELECT COUNT(*) FROM bans WHERE userid = u.id) AS is_banned
-        FROM users u"));
+        FROM users u
+        WHERE (u.name LIKE CONCAT('%', ?, '%'))
+        ORDER BY u.id DESC $limit
+        ", [$search]));
 
 $countedIps = array_count_values(array_column($usersDataQuery, 'ip'));
 
@@ -63,4 +72,16 @@ foreach ($usersDataQuery as $user) {
         ];
 }
 
-echo $twig->render("admin_users.twig", ["users" => $usersData]);
+$count = $database->result(
+        "SELECT COUNT(*)
+        FROM users u
+        WHERE (u.name LIKE CONCAT('%', ?, '%'))
+        ", [$search]);
+
+echo $twig->render("admin_users.twig", [
+    "users" => $usersData,
+    "amount" => $amount,
+    "page" => $page,
+    "count" => $count,
+    "search" => $search,
+]);

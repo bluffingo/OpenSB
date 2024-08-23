@@ -35,10 +35,8 @@ if (isset($_POST['ban_user'])) {
     // Check if user is already banned, if not, then ban. Otherwise, unban.
     $id = $database->fetch("SELECT u.id FROM users u WHERE u.name = ?", [$_POST["ban_user"]])["id"];
     if ($database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$id])) {
-        //"DELETE FROM bans WHERE `bans`.`autoint` = 121"?
         $database->query("DELETE FROM bans WHERE userid = ?", [$id]);
         UnorganizedFunctions::Notification("Unbanned " . $_POST["ban_user"] . '.' , "/admin/users", "success");
-        //UnorganizedFunctions::Notification("This user is already banned.", "/admin/users/");
     } else {
         $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
             [$id, "Banned by " . $auth->getUserData()["name"], time()]);
