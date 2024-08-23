@@ -21,7 +21,7 @@ $submission = new UploadData($database, $id);
 // check if the upload has been taken down.
 if ($takedown = $submission->getTakedown()) {
     // go back to homepage with a notification
-    UnorganizedFunctions::Notification("This upload has been taken down: " . $takedown["reason"], "/");
+    UnorganizedFunctions::Notification("This upload has been taken down.", "/");
 }
 
 if ($submission->isDeleted()) {
