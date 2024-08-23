@@ -24,6 +24,7 @@ class SquareBracketTwigExtension extends AbstractExtension
             new TwigFunction('thumbnail', [$this, 'thumbnail']),
             new TwigFunction('user_link', [$this, $userlink_function_name], ['is_safe' => ['html']]),
             new TwigFunction('profile_picture', [$this, 'profilePicture']),
+            new TwigFunction('profile_picture_admin', [$this, 'profilePictureAdmin']),
             new TwigFunction('profile_banner', [$this, 'profileBanner']),
             new TwigFunction('profiler_stats', function () use ($profiler) {
                 $profiler->getStats();
@@ -183,6 +184,22 @@ class SquareBracketTwigExtension extends AbstractExtension
             } else {
                 $data = "/assets/profiledef.png";
             }
+        }
+
+        return $data;
+    }
+
+    //
+    public function profilePictureAdmin($username)
+    {
+        global $database, $storage;
+
+        $id = UnorganizedFunctions::usernameToID($database, $username);
+        $location = '/dynamic/pfp/' . $id . '.png';
+        if ($storage->fileExists('..' . $location)) {
+            $data = $location;
+        } else {
+            $data = "/assets/profiledef.png";
         }
 
         return $data;
