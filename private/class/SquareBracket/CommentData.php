@@ -30,13 +30,13 @@ class CommentData
 
         switch ($this->type) {
             case CommentLocation::Submission:
-                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM comments c WHERE c.reply_to = ? ORDER BY c.date ASC", [$comment_id]);
+                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM comments c WHERE c.reply_to = ? AND c.author NOT IN (SELECT userid FROM bans) ORDER BY c.date ASC", [$comment_id]);
                 break;
             case CommentLocation::Profile:
-                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c WHERE c.reply_to = ? ORDER BY c.date ASC", [$comment_id]);
+                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c WHERE c.reply_to = ? AND c.author NOT IN (SELECT userid FROM bans) ORDER BY c.date ASC", [$comment_id]);
                 break;
             case CommentLocation::Journal:
-                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM journal_comments c WHERE c.reply_to = ? ORDER BY c.date ASC", [$comment_id]);
+                $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM journal_comments c WHERE c.reply_to = ? AND c.author NOT IN (SELECT userid FROM bans) ORDER BY c.date ASC", [$comment_id]);
                 break;
         }
 
@@ -67,18 +67,21 @@ class CommentData
                 $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted 
                                                   FROM comments c 
                                                   WHERE c.id = ? AND c.reply_to = 0
+                                                  AND c.author NOT IN (SELECT userid FROM bans)
                                                   ORDER BY c.date DESC", [$this->id]);
                 break;
             case CommentLocation::Profile:
                 $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted 
                                                   FROM channel_comments c 
                                                   WHERE c.id = ? AND c.reply_to = 0
+                                                  AND c.author NOT IN (SELECT userid FROM bans)
                                                   ORDER BY c.date DESC", [$this->id]);
                 break;
             case CommentLocation::Journal:
                 $database_data = $this->fetchComments("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted 
                                                   FROM journal_comments c 
                                                   WHERE c.id = ? AND c.reply_to = 0
+                                                  AND c.author NOT IN (SELECT userid FROM bans)
                                                   ORDER BY c.date DESC", [$this->id]);
                 break;
         }

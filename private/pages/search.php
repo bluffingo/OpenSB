@@ -42,7 +42,13 @@ $whereRatings = UnorganizedFunctions::whereRatings();
 
 $submissions = $database->fetchArray(
     $database->query(
-        "SELECT v.* FROM videos v WHERE (v.tags LIKE CONCAT('%', ?, '%') OR v.title LIKE CONCAT('%', ?, '%') OR v.description LIKE CONCAT('%', ?, '%')) AND $whereRatings AND v.video_id NOT IN (SELECT submission FROM takedowns) ORDER BY $order DESC $limit",
+        "SELECT v.* FROM videos v WHERE (v.tags LIKE CONCAT('%', ?, '%')
+                                  OR v.title LIKE CONCAT('%', ?, '%') 
+                                  OR v.description LIKE CONCAT('%', ?, '%')) 
+                                  AND $whereRatings 
+                                  AND v.video_id NOT IN (SELECT submission FROM takedowns) 
+                                  AND v.author NOT IN (SELECT userid FROM bans)
+                                  ORDER BY $order DESC $limit",
         [$query, $query, $query]));
 
 $data = [
