@@ -23,6 +23,29 @@ $username = $path[3] ?? null;
 
 $user = $database->fetch("SELECT * FROM users u WHERE u.name = ?", [$username]);
 
+if (isset($_POST['ban_user'])) {
+    // Don't ban non-existent users.
+    if (!$database->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$_POST["ban_user"]])) {
+        UnorganizedFunctions::Notification("This user does not exist.", "/admin/users/");
+    }
+    // Don't ban mods/admins.
+    if ($database->fetch("SELECT u.powerlevel FROM users u WHERE u.name = ?", [$_POST["ban_user"]])["powerlevel"] != 1) {
+        UnorganizedFunctions::Notification("This user cannot be banned.", "/admin/users/");
+    }
+    // Check if user is already banned, if not, then ban. Otherwise, unban.
+    $id = $database->fetch("SELECT u.id FROM users u WHERE u.name = ?", [$_POST["ban_user"]])["id"];
+    if ($database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$id])) {
+        //"DELETE FROM bans WHERE `bans`.`autoint` = 121"?
+        $database->query("DELETE FROM bans WHERE userid = ?", [$id]);
+        UnorganizedFunctions::Notification("Unbanned " . $_POST["ban_user"] . '.' , "/admin/users", "success");
+        //UnorganizedFunctions::Notification("This user is already banned.", "/admin/users/");
+    } else {
+        $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
+            [$id, "Banned by " . $auth->getUserData()["name"], time()]);
+        UnorganizedFunctions::Notification("Banned " . $_POST["ban_user"] . '.', "/admin/users", "success");
+    }
+}
+
 if ($user["ip"] != "999.999.999.999") {
     $users_with_matching_ips = $database->fetchArray($database->query("SELECT u.name, u.title FROM users u WHERE u.ip = ? AND id != ?",
         [$user["ip"], $user["id"]]));

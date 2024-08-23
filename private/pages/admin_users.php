@@ -59,6 +59,7 @@ foreach ($usersDataQuery as $user) {
             "banned" => $user["is_banned"],
             "about" => $user["about"],
             "class" => $class,
+            "powerlevel" => $user["powerlevel"],
         ];
 }
 

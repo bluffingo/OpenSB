@@ -72,65 +72,6 @@ function countViews($database): array
     ));
 }
 
-/*
-function countCumulativeViewsCSV($database): string
-{
-    $results = $database->fetchArray($database->query(
-        "SELECT 
-            video_id,
-            DATE(FROM_UNIXTIME(timestamp)) AS date, 
-            SUM(CASE WHEN type = 'user' THEN 1 ELSE 0 END) AS daily_user_views,
-            SUM(CASE WHEN type = 'guest' THEN 1 ELSE 0 END) AS daily_guest_views
-        FROM views
-        GROUP BY video_id, DATE(FROM_UNIXTIME(timestamp))
-        HAVING SUM(CASE WHEN type = 'user' THEN 1 ELSE 0 END) + SUM(CASE WHEN type = 'guest' THEN 1 ELSE 0 END) >= 1
-        ORDER BY video_id, DATE(FROM_UNIXTIME(timestamp))"
-    ));
-
-    // Organize the results into a nested array and calculate cumulative views
-    $data = [];
-    $dates = [];
-    foreach ($results as $row) {
-        $video_id = $row['video_id'];
-        $date = $row['date'];
-        $daily_views = $row['daily_user_views'] + $row['daily_guest_views'];
-
-        if (!isset($data[$video_id])) {
-            $data[$video_id] = [];
-        }
-        $data[$video_id][$date] = $daily_views;
-
-        if (!in_array($date, $dates)) {
-            $dates[] = $date;
-        }
-    }
-
-    // Sort the dates
-    sort($dates);
-
-    // Build the CSV content
-    $csv = "video_id";
-    foreach ($dates as $date) {
-        $csv .= ",$date";
-    }
-    $csv .= "\n";
-
-    foreach ($data as $video_id => $views) {
-        $cumulative_views = 0;
-        $csv .= $video_id;
-        foreach ($dates as $date) {
-            if (isset($views[$date])) {
-                $cumulative_views += $views[$date];
-            }
-            $csv .= ",$cumulative_views";
-        }
-        $csv .= "\n";
-    }
-
-    return $csv;
-}
-*/
-
 // squarebracket's production db has random references to dates prior to january 31st 2021, but the site
 // did launch back there, so just hardcode $date to that date. -chaziz 6/4/2024 (replaces rambling)
 if ($isChazizSB) {
@@ -141,37 +82,13 @@ if ($isChazizSB) {
 
 // Admin actions
 if(isset($_POST["action"])) {
-    if ($_POST["action"] == "ban_user") {
-        // Don't ban non-existent users.
-        if (!$database->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$_POST["user_to_ban"]])) {
-            UnorganizedFunctions::Notification("This user does not exist.", "/admin.php");
-        }
-        // Don't ban mods/admins.
-        if ($database->fetch("SELECT u.powerlevel FROM users u WHERE u.name = ?", [$_POST["user_to_ban"]])["powerlevel"] != 1) {
-            UnorganizedFunctions::Notification("This user cannot be banned.", "/admin.php");
-        }
-        // Check if user is already banned, if not, then ban.
-        $id = $database->fetch("SELECT u.id FROM users u WHERE u.name = ?", [$_POST["user_to_ban"]])["id"];
-        if ($database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$id])) {
-            UnorganizedFunctions::Notification("This user is already banned.", "/admin.php");
-        } else {
-            $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
-                [$id, $_POST["reason"], time()]);
-            UnorganizedFunctions::Notification("Banned user!", "/admin.php", "success");
-        }
-    } elseif ($_POST["action"] == "generate_invite_key") {
+    if ($_POST["action"] == "generate_invite_key") {
         $random = strtoupper("SB" . UnorganizedFunctions::generateRandomizedString(16));
 
         $database->query("INSERT INTO invite_keys (invite_key, generated_by, generated_time) VALUES (?,?,?)",
             [$random, $auth->getUserID(), time()]);
 
         UnorganizedFunctions::Notification("Generated key! ($random)", "/admin.php", "success");
-    }
-} else if (isset($_GET["action"])) {
-    if ($_GET["action"] == "unban_user") {
-        if ($database->query("DELETE FROM bans WHERE userid = ?", [$_GET["user"]])) {
-            UnorganizedFunctions::Notification("Unbanned user!", "/admin.php", "success");
-        }
     }
 }
 
