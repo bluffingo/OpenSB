@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $auth, $twig, $database, $orange;
+global $auth, $twig, $database, $orange, $path;
 
 use SquareBracket\UnorganizedFunctions;
 
@@ -18,4 +18,14 @@ if ($orange->getLocalOptions()["skin"] != "biscuit" && $orange->getLocalOptions(
     UnorganizedFunctions::Notification("Please change your skin to Biscuit.", "/theme");
 }
 
-echo $twig->render("admin_temporary.twig");
+$username = $path[3] ?? null;
+
+$user = $database->fetch("SELECT * FROM users u WHERE u.name = ?", [$username]);
+
+$users_with_matching_ips = $database->fetchArray($database->query("SELECT u.name, u.title FROM users u WHERE u.ip = ? AND id != ?",
+    [$user["ip"], $user["id"]]));
+
+echo $twig->render('admin_user_edit.twig', [
+    'user' => $user,
+    'users_with_matching_ips' => $users_with_matching_ips,
+]);

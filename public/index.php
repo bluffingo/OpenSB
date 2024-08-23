@@ -66,6 +66,13 @@ if ($config["enable_theseus"]) {
     if (isset($path[1]) && $path[1] != '') {
         match ($path[1]) {
             'admin' => match ($path[2] ?? null) {
+                'login' => require(SB_PRIVATE_PATH . '/pages/admin_login.php'),
+                'users' => match ($path[3] ?? null) {
+                        $path[3] ?? null => (!empty($path[3]) && $path[3] !== '')
+                        ? require(SB_PRIVATE_PATH . '/pages/admin_user_edit.php')
+                        : require(SB_PRIVATE_PATH . '/pages/admin_users.php'),
+                    default => require(SB_PRIVATE_PATH . '/pages/admin_users.php'),
+                },
                 'overview' => require(SB_PRIVATE_PATH . '/pages/admin_overview.php'),
                 'users' => require(SB_PRIVATE_PATH . '/pages/admin_users.php'),
                 'uploads' => require(SB_PRIVATE_PATH . '/pages/admin_uploads.php'),

@@ -40,6 +40,24 @@ if (php_sapi_name() == "cli-server") {
 }
 
 if(!$config["enable_theseus"]) {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_name("sb_session");
+
+        session_set_cookie_params([
+            'lifetime' => 0,
+            'path' => '/',
+            'domain' => $_SERVER['HTTP_HOST'],
+            'secure' => isset($_SERVER['HTTPS']),
+            'httponly' => true,
+            'samesite' => 'Strict'
+        ]);
+
+        session_start([
+            "cookie_lifetime" => 0,
+            "gc_maxlifetime" => 86400,
+        ]);
+    }
+
     spl_autoload_register(function ($class_name) {
         $class_name = str_replace('\\', '/', $class_name);
         if (file_exists(SB_PRIVATE_PATH . "/class/$class_name.php")) {
@@ -101,7 +119,7 @@ if(!$config["enable_theseus"]) {
     // now initialize the orange classes
     $orange = new SquareBracket($host, $user, $pass, $db);
     $database = $orange->getDatabase();
-    $auth = new Authentication($database, $_COOKIE['SBTOKEN'] ?? null);
+    $auth = new Authentication($database);
     $profiler = new Profiler();
     $twig = new Templating($orange);
     $localization = new Localization();

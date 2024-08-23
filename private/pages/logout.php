@@ -6,5 +6,6 @@ global $twig, $orange;
 
 use SquareBracket\UnorganizedFunctions;
 
-setcookie("SBTOKEN", "", time() - 3600);
+session_destroy();
+
 UnorganizedFunctions::Notification("Logged out!", "/", "success");

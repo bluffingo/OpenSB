@@ -55,7 +55,7 @@ if (isset($_POST['registersubmit'])) {
             $database->query("UPDATE invite_keys SET claimed_by = ?, claimed_time = ? WHERE invite_key = ?", [$userId, time(), $invite]);
         }
 
-        setcookie('SBTOKEN', $token, 2147483647);
+        $_SESSION["SBTOKEN"] = $token;
 
         UnorganizedFunctions::redirect('./');
     } else {

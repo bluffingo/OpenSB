@@ -8,7 +8,11 @@ use SquareBracket\UnorganizedFunctions;
 use SquareBracket\UserData;
 
 if (!$auth->isUserAdmin()) {
-    UnorganizedFunctions::Notification("You do not have permission to access this page", "/");
+    UnorganizedFunctions::Notification("You do not have permission to access this page.", "/");
+}
+
+if (!$auth->hasUserAuthenticatedAsAnAdmin()) {
+    UnorganizedFunctions::Notification("Please login with your admin password.", "/admin/login");
 }
 
 if ($orange->getLocalOptions()["skin"] != "biscuit" && $orange->getLocalOptions()["skin"] != "charla") {

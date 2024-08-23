@@ -29,7 +29,7 @@ if (isset($path_username)) {
             $token = $account["token"];
             $new_array[] = [
                 "userid" => $auth->getUserID(),
-                "token" => $_COOKIE["SBTOKEN"],
+                "token" => $_SESSION["SBTOKEN"],
             ];
         } else {
             $new_array[] = $account;
@@ -100,20 +100,21 @@ if (isset($_POST["loginsubmit"])) {
             }
 
             // if we're logged in, add our current token in an array for account switching purposes.
-            if (isset($_COOKIE["SBTOKEN"])) {
+            if (isset($_TOKEN["SBTOKEN"])) {
                 if (!isset($_COOKIE["SBACCOUNTS"])) {
                     $current_userid = $auth->getUserID();
 
                     $cookie_shit_testing = [
                         [
                             "userid" => $current_userid,
-                            "token" => $_COOKIE["SBTOKEN"],
+                            "token" => $_SESSION["SBTOKEN"],
                         ]
                     ];
 
                     $encoded_sbaccounts_cookie = ($warning . base64_encode(json_encode($cookie_shit_testing)));
                 } else {
                     // TODO: this will be buggy, i can feel it. -chaziz 6/28/2024
+                    // FIXME: and yes it is! duplicate accounts. i kinda dont care tho. -chaziz 8/23/2024
                     $stupid_fucking_bullshit = str_replace($warning, "", $_COOKIE["SBACCOUNTS"]);
                     $decoded_accounts = json_decode(base64_decode($stupid_fucking_bullshit));
 
@@ -121,7 +122,7 @@ if (isset($_POST["loginsubmit"])) {
 
                     $decoded_accounts[] = [
                         "userid" => $current_userid,
-                        "token" => $_COOKIE["SBTOKEN"],
+                        "token" => $_SESSION["SBTOKEN"],
                     ];
 
                     $encoded_sbaccounts_cookie = ($warning . base64_encode(json_encode($decoded_accounts)));
@@ -131,20 +132,16 @@ if (isset($_POST["loginsubmit"])) {
                     'expires' => $expires,
                     'path' => '/',
                     'domain' => '',
-                    'secure' => false,
-                    'httponly' => false,
+                    'secure' => true,
+                    'httponly' => true,
                     'samesite' =>'Lax',
                 ]);
+
+                // null access to admin panel for security
+                $_SESSION["SB_ADMIN_AUTHED"] = null;
             }
 
-            setcookie('SBTOKEN', $logindata['token'], [
-                'expires' => $expires,
-                'path' => '/',
-                'domain' => '',
-                'secure' => false,
-                'httponly' => true,
-                'samesite' =>'Lax',
-            ]);
+            $_SESSION["SBTOKEN"] = $logindata['token'];
 
             $nid = $database->result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
             $database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), Utilities::get_ip_address(), $nid]);

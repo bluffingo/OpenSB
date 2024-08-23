@@ -9,19 +9,21 @@ namespace SquareBracket;
  */
 class Authentication
 {
-    private \SquareBracket\Database $database;
-    private bool $is_logged_in;
+    private Database $database;
+    private bool $is_logged_in = false;
     private int $user_id;
     private array $user_data;
     private $user_ban_data;
     private $user_notice_count; // this shouldn't be here but whatever
     // TODO: make this default blacklist configurable per instance
     private $default_tags_blacklist = [];
+    private $has_authenticated_as_an_admin = false;
 
-    public function __construct(\SquareBracket\Database $database, $token)
+    public function __construct(Database $database)
     {
         $accountfields = "id, ip, name, title, email, title, about, powerlevel, joined, lastview, comfortable_rating, customcolor, blacklisted_tags, token";
         $this->database = $database;
+        $token = $_SESSION["SBTOKEN"] ?? null;
         if (isset($token)) {
             if($this->user_id = $this->database->result("SELECT id FROM users WHERE token = ?", [$token])) {
                 $this->is_logged_in = true;
@@ -54,11 +56,9 @@ class Authentication
                     $this->database->query("UPDATE users SET comfortable_rating = 'general' WHERE id = ?", [$this->user_id]);
                     UnorganizedFunctions::Notification("Due to updates with content filtering, your filtering settings have been reset from Questionable to General.", false, "primary");
                 }
-            } else {
-                $this->is_logged_in = false;
+
+                $this->has_authenticated_as_an_admin = $_SESSION["SB_ADMIN_AUTHED"] ?? null;
             }
-        } else {
-            $this->is_logged_in = false;
         }
     }
 
@@ -106,6 +106,14 @@ class Authentication
     {
         if ($this->is_logged_in) {
             return ($this->user_data['powerlevel'] >= 3);
+        } else {
+            return false;
+        }
+    }
+
+    public function hasUserAuthenticatedAsAnAdmin() {
+        if ($this->isUserAdmin()) {
+            return $this->has_authenticated_as_an_admin;
         } else {
             return false;
         }

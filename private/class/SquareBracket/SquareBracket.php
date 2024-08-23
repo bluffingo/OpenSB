@@ -20,8 +20,6 @@ class SquareBracket {
     public function __construct($host, $user, $pass, $db) {
         global $isChazizSB;
 
-        session_start(["cookie_lifetime" => 0, "gc_maxlifetime" => 455800]);
-
         if (isset($_COOKIE["SBOPTIONS"])) {
             $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
 
