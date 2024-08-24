@@ -22,8 +22,8 @@ if ($auth->getUserID() != $data["author"]) {
 }
 
 $database->query("DELETE FROM videos WHERE video_id = ?", [$id]);
-$database->query("INSERT INTO deleted_videos (id, uploaded_time, deleted_time, moved_to_bitqobo) VALUES (?,?,?,?)", [$id, $data["time"], time(), 0]);
+$database->query("INSERT INTO deleted_videos (id, uploaded_time, deleted_time) VALUES (?,?,?)", [$id, $data["time"], time()]);
 
 $storage->deleteSubmission($data);
 
-UnorganizedFunctions::Notification("Deleted.", "/my_submissions", "success");
+UnorganizedFunctions::Notification("Deleted.", "/my_uploads", "success");

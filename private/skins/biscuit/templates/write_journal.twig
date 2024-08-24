@@ -23,6 +23,13 @@
                                           style="overflow:hidden;resize:vertical" rows="10" required></textarea>
                             </div>
 
+                            {% if user_is_authenticated_admin %}
+                                <div class="form-input">
+                                    <input type="checkbox" id="news" name="news" value="true">
+                                    <label for="news"> Publish as website announcement</label><br>
+                                </div>
+                            {% endif %}
+
                             <div class="form-button-container">
                                 <input class="button button-primary" type="submit" id="upload" name="upload"
                                        value="Submit">

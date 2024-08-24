@@ -28,8 +28,10 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
     $title = ($_POST['title'] ?? "No title");
     $description = ($_POST['desc'] ?? null);
 
-    $database->query("INSERT INTO journals (title, post, author, date) VALUES (?,?,?,?)",
-        [$title, $description, $uploader, time()]);
+    $isSiteNews = ($auth->hasUserAuthenticatedAsAnAdmin() && ($_POST['news'] ?? false)) ? 1 : 0;
+
+    $database->query("INSERT INTO journals (title, post, author, date, is_site_news) VALUES (?,?,?,?,?)",
+        [$title, $description, $uploader, time(), $isSiteNews]);
 
     UnorganizedFunctions::Notification("Your journal has been posted.", "./user.php?name=" . $auth->getUserData()["name"], "success");
 }

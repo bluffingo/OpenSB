@@ -154,6 +154,7 @@ class Templating
         $this->twig->addGlobal('user_ban_data', $auth->getUserBanData());
         $this->twig->addGlobal('user_notice_data', $auth->getUserNoticesCount());
         $this->twig->addGlobal('user_is_admin', $auth->isUserAdmin());
+        $this->twig->addGlobal('user_is_authenticated_admin', $auth->hasUserAuthenticatedAsAnAdmin());
         $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
         $this->twig->addGlobal('opensb_version', (new VersionNumber)->getVersionString());
         $this->twig->addGlobal('session', $_SESSION);
