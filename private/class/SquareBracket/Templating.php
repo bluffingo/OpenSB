@@ -44,8 +44,7 @@ class Templating
 
         $skinPath = 'skins/' . $this->skin;
 
-        // get metadata so that we can check if the skin is actually intended for squarebracket since
-        // soos skins wont work on orange opensb
+        // get metadata so that we can check if the skin is actually intended for squarebracket
         $metadata = $this->getSkinMetadata($skinPath);
 
         // if this skin is not meant for squarebracket, don't load.
@@ -59,7 +58,7 @@ class Templating
         // if this skin isnt an actual skin, don't load.
         try {
             $this->loader = new FilesystemLoader($templatePath);
-        } catch (LoaderError $e) {
+        } catch (LoaderError) {
             trigger_error("Currently selected skin is invalid", E_USER_WARNING);
 
             $this->skin = "biscuit";

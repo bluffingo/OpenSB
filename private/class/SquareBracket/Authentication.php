@@ -21,7 +21,7 @@ class Authentication
 
     public function __construct(Database $database)
     {
-        $accountfields = "id, ip, name, title, email, title, about, powerlevel, joined, lastview, comfortable_rating, customcolor, blacklisted_tags, token";
+        $accountfields = "id, ip, name, title, email, title, about, powerlevel, joined, lastview, birthdate, comfortable_rating, customcolor, blacklisted_tags, token";
         $this->database = $database;
         $token = $_SESSION["SBTOKEN"] ?? null;
         if (isset($token)) {
@@ -35,6 +35,15 @@ class Authentication
                     $this->user_data['blacklisted_tags'] = $this->default_tags_blacklist;
                 } else {
                     $this->user_data['blacklisted_tags'] = json_decode($this->user_data['blacklisted_tags']); // decode this shit on the fly
+                }
+
+                if (!isset($this->user_data['birthdate'])) {
+                    $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+                    $path = explode('/', $uri);
+                    if ($path[1] != "verify_birthdate") {
+                        header('Location: /verify_birthdate');
+                        die();
+                    }
                 }
 
                 // check if the current logged-in user is IP banned from another address, if so, then log them out.

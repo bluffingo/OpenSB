@@ -14,6 +14,18 @@ if ($orange->getLocalOptions()["skin"] != "biscuit" && $orange->getLocalOptions(
     UnorganizedFunctions::Notification("Please change your skin to Biscuit.", "/theme");
 }
 
+// yes Stupid Shit!!!!!!!!!!!!!! Epic!!!!!!! -chaziz 8/23/2024
+$logindata = $database->fetch("SELECT admin_password FROM users WHERE name = ?", [$auth->getUserData()["name"]]);
+
+// if this password does not exist. generate it automatically.
+if (!isset($logindata["admin_password"])) {
+    $new_pass = UnorganizedFunctions::generateRandomizedString(24);
+    $database->query("UPDATE users SET admin_password = ? WHERE name = ?", [password_hash($new_pass, PASSWORD_DEFAULT), $auth->getUserData()["name"]]);
+    $_SESSION["SB_ADMIN_AUTHED"] = true;
+    UnorganizedFunctions::Notification("Welcome! Your admin password is " . $new_pass .
+        ". Please note it down in a safe and secure place to avoid losing it.", "/admin/", "success");
+}
+
 if (isset($_POST["loginsubmit"])) {
     $error = false;
 
@@ -29,8 +41,6 @@ if (isset($_POST["loginsubmit"])) {
     }
 
     if (!$error) {
-        $logindata = $database->fetch("SELECT admin_password FROM users WHERE name = ?", [$username]);
-
         if ($logindata && password_verify($password, $logindata['admin_password'])) {
             $_SESSION["SB_ADMIN_AUTHED"] = true;
             UnorganizedFunctions::Notification("Welcome!", "/admin/", "success");
