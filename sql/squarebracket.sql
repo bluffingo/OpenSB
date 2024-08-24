@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2024 at 07:12 PM
+-- Generation Time: Aug 24, 2024 at 04:12 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.3.4
+-- PHP Version: 8.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,39 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `squarebracket_migration`
+-- Database: `sb_bullshit_lol`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `activitypub_sites`
---
-
-CREATE TABLE `activitypub_sites` (
-  `id` int(11) NOT NULL,
-  `domain` tinytext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `activitypub_user_urls`
---
-
-CREATE TABLE `activitypub_user_urls` (
-  `int_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `id` text NOT NULL,
-  `featured` text NOT NULL,
-  `followers` text NOT NULL,
-  `following` text NOT NULL,
-  `profile_picture` text NOT NULL,
-  `banner_picture` text NOT NULL,
-  `inbox` text NOT NULL,
-  `outbox` text NOT NULL,
-  `last_updated` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -118,8 +87,7 @@ CREATE TABLE `deleted_videos` (
   `autoint` int(11) NOT NULL,
   `id` varchar(11) NOT NULL,
   `uploaded_time` bigint(20) NOT NULL,
-  `deleted_time` bigint(20) NOT NULL,
-  `moved_to_bitqobo` tinyint(1) NOT NULL
+  `deleted_time` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -318,9 +286,11 @@ CREATE TABLE `users` (
   `name` varchar(128) NOT NULL COMMENT 'Username, chosen by the user',
   `email` varchar(128) NOT NULL,
   `password` varchar(128) NOT NULL COMMENT 'Password, hashed in bcrypt.',
+  `admin_password` varchar(128) DEFAULT NULL,
   `token` varchar(128) NOT NULL COMMENT 'User token for cookie authentication.',
   `joined` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'User''s join date',
   `lastview` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Timestamp of last view',
+  `birthdate` date DEFAULT NULL,
   `featured_submission` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `title` text NOT NULL COMMENT 'Display Name',
   `about` text DEFAULT NULL COMMENT 'User''s description',
@@ -404,18 +374,6 @@ CREATE TABLE `views` (
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `activitypub_sites`
---
-ALTER TABLE `activitypub_sites`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `activitypub_user_urls`
---
-ALTER TABLE `activitypub_user_urls`
-  ADD PRIMARY KEY (`int_id`);
 
 --
 -- Indexes for table `bans`
@@ -516,18 +474,6 @@ ALTER TABLE `videos`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `activitypub_sites`
---
-ALTER TABLE `activitypub_sites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `activitypub_user_urls`
---
-ALTER TABLE `activitypub_user_urls`
-  MODIFY `int_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `bans`
