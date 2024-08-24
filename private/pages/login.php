@@ -68,7 +68,6 @@ if (isset($_POST["loginsubmit"])) {
 
     $username = ($_POST['username'] ?? null);
     $password = ($_POST['password'] ?? null);
-    $rememberMe = isset($_POST['remember_me']);
 
     // backwards compatibility with youclipped
     if ($username !== null) {
@@ -91,12 +90,6 @@ if (isset($_POST["loginsubmit"])) {
 
             if ($ipban) {
                 UnorganizedFunctions::Notification("This account's latest IP address is banned.", "/login.php");
-            }
-
-            if ($rememberMe) {
-                $expires = time() + (365 * 24 * 60 * 60);
-            } else {
-                $expires = time() + (30 * 24 * 60 * 60);
             }
 
             // if we're logged in, add our current token in an array for account switching purposes.
@@ -129,7 +122,7 @@ if (isset($_POST["loginsubmit"])) {
                 }
 
                 setcookie('SBACCOUNTS', $encoded_sbaccounts_cookie, [
-                    'expires' => $expires,
+                    'expires' => time() + (30 * 24 * 60 * 60),
                     'path' => '/',
                     'domain' => '',
                     'secure' => true,

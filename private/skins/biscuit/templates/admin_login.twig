@@ -1,21 +1,18 @@
 {% extends "_layout_login.twig" %}
 
-{% set title = "Login" %}
+{% set title = "Admin login" %}
 
 	{% block content %}
-        {% if error %}
-            <div class="banner banner-danger">{{ error }}</div>
-        {% endif %}
         <div class="section">
             <div class="section-title">
-                <h1>Login</h1>
+                <h1>Admin login</h1>
             </div>
             <div class="content-box rounded login">
                 <div class="panel-body">
-                    <form method="post" name="loginForm" id="loginForm" action="login" class="form-signin">
+                    <form method="post" name="loginForm" id="loginForm" action="/admin/login" class="form-signin">
                         <div class="form-input">
                             <label for="username">Username:</label>
-                            <input type="text" name="username" class="form-submit" placeholder="Username">
+                            <input type="text" name="username" class="form-submit" placeholder="Username" value="{{ user_data.name }}">
                         </div>
 
                         <div class="form-input">
