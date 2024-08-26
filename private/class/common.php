@@ -70,6 +70,7 @@ $user = $config["mysql"]["username"];
 $pass = $config["mysql"]["password"];
 
 $captcha = [
+    "enabled" => $config["captcha"]["enabled"],
     "secret" => $config["captcha"]["secret"],
     "public" => $config["captcha"]["public"],
 ];

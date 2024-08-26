@@ -42,10 +42,12 @@
                             <input type="date" name="birthdate" required />
                         </div>
 
-                        <div class="form-input">
-                            <label>Captcha:</label>
-                            <div class="h-captcha" data-sitekey="{{ captcha_public_token }}"></div>
-                        </div>
+                        {% if captcha_public_token %}
+                            <div class="form-input">
+                                <label>Captcha:</label>
+                                <div class="h-captcha" data-sitekey="{{ captcha_public_token }}"></div>
+                            </div>
+                        {% endif %}
 
                         <div class="form-button-container">
                             <input type="submit" class="button button-primary" value="Register" name="registersubmit">

@@ -33,7 +33,7 @@ if (isset($_POST['registersubmit'])) {
     $verify = json_decode($verify, true);
 
     if (!$verify['success']) {
-        $error .= "You must complete a captcha to register a new account. ";
+        $error .= "You must complete the captcha in order to register a new account. ";
     }
 
     $username = trim($_POST['username'] ?? '');
@@ -92,4 +92,10 @@ if (isset($_POST['registersubmit'])) {
     }
 }
 
-echo $twig->render('register.twig', ['captcha_public_token' => $captcha['public']]);
+$data = [];
+
+if ($captcha['enabled']) {
+    $data['captcha_public_token'] = $captcha['public'];
+}
+
+echo $twig->render('register.twig', $data);
