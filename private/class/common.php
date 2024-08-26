@@ -38,11 +38,13 @@ if (php_sapi_name() == "cli-server") {
 if (session_status() === PHP_SESSION_NONE) {
     session_name("sb_session");
 
+    $is_secure = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+    
     session_set_cookie_params([
         'lifetime' => 0,
         'path' => '/',
         'domain' => $_SERVER['HTTP_HOST'],
-        'secure' => isset($_SERVER['HTTPS']),
+        'secure' => $is_secure,
         'httponly' => true,
         'samesite' => 'Strict'
     ]);
