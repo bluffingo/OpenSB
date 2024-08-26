@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $disableRegistration, $enableInviteKeys, $twig, $database;
+global $disableRegistration, $enableInviteKeys, $twig, $database, $captcha;
 
 use DateTime;
 use SquareBracket\UnorganizedFunctions;
@@ -20,6 +20,21 @@ if (str_contains($ipcheck, "<appears>yes</appears>")) {
 
 if (isset($_POST['registersubmit'])) {
     $error = "";
+
+    $verify = curl_init();
+    curl_setopt($verify, CURLOPT_URL,   "https://hcaptcha.com/siteverify");
+    curl_setopt($verify, CURLOPT_POST, true);
+    curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query([
+        'secret' => $captcha['secret'],
+        'response' => $_POST['h-captcha-response']
+    ]));
+    curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+    $verify = curl_exec($verify);
+    $verify = json_decode($verify, true);
+
+    if (!$verify['success']) {
+        $error .= "You must complete a captcha to register a new account. ";
+    }
 
     $username = trim($_POST['username'] ?? '');
     $pass = $_POST['pass1'] ?? '';
@@ -77,4 +92,4 @@ if (isset($_POST['registersubmit'])) {
     }
 }
 
-echo $twig->render('register.twig');
+echo $twig->render('register.twig', ['captcha_public_token' => $captcha['public']]);
