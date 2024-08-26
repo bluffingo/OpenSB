@@ -8,6 +8,10 @@ return [
         "password" => "",
         "host" => "127.0.0.1",
     ],
+    "captcha" => [
+        "secret" => "",
+        "public" => ""
+    ],
     // put "PROD" for production, put "DEV" for development
     "mode" => "PROD",
     "site" => "squarebracket",

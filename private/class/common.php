@@ -69,6 +69,11 @@ $db = $config["mysql"]["database"];
 $user = $config["mysql"]["username"];
 $pass = $config["mysql"]["password"];
 
+$captcha = [
+    "secret" => $config["captcha"]["secret"],
+    "public" => $config["captcha"]["public"],
+];
+
 if ($config["site"] == "squarebracket_chaziz") {
     $isChazizSB = true;
 } else {
