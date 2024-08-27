@@ -2,6 +2,7 @@
 ![Screen Shot 2024-08-08 at 20 15 36](https://github.com/user-attachments/assets/44b54ee7-c2da-46ce-bbdc-e4b8fd3c2556)
 
 <h3 align="center"><a href="https://squarebracket.me/">squareBracket (our official instance)</a></h3>
+<h5 align="center">Alternative Domains (not recommended): <a href="https://squarebracket.pw/">1</a> <a href="https://fulptube.rocks">2</a></h5>
 
 ## How to setup an OpenSB instance.
 
