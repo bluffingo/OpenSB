@@ -117,13 +117,28 @@ class SquareBracketTwigExtension extends AbstractExtension
      * Relative time function.
      */
     function relativeTime($time) {
-        if (!$time) return 'unknown';
+        if ($time == 0) {
+            return "unknown";
+        }
 
-        $relativeTime = new RelativeTime([
-            'truncate' => 1,
-        ]);
+        $time_difference = time() - $time;
+        $units = [
+            31536000 => 'year',
+            2592000  => 'month',
+            604800   => 'week',
+            86400    => 'day',
+            3600     => 'hour',
+            60       => 'minute',
+            1        => 'second'
+        ];
 
-        return $relativeTime->timeAgo($time);
+        foreach ($units as $unit => $text) {
+            if ($time_difference < $unit) continue;
+            $numberOfUnits = floor($time_difference / $unit);
+            return $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '') . ' ago';
+        }
+
+        return 'just now';
     }
 
     public function submissionView($submission_data)
