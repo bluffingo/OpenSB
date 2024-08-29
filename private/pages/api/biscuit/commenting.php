@@ -65,7 +65,7 @@ $comment = [
 $html = $twig->render('components/_comment.twig', ['comment' => $comment]);
 
 $id = $post_data["id"];
-$replyTo = isset($post_data['reply_to']) ? $post_data['reply_to'] : 0;
+$replyTo = $post_data['reply_to'] ?? 0;
 $userId = $auth->getUserID();
 $currentTime = time();
 $table = '';
