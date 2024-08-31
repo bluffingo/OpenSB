@@ -159,6 +159,9 @@ $storage = new Storage($orange->getDatabase(), $isChazizSB, $bunnySettings);
 
 // and i am being serious with this. -chaziz 8/7/2024
 if (!file_exists(SB_GIT_PATH)) {
+    // to clarify with this: if you are downloading the opensb source code from that fucking shitty github download
+    // button. you are effectively making it hard for your instance to be able to be updated with newer upstream code
+    // (via a git pull), if you do not know how to use git, please do not bother setting up opensb. -chaziz 8/31/2024
     echo $twig->render("error.twig", [
         "error_title" => "Critical error",
         "error_reason" => "Please initialize OpenSB using git clone instead of downloading it straight from GitHub,
