@@ -5,7 +5,7 @@
 
 [SquareBracket.me](https://squarebracket.me/)
 
-**Alternative Domains (not recommended):** [SquareBracket.pw](https://squarebracket.pw/), [SquareBracket.lol](https://squarebracket.lol/), [FulpTube.rocks](https://fulptube.rocks)
+**Alternative Domains (not recommended):** [SquareBracket.pw](https://squarebracket.pw/), [FulpTube.rocks](https://fulptube.rocks)
 
 ## How to setup an OpenSB instance.
 
