@@ -1,5 +1,5 @@
 # SquareBracket Upload Guidelines 
-Last updated by Chaziz on August 20th 2024.
+Last updated by Flowerz on August 31st 2024.
 
 ## What we don't allow
 **If you upload anything that falls under this list, your accounts will most likely be terminated.**
@@ -8,6 +8,7 @@ Last updated by Chaziz on August 20th 2024.
 * Illegal content (CSAM/CSEM, bestiality)
 * Fetish content
 * Shock content (Gore)
+* Pornography or content containing nudity.
 * Non-consenting content (Rape, leaking personal information)
 * Edgy content (Nazism, racism, bigotry)
 
