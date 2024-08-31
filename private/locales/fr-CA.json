@@ -1,0 +1,29 @@
+{
+  "browse": "Parcourir",
+  "browse_more": "Parcourir plus",
+
+  "welcome_logged_in": "Bienvenue à nouveau, %s",
+  "welcome_logged_in_finalium": "Bienvenue à %s, %s",
+  "welcome_logged_in_finalium_beta": "Bienvenue, %s",
+  "welcome_logged_out": "Bienvenue à %s",
+
+  "random_uploads": "Aléatoire",
+  "random_uploads_desc": "Sélection aléatoire de téléchargements",
+
+  "recent_uploads": "Récent",
+  "recent_uploads_desc": "Tous les derniers téléchargements",
+
+  "site_news": "Actualités",
+  "site_news_desc": "Annonces du site",
+
+  "recent_tags": "Tags",
+  "recent_tags_desc": "100 derniers tags",
+
+  "more": "Plus",
+
+  "search": "Recherche",
+
+  "write_comment": "Ecrivez votre commentaire ici.",
+  "reply": "Répondre",
+  "post": "Post"
+}
