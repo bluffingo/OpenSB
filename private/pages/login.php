@@ -37,14 +37,7 @@ if (isset($path_username)) {
     }
 
     if ($is_the_account_in_the_accounts_array) {
-        setcookie('SBTOKEN', $token, [
-            'expires' => time() + (30 * 24 * 60 * 60),
-            'path' => '/',
-            'domain' => '',
-            'secure' => false,
-            'httponly' => true,
-            'samesite' =>'Lax',
-        ]);
+        $_SESSION["SBTOKEN"] = $token;
 
         $encoded_sbaccounts_cookie = ($warning . base64_encode(json_encode($new_array)));
 
@@ -93,7 +86,7 @@ if (isset($_POST["loginsubmit"])) {
             }
 
             // if we're logged in, add our current token in an array for account switching purposes.
-            if (isset($_TOKEN["SBTOKEN"])) {
+            if (isset($_SESSION["SBTOKEN"])) {
                 if (!isset($_COOKIE["SBACCOUNTS"])) {
                     $current_userid = $auth->getUserID();
 

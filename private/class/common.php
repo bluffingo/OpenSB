@@ -50,8 +50,8 @@ if (session_status() === PHP_SESSION_NONE) {
     ]);
 
     session_start([
-        "cookie_lifetime" => 0,
-        "gc_maxlifetime" => 86400,
+        "cookie_lifetime" => 1209600,
+        "gc_maxlifetime" => 1209600,
     ]);
 }
 
