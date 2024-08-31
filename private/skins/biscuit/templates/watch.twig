@@ -15,9 +15,9 @@
 {% set opengraph_author = domain ~ "user/" ~ submission.author.info.username %}
 {% set metadata_author = submission.author.info.username %}
 {% if submission.type == 0 %}
-    {% set opengraph_section = "squareBracket video" %}
+    {% set opengraph_section = "SquareBracket video" %}
 {% elseif submission.type == 2 %}
-    {% set opengraph_section = "squareBracket image" %}
+    {% set opengraph_section = "SquareBracket image" %}
 {% endif %}
 
 {% block scripts %}

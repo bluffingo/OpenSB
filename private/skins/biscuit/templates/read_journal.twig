@@ -10,7 +10,7 @@
 {% set opengraph_published = data.published | date("c") %}
 {% set opengraph_author = domain ~ "user/" ~ data.author.info.username %}
 {% set metadata_author = data.author.info.username %}
-{% set opengraph_section = "squareBracket post" %}
+{% set opengraph_section = "SquareBracket post" %}
 
 {% block scripts %}
 	{{ include('submission_rating_script.twig') }}

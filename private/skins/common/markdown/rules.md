@@ -9,6 +9,6 @@
 
 
 We monitor off-site behavior, if we find anything from another profile of yours, and we then find you unsuitable,
-you will be banned from squareBracket.
+you will be banned from SquareBracket.
 
 (i hate writing shit like this)

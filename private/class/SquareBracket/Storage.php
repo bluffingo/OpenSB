@@ -40,7 +40,7 @@ class Storage
             $newVideo = $streamApi->createVideo(
                 libraryId: $this->bunnyCDNSettings["streamLibrary"],
                 body: [
-                    'title' => 'squareBracket: ' . $new,
+                    'title' => 'SquareBracket: ' . $new,
                 ],
             );
             $content = file_get_contents($target_file);

@@ -9,7 +9,7 @@
       {
         "id": "default",
         "name": "Default",
-        "description": "The default squareBracket user experience.",
+        "description": "The default SquareBracket user experience.",
         "author": "OpenSB developers"
       },
       {
@@ -21,7 +21,7 @@
       {
         "id": "classic",
         "name": "Classic",
-        "description": "Emulates the April 2021 version of squareBracket.",
+        "description": "Emulates the April 2021 version of SquareBracket.",
         "author": "OpenSB developers"
       },
       {
@@ -33,7 +33,7 @@
       {
         "id": "pink",
         "name": "Pink",
-        "description": "A pink theme for squareBracket.",
+        "description": "A pink theme for SquareBracket.",
         "author": "Mori"
       }
     ]

@@ -1,4 +1,4 @@
-# squareBracket Upload Guidelines 
+# SquareBracket Upload Guidelines 
 Last updated by Chaziz on August 20th 2024.
 
 ## What we don't allow

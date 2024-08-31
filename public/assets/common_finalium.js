@@ -12,7 +12,7 @@ if (cookie) {
 }
 
 $(document).ready(function () {
-    console.log("squareBracket Sounds: " + sbnextSounds);
+    console.log("SquareBracket Sounds: " + sbnextSounds);
     $("#masthead-loggedin").click(function () {
         var x = document.getElementById("masthead-below");
         if (x.style.display === "block") {
