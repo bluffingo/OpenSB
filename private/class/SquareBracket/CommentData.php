@@ -13,6 +13,7 @@ class CommentData
     private CommentLocation $type;
     private $id;
     private $data;
+    private $count = 0; // stupid? maybe idfk
 
     public function __construct(\SquareBracket\Database $database, $type, $id = null) {
         $this->database = $database;
@@ -42,6 +43,7 @@ class CommentData
 
         $data = [];
         foreach ($database_data as $comment) {
+            $this->count++;
             $author = new UserData($this->database, $comment["author"]);
             $data[$comment["comment_id"]] = [
                 "id" => $comment["comment_id"],
@@ -58,9 +60,12 @@ class CommentData
         return $data;
     }
 
+    public function getCommentCount() {
+        return $this->count;
+    }
+
     public function getComments() {
         $database_data = null;
-
 
         switch ($this->type) {
             case CommentLocation::Submission:
@@ -88,6 +93,7 @@ class CommentData
 
         $data = [];
         foreach ($database_data as $comment) {
+            $this->count++;
             $author = new UserData($this->database, $comment["author"]);
             $data[$comment["comment_id"]] = [
                 "id" => $comment["comment_id"],

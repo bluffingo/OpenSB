@@ -32,7 +32,7 @@ if ($options["skin"] == "biscuit" || $options["skin"] == "charla") {
 $submissions_random = $submission_query->query("RAND()", $submissions_random_query_limit);
 $submissions_recent = $submission_query->query("v.time DESC", $submissions_recent_query_limit);
 
-$news_recent = $database->fetchArray($database->query("SELECT j.* FROM journals j WHERE j.is_site_news = 1 ORDER BY j.date DESC LIMIT 3"));
+$news_recent = $database->fetchArray($database->query("SELECT j.* FROM journals j WHERE j.is_site_news = 1 ORDER BY j.date DESC LIMIT 5"));
 $users_recent = $database->fetchArray($database->query("SELECT u.id, u.about, u.title, (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num FROM users u ORDER BY u.lastview DESC LIMIT 8"));
 
 $data = [

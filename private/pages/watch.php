@@ -214,6 +214,9 @@ if ($tags === []) {
 
 if ($auth->getUserID() == $data["author"]) { $owner = true; } else { $owner = false; }
 
+$comment_data = $comments->getComments();
+$comment_count = $comments->getCommentCount();
+
 $page_data = [
     "is_owner" => $owner,
     "int_id" => $data["id"],
@@ -235,8 +238,9 @@ $page_data = [
         "views" => $data["views"],
         "ratings" => UnorganizedFunctions::calculateRatings($ratings),
         "favorites" => $favorites,
+        "comments" => $comment_count,
     ],
-    "comments" => $comments->getComments(),
+    "comments" => $comment_data,
     "bools" => $bools,
     "rating" => $data["rating"],
     "recommended" => UnorganizedFunctions::makeSubmissionArray($database, $recommended),
