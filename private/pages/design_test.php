@@ -8,7 +8,7 @@ use SquareBracket\UnorganizedFunctions;
 echo $twig->render('design_test.twig',
     [
         "color_types" => [
-            "primary", "secondary", "success", "danger"
+            "primary", "secondary", "success", "danger", "warning"
         ]
     ]
 );

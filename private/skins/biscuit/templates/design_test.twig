@@ -24,8 +24,6 @@
     {% for color in color_types %}
         <div class="button button-{{ color }}">{{ color }} button!</div>
     {% endfor %}
-    {# not an actual color #}
-    <div class="button button-get-started">get started button!</div>
     <hr>
     <div>Unix epoch: {{ "0" | relative_time() }}</div>
     <div>Unix epoch: {{ "1" | relative_time() }}</div>

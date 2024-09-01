@@ -86,7 +86,7 @@
                         {% if user.powerlevel <= 1 %}
                             {% if user.banned %}
                                 <form id="banForm" method="post" action="/admin/users/{{ user.info.username }}" enctype="multipart/form-data">
-                                    <button name="ban_user" value="{{ user.info.username }}" class="button button-get-started" onclick="if (!confirm('Are you sure you want to unban this user?')) { return false }">Unban</button>
+                                    <button name="ban_user" value="{{ user.info.username }}" class="button button-warning" onclick="if (!confirm('Are you sure you want to unban this user?')) { return false }">Unban</button>
                                 </form>
                             {% else %}
                                 <form id="banForm" method="post" action="/admin/users/{{ user.info.username }}" enctype="multipart/form-data">

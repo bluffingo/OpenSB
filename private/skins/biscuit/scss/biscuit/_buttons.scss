@@ -93,7 +93,7 @@ $value: #ffa60a;
   $value: #ffb81f;
 }
 
-.button-get-started {
+.button-warning {
   @if $theme != "biscuit" {
     border: 1px solid adjust-hue(darken($value, 4%), -6);
     background-color: $value;

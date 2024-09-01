@@ -1,7 +1,6 @@
 // colors
 
-$threshold: 66%; // contrast threshold
-
+$threshold: 66%;
 $primary: #3498db; // primary color
 @if $theme == "pink" {
         $primary: #edb1c1; // primary color
@@ -10,6 +9,7 @@ $primary-darker: darken($primary, 33%); // darker primary color
 $secondary: #eee; //secondary color (nearly white)
 $green: #28c228;
 $red: #c01b0c;
+$yellow: #ffb81f;
 
 $link-color: #0061c5;
 @if $theme == "pink" {
@@ -22,6 +22,7 @@ $link-color: #0061c5;
         $secondary: #EEEEEE; //secondary color (nearly white)
         $green: #559900;
         $red: #993300;
+        $yellow: #ffa60a;
 }
 
 $color-map: (
@@ -29,6 +30,7 @@ $color-map: (
         "secondary": $secondary,
         "success": $green,
         "danger": $red,
+        "warning": $yellow,
 );
 
 // colors used for the users section in the admin panel. taken from the ones on bitview, sorry!
