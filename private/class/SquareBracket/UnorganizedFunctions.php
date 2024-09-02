@@ -421,7 +421,7 @@ class UnorganizedFunctions
         return ($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'fulptube.rocks');
     }
 
-    public static function sbToFulpTube($input, $isAnnouncementJournal = false)
+    public static function sbToFulpTube($input)
     {
         // replace "squarebracket" with "fulptube"
         $replacements = [

@@ -329,7 +329,7 @@ HTML;
 
     public function headerUserLinks()
     {
-        global $auth, $orange;
+        global $auth, $orange, $isDebug;
 
         if ($auth->isUserLoggedIn()) {
             $username = $auth->getUserData()["name"];
@@ -365,6 +365,13 @@ HTML;
                 $array["admin"] = [
                     "name" => "Admin",
                     "url" => "/admin",
+                ];
+            }
+
+            if ($isDebug) {
+                $array["zUpload"] = [
+                    "name" => "zUpload",
+                    "url" => "/dev/upload",
                 ];
             }
 

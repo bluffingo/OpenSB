@@ -1,110 +1,36 @@
-<link href="https://unpkg.com/plyr@3.7.8/dist/plyr.css" rel="stylesheet">
-<script src="https://unpkg.com/plyr@3.7.8/dist/plyr.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.15/hls.min.js" integrity="sha512-laeOywAR8veaLuF0pnbe9aXnZF0OhY25VdUkVgeRDUezc5IB1XVvqNYASMEVLh2nFvLEX/MStxGvpaNoVH6hRQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style>
+    #oplayer {
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@oplayer/core@latest/dist/index.ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@oplayer/hls@latest/dist/index.min.js"></script>
 {% if is_chaziz_sb %}
     {% set video = submission.file %}
 {% else %}
     {% set video = "/dynamic/videos/" ~ submission.id ~ ".converted.mp4" %}
 {% endif %}
-
-<style>
-    .plyr--video {
-        --plyr-color-main: #1b8ade;
-        --plyr-control-spacing: 10px;
-    }
-    .plyr--video .plyr__controls {
-        padding: 1px 3px !important;
-        background: var(--plyr-video-controls-background,linear-gradient(#292929,#0B0B0B));
-    }
-    .plyr__control svg {
-        fill: #656565;
-    }
-    .plyr__control svg:hover {
-        fill: #CDCDCD;
-    }
-    .plyr--video .plyr__control.plyr__tab-focus, .plyr--video .plyr__control:hover, .plyr--video .plyr__control[aria-expanded="true"] {
-        background: #FFFFFF11;
-        color: var(--plyr-video-control-color-hover,#fff);
-    }
-    .plyr__control--overlaid {
-        background: #fff;
-    }
-    .plyr__controls .plyr__controls__item:first-child {
-        margin-left: 0;
-        margin-right: auto;
-        padding: 6px 19px;
-    }
-    .plyr--full-ui input[type="range"]::-moz-range-progress {
-        background: linear-gradient(#1d89dc,#1a78c1);
-    }
-    .plyr__tooltip {
-        background: var(--plyr-tooltip-background,hsla(0, 0%, 7.5%, 0.9));
-        color: var(--plyr-tooltip-color,#fff);
-    }
-    .plyr__tooltip::before {
-        border-top: var(--plyr-tooltip-arrow-size,4px) solid var(--plyr-tooltip-background,hsla(0, 0%, 7.5%, 0.9));
-    }
-    .plyr__menu__container {
-        background: var(--plyr-menu-background,hsla(0, 0%, 7.5%, 0.9));
-    }
-    .plyr__menu__container::after {
-        border-top: var(--plyr-menu-arrow-size,4px) solid hsla(0, 0%, 7.5%, 0.9);
-    }
-    .plyr__menu__container .plyr__control {
-        color: var(--plyr-menu-color,#cbcbcb);
-    }
-</style>
+<div id="oplayer"></div>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const video = document.querySelector("video");
-        const source = "{{ video }}";
-
-        // For more options see: https://github.com/sampotts/plyr/#options
-        const defaultOptions = {};
-
-        if (Hls.isSupported()) {
-            // For more Hls.js options, see https://github.com/dailymotion/hls.js
-            const hls = new Hls();
-            hls.loadSource(source);
-
-            // From the m3u8 playlist, hls parses the manifest and returns
-            // all available video qualities. This is important, in this approach,
-            // we will have one source on the Plyr player.
-            hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
-
-                // Transform available levels into an array of integers (height values).
-                const availableQualities = hls.levels.map((l) => l.height)
-
-                // Add new qualities to option
-                defaultOptions.quality = {
-                    default: availableQualities[0],
-                    options: availableQualities,
-                    // this ensures Plyr to use Hls to update quality level
-                    // Ref: https://github.com/sampotts/plyr/blob/master/src/js/html5.js#L77
-                    forced: true,
-                    onChange: (e) => updateQuality(e),
-                }
-
-                // Initialize new Plyr player with quality options
-                const player = new Plyr(video, defaultOptions);
-            });
-            hls.attachMedia(video);
-            window.hls = hls;
-        } else {
-            // default options with no quality update in case Hls is not supported
-            const player = new Plyr(video, defaultOptions);
+    OPlayer.make('#oplayer', {
+        source: {
+            title: '{{ submission.title }}',
+            src: '{{ video }}',
+            poster: '{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail )}}'
         }
-
-        function updateQuality(newQuality) {
-            window.hls.levels.forEach((level, levelIndex) => {
-                if (level.height === newQuality) {
-                    console.log("Found quality match with " + newQuality);
-                    window.hls.currentLevel = levelIndex;
-                }
-            });
-        }
-    });
+    })
+        .use([
+            OUI({
+                theme: {
+                    primaryColor: "{{ is_user_logged_in ? user_data.customcolor : '#1d89dc' }}",
+                },
+            }),
+            OHls({
+                forceHLS: true,
+                // will lazy load hls.js
+                library: 'https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js'
+            })
+        ])
+        .create()
 </script>
-<div style="width:100%;">
-<video style="aspect-ratio: 16 / 9;width: 100%;background-color:black;" controls crossorigin playsinline poster="{{ thumbnail(submission.id, submission.type, submission.bools.custom_thumbnail) }}"></video>
-</div>

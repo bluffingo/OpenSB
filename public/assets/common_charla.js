@@ -69,10 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (tabId) {
                 document.getElementById(tabId).style.display = "block";
                 firstTab.classList.add("active");
-            } //else {
-            //    error("THIS SHOULD NOT HAPPEN. (tab code fail 1)");
-            //}
-            // actually that's fine. some pages use javascript-less tabs (browse and admin for example)
+            }
         } else {
             error("THIS SHOULD NOT HAPPEN.");
         }
@@ -268,10 +265,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
     }
+
+    // SETTINGS
+    let settings_display_name_input = (document.getElementById('settings-display-name-input'));
+    let settings_display_name = (document.getElementById('settings-display-name'));
+    let settings_custom_color = (document.getElementById('settings-color'));
+
+    if (settings_display_name_input && settings_display_name) {
+        settings_display_name_input.addEventListener("input", function () {
+            console.log(settings_display_name_input.value);
+            settings_display_name.innerHTML = settings_display_name_input.value;
+        });
+    }
+
+    if (settings_custom_color && settings_display_name) {
+        settings_custom_color.addEventListener("input", function () {
+            console.log(settings_custom_color.value);
+            settings_display_name.style.color = settings_custom_color.value;
+        });
+    }
 });
 
 function play(sound) {
-    if (JSON.parse(uiSounds) == true) {
+    if (JSON.parse(uiSounds) === true) {
         var audio = new Audio('/assets/sounds/' + sound + '.ogg');
         audio.play();
     }

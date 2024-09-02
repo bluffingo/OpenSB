@@ -33,13 +33,13 @@ $submissions_random = $submission_query->query("RAND()", $submissions_random_que
 $submissions_recent = $submission_query->query("v.time DESC", $submissions_recent_query_limit);
 
 $news_recent = $database->fetchArray($database->query("SELECT j.* FROM journals j WHERE j.is_site_news = 1 ORDER BY j.date DESC LIMIT 5"));
-$users_recent = $database->fetchArray($database->query("SELECT u.id, u.about, u.title, (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num FROM users u ORDER BY u.lastview DESC LIMIT 8"));
+//$users_recent = $database->fetchArray($database->query("SELECT u.id, u.about, u.title, (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num FROM users u ORDER BY u.lastview DESC LIMIT 8"));
 
 $data = [
     "submissions" => UnorganizedFunctions::makeUploadArray($database, $submissions_random),
     "submissions_new" => UnorganizedFunctions::makeUploadArray($database, $submissions_recent),
     "news_recent" => UnorganizedFunctions::makeJournalArray($database, $news_recent),
-    "users_recent" => $users_recent, // TODO: makeUsersArray
+    //"users_recent" => $users_recent, // TODO: makeUsersArray
 ];
 
 if ($auth->isUserLoggedIn()) {

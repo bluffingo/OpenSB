@@ -21,15 +21,7 @@
 {% endif %}
 
 {% block scripts %}
-    {#
-    in opensb theseus, we get this error:
-    Unable to find template "submission_rating_script.twig" (looked into: C:/OpenSB/public/../private/skins/biscuit/templates).
-
-    this is simply a path issue. but we'll not fix it for now since we have other more crucial stuff to deal with first.
-    #}
-    {% if not areWeRunningTheNewCode %}
     {{ include('submission_rating_script.twig') }}
-    {% endif %}
 
     <script>
         submission_id = '{{ submission.id }}';
