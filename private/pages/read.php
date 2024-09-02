@@ -23,6 +23,11 @@ if ($auth->getUserID() == $data["author"]) {
     $owner = false;
 }
 
+if (UnorganizedFunctions::isFulpTube() && $data["is_site_news"]) {
+    $data["title"] = UnorganizedFunctions::sbToFulpTube($data["title"]);
+    $data["post"] = UnorganizedFunctions::sbToFulpTube($data["post"]);
+}
+
 $author = new UserData($database, $data["author"]);
 $comments = new CommentData($database, CommentLocation::Journal, $id);
 

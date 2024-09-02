@@ -131,19 +131,6 @@ $localization = new Localization();
 // automatic stuff
 // this should probably have a cooldown or something i don't fucking know
 
-// this can be easily bypassed but my paranoia wants me to implement this -Chaziz 4/8/2024
-if (isset($_SERVER['HTTP_REFERER'])) {
-    $blacklistedReferers = $database->fetch("SELECT url from blacklisted_referer where url = ?", [$_SERVER['HTTP_REFERER']]);
-    if ($blacklistedReferers) {
-        $alreadyIpBanned = $database->fetch("SELECT * from ipbans where ip = ?", [UnorganizedFunctions::getIpAddress()]);
-        if (!$alreadyIpBanned) {
-            $database->query("INSERT INTO ipbans (ip, reason, time) VALUES (?,?,?)",
-                [UnorganizedFunctions::getIpAddress(), "[Automatically done by OpenSB] Referer is from blacklisted website "
-                    . $_SERVER['HTTP_REFERER'], time()]);
-        }
-    }
-}
-
 // automatically ban accounts linked to banned ips.
 $ipBannedUsers = $database->fetchArray($database->query("SELECT * from ipbans"));
 foreach ($ipBannedUsers as $ipBannedUser) {

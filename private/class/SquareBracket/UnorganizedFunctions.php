@@ -115,6 +115,11 @@ class UnorganizedFunctions
     {
         $journalsData = [];
         foreach ($journals as $journal) {
+            if (self::isFulpTube() && $journal["is_site_news"]) {
+                $journal["title"] = self::sbToFulpTube($journal["title"]);
+                $journal["post"] = self::sbToFulpTube($journal["post"]);
+            }
+
             $userData = new UserData($database, $journal["author"]);
             $journalsData[] =
                 [
@@ -290,16 +295,13 @@ class UnorganizedFunctions
         $img->toPng()->save($target);
     }
 
-    #[NoReturn] public static function redirectPerma($url, ...$args)
-    {
-        header('Location: ' . sprintf($url, ...$args), true, 301);
-        die();
-    }
-
     public static function rewritePHP(): void
     {
-        if (str_contains($_SERVER["REQUEST_URI"], '.php'))
-            self::redirectPerma('%s', str_replace('.php', '', $_SERVER["REQUEST_URI"]));
+        if (str_contains($_SERVER["REQUEST_URI"], '.php')) {
+            $newUrl = str_replace('.php', '', $_SERVER["REQUEST_URI"]);
+            header('Location: ' . $newUrl, true, 301);
+            die();
+        }
     }
 
     #[NoReturn] public static function redirect($url, ...$args)
@@ -411,5 +413,45 @@ class UnorganizedFunctions
         if (php_sapi_name() == "cli") return null;
 
         return $_SERVER['REMOTE_ADDR'];
+    }
+
+    public static function isFulpTube()
+    {
+        return true;
+        //global $isChazizSB;
+        //return ($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'fulptube.rocks');
+    }
+
+    public static function sbToFulpTube($input, $isAnnouncementJournal = false)
+    {
+        // replace "squarebracket" with "fulptube"
+        $replacements = [
+            'squarebracket' => 'fulptube',
+            'squareBracket' => 'FulpTube',
+            'SquareBracket' => 'FulpTube',
+            'SQUAREBRACKET' => 'FULPTUBE',
+        ];
+
+        $output = str_replace(array_keys($replacements), array_values($replacements), $input);
+
+        // de-fuck urls
+        $urlReplacements = [
+            'fulptube.me' => 'squarebracket.me',
+            'fulptube.pw' => 'squarebracket.pw',
+            'fulptube.veselcraft.ru' => 'squarebracket.veselcraft.ru', // this domain still works lol
+        ];
+
+        $output = str_replace(array_keys($urlReplacements), array_values($urlReplacements), $output);
+
+        // now replace all *actual* squarebracket urls with fulptube.rocks
+        $properUrlReplacements = [
+            '://squarebracket.me' => '://fulptube.rocks',
+            '://squarebracket.pw' => '://fulptube.rocks',
+            '://squarebracket.veselcraft.ru' => '://fulptube.rocks',
+        ];
+
+        $output = str_replace(array_keys($properUrlReplacements), array_values($properUrlReplacements), $output);
+
+        return $output;
     }
 }
