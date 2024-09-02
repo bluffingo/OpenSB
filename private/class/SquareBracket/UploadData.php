@@ -3,7 +3,7 @@
 namespace SquareBracket;
 
 /**
- * Submissions.
+ * uploads.
  *
  * @since SquareBracket 1.0
  */
@@ -17,20 +17,20 @@ class UploadData
 
     // FLAGS
 
-    // 00000001: featured submission, at least back in the opensb milestone/alpha 2 days.
+    // 00000001: featured upload flag that was used in mid-2021.
     public const FLAG_FEATURED = 1;
 
-    // 00000010: Unprocessed VIDEO submission, which is now unused but a few image submissions on squarebracket still have
-    // this flag toggled.
+    // 00000010: Unprocessed VIDEO upload, which is now unused but a few image uploads on squarebracket still have
+    // this flag enabled.
     public const FLAG_UNPROCESSED = 2;
 
-    // 00000100: "Block guests from viewing this submission"
+    // 00000100: "Block guests from viewing this upload"
     public const FLAG_BLOCK_GUESTS = 4;
 
-    // 00001000: "Block users from commenting in this submission"
+    // 00001000: "Block users from commenting in this upload"
     public const FLAG_BLOCK_COMMENTS = 8;
 
-    // 00010000: "Submission has custom thumbnail"
+    // 00010000: "upload has custom thumbnail"
     public const FLAG_CUSTOM_THUMBNAIL = 16;
 
     public function __construct(\SquareBracket\Database $database, $id)
@@ -39,7 +39,7 @@ class UploadData
 
         $this->deleted_data = $this->database->fetch("SELECT COUNT(*) FROM deleted_videos v WHERE id = ?", [$id])["COUNT(*)"];
 
-        // if we get the internal id instead of the string id, we correct $id after fetching the submission otherwise
+        // if we get the internal id instead of the string id, we correct $id after fetching the upload otherwise
         // stuff won't work.
         if (is_int($id)) {
             $this->data = $this->database->fetch("SELECT v.* FROM videos v WHERE v.id = ?", [$id]);

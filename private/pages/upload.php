@@ -13,21 +13,21 @@ $supportedImageFormats = ["png", "jpg", "jpeg"];
 
 if (!$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
+    UnorganizedFunctions::bannerNotification("Please login to continue.", "/login.php");
 }
 
 if ($auth->getUserBanData()) {
-    UnorganizedFunctions::Notification("You cannot proceed with this action.", "/");
+    UnorganizedFunctions::bannerNotification("You cannot proceed with this action.", "/");
 }
 
 if ($disableUploading) {
-    UnorganizedFunctions::Notification("The ability to upload has been disabled.", "/");
+    UnorganizedFunctions::bannerNotification("The ability to upload has been disabled.", "/");
 }
 
 if (!$auth->isUserAdmin()) {
     // Rate limit uploading to a minute, both to prevent spam and to prevent double uploads.
     if ($database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 120, $auth->getUserID()]) && !$isDebug) {
-        UnorganizedFunctions::Notification("Please wait two minutes before uploading again.", "/");
+        UnorganizedFunctions::bannerNotification("Please wait two minutes before uploading again.", "/");
     }
 }
 
@@ -58,7 +58,7 @@ function parse_tags($tags, $submission_id, $database) {
 }
 
 if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLoggedIn()) {
-    $new = UnorganizedFunctions::generateRandomizedString(11, true);
+    $new = UnorganizedFunctions::generateRandomString(11, true);
     $uploader = $auth->getUserID();
 
     $title = ($_POST['title'] ?? null);
@@ -96,9 +96,9 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
 
             parse_tags($tags2, $new, $database);
 
-            UnorganizedFunctions::Notification("Your upload has been completed.", "./watch.php?v=" . $new, "success");
+            UnorganizedFunctions::bannerNotification("Your upload has been completed.", "./watch.php?v=" . $new, "success");
         } else {
-            UnorganizedFunctions::Notification("There is a problem with file permissions and/or PHP on this instance.", "/upload");
+            UnorganizedFunctions::bannerNotification("There is a problem with file permissions and/or PHP on this instance.", "/upload");
         }
     } elseif (in_array(strtolower($ext), $supportedImageFormats, true)) {
         $storage->processImage($temp_name, $new);
@@ -108,9 +108,9 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
 
         parse_tags($tags2, $new, $database);
 
-        UnorganizedFunctions::Notification("Your upload has been completed.", "./watch.php?v=" . $new, "success");
+        UnorganizedFunctions::bannerNotification("Your upload has been completed.", "./watch.php?v=" . $new, "success");
     } else {
-        UnorganizedFunctions::Notification("This file format is not supported.", "/upload");
+        UnorganizedFunctions::bannerNotification("This file format is not supported.", "/upload");
     }
 }
 

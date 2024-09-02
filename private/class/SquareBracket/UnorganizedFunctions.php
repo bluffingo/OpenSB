@@ -17,13 +17,13 @@ use Random\Randomizer;
 class UnorganizedFunctions
 {
     /**
-     * Get the submission's file, works for all three storage modes.
+     * Get the upload's file, works for all three storage modes.
      *
-     * @param array|bool $submission The submission data
+     * @param array $submission The upload data
      * @return array|string|null
      * @since openSB Beta 3.0
      */
-    public static function getSubmissionFile(array|bool $submission): array|string|null
+    public static function getUploadFile(array $submission): array|string|null
     {
         global $isChazizSB, $bunnySettings;
         if ($submission == null)
@@ -41,11 +41,11 @@ class UnorganizedFunctions
     }
 
     /**
-     * Calculate the submission's ratings.
+     * Calculate the upload's ratings.
      *
      * @since openSB Beta 3.0
      */
-    public static function calculateRatings($ratings): array
+    public static function calculateUploadRatings($ratings): array
     {
         $total_ratings = ($ratings["1"] +
             $ratings["2"] +
@@ -70,40 +70,40 @@ class UnorganizedFunctions
         ];
     }
 
-    public static function makeSubmissionArray($database, $submissions): array
+    public static function makeUploadArray($database, $uploads): array
     {
         $submissionsData = [];
-        foreach ($submissions as $submission) {
+        foreach ($uploads as $upload) {
 
-            $bools = UnorganizedFunctions::submissionBitmaskToArray($submission["flags"]);
+            $bools = UnorganizedFunctions::submissionBitmaskToArray($upload["flags"]);
 
             $ratingData = [
-                "1" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$submission["id"]]),
-                "2" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$submission["id"]]),
-                "3" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=3", [$submission["id"]]),
-                "4" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=4", [$submission["id"]]),
-                "5" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$submission["id"]]),
+                "1" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$upload["id"]]),
+                "2" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$upload["id"]]),
+                "3" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=3", [$upload["id"]]),
+                "4" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=4", [$upload["id"]]),
+                "5" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$upload["id"]]),
             ];
 
-            $userData = new UserData($database, $submission["author"]);
+            $userData = new UserData($database, $upload["author"]);
             $submissionsData[] =
                 [
-                    "id" => $submission["video_id"],
-                    "title" => $submission["title"],
-                    "description" => $submission["description"],
-                    "published" => $submission["time"],
-                    "published_originally" => $submission["original_time"],
-                    "original_site" => $submission["original_site"],
-                    "type" => $submission["post_type"],
-                    "content_rating" => $submission["rating"],
-                    "views" => $submission["views"],
+                    "id" => $upload["video_id"],
+                    "title" => $upload["title"],
+                    "description" => $upload["description"],
+                    "published" => $upload["time"],
+                    "published_originally" => $upload["original_time"],
+                    "original_site" => $upload["original_site"],
+                    "type" => $upload["post_type"],
+                    "content_rating" => $upload["rating"],
+                    "views" => $upload["views"],
                     "flags" => $bools,
                     "author" => [
-                        "id" => $submission["author"],
+                        "id" => $upload["author"],
                         "info" => $userData->getUserArray(),
                     ],
                     "interactions" => [
-                        "ratings" => UnorganizedFunctions::calculateRatings($ratingData),
+                        "ratings" => UnorganizedFunctions::calculateUploadRatings($ratingData),
                     ],
                 ];
         }
@@ -226,7 +226,7 @@ class UnorganizedFunctions
      * @param string $color
      * @since SquareBracket 1.0
      */
-    public static function Notification($message, $redirect, string $color = "danger"): void
+    public static function bannerNotification($message, $redirect, string $color = "danger"): void
     {
         $_SESSION["notif_message"] = $message;
         $_SESSION["notif_color"] = $color;
@@ -240,7 +240,7 @@ class UnorganizedFunctions
     /**
      * @since SquareBracket 1.1
      */
-    public static function processImageSubmissionFile($temp_name, $target): void
+    public static function processImageUploadFile($temp_name, $target): void
     {
         $manager = new ImageManager(Driver::class);
         $img = $manager->read($temp_name);
@@ -251,7 +251,7 @@ class UnorganizedFunctions
     /**
      * @since SquareBracket 1.1
      */
-    public static function processImageSubmissionThumbnail($temp_name, $target): void
+    public static function processImageUploadThumbnail($temp_name, $target): void
     {
         $manager = new ImageManager(Driver::class);
         $img = $manager->read($temp_name);
@@ -262,7 +262,8 @@ class UnorganizedFunctions
     /**
      * @since SquareBracket 1.1
      */
-    public static function processCustomThumbnail($temp_name, $target) {
+    public static function processCustomUploadThumbnail($temp_name, $target): void
+    {
         $manager = new ImageManager(Driver::class);
         $img = $manager->read($temp_name);
         $img->scaleDown(1280);
@@ -307,7 +308,7 @@ class UnorganizedFunctions
         die();
     }
 
-    public static function generateRandomizedString($length, $includeSymbols = false): string
+    public static function generateRandomString($length, $includeSymbols = false): string
     {
         if ($includeSymbols) {
             $string = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-";
@@ -401,5 +402,14 @@ class UnorganizedFunctions
         $sz = 'BKMGTP';
         $factor = floor((strlen($qty) - 1) / 3);
         return sprintf("%.{$decimals}f", $qty / pow(1024, $factor)) . @$sz[$factor];
+    }
+
+    // if you use cloudflare and this function is returning
+    // cloudflare ips. make sure you've properly configured your server.
+    public static function getIpAddress()
+    {
+        if (php_sapi_name() == "cli") return null;
+
+        return $_SERVER['REMOTE_ADDR'];
     }
 }

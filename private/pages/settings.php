@@ -10,12 +10,12 @@ global $auth;
 
 if (!$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
+    UnorganizedFunctions::bannerNotification("Please login to continue.", "/login.php");
 }
 
 // we shouldn't let banned users change settings.
 if ($auth->getUserBanData()) {
-    UnorganizedFunctions::Notification("You cannot proceed with this action.", "/");
+    UnorganizedFunctions::bannerNotification("You cannot proceed with this action.", "/");
 }
 
 if (isset($_POST['save'])) {
@@ -53,7 +53,7 @@ if (isset($_POST['save'])) {
                 $database->query("UPDATE users SET password = ?, token = ? WHERE id = ?",
                     [password_hash($pass, PASSWORD_DEFAULT), bin2hex(random_bytes(32)), $auth->getUserID()]);
 
-                UnorganizedFunctions::Notification("Your password has been changed.", "/login.php");
+                UnorganizedFunctions::bannerNotification("Your password has been changed.", "/login.php");
             } else {
                 $error .= " The new passwords aren't identical.";
             }
@@ -142,9 +142,9 @@ if (isset($_POST['save'])) {
             $url = "/user/" . $auth->getUserData()["name"];
         }
 
-        UnorganizedFunctions::Notification("Successfully updated your settings!", $url, "success");
+        UnorganizedFunctions::bannerNotification("Successfully updated your settings!", $url, "success");
     } else {
-        UnorganizedFunctions::Notification($error, "/settings.php");
+        UnorganizedFunctions::bannerNotification($error, "/settings.php");
     }
 }
 

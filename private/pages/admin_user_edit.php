@@ -8,15 +8,15 @@ use SquareBracket\UnorganizedFunctions;
 use SquareBracket\UserData;
 
 if (!$auth->isUserAdmin()) {
-    UnorganizedFunctions::Notification("You do not have permission to access this page.", "/");
+    UnorganizedFunctions::bannerNotification("You do not have permission to access this page.", "/");
 }
 
 if (!$auth->hasUserAuthenticatedAsAnAdmin()) {
-    UnorganizedFunctions::Notification("Please login with your admin password.", "/admin/login");
+    UnorganizedFunctions::bannerNotification("Please login with your admin password.", "/admin/login");
 }
 
 if ($orange->getLocalOptions()["skin"] != "biscuit" && $orange->getLocalOptions()["skin"] != "charla") {
-    UnorganizedFunctions::Notification("Please change your skin to Biscuit.", "/theme");
+    UnorganizedFunctions::bannerNotification("Please change your skin to Biscuit.", "/theme");
 }
 
 $username = $path[3] ?? null;
@@ -26,21 +26,21 @@ $user = $database->fetch("SELECT * FROM users u WHERE u.name = ?", [$username]);
 if (isset($_POST['ban_user'])) {
     // Don't ban non-existent users.
     if (!$database->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$_POST["ban_user"]])) {
-        UnorganizedFunctions::Notification("This user does not exist.", "/admin/users/");
+        UnorganizedFunctions::bannerNotification("This user does not exist.", "/admin/users/");
     }
     // Don't ban mods/admins.
     if ($database->fetch("SELECT u.powerlevel FROM users u WHERE u.name = ?", [$_POST["ban_user"]])["powerlevel"] != 1) {
-        UnorganizedFunctions::Notification("This user cannot be banned.", "/admin/users/");
+        UnorganizedFunctions::bannerNotification("This user cannot be banned.", "/admin/users/");
     }
     // Check if user is already banned, if not, then ban. Otherwise, unban.
     $id = $database->fetch("SELECT u.id FROM users u WHERE u.name = ?", [$_POST["ban_user"]])["id"];
     if ($database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$id])) {
         $database->query("DELETE FROM bans WHERE userid = ?", [$id]);
-        UnorganizedFunctions::Notification("Unbanned " . $_POST["ban_user"] . '.' , "/admin/users", "success");
+        UnorganizedFunctions::bannerNotification("Unbanned " . $_POST["ban_user"] . '.' , "/admin/users", "success");
     } else {
         $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
             [$id, "Banned by " . $auth->getUserData()["name"], time()]);
-        UnorganizedFunctions::Notification("Banned " . $_POST["ban_user"] . '.', "/admin/users", "success");
+        UnorganizedFunctions::bannerNotification("Banned " . $_POST["ban_user"] . '.', "/admin/users", "success");
     }
 }
 

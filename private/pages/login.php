@@ -49,9 +49,9 @@ if (isset($path_username)) {
             'httponly' => false,
             'samesite' =>'Lax',
         ]);
-        UnorganizedFunctions::Notification("Switched to $path_username.", '/', "success");
+        UnorganizedFunctions::bannerNotification("Switched to $path_username.", '/', "success");
     } else {
-        UnorganizedFunctions::Notification("You have not logged into this account.", '/');
+        UnorganizedFunctions::bannerNotification("You have not logged into this account.", '/');
     }
 }
 
@@ -71,7 +71,7 @@ if (isset($_POST["loginsubmit"])) {
     if (!$password) $error = true;
 
     if ($username == $auth->getUserData()["name"]) {
-        UnorganizedFunctions::Notification("You're already logged into this account.", "/");
+        UnorganizedFunctions::bannerNotification("You're already logged into this account.", "/");
     }
 
     if (!$error) {
@@ -82,7 +82,7 @@ if (isset($_POST["loginsubmit"])) {
             $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$logindata['ip']]);
 
             if ($ipban) {
-                UnorganizedFunctions::Notification("This account's latest IP address is banned.", "/login.php");
+                UnorganizedFunctions::bannerNotification("This account's latest IP address is banned.", "/login.php");
             }
 
             // if we're logged in, add our current token in an array for account switching purposes.
@@ -130,14 +130,14 @@ if (isset($_POST["loginsubmit"])) {
             $_SESSION["SBTOKEN"] = $logindata['token'];
 
             $nid = $database->result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
-            $database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), Utilities::get_ip_address(), $nid]);
+            $database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), UnorganizedFunctions::getIpAddress(), $nid]);
 
             UnorganizedFunctions::redirect('./');
         } else {
-            UnorganizedFunctions::Notification("Incorrect credentials.", "/login.php");
+            UnorganizedFunctions::bannerNotification("Incorrect credentials.", "/login.php");
         }
     } else {
-        UnorganizedFunctions::Notification("Please input your credentials.", "/login.php");
+        UnorganizedFunctions::bannerNotification("Please input your credentials.", "/login.php");
     }
 }
 

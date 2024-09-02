@@ -20,7 +20,7 @@ if (isset($_POST['apply'])) {
 
     setcookie("SBOPTIONS", base64_encode(json_encode($options)), 2147483647);
 
-    UnorganizedFunctions::Notification("Successfully changed your settings.", "/index.php", "success");
+    UnorganizedFunctions::bannerNotification("Successfully changed your settings.", "/index.php", "success");
 }
 
 echo $twig->render('theme.twig');

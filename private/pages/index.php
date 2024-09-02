@@ -36,8 +36,8 @@ $news_recent = $database->fetchArray($database->query("SELECT j.* FROM journals 
 $users_recent = $database->fetchArray($database->query("SELECT u.id, u.about, u.title, (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num FROM users u ORDER BY u.lastview DESC LIMIT 8"));
 
 $data = [
-    "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $submissions_random),
-    "submissions_new" => UnorganizedFunctions::makeSubmissionArray($database, $submissions_recent),
+    "submissions" => UnorganizedFunctions::makeUploadArray($database, $submissions_random),
+    "submissions_new" => UnorganizedFunctions::makeUploadArray($database, $submissions_recent),
     "news_recent" => UnorganizedFunctions::makeJournalArray($database, $news_recent),
     "users_recent" => $users_recent, // TODO: makeUsersArray
 ];

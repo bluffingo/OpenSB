@@ -39,7 +39,7 @@ if ($user) {
     // TODO: handle old names
     $id = UnorganizedFunctions::usernameToID($database, $user);
     if (!$id) {
-        UnorganizedFunctions::Notification("This user does not exist.", "/");
+        UnorganizedFunctions::bannerNotification("This user does not exist.", "/");
     }
     $submissions = $submission_query->query($order, $limit, "v.author = ?", [$id]);
     $submission_count = $submission_query->count("v.author = ?", [$id]);
@@ -49,7 +49,7 @@ if ($user) {
 }
 
 $data = [
-    "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $submissions),
+    "submissions" => UnorganizedFunctions::makeUploadArray($database, $submissions),
     "count" => $submission_count,
 ];
 

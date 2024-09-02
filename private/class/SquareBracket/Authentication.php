@@ -50,12 +50,12 @@ class Authentication
                 // this will prevent users from using IP banned accounts on other IPs.
                 if ($this->database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$this->user_data['ip']])) {
                     setcookie("SBTOKEN", "", time() - 3600);
-                    UnorganizedFunctions::Notification("You have been logged out, as this account is linked to a banned IP address.", true);
+                    UnorganizedFunctions::bannerNotification("You have been logged out, as this account is linked to a banned IP address.", true);
                 }
 
                 // update "last logged in" timestamp after 12 hours.
                 if ($database->result("SELECT COUNT(*) FROM users WHERE lastview < ? AND id = ?", [time() - (12 * 60 * 60), $this->user_id])) {
-                    $database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), Utilities::get_ip_address(), $this->user_id]);
+                    $database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), UnorganizedFunctions::getIpAddress(), $this->user_id]);
                 }
 
                 // if "comfortable rating" is questionable, reset it back to general. this is because the site now uses
@@ -63,7 +63,7 @@ class Authentication
                 // old system is left there for compatibility. -chaziz 6/9/2024
                 if ($this->user_data["comfortable_rating"] == "questionable") {
                     $this->database->query("UPDATE users SET comfortable_rating = 'general' WHERE id = ?", [$this->user_id]);
-                    UnorganizedFunctions::Notification("Due to updates with content filtering, your filtering settings have been reset from Questionable to General.", false, "primary");
+                    UnorganizedFunctions::bannerNotification("Due to updates with content filtering, your filtering settings have been reset from Questionable to General.", false, "primary");
                 }
 
                 $this->has_authenticated_as_an_admin = $_SESSION["SB_ADMIN_AUTHED"] ?? null;

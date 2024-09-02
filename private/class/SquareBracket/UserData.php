@@ -16,7 +16,7 @@ class UserData
         $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$id])['COUNT(user)'];
         $this->is_banned = $this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
         if ($this->data == null) {
-            trigger_error("Account ID $id is nonexistent.", E_USER_WARNING);
+            trigger_error("User ID $id is nonexistent.", E_USER_WARNING);
         }
     }
 

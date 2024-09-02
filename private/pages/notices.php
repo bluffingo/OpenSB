@@ -13,8 +13,8 @@ function typeToName($database, $type)
     $name = "generic";
 
     switch (NotificationEnum::from($type)) {
-        case NotificationEnum::CommentSubmission:
-            $name = "comment_submission";
+        case NotificationEnum::CommentUpload:
+            $name = "comment_upload";
             break;
         case NotificationEnum::CommentProfile:
             $name = "comment_profile";
@@ -22,8 +22,8 @@ function typeToName($database, $type)
         case NotificationEnum::CommentJournal:
             $name = "comment_journal";
             break;
-        case NotificationEnum::TakedownSubmission:
-            $name = "submission_takedown";
+        case NotificationEnum::UploadTakedown:
+            $name = "upload_takedown";
             break;
         case NotificationEnum::Follow:
             $name = "user_follow";
@@ -38,17 +38,17 @@ function typeToIntro($database, $type)
     $intro = "Generic notice by ";
 
     switch (NotificationEnum::from($type)) {
-        case NotificationEnum::CommentSubmission:
-            $intro = "SubmissionView comment by ";
+        case NotificationEnum::CommentUpload:
+            $intro = "Comment on your upload by ";
             break;
         case NotificationEnum::CommentProfile:
-            $intro = "UserProfile comment by ";
+            $intro = "Comment on your profile by ";
             break;
         case NotificationEnum::CommentJournal:
-            $intro = "Journal comment by ";
+            $intro = "Comment on your journal by ";
             break;
-        case NotificationEnum::TakedownSubmission:
-            $intro = "Your submission has been taken down.";
+        case NotificationEnum::UploadTakedown:
+            $intro = "Your upload has been taken down.";
             break;
         case NotificationEnum::Follow:
             $intro = "You have been followed by ";
@@ -63,7 +63,7 @@ function getRequiredData($database, $notice)
     $data = "[placeholder]";
 
     switch (NotificationEnum::from($notice["type"])) {
-        case NotificationEnum::CommentSubmission:
+        case NotificationEnum::CommentUpload:
             $comment = $database->fetch("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM comments c WHERE c.comment_id = ?", [$notice["related_id"]]);
 
             $data = $comment["comment"];
@@ -81,7 +81,7 @@ function getRequiredData($database, $notice)
 
 if (!$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
+    UnorganizedFunctions::bannerNotification("Please login to continue.", "/login.php");
 }
 
 $data = $database->fetchArray($database->query("SELECT * FROM notifications WHERE recipient = ? ORDER BY id DESC", [$auth->getUserID()]));

@@ -26,6 +26,7 @@ use SquareBracket\Profiler;
 use SquareBracket\SquareBracket;
 use SquareBracket\Storage;
 use SquareBracket\Templating;
+use SquareBracket\UnorganizedFunctions;
 use SquareBracket\Utilities;
 
 // please use apache/nginx for production stuff.
@@ -134,10 +135,10 @@ $localization = new Localization();
 if (isset($_SERVER['HTTP_REFERER'])) {
     $blacklistedReferers = $database->fetch("SELECT url from blacklisted_referer where url = ?", [$_SERVER['HTTP_REFERER']]);
     if ($blacklistedReferers) {
-        $alreadyIpBanned = $database->fetch("SELECT * from ipbans where ip = ?", [Utilities::get_ip_address()]);
+        $alreadyIpBanned = $database->fetch("SELECT * from ipbans where ip = ?", [UnorganizedFunctions::getIpAddress()]);
         if (!$alreadyIpBanned) {
             $database->query("INSERT INTO ipbans (ip, reason, time) VALUES (?,?,?)",
-                [Utilities::get_ip_address(), "[Automatically done by OpenSB] Referer is from blacklisted website "
+                [UnorganizedFunctions::getIpAddress(), "[Automatically done by OpenSB] Referer is from blacklisted website "
                     . $_SERVER['HTTP_REFERER'], time()]);
         }
     }
@@ -170,8 +171,8 @@ if (!file_exists(SB_GIT_PATH)) {
     die();
 }
 
-if ($ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities::get_ip_address()])) {
-    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [Utilities::get_ip_address()]));
+if ($ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [UnorganizedFunctions::getIpAddress()])) {
+    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [UnorganizedFunctions::getIpAddress()]));
     echo $twig->render("ip_banned.twig", [
         "data" => $ipban,
         "users" => $usersAssociatedWithIP,

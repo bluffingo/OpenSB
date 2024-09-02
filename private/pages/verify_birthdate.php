@@ -40,7 +40,7 @@ if (isset($_POST['birthdatesubmit'])) {
         $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
             [$auth->getUserData()["id"], "Failed birthdate verification check / Below 13", time()]);
     } else {
-        UnorganizedFunctions::Notification("Successfully verified!", false, "success");
+        UnorganizedFunctions::bannerNotification("Successfully verified!", false, "success");
     }
     $database->query("UPDATE users SET birthdate = ? WHERE id = ?", [$dobDateTime->format('Y-m-d'), $auth->getUserData()["id"]]);
     header('Location: /index');

@@ -11,7 +11,7 @@ $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page
 
 if (!$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
+    UnorganizedFunctions::bannerNotification("Please login to continue.", "/login.php");
 }
 
 $limit = sprintf("LIMIT %s,%s", (($page_number - 1) * 20), 20);
@@ -21,7 +21,7 @@ $submissions = $database->fetchArray($database->query("SELECT v.* FROM videos v 
 $submission_count = $database->result("SELECT COUNT(*) FROM videos where videos.author = ?", [$auth->getUserID()]);
 
 $data = [
-    "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $submissions),
+    "submissions" => UnorganizedFunctions::makeUploadArray($database, $submissions),
     "count" => $submission_count,
 ];
 

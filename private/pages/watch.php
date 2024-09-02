@@ -22,16 +22,16 @@ $submission = new UploadData($database, $id);
 $takedown = $submission->getTakedown();
 if ($takedown && !$auth->isUserAdmin()) {
     // go back to homepage with a notification
-    UnorganizedFunctions::Notification("This upload has been taken down.", "/");
+    UnorganizedFunctions::bannerNotification("This upload has been taken down.", "/");
 }
 
 if ($submission->isDeleted()) {
-    UnorganizedFunctions::Notification("This upload has been deleted.", "/");
+    UnorganizedFunctions::bannerNotification("This upload has been deleted.", "/");
 }
 
 $data = $submission->getData();
 if (!$data) {
-    UnorganizedFunctions::Notification("This upload does not exist.", "/");
+    UnorganizedFunctions::bannerNotification("This upload does not exist.", "/");
 }
 
 $tagBlacklist = $auth->getUserBlacklistedTags();
@@ -42,9 +42,9 @@ if (isset($data["tags"])) {
         foreach ($decodedTags as $tag) {
             if (in_array($tag, $tagBlacklist)) {
                 if ($auth->isUserLoggedIn()) {
-                    UnorganizedFunctions::Notification("This upload is blacklisted per your settings.", "/");
+                    UnorganizedFunctions::bannerNotification("This upload is blacklisted per your settings.", "/");
                 } else {
-                    UnorganizedFunctions::Notification("This upload is blacklisted by default.", "/");
+                    UnorganizedFunctions::bannerNotification("This upload is blacklisted by default.", "/");
                 }
             }
         }
@@ -52,10 +52,10 @@ if (isset($data["tags"])) {
 }
 
 
-$comments = new CommentData($database, CommentLocation::Submission, $id);
+$comments = new CommentData($database, CommentLocation::Upload, $id);
 $author = new UserData($database, $data["author"]);
 if ($author->isUserBanned() && !$auth->isUserAdmin()) {
-    UnorganizedFunctions::Notification("This upload's author is banned.", "/");
+    UnorganizedFunctions::bannerNotification("This upload's author is banned.", "/");
 }
 
 $tags = $submission->getTags();
@@ -77,14 +77,14 @@ $bools = $submission->bitmaskToArray();
 
 if ($bools["block_guests"] && !$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::Notification("This submission's author has blocked guest access.", "/login.php");
+    UnorganizedFunctions::bannerNotification("This submission's author has blocked guest access.", "/login.php");
 }
 
 if (UnorganizedFunctions::RatingToNumber($data["rating"]) > UnorganizedFunctions::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
-    UnorganizedFunctions::Notification("You cannot access sensitive-rated submissions.", "/");
+    UnorganizedFunctions::bannerNotification("You cannot access sensitive-rated submissions.", "/");
 }
 
-$ip = Utilities::get_ip_address();
+$ip = UnorganizedFunctions::getIpAddress();
 
 $CrawlerDetect = new CrawlerDetect;
 
@@ -227,7 +227,7 @@ $page_data = [
     "original_site" => $data["original_site"],
     "published_originally" => $data["original_time"],
     "type" => $data["post_type"],
-    "file" => UnorganizedFunctions::getSubmissionFile($data),
+    "file" => UnorganizedFunctions::getUploadFile($data),
     "author" => [
         "id" => $data["author"],
         "info" => $author->getUserArray(),
@@ -236,14 +236,14 @@ $page_data = [
     ],
     "interactions" => [
         "views" => $data["views"],
-        "ratings" => UnorganizedFunctions::calculateRatings($ratings),
+        "ratings" => UnorganizedFunctions::calculateUploadRatings($ratings),
         "favorites" => $favorites,
         "comments" => $comment_count,
     ],
     "comments" => $comment_data,
     "bools" => $bools,
     "rating" => $data["rating"],
-    "recommended" => UnorganizedFunctions::makeSubmissionArray($database, $recommended),
+    "recommended" => UnorganizedFunctions::makeUploadArray($database, $recommended),
     "tags" => $tags,
 ];
 

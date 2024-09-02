@@ -18,15 +18,15 @@ $data = $submission->getData();
 
 if (!$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::Notification("Please login to continue.", "/login.php");
+    UnorganizedFunctions::bannerNotification("Please login to continue.", "/login.php");
 }
 
 if ($auth->getUserBanData() || $submission->getTakedown()) {
-    UnorganizedFunctions::Notification("You cannot proceed with this action.", "/");
+    UnorganizedFunctions::bannerNotification("You cannot proceed with this action.", "/");
 }
 
 if ($auth->getUserID() != $data["author"]) {
-    UnorganizedFunctions::Notification("This is not your submission.", "/");
+    UnorganizedFunctions::bannerNotification("This is not your upload.", "/");
 }
 
 if (isset($_POST['upload'])) {
@@ -43,7 +43,7 @@ if (isset($_POST['upload'])) {
 
     $database->query("UPDATE videos SET title = ?, description = ? WHERE video_id = ?",
         [$title, $desc, $id]);
-    UnorganizedFunctions::Notification("Your submission's details have been modified.", "/view/" . $id, "success");
+    UnorganizedFunctions::bannerNotification("Your upload's details have been successfully modified.", "/view/" . $id, "success");
 }
 
 $infoData = [

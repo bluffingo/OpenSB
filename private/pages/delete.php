@@ -14,11 +14,11 @@ $data = $submission->getData();
 
 if (!$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::Notification("You might've logged out by accident. Re-enter your credentials.", "/login.php");
+    UnorganizedFunctions::bannerNotification("Please login to continue.", "/login.php");
 }
 
 if ($auth->getUserID() != $data["author"]) {
-    UnorganizedFunctions::Notification("This is not your submission.", "/");
+    UnorganizedFunctions::bannerNotification("This is not your upload.", "/");
 }
 
 $database->query("DELETE FROM videos WHERE video_id = ?", [$id]);
@@ -26,4 +26,4 @@ $database->query("INSERT INTO deleted_videos (id, uploaded_time, deleted_time) V
 
 $storage->deleteSubmission($data);
 
-UnorganizedFunctions::Notification("Deleted.", "/my_uploads", "success");
+UnorganizedFunctions::bannerNotification("This upload has been successfully deleted.", "/my_uploads", "success");

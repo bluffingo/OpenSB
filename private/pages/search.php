@@ -52,7 +52,7 @@ $submissions = $database->fetchArray(
         [$query, $query, $query]));
 
 $data = [
-    "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $submissions),
+    "submissions" => UnorganizedFunctions::makeUploadArray($database, $submissions),
 ];
 
 echo $twig->render('browse.twig', [

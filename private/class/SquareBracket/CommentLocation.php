@@ -4,7 +4,7 @@ namespace SquareBracket;
 
 enum CommentLocation
 {
-    case Submission;
+    case Upload;
     case Profile;
     case Journal;
 }

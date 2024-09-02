@@ -30,13 +30,13 @@ if (!$data)
         header("Location: /user/$new_username");
         exit();
     } else {
-        UnorganizedFunctions::Notification("This user does not exist.", "/");
+        UnorganizedFunctions::bannerNotification("This user does not exist.", "/");
     }
 }
 
 if ($database->fetch("SELECT * FROM bans WHERE userid = ?", [$data["id"]]))
 {
-    UnorganizedFunctions::Notification("This user is banned.", "/");
+    UnorganizedFunctions::bannerNotification("This user is banned.", "/");
 }
 
 $user_submissions = $submission_query->query("v.time desc", 12, "v.author = ?", [$data["id"]]);
@@ -71,7 +71,7 @@ $profile_data = [
     "joined" => $data["joined"],
     "connected" => $data["lastview"],
     "is_current" => $is_own_profile,
-    "submissions" => UnorganizedFunctions::makeSubmissionArray($database, $user_submissions),
+    "submissions" => UnorganizedFunctions::makeUploadArray($database, $user_submissions),
     "journals" => UnorganizedFunctions::makeJournalArray($database, $user_journals),
     "comments" => $comments->getComments(),
     "followers" => $followers,

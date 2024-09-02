@@ -8,4 +8,4 @@ use SquareBracket\UnorganizedFunctions;
 
 session_destroy();
 
-UnorganizedFunctions::Notification("Logged out!", "/", "success");
+UnorganizedFunctions::bannerNotification("Logged out!", "/", "success");

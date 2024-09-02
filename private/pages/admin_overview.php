@@ -7,15 +7,15 @@ global $auth, $isChazizSB, $twig, $database, $orange;
 use SquareBracket\UnorganizedFunctions;
 
 if (!$auth->isUserAdmin()) {
-    UnorganizedFunctions::Notification("You do not have permission to access this page.", "/");
+    UnorganizedFunctions::bannerNotification("You do not have permission to access this page.", "/");
 }
 
 if (!$auth->hasUserAuthenticatedAsAnAdmin()) {
-    UnorganizedFunctions::Notification("Please login with your admin password.", "/admin/login");
+    UnorganizedFunctions::bannerNotification("Please login with your admin password.", "/admin/login");
 }
 
 if ($orange->getLocalOptions()["skin"] != "biscuit" && $orange->getLocalOptions()["skin"] != "charla") {
-    UnorganizedFunctions::Notification("Please change your skin to Biscuit.", "/theme");
+    UnorganizedFunctions::bannerNotification("Please change your skin to Biscuit.", "/theme");
 }
 
 /**
@@ -83,12 +83,12 @@ if ($isChazizSB) {
 // Admin actions
 if(isset($_POST["action"])) {
     if ($_POST["action"] == "generate_invite_key") {
-        $random = strtoupper("SB" . UnorganizedFunctions::generateRandomizedString(16));
+        $random = strtoupper("SB" . UnorganizedFunctions::generateRandomString(16));
 
         $database->query("INSERT INTO invite_keys (invite_key, generated_by, generated_time) VALUES (?,?,?)",
             [$random, $auth->getUserID(), time()]);
 
-        UnorganizedFunctions::Notification("Generated key! ($random)", "/admin.php", "success");
+        UnorganizedFunctions::bannerNotification("Generated key! ($random)", "/admin.php", "success");
     }
 }
 
