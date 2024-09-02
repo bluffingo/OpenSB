@@ -112,27 +112,23 @@ class Templating
         // this fulptube branding is meant to look like the squarebracket branding on purpose, since
         // both squarebracket.pw and fulptube.rocks lead to the same site.
         if (($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'fulptube.rocks')) {
+            $isFulpTube = true;
             $branding = [
-                "name" => "CleberTube",
+                "name" => "FulpTube",
                 "assets_location" => "/assets/sb_branding/fulp",
             ];
-            $isFulpTube = true;
         } else {
+            $isFulpTube = false;
             // custom branding for themes. for that Extra Accuracy™.
             if ($isChazizSB) {
                 if ($this->skin == "finalium" && $this->theme == "qobo") {
-                    $branding = [
-                        "name" => "Qobo",
-                        "assets_location" => "/assets/sb_branding",
-                    ];
+                    $branding["name"] = "Qobo";
                 } elseif ($this->skin == "finalium" && $this->theme == "beta") {
-                    $branding = [
-                        "name" => "cheeseRox",
-                        "assets_location" => "/assets/sb_branding",
-                    ];
+                    $branding["name"] = "cheeseRox";
+                } elseif ($this->skin == "finalium" || $this->skin == "bootstrap") {
+                    $branding["name"] = "squareBracket";
                 }
             }
-            $isFulpTube = false;
         }
 
         /*
