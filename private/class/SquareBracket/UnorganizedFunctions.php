@@ -417,9 +417,8 @@ class UnorganizedFunctions
 
     public static function isFulpTube()
     {
-        return true;
-        //global $isChazizSB;
-        //return ($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'fulptube.rocks');
+        global $isChazizSB;
+        return ($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'fulptube.rocks');
     }
 
     public static function sbToFulpTube($input, $isAnnouncementJournal = false)
