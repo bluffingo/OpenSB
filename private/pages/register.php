@@ -2,7 +2,7 @@
 
 namespace OpenSB;
 
-global $disableRegistration, $enableInviteKeys, $twig, $database, $captcha;
+global $disableRegistration, $enableInviteKeys, $twig, $database, $captcha, $isDebug;
 
 use DateTime;
 use SquareBracket\UnorganizedFunctions;
@@ -14,26 +14,28 @@ if ($disableRegistration) {
 
 $ipcheck = file_get_contents("https://api.stopforumspam.org/api?ip=" . UnorganizedFunctions::getIpAddress());
 
-if (str_contains($ipcheck, "<appears>yes</appears>")) {
+if (str_contains($ipcheck, "<appears>yes</appears>") && !$isDebug) {
     UnorganizedFunctions::bannerNotification("This IP address appears to be suspicious.", "/index.php");
 }
 
 if (isset($_POST['registersubmit'])) {
     $error = "";
 
-    $verify = curl_init();
-    curl_setopt($verify, CURLOPT_URL,   "https://hcaptcha.com/siteverify");
-    curl_setopt($verify, CURLOPT_POST, true);
-    curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query([
-        'secret' => $captcha['secret'],
-        'response' => $_POST['h-captcha-response']
-    ]));
-    curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
-    $verify = curl_exec($verify);
-    $verify = json_decode($verify, true);
+    if ($captcha["enabled"]) {
+        $verify = curl_init();
+        curl_setopt($verify, CURLOPT_URL,   "https://hcaptcha.com/siteverify");
+        curl_setopt($verify, CURLOPT_POST, true);
+        curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query([
+            'secret' => $captcha['secret'],
+            'response' => $_POST['h-captcha-response']
+        ]));
+        curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+        $verify = curl_exec($verify);
+        $verify = json_decode($verify, true);
 
-    if (!$verify['success']) {
-        $error .= "You must complete the captcha in order to register a new account. ";
+        if (!$verify['success']) {
+            $error .= "You must complete the captcha in order to register a new account. ";
+        }
     }
 
     $username = trim($_POST['username'] ?? '');
@@ -49,7 +51,7 @@ if (isset($_POST['registersubmit'])) {
     if ($database->result("SELECT COUNT(*) FROM users WHERE email = ?", [$mail]) > 0) $error .= "This email address is used by another account. ";
     if (!isset($pass2) || $pass != $pass2) $error .= "The passwords don't match. ";
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) $error .= "Invalid email format. ";
-    if ((UnorganizedFunctions::getIpAddress() != "127.0.0.1") || (UnorganizedFunctions::getIpAddress() != "::1")) {
+    if ((UnorganizedFunctions::getIpAddress() != "127.0.0.1") && (UnorganizedFunctions::getIpAddress() != "::1")) {
         if ($database->result("SELECT COUNT(*) FROM users WHERE ip = ?", [UnorganizedFunctions::getIpAddress()]) > 3)
             $error .= "Your IP address has too many accounts associated with it. ";
     }

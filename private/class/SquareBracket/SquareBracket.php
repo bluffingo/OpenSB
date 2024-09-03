@@ -50,6 +50,7 @@ class SquareBracket {
         if (isset($_COOKIE["SBACCOUNTS"])) {
             $stupid_fucking_bullshit = str_replace($this->accounts_cookie_warning, "", $_COOKIE["SBACCOUNTS"]);
             $this->accounts = json_decode(base64_decode($stupid_fucking_bullshit), true);
+            var_dump($this->accounts);
         } else {
             $this->accounts = [];
         }

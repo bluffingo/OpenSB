@@ -25,12 +25,14 @@ if (isset($path_username)) {
     // stupid shit
     foreach ($accounts as $account) {
         if ($account["userid"] == $id) {
-            $is_the_account_in_the_accounts_array = true;
-            $token = $account["token"];
-            $new_array[] = [
-                "userid" => $auth->getUserID(),
-                "token" => $_SESSION["SBTOKEN"],
-            ];
+            if (!$is_the_account_in_the_accounts_array) {
+                $is_the_account_in_the_accounts_array = true;
+                $token = $account["token"];
+                $new_array[] = [
+                    "userid" => $auth->getUserID(),
+                    "token" => $_SESSION["SBTOKEN"],
+                ];
+            }
         } else {
             $new_array[] = $account;
         }
@@ -56,7 +58,6 @@ if (isset($path_username)) {
 }
 
 if (isset($_POST["loginsubmit"])) {
-
     $error = false;
 
     $username = ($_POST['username'] ?? null);
@@ -75,7 +76,7 @@ if (isset($_POST["loginsubmit"])) {
     }
 
     if (!$error) {
-        $logindata = $database->fetch("SELECT password,token,ip FROM users WHERE name = ?", [$username]);
+        $logindata = $database->fetch("SELECT password,token,ip,id FROM users WHERE name = ?", [$username]);
 
         if ($logindata && password_verify($password, $logindata['password'])) {
             // check if the account is from an ip that is in ipbans
@@ -90,11 +91,9 @@ if (isset($_POST["loginsubmit"])) {
                 if (!isset($_COOKIE["SBACCOUNTS"])) {
                     $current_userid = $auth->getUserID();
 
-                    $cookie_shit_testing = [
-                        [
-                            "userid" => $current_userid,
-                            "token" => $_SESSION["SBTOKEN"],
-                        ]
+                    $cookie_shit_testing[] = [
+                        "userid" => $current_userid,
+                        "token" => $_SESSION["SBTOKEN"],
                     ];
 
                     $encoded_sbaccounts_cookie = ($warning . base64_encode(json_encode($cookie_shit_testing)));
@@ -102,14 +101,22 @@ if (isset($_POST["loginsubmit"])) {
                     // TODO: this will be buggy, i can feel it. -chaziz 6/28/2024
                     // FIXME: and yes it is! duplicate accounts. i kinda dont care tho. -chaziz 8/23/2024
                     $stupid_fucking_bullshit = str_replace($warning, "", $_COOKIE["SBACCOUNTS"]);
-                    $decoded_accounts = json_decode(base64_decode($stupid_fucking_bullshit));
+                    $decoded_accounts = json_decode(base64_decode($stupid_fucking_bullshit), true);
 
                     $current_userid = $auth->getUserID();
 
-                    $decoded_accounts[] = [
-                        "userid" => $current_userid,
-                        "token" => $_SESSION["SBTOKEN"],
-                    ];
+                    $duplicates = array_keys(array_combine(array_keys($decoded_accounts), array_column($decoded_accounts, 'userid')),$logindata["id"]);
+
+                    foreach ($duplicates as $duplicate) {
+                        unset ($decoded_accounts[$duplicate]);
+                    }
+
+                    if ($current_userid != $logindata["id"]) {
+                        $decoded_accounts[] = [
+                            "userid" => $current_userid,
+                            "token" => $_SESSION["SBTOKEN"],
+                        ];
+                    }
 
                     $encoded_sbaccounts_cookie = ($warning . base64_encode(json_encode($decoded_accounts)));
                 }
