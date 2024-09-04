@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $twig, $orange;
 
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 session_destroy();
 
-UnorganizedFunctions::bannerNotification("Logged out!", "/", "success");
+Utilities::bannerNotification("Logged out!", "/", "success");

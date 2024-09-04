@@ -4,18 +4,18 @@ namespace OpenSB;
 
 global $twig, $auth, $database;
 
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 global $auth;
 
 if (!$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::bannerNotification("Please login to continue.", "/login.php");
+    Utilities::bannerNotification("Please login to continue.", "/login.php");
 }
 
 // we shouldn't let banned users change settings.
 if ($auth->getUserBanData()) {
-    UnorganizedFunctions::bannerNotification("You cannot proceed with this action.", "/");
+    Utilities::bannerNotification("You cannot proceed with this action.", "/");
 }
 
 if (isset($_POST['save'])) {
@@ -53,7 +53,7 @@ if (isset($_POST['save'])) {
                 $database->query("UPDATE users SET password = ?, token = ? WHERE id = ?",
                     [password_hash($pass, PASSWORD_DEFAULT), bin2hex(random_bytes(32)), $auth->getUserID()]);
 
-                UnorganizedFunctions::bannerNotification("Your password has been changed.", "/login.php");
+                Utilities::bannerNotification("Your password has been changed.", "/login.php");
             } else {
                 $error .= " The new passwords aren't identical.";
             }
@@ -78,7 +78,7 @@ if (isset($_POST['save'])) {
                 if ($is_old_username) {
                     // still validate any old usernames because this code was actually broken and
                     // didn't validate anything (sql was sanitized tho), at all! -chaziz 6/28/2024
-                    $error .= UnorganizedFunctions::validateUsername($new_username, $database, false);
+                    $error .= Utilities::validateUsername($new_username, $database, false);
                     $database->query("INSERT INTO user_old_names (user, old_name, time) VALUES (?, ?, ?)",
                         [$auth->getUserID(), $old_username, time()]);
 
@@ -87,7 +87,7 @@ if (isset($_POST['save'])) {
                         $username_changed = true;
                     }
                 } else {
-                    $error .= UnorganizedFunctions::validateUsername($new_username, $database);
+                    $error .= Utilities::validateUsername($new_username, $database);
                     if ($database->result("SELECT COUNT(*) FROM user_old_names WHERE user != ? AND old_name = ?", [$auth->getUserID(), $new_username])) {
                         $error .= "You cannot use someone else's previous username.";
                     }
@@ -142,9 +142,9 @@ if (isset($_POST['save'])) {
             $url = "/user/" . $auth->getUserData()["name"];
         }
 
-        UnorganizedFunctions::bannerNotification("Successfully updated your settings!", $url, "success");
+        Utilities::bannerNotification("Successfully updated your settings!", $url, "success");
     } else {
-        UnorganizedFunctions::bannerNotification($error, "/settings.php");
+        Utilities::bannerNotification($error, "/settings.php");
     }
 }
 

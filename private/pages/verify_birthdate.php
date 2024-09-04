@@ -5,7 +5,6 @@ namespace OpenSB;
 global $twig, $database, $auth, $orange, $isChazizSB;
 
 use DateTime;
-use SquareBracket\UnorganizedFunctions;
 use SquareBracket\Utilities;
 
 if (isset($auth->getUserData()['birthdate'])) {
@@ -40,7 +39,7 @@ if (isset($_POST['birthdatesubmit'])) {
         $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
             [$auth->getUserData()["id"], "Failed birthdate verification check / Below 13", time()]);
     } else {
-        UnorganizedFunctions::bannerNotification("Successfully verified!", false, "success");
+        Utilities::bannerNotification("Successfully verified!", false, "success");
     }
     $database->query("UPDATE users SET birthdate = ? WHERE id = ?", [$dobDateTime->format('Y-m-d'), $auth->getUserData()["id"]]);
     header('Location: /index');

@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $database, $orange, $auth;
 
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 use SquareBracket\UploadQuery;
 
 $submission_query = new UploadQuery($database);
@@ -36,9 +36,9 @@ $news_recent = $database->fetchArray($database->query("SELECT j.* FROM journals 
 //$users_recent = $database->fetchArray($database->query("SELECT u.id, u.about, u.title, (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num FROM users u ORDER BY u.lastview DESC LIMIT 8"));
 
 $data = [
-    "submissions" => UnorganizedFunctions::makeUploadArray($database, $submissions_random),
-    "submissions_new" => UnorganizedFunctions::makeUploadArray($database, $submissions_recent),
-    "news_recent" => UnorganizedFunctions::makeJournalArray($database, $news_recent),
+    "submissions" => Utilities::makeUploadArray($database, $submissions_random),
+    "submissions_new" => Utilities::makeUploadArray($database, $submissions_recent),
+    "news_recent" => Utilities::makeJournalArray($database, $news_recent),
     //"users_recent" => $users_recent, // TODO: makeUsersArray
 ];
 

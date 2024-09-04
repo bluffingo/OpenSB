@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $database;
 
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 function getOrderFromType($type): string
 {
@@ -38,7 +38,7 @@ $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page
 $order = getOrderFromType($type);
 $limit = sprintf("LIMIT %s,%s", (($page_number - 1) * 20), 20);
 
-$whereRatings = UnorganizedFunctions::whereRatings();
+$whereRatings = Utilities::whereRatings();
 
 $submissions = $database->fetchArray(
     $database->query(
@@ -52,7 +52,7 @@ $submissions = $database->fetchArray(
         [$query, $query, $query]));
 
 $data = [
-    "submissions" => UnorganizedFunctions::makeUploadArray($database, $submissions),
+    "submissions" => Utilities::makeUploadArray($database, $submissions),
 ];
 
 echo $twig->render('browse.twig', [

@@ -6,7 +6,7 @@ global $twig, $database, $auth;
 
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 use SquareBracket\UserData;
 
 $id = ($_GET['j'] ?? null);
@@ -14,7 +14,7 @@ $id = ($_GET['j'] ?? null);
 $data = $database->fetch("SELECT j.* FROM journals j WHERE j.id = ?", [$id]);
 
 if (!$data) {
-    UnorganizedFunctions::bannerNotification("This journal does not exist.", "/");
+    Utilities::bannerNotification("This journal does not exist.", "/");
 }
 
 if ($auth->getUserID() == $data["author"]) {
@@ -23,9 +23,9 @@ if ($auth->getUserID() == $data["author"]) {
     $owner = false;
 }
 
-if (UnorganizedFunctions::isFulpTube() && $data["is_site_news"]) {
-    $data["title"] = UnorganizedFunctions::sbToFulpTube($data["title"]);
-    $data["post"] = UnorganizedFunctions::sbToFulpTube($data["post"]);
+if (Utilities::isFulpTube() && $data["is_site_news"]) {
+    $data["title"] = Utilities::sbToFulpTube($data["title"]);
+    $data["post"] = Utilities::sbToFulpTube($data["post"]);
 }
 
 $author = new UserData($database, $data["author"]);

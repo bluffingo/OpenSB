@@ -7,14 +7,14 @@ global $auth, $database, $twig;
 use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\UploadData;
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 use SquareBracket\UploadQuery;
 
 $submission_query = new UploadQuery($database);
 
 $username = $path[2] ?? null;
 
-if (isset($_GET['name'])) UnorganizedFunctions::redirect('/user/' . $_GET['name']);
+if (isset($_GET['name'])) Utilities::redirect('/user/' . $_GET['name']);
 
 $data = $database->fetch("SELECT * FROM users u WHERE u.name = ?", [$username]);
 
@@ -30,13 +30,13 @@ if (!$data)
         header("Location: /user/$new_username");
         exit();
     } else {
-        UnorganizedFunctions::bannerNotification("This user does not exist.", "/");
+        Utilities::bannerNotification("This user does not exist.", "/");
     }
 }
 
 if ($database->fetch("SELECT * FROM bans WHERE userid = ?", [$data["id"]]))
 {
-    UnorganizedFunctions::bannerNotification("This user is banned.", "/");
+    Utilities::bannerNotification("This user is banned.", "/");
 }
 
 $user_submissions = $submission_query->query("v.time desc", 12, "v.author = ?", [$data["id"]]);
@@ -59,7 +59,7 @@ if ($is_own_profile || $auth->isUserAdmin()) {
 $comments = new CommentData($database, CommentLocation::Profile, $data["id"]);
 
 $followers = $database->result("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$data["id"]]);
-$followed = UnorganizedFunctions::IsFollowingUser($data["id"]);
+$followed = Utilities::IsFollowingUser($data["id"]);
 $views = $database->result("SELECT SUM(views) FROM videos WHERE author = ?", [$data["id"]]);
 
 $profile_data = [
@@ -71,8 +71,8 @@ $profile_data = [
     "joined" => $data["joined"],
     "connected" => $data["lastview"],
     "is_current" => $is_own_profile,
-    "submissions" => UnorganizedFunctions::makeUploadArray($database, $user_submissions),
-    "journals" => UnorganizedFunctions::makeJournalArray($database, $user_journals),
+    "submissions" => Utilities::makeUploadArray($database, $user_submissions),
+    "journals" => Utilities::makeJournalArray($database, $user_journals),
     "comments" => $comments->getComments(),
     "followers" => $followers,
     "following" => $followed,

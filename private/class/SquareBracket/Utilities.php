@@ -14,7 +14,7 @@ use Random\Randomizer;
  *
  * @since SquareBracket 1.0
  */
-class UnorganizedFunctions
+class Utilities
 {
     /**
      * Get the upload's file, works for all three storage modes.
@@ -75,7 +75,7 @@ class UnorganizedFunctions
         $submissionsData = [];
         foreach ($uploads as $upload) {
 
-            $bools = UnorganizedFunctions::submissionBitmaskToArray($upload["flags"]);
+            $bools = Utilities::submissionBitmaskToArray($upload["flags"]);
 
             $ratingData = [
                 "1" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$upload["id"]]),
@@ -103,7 +103,7 @@ class UnorganizedFunctions
                         "info" => $userData->getUserArray(),
                     ],
                     "interactions" => [
-                        "ratings" => UnorganizedFunctions::calculateUploadRatings($ratingData),
+                        "ratings" => Utilities::calculateUploadRatings($ratingData),
                     ],
                 ];
         }

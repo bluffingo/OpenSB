@@ -11,7 +11,7 @@ define("SB_VENDOR_PATH", SB_ROOT_PATH . '/vendor');
 define("SB_GIT_PATH", SB_ROOT_PATH . '/.git'); // ONLY FOR makeVersionString() IN SquareBracket CLASS.
 
 use JetBrains\PhpStorm\NoReturn;
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
@@ -27,7 +27,7 @@ require_once SB_PRIVATE_PATH . '/class/common.php';
         readfile($skinPath);
         exit;
     } else {
-        UnorganizedFunctions::redirect('/assets/unknown_theme.png');
+        Utilities::redirect('/assets/unknown_theme.png');
     }
 }
 
@@ -61,7 +61,7 @@ if (isset($path[1]) && $path[1] != '') {
             'uploads' => require(SB_PRIVATE_PATH . '/pages/admin_uploads.php'),
             'interactions' => require(SB_PRIVATE_PATH . '/pages/admin_interactions.php'),
             'invitekeys' => require(SB_PRIVATE_PATH . '/pages/admin_invitekeys.php'),
-            default => UnorganizedFunctions::redirect('/admin/overview/'),
+            default => Utilities::redirect('/admin/overview/'),
         },
         'api' => match ($path[2] ?? null) {
             'biscuit' => match ($path[3] ?? null) {
@@ -104,7 +104,7 @@ if (isset($path[1]) && $path[1] != '') {
         'license' => require(SB_PRIVATE_PATH . '/pages/license.php'),
         'login' => require(SB_PRIVATE_PATH . '/pages/login.php'),
         'logout' => require(SB_PRIVATE_PATH . '/pages/logout.php'),
-        'my_submissions' => UnorganizedFunctions::redirect('/my_uploads'),
+        'my_submissions' => Utilities::redirect('/my_uploads'),
         'my_uploads' => require(SB_PRIVATE_PATH . '/pages/my_uploads.php'),
         'notices' => require(SB_PRIVATE_PATH . '/pages/notices.php'),
         'privacy' => require(SB_PRIVATE_PATH . '/pages/privacy.php'),
@@ -126,9 +126,9 @@ if (isset($path[1]) && $path[1] != '') {
             default => require(SB_PRIVATE_PATH . '/pages/version.php'),
         },
         'view' => require(SB_PRIVATE_PATH . '/pages/watch.php'),
-        'watch' => UnorganizedFunctions::redirect('/view/' . $_GET['v']),
+        'watch' => Utilities::redirect('/view/' . $_GET['v']),
         'write' => require(SB_PRIVATE_PATH . '/pages/write.php'),
-        default => UnorganizedFunctions::rewritePHP()
+        default => Utilities::rewritePHP()
     };
 } else {
     require(SB_PRIVATE_PATH . '/pages/index.php');

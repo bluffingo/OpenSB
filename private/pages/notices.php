@@ -5,7 +5,7 @@ namespace OpenSB;
 global $twig, $database, $auth;
 
 use SquareBracket\NotificationEnum;
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 use SquareBracket\UserData;
 
 function typeToName($database, $type)
@@ -81,7 +81,7 @@ function getRequiredData($database, $notice)
 
 if (!$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::bannerNotification("Please login to continue.", "/login.php");
+    Utilities::bannerNotification("Please login to continue.", "/login.php");
 }
 
 $data = $database->fetchArray($database->query("SELECT * FROM notifications WHERE recipient = ? ORDER BY id DESC", [$auth->getUserID()]));

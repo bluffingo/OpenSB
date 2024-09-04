@@ -4,14 +4,14 @@ namespace OpenSB;
 
 global $auth, $twig, $database, $orange, $path;
 
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 if (!$auth->isUserAdmin()) {
-    UnorganizedFunctions::bannerNotification("You do not have permission to access this page.", "/");
+    Utilities::bannerNotification("You do not have permission to access this page.", "/");
 }
 
 if ($orange->getLocalOptions()["skin"] != "biscuit" && $orange->getLocalOptions()["skin"] != "charla") {
-    UnorganizedFunctions::bannerNotification("Please change your skin to Biscuit.", "/theme");
+    Utilities::bannerNotification("Please change your skin to Biscuit.", "/theme");
 }
 
 // yes Stupid Shit!!!!!!!!!!!!!! Epic!!!!!!! -chaziz 8/23/2024
@@ -19,10 +19,10 @@ $logindata = $database->fetch("SELECT admin_password FROM users WHERE name = ?",
 
 // if this password does not exist. generate it automatically.
 if (!isset($logindata["admin_password"])) {
-    $new_pass = UnorganizedFunctions::generateRandomString(24);
+    $new_pass = Utilities::generateRandomString(24);
     $database->query("UPDATE users SET admin_password = ? WHERE name = ?", [password_hash($new_pass, PASSWORD_DEFAULT), $auth->getUserData()["name"]]);
     $_SESSION["SB_ADMIN_AUTHED"] = true;
-    UnorganizedFunctions::bannerNotification("Welcome! Your admin password is " . $new_pass .
+    Utilities::bannerNotification("Welcome! Your admin password is " . $new_pass .
         ". Please note it down in a safe and secure place to avoid losing it.", "/admin/", "success");
 }
 
@@ -36,16 +36,16 @@ if (isset($_POST["loginsubmit"])) {
     if (!$password) $error = true;
 
     if ($username != $auth->getUserData()["name"]) {
-        UnorganizedFunctions::bannerNotification("You must log into the admin panel with your current username.",
+        Utilities::bannerNotification("You must log into the admin panel with your current username.",
             "/admin/login");
     }
 
     if (!$error) {
         if ($logindata && password_verify($password, $logindata['admin_password'])) {
             $_SESSION["SB_ADMIN_AUTHED"] = true;
-            UnorganizedFunctions::bannerNotification("Welcome!", "/admin/", "success");
+            Utilities::bannerNotification("Welcome!", "/admin/", "success");
         } else {
-            UnorganizedFunctions::bannerNotification("Incorrect admin password.", "/admin/login");
+            Utilities::bannerNotification("Incorrect admin password.", "/admin/login");
         }
     }
 }

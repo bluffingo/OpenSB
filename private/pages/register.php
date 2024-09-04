@@ -5,17 +5,16 @@ namespace OpenSB;
 global $disableRegistration, $enableInviteKeys, $twig, $database, $captcha, $isDebug;
 
 use DateTime;
-use SquareBracket\UnorganizedFunctions;
 use SquareBracket\Utilities;
 
 if ($disableRegistration) {
-    UnorganizedFunctions::bannerNotification("The ability to register has been disabled.", "/");
+    Utilities::bannerNotification("The ability to register has been disabled.", "/");
 }
 
-$ipcheck = file_get_contents("https://api.stopforumspam.org/api?ip=" . UnorganizedFunctions::getIpAddress());
+$ipcheck = file_get_contents("https://api.stopforumspam.org/api?ip=" . Utilities::getIpAddress());
 
 if (str_contains($ipcheck, "<appears>yes</appears>") && !$isDebug) {
-    UnorganizedFunctions::bannerNotification("This IP address appears to be suspicious.", "/index.php");
+    Utilities::bannerNotification("This IP address appears to be suspicious.", "/index.php");
 }
 
 if (isset($_POST['registersubmit'])) {
@@ -47,12 +46,12 @@ if (isset($_POST['registersubmit'])) {
         $invite = $_POST['invite'];
     }
 
-    $error .= UnorganizedFunctions::validateUsername($username, $database);
+    $error .= Utilities::validateUsername($username, $database);
     if ($database->result("SELECT COUNT(*) FROM users WHERE email = ?", [$mail]) > 0) $error .= "This email address is used by another account. ";
     if (!isset($pass2) || $pass != $pass2) $error .= "The passwords don't match. ";
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) $error .= "Invalid email format. ";
-    if ((UnorganizedFunctions::getIpAddress() != "127.0.0.1") && (UnorganizedFunctions::getIpAddress() != "::1")) {
-        if ($database->result("SELECT COUNT(*) FROM users WHERE ip = ?", [UnorganizedFunctions::getIpAddress()]) > 3)
+    if ((Utilities::getIpAddress() != "127.0.0.1") && (Utilities::getIpAddress() != "::1")) {
+        if ($database->result("SELECT COUNT(*) FROM users WHERE ip = ?", [Utilities::getIpAddress()]) > 3)
             $error .= "Your IP address has too many accounts associated with it. ";
     }
     if ($database->fetch("SELECT COUNT(*) FROM user_old_names WHERE old_name = ?", [$username])["COUNT(*)"] >= 1)
@@ -79,7 +78,7 @@ if (isset($_POST['registersubmit'])) {
         $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
         $database->query("INSERT INTO users (name, password, token, joined, lastview, title, email, ip, birthdate)
                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            [$username, $hashedPassword, $token, time(), time(), $username, $mail, UnorganizedFunctions::getIpAddress(), $dobDateTime->format('Y-m-d')]);
+            [$username, $hashedPassword, $token, time(), time(), $username, $mail, Utilities::getIpAddress(), $dobDateTime->format('Y-m-d')]);
         $userId = $database->insertId();
 
         if ($enableInviteKeys) {
@@ -88,9 +87,9 @@ if (isset($_POST['registersubmit'])) {
 
         $_SESSION["SBTOKEN"] = $token;
 
-        UnorganizedFunctions::redirect('./');
+        Utilities::redirect('./');
     } else {
-        UnorganizedFunctions::bannerNotification($error, "/register.php");
+        Utilities::bannerNotification($error, "/register.php");
     }
 }
 

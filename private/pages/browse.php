@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $database;
 
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 use SquareBracket\UploadQuery;
 
 $submission_query = new UploadQuery($database);
@@ -37,9 +37,9 @@ $limit = sprintf("%s,%s", (($page_number - 1) * 20), 20);
 
 if ($user) {
     // TODO: handle old names
-    $id = UnorganizedFunctions::usernameToID($database, $user);
+    $id = Utilities::usernameToID($database, $user);
     if (!$id) {
-        UnorganizedFunctions::bannerNotification("This user does not exist.", "/");
+        Utilities::bannerNotification("This user does not exist.", "/");
     }
     $submissions = $submission_query->query($order, $limit, "v.author = ?", [$id]);
     $submission_count = $submission_query->count("v.author = ?", [$id]);
@@ -49,7 +49,7 @@ if ($user) {
 }
 
 $data = [
-    "submissions" => UnorganizedFunctions::makeUploadArray($database, $submissions),
+    "submissions" => Utilities::makeUploadArray($database, $submissions),
     "count" => $submission_count,
 ];
 

@@ -105,8 +105,8 @@ class Storage
         $target_file = SB_DYNAMIC_PATH . '/art/' . $new . '.png';
         $target_thumbnail = SB_DYNAMIC_PATH . '/art_thumbnails/' . $new . '.jpg';
 
-        UnorganizedFunctions::processImageUploadFile($temp_name, $target_file);
-        UnorganizedFunctions::processImageUploadThumbnail($temp_name, $target_thumbnail);
+        Utilities::processImageUploadFile($temp_name, $target_file);
+        Utilities::processImageUploadThumbnail($temp_name, $target_thumbnail);
 
         unlink($temp_name);
     }
@@ -115,14 +115,14 @@ class Storage
     {
         $target_file = SB_DYNAMIC_PATH . '/pfp/' . $new . '.png';
 
-        UnorganizedFunctions::processProfilePicture($temp_name, $target_file);
+        Utilities::processProfilePicture($temp_name, $target_file);
 
         unlink($temp_name);
     }
 
     public function uploadCustomThumbnail($temp_name, $new): void
     {
-        UnorganizedFunctions::processCustomUploadThumbnail($temp_name, $new);
+        Utilities::processCustomUploadThumbnail($temp_name, $new);
 
         unlink($temp_name);
     }
@@ -131,7 +131,7 @@ class Storage
     {
         $target_file = SB_DYNAMIC_PATH . '/banners/' . $new . '.png';
 
-        UnorganizedFunctions::processProfileBanner($temp_name, $target_file);
+        Utilities::processProfileBanner($temp_name, $target_file);
 
         unlink($temp_name);
     }

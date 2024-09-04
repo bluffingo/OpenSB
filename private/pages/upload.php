@@ -6,28 +6,28 @@ global $database, $twig, $disableUploading, $auth, $isDebug, $storage;
 
 use SquareBracket\Pages\SubmissionUpload;
 use SquareBracket\Templating;
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 $supportedVideoFormats = ["mp4", "mkv", "wmv", "flv", "avi", "mov", "3gp"];
 $supportedImageFormats = ["png", "jpg", "jpeg"];
 
 if (!$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::bannerNotification("Please login to continue.", "/login.php");
+    Utilities::bannerNotification("Please login to continue.", "/login.php");
 }
 
 if ($auth->getUserBanData()) {
-    UnorganizedFunctions::bannerNotification("You cannot proceed with this action.", "/");
+    Utilities::bannerNotification("You cannot proceed with this action.", "/");
 }
 
 if ($disableUploading) {
-    UnorganizedFunctions::bannerNotification("The ability to upload has been disabled.", "/");
+    Utilities::bannerNotification("The ability to upload has been disabled.", "/");
 }
 
 if (!$auth->isUserAdmin()) {
     // Rate limit uploading to a minute, both to prevent spam and to prevent double uploads.
     if ($database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 120, $auth->getUserID()]) && !$isDebug) {
-        UnorganizedFunctions::bannerNotification("Please wait two minutes before uploading again.", "/");
+        Utilities::bannerNotification("Please wait two minutes before uploading again.", "/");
     }
 }
 
@@ -58,7 +58,7 @@ function parse_tags($tags, $submission_id, $database) {
 }
 
 if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLoggedIn()) {
-    $new = UnorganizedFunctions::generateRandomString(11, true);
+    $new = Utilities::generateRandomString(11, true);
     $uploader = $auth->getUserID();
 
     $title = ($_POST['title'] ?? null);
@@ -96,9 +96,9 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
 
             parse_tags($tags2, $new, $database);
 
-            UnorganizedFunctions::bannerNotification("Your upload has been completed.", "./watch.php?v=" . $new, "success");
+            Utilities::bannerNotification("Your upload has been completed.", "./watch.php?v=" . $new, "success");
         } else {
-            UnorganizedFunctions::bannerNotification("There is a problem with file permissions and/or PHP on this instance.", "/upload");
+            Utilities::bannerNotification("There is a problem with file permissions and/or PHP on this instance.", "/upload");
         }
     } elseif (in_array(strtolower($ext), $supportedImageFormats, true)) {
         $storage->processImage($temp_name, $new);
@@ -108,12 +108,12 @@ if (isset($_POST['upload']) or isset($_POST['upload_video']) and $auth->isUserLo
 
         parse_tags($tags2, $new, $database);
 
-        UnorganizedFunctions::bannerNotification("Your upload has been completed.", "./watch.php?v=" . $new, "success");
+        Utilities::bannerNotification("Your upload has been completed.", "./watch.php?v=" . $new, "success");
     } else {
-        UnorganizedFunctions::bannerNotification("This file format is not supported.", "/upload");
+        Utilities::bannerNotification("This file format is not supported.", "/upload");
     }
 }
 
 echo $twig->render('upload.twig', [
-    'limit' => (UnorganizedFunctions::convertBytes(ini_get('upload_max_filesize'))),
+    'limit' => (Utilities::convertBytes(ini_get('upload_max_filesize'))),
 ]);;

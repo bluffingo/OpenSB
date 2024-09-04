@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $orange;
 
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 if (isset($_POST['apply'])) {
     $options = [];
@@ -20,7 +20,7 @@ if (isset($_POST['apply'])) {
 
     setcookie("SBOPTIONS", base64_encode(json_encode($options)), 2147483647);
 
-    UnorganizedFunctions::bannerNotification("Successfully changed your settings.", "/index.php", "success");
+    Utilities::bannerNotification("Successfully changed your settings.", "/index.php", "success");
 }
 
 echo $twig->render('theme.twig');

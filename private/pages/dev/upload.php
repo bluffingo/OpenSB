@@ -4,16 +4,16 @@ namespace OpenSB;
 
 global $auth, $twig, $database, $orange, $isDebug;
 
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 if (!$isDebug) {
-    UnorganizedFunctions::redirect("/upload");
+    Utilities::redirect("/upload");
 }
 
 if ($orange->getLocalOptions()["skin"] != "charla") {
-    UnorganizedFunctions::bannerNotification("Please change your skin to Charla.", "/theme");
+    Utilities::bannerNotification("Please change your skin to Charla.", "/theme");
 }
 
 echo $twig->render('upload_new.twig', [
-    'limit' => (UnorganizedFunctions::convertBytes(ini_get('upload_max_filesize'))),
+    'limit' => (Utilities::convertBytes(ini_get('upload_max_filesize'))),
 ]);;

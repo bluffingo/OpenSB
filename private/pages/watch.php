@@ -10,9 +10,8 @@ use SquareBracket\CommentData;
 use SquareBracket\CommentLocation;
 use SquareBracket\UploadData;
 use SquareBracket\UploadQuery;
-use SquareBracket\UnorganizedFunctions;
-use SquareBracket\UserData;
 use SquareBracket\Utilities;
+use SquareBracket\UserData;
 
 $id = $path[2] ?? null;
 
@@ -22,16 +21,16 @@ $submission = new UploadData($database, $id);
 $takedown = $submission->getTakedown();
 if ($takedown && !$auth->isUserAdmin()) {
     // go back to homepage with a notification
-    UnorganizedFunctions::bannerNotification("This upload has been taken down.", "/");
+    Utilities::bannerNotification("This upload has been taken down.", "/");
 }
 
 if ($submission->isDeleted()) {
-    UnorganizedFunctions::bannerNotification("This upload has been deleted.", "/");
+    Utilities::bannerNotification("This upload has been deleted.", "/");
 }
 
 $data = $submission->getData();
 if (!$data) {
-    UnorganizedFunctions::bannerNotification("This upload does not exist.", "/");
+    Utilities::bannerNotification("This upload does not exist.", "/");
 }
 
 $tagBlacklist = $auth->getUserBlacklistedTags();
@@ -42,9 +41,9 @@ if (isset($data["tags"])) {
         foreach ($decodedTags as $tag) {
             if (in_array($tag, $tagBlacklist)) {
                 if ($auth->isUserLoggedIn()) {
-                    UnorganizedFunctions::bannerNotification("This upload is blacklisted per your settings.", "/");
+                    Utilities::bannerNotification("This upload is blacklisted per your settings.", "/");
                 } else {
-                    UnorganizedFunctions::bannerNotification("This upload is blacklisted by default.", "/");
+                    Utilities::bannerNotification("This upload is blacklisted by default.", "/");
                 }
             }
         }
@@ -55,13 +54,13 @@ if (isset($data["tags"])) {
 $comments = new CommentData($database, CommentLocation::Upload, $id);
 $author = new UserData($database, $data["author"]);
 if ($author->isUserBanned() && !$auth->isUserAdmin()) {
-    UnorganizedFunctions::bannerNotification("This upload's author is banned.", "/");
+    Utilities::bannerNotification("This upload's author is banned.", "/");
 }
 
 $tags = $submission->getTags();
 
 $followers = $database->result("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$data["author"]]);
-$followed = UnorganizedFunctions::IsFollowingUser($data["author"]);
+$followed = Utilities::IsFollowingUser($data["author"]);
 
 // looks weird, whatever.
 $ratings = [
@@ -77,14 +76,14 @@ $bools = $submission->bitmaskToArray();
 
 if ($bools["block_guests"] && !$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::bannerNotification("This submission's author has blocked guest access.", "/login.php");
+    Utilities::bannerNotification("This submission's author has blocked guest access.", "/login.php");
 }
 
-if (UnorganizedFunctions::RatingToNumber($data["rating"]) > UnorganizedFunctions::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
-    UnorganizedFunctions::bannerNotification("You cannot access sensitive-rated submissions.", "/");
+if (Utilities::RatingToNumber($data["rating"]) > Utilities::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
+    Utilities::bannerNotification("You cannot access sensitive-rated submissions.", "/");
 }
 
-$ip = UnorganizedFunctions::getIpAddress();
+$ip = Utilities::getIpAddress();
 
 $CrawlerDetect = new CrawlerDetect;
 
@@ -128,8 +127,8 @@ if (!$CrawlerDetect->isCrawler() && domainCheck()) {
     }
 }
 
-$whereRatings = UnorganizedFunctions::whereRatings();
-$whereTagBlacklist = UnorganizedFunctions::whereTagBlacklist();
+$whereRatings = Utilities::whereRatings();
+$whereTagBlacklist = Utilities::whereTagBlacklist();
 $submission_query = new UploadQuery($database);
 
 // ported from poktwo, modified to accommodate for takedowns and relevancy.
@@ -227,7 +226,7 @@ $page_data = [
     "original_site" => $data["original_site"],
     "published_originally" => $data["original_time"],
     "type" => $data["post_type"],
-    "file" => UnorganizedFunctions::getUploadFile($data),
+    "file" => Utilities::getUploadFile($data),
     "author" => [
         "id" => $data["author"],
         "info" => $author->getUserArray(),
@@ -236,14 +235,14 @@ $page_data = [
     ],
     "interactions" => [
         "views" => $data["views"],
-        "ratings" => UnorganizedFunctions::calculateUploadRatings($ratings),
+        "ratings" => Utilities::calculateUploadRatings($ratings),
         "favorites" => $favorites,
         "comments" => $comment_count,
     ],
     "comments" => $comment_data,
     "bools" => $bools,
     "rating" => $data["rating"],
-    "recommended" => UnorganizedFunctions::makeUploadArray($database, $recommended),
+    "recommended" => Utilities::makeUploadArray($database, $recommended),
     "tags" => $tags,
 ];
 
@@ -292,7 +291,7 @@ if ($orange->getLocalOptions()["skin"] == "finalium" || $orange->getLocalOptions
 
 if ($auth->isUserAdmin() && $takedown) {
     $page_data["takedown"] = $takedown[0];
-    $page_data["takedown"]["takedownee"] = UnorganizedFunctions::idToUsername($database, $takedown[0]["sender"]);
+    $page_data["takedown"]["takedownee"] = Utilities::idToUsername($database, $takedown[0]["sender"]);
     $page_data["author_banned"] = $author->isUserBanned();
 } else {
     $page_data["takedown"] = [];

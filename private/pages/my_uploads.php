@@ -4,14 +4,14 @@ namespace OpenSB;
 
 global $twig, $orange, $auth;
 
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 $type = ($_GET['type'] ?? 'recent');
 $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
 if (!$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::bannerNotification("Please login to continue.", "/login.php");
+    Utilities::bannerNotification("Please login to continue.", "/login.php");
 }
 
 $limit = sprintf("LIMIT %s,%s", (($page_number - 1) * 20), 20);
@@ -21,7 +21,7 @@ $submissions = $database->fetchArray($database->query("SELECT v.* FROM videos v 
 $submission_count = $database->result("SELECT COUNT(*) FROM videos where videos.author = ?", [$auth->getUserID()]);
 
 $data = [
-    "submissions" => UnorganizedFunctions::makeUploadArray($database, $submissions),
+    "submissions" => Utilities::makeUploadArray($database, $submissions),
     "count" => $submission_count,
 ];
 

@@ -10,8 +10,8 @@ class UploadQuery
 
     public function __construct($database) {
         $this->database = $database;
-        $this->whereRatings = UnorganizedFunctions::whereRatings();
-        $this->whereTagBlacklist = UnorganizedFunctions::whereTagBlacklist();
+        $this->whereRatings = Utilities::whereRatings();
+        $this->whereTagBlacklist = Utilities::whereTagBlacklist();
     }
 
     public function query($order, $limit, $whereCondition = null, $params = []) {

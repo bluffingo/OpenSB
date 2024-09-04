@@ -4,18 +4,18 @@ namespace OpenSB;
 
 global $auth, $isChazizSB, $twig, $database, $orange;
 
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 if (!$auth->isUserAdmin()) {
-    UnorganizedFunctions::bannerNotification("You do not have permission to access this page.", "/");
+    Utilities::bannerNotification("You do not have permission to access this page.", "/");
 }
 
 if (!$auth->hasUserAuthenticatedAsAnAdmin()) {
-    UnorganizedFunctions::bannerNotification("Please login with your admin password.", "/admin/login");
+    Utilities::bannerNotification("Please login with your admin password.", "/admin/login");
 }
 
 if ($orange->getLocalOptions()["skin"] != "biscuit" && $orange->getLocalOptions()["skin"] != "charla") {
-    UnorganizedFunctions::bannerNotification("Please change your skin to Biscuit.", "/theme");
+    Utilities::bannerNotification("Please change your skin to Biscuit.", "/theme");
 }
 
 /**
@@ -83,12 +83,12 @@ if ($isChazizSB) {
 // Admin actions
 if(isset($_POST["action"])) {
     if ($_POST["action"] == "generate_invite_key") {
-        $random = strtoupper("SB" . UnorganizedFunctions::generateRandomString(16));
+        $random = strtoupper("SB" . Utilities::generateRandomString(16));
 
         $database->query("INSERT INTO invite_keys (invite_key, generated_by, generated_time) VALUES (?,?,?)",
             [$random, $auth->getUserID(), time()]);
 
-        UnorganizedFunctions::bannerNotification("Generated key! ($random)", "/admin.php", "success");
+        Utilities::bannerNotification("Generated key! ($random)", "/admin.php", "success");
     }
 }
 

@@ -3,7 +3,7 @@ namespace OpenSB;
 
 global $twig, $database;
 
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 use SquareBracket\UploadQuery;
 
 $upload_query = new UploadQuery($database);
@@ -42,6 +42,6 @@ $data["icons"] = [
     "placeholder",
 ];
 
-$data["uploads"] = UnorganizedFunctions::makeUploadArray($database, $uploads);
+$data["uploads"] = Utilities::makeUploadArray($database, $uploads);
 
 echo $twig->render('design_test.twig', $data);

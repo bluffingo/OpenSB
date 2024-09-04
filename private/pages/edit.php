@@ -5,7 +5,7 @@ namespace OpenSB;
 global $twig, $database, $auth, $storage;
 
 use SquareBracket\UploadData;
-use SquareBracket\UnorganizedFunctions;
+use SquareBracket\Utilities;
 
 if (isset($_POST['upload'])) {
     $id = ($_POST['vid_id'] ?? null);
@@ -18,15 +18,15 @@ $data = $submission->getData();
 
 if (!$auth->isUserLoggedIn())
 {
-    UnorganizedFunctions::bannerNotification("Please login to continue.", "/login.php");
+    Utilities::bannerNotification("Please login to continue.", "/login.php");
 }
 
 if ($auth->getUserBanData() || $submission->getTakedown()) {
-    UnorganizedFunctions::bannerNotification("You cannot proceed with this action.", "/");
+    Utilities::bannerNotification("You cannot proceed with this action.", "/");
 }
 
 if ($auth->getUserID() != $data["author"]) {
-    UnorganizedFunctions::bannerNotification("This is not your upload.", "/");
+    Utilities::bannerNotification("This is not your upload.", "/");
 }
 
 if (isset($_POST['upload'])) {
@@ -43,7 +43,7 @@ if (isset($_POST['upload'])) {
 
     $database->query("UPDATE videos SET title = ?, description = ? WHERE video_id = ?",
         [$title, $desc, $id]);
-    UnorganizedFunctions::bannerNotification("Your upload's details have been successfully modified.", "/view/" . $id, "success");
+    Utilities::bannerNotification("Your upload's details have been successfully modified.", "/view/" . $id, "success");
 }
 
 $infoData = [

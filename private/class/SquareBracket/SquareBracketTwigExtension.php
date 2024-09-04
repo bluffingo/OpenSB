@@ -51,8 +51,8 @@ class SquareBracketTwigExtension extends AbstractExtension
         return [
             new TwigFilter('relative_time', [$this, 'relativeTime']),
 
-            new TwigFilter('calculate_age', [UnorganizedFunctions::class, 'calculateAge']),
-            new TwigFilter('calculate_age_from', [UnorganizedFunctions::class, 'calculateAgeFrom']),
+            new TwigFilter('calculate_age', [Utilities::class, 'calculateAge']),
+            new TwigFilter('calculate_age_from', [Utilities::class, 'calculateAgeFrom']),
 
             // Markdown function for non-inline text, sanitized.
             new TwigFilter('markdown', function ($text) {
@@ -174,7 +174,7 @@ class SquareBracketTwigExtension extends AbstractExtension
     {
         global $database, $storage;
 
-        $id = UnorganizedFunctions::usernameToID($database, $username);
+        $id = Utilities::usernameToID($database, $username);
         $location = '/dynamic/pfp/' . $id . '.png';
         // don't bother with userdata since that might slow shit down
         $is_banned = $database->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
@@ -197,7 +197,7 @@ class SquareBracketTwigExtension extends AbstractExtension
     {
         global $database, $storage;
 
-        $id = UnorganizedFunctions::usernameToID($database, $username);
+        $id = Utilities::usernameToID($database, $username);
         $location = '/dynamic/pfp/' . $id . '.png';
         if ($storage->fileExists('..' . $location)) {
             $data = $location;
@@ -212,7 +212,7 @@ class SquareBracketTwigExtension extends AbstractExtension
     {
         global $database, $storage;
 
-        $id = UnorganizedFunctions::usernameToID($database, $username);
+        $id = Utilities::usernameToID($database, $username);
         $location = '/dynamic/banners/' . $id . '.png';
 
         if ($storage->fileExists('..' . $location)) {

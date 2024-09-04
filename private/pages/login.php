@@ -4,7 +4,6 @@ namespace OpenSB;
 
 global $twig, $database, $auth, $orange;
 
-use SquareBracket\UnorganizedFunctions;
 use SquareBracket\Utilities;
 
 $warning = $orange->getWarningString();
@@ -17,7 +16,7 @@ if (isset($path_username)) {
     }
 
     $is_the_account_in_the_accounts_array = false;
-    $id = UnorganizedFunctions::usernameToID($database, $path_username);
+    $id = Utilities::usernameToID($database, $path_username);
     $accounts = $orange->getAccountsArray();
     $new_array = [];
     $token = null;
@@ -51,9 +50,9 @@ if (isset($path_username)) {
             'httponly' => false,
             'samesite' =>'Lax',
         ]);
-        UnorganizedFunctions::bannerNotification("Switched to $path_username.", '/', "success");
+        Utilities::bannerNotification("Switched to $path_username.", '/', "success");
     } else {
-        UnorganizedFunctions::bannerNotification("You have not logged into this account.", '/');
+        Utilities::bannerNotification("You have not logged into this account.", '/');
     }
 }
 
@@ -72,7 +71,7 @@ if (isset($_POST["loginsubmit"])) {
     if (!$password) $error = true;
 
     if ($username == $auth->getUserData()["name"]) {
-        UnorganizedFunctions::bannerNotification("You're already logged into this account.", "/");
+        Utilities::bannerNotification("You're already logged into this account.", "/");
     }
 
     if (!$error) {
@@ -83,7 +82,7 @@ if (isset($_POST["loginsubmit"])) {
             $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$logindata['ip']]);
 
             if ($ipban) {
-                UnorganizedFunctions::bannerNotification("This account's latest IP address is banned.", "/login.php");
+                Utilities::bannerNotification("This account's latest IP address is banned.", "/login.php");
             }
 
             // if we're logged in, add our current token in an array for account switching purposes.
@@ -137,14 +136,14 @@ if (isset($_POST["loginsubmit"])) {
             $_SESSION["SBTOKEN"] = $logindata['token'];
 
             $nid = $database->result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
-            $database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), UnorganizedFunctions::getIpAddress(), $nid]);
+            $database->query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), Utilities::getIpAddress(), $nid]);
 
-            UnorganizedFunctions::redirect('./');
+            Utilities::redirect('./');
         } else {
-            UnorganizedFunctions::bannerNotification("Incorrect credentials.", "/login.php");
+            Utilities::bannerNotification("Incorrect credentials.", "/login.php");
         }
     } else {
-        UnorganizedFunctions::bannerNotification("Please input your credentials.", "/login.php");
+        Utilities::bannerNotification("Please input your credentials.", "/login.php");
     }
 }
 

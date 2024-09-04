@@ -26,7 +26,6 @@ use SquareBracket\Profiler;
 use SquareBracket\SquareBracket;
 use SquareBracket\Storage;
 use SquareBracket\Templating;
-use SquareBracket\UnorganizedFunctions;
 use SquareBracket\Utilities;
 
 // please use apache/nginx for production stuff.
@@ -154,8 +153,8 @@ if (!file_exists(SB_GIT_PATH)) {
     die();
 }
 
-if ($ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [UnorganizedFunctions::getIpAddress()])) {
-    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [UnorganizedFunctions::getIpAddress()]));
+if ($ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities::getIpAddress()])) {
+    $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [Utilities::getIpAddress()]));
     echo $twig->render("ip_banned.twig", [
         "data" => $ipban,
         "users" => $usersAssociatedWithIP,
