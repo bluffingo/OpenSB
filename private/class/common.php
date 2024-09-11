@@ -110,7 +110,7 @@ $branding = [
 ];
 
 // TODO: port these to feature flags or settings that can be changed in-site.
-$disableRegistration = true;
+$disableRegistration = false;
 $disableUploading = false;
 $disableWritingJournals = false;
 $enableInviteKeys = false;
