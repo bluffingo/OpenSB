@@ -1,13 +1,13 @@
 {
 	"require": {
-		"twig/twig": "3.11.0",
+		"twig/twig": "3.14.0",
 		"intervention/image": "^3.2",
 		"erusev/parsedown": "dev-master",
 		"php-ffmpeg/php-ffmpeg": "1.2.0",
 		"toshy/bunnynet-php": "4.5.0",
 		"symfony/http-client": "7.1.4",
 		"ext-pdo": "*",
-		"twig/string-extra": "3.12.0",
+		"twig/string-extra": "3.13.0",
 		"psr/http-client": "1.0.3",
 		"twbs/bootstrap": "^5.3",
 		"twbs/bootstrap-icons": "^1.11",
