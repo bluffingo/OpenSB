@@ -110,6 +110,7 @@
       <excludeFolder url="file://$MODULE_DIR$/pma/vendor/web-auth/webauthn-lib" />
       <excludeFolder url="file://$MODULE_DIR$/pma/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/pma/vendor/williamdes/mariadb-mysql-kbs" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

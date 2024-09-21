@@ -39,6 +39,23 @@ function updateConfig(key, value) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    let hamburgerButton = (document.getElementById('button-hamburger')); // TEMPORARY
+    let hamburgerMenu = (document.getElementById('hamburger')); // TEMPORARY
+
+    if (hamburgerButton) {
+        hamburgerButton.onclick = function() {
+            if (hamburgerMenu) {
+                if (hamburgerMenu.style.display === "block") {
+                    hamburgerMenu.style.display = "none"
+                } else {
+                    hamburgerMenu.style.display = "block"
+                }
+            } else {
+                error("where the fuck is the hamburger menu");
+            }
+        }
+    }
+
     // get those two buttons in the homepage
     let indexListButton = (document.getElementById('index-list-button'));
     let indexGridButton = (document.getElementById('index-grid-button'));
