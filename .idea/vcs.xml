@@ -2,5 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/private/skins/bootstrap" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/private/skins/charla" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/private/skins/cubicle" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/private/skins/finalium" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/private/skins/poktube" vcs="Git" />
   </component>
 </project>

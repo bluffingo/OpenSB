@@ -131,6 +131,12 @@ class Templating
             }
         }
 
+        $isFulpTube = true;
+        $branding = [
+            "name" => "FulpTube",
+            "assets_location" => "/assets/sb_branding/fulp",
+        ];
+
         /*
         if (($isChazizSB) && isset($_SERVER['HTTP_HOST']) &&
             ($_SERVER['HTTP_HOST'] === 'fulptube.rocks' || $_SERVER['HTTP_HOST'] === 'squarebracket.pw')) {

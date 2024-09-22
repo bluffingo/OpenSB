@@ -1,3 +1,5 @@
+*.*
+
 # don't gitignore pre-existing skins
 
 # common (stuff shared between skins)
@@ -5,5 +7,3 @@
 
 # finalium 2 (biscuit)
 !/biscuit
-# finalium 2 (biscuit, soos-specific)
-!/soos

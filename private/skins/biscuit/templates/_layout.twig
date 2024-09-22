@@ -1,6 +1,4 @@
-{% if is_fulptube %}
-    {% set logo = '/assets/sb_branding/fulp/logo.png' %}
-{% elseif current_theme in ["default", "pink"] %}
+{% if current_theme in ["default", "pink"] %}
     {% set logo = website_branding.assets_location ~ '/logo-wordmark.png' %}
 {% else %}
     {% set logo = website_branding.assets_location ~ '/logo-wordmark-dark.png' %}

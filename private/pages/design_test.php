@@ -40,6 +40,7 @@ $data["icons"] = [
     "b-warning",
     "search",
     "placeholder",
+    "hamburger",
 ];
 
 $data["uploads"] = Utilities::makeUploadArray($database, $uploads);
