@@ -5,7 +5,7 @@ command=$1
 common_arguments="--style expanded --no-source-map --load-path=private/skins"
 
 if [ "$command" = "dev" ]; then
-  common_arguments+=" --watch"
+  common_arguments+=" --watch --poll"
 fi
 
 machine=$(uname -s)
