@@ -51,7 +51,7 @@ if (isset($_POST['registersubmit'])) {
     if (!isset($pass2) || $pass != $pass2) $error .= "The passwords don't match. ";
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) $error .= "Invalid email format. ";
     if ((Utilities::getIpAddress() != "127.0.0.1") && (Utilities::getIpAddress() != "::1")) {
-        if ($database->result("SELECT COUNT(*) FROM users WHERE ip = ?", [Utilities::getIpAddress()]) > 2)
+        if ($database->result("SELECT COUNT(*) FROM users WHERE ip = ?", [Utilities::getIpAddress()]) >= 1)
             $error .= "Your IP address has too many accounts associated with it. ";
     }
     if ($database->fetch("SELECT COUNT(*) FROM user_old_names WHERE old_name = ?", [$username])["COUNT(*)"] >= 1)
