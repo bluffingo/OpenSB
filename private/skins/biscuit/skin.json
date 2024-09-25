@@ -29,12 +29,6 @@
         "name": "Cubicle",
         "description": "Cubicle",
         "author": "OpenSB developers"
-      },
-      {
-        "id": "pink",
-        "name": "Pink",
-        "description": "A pink theme for SquareBracket.",
-        "author": "Mori"
       }
     ]
   }

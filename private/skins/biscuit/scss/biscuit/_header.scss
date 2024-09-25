@@ -72,7 +72,7 @@
         display: inline-block;
         font-size: 10px;
         color: rgba(255, 255, 255, 0.75);
-        @if $theme == "pink" or $theme == "classic" or $theme == "biscuit" {
+        @if $theme == "classic" or $theme == "biscuit" {
           color: rgba(0, 0, 0, 0.75);
         }
       }
@@ -156,31 +156,17 @@ form.header-search
   #header-search-input {
     @if $theme != "biscuit" {
       @if $theme != "cubicle" and $theme != "classic" {
-        @if $theme == "pink" {
-          background: #ffe0e0;
-          border: #ff7c7c solid 1px;
-          color: #444;
-          box-shadow: none;
-        } @else {
-          border: 1px solid black;
-          color: #eee;
-          background: #575757;
-          box-shadow: 0 1px 0 #333;
-          padding: 6px 40px 6px 6px;
-          height: 30px;
-        }
+        border: 1px solid black;
+        color: #eee;
+        background: #575757;
+        box-shadow: 0 1px 0 #333;
+        padding: 6px 40px 6px 6px;
+        height: 30px;
 
         &:focus {
-          @if $theme == "pink" {
-            background: #ffe0e0;
-            border: #ff7c7c solid 1px;
-            box-shadow: #ff6d6d 0 1px 5px;
-            color: #111;
-          } @else {
-            background: #eee;
-            color: #222;
-            box-shadow: 0 1px 0 #000;
-          }
+          background: #eee;
+          color: #222;
+          box-shadow: 0 1px 0 #000;
         }
       }
     }
@@ -221,7 +207,7 @@ td.h
 
 .menulink
 {
-  @if $theme == "pink" or $theme == "biscuit" {
+  @if $theme == "biscuit" {
     color: black;
   } @else {
     color: white;
@@ -267,9 +253,7 @@ td.h
 
   width: 100%;
 
-  @if $theme == "pink" {
-    background: linear-gradient(to bottom, #ffc2c2, #FF9A9A);
-  } @else if $theme == "cubicle" or $theme == "classic" {
+  @if $theme == "cubicle" or $theme == "classic" {
     background: none;
     box-shadow: none;
   } @else if $theme == "soretro" {
