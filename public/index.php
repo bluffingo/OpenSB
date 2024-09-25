@@ -1,8 +1,6 @@
 <?php
 namespace OpenSB;
 
-global $config; // temporary
-
 define("SB_ROOT_PATH", dirname(__DIR__));
 define("SB_DYNAMIC_PATH", SB_ROOT_PATH . '/dynamic');
 define("SB_PUBLIC_PATH", SB_ROOT_PATH . '/public'); // we need this for SquareBracketTwigExtension
@@ -121,10 +119,7 @@ if (isset($path[1]) && $path[1] != '') {
         },
         'users' => require(SB_PRIVATE_PATH . '/pages/users.php'),
         'verify_birthdate' => require(SB_PRIVATE_PATH . '/pages/verify_birthdate.php'),
-        'version' => match ($path[2] ?? null) {
-            'special_thanks' => require(SB_PRIVATE_PATH . '/pages/special_thanks.php'),
-            default => require(SB_PRIVATE_PATH . '/pages/version.php'),
-        },
+        'version' => require(SB_PRIVATE_PATH . '/pages/version.php'),
         'view' => require(SB_PRIVATE_PATH . '/pages/watch.php'),
         'watch' => Utilities::redirect('/view/' . $_GET['v']),
         'write' => require(SB_PRIVATE_PATH . '/pages/write.php'),
