@@ -111,6 +111,7 @@ if (isset($path[1]) && $path[1] != '') {
         'register' => require(SB_PRIVATE_PATH . '/pages/register.php'),
         'search' => require(SB_PRIVATE_PATH . '/pages/search.php'),
         'settings' => require(SB_PRIVATE_PATH . '/pages/settings.php'),
+        'staff' => require(SB_PRIVATE_PATH . '/pages/staff.php'),
         'theme' => require(SB_PRIVATE_PATH . '/pages/theme.php'),
         'tos' => require(SB_PRIVATE_PATH . '/pages/tos.php'),
         'upload' => require(SB_PRIVATE_PATH . '/pages/upload.php'),
