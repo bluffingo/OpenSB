@@ -1,11 +1,11 @@
 # OpenSB
-![Screen Shot 2024-08-08 at 20 15 36](https://github.com/user-attachments/assets/44b54ee7-c2da-46ce-bbdc-e4b8fd3c2556)
+![Screen Shot 2024-09-25 at 14 37 34](https://github.com/user-attachments/assets/722dfd47-2566-4d4b-8233-4c00c8ed648a)
 
 ## Our official instance
 
 [SquareBracket.me](https://squarebracket.me/)
 
-**Alternative Domains (not recommended):** [SquareBracket.pw](https://squarebracket.pw/), [FulpTube.rocks](https://fulptube.rocks)
+Alternative domains (not recommended): [SquareBracket.pw](https://squarebracket.pw/), [FulpTube.rocks](https://fulptube.rocks)
 
 ## How to setup an OpenSB instance.
 
