@@ -25,9 +25,23 @@ if ($disableUploading) {
 }
 
 if (!$auth->isUserAdmin()) {
-    // Rate limit uploading to a minute, both to prevent spam and to prevent double uploads.
-    if ($database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - 120, $auth->getUserID()]) && !$isDebug) {
-        Utilities::bannerNotification("Please wait two minutes before uploading again.", "/");
+    $joindate = $auth->getUserData()["joined"];
+    $timeSinceJoin = time() - strtotime($joindate);
+
+    if ($timeSinceJoin < 2 * 24 * 60 * 60) {
+        // if we have a new account, make the ratelimit longer.
+        $rateLimit = 10 * 60;
+    } elseif ($timeSinceJoin < 7 * 24 * 60 * 60) {
+        // if its 2-7 days old make the rate limit smaller.
+        $rateLimit = 5 * 60;
+    } else {
+        // if it is older than that, keep our usual ratelimit of two minutes.
+        $rateLimit = 2 * 60;
+    }
+
+    if ($database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [$rateLimit, $auth->getUserID()]) && !$isDebug) {
+        $waitTimeMinutes = $rateLimit / 60;
+        Utilities::bannerNotification("Please wait at least {$waitTimeMinutes} minutes before uploading again.", "/");
     }
 }
 
