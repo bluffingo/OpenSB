@@ -39,7 +39,7 @@ if (!$auth->isUserAdmin()) {
         $rateLimit = 2 * 60;
     }
 
-    if ($database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [$rateLimit, $auth->getUserID()]) && !$isDebug) {
+    if ($database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - $rateLimit, $auth->getUserID()]) && !$isDebug) {
         $waitTimeMinutes = $rateLimit / 60;
         Utilities::bannerNotification("Please wait at least {$waitTimeMinutes} minutes before uploading again.", "/");
     }
