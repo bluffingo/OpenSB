@@ -41,8 +41,12 @@ $data["icons"] = [
     "b-warning",
     "b-dark",
     "search",
-    "placeholder",
     "hamburger",
+    "caret-closed",
+    "caret-open",
+    "caret-closed-header",
+    "caret-open-header",
+    "placeholder",
 ];
 
 $data["uploads"] = Utilities::makeUploadArray($database, $uploads);

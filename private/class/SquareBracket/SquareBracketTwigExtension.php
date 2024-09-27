@@ -218,12 +218,12 @@ class SquareBracketTwigExtension extends AbstractExtension
         $is_banned = $database->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
 
         if ($is_banned) {
-            $data = "/assets/profiledel.png";
+            $data = "/assets/profiledef.svg";
         } else {
             if ($storage->fileExists('..' . $location)) {
                 $data = $location;
             } else {
-                $data = "/assets/profiledef.png";
+                $data = "/assets/profiledef.svg";
             }
         }
 
