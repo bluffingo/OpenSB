@@ -14,7 +14,8 @@ $data["color_types"] = [
     "secondary",
     "success",
     "danger",
-    "warning"
+    "warning",
+    "dark",
 ];
 
 $data["color_types_admin"] = [
@@ -38,6 +39,7 @@ $data["icons"] = [
     "b-secondary",
     "b-success",
     "b-warning",
+    "b-dark",
     "search",
     "placeholder",
     "hamburger",
