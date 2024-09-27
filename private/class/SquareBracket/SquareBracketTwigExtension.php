@@ -82,6 +82,18 @@ class SquareBracketTwigExtension extends AbstractExtension
                 // Mentions
                 $parsed_text = preg_replace('/(?<!=|\b|&)@([a-z0-9_]+(?:@[a-z0-9.-]+)?)/i', '<a href="/user/$1">@$1</a>', $parsed_text);
 
+                // Emojis
+                $parsed_text = preg_replace_callback('/:([a-z0-9_]+):/i', function($matches) {
+                    global $storage;
+                    $emoji_name = strtolower($matches[1]);
+                    // check if emoji exists so we dont load nothing
+                    if ($storage->fileExists('../dynamic/emojis/' . $emoji_name . '.png')) {
+                        return '<img class="emoji" src="/dynamic/emojis/' . $emoji_name . '.png" alt=":' . $emoji_name . ':" />';
+                    } else {
+                        return ':' . $emoji_name . ':';
+                    }
+                }, $parsed_text);
+
                 return $parsed_text;
 
             }, ['is_safe' => ['html']]),
@@ -100,6 +112,17 @@ class SquareBracketTwigExtension extends AbstractExtension
                 // Mentions
                 $parsed_text = preg_replace('/(?<!=|\b|&)@([a-z0-9_]+(?:@[a-z0-9.-]+)?)/i', '<a href="/user/$1">@$1</a>', $parsed_text);
 
+                // Emojis
+                $parsed_text = preg_replace_callback('/:([a-z0-9_]+):/i', function($matches) {
+                    global $storage;
+                    $emoji_name = strtolower($matches[1]);
+                    // check if emoji exists so we dont load nothing
+                    if ($storage->fileExists('../dynamic/emojis/' . $emoji_name . '.png')) {
+                        return '<img class="emoji" src="/dynamic/emojis/' . $emoji_name . '.png" alt=":' . $emoji_name . ':" />';
+                    } else {
+                        return ':' . $emoji_name . ':';
+                    }
+                }, $parsed_text);
 
                 return $parsed_text;
 

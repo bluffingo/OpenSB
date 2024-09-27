@@ -11,9 +11,10 @@ dynamic/banners/
 dynamic/videos/
 dynamic/videos_test/
 dynamic/art/
-dynamic/art_thumbnails
-dynamic/custom_thumbnails
+dynamic/art_thumbnails/
+dynamic/custom_thumbnails/
 dynamic/music/
+dynamic/emojis/
 
 !*.txt
 

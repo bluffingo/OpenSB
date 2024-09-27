@@ -180,6 +180,12 @@ hr {
   display: flex;
 }
 
+.emoji {
+  display: inline;
+  width: 24px;
+  vertical-align: middle;
+}
+
 @import 'header';
 @import 'footer';
 @import 'forms';

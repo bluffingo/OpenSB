@@ -1,0 +1,1 @@
+this is where custom emojis are stored.
