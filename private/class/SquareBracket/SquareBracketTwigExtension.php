@@ -39,6 +39,7 @@ class SquareBracketTwigExtension extends AbstractExtension
             new TwigFunction('header_main_links', [$this, 'headerMainLinks']),
             new TwigFunction('header_user_links', [$this, 'headerUserLinks']),
             new TwigFunction('header_user_account_links', [$this, 'headerUserAccountLinks']),
+            new TwigFunction('sidebar_following_users', [$this, 'sidebarFollowingUsers']),
             new TwigFunction('get_css_file_date', [$this, 'getCSSFileDate']),
             new TwigFunction('submission_box', [$this, 'submissionBox'], ['is_safe' => ['html']]),
             new TwigFunction('comment', [$this, 'comment'], ['is_safe' => ['html']]),
@@ -445,6 +446,30 @@ HTML;
 
             $array[] = [
                 "id" => $account["userid"],
+                "username" => $data,
+            ];
+        }
+
+        return $array;
+    }
+
+    public function sidebarFollowingUsers() {
+        global $auth, $database;
+
+        $userid = $auth->getUserID();
+
+        //$allUsers = query("SELECT $userfields s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]);
+        $users = $database->fetchArray(
+            $database->query("SELECT s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.user = ?", [$userid])
+        );
+
+        $array = [];
+
+        foreach ($users as $user) {
+            $data = $database->result("SELECT name FROM users WHERE id = ?", [$user["id"]]);
+
+            $array[] = [
+                "id" => $user["user"],
                 "username" => $data,
             ];
         }
