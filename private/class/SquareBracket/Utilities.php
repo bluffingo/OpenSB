@@ -423,7 +423,6 @@ class Utilities
 
     public static function isChazizTestInstance()
     {
-        return true;
         global $isChazizSB;
         return ($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'test.qobo.tv');
     }

@@ -35,7 +35,7 @@ class SquareBracket {
             // NOTE: dont add any more default options.
 
             $defaultSkin = "biscuit";
-            if ($isChazizSB) {
+            if ($isChazizSB && !Utilities::isChazizTestInstance()) {
                 $defaultSkin = "charla";
             }
 
