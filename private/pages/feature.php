@@ -10,7 +10,7 @@ $id = ($_GET['v'] ?? null);
 
 if (!$auth->isUserLoggedIn())
 {
-    Utilities::bannerNotification("Please login to continue.", "/login.php");
+    Utilities::bannerNotification("Please login to continue.", "/login");
 }
 
 $submission = new \SquareBracket\UploadData($database, $id);

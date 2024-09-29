@@ -13,6 +13,8 @@ use SquareBracket\Utilities;
 
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
+global $auth;
+
 #[NoReturn] function load_thumbnail_from_skin($path) {
     $pathParts = explode('_', $path);
     $skin = $pathParts[0] ?? '';
@@ -41,6 +43,15 @@ require_once SB_PRIVATE_PATH . '/class/common.php';
 
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $path = explode('/', $uri);
+
+// testing code
+if (Utilities::isChazizTestInstance())
+{
+    if (!$auth->isUserLoggedIn() && $path[1] != "login")
+    {
+        Utilities::redirect("/login");
+    }
+}
 
 // Originally based on Rollerozxa's router implementation in Principia-Web.
 // https://github.com/principia-game/principia-web/blob/master/router.php

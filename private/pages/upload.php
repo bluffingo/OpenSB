@@ -13,7 +13,7 @@ $supportedImageFormats = ["png", "jpg", "jpeg"];
 
 if (!$auth->isUserLoggedIn())
 {
-    Utilities::bannerNotification("Please login to continue.", "/login.php");
+    Utilities::bannerNotification("Please login to continue.", "/login");
 }
 
 if ($auth->getUserBanData()) {

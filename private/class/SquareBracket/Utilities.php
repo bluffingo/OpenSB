@@ -116,8 +116,8 @@ class Utilities
         $journalsData = [];
         foreach ($journals as $journal) {
             if (self::isFulpTube() && $journal["is_site_news"]) {
-                $journal["title"] = self::sbToFulpTube($journal["title"]);
-                $journal["post"] = self::sbToFulpTube($journal["post"]);
+                $journal["title"] = self::replaceSquareBracketWithFulpTube($journal["title"]);
+                $journal["post"] = self::replaceSquareBracketWithFulpTube($journal["post"]);
             }
 
             $userData = new UserData($database, $journal["author"]);
@@ -421,7 +421,14 @@ class Utilities
         return ($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'fulptube.rocks');
     }
 
-    public static function sbToFulpTube($input)
+    public static function isChazizTestInstance()
+    {
+        return true;
+        global $isChazizSB;
+        return ($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'test.qobo.tv');
+    }
+
+    public static function replaceSquareBracketWithFulpTube($input)
     {
         // replace "squarebracket" with "fulptube"
         $replacements = [
@@ -447,6 +454,7 @@ class Utilities
             '://squarebracket.me' => '://fulptube.rocks',
             '://squarebracket.pw' => '://fulptube.rocks',
             '://squarebracket.veselcraft.ru' => '://fulptube.rocks',
+            '://sb.billyisreal.com' => '://fulptube.rocks',
         ];
 
         $output = str_replace(array_keys($properUrlReplacements), array_values($properUrlReplacements), $output);

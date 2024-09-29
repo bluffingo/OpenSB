@@ -14,7 +14,7 @@ if ($disableRegistration) {
 $ipcheck = file_get_contents("https://api.stopforumspam.org/api?ip=" . Utilities::getIpAddress());
 
 if (str_contains($ipcheck, "<appears>yes</appears>") && !$isDebug) {
-    Utilities::bannerNotification("This IP address appears to be suspicious.", "/index.php");
+    Utilities::bannerNotification("This IP address appears to be suspicious.", "/");
 }
 
 if (isset($_POST['registersubmit'])) {

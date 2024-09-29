@@ -7,7 +7,7 @@ global $twig, $database, $disableWritingJournals, $auth, $isDebug;
 use SquareBracket\Utilities;
 
 if (!$auth->isUserLoggedIn()) {
-    Utilities::bannerNotification("Please login to continue.", "/login.php");
+    Utilities::bannerNotification("Please login to continue.", "/login");
 }
 
 if ($auth->getUserBanData()) {

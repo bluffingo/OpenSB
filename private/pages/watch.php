@@ -76,7 +76,7 @@ $bools = $submission->bitmaskToArray();
 
 if ($bools["block_guests"] && !$auth->isUserLoggedIn())
 {
-    Utilities::bannerNotification("This submission's author has blocked guest access.", "/login.php");
+    Utilities::bannerNotification("This submission's author has blocked guest access.", "/login");
 }
 
 if (Utilities::RatingToNumber($data["rating"]) > Utilities::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
@@ -99,7 +99,7 @@ function domainCheck()
 {
     global $isChazizSB;
 
-    $allowedChazizSbDomains = ['squarebracket.pw', 'squarebracket.me', 'fulptube.rocks'];
+    $allowedChazizSbDomains = ['squarebracket.pw', 'squarebracket.me', 'fulptube.rocks', 'test.qobo.tv'];
     $currentDomain = $_SERVER['HTTP_HOST'];
 
     if ($isChazizSB) {

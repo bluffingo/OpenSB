@@ -24,8 +24,8 @@ if ($auth->getUserID() == $data["author"]) {
 }
 
 if (Utilities::isFulpTube() && $data["is_site_news"]) {
-    $data["title"] = Utilities::sbToFulpTube($data["title"]);
-    $data["post"] = Utilities::sbToFulpTube($data["post"]);
+    $data["title"] = Utilities::replaceSquareBracketWithFulpTube($data["title"]);
+    $data["post"] = Utilities::replaceSquareBracketWithFulpTube($data["post"]);
 }
 
 $author = new UserData($database, $data["author"]);

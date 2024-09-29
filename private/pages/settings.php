@@ -10,7 +10,7 @@ global $auth;
 
 if (!$auth->isUserLoggedIn())
 {
-    Utilities::bannerNotification("Please login to continue.", "/login.php");
+    Utilities::bannerNotification("Please login to continue.", "/login");
 }
 
 // we shouldn't let banned users change settings.
@@ -53,7 +53,7 @@ if (isset($_POST['save'])) {
                 $database->query("UPDATE users SET password = ?, token = ? WHERE id = ?",
                     [password_hash($pass, PASSWORD_DEFAULT), bin2hex(random_bytes(32)), $auth->getUserID()]);
 
-                Utilities::bannerNotification("Your password has been changed.", "/login.php");
+                Utilities::bannerNotification("Your password has been changed.", "/login");
             } else {
                 $error .= " The new passwords aren't identical.";
             }

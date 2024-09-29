@@ -241,7 +241,7 @@ class SquareBracketTwigExtension extends AbstractExtension
         if ($storage->fileExists('..' . $location)) {
             $data = $location;
         } else {
-            $data = "/assets/profiledef.png";
+            $data = "/assets/profiledef.svg";
         }
 
         return $data;
