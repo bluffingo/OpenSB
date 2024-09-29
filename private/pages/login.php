@@ -77,7 +77,7 @@ if (isset($_POST["loginsubmit"])) {
     // testing code
     if (Utilities::isChazizTestInstance())
     {
-        if ($username != "chaziz")
+        if ($username != "chaziz" && $username != "flowerz")
         {
             Utilities::bannerNotification("Please use SquareBracket.me.", "/login");
         }
