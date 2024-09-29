@@ -11,8 +11,6 @@ use Random\Randomizer;
 
 /**
  * Static utilities.
- *
- * @since SquareBracket 1.0
  */
 class Utilities
 {
@@ -21,7 +19,6 @@ class Utilities
      *
      * @param array $submission The upload data
      * @return array|string|null
-     * @since openSB Beta 3.0
      */
     public static function getUploadFile(array $submission): array|string|null
     {
@@ -42,8 +39,6 @@ class Utilities
 
     /**
      * Calculate the upload's ratings.
-     *
-     * @since openSB Beta 3.0
      */
     public static function calculateUploadRatings($ratings): array
     {
@@ -185,7 +180,6 @@ class Utilities
     /**
      * Not to be confused with Notification, which makes a banner.
      *
-     * @since SquareBracket 1.0
      */
     public static function NotifyUser($database, $user, $submission, $related_id, NotificationEnum $type): void
     {
@@ -229,7 +223,6 @@ class Utilities
      * @param $message
      * @param $redirect
      * @param string $color
-     * @since SquareBracket 1.0
      */
     public static function bannerNotification($message, $redirect, string $color = "danger"): void
     {
@@ -242,9 +235,7 @@ class Utilities
         }
     }
 
-    /**
-     * @since SquareBracket 1.1
-     */
+
     public static function processImageUploadFile($temp_name, $target): void
     {
         $manager = new ImageManager(Driver::class);
@@ -253,9 +244,7 @@ class Utilities
         $img->toPng()->save($target);
     }
 
-    /**
-     * @since SquareBracket 1.1
-     */
+
     public static function processImageUploadThumbnail($temp_name, $target): void
     {
         $manager = new ImageManager(Driver::class);
@@ -264,9 +253,7 @@ class Utilities
         $img->toJpeg(90)->save($target);
     }
 
-    /**
-     * @since SquareBracket 1.1
-     */
+
     public static function processCustomUploadThumbnail($temp_name, $target): void
     {
         $manager = new ImageManager(Driver::class);
@@ -275,9 +262,7 @@ class Utilities
         $img->toJpeg(80)->save($target);
     }
 
-    /**
-     * @since SquareBracket 1.1
-     */
+
     public static function processProfilePicture($temp_name, $target): void
     {
         $manager = new ImageManager(Driver::class);

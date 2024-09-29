@@ -19,7 +19,6 @@ class CoreException extends \Exception
     /**
      * Display custom page for exceptions instead of using the frontend.
      *
-     * @since SquareBracket 1.0
      *
      * @return void
      */

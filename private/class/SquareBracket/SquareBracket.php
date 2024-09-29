@@ -3,8 +3,6 @@ namespace SquareBracket;
 
 /**
  * The core SquareBracket class.
- *
- * @since SquareBracket 1.0
  */
 class SquareBracket {
     private Database $database;
@@ -15,7 +13,6 @@ class SquareBracket {
     /**
      * Initialize core SquareBracket classes. (this is fucking stupid)
      *
-     * @since SquareBracket 1.0
      */
     public function __construct($host, $user, $pass, $db) {
         global $isChazizSB;

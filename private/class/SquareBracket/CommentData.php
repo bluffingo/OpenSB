@@ -4,8 +4,6 @@ namespace SquareBracket;
 
 /**
  * Commenting on uploads, profiles and journals.
- *
- * @since SquareBracket 1.0
  */
 class CommentData
 {

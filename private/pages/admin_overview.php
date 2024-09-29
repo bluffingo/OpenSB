@@ -20,8 +20,6 @@ if ($orange->getLocalOptions()["skin"] != "biscuit" && $orange->getLocalOptions(
 
 /**
  * Based on the implementation in principia-web. Originally, this was 5 slightly different duplicated functions.
- *
- * @since SquareBracket 1.1
  */
 function makeRunningTotalGraph($database, $table, $orderfield): array
 {

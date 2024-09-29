@@ -7,8 +7,6 @@ use PDOException;
 
 /**
  * PDO interface(?).
- *
- * @since openSB Pre-Alpha 1
  */
 class Database
 {

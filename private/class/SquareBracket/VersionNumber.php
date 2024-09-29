@@ -13,7 +13,6 @@ class VersionNumber
     /**
      * Make SquareBracket's version number.
      *
-     * @since SquareBracket 1.0
      */
     private function makeVersionString(): void
     {
@@ -54,7 +53,6 @@ class VersionNumber
      * Returns SquareBracket's version number. Originally named getBettyVersion().
      *
      * @return string
-     * @since SquareBracket 1.0
      */
     public function getVersionString(): string
     {

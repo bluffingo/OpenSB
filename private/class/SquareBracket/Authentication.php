@@ -4,8 +4,6 @@ namespace SquareBracket;
 
 /**
  * Authentication stuff.
- *
- * @since SquareBracket 1.0
  */
 class Authentication
 {

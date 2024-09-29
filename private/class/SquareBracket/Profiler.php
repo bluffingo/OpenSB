@@ -4,8 +4,6 @@ namespace SquareBracket;
 
 /**
  * Revamped profiler.
- *
- * @since SquareBracket 1.0
  */
 class Profiler
 {

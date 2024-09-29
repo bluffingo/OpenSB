@@ -13,8 +13,6 @@ use Twig\TwigFunction;
 
 /**
  * A rewrite of openSB's /private/layout.php.
- *
- * @since SquareBracket 1.0
  */
 class Templating
 {
@@ -87,14 +85,6 @@ class Templating
         $this->twig->addExtension(new StringExtension());
 
         // BOOTSTRAP SQUAREBRACKET FRONTEND COMPATIBILITY
-        $this->twig->addFunction(new TwigFunction('video_box', function() {
-            return false;
-        }));
-
-        $this->twig->addFunction(new TwigFunction('browse_video_box', function() {
-            return false;
-        }));
-
         $this->twig->addFunction(new TwigFunction('icon', function($icon, $size) {
             return $this->render('components/icon.twig', ['icon' => $icon, 'size' => $size]);
         }, ['is_safe' => ['html']]));
@@ -163,8 +153,6 @@ class Templating
         // temporary
         $this->twig->addGlobal('show_warning_banner', $showWarningBanner);
 
-
-
         /*
         if ($this->skin == "finalium" && $this->theme == "beta")
         {
@@ -190,7 +178,6 @@ class Templating
     /**
      * Get all the available skins.
      *
-     * @since SquareBracket 1.0
      *
      * @return string[]
      */
@@ -214,7 +201,6 @@ class Templating
     /**
      * Get the skin's JSON metadata.
      *
-     * @since SquareBracket 1.0
      *
      * @param $skin
      * @return array|null
@@ -263,7 +249,6 @@ class Templating
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
-     * @since SquareBracket 1.0
      *
      */
     public function render($template, array $data = []): string

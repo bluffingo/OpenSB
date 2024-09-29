@@ -4,8 +4,6 @@ namespace SquareBracket;
 
 /**
  * uploads.
- *
- * @since SquareBracket 1.0
  */
 class UploadData
 {
