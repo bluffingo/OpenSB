@@ -17,6 +17,7 @@ return [
     "mode" => "PROD",
     "site" => "squarebracket",
     "maintenance" => false,
+    "cache" => false,
     // Bunny settings, only used if the "site" parameter above is squarebracket_chaziz
     "bunny_settings" => [
         "stream_api" => "stream api key",

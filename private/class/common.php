@@ -87,6 +87,12 @@ if ($config["mode"] == "DEV") {
     $isDebug = false;
 }
 
+if ($config["cache"]) {
+    $enableCache = true;
+} else {
+    $enableCache = false;
+}
+
 if ($config["maintenance"]) {
     $isMaintenance = true;
 } else {

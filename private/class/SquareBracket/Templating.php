@@ -26,7 +26,7 @@ class Templating
      */
     public function __construct(SquareBracket $orange)
     {
-        global $isChazizSB, $auth, $isDebug, $branding, $enableInviteKeys, $externalSkins;
+        global $isChazizSB, $auth, $isDebug, $branding, $enableInviteKeys, $enableCache;
         chdir(SB_PRIVATE_PATH);
 
         $options = $orange->getLocalOptions();
@@ -65,8 +65,10 @@ class Templating
             $this->loader = new FilesystemLoader($templatePath);
         }
 
+        $doCache = !$enableCache ? false : 'skins/cache/';
+
         $this->loader->addPath('skins/common/');
-        $this->twig = new Environment($this->loader, ['debug' => $isDebug]);
+        $this->twig = new Environment($this->loader, ['debug' => $isDebug, 'cache' => $doCache]);
 
         $this->twig->addFunction(new TwigFunction('component', function($component) use ($templatePath) {
             $path = '/components/' . $this->theme . '/' . $component . '.twig';
@@ -190,7 +192,7 @@ class Templating
 
         // include skins bundled with opensb, except "common" since thats not a skin.
         foreach($unfiltered_skins as $skin) {
-            if ($skin != "skins/common") {
+            if ($skin != "skins/common" && $skin != "skins/cache") {
                 $skins[] = $skin;
             }
         }
@@ -228,7 +230,7 @@ class Templating
                 $incomplete = $isDebug ? false : ($metadata["metadata"]["incomplete"] ?? false);
                 // dont show incomplete skins
                 if (!$incomplete) {
-                    $skins[] = $this->getSkinMetadata($skin);
+                    $skins[] = $metadata;
                 }
             }
         }
