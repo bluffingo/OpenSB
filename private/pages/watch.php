@@ -175,11 +175,11 @@ ORDER BY
     jaccard_index DESC
 LIMIT 24";
 
-$submissions_by_author = $submission_query->query("RAND()", 24, "v.author = ?", [$data["author"]]);
+$uploads_by_author = $submission_query->query("RAND()", 24, "v.author = ? AND v.video_id != ?", [$data["author"], $data["video_id"]]);
 
 if ($tags === []) {
     // if there are no tags, list the author's other submissions
-    $recommended = $submissions_by_author;
+    $recommended = false;
 } else {
     // if there are tags, use jaccard stuff ported from poktwo to list submissions that may be relevant enough.
     // this isn't ported to UploadQuery for now since this query uses a slightly different syntax.
@@ -207,9 +207,33 @@ if ($tags === []) {
 
     // if no other submissions match, then fallback to listing the author's other submissions
     if (empty($recommended)) {
-        $recommended = $submissions_by_author;
+        $recommended = false;
     }
 }
+
+if ($recommended) {
+    $recommended_upload_array = Utilities::makeUploadArray($database, $recommended);
+} else {
+    $recommended_upload_array = [];
+}
+
+if ($uploads_by_author) {
+    $uploads_by_author_array = Utilities::makeUploadArray($database, $uploads_by_author);
+} else {
+    $uploads_by_author_array = [];
+}
+
+if (!$recommended && !$uploads_by_author) {
+    $random_uploads = $submission_query->query("RAND()", 24, "v.video_id != ?", [$data["video_id"]]);
+    if ($random_uploads) {
+        $random_uploads_array = Utilities::makeUploadArray($database, $random_uploads);
+    } else {
+        $random_uploads_array = [];
+    }
+} else {
+    $random_uploads_array = [];
+}
+
 
 if ($auth->getUserID() == $data["author"]) { $owner = true; } else { $owner = false; }
 
@@ -242,7 +266,9 @@ $page_data = [
     "comments" => $comment_data,
     "bools" => $bools,
     "rating" => $data["rating"],
-    "recommended" => Utilities::makeUploadArray($database, $recommended),
+    "recommended" => $recommended_upload_array,
+    "other_by_author" => $uploads_by_author_array,
+    "random" => $random_uploads_array,
     "tags" => $tags,
 ];
 

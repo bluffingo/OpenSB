@@ -160,11 +160,25 @@
             </div>
         </div>
         <div class="col-large-3 col-4">
-            <div class="content-box">
-                {% for submission in submission.recommended %}
-                    {{ include('/components/_small_submission.twig') }}
-                {% endfor %}
-            </div>
+            {% if submission.recommended %}
+                <div class="content-box">
+                    {% for submission in submission.recommended %}
+                        {{ include('/components/_small_submission.twig') }}
+                    {% endfor %}
+                </div>
+            {% elseif submission.other_by_author %}
+                <div class="content-box">
+                    {% for submission in submission.other_by_author %}
+                        {{ include('/components/_small_submission.twig') }}
+                    {% endfor %}
+                </div>
+            {% elseif submission.random %}
+                <div class="content-box">
+                    {% for submission in submission.random %}
+                        {{ include('/components/_small_submission.twig') }}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
