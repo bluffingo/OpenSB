@@ -1,16 +1,16 @@
 # SquareBracket Community Guidelines 
-Last updated by Chaziz on September 26th 2024.
+Last updated by Chaziz on September 30th 2024.
 
 ## What we don't allow
 
-**If you upload any of these, you will be banned.**
+**If you upload any of these, you will have your upload taken down and in some cases your account will be banned**
 
 * Content intended for children
 * Illegal content (CSAM/CSEM, bestiality, doxxing)
 * Adult content (pornography, erotic fetish content)
 * Shock content (gore)
 * Offensive content (Racism, fascism, homophobia)
-* **Reuploads of pre-existing copyrighted content that do not fall into fair use**
+* **Reuploads of pre-existing copyrighted content that do not fall into fair use** (You must provide some sort of commentary. If you reupload something and claim it is under fair use we will take it down regardless.)
 
 ## Sensitive content
 
