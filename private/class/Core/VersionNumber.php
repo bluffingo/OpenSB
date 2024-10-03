@@ -23,7 +23,7 @@ class VersionNumber
 
             $hash = substr($commit, 0, 7);
 
-            $this->version = sprintf('%s-%s', $hash, $gitBranch);
+            $this->version = sprintf('Kuva %s-%s', $hash, $gitBranch);
         } else {
             $this->version = 'Unknown';
         }
@@ -32,21 +32,6 @@ class VersionNumber
     public function printVersionForOutput()
     {
         return sprintf("OpenSB %s - Executed at %s", VersionNumber::getVersionString(), date("Y-m-d h:i:s")) . PHP_EOL;
-    }
-
-    public function printVersionForUserAgent()
-    {
-        // This user agent will be used for server-to-server communication, especially around the fediverse.
-        // For example, The user agent for Akkoma-based instances goes something like this:
-        // Software Version-GitHash; Website <hostmaster@website.social>
-        // OpenSB will use that, but without a hostmaster address at the end.
-        if (isset($_SERVER['HTTP_HOST'])) {
-            $domain = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/";
-
-            return sprintf("OpenSB %s; %s", VersionNumber::getVersionString(), $domain);
-        } else {
-            return "printVersionForUserAgent() shouldn't be used in this context";
-        }
     }
 
     /**

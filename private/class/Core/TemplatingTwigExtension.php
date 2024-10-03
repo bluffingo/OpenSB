@@ -7,7 +7,7 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-class FrontendTwigExtension extends AbstractExtension
+class TemplatingTwigExtension extends AbstractExtension
 {
     public function getFunctions(): array
     {

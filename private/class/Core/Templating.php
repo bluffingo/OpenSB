@@ -81,7 +81,7 @@ class Templating
             }
         }));
 
-        $this->twig->addExtension(new FrontendTwigExtension());
+        $this->twig->addExtension(new TemplatingTwigExtension());
         $this->twig->addExtension(new StringExtension());
 
         // BOOTSTRAP SQUAREBRACKET FRONTEND COMPATIBILITY

@@ -3,7 +3,7 @@ namespace OpenSB;
 
 define("SB_ROOT_PATH", dirname(__DIR__));
 define("SB_DYNAMIC_PATH", SB_ROOT_PATH . '/dynamic');
-define("SB_PUBLIC_PATH", SB_ROOT_PATH . '/public'); // we need this for FrontendTwigExtension
+define("SB_PUBLIC_PATH", SB_ROOT_PATH . '/public'); // we need this for TemplatingTwigExtension
 define("SB_PRIVATE_PATH", SB_ROOT_PATH . '/private');
 define("SB_VENDOR_PATH", SB_ROOT_PATH . '/vendor');
 define("SB_GIT_PATH", SB_ROOT_PATH . '/.git'); // ONLY FOR makeVersionString() IN VersionNumber CLASS.
