@@ -125,7 +125,7 @@ $enableInviteKeys = false;
 
 // now initialize the orange classes
 $orange = new CoreClasses($host, $user, $pass, $db);
-$database = $orange->getDatabase();
+$database = $orange->getDatabaseClass();
 $auth = new Authentication($database);
 $profiler = new Profiler();
 $twig = new Templating($orange);
@@ -146,7 +146,7 @@ foreach ($ipBannedUsers as $ipBannedUser) {
     }
 }
 
-$storage = new Storage($orange->getDatabase(), $isChazizSB, $bunnySettings);
+$storage = new Storage($orange->getDatabaseClass(), $isChazizSB, $bunnySettings);
 
 // and i am being serious with this. -chaziz 8/7/2024
 if (!file_exists(SB_GIT_PATH)) {

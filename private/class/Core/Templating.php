@@ -25,12 +25,19 @@ class Templating
     /**
      * @throws LoaderError
      */
-    public function __construct(CoreClasses $orange)
+    public function __construct(array $options, Authentication $auth)
     {
-        global $isChazizSB, $auth, $isDebug, $branding, $enableInviteKeys, $enableCache;
         chdir(SB_PRIVATE_PATH);
 
-        $options = $orange->getLocalOptions();
+        // TEMPORARY
+        $isChazizSB = false;
+        $isDebug = false;
+        $branding = [
+            "name" => "FIXME BRANDING",
+            "assets_location" => "/assets/placeholder",
+        ];
+        $enableInviteKeys = false;
+        $enableCache = false;
 
         $this->skin = $options["skin"] ?? "biscuit";
         $this->theme = $options["theme"] ?? "default";
