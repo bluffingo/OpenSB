@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $orange;
 
-use SquareBracket\Templating;
+use OpenSB\class\Core\Templating;
 
 echo $twig->render('_markdown.twig', [
 	'pagetitle' => 'Privacy Policy',

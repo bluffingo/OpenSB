@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $auth, $database, $twig;
 
-use SquareBracket\Templating;
-use SquareBracket\UserData;
+use OpenSB\class\Core\Templating;
+use OpenSB\class\Core\UserData;
 
 if (isset($_POST['really'])) {
     switch ($_POST['type']) {

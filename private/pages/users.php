@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $database;
 
-use SquareBracket\UserData;
+use OpenSB\class\Core\UserData;
 
 $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 $limit = sprintf("%s,%s", (($page_number - 1) * 20), 20);

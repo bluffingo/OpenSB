@@ -1,13 +1,13 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
 use Parsedown;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-class SquareBracketTwigExtension extends AbstractExtension
+class FrontendTwigExtension extends AbstractExtension
 {
     public function getFunctions(): array
     {

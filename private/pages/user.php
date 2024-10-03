@@ -4,11 +4,11 @@ namespace OpenSB;
 
 global $auth, $database, $twig;
 
-use SquareBracket\CommentData;
-use SquareBracket\CommentLocation;
-use SquareBracket\UploadData;
-use SquareBracket\Utilities;
-use SquareBracket\UploadQuery;
+use OpenSB\class\Core\CommentData;
+use OpenSB\class\Core\CommentLocation;
+use OpenSB\class\Core\UploadData;
+use OpenSB\class\Core\Utilities;
+use OpenSB\class\Core\UploadQuery;
 
 $submission_query = new UploadQuery($database);
 

@@ -6,12 +6,12 @@ global $twig, $database, $auth, $orange;
 
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
-use SquareBracket\CommentData;
-use SquareBracket\CommentLocation;
-use SquareBracket\UploadData;
-use SquareBracket\UploadQuery;
-use SquareBracket\Utilities;
-use SquareBracket\UserData;
+use OpenSB\class\Core\CommentData;
+use OpenSB\class\Core\CommentLocation;
+use OpenSB\class\Core\UploadData;
+use OpenSB\class\Core\UploadQuery;
+use OpenSB\class\Core\Utilities;
+use OpenSB\class\Core\UserData;
 
 $id = $path[2] ?? null;
 

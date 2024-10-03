@@ -1,6 +1,6 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
 use Symfony\Component\HttpClient\Psr18Client;
 use ToshY\BunnyNet\Client\BunnyClient;

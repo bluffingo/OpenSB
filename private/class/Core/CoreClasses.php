@@ -1,10 +1,10 @@
 <?php
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
 /**
  * The core SquareBracket class.
  */
-class SquareBracket {
+class CoreClasses {
     private Database $database;
     public array $options;
     private array $accounts;
@@ -92,7 +92,7 @@ class SquareBracket {
     /**
      * Returns array for changing accounts.
      *
-     * @return string
+     * @return array|string
      */
     public function getAccountsArray(): array|string
     {

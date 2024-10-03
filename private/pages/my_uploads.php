@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $orange, $auth;
 
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Utilities;
 
 $type = ($_GET['type'] ?? 'recent');
 $page_number = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);

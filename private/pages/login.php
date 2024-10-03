@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $database, $auth, $orange;
 
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Utilities;
 
 $warning = $orange->getWarningString();
 

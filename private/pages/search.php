@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $database;
 
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Utilities;
 
 function getOrderFromType($type): string
 {

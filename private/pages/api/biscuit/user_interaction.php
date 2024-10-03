@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $auth, $orange;
 
-use SquareBracket\NotificationEnum;
-use SquareBracket\Utilities;
+use OpenSB\class\Core\NotificationEnum;
+use OpenSB\class\Core\Utilities;
 
 header('Content-Type: application/json');
 

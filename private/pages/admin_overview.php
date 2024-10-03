@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $auth, $isChazizSB, $twig, $database, $orange;
 
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Utilities;
 
 if (!$auth->isUserAdmin()) {
     Utilities::bannerNotification("You do not have permission to access this page.", "/");

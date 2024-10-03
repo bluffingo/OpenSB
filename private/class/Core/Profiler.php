@@ -1,9 +1,9 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
 /**
- * Revamped profiler.
+ * Profiler.
  */
 class Profiler
 {

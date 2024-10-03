@@ -1,6 +1,6 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
 use Twig\Environment;
 use Twig\Error\LoaderError;
@@ -12,7 +12,7 @@ use Twig\Loader\FilesystemLoader;
 use Twig\TwigFunction;
 
 /**
- * A rewrite of openSB's /private/layout.php.
+ * Templating
  */
 class Templating
 {
@@ -24,7 +24,7 @@ class Templating
     /**
      * @throws LoaderError
      */
-    public function __construct(SquareBracket $orange)
+    public function __construct(CoreClasses $orange)
     {
         global $isChazizSB, $auth, $isDebug, $branding, $enableInviteKeys, $enableCache;
         chdir(SB_PRIVATE_PATH);
@@ -53,17 +53,7 @@ class Templating
 
         $templatePath = $skinPath . '/templates';
 
-        // if this skin isnt an actual skin, don't load.
-        try {
-            $this->loader = new FilesystemLoader($templatePath);
-        } catch (LoaderError) {
-            trigger_error("Currently selected skin is invalid", E_USER_WARNING);
-
-            $this->skin = "biscuit";
-            $this->theme = "default";
-            $templatePath = "skins/biscuit/templates";
-            $this->loader = new FilesystemLoader($templatePath);
-        }
+        $this->loader = new FilesystemLoader($templatePath);
 
         $doCache = !$enableCache ? false : 'skins/cache/';
 
@@ -83,7 +73,7 @@ class Templating
             }
         }));
 
-        $this->twig->addExtension(new SquareBracketTwigExtension());
+        $this->twig->addExtension(new FrontendTwigExtension());
         $this->twig->addExtension(new StringExtension());
 
         // BOOTSTRAP SQUAREBRACKET FRONTEND COMPATIBILITY

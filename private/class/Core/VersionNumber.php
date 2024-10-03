@@ -1,6 +1,6 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
 class VersionNumber
 {

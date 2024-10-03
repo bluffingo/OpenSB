@@ -1,12 +1,13 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
+use Exception;
 use JetBrains\PhpStorm\NoReturn;
 use ReturnTypeWillChange;
 use Throwable;
 
-class CoreException extends \Exception
+class CoreException extends Exception
 {
     public function __construct($message, $code = 500, Throwable $previous = null) {
         parent::__construct($message, $code, $previous);
@@ -28,7 +29,7 @@ class CoreException extends \Exception
 
         http_response_code(500);
         echo "<body>";
-        echo "<h1>OpenSB Orange Exception</h1>";
+        echo "<h1>OpenSB Exception</h1>";
         echo "<p>" . $errorMsg . "</p>";
         echo "</body>";
         die();

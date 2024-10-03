@@ -20,13 +20,13 @@ $config = include_once(SB_PRIVATE_PATH . '/config/config.php');
 
 require_once(SB_VENDOR_PATH . '/autoload.php');
 
-use SquareBracket\Authentication;
-use SquareBracket\Localization;
-use SquareBracket\Profiler;
-use SquareBracket\SquareBracket;
-use SquareBracket\Storage;
-use SquareBracket\Templating;
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Authentication;
+use OpenSB\class\Core\Localization;
+use OpenSB\class\Core\Profiler;
+use OpenSB\class\Core\CoreClasses;
+use OpenSB\class\Core\Storage;
+use OpenSB\class\Core\Templating;
+use OpenSB\class\Core\Utilities;
 
 // please use apache/nginx for production stuff.
 if (php_sapi_name() == "cli-server") {
@@ -122,7 +122,7 @@ $disableWritingJournals = false;
 $enableInviteKeys = false;
 
 // now initialize the orange classes
-$orange = new SquareBracket($host, $user, $pass, $db);
+$orange = new CoreClasses($host, $user, $pass, $db);
 $database = $orange->getDatabase();
 $auth = new Authentication($database);
 $profiler = new Profiler();
