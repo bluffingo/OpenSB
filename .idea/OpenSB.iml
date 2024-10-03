@@ -20,7 +20,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php73" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/process" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php80" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/erusev/parsedown" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-message" />
@@ -44,14 +43,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/string-extra" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/gif" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-foundation" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php83" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/event-dispatcher" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/error-handler" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher-contracts" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-kernel" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fortawesome/font-awesome" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jaybizzle/crawler-detect" />
       <excludeFolder url="file://$MODULE_DIR$/pma/vendor/bacon/bacon-qr-code" />

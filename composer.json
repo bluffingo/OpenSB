@@ -11,7 +11,8 @@
 		"psr/http-client": "1.0.3",
 		"twbs/bootstrap": "^5.3",
 		"twbs/bootstrap-icons": "^1.11",
-		"jaybizzle/crawler-detect": "^1.2"
+		"jaybizzle/crawler-detect": "^1.2",
+		"filp/whoops": "^2.16"
 	},
 	"minimum-stability": "stable",
 	"config": {

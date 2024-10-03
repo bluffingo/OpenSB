@@ -10,6 +10,8 @@ define("SB_GIT_PATH", SB_ROOT_PATH . '/.git'); // ONLY FOR makeVersionString() I
 
 $config = require_once SB_PRIVATE_PATH . '/config/config.php';
 
+require_once(SB_VENDOR_PATH . '/autoload.php');
+
 // stupid shitty autoload that's fine for now -chaziz 10/3/2024
 spl_autoload_register(function ($class_name) {
     $class_name = str_replace('\\', '/', $class_name);
