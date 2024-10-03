@@ -1,8 +1,12 @@
 <?php
-namespace OpenSB\class\Core;
+namespace OpenSB\class;
+
+use OpenSB\class\Core\CoreException;
+use OpenSB\class\Core\Database;
+use OpenSB\class\Core\Utilities;
 
 /**
- * The core SquareBracket class.
+ * The core classes.
  */
 class CoreClasses {
     private Database $database;
@@ -11,11 +15,17 @@ class CoreClasses {
     private string $accounts_cookie_warning = "DO-NOT-SHARE-THIS-WITH-ANYONE-";
 
     /**
-     * Initialize core SquareBracket classes. (this is fucking stupid)
+     * Initialize core classes.
      *
      */
-    public function __construct($host, $user, $pass, $db) {
+    public function __construct($config) {
         global $isChazizSB;
+
+        // temporary!
+        $host = $config["mysql"]["host"];
+        $db = $config["mysql"]["database"];
+        $user = $config["mysql"]["username"];
+        $pass = $config["mysql"]["password"];
 
         if (isset($_COOKIE["SBOPTIONS"])) {
             $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
@@ -59,7 +69,7 @@ class CoreClasses {
     }
 
     /**
-     * Returns the database class for other SquareBracket classes to use. (this is stupid design)
+     * Returns the database class for other classes to use.
      *
      * @return Database
      *

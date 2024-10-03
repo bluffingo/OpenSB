@@ -2,6 +2,7 @@
 
 namespace OpenSB\class\Core;
 
+use OpenSB\class\CoreClasses;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;

@@ -1,5 +1,7 @@
 <?php
 
+// DEPRECATED! WE'RE MOVING SHIT OUT OF HERE. -chaziz 10/3/2024
+
 namespace OpenSB;
 
 if (version_compare(PHP_VERSION, '8.2.0') <= 0) {
@@ -23,10 +25,10 @@ require_once(SB_VENDOR_PATH . '/autoload.php');
 use OpenSB\class\Core\Authentication;
 use OpenSB\class\Core\Localization;
 use OpenSB\class\Core\Profiler;
-use OpenSB\class\Core\CoreClasses;
 use OpenSB\class\Core\Storage;
 use OpenSB\class\Core\Templating;
 use OpenSB\class\Core\Utilities;
+use OpenSB\class\CoreClasses;
 
 // please use apache/nginx for production stuff.
 if (php_sapi_name() == "cli-server") {
