@@ -27,7 +27,7 @@ class Router {
             $className = $this->routes[$method][$path];
 
             if (class_exists($className)) {
-                $page = new $className();
+                $page = new $className($this->core_classes);
                 return $page->render($_REQUEST);
             } else {
                 return "Page class '$className' not found.";

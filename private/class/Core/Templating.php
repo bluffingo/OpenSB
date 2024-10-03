@@ -81,7 +81,7 @@ class Templating
             }
         }));
 
-        $this->twig->addExtension(new TemplatingTwigExtension());
+        $this->twig->addExtension(new TemplatingTwigExtension($auth));
         $this->twig->addExtension(new StringExtension());
 
         // BOOTSTRAP SQUAREBRACKET FRONTEND COMPATIBILITY
@@ -245,15 +245,15 @@ class Templating
      *
      * @param $template
      * @param array $data
-     * @return string
+     * @return void
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      *
      */
-    public function render($template, array $data = []): string
+    public function render($template, array $data = []): void
     {
-        return $this->twig->render($template, $data);
+        $this->twig->display($template, $data);
     }
 }
 
