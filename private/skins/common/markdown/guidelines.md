@@ -1,7 +1,15 @@
 # SquareBracket Community Guidelines 
-Last updated by Chaziz on September 30th 2024.
+Last updated by Chaziz on October 2nd 2024.
 
-## What we don't allow
+## General rules
+* You must be 13 or older to register in order to make an account.
+* Do not do drama for the sake of doing drama.
+* Do not be a bigot.
+
+We monitor off-site behavior, if we find anything from another profile of yours, and we then find you unsuitable,
+you will be banned from SquareBracket.
+
+## What we don't allow to be uploaded
 
 **If you upload any of these, you will have your upload taken down and in some cases your account will be banned**
 

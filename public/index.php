@@ -118,7 +118,6 @@ if (isset($path[1]) && $path[1] != '') {
         'notices' => require(SB_PRIVATE_PATH . '/pages/notices.php'),
         'privacy' => require(SB_PRIVATE_PATH . '/pages/privacy.php'),
         'read' => require(SB_PRIVATE_PATH . '/pages/read.php'),
-        'rules' => require(SB_PRIVATE_PATH . '/pages/rules.php'),
         'register' => require(SB_PRIVATE_PATH . '/pages/register.php'),
         'search' => require(SB_PRIVATE_PATH . '/pages/search.php'),
         'settings' => require(SB_PRIVATE_PATH . '/pages/settings.php'),
