@@ -135,6 +135,7 @@ class Utilities
     {
         global $auth;
 
+        /*
         if ($auth->isUserLoggedIn()) {
             $rating = $auth->getUserData()["comfortable_rating"];
 
@@ -146,13 +147,19 @@ class Utilities
         } else {
             $return_value = 'v.rating IN ("general")';
         }
+        */
+
+        $return_value = 'v.rating IN ("general","questionable","mature")';
 
         return $return_value;
     }
 
     public static function whereTagBlacklist(): string {
         global $auth;
-        
+
+        return "";
+
+        /*
         $tagBlacklist = $auth->getUserBlacklistedTags();
 
         // we use old-fashioned json tags instead of the "new" ported-from-poktwo tags so we don't have to bloat
@@ -164,6 +171,7 @@ class Utilities
         }
 
         return implode(' AND ', $conditions);
+        */
     }
 
     // TODO: This should probably be an enum class.
@@ -184,9 +192,9 @@ class Utilities
     {
         global $auth, $database;
 
-        if (!$auth->isUserLoggedIn()) {
-            throw new CoreException("NotifyUser should not be called by the backend if current user is logged off.");
-        }
+        //if (!$auth->isUserLoggedIn()) {
+        //    throw new CoreException("NotifyUser should not be called by the backend if current user is logged off.");
+        //}
 
         // If this user hasen't been notified by an identical notification the day prior.
         if (!$database->result("SELECT COUNT(*) FROM notifications WHERE timestamp > ? AND type = ? AND recipient = ? AND sender = ?",

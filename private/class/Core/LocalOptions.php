@@ -21,10 +21,15 @@ class LocalOptions
         } else {
             // NOTE: dont add any more default options.
 
+            // TODO
+            /*
             $defaultSkin = "biscuit"; // NOTE: biscuit is deprecated but charla isn't shipped by default
             if ($this->isChazizSquareBracketInstance() && !Utilities::isChazizTestInstance()) {
                 $defaultSkin = "charla";
             }
+            */
+
+            $defaultSkin = "charla";
 
             $this->options = [
                 "skin" => $defaultSkin,
