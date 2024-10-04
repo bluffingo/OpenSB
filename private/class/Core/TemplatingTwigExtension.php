@@ -9,10 +9,12 @@ use Twig\TwigFunction;
 
 class TemplatingTwigExtension extends AbstractExtension
 {
+    private Database $database;
     private Authentication $auth;
 
-    public function __construct(Authentication $auth)
+    public function __construct(Database $database, Authentication $auth)
     {
+        $this->database = $database;
         $this->auth = $auth;
     }
 
@@ -221,21 +223,21 @@ class TemplatingTwigExtension extends AbstractExtension
 
     public function profilePicture($username)
     {
-        global $database, $storage;
+        global $storage;
 
-        $id = Utilities::usernameToID($database, $username);
+        $id = Utilities::usernameToID($this->database, $username);
         $location = '/dynamic/pfp/' . $id . '.png';
         // don't bother with userdata since that might slow shit down
-        $is_banned = $database->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
+        $is_banned = $this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
 
         if ($is_banned) {
             $data = "/assets/profiledef.svg";
         } else {
-            if ($storage->fileExists('..' . $location)) {
-                $data = $location;
-            } else {
+            //if ($storage->fileExists('..' . $location)) {
+            //    $data = $location;
+            //} else {
                 $data = "/assets/profiledef.svg";
-            }
+            //}
         }
 
         return $data;
@@ -244,24 +246,24 @@ class TemplatingTwigExtension extends AbstractExtension
     //
     public function profilePictureAdmin($username)
     {
-        global $database, $storage;
+        global $storage;
 
-        $id = Utilities::usernameToID($database, $username);
+        $id = Utilities::usernameToID($this->database, $username);
         $location = '/dynamic/pfp/' . $id . '.png';
-        if ($storage->fileExists('..' . $location)) {
-            $data = $location;
-        } else {
+        //if ($storage->fileExists('..' . $location)) {
+        //    $data = $location;
+        //} else {
             $data = "/assets/profiledef.svg";
-        }
+        //}
 
         return $data;
     }
 
     public function profileBanner($username)
     {
-        global $database, $storage;
+        global $storage;
 
-        $id = Utilities::usernameToID($database, $username);
+        $id = Utilities::usernameToID($this->database, $username);
         $location = '/dynamic/banners/' . $id . '.png';
 
         if ($storage->fileExists('..' . $location)) {
@@ -448,13 +450,14 @@ HTML;
 
     public function headerUserAccountLinks()
     {
-        global $orange, $database;
+        /*
+        global $orange;
         $accountsArray = $orange->getAccountsArray();
 
         $array = [];
 
         foreach ($accountsArray as $account) {
-            $data = $database->result("SELECT name FROM users WHERE id = ?", [$account["userid"]]);
+            $data = $this->database->result("SELECT name FROM users WHERE id = ?", [$account["userid"]]);
 
             $array[] = [
                 "id" => $account["userid"],
@@ -463,22 +466,22 @@ HTML;
         }
 
         return $array;
+        */
+        return [];
     }
 
     public function sidebarFollowingUsers() {
-        global $auth, $database;
-
         $userid = $this->auth->getUserID();
 
         //$allUsers = query("SELECT $userfields s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]);
-        $users = $database->fetchArray(
-            $database->query("SELECT s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.user = ?", [$userid])
+        $users = $this->database->fetchArray(
+            $this->database->query("SELECT s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.user = ?", [$userid])
         );
 
         $array = [];
 
         foreach ($users as $user) {
-            $data = $database->result("SELECT name FROM users WHERE id = ?", [$user["id"]]);
+            $data = $this->database->result("SELECT name FROM users WHERE id = ?", [$user["id"]]);
 
             $array[] = [
                 "id" => $user["user"],

@@ -12,7 +12,8 @@
 		"twbs/bootstrap": "^5.3",
 		"twbs/bootstrap-icons": "^1.11",
 		"jaybizzle/crawler-detect": "^1.2",
-		"filp/whoops": "^2.16"
+		"filp/whoops": "^2.16",
+		"sendgrid/sendgrid": "dev-allow_starkbank_ecdsa_2"
 	},
 	"minimum-stability": "stable",
 	"config": {
@@ -24,5 +25,12 @@
 		"psr-4": {
 			"OpenSB\\": "private/"
 		}
-	}
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/simoheinonen/sendgrid-php",
+			"no-api": true
+		}
+	]
 }

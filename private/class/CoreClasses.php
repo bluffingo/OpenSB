@@ -64,7 +64,7 @@ class CoreClasses {
         try {
             $this->database = new Database($config["mysql"]);
             $this->authentication = new Authentication($this->database);
-            $this->templating = new Templating($this->options, $this->authentication);
+            $this->templating = new Templating($this->options, $this->database, $this->authentication);
         } catch (CoreException $e) {
             $e->page();
         }

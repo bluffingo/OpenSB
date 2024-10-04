@@ -21,11 +21,13 @@ class Templating
     private $theme;
     private FilesystemLoader $loader;
     private Environment $twig;
+    private Database $database;
+    private Authentication $auth;
 
     /**
      * @throws LoaderError
      */
-    public function __construct(array $options, Authentication $auth)
+    public function __construct(array $options, Database $database, Authentication $auth)
     {
         chdir(SB_PRIVATE_PATH);
 
@@ -38,6 +40,9 @@ class Templating
         ];
         $enableInviteKeys = false;
         $enableCache = false;
+
+        $this->database = $database;
+        $this->auth = $auth;
 
         $this->skin = $options["skin"] ?? "biscuit";
         $this->theme = $options["theme"] ?? "default";
@@ -81,7 +86,7 @@ class Templating
             }
         }));
 
-        $this->twig->addExtension(new TemplatingTwigExtension($auth));
+        $this->twig->addExtension(new TemplatingTwigExtension($database, $auth));
         $this->twig->addExtension(new StringExtension());
 
         // BOOTSTRAP SQUAREBRACKET FRONTEND COMPATIBILITY

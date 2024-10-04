@@ -1,6 +1,8 @@
 # OpenSB
 ![Screen Shot 2024-09-25 at 14 37 34](https://github.com/user-attachments/assets/722dfd47-2566-4d4b-8233-4c00c8ed648a)
 
+**MAJOR REFACTOR IN PROGRESS. USE ``legacy-orange`` BRANCH FOR THE TIME BEING**
+
 ## Our official instance
 
 [SquareBracket.me](https://squarebracket.me/)

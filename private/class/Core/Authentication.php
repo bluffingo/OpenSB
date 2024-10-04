@@ -19,6 +19,26 @@ class Authentication
 
     public function __construct(Database $database)
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_name("sb_session");
+
+            $is_secure = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+
+            session_set_cookie_params([
+                'lifetime' => 0,
+                'path' => '/',
+                'domain' => $_SERVER['HTTP_HOST'],
+                'secure' => $is_secure,
+                'httponly' => true,
+                'samesite' => 'Strict'
+            ]);
+
+            session_start([
+                "cookie_lifetime" => 1209600,
+                "gc_maxlifetime" => 1209600,
+            ]);
+        }
+
         $accountfields = "id, ip, name, title, email, title, about, powerlevel, joined, lastview, birthdate, comfortable_rating, customcolor, blacklisted_tags, token";
         $this->database = $database;
         $token = $_SESSION["SBTOKEN"] ?? null;
