@@ -11,7 +11,7 @@ if (isset($auth->getUserData()['birthdate'])) {
     header('Location: /index');
 }
 
-if ($orange->getLocalOptions()["skin"] != "biscuit" && $orange->getLocalOptions()["skin"] != "charla") {
+if ($orange->getLocalOptionsClass()->getOptions()["skin"] != "biscuit" && $orange->getLocalOptionsClass()->getOptions()["skin"] != "charla") {
     if (isset($_COOKIE['SBOPTIONS'])) {
         $options = json_decode(base64_decode($_COOKIE['SBOPTIONS']), true);
     }

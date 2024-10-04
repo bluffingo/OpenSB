@@ -273,7 +273,7 @@ $page_data = [
 ];
 
 // if were on bootstrap or finalium 1, replicate like/dislike system.
-if ($orange->getLocalOptions()["skin"] == "finalium" || $orange->getLocalOptions()["skin"] == "bootstrap") {
+if ($orange->getLocalOptionsClass()->getOptions()["skin"] == "finalium" || $orange->getLocalOptionsClass()->getOptions()["skin"] == "bootstrap") {
     // calculates the ratio for the likesaber
     function calculateRatio($number, $percent, $total): float|int
     {

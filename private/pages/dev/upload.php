@@ -10,7 +10,7 @@ if (!$isDebug) {
     Utilities::redirect("/upload");
 }
 
-if ($orange->getLocalOptions()["skin"] != "charla") {
+if ($orange->getLocalOptionsClass()->getOptions()["skin"] != "charla") {
     Utilities::bannerNotification("Please change your skin to Charla.", "/theme");
 }
 

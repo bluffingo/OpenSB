@@ -15,7 +15,7 @@ if (!$auth->hasUserAuthenticatedAsAnAdmin()) {
     Utilities::bannerNotification("Please login with your admin password.", "/admin/login");
 }
 
-if ($orange->getLocalOptions()["skin"] != "biscuit" && $orange->getLocalOptions()["skin"] != "charla") {
+if ($orange->getLocalOptionsClass()->getOptions()["skin"] != "biscuit" && $orange->getLocalOptionsClass()->getOptions()["skin"] != "charla") {
     Utilities::bannerNotification("Please change your skin to Biscuit.", "/theme");
 }
 

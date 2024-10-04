@@ -9,7 +9,7 @@ use OpenSB\class\Core\UploadQuery;
 
 $submission_query = new UploadQuery($database);
 
-$options = $orange->getLocalOptions();
+$options = $orange->getLocalOptionsClass()->getOptions();
 
 if ($options["skin"] == "charla") {
     $type = isset($options["charla_homepage_type"]) && $options["charla_homepage_type"] !== "list" ? $options["charla_homepage_type"] : "list";

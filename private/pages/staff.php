@@ -7,7 +7,7 @@ global $twig, $database, $orange;
 use OpenSB\class\Core\UserData;
 use OpenSB\class\Core\Utilities;
 
-if ($orange->getLocalOptions()["skin"] != "charla") {
+if ($orange->getLocalOptionsClass()->getOptions()["skin"] != "charla") {
     Utilities::bannerNotification("Please change your skin to Charla.", "/theme");
 }
 
