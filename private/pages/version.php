@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $database;
 
-use SquareBracket\VersionNumber;
+use OpenSB\class\Core\VersionNumber;
 
 $database_version = $database->getVersion();
 

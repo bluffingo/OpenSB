@@ -3,8 +3,8 @@ namespace OpenSB;
 
 global $twig, $database;
 
-use SquareBracket\Utilities;
-use SquareBracket\UploadQuery;
+use OpenSB\class\Core\Utilities;
+use OpenSB\class\Core\UploadQuery;
 
 $upload_query = new UploadQuery($database);
 $uploads = $upload_query->query("v.id DESC", 2);

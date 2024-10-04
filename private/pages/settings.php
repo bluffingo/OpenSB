@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $auth, $database;
 
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Utilities;
 
 global $auth;
 

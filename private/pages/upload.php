@@ -4,9 +4,8 @@ namespace OpenSB;
 
 global $database, $twig, $disableUploading, $auth, $isDebug, $storage;
 
-use SquareBracket\Pages\SubmissionUpload;
-use SquareBracket\Templating;
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Templating;
+use OpenSB\class\Core\Utilities;
 
 $supportedVideoFormats = ["mp4", "mkv", "wmv", "flv", "avi", "mov", "3gp"];
 $supportedImageFormats = ["png", "jpg", "jpeg"];

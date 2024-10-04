@@ -1,6 +1,6 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
 class VersionNumber
 {
@@ -23,7 +23,7 @@ class VersionNumber
 
             $hash = substr($commit, 0, 7);
 
-            $versionNumber = "1.2";
+            $versionNumber = "2.0-alpha";
 
             $this->version = sprintf('%s.%s-%s', $versionNumber, $gitBranch, $hash);
         } else {

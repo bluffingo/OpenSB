@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $database, $disableWritingJournals, $auth, $isDebug;
 
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Utilities;
 
 if (!$auth->isUserLoggedIn()) {
     Utilities::bannerNotification("Please login to continue.", "/login");

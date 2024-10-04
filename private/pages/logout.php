@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $twig, $orange;
 
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Utilities;
 
 session_destroy();
 

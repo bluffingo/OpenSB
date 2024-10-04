@@ -3,14 +3,38 @@ namespace OpenSB;
 
 define("SB_ROOT_PATH", dirname(__DIR__));
 define("SB_DYNAMIC_PATH", SB_ROOT_PATH . '/dynamic');
-define("SB_PUBLIC_PATH", SB_ROOT_PATH . '/public'); // we need this for SquareBracketTwigExtension
+define("SB_PUBLIC_PATH", SB_ROOT_PATH . '/public'); // we need this for TemplatingTwigExtension
 define("SB_PRIVATE_PATH", SB_ROOT_PATH . '/private');
 define("SB_VENDOR_PATH", SB_ROOT_PATH . '/vendor');
-define("SB_GIT_PATH", SB_ROOT_PATH . '/.git'); // ONLY FOR makeVersionString() IN SquareBracket CLASS.
+define("SB_GIT_PATH", SB_ROOT_PATH . '/.git'); // ONLY FOR makeVersionString() IN VersionNumber CLASS.
 
-use JetBrains\PhpStorm\NoReturn;
-use SquareBracket\Utilities;
+$config = require_once SB_PRIVATE_PATH . '/config/config.php';
 
+require_once(SB_VENDOR_PATH . '/autoload.php');
+
+// stupid shitty autoload that's fine for now -chaziz 10/3/2024
+spl_autoload_register(function ($class_name) {
+    $class_name = str_replace('\\', '/', $class_name);
+
+    if (str_starts_with($class_name, 'OpenSB/class/')) {
+        $class_name = substr($class_name, strlen('OpenSB/class/'));
+    }
+
+    $filename = SB_PRIVATE_PATH . "/class/$class_name.php";
+
+    if (file_exists($filename)) {
+        require $filename;
+    }
+});
+
+//use JetBrains\PhpStorm\NoReturn;
+//use OpenSB\class\Core\Utilities;
+use OpenSB\class\CoreClasses;
+use OpenSB\class\Router;
+
+use OpenSB\class\Pages\HomePage;
+
+/*
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
 global $auth;
@@ -39,8 +63,16 @@ global $auth;
     readfile(SB_VENDOR_PATH . $path);
     exit;
 }
+*/
 
+$core_classes = new CoreClasses($config);
+$router = new Router($core_classes);
 
+$router->register('GET', '/', HomePage::class);
+
+$router->resolve($_SERVER['REQUEST_URI']);
+
+/*
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $path = explode('/', $uri);
 
@@ -139,3 +171,4 @@ if (isset($path[1]) && $path[1] != '') {
 } else {
     require(SB_PRIVATE_PATH . '/pages/index.php');
 }
+*/

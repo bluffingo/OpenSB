@@ -1,19 +1,19 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
 /**
  * Commenting on uploads, profiles and journals.
  */
 class CommentData
 {
-    private \SquareBracket\Database $database;
+    private Database $database;
     private CommentLocation $type;
     private $id;
     private $data;
     private $count = 0; // stupid? maybe idfk
 
-    public function __construct(\SquareBracket\Database $database, $type, $id = null) {
+    public function __construct(Database $database, $type, $id = null) {
         $this->database = $database;
         $this->type = $type;
         $this->id = $id;

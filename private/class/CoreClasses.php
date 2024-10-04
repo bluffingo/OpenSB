@@ -1,22 +1,31 @@
 <?php
-namespace SquareBracket;
+namespace OpenSB\class;
+
+use OpenSB\class\Core\Authentication;
+use OpenSB\class\Core\CoreException;
+use OpenSB\class\Core\Database;
+use OpenSB\class\Core\Templating;
+use OpenSB\class\Core\Utilities;
 
 /**
- * The core SquareBracket class.
+ * The core classes.
  */
-class SquareBracket {
+class CoreClasses {
     private Database $database;
+    private Authentication $authentication;
+    private Templating $templating;
+    // TODO: this should be moved to a separate class
     public array $options;
+    // TODO: these should be moved to the Authentication class
     private array $accounts;
     private string $accounts_cookie_warning = "DO-NOT-SHARE-THIS-WITH-ANYONE-";
 
     /**
-     * Initialize core SquareBracket classes. (this is fucking stupid)
+     * Initialize core classes.
      *
      */
-    public function __construct($host, $user, $pass, $db) {
-        global $isChazizSB;
-
+    public function __construct($config) {
+        // TODO: this should be moved to a separate class
         if (isset($_COOKIE["SBOPTIONS"])) {
             $this->options = json_decode(base64_decode($_COOKIE["SBOPTIONS"]), true);
 
@@ -31,7 +40,7 @@ class SquareBracket {
         } else {
             // NOTE: dont add any more default options.
 
-            $defaultSkin = "biscuit";
+            $defaultSkin = "biscuit"; // NOTE: biscuit is deprecated but charla isn't shipped by default
             if ($isChazizSB && !Utilities::isChazizTestInstance()) {
                 $defaultSkin = "charla";
             }
@@ -44,6 +53,7 @@ class SquareBracket {
             setcookie("SBOPTIONS", base64_encode(json_encode($this->options)), 2147483647);
         }
 
+        // TODO: this should be moved to the Authentication class
         if (isset($_COOKIE["SBACCOUNTS"])) {
             $stupid_fucking_bullshit = str_replace($this->accounts_cookie_warning, "", $_COOKIE["SBACCOUNTS"]);
             $this->accounts = json_decode(base64_decode($stupid_fucking_bullshit), true);
@@ -52,25 +62,51 @@ class SquareBracket {
         }
 
         try {
-            $this->database = new Database($host, $user, $pass, $db);
+            $this->database = new Database($config["mysql"]);
+            $this->authentication = new Authentication($this->database);
+            $this->templating = new Templating($this->options, $this->authentication);
         } catch (CoreException $e) {
             $e->page();
         }
     }
 
     /**
-     * Returns the database class for other SquareBracket classes to use. (this is stupid design)
+     * Returns the database class.
      *
      * @return Database
      *
      */
-    public function getDatabase(): Database
+    public function getDatabaseClass(): Database
     {
         return $this->database;
     }
 
     /**
+     * Returns the authentication class.
+     *
+     * @return Authentication
+     *
+     */
+    public function getAuthenticationClass(): Authentication
+    {
+        return $this->authentication;
+    }
+
+    /**
+     * Returns the database class.
+     *
+     * @return Templating
+     *
+     */
+    public function getTemplatingClass(): Templating
+    {
+        return $this->templating;
+    }
+
+    /**
      * Returns the user's local settings.
+     *
+     * TODO: this should be moved to a separate class
      *
      * @return array
      */
@@ -82,6 +118,8 @@ class SquareBracket {
     /**
      * Returns warning string for accounts cookie.
      *
+     * TODO: this should be moved to the Authentication class
+     *
      * @return string
      */
     public function getWarningString(): string
@@ -92,7 +130,9 @@ class SquareBracket {
     /**
      * Returns array for changing accounts.
      *
-     * @return string
+     * TODO: this should be moved to the Authentication class
+     *
+     * @return array|string
      */
     public function getAccountsArray(): array|string
     {

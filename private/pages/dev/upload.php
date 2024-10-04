@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $auth, $twig, $database, $orange, $isDebug;
 
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Utilities;
 
 if (!$isDebug) {
     Utilities::redirect("/upload");

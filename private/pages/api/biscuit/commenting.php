@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $auth, $orange, $twig, $isDebug;
 
-use SquareBracket\UserData;
+use OpenSB\class\Core\UserData;
 
 chdir('../../');
 
@@ -24,7 +24,7 @@ if (!isset($post_data['type']) || !isset($post_data['comment'])) {
     exit;
 }
 
-$database = $orange->getDatabase();
+$database = $orange->getDatabaseClass();
 $author = new UserData($database, $auth->getUserID());
 $commentText = trim($post_data['comment']);
 

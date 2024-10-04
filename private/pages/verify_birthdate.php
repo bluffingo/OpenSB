@@ -5,7 +5,7 @@ namespace OpenSB;
 global $twig, $database, $auth, $orange, $isChazizSB;
 
 use DateTime;
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Utilities;
 
 if (isset($auth->getUserData()['birthdate'])) {
     header('Location: /index');

@@ -5,7 +5,7 @@ namespace OpenSB;
 global $disableRegistration, $enableInviteKeys, $twig, $database, $captcha, $isDebug;
 
 use DateTime;
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Utilities;
 
 if ($disableRegistration) {
     Utilities::bannerNotification("The ability to register has been disabled.", "/");

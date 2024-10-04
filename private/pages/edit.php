@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $twig, $database, $auth, $storage;
 
-use SquareBracket\UploadData;
-use SquareBracket\Utilities;
+use OpenSB\class\Core\UploadData;
+use OpenSB\class\Core\Utilities;
 
 if (isset($_POST['upload'])) {
     $id = ($_POST['vid_id'] ?? null);

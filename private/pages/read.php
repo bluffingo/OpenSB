@@ -4,10 +4,10 @@ namespace OpenSB;
 
 global $twig, $database, $auth;
 
-use SquareBracket\CommentData;
-use SquareBracket\CommentLocation;
-use SquareBracket\Utilities;
-use SquareBracket\UserData;
+use OpenSB\class\Core\CommentData;
+use OpenSB\class\Core\CommentLocation;
+use OpenSB\class\Core\Utilities;
+use OpenSB\class\Core\UserData;
 
 $id = ($_GET['j'] ?? null);
 

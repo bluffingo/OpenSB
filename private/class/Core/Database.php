@@ -1,6 +1,6 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
 use PDO;
 use PDOException;
@@ -10,13 +10,18 @@ use PDOException;
  */
 class Database
 {
-    private $sql;
+    private PDO $pdo;
 
     /**
      * @throws CoreException
      */
-    public function __construct($host, $user, $pass, $db)
+    public function __construct($database_config)
     {
+        $host = $database_config["host"];
+        $db = $database_config["database"];
+        $user = $database_config["username"];
+        $pass = $database_config["password"];
+
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -24,9 +29,9 @@ class Database
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET sql_mode="TRADITIONAL"'
         ];
         try {
-            $this->sql = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
+            $this->pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
         } catch (PDOException $e) {
-            throw new CoreException('The database is currently not available. [' . $e . ']');
+            throw new CoreException('The database appears to be unavailable. [' . $e . ']');
         }
     }
 
@@ -38,7 +43,7 @@ class Database
 
     public function query($query, $params = [])
     {
-        $res = $this->sql->prepare($query);
+        $res = $this->pdo->prepare($query);
         $res->execute($params);
         return $res;
     }
@@ -60,11 +65,11 @@ class Database
 
     public function insertId()
     {
-        return $this->sql->lastInsertId();
+        return $this->pdo->lastInsertId();
     }
 
     public function getVersion()
     {
-        return $this->sql->getAttribute(PDO::ATTR_SERVER_VERSION);
+        return $this->pdo->getAttribute(PDO::ATTR_SERVER_VERSION);
     }
 }

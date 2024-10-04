@@ -4,7 +4,7 @@ namespace OpenSB;
 
 global $database, $auth;
 
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Utilities;
 
 $id = ($_GET['v'] ?? null);
 

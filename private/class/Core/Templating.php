@@ -1,7 +1,8 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
+use OpenSB\class\CoreClasses;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -12,7 +13,7 @@ use Twig\Loader\FilesystemLoader;
 use Twig\TwigFunction;
 
 /**
- * A rewrite of openSB's /private/layout.php.
+ * Templating
  */
 class Templating
 {
@@ -24,12 +25,19 @@ class Templating
     /**
      * @throws LoaderError
      */
-    public function __construct(SquareBracket $orange)
+    public function __construct(array $options, Authentication $auth)
     {
-        global $isChazizSB, $auth, $isDebug, $branding, $enableInviteKeys, $enableCache;
         chdir(SB_PRIVATE_PATH);
 
-        $options = $orange->getLocalOptions();
+        // TEMPORARY
+        $isChazizSB = false;
+        $isDebug = false;
+        $branding = [
+            "name" => "FIXME BRANDING",
+            "assets_location" => "/assets/placeholder",
+        ];
+        $enableInviteKeys = false;
+        $enableCache = false;
 
         $this->skin = $options["skin"] ?? "biscuit";
         $this->theme = $options["theme"] ?? "default";
@@ -53,17 +61,7 @@ class Templating
 
         $templatePath = $skinPath . '/templates';
 
-        // if this skin isnt an actual skin, don't load.
-        try {
-            $this->loader = new FilesystemLoader($templatePath);
-        } catch (LoaderError) {
-            trigger_error("Currently selected skin is invalid", E_USER_WARNING);
-
-            $this->skin = "biscuit";
-            $this->theme = "default";
-            $templatePath = "skins/biscuit/templates";
-            $this->loader = new FilesystemLoader($templatePath);
-        }
+        $this->loader = new FilesystemLoader($templatePath);
 
         $doCache = !$enableCache ? false : 'skins/cache/';
 
@@ -83,7 +81,7 @@ class Templating
             }
         }));
 
-        $this->twig->addExtension(new SquareBracketTwigExtension());
+        $this->twig->addExtension(new TemplatingTwigExtension($auth));
         $this->twig->addExtension(new StringExtension());
 
         // BOOTSTRAP SQUAREBRACKET FRONTEND COMPATIBILITY
@@ -190,7 +188,7 @@ class Templating
         $skins = [];
         $unfiltered_skins = glob('skins/*', GLOB_ONLYDIR);
 
-        // include skins bundled with opensb, except "common" since thats not a skin.
+        // include every skin except "common" and "cache" since those arent skins.
         foreach($unfiltered_skins as $skin) {
             if ($skin != "skins/common" && $skin != "skins/cache") {
                 $skins[] = $skin;
@@ -202,7 +200,6 @@ class Templating
 
     /**
      * Get the skin's JSON metadata.
-     *
      *
      * @param $skin
      * @return array|null
@@ -225,14 +222,14 @@ class Templating
         foreach($this->getAllSkins() as $skin) {
             $metadata = $this->getSkinMetadata($skin);
             // only list squarebracket skins since soos skins will Not work with orange opensb
-            $site = $metadata["metadata"]["site"] ?? "unknown";
-            if ($site == "squarebracket") {
-                $incomplete = $isDebug ? false : ($metadata["metadata"]["incomplete"] ?? false);
-                // dont show incomplete skins
-                if (!$incomplete) {
-                    $skins[] = $metadata;
-                }
+            //$site = $metadata["metadata"]["site"] ?? "unknown";
+            //if ($site == "squarebracket") {
+            $incomplete = $isDebug ? false : ($metadata["metadata"]["incomplete"] ?? false);
+            // dont show incomplete skins
+            if (!$incomplete) {
+                $skins[] = $metadata;
             }
+            //}
         }
 
         // sort by metadata name
@@ -247,15 +244,15 @@ class Templating
      *
      * @param $template
      * @param array $data
-     * @return string
+     * @return void
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      *
      */
-    public function render($template, array $data = []): string
+    public function render($template, array $data = []): void
     {
-        return $this->twig->render($template, $data);
+        $this->twig->display($template, $data);
     }
 }
 

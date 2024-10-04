@@ -1,9 +1,8 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
 use DateTime;
-
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use JetBrains\PhpStorm\NoReturn;

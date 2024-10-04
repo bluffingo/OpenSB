@@ -4,8 +4,8 @@ namespace OpenSB;
 
 global $auth, $twig, $database, $orange, $path;
 
-use SquareBracket\Utilities;
-use SquareBracket\UserData;
+use OpenSB\class\Core\Utilities;
+use OpenSB\class\Core\UserData;
 
 if (!$auth->isUserAdmin()) {
     Utilities::bannerNotification("You do not have permission to access this page.", "/");

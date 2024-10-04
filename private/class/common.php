@@ -1,5 +1,7 @@
 <?php
 
+// DEPRECATED! WE'RE MOVING SHIT OUT OF HERE. -chaziz 10/3/2024
+
 namespace OpenSB;
 
 if (version_compare(PHP_VERSION, '8.2.0') <= 0) {
@@ -20,13 +22,13 @@ $config = include_once(SB_PRIVATE_PATH . '/config/config.php');
 
 require_once(SB_VENDOR_PATH . '/autoload.php');
 
-use SquareBracket\Authentication;
-use SquareBracket\Localization;
-use SquareBracket\Profiler;
-use SquareBracket\SquareBracket;
-use SquareBracket\Storage;
-use SquareBracket\Templating;
-use SquareBracket\Utilities;
+use OpenSB\class\Core\Authentication;
+use OpenSB\class\Core\Localization;
+use OpenSB\class\Core\Profiler;
+use OpenSB\class\Core\Storage;
+use OpenSB\class\Core\Templating;
+use OpenSB\class\Core\Utilities;
+use OpenSB\class\CoreClasses;
 
 // please use apache/nginx for production stuff.
 if (php_sapi_name() == "cli-server") {
@@ -122,8 +124,8 @@ $disableWritingJournals = false;
 $enableInviteKeys = false;
 
 // now initialize the orange classes
-$orange = new SquareBracket($host, $user, $pass, $db);
-$database = $orange->getDatabase();
+$orange = new CoreClasses($host, $user, $pass, $db);
+$database = $orange->getDatabaseClass();
 $auth = new Authentication($database);
 $profiler = new Profiler();
 $twig = new Templating($orange);
@@ -144,7 +146,7 @@ foreach ($ipBannedUsers as $ipBannedUser) {
     }
 }
 
-$storage = new Storage($orange->getDatabase(), $isChazizSB, $bunnySettings);
+$storage = new Storage($orange->getDatabaseClass(), $isChazizSB, $bunnySettings);
 
 // and i am being serious with this. -chaziz 8/7/2024
 if (!file_exists(SB_GIT_PATH)) {

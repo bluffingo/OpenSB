@@ -1,23 +1,33 @@
 <?php
 
-namespace SquareBracket;
+namespace OpenSB\class\Core;
 
 use Parsedown;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-class SquareBracketTwigExtension extends AbstractExtension
+class TemplatingTwigExtension extends AbstractExtension
 {
+    private Authentication $auth;
+
+    public function __construct(Authentication $auth)
+    {
+        $this->auth = $auth;
+    }
+
     public function getFunctions(): array
     {
         global $profiler, $orange;
 
+        /*
         if ($orange->getLocalOptions()["skin"] == "biscuit" || $orange->getLocalOptions()["skin"] == "charla") {
             $userlink_function_name = "UserLink";
         } else {
             $userlink_function_name = "UserLinkOld";
         }
+        */
+        $userlink_function_name = "UserLink";
 
         return [
             new TwigFunction('submission_view', [$this, 'submissionView']),
@@ -347,7 +357,7 @@ HTML;
     public function pagination($levels, $lpp, $url, $current)
     {
         global $twig;
-        return $twig->render('components/pagination.twig', ['levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current]);
+        $twig->render('components/pagination.twig', ['levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current]);
     }
 
     public function headerMainLinks()
@@ -368,10 +378,10 @@ HTML;
 
     public function headerUserLinks()
     {
-        global $auth, $orange, $isDebug;
+        global $orange, $isDebug;
 
-        if ($auth->isUserLoggedIn()) {
-            $username = $auth->getUserData()["name"];
+        if ($this->auth->isUserLoggedIn()) {
+            $username = $this->auth->getUserData()["name"];
 
             $array = [
                 "profile" => [
@@ -400,7 +410,7 @@ HTML;
                 ],
             ];
 
-            if ($auth->isUserAdmin()) {
+            if ($this->auth->isUserAdmin()) {
                 $array["admin"] = [
                     "name" => "Admin",
                     "url" => "/admin",
@@ -414,10 +424,12 @@ HTML;
                 ];
             }
 
+            /*
             // remove upload link on finalium 1 and bootstrap
             if ($orange->getLocalOptions()["skin"] == "finalium" || $orange->getLocalOptions()["skin"] == "bootstrap") {
                 unset($array["upload"]);
             }
+            */
         } else {
             $array = [
                 "login" => [
@@ -456,7 +468,7 @@ HTML;
     public function sidebarFollowingUsers() {
         global $auth, $database;
 
-        $userid = $auth->getUserID();
+        $userid = $this->auth->getUserID();
 
         //$allUsers = query("SELECT $userfields s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]);
         $users = $database->fetchArray(
@@ -485,17 +497,20 @@ HTML;
     public function submissionBox($submission)
     {
         global $twig;
-        return $twig->render('components/smallvideobox.twig', ['data' => $submission]);
+        $twig->render('components/smallvideobox.twig', ['data' => $submission]);
     }
 
     public function comment($comment)
     {
         global $twig;
-        return $twig->render('components/comment.twig', ['data' => $comment]);
+        $twig->render('components/comment.twig', ['data' => $comment]);
     }
 
     public function localize($key, ...$args) {
+        /*
         global $localization;
         return $localization->getMessage($key, ...$args);
+        */
+        return $key;
     }
 }
