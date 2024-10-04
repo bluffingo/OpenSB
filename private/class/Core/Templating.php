@@ -188,7 +188,7 @@ class Templating
         $skins = [];
         $unfiltered_skins = glob('skins/*', GLOB_ONLYDIR);
 
-        // include skins bundled with opensb, except "common" since thats not a skin.
+        // include every skin except "common" and "cache" since those arent skins.
         foreach($unfiltered_skins as $skin) {
             if ($skin != "skins/common" && $skin != "skins/cache") {
                 $skins[] = $skin;
@@ -200,7 +200,6 @@ class Templating
 
     /**
      * Get the skin's JSON metadata.
-     *
      *
      * @param $skin
      * @return array|null
@@ -223,14 +222,14 @@ class Templating
         foreach($this->getAllSkins() as $skin) {
             $metadata = $this->getSkinMetadata($skin);
             // only list squarebracket skins since soos skins will Not work with orange opensb
-            $site = $metadata["metadata"]["site"] ?? "unknown";
-            if ($site == "squarebracket") {
-                $incomplete = $isDebug ? false : ($metadata["metadata"]["incomplete"] ?? false);
-                // dont show incomplete skins
-                if (!$incomplete) {
-                    $skins[] = $metadata;
-                }
+            //$site = $metadata["metadata"]["site"] ?? "unknown";
+            //if ($site == "squarebracket") {
+            $incomplete = $isDebug ? false : ($metadata["metadata"]["incomplete"] ?? false);
+            // dont show incomplete skins
+            if (!$incomplete) {
+                $skins[] = $metadata;
             }
+            //}
         }
 
         // sort by metadata name
