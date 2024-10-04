@@ -34,6 +34,7 @@ use OpenSB\class\Router;
 
 use OpenSB\class\Pages\HomePage;
 use OpenSB\class\Pages\VersionPage;
+use OpenSB\class\Pages\ProfilePage;
 
 /*
 require_once SB_PRIVATE_PATH . '/class/common.php';
@@ -70,6 +71,8 @@ $core_classes = new CoreClasses($config);
 $router = new Router($core_classes);
 
 $router->register('GET', '/', HomePage::class);
+
+$router->register('GET', '/user/{username}', ProfilePage::class);
 
 $router->register('GET', '/version', VersionPage::class);
 

@@ -23,14 +23,19 @@ class Router {
         $path = parse_url($requestUri, PHP_URL_PATH);
         $method = $_SERVER['REQUEST_METHOD'];
 
-        if (array_key_exists($path, $this->routes[$method])) {
-            $className = $this->routes[$method][$path];
+        foreach ($this->routes[$method] as $route => $className) {
+            $pattern = preg_replace('/\{([a-zA-Z0-9_]+)\}/', '([^/]+)', $route);
+            $pattern = str_replace('/', '\/', $pattern);
 
-            if (class_exists($className)) {
-                $page = new $className($this->core_classes);
-                return $page->render($_REQUEST);
-            } else {
-                return "Page class '$className' not found.";
+            if (preg_match("/^{$pattern}$/", $path, $matches)) {
+                array_shift($matches);
+
+                if (class_exists($className)) {
+                    $page = new $className($this->core_classes);
+                    return $page->render($_REQUEST, $matches);
+                } else {
+                    return "Page class '$className' not found.";
+                }
             }
         }
 

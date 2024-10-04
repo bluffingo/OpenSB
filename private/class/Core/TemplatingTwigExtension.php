@@ -205,6 +205,7 @@ class TemplatingTwigExtension extends AbstractExtension
 
         $data = null;
 
+        /*
         if ($custom) {
             if ($storage->fileExists('..' . $custom_location)) {
                 $data = $custom_location;
@@ -217,6 +218,7 @@ class TemplatingTwigExtension extends AbstractExtension
                 $data = $storage->getImageThumbnail($id);
             }
         }
+        */
 
         return $data;
     }
@@ -266,11 +268,11 @@ class TemplatingTwigExtension extends AbstractExtension
         $id = Utilities::usernameToID($this->database, $username);
         $location = '/dynamic/banners/' . $id . '.png';
 
-        if ($storage->fileExists('..' . $location)) {
-            $data = $location;
-        } else {
+        //if ($storage->fileExists('..' . $location)) {
+        //    $data = $location;
+        //} else {
             $data = "/assets/biscuit_banner.svg";
-        }
+        //}
         return $data;
     }
 

@@ -5,6 +5,7 @@ use OpenSB\class\Core\Authentication;
 use OpenSB\class\Core\CoreException;
 use OpenSB\class\Core\Database;
 use OpenSB\class\Core\LocalOptions;
+use OpenSB\class\Core\Storage;
 use OpenSB\class\Core\Templating;
 
 /**
@@ -38,6 +39,8 @@ class CoreClasses {
             $this->options = new LocalOptions();
             $this->database = new Database($config["mysql"]);
             $this->authentication = new Authentication($this->database);
+            // TODO! refactor storage so we dont need to pass isChazizSquareBracketInstance into it
+            $this->storage = new Storage($this->database, $this->isChazizSquareBracketInstance(), []);
             $this->templating = new Templating($this->options->getOptions(), $this->database, $this->authentication);
         } catch (CoreException $e) {
             $e->page();
@@ -85,6 +88,16 @@ class CoreClasses {
     public function getLocalOptionsClass(): LocalOptions
     {
         return $this->options;
+    }
+
+    /**
+     * Returns the storage class.
+     *
+     * @return Storage
+     */
+    public function getStorageClass(): Storage
+    {
+        return $this->storage;
     }
 
     /**
