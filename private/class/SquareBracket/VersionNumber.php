@@ -23,7 +23,9 @@ class VersionNumber
 
             $hash = substr($commit, 0, 7);
 
-            $this->version = sprintf('%s-%s', $hash, $gitBranch);
+            $versionNumber = "1.2";
+
+            $this->version = sprintf('%s.%s-%s', $versionNumber, $gitBranch, $hash);
         } else {
             $this->version = 'Unknown';
         }
