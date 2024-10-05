@@ -167,17 +167,10 @@ class Templating
         }
         */
 
-        if (isset($_SERVER["REQUEST_URI"])) {
-            $this->twig->addGlobal('page_name', empty(basename($_SERVER["REQUEST_URI"], '.php')) ? 'index' : basename($_SERVER["REQUEST_URI"], '.php'));
-        }
-
         if (isset($_SERVER['HTTP_HOST'])) {
             $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
             $this->twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
         }
-
-        // temporary measure to update the frontend code without breaking old backend until we toss that shit out
-        $this->twig->addGlobal('areWeRunningTheNewCode', false);
     }
 
     /**
