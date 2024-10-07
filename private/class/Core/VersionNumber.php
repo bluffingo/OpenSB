@@ -4,16 +4,18 @@ namespace OpenSB\class\Core;
 
 class VersionNumber
 {
-    private string $version;
+    private string $versionNumber;
+    private string $versionString;
 
     public function __construct() {
-        $this->makeVersionString();
+        $this->versionNumber = "2.0-alpha";
+        $this->versionString = $this->makeVersionString();
     }
 
     /**
      * Make SquareBracket's version number.
      */
-    private function makeVersionString(): void
+    private function makeVersionString(): string
     {
         if (file_exists(SB_GIT_PATH)) {
             $gitHead = file_get_contents(SB_GIT_PATH . '/HEAD');
@@ -22,11 +24,9 @@ class VersionNumber
 
             $hash = substr($commit, 0, 7);
 
-            $versionNumber = "2.0-alpha";
-
-            $this->version = sprintf('%s.%s-%s', $versionNumber, $gitBranch, $hash);
+            return sprintf('%s.%s-%s', $this->versionNumber, $gitBranch, $hash);
         } else {
-            $this->version = 'Unknown';
+            return $this->versionNumber;
         }
     }
 
@@ -36,12 +36,22 @@ class VersionNumber
     }
 
     /**
-     * Returns SquareBracket's version number. Originally named getBettyVersion().
+     * Returns the version number.
+     *
+     * @return string
+     */
+    public function getVersionNumber(): string
+    {
+        return $this->versionNumber;
+    }
+
+    /**
+     * Returns the version string.
      *
      * @return string
      */
     public function getVersionString(): string
     {
-        return $this->version;
+        return $this->versionString;
     }
 }
