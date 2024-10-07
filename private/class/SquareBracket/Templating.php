@@ -134,6 +134,8 @@ class Templating
 
         $showWarningBanner = false;
 
+        $versionNumber = new VersionNumber;
+
         $this->twig->addGlobal('is_chaziz_sb', $isChazizSB);
         $this->twig->addGlobal('is_fulptube', $isFulpTube);
         $this->twig->addGlobal('is_debug', $isDebug);
@@ -144,7 +146,7 @@ class Templating
         $this->twig->addGlobal('user_is_admin', $auth->isUserAdmin());
         $this->twig->addGlobal('user_is_authenticated_admin', $auth->hasUserAuthenticatedAsAnAdmin());
         $this->twig->addGlobal('skins', $this->getAllSkinsMetadata());
-        $this->twig->addGlobal('opensb_version', (new VersionNumber)->getVersionString());
+        $this->twig->addGlobal('opensb_version', $versionNumber->getVersionNumber());
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('website_branding', $branding);
         $this->twig->addGlobal('current_theme', $this->theme); // not to be confused with skins
@@ -154,6 +156,7 @@ class Templating
         $this->twig->addGlobal('current_skin_and_theme', $this->skin . ',' . $this->theme);
         // temporary
         $this->twig->addGlobal('show_warning_banner', $showWarningBanner);
+        $this->twig->addGlobal('is_opensb_v2', false);
 
         /*
         if ($this->skin == "finalium" && $this->theme == "beta")

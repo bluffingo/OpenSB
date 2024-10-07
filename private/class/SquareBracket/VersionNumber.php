@@ -4,17 +4,19 @@ namespace SquareBracket;
 
 class VersionNumber
 {
-    private string $version;
+    private string $versionNumber;
+    private string $versionString;
 
     public function __construct() {
-        $this->makeVersionString();
+        $this->versionNumber = "1.2.1";
+        $this->versionString = $this->makeVersionString();
     }
 
     /**
      * Make SquareBracket's version number.
      *
      */
-    private function makeVersionString(): void
+    private function makeVersionString(): string
     {
         if (file_exists(SB_GIT_PATH)) {
             $gitHead = file_get_contents(SB_GIT_PATH . '/HEAD');
@@ -23,11 +25,9 @@ class VersionNumber
 
             $hash = substr($commit, 0, 7);
 
-            $versionNumber = "1.2";
-
-            $this->version = sprintf('%s.%s-%s', $versionNumber, $gitBranch, $hash);
+            return sprintf('%s.%s-%s', $this->versionNumber, $gitBranch, $hash);
         } else {
-            $this->version = 'Unknown';
+            return $this->versionNumber;
         }
     }
 
@@ -36,28 +36,23 @@ class VersionNumber
         return sprintf("OpenSB %s - Executed at %s", VersionNumber::getVersionString(), date("Y-m-d h:i:s")) . PHP_EOL;
     }
 
-    public function printVersionForUserAgent()
+    /**
+     * Returns the version number.
+     *
+     * @return string
+     */
+    public function getVersionNumber(): string
     {
-        // This user agent will be used for server-to-server communication, especially around the fediverse.
-        // For example, The user agent for Akkoma-based instances goes something like this:
-        // Software Version-GitHash; Website <hostmaster@website.social>
-        // OpenSB will use that, but without a hostmaster address at the end.
-        if (isset($_SERVER['HTTP_HOST'])) {
-            $domain = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/";
-
-            return sprintf("OpenSB %s; %s", VersionNumber::getVersionString(), $domain);
-        } else {
-            return "printVersionForUserAgent() shouldn't be used in this context";
-        }
+        return $this->versionNumber;
     }
 
     /**
-     * Returns SquareBracket's version number. Originally named getBettyVersion().
+     * Returns the version string.
      *
      * @return string
      */
     public function getVersionString(): string
     {
-        return $this->version;
+        return $this->versionString;
     }
 }
