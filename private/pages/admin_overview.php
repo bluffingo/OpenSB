@@ -91,33 +91,18 @@ if(isset($_POST["action"])) {
 }
 
 // Total number of things
-$thingsToCount = ['comments', 'channel_comments', 'users', 'videos', 'views', 'favorites', 'bans', 'journals'];
+// TODO: make it so that "videos" get labelled as "Uploads" without having to redo the entire database scheme for now.
+// -chaziz 10/7/2024
+$thingsToCount = ['comments', 'channel_comments', 'users', 'videos', 'views', 'favorites', 'bans', 'journals', 'journal_comments'];
 $query = "SELECT ";
 foreach ($thingsToCount as $thing) {
     if ($query != "SELECT ") $query .= ", ";
     $query .= sprintf("(SELECT COUNT(*) FROM %s) %s", $thing, $thing);
 }
 
-// Get bans (used in the old bans tab)
-$bans = $database->fetchArray($database->query("SELECT * FROM bans"));
+$numbersOfThingsArray = $database->fetch($query);
 
-$bannedUserData = [];
-foreach ($bans as $ban) {
-    $banned_user = $database->fetch("SELECT u.* FROM users u WHERE u.id = ?", [$ban["userid"]]);
-
-    // avoids "conversion from false to array" is deprecated error if the banned user no longer exists
-    // due to manual db modification although in reality these bans should get automatically revoked
-    if (!$banned_user)
-    {
-        $banned_user = [
-            "name" => "Deleted user"
-        ];
-    }
-
-    $banned_user["ban_reason"] = $ban["reason"];
-    $banned_user["ban_time"] = $ban["time"];
-    $bannedUserData[] = $banned_user;
-}
+var_dump($numbersOfThingsArray);
 
 // Get the invite keys
 $inviteKeys = $database->fetchArray($database->query("SELECT * FROM invite_keys"));
@@ -134,7 +119,7 @@ foreach ($inviteKeys as $inviteKey) {
 }
 
 $data = [
-    "numbers" => $database->fetch($query),
+    "numbers" => $numbersOfThingsArray,
     "system" => [
         "uname" => php_uname(),
     ],
@@ -145,7 +130,6 @@ $data = [
         "journals" => makeRunningTotalGraph($database, 'journals', 'date'),
         "views" => countViews($database),
     ],
-    "bans" => $bannedUserData,
     "invites" => $inviteKeyData,
     "time" => [
         "formatted_date" => date("F j, Y", $date),
