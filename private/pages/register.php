@@ -14,7 +14,7 @@ if ($disableRegistration) {
 $ipcheck = file_get_contents("https://api.stopforumspam.org/api?ip=" . Utilities::getIpAddress());
 
 if (str_contains($ipcheck, "<appears>yes</appears>") && !$isDebug) {
-    Utilities::bannerNotification("This IP address appears to be suspicious.", "/");
+    Utilities::bannerNotification("Your IP address appears to be suspicious.", "/");
 }
 
 if (isset($_POST['registersubmit'])) {
@@ -33,7 +33,7 @@ if (isset($_POST['registersubmit'])) {
         $verify = json_decode($verify, true);
 
         if (!$verify['success']) {
-            $error .= "You must complete the captcha in order to register a new account. ";
+            $error .= "You must complete the captcha in order to register an account. ";
         }
     }
 
@@ -51,19 +51,28 @@ if (isset($_POST['registersubmit'])) {
     if (!isset($pass2) || $pass != $pass2) $error .= "The passwords don't match. ";
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) $error .= "Invalid email format. ";
     if ((Utilities::getIpAddress() != "127.0.0.1") && (Utilities::getIpAddress() != "::1")) {
-        if ($database->result("SELECT COUNT(*) FROM users WHERE ip = ?", [Utilities::getIpAddress()]) > 0)
+        if ($database->result("SELECT COUNT(*) FROM users WHERE ip = ?", [Utilities::getIpAddress()]) >= 2)
             $error .= "Your IP address has too many accounts associated with it. ";
     }
     if ($database->fetch("SELECT COUNT(*) FROM user_old_names WHERE old_name = ?", [$username])["COUNT(*)"] >= 1)
         $error .= "You cannot use someone's previous username. ";
 
-    $dobDateTime = new DateTime($birthdate);
-    $currentDate = new DateTime();
+    try {
+        $dobDateTime = new DateTime($birthdate);
+    } catch (\DateMalformedStringException $e) {
+        $error .= "You have an invalid birth date. ";
+    } finally {
+        $currentDate = new DateTime();
 
-    $age = $currentDate->diff($dobDateTime)->y;
+        if ($dobDateTime->format('Y') < 1900) {
+            $error .= "You have an invalid birth date. ";
+        } else {
+            $age = $currentDate->diff($dobDateTime)->y;
 
-    if ($age < 13) {
-        $error .= "You are below the age of 13. ";
+            if ($age < 13) {
+                $error .= "You are below the age of 13. ";
+            }
+        }
     }
 
     if ($enableInviteKeys) {
