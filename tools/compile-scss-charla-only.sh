@@ -5,7 +5,11 @@ command=$1
 common_arguments="--verbose --style expanded --no-source-map --load-path=private/skins"
 
 if [ "$command" = "dev" ]; then
-  common_arguments+=" --watch --poll --fatal-deprecation"
+  common_arguments+=" --watch --poll"
+fi
+
+if [ "$command" = "deprecated" ]; then
+  common_arguments+=" --fatal-deprecation=mixed-decls,color-functions"
 fi
 
 machine=$(uname -s)
