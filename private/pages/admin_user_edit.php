@@ -23,6 +23,22 @@ $username = $path[3] ?? null;
 
 $user = $database->fetch("SELECT * FROM users u WHERE u.name = ?", [$username]);
 
+if (!$user)
+{
+    // check if this username was used before and was changed out of.
+    $old_username_data = $database->fetch("SELECT user FROM user_old_names WHERE old_name = ?", [$username]);
+
+    if ($old_username_data) {
+        // if so, redirect to the new profile.
+        $new_username = $database->fetch("SELECT name FROM users WHERE id = ?", [$old_username_data['user']])["name"];
+        http_response_code(301);
+        header("Location: /admin/users/$new_username");
+        exit();
+    } else {
+        Utilities::bannerNotification("This user does not exist.", "/admin/");
+    }
+}
+
 if (isset($_POST['ban_user'])) {
     // Don't ban non-existent users.
     if (!$database->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$_POST["ban_user"]])) {

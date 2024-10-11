@@ -8,6 +8,10 @@ if [ "$command" = "dev" ]; then
   common_arguments+=" --watch --poll"
 fi
 
+if [ "$command" = "deprecated" ]; then
+  common_arguments+=" --fatal-deprecation=mixed-decls,color-functions"
+fi
+
 machine=$(uname -s)
 case "${machine}" in
   CYGWIN*|MINGW*|MSYS*) machine=Windows;;

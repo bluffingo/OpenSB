@@ -1,36 +1,37 @@
 {
-	"require": {
-		"twig/twig": "3.14.0",
-		"intervention/image": "^3.2",
-		"erusev/parsedown": "dev-master",
-		"php-ffmpeg/php-ffmpeg": "1.2.0",
-		"toshy/bunnynet-php": "4.5.0",
-		"symfony/http-client": "7.1.5",
-		"ext-pdo": "*",
-		"twig/string-extra": "3.13.0",
-		"psr/http-client": "1.0.3",
-		"twbs/bootstrap": "^5.3",
-		"twbs/bootstrap-icons": "^1.11",
-		"jaybizzle/crawler-detect": "^1.2",
-		"filp/whoops": "^2.16",
-		"sendgrid/sendgrid": "dev-allow_starkbank_ecdsa_2"
-	},
-	"minimum-stability": "stable",
-	"config": {
-		"platform": {
-			"php": "8.2"
-		}
-	},
-	"autoload": {
-		"psr-4": {
-			"OpenSB\\": "private/"
-		}
-	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/simoheinonen/sendgrid-php",
-			"no-api": true
-		}
-	]
+  "require": {
+    "twig/twig": "3.14.0",
+    "intervention/image": "^3.2",
+    "erusev/parsedown": "dev-master",
+    "php-ffmpeg/php-ffmpeg": "1.2.0",
+    "toshy/bunnynet-php": "4.5.0",
+    "symfony/http-client": "7.1.5",
+    "ext-pdo": "*",
+    "twig/string-extra": "3.13.0",
+    "psr/http-client": "1.0.3",
+    "twbs/bootstrap": "^5.3",
+    "twbs/bootstrap-icons": "^1.11",
+    "jaybizzle/crawler-detect": "^1.2",
+    "filp/whoops": "^2.16",
+    "sendgrid/sendgrid": "dev-allow_starkbank_ecdsa_2",
+    "ext-curl": "*"
+  },
+  "minimum-stability": "stable",
+  "config": {
+    "platform": {
+      "php": "8.2"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "OpenSB\\": "private/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/simoheinonen/sendgrid-php",
+      "no-api": true
+    }
+  ]
 }
