@@ -406,12 +406,6 @@ class Utilities
         return ($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'fulptube.rocks');
     }
 
-    public static function isChazizTestInstance()
-    {
-        global $isChazizSB;
-        return ($isChazizSB) && isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'test.qobo.tv');
-    }
-
     public static function replaceSquareBracketWithFulpTube($input)
     {
         // replace "squarebracket" with "fulptube"
