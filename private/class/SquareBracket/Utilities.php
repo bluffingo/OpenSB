@@ -179,7 +179,6 @@ class Utilities
 
     /**
      * Not to be confused with Notification, which makes a banner.
-     *
      */
     public static function NotifyUser($database, $user, $submission, $related_id, NotificationEnum $type): void
     {
@@ -189,7 +188,7 @@ class Utilities
             throw new CoreException("NotifyUser should not be called by the backend if current user is logged off.");
         }
 
-        // If this user hasen't been notified by an identical notification the day prior.
+        // If this user hasn't been notified by an identical notification the day prior.
         if (!$database->result("SELECT COUNT(*) FROM notifications WHERE timestamp > ? AND type = ? AND recipient = ? AND sender = ?",
                 [time() - 86400, $type->value, $user, $auth->getUserID()])) {
             // Notify the user
@@ -355,13 +354,11 @@ class Utilities
     public static function validateUsername($username, $database, $checkIfTaken = true) {
         $error = "";
 
-        if (!isset($username)) $error .= "Blank username. ";
+        if (!isset($username)) $error .= "This username is blank. ";
         if ($checkIfTaken) {
-            if ($database->result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= "Username has already been taken. ";
+            if ($database->result("SELECT COUNT(*) FROM users WHERE name = ?", [$username])) $error .= "This username has already been taken. ";
         }
-        if (!preg_match('/^[a-zA-Z0-9\-_]+$/', $username)) $error .= "Username contains invalid characters. ";
-        if (str_starts_with($username, 'Discord')) { $error .= "Username cannot start with 'Discord' due to chat feature. ";}
-        if (str_starts_with($username, 'Blockland')) { $error .= "Username cannot start with 'Blockland' due to chat feature. ";}
+        if (!preg_match('/^[a-zA-Z0-9\-_]+$/', $username)) $error .= "This username contains invalid characters. ";
 
         return $error;
     }
