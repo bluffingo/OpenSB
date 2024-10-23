@@ -14,7 +14,9 @@ css: compiled css
 ATTRIBUTION:
 charla banner background by Matt Bango on StockSnap: https://stocksnap.io/photo/cloud-cloudscape-W9JMAUN9DM
 
-biscuit/charla sunset login by Quino Al on Unsplash: https://unsplash.com/photos/body-of-water-and-seashore-JFeOy62yjXk
+biscuit sunset login background by Quino Al on Unsplash: https://unsplash.com/photos/body-of-water-and-seashore-JFeOy62yjXk
+
+charla login background by nugg3t
 
 qobo-era "brisbane australia" finalium login background by Elliott Brennan on Unsplash: https://unsplash.com/photos/silhouette-of-trees-at-nighttime-va926-45QYk
 
