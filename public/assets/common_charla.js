@@ -1,5 +1,3 @@
-sbAccounts = document.cookie.split('; ').find(row => row.startsWith('SBACCOUNTS='));
-
 function error(error) {
     play('error');
     console.error("OpenSB Charla Frontend Error: " + error);
@@ -45,13 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hamburgerButton) {
         hamburgerButton.onclick = function() {
             if (hamburgerMenu) {
-                if (hamburgerMenu.style.display === "block") {
-                    hamburgerMenu.style.display = "none"
-                } else {
-                    hamburgerMenu.style.display = "block"
-                }
+                hamburgerMenu.classList.toggle("active");
             } else {
-                error("where the fuck is the hamburger menu");
+                console.error("where the fuck is the hamburger menu");
             }
         }
     }
