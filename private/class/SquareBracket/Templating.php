@@ -181,9 +181,6 @@ class Templating
             $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
             $this->twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
         }
-
-        // temporary measure to update the frontend code without breaking old backend until we toss that shit out
-        $this->twig->addGlobal('areWeRunningTheNewCode', false);
     }
 
     /**
@@ -201,7 +198,7 @@ class Templating
 
         // include skins bundled with opensb, except "common" since thats not a skin.
         foreach($unfiltered_skins as $skin) {
-            if ($skin != "skins/common" && $skin != "skins/cache") {
+            if ($skin != "skins/common" && $skin != "skins/cache" && $skin != "skins/error") {
                 $skins[] = $skin;
             }
         }

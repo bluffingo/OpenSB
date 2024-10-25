@@ -13,7 +13,7 @@ use SquareBracket\Utilities;
 
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
-global $auth;
+global $twig_error;
 
 #[NoReturn] function load_thumbnail_from_skin($path) {
     $pathParts = explode('_', $path);
@@ -38,6 +38,16 @@ global $auth;
     header("Content-Type: $content_type");
     readfile(SB_VENDOR_PATH . $path);
     exit;
+}
+
+function last_resort(): void
+{
+    global $twig_error;
+
+    Utilities::rewritePHP();
+
+    http_response_code(404);
+    echo $twig_error->render("404.twig", ["page" => "failwhale"]);
 }
 
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
@@ -126,7 +136,7 @@ if (isset($path[1]) && $path[1] != '') {
         'view' => require(SB_PRIVATE_PATH . '/pages/watch.php'),
         'watch' => Utilities::redirect('/view/' . $_GET['v']),
         'write' => require(SB_PRIVATE_PATH . '/pages/write.php'),
-        default => Utilities::rewritePHP()
+        default => last_resort()
     };
 } else {
     require(SB_PRIVATE_PATH . '/pages/index.php');
