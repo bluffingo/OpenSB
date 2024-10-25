@@ -25,7 +25,9 @@
                                 </td>
                                 <td>
                                     {{ notice.intro }} {{ user_link(notice.sender) }}
-                                    {{ notice.detail | markdown_user_written }}
+                                    {% if notice.detail.info %}
+                                        {{ notice.detail.info }}
+                                    {% endif %}
                                     <small>
                                         {{ notice.time | relative_time }} on {{ website_branding.name }}, could be anywhere.
                                     </small>
