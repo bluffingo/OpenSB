@@ -8,7 +8,7 @@ use OpenSB\class\Core\NotificationEnum;
 use OpenSB\class\Core\Utilities;
 use OpenSB\class\Core\UserData;
 
-function typeToName($database, $type)
+function typeToName($type)
 {
     $name = "generic";
 
@@ -33,25 +33,21 @@ function typeToName($database, $type)
     return $name;
 }
 
-function typeToIntro($database, $type)
+function typeToIntro($type)
 {
     $intro = "Generic notice by ";
 
     switch (NotificationEnum::from($type)) {
-        case NotificationEnum::CommentUpload:
-            $intro = "Comment on your upload by ";
-            break;
         case NotificationEnum::CommentProfile:
-            $intro = "Comment on your profile by ";
-            break;
         case NotificationEnum::CommentJournal:
-            $intro = "Comment on your journal by ";
+        case NotificationEnum::CommentUpload:
+            $intro = "Comment by ";
             break;
         case NotificationEnum::UploadTakedown:
             $intro = "Your upload has been taken down.";
             break;
         case NotificationEnum::Follow:
-            $intro = "You have been followed by ";
+            $intro = "Followed by ";
             break;
     }
 
@@ -60,19 +56,28 @@ function typeToIntro($database, $type)
 
 function getRequiredData($database, $notice)
 {
-    $data = "[placeholder]";
+    $data = [];
 
     switch (NotificationEnum::from($notice["type"])) {
+        case NotificationEnum::Follow:
+            $data["info"] = "This user is now following your profile.";
+            $data["origin"] = false;
+            break;
+
         case NotificationEnum::CommentUpload:
             $comment = $database->fetch("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM comments c WHERE c.comment_id = ?", [$notice["related_id"]]);
+            $upload = $database->fetch("SELECT v.video_id, v.author, v.title FROM videos v WHERE v.id = ?", [$notice["level"]]);
 
-            $data = $comment["comment"];
+            $data["info"] = $comment["comment"];
+            $data["origin"] = $upload["title"] ?? "Unknown upload";
             break;
 
         case NotificationEnum::CommentProfile:
             $comment = $database->fetch("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c WHERE c.comment_id = ?", [$notice["related_id"]]);
+            $profile = $database->fetch("SELECT u.name FROM users u WHERE u.id = ?", [$notice["level"]]);
 
-            $data = $comment["comment"];
+            $data["info"] = $comment["comment"];
+            $data["origin"] = $profile["name"] . "'s profile";
             break;
     }
 
@@ -93,13 +98,13 @@ foreach ($data as $notice) {
 
     $noticeData[] = [
         "id" => $notice["id"],
-        "type" => typeToName($database, $notice["type"]),
+        "type" => typeToName($notice["type"]),
         "sender" => [
             "id" => $notice["sender"],
             "info" => $userData->getUserArray(),
         ],
         "time" => $notice["timestamp"],
-        "intro" => typeToIntro($database, $notice["type"]),
+        "intro" => typeToIntro($notice["type"]),
         "detail" => getRequiredData($database, $notice),
     ];
 }

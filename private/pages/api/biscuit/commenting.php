@@ -6,8 +6,6 @@ global $auth, $orange, $twig, $isDebug;
 
 use OpenSB\class\Core\UserData;
 
-chdir('../../');
-
 $post_data = json_decode(file_get_contents('php://input'), true);
 
 $apiOutput = [

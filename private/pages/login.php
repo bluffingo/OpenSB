@@ -74,15 +74,6 @@ if (isset($_POST["loginsubmit"])) {
         Utilities::bannerNotification("You're already logged into this account.", "/");
     }
 
-    // testing code
-    if (Utilities::isChazizTestInstance())
-    {
-        if ($username != "chaziz")
-        {
-            Utilities::bannerNotification("Please use SquareBracket.me.", "/login");
-        }
-    }
-
     if (!$error) {
         $logindata = $database->fetch("SELECT password,token,ip,id FROM users WHERE name = ?", [$username]);
 

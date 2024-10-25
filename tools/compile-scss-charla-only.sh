@@ -29,6 +29,6 @@ if [ ! -d "public/assets/css" ]; then
 fi
 
 # Compile SCSS directories
-${sass_executable} ${common_arguments} private/skins/charla/scss/:public/assets/css/
+${sass_executable} ${common_arguments} private/skins/charla/scss/:public/assets/css/ private/skins/error/scss/:public/assets/css/
 
 echo "SCSS compilation complete."

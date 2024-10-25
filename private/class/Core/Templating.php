@@ -170,6 +170,16 @@ class Templating
         }
         */
 
+        if (isset($_SERVER["REQUEST_URI"])) {
+            $uri = explode('?', $_SERVER["REQUEST_URI"])[0];
+
+            $uriParts = explode('/', trim($uri, '/'));
+            $pageName = $uriParts[0] ?? 'index';
+
+            $this->twig->addGlobal('page_name', $pageName);
+        }
+
+
         if (isset($_SERVER['HTTP_HOST'])) {
             $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
             $this->twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
@@ -189,9 +199,9 @@ class Templating
         $skins = [];
         $unfiltered_skins = glob('skins/*', GLOB_ONLYDIR);
 
-        // include every skin except "common" and "cache" since those arent skins.
+        // include every skin except "common", "cache" and "error" since those arent skins.
         foreach($unfiltered_skins as $skin) {
-            if ($skin != "skins/common" && $skin != "skins/cache") {
+            if ($skin != "skins/common" && $skin != "skins/cache" && $skin != "skins/error") {
                 $skins[] = $skin;
             }
         }

@@ -39,7 +39,7 @@ use OpenSB\class\Pages\ProfilePage;
 /*
 require_once SB_PRIVATE_PATH . '/class/common.php';
 
-global $auth;
+global $twig_error;
 
 #[NoReturn] function load_thumbnail_from_skin($path) {
     $pathParts = explode('_', $path);
@@ -79,17 +79,18 @@ $router->register('GET', '/version', VersionPage::class);
 $router->resolve($_SERVER['REQUEST_URI']);
 
 /*
+function last_resort(): void
+{
+    global $twig_error;
+
+    Utilities::rewritePHP();
+
+    http_response_code(404);
+    echo $twig_error->render("404.twig", ["page" => "failwhale"]);
+}
+
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $path = explode('/', $uri);
-
-// testing code
-if (Utilities::isChazizTestInstance())
-{
-    if (!$auth->isUserLoggedIn() && $path[1] != "login")
-    {
-        Utilities::redirect("/login");
-    }
-}
 
 // Originally based on Rollerozxa's router implementation in Principia-Web.
 // https://github.com/principia-game/principia-web/blob/master/router.php
@@ -146,6 +147,7 @@ if (isset($path[1]) && $path[1] != '') {
         },
         'edit' => require(SB_PRIVATE_PATH . '/pages/edit.php'),
         'feature' => require(SB_PRIVATE_PATH . '/pages/feature.php'),
+        'githistory' => Utilities::redirect('https://github.com/bluffingo/OpenSB/commits/main/'),
         'guidelines' => require(SB_PRIVATE_PATH . '/pages/guidelines.php'),
         'index' => require(SB_PRIVATE_PATH . '/pages/index.php'),
         'license' => require(SB_PRIVATE_PATH . '/pages/license.php'),
@@ -155,6 +157,7 @@ if (isset($path[1]) && $path[1] != '') {
         'my_uploads' => require(SB_PRIVATE_PATH . '/pages/my_uploads.php'),
         'notices' => require(SB_PRIVATE_PATH . '/pages/notices.php'),
         'privacy' => require(SB_PRIVATE_PATH . '/pages/privacy.php'),
+        'profile' => require(SB_PRIVATE_PATH . '/pages/profile.php'),
         'read' => require(SB_PRIVATE_PATH . '/pages/read.php'),
         'register' => require(SB_PRIVATE_PATH . '/pages/register.php'),
         'search' => require(SB_PRIVATE_PATH . '/pages/search.php'),
@@ -172,7 +175,7 @@ if (isset($path[1]) && $path[1] != '') {
         'view' => require(SB_PRIVATE_PATH . '/pages/watch.php'),
         'watch' => Utilities::redirect('/view/' . $_GET['v']),
         'write' => require(SB_PRIVATE_PATH . '/pages/write.php'),
-        default => Utilities::rewritePHP()
+        default => last_resort()
     };
 } else {
     require(SB_PRIVATE_PATH . '/pages/index.php');

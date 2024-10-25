@@ -2,7 +2,7 @@ OpenSB assets
 
 placeholder: generic default assets
 	- icons: generic default browser-specific assets
-sb_branding: squarebracket branding ONLY FOR SQUAREBRACKET.PW/SQUAREBRACKET.ME
+sb_branding: squarebracket branding ONLY FOR SQUAREBRACKET.ME/SQUAREBRACKET.PW
 	- icons: squarebracket icons
 	- bootstrap: old 2021 branding
 	- finalium: old 2022-2023 branding
@@ -12,15 +12,21 @@ icons: biscuit/charla icons
 css: compiled css
 
 ATTRIBUTION:
-charla banner background by Matt Bango on StockSnap: https://stocksnap.io/photo/cloud-cloudscape-W9JMAUN9DM
+charla login page background by nugg3t
 
-biscuit/charla sunset login by Quino Al on Unsplash: https://unsplash.com/photos/body-of-water-and-seashore-JFeOy62yjXk
+charla homepage banner "stroud" background by sks2002
 
-qobo-era "brisbane australia" finalium login background by Elliott Brennan on Unsplash: https://unsplash.com/photos/silhouette-of-trees-at-nighttime-va926-45QYk
+charla upload banner background by hyperxori
 
-leaf droplet finalium login background by Min An on Pexels: https://www.pexels.com/photo/macro-shot-of-water-drop-on-green-textile-689326/
+charla generic banner background by Matt Bango on StockSnap: https://stocksnap.io/photo/cloud-cloudscape-W9JMAUN9DM
 
-finalium homepage droplets background by Armennano on Pixabay: https://pixabay.com/photos/rain-drops-rainy-wet-droplets-4941771/
+biscuit login page background by Quino Al on Unsplash: https://unsplash.com/photos/body-of-water-and-seashore-JFeOy62yjXk
+
+finalium "brisbane" login background by Elliott Brennan on Unsplash: https://unsplash.com/photos/silhouette-of-trees-at-nighttime-va926-45QYk
+
+finalium "leaf droplet" login background by Min An on Pexels: https://www.pexels.com/photo/macro-shot-of-water-drop-on-green-textile-689326/
+
+finalium homepage banner "droplets" background by Armennano on Pixabay: https://pixabay.com/photos/rain-drops-rainy-wet-droplets-4941771/
 
 vidshr.png (original FulpTube logo) by evodesign.
 

@@ -17,9 +17,10 @@ class Profiler
     {
         global $auth;
         if ($auth->isUserLoggedIn()) {
-            return "Site user is logged in as " . htmlspecialchars($auth->getUserData()["name"]) . ".";
+            return "Currently logged in as " . htmlspecialchars($auth->getUserData()["name"]) .
+                " (ID " . $auth->getUserData()["id"] . ").";
         } else {
-            return "Site user is logged out.";
+            return "Logged out.";
         }
     }
 
@@ -34,7 +35,7 @@ class Profiler
 
     function getStats(): void
     {
-        printf("Rendered in %1.8fs with %dKB memory used. %s. %s",
+        printf("Rendered in %1.6fs with %dKB memory used. %s. %s",
             microtime(true) - $this->starttime,
             memory_get_usage(false) / 1024, $this->whoAmI(), $this->getAuthData());
     }

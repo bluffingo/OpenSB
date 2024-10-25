@@ -5,5 +5,8 @@
 # common (stuff shared between skins)
 !/common
 
+# error template
+!/error
+
 # finalium 2 (biscuit)
 !/biscuit

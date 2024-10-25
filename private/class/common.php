@@ -23,6 +23,7 @@ $config = include_once(SB_PRIVATE_PATH . '/config/config.php');
 require_once(SB_VENDOR_PATH . '/autoload.php');
 
 use OpenSB\class\Core\Authentication;
+use OpenSB\class\Core\ErrorTemplating;
 use OpenSB\class\Core\Localization;
 use OpenSB\class\Core\Profiler;
 use OpenSB\class\Core\Storage;
@@ -128,8 +129,10 @@ $orange = new CoreClasses($host, $user, $pass, $db);
 $database = $orange->getDatabaseClass();
 $auth = new Authentication($database);
 $profiler = new Profiler();
-$twig = new Templating($orange);
-$localization = new Localization();
+
+$localization_setting = $orange->getLocalOptions()["localization"] ?? "en-US";
+
+$localization = new Localization($localization_setting);
 
 // automatic stuff
 // this should probably have a cooldown or something i don't fucking know
@@ -148,9 +151,14 @@ foreach ($ipBannedUsers as $ipBannedUser) {
 
 $storage = new Storage($orange->getDatabaseClass(), $isChazizSB, $bunnySettings);
 
+$twig = new Templating($orange);
+$twig_error = new ErrorTemplating($orange);
+
 if ($ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities::getIpAddress()])) {
     $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [Utilities::getIpAddress()]));
-    echo $twig->render("ip_banned.twig", [
+
+    echo $twig_error->render("ip_banned.twig", [
+        "page" => "ip-banned",
         "data" => $ipban,
         "users" => $usersAssociatedWithIP,
     ]);
@@ -158,9 +166,6 @@ if ($ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities
 }
 
 if ($isMaintenance && !SB_PHP_BUILTINSERVER) {
-    echo $twig->render("error.twig", [
-        "error_title" => "Offline",
-        "error_reason" => "This site is currently offline."
-    ]);
+    echo $twig_error->render("offline.twig", ["page" => "failwhale"]);
     die();
 }

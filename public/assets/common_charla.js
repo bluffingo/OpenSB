@@ -1,5 +1,3 @@
-sbAccounts = document.cookie.split('; ').find(row => row.startsWith('SBACCOUNTS='));
-
 function error(error) {
     play('error');
     console.error("OpenSB Charla Frontend Error: " + error);
@@ -45,13 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hamburgerButton) {
         hamburgerButton.onclick = function() {
             if (hamburgerMenu) {
-                if (hamburgerMenu.style.display === "block") {
-                    hamburgerMenu.style.display = "none"
-                } else {
-                    hamburgerMenu.style.display = "block"
-                }
+                hamburgerMenu.classList.toggle("active");
             } else {
-                error("where the fuck is the hamburger menu");
+                console.error("where the fuck is the hamburger menu");
             }
         }
     }
@@ -206,11 +200,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             error(`replies-${replyTo} doesn't exist. Biscuit fucked up.`);
                         }
                     } else {
-                        const commentsSection = document.getElementById('new-comments-here');
-                        if (commentsSection) {
-                            commentsSection.insertAdjacentHTML("afterbegin", json.html);
+                        let comment_field = (document.getElementById('comment_field'));
+
+                        if (comment_field) {
+                            comment_field.insertAdjacentHTML("afterend", json.html);
                         } else {
-                            error(`Comments section doesn't exist????? Biscuit fucked up.`);
+                            error(`Comments section doesn't exist????? Charla fucked up.`);
                         }
                     }
 
@@ -299,17 +294,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    if (settings_custom_color && settings_display_name) {
+    if (settings_custom_color) {
+        if (settings_display_name) {
+            settings_custom_color.addEventListener("input", function () {
+                settings_display_name.style.color = settings_custom_color.value;
+            });
+        }
         settings_custom_color.addEventListener("input", function () {
-            console.log(settings_custom_color.value);
-            settings_display_name.style.color = settings_custom_color.value;
+            document.documentElement.style.setProperty('--link-color', settings_custom_color.value);
         });
     }
 });
 
 function play(sound) {
     if (JSON.parse(uiSounds) === true) {
-        var audio = new Audio('/assets/sounds/' + sound + '.ogg');
+        let audio = new Audio('/assets/sounds/' + sound + '.ogg');
         audio.play();
+
+        audio.addEventListener('ended', function() {
+            audio = null;
+        });
     }
 }
