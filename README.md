@@ -1,7 +1,7 @@
 # OpenSB
-![Screen Shot 2024-09-25 at 14 37 34](https://github.com/user-attachments/assets/722dfd47-2566-4d4b-8233-4c00c8ed648a)
+![Screen Shot 2024-10-25 at 18 18 35](https://github.com/user-attachments/assets/c1cde928-02b6-4b64-b551-5bac85ecee52)
 
-**MAJOR REFACTOR IN PROGRESS. USE ``legacy-orange`` BRANCH FOR THE TIME BEING**
+**MAJOR REFACTOR IN PROGRESS. USE ``opensb-1.2`` (stable) or ``opensb-1.3`` (beta) BRANCH FOR THE TIME BEING**
 
 ## Our official instance
 
