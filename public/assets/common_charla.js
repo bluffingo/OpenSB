@@ -293,17 +293,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    if (settings_custom_color && settings_display_name) {
+    if (settings_custom_color) {
+        if (settings_display_name) {
+            settings_custom_color.addEventListener("input", function () {
+                settings_display_name.style.color = settings_custom_color.value;
+            });
+        }
         settings_custom_color.addEventListener("input", function () {
-            console.log(settings_custom_color.value);
-            settings_display_name.style.color = settings_custom_color.value;
+            document.documentElement.style.setProperty('--link-color', settings_custom_color.value);
         });
     }
 });
 
 function play(sound) {
     if (JSON.parse(uiSounds) === true) {
-        var audio = new Audio('/assets/sounds/' + sound + '.ogg');
+        let audio = new Audio('/assets/sounds/' + sound + '.ogg');
         audio.play();
+
+        audio.addEventListener('ended', function() {
+            audio = null;
+        });
     }
 }

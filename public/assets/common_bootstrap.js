@@ -1,18 +1,26 @@
-$(document).ready(function(){
-	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-});
-	function play(sound) {
-		var audio = new Audio('/assets/sounds/'+sound+'.ogg');
-		audio.play();
+let uiSounds = false;
+const cookie = document.cookie.split('; ').find(row => row.startsWith('SBOPTIONS='));
+if (cookie) {
+	const encodedOptions = cookie.split('=')[1];
+	const decodedOptions = decodeURIComponent(encodedOptions);
+	const options = JSON.parse(atob(decodedOptions));
+	if (options.hasOwnProperty('sounds')) {
+		uiSounds = options.sounds;
 	}
-	//document.getElementById("liveToastBtn").onclick = function() {
-    //var myAlert =document.getElementById('liveToast');//select id of toast
-    //var bsAlert = new bootstrap.Toast(myAlert);//inizialize it
-    //bsAlert.show();//show it
-	//play("toast_show")
-	//};
+}
+
+function play(sound) {
+	if (JSON.parse(uiSounds) === true) {
+		let audio = new Audio('/assets/sounds/' + sound + '.ogg');
+		audio.play();
+
+		audio.addEventListener('ended', function() {
+			audio = null;
+		});
+	}
+}
+
+$(document).ready(function(){
 	$(window).click(function() {
 	  $("#mainMenu").removeClass("show");
 	  $("#themeSelection").removeClass("show");

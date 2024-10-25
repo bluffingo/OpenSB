@@ -1,18 +1,18 @@
 index = 0;
 
-let sbnextSounds = false;
+let uiSounds = false;
 const cookie = document.cookie.split('; ').find(row => row.startsWith('SBOPTIONS='));
 if (cookie) {
     const encodedOptions = cookie.split('=')[1];
     const decodedOptions = decodeURIComponent(encodedOptions);
     const options = JSON.parse(atob(decodedOptions));
     if (options.hasOwnProperty('sounds')) {
-        sbnextSounds = options.sounds;
+        uiSounds = options.sounds;
     }
 }
 
 $(document).ready(function () {
-    console.log("SquareBracket Sounds: " + sbnextSounds);
+    console.log("SquareBracket Sounds: " + uiSounds);
     $("#masthead-loggedin").click(function () {
         var x = document.getElementById("masthead-below");
         if (x.style.display === "block") {
@@ -345,8 +345,12 @@ function reply(id) {
 }
 
 function play(sound) {
-    if (JSON.parse(sbnextSounds) == true) {
-        var audio = new Audio('/assets/sounds/' + sound + '.ogg');
+    if (JSON.parse(uiSounds) === true) {
+        let audio = new Audio('/assets/sounds/' + sound + '.ogg');
         audio.play();
+
+        audio.addEventListener('ended', function() {
+            audio = null;
+        });
     }
 }
