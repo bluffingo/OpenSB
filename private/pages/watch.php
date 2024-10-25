@@ -76,11 +76,11 @@ $bools = $submission->bitmaskToArray();
 
 if ($bools["block_guests"] && !$auth->isUserLoggedIn())
 {
-    Utilities::bannerNotification("This submission's author has blocked guest access.", "/login");
+    Utilities::bannerNotification("This upload's author has blocked guest access.", "/login");
 }
 
 if (Utilities::RatingToNumber($data["rating"]) > Utilities::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
-    Utilities::bannerNotification("You cannot access sensitive-rated submissions.", "/");
+    Utilities::bannerNotification("You cannot access sensitive-rated uploads.", "/");
 }
 
 $ip = Utilities::getIpAddress();

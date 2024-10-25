@@ -231,8 +231,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function play(sound) {
-    if (JSON.parse(uiSounds) == true) {
-        var audio = new Audio('/assets/sounds/' + sound + '.ogg');
+    if (JSON.parse(uiSounds) === true) {
+        let audio = new Audio('/assets/sounds/' + sound + '.ogg');
         audio.play();
+
+        audio.addEventListener('ended', function() {
+            audio = null;
+        });
     }
 }
