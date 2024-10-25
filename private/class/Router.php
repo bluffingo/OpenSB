@@ -44,6 +44,9 @@ class Router {
 
     private function render404() {
         http_response_code(404);
-        return "404";
+
+        echo $this->core_classes->getErrorTemplatingClass()->render("404.twig", ["page" => "failwhale"]);
+
+        return false;
     }
 }

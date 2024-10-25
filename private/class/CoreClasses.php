@@ -4,6 +4,7 @@ namespace OpenSB\class;
 use OpenSB\class\Core\Authentication;
 use OpenSB\class\Core\CoreException;
 use OpenSB\class\Core\Database;
+use OpenSB\class\Core\ErrorTemplating;
 use OpenSB\class\Core\LocalOptions;
 use OpenSB\class\Core\Storage;
 use OpenSB\class\Core\Templating;
@@ -17,6 +18,7 @@ class CoreClasses {
     private Database $database;
     private Authentication $authentication;
     private Templating $templating;
+    private ErrorTemplating $errorTemplating;
     // TODO: these should be moved to the Authentication class
     private array $accounts;
     private string $accounts_cookie_warning = "DO-NOT-SHARE-THIS-WITH-ANYONE-";
@@ -42,6 +44,7 @@ class CoreClasses {
             // TODO! refactor storage so we dont need to pass isChazizSquareBracketInstance into it
             $this->storage = new Storage($this->database, $this->isChazizSquareBracketInstance(), []);
             $this->templating = new Templating($this->options->getOptions(), $this->database, $this->authentication);
+            $this->error_templating = new ErrorTemplating();
         } catch (CoreException $e) {
             $e->page();
         }
@@ -78,6 +81,17 @@ class CoreClasses {
     public function getTemplatingClass(): Templating
     {
         return $this->templating;
+    }
+
+    /**
+     * Returns the error templating class.
+     *
+     * @return ErrorTemplating
+     *
+     */
+    public function getErrorTemplatingClass(): ErrorTemplating
+    {
+        return $this->error_templating;
     }
 
     /**

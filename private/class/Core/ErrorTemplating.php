@@ -19,12 +19,10 @@ class ErrorTemplating
     /**
      * @throws LoaderError
      */
-    public function __construct(SquareBracket $orange)
+    public function __construct()
     {
         global $isDebug, $branding, $isChazizSB;
         chdir(SB_PRIVATE_PATH);
-
-        $options = $orange->getLocalOptions();
 
         $skinPath = 'skins/error';
 
