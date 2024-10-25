@@ -13,7 +13,6 @@
         <div class="banner banner-secondary">
             <strong>NOTE</strong>: This page is still incomplete.
         </div>
-        <br>
         <div class="content-box">
             {% for notice in data %}
                 <div class="content-entry">
@@ -25,9 +24,12 @@
                                 </td>
                                 <td>
                                     {{ notice.intro }} {{ user_link(notice.sender) }}
-                                    {{ notice.detail | markdown_user_written }}
+                                    <br>
+                                    {{ notice.detail.info }}
+                                    <br>
                                     <small>
-                                        {{ notice.time | relative_time }} on {{ website_branding.name }}, could be anywhere.
+                                        {{ notice.time | relative_time }}
+                                        {% if notice.detail.origin %}on {{ notice.detail.origin }}{% endif %}
                                     </small>
                                 </td>
                             </tr>
