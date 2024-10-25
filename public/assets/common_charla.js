@@ -200,11 +200,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             error(`replies-${replyTo} doesn't exist. Biscuit fucked up.`);
                         }
                     } else {
-                        const commentsSection = document.getElementById('new-comments-here');
-                        if (commentsSection) {
-                            commentsSection.insertAdjacentHTML("afterbegin", json.html);
+                        let comment_field = (document.getElementById('comment_field'));
+
+                        if (comment_field) {
+                            comment_field.insertAdjacentHTML("afterend", json.html);
                         } else {
-                            error(`Comments section doesn't exist????? Biscuit fucked up.`);
+                            error(`Comments section doesn't exist????? Charla fucked up.`);
                         }
                     }
 

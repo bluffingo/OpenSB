@@ -168,8 +168,14 @@ class Templating
         */
 
         if (isset($_SERVER["REQUEST_URI"])) {
-            $this->twig->addGlobal('page_name', empty(basename($_SERVER["REQUEST_URI"], '.php')) ? 'index' : basename($_SERVER["REQUEST_URI"], '.php'));
+            $uri = explode('?', $_SERVER["REQUEST_URI"])[0];
+
+            $uriParts = explode('/', trim($uri, '/'));
+            $pageName = $uriParts[0] ?? 'index';
+
+            $this->twig->addGlobal('page_name', $pageName);
         }
+
 
         if (isset($_SERVER['HTTP_HOST'])) {
             $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
