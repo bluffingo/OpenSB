@@ -46,7 +46,7 @@ function makeRunningTotalGraphFromMultipleCommentTables($database): array
             GROUP BY DATE(FROM_UNIXTIME(date)))
             UNION ALL
             (SELECT FROM_UNIXTIME(date) AS date, COUNT(*) AS num_interactions
-            FROM channel_comments
+            FROM user_profile_comments
             GROUP BY DATE(FROM_UNIXTIME(date)))
             UNION ALL
             (SELECT FROM_UNIXTIME(date) AS date, COUNT(*) AS num_interactions
@@ -91,7 +91,7 @@ if(isset($_POST["action"])) {
 }
 
 // Total number of things
-$thingsToCount = ['comments', 'channel_comments', 'users', 'videos', 'views', 'favorites', 'bans', 'journals'];
+$thingsToCount = ['comments', 'user_profile_comments', 'users', 'videos', 'views', 'favorites', 'bans', 'journals'];
 $query = "SELECT ";
 foreach ($thingsToCount as $thing) {
     if ($query != "SELECT ") $query .= ", ";

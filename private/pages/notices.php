@@ -73,7 +73,7 @@ function getRequiredData($database, $notice)
             break;
 
         case NotificationEnum::CommentProfile:
-            $comment = $database->fetch("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c WHERE c.comment_id = ?", [$notice["related_id"]]);
+            $comment = $database->fetch("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM user_profile_comments c WHERE c.comment_id = ?", [$notice["related_id"]]);
             $profile = $database->fetch("SELECT u.name FROM users u WHERE u.id = ?", [$notice["level"]]);
 
             $data["info"] = $comment["comment"];
