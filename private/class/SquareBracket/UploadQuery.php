@@ -17,9 +17,9 @@ class UploadQuery
     public function query($order, $limit, $whereCondition = null, $params = []) {
         $query = "
         SELECT v.*
-        FROM videos v
-        WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
-        AND v.author NOT IN (SELECT userid FROM bans)
+        FROM uploads v
+        WHERE v.video_id NOT IN (SELECT submission FROM upload_takedowns)
+        AND v.author NOT IN (SELECT userid FROM user_bans)
         ";
 
         if (!empty($whereCondition)) {
@@ -43,9 +43,9 @@ class UploadQuery
     public function count($whereCondition = null, $params = []) {
         $query = "
         SELECT COUNT(*)
-        FROM videos v
-        WHERE v.video_id NOT IN (SELECT submission FROM takedowns)
-        AND v.author NOT IN (SELECT userid FROM bans)
+        FROM uploads v
+        WHERE v.video_id NOT IN (SELECT submission FROM upload_takedowns)
+        AND v.author NOT IN (SELECT userid FROM user_bans)
         ";
 
         if (!empty($whereCondition)) {

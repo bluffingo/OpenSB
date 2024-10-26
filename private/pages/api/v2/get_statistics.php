@@ -8,7 +8,7 @@ global $database;
 
 header('Content-Type: application/json');
 
-$stats = $database->fetch("SELECT (SELECT COUNT(*) FROM users) usercount, (SELECT COUNT(*) FROM videos) videocount, (SELECT COUNT(*) FROM views) viewcount, (SELECT COUNT(*) FROM comments) commentcount");
+$stats = $database->fetch("SELECT (SELECT COUNT(*) FROM users) usercount, (SELECT COUNT(*) FROM uploads) videocount, (SELECT COUNT(*) FROM views) viewcount, (SELECT COUNT(*) FROM upload_comments) commentcount");
 
 $apiOutput = [
     'instance' => [

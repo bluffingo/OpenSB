@@ -39,7 +39,7 @@ if (!$auth->isUserAdmin()) {
         $rateLimit = 2 * 60;
     }
 
-    if ($database->result("SELECT COUNT(*) FROM videos WHERE time > ? AND author = ?", [time() - $rateLimit, $auth->getUserID()]) && !$isDebug) {
+    if ($database->result("SELECT COUNT(*) FROM uploads WHERE time > ? AND author = ?", [time() - $rateLimit, $auth->getUserID()]) && !$isDebug) {
         $waitTimeMinutes = $rateLimit / 60;
         Utilities::bannerNotification("Please wait at least {$waitTimeMinutes} minutes before uploading again.", "/");
     }
@@ -49,13 +49,13 @@ function parse_tags($tags, $submission_id, $database) {
     // parse tags from input
     $tagsID = [];
     foreach ($tags as $tag) {
-        $tagId = $database->result("SELECT tag_id FROM tag_meta WHERE name = ?", [$tag]);
+        $tagId = $database->result("SELECT tag_id FROM upload_tag_meta WHERE name = ?", [$tag]);
 
         if ($tagId === false) {
-            $database->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
+            $database->query("INSERT INTO upload_tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
             $tagId = $database->insertId(); // Get the ID of the newly inserted tag
         } else {
-            $database->query("UPDATE tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]);
+            $database->query("UPDATE upload_tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]);
         }
 
         $tagsID[] = $tagId;
@@ -65,8 +65,8 @@ function parse_tags($tags, $submission_id, $database) {
 
     // link tags to the submission
     foreach ($tagsID as $tagID) {
-        if (!$database->result("SELECT tag_id FROM tag_index WHERE tag_id = ? AND video_id = ?", [$tagID, $submission_integer_id])) {
-            $database->query("INSERT INTO tag_index (video_id, tag_id) VALUES (?,?)", [$submission_integer_id, $tagID]);
+        if (!$database->result("SELECT tag_id FROM upload_tag_index WHERE tag_id = ? AND video_id = ?", [$tagID, $submission_integer_id])) {
+            $database->query("INSERT INTO upload_tag_index (video_id, tag_id) VALUES (?,?)", [$submission_integer_id, $tagID]);
         }
     }
 }

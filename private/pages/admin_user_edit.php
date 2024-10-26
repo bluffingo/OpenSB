@@ -50,11 +50,11 @@ if (isset($_POST['ban_user'])) {
     }
     // Check if user is already banned, if not, then ban. Otherwise, unban.
     $id = $database->fetch("SELECT u.id FROM users u WHERE u.name = ?", [$_POST["ban_user"]])["id"];
-    if ($database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$id])) {
-        $database->query("DELETE FROM bans WHERE userid = ?", [$id]);
+    if ($database->fetch("SELECT b.userid FROM user_bans b WHERE b.userid = ?", [$id])) {
+        $database->query("DELETE FROM user_bans WHERE userid = ?", [$id]);
         Utilities::bannerNotification("Unbanned " . $_POST["ban_user"] . '.' , "/admin/users", "success");
     } else {
-        $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
+        $database->query("INSERT INTO user_bans (userid, reason, time) VALUES (?,?,?)",
             [$id, "Banned by " . $auth->getUserData()["name"], time()]);
         Utilities::bannerNotification("Banned " . $_POST["ban_user"] . '.', "/admin/users", "success");
     }

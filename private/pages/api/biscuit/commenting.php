@@ -39,7 +39,7 @@ if (strlen($commentText) > 1000) {
 if (!$isDebug) {
     $timeLimit = time() - 15;
     $userId = $auth->getUserID();
-    if ($database->result("SELECT COUNT(*) FROM comments WHERE date > ? AND author = ?", [$timeLimit, $userId]) ||
+    if ($database->result("SELECT COUNT(*) FROM upload_comments WHERE date > ? AND author = ?", [$timeLimit, $userId]) ||
         $database->result("SELECT COUNT(*) FROM channel_comments WHERE date > ? AND author = ?", [$timeLimit, $userId]) ||
         $database->result("SELECT COUNT(*) FROM journal_comments WHERE date > ? AND author = ?", [$timeLimit, $userId])
     ) {
@@ -70,7 +70,7 @@ $table = '';
 
 switch ($post_data['type']) {
     case 'submission':
-        $table = 'comments';
+        $table = 'upload_comments';
         break;
     case 'profile':
         $table = 'channel_comments';

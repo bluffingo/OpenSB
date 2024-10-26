@@ -26,7 +26,7 @@ $config = [
     'ffprobe.binaries' => ($ffprobePath ? $ffprobePath : 'ffprobe'),
 ];
 
-// Here's an example of the required parameters for the processing worker.
+// Here's an example of the required parameters for the processing worker:
 // php private/scripts/processingworker.php "videoid" "dynamic/videos/videoid.mp4" "0"
 
 if (!isset($argv[1])) {
@@ -105,19 +105,19 @@ try {
 
     if ($for_website) {
         echo time() . ": Updating database flags..." . PHP_EOL;
-        $videoData = $database->fetch("SELECT v.* FROM videos v WHERE v.video_id = ?", [$new]);
+        $videoData = $database->fetch("SELECT v.* FROM uploads v WHERE v.video_id = ?", [$new]);
 
-        $database->query("UPDATE videos SET videolength = ?, flags = ? WHERE video_id = ?",
+        $database->query("UPDATE uploads SET videolength = ?, flags = ? WHERE video_id = ?",
             [round($duration / $framerate), $videoData['flags'] ^ 0x2, $new]);
     } else {
         echo time() . ": Not a website video, skipping." . PHP_EOL;
     }
 } catch (\Exception $e) {
-    echo time() . " openSB Video Processing Worker Failure: " . $e->getMessage() . PHP_EOL;
+    echo time() . " OpenSB Video Processing Worker Failure: " . $e->getMessage() . PHP_EOL;
     clearstatcache();
     die();
 }
 
-echo time() . " openSB Video Processing Worker Success!" . PHP_EOL;
+echo time() . " OpenSB Video Processing Worker Success!" . PHP_EOL;
 
 clearstatcache();

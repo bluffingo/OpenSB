@@ -23,11 +23,11 @@ function rate($number, $submission): array
     global $database, $auth;
 
     // shouldn't this update instead?
-    if ($database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND user=?", [$submission, $auth->getUserID()]))
+    if ($database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND user=?", [$submission, $auth->getUserID()]))
     {
-        $database->query("DELETE FROM rating WHERE video=? AND user=?", [$submission, $auth->getUserID()]);
+        $database->query("DELETE FROM upload_ratings WHERE video=? AND user=?", [$submission, $auth->getUserID()]);
     }
-    $database->query("INSERT INTO rating (video, user, rating) VALUES (?,?,?)", [$submission, $auth->getUserID(), $number]);
+    $database->query("INSERT INTO upload_ratings (video, user, rating) VALUES (?,?,?)", [$submission, $auth->getUserID(), $number]);
     return [ "rated" => true ];
 }
 

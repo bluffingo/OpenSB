@@ -30,8 +30,8 @@ foreach ($submissions as $submission) {
 }
 
 foreach ($uniqueTags as $tag) {
-    if (!$database->result("SELECT tag_id FROM tag_meta WHERE name = ?", [$tag])) {
-        $database->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
+    if (!$database->result("SELECT tag_id FROM upload_tag_meta WHERE name = ?", [$tag])) {
+        $database->query("INSERT INTO upload_tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
     }
 }
 
@@ -40,9 +40,9 @@ foreach ($submissions as $submission) {
         $tags = json_decode($submission["tags"]);
         if ($tags !== null) {
             foreach ($tags as $tag) {
-                $tagID = $database->fetchArray($database->query("SELECT tag_id FROM tag_meta WHERE name = ?", [$tag]))[0]['tag_id'];
-                if (!$database->result("SELECT tag_id FROM tag_index WHERE tag_id = ? AND video_id = ?", [$tagID, $submission['id']])) {
-                    $database->query("INSERT INTO tag_index (video_id, tag_id) VALUES (?,?)", [$submission['id'], $tagID]);
+                $tagID = $database->fetchArray($database->query("SELECT tag_id FROM upload_tag_meta WHERE name = ?", [$tag]))[0]['tag_id'];
+                if (!$database->result("SELECT tag_id FROM upload_tag_index WHERE tag_id = ? AND video_id = ?", [$tagID, $submission['id']])) {
+                    $database->query("INSERT INTO upload_tag_index (video_id, tag_id) VALUES (?,?)", [$submission['id'], $tagID]);
                 }
             }
         }

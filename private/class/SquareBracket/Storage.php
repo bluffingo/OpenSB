@@ -52,7 +52,7 @@ class Storage
                     'enabledResolutions' => '240p,360p,480p,720p',
                 ],
             );
-            $this->database->query("UPDATE videos SET videofile = ?, videolength = ?, flags = ? WHERE video_id = ?", [$newVideo->getContents()["guid"], 0, 0, $new]);
+            $this->database->query("UPDATE uploads SET videofile = ?, videolength = ?, flags = ? WHERE video_id = ?", [$newVideo->getContents()["guid"], 0, 0, $new]);
             unlink($target_file);
         } else {
             // this uses the version of php on path. if processing worker errors out with "OpenSB is not compatible with your PHP version.",
@@ -72,7 +72,7 @@ class Storage
         if (file_exists(SB_DYNAMIC_PATH . '/custom_thumbnails/' . $id . '.jpg')) {
             return '/dynamic/custom_thumbnails/' . $id . '.jpg';
         } elseif ($this->chazizInstance) {
-            $guid = $this->database->fetch("SELECT videofile from videos where video_id = ?", [$id]);
+            $guid = $this->database->fetch("SELECT videofile FROM uploads where video_id = ?", [$id]);
             return "https://" . $this->bunnyCDNSettings["streamHostname"] . "/" . $guid["videofile"] . "/thumbnail.jpg";
         } elseif (file_exists(SB_DYNAMIC_PATH . '/thumbnails/' . $id . '.png')) {
             return '/dynamic/thumbnails/' . $id . '.png';

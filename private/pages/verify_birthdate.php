@@ -36,7 +36,7 @@ if (isset($_POST['birthdatesubmit'])) {
 
     if ($age < 13) {
         // TROLLED
-        $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
+        $database->query("INSERT INTO user_bans (userid, reason, time) VALUES (?,?,?)",
             [$auth->getUserData()["id"], "Failed birthdate verification check / Below 13", time()]);
     } else {
         Utilities::bannerNotification("Successfully verified!", false, "success");

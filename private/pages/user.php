@@ -34,7 +34,7 @@ if (!$data)
     }
 }
 
-if ($database->fetch("SELECT * FROM bans WHERE userid = ?", [$data["id"]]))
+if ($database->fetch("SELECT * FROM user_bans WHERE userid = ?", [$data["id"]]))
 {
     Utilities::bannerNotification("This user is banned.", "/");
 }
@@ -58,9 +58,9 @@ if ($is_own_profile || $auth->isUserAdmin()) {
 
 $comments = new CommentData($database, CommentLocation::Profile, $data["id"]);
 
-$followers = $database->result("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$data["id"]]);
+$followers = $database->result("SELECT COUNT(user) FROM user_follows WHERE id = ?", [$data["id"]]);
 $followed = Utilities::IsFollowingUser($data["id"]);
-$views = $database->result("SELECT SUM(views) FROM videos WHERE author = ?", [$data["id"]]);
+$views = $database->result("SELECT SUM(views) FROM uploads WHERE author = ?", [$data["id"]]);
 
 $profile_data = [
     "id" => $data["id"],

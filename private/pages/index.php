@@ -33,7 +33,7 @@ $submissions_random = $submission_query->query("RAND()", $submissions_random_que
 $submissions_recent = $submission_query->query("v.time DESC", $submissions_recent_query_limit);
 
 $news_recent = $database->fetchArray($database->query("SELECT j.* FROM journals j WHERE j.is_site_news = 1 ORDER BY j.date DESC LIMIT 5"));
-//$users_recent = $database->fetchArray($database->query("SELECT u.id, u.about, u.title, (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num FROM users u ORDER BY u.lastview DESC LIMIT 8"));
+//$users_recent = $database->fetchArray($database->query("SELECT u.id, u.about, u.title, (SELECT COUNT(*) FROM uploads WHERE author = u.id) AS s_num, (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num FROM users u ORDER BY u.lastview DESC LIMIT 8"));
 
 $data = [
     "submissions" => Utilities::makeUploadArray($database, $submissions_random),
@@ -43,8 +43,8 @@ $data = [
 ];
 
 if ($auth->isUserLoggedIn()) {
-    $followers = $database->result("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$auth->getUserID()]);
-    $views = $database->result("SELECT SUM(views) FROM videos WHERE author = ?", [$auth->getUserID()]);
+    $followers = $database->result("SELECT COUNT(user) FROM user_follows WHERE id = ?", [$auth->getUserID()]);
+    $views = $database->result("SELECT SUM(views) FROM uploads WHERE author = ?", [$auth->getUserID()]);
 
     $data["totals"] = [
         "followers" => $followers,

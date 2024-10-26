@@ -11,7 +11,7 @@ if (isset($_POST['really'])) {
     switch ($_POST['type']) {
         case "video":
             $type = 0;
-            $table = "comments";
+            $table = "upload_comments";
             $id = ($_POST['vidid'] ?? "");
             $reply_to = ($_POST['reply_to'] ?? "0");
             break;

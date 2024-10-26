@@ -12,8 +12,8 @@ $limit = (isset($_GET['limit']) ? $_GET['limit'] : 10);
 $offset = (isset($_GET['offset']) ? $_GET['offset'] : 0);
 $id = ($_GET['v'] ?? null);
 
-$comments = $database->query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC LIMIT ? OFFSET ?", [$id, $limit, $offset]);
-$commentCount = $database->fetch("SELECT COUNT(id) FROM comments WHERE id=?", [$id])['COUNT(id)'];
+$comments = $database->query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM upload_comments WHERE reply_to = c.comment_id) AS replycount FROM upload_comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC LIMIT ? OFFSET ?", [$id, $limit, $offset]);
+$commentCount = $database->fetch("SELECT COUNT(id) FROM upload_comments WHERE id=?", [$id])['COUNT(id)'];
 
 $apiOutput = [];
 foreach ($comments as $comment) {

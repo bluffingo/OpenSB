@@ -21,7 +21,7 @@ if ($auth->getUserID() != $data["author"]) {
     Utilities::bannerNotification("This is not your upload.", "/");
 }
 
-$database->query("DELETE FROM videos WHERE video_id = ?", [$id]);
+$database->query("DELETE FROM uploads WHERE video_id = ?", [$id]);
 $database->query("INSERT INTO deleted_videos (id, uploaded_time, deleted_time) VALUES (?,?,?)", [$id, $data["time"], time()]);
 
 $storage->deleteSubmission($data);

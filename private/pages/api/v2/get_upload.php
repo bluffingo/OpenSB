@@ -20,8 +20,8 @@ if(!$submission) {
 }
 
 // move this to getVideoData
-$totalLikes = $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$submission['id']]);
-$totalDislikes = $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=0", [$submission['id']]);
+$totalLikes = $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=1", [$submission['id']]);
+$totalDislikes = $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=0", [$submission['id']]);
 
 // TODO: comments? likes?
 $apiOutput = [

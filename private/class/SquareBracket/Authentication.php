@@ -26,8 +26,8 @@ class Authentication
             if($this->user_id = $this->database->result("SELECT id FROM users WHERE token = ?", [$token])) {
                 $this->is_logged_in = true;
                 $this->user_data = $this->database->fetch("SELECT $accountfields FROM users WHERE id = ?", [$this->user_id]);
-                $this->user_notice_count = $this->database->result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$this->user_id]);
-                $this->user_ban_data = $this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->user_id]);
+                $this->user_notice_count = $this->database->result("SELECT COUNT(*) FROM user_notifications WHERE recipient = ?", [$this->user_id]);
+                $this->user_ban_data = $this->database->fetch("SELECT * FROM user_bans WHERE userid = ?", [$this->user_id]);
 
                 if (!isset($this->user_data['blacklisted_tags'])) {
                     $this->user_data['blacklisted_tags'] = $this->default_tags_blacklist;
@@ -46,9 +46,9 @@ class Authentication
 
                 // check if the current logged-in user is IP banned from another address, if so, then log them out.
                 // this will prevent users from using IP banned accounts on other IPs.
-                if ($this->database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$this->user_data['ip']])) {
+                if ($this->database->fetch("SELECT * FROM ip_bans WHERE ? LIKE ip", [$this->user_data['ip']])) {
                     setcookie("SBTOKEN", "", time() - 3600);
-                    Utilities::bannerNotification("You have been logged out, as this account is linked to a banned IP address.", true);
+                    Utilities::bannerNotification("You have been logged out, as this user is linked to a banned IP address.", true);
                 }
 
                 // update "last logged in" timestamp after 12 hours.

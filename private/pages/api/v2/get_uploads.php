@@ -11,8 +11,8 @@ header('Content-Type: application/json');
 $limit = (isset($_GET['limit']) ? $_GET['limit'] : 10);
 $offset = (isset($_GET['offset']) ? $_GET['offset'] : 0);
 
-$sumbissionCount = $database->result("SELECT COUNT(1) FROM videos v JOIN users u ON v.author = u.id");
-$submissions = $database->query("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT ? OFFSET ?", [$limit, $offset]);
+$sumbissionCount = $database->result("SELECT COUNT(1) FROM uploads v JOIN users u ON v.author = u.id");
+$submissions = $database->query("SELECT $userfields v.* FROM uploads v JOIN users u ON v.author = u.id ORDER BY v.id DESC LIMIT ? OFFSET ?", [$limit, $offset]);
 
 $apiOutput = [];
 foreach ($submissions as $submission) {

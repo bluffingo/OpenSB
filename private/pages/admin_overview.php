@@ -42,7 +42,7 @@ function makeRunningTotalGraphFromMultipleCommentTables($database): array
             @runningTotal := @runningTotal + num_interactions AS runningTotal
         FROM (
             (SELECT FROM_UNIXTIME(date) AS date, COUNT(*) AS num_interactions
-            FROM comments
+            FROM upload_comments
             GROUP BY DATE(FROM_UNIXTIME(date)))
             UNION ALL
             (SELECT FROM_UNIXTIME(date) AS date, COUNT(*) AS num_interactions
@@ -99,7 +99,7 @@ foreach ($thingsToCount as $thing) {
 }
 
 // Get bans (used in the old bans tab)
-$bans = $database->fetchArray($database->query("SELECT * FROM bans"));
+$bans = $database->fetchArray($database->query("SELECT * FROM user_bans"));
 
 $bannedUserData = [];
 foreach ($bans as $ban) {

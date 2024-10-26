@@ -216,7 +216,7 @@ class SquareBracketTwigExtension extends AbstractExtension
         $id = Utilities::usernameToID($database, $username);
         $location = '/dynamic/pfp/' . $id . '.png';
         // don't bother with userdata since that might slow shit down
-        $is_banned = $database->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
+        $is_banned = $database->fetch("SELECT * FROM user_bans WHERE userid = ?", [$id]);
 
         if ($is_banned) {
             $data = "/assets/profiledef.svg";
@@ -458,9 +458,9 @@ HTML;
 
         $userid = $auth->getUserID();
 
-        //$allUsers = query("SELECT $userfields s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]);
+        //$allUsers = query("SELECT $userfields s.* FROM user_follows s JOIN users u ON s.user = u.id WHERE s.id = ?", [$userdata['id']]);
         $users = $database->fetchArray(
-            $database->query("SELECT s.* FROM subscriptions s JOIN users u ON s.user = u.id WHERE s.user = ?", [$userid])
+            $database->query("SELECT s.* FROM user_follows s JOIN users u ON s.user = u.id WHERE s.user = ?", [$userid])
         );
 
         $array = [];

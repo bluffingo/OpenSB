@@ -162,7 +162,7 @@ class Templating
         if ($this->skin == "finalium" && $this->theme == "beta")
         {
             $db = $orange->getDatabase();
-            $footerstats = $db->fetch("SELECT (SELECT COUNT(*) FROM users) users, (SELECT COUNT(*) FROM videos) submissions");
+            $footerstats = $db->fetch("SELECT (SELECT COUNT(*) FROM users) users, (SELECT COUNT(*) FROM uploads) submissions");
             $this->twig->addGlobal('footer_stats', $footerstats);
         }
         */
