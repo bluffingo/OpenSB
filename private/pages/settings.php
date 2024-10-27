@@ -35,6 +35,8 @@ if (isset($_POST['save'])) {
 
     $customcolor = ($_POST['customcolor'] ?? '#523bb8');
 
+    $profile_layout = ($_POST['profile-layout'] ?? 0);
+
     $rating = isset($_POST['rating']) && $_POST['rating'] === 'true' ? 'mature' : 'general';
     $blacklisted_tags = ($_POST['blacklisted_tags'] ?? $auth->getDefaultBlacklistedTags());
 
@@ -130,9 +132,10 @@ if (isset($_POST['save'])) {
                  about = ?, 
                  comfortable_rating = ?, 
                  customcolor = ?, 
+                 profile_layout = ?,
                  blacklisted_tags = ?
                  WHERE id = ?",
-            [$title, $about, $rating, $customcolor, json_encode($parsed_tags), $auth->getUserID()]);
+            [$title, $about, $rating, $customcolor, $profile_layout, json_encode($parsed_tags), $auth->getUserID()]);
 
         if ($username_changed) {
             // avoids "This user does not exist." error since $auth by this point still uses outdated data.

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2024 at 02:02 AM
+-- Generation Time: Oct 27, 2024 at 07:04 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.3.10
 
@@ -230,6 +230,7 @@ CREATE TABLE `users` (
   `title` text NOT NULL COMMENT 'Display Name',
   `about` text DEFAULT NULL COMMENT 'User''s description',
   `customcolor` varchar(7) DEFAULT '#523bb8' COMMENT 'The color that the user has set for their profile',
+  `profile_layout` tinyint(4) NOT NULL,
   `language` varchar(10) NOT NULL DEFAULT 'en-US' COMMENT 'Language (Defaults to English)',
   `avatar` tinyint(1) NOT NULL DEFAULT 0,
   `ip` varchar(48) DEFAULT '999.999.999.999',
@@ -243,10 +244,10 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_bans`
+-- Table structure for table `user_bans`
 --
 
-CREATE TABLE `users_bans` (
+CREATE TABLE `user_bans` (
   `autoint` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `reason` text NOT NULL,
@@ -412,9 +413,9 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users_bans`
+-- Indexes for table `user_bans`
 --
-ALTER TABLE `users_bans`
+ALTER TABLE `user_bans`
   ADD PRIMARY KEY (`autoint`);
 
 --
@@ -506,9 +507,9 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT ' 	Incrementing ID for internal purposes.';
 
 --
--- AUTO_INCREMENT for table `users_bans`
+-- AUTO_INCREMENT for table `user_bans`
 --
-ALTER TABLE `users_bans`
+ALTER TABLE `user_bans`
   MODIFY `autoint` int(11) NOT NULL AUTO_INCREMENT;
 
 --
