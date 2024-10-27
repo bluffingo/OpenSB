@@ -5,6 +5,7 @@ namespace OpenSB;
 global $twig, $database, $orange;
 
 use SquareBracket\UserData;
+use SquareBracket\UserRoleEnum;
 use SquareBracket\Utilities;
 
 if ($orange->getLocalOptions()["skin"] != "charla") {
@@ -15,7 +16,7 @@ $staffQueryData = $database->fetchArray(
     $database->query(
         "SELECT u.id, u.powerlevel
         FROM users u 
-        WHERE u.powerlevel >= '3'"));
+        WHERE u.powerlevel >= ?", [UserRoleEnum::Moderator->value]));
 
 $usersData = [];
 foreach ($staffQueryData as $user)
