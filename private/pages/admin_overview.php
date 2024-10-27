@@ -64,7 +64,7 @@ function countViews($database): array
             DATE(FROM_UNIXTIME(timestamp)) AS date, 
             SUM(CASE WHEN type = 'user' THEN 1 ELSE 0 END) AS user_views,
             SUM(CASE WHEN type = 'guest' THEN 1 ELSE 0 END) AS guest_views
-        FROM views
+        FROM upload_views
         GROUP BY DATE(FROM_UNIXTIME(timestamp))
         ORDER BY DATE(FROM_UNIXTIME(timestamp))"
     ));
@@ -91,7 +91,7 @@ if(isset($_POST["action"])) {
 }
 
 // Total number of things
-$thingsToCount = ['comments', 'user_profile_comments', 'users', 'videos', 'views', 'favorites', 'bans', 'journals'];
+$thingsToCount = ['upload_comments', 'user_profile_comments', 'users', 'uploads', 'upload_views', 'user_favorites', 'user_bans', 'journals'];
 $query = "SELECT ";
 foreach ($thingsToCount as $thing) {
     if ($query != "SELECT ") $query .= ", ";
@@ -140,7 +140,7 @@ $data = [
     ],
     "graph_data" => [
         "users" => makeRunningTotalGraph($database, 'users', 'joined'),
-        "submissions" => makeRunningTotalGraph($database, 'videos', 'time'),
+        "submissions" => makeRunningTotalGraph($database, 'uploads', 'time'),
         "comments" => makeRunningTotalGraphFromMultipleCommentTables($database),
         "journals" => makeRunningTotalGraph($database, 'journals', 'date'),
         "views" => countViews($database),
