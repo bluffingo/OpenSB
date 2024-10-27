@@ -85,11 +85,11 @@ if (isset($path[1]) && $path[1] != '') {
                 'subscribe' => require(SB_PRIVATE_PATH . '/pages/api/legacy/subscribe.php'),
                 default => die("Invalid API.")
             },
-            'v2' => match ($path[3] ?? null) { //TODO
-                //'get_comments' => require(SB_PRIVATE_PATH . '/pages/api/v2/get_comments.php'),
-                //'get_statistics' => require(SB_PRIVATE_PATH . '/pages/api/v2/get_statistics.php'),
-                //'get_upload' => require(SB_PRIVATE_PATH . '/pages/api/v2/get_upload.php'),
-                //'get_uploads' => require(SB_PRIVATE_PATH . '/pages/api/v2/get_uploads.php'),
+            'v3' => match ($path[3] ?? null) { //TODO
+                'get_comments' => require(SB_PRIVATE_PATH . '/pages/api/v3/get_comments.php'),
+                'get_instance_info' => require(SB_PRIVATE_PATH . '/pages/api/v3/get_instance_info.php'),
+                'get_upload' => require(SB_PRIVATE_PATH . '/pages/api/v3/get_upload.php'),
+                //'get_uploads' => require(SB_PRIVATE_PATH . '/pages/api/v3/get_uploads.php'),
                 default => die(json_encode("Invalid API."))
             },
             default => die("Invalid API.")
