@@ -159,13 +159,14 @@ class Templating
         $this->twig->addGlobal('current_skin_and_theme', $this->skin . ',' . $this->theme);
         // temporary
         $this->twig->addGlobal('show_warning_banner', $showWarningBanner);
+        $this->twig->addGlobal('is_opensb_v1_3', true);
         $this->twig->addGlobal('is_opensb_v2', true);
 
         /*
         if ($this->skin == "finalium" && $this->theme == "beta")
         {
             $db = $orange->getDatabase();
-            $footerstats = $db->fetch("SELECT (SELECT COUNT(*) FROM users) users, (SELECT COUNT(*) FROM videos) submissions");
+            $footerstats = $db->fetch("SELECT (SELECT COUNT(*) FROM users) users, (SELECT COUNT(*) FROM uploads) submissions");
             $this->twig->addGlobal('footer_stats', $footerstats);
         }
         */
@@ -211,7 +212,6 @@ class Templating
 
     /**
      * Get the skin's JSON metadata.
-     *
      * @param $skin
      * @return array|null
      */

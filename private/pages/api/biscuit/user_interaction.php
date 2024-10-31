@@ -12,12 +12,12 @@ header('Content-Type: application/json');
 $post_data = json_decode(file_get_contents('php://input'), true);
 
 $apiOutput = [
-    "error" => "Invalid request."
+    "error" => "This request is invalid."
 ];
 
 if ($auth->getUserBanData()) {
     $apiOutput = [
-        "error" => "User is banned!!!"
+        "error" => "You have been banned."
     ];
 }
 
@@ -33,17 +33,17 @@ function follow($member): array
         ];
     }
 
-    if ($database->result("SELECT COUNT(user) FROM subscriptions WHERE user=? AND id=?", [$auth->getUserID(), $member]) != 0) {
-        $database->query("DELETE FROM subscriptions WHERE user=? AND id=?", [$auth->getUserID(), $member]);
+    if ($database->result("SELECT COUNT(user) FROM user_follows WHERE user=? AND id=?", [$auth->getUserID(), $member]) != 0) {
+        $database->query("DELETE FROM user_follows WHERE user=? AND id=?", [$auth->getUserID(), $member]);
         $result = false;
     } else {
-        $database->query("INSERT INTO subscriptions (id, user) VALUES (?,?)", [$member, $auth->getUserID()]);
+        $database->query("INSERT INTO user_follows (id, user) VALUES (?,?)", [$member, $auth->getUserID()]);
         $result = true;
 
         Utilities::NotifyUser($database, $member, 0,0,NotificationEnum::Follow);
     }
 
-    $number = $database->fetch("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$member])['COUNT(user)'];
+    $number = $database->fetch("SELECT COUNT(user) FROM user_follows WHERE id = ?", [$member])['COUNT(user)'];
 
     if ($result) {
         $text = "Unfollow";
@@ -63,7 +63,7 @@ if (isset($post_data['member'])) {
         $apiOutput = match ($post_data['action']) {
             'follow' => follow($post_data['member']),
             default => [
-                "error" => "Invalid interaction type, or NYI"
+                "error" => "This interaction type is invalid or has not yet been implemented."
             ],
         };
     }

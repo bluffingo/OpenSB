@@ -41,7 +41,7 @@ if (isset($_POST['upload'])) {
         $storage->uploadCustomThumbnail($temp_name, $target_file);
     }
 
-    $database->query("UPDATE videos SET title = ?, description = ? WHERE video_id = ?",
+    $database->query("UPDATE uploads SET title = ?, description = ? WHERE video_id = ?",
         [$title, $desc, $id]);
     Utilities::bannerNotification("Your upload's details have been successfully modified.", "/view/" . $id, "success");
 }

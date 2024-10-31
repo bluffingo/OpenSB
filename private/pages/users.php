@@ -12,13 +12,13 @@ $limit = sprintf("%s,%s", (($page_number - 1) * 20), 20);
 $queryData = $database->fetchArray(
     $database->query(
         "SELECT u.id, u.about, u.title, 
-       (SELECT COUNT(*) FROM videos WHERE author = u.id) AS s_num, 
+       (SELECT COUNT(*) FROM uploads WHERE author = u.id) AS s_num, 
        (SELECT COUNT(*) FROM journals WHERE author = u.id) AS j_num 
         FROM users u 
-        WHERE u.id NOT IN (SELECT userid FROM bans)
+        WHERE u.id NOT IN (SELECT userid FROM user_bans)
         ORDER BY u.lastview DESC LIMIT $limit"));
 
-$countData = $database->result("SELECT COUNT(*) FROM users u WHERE u.id NOT IN (SELECT userid FROM bans)");
+$countData = $database->result("SELECT COUNT(*) FROM users u WHERE u.id NOT IN (SELECT userid FROM user_bans)");
 
 $usersData = [];
 foreach ($queryData as $user)

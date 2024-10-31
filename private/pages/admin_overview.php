@@ -42,11 +42,11 @@ function makeRunningTotalGraphFromMultipleCommentTables($database): array
             @runningTotal := @runningTotal + num_interactions AS runningTotal
         FROM (
             (SELECT FROM_UNIXTIME(date) AS date, COUNT(*) AS num_interactions
-            FROM comments
+            FROM upload_comments
             GROUP BY DATE(FROM_UNIXTIME(date)))
             UNION ALL
             (SELECT FROM_UNIXTIME(date) AS date, COUNT(*) AS num_interactions
-            FROM channel_comments
+            FROM user_profile_comments
             GROUP BY DATE(FROM_UNIXTIME(date)))
             UNION ALL
             (SELECT FROM_UNIXTIME(date) AS date, COUNT(*) AS num_interactions
@@ -64,7 +64,7 @@ function countViews($database): array
             DATE(FROM_UNIXTIME(timestamp)) AS date, 
             SUM(CASE WHEN type = 'user' THEN 1 ELSE 0 END) AS user_views,
             SUM(CASE WHEN type = 'guest' THEN 1 ELSE 0 END) AS guest_views
-        FROM views
+        FROM upload_views
         GROUP BY DATE(FROM_UNIXTIME(timestamp))
         ORDER BY DATE(FROM_UNIXTIME(timestamp))"
     ));
@@ -91,33 +91,14 @@ if(isset($_POST["action"])) {
 }
 
 // Total number of things
-$thingsToCount = ['comments', 'channel_comments', 'users', 'videos', 'views', 'favorites', 'bans', 'journals'];
+$thingsToCount = ['upload_comments', 'user_profile_comments', 'users', 'uploads', 'upload_views', 'user_favorites', 'user_bans', 'journals'];
 $query = "SELECT ";
 foreach ($thingsToCount as $thing) {
     if ($query != "SELECT ") $query .= ", ";
     $query .= sprintf("(SELECT COUNT(*) FROM %s) %s", $thing, $thing);
 }
 
-// Get bans (used in the old bans tab)
-$bans = $database->fetchArray($database->query("SELECT * FROM bans"));
-
-$bannedUserData = [];
-foreach ($bans as $ban) {
-    $banned_user = $database->fetch("SELECT u.* FROM users u WHERE u.id = ?", [$ban["userid"]]);
-
-    // avoids "conversion from false to array" is deprecated error if the banned user no longer exists
-    // due to manual db modification although in reality these bans should get automatically revoked
-    if (!$banned_user)
-    {
-        $banned_user = [
-            "name" => "Deleted user"
-        ];
-    }
-
-    $banned_user["ban_reason"] = $ban["reason"];
-    $banned_user["ban_time"] = $ban["time"];
-    $bannedUserData[] = $banned_user;
-}
+$numbersOfThingsArray = $database->fetch($query);
 
 // Get the invite keys
 $inviteKeys = $database->fetchArray($database->query("SELECT * FROM invite_keys"));
@@ -134,18 +115,17 @@ foreach ($inviteKeys as $inviteKey) {
 }
 
 $data = [
-    "numbers" => $database->fetch($query),
+    "numbers" => $numbersOfThingsArray,
     "system" => [
         "uname" => php_uname(),
     ],
     "graph_data" => [
         "users" => makeRunningTotalGraph($database, 'users', 'joined'),
-        "submissions" => makeRunningTotalGraph($database, 'videos', 'time'),
+        "submissions" => makeRunningTotalGraph($database, 'uploads', 'time'),
         "comments" => makeRunningTotalGraphFromMultipleCommentTables($database),
         "journals" => makeRunningTotalGraph($database, 'journals', 'date'),
         "views" => countViews($database),
     ],
-    "bans" => $bannedUserData,
     "invites" => $inviteKeyData,
     "time" => [
         "formatted_date" => date("F j, Y", $date),

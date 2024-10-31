@@ -18,58 +18,6 @@
 					{% endfor %}
 				</ul>
 			</div>
-		</div>
-
-			<div id="bans" class="tabcontent">
-				<div class="content-box">
-					<div class="content-box">
-						<h1>Ban User</h1>
-						<form id="banForm" method="post" action="admin" enctype="multipart/form-data">
-							<div>
-								<strong>NOTE</strong>: We currently don't support expirable bans.
-							</div>
-							<input type="hidden" name="action" value="ban_user" />
-							<div class="form-input">
-								<label for="user_to_ban">Username:</label>
-								<input type="text" id="user_to_ban" name="user_to_ban" class="form-submit" required>
-								<label for="reason">Reason:</label>
-								<input type="text" id="reason" name="reason" class="form-submit" required>
-							</div>
-							<div class="form-button-container">
-								<input type="submit" id="upload" name="upload" class="button button-danger" value="Ban">
-							</div>
-						</form>
-					</div>
-					<br>
-					<div class="content-box">
-						<h1>Banned Users</h1>
-						<div>
-							<strong>NOTE</strong>: If the account gets automatically banned after being unbanned, then the account's latest IP is IP banned.
-						</div>
-						<table class="c1">
-							<thead>
-							<tr class="h">
-								<th style="width:150px">Username</th>
-								<th>Reason</th>
-								<th style="width:70px">Unban</th>
-							</tr>
-							</thead>
-							<tbody>
-							{% for user in data.bans %}
-								<tr style="height: 30px;">
-									<td>{{ user.name }}</td>
-									<td>
-										{{ user.ban_reason }}
-										<small>({{ user.ban_time | date('F j, Y') }}/{{ user.ban_time | relative_time }})</small>
-									</td>
-									<td><a href="/admin?action=unban_user&user={{ user.id }}" class="button button-secondary">Unban</a></td>
-								</tr>
-							{% endfor %}
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
 
 			{% if invite_keys_enabled %}
 				<div id="invitekeys" class="tabcontent">

@@ -54,33 +54,33 @@ if (isset($data["tags"])) {
 $comments = new CommentData($database, CommentLocation::Upload, $id);
 $author = new UserData($database, $data["author"]);
 if ($author->isUserBanned() && !$auth->isUserAdmin()) {
-    Utilities::bannerNotification("This upload's author is banned.", "/");
+    Utilities::bannerNotification("The author of this upload is banned.", "/");
 }
 
 $tags = $submission->getTags();
 
-$followers = $database->result("SELECT COUNT(user) FROM subscriptions WHERE id = ?", [$data["author"]]);
+$followers = $database->result("SELECT COUNT(user) FROM user_follows WHERE id = ?", [$data["author"]]);
 $followed = Utilities::IsFollowingUser($data["author"]);
 
 // looks weird, whatever.
 $ratings = [
-    "1" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$data["id"]]),
-    "2" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$data["id"]]),
-    "3" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=3", [$data["id"]]),
-    "4" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=4", [$data["id"]]),
-    "5" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$data["id"]]),
+    "1" => $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=1", [$data["id"]]),
+    "2" => $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=2", [$data["id"]]),
+    "3" => $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=3", [$data["id"]]),
+    "4" => $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=4", [$data["id"]]),
+    "5" => $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=5", [$data["id"]]),
 ];
-$favorites = $database->result("SELECT COUNT(video_id) FROM favorites WHERE video_id=?", [$id]);
+$favorites = $database->result("SELECT COUNT(video_id) FROM user_favorites WHERE video_id=?", [$id]);
 
 $bools = $submission->bitmaskToArray();
 
 if ($bools["block_guests"] && !$auth->isUserLoggedIn())
 {
-    Utilities::bannerNotification("This upload's author has blocked guest access.", "/login");
+    Utilities::bannerNotification("The author of this upload has blocked guest access.", "/login");
 }
 
 if (Utilities::RatingToNumber($data["rating"]) > Utilities::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
-    Utilities::bannerNotification("You cannot access sensitive-rated uploads.", "/");
+    Utilities::bannerNotification("Access to mature-rated uploads is restricted.", "/");
 }
 
 $ip = Utilities::getIpAddress();
@@ -122,7 +122,7 @@ if (!$CrawlerDetect->isCrawler() && domainCheck()) {
         // increment the indexed view count. this might go out of sync eventually, but this can be fixed with a
         // script that'll be run at least once a week via cron. -chaziz 4/6/2024
         $new_views = $data["views"] + 1;
-        $database->query("UPDATE videos SET views = ? WHERE id = ?",
+        $database->query("UPDATE uploads SET views = ? WHERE id = ?",
             [$new_views, $data["id"]]);
     }
 }
@@ -148,17 +148,17 @@ FROM
         SELECT
             COUNT(DISTINCT ct3.tag_id)
         FROM
-            tag_index ct3
+            upload_tag_index ct3
         WHERE
             ct3.video_id IN (c1.id, c2.id)
     ) AS union_count
     FROM
-        videos AS c1
-    INNER JOIN videos AS c2
+        uploads AS c1
+    INNER JOIN uploads AS c2
         ON c1.id != c2.id
-    LEFT JOIN tag_index AS ct1
+    LEFT JOIN upload_tag_index AS ct1
         ON ct1.video_id = c1.id
-    LEFT JOIN tag_index AS ct2
+    LEFT JOIN upload_tag_index AS ct2
         ON ct2.video_id = c2.id AND ct1.tag_id = ct2.tag_id
     WHERE
         c1.id = ?
@@ -185,12 +185,12 @@ if ($tags === []) {
     // this isn't ported to UploadQuery for now since this query uses a slightly different syntax.
 
     $query = "SELECT v.* 
-    FROM videos v
+    FROM uploads v
     INNER JOIN (
         SELECT $recommendfields
     ) AS recommended
     ON v.video_id = recommended.video_id
-    WHERE v.video_id NOT IN (SELECT submission FROM takedowns)";
+    WHERE v.video_id NOT IN (SELECT submission FROM upload_takedowns)";
 
     if (!empty($whereRatings)) {
         $query .= "AND $whereRatings ";
@@ -200,7 +200,7 @@ if ($tags === []) {
         $query .= "AND $whereTagBlacklist ";
     }
 
-    $query .= "AND v.author NOT IN (SELECT userid FROM bans)
+    $query .= "AND v.author NOT IN (SELECT userid FROM user_bans)
     ORDER BY RAND()";
 
     $recommended = $database->fetchArray($database->query($query, [$data["id"]]));
@@ -287,7 +287,7 @@ if ($orange->getLocalOptionsClass()->getOptions()["skin"] == "finalium" || $oran
     }
 
     if ($auth->isUserLoggedIn()) {
-        $current_rating_from_db = $database->result("SELECT rating FROM rating WHERE video=? AND user=?", [$data["id"], $auth->getUserID()]);
+        $current_rating_from_db = $database->result("SELECT rating FROM upload_ratings WHERE video=? AND user=?", [$data["id"], $auth->getUserID()]);
 
         if (($current_rating_from_db == "4") || ($current_rating_from_db == "5")) {
             $current_rating = "like";

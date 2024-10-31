@@ -13,8 +13,8 @@ class UserData
     {
         $this->database = $database;
         $this->data = $this->database->fetch("SELECT u.* FROM users u WHERE u.id = ?", [$id]);
-        $this->followers = $this->database->fetch("SELECT COUNT(user) FROM subscriptions WHERE user = ?", [$id])['COUNT(user)'];
-        $this->is_banned = $this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$id]);
+        $this->followers = $this->database->fetch("SELECT COUNT(user) FROM user_follows WHERE user = ?", [$id])['COUNT(user)'];
+        $this->is_banned = $this->database->fetch("SELECT * FROM user_bans WHERE userid = ?", [$id]);
         if ($this->data == null) {
             trigger_error("User ID $id is nonexistent.", E_USER_WARNING);
         }

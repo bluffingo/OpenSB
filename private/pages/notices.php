@@ -65,15 +65,15 @@ function getRequiredData($database, $notice)
             break;
 
         case NotificationEnum::CommentUpload:
-            $comment = $database->fetch("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM comments c WHERE c.comment_id = ?", [$notice["related_id"]]);
-            $upload = $database->fetch("SELECT v.video_id, v.author, v.title FROM videos v WHERE v.id = ?", [$notice["level"]]);
+            $comment = $database->fetch("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM upload_comments c WHERE c.comment_id = ?", [$notice["related_id"]]);
+            $upload = $database->fetch("SELECT v.video_id, v.author, v.title FROM uploads v WHERE v.id = ?", [$notice["level"]]);
 
             $data["info"] = $comment["comment"];
             $data["origin"] = $upload["title"] ?? "Unknown upload";
             break;
 
         case NotificationEnum::CommentProfile:
-            $comment = $database->fetch("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM channel_comments c WHERE c.comment_id = ?", [$notice["related_id"]]);
+            $comment = $database->fetch("SELECT c.comment_id, c.id, c.comment, c.author, c.date, c.deleted FROM user_profile_comments c WHERE c.comment_id = ?", [$notice["related_id"]]);
             $profile = $database->fetch("SELECT u.name FROM users u WHERE u.id = ?", [$notice["level"]]);
 
             $data["info"] = $comment["comment"];
@@ -89,7 +89,7 @@ if (!$auth->isUserLoggedIn())
     Utilities::bannerNotification("Please login to continue.", "/login");
 }
 
-$data = $database->fetchArray($database->query("SELECT * FROM notifications WHERE recipient = ? ORDER BY id DESC", [$auth->getUserID()]));
+$data = $database->fetchArray($database->query("SELECT * FROM user_notifications WHERE recipient = ? ORDER BY id DESC", [$auth->getUserID()]));
 
 $noticeData = [];
 

@@ -35,7 +35,14 @@ if (isset($_POST['save'])) {
 
     $customcolor = ($_POST['customcolor'] ?? '#523bb8');
 
-    $rating = isset($_POST['rating']) && $_POST['rating'] === 'true' ? 'mature' : 'general';
+    $profile_layout = ($_POST['profile-layout'] ?? 0);
+
+    if ($auth->isUserOver18()) {
+        $rating = isset($_POST['rating']) && $_POST['rating'] === 'true' ? 'mature' : 'general';
+    } else {
+        $rating = 'general';
+    }
+
     $blacklisted_tags = ($_POST['blacklisted_tags'] ?? $auth->getDefaultBlacklistedTags());
 
     if ($blacklisted_tags === '') {
@@ -130,9 +137,10 @@ if (isset($_POST['save'])) {
                  about = ?, 
                  comfortable_rating = ?, 
                  customcolor = ?, 
+                 profile_layout = ?,
                  blacklisted_tags = ?
                  WHERE id = ?",
-            [$title, $about, $rating, $customcolor, json_encode($parsed_tags), $auth->getUserID()]);
+            [$title, $about, $rating, $customcolor, $profile_layout, json_encode($parsed_tags), $auth->getUserID()]);
 
         if ($username_changed) {
             // avoids "This user does not exist." error since $auth by this point still uses outdated data.
@@ -142,10 +150,10 @@ if (isset($_POST['save'])) {
             $url = "/user/" . $auth->getUserData()["name"];
         }
 
-        Utilities::bannerNotification("Successfully updated your settings!", $url, "success");
+        Utilities::bannerNotification("Your settings have been successfully updated.", $url, "success");
     } else {
         Utilities::bannerNotification($error, "/settings.php");
     }
 }
 
-echo $twig->render('settings.twig');
+echo $twig->render('settings.twig', ['isUserOver18' => $auth->isUserOver18()]);

@@ -3,10 +3,10 @@
 # don't gitignore pre-existing skins
 
 # common (stuff shared between skins)
-!/common
+!/common/**
 
 # error template
-!/error
+!/error/**
 
 # finalium 2 (biscuit)
-!/biscuit
+!/biscuit/**

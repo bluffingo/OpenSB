@@ -138,12 +138,12 @@ $localization = new Localization($localization_setting);
 // this should probably have a cooldown or something i don't fucking know
 
 // automatically ban accounts linked to banned ips.
-$ipBannedUsers = $database->fetchArray($database->query("SELECT * from ipbans"));
+$ipBannedUsers = $database->fetchArray($database->query("SELECT * from ip_bans"));
 foreach ($ipBannedUsers as $ipBannedUser) {
     $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT id, name FROM users WHERE ip LIKE ?", [$ipBannedUser["ip"]]));
     foreach ($usersAssociatedWithIP as $ipBannedUser2) { // i can't really name variables that well
-        if (!$database->fetch("SELECT b.userid FROM bans b WHERE b.userid = ?", [$ipBannedUser2["id"]])) {
-            $database->query("INSERT INTO bans (userid, reason, time) VALUES (?,?,?)",
+        if (!$database->fetch("SELECT b.userid FROM user_bans b WHERE b.userid = ?", [$ipBannedUser2["id"]])) {
+            $database->query("INSERT INTO user_bans (userid, reason, time) VALUES (?,?,?)",
                 [$ipBannedUser2["id"], "Automatically done by OpenSB", time()]);
         }
     }
@@ -154,7 +154,7 @@ $storage = new Storage($orange->getDatabaseClass(), $isChazizSB, $bunnySettings)
 $twig = new Templating($orange);
 $twig_error = new ErrorTemplating($orange);
 
-if ($ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities::getIpAddress()])) {
+if ($ipban = $database->fetch("SELECT * FROM ip_bans WHERE ? LIKE ip", [Utilities::getIpAddress()])) {
     $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [Utilities::getIpAddress()]));
 
     echo $twig_error->render("ip_banned.twig", [

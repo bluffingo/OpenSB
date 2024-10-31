@@ -46,8 +46,8 @@ class Authentication
             if($this->user_id = $this->database->result("SELECT id FROM users WHERE token = ?", [$token])) {
                 $this->is_logged_in = true;
                 $this->user_data = $this->database->fetch("SELECT $accountfields FROM users WHERE id = ?", [$this->user_id]);
-                $this->user_notice_count = $this->database->result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$this->user_id]);
-                $this->user_ban_data = $this->database->fetch("SELECT * FROM bans WHERE userid = ?", [$this->user_id]);
+                $this->user_notice_count = $this->database->result("SELECT COUNT(*) FROM user_notifications WHERE recipient = ?", [$this->user_id]);
+                $this->user_ban_data = $this->database->fetch("SELECT * FROM user_bans WHERE userid = ?", [$this->user_id]);
 
                 if (!isset($this->user_data['blacklisted_tags'])) {
                     $this->user_data['blacklisted_tags'] = $this->default_tags_blacklist;
@@ -66,9 +66,9 @@ class Authentication
 
                 // check if the current logged-in user is IP banned from another address, if so, then log them out.
                 // this will prevent users from using IP banned accounts on other IPs.
-                if ($this->database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$this->user_data['ip']])) {
+                if ($this->database->fetch("SELECT * FROM ip_bans WHERE ? LIKE ip", [$this->user_data['ip']])) {
                     setcookie("SBTOKEN", "", time() - 3600);
-                    Utilities::bannerNotification("You have been logged out, as this account is linked to a banned IP address.", true);
+                    Utilities::bannerNotification("You have been logged out, as this user is linked to a banned IP address.", true);
                 }
 
                 // update "last logged in" timestamp after 12 hours.
@@ -81,7 +81,12 @@ class Authentication
                 // old system is left there for compatibility. -chaziz 6/9/2024
                 if ($this->user_data["comfortable_rating"] == "questionable") {
                     $this->database->query("UPDATE users SET comfortable_rating = 'general' WHERE id = ?", [$this->user_id]);
-                    Utilities::bannerNotification("Due to updates with content filtering, your filtering settings have been reset from Questionable to General.", false, "primary");
+                    Utilities::bannerNotification("Your content filtering settings have been reset to General.", false, "primary");
+                }
+
+                if ($this->user_data["comfortable_rating"] == "mature" && !$this->isUserOver18()) {
+                    $this->database->query("UPDATE users SET comfortable_rating = 'general' WHERE id = ?", [$this->user_id]);
+                    Utilities::bannerNotification("Your content filtering settings have been reset to General.", false, "primary");
                 }
 
                 $this->has_authenticated_as_an_admin = $_SESSION["SB_ADMIN_AUTHED"] ?? null;
@@ -152,6 +157,17 @@ class Authentication
             return $this->user_data['blacklisted_tags'];
         } else {
             return $this->default_tags_blacklist;
+        }
+    }
+
+    public function isUserOver18(): bool
+    {
+        if ($this->is_logged_in) {
+            $age = date_diff(date_create($this->user_data['birthdate']), date_create('today'))->y;
+
+            return $age >= 18;
+        } else {
+            return false;
         }
     }
 

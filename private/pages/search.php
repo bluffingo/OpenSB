@@ -42,12 +42,12 @@ $whereRatings = Utilities::whereRatings();
 
 $submissions = $database->fetchArray(
     $database->query(
-        "SELECT v.* FROM videos v WHERE (v.tags LIKE CONCAT('%', ?, '%')
+        "SELECT v.* FROM uploads v WHERE (v.tags LIKE CONCAT('%', ?, '%')
                                   OR v.title LIKE CONCAT('%', ?, '%') 
                                   OR v.description LIKE CONCAT('%', ?, '%')) 
                                   AND $whereRatings 
-                                  AND v.video_id NOT IN (SELECT submission FROM takedowns) 
-                                  AND v.author NOT IN (SELECT userid FROM bans)
+                                  AND v.video_id NOT IN (SELECT submission FROM upload_takedowns) 
+                                  AND v.author NOT IN (SELECT userid FROM user_bans)
                                   ORDER BY $order DESC $limit",
         [$query, $query, $query]));
 

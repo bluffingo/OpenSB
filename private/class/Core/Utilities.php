@@ -72,11 +72,11 @@ class Utilities
             $bools = Utilities::submissionBitmaskToArray($upload["flags"]);
 
             $ratingData = [
-                "1" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=1", [$upload["id"]]),
-                "2" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=2", [$upload["id"]]),
-                "3" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=3", [$upload["id"]]),
-                "4" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=4", [$upload["id"]]),
-                "5" => $database->result("SELECT COUNT(rating) FROM rating WHERE video=? AND rating=5", [$upload["id"]]),
+                "1" => $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=1", [$upload["id"]]),
+                "2" => $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=2", [$upload["id"]]),
+                "3" => $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=3", [$upload["id"]]),
+                "4" => $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=4", [$upload["id"]]),
+                "5" => $database->result("SELECT COUNT(rating) FROM upload_ratings WHERE video=? AND rating=5", [$upload["id"]]),
             ];
 
             $userData = new UserData($database, $upload["author"]);
@@ -196,10 +196,10 @@ class Utilities
         //}
 
         // If this user hasn't been notified by an identical notification the day prior.
-        if (!$database->result("SELECT COUNT(*) FROM notifications WHERE timestamp > ? AND type = ? AND recipient = ? AND sender = ?",
+        if (!$database->result("SELECT COUNT(*) FROM user_notifications WHERE timestamp > ? AND type = ? AND recipient = ? AND sender = ?",
                 [time() - 86400, $type->value, $user, $auth->getUserID()])) {
             // Notify the user
-            $database->query("INSERT INTO notifications (type, level, recipient, sender, timestamp, related_id) VALUES (?,?,?,?,?,?);",
+            $database->query("INSERT INTO user_notifications (type, level, recipient, sender, timestamp, related_id) VALUES (?,?,?,?,?,?);",
                 [$type->value, $submission, $user, $auth->getUserID(), time(), $related_id]);
         }
     }
@@ -207,7 +207,7 @@ class Utilities
     public static function IsFollowingUser($user) {
         global $auth, $database;
 
-        return $database->result("SELECT COUNT(user) FROM subscriptions WHERE id=? AND user=?", [$user, $auth->getUserID()]);
+        return $database->result("SELECT COUNT(user) FROM user_follows WHERE id=? AND user=?", [$user, $auth->getUserID()]);
     }
 
     public static function submissionBitmaskToArray($bitmask): array

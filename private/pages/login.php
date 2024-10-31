@@ -78,8 +78,8 @@ if (isset($_POST["loginsubmit"])) {
         $logindata = $database->fetch("SELECT password,token,ip,id FROM users WHERE name = ?", [$username]);
 
         if ($logindata && password_verify($password, $logindata['password'])) {
-            // check if the account is from an ip that is in ipbans
-            $ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$logindata['ip']]);
+            // check if the account is from an ip that is in ip_bans
+            $ipban = $database->fetch("SELECT * FROM ip_bans WHERE ? LIKE ip", [$logindata['ip']]);
 
             if ($ipban) {
                 Utilities::bannerNotification("This account's latest IP address is banned.", "/login");
