@@ -111,6 +111,7 @@ if (isset($path[1]) && $path[1] != '') {
         'githistory' => Utilities::redirect('https://github.com/bluffingo/OpenSB/commits/main/'),
         'guidelines' => require(SB_PRIVATE_PATH . '/pages/guidelines.php'),
         'index' => require(SB_PRIVATE_PATH . '/pages/index.php'),
+        'journals' => require(SB_PRIVATE_PATH . '/pages/journals.php'),
         'license' => require(SB_PRIVATE_PATH . '/pages/license.php'),
         'login' => require(SB_PRIVATE_PATH . '/pages/login.php'),
         'logout' => require(SB_PRIVATE_PATH . '/pages/logout.php'),
