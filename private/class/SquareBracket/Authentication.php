@@ -135,6 +135,17 @@ class Authentication
         }
     }
 
+    public function isUserOver18(): bool
+    {
+        if ($this->is_logged_in) {
+            $age = date_diff(date_create($this->user_data['birthdate']), date_create('today'))->y;
+
+            return $age >= 18;
+        } else {
+            return false;
+        }
+    }
+
     public function getDefaultBlacklistedTags()
     {
         return $this->default_tags_blacklist;

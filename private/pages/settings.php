@@ -37,7 +37,12 @@ if (isset($_POST['save'])) {
 
     $profile_layout = ($_POST['profile-layout'] ?? 0);
 
-    $rating = isset($_POST['rating']) && $_POST['rating'] === 'true' ? 'mature' : 'general';
+    if ($auth->isUserOver18()) {
+        $rating = isset($_POST['rating']) && $_POST['rating'] === 'true' ? 'mature' : 'general';
+    } else {
+        $rating = 'general';
+    }
+
     $blacklisted_tags = ($_POST['blacklisted_tags'] ?? $auth->getDefaultBlacklistedTags());
 
     if ($blacklisted_tags === '') {
@@ -151,4 +156,4 @@ if (isset($_POST['save'])) {
     }
 }
 
-echo $twig->render('settings.twig');
+echo $twig->render('settings.twig', ['isUserOver18' => $auth->isUserOver18()]);
