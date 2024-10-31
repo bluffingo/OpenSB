@@ -12,12 +12,12 @@ header('Content-Type: application/json');
 $post_data = json_decode(file_get_contents('php://input'), true);
 
 $apiOutput = [
-    "error" => "Invalid request."
+    "error" => "This request is invalid."
 ];
 
 if ($auth->getUserBanData()) {
     $apiOutput = [
-        "error" => "User is banned!!!"
+        "error" => "You have been banned."
     ];
 }
 
@@ -63,7 +63,7 @@ if (isset($post_data['member'])) {
         $apiOutput = match ($post_data['action']) {
             'follow' => follow($post_data['member']),
             default => [
-                "error" => "Invalid interaction type, or NYI"
+                "error" => "This interaction type is invalid or has not yet been implemented."
             ],
         };
     }

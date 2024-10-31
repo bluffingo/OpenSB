@@ -142,7 +142,7 @@ if (isset($_POST['save'])) {
             $url = "/user/" . $auth->getUserData()["name"];
         }
 
-        Utilities::bannerNotification("Successfully updated your settings!", $url, "success");
+        Utilities::bannerNotification("Your settings have been successfully updated.", $url, "success");
     } else {
         Utilities::bannerNotification($error, "/settings.php");
     }

@@ -61,7 +61,7 @@ class Authentication
                 // old system is left there for compatibility. -chaziz 6/9/2024
                 if ($this->user_data["comfortable_rating"] == "questionable") {
                     $this->database->query("UPDATE users SET comfortable_rating = 'general' WHERE id = ?", [$this->user_id]);
-                    Utilities::bannerNotification("Due to updates with content filtering, your filtering settings have been reset from Questionable to General.", false, "primary");
+                    Utilities::bannerNotification("Your content filtering settings have been reset to General.", false, "primary");
                 }
 
                 $this->has_authenticated_as_an_admin = $_SESSION["SB_ADMIN_AUTHED"] ?? null;

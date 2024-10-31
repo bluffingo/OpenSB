@@ -54,7 +54,7 @@ if (isset($data["tags"])) {
 $comments = new CommentData($database, CommentLocation::Upload, $id);
 $author = new UserData($database, $data["author"]);
 if ($author->isUserBanned() && !$auth->isUserAdmin()) {
-    Utilities::bannerNotification("This upload's author is banned.", "/");
+    Utilities::bannerNotification("The author of this upload is banned.", "/");
 }
 
 $tags = $submission->getTags();
@@ -76,11 +76,11 @@ $bools = $submission->bitmaskToArray();
 
 if ($bools["block_guests"] && !$auth->isUserLoggedIn())
 {
-    Utilities::bannerNotification("This upload's author has blocked guest access.", "/login");
+    Utilities::bannerNotification("The author of this upload has blocked guest access.", "/login");
 }
 
 if (Utilities::RatingToNumber($data["rating"]) > Utilities::RatingToNumber($auth->getUserData()["comfortable_rating"])) {
-    Utilities::bannerNotification("You cannot access sensitive-rated uploads.", "/");
+    Utilities::bannerNotification("Access to mature-rated uploads is restricted.", "/");
 }
 
 $ip = Utilities::getIpAddress();

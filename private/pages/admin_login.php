@@ -43,7 +43,7 @@ if (isset($_POST["loginsubmit"])) {
     if (!$error) {
         if ($logindata && password_verify($password, $logindata['admin_password'])) {
             $_SESSION["SB_ADMIN_AUTHED"] = true;
-            Utilities::bannerNotification("Welcome!", "/admin/", "success");
+            Utilities::bannerNotification("Welcome to the admin panel.", "/admin/", "success");
         } else {
             Utilities::bannerNotification("Incorrect admin password.", "/admin/login");
         }
