@@ -78,6 +78,14 @@ if (isset($_POST["loginsubmit"])) {
         $logindata = $database->fetch("SELECT password,token,ip,id FROM users WHERE name = ?", [$username]);
 
         if ($logindata && password_verify($password, $logindata['password'])) {
+            if (password_needs_rehash($logindata['password'], PASSWORD_BCRYPT)) {
+                // if the hash's cost value isn't how it should be, rehash it.
+                // (added in preparation for php 8.4) -chaziz 11/2/2024
+                $new_password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+                $database->query("UPDATE users SET password = ? WHERE id = ?", [$new_password_hash, $logindata['id']]);
+            }
+
             // check if the account is from an ip that is in ip_bans
             $ipban = $database->fetch("SELECT * FROM ip_bans WHERE ? LIKE ip", [$logindata['ip']]);
 
