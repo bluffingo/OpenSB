@@ -99,7 +99,7 @@ function domainCheck()
 {
     global $isChazizSB;
 
-    $allowedChazizSbDomains = ['squarebracket.pw', 'squarebracket.me', 'fulptube.rocks'];
+    $allowedChazizSbDomains = ['squarebracket.pw', 'squarebracket.me', 'fulptube.rocks', 'qobo.tv'];
     $currentDomain = $_SERVER['HTTP_HOST'];
 
     if ($isChazizSB) {
