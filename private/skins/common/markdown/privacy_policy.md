@@ -19,8 +19,8 @@ Whenever you are logged in, your latest IP address is stored in the database (in
 
 Any additional user information you add to your profile (Profile description, etc.) is strictly optional and will be displayed publicly on your user page, do not put private or otherwise personal information you do not want accessible on the internet.
 
-## Cookies and Advertisements
-This site uses a token cookie (`SBTOKEN`) to keep you logged in, this token should not be publicly disclosed to *anyone* as it will make them able to log into your account.
+## Cookies
+This site uses a session cookie (`sb_session`) to keep you logged in, this cookie should not be publicly disclosed to *anyone* as it will make them able to log into your account.
 
 ## Removal Requests
 If you have published personal information you would like to remove, use the tools given to edit it out if applicable. If this is not possible (e.g. you want to rename a personally identifiable username) or you would like to fully erase it, please contact Chaziz.
