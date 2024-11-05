@@ -22,16 +22,9 @@ class Utilities
      */
     public static function getUploadFile(array $submission): array|string|null
     {
-        global $isChazizSB, $bunnySettings;
         if ($submission == null)
         {
             return null;
-        }
-
-        if ($isChazizSB && $submission['post_type'] == 0)
-        {
-            // videofile on videos using bunnycdn are the guid, don't ask me why. -chaziz 4/8/2023
-            return "https://" . $bunnySettings["streamHostname"] . "/" . $submission["videofile"] . "/playlist.m3u8";
         }
 
         return $submission['videofile'];
