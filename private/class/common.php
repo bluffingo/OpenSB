@@ -99,16 +99,6 @@ if ($config["maintenance"]) {
     $isMaintenance = false;
 }
 
-// Bunny settings which are only used if $isChazizSB is true
-$bunnySettings = [
-    "streamApi" => $config["bunny_settings"]["stream_api"],
-    "streamLibrary" => $config["bunny_settings"]["stream_library"],
-    "streamHostname" => $config["bunny_settings"]["stream_hostname"],
-    "storageApi" => $config["bunny_settings"]["storage_api"],
-    "storageZone" => $config["bunny_settings"]["storage_zone"],
-    "pullZone" => $config["bunny_settings"]["pull_zone"],
-];
-
 // Branding settings
 $branding = [
     "name" => $config["branding"]["name"],
@@ -144,7 +134,7 @@ foreach ($ipBannedUsers as $ipBannedUser) {
     }
 }
 
-$storage = new Storage($orange->getDatabase(), $isChazizSB, $bunnySettings);
+$storage = new Storage($orange->getDatabase());
 
 if ($ipban = $database->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [Utilities::getIpAddress()])) {
     $usersAssociatedWithIP = $database->fetchArray($database->query("SELECT name FROM users WHERE ip LIKE ?", [Utilities::getIpAddress()]));

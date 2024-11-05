@@ -2,66 +2,21 @@
 
 namespace SquareBracket;
 
-use Symfony\Component\HttpClient\Psr18Client;
-use ToshY\BunnyNet\Client\BunnyClient;
-use ToshY\BunnyNet\StreamAPI;
-
 class Storage
 {
-    private mixed $bunnyClient;
     private Database $database;
-    private bool $chazizInstance;
-    private array $bunnyCDNSettings;
-    public function __construct(Database $database, bool $isChazizSB, array $bunnySettings) {
+    public function __construct(Database $database) {
         $this->database = $database;
-
-        if ($isChazizSB) {
-            $this->bunnyClient = new BunnyClient(
-                client: new Psr18Client(),
-            );
-            $this->chazizInstance = true;
-            $this->bunnyCDNSettings = $bunnySettings;
-        } else {
-            $this->bunnyClient = null;
-            $this->chazizInstance = false;
-            $this->bunnyCDNSettings = [];
-        }
     }
 
     public function processVideo($new, $target_file): void
     {
-        if ($this->chazizInstance) {
-            // this fucking shit won't work if i put this on __construct(). -chaziz 4/7/2023
-            $streamApi = new StreamAPI(
-                apiKey: $this->bunnyCDNSettings["streamApi"],
-                client: $this->bunnyClient,
-            );
-
-            $newVideo = $streamApi->createVideo(
-                libraryId: $this->bunnyCDNSettings["streamLibrary"],
-                body: [
-                    'title' => 'SquareBracket: ' . $new,
-                ],
-            );
-            $content = file_get_contents($target_file);
-            $streamApi->uploadVideo(
-                libraryId: $this->bunnyCDNSettings["streamLibrary"],
-                videoId: $newVideo->getContents()["guid"],
-                body: $content,
-                query: [
-                    'enabledResolutions' => '240p,360p,480p,720p',
-                ],
-            );
-            $this->database->query("UPDATE videos SET videofile = ?, videolength = ?, flags = ? WHERE video_id = ?", [$newVideo->getContents()["guid"], 0, 0, $new]);
-            unlink($target_file);
+        // this uses the version of php on path. if processing worker errors out with "OpenSB is not compatible with your PHP version.",
+        // then your path's php is too old.
+        if (str_starts_with(php_uname(), "Windows")) {
+            pclose(popen(sprintf('start /B  php %s "%s" "%s" "1" > %s', SB_PRIVATE_PATH . '\scripts\processingworker.php', $new, $target_file, SB_DYNAMIC_PATH . '/videos/' . $new . '.log'), "r"));
         } else {
-            // this uses the version of php on path. if processing worker errors out with "OpenSB is not compatible with your PHP version.",
-            // then your path's php is too old.
-            if (str_starts_with(php_uname(), "Windows")) {
-                pclose(popen(sprintf('start /B  php %s "%s" "%s" "1" > %s', SB_PRIVATE_PATH . '\scripts\processingworker.php', $new, $target_file, SB_DYNAMIC_PATH . '/videos/' . $new . '.log'), "r"));
-            } else {
-                system(sprintf('php %s "%s" "%s" "1" > %s 2>&1 &', SB_PRIVATE_PATH . '/scripts/processingworker.php', $new, $target_file, SB_DYNAMIC_PATH . '/videos/' . $new . '.log'));
-            }
+            system(sprintf('php %s "%s" "%s" "1" > %s 2>&1 &', SB_PRIVATE_PATH . '/scripts/processingworker.php', $new, $target_file, SB_DYNAMIC_PATH . '/videos/' . $new . '.log'));
         }
     }
 
@@ -71,9 +26,6 @@ class Storage
 
         if (file_exists(SB_DYNAMIC_PATH . '/custom_thumbnails/' . $id . '.jpg')) {
             return '/dynamic/custom_thumbnails/' . $id . '.jpg';
-        } elseif ($this->chazizInstance) {
-            $guid = $this->database->fetch("SELECT videofile from videos where video_id = ?", [$id]);
-            return "https://" . $this->bunnyCDNSettings["streamHostname"] . "/" . $guid["videofile"] . "/thumbnail.jpg";
         } elseif (file_exists(SB_DYNAMIC_PATH . '/thumbnails/' . $id . '.png')) {
             return '/dynamic/thumbnails/' . $id . '.png';
         } else {
@@ -138,22 +90,6 @@ class Storage
 
     public function deleteSubmission($data): void
     {
-        if ($data["post_type"] == 0) {
-            if ($this->chazizInstance) {
-                $streamApi = new StreamAPI(
-                    apiKey: $this->bunnyCDNSettings["streamApi"],
-                    client: $this->bunnyClient,
-                );
-
-                $streamApi->deleteVideo(
-                    libraryId: $this->bunnyCDNSettings["streamLibrary"],
-                    videoId: $data["videofile"],
-                );
-            } else {
-                unlink(SB_ROOT_PATH . $data["videofile"]);
-            }
-        } else {
-            unlink(SB_ROOT_PATH . $data["videofile"]);
-        }
+        unlink(SB_ROOT_PATH . $data["videofile"]);
     }
 }
