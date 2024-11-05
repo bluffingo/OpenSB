@@ -3,9 +3,9 @@
 
 ## Our official instance
 
-[SquareBracket.me](https://squarebracket.me/)
+[SquareBracket.pw](https://squarebracket.pw/)
 
-Alternative domains (not recommended): [SquareBracket.pw](https://squarebracket.pw/), [FulpTube.rocks](https://fulptube.rocks)
+Alternative domains: [squarebracket.bluffingo.net](https://squarebracket.bluffingo.net/), [FulpTube.rocks](https://fulptube.rocks)
 
 ## How to setup an OpenSB instance.
 
