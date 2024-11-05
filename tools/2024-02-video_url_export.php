@@ -19,7 +19,9 @@ $sql = $orange->getDatabase();
 
 // 1708565417 is March 2024 or something I DONT FUCKING KNOW FUCK YOU SKS2002 GENUINELY GO FUCK YOURSELF
 // FUCK YOU AND YOUR STUPID BITTOCO PIECE OF SHIT ORGANIZATION -chaziz 11/5/2024
-$videoData = $sql->fetchArray($sql->query("SELECT v.* FROM videos v WHERE v.post_type = 0 AND v.time > 1708565417 ORDER BY v.time DESC"));
+$videoData = $sql->fetchArray($sql->query("SELECT v.* FROM videos v WHERE v.post_type = 0 AND v.time < 1619537017 ORDER BY v.time DESC"));
+
+//$videoData = $sql->fetchArray($sql->query("SELECT v.* FROM videos v WHERE v.post_type = 0 AND v.author = 105 AND v.time BETWEEN 1619537017 AND 1641013200 ORDER BY v.time DESC"));
 
 $file = fopen("video_urls.txt", "w") or die("Can't open.");
 
