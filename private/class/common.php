@@ -111,6 +111,12 @@ $disableUploading = false;
 $disableWritingJournals = false;
 $enableInviteKeys = false;
 
+if ($config["site"] == "squarebracket_chaziz") {
+    $disableRegistration = true;
+    $disableUploading = true;
+    $disableWritingJournals = true;
+}
+
 // now initialize the orange classes
 $orange = new SquareBracket($host, $user, $pass, $db);
 $database = $orange->getDatabase();
