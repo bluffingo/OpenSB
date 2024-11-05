@@ -123,16 +123,17 @@ class Templating
             }
         }
 
-        /*
+        $warningBannerTextIfOnNonChazizOwnedDomain = "We're not shutting down. If any of the domains cease to work, please use 
+        SquareBracket through squarebracket.bluffingo.net.";
+
         if (($isChazizSB) && isset($_SERVER['HTTP_HOST']) &&
-            ($_SERVER['HTTP_HOST'] === 'fulptube.rocks' || $_SERVER['HTTP_HOST'] === 'squarebracket.pw')) {
+            ($_SERVER['HTTP_HOST'] != 'squarebracket.bluffingo.net')) {
             $showWarningBanner = true;
+            $warningBannerText = $warningBannerTextIfOnNonChazizOwnedDomain;
         } else {
             $showWarningBanner = false;
+            $warningBannerText = null;
         }
-        */
-
-        $showWarningBanner = false;
 
         $versionNumber = new VersionNumber;
 
@@ -154,9 +155,10 @@ class Templating
         $this->twig->addGlobal('items_per_page', 20);
         // shit
         $this->twig->addGlobal('current_skin_and_theme', $this->skin . ',' . $this->theme);
-        // temporary
         $this->twig->addGlobal('show_warning_banner', $showWarningBanner);
+        $this->twig->addGlobal('warning_banner_text', $warningBannerText);
         $this->twig->addGlobal('is_opensb_v2', false);
+        $this->twig->addGlobal('is_opensb_v1_3', false);
 
         /*
         if ($this->skin == "finalium" && $this->theme == "beta")
