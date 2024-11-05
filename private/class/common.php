@@ -114,7 +114,6 @@ $enableInviteKeys = false;
 if ($config["site"] == "squarebracket_chaziz") {
     $disableRegistration = true;
     $disableUploading = true;
-    $disableWritingJournals = true;
 }
 
 // now initialize the orange classes
