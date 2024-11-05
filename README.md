@@ -3,7 +3,7 @@
 
 ## Our official instance
 
-[SquareBracket.me](https://squarebracket.me/)
+https://squarebracket.bluffingo.net/
 
 Alternative domains (not recommended): [SquareBracket.pw](https://squarebracket.pw/), [FulpTube.rocks](https://fulptube.rocks)
 
