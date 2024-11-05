@@ -123,11 +123,11 @@ class Templating
             }
         }
 
-        $warningBannerTextIfOnNonChazizOwnedDomain = "We're not shutting down. If any of the domains cease to work, please use 
-        SquareBracket through squarebracket.bluffingo.net.";
+        $warningBannerTextIfOnNonChazizOwnedDomain = "Given recent allegations, if you do not want your content to remain
+        on SquareBracket/FulpTube, please delete it. Uploading is currently disabled for the time being due to a ex-staff
+        member going rogue.";
 
-        if (($isChazizSB) && isset($_SERVER['HTTP_HOST']) &&
-            ($_SERVER['HTTP_HOST'] != 'squarebracket.bluffingo.net')) {
+        if ($isChazizSB) {
             $showWarningBanner = true;
             $warningBannerText = $warningBannerTextIfOnNonChazizOwnedDomain;
         } else {
