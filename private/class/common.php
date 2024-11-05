@@ -112,7 +112,6 @@ $disableWritingJournals = false;
 $enableInviteKeys = false;
 
 if ($config["site"] == "squarebracket_chaziz") {
-    $disableRegistration = true;
     $disableUploading = true;
 }
 
