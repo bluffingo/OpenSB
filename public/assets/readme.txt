@@ -12,11 +12,6 @@ icons: biscuit/charla icons
 css: compiled css
 
 ATTRIBUTION:
-charla login page background by nugg3t
-
-charla homepage banner "stroud" background by sks2002
-
-charla upload banner background by hyperxori
 
 charla generic banner background by Matt Bango on StockSnap: https://stocksnap.io/photo/cloud-cloudscape-W9JMAUN9DM
 

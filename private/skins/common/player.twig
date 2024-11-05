@@ -6,11 +6,7 @@
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@oplayer/core@latest/dist/index.ui.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@oplayer/hls@latest/dist/index.min.js"></script>
-{% if is_chaziz_sb %}
-    {% set video = submission.file %}
-{% else %}
-    {% set video = "/dynamic/videos/" ~ submission.id ~ ".converted.mp4" %}
-{% endif %}
+{% set video = "/dynamic/videos/" ~ submission.id ~ ".converted.mp4" %}
 <div id="oplayer"></div>
 <script>
     OPlayer.make('#oplayer', {
