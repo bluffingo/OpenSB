@@ -113,9 +113,7 @@ class Templating
             $isFulpTube = false;
             // custom branding for themes. for that Extra Accuracy™.
             if ($isChazizSB) {
-                if ($this->skin == "finalium" && $this->theme == "qobo") {
-                    $branding["name"] = "Qobo";
-                } elseif ($this->skin == "finalium" && $this->theme == "beta") {
+                if ($this->skin == "finalium" && $this->theme == "beta") {
                     $branding["name"] = "cheeseRox";
                 } elseif ($this->skin == "finalium" || $this->skin == "bootstrap") {
                     $branding["name"] = "squareBracket";
