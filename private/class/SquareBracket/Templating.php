@@ -121,9 +121,8 @@ class Templating
             }
         }
 
-        $warningBannerTextIfOnNonChazizOwnedDomain = "Given recent allegations, if you do not want your content to remain
-        on SquareBracket/FulpTube, please delete it. Uploading is currently disabled for the time being due to a ex-staff
-        member going rogue.";
+        $warningBannerTextIfOnNonChazizOwnedDomain = "Given recent allegations, if you do not want your uploads to remain
+        on " . $branding["name"] . ", please delete them. Uploading is currently disabled for now.";
 
         if ($isChazizSB) {
             $showWarningBanner = true;
