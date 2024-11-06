@@ -23,7 +23,7 @@ class SquareBracket {
             // the finalium 2/biscuit frontend is now internally called "biscuit" instead of "qobo".
             // to avoid a bug where the old userlink implementation is used in squarebrackettwigextension,
             // automatically update SBOPTIONS on the fly.
-            if ($this->options["skin"] == "qobo")
+            if ($this->options["skin"] == "qobo") // <- dont get mad at this you bittoco idiots -chaziz 11/6/2024
             {
                 $this->options["skin"] = "biscuit";
                 setcookie("SBOPTIONS", base64_encode(json_encode($this->options)), 2147483647);

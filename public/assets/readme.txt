@@ -2,7 +2,7 @@ OpenSB assets
 
 placeholder: generic default assets
 	- icons: generic default browser-specific assets
-sb_branding: squarebracket branding ONLY FOR SQUAREBRACKET.ME/SQUAREBRACKET.PW
+sb_branding: squarebracket branding ONLY FOR SQUAREBRACKET.PW
 	- icons: squarebracket icons
 	- bootstrap: old 2021 branding
 	- finalium: old 2022-2023 branding
@@ -16,8 +16,6 @@ ATTRIBUTION:
 charla generic banner background by Matt Bango on StockSnap: https://stocksnap.io/photo/cloud-cloudscape-W9JMAUN9DM
 
 biscuit login page background by Quino Al on Unsplash: https://unsplash.com/photos/body-of-water-and-seashore-JFeOy62yjXk
-
-finalium "brisbane" login background by Elliott Brennan on Unsplash: https://unsplash.com/photos/silhouette-of-trees-at-nighttime-va926-45QYk
 
 finalium "leaf droplet" login background by Min An on Pexels: https://www.pexels.com/photo/macro-shot-of-water-drop-on-green-textile-689326/
 
