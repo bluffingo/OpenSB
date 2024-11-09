@@ -26,7 +26,7 @@ if ($disableUploading) {
 
 if (!$auth->isUserAdmin()) {
     $joindate = $auth->getUserData()["joined"];
-    $timeSinceJoin = time() - strtotime($joindate);
+    $timeSinceJoin = time() - $joindate;
 
     if ($timeSinceJoin < 2 * 24 * 60 * 60) {
         // if we have a new account, make the ratelimit longer.
