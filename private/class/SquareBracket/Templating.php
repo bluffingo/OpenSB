@@ -122,7 +122,7 @@ class Templating
         }
 
         $warningBannerTextIfOnNonChazizOwnedDomain = "Given recent allegations, if you do not want your uploads to remain
-        on " . $branding["name"] . ", please delete them. Uploading is currently disabled for now.";
+        on " . $branding["name"] . ", please delete them.";
 
         if ($isChazizSB) {
             $showWarningBanner = true;
@@ -179,9 +179,6 @@ class Templating
             $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
             $this->twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
         }
-
-        // temporary measure to update the frontend code without breaking old backend until we toss that shit out
-        $this->twig->addGlobal('areWeRunningTheNewCode', false);
     }
 
     /**
