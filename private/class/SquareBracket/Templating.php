@@ -154,13 +154,13 @@ class Templating
         $this->twig->addGlobal('show_warning_banner', $showWarningBanner);
         $this->twig->addGlobal('warning_banner_text', $warningBannerText);
         $this->twig->addGlobal('is_opensb_v2', false);
-        $this->twig->addGlobal('is_opensb_v1_3', true);
+        $this->twig->addGlobal('is_opensb_v1_3', false);
 
         /*
         if ($this->skin == "finalium" && $this->theme == "beta")
         {
             $db = $orange->getDatabase();
-            $footerstats = $db->fetch("SELECT (SELECT COUNT(*) FROM users) users, (SELECT COUNT(*) FROM uploads) submissions");
+            $footerstats = $db->fetch("SELECT (SELECT COUNT(*) FROM users) users, (SELECT COUNT(*) FROM videos) submissions");
             $this->twig->addGlobal('footer_stats', $footerstats);
         }
         */
@@ -173,7 +173,6 @@ class Templating
 
             $this->twig->addGlobal('page_name', $pageName);
         }
-
 
         if (isset($_SERVER['HTTP_HOST'])) {
             $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
