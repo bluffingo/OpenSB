@@ -1,5 +1,5 @@
 # SquareBracket Community Guidelines 
-Last updated by Chaziz on October 2nd 2024.
+Last updated by Chaziz on November 9th 2024.
 
 ## General rules
 * You must be 13 or older to register in order to make an account.
@@ -14,10 +14,11 @@ you will be banned from SquareBracket.
 **If you upload any of these, you will have your upload taken down and in some cases your account will be banned**
 
 * Content intended for children
-* Illegal content (CSAM/CSEM, bestiality, doxxing)
+* Illegal content (**CSAM/CSEM content**, **bestiality content**, doxxing)
 * Adult content (pornography, erotic fetish content)
 * Shock content (gore)
-* Offensive content (Racism, fascism, homophobia)
+* Offensive content (Racism, fascism, homophobia, transphobia)
+* Content promoting misleading information
 * **Reuploads of pre-existing copyrighted content that do not fall into fair use** (You must provide some sort of commentary. If you reupload something and claim it is under fair use we will take it down regardless.)
 
 ## Sensitive content
