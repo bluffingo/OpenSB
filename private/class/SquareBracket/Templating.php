@@ -154,13 +154,13 @@ class Templating
         $this->twig->addGlobal('show_warning_banner', $showWarningBanner);
         $this->twig->addGlobal('warning_banner_text', $warningBannerText);
         $this->twig->addGlobal('is_opensb_v2', false);
-        $this->twig->addGlobal('is_opensb_v1_3', false);
+        $this->twig->addGlobal('is_opensb_v1_3', true);
 
         /*
         if ($this->skin == "finalium" && $this->theme == "beta")
         {
             $db = $orange->getDatabase();
-            $footerstats = $db->fetch("SELECT (SELECT COUNT(*) FROM users) users, (SELECT COUNT(*) FROM videos) submissions");
+            $footerstats = $db->fetch("SELECT (SELECT COUNT(*) FROM users) users, (SELECT COUNT(*) FROM uploads) submissions");
             $this->twig->addGlobal('footer_stats', $footerstats);
         }
         */
