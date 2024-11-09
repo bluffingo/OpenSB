@@ -125,7 +125,7 @@ class Templating
         on " . $branding["name"] . ", please delete them.";
 
         if ($isChazizSB) {
-            $showWarningBanner = true;
+            $showWarningBanner = false;
             $warningBannerText = $warningBannerTextIfOnNonChazizOwnedDomain;
         } else {
             $showWarningBanner = false;
