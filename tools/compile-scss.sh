@@ -4,6 +4,8 @@ command=$1
 
 common_arguments="--style expanded --no-source-map --load-path=private/skins"
 
+common_arguments+="--silence-deprecation=import,global-builtin"
+
 if [ "$command" = "dev" ]; then
   common_arguments+=" --watch --poll"
 fi
@@ -15,7 +17,11 @@ case "${machine}" in
 esac
 
 if [ "$machine" == "Windows" ]; then
-  sass_executable="sass.bat"
+  if ! sass --version &> /dev/null; then
+    sass_executable="sass.bat"
+  else
+    sass_executable="sass"
+  fi
 else
   sass_executable="sass"
 fi
