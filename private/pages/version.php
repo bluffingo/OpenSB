@@ -18,9 +18,7 @@ if (str_contains(strtolower($database_version), "maria")) {
 
 $data = [
     "developers" => [
-        'Chaziz',
-        'icanttellyou',
-        'ROllerozxa'
+        'Chaziz'
     ],
     "software" => [
         'sbVersion' => [

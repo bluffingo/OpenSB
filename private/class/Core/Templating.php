@@ -116,9 +116,7 @@ class Templating
             $isFulpTube = false;
             // custom branding for themes. for that Extra Accuracy™.
             if ($isChazizSB) {
-                if ($this->skin == "finalium" && $this->theme == "qobo") {
-                    $branding["name"] = "Qobo";
-                } elseif ($this->skin == "finalium" && $this->theme == "beta") {
+                if ($this->skin == "finalium" && $this->theme == "beta") {
                     $branding["name"] = "cheeseRox";
                 } elseif ($this->skin == "finalium" || $this->skin == "bootstrap") {
                     $branding["name"] = "squareBracket";
@@ -126,16 +124,15 @@ class Templating
             }
         }
 
-        /*
-        if (($isChazizSB) && isset($_SERVER['HTTP_HOST']) &&
-            ($_SERVER['HTTP_HOST'] === 'fulptube.rocks' || $_SERVER['HTTP_HOST'] === 'squarebracket.pw')) {
+        $warningBannerTextIfOnChazizOwnedDomain = "Warning banner text";
+
+        if ($isChazizSB) {
             $showWarningBanner = true;
+            $warningBannerText = $warningBannerTextIfOnChazizOwnedDomain;
         } else {
             $showWarningBanner = false;
+            $warningBannerText = null;
         }
-        */
-
-        $showWarningBanner = false;
 
         $versionNumber = new VersionNumber;
 
@@ -157,10 +154,10 @@ class Templating
         $this->twig->addGlobal('items_per_page', 20);
         // shit
         $this->twig->addGlobal('current_skin_and_theme', $this->skin . ',' . $this->theme);
-        // temporary
         $this->twig->addGlobal('show_warning_banner', $showWarningBanner);
-        $this->twig->addGlobal('is_opensb_v1_3', true);
+        $this->twig->addGlobal('warning_banner_text', $warningBannerText);
         $this->twig->addGlobal('is_opensb_v2', true);
+        $this->twig->addGlobal('is_opensb_v1_3', true);
 
         /*
         if ($this->skin == "finalium" && $this->theme == "beta")
@@ -179,7 +176,6 @@ class Templating
 
             $this->twig->addGlobal('page_name', $pageName);
         }
-
 
         if (isset($_SERVER['HTTP_HOST'])) {
             $this->twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");

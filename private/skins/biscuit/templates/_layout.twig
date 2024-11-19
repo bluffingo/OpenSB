@@ -71,7 +71,7 @@
 {% if show_warning_banner %}
 <div class="banner banner-danger full-screen">
     <span class="notification-text">
-        Heads up! This frontend is deprecated and will be removed from {{ website_branding.name }} in 2025.
+    {{ warning_banner_text }}
     </span>
 </div>
 {% endif %}
@@ -86,8 +86,12 @@
     </div>
     {{ include(component('footer')) }}
 </div>
+<script>
+    opensb_version = '{{ opensb_version }}';
+</script>
 {% block scripts %}{% endblock %}
 {# yes #}
+<script src="/assets/common_shared.js?r={{ get_css_file_date() }}"></script>
 <script src="/assets/common_biscuit.js?r={{ get_css_file_date() }}"></script>
 <!-- {{ version_banner() }} -->
 </body>
