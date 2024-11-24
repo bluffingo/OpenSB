@@ -16,7 +16,7 @@
                 {{ include('/components/_edit_submission.twig') }}
             {% endfor %}
         </div>
-        {% set le_url = 'my_submissions?page=%s' %}
+        {% set le_url = 'my_uploads?page=%s' %}
 
         {{ pagination(data.count, items_per_page, le_url, current_page) }}
     </div>
