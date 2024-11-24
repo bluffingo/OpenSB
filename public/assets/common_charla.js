@@ -127,11 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let menuCaretOff= "biscuit-icon caret-closed menu-caret";
         let menuCaretOn = "biscuit-icon caret-open menu-caret";
 
-        if (isThisTheHeaderUserMenu) {
-            menuCaretOff = "biscuit-icon caret-closed-header menu-caret";
-            menuCaretOn  = "biscuit-icon caret-open-header menu-caret";
-        }
-
         let actualCaret;
         if (menuCaret.length === 1) {
             actualCaret = menuCaret.item(0);
