@@ -1,4 +1,4 @@
-# SquareBracket.pw Community Guidelines 
+# SquareBracket Community Guidelines 
 Last updated by Chaziz on November 9th 2024.
 
 ## General rules
@@ -7,7 +7,7 @@ Last updated by Chaziz on November 9th 2024.
 * Do not be a bigot.
 
 We monitor off-site behavior, if we find anything from another profile of yours, and we then find you unsuitable,
-you will be banned from SquareBracket.pw.
+you will be banned from SquareBracket.
 
 ## What we don't allow to be uploaded
 
