@@ -55,6 +55,20 @@ if (session_status() === PHP_SESSION_NONE) {
     ]);
 }
 
+$blacklisted_user_agents = [
+    '/python-requests/i',
+    '/curl/i',
+];
+
+$user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+
+foreach ($blacklisted_user_agents as $pattern) {
+    if (preg_match($pattern, $user_agent)) {
+        http_response_code(403);
+        exit;
+    }
+}
+
 spl_autoload_register(function ($class_name) {
     $class_name = str_replace('\\', '/', $class_name);
     if (file_exists(SB_PRIVATE_PATH . "/class/$class_name.php")) {
