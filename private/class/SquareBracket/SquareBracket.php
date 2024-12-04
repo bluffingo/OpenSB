@@ -2,7 +2,7 @@
 namespace SquareBracket;
 
 /**
- * The core SquareBracket class.
+ * The core OpenSB class.
  */
 class SquareBracket {
     private Database $database;
@@ -11,7 +11,7 @@ class SquareBracket {
     private string $accounts_cookie_warning = "DO-NOT-SHARE-THIS-WITH-ANYONE-";
 
     /**
-     * Initialize core SquareBracket classes. (this is fucking stupid)
+     * Initialize core OpenSB classes. (this is fucking stupid)
      *
      */
     public function __construct($host, $user, $pass, $db) {
@@ -59,7 +59,7 @@ class SquareBracket {
     }
 
     /**
-     * Returns the database class for other SquareBracket classes to use. (this is stupid design)
+     * Returns the database class for other OpenSB classes to use. (this is stupid design)
      *
      * @return Database
      *

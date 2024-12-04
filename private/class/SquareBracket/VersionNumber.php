@@ -13,7 +13,7 @@ class VersionNumber
     }
 
     /**
-     * Make SquareBracket's version number.
+     * Make OpenSB's version number.
      *
      */
     private function makeVersionString(): string
