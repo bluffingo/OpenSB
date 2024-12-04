@@ -178,7 +178,11 @@ class Templating
             $uri = explode('?', $_SERVER["REQUEST_URI"])[0];
 
             $uriParts = explode('/', trim($uri, '/'));
-            $pageName = $uriParts[0] ?? 'index';
+            if (!empty($uriParts) && $uriParts[0] === 'admin') {
+                $pageName = end($uriParts);
+            } else {
+                $pageName = $uriParts[0] ?? 'index';
+            }
 
             $this->twig->addGlobal('page_name', $pageName);
         }
