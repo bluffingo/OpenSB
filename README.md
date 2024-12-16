@@ -1,5 +1,4 @@
 # OpenSB
-![Screen Shot 2024-10-25 at 18 18 35](https://github.com/user-attachments/assets/c1cde928-02b6-4b64-b551-5bac85ecee52)
 
 **MAJOR REFACTOR IN PROGRESS. USE ``opensb-1.2`` (stable) or ``opensb-1.3`` (beta) BRANCH FOR THE TIME BEING**
 
