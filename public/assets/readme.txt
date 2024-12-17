@@ -13,7 +13,7 @@ css: compiled css
 
 ATTRIBUTION:
 
-charla generic banner background by Matt Bango on StockSnap: https://stocksnap.io/photo/cloud-cloudscape-W9JMAUN9DM
+charla dark theme generic banner background by Matt Bango on StockSnap: https://stocksnap.io/photo/cloud-cloudscape-W9JMAUN9DM
 
 biscuit login page background by Quino Al on Unsplash: https://unsplash.com/photos/body-of-water-and-seashore-JFeOy62yjXk
 
