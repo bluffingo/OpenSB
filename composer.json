@@ -1,15 +1,15 @@
 {
 	"require": {
-		"twig/twig": "3.15.0",
-		"intervention/image": "^3.2",
+		"twig/twig": "3.17.1",
+		"intervention/image": "3.9.1",
 		"erusev/parsedown": "dev-master",
 		"php-ffmpeg/php-ffmpeg": "1.3.0",
 		"ext-pdo": "*",
-		"twig/string-extra": "3.15.0",
+		"twig/string-extra": "3.17.0",
 		"psr/http-client": "1.0.3",
-		"twbs/bootstrap": "^5.3",
-		"twbs/bootstrap-icons": "^1.11",
-		"jaybizzle/crawler-detect": "^1.2",
+		"twbs/bootstrap": "5.3.3",
+		"twbs/bootstrap-icons": "1.11.3",
+		"jaybizzle/crawler-detect": "1.3.0",
 		"ext-curl": "*"
 	},
 	"minimum-stability": "stable",
