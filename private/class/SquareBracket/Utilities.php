@@ -381,13 +381,14 @@ class Utilities
         return sprintf("%.{$decimals}f", $qty / pow(1024, $factor)) . @$sz[$factor];
     }
 
-    // if you use cloudflare and this function is returning
-    // cloudflare ips. make sure you've properly configured your server.
+    // if you're using cloudflare, make sure you've properly configured your server so ips arent cloudflare ips.
     public static function getIpAddress()
     {
         if (php_sapi_name() == "cli") return null;
 
-        return $_SERVER['REMOTE_ADDR'];
+        $ip = $_SERVER['REMOTE_ADDR'];
+
+        return crypt($ip, $ip);
     }
 
     public static function isFulpTube()
