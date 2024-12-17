@@ -1,6 +1,6 @@
 # OpenSB
 
-**MAJOR REFACTOR IN PROGRESS. USE ``opensb-1.2`` (stable) or ``opensb-1.3`` (beta) BRANCH FOR THE TIME BEING**
+**MAJOR REFACTOR ~~IN PROGRESS~~ ON HOLD. USE ``opensb-1.2`` (stable) or ``opensb-1.3`` (beta) BRANCH FOR THE TIME BEING**
 
 ## Our official instance
 
