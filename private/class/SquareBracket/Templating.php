@@ -120,25 +120,9 @@ class Templating
                 }
             }
         }
-
-        $warningBannerTextIfOnSquareBracketPw = 'In the next couple of weeks, this website\'s data will be transferred
-        over to Quadium/Brickface, which will be rebranding to SquareBracket. We will be rebranding to CheeseRox 
-        afterwards. <a href="https://squarebracket.pw/read?j=209">Read more</a>';
-
-        $warningBannerTextIfOnFulpTubeRocks = 'In the next couple of weeks, this website\'s data will be transferred
-        over to Quadium/Brickface. The FulpTube domain, however, will remain part of what will now be CheeseRox.
-        <a href="https://fulptube.rocks/read?j=209">Read more</a>';
-
-        if ($isChazizSB) {
-            $showWarningBanner = true;
-            $warningBannerText = $warningBannerTextIfOnSquareBracketPw;
-            if (Utilities::isFulpTube()) {
-                $warningBannerText = $warningBannerTextIfOnFulpTubeRocks;
-            }
-        } else {
-            $showWarningBanner = false;
-            $warningBannerText = null;
-        }
+        
+        $showWarningBanner = false;
+        $warningBannerText = null;
 
         $versionNumber = new VersionNumber;
 
