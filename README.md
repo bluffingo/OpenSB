@@ -1,3 +1,7 @@
+OpenSB development is on hold.
+
+I am currently exhausted with handling the codebase and the SquareBracket website, and so I am going to take an indefinite break from the project.
+
 # OpenSB
 
 **MAJOR REFACTOR ~~IN PROGRESS~~ ON HOLD. USE ``opensb-1.2`` (stable) or ``opensb-1.3`` (beta) BRANCH FOR THE TIME BEING**
