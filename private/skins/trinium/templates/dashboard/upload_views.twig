@@ -1,0 +1,30 @@
+{% extends "_layout_dashboard.twig" %}
+
+{% set title = user.name %}
+
+{% set breadcrumbs = [
+    { url: '/dashboard/uploads', label: "Uploads" },
+    { url: '/dashboard/uploads/' ~ upload.upload_id, label: upload.title },
+    { url: '/dashboard/uploads/' ~ upload.upload_id ~ '/views', label: localize('views') },
+] %}
+
+{% block dashboard_content %}
+    <div class="content-box">
+        <table class="styled">
+            <tbody>
+                <tr class="table-header">
+                    <td>User</td>
+                    <td>Timestamp</td>
+                    <td>Type</td>
+                </tr>
+                {% for view in views %}
+                    <tr>
+                        <td>{{ view.user }}</td>
+                        <td>{% if view.timestamp %}{{ view.timestamp | date("Y-m-d H:i:s") }} / {{ view.timestamp | relative_time() }}{% else %}unknown{% endif %}</td>
+                        <td>{{ view.type }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

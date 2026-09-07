@@ -1,0 +1,32 @@
+{% extends "_layout_dashboard.twig" %}
+
+{% set title = user.name %}
+
+{% set breadcrumbs = [
+    { url: '/dashboard/uploads', label: "Uploads" },
+    { url: '/dashboard/uploads/' ~ upload.upload_id, label: upload.title },
+    { url: '/dashboard/uploads/' ~ upload.upload_id ~ '/ratings', label: localize('ratings') },
+] %}
+
+{% block dashboard_content %}
+    <div class="content-box">
+        {% if ratings %}
+        <table class="styled">
+            <tbody>
+                <tr class="table-header">
+                    <td>User</td>
+                    <td>Rating</td>
+                </tr>
+                {% for rating in ratings %}
+                    <tr>
+                        <td>{{ rating.info.username }}</td>
+                        <td>{{ rating.rating }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>No ratings.</p>
+        {% endif %}
+    </div>
+{% endblock %}

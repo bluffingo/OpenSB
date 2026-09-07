@@ -74,6 +74,6 @@ if (isset($_POST["loginsubmit"])) {
     }
 }
 
-echo $twig->render('dashboard_login.twig', [
+echo $twig->render('dashboard/login.twig', [
     'csrf_token' => $csrf_token_for_template
 ]);

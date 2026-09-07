@@ -305,6 +305,8 @@ $router->add('/dashboard/users/{username}/follows', 'dashboard/user_follows.php'
 $router->redirect('/dashboard/overview', '/dashboard');
 $router->add('/dashboard/uploads', 'dashboard/uploads.php');
 $router->add('/dashboard/uploads/{id}', 'dashboard/upload_edit.php');
+$router->add('/dashboard/uploads/{id}/views', 'dashboard/upload_views.php');
+$router->add('/dashboard/uploads/{id}/ratings', 'dashboard/upload_ratings.php');
 $router->add('/dashboard/posts', 'dashboard/posts.php');
 $router->add('/dashboard/invite_keys', 'dashboard/invite_keys.php');
 $router->add('/dashboard/ip_bans', 'dashboard/ip_bans.php');

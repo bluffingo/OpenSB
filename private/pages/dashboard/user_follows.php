@@ -56,7 +56,7 @@ if (!$user) {
     }
 }
 
-function handle_those_darn_users($raw_data, $database) {
+function handle_users($raw_data, $database) {
     $user_array = [];
 
     foreach ($raw_data as $key => $value) {
@@ -77,6 +77,6 @@ $followers = $database->fetchArray($database->query("SELECT user as user_id FROM
 
 echo $twig->render("dashboard/user_follows.twig", [
     'user' => $user,
-    "following" => handle_those_darn_users($following, $database),
-    "followers" => handle_those_darn_users($followers, $database)
+    "following" => handle_users($following, $database),
+    "followers" => handle_users($followers, $database)
 ]);

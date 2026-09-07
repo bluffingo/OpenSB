@@ -81,7 +81,27 @@ class UploadData
                 $id = $this->data["upload_id"];
             }
         } else {
-            $this->data = $this->database->fetch("SELECT v.* FROM uploads v WHERE v.upload_id = ?", [$id]);
+            // if deleted, we need to dummy this out for certain cases (dashboard)
+            // this should be in sync with the layout of the uploads table.
+            if ($this->is_deleted) {
+                $this->data = [
+                    'id' => 0,
+                    'upload_id' => $id,
+                    'author' => 0,
+                    'title' => 'Deleted Upload (' . $id . ')',
+                    'timestamp' => 0,
+                    'flags' => 0,
+                    'description' => 'This upload has been deleted.',
+                    'original_site' => '',
+                    'original_timestamp' => 0,
+                    'type' => UploadTypeEnum::Unused->value,
+                    'upload_file' => '',
+                    'views' => 0,
+                    'rating' => 0,
+                ];
+            } else {
+                $this->data = $this->database->fetch("SELECT v.* FROM uploads v WHERE v.upload_id = ?", [$id]);
+            }
         }
 
         if ($this->data != []) {
