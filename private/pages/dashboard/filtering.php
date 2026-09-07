@@ -61,4 +61,4 @@ foreach ($db as $entry) {
     ]
 ];*/
 
-echo $twig->render("dashboard_filtering.twig", ['data' => $data]);
+echo $twig->render("dashboard/filtering.twig", ['data' => $data]);

@@ -132,7 +132,7 @@ foreach ($uploads_array as $upload) {
     $upload_array[] = $upload;
 };
 
-echo $twig->render("dashboard_uploads.twig", [
+echo $twig->render("dashboard/uploads.twig", [
     "uploads" => $upload_array,
     "amount" => $amount,
     "page" => $page,

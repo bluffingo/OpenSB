@@ -148,6 +148,8 @@
     "claimed_by": "Claimed by",
     "unclaimed": "Unclaimed",
 
+    "banned": "Banned",
+
     "ban_title": "Account banned",
     "ban_intro_1": "Your account (%s) is banned.",
     "ban_intro_2": "You have been banned due to a violation of one or more of the <a href=\"%s\">Terms of Service</a> and/or <a href=\"%s\">Community Guidelines</a>.",
@@ -273,7 +275,7 @@
     "404_not_found": "404 Not Found",
     "ip_banned_intro": "You have been IP banned from %s",
 
-    "dashboard_lookup": "Lookup",
+    "dashboard_lookup": "Manage",
 
     "user_id": "ID",
     "profile_name": "Profile name",

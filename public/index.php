@@ -301,6 +301,7 @@ $router->add('/dashboard/accounts/{id}', 'dashboard/account_edit.php');
 $router->add('/dashboard/asn_bans', 'dashboard/asn_bans.php');
 $router->add('/dashboard/users', 'dashboard/users.php');
 $router->add('/dashboard/users/{username}', 'dashboard/user_edit.php');
+$router->add('/dashboard/users/{username}/follows', 'dashboard/user_follows.php');
 $router->redirect('/dashboard/overview', '/dashboard');
 $router->add('/dashboard/uploads', 'dashboard/uploads.php');
 $router->add('/dashboard/uploads/{id}', 'dashboard/upload_edit.php');

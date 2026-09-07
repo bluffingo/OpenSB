@@ -46,6 +46,6 @@ $account_info_table = [
     ],
 ];
 
-echo $twig->render("dashboard_account_edit.twig", [
+echo $twig->render("dashboard/account_edit.twig", [
     'account_info_table' => $account_info_table
 ]);

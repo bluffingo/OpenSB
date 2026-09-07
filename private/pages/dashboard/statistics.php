@@ -412,13 +412,12 @@ $unbannedUsers = $totalUsers - $bannedUsers;
 $unbannedRatio = Utilities::calculatePercentage($unbannedUsers, $totalUsers);
 
 $results[] = [
-    'name' => "Unbanned user percentage",
+    'name' => "Percentage of unbanned users",
     'value' => $unbannedRatio,
 ];
 
-// existing upload percentage
+// available upload percentage
 
-// TODO: should be refactored in opensb 2.1, this feels too ugly. -chaziz 11/19/2025
 $uploadsByBannedAuthors = $database->result("SELECT COUNT(*) FROM `uploads`
 WHERE author IN (SELECT user FROM user_bans)
 AND upload_id NOT IN (SELECT upload FROM upload_takedowns)");
@@ -430,9 +429,12 @@ $totalUploads = $existingUploads + $unavailableUploads;
 $existingRatio = Utilities::calculatePercentage($existingUploads, $totalUploads);
 
 $results[] = [
-    'name' => "Existing upload percentage",
+    'name' => "Percentage of available uploads",
     'value' => $existingRatio,
 ];
+
+// MEDIAN() in mariadb is a little fucked up for this. -chaziz 09/07/2026
+
 
 $data = [
     "numbers" => $results,
@@ -444,6 +446,6 @@ $data = [
     ],
 ];
 
-echo $twig->render("dashboard_statistics.twig", [
+echo $twig->render("dashboard/statistics.twig", [
     'data' => $data
 ]);

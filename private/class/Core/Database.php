@@ -192,6 +192,15 @@ class Database
         return $this->sql->getAttribute(PDO::ATTR_SERVER_VERSION);
     }
 
+    public function getServerName()
+    {
+        if (str_contains($this->sql->getAttribute(PDO::ATTR_SERVER_VERSION), "Maria")) {
+            return "MariaDB";
+        } else {
+            return "MySQL";
+        }
+    }
+
     private function logQueryForProfiler(string $query, array $params, float $startTime, float $executionTime): void
     {
         $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);

@@ -38,4 +38,4 @@ if ($sb->getCurrentSkinName() != "trinium") {
     Utilities::notifyBanner("notify_skin_switch_required", "/theme", "accent", ["Trinium"]);
 }
 
-echo $twig->render("dashboard_home.twig");
+echo $twig->render("dashboard/home.twig");

@@ -86,7 +86,7 @@ $count = $database->result(
     [$search]
 );
 
-echo $twig->render("dashboard_ip_bans.twig", [
+echo $twig->render("dashboard/ip_bans.twig", [
     "ips" => $ipData,
     "amount" => $amount,
     "page" => $page,

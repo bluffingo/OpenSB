@@ -89,7 +89,7 @@ $count = $database->result(
     [$search]
 );
 
-echo $twig->render("dashboard_users.twig", [
+echo $twig->render("dashboard/users.twig", [
     "users" => $usersData,
     "amount" => $amount,
     "page" => $page,

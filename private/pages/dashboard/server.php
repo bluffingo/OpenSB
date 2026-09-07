@@ -156,7 +156,7 @@ if (!$is_windows) {
     $disk = [];
 }
 
-echo $twig->render("dashboard_server.twig", [
+echo $twig->render("dashboard/server.twig", [
     "packages" => getComposerPackages(),
     "system" => [
         "uname" => php_uname(),

@@ -20,7 +20,7 @@
                                         name="{{ state.name }}"
                                         value="{{ state.value }}"
                                         class="{{ state.class }}"
-                                        onclick="if (!confirm('{{ state.confirm }}')) { return false }"
+                                        {% if state.confirm %}onclick="if (!confirm('{{ state.confirm }}')) { return false }"{% endif %}
                                     >{{ state.label }}</button>
                                 {% endif %}
                             {% endfor %}
@@ -46,7 +46,11 @@
                                             {% if row.raw_html is defined and row.raw_html %}
                                                 {{ row.value | raw }}
                                             {% else %}
-                                                {{ row.value }}
+                                                {% if row.link is defined and row.link %}
+                                                    <a href="{{ row.link }}">{{ row.value }}</a>
+                                                {% else %}
+                                                    {{ row.value }}
+                                                {% endif %}
                                             {% endif %}
                                         </td>
                                     </tr>

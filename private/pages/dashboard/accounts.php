@@ -68,7 +68,7 @@ foreach ($accounts as &$account) {
     $account["gravatar"] = hash('sha256', strtolower(trim($account["email"])));
 }
 
-echo $twig->render("dashboard_accounts.twig", [
+echo $twig->render("dashboard/accounts.twig", [
     "accounts" => $accounts,
     "amount" => $amount,
     "page" => $page,

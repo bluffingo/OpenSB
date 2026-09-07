@@ -1,0 +1,41 @@
+{% extends "_layout_dashboard.twig" %}
+
+{% set title = user.name %}
+
+{% set breadcrumbs = [
+    { url: '/dashboard/users', label: "Users" },
+    { url: '/dashboard/users/' ~ user.name, label: user.name },
+    { url: '/dashboard/users/' ~ user.name ~ '/follows', label: localize('follows') },
+] %}
+
+{% macro render_list(type, users) %}
+    {% set sorted_keys = users|keys|sort %}
+    <div class="section">
+        <div class="section-header">
+            <h2 class="section-title">{{ localize(type) }}</h2>
+        </div>
+        {% if users %}
+            <ul>
+            {% for key in sorted_keys %}
+                {% set user = users[key] %}
+                    <li>{{ user_link(user) }} {% if user.banned %}({{ localize('banned') }}){% endif %}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <div>None.</div>
+        {% endif %}
+        </div>
+{% endmacro %}
+
+{% block dashboard_content %}
+    <div class="content-box">
+        <div class="grid">
+            <div class="col-6">
+                {{ _self.render_list('followers', followers) }}
+            </div>
+            <div class="col-6">
+                {{ _self.render_list('following', following) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -194,6 +194,6 @@ $page_data = [
     "takedown" => $takedown_data,
 ];
 
-echo $twig->render("dashboard_upload_edit.twig", [
+echo $twig->render("dashboard/upload_edit.twig", [
     'upload' => $page_data,
 ]);

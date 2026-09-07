@@ -81,7 +81,7 @@ $count = $database->result(
     [$search]
 );
 
-echo $twig->render("dashboard_asn_bans.twig", [
+echo $twig->render("dashboard/asn_bans.twig", [
     "asns" => $asnData,
     "amount" => $amount,
     "page" => $page,

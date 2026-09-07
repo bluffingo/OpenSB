@@ -51,17 +51,10 @@ foreach ($staffQueryData as $user) {
 
 // VERSION
 
+$database_server = $database->getServerName();
 $database_version = $database->getServerVersion();
-
-// instead of using "Database software", check if we're running on MariaDB or MySQL.
-// OpenSB is intended to be used with either one of these.
-if (str_contains(strtolower($database_version), "maria")) {
-    $database_server = "MariaDB";
-    // remove "from Debian"
-    $database_version = preg_replace('/\s+from.*$/i', '', $database_version);
-} else {
-    $database_server = "MySQL";
-}
+// remove "from Debian"
+$database_version = preg_replace('/\s+from.*$/i', '', $database_version);
 
 $sbVersionNumber = new VersionNumber;
 

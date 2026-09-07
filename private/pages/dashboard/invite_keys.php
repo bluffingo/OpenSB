@@ -74,6 +74,6 @@ $data = [
     "invites" => $inviteKeyData,
 ];
 
-echo $twig->render("dashboard_invite_keys.twig", [
+echo $twig->render("dashboard/invite_keys.twig", [
     'data' => $data
 ]);

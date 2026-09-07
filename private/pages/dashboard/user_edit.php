@@ -21,7 +21,7 @@
 
 namespace Pages;
 
-global $auth, $twig, $database, $sb, $path;
+global $auth, $twig, $database, $sb;
 
 use Data\User\UserData; // only used for staff notes authors, do NOT use this for actual user data
 use Data\User\UserFlags;
@@ -344,9 +344,21 @@ $user_info_table = [
         'value' => null,
         'style' => 'background:' . $user['userlink_color'] . ';',
     ],
+    'uploads' => [
+        'condition' => true,
+        'label' => $localization->translate('uploads'),
+        'value' => $user['u_index'],
+        //'link' => '/dashboard/users/' . $user['name'] . '/follows',
+    ],
+    'followers' => [
+        'condition' => true,
+        'label' => $localization->translate('followers'),
+        'value' => $user['f_index'],
+        'link' => '/dashboard/users/' . $user['name'] . '/follows',
+    ],
 ];
 
-echo $twig->render("dashboard_user_edit.twig", [
+echo $twig->render("dashboard/user_edit.twig", [
     'user' => $user,
     'flags' => $flags_array,
     'users_with_matching_ips' => $users_with_matching_ips,
