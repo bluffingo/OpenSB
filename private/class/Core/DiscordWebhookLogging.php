@@ -71,13 +71,18 @@ class DiscordWebhookLogging
     public function __construct(SquareBracket $sb, $url)
     {
         $this->database = $sb->getDatabaseClass();
-
         $this->url = $url;
 
-        $this->footer_text = $sb->getBrandingSettings()["name"]
-            . ' / OpenSB ' . (new VersionNumber())->getVersionString();
+        $name = $sb->getBrandingSettings()["name"];
+        $version = (new VersionNumber())->getVersionString();
 
         $this->domain = Utilities::getURL(false);
+        $this->footer_text = "{$name} / OpenSB {$version}";
+
+        if ($sb->isTestInstance()) {
+            $this->domain = str_replace("//web-orange-qa.", "//", $url);
+            $this->footer_text = "{$name} (QA) / OpenSB {$version}";
+        }
     }
 
     /**
