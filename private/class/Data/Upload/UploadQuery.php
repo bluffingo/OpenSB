@@ -27,6 +27,8 @@ use Core\Authentication;
 
 use Data\User\UserFlags;
 
+use Data\Upload\UploadQueryTypeEnum;
+
 /**
  * class UploadQuery
  *
@@ -86,20 +88,28 @@ class UploadQuery
      * @param int $limit
      * @param string $whereCondition
      * @param array $params
-     * @param bool $adminPanel
+     * @param UploadQueryTypeEnum $queryType
      *
      * @return UploadResult
      */
-    public function query($order, $limit, $whereCondition = null, $params = [], $adminPanel = false): UploadResult
+    public function query($order, $limit, $whereCondition = null, $params = [], UploadQueryTypeEnum $queryType = UploadQueryTypeEnum::Default): UploadResult
     {
         $query = "SELECT v.*, COALESCE(NULLIF(original_timestamp, 0), `timestamp`) AS uploaded FROM uploads v";
         $whereClauses = [];
 
-        if (!$adminPanel) {
+        if ($queryType != UploadQueryTypeEnum::Dashboard) {
             // if upload isnt taken down
             $whereClauses[] = "v.upload_id NOT IN (SELECT upload FROM upload_takedowns)";
             // if upload does not belong to someone who has been banned
             $whereClauses[] = "v.author NOT IN (SELECT user FROM user_bans)";
+
+            if ($queryType != UploadQueryTypeEnum::Profile) {
+                // if upload isn't from a shadowbanned user (pretend otherwise if loggedin user is the author)
+                $shadow_ban_flag = UserFlags::FLAG_SHADOW_BAN->value;
+                $user_id = $this->auth->isUserLoggedIn() ? (int) $this->auth->getUserId() : 0;
+                $whereClauses[] = "(v.author = $user_id OR v.author NOT IN (SELECT id FROM users WHERE flags & $shadow_ban_flag = $shadow_ban_flag))";
+            }
+
             // if upload is public
             $whereClauses[] = "v.visibility = " . UploadVisibilityEnum::Public->value;
         }
@@ -114,7 +124,7 @@ class UploadQuery
             $whereClauses[] = $whereCondition;
         }
 
-        if (!$adminPanel) {
+        if ($queryType != UploadQueryTypeEnum::Dashboard) {
             if (!($this->userFlags & UserFlags::FLAG_MATURE_CONTENT_ACCESS->value)) {
                 $matureFlag = UploadFlags::FLAG_MATURE->value;
 
@@ -150,26 +160,33 @@ class UploadQuery
 
     /**
      * function count
-     * 
-     * used in the browse page
      *
      * @param mixed $whereCondition
      * @param mixed $params
      *
      * @return mixed
      */
-    public function count($whereCondition = null, $params = [])
+    public function count($whereCondition = null, $params = [], UploadQueryTypeEnum $queryType = UploadQueryTypeEnum::Default)
     {
         $query = "SELECT COUNT(*) FROM uploads v";
         $whereClauses = [];
 
-        //if (!$adminPanel) {
-        // if upload isnt taken down
-        $whereClauses[] = "v.upload_id NOT IN (SELECT upload FROM upload_takedowns)";
-        // if upload does not belong to someone who has been banned
-        $whereClauses[] = "v.author NOT IN (SELECT user FROM user_bans)";
-        $whereClauses[] = "v.visibility = " . UploadVisibilityEnum::Public->value;
-        //}
+        if ($queryType != UploadQueryTypeEnum::Dashboard) {
+            // if upload isnt taken down
+            $whereClauses[] = "v.upload_id NOT IN (SELECT upload FROM upload_takedowns)";
+            // if upload does not belong to someone who has been banned
+            $whereClauses[] = "v.author NOT IN (SELECT user FROM user_bans)";
+
+            if ($queryType != UploadQueryTypeEnum::Profile) {
+                // if upload isn't from a shadowbanned user (pretend otherwise if loggedin user is the author)
+                $shadow_ban_flag = UserFlags::FLAG_SHADOW_BAN->value;
+                $user_id = $this->auth->isUserLoggedIn() ? (int) $this->auth->getUserId() : 0;
+                $whereClauses[] = "(v.author = $user_id OR v.author NOT IN (SELECT id FROM users WHERE flags & $shadow_ban_flag = $shadow_ban_flag))";
+            }
+
+            // if upload is public
+            $whereClauses[] = "v.visibility = " . UploadVisibilityEnum::Public->value;
+        }
 
         if (!$this->auth->isUserLoggedIn()) {
             $blocked_guest_flag = UploadFlags::FLAG_BLOCK_GUESTS->value;

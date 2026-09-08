@@ -179,6 +179,41 @@ if (isset($_POST['feature_user'])) {
     }
 }
 
+if (isset($_POST['shadowban_user'])) {
+    // Don't (un)shadow-ban non-existent users.
+    if (!$database->fetch("SELECT u.name FROM users u WHERE u.name = ?", [$_POST["shadowban_user"]])) {
+        Utilities::notifyBanner("notify_invalid_user", "/dashboard/users/");
+    }
+
+    if ($flags & UserFlags::FLAG_SHADOW_BAN->value) {
+        $flags &= ~UserFlags::FLAG_SHADOW_BAN->value;
+
+        $database->query(
+            "UPDATE users SET flags = ? WHERE id = ?",
+            [$flags, $user["id"]]
+        );
+
+        if ($sb->isDiscordWebhookEnabled()) {
+            discord_webhook_notify($sb, $auth, $_POST["shadowban_user"], 'unshadowbanned');
+        }
+
+        Utilities::notifyBanner("notify_dashboard_unshadowban_user_success", "/dashboard/users/{$username}", "success", [$_POST["shadowban_user"]]);
+    } else {
+        $flags |= UserFlags::FLAG_SHADOW_BAN->value;
+
+        $database->query(
+            "UPDATE users SET flags = ? WHERE id = ?",
+            [$flags, $user["id"]]
+        );
+
+        if ($sb->isDiscordWebhookEnabled()) {
+            discord_webhook_notify($sb, $auth, $_POST["shadowban_user"], 'shadowbanned');
+        }
+
+        Utilities::notifyBanner("notify_dashboard_shadowban_user_success", "/dashboard/users/{$username}", "success", [$_POST["shadowban_user"]]);
+    }
+}
+
 if ($user["ip"] != "999.999.999.999") {
     $users_with_matching_ips = $database->fetchArray($database->query(
         "SELECT u.name, u.title FROM users u WHERE u.ip = ? AND id != ?",
@@ -236,6 +271,27 @@ $buttons = [
                 'class' => 'button danger',
                 'label' => 'Ban',
                 'confirm' => 'Are you sure you want to ban this user?',
+            ],
+        ],
+    ],
+    'shadowban_user' => [
+        'condition' => true,
+        'states' => [
+            'shadowbanned' => [
+                'condition' => $flags & UserFlags::FLAG_SHADOW_BAN->value,
+                'name' => 'shadowban_user',
+                'value' => $user['name'],
+                'class' => 'button secondary',
+                'label' => 'Unshadowban',
+                'confirm' => 'Are you sure you want to unshadowban this user?',
+            ],
+            'not_shadowbanned' => [
+                'condition' => !($flags & UserFlags::FLAG_SHADOW_BAN->value),
+                'name' => 'shadowban_user',
+                'value' => $user['name'],
+                'class' => 'button danger',
+                'label' => 'Shadowban',
+                'confirm' => 'Are you sure you want to shadowban this user?',
             ],
         ],
     ],

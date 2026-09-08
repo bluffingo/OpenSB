@@ -25,6 +25,7 @@ global $auth, $database, $twig, $sb;
 
 use Core\Utilities;
 use Data\Upload\UploadQuery;
+use Data\Upload\UploadQueryTypeEnum;
 use Data\Upload\UploadFlags;
 
 include_once('_include.php');
@@ -62,8 +63,8 @@ $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 
 
 $limit = $database->paginate($page, 20);
 
-$uploads = $upload_query->query($tabs[$type]["order"] ?? "timestamp DESC", $limit, $tabs[$type]["where"] ?? null, [$data["id"]]);
-$upload_count = $upload_query->count("v.author = ?", [$data["id"]]);
+$uploads = $upload_query->query($tabs[$type]["order"] ?? "timestamp DESC", $limit, $tabs[$type]["where"] ?? null, [$data["id"]], UploadQueryTypeEnum::Profile);
+$upload_count = $upload_query->count("v.author = ?", [$data["id"]], UploadQueryTypeEnum::Profile);
 
 $page_data = [
     "uploads" => $uploads->toCleanArray(),
