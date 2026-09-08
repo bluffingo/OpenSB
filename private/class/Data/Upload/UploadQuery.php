@@ -106,7 +106,7 @@ class UploadQuery
             if ($queryType != UploadQueryTypeEnum::Profile) {
                 // if upload isn't from a shadowbanned user (pretend otherwise if loggedin user is the author)
                 $shadow_ban_flag = UserFlags::FLAG_SHADOW_BAN->value;
-                $user_id = $this->auth->isUserLoggedIn() ? (int) $this->auth->getUserId() : 0;
+                $user_id = $this->auth->isLoggedIn() ? (int) $this->auth->getUserId() : 0;
                 $whereClauses[] = "(v.author = $user_id OR v.author NOT IN (SELECT id FROM users WHERE flags & $shadow_ban_flag = $shadow_ban_flag))";
             }
 
@@ -182,7 +182,7 @@ class UploadQuery
             if ($queryType != UploadQueryTypeEnum::Profile) {
                 // if upload isn't from a shadowbanned user (pretend otherwise if loggedin user is the author)
                 $shadow_ban_flag = UserFlags::FLAG_SHADOW_BAN->value;
-                $user_id = $this->auth->isUserLoggedIn() ? (int) $this->auth->getUserId() : 0;
+                $user_id = $this->auth->isLoggedIn() ? (int) $this->auth->getUserId() : 0;
                 $whereClauses[] = "(v.author = $user_id OR v.author NOT IN (SELECT id FROM users WHERE flags & $shadow_ban_flag = $shadow_ban_flag))";
             }
 
