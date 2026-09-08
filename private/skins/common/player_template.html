@@ -1,4 +1,4 @@
-<style>
+<style name="player-styles-temporary">
     .video-player {
         position: relative;
         width: 100%;
@@ -14,8 +14,31 @@
     }
 
     .player-progress-bar {
-        background: #cc181e;
+        background: #444444;
         height: 8px;
+    }
+
+    .player-progress-bar-elapsed {
+        background: #cc181e;
+        width: 0px;
+        height: 100%;
+    }
+
+    .player-scrubber {
+        border: 5px solid #eaeaea;
+        border-radius: 8px;
+        background: #aeaeae;
+        height: 16px;
+        width: 16px;
+        top: -4px;
+        margin-left: -8px;
+        z-index: 10;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .player-scrubber:hover {
+        background: #cc181e;
     }
 
     .player-chrome {
@@ -49,8 +72,11 @@
 <div id="video-player" class="video-player">
     <div class="video-container"></div>
     <div class="video-controls">
-        <div class="player-progress-bar">
-
+        <div class="player-progress">
+            <div class="player-scrubber"></div>
+            <div class="player-progress-bar">
+                <div class="player-progress-bar-elapsed"></div>
+            </div>
         </div>
         <div class="player-chrome">
             <div class="player-button player-button-play"></div>

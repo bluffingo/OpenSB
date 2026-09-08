@@ -21,20 +21,24 @@
             "url": "{{ video }}",
         };
     </script>
-    <script name="player" src="/assets/player.js"></script>
-    <style name="dumb-bullshit-no-one-cares-about">
+    <script name="player" src="/assets/player.js?r={{ get_css_file_timestamp() }}"></script>
+    <style name="player-wrapper-styles-temporary">
         #video-wrapper {
-            width: 100%;
             aspect-ratio: 16 / 9;
             background: black;
             overflow: hidden;
+        }
+
+        #video-wrapper .video-container {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
         #video-wrapper video {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            display: block;
         }
     </style>
     <div id="video-wrapper"></div>
