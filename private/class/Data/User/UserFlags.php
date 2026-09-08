@@ -91,6 +91,7 @@ enum UserFlags: int
             'featured' => (bool)($flags & self::FLAG_FEATURED->value),
             'mature_content_access' => (bool)($flags & self::FLAG_MATURE_CONTENT_ACCESS->value),
             'profile_customization_enabled' => (bool)($flags & self::FLAG_PROFILE_CUSTOMIZATION_ENABLED->value),
+            'shadowbanned' => (bool)($flags & self::FLAG_SHADOW_BAN->value),
         ];
     }
 }

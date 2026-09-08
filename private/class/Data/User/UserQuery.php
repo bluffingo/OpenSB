@@ -62,10 +62,10 @@ class UserQuery
     {
         $query = "SELECT u.id, u.about, u.title, u.flags, u.joined, u.last_seen, u.f_index, u.u_index FROM users u";
         $whereClauses = [];
-        $baseParams = [UserFlags::FLAG_UNVERIFIED->value];
+        $baseParams = [UserFlags::FLAG_UNVERIFIED->value, UserFlags::FLAG_SHADOW_BAN->value];
 
         $whereClauses[] = "u.id NOT IN (SELECT user FROM user_bans)";
-        $whereClauses[] = "(u.flags & ?) = 0";
+        $whereClauses[] = "(u.flags & ?) = 0 AND (u.flags & ?) = 0";
 
         if (!empty($whereCondition)) {
             $whereClauses[] = $whereCondition;
@@ -79,7 +79,7 @@ class UserQuery
             $query .= " $limit";
         } else {
             $query .= " LIMIT " . (int) $limit;
-        }
+        } 
 
         return new UserResult($this->database, $this->database->fetchArray($this->database->query($query, $allParams)));
     }
@@ -96,10 +96,10 @@ class UserQuery
     {
         $query = "SELECT COUNT(*) FROM users u";
         $whereClauses = [];
-        $baseParams = [UserFlags::FLAG_UNVERIFIED->value];
+        $baseParams = [UserFlags::FLAG_UNVERIFIED->value, UserFlags::FLAG_SHADOW_BAN->value];
 
         $whereClauses[] = "u.id NOT IN (SELECT user FROM user_bans)";
-        $whereClauses[] = "(u.flags & ?) = 0";
+        $whereClauses[] = "(u.flags & ?) = 0 AND (u.flags & ?) = 0";
 
         if (!empty($whereCondition)) {
             $whereClauses[] = $whereCondition;

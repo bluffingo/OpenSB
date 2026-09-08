@@ -24,7 +24,7 @@ namespace Pages;
 global $auth, $twig, $database, $sb;
 
 use Data\Upload\UploadQuery;
-use Data\Upload\UploadResult;
+use Data\Upload\UploadQueryTypeEnum;
 use Core\Utilities;
 use Data\User\UserRoleEnum;
 
@@ -58,7 +58,7 @@ if ($search !== "") {
 $count = $search !== ""
     ? (int) $database->result("SELECT COUNT(*) FROM uploads v WHERE (v.title LIKE ? OR v.upload_id LIKE ?)", ["%{$search}%", "%{$search}%"])
     : (int) $database->result("SELECT COUNT(*) FROM uploads v");
-$uploads = $upload_query->query('v.timestamp DESC', $limit, $whereCondition, $params, true);
+$uploads = $upload_query->query('v.timestamp DESC', $limit, $whereCondition, $params, UploadQueryTypeEnum::Dashboard);
 
 $uploads_array = $uploads->toCleanArray();
 

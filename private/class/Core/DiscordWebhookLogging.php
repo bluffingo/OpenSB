@@ -377,6 +377,18 @@ class DiscordWebhookLogging
                 $author = 'User unfeatured by ' . $data['author'];
                 $color = Colors::WARNING;
                 break;
+            case "shadowbanned":
+                $author = 'User shadowbanned by ' . $data['author'];
+                $color = Colors::DANGER;
+                break;
+            case "unshadowbanned":
+                $author = 'User unshadowbanned by ' . $data['author'];
+                $color = Colors::WARNING;
+                break;
+            default:
+                $author = 'Dashboard user action ' . $data['action'] . ' by ' . $data['author'];
+                $color = Colors::ACCENT;
+                break;
         }
 
         $title = $data['user']; //Utilities::userIDToUsername($this->database, $data['user']);

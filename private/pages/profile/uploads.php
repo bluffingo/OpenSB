@@ -25,6 +25,7 @@ global $auth, $database, $twig, $sb;
 
 use Core\Utilities;
 use Data\Upload\UploadQuery;
+use Data\Upload\UploadQueryTypeEnum;
 use Data\Upload\UploadFlags;
 use Data\Upload\UploadTypeEnum;
 
@@ -75,8 +76,8 @@ $limit_num = ($sb->getCurrentSkinName() == "finalium") ? 30 : 20;
 
 $limit = $database->paginate($page, $limit_num);
 
-$uploads = $upload_query->query($tabs[$type]["order"] ?? "timestamp DESC", $limit, $tabs[$type]["where"] ?? null, [$data["id"]]);
-$upload_count = $upload_query->count("v.author = ?" . $upload_type_filter, [$data["id"]]);
+$uploads = $upload_query->query($tabs[$type]["order"] ?? "timestamp DESC", $limit, $tabs[$type]["where"] ?? null, [$data["id"]], UploadQueryTypeEnum::Profile);
+$upload_count = $upload_query->count("v.author = ?", [$data["id"]], UploadQueryTypeEnum::Profile);
 
 $page_data = [
     "uploads" => $uploads->toCleanArray(),

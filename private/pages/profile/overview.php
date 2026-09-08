@@ -31,6 +31,7 @@ use Data\Comment\CommentLocation;
 use Data\Upload\UploadData;
 use Data\Upload\UploadQuery;
 use Data\Upload\UploadResult;
+use Data\Upload\UploadQueryTypeEnum;
 use Data\Journal\JournalQuery;
 
 $upload_query = new UploadQuery($sb);
@@ -94,7 +95,7 @@ function handleFeaturedUpload($database, $data): false|array
     }
 }
 
-$user_uploads = $upload_query->query("uploaded desc", $user_uploads_query_limit, "v.author = ?", [$data["id"]])->toCleanArray();
+$user_uploads = $upload_query->query("uploaded desc", $user_uploads_query_limit, "v.author = ?", [$data["id"]], UploadQueryTypeEnum::Profile)->toCleanArray();
 
 if ($options["skin"] == "bootstrap") {
     $user_journal_limit = 3;
