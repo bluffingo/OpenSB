@@ -45,7 +45,7 @@ class IPLookup
     public function __construct(string $config)
     {
         if ($config) {
-            $this->reader = new Reader(SB_PRIVATE_PATH . '/config/' . $config);
+            $this->reader = new Reader(str_starts_with($config, '/') ? $config : SB_PRIVATE_PATH . '/config/' . $config);
         }
     }
 

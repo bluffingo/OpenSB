@@ -80,7 +80,7 @@ class DiscordWebhookLogging
         $this->footer_text = "{$name} / OpenSB {$version}";
 
         if ($sb->isTestInstance()) {
-            $this->domain = str_replace("//web-orange-qa.", "//", $url);
+            $this->domain = str_replace("//web-orange-qa.", "//", $this->domain);
             $this->footer_text = "{$name} (QA) / OpenSB {$version}";
         }
     }
