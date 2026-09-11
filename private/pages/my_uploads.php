@@ -34,7 +34,7 @@ if (!$auth->isLoggedIn()) {
     Utilities::notifyBanner("notify_login_required", "/login");
 }
 
-$limit = $database->paginate($page, 20);
+$limit = $database->paginate($page);
 
 $database = $sb->getDatabaseClass();
 // TODO: maybe migrate this into UploadQuery?

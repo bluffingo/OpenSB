@@ -33,11 +33,11 @@ $tid = $_GET['id'] ?? null;
 
 $thread = fetch("SELECT t.*, f.title ftitle, f.minreply fminreply
 	FROM z_threads t LEFT JOIN z_forums f ON f.id=t.forum
-	WHERE t.id = ? AND ? >= f.minread", [$tid, $userdata['rank']]);
+	WHERE t.id = ? AND ? >= f.minread", [$tid, $userdata['powerlevel']]);
 
 if (!$thread)
 	error('404');
-if ($thread['fminreply'] > $userdata['rank'])
+if ($thread['fminreply'] > $userdata['powerlevel'])
 	error('403', "You have no permissions to create posts in this forum!");
 if ($thread['closed'] && !IS_MOD)
 	error('400', "You can't post in closed threads.");
@@ -89,7 +89,7 @@ if ($pid) {
 			WHERE p.id = ?", [$pid]);
 
 	//does the user have reading access to the quoted post?
-	if ($userdata['rank'] < $post['minread']) {
+	if ($userdata['powerlevel'] < $post['minread']) {
 		$post['name'] = 'ROllerozxa';
 		$post['text'] = 'uwu';
 	}

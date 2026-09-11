@@ -26,6 +26,10 @@ namespace Pages\Forum;
 
 include_once('_include.php');
 
+use Core\Utilities;
+
+global $sb, $database, $twig;
+
 $page = (int)($_GET['page'] ?? 1);
 
 $fieldlist = userfields('u', 'u') . ',' . userfields_post() . ',';
@@ -41,21 +45,22 @@ if (isset($_GET['id'])) {
 	$viewmode = "time";
 } elseif (isset($_GET['pid'])) { // "link" support (i.e., thread?pid=999whatever)
 	$pid = (int)$_GET['pid'];
-	$numpid = fetch("SELECT t.id tid FROM z_posts p LEFT JOIN z_threads t ON p.thread = t.id WHERE p.id = ?", [$pid]);
+	$numpid = $database->fetch("SELECT t.id tid FROM z_posts p LEFT JOIN z_threads t ON p.thread = t.id WHERE p.id = ?", [$pid]);
 	if (!$numpid) error('404');
 
-	$tid = result("SELECT thread FROM z_posts WHERE id = ?", [$pid]);
-	$page = floor(result("SELECT COUNT(*) FROM z_posts WHERE thread = ? AND id < ?", [$tid, $pid]) / PPP) + 1;
+	$tid = $database->result("SELECT thread FROM z_posts WHERE id = ?", [$pid]);
+	$page = floor($database->result("SELECT COUNT(*) FROM z_posts WHERE thread = ? AND id < ?", [$tid, $pid]) / PPP) + 1;
 	$viewmode = "thread";
 } else
 	error('404');
 
-$threadcreator = ($viewmode == "thread" ? result("SELECT user FROM z_threads WHERE id = ?", [$tid]) : 0);
+$threadcreator = ($viewmode == "thread" ? $database->result("SELECT user FROM z_threads WHERE id = ?", [$tid]) : 0);
 
 $modact = '';
 
 $act = $_POST['action'] ?? '';
 
+/*
 if (isset($tid) && $log && $act && (IS_ADMIN ||
 		($userdata['id'] == $threadcreator && $act == "rename" && IS_MEMBER && isset($_POST['title'])))) {
 
@@ -67,19 +72,20 @@ if (isset($tid) && $log && $act && (IS_ADMIN ||
 	if ($act == 'rename')	$modact = ",title=?";
 	if ($act == 'move')		moveThread($tid, $_POST['arg']);
 }
+*/
 
 if ($viewmode == "thread") {
 	if (!$tid) $tid = 0;
 
 	$params = ($act == 'rename' ? [$_POST['title'], $tid] : [$tid]);
 
-	query("UPDATE z_threads SET views = views + 1 $modact WHERE id = ?", $params);
+	$database->query("UPDATE z_threads SET views = views + 1 $modact WHERE id = ?", $params);
 
-	$thread = fetch("SELECT t.*, f.title ftitle, t.forum fid".($log ? ', r.time frtime' : '').' '
+	$thread = $database->fetch("SELECT t.*, f.title ftitle, t.forum fid".($log ? ', r.time frtime' : '').' '
 			. "FROM z_threads t LEFT JOIN z_forums f ON f.id=t.forum "
 			. ($log ? "LEFT JOIN z_forumsread r ON (r.fid=f.id AND r.uid=$userdata[id]) " : '')
 			. "WHERE t.id = ? AND ? >= f.minread",
-			[$tid, $userdata['rank']]);
+			[$tid, $userdata['powerlevel']]);
 
 	if (!isset($thread['id'])) error('404');
 
@@ -88,26 +94,26 @@ if ($viewmode == "thread") {
 
 	//mark thread as read
 	if ($log && $thread['lastdate'] > $thread['frtime'])
-		query("REPLACE INTO z_threadsread VALUES (?,?,?)", [$userdata['id'], $thread['id'], time()]);
+		$database->query("REPLACE INTO z_threadsread VALUES (?,?,?)", [$userdata['id'], $thread['id'], time()]);
 
 	//check for having to mark the forum as read too
 	if ($log) {
-		$readstate = fetch("SELECT ((NOT ISNULL(r.time)) OR t.lastdate < ?) n FROM z_threads t LEFT JOIN z_threadsread r ON (r.tid = t.id AND r.uid = ?) "
+		$readstate = $database->fetch("SELECT ((NOT ISNULL(r.time)) OR t.lastdate < ?) n FROM z_threads t LEFT JOIN z_threadsread r ON (r.tid = t.id AND r.uid = ?) "
 			. "WHERE t.forum = ? GROUP BY ((NOT ISNULL(r.time)) OR t.lastdate < ?) ORDER BY n ASC",
 			[$thread['frtime'], $userdata['id'], $thread['fid'], $thread['frtime']]);
 		//if $readstate[n] is 1, MySQL did not create a group for threads where ((NOT ISNULL(r.time)) OR t.lastdate<'$thread[frtime]') is 0;
 		//thus, all threads in the forum are read. Mark it as such.
 		if ($readstate['n'] == 1)
-			query("REPLACE INTO z_forumsread VALUES (?,?,?)", [$userdata['id'], $thread['fid'], time()]);
+			$database->query("REPLACE INTO z_forumsread VALUES (?,?,?)", [$userdata['id'], $thread['fid'], time()]);
 	}
 
-	$posts = query("SELECT $fieldlist p.*, pt.text, pt.date ptdate, pt.revision cur_revision, t.forum tforum
+	$posts = $database->query("SELECT $fieldlist p.*, pt.text, pt.date ptdate, pt.revision cur_revision, t.forum tforum
 			FROM z_posts p
 			LEFT JOIN z_threads t ON t.id = p.thread
 			LEFT JOIN z_poststext pt ON p.id = pt.id AND p.revision = pt.revision
 			LEFT JOIN users u ON p.user = u.id
 			WHERE p.thread = ?
-			GROUP BY p.id ORDER BY p.id ".paginate($page, PPP),
+			GROUP BY p.id ORDER BY p.id ".$database->paginate($page),
 		[$tid]);
 
 	$topbot = [
@@ -115,9 +121,9 @@ if ($viewmode == "thread") {
 		'title' => $thread['title']
 	];
 
-	$faccess = fetch("SELECT id,minreply FROM z_forums WHERE id = ?",[$thread['forum']]);
-	if ($faccess['minreply'] <= $userdata['rank']) {
-		if (IS_MOD && $thread['closed'])
+	$faccess = $database->fetch("SELECT id,minreply FROM z_forums WHERE id = ?",[$thread['forum']]);
+	if ($faccess['minreply'] <= $userdata['powerlevel']) {
+		if (/*IS_MOD &&*/ $thread['closed'])
 			$topbot['actions'] = ['none' => 'Thread closed', "newreply?id=$tid" => 'New reply'];
 		elseif ($thread['closed'])
 			$topbot['actions'] = ['none' => 'Thread closed'];
@@ -127,22 +133,22 @@ if ($viewmode == "thread") {
 
 	$url = "thread?id=$tid";
 } elseif ($viewmode == "user") {
-	$user = fetch("SELECT * FROM users WHERE id = ?", [$uid]);
+	$user = $database->fetch("SELECT * FROM users WHERE id = ?", [$uid]);
 
 	if ($user == null) error('404');
 
 	$title = "Posts by " . $user['name'];
-	$posts = query("SELECT $fieldlist p.*, pt.text, pt.date ptdate, pt.revision cur_revision, t.id tid, f.id fid, t.title ttitle, t.forum tforum
+	$posts = $database->query("SELECT $fieldlist p.*, pt.text, pt.date ptdate, pt.revision cur_revision, t.id tid, f.id fid, t.title ttitle, t.forum tforum
 			FROM z_posts p
 			LEFT JOIN z_poststext pt ON p.id = pt.id AND p.revision = pt.revision
 			LEFT JOIN users u ON p.user = u.id
 			LEFT JOIN z_threads t ON p.thread = t.id
 			LEFT JOIN z_forums f ON f.id = t.forum
 			WHERE p.user = ? AND ? >= f.minread
-			ORDER BY p.id".paginate($page, PPP),
-		[$uid, $userdata['rank']]);
+			ORDER BY p.id".$database->paginate($page),
+		[$uid, $userdata['powerlevel']]);
 
-	$thread['posts'] = result("SELECT count(*) FROM z_posts p WHERE user = ?", [$uid]);
+	$thread['posts'] = $database->result("SELECT count(*) FROM z_posts p WHERE user = ?", [$uid]);
 
 	$topbot = [
 		'breadcrumb' => ["/user/$uid" => $user['name']],
@@ -155,26 +161,27 @@ if ($viewmode == "thread") {
 
 	$title = 'Latest posts';
 
-	$posts = query("SELECT $fieldlist p.*, pt.text, pt.date ptdate, pt.revision cur_revision, t.id tid, f.id fid, t.title ttitle, t.forum tforum
+	$posts = $database->query("SELECT $fieldlist p.*, pt.text, pt.date ptdate, pt.revision cur_revision, t.id tid, f.id fid, t.title ttitle, t.forum tforum
 			FROM z_posts p
 			LEFT JOIN z_poststext pt ON p.id = pt.id AND p.revision = pt.revision
 			LEFT JOIN users u ON p.user=u.id
 			LEFT JOIN z_threads t ON p.thread=t.id
 			LEFT JOIN z_forums f ON f.id=t.forum
 			WHERE p.date > ? AND ? >= f.minread
-			ORDER BY p.date DESC ".paginate($page, PPP),
-		[$mintime, $userdata['rank']]);
+			ORDER BY p.date DESC ".$database->paginate($page),
+		[$mintime, $userdata['powerlevel']]);
 
-	$thread['posts'] = result("SELECT count(*) FROM z_posts WHERE date > ?", [$mintime]);
+	$thread['posts'] = $database->result("SELECT count(*) FROM z_posts WHERE date > ?", [$mintime]);
 
 	$time = $_GET['time'];
 
 	$url = "thread?time=$time";
 }
 
-if ($thread['posts'] > PPP)
-	$pagelist = pagination($thread['posts'], PPP, $url.'&page=%s', $page);
+if ($thread['posts'] > 20)
+	$pagelist = $database->pagination($thread['posts'], $url.'&page=%s', $page);
 
+/*
 if ($log && isset($tid) && (IS_ADMIN || ($userdata['id'] == $thread['user'] && !$thread['closed'] && IS_MEMBER))) {
 	$fmovelinks = $stick = $close = $trash = '';
 	$link = "<a href=javascript:submitmod";
@@ -215,8 +222,9 @@ function showmove() { moptions.innerHTML = 'Move to: $fmovelinks'; }
 </form>
 HTML;
 }
+*/
 
-twigloaderForum()->display('forum/thread.twig', [
+echo $twig->render('forum/thread.twig', [
 	'viewmode' => $viewmode,
 	'thread' => $thread,
 	'posts' => $posts,

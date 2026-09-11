@@ -31,11 +31,11 @@ needsLogin();
 $action = $_POST['action'] ?? null;
 $fid = $_GET['id'] ?? null;
 
-$forum = fetch("SELECT * FROM z_forums WHERE id = ? AND ? >= minread", [$fid, $userdata['rank']]);
+$forum = fetch("SELECT * FROM z_forums WHERE id = ? AND ? >= minread", [$fid, $userdata['powerlevel']]);
 
 if (!$forum)
 	error('404');
-if ($forum['minthread'] > $userdata['rank'])
+if ($forum['minthread'] > $userdata['powerlevel'])
 	error('403', "You have no permissions to create threads in this forum!");
 
 $error = '';

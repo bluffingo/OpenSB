@@ -40,7 +40,7 @@ $upload_query = new UploadQuery($sb);
 $query = $_GET['query'] ?? null;
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
-$limit = $database->paginate($page, pp: 20);
+$limit = $database->paginate($page);
 
 // TODO: searching for a user should prioitize them and their uploads
 

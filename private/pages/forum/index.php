@@ -32,9 +32,6 @@ global $sb, $database, $twig;
 
 $action = $_GET['action'] ?? '';
 
-$userdata = $sb->getAuthenticationClass()->getUserData(); 
-$log = $sb->getAuthenticationClass()->isLoggedIn();
-
 $categ = [];
 
 //mark forum read
@@ -65,7 +62,7 @@ $forums = $database->query("SELECT f.*, ".($log ? "r.time rtime, " : '').userfie
 		. " WHERE ? >= f.minread "
 		. " ORDER BY c.ord,c.id,f.ord,f.id ",
         // on principia-web, "powerlevel" was renamed to "rank" (commit 4073bc1), this change was never applied to opensb.
-		[$userdata['powerlevel']]); //[$userdata['rank']]);
+		[$userdata['powerlevel']]); //[$userdata['powerlevel']]);
 
 echo $twig->render('forum/index.twig', [
 	'forums' => $forums,

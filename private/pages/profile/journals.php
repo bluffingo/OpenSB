@@ -33,7 +33,7 @@ include_once('_include.php');
 $journal_count = 0;
 
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
-$limit = $database->paginate($page, 20);
+$limit = $database->paginate($page);
 
 $journal_query = new JournalQuery($sb);
 

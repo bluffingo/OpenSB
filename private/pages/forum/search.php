@@ -42,7 +42,7 @@ if ($query && $where == 1) {
 			JOIN z_forums f ON f.id = t.forum
 			WHERE pt.text LIKE CONCAT('%', ?, '%') AND ? >= f.minread
 			ORDER BY p.id DESC LIMIT 20",
-		[$query, $userdata['rank']]);
+		[$query, $userdata['powerlevel']]);
 
 } elseif ($query) {
 	// Search by thread title (list threads)
@@ -53,7 +53,7 @@ if ($query && $where == 1) {
 		JOIN z_forums f ON f.id = t.forum
 		WHERE t.title LIKE CONCAT('%', ?, '%') AND ? >= f.minread
 		ORDER BY t.lastdate DESC",
-	[$query, $userdata['rank']]);
+	[$query, $userdata['powerlevel']]);
 }
 
 twigloaderForum()->display('forum/search.twig', [

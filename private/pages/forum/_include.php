@@ -33,6 +33,9 @@ use Core\Utilities;
 // compatibility code in order to make the principia-web forum codebase
 // work on modern-day opensb. -chaziz 09/11/2026
 
+$userdata = $sb->getAuthenticationClass()->getUserData(); 
+$log = $sb->getAuthenticationClass()->isLoggedIn();
+
 /**
  * Get list of SQL SELECT fields for userlinks.
  *
@@ -55,9 +58,27 @@ function userfields($tbl = null, $pf = null) {
 	return implode(',', $out); //commasep($out);
 }
 
+function userfields_post() {
+	$fields = [/*'posts',*/ 'joined', /*'avatar', 'signature'*/];
+	$out = [];
+
+	foreach ($fields as $f)
+		$out[] = "u.$f u$f";
+
+	return implode(',', $out); //commasep($out);
+}
+
 /**
  * during opensb development, most usages of this function was replaced with Utilities:notifyBanner.
  */
 function error($code, $message = null) {
     Utilities::notifyBanner($message ?? $code . " (no message specified)", "/forum/");
+}
+
+function needsLogin() {
+    global $auth;
+
+    if (!$auth->isLoggedIn()) {
+        Utilities::notifyBanner("notify_login_required", "/login");
+    }
 }

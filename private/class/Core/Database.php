@@ -172,7 +172,7 @@ class Database
         return ['fieldquery' => $fieldquery, 'placeholders' => $placeholders];
     }
 
-    public function paginate($page, $pp)
+    public function paginate($page, $pp = 20)
     {
         $page = (int)floor((float)$page); // don't do decimal pages
         $page = ($page > 0 ? $page : 1);

@@ -46,7 +46,7 @@ $thread = fetch("SELECT p.user puser, t.*, f.title ftitle
 			LEFT JOIN z_threads t ON t.id = p.thread
 			LEFT JOIN z_forums f ON f.id = t.forum
 			WHERE p.id = ? AND ? >= f.minread",
-		[$pid, $userdata['rank']]);
+		[$pid, $userdata['powerlevel']]);
 
 if (!$thread)
 	error('404');

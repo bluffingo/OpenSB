@@ -64,7 +64,7 @@ $pmsgs = query("SELECT $ufields, p.* FROM z_pmsgs p
 		LEFT JOIN users u ON u.id = p.user$fieldn
 		WHERE p.user$fieldn2 = ? AND del_$fieldn2 = ?
 		ORDER BY p.unread DESC, p.date DESC
-		".paginate($page, TPP),
+		".paginate($page),
 	[$userdata['id'], $showdel]);
 
 $topbot = ['title' => $ptitle];

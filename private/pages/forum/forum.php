@@ -26,6 +26,10 @@ namespace Pages\Forum;
 
 include_once('_include.php');
 
+use Core\Utilities;
+
+global $sb, $database, $twig;
+
 $page = (int)($_GET['page'] ?? 1);
 $fid = (int)($_GET['id'] ?? 0);
 $uid = (int)($_GET['user'] ?? 0);
@@ -44,8 +48,8 @@ if ($log) {
 $ufields = userfields('u1', 'u1') . "," . userfields('u2', 'u2') . ",";
 if ($fid) {
 	if ($log) {
-		$forum = fetch("SELECT f.*, r.time rtime FROM z_forums f LEFT JOIN z_forumsread r ON (r.fid = f.id AND r.uid = ?) "
-			. "WHERE f.id = ? AND ? >= minread", [$userdata['id'], $fid, $userdata['rank']]);
+		$forum = $database->fetch("SELECT f.*, r.time rtime FROM z_forums f LEFT JOIN z_forumsread r ON (r.fid = f.id AND r.uid = ?) "
+			. "WHERE f.id = ? AND ? >= minread", [$userdata['id'], $fid, $userdata['powerlevel']]);
 
 		if ($forum) {
 			if (!$forum['rtime']) $forum['rtime'] = 0;
@@ -54,48 +58,48 @@ if ($fid) {
 			$threadsread = "LEFT JOIN z_threadsread r ON (r.tid=t.id AND r.uid=$userdata[id])";
 		}
 	} else
-		$forum = fetch("SELECT * FROM z_forums WHERE id = ? AND ? >= minread", [$fid, $userdata['rank']]);
+		$forum = $database->fetch("SELECT * FROM z_forums WHERE id = ? AND ? >= minread", [$fid, $userdata['powerlevel']]);
 
 	if (!isset($forum['id'])) error('404');
 
 	$title = $forum['title'];
 	$fdesc = $forum['descr'];
 
-	$threads = query("SELECT $ufields t.* $isread FROM z_threads t
+	$threads = $database->query("SELECT $ufields t.* $isread FROM z_threads t
 			LEFT JOIN users u1 ON u1.id = t.user
 			LEFT JOIN users u2 ON u2.id = t.lastuser
 			$threadsread
 			WHERE t.forum = ?
-			ORDER BY t.sticky DESC, t.lastdate DESC ".paginate($page, TPP),
+			ORDER BY t.sticky DESC, t.lastdate DESC ".$database->paginate($page),
 		[$fid]);
 
 	$topbot = [
 		'title' => $forum['title']
 	];
-	if ($userdata['rank'] >= $forum['minthread'])
+	if ($userdata['powerlevel'] >= $forum['minthread'])
 		$topbot['actions'] = ["newthread?id=$fid" => 'New thread'];
 
 	$url = "forum?id=$fid";
 } elseif ($uid) {
-	$user = fetch("SELECT name FROM users WHERE id = ?", [$uid]);
+	$user = $database->fetch("SELECT name FROM users WHERE id = ?", [$uid]);
 
 	if (!$user) error('404');
 
 	$title = "Threads by ".$user['name'];
 
-	$threads = query("SELECT $ufields t.*, f.id fid $isread, f.title ftitle FROM z_threads t
+	$threads = $database->query("SELECT $ufields t.*, f.id fid $isread, f.title ftitle FROM z_threads t
 			LEFT JOIN users u1 ON u1.id = t.user
 			LEFT JOIN users u2 ON u2.id = t.lastuser
 			LEFT JOIN z_forums f ON f.id = t.forum
 			$threadsread
 			WHERE t.user = ? AND ? >= minread
-			ORDER BY t.lastdate DESC ".paginate($page, TPP),
-		[$uid, $userdata['rank']]);
+			ORDER BY t.lastdate DESC ".$database->paginate($page),
+		[$uid, $userdata['powerlevel']]);
 
-	$forum['threads'] = result("SELECT count(*) FROM z_threads t
+	$forum['threads'] = $database->result("SELECT count(*) FROM z_threads t
 			LEFT JOIN z_forums f ON f.id = t.forum
 			WHERE t.user = ? AND ? >= minread",
-		[$uid, $userdata['rank']]);
+		[$uid, $userdata['powerlevel']]);
 
 	$topbot = [
 		'breadcrumb' => ["/user/$uid" => $user['name']],
@@ -108,20 +112,20 @@ if ($fid) {
 
 	$title = 'Latest posts';
 
-	$threads = query("SELECT $ufields t.*, f.id fid $isread, f.title ftitle
+	$threads = $database->query("SELECT $ufields t.*, f.id fid $isread, f.title ftitle
 			FROM z_threads t
 			LEFT JOIN users u1 ON u1.id = t.user
 			LEFT JOIN users u2 ON u2.id = t.lastuser
 			LEFT JOIN z_forums f ON f.id = t.forum
 			$threadsread
 			WHERE t.lastdate > ? AND ? >= f.minread
-			ORDER BY t.lastdate DESC ".paginate($page, TPP),
-		[$mintime, $userdata['rank']]);
+			ORDER BY t.lastdate DESC ".$database->paginate($page),
+		[$mintime, $userdata['powerlevel']]);
 
-	$forum['threads'] = result("SELECT count(*) FROM z_threads t
+	$forum['threads'] = $database->result("SELECT count(*) FROM z_threads t
 			LEFT JOIN z_forums f ON f.id = t.forum
 			WHERE t.lastdate > ? AND ? >= f.minread",
-		[$mintime, $userdata['rank']]);
+		[$mintime, $userdata['powerlevel']]);
 
 	$url = "forum?time=$time";
 } else
@@ -130,10 +134,12 @@ if ($fid) {
 
 $showforum = $time ?? $uid;
 
+/* this doesn't seem right. look into it later.
 if ($forum['threads'] > TPP)
-	$pagelist = pagination($forum['threads'], TPP, $url.'&page=%s', $page);
+	$pagelist = $database->pagination($forum['threads'], TPP, $url.'&page=%s', $page);
+*/
 
-twigloaderForum()->display('forum/forum.twig', [
+echo $twig->render('forum/forum.twig', [
 	'fid' => $fid,
 	'title' => $title,
 	'fdesc' => $fdesc ?? null,

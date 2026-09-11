@@ -249,7 +249,7 @@ class Templating
         $this->twig->addExtension(new StringExtension());
 
         if ($uriParts[0] ?? '' == "forum") {
-            $this->twig->addExtension(new ForumTwigExtension());
+            $this->twig->addExtension(new ForumTwigExtension($sb, $this, $this->twig));
         }
 
         if ($sb->isDebug()) {
