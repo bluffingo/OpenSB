@@ -231,6 +231,22 @@ $router->redirect('/version', '/about');
 $router->add('/write', 'write.php');
 $router->add('/view/{id}', 'view.php');
 
+// forums
+$router->add('/forum', 'forum/index.php');
+$router->add('/forum/index', 'forum/index.php');
+
+$router->add('/forum/activeusers', 'forum/activeusers.php'); // unsure
+$router->add('/forum/editpost', 'forum/editpost.php');
+$router->add('/forum/forum', 'forum/forum.php');
+$router->add('/forum/manageforums', 'forum/manageforums.php'); // should be moved to dashboard
+$router->add('/forum/newreply', 'forum/newreply.php');
+$router->add('/forum/newthread', 'forum/newthread.php');
+$router->add('/forum/private', 'forum/private.php'); // should be merged with my_messages
+$router->add('/forum/search', 'forum/search.php');
+$router->add('/forum/sendprivate', 'forum/sendprivate.php'); // should be merged with my_messages
+$router->add('/forum/showprivate', 'forum/showprivate.php'); // should be merged with my_messages
+$router->add('/forum/thread', 'forum/thread.php');
+
 // template
 $router->add('/html5_player_template', 'html5_player_template.php');
 

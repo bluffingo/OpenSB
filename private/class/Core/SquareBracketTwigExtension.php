@@ -548,6 +548,11 @@ class SquareBracketTwigExtension extends AbstractExtension
                         "url"  => "/browse",
                         "icon" => "guide_uploads"
                     ],
+                    "forum" => [
+                        "name" => $this->localize("forums"),
+                        "url"  => "/forum",
+                        "icon" => "watch_like"
+                    ],
                 ],
                 "bottom" => [
                     "members" => [
@@ -578,6 +583,10 @@ class SquareBracketTwigExtension extends AbstractExtension
             "browse" => [
                 "name" => $this->localize("browse"), // Browse
                 "url" => "/browse",
+            ],
+            "forums" => [
+                "name" => $this->localize("forums"), // Forums
+                "url" => "/forum",
             ],
             "members" => [
                 "name" => $this->localize("members"), // Members

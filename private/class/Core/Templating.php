@@ -248,6 +248,10 @@ class Templating
         $this->twig->addExtension($this->twigExtension);
         $this->twig->addExtension(new StringExtension());
 
+        if ($uriParts[0] ?? '' == "forum") {
+            $this->twig->addExtension(new ForumTwigExtension());
+        }
+
         if ($sb->isDebug()) {
             $this->twig->addExtension(new DebugExtension());
         } else {

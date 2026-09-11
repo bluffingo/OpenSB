@@ -4,6 +4,8 @@
   OpenSB: The Open SquareBracket Software
 
   Copyright (C) 2021-2026 Chaziz
+
+  This file is based on code from Principia-web.
   Copyright (C) 2021-2023 ROllerozxa
 
   OpenSB is free software: you can redistribute it and/or modify it under the 
