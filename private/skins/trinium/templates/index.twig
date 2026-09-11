@@ -86,6 +86,8 @@
                         {% endfor %}
                     </div>#}
                 </div>
+            {% elseif logged_in %}
+                <div class="display-message">You aren't following anyone! [temporary string]</div>
             {% endif %}
         </div>
         <div class="col-4">

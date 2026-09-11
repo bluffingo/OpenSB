@@ -28,7 +28,7 @@ final class Colors
 {
     /* IMPORTANT: These should be kept in sync with the colors in the Trinium skin. */
     const ACCENT  = '#0069B4';
-    const SUCCESS = '#00A651';
-    const WARNING = '#FFBB00';
-    const DANGER  = '#CB122E';
+    const SUCCESS = '#28A828';
+    const WARNING = '#FFC219';
+    const DANGER  = '#CB2112';
 }

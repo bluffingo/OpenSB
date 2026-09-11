@@ -123,6 +123,12 @@
                     </div>
                 </div>
             </div>
+        {% else %}
+            <div class="section">
+                <div class="content-box basic-box">
+                    <div class="display-message">{{ common.username }} has not uploaded anything.</div>
+                </div>
+            </div>
         {% endif %}
 
         {% if enable_incomplete_features and options.exp_collections %}
