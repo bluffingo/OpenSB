@@ -237,6 +237,8 @@ $thingsToCount = [
     'upload_views' => 'Views',
     'user_bans' => 'User bans',
     'ip_bans' => 'IP bans',
+    'z_posts' => 'Forum posts',
+    'z_threads' => 'Forum threads',
 ];
 
 $query = "SELECT ";

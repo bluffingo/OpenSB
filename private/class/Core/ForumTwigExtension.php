@@ -175,7 +175,7 @@ class ForumTwigExtension extends AbstractExtension
     }
 
     function ifEmptyQuery($message, $colspan = 0, $table = false) {
-        if ($table) echo '<table class="c1">';
+        if ($table) echo '<table class="styled">';
         echo '<tr><td class="n1 center" '.($colspan != 0 ? "colspan=$colspan" : '')."><p>$message</p></td></tr>";
         if ($table) echo '</table>';
     }
@@ -208,9 +208,9 @@ class ForumTwigExtension extends AbstractExtension
             //if (!IS_MOD) return;
 
             $pid = $post['id'];
-            $ulink = "userlink"; //userlink($post, 'u');
+            $ulink = $post['uname']; //userlink($post, 'u');
             return <<<HTML
-                <table class="c1 threadpost" id="{$post['id']}"><tr>
+                <table class="styled threadpost" id="{$post['id']}"><tr>
                     <td class="n1 sidebar">$ulink</td>
                     <td class="n1 topbar">
                         (post deleted)
@@ -261,7 +261,7 @@ class ForumTwigExtension extends AbstractExtension
 
         $postlinks = join(' &ndash; ', $postlinks);
 
-        $ulink = "userlink"; //userlink($post, 'u');
+        $ulink = $post['uname']; //userlink($post, 'u');
         $pdate = date('Y-m-d H:i', $post['date']);
         $picture = null; //($post['uavatar'] ? '<img class="avatar" src="'.self::avatarUrl($post, 'u').'" alt="(Avatar)"><br>' : '');
 
@@ -270,7 +270,7 @@ class ForumTwigExtension extends AbstractExtension
         $ujoined = date('Y-m-d', $post['ujoined']);
         $posttext = self::postfilter($post['text']);
         return <<<HTML
-            <table class="c1 threadpost" id="{$post['id']}">
+            <table class="styled threadpost" id="{$post['id']}">
                 $headerbar
                 <tr>
                     <td class="n2 topbar_mobile blkm nod clearfix">
@@ -305,7 +305,9 @@ class ForumTwigExtension extends AbstractExtension
     private function postfilter($msg) {
         $msg = str_replace("[/quote]", "[/quote]\n\n", $msg);
 
-        //$msg = markdown($msg); right. fuck.
+        $markdown = new Parsedown();
+        $markdown->setSafeMode(true);
+        $msg = $markdown->text($msg);
 
         $msg = preg_replace("'\[reply=\"(.*?)\" id=\"(.*?)\"\]'si", '<blockquote><span class="quotedby"><small><i><a href=showprivate?id=\\2>Sent by \\1</a></i></small></span><hr>', $msg);
         $msg = str_replace('[/reply]', '<hr></blockquote>', $msg);
