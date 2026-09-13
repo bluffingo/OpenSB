@@ -147,7 +147,7 @@
     "best_of_site": "Le meilleur de %s",
     "featured_on_site": "En vedette sur %s",
 
-    "featured_uploads": "En vedette",
+    "featured_uploads": "Tendances",
     "featured_uploads_desc": "Le favori du personnel",
 
     "recent_members": "Membres",
@@ -219,12 +219,12 @@
     "related_uploads": "Publications similaires",
     "random_uploads": "Publications aléatoires",
 
-    "featured": "En vedette",
+    "featured": "Tendances",
     "none": "Aucun",
     "general_rating": "Générale",
     "mature_rating": "Mature",
 
-    "404_not_found": "404 Non Trouvé",
+    "404_not_found": "404 Page introuvable",
     "ip_banned_intro": "Votre addresse IP a été bannie de %s",
 
     "dashboard_lookup": "Recherche (panel du personnel)",
@@ -343,8 +343,8 @@
     "change_theme": "Changer de thème",
     "help": "Aide",
     "community_guidelines": "Règles Communautaires",
-    "terms_of_service": "Conditions de Service",
-    "privacy_policy": "Politique de Confidentialité",
+    "terms_of_service": "Conditions d'utilisation",
+    "privacy_policy": "Confidentialité",
     "staff": "Personnel",
     "kylarz_link": "Aller sur Brickface/Quadium",
     "debug": "Débogage",
