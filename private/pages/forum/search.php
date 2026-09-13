@@ -56,7 +56,7 @@ if ($query && $where == 1) {
 	[$query, $userdata['powerlevel']]);
 }
 
-twigloaderForum()->display('forum/search.twig', [
+echo $twig->render('forum/search.twig', [
 	'query' => $query,
 	'where' => $where,
 	'threads' => $threads ?? null,

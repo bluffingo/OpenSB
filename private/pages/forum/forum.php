@@ -26,8 +26,6 @@ namespace Pages\Forum;
 
 include_once('_include.php');
 
-use Core\Utilities;
-
 global $sb, $database, $twig;
 
 $page = (int)($_GET['page'] ?? 1);

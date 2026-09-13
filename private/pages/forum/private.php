@@ -76,7 +76,7 @@ else
 
 $topbot['actions']['sendprivate'] = 'Send new';
 
-twigloaderForum()->display('forum/private.twig', [
+echo $twig->render('forum/private.twig', [
 	'pmsgs' => $pmsgs,
 	'pmsgc' => $pmsgc,
 	'topbot' => $topbot,

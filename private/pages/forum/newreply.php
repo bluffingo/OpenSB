@@ -24,14 +24,18 @@
 
 namespace Pages\Forum;
 
+use Core\Utilities;
+
 include_once('_include.php');
+
+global $sb, $database, $twig;
 
 needsLogin();
 
 $action = $_POST['action'] ?? null;
 $tid = $_GET['id'] ?? null;
 
-$thread = fetch("SELECT t.*, f.title ftitle, f.minreply fminreply
+$thread = $database->fetch("SELECT t.*, f.title ftitle, f.minreply fminreply
 	FROM z_threads t LEFT JOIN z_forums f ON f.id=t.forum
 	WHERE t.id = ? AND ? >= f.minread", [$tid, $userdata['powerlevel']]);
 
@@ -39,7 +43,7 @@ if (!$thread)
 	error('404');
 if ($thread['fminreply'] > $userdata['powerlevel'])
 	error('403', "You have no permissions to create posts in this forum!");
-if ($thread['closed'] && !IS_MOD)
+if ($thread['closed'] /*&& !IS_MOD*/)
 	error('400', "You can't post in closed threads.");
 
 $error = '';
@@ -47,10 +51,10 @@ $error = '';
 $message = $_POST['message'] ?? '';
 
 if ($action == 'Submit') {
-	$lastpost = fetch("SELECT id,user,date FROM z_posts WHERE thread = ? ORDER BY id DESC LIMIT 1", [$thread['id']]);
-	if ($lastpost['user'] == $userdata['id'] && $lastpost['date'] >= (time() - 86400) && !IS_ADMIN)
+	$lastpost = $database->fetch("SELECT id,user,date FROM z_posts WHERE thread = ? ORDER BY id DESC LIMIT 1", [$thread['id']]);
+	if ($lastpost['user'] == $userdata['id'] && $lastpost['date'] >= (time() - 86400) /*&& !IS_ADMIN*/)
 		$error = "You can't double post until it's been at least one day!";
-	if ($lastpost['user'] == $userdata['id'] && $lastpost['date'] >= (time() - 2) && IS_ADMIN)
+	if ($lastpost['user'] == $userdata['id'] && $lastpost['date'] >= (time() - 2) /*&& IS_ADMIN*/)
 		$error = "You must wait 2 seconds before posting consecutively.";
 	if (strlen(trim($message)) == 0)
 		$error = "Your post is empty! Enter a message and try again.";
@@ -67,7 +71,7 @@ if ($action == 'Submit') {
 			'u_name' => $userdata['name']
 		]);
 
-		redirect("thread?pid=$pid#$pid");
+		Utilities::redirect("thread?pid=$pid#$pid");
 	}
 }
 
@@ -80,7 +84,7 @@ $topbot = [
 
 $pid = $_GET['pid'] ?? 0;
 if ($pid) {
-	$post = fetch("SELECT u.name name, p.user, pt.text, f.id fid, p.thread, f.minread
+	$post = $database->fetch("SELECT u.name name, p.user, pt.text, f.id fid, p.thread, f.minread
 			FROM z_posts p
 			LEFT JOIN z_poststext pt ON p.id = pt.id AND p.revision = pt.revision
 			LEFT JOIN users u ON p.user = u.id
@@ -110,15 +114,16 @@ if ($action == 'Preview') {
 	$topbot['title'] .= ' (Preview)';
 }
 
-$fieldlist = userfields('u', 'u') . ', u.posts uposts, ';
-$newestposts = query("SELECT $fieldlist p.*, pt.text
+$fieldlist = userfields('u', 'u') . ','; /*.u.posts uposts, ';*/
+
+$newestposts = $database->query("SELECT $fieldlist p.*, pt.text
 			FROM z_posts p
 			LEFT JOIN z_poststext pt ON p.id = pt.id AND p.revision = pt.revision
 			LEFT JOIN users u ON p.user = u.id
 			WHERE p.thread = ? AND p.deleted = 0
 			ORDER BY p.id DESC LIMIT 5", [$tid]);
 
-twigloaderForum()->display('forum/newreply.twig', [
+echo $twig->render('forum/newreply.twig', [
 	'post' => $post ?? null,
 	'message' => $message,
 	'topbot' => $topbot,

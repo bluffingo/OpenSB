@@ -22,6 +22,8 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// TODO: $post['uposts']
+
 namespace Core;
 
 use Exception;
@@ -111,7 +113,7 @@ class ForumTwigExtension extends AbstractExtension
             new TwigFunction('render_page_bar', [$this, 'renderPageBar']),
             new TwigFunction('if_empty_query', [$this, 'ifEmptyQuery']),
             new TwigFunction('threadpost', [$this, 'threadpost'], ['is_safe' => ['html']]),
-            new TwigFunction('minipost', [$this, 'minipost']),
+            new TwigFunction('minipost', [$this, 'minipost'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -296,6 +298,35 @@ class ForumTwigExtension extends AbstractExtension
         HTML;
     }
 
+    public function minipost($post) {
+        if (isset($post['deleted']) && $post['deleted']) return;
+
+        $ulink = $post['uname']; //userlink($post, 'u');
+        $pdate = date('Y-m-d H:i', $post['date']);
+
+        $posttext = $this->postfilter($post['text']);
+
+        return <<<HTML
+            <tr>
+                <td class="n2 topbar_mobile blkm nod clearfix sep_mini">
+                    $ulink
+                </td>
+            </tr>
+            <tr>
+                <td class="n2 sidebar nom sep_mini" rowspan="2">
+                    $ulink
+                    <br>
+                    <br>Posts: 0
+                </td>
+                <td class="n2 topbar blkm sep_mini">Posted on $pdate
+                    <span class="float-right"><a href="thread?pid={$post['id']}#{$post['id']}">Link</a> &ndash; ID: {$post['id']}</span>
+                </td>
+            </tr><tr>
+                <td class="n2 mainbar">$posttext</td>
+            </tr>
+        HTML;
+    }
+
     private function avatarUrl($user, $pf = '') {
         global $sb;
 
@@ -303,6 +334,8 @@ class ForumTwigExtension extends AbstractExtension
     }
 
     private function postfilter($msg) {
+        $msg = $msg ?? '';
+        
         $msg = str_replace("[/quote]", "[/quote]\n\n", $msg);
 
         $markdown = new Parsedown();

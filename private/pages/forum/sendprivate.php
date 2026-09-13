@@ -111,7 +111,7 @@ if (!$action) {
 	$topbot['title'] .= ' (Preview)';
 }
 
-twigloaderForum()->display('forum/sendprivate.twig', [
+echo $twig->render('forum/sendprivate.twig', [
 	'post' => $post ?? null,
 	'userto' => $userto,
 	'messagetitle' => $title,

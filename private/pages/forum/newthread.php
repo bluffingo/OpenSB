@@ -82,7 +82,7 @@ if ($action == 'Preview') {
 	$topbot['title'] .= ' (Preview)';
 }
 
-twigloaderForum()->display('forum/newthread.twig', [
+echo $twig->render('forum/newthread.twig', [
 	'post' => $post ?? null,
 	'threadtitle' => $title,
 	'message' => $message,
